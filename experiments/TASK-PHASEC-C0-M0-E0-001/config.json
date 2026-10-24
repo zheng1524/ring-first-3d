@@ -1,0 +1,67 @@
+{
+  "task": "TASK-PHASEC-C0-M0-E0-001",
+  "state": "APPROVED_EXPERIMENTAL",
+  "GT_used": false,
+  "parameter_search": false,
+  "group": "G01",
+  "videos": [
+    "004",
+    "005"
+  ],
+  "historical_ref_definition": "independent_confidence_fusion_v1 inputs/references.json",
+  "depth_tolerance_mm": 0.3,
+  "min_parallax_deg": 2.0,
+  "Mask_guard_px": 3,
+  "local_depth_residual_mm": 0.5,
+  "local_median_window_px": 5,
+  "track_error_px": 2.0,
+  "track_source_radius_px": 2.0,
+  "min_track_targets": 2,
+  "thin_component_aspect_ratio": 12.0,
+  "source_boundary_protection_px": 3,
+  "holdout_indices": {
+    "004": [
+      10,
+      15
+    ],
+    "005": [
+      11,
+      20,
+      21
+    ]
+  },
+  "display_exclusion": {
+    "minimum_clear_background_witnesses": 2,
+    "requires_self_visibility": true,
+    "requires_local_or_component_anomaly": true,
+    "forbid_any_track_support": true,
+    "forbid_any_other_depth_agreement": true,
+    "protect_boundary_and_minor_source_components": true,
+    "permanent_deletion": false
+  },
+  "score_weights": {
+    "track_support": 0.25,
+    "mask_support": 0.2,
+    "depth_support": 0.15,
+    "no_conflict": 0.2,
+    "connected_area": 0.15,
+    "local_continuity": 0.05
+  },
+  "selection_gates": {
+    "minimum_supported_face_area_fraction": 0.1,
+    "minimum_supported_tracks": 10,
+    "maximum_conflict_point_fraction": 0.2,
+    "minimum_score_margin": 0.05,
+    "same_winner_all_leave_one_view_out": true
+  },
+  "allowed_prediction_modules": [
+    "C0",
+    "M0"
+  ],
+  "M1": false,
+  "M2": false,
+  "HERO_runs": 0,
+  "new_camera_fits": 0,
+  "ring_R_mm": 5.6,
+  "ring_r_mm": 0.6
+}
