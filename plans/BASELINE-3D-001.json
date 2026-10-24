@@ -1,0 +1,761 @@
+{
+  "plan_id": "BASELINE-3D-001",
+  "status": "NOT_AUTHORIZED_TO_IMPORT",
+  "created_date_AsiaShanghai": "2026-10-24",
+  "repository": "zheng1524/ring-first-3d",
+  "repository_phase": "BOOTSTRAP_ONLY",
+  "seed_commit": "55f4bc29efa7a055acfe03546f2980b914ef0a4c",
+  "legacy_host": {
+    "root": "/home/liu/polyp_research",
+    "HEAD": "4483e25ede3eee1b6eaf96254d2544152f935c0d",
+    "branch": "main",
+    "remote": "https://github.com/zheng1524/polyp-resarch.git",
+    "ring_source_root": "/home/liu/polyp_research/ring_anchor_3d",
+    "ring_tracked_files": 0,
+    "unsubmitted_counts": {
+      " M": 14,
+      "??": 2599
+    },
+    "source_is_LOCAL_ONLY": true,
+    "host_HEAD_does_not_version_RingFirst_sources": true
+  },
+  "principles": {
+    "no_legacy_source_copied_this_task": true,
+    "no_scientific_run_this_task": true,
+    "no_historical_experiment_directory_copy": true,
+    "no_DXY_mutation": true,
+    "no_whole_repo_mirror": true,
+    "no_baseline_tag_created": true,
+    "no_GT_pose_correction": true
+  },
+  "runtime": {
+    "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+    "executable": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "trimesh": "5.1.1",
+      "open3d": "NOT_FOUND_IN_ENV_METADATA",
+      "torch": "2.7.1+cu128",
+      "torchvision": "0.22.1+cu128",
+      "scikit-image": "NOT_FOUND_IN_ENV_METADATA",
+      "opencv-python": "NOT_FOUND_IN_ENV_METADATA",
+      "opencv-python-headless": "4.11.0.86"
+    },
+    "additional_vendor": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/vendor/pymeshlab",
+    "Blender": "/home/liu/blender/blender-5.0.1-linux-x64/blender",
+    "vendor_packages": [
+      {
+        "name": "open3d",
+        "version": "0.19.0",
+        "vendor_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor"
+      },
+      {
+        "name": "scikit-image",
+        "version": "0.24.0",
+        "vendor_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_depth_v3/vendor"
+      },
+      {
+        "name": "pymeshlab",
+        "version": "2023.12.post3",
+        "vendor_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/vendor"
+      }
+    ],
+    "metadata_only_no_import_or_model_run": true
+  },
+  "external_read_only_code": [
+    {
+      "path": "/home/liu/new-polyp-dxy/src/dxy_mid/segmentation.py",
+      "bytes": 2445,
+      "sha256": "f16b9c142894d0ef1d7e6b43f9f5d2c8cdeffdc8576e5c3e6493f7b7e60d57c4",
+      "status": "EXTERNAL_READ_ONLY_NO_COPY_TO_3D"
+    },
+    {
+      "path": "/home/liu/new-polyp-dxy/src/dxy_mid/_engine/ring_holes.py",
+      "bytes": 2834,
+      "sha256": "bed11577ee2a7aeed8e2bf9acd6e2fd993525af42374c2a66812b8a48e46a1d3",
+      "status": "EXTERNAL_READ_ONLY_NO_COPY_TO_3D"
+    }
+  ],
+  "candidate_source_files": [
+    {
+      "module": "Ring-First camera / shared identity",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/v6_common.py",
+      "bytes": 2662,
+      "sha256": "59404f5c2a35913c253f802f5bb4ff21461861958a881f86973de15710693fe1",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/v6_common.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Ring-First camera / shared identity",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py",
+      "bytes": 7677,
+      "sha256": "673b57af12fcda5dad082eb7397574d46f0bdce2c097956c0682d8dac2cd8541",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Ring-First camera / shared identity",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/validate_select.py",
+      "bytes": 4988,
+      "sha256": "bdfb607de4c3d967b2c84ce866a24f5fd5bd046744ce6dd62d4e545fd07b58db",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/validate_select.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Ring-First camera / shared identity",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/prepare_ring.py",
+      "bytes": 4438,
+      "sha256": "4225f0fe7ea713ac109b26a4151be0ef5b4b23b17a62732f36146c6fc1b0f271",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/prepare_ring.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Ring-First camera / shared identity",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/track005.py",
+      "bytes": 3583,
+      "sha256": "c912da0713a329a3c954fc7b1dfbdcf43459493432ccbc782d7742cd26e514ac",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/track005.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Ring-First camera / shared identity",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v5_geometry_crossvideo/scripts/g5_common.py",
+      "bytes": 2744,
+      "sha256": "d004b136fc46e2f1d28503ae3986d4ab42261977839d7235f644da99aa5e2a0a",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/ring_first_v5_geometry_crossvideo/scripts/g5_common.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Ring-First camera / shared identity",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/scripts/batch_common.py",
+      "bytes": 1615,
+      "sha256": "89450f8ccca49631a5b8fda79f886dd0683fd34a2c9977574f64510279ae6471",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/scripts/batch_common.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Ring-First camera / shared identity",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/scripts/run_geometry.py",
+      "bytes": 8992,
+      "sha256": "4caa5223bc91eb5d9496fd26ece7bffc1f0fc1c7af0a117a39f38dcde927c79a",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/scripts/run_geometry.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Ring-First camera / shared identity",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/scripts/prepare_batch.py",
+      "bytes": 3121,
+      "sha256": "3af120c41ca8e7ae5e3320ff44bcb6419eac20cdd0ffaece7ad4be8829e60b29",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/scripts/prepare_batch.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Ring-First camera / shared identity",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/scripts/run_hero.py",
+      "bytes": 2720,
+      "sha256": "d9cbcebafa7f94475df78c5ae5685368e0368a8055248aecf208796e66a5da60",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/scripts/run_hero.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "HERO and camera/depth interfaces",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/scripts/run_mvs_adapter3.py",
+      "bytes": 7276,
+      "sha256": "14315d808e71a136dad71877c52336473fb2431428451e0a3b3de6f894e7d481",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/surface_fusion_v1/scripts/run_mvs_adapter3.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "HERO and camera/depth interfaces",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/scripts/common.py",
+      "bytes": 3563,
+      "sha256": "be638d095e19ce065285bae811b453f3951ae5d99679fcb70ea3fb9bd0f5ce11",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/surface_fusion_v1/scripts/common.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "HERO and camera/depth interfaces",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/scripts/fusion_common.py",
+      "bytes": 1919,
+      "sha256": "3760d8f9ab3cc51263e0f99f20407c75bdafdcc241b44971461a024ce1b384c0",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/surface_fusion_v2/scripts/fusion_common.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "HERO and camera/depth interfaces",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/scripts/v3_common.py",
+      "bytes": 2786,
+      "sha256": "c117d3b37ad6f376628e0e8d5fcf0600b2ccf689067e90f6e4afcb9b4fe7462c",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/surface_fusion_v3/scripts/v3_common.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "HERO and camera/depth interfaces",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v1/scripts/common.py",
+      "bytes": 4499,
+      "sha256": "12e9eab72765877219191aa9a26bf37d3ffb0c7deb7b55125c4b5d5864201e1e",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/ring_first_v1/scripts/common.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Historical independent local reconstruction and fusion",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/icf_common.py",
+      "bytes": 2234,
+      "sha256": "282c197eb6173d7fd44882b47e2ec64f8de05146bfd008671406b355487f1859",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/icf_common.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Historical independent local reconstruction and fusion",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/reconstruct.py",
+      "bytes": 4287,
+      "sha256": "577f0182d2e2d82e8105c6d73350155a96f3551a56f6007fd8b23c6b6fc6c83c",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/reconstruct.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Historical independent local reconstruction and fusion",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/confidence_fusion.py",
+      "bytes": 8137,
+      "sha256": "e541dcd699a88f287a3c9e1f4a9668053cea834f0ee4ffe95b7e7ad602a3f555",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/confidence_fusion.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Historical independent local reconstruction and fusion",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/tsdf_compare.py",
+      "bytes": 3457,
+      "sha256": "6e5b676ae2cd67a21645f3773a85ff2daab514153bd094f576539fdcdcaf9648",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/tsdf_compare.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Historical independent local reconstruction and fusion",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/evaluate.py",
+      "bytes": 12627,
+      "sha256": "d86b0011ec305792224c9848df2b8e7d72fa6e6e9a2360dbc87d9dd7e8718daf",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/evaluate.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Historical independent local reconstruction and fusion",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/export_scenes.py",
+      "bytes": 7013,
+      "sha256": "5315055682a3b974eebb478f71420b4130e0d8974e773a4ccbec1548afd20999",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/independent_confidence_fusion_v1/scripts/export_scenes.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "GT and conservative topology shared helpers",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/code/vnext_common.py",
+      "bytes": 2272,
+      "sha256": "da6dfee730a2f5f9ccb9d10aef5a519a76dd463c89bab0054abb31b64ff44a4b",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/code/vnext_common.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "GT and conservative topology shared helpers",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/code/process_surfaces.py",
+      "bytes": 10604,
+      "sha256": "a24791472751e3e13d6d84c719aa07443c698015fb5914a6656dec35c6b542f4",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/code/process_surfaces.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "GT and conservative topology shared helpers",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/code/evaluate_gt.py",
+      "bytes": 9699,
+      "sha256": "5119f9ace7e1a5be3935debbc93e89cc1728ee008034a4ec385e16bd551ab5a9",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/code/evaluate_gt.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest pointcloud processing",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/build_report.py",
+      "bytes": 32304,
+      "sha256": "cf7bdcb8892961732e452a05fcff4cc3488d0d42ec14c5f320b04c29280ac153",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/build_report.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest pointcloud processing",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/controlled_test.py",
+      "bytes": 3216,
+      "sha256": "4d92ce9e9da3ced212b92d4de8a458ff876a257290f11b4cac2db7f137d2ea5d",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/controlled_test.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest pointcloud processing",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/evaluate_filters.py",
+      "bytes": 7555,
+      "sha256": "3711471168ad025d01b0e36fdb18a64fbfbe1601737a1241887914ddb970411b",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/evaluate_filters.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest pointcloud processing",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/filters.py",
+      "bytes": 6969,
+      "sha256": "8727ae3c5d2359497d48f892cbb7423ba90f7b3eb58a648c1f8a9f22f9f1f1f4",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/filters.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest pointcloud processing",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/final_validate.py",
+      "bytes": 6149,
+      "sha256": "13c96fb4d63dceb7e9577c907d9d67a706aa73f7ddbb371e15d43ba1f5069a20",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/final_validate.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest pointcloud processing",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/pc_common.py",
+      "bytes": 2000,
+      "sha256": "f3377d001a00eb381fd85e83d6a38d4b8060c7fb1885df4d6916a108fcc77d57",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/pc_common.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest pointcloud processing",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/prepare_and_select.py",
+      "bytes": 4246,
+      "sha256": "612d4d56a095b29b94fedddda125b277715b1a6f486f7006cc07f051ed250712",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/prepare_and_select.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest pointcloud processing",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/run_filters.py",
+      "bytes": 4842,
+      "sha256": "2536a3c70a229412c6244a879b38e5fdaed5ebfac98f4e150ac0cd16c4ad74fb",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/run_filters.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest pointcloud processing",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/setup_inputs.py",
+      "bytes": 3386,
+      "sha256": "6f0e4736899a29f755cc05e3df61d30829865fd5eda35961a2d3e8858ba650b8",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/setup_inputs.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest pointcloud processing",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/summarize.py",
+      "bytes": 9377,
+      "sha256": "45622582ad87ce057f7a0be2b064e48c781ba12909f7ffcc1ce8255265ac2781",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/summarize.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest pointcloud processing",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/visualize.py",
+      "bytes": 15318,
+      "sha256": "bcb0e24afe09ac276442348433fe64e0b3f3e6674832abf378d9d2bb49959256",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/visualize.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/build_report.py",
+      "bytes": 28528,
+      "sha256": "2687056ba11848c80735f08cef9ec6d4174aa45be1722fb0f66c62b5c9ecd3b1",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/build_report.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/evaluate.py",
+      "bytes": 11216,
+      "sha256": "5ad564cabe12ecfaa2ea5e2f8eddbf54134f1fd016aa1d3819a1ae23439b56ec",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/evaluate.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/evaluate_diagnostics.py",
+      "bytes": 12212,
+      "sha256": "938f4336a9b0591535a85d6366a7710621f28813dc4b2735f5391640c0964e3c",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/evaluate_diagnostics.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/failure_evidence.py",
+      "bytes": 5436,
+      "sha256": "1628bc2d44f2439696577a887bec91622f46f24921fbd9505b2167b573a84313",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/failure_evidence.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/hull.py",
+      "bytes": 7840,
+      "sha256": "c0c4f541f179263996b8b1384ea09844c4f6591ae92c899c51ff9b769cf705e4",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/hull.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/prepare.py",
+      "bytes": 3923,
+      "sha256": "841453a999e5eef28334a97b85127bc66617ad5eb2c96ff02a3b4a199d6f47cb",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/prepare.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/presentation_detail.py",
+      "bytes": 2939,
+      "sha256": "1c0f1c92e992ff9a4f456625525f44d41c725368ac49063d8d7e2a0c1bb48ec7",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/presentation_detail.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/reproduce.sh",
+      "bytes": 641,
+      "sha256": "7ea81be579f27d3fc41ea81f2ee40268ea0a030cbc9e7709c9622c12568e689c",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/reproduce.sh",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/run_real.py",
+      "bytes": 6479,
+      "sha256": "455e8614742b837a90ea2be2eed2c5e4429c462d2cfc438c3c6b7340819d7691",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/run_real.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/scene_markers.py",
+      "bytes": 1648,
+      "sha256": "31a0c08b348e788bb2f980340d967a1c2772e38186ca3e314442da6e5dd12bf8",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/scene_markers.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/summarize.py",
+      "bytes": 3383,
+      "sha256": "2859ea9bf84e2cb160cd828c83815ead7a137f65e53b15dd147c438b215e7d5e",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/summarize.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/test_geometry.py",
+      "bytes": 1787,
+      "sha256": "d96bfdb33b3d2bb4c386fc13a4160e989ff446956411fcabec9617a84740801a",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/test_geometry.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/validate.py",
+      "bytes": 4203,
+      "sha256": "8909514d882256a3142347e7d2ad9b0805bd17f5a833556e6696940e6607fdb9",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/validate.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/vh_common.py",
+      "bytes": 4376,
+      "sha256": "f862f1e5bf4d329f3fd4734466b9b18d5f0c5290ee70a109073a51c24a054aff",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/vh_common.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Latest executed unaccepted Hull",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/visualize.py",
+      "bytes": 17968,
+      "sha256": "b9b0c0a7927126c6be2aa8bc220e32476bf6f3db1347e913739618d9dfc35f70",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/visualize.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    },
+    {
+      "module": "Pointcloud regression tests",
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/tests/test_geometry.py",
+      "bytes": 2360,
+      "sha256": "ddb14f68a16b97e577e1b0537087049addeed682c67045da84029c2cfc751832",
+      "proposed_snapshot_path": "legacy_source_snapshot/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/tests/test_geometry.py",
+      "status": "LOCAL_ONLY_NOT_AUTHORIZED_TO_IMPORT",
+      "copied_this_task": false
+    }
+  ],
+  "dependency_closure_complete": false,
+  "source_candidate_count": 51,
+  "source_candidate_bytes": 333214,
+  "small_reference_assets": [
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/assets/ring_R5.obj",
+      "bytes": 1028404,
+      "sha256": "9b9b686351aeefb29f9b21902c2881e6aeaee560cc97c401c13b01e897aa6851",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/assets/ring_R10.obj",
+      "bytes": 1028404,
+      "sha256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/config.json",
+      "bytes": 1456,
+      "sha256": "e081a0a2fb35b4e515b9eb4d6e93ef1c764a0c43b643e197df9eff988133b7a1",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/inputs/entries.json",
+      "bytes": 116609,
+      "sha256": "932315184234f5ff0537104d3fac55be71e6c01fe7402ed6f90f02730e30a567",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/inputs/groups.json",
+      "bytes": 6645,
+      "sha256": "7c3c6d31d5e0f14d297a28bfd738ac98f4661016784952a695ae71f18837c729",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/config.json",
+      "bytes": 1471,
+      "sha256": "a59238484df724516d11b608d0b05dc7a75272d9923e817ec2498cd6f69c408d",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/inputs/entries.json",
+      "bytes": 33740,
+      "sha256": "8527d94700f8f8745faf02c5d81373bd4c942e751325e826159838614ece8895",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/provenance/FORMAL_PREDICTIONS_BEFORE_GT.json",
+      "bytes": 16419,
+      "sha256": "70a1b8cc767f57c29dfc3f5cee9b64ec875d301f78928d0a0713938bb9f0abe9",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/provenance/FORMAL_PREDICTIONS_BEFORE_GT.json",
+      "bytes": 28453,
+      "sha256": "103353815e0398f6f1e7633e8c3b9f09fe19264380cf96d9c18eb2c68c09cb6f",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_camera_0.npz",
+      "bytes": 60006,
+      "sha256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/local005_camera_0.npz",
+      "bytes": 16257,
+      "sha256": "f50f066a85c152f0ab49a465acc188be329cbccae07555bc9c0c381b8314fc3b",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/gt_mapping/GT_ASSET_AUDIT.json",
+      "bytes": 11900,
+      "sha256": "f049a3626b6f4d7516d67d3c77935cbb59bd62d4fc2e2fbe112b09e02b77d865",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_benchmark_v1/metrics/MVS_source_verification.json",
+      "bytes": 144,
+      "sha256": "6fbeb836531bcf57d11c03d13007a8e7ed0902b47566d6ddccf3580b18d97379",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/metrics/official_checkpoint_verification.json",
+      "bytes": 468,
+      "sha256": "b096aa7d2d70040aa6874619869a3171a5511c147b1e4487008657df0be39428",
+      "status": "LOCAL_ONLY_READ_ONLY_REFERENCE_NOT_UPLOADED"
+    }
+  ],
+  "proposed_curated_figures": [
+    {
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/visualizations/Fig10_accuracy_coverage_false_removal.png",
+      "bytes": 212219,
+      "sha256": "f2f2fb5f187a678c7f55728a98d65cd53eb175a8a5d581ca59667588c15960de",
+      "proposed_destination": "research_archive/pointcloud_surface_filter_vnext/Fig10_accuracy_coverage_false_removal.png",
+      "status": "PROPOSED_NEEDS_USER_REVIEW_NOT_COPIED"
+    },
+    {
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/visualizations/Fig0_Review_Overview.png",
+      "bytes": 596077,
+      "sha256": "8c4f3670b66bf6ca7fd4929894466507083fe06ea40ae9c2ead9132eee53daa6",
+      "proposed_destination": "research_archive/occlusion_visual_hull_20261024/Fig0_Review_Overview.png",
+      "status": "PROPOSED_NEEDS_USER_REVIEW_NOT_COPIED"
+    },
+    {
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/visualizations/Fig9_false_removal.png",
+      "bytes": 380479,
+      "sha256": "b1eaabfa4f7afb18f81b5d4950f531595f28f82d9dfd5b78e2383aa15b302591",
+      "proposed_destination": "research_archive/multigroup_surface_gt_vnext/Fig9_false_removal.png",
+      "status": "PROPOSED_NEEDS_USER_REVIEW_NOT_COPIED"
+    }
+  ],
+  "historical_reports": [
+    {
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/TECHNICAL_REPORT.md",
+      "bytes": 41477,
+      "sha256": "6b815079391edfd24c5a92d9b09fa97bb08106952f6f5b88c8fc0c71157c963e",
+      "status": "LOCAL_ONLY_HISTORICAL_REPORT_NOT_COPIED"
+    },
+    {
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/TECHNICAL_REPORT.md",
+      "bytes": 26245,
+      "sha256": "1a70dfff204746a5c08aa0fb230f95f077b160f216fc7eaf13a30d2eacda92c3",
+      "status": "LOCAL_ONLY_HISTORICAL_REPORT_NOT_COPIED"
+    },
+    {
+      "source_path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/TECHNICAL_REPORT.md",
+      "bytes": 38929,
+      "sha256": "a63e8595a71fe59496e41043f6473aead107fc2667ca4b3d8d1d3d8010f60655",
+      "status": "LOCAL_ONLY_HISTORICAL_REPORT_NOT_COPIED"
+    }
+  ],
+  "external_large_assets": [
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/weights/mvsanywhere_hero_full.ckpt",
+      "bytes": 2420601860,
+      "recorded_sha256": "00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d",
+      "freshly_hashed_this_task": false,
+      "status": "LOCAL_ONLY_NEVER_IMPORT_TO_GIT"
+    },
+    {
+      "path": "/home/liu/polyp_research/smart_endoscope_20260805/raw",
+      "status": "LOCAL_ONLY_RAW_VIDEO_DIRECTORY_DO_NOT_COPY"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/.venv",
+      "status": "LOCAL_ONLY_RUNTIME_DO_NOT_COPY"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/gt_mapping",
+      "status": "LOCAL_ONLY_TRUSTED_SHAPE_GT_ORACLE_MAPS_EVALUATION_ONLY"
+    }
+  ],
+  "current_science_status": {
+    "mainline": "Ring-First frozen local camera candidates + official MVSAnywhere HERO + P0 back-projection / open visible mesh",
+    "SOR_ROR_P4": "EXPERIMENTAL_NOT_DEFAULT_APPROVED",
+    "Hull": "20261024 H1/H2 already executed; NOT_SCIENTIFICALLY_ACCEPTED",
+    "cross_video_004_005": "UNVERIFIED_DO_NOT_MERGE",
+    "GT_shape": "USER_TRUSTED_SAME_NAMED_SHAPES",
+    "real_GT_deployment_pose": "UNKNOWN",
+    "G04_exact_GT": "MISSING"
+  },
+  "migration_stages": [
+    {
+      "stage": 0,
+      "title": "Approve bounded source snapshot and dependency graph",
+      "action": "Review the explicit candidate list; trace dynamic imports, hard-coded paths and licensing; freeze source SHA/config/input boundaries before copying. This plan is not approval.",
+      "execute_this_task": false
+    },
+    {
+      "stage": 1,
+      "title": "Minimal P0 source and read-only input contract",
+      "action": "After approval, import one explicitly reviewed module subset with source mappings; preserve pixel IDs, c2w/K, axial-Z mm and original mesher semantics. Keep model weights/raw data/GT outside Git.",
+      "execute_this_task": false
+    },
+    {
+      "stage": 2,
+      "title": "Independent bounded replay",
+      "action": "Use a new output path and reviewed frozen G01 inputs; run approved small geometry/input checks and actual replay, compare pixel/mesh counts and scientific failure denominators. If HERO inference is required, approve one bounded run separately. Existing logs or re-rendering alone are not reproduction.",
+      "execute_this_task": false
+    },
+    {
+      "stage": 3,
+      "title": "Human acceptance and baseline tag",
+      "action": "PM/RA review through human relay; user approves baseline scope, code commit, input manifest and GT protocol. Only then create a baseline-3d-001 tag; distinguish engineering reproduction from absolute geometric accuracy.",
+      "execute_this_task": false
+    },
+    {
+      "stage": 4,
+      "title": "Selective historical evidence import",
+      "action": "Import only user-approved historical report excerpts/curated small PNGs and tables in meaningful incremental commits; retain all source files in place. Do not copy 22GiB or reuse another route's predictions to fill failures.",
+      "execute_this_task": false
+    }
+  ],
+  "reproduction_commands_to_review_not_run": [
+    {
+      "scope": "Original pointcloud pipeline",
+      "working_directory": "/home/liu/polyp_research",
+      "command": "PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 ring_anchor_3d/.venv/bin/python ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/code/run_filters.py",
+      "warning": "Historical entry has output-root assumptions; must first adapt an approved new empty output root and frozen configuration. Do not run now or overwrite frozen experiment."
+    },
+    {
+      "scope": "Original Hull reproduction wrapper",
+      "command": "VH_OUT=/absolute/path/to/approved_new_empty_run bash /home/liu/polyp_research/ring_anchor_3d/experiments/occlusion_visual_hull_20261024/code/reproduce.sh",
+      "warning": "Only a future explicitly approved task may run; Hull is already executed and unaccepted, not an automatically scheduled first experiment."
+    },
+    {
+      "scope": "Original HERO loader",
+      "entry": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/scripts/run_mvs_adapter3.py",
+      "warning": "Loads the frozen 2.42GB checkpoint in the current vendor/environment context; not certified portable to the new repository."
+    }
+  ],
+  "blockers": [
+    "Source whitelist is a candidate set, not a proven import closure.",
+    "Multiple historical common.py namespaces, Path(__file__) parent assumptions and absolute data/DXY paths need a path-only migration design.",
+    "Open3D/scikit-image/PyMeshLab are installed in isolated vendor trees; the base venv alone is incomplete.",
+    "Existing source configurations must not activate failed point-deletion branches as the P0 default.",
+    "Remote README/SHA readback hit TLS timeout; stop all remote operations until user review."
+  ],
+  "approval_required_before_any_copy": true
+}
