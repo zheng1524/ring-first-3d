@@ -1,0 +1,48 @@
+{
+  "task": "TASK-PHASEC-DENSITY-MULTIGROUP-001",
+  "status": "APPROVED_EXPERIMENTAL_DIAGNOSTIC_ONLY",
+  "radius_mm": 0.4,
+  "knn_k": 12,
+  "normal_k": 16,
+  "minimum_cos_incidence": 0.15,
+  "maximum_nonplanarity": 0.1,
+  "score_threshold": 0.5,
+  "D0": "clip(min(rho_radius/rho_expected,rho_knn/rho_expected),0,1)",
+  "continuity_score": "1/(1+max(0,max_neighbor_tangent_normalized_stretch-1)+max_neighbor_abs_delta_log_density/log(2))",
+  "D1": "max(D0,continuity_score), conservative conjunction, never deletes points",
+  "density_gradient": "source 8-neighbor maximum abs delta log normalized density per source-pixel distance; physical gradient also retained",
+  "candidate_rule": "score < 0.5 and normalization reliable; unknown remains NaN",
+  "minimum_regular_screened_frames": 3,
+  "normalization": "rho_expected=fx*fy*abs(dot(n_cam,K^-1 pixel))/Z^2; axial Z in mm; n from local P0 PCA",
+  "mask_boundary_px": 3,
+  "Ring_neighbor_px": 3,
+  "cross_reference_conflict_mm": 0.3,
+  "source_neighbors": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      -1,
+      1
+    ]
+  ],
+  "parameter_search_runs": 0,
+  "point_deletions": 0,
+  "GT_used": false,
+  "view_angle_deg": [
+    0,
+    0
+  ],
+  "physical_scale": "mm",
+  "G01_bin_width_mm": 1.0,
+  "minimum_tangent_eigen_ratio": 0.02
+}

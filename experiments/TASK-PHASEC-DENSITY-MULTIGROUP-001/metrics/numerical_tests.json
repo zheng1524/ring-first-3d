@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "kind": "analytic numerical tests, not real reconstruction GT",
+  "checks": [
+    {
+      "test": "front_plane_density_normalization",
+      "passed": true,
+      "median": 0.9549296585513491
+    },
+    {
+      "test": "tilt_changes_raw_density",
+      "passed": true
+    },
+    {
+      "test": "tilt_normalization_reduces_expected_sampling_difference",
+      "passed": true
+    },
+    {
+      "test": "rigid_frame_does_not_change_density_scores",
+      "passed": true
+    },
+    {
+      "test": "finite_surface_boundary_can_be_flagged_without_being_wrong",
+      "passed": true,
+      "candidate_score": 0.27177645425937974
+    },
+    {
+      "test": "D1_candidate_subset_of_D0_5",
+      "passed": true
+    },
+    {
+      "test": "D1_candidate_subset_of_D0_6",
+      "passed": true
+    },
+    {
+      "test": "D1_candidate_subset_of_D0_7",
+      "passed": true
+    },
+    {
+      "test": "unidentifiable_thin_line_normals_remain_unknown",
+      "passed": true
+    },
+    {
+      "test": "all_points_and_source_pixels_preserved",
+      "passed": true
+    },
+    {
+      "test": "GT_firewall",
+      "passed": true
+    }
+  ]
+}
