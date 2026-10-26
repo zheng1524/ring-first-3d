@@ -45,7 +45,7 @@ def store_prediction(dest,out,target):
     dest.mkdir(parents=True,exist_ok=True);Image.fromarray(out['RGBA']).save(dest/'Prediction_A_RGB.png');Image.fromarray(target).save(dest/'B_real_frame.png');alpha=(out['RGBA'][:,:,3]>0)[:,:,None]*.7;overlay=np.rint(target*(1-alpha)+out['RGBA'][:,:,:3]*alpha).astype(np.uint8);Image.fromarray(overlay).save(dest/'Overlay.png');np.savez_compressed(dest/'projection_exact.npz',**out)
 def run(cross=False):
     verify()
-    for f in ['P2_SOURCE_FROZEN.json','P2_INPUTS.json']:
+    for f in ['P2_EXECUTION_FROZEN.json','P2_INPUTS.json']:
         for x in load(R/'provenance'/f)['files']:assert sha(x['path'])==x['sha256'],x['path']
     pairs=load(R/'provenance'/('P3_PAIRS_FROZEN.json'if cross else'P2_PAIRS_FROZEN.json'));rows=[];st='P3'if cross else'P2'
     if cross:assert(R/'metrics/P2_results.json').exists()
@@ -53,7 +53,8 @@ def run(cross=False):
         if pair['status'].startswith('NOT_EVALUABLE'):rows.append(pair);continue
         c=next(c for c in cases()if c['id']==pair['A']);transforms=load(ICF/'inputs/H_frozen.json')if cross else[dict(tag='SAME_VIDEO',H=np.eye(4))]
         for tr in transforms:
-            H=np.array(tr['H']);H=np.linalg.inv(H)if cross and c['video']=='004'else H;raw,target=predict(c,pair,H=H);cleaned,_=predict(c,pair,'FINAL',H);mask=cv2.imread(pair['B_Mask'],0);row=dict(A=c['id'],B=pair['B'],B_raw_frame=pair['B_raw_frame'],candidate=tr['tag'],**evaluate(raw,cleaned,target,mask),target_not_in_A_HERO_inputs=pair.get('B_not_A_HERO_input')if not cross else None,whole_pipeline_independent=False,status='NO_VERIFIED_REGISTRATION'if cross else'POSE_CONDITIONAL_DIAGNOSTIC',source_timeline_risk=c['video']=='004'and c['group']=='G01')
+            tier='FINAL'if cross or c['group']!='G01'else'T2'
+            H=np.array(tr['H']);H=np.linalg.inv(H)if cross and c['video']=='004'else H;raw,target=predict(c,pair,H=H);cleaned,_=predict(c,pair,tier,H);mask=cv2.imread(pair['B_Mask'],0);row=dict(A=c['id'],B=pair['B'],B_raw_frame=pair['B_raw_frame'],candidate=tr['tag'],**evaluate(raw,cleaned,target,mask),cleaned_prediction_identity='REJECTED_T2_DIAGNOSTIC_ONLY'if tier=='T2'else'FINAL_RAW_PRESERVED',final_selected_tier='RAW',target_not_in_A_HERO_inputs=pair.get('B_not_A_HERO_input')if not cross else None,whole_pipeline_independent=False,status='NO_VERIFIED_REGISTRATION'if cross else'POSE_CONDITIONAL_DIAGNOSTIC',source_timeline_risk=c['video']=='004'and c['group']=='G01')
             if cross:
                 row.update(Ring_center_offset_mm=np.linalg.norm(H[:3,3]),Ring_normal_angle_degrees=np.degrees(np.arccos(np.clip(H[2,2],-1,1))),H_source_to_target=H,transform_updated=False,background_matches_used_for_new_fit=0,reason='Historical H reused without optimization; Ring yaw symmetry and shared camera/identity errors unresolved; no certified independent background anchors')
             folder=R/'local_results'/st/(c['id']+'__'+tr['tag']);store_prediction(folder/'RAW',raw,target);store_prediction(folder/'CLEANED',cleaned,target);row['local_output']=str(folder);rows.append(row)
