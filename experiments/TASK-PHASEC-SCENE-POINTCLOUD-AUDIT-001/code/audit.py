@@ -49,6 +49,11 @@ def raw(c):
     a=np.load(c['source_points']);P=a['points_mm']if'points_mm'in a else a['XYZ_mm'];uv=a['uv']if'uv'in a else a['pixel_uv'];p=dict(np.load(c['pack']));rgb=np.asarray(Image.open(c['RGB']).convert('RGB'));return P,uv.astype(int),p,rgb
 def stats(x):
     x=np.asarray(x,float);return dict(n=len(x),min=float(x.min())if len(x)else None,median=float(np.median(x))if len(x)else None,p95=float(np.percentile(x,95))if len(x)else None,max=float(x.max())if len(x)else None)
+def annotate_stages(c,stages,conf):
+    for stage in stages:
+        final=stage['stage']=='L5';stage.update(coordinate_system='unchanged Ring local XYZ / millimeters / independent per video',source_RGB=c['RGB'],point_renderer='visualization.real_p0_renderer.draw_rgb_points',point_size=conf['L5_point_size']if final else conf['diagnostic_point_size'],point_alpha=1.,projection='frozen source K/c2w perspective'if final else'Ring oblique orthographic '+str(conf['layer_oblique_angle_degrees']))
+        stage.setdefault('source_XYZ','exact L1 P0 + L2 background concatenation; local_layers/'+c['scene_id']+'/Layers_L1-L4_XYZ_RGB.npz')
+    return stages
 def prepare():
     paths=set()
     for c in scenes():
@@ -95,7 +100,7 @@ def build(c):
     diagnostics,geometry=diag.figures(P,rgb,B,bRGB,mesh,scene,p['K'],p['pose'],poses,(p['labels'].shape[1],p['labels'].shape[0]),conf,c['scene_id'],c['morphology'],c['ring'],c['condition'],l5_images=(frame,l5))
     for name,figure in diagnostics.items():figure.savefig(dest/name,dpi=dpi,facecolor='white');plt.close(figure)
     stages_meta=[dict(stage='L1',P0_points=len(P),background_points=0,total_points=len(P),source_XYZ=c['source_points']),dict(stage='L2',P0_points=0,background_points=len(B),total_points=len(B),source_XYZ='local_layers/'+c['scene_id']+'/Raw_Background_FULL.npz and selected source indices'),dict(stage='L3',P0_points=len(P),background_points=len(B),total_points=len(allP),source_XYZ='exact concatenation L1+L2'),dict(stage='L4',P0_points=len(P),background_points=len(B),total_points=len(allP),CAD_source=str(ring_path(c)),CAD_vertices=len(mesh.vertices),CAD_faces=len(mesh.faces),CAD_alpha=conf['diagnostic_CAD_alpha']),dict(stage='L5',P0_points=len(P),background_points=len(B),total_input_points=len(allP),visible_points=int(visible.sum()),CAD_alpha=1.,source_camera_unchanged=True)]
-    result=dict(scene_id=c['scene_id'],group=c['group'],actual_video=c['video'],reference=c['reference'],raw_frame=c['raw_frame'],morphology=c['morphology'],ring=c['ring'],condition=c['condition'],stages=stages_meta,metrics=metrics,background_ranges=ranges,diagnostic_cameras=poses,source_K=p['K'],source_c2w=p['pose'],**geometry,L5=l5info,config=conf,accuracy_status='NOT_EVALUABLE',GT_used=False)
+    result=dict(scene_id=c['scene_id'],group=c['group'],actual_video=c['video'],reference=c['reference'],raw_frame=c['raw_frame'],morphology=c['morphology'],ring=c['ring'],condition=c['condition'],stages=annotate_stages(c,stages_meta,conf),metrics=metrics,background_ranges=ranges,diagnostic_cameras=poses,source_K=p['K'],source_c2w=p['pose'],**geometry,L5=l5info,config=conf,accuracy_status='NOT_EVALUABLE',GT_used=False)
     save('metrics/'+c['scene_id']+'_audit.json',result);save('local_layers/'+c['scene_id']+'/SOURCE_AND_PARAMETERS.json',result)
     print('BUILT',c['scene_id'],'L1',len(P),'L2',len(B),'gap proxy median',metrics['base_proxy_to_background_nn_mm']['median'],'; four core PNG',flush=True)
     return result
@@ -114,6 +119,6 @@ def main():
             if args.scene and c['scene_id']!=args.scene:continue
             build(c)
     else:
-        rows=[load(O/f'metrics/{c["scene_id"]}_audit.json')for c in scenes()];save('metrics/scene_index.json',rows);csvsave('metrics/scene_summary.csv',[dict(scene_id=x['scene_id'],group=x['group'],video=x['actual_video'],reference=x['reference'],raw_frame=x['raw_frame'],morphology=x['morphology'],ring=x['ring'],condition=x['condition'],**x['metrics'])for x in rows]);csvsave('metrics/stage_counts.csv',[dict(scene_id=x['scene_id'],**stage)for x in rows for stage in x['stages']]);csvsave('metrics/background_ranges.csv',[a for x in rows for a in x['background_ranges']])
+        rows=[load(O/f'metrics/{c["scene_id"]}_audit.json')for c in scenes()];save('metrics/scene_index.json',rows);csvsave('metrics/scene_summary.csv',[{**x['metrics'],**{k:x[k]for k in ['group','reference','raw_frame','morphology','ring']},'video':x['actual_video']}for x in rows]);csvsave('metrics/stage_counts.csv',[dict(scene_id=x['scene_id'],**stage)for x in rows for stage in x['stages']]);csvsave('metrics/background_ranges.csv',[a for x in rows for a in x['background_ranges']])
     verify()
 if __name__=='__main__':main()

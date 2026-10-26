@@ -1,0 +1,829 @@
+{
+  "scene_id": "G06_004",
+  "group": "G06",
+  "actual_video": "004",
+  "reference": "key04_raw00596",
+  "raw_frame": 596,
+  "morphology": "IIa",
+  "ring": "R10",
+  "condition": "NORMAL_CONDITIONAL",
+  "stages": [
+    {
+      "stage": "L1",
+      "P0_points": 9282,
+      "background_points": 0,
+      "total_points": 9282,
+      "source_XYZ": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/points/G06_004_RAW_PIXEL_IDENTITIES.npz",
+      "coordinate_system": "unchanged Ring local XYZ / millimeters / independent per video",
+      "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/groups/G06/inputs/key04_raw00596.png",
+      "point_renderer": "visualization.real_p0_renderer.draw_rgb_points",
+      "point_size": 0.08,
+      "point_alpha": 1.0,
+      "projection": "Ring oblique orthographic [-65, 22]"
+    },
+    {
+      "stage": "L2",
+      "P0_points": 0,
+      "background_points": 41928,
+      "total_points": 41928,
+      "source_XYZ": "local_layers/G06_004/Raw_Background_FULL.npz and selected source indices",
+      "coordinate_system": "unchanged Ring local XYZ / millimeters / independent per video",
+      "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/groups/G06/inputs/key04_raw00596.png",
+      "point_renderer": "visualization.real_p0_renderer.draw_rgb_points",
+      "point_size": 0.08,
+      "point_alpha": 1.0,
+      "projection": "Ring oblique orthographic [-65, 22]"
+    },
+    {
+      "stage": "L3",
+      "P0_points": 9282,
+      "background_points": 41928,
+      "total_points": 51210,
+      "source_XYZ": "exact concatenation L1+L2",
+      "coordinate_system": "unchanged Ring local XYZ / millimeters / independent per video",
+      "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/groups/G06/inputs/key04_raw00596.png",
+      "point_renderer": "visualization.real_p0_renderer.draw_rgb_points",
+      "point_size": 0.08,
+      "point_alpha": 1.0,
+      "projection": "Ring oblique orthographic [-65, 22]"
+    },
+    {
+      "stage": "L4",
+      "P0_points": 9282,
+      "background_points": 41928,
+      "total_points": 51210,
+      "CAD_source": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/inputs/R10_ring.obj",
+      "CAD_vertices": 16384,
+      "CAD_faces": 32768,
+      "CAD_alpha": 0.15,
+      "coordinate_system": "unchanged Ring local XYZ / millimeters / independent per video",
+      "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/groups/G06/inputs/key04_raw00596.png",
+      "point_renderer": "visualization.real_p0_renderer.draw_rgb_points",
+      "point_size": 0.08,
+      "point_alpha": 1.0,
+      "projection": "Ring oblique orthographic [-65, 22]",
+      "source_XYZ": "exact L1 P0 + L2 background concatenation; local_layers/G06_004/Layers_L1-L4_XYZ_RGB.npz"
+    },
+    {
+      "stage": "L5",
+      "P0_points": 9282,
+      "background_points": 41928,
+      "total_input_points": 51210,
+      "visible_points": 51090,
+      "CAD_alpha": 1.0,
+      "source_camera_unchanged": true,
+      "coordinate_system": "unchanged Ring local XYZ / millimeters / independent per video",
+      "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/groups/G06/inputs/key04_raw00596.png",
+      "point_renderer": "visualization.real_p0_renderer.draw_rgb_points",
+      "point_size": 0.8,
+      "point_alpha": 1.0,
+      "projection": "frozen source K/c2w perspective",
+      "source_XYZ": "exact L1 P0 + L2 background concatenation; local_layers/G06_004/Layers_L1-L4_XYZ_RGB.npz"
+    }
+  ],
+  "metrics": {
+    "scene_id": "G06_004",
+    "P0_points": 9282,
+    "background_raw_points": 215260,
+    "background_selected_points": 41928,
+    "selected_ellipse_scale": 2.0,
+    "base_proxy_points": 1915,
+    "base_proxy_to_background_nn_mm": {
+      "n": 1915,
+      "min": 0.07140736681533448,
+      "median": 0.4863201559443806,
+      "p95": 1.0437755356757594,
+      "max": 2.509075150369921
+    },
+    "contact_witness_to_base_proxy_nn_mm": {
+      "n": 2371,
+      "min": 0.07140736681533448,
+      "median": 0.5679199600447203,
+      "p95": 1.0066669775593735,
+      "max": 1.3669565859798083
+    },
+    "P0_nearest_neighbor_spacing_mm": {
+      "n": 9282,
+      "min": 0.07113784453179274,
+      "median": 0.07977811904180722,
+      "p95": 0.08761664065486761,
+      "max": 0.14271311396465447
+    },
+    "background_nearest_neighbor_spacing_mm": {
+      "n": 41928,
+      "min": 0.054241978549805045,
+      "median": 0.07044056889317715,
+      "p95": 0.10084314653191205,
+      "max": 0.4086013393208254
+    },
+    "contact_witnesses": 2371,
+    "far_contact_witnesses_retained": 0,
+    "condition": "NORMAL_CONDITIONAL",
+    "GT_error": null,
+    "metric_identity": "PREDICTED_LAYER_GEOMETRY_ONLY_NOT_ACCURACY"
+  },
+  "background_ranges": [
+    {
+      "scene_id": "G06_004",
+      "scale": 1.5,
+      "ellipse_center_uv": [
+        260.0,
+        253.0
+      ],
+      "semi_axes_px": [
+        117.75,
+        88.3125
+      ],
+      "base_proxy_center_XYZ_mm": [
+        5.550338653975182,
+        -1.744362179959717,
+        -0.961876629626687
+      ],
+      "base_proxy_points": 1915,
+      "far_limit_mm": 24.799999999999997,
+      "raw_background": 215260,
+      "inside_ellipse": 19898,
+      "ellipse_far_excluded": 0,
+      "contact_witnesses": 2371,
+      "far_contact_witnesses_retained": 0,
+      "selected_points": 19898,
+      "selected_world_bounds_mm": [
+        [
+          -6.309173585246583,
+          -10.520260000393185,
+          -1.9907587046441186
+        ],
+        [
+          13.089965887946295,
+          6.936180540601782,
+          -0.05823147922680505
+        ]
+      ],
+      "selection_is_display_only": true
+    },
+    {
+      "scene_id": "G06_004",
+      "scale": 2.0,
+      "ellipse_center_uv": [
+        260.0,
+        253.0
+      ],
+      "semi_axes_px": [
+        157.0,
+        117.75
+      ],
+      "base_proxy_center_XYZ_mm": [
+        5.550338653975182,
+        -1.744362179959717,
+        -0.961876629626687
+      ],
+      "base_proxy_points": 1915,
+      "far_limit_mm": 24.799999999999997,
+      "raw_background": 215260,
+      "inside_ellipse": 41928,
+      "ellipse_far_excluded": 0,
+      "contact_witnesses": 2371,
+      "far_contact_witnesses_retained": 0,
+      "selected_points": 41928,
+      "selected_world_bounds_mm": [
+        [
+          -12.673729437914034,
+          -13.721854794740494,
+          -2.340738949686557
+        ],
+        [
+          14.330454626518865,
+          9.98992133049644,
+          -0.04908304349569548
+        ]
+      ],
+      "selection_is_display_only": true
+    },
+    {
+      "scene_id": "G06_004",
+      "scale": 2.5,
+      "ellipse_center_uv": [
+        260.0,
+        253.0
+      ],
+      "semi_axes_px": [
+        196.25,
+        147.1875
+      ],
+      "base_proxy_center_XYZ_mm": [
+        5.550338653975182,
+        -1.744362179959717,
+        -0.961876629626687
+      ],
+      "base_proxy_points": 1915,
+      "far_limit_mm": 24.799999999999997,
+      "raw_background": 215260,
+      "inside_ellipse": 68046,
+      "ellipse_far_excluded": 0,
+      "contact_witnesses": 2371,
+      "far_contact_witnesses_retained": 0,
+      "selected_points": 68046,
+      "selected_world_bounds_mm": [
+        [
+          -18.309082555880444,
+          -16.954430172762407,
+          -2.5690647449257504
+        ],
+        [
+          14.642247242116476,
+          13.116996317191537,
+          0.6803437148519009
+        ]
+      ],
+      "selection_is_display_only": true
+    }
+  ],
+  "diagnostic_cameras": [
+    {
+      "name": "source_reference",
+      "c2w": [
+        [
+          0.12216112883359188,
+          0.6093438017941566,
+          -0.7834390785614067,
+          30.573136896917788
+        ],
+        [
+          0.9923507990239294,
+          -0.0891378067302986,
+          0.08540692646314377,
+          -3.0189600652807324e-17
+        ],
+        [
+          -0.017791859899163903,
+          -0.7878798021439282,
+          -0.615571983682634,
+          25.14664770785519
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "translation_from_source_mm": 0.0,
+      "role": "FROZEN_REAL_REFERENCE_CAMERA"
+    },
+    {
+      "name": "diagnostic_left",
+      "c2w": [
+        [
+          0.12216112883359188,
+          0.6093438017941566,
+          -0.7834390785614067,
+          30.450975768084195
+        ],
+        [
+          0.9923507990239294,
+          -0.0891378067302986,
+          0.08540692646314377,
+          -0.9923507990239294
+        ],
+        [
+          -0.017791859899163903,
+          -0.7878798021439282,
+          -0.615571983682634,
+          25.164439567754354
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "translation_from_source_mm": -1.0,
+      "role": "DIAGNOSTIC_ONLY_NOT_VIDEO_FRAME"
+    },
+    {
+      "name": "diagnostic_right",
+      "c2w": [
+        [
+          0.12216112883359188,
+          0.6093438017941566,
+          -0.7834390785614067,
+          30.69529802575138
+        ],
+        [
+          0.9923507990239294,
+          -0.0891378067302986,
+          0.08540692646314377,
+          0.9923507990239294
+        ],
+        [
+          -0.017791859899163903,
+          -0.7878798021439282,
+          -0.615571983682634,
+          25.12885584795603
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "translation_from_source_mm": 1.0,
+      "role": "DIAGNOSTIC_ONLY_NOT_VIDEO_FRAME"
+    }
+  ],
+  "source_K": [
+    [
+      490.0,
+      0.0,
+      319.5
+    ],
+    [
+      0.0,
+      490.0,
+      179.5
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "source_c2w": [
+    [
+      0.12216112883359188,
+      0.6093438017941566,
+      -0.7834390785614067,
+      30.573136896917788
+    ],
+    [
+      0.9923507990239294,
+      -0.0891378067302986,
+      0.08540692646314377,
+      -3.0189600652807324e-17
+    ],
+    [
+      -0.017791859899163903,
+      -0.7878798021439282,
+      -0.615571983682634,
+      25.14664770785519
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "panels": [
+    {
+      "figure": "Layers",
+      "stage": 1,
+      "input_points": 9282,
+      "positive_depth_drawn": 9282,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 1,
+      "input_points": 9282,
+      "positive_depth_drawn": 9282,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -8.616234221137505,
+        12.324520912046868
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 2,
+      "input_points": 41928,
+      "positive_depth_drawn": 41928,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 2,
+      "input_points": 41928,
+      "positive_depth_drawn": 41928,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -8.616234221137505,
+        12.324520912046868
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 3,
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 3,
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -8.616234221137505,
+        12.324520912046868
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 4,
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 4,
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -8.616234221137505,
+        12.324520912046868
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "source_reference",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "source_reference",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        28.180074373881016,
+        50.47495422363281
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "diagnostic_left",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "diagnostic_left",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        28.180074373881016,
+        50.47495422363281
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "diagnostic_right",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "diagnostic_right",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        28.180074373881016,
+        50.47495422363281
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "X",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "X",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -12.673729437914034,
+        14.330454626518865
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "Y",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "Y",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -13.721854794740494,
+        9.98992133049644
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "Z",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "Z",
+      "input_points": 51210,
+      "positive_depth_drawn": 51210,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -2.340738949686557,
+        0.13879350648804945
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    }
+  ],
+  "oblique_basis": [
+    [
+      0.39184482893105715,
+      -0.8403139474085362,
+      0.374606593415912
+    ],
+    [
+      0.9063077870366499,
+      0.42261826174069944,
+      -0.0
+    ],
+    [
+      -0.15831558734603768,
+      0.3395088726881133,
+      0.9271838545667873
+    ]
+  ],
+  "layer_mm_bounds": [
+    [
+      -14.668690074602665,
+      14.743805660468741
+    ],
+    [
+      -16.666810658346577,
+      12.745685076724829
+    ]
+  ],
+  "camera_diagnostic_bounds_px": [
+    [
+      -15.975000000000001,
+      654.975
+    ],
+    [
+      -8.975000000000003,
+      367.97500000000014
+    ]
+  ],
+  "XYZ_mm_bounds": [
+    [
+      [
+        -16.178184286271463,
+        12.446250822027409
+      ],
+      [
+        -15.182587016992715,
+        13.441848091306158
+      ]
+    ],
+    [
+      [
+        -15.140580148451852,
+        13.48385495984702
+      ],
+      [
+        -15.182587016992715,
+        13.441848091306158
+      ]
+    ],
+    [
+      [
+        -13.48385495984702,
+        15.140580148451852
+      ],
+      [
+        -16.178184286271463,
+        12.446250822027409
+      ]
+    ]
+  ],
+  "L5": {
+    "Polyp_points": 9282,
+    "Background_points": 41928,
+    "Polyp_drawn": 9181,
+    "Background_drawn": 41909,
+    "shared_point_artist": true,
+    "shared_point_size": 0.8,
+    "shared_point_alpha": 1.0,
+    "shared_projector": "frozen K/c2w pinhole",
+    "independent_observation_rotation": false,
+    "CAD_mesh_vertices": 16384,
+    "CAD_mesh_faces": 32768,
+    "CAD_world_bounds_mm": [
+      [
+        -6.199999809,
+        -6.199999809,
+        -0.600000024
+      ],
+      [
+        6.199999809,
+        6.199999809,
+        0.600000024
+      ]
+    ],
+    "CAD_opaque_pixels": 22294,
+    "CAD_alpha_values": [
+      0.0,
+      1.0
+    ],
+    "CAD_max_display_RGB": 0.0812147930264473
+  },
+  "config": {
+    "task": "TASK-PHASEC-SCENE-POINTCLOUD-AUDIT-001",
+    "scope": "RAW_XYZ_LAYER_AND_MULTIVIEW_DIAGNOSTICS_ONLY",
+    "diagnostic_point_size": 0.08,
+    "diagnostic_point_alpha": 1.0,
+    "diagnostic_antialias": false,
+    "diagnostic_CAD_alpha": 0.15,
+    "diagnostic_ring_pixels": 420,
+    "layer_oblique_angle_degrees": [
+      -65,
+      22
+    ],
+    "diagnostic_translation_mm": 1.0,
+    "background_base_proxy_lower_source_fraction": 0.2,
+    "background_ellipse_scales": [
+      1.5,
+      2.0,
+      2.5
+    ],
+    "background_selected_scale": 2.0,
+    "background_ellipse_y_over_x": 0.75,
+    "background_contact_witness_pixels": 12,
+    "background_far_distance_outer_diameters": 2.0,
+    "contact_witnesses_exempt_from_far_exclusion": true,
+    "L5_point_size": 0.8,
+    "L5_point_alpha": 1.0,
+    "L5_CAD_alpha": 1.0,
+    "PNG_DPI": 160,
+    "open3d_vendor": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor",
+    "point_subsampling": false,
+    "point_coordinates_changed": false,
+    "world_Z_cutoff": null,
+    "GT_used": false,
+    "upstream_model_runs": 0,
+    "research_camera_updates": 0
+  },
+  "accuracy_status": "NOT_EVALUABLE",
+  "GT_used": false
+}

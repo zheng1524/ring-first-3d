@@ -13,21 +13,39 @@
       "P0_points": 24343,
       "background_points": 0,
       "total_points": 24343,
-      "source_XYZ": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/points/004_ref03_Polyp_source.npz"
+      "source_XYZ": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/points/004_ref03_Polyp_source.npz",
+      "coordinate_system": "unchanged Ring local XYZ / millimeters / independent per video",
+      "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+      "point_renderer": "visualization.real_p0_renderer.draw_rgb_points",
+      "point_size": 0.08,
+      "point_alpha": 1.0,
+      "projection": "Ring oblique orthographic [-65, 22]"
     },
     {
       "stage": "L2",
       "P0_points": 0,
       "background_points": 58623,
       "total_points": 58623,
-      "source_XYZ": "local_layers/G01_004/Raw_Background_FULL.npz and selected source indices"
+      "source_XYZ": "local_layers/G01_004/Raw_Background_FULL.npz and selected source indices",
+      "coordinate_system": "unchanged Ring local XYZ / millimeters / independent per video",
+      "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+      "point_renderer": "visualization.real_p0_renderer.draw_rgb_points",
+      "point_size": 0.08,
+      "point_alpha": 1.0,
+      "projection": "Ring oblique orthographic [-65, 22]"
     },
     {
       "stage": "L3",
       "P0_points": 24343,
       "background_points": 58623,
       "total_points": 82966,
-      "source_XYZ": "exact concatenation L1+L2"
+      "source_XYZ": "exact concatenation L1+L2",
+      "coordinate_system": "unchanged Ring local XYZ / millimeters / independent per video",
+      "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+      "point_renderer": "visualization.real_p0_renderer.draw_rgb_points",
+      "point_size": 0.08,
+      "point_alpha": 1.0,
+      "projection": "Ring oblique orthographic [-65, 22]"
     },
     {
       "stage": "L4",
@@ -37,7 +55,14 @@
       "CAD_source": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/inputs/R10_ring.obj",
       "CAD_vertices": 16384,
       "CAD_faces": 32768,
-      "CAD_alpha": 0.15
+      "CAD_alpha": 0.15,
+      "coordinate_system": "unchanged Ring local XYZ / millimeters / independent per video",
+      "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+      "point_renderer": "visualization.real_p0_renderer.draw_rgb_points",
+      "point_size": 0.08,
+      "point_alpha": 1.0,
+      "projection": "Ring oblique orthographic [-65, 22]",
+      "source_XYZ": "exact L1 P0 + L2 background concatenation; local_layers/G01_004/Layers_L1-L4_XYZ_RGB.npz"
     },
     {
       "stage": "L5",
@@ -46,7 +71,14 @@
       "total_input_points": 82966,
       "visible_points": 82033,
       "CAD_alpha": 1.0,
-      "source_camera_unchanged": true
+      "source_camera_unchanged": true,
+      "coordinate_system": "unchanged Ring local XYZ / millimeters / independent per video",
+      "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+      "point_renderer": "visualization.real_p0_renderer.draw_rgb_points",
+      "point_size": 0.8,
+      "point_alpha": 1.0,
+      "projection": "frozen source K/c2w perspective",
+      "source_XYZ": "exact L1 P0 + L2 background concatenation; local_layers/G01_004/Layers_L1-L4_XYZ_RGB.npz"
     }
   ],
   "metrics": {
