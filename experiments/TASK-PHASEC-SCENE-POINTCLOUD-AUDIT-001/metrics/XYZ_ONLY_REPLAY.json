@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "tested_scenes": 1,
+  "scope": "G01_004 actually replayed; common entry supports all saved scene arrays",
+  "input_guard": "Runtime denies PNG JPG JPEG MP4 BLEND and any NPZ except supplied layer data",
+  "input_files": [
+    "local_layers/G01_004/Layers_L1-L4_XYZ_RGB.npz",
+    "frozen R10 CAD OBJ",
+    "config.json"
+  ],
+  "generated": [
+    "Layers_L1-L4.png",
+    "Camera_3Views.png",
+    "XYZ_3Views.png"
+  ],
+  "comparisons": [
+    {
+      "scene": "G01_004",
+      "file": "Camera_3Views.png",
+      "complete_entry_SHA256": "764d712030ba42f8d3e74b7a47e5f7cef8ebb085c7f9e2cd94a3bbe840255298",
+      "XYZ_only_SHA256": "764d712030ba42f8d3e74b7a47e5f7cef8ebb085c7f9e2cd94a3bbe840255298",
+      "byte_identical": true
+    },
+    {
+      "scene": "G01_004",
+      "file": "XYZ_3Views.png",
+      "complete_entry_SHA256": "965f643eb89dda492b1c51c2f839a615bdb370f2c941edbaa93fab08c3269a4c",
+      "XYZ_only_SHA256": "965f643eb89dda492b1c51c2f839a615bdb370f2c941edbaa93fab08c3269a4c",
+      "byte_identical": true
+    }
+  ],
+  "local_output": "/tmp/ring-pointcloud-audit-XYZ-only-20261026",
+  "GT_used": false
+}

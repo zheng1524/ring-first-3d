@@ -1,0 +1,81 @@
+{
+  "purpose": "Native-frame identity only; no geometric optimization",
+  "random_seek_storage_MAD": {
+    "G06_004": 2.5578428819444445,
+    "G07_004": 9.983250868055556
+  },
+  "sequential_probe": [
+    {
+      "scene": "G06_004",
+      "legacy_raw_frame": 596,
+      "sequential_decode": [
+        {
+          "index": 593,
+          "MAD": 0.021351273148148147
+        },
+        {
+          "index": 594,
+          "MAD": 0.017896412037037037
+        },
+        {
+          "index": 595,
+          "MAD": 0.0037528935185185187
+        },
+        {
+          "index": 596,
+          "MAD": 0.0
+        },
+        {
+          "index": 597,
+          "MAD": 0.43865885416666667
+        },
+        {
+          "index": 598,
+          "MAD": 0.3286834490740741
+        },
+        {
+          "index": 599,
+          "MAD": 2.3913353587962964
+        }
+      ]
+    },
+    {
+      "scene": "G07_004",
+      "legacy_raw_frame": 369,
+      "sequential_decode": [
+        {
+          "index": 366,
+          "MAD": 9.982809606481482
+        },
+        {
+          "index": 367,
+          "MAD": 9.983250868055556
+        },
+        {
+          "index": 368,
+          "MAD": 9.982815393518518
+        },
+        {
+          "index": 369,
+          "MAD": 0.0
+        },
+        {
+          "index": 370,
+          "MAD": 0.34649305555555554
+        },
+        {
+          "index": 371,
+          "MAD": 0.48181857638888886
+        },
+        {
+          "index": 372,
+          "MAD": 0.5200028935185185
+        }
+      ]
+    }
+  ],
+  "action": "Sequential zero-based decoding matching historical preparation; keep strict source RGB identity guard",
+  "historical_preparation_script": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/scripts/prepare_batch.py",
+  "historical_script_SHA256": "3af120c41ca8e7ae5e3320ff44bcb6419eac20cdd0ffaece7ad4be8829e60b29",
+  "GT_used": false
+}
