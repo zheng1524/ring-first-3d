@@ -1,0 +1,117 @@
+{
+  "UTC": "2026-10-26T16:59:32.317243+00:00",
+  "videos": [
+    {
+      "group": "G01",
+      "video": "004",
+      "condition": "NORMAL_CONDITIONAL",
+      "references": 3,
+      "reference_passes": 3,
+      "density_drop": 4.277777777777778,
+      "gate": "ENTER_CANDIDATE_TRIALS",
+      "absolute_thresholds": [
+        17.904931097838226,
+        49.21594809052892,
+        135.28170162811102
+      ],
+      "threshold_rule": "L=median over references of largest low region rho q25; D=median of dense-set rho q10; candidates L,sqrt(L*D),D"
+    },
+    {
+      "group": "G01",
+      "video": "005",
+      "condition": "NORMAL_CONDITIONAL",
+      "references": 3,
+      "reference_passes": 3,
+      "density_drop": 3.8636363636363633,
+      "gate": "ENTER_CANDIDATE_TRIALS",
+      "absolute_thresholds": [
+        17.904931097838226,
+        58.17189372286792,
+        188.9964949216257
+      ],
+      "threshold_rule": "L=median over references of largest low region rho q25; D=median of dense-set rho q10; candidates L,sqrt(L*D),D"
+    },
+    {
+      "group": "G02",
+      "video": "004",
+      "condition": "LIMITED_STRESS",
+      "references": 1,
+      "reference_passes": 0,
+      "density_drop": 2.2857142857142856,
+      "gate": "NO_CLEANING_REQUIRED",
+      "absolute_thresholds": [],
+      "threshold_rule": "L=median over references of largest low region rho q25; D=median of dense-set rho q10; candidates L,sqrt(L*D),D"
+    },
+    {
+      "group": "G03",
+      "video": "004",
+      "condition": "UNQUALIFIED_STRESS",
+      "references": 1,
+      "reference_passes": 1,
+      "density_drop": 3.7333333333333334,
+      "gate": "ENTER_CANDIDATE_TRIALS",
+      "absolute_thresholds": [
+        17.904931097838226,
+        42.202327319864345,
+        99.47183943243458
+      ],
+      "threshold_rule": "L=median over references of largest low region rho q25; D=median of dense-set rho q10; candidates L,sqrt(L*D),D"
+    },
+    {
+      "group": "G04",
+      "video": "004",
+      "condition": "UNQUALIFIED_STRESS",
+      "references": 1,
+      "reference_passes": 0,
+      "density_drop": 2.5,
+      "gate": "NO_CLEANING_REQUIRED",
+      "absolute_thresholds": [],
+      "threshold_rule": "L=median over references of largest low region rho q25; D=median of dense-set rho q10; candidates L,sqrt(L*D),D"
+    },
+    {
+      "group": "G05",
+      "video": "004",
+      "condition": "UNQUALIFIED_STRESS",
+      "references": 1,
+      "reference_passes": 0,
+      "density_drop": 2.511627906976744,
+      "gate": "NO_CLEANING_REQUIRED",
+      "absolute_thresholds": [],
+      "threshold_rule": "L=median over references of largest low region rho q25; D=median of dense-set rho q10; candidates L,sqrt(L*D),D"
+    },
+    {
+      "group": "G06",
+      "video": "004",
+      "condition": "NORMAL_CONDITIONAL",
+      "references": 1,
+      "reference_passes": 0,
+      "density_drop": 1.7777777777777777,
+      "gate": "NO_CLEANING_REQUIRED",
+      "absolute_thresholds": [],
+      "threshold_rule": "L=median over references of largest low region rho q25; D=median of dense-set rho q10; candidates L,sqrt(L*D),D"
+    },
+    {
+      "group": "G07",
+      "video": "004",
+      "condition": "UNQUALIFIED_STRESS",
+      "references": 1,
+      "reference_passes": 0,
+      "density_drop": 3.2790697674418605,
+      "gate": "INSUFFICIENT_EVIDENCE",
+      "absolute_thresholds": [],
+      "threshold_rule": "L=median over references of largest low region rho q25; D=median of dense-set rho q10; candidates L,sqrt(L*D),D"
+    },
+    {
+      "group": "G08",
+      "video": "005",
+      "condition": "LIMITED_STRESS",
+      "references": 1,
+      "reference_passes": 0,
+      "density_drop": 3.4,
+      "gate": "INSUFFICIENT_EVIDENCE",
+      "absolute_thresholds": [],
+      "threshold_rule": "L=median over references of largest low region rho q25; D=median of dense-set rho q10; candidates L,sqrt(L*D),D"
+    }
+  ],
+  "no_deletion_run_yet": true
+}
