@@ -1,0 +1,176 @@
+{
+  "scope": "G01_VIDEO004_ONLY_WAIT_FOR_HUMAN_REVIEW",
+  "group": "G01",
+  "actual_video": "004",
+  "raw_frame": 303,
+  "frame_index_base": 0,
+  "selected_reference": "G01_004_ref03",
+  "reference_frame": "004_03",
+  "selection": "existing more oblique ref03; visual display only, no GT",
+  "other_available_references": [
+    "004_ref08/raw676",
+    "004_ref13/raw1043"
+  ],
+  "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Ip_12.0mm_closed_R10_single_refY_004.mp4",
+  "source_P0": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/points/004_ref03_Polyp_source.npz",
+  "source_mesh": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/meshes/004_ref03_Polyp_A.ply",
+  "native_image_size": [
+    1280,
+    720
+  ],
+  "source_image_size": [
+    640,
+    360
+  ],
+  "source_K": [
+    [
+      490.0,
+      0.0,
+      319.5
+    ],
+    [
+      0.0,
+      490.0,
+      179.5
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "native_K": [
+    [
+      980.0,
+      0.0,
+      639.5
+    ],
+    [
+      0.0,
+      980.0,
+      359.5
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "c2w": [
+    [
+      0.9927256025890222,
+      -0.07403497995661765,
+      0.09494577245504902,
+      -9.880543930367976
+    ],
+    [
+      -0.11980399432117389,
+      -0.6857175637921019,
+      0.7179404053622538,
+      -22.31537625669534
+    ],
+    [
+      0.011953280259195126,
+      -0.7240927043202742,
+      -0.6895990680396811,
+      18.21668763098684
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "native_K_rule": "pixel-center preserving resize only",
+  "independent_camera_rotation": false,
+  "camera_pose_updated": false,
+  "full_P0_points": 24343,
+  "P0_points_cropped": 0,
+  "background_available_points": 198076,
+  "background_selected_points": 30336,
+  "background_mask_label": 0,
+  "background_polyp_pixel_overlap": 0,
+  "background_depth_status": "UNVALIDATED_FROZEN_HERO_DISPLAY_ONLY",
+  "background_world_clipping": null,
+  "background_approximation_used": false,
+  "background_backprojection_count": 1,
+  "point_style": {
+    "size": 0.8,
+    "alpha": 1,
+    "linewidths": 0,
+    "rasterized": true,
+    "shared_one_artist": true
+  },
+  "render": {
+    "Polyp_points": 24343,
+    "Background_points": 30336,
+    "Polyp_drawn": 23465,
+    "Background_drawn": 29853,
+    "shared_point_artist": true,
+    "shared_point_size": 0.8,
+    "shared_point_alpha": 1.0,
+    "shared_projector": "frozen K/c2w pinhole",
+    "independent_observation_rotation": false,
+    "CAD_mesh_vertices": 16384,
+    "CAD_mesh_faces": 32768,
+    "CAD_world_bounds_mm": [
+      [
+        -6.199999809,
+        -6.199999809,
+        -0.600000024
+      ],
+      [
+        6.199999809,
+        6.199999809,
+        0.600000024
+      ]
+    ],
+    "CAD_opaque_pixels": 40587,
+    "CAD_alpha_values": [
+      0.0,
+      1.0
+    ],
+    "CAD_max_display_RGB": 0.08196671307086945
+  },
+  "Ring_transform_modified": false,
+  "scale_bar": {
+    "world_endpoints_mm": [
+      [
+        -19.270722321776304,
+        -10.829381112862562,
+        0.0
+      ],
+      [
+        -16.78873099438114,
+        -11.128912498088207,
+        0.0
+      ]
+    ],
+    "pixel_endpoints": [
+      [
+        102.3999999999997,
+        655.1999999999997
+      ],
+      [
+        225.83028421179995,
+        655.9580133021279
+      ]
+    ],
+    "length_mm": 2.5,
+    "plane": "Ring Z=0 only"
+  },
+  "source_RGB_frame_storage_difference": 0.6049826388888889,
+  "source_pixel_projection_roundtrip_max_px": 3.268496584496461e-13,
+  "native_pixel_center_projection_check_max_px": 6.536993168992922e-13,
+  "projection_overlay_is_accuracy_evidence": false,
+  "GT_used": false,
+  "upstream_model_runs": 0,
+  "original_assets_modified": false,
+  "output_files": [
+    "Local_3D_Scene.png",
+    "Projection_Overlay.png",
+    "Real_vs_3D.png",
+    "Selected_Real_Frame.png"
+  ]
+}
