@@ -1,0 +1,543 @@
+{
+  "id": "G01_005_raw00745",
+  "local_folder": "/home/liu/ring_first_3d_abs_density/experiments/TASK-PHASEC-ABS-DENSITY-REPROJ-001/local_results/visuals/G01_005_raw00745",
+  "P0_N": 14873,
+  "background_N": 45328,
+  "L1_N": 14873,
+  "L2_N": 45328,
+  "L3_N": 60201,
+  "L4_N": 60201,
+  "L5_input_N": 60201,
+  "XYZ": "actual_layers_exact.npz; Ring-local mm; no points moved",
+  "source": {
+    "id": "G01_005_raw00745",
+    "group": "G01",
+    "video": "005",
+    "reference": "v005_00745",
+    "raw_frame": 745,
+    "reference_index": 17,
+    "morphology": "Ip",
+    "ring": "R10",
+    "pack": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/depths/005_raw00745.npz",
+    "mesh": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/meshes/005_raw00745_Polyp_A.ply",
+    "source_points": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/points/005_raw00745_Polyp_source.npz",
+    "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/v005_00745.png",
+    "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00745.png",
+    "camera_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/local005_camera_0.npz",
+    "qualified_frames": 15,
+    "source_camera_qualified": true,
+    "R_mm": 5.6,
+    "condition": "NORMAL_CONDITIONAL",
+    "points": 14873,
+    "faces": 28016,
+    "raw_area_sum_mm2": 123.61747773415571,
+    "source_coordinate": "mm / axial Z / frozen c2w",
+    "source_uv_exact": true
+  },
+  "parameters": {
+    "task": "TASK-PHASEC-SCENE-POINTCLOUD-AUDIT-001",
+    "scope": "RAW_XYZ_LAYER_AND_MULTIVIEW_DIAGNOSTICS_ONLY",
+    "diagnostic_point_size": 0.08,
+    "diagnostic_point_alpha": 1.0,
+    "diagnostic_antialias": false,
+    "diagnostic_CAD_alpha": 0.15,
+    "diagnostic_ring_pixels": 420,
+    "layer_oblique_angle_degrees": [
+      -65,
+      22
+    ],
+    "diagnostic_translation_mm": 1.0,
+    "background_base_proxy_lower_source_fraction": 0.2,
+    "background_ellipse_scales": [
+      1.5,
+      2.0,
+      2.5
+    ],
+    "background_selected_scale": 2.0,
+    "background_ellipse_y_over_x": 0.75,
+    "background_contact_witness_pixels": 12,
+    "background_far_distance_outer_diameters": 2.0,
+    "contact_witnesses_exempt_from_far_exclusion": true,
+    "L5_point_size": 0.8,
+    "L5_point_alpha": 1.0,
+    "L5_CAD_alpha": 1.0,
+    "PNG_DPI": 160,
+    "open3d_vendor": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor",
+    "point_subsampling": false,
+    "point_coordinates_changed": false,
+    "world_Z_cutoff": null,
+    "GT_used": false,
+    "upstream_model_runs": 0,
+    "research_camera_updates": 0
+  },
+  "diagnostic_cameras": [
+    {
+      "name": "source_reference",
+      "c2w": [
+        [
+          0.3412131787625181,
+          0.8455366227906769,
+          -0.41065969629185,
+          19.49494367462686
+        ],
+        [
+          0.932969670384789,
+          -0.3579162873374847,
+          0.03825605051033143,
+          7.867214188172207
+        ],
+        [
+          -0.11463490210610276,
+          -0.3961865100912545,
+          -0.9109857783965876,
+          30.222158052798367
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "diagnostic_left",
+      "c2w": [
+        [
+          0.3412131787625181,
+          0.8455366227906769,
+          -0.41065969629185,
+          19.15373049586434
+        ],
+        [
+          0.932969670384789,
+          -0.3579162873374847,
+          0.03825605051033143,
+          6.934244517787418
+        ],
+        [
+          -0.11463490210610276,
+          -0.3961865100912545,
+          -0.9109857783965876,
+          30.33679295490447
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "diagnostic_right",
+      "c2w": [
+        [
+          0.3412131787625181,
+          0.8455366227906769,
+          -0.41065969629185,
+          19.83615685338938
+        ],
+        [
+          0.932969670384789,
+          -0.3579162873374847,
+          0.03825605051033143,
+          8.800183858556997
+        ],
+        [
+          -0.11463490210610276,
+          -0.3961865100912545,
+          -0.9109857783965876,
+          30.107523150692263
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "panels": [
+    {
+      "figure": "Layers",
+      "stage": 1,
+      "input_points": 14873,
+      "positive_depth_drawn": 14873,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 1,
+      "input_points": 14873,
+      "positive_depth_drawn": 14873,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -14.962953155481026,
+        11.368778655422766
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 2,
+      "input_points": 45328,
+      "positive_depth_drawn": 45328,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 2,
+      "input_points": 45328,
+      "positive_depth_drawn": 45328,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -14.962953155481026,
+        11.368778655422766
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 3,
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 3,
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -14.962953155481026,
+        11.368778655422766
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 4,
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Layers",
+      "stage": 4,
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -14.962953155481026,
+        11.368778655422766
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "source_reference",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "source_reference",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        32.7929801940918,
+        51.202259402804906
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "diagnostic_left",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "diagnostic_left",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        32.7929801940918,
+        51.202259402804906
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "diagnostic_right",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "Camera_3Views",
+      "view": "diagnostic_right",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        32.7929801940918,
+        51.202259402804906
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "X",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "X",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -14.721779293771071,
+        12.537539570862315
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "Y",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "Y",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -17.222808787130376,
+        11.143127669334866
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "Z",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": false,
+      "depth_color_range_mm": null,
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    },
+    {
+      "figure": "XYZ_3Views",
+      "view": "Z",
+      "input_points": 60201,
+      "positive_depth_drawn": 60201,
+      "glyph_size": 0.08,
+      "alpha": 1.0,
+      "antialias": false,
+      "depth_color": true,
+      "depth_color_range_mm": [
+        -13.29500352360851,
+        2.047827306627628
+      ],
+      "background_image_used": false,
+      "point_subsampling": false,
+      "CAD_hides_points": false
+    }
+  ],
+  "oblique_basis": [
+    [
+      0.39184482893105715,
+      -0.8403139474085362,
+      0.374606593415912
+    ],
+    [
+      0.9063077870366499,
+      0.42261826174069944,
+      -0.0
+    ],
+    [
+      -0.15831558734603768,
+      0.3395088726881133,
+      0.9271838545667873
+    ]
+  ],
+  "layer_mm_bounds": [
+    [
+      -18.13780634612027,
+      13.58947144768213
+    ],
+    [
+      -21.286043007551143,
+      10.441234786251256
+    ]
+  ],
+  "camera_diagnostic_bounds_px": [
+    [
+      -15.975000000000001,
+      654.975
+    ],
+    [
+      -8.975,
+      367.975
+    ]
+  ],
+  "XYZ_mm_bounds": [
+    [
+      [
+        -18.073786880824336,
+        11.994105763028825
+      ],
+      [
+        -20.657534430417023,
+        9.410358213436139
+      ]
+    ],
+    [
+      [
+        -13.941826460472202,
+        16.126066183380956
+      ],
+      [
+        -20.657534430417023,
+        9.410358213436139
+      ]
+    ],
+    [
+      [
+        -16.126066183380956,
+        13.941826460472202
+      ],
+      [
+        -18.073786880824336,
+        11.994105763028825
+      ]
+    ]
+  ]
+}

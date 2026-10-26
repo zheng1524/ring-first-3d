@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "scene": "G01_005_raw00057",
+  "tested_scenes": 1,
+  "source_images_mask_depth_video_reads_blocked": true,
+  "input_XYZ_RGB": "local_results/visuals/G01_005_raw00057/actual_layers_exact.npz",
+  "output": "/tmp/ring-abs-layer-XYZ-only-20261027",
+  "comparisons": [
+    {
+      "file": "Camera_3Views.png",
+      "complete_SHA256": "553d699f9448bd9ab267c6faf33cc7406f37d38ac0f2af9e88ce8e7f6646e382",
+      "XYZ_only_SHA256": "553d699f9448bd9ab267c6faf33cc7406f37d38ac0f2af9e88ce8e7f6646e382",
+      "byte_identical": true
+    },
+    {
+      "file": "XYZ_3Views.png",
+      "complete_SHA256": "3fbb2f2362e4e7ab940bd0f953083eb95134957f67afd661a5e110708d417e85",
+      "XYZ_only_SHA256": "3fbb2f2362e4e7ab940bd0f953083eb95134957f67afd661a5e110708d417e85",
+      "byte_identical": true
+    }
+  ],
+  "scope": "Independent L1-L4 data replay; these two six-view PNG are byte-identical; not geometric accuracy"
+}
