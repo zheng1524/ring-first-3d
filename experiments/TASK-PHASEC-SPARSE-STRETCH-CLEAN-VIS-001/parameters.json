@@ -1,0 +1,32 @@
+{
+  "task": "TASK-PHASEC-SPARSE-STRETCH-CLEAN-VIS-001",
+  "source_window_pixels": 31,
+  "local_reference_percentile": 25,
+  "minimum_local_valid_points": 32,
+  "chunk_points": 512,
+  "spacing_feature": "previous knn_k_distance_mm / frozen axial Z",
+  "stretch_feature": "previous adjacency_perspective_stretch_max",
+  "reference_support": "same Polyp source-Mask connected component within fixed square source window",
+  "candidate_rule": "spacing/local_q25 >= spacing_ratio AND stretch/local_q25 >= stretch_ratio; invalid support remains UNKNOWN",
+  "presets": {
+    "C": {"name": "conservative", "spacing_ratio": 3.0, "stretch_ratio": 3.0},
+    "M": {"name": "moderate", "spacing_ratio": 2.0, "stretch_ratio": 2.0},
+    "A": {"name": "active", "spacing_ratio": 1.5, "stretch_ratio": 1.5}
+  },
+  "GT_used": false,
+  "maximum_presets": 3,
+  "upstream_model_runs": 0,
+  "default_renderer": "visualization/real_p0_renderer.py",
+  "main_angle_degrees": [-65, 22],
+  "side_angle_degrees": [0, 0],
+  "point_size": 0.8,
+  "PNG_DPI": 160,
+  "review_guards": {
+    "raw_main_component_area_retained_minimum": 0.99,
+    "largest_remaining_piece_of_raw_main_minimum": 0.99,
+    "possible_stalk_proxy_removal_maximum": 0.01,
+    "Ring_near_removal_maximum": 0.01,
+    "compact_sampling_control_removal_maximum": 0.001,
+    "interior_deletion_patch_maximum": 0
+  }
+}
