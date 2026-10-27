@@ -1,0 +1,93 @@
+{
+  "UTC": "2026-10-27T05:03:20.635410+00:00",
+  "scenes": [
+    {
+      "video": "004",
+      "fit_references": [
+        "G01_004_ref08",
+        "G01_004_ref03"
+      ],
+      "geometric_holdout": "G01_004_ref13",
+      "working_points": 12488,
+      "heldout_points": 20816,
+      "rows": [
+        {
+          "reference": "G01_004_ref03",
+          "role": "FIT",
+          "raw_background_N": 198076,
+          "fit_ROI_N": 99642,
+          "quality_N": 93593,
+          "consistent_nonconflict_N": 44885,
+          "display_N": 58623,
+          "display_mask_used_for_fit": false
+        },
+        {
+          "reference": "G01_004_ref08",
+          "role": "FIT",
+          "raw_background_N": 210939,
+          "fit_ROI_N": 63460,
+          "quality_N": 60018,
+          "consistent_nonconflict_N": 24208,
+          "display_N": 39785,
+          "display_mask_used_for_fit": false
+        },
+        {
+          "reference": "G01_004_ref13",
+          "role": "GEOMETRIC_HOLDOUT_MODEL_CONDITIONAL",
+          "raw_background_N": 212182,
+          "fit_ROI_N": 59493,
+          "quality_N": 56944,
+          "consistent_nonconflict_N": 20816,
+          "display_N": 36812,
+          "display_mask_used_for_fit": false
+        }
+      ],
+      "voxel_selection": "one unchanged original point per 0.25mm voxel, no scene downsampling"
+    },
+    {
+      "video": "005",
+      "fit_references": [
+        "G01_005_raw00459",
+        "G01_005_raw00057"
+      ],
+      "geometric_holdout": "G01_005_raw00745",
+      "working_points": 13341,
+      "heldout_points": 53640,
+      "rows": [
+        {
+          "reference": "G01_005_raw00057",
+          "role": "FIT",
+          "raw_background_N": 200985,
+          "fit_ROI_N": 78072,
+          "quality_N": 76604,
+          "consistent_nonconflict_N": 53850,
+          "display_N": 49317,
+          "display_mask_used_for_fit": false
+        },
+        {
+          "reference": "G01_005_raw00459",
+          "role": "FIT",
+          "raw_background_N": 210602,
+          "fit_ROI_N": 60049,
+          "quality_N": 59089,
+          "consistent_nonconflict_N": 36727,
+          "display_N": 37751,
+          "display_mask_used_for_fit": false
+        },
+        {
+          "reference": "G01_005_raw00745",
+          "role": "GEOMETRIC_HOLDOUT_MODEL_CONDITIONAL",
+          "raw_background_N": 207364,
+          "fit_ROI_N": 73913,
+          "quality_N": 72852,
+          "consistent_nonconflict_N": 53640,
+          "display_N": 45328,
+          "display_mask_used_for_fit": false
+        }
+      ],
+      "voxel_selection": "one unchanged original point per 0.25mm voxel, no scene downsampling"
+    }
+  ],
+  "source_sha256": "25b454432f8c0e07b327b800c6757d776a3bba471bf2ffac877f2108dd61eb7e",
+  "before_cross_video_optimization": true
+}

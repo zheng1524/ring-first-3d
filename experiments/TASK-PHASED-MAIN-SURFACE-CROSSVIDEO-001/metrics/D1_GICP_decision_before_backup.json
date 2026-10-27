@@ -1,0 +1,72 @@
+{
+  "best_candidate": "HISTORICAL_FULL_LightGlue",
+  "H_005_to_004": [
+    [
+      0.029372592471839307,
+      0.9986318950740737,
+      -0.04326186487251295,
+      -0.0026142650343077786
+    ],
+    [
+      -0.9994905886533727,
+      0.02880229627456668,
+      -0.01374739694073332,
+      0.05418121739520212
+    ],
+    [
+      -0.012482548009811233,
+      0.043643623475559605,
+      0.998969178766345,
+      -0.1443246144924134
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "H_direction": "005_to_004",
+  "units": "millimeters",
+  "selection": "training background symmetry score plus Ring penalty; holdout RGB not used",
+  "working_input_qualified": true,
+  "initialization_stability": [],
+  "multiple_initializations_stable": false,
+  "Ring": {
+    "center_mm": 0.15418181815142634,
+    "normal_degrees": 2.6017563422776435,
+    "scale_singular_values": [
+      1.0,
+      0.9999999999999997,
+      0.9999999999999997
+    ],
+    "SE3": true
+  },
+  "observability": {
+    "correspondences": 5149,
+    "raw_information_eigenvalues": [
+      0.027918977505983752,
+      0.06482768137517553,
+      0.08679360129531957,
+      0.26256805308967085,
+      0.4809383379071868,
+      1.389395626560361
+    ],
+    "raw_information_eigen_ratio": 0.020094332364569912,
+    "Ring_augmented_eigenvalues": [
+      0.095194579799295,
+      1.03013656511786,
+      1.0652656327381445,
+      1.2607944583376423,
+      1.4735153099375196,
+      2.3875357318032373
+    ],
+    "Ring_augmented_eigen_ratio": 0.03987147858407014,
+    "yaw_conditional_information": 0.10092626610328838,
+    "geometry_eigen_ratio": 0.003218398772659285,
+    "interpretation": "conditional point-to-plane geometry plus 5 Ring priors; not absolute pose observability or truth"
+  },
+  "status": "REGISTRATION_CANDIDATE_NOT_YET_FUSED",
+  "backup": "NOT_RUN; classify geometry/holdout first. No new method search without independent constraint.",
+  "GT_used": false
+}

@@ -1,0 +1,44 @@
+{
+  "UTC": "2026-10-27T05:18:41.144023+00:00",
+  "files": [
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v13_multisource/config.json",
+      "sha256": "4c1b0a37f98fc7bf8c4b36d7a4a7f18c6f6784f415f810ea94cbeb55426e4c20",
+      "bytes": 1462
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v13_multisource/inputs/views.json",
+      "sha256": "5117136307c0207d7c6487781c1c3e438febcbefb3468b7fe86d62891407f1a4",
+      "bytes": 68707
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v13_multisource/observations/LightGlue_004_08__v005_00459.npz",
+      "sha256": "cd74d50b4a8953a2135454bcf2488b3cb4005e628e66ff9252b54d4e69491243",
+      "bytes": 7653
+    },
+    {
+      "path": "/home/liu/ring_first_3d_phase_d/experiments/TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001/code/backup_pnp.py",
+      "sha256": "854fc14901d17923c821c7f1e3fcfccff23b44d2fa6f3c386ef5b835d0c798fc",
+      "bytes": 8796
+    }
+  ],
+  "GT_used": false,
+  "reason": "GICP reduced background residual but all five crossed Ring bounds; PnP uses background image material candidates and source depth rather than target predicted depth",
+  "pair": [
+    "004_08",
+    "v005_00459"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "fraction": 0.8,
+  "RANSAC_iterations": 300,
+  "RANSAC_reprojection_px": 6,
+  "RANSAC_confidence": 0.99,
+  "minimum_matches": 8,
+  "minimum_source_80px_cells": 3,
+  "select_primary_seed": 0,
+  "target_holdout_frames_untouched": true
+}

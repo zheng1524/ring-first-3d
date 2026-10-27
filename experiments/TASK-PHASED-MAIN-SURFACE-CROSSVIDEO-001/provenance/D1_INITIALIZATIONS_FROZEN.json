@@ -1,0 +1,235 @@
+{
+  "UTC": "2026-10-27T05:03:21.843983+00:00",
+  "H_direction": "005_to_004",
+  "units": "mm",
+  "initializations": [
+    {
+      "tag": "FULL_LightGlue",
+      "H": [
+        [
+          0.029372592471839307,
+          0.9986318950740737,
+          -0.04326186487251295,
+          -0.0026142650343077786
+        ],
+        [
+          -0.9994905886533727,
+          0.02880229627456668,
+          -0.01374739694073332,
+          0.05418121739520212
+        ],
+        [
+          -0.012482548009811233,
+          0.043643623475559605,
+          0.998969178766345,
+          -0.1443246144924134
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "tag": "FULL_RoMa",
+      "H": [
+        [
+          0.029521685893748612,
+          0.9986249901246299,
+          -0.04331973176940667,
+          -0.0020432500201896164
+        ],
+        [
+          -0.9995345128424322,
+          0.0291593968638601,
+          -0.008971466512111113,
+          0.014729702810362639
+        ],
+        [
+          -0.0076959534063604125,
+          0.04356441980697554,
+          0.9990209775715668,
+          -0.11387051474991261
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "tag": "RingYaw",
+      "H": [
+        [
+          0.029448720706985176,
+          0.9995662923732082,
+          0.0,
+          0.0
+        ],
+        [
+          -0.9995662923732082,
+          0.029448720706985176,
+          -0.0,
+          0.0
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "tag": "RingYaw_minus5",
+      "H": [
+        [
+          -0.05778128320342657,
+          0.9983292659795993,
+          0.0,
+          0.0
+        ],
+        [
+          -0.9983292659795993,
+          -0.05778128320342657,
+          -0.0,
+          0.0
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "tag": "RingYaw_plus5",
+      "H": [
+        [
+          0.1164546020711929,
+          0.993196015727228,
+          0.0,
+          0.0
+        ],
+        [
+          -0.993196015727228,
+          0.1164546020711929,
+          -0.0,
+          0.0
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "config": {
+    "task": "TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001",
+    "consistency_mm": 0.3,
+    "duplicate_distance_mm": 0.3,
+    "normal_compatibility_degrees": 30,
+    "source_rgb_support_MAE_maximum": 40,
+    "main_score_weights": {
+      "selection_view_coverage": 0.4,
+      "source_RGB_explanation": 0.2,
+      "largest_face_component": 0.2,
+      "nonconflict_source_fraction": 0.1,
+      "not_frozen_T2_candidate_fraction": 0.1
+    },
+    "main_ambiguity_gap": 0.03,
+    "local_surface_rigid_adjustments": "NONE; unreliable correspondences retain frozen source pose",
+    "D0_selection_targets": {
+      "004": [
+        10
+      ],
+      "005": [
+        11
+      ]
+    },
+    "D1_held_targets": {
+      "004": [
+        15
+      ],
+      "005": [
+        20,
+        21
+      ]
+    },
+    "CAD_occlusion_tolerance_mm": 0.002,
+    "background_display_ellipse_scale": 2.0,
+    "background_display_far_outer_diameters": 2.0,
+    "background_fit_ellipse_scale": 2.5,
+    "background_ellipse_y_over_x": 0.75,
+    "background_fit_consistency_mm": 0.5,
+    "background_depth_gradient_max_mm": 0.8,
+    "background_specular_value_max": 245,
+    "background_dark_value_min": 15,
+    "registration_voxel_mm": 0.25,
+    "registration_minimum_points_per_video": 150,
+    "registration_max_correspondence_mm": 1.0,
+    "registration_Huber_k_mm": 0.3,
+    "registration_covariance_radius_mm": 0.8,
+    "registration_covariance_max_nn": 30,
+    "registration_iterations": 60,
+    "registration_generalized_epsilon": 0.001,
+    "ring_translation_bound_mm": 1.0,
+    "ring_normal_bound_degrees": 5,
+    "yaw_step_bound_degrees": 10,
+    "seed_yaw_perturbation_degrees": 5,
+    "stable_initializations_rotation_degrees": 3,
+    "stable_initializations_translation_mm": 0.5,
+    "geometry_distance_support_mm": 0.5,
+    "observability_eigenvalue_ratio_minimum": 0.0001,
+    "D2_holdout_coverage_loss_maximum": 0.05,
+    "D2_holdout_boundary_median_worsening_maximum_px": 2,
+    "D3_base_pixel_ROIs": [
+      [
+        5,
+        30
+      ],
+      [
+        5,
+        45
+      ],
+      [
+        5,
+        60
+      ]
+    ],
+    "D3_plane_inlier_distance_mm": 0.3,
+    "D3_plane_minimum_inlier_fraction": 0.5,
+    "D3_plane_minimum_points": 100,
+    "D3_plane_iterations": 300,
+    "random_seed": 0,
+    "GT_used": false,
+    "upstream_model_runs": 0,
+    "official_camera_updates": 0,
+    "Type2_algorithm_updates": 0
+  }
+}
