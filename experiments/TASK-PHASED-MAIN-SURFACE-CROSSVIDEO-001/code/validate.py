@@ -7,7 +7,7 @@ def main():
         ok=bool(value);rows.append(dict(check=name,passed=ok,detail=detail));assert ok,name
     verify();check('all_input_SHA256_unchanged',True)
     archives=list((R/'provenance/frozen_sources').glob('*.py'))
-    for name in ['SOURCE_RULES_FROZEN','EVALUATION_D2_FROZEN','D1_YAW_PROFILE_BEFORE_COMPUTE','D1_BACKUP_BEFORE_COMPUTE','D3_BEFORE_COMPUTE','POST_ANALYSIS_SOURCES']:
+    for name in ['SOURCE_RULES_FROZEN','EVALUATION_D2_FROZEN','D1_YAW_PROFILE_BEFORE_COMPUTE','D1_BACKUP_BEFORE_COMPUTE','D3_BEFORE_COMPUTE','POST_ANALYSIS_SOURCES','BACKGROUND_HELDOUT_BEFORE_COMPUTE']:
         manifest=load(R/f'provenance/{name}.json');files=manifest.get('files',[dict(path=str(R/'code/yaw_observability.py'),sha256=manifest.get('source_sha256'))])
         for f in files:
             current=sha(f['path'])==f['sha256'];archived=any(sha(p)==f['sha256']for p in archives);check(name+':'+Path(f['path']).name,current or archived,'current exact source'if current else'exact execution source archived; bookkeeping/metadata change documented')
@@ -29,6 +29,7 @@ def main():
     gate=load(R/'metrics/D2_gate.json');check('D2_NOT_FUSED_no_silent_fusion',gate['status']=='NOT_FUSED'and not list((R/'local_results').rglob('*D2_duplicate_face_indices.npz')))
     backup=load(R/'metrics/D1_backup_PnP.json');check('PnP_original_17_background_matches_3_fixed_subsets',backup['usable_background_nonheld_quality_N']==17 and len(backup['runs'])==3 and backup['resampling_stable']and not backup['target_depth_used'])
     disp=load(R/'metrics/D1_display_candidate.json');check('active_candidate_is_frozen_seed0',disp['candidate']=='CACHED_LIGHTGLUE_PNP_SEED0'and np.array_equal(disp['H_005_to_004'],backup['runs'][0]['H_005_to_004']))
+    bg=load(R/'metrics/D1_BACKGROUND_HELDOUT.json');check('background_holdout_8_candidates_both_directions_fixed_support',len(bg)==16 and all(x['source_N']==(53640 if x['source_video']=='005'else 20816)and not x['used_for_H_selection']for x in bg))
     for video,other in [('005','004'),('004','005')]:
         P,rgb,kind=point_data(video,'D0_FULL');m=geometry(video,'D0_FULL');C=m.visual.vertex_colors[:,:3]/255.
         for t in target(other,'holdout'):

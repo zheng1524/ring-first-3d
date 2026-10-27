@@ -2,7 +2,7 @@
 
 使用 `/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python`（Python 3.12），实际依赖见 [RUNTIME.json](provenance/RUNTIME.json)。Open3D 0.19 直接只读调用历史 `surface_fusion_v3/vendor`；不安装或迁移整个旧项目，不下载权重。原始冻结资产未公开，外部机器仅凭 public 仓库不能独立重建这些科研结果。
 
-在本机核验当前交付（已实际运行；16 项解析/来源测试与 286 项结果级检查通过）：
+在本机核验当前交付（已实际运行；16 项解析/来源测试与 292 项结果级检查通过）：
 
 ```bash
 cd /home/liu/ring_first_3d_phase_d

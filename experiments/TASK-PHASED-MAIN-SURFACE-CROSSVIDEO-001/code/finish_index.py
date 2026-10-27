@@ -7,7 +7,7 @@ def main():
         try:versions[name]=importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:versions[name]='not registered'
     sys.path.insert(0,str(OLD/'surface_fusion_v3/vendor'));import open3d
-    versions['open3d']=open3d.__version__;save('provenance/RUNTIME.json',dict(python=sys.version,executable=sys.executable,platform=platform.platform(),versions=versions,Open3D_module=str(Path(open3d.__file__).resolve()),environment=dict(PYTHONDONTWRITEBYTECODE='1',OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='2')))
+    versions['open3d']=open3d.__version__;versions['cv2_runtime']=cv2.__version__;save('provenance/RUNTIME.json',dict(python=sys.version,executable=sys.executable,platform=platform.platform(),versions=versions,Open3D_module=str(Path(open3d.__file__).resolve()),cv2_module=str(Path(cv2.__file__).resolve()),environment=dict(PYTHONDONTWRITEBYTECODE='1',OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='2')))
     save('provenance/FINAL_SOURCE_MANIFEST.json',stamp(list((R/'code').glob('*.py'))+list((R/'provenance/frozen_sources').glob('*.py'))+[R/'config.json',R/'PROTOCOL.md',R/'TASK.md']))
     local=[]
     for p in sorted((R/'local_results').rglob('*')):

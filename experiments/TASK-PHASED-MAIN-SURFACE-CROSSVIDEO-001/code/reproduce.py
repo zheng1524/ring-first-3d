@@ -2,7 +2,7 @@
 import argparse,subprocess,os,sys,json,hashlib,shutil,datetime
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-STAGES=[('model.py','prepare'),('test_small.py',),('model.py','D0'),('registration.py',),('yaw_observability.py',),('FREEZE_EVALUATION',),('evaluation.py','D0'),('evaluation.py','D1'),('backup_pnp.py',),('physical_export.py','D3'),('height_sensitivity.py',),('physical_export.py','export'),('comparison_extras.py',),('figures.py',),('diagnostic_views.py',),('paired_support.py',),('validate.py',)]
+STAGES=[('model.py','prepare'),('test_small.py',),('model.py','D0'),('registration.py',),('yaw_observability.py',),('FREEZE_EVALUATION',),('evaluation.py','D0'),('evaluation.py','D1'),('backup_pnp.py',),('background_heldout.py',),('physical_export.py','D3'),('height_sensitivity.py',),('physical_export.py','export'),('comparison_extras.py',),('figures.py',),('diagnostic_views.py',),('paired_support.py',),('validate.py',)]
 def freeze_evaluation(root):
     files=[root/'code/evaluation.py',root/'config.json',root/'provenance/TARGETS_FROZEN.json'];value=dict(UTC=datetime.datetime.now(datetime.timezone.utc).isoformat(),files=[dict(path=str(p),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),bytes=p.stat().st_size)for p in files],GT_used=False,heldout_RGB_not_computed_yet=True,front_conflict_exposure_fraction_maximum=.15,acceptance='Frozen Ring bounds, multiple initialization stability, conditional observability and relative heldout deterioration; no 3px absolute veto');(root/'provenance/EVALUATION_D2_FROZEN.json').write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n')
 def main():

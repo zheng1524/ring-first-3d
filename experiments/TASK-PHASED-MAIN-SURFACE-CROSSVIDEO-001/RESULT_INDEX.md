@@ -29,4 +29,5 @@
 
 已完成增量提交（本索引所在最终文档提交 SHA 由 Git 历史及最终交付回执提供，避免自引用）：
 
+- `45d8cc5cf78d741eb22d98cd058252a8665308e9 Phase D: preserve multireference scenes, diagnose bounded registration, publish four real review figures`
 - `fe9e045aadaac8de49d6d8ea0e897abb866bf4f9 Phase D: record explicit research authorization and freeze bounded source-aware protocol`
