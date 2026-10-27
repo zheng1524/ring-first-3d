@@ -1,6 +1,8 @@
 # Ring-First 3D · Human-in-the-loop research collaboration
 
-Status: **BOOTSTRAP_ONLY** · Collaboration standard: **v1.3** · No certified 3D algorithm baseline has been imported.
+Status: **PHASE_D_RESEARCH_AUTHORIZED** · Collaboration standard: **v1.3** · No certified 3D algorithm baseline has been imported.
+
+Researcher authorization: [TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001](experiments/TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001/TASK.md). This task may use frozen legacy assets/source read-only, wrap them, and make necessary bounded copies. Full migration and a baseline tag are not prerequisites. Frozen upstream models, cameras, P0, Dxy and GT restrictions remain in force.
 
 This repository is for incremental Codex-produced reproducible source, configurations, diagnostics, curated visuals and one technical report per task. RA and PM collaborate through human-relayed prompts and reports; they are not required to write GitHub.
 

@@ -1,0 +1,19 @@
+[
+  {
+    "source": "/home/liu/ring_first_3d_abs_density/experiments/TASK-PHASEC-ABS-DENSITY-REPROJ-001/code/common.py",
+    "source_sha256": "cf283751579ff5c3c3426bf82f5ba5f1cb2af93a35e81182e39755410af41d75",
+    "destination": "code/common.py",
+    "adaptation": "Task-local R; six G01 references only; no change to data/identity/guard math"
+  },
+  {
+    "source": "/home/liu/ring_first_3d_abs_density/experiments/TASK-PHASEC-ABS-DENSITY-REPROJ-001/code/reprojection.py",
+    "source_sha256": "24437668550de69fbf1310498fdfa607bc9e5fd34e86b00104800d9ccc2e6c1a",
+    "destination": "code/source_rgb_projection.py",
+    "functions": [
+      "raster",
+      "errors",
+      "evaluate"
+    ],
+    "adaptation": "Only pure source RGB point raster/evaluation functions; no P1 cleanup or prior task entry executed"
+  }
+]

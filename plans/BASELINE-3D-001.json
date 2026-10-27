@@ -1,9 +1,9 @@
 {
   "plan_id": "BASELINE-3D-001",
-  "status": "NOT_AUTHORIZED_TO_IMPORT",
+  "status": "PHASE_D_RESEARCH_USE_AUTHORIZED_BASELINE_NOT_CERTIFIED",
   "created_date_AsiaShanghai": "2026-10-24",
   "repository": "zheng1524/ring-first-3d",
-  "repository_phase": "BOOTSTRAP_ONLY",
+  "repository_phase": "PHASE_D_RESEARCH_AUTHORIZED",
   "seed_commit": "55f4bc29efa7a055acfe03546f2980b914ef0a4c",
   "legacy_host": {
     "root": "/home/liu/polyp_research",
@@ -757,5 +757,16 @@
     "Existing source configurations must not activate failed point-deletion branches as the P0 default.",
     "Remote README/SHA readback hit TLS timeout; stop all remote operations until user review."
   ],
-  "approval_required_before_any_copy": true
+  "approval_required_before_any_copy": true,
+  "formal_scientific_baseline_imported": false,
+  "phase_d_authorization": {
+    "task": "TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001",
+    "date_AsiaShanghai": "2026-10-27",
+    "request_sha256": "d0ac8573a92d11e4487b4c215857fe58555b0f5956e44713b3ad2bea8f57c7cd",
+    "full_legacy_migration_required": false,
+    "baseline_tag_required_before_research": false,
+    "permitted": "frozen assets/source read-only use, wrappers, necessary bounded controlled copies",
+    "scope": "this task only; no upstream/camera/P0/Dxy mutation; no GT/Oracle prediction",
+    "copy_authorization": "explicit researcher authorization for necessary bounded task copies; original candidate list is not imported or certified"
+  }
 }
