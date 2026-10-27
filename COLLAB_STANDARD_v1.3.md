@@ -46,3 +46,7 @@ GitHub只保存结果和已采纳的治理摘要，不承担自动发送消息�
 ## 8. 标签与冻结
 `PROPOSED` 候选；`APPROVED_TASK` 用户准许执行；`RUNNING` 已开始；`REPORTED` 交付已有；`ACCEPTED` 科学验收；`REJECTED` 明确不采纳；`DEPRECATED` 历史路线；`LOCAL_ONLY` 本地存在而未上传；`NOT_EVALUABLE` 输入不满足评价条件。
 每次冻结记录源码commit、manifest SHA、配置、数据边界、有效/失败分母和GT协议，打`baseline-...`标签。**种子库的治理tag不是三维算法基线tag。**
+
+## 2026-10-27 后续增量任务授权
+
+用户已直接转交TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001。沿用已解除的工程管理门槛，在独立分支开展任务指定四组的只读资产复用与派生实验，不宣称旧基线已正式认证。正式Dxy独立冻结；本轮仅新建三维模型投影直径原型，不读取历史测量值或GT回退。

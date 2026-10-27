@@ -8,3 +8,5 @@
 - 分支与增量push，显式git add，禁止git add . / git clean / force push；禁止上传全量视频/大权重/虚拟环境/原实验22GiB；精选关键PNG和小数据表。
 - 不更改研究主线、不因GT调参污染测试；不能通过漂亮的GLB代替精度与覆盖评价。
 - 提交后给人工短总结、commit SHA、报告及关键图链接；未实测上传就不能称同步完成。
+
+- 用户于本轮明确下达TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001，允许四组冻结资产的既有清理复用、主体优先派生补片、基底几何和独立3D投影直径原型；不修改正式Dxy，不进行跨视频新配准，不改变上游或正式baseline状态。

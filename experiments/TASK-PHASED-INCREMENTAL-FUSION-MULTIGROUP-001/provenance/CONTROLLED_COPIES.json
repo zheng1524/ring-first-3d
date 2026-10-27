@@ -1,0 +1,34 @@
+[
+  {
+    "source": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001/code/common.py",
+    "source_sha256": "5f4b6911211103d639189d188c09eb82eb638d43247c8c559772c9c3cd327443",
+    "destination": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/code/common.py",
+    "note": "own previously published code; only task paths/case selection adapted"
+  },
+  {
+    "source": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001/code/source_rgb_projection.py",
+    "source_sha256": "d216d7368163fb6b1dd4dc6f5a78ed1c297263381ca344578b095a7ea6b3ea57",
+    "destination": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/code/source_rgb_projection.py",
+    "note": "own previously published code; only task paths/case selection adapted"
+  },
+  {
+    "source": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001/code/model.py",
+    "source_sha256": "6ce6c15fed866e8de09fc959e2f0dd70c36a92a5eff59696fc88c5d38b8e7467",
+    "functions": [
+      "cfg",
+      "source",
+      "background"
+    ],
+    "destination": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/code/assets.py",
+    "mode": "AST-exact function extraction, source/background cache retained; new camera/selection interfaces below"
+  },
+  {
+    "source": "/home/liu/ring_first_3d_abs_density/experiments/TASK-PHASEC-ABS-DENSITY-REPROJ-001/code/p1.py",
+    "source_sha256": "c8774354ad341b2c3cb2144aa10fd1b3371ed812cd539c47328c8340ba9d598e",
+    "functions": [
+      "damage"
+    ],
+    "destination": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/code/historical_damage.py",
+    "mode": "exact AST function extraction; historical entry not called"
+  }
+]
