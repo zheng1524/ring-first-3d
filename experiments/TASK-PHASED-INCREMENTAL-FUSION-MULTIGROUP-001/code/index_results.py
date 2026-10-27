@@ -1,0 +1,39 @@
+"""Actual four-group summaries, local HTML gallery and full artifact index."""
+from pipeline import *
+import html,platform,importlib.metadata
+def main():
+    scs=load(R/'metrics/B_scenes.json');heights=load(R/'metrics/C_height_geometry.json');ds=load(R/'metrics/D_observed_surface_definition_audit.json');scene_rows=[];groups=[];links=[]
+    for sc in scs:
+        sums={str(k):sum(x['classes'][str(k)]['model_area_mm2']for x in sc['source_summaries'])for k in range(6)};new_by_source=[];partial=0.;partial_parents=0
+        for cid in sc['reference_order']:
+            z=np.load(R/f'local_results/scenes/{sc["id"]}/{cid}_faces_exact.npz');mask=(z['face_status']==5)&(z['child_code']>0);ar=area(z['XYZ_mm'],z['faces']);partial+=float(ar[mask].sum());partial_parents+=len(np.unique(z['parent_original_face_id'][mask]));new_by_source.append(dict(reference=cid,new_patch_mm2=float(ar[z['face_status']==5].sum()),partial_overlap_recovered_mm2=float(ar[mask].sum())))
+        hh=[x for x in heights if x['scene']==sc['id']];dd=[x for x in ds if x['scene']==sc['id']and x['model']=='core'];valid=np.array([x['H95_mm']for x in hh if x['H95_mm']is not None]);scene_rows.append(dict(scene=sc['id'],group=sc['group'],references=len(sc['references']),source_N=sum(source(cid)['c']['points']for cid in sc['references']),condition=source(sc['main_reference'])['c']['condition'],main_reference=sc['main_reference'],primary_raw_area_mm2=sc['primary_raw_area_mm2'],primary_applied_area_mm2=sc['primary_applied_area_mm2'],new_patch_model_area_mm2=sc['new_patch_area_mm2'],partial_overlap_recovered_model_area_mm2=partial,partial_overlap_parent_N=partial_parents,duplicate_observation_exposure_mm2=sums['4'],conflict_model_exposure_mm2=sums['2'],unknown_model_exposure_mm2=sums['1']+sums['3'],core_model_area_mm2=sc['primary_applied_area_mm2']+sc['new_patch_area_mm2'],primary_vertex_displacement_mm=0.,new_by_source=new_by_source,multireference_status=sc['status'],base_conditions=len(hh),usable_base_conditions=len(valid),height_min_mm=float(valid.min())if len(valid)else None,height_max_mm=float(valid.max())if len(valid)else None,height_median_mm=float(np.median(valid))if len(valid)else None,Dproj_conditions=len(dd),Dproj_usable=sum(x['observed_surface_Dproj_mm']is not None for x in dd),independent_true_surface_gain=None,clinical_Dxy=None,GT_used=False))
+    save('metrics/F_scene_summary.json',scene_rows);csvsave('metrics/F_scene_summary.csv',scene_rows)
+    for g in cfg()['groups']:
+        rows=[x for x in scene_rows if x['group']==g];groups.append(dict(group=g,local_video_scenes=len(rows),independent_physical_groups=1,reference_exposures=sum(x['references']for x in rows),source_point_exposures=sum(x['source_N']for x in rows),multiple_reference_scenes=sum(x['references']>1 for x in rows),base_condition_N=sum(x['base_conditions']for x in rows),usable_base_condition_N=sum(x['usable_base_conditions']for x in rows),projected_diameter_condition_N=sum(x['Dproj_conditions']for x in rows),projected_diameter_usable=sum(x['Dproj_usable']for x in rows),independent_verified_surface_gain=None,GT_used=False))
+    save('metrics/F_group_summary.json',groups);csvsave('metrics/F_group_summary.csv',groups)
+    css='body{max-width:1500px;margin:30px auto;padding:0 20px;font-family:system-ui;background:#f5f5f6;color:#242428}h1,h2,h3{line-height:1.4}.card{background:white;padding:22px;margin:24px 0;border:1px solid #ddd;border-radius:8px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}img{max-width:100%;height:auto}a{color:#125b95}.flag{background:#fff0c4;padding:12px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccc;padding:8px;text-align:left}code{overflow-wrap:anywhere}'
+    body=['<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Phase-D 四组审查索引</title><style>'+css+'</style><body><h1>'+R.name+'</h1><p>4独立物理组，5独立视频场景，9参考；GT=NONE。所有缩略图均来自真实XYZ和源RGB，点击打开原图。科研资产与指标尚待人工验收。</p><p class="flag">仅G01有多参考；G06/G07/G08为单参考诊断，不冒充融合成功。清理候选均未自动采纳；Dxy可评价结果0，数学候选与失败端点仍展示。拟合平面是分析代理，不是新重建表面。</p><p><a href="../TECHNICAL_REPORT.md">技术报告</a> · <a href="../metrics/F_group_summary.csv">逐组汇总CSV</a> · <a href="../metrics/D_projected_diameter.csv">原始严格Dxy条件</a> · <a href="../metrics/D_observed_surface_definition_audit.csv">观测区域定义审计</a></p><h2>总览联系表</h2><a href="Overview_Contact_Sheet.png"><img src="Overview_Contact_Sheet.png" alt="四组真实图总览"></a>']
+    glbs=load(R/'metrics/GLB_INDEX.json');visindex=load(R/'metrics/VISUALIZATION_INDEX.json')
+    for sc in scs:
+        item=next(x for x in visindex if x['scene']==sc['id']);summary=next(x for x in scene_rows if x['scene']==sc['id']);body+=['<section class="card"><h2>'+sc['id']+' — '+html.escape(summary['condition'])+'</h2><p>主体 '+sc['main_reference']+'；参考数 '+str(len(sc['references']))+'；'+sc['status']+'；新增源模型面 '+f'{sc["new_patch_area_mm2"]:.6f}'+'mm²（非解剖真面积）；高度可用 '+str(summary['usable_base_conditions'])+'/'+str(summary['base_conditions'])+'。</p><div class="grid">']
+        for p in item['core_png']:
+            path=Path(p).relative_to(R/'visualizations');body+=['<a href="'+str(path)+'"><img src="'+str(path)+'" alt="'+path.name+'"><p>'+path.name+'</p></a>']
+        body+=['</div><h3>全部基底条件（包含失败）</h3><p>']
+        for p in sorted((Path(item['folder'])/'height_conditions').glob('*.png')):body+=['<a href="'+str(p.relative_to(R/'visualizations'))+'">'+p.stem+'</a> · ']
+        body+=['</p><h3>本地可旋转模型文件</h3><p>']
+        for x in glbs:
+            if x['scene']==sc['id']:body+=['<a href="../'+str(Path(x['path']).relative_to(R))+'">'+Path(x['path']).name+'</a> ('+str(x['bytes'])+' bytes) · ']
+        body+=['</p><p>GLB用米序列化，XYZ以毫米处理；已知CAD和实际背景点随场景保存。可下载后用本地GLB查看器或Blender打开。UNKNOWN/CONFLICT不代表已解决。</p></section>']
+    body+=['<p><a href="../../TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001/figures/Fig4_BC_new_coverage_conflict_loss.png">只读历史B/C真实对照图</a>；本轮B/C重新评价只读取原有几何，未重跑融合器。</p></body></html>'];(R/'visualizations/index.html').write_text('\n'.join(body)+'\n')
+    assets=[]
+    for folder in ['local_results','visualizations']:
+        for p in sorted((R/folder).rglob('*')):
+            if p.is_file():assets.append(dict(path=str(p),bytes=p.stat().st_size,sha256=sha(p),relative=str(p.relative_to(R)),public_uploaded=False))
+    save('provenance/LOCAL_ASSET_INDEX.json',assets);csvsave('provenance/LOCAL_ASSET_INDEX.csv',assets);save('provenance/FINAL_SOURCE_MANIFEST.json',stamp(list((R/'code').glob('*.py'))+[R/'config.json',R/'PROTOCOL.md',R/'TASK.md']));save('provenance/RUNTIME.json',dict(python=sys.version,platform=platform.platform(),numpy=np.__version__,cv2=cv2.__version__,trimesh=trimesh.__version__,scipy=importlib.metadata.version('scipy'),matplotlib=importlib.metadata.version('matplotlib'),open3d=o3d_module().__version__,PYTHONDONTWRITEBYTECODE='1',OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='2'))
+    md=['# 本轮结果索引','','[完整技术报告](TECHNICAL_REPORT.md) · [复现入口](REPRODUCE.md) · [逐组指标](metrics/F_group_summary.csv) · [所有本地文件SHA](provenance/LOCAL_ASSET_INDEX.csv)','','4物理组、5视频场景、9参考；仅G01有多参考。GT=NONE；清理候选未采纳，三维Dxy均不可评价。','','[打开本轮可视化文件夹]('+str(R/'visualizations/')+') · [直接打开 index.html]('+str(R/'visualizations/index.html')+')','','四张公开组级核心图（每场景含清理、增量融合和高度/Dxy三类完整面板）：','']
+    for x in load(R/'metrics/PUBLIC_FIGURES.json'):md.append('- ['+x['group']+' 三阶段审查图](figures/'+Path(x['path']).name+') — SHA256 `'+x['sha256']+'`')
+    md+=['','全部单独核心图和27个完整基底条件图在本地HTML中；完整XYZ、Mesh和GLB未公开上传。','','| 场景 | 两类本地GLB | 字节 | SHA256 |','| --- | --- | ---: | --- |']
+    for x in glbs:md.append('| '+x['scene']+' | `'+x['path']+'` | '+str(x['bytes'])+' | `'+x['sha256']+'` |')
+    md+=['','每场景真实可视化文件夹：','']+['- `'+x['folder']+'`：三类核心PNG及全部ROI条件。'for x in visindex];(R/'RESULT_INDEX.md').write_text('\n'.join(md)+'\n');print('INDEX_HTML_AND_ASSETS',len(assets),'local files',flush=True)
+if __name__=='__main__':main()

@@ -1,0 +1,6 @@
+"""Controlled copy: original source-face ray projection, no target recoloring."""
+from assets import *
+def transform(P,H):return np.asarray(P)@H[:3,:3].T+H[:3,3]
+def triangle_predict(m,t,H=np.eye(4)):
+    sc=scene_for(t);o=sc.o3d;T=transform(m.vertices,H);rt=o.t.geometry.RaycastingScene(nthreads=2);rt.add_triangles(o.core.Tensor(T.astype(np.float32)),o.core.Tensor(np.asarray(m.faces,np.uint32)));uv=np.c_[np.tile(np.arange(640),360),np.repeat(np.arange(360),640)];rays=vis.camera_rays(uv,np.array(t['K']),np.array(t['c2w']));hit=rt.cast_rays(o.core.Tensor(rays.astype(np.float32)));z=hit['t_hit'].numpy();ringz=sc.cast(uv)['t_hit'].numpy();valid=np.isfinite(z)&(z>0)&(z<=ringz+cfg()['CAD_occlusion_tolerance_mm']);fid=hit['primitive_ids'].numpy();bary=hit['primitive_uvs'].numpy();color=np.zeros((640*360,4),np.uint8);F=m.faces[fid[valid]];w=bary[valid];weights=np.c_[1-w.sum(1),w];rgb=m.visual.vertex_colors[:,:3]/255.;C=(rgb[F]*weights[:,:,None]).sum(1);color[valid,:3]=np.rint(np.clip(C,0,1)*255).astype(np.uint8);color[valid,3]=255
+    return dict(RGBA=color.reshape(360,640,4),z=z.reshape(360,640),face_id=fid.reshape(360,640),source_barycentric=bary.reshape(360,640,2),kind=valid.reshape(360,640).astype(int),known_CAD_occlusion=True,original_triangles_only=True,B_RGB_used_for_prediction=False)
