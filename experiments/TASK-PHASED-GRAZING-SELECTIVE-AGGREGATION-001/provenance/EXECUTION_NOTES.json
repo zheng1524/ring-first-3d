@@ -1,0 +1,29 @@
+{
+  "scientific_rules_changed": false,
+  "post_execution_repairs": [
+    {
+      "file": "code/evaluate.py",
+      "fix": "dict(**h,status=...) -> dict(h,status=...), duplicate metadata key only; single-video results retained and cross-video branch resumed"
+    },
+    {
+      "file": "code/scene_renderer.py",
+      "fix": "zero-length Background color array reshaped to (0,3), supports polyp-only L3 rendering"
+    },
+    {
+      "file": "code/cleaning.py",
+      "fix": "retain valid zero as zero instead of truthiness fallback; all actual compared sparse-proxy retentions are >0, so all45 outputs and Raw decision unchanged"
+    },
+    {
+      "file": "code/anchors.py",
+      "fix": "state explicit historical fallback when no new matches; H unchanged, no residual minimization claimed"
+    }
+  ],
+  "visual_layout_refinements_only": [
+    "Fig1 12deg diagnostic instead of exact edge-on CAD, identical angles across versions; row spacing",
+    "Fig2 row spacing",
+    "Panel2 original two-hue depth legend in white gap"
+  ],
+  "new_threshold_searches": 0,
+  "depth_correction_runs": 0,
+  "GT_reads": 0
+}

@@ -52,6 +52,7 @@ def main():
     def score(r):return r['fit_px']['median']if r.get('fit_px',{}).get('median')is not None else 1e9
     best=min(eligible or rr,key=score);H=np.array(best['H_source_to_primary']);new=[r for r in eligible if r['candidate'].startswith('SIFT')];stability=[dict(candidate=r['candidate'],rotation_deg=rotangle(np.array(r['H_source_to_primary'])@np.linalg.inv(H)),translation_mm=float(np.linalg.norm(np.array(r['H_source_to_primary'])[:3,3]-H[:3,3])))for r in new]
     # Low residual alone cannot certify an H derived from predicted depths.
-    save('metrics/crossvideo_candidate.json',dict(selected=best['candidate'],H_005_to_004=H,selection='minimum training median among Ring-plausible finite candidates',training_N=best['fit_N'],heldout_N=best['heldout_N'],Ring=best['Ring'],stability=stability,status='REGISTRATION_CANDIDATE_NOT_FUSED_PENDING_INDEPENDENT_VIEWS',two_independent_constraints_required=True,GT_used=False))
+    rule='minimum training median among Ring-plausible finite candidates'if any(score(r)<1e9 for r in eligible)else'NO_USABLE_NEW_SIFT_CORRESPONDENCES; first frozen historical candidate retained only for diagnosis, not refitted or certified'
+    save('metrics/crossvideo_candidate.json',dict(selected=best['candidate'],H_005_to_004=H,selection=rule,training_N=best['fit_N'],heldout_N=best['heldout_N'],Ring=best['Ring'],stability=stability,status='REGISTRATION_CANDIDATE_NOT_FUSED_PENDING_INDEPENDENT_VIEWS',two_independent_constraints_required=True,GT_used=False))
     print('ANCHORS',len(records),'cross selected',best['candidate'],'matches',best['balanced_matches'],flush=True)
 if __name__=='__main__':main()
