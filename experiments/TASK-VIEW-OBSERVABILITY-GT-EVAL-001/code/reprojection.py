@@ -34,7 +34,8 @@ def make_figure(row,pred,metrics,mae,common,P,C,p,c,B):
     fig.suptitle(row['pair_id']+'｜标准五面板：真实跨帧 / 不使用B颜色、B深度或GT；三角面颜色仅原A顶点重心插值',fontsize=14);fig.text(.03,.05,metrics_text+'\n004 raw编号仅历史近似绑定：以关键帧ID+RGB SHA为准。相机/光照/反光/遮挡均可能引起差异；该图不证明自主三维准确性。',fontsize=10)
     fig.subplots_adjust(top=.85,bottom=.20);dest=R/'figures/A_to_B'/(row['pair_id']+'.png');dest.parent.mkdir(parents=True,exist_ok=True);fig.savefig(dest,dpi=130,facecolor='white');plt.close(fig);return str(dest.relative_to(R))
 def main():
-    verify_predictions();frozen=load(R/'provenance/A_TO_B_PAIRS_BEFORE_RENDER.json');rows=[]
+    supplement='--photo-supplement'in sys.argv
+    verify_predictions();frozen=load(R/('provenance/PHOTO_PAIRS_BEFORE_RENDER.json'if supplement else'provenance/A_TO_B_PAIRS_BEFORE_RENDER.json'));rows=load(R/'metrics/a_to_b_results.json')if supplement else[]
     for row in frozen['pairs']:
         if not row['executable']:continue
         c,P,C,m,p,uv=source(row['A']);t=row['B_target'];H=np.array(row['H_A_to_B_world']);pred=render(P,m.faces,C,np.array(t['K']),np.array(t['c2w']),H,c['ring']);out=R/'local_results/reprojection';out.mkdir(parents=True,exist_ok=True);np.savez_compressed(out/(row['pair_id']+'.npz'),**pred)

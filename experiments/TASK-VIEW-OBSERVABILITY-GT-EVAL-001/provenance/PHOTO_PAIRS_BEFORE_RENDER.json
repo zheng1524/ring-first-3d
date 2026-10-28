@@ -1,0 +1,559 @@
+{
+  "UTC": "2026-10-28T03:12:10.735599+00:00",
+  "files": [
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v13_multisource/inputs/views.json",
+      "bytes": 68707,
+      "sha256": "5117136307c0207d7c6487781c1c3e438febcbefb3468b7fe86d62891407f1a4"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v13_multisource/metrics/sparse_registration.json",
+      "bytes": 235485,
+      "sha256": "8559451e6e18091852df2e609da0c90652d4ec2cd21b155e82d823e93c7d63e3"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_view_eval/experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/code/photo_candidates.py",
+      "bytes": 2303,
+      "sha256": "7fd50497fe1cf9a07feb50b2d1630f766a9e85dbf7f649f2f12a81726fc0d9e1"
+    }
+  ],
+  "pairs": [
+    {
+      "pair_id": "G01_004_ref08__to__photo_001_LG490_candidate",
+      "group": "G01",
+      "A": "G01_004_ref08",
+      "B": "photo_001",
+      "B_target": {
+        "id": "photo_001",
+        "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/photo_001.png",
+        "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/photo_001.png",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "c2w": [
+          [
+            0.9849244386624443,
+            -0.1729659371429101,
+            -0.0025757938083025354,
+            -6.30035864022299
+          ],
+          [
+            -0.12261882176399612,
+            -0.7085798667086993,
+            0.6948950978703841,
+            -23.249961233991893
+          ],
+          [
+            -0.12201833745252136,
+            -0.6841033233973914,
+            -0.7191065068833447,
+            25.160378262231504
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "ring_case": "G01_004_ref08",
+        "role": "HISTORICAL_PHOTO_CAMERA_CANDIDATE_ONLY",
+        "not_in_any_source_HERO_inputs": true,
+        "K_status": "MODE_UNKNOWN_441_490_539"
+      },
+      "H_A_to_B_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "pose_status": "CANDIDATE_PHOTO_K490_NOT_REGISTERED",
+      "selection": "All three photos, both scopes; fixed historical LightGlue/f490; not selected by current RGB errors",
+      "executable": true,
+      "failure_reason": "HISTORICAL_INDEPENDENT_VALIDATION_FAILED; UNKNOWN_OPTICAL_MODE",
+      "whole_pipeline_independent": false
+    },
+    {
+      "pair_id": "G01_004_ref08__to__photo_002_LG490_candidate",
+      "group": "G01",
+      "A": "G01_004_ref08",
+      "B": "photo_002",
+      "B_target": {
+        "id": "photo_002",
+        "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/photo_002.png",
+        "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/photo_002.png",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "c2w": [
+          [
+            0.9408398685965599,
+            -0.3383482045614938,
+            -0.01846169356320198,
+            -6.930484253178331
+          ],
+          [
+            -0.2962264841904504,
+            -0.8477219397989921,
+            0.4400197527925292,
+            -15.353177897038503
+          ],
+          [
+            -0.16453027600831682,
+            -0.4085192838207851,
+            -0.8977982975163075,
+            29.13945398164028
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "ring_case": "G01_004_ref08",
+        "role": "HISTORICAL_PHOTO_CAMERA_CANDIDATE_ONLY",
+        "not_in_any_source_HERO_inputs": true,
+        "K_status": "MODE_UNKNOWN_441_490_539"
+      },
+      "H_A_to_B_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "pose_status": "CANDIDATE_PHOTO_K490_NOT_REGISTERED",
+      "selection": "All three photos, both scopes; fixed historical LightGlue/f490; not selected by current RGB errors",
+      "executable": true,
+      "failure_reason": "HISTORICAL_INDEPENDENT_VALIDATION_FAILED; UNKNOWN_OPTICAL_MODE",
+      "whole_pipeline_independent": false
+    },
+    {
+      "pair_id": "G01_004_ref08__to__photo_003_LG490_candidate",
+      "group": "G01",
+      "A": "G01_004_ref08",
+      "B": "photo_003",
+      "B_target": {
+        "id": "photo_003",
+        "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/photo_003.png",
+        "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/photo_003.png",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "c2w": [
+          [
+            0.8838030803653579,
+            -0.17169376920381532,
+            -0.43521645735575254,
+            13.909414084899149
+          ],
+          [
+            0.19690468862114438,
+            -0.7073328254991543,
+            0.678902656918054,
+            -20.92609837043572
+          ],
+          [
+            -0.424406242573922,
+            -0.6857124204708337,
+            -0.5913356218564171,
+            15.169315521752912
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "ring_case": "G01_004_ref08",
+        "role": "HISTORICAL_PHOTO_CAMERA_CANDIDATE_ONLY",
+        "not_in_any_source_HERO_inputs": true,
+        "K_status": "MODE_UNKNOWN_441_490_539"
+      },
+      "H_A_to_B_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "pose_status": "CANDIDATE_PHOTO_K490_NOT_REGISTERED",
+      "selection": "All three photos, both scopes; fixed historical LightGlue/f490; not selected by current RGB errors",
+      "executable": true,
+      "failure_reason": "HISTORICAL_INDEPENDENT_VALIDATION_FAILED; UNKNOWN_OPTICAL_MODE",
+      "whole_pipeline_independent": false
+    },
+    {
+      "pair_id": "G01_005_raw00459__to__photo_001_LG490_candidate",
+      "group": "G01",
+      "A": "G01_005_raw00459",
+      "B": "photo_001",
+      "B_target": {
+        "id": "photo_001",
+        "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/photo_001.png",
+        "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/photo_001.png",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "c2w": [
+          [
+            0.16879499703156156,
+            0.6952961374802453,
+            -0.6986211635658965,
+            23.522365321488856
+          ],
+          [
+            0.9733505205413426,
+            -0.22921401732053584,
+            0.0070497110351019935,
+            -6.655037713868808
+          ],
+          [
+            -0.155232126633028,
+            -0.6811932291713073,
+            -0.7154570367199939,
+            25.57939118872197
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "ring_case": "G01_005_raw00459",
+        "role": "HISTORICAL_PHOTO_CAMERA_CANDIDATE_ONLY",
+        "not_in_any_source_HERO_inputs": true,
+        "K_status": "MODE_UNKNOWN_441_490_539"
+      },
+      "H_A_to_B_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "pose_status": "CANDIDATE_PHOTO_K490_NOT_REGISTERED",
+      "selection": "All three photos, both scopes; fixed historical LightGlue/f490; not selected by current RGB errors",
+      "executable": true,
+      "failure_reason": "HISTORICAL_INDEPENDENT_VALIDATION_FAILED; UNKNOWN_OPTICAL_MODE",
+      "whole_pipeline_independent": false
+    },
+    {
+      "pair_id": "G01_005_raw00459__to__photo_002_LG490_candidate",
+      "group": "G01",
+      "A": "G01_005_raw00459",
+      "B": "photo_002",
+      "B_target": {
+        "id": "photo_002",
+        "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/photo_002.png",
+        "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/photo_002.png",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "c2w": [
+          [
+            0.3331916813682295,
+            0.8444026183288049,
+            -0.41948482883945976,
+            14.16862015055366
+          ],
+          [
+            0.9198308038398988,
+            -0.3888397416392209,
+            -0.05210515933369607,
+            -5.680690855200839
+          ],
+          [
+            -0.2071101054373208,
+            -0.3684940616636889,
+            -0.9062657064814597,
+            29.600622188550687
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "ring_case": "G01_005_raw00459",
+        "role": "HISTORICAL_PHOTO_CAMERA_CANDIDATE_ONLY",
+        "not_in_any_source_HERO_inputs": true,
+        "K_status": "MODE_UNKNOWN_441_490_539"
+      },
+      "H_A_to_B_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "pose_status": "CANDIDATE_PHOTO_K490_NOT_REGISTERED",
+      "selection": "All three photos, both scopes; fixed historical LightGlue/f490; not selected by current RGB errors",
+      "executable": true,
+      "failure_reason": "HISTORICAL_INDEPENDENT_VALIDATION_FAILED; UNKNOWN_OPTICAL_MODE",
+      "whole_pipeline_independent": false
+    },
+    {
+      "pair_id": "G01_005_raw00459__to__photo_003_LG490_candidate",
+      "group": "G01",
+      "A": "G01_005_raw00459",
+      "B": "photo_003",
+      "B_target": {
+        "id": "photo_003",
+        "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/photo_003.png",
+        "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/photo_003.png",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "c2w": [
+          [
+            -0.12532274770305912,
+            0.713743058939989,
+            -0.6891045310568951,
+            21.3786107644202
+          ],
+          [
+            0.8840606545545602,
+            -0.23488522169092582,
+            -0.40406149494819116,
+            13.01020454776634
+          ],
+          [
+            -0.45025655794970715,
+            -0.6598482995705849,
+            -0.6015556944931115,
+            15.55342503503365
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "ring_case": "G01_005_raw00459",
+        "role": "HISTORICAL_PHOTO_CAMERA_CANDIDATE_ONLY",
+        "not_in_any_source_HERO_inputs": true,
+        "K_status": "MODE_UNKNOWN_441_490_539"
+      },
+      "H_A_to_B_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "pose_status": "CANDIDATE_PHOTO_K490_NOT_REGISTERED",
+      "selection": "All three photos, both scopes; fixed historical LightGlue/f490; not selected by current RGB errors",
+      "executable": true,
+      "failure_reason": "HISTORICAL_INDEPENDENT_VALIDATION_FAILED; UNKNOWN_OPTICAL_MODE",
+      "whole_pipeline_independent": false
+    }
+  ],
+  "all_original_video_errors_already_computed": true,
+  "photo_prediction_errors_computed": false,
+  "no_photo_candidate_selected_by_new_error": true
+}

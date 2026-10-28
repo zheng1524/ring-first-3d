@@ -1,0 +1,11 @@
+"""Freeze six EXISTING photo camera candidates; never estimate or accept a new pose."""
+from io_utils import *
+sys.addaudithook(guard_no_gt)
+def main():
+    old=load(V13/'metrics/sparse_registration.json');photos=[x for x in load(V13/'inputs/views.json')if x['id'].startswith('photo')];scenes=load(R/'prediction_snapshot/B_scenes.json');plan=[];ledger=[]
+    for scope in ['004','005']:
+        mainref=next(s['main_reference']for s in scenes if s['id']=='G01_'+scope)
+        for photo in photos:
+            r=next(x for x in old if x.get('method')=='LightGlue'and x.get('scope')==scope and x.get('target')==photo['id']and x.get('focal')==490);assert r['numeric']and not r['accepted'];pose=r['training_best']['poses'][photo['id']];t=dict(id=photo['id'],RGB=photo['RGB_path'],Mask=photo['Mask_path'],K=photo['K'],c2w=pose,ring_case=mainref,role='HISTORICAL_PHOTO_CAMERA_CANDIDATE_ONLY',not_in_any_source_HERO_inputs=True,K_status=photo['K_status']);plan.append(dict(pair_id=mainref+'__to__'+photo['id']+'_LG490_candidate',group='G01',A=mainref,B=photo['id'],B_target=t,H_A_to_B_world=np.eye(4),pose_status='CANDIDATE_PHOTO_K490_NOT_REGISTERED',selection='All three photos, both scopes; fixed historical LightGlue/f490; not selected by current RGB errors',executable=True,failure_reason='HISTORICAL_INDEPENDENT_VALIDATION_FAILED; UNKNOWN_OPTICAL_MODE',whole_pipeline_independent=False));ledger.append(dict(source='G01_'+photo['id'],scope=scope,method='HISTORICAL_LightGlue',focal_candidate=490,formal_pose_status='UNREGISTERED',candidate_c2w=pose,training_N=r['training'],same_geometry_held_error=r['held_error_px'],independent_checks=r['independent_checks'],accepted=False,formal_pose=r['formal_pose'],source_file=str(V13/'metrics/sparse_registration.json')))
+    p=R/'provenance/PHOTO_PAIRS_BEFORE_RENDER.json';assert not p.exists();save(str(p.relative_to(R)),stamp([V13/'metrics/sparse_registration.json',V13/'inputs/views.json',Path(__file__)],pairs=plan,all_original_video_errors_already_computed=True,photo_prediction_errors_computed=False,no_photo_candidate_selected_by_new_error=True));both('photo_pose_candidates',ledger);original=load(R/'metrics/a_to_b_pair_inventory.json');both('a_to_b_pair_inventory',original+plan);print('FROZEN_PHOTO_CANDIDATES',len(plan))
+if __name__=='__main__':main()

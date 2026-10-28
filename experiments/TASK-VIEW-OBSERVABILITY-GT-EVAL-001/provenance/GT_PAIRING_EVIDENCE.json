@@ -1,0 +1,109 @@
+{
+  "UTC": "2026-10-28T03:15:39.873148+00:00",
+  "files": [
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/code/export_gt_blender.py",
+      "bytes": 3345,
+      "sha256": "5ef79b8d2cef24a1326a8a5185a206239ce64052fa649527130b6a34722f5cc6"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/gt_mapping/GT_ASSET_AUDIT.json",
+      "bytes": 11900,
+      "sha256": "f049a3626b6f4d7516d67d3c77935cbb59bd62d4fc2e2fbe112b09e02b77d865"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/inputs/groups.json",
+      "bytes": 6645,
+      "sha256": "7c3c6d31d5e0f14d297a28bfd738ac98f4661016784952a695ae71f18837c729"
+    }
+  ],
+  "records": [
+    {
+      "id": "G01",
+      "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+      "morphology_label": "Ip",
+      "nominal_size_metadata": "12.0",
+      "nominal_size_NOT_GT_or_prediction_input": true,
+      "ring": "R10",
+      "R_mm": 5.6,
+      "r_mm": 0.6,
+      "reuse_existing": true,
+      "videos": [
+        "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Ip_12.0mm_closed_R10_single_refY_004.mp4",
+        "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Ip_12.0mm_closed_R10_single_refY_005.mp4"
+      ],
+      "selection_basis": "predeclared morphology and nominal-size coverage; allR10 supported by unchanged frozen solver; no reconstruction outcomes used",
+      "split": "DEV",
+      "CAD_family_partition": "Ip_conservative_family",
+      "trusted_GT_path": "/home/liu/polyp_research/01p型/01p-12-/息肉.blend",
+      "GT_identity_status": "SAME_NAMED_ORIGINAL_FILE_USER_TRUSTED",
+      "GT_is_prediction_input": false,
+      "selection_frozen_before_geometry_scores": true
+    },
+    {
+      "id": "G06",
+      "group": "GP_IIa_14.0mm_closed_R10_single_refY",
+      "morphology_label": "IIa",
+      "nominal_size_metadata": "14.0",
+      "nominal_size_NOT_GT_or_prediction_input": true,
+      "ring": "R10",
+      "R_mm": 5.6,
+      "r_mm": 0.6,
+      "reuse_existing": false,
+      "videos": [
+        "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_IIa_14.0mm_closed_R10_single_refY_004.mp4"
+      ],
+      "selection_basis": "predeclared morphology and nominal-size coverage; allR10 supported by unchanged frozen solver; no reconstruction outcomes used",
+      "split": "TEST",
+      "CAD_family_partition": "IIa_conservative_family",
+      "trusted_GT_path": "/home/liu/ultralytics-main/polyp_detection/息肉建模/02a-14-1.6/息肉.blend",
+      "GT_identity_status": "SAME_NAMED_ORIGINAL_FILE_USER_TRUSTED",
+      "GT_is_prediction_input": false,
+      "selection_frozen_before_geometry_scores": true
+    },
+    {
+      "id": "G07",
+      "group": "GP_Is_14.0mm_closed_R5_single_refY",
+      "morphology_label": "Is",
+      "ring": "R5",
+      "R_mm": 3.1,
+      "r_mm": 0.6,
+      "videos": [
+        "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_14.0mm_closed_R5_single_refY_004.mp4"
+      ],
+      "reuse_existing": false,
+      "split": "VALIDATION",
+      "CAD_family_partition": "Is_conservative_family",
+      "trusted_GT_path": "/home/liu/polyp_research/新建息肉建模(1)/01s-14/息肉.blend",
+      "GT_identity_status": "SAME_NAMED_ORIGINAL_FILE_USER_TRUSTED",
+      "GT_is_prediction_input": false,
+      "selection_frozen_before_geometry_scores": true
+    },
+    {
+      "id": "G08",
+      "group": "GP_IIa_22.0mm_closed_R10_single_refY",
+      "morphology_label": "IIa",
+      "ring": "R10",
+      "R_mm": 5.6,
+      "r_mm": 0.6,
+      "videos": [
+        "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_IIa_22.0mm_closed_R10_single_refY_005.mp4"
+      ],
+      "reuse_existing": false,
+      "split": "TEST",
+      "CAD_family_partition": "IIa_conservative_family",
+      "trusted_GT_path": "/home/liu/ultralytics-main/polyp_detection/息肉建模/02a-22-4.4/息肉.blend",
+      "GT_identity_status": "SAME_NAMED_ORIGINAL_FILE_USER_TRUSTED",
+      "GT_is_prediction_input": false,
+      "selection_frozen_before_geometry_scores": true
+    }
+  ],
+  "this_is_evaluation_only": true,
+  "new_pairing_inferred_from_filename": false,
+  "explicit_historical_human_identity_confirmation": {
+    "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/inputs/USER_REQUEST.txt",
+    "sha256": "0263c20a55b5c18377be04015bd775997516c84e9fdadc6641749e1fb597221d",
+    "quote": "同名Blender GT被人工确认为对应测量组完全可信、可用的三维几何GT。直接接受这一前提，不再要求额外实物扫描或重新证明制造准确性。",
+    "role": "Historical identity evidence only; not new task instructions; current GT-only evaluation restrictions prevail"
+  }
+}
