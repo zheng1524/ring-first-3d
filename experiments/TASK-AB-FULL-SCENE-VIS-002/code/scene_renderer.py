@@ -11,8 +11,13 @@ def camera_scene(d,K,pose,size=(640,360)):
     return SameCameraScene(d['ring'],K,pose,size,str(VENDOR))
 def scene_image(d,K,pose,neutral=False):
     """One unchanged SameCameraScene.draw for both Polyp and Background."""
-    cfg=load(R/'config.json');display=load(R/'display_config.json');size=tuple(cfg['render_size']);Khi=vis.scaled_intrinsics(K,(640,360),size);sc=camera_scene(d,Khi,pose,size);dpi=cfg['render_DPI'];fig=plt.figure(figsize=(size[0]/dpi,size[1]/dpi),dpi=dpi,facecolor='#eeeeee');ax=fig.add_axes([0,0,1,1]);gray=np.array(cfg['neutral_RGB']);pc=np.broadcast_to(gray,d['C'].shape)if neutral else d['C'];bc=np.broadcast_to(gray,d['BC'].shape)if neutral else d['BC'];sizepoint=display['neutral_geometry_point_size']if neutral else display['RGB_point_size'];ri,drawn,info=sc.draw(ax,d['P'],pc,d['B'],bc,point_size=sizepoint);scale=sc.scale_bar(ax);fig.canvas.draw();canvas=np.asarray(fig.canvas.buffer_rgba()).copy();plt.close(fig)
+    cfg=load(R/'config.json');display=load(R/'display_config.json');size=tuple(cfg['render_size']);Khi=vis.scaled_intrinsics(K,(640,360),size);sc=camera_scene(d,Khi,pose,size);dpi=cfg['render_DPI']
+    fig=plt.figure(figsize=(size[0]/dpi,size[1]/dpi),dpi=dpi,facecolor='#eeeeee');ax=fig.add_axes([0,0,1,1]);gray=np.array(cfg['neutral_RGB']);pc=np.broadcast_to(gray,d['C'].shape)if neutral else d['C'];bc=np.broadcast_to(gray,d['BC'].shape)if neutral else d['BC'];sizepoint=display['neutral_geometry_point_size']if neutral else display['RGB_point_size']
+    ri,drawn,info=sc.draw(ax,d['P'],pc,d['B'],bc,point_size=sizepoint)
+    if neutral:ax.collections[-1].set_antialiased(False)
+    scale=sc.scale_bar(ax);fig.canvas.draw();canvas=np.asarray(fig.canvas.buffer_rgba()).copy();plt.close(fig)
     info.update(neutral=neutral,source_RGB_used_for_point_colors=not neutral,source_CAD_original_A_coordinates=True,scale=scale,K_display=Khi,c2w_display=pose,display_size=size)
+    if neutral:info['point_antialiased']=False
     return canvas[:,:,:3],info
 def point_projection(d,K,pose):
     """Exact centers of A XYZ; native pixels. No target image/Mask/depth inputs."""
