@@ -11,6 +11,9 @@ def main():
     out=R/'runtime'/('replay_'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ'));out.mkdir(parents=True,exist_ok=False)
     for name in ['code','config']:shutil.copytree(R/name,out/name)
     shutil.copy2(R/'TASK.md',out/'TASK.md');(out/'runtime').mkdir();(out/'local_results').mkdir()
+    shutil.copy2(R/'REPRODUCE.md',out/'REPRODUCE.md');(out/'provenance').mkdir()
+    if(R/'provenance/EXECUTION_NOTES.json').exists():shutil.copy2(R/'provenance/EXECUTION_NOTES.json',out/'provenance/EXECUTION_NOTES.json')
+    (out/'provenance/DELIVERY_COMMITS.json').write_text(json.dumps(dict(status='LOCAL_REPLAY_NOT_UPLOADED',original_delivery=str(R)),indent=2)+'\n')
     # Child common computes REPO from its new location; renderer imports must
     # remain bound to this checkout, never copied legacy code.
     # Use direct exact line replacement, without shell interpolation.
