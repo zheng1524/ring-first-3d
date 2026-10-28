@@ -1,6 +1,6 @@
 # TASK-AB-FULL-SCENE-VIS-002
 
-用户任务标题别名：TASK-VIEW-OBSERVABILITY-AB-SCENE-VIS-002。2026-10-28人工直接授权，状态RUNNING。
+用户任务标题别名：TASK-VIEW-OBSERVABILITY-AB-SCENE-VIS-002。2026-10-28人工直接授权，状态REPORTED / VISUALIZATION_RESTORED；11配对、4物理组已交付，等待人工审查。未认证新的几何精度、融合或跨源注册。
 
 仅复用冻结资产和已认可的真实点云渲染器，恢复Polyp+黑色不透明实体CAD Ring+源背景XYZ的A→B五面板。Panel2点云统一中性灰，不用源RGB；Panel4只有A来源RGB。四独立组，G07压力测试；大角度按冻结位姿/可读资产和既有质量选取，原Polyp-only指标口径不变，新背景/点云场景指标单列。
 
