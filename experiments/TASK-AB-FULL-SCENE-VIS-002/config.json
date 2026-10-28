@@ -1,0 +1,31 @@
+{
+  "render_size": [
+    1280,
+    720
+  ],
+  "render_DPI": 160,
+  "point_size": 0.8,
+  "point_alpha": 1.0,
+  "neutral_RGB": [
+    0.58,
+    0.58,
+    0.58
+  ],
+  "side_point_size": 0.08,
+  "CAD_alpha": 1.0,
+  "CAD_occlusion_tolerance_mm": 0.002,
+  "Polyp_crop": null,
+  "point_subsample": false,
+  "background_rule": "REUSE_FROZEN_CACHE_DISPLAY_MASK_WITHOUT_MODIFICATION",
+  "background_evaluation_ROI": {
+    "center": "B Polyp mask lowest-image20pct source-pixel rows; median uv, evaluation-only",
+    "radius": "2*max(B Polyp horizontal_half_width,B Ring horizontal_half_width)",
+    "ellipse_y_over_x": 0.75,
+    "eligible": "B label0 AND ellipse; no target depth; same source-style image ROI only",
+    "B_Mask_used_for_prediction": false
+  },
+  "legacy_polyp_metrics": "UNCHANGED_ORIGINAL_TRIANGLE_KERNEL_AND_ALL_B_POLYP_MASK_DENOMINATOR; separate .05mm target-local-CAD tolerance",
+  "full_scene_point_metrics": "Nearest pixel source-point zbuffer + source CAD, native640x360, separate Polyp/Background supports; no glyph-area inflation",
+  "GT_used": false,
+  "upstream_runs": 0
+}
