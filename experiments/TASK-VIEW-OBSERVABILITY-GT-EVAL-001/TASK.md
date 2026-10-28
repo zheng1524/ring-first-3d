@@ -1,0 +1,7 @@
+# TASK-VIEW-OBSERVABILITY-GT-EVAL-001
+
+状态：USER_AUTHORIZED / RUNNING；用户于2026-10-28直接下达本任务。只读复用既有冻结预测，独立GT标量评价、四组来源/相机可观测性审计、标准A→B五面板和失败分类，准备顶层设计者文献研究交接材料。
+
+不开发融合器、不重跑HERO/相机/P0/清理/高度、不修改正式Dxy，不用GT参与任何预测、选帧或配准。跨视频/照片只允许明确标记既有候选；未知共同坐标系不合并。所有历史失败保留。
+
+独立分支：exp/TASK-VIEW-OBSERVABILITY-GT-EVAL-001。GT/完整几何/原视频LOCAL_ONLY；公开代码、指标、唯一TECHNICAL_REPORT、四张核心真实诊断图及索引。完成后停止等待人工验收。
