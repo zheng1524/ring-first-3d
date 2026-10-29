@@ -94,3 +94,27 @@ F一致只是候选，不是正确匹配标签；密集近邻输出存在相关�
 
 
 同图像历史LightGlue/RoMa缓存另作只读对照：8/18方法-配对缓存可用，其余明确缺失。G01跨视频的Polyp F一致候选为LightGlue0、RoMa194、MASt3R全图118、ROI828；因此全图MASt3R并未普遍优于RoMa，ROI增加也仍非真实性标签。新帧对没有相同旧缓存，使用实际新SIFT作为成熟方法对照，不回填旧结果。见[历史匹配表](metrics/historical_matching_baselines.csv)。
+
+## Batch C — 新HERO参考与真实XYZ
+
+四组实际运行5次冻结HERO新参考推理，全部生成原生深度与Raw XYZ。首次背景包装缺少lru_cache、Image依赖，深度与原点已保存；修复后仅恢复后处理，**没有再次推理**，原生深度SHA逐份未变，错误记录保留。
+
+|新参考|Raw点|Cleaned点|相机身份|
+|---|---|---|---|
+|G01_004_new_r00|23388|22113|FROZEN_CAMERA_CANDIDATE_DIAGNOSTIC|
+|G01_005_new_r04|15142|14487|FROZEN_CAMERA_CANDIDATE_DIAGNOSTIC|
+|G06_004_new_r00|8302|8245|DERIVED_RING_PNP_CONDITIONAL|
+|G07_004_new_r06|17590|17169|FROZEN_CAMERA_CANDIDATE_DIAGNOSTIC|
+|G08_005_new_r00|15997|13259|FROZEN_CAMERA_CANDIDATE_DIAGNOSTIC|
+
+新增总参考5：G01两视频各1，G06/G07/G08各1；旧参考仍9，合计14，不能把同组两视频计独立病例。G06使用条件通过的派生新相机，其他使用冻结候选；G07只作不合格压力测试。三照片经过实际MASt3R/候选PnP检查，但K/部署位姿未认证，不伪造公制深度。
+
+HERO调用逐字AST复用load_official；backprojection/mesh逐字复用原unproject/depth_mesh。遵循原gallery流程：原生352×640深度仅作既有双线性尺寸适配到640×360，再在对应原像素执行既有反投影；本轮没有第二套深度/相机/mesher。原生深度完整保留；其后不插值或平滑点云。源RGB、Mask、K、c2w、三源视角、原点UV/ID、清理标记、单位和SHA都在清单中。G01 video004仅有历史缓存索引身份，原视频精确顺序帧号未独立认证，保留Unknown而不猜。
+
+![G01](figures/P7_new_reference_reconstruction/G01.png)
+
+![G06](figures/P7_new_reference_reconstruction/G06.png)
+
+![G07_G08](figures/P7_new_reference_reconstruction/G07_G08.png)
+
+新方向差依赖相机候选，不能把五次推理当五次几何正确。新XYZ投到冻结留出帧的Raw/Cleaned独立及共同分母见[验证](metrics/new_reference_validation.csv)，缺留出相机的保留NOT_EVALUABLE。后续实际进入F1多块与F2负责制聚合。

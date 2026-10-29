@@ -26,6 +26,9 @@
 - [figures/P6_global_pose/G01.png](figures/P6_global_pose/G01.png)
 - [figures/P6_global_pose/G06.png](figures/P6_global_pose/G06.png)
 - [figures/P6_global_pose/G07_G08.png](figures/P6_global_pose/G07_G08.png)
+- [figures/P7_new_reference_reconstruction/G01.png](figures/P7_new_reference_reconstruction/G01.png)
+- [figures/P7_new_reference_reconstruction/G06.png](figures/P7_new_reference_reconstruction/G06.png)
+- [figures/P7_new_reference_reconstruction/G07_G08.png](figures/P7_new_reference_reconstruction/G07_G08.png)
 
 - [code_reuse_audit](metrics/code_reuse_audit.csv)
 
@@ -42,3 +45,5 @@
 - [registration_candidates](metrics/registration_candidates.csv)
 
 - [registration_validation](metrics/registration_validation.csv)
+
+- [new_reference_sources](metrics/new_reference_sources.csv)

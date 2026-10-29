@@ -106,5 +106,30 @@ V8=OLD/'ring_first_v8_registration_narrow_baseline'
 V9=OLD/'ring_first_v9_ring_guided_recovery'
 F1=OLD/'surface_fusion_v1'
 
+# Extend the input contract for newly generated HERO references. Historical
+# source reading remains the exact previous implementation above.
+historical_cases=cases
+historical_source=source
+historical_background=background
+def cases():
+    path=R/'provenance/NEW_CASES.json'
+    return historical_cases()+(load(path)if path.exists()else[])
+@lru_cache(None)
+def source(cid):
+    c=case(cid)
+    if not c.get('new_reference'):return historical_source(cid)
+    z=dict(np.load(c['source_points']));p=dict(np.load(c['pack']));P=z['XYZ_mm'];uv=z['source_uv'];frame=np.asarray(Image.open(c['RGB']).convert('RGB'));m=trimesh.load(c['mesh'],process=False);assert np.allclose(P,m.vertices,atol=1e-5,rtol=0)
+    a=dict(XYZ_mm=P,source_u=uv[:,0],source_v=uv[:,1])
+    return dict(c=c,a=a,p=p,P=P,C=frame[uv[:,1],uv[:,0]]/255.,uv=uv,m=m,F=np.asarray(m.faces),areas=m.area_faces,frame=frame,ring=trimesh.load(ring_path(c),process=False))
+def background(cid):
+    c=case(cid)
+    if not c.get('new_reference'):return historical_background(cid)
+    path=R/f'local_results/background/{cid}.npz'
+    if not path.exists():
+        namespace=dict(np=np,cv2=cv2,R=R,source=source,lru_cache=lru_cache,Image=Image,cfg=lambda:load(INC/'config.json'))
+        unp=next(n for n in ast.parse((OLD/'ring_first_v1/scripts/common.py').read_text()).body if isinstance(n,ast.FunctionDef)and n.name=='unproject');exec(compile(ast.Module(body=[unp],type_ignores=[]),'legacy_unproject','exec'),namespace);original=namespace['unproject'];namespace['unproject']=lambda uv,z,K,pose:original(z,pose,uv,K)
+        node=next(n for n in ast.parse((INC/'code/assets.py').read_text()).body if isinstance(n,ast.FunctionDef)and n.name=='background');exec(compile(ast.Module(body=[node],type_ignores=[]),str(INC/'code/assets.py'),'exec'),namespace);namespace['background'](cid)
+    z=dict(np.load(path));i=np.flatnonzero(z['display']);return dict(P=z['XYZ_mm'][i],C=z['RGB'][i],uv=z['source_uv'][i],ids=i)
+
 def verify():
     for f in load(R/'provenance/INPUTS_FROZEN.json')['files']:assert sha(f['path'])==f['sha256'],f['path']
