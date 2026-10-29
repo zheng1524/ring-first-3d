@@ -32,3 +32,65 @@ G01 T2为004=49.21594809052892、005=58.17189372286792点/mm²。其他组三组
 ![P3_view_partition/G01.png](figures/P3_view_partition/G01.png)
 
 每个P0/P1/P2/P3阶段另有3张真实复合图，覆盖四组，见图库。下一批固定使用这些分区和帧身份进行MASt3R全图/ROI及历史对照，不按最终RGB误差选配对。
+
+## Batch B — MASt3R与邻接图
+
+正式完成9配对×SIFT/MASt3R全图/MASt3R ROI=27臂，其中18次MASt3R新前向，全部返回匹配。官方本地权重与源码只读，未用神经点图生成几何。
+
+|配对|方法|原匹配|Polyp F一致候选|近BG F一致候选|
+|---|---|---|---|---|
+|G01_004_adjacent_new|SIFT|89|1|12|
+|G01_005_adjacent_new|SIFT|123|2|5|
+|G06_004_adjacent_new|SIFT|23|0|3|
+|G07_004_adjacent_new|SIFT|21|0|5|
+|G08_005_adjacent_new|SIFT|25|0|2|
+|G01_crossvideo|SIFT|22|0|0|
+|G01_photo001|SIFT|151|5|9|
+|G01_photo002|SIFT|39|1|4|
+|G01_photo003|SIFT|5|0|0|
+|G01_004_adjacent_new|MASt3R_FULL|2216|257|383|
+|G01_004_adjacent_new|MASt3R_ROI|3018|1327|1063|
+|G01_005_adjacent_new|MASt3R_FULL|2071|21|303|
+|G01_005_adjacent_new|MASt3R_ROI|2892|978|1082|
+|G06_004_adjacent_new|MASt3R_FULL|2226|92|320|
+|G06_004_adjacent_new|MASt3R_ROI|2689|750|1347|
+|G07_004_adjacent_new|MASt3R_FULL|1809|189|421|
+|G07_004_adjacent_new|MASt3R_ROI|2915|1036|1384|
+|G08_005_adjacent_new|MASt3R_FULL|2234|192|424|
+|G08_005_adjacent_new|MASt3R_ROI|2348|866|1185|
+|G01_crossvideo|MASt3R_FULL|1428|118|351|
+|G01_crossvideo|MASt3R_ROI|2349|828|768|
+|G01_photo001|MASt3R_FULL|2021|141|351|
+|G01_photo001|MASt3R_ROI|2983|1091|1184|
+|G01_photo002|MASt3R_FULL|1429|119|315|
+|G01_photo002|MASt3R_ROI|2763|1020|894|
+|G01_photo003|MASt3R_FULL|1307|66|263|
+|G01_photo003|MASt3R_ROI|861|396|97|
+
+F一致只是候选，不是正确匹配标签；密集近邻输出存在相关采样。所有原始点对、描述子置信度、Ring/反光、类别、F内/离群和空间格均保存。PnP只用Cleaned实际Polyp XYZ和历史质量背景原点，源像素最近≤2px；不使用MASt3R点图。每区域4×3格均衡，远BG限额，2个固定种子，Ring中心/法向先验与Ring Mask的有限60次局部优化。目标B RGB仅在预测生成后比较。
+
+|配对|选定候选|状态|独立真实帧状态|
+|---|---|---|---|
+|G01_004_adjacent_new|MASt3R_ROI_seed0|REGISTRATION_CANDIDATE|SUPPORTED_CONDITIONALLY|
+|G01_005_adjacent_new|MASt3R_FULL_seed0|REGISTRATION_CANDIDATE|SUPPORTED_CONDITIONALLY|
+|G06_004_adjacent_new|MASt3R_FULL_seed0|VERIFIED_ADJACENT_CONSTRAINT|SUPPORTED_CONDITIONALLY|
+|G07_004_adjacent_new|MASt3R_FULL_seed0|REGISTRATION_CANDIDATE|SUPPORTED_CONDITIONALLY|
+|G08_005_adjacent_new|MASt3R_FULL_seed0|REGISTRATION_CANDIDATE|NOT_EVALUABLE_NO_FROZEN_HELD_CAMERA|
+|G01_crossvideo|MASt3R_FULL_seed0|VERIFIED_ADJACENT_CONSTRAINT|SUPPORTED_CONDITIONALLY|
+|G01_photo001|MASt3R_ROI_seed0|REGISTRATION_CANDIDATE|NOT_EVALUABLE_NO_FROZEN_HELD_CAMERA|
+|G01_photo002|SIFT_seed0|REGISTRATION_CANDIDATE|NOT_EVALUABLE_NO_FROZEN_HELD_CAMERA|
+|G01_photo003|MASt3R_FULL_seed0|REGISTRATION_CANDIDATE|NOT_EVALUABLE_NO_FROZEN_HELD_CAMERA|
+
+图为21节点、19个分量、2条条件通过边；初次全图Open3D因不连通拒绝，已保留日志并改为逐真实连通分量优化。没有添加边解决连通性。G01跨视频仅得到一条**条件约束**，尚未通过完整几何/双向融合验收；三照片K仍未认证，不能记为三维新增。G07不入正常成功率。后续将实际运行5份新HERO参考，只有相机条件检查通过者采用派生位姿，其余保留冻结候选并标记诊断身份。
+
+![P4_mast3r_matching/G01.png](figures/P4_mast3r_matching/G01.png)
+
+![P4_mast3r_matching/G07_G08.png](figures/P4_mast3r_matching/G07_G08.png)
+
+![P5_adjacent_registration/G06.png](figures/P5_adjacent_registration/G06.png)
+
+![P6_global_pose/G01.png](figures/P6_global_pose/G01.png)
+
+
+
+同图像历史LightGlue/RoMa缓存另作只读对照：8/18方法-配对缓存可用，其余明确缺失。G01跨视频的Polyp F一致候选为LightGlue0、RoMa194、MASt3R全图118、ROI828；因此全图MASt3R并未普遍优于RoMa，ROI增加也仍非真实性标签。新帧对没有相同旧缓存，使用实际新SIFT作为成熟方法对照，不回填旧结果。见[历史匹配表](metrics/historical_matching_baselines.csv)。

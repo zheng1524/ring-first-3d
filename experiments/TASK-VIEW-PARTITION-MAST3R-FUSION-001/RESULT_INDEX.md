@@ -17,6 +17,15 @@
 - [figures/P3_view_partition/G01.png](figures/P3_view_partition/G01.png)
 - [figures/P3_view_partition/G06.png](figures/P3_view_partition/G06.png)
 - [figures/P3_view_partition/G07_G08.png](figures/P3_view_partition/G07_G08.png)
+- [figures/P4_mast3r_matching/G01.png](figures/P4_mast3r_matching/G01.png)
+- [figures/P4_mast3r_matching/G06.png](figures/P4_mast3r_matching/G06.png)
+- [figures/P4_mast3r_matching/G07_G08.png](figures/P4_mast3r_matching/G07_G08.png)
+- [figures/P5_adjacent_registration/G01.png](figures/P5_adjacent_registration/G01.png)
+- [figures/P5_adjacent_registration/G06.png](figures/P5_adjacent_registration/G06.png)
+- [figures/P5_adjacent_registration/G07_G08.png](figures/P5_adjacent_registration/G07_G08.png)
+- [figures/P6_global_pose/G01.png](figures/P6_global_pose/G01.png)
+- [figures/P6_global_pose/G06.png](figures/P6_global_pose/G06.png)
+- [figures/P6_global_pose/G07_G08.png](figures/P6_global_pose/G07_G08.png)
 
 - [code_reuse_audit](metrics/code_reuse_audit.csv)
 
@@ -27,3 +36,9 @@
 - [view_partition](metrics/view_partition.csv)
 
 - [adjacency_graph](metrics/adjacency_graph.csv)
+
+- [matching_comparison](metrics/matching_comparison.csv)
+
+- [registration_candidates](metrics/registration_candidates.csv)
+
+- [registration_validation](metrics/registration_validation.csv)
