@@ -61,7 +61,11 @@ def stats(x):
     a=np.asarray(x,float);a=a[np.isfinite(a)]
     return dict(N=len(a),median=np.median(a) if len(a) else None,MAE=np.mean(abs(a)) if len(a) else None,p05=np.quantile(a,.05) if len(a) else None,p95=np.quantile(a,.95) if len(a) else None,maximum=a.max() if len(a) else None)
 def stamp(files,**kw):return dict(UTC=datetime.datetime.now(datetime.timezone.utc).isoformat(),files=[dict(path=str(p),bytes=Path(p).stat().st_size,sha256=sha(p)) for p in sorted(set(map(Path,files)))],**kw)
-def cfg():return load(R/'config/rules.json')
+def cfg():
+    base=load(R/'config/rules.json');extra=R/'config/aggregation_rules.json'
+    if extra.exists():
+        added=load(extra);assert not(set(base)&set(added)), 'stage additions cannot override frozen rules';base.update(added)
+    return base
 def cases():return load(INC/'provenance/CASES.json')
 def case(cid):return next(c for c in cases() if c['id']==cid)
 def sceneid(c):return c['group']+'_'+c['video']

@@ -7,7 +7,7 @@ def update(stage,body):
     marker='\n## '+stage+'\n';start=text.find(marker)
     if start>=0:
         end=text.find('\n## ',start+len(marker));text=text[:start]+(text[end:]if end>=0 else'')
-    p.write_text(text+marker+'\n'+body+'\n')
+    p.write_text((text+marker+'\n'+body).rstrip()+'\n')
 def index():
     figs=sorted((R/'figures').rglob('*.png'));md='# 结果索引\n\n[技术报告](TECHNICAL_REPORT.md) · [HTML图库](visualizations/index.html) · [代码复用](CODE_REUSE_AUDIT.md)\n\n本地根目录：`'+str(R)+'`\n\n'
     h='<!doctype html><html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>View Partition / MASt3R</title><style>body{font:16px system-ui;max-width:1500px;margin:auto;padding:24px;background:#eee}article{background:white;padding:12px;margin:20px 0}img{width:100%;height:auto}button{margin:6px;padding:8px}nav{position:sticky;top:0;background:white}</style><h1>四组视角分区与选择性聚合</h1><p>真实XYZ；黑色CAD；照片/未验证跨视频关系仅候选；背景DISPLAY_ONLY，无GT。<a href="../TECHNICAL_REPORT.md">报告</a> · <a href="../RESULT_INDEX.md">全部结果</a></p><nav>'
@@ -15,9 +15,18 @@ def index():
     h+='</nav>'
     for p in figs:
         rel=str(p.relative_to(R));md+='- ['+rel+']('+rel+')\n';href='../'+quote(rel);h+='<article data-name="'+rel+'"><h2>'+escape(rel)+'</h2><a href="'+href+'"><img loading="lazy" src="'+href+'"></a></article>'
-    for name in ['code_reuse_audit','cleaned_input_audit','view_distribution','view_partition','adjacency_graph','matching_comparison','registration_candidates','registration_validation','new_reference_sources','surface_ownership','novel_surface_contribution','multigroup_summary','failure_ledger']:
-        p=R/'metrics'/(name+'.csv')
-        if p.exists():md+='\n- ['+name+'](metrics/'+name+'.csv)\n'
+    md+='\n## 指标与状态（完整索引）\n\n'
+    h+='<section><h2>指标与最终身份</h2><p>工程完成；跨视频 NOT FUSED；真实新增表面/物理精度未认证。G07压力测试、G08有限相机。灰色/深度图皆实际XYZ。</p><ul>'
+    for p in sorted((R/'metrics').glob('*.csv')):
+        rel=str(p.relative_to(R));md+='- ['+p.stem+']('+rel+')\n';h+='<li><a href="../'+quote(rel)+'">'+escape(p.stem)+'</a></li>'
+    h+='</ul></section>'
+    md+='\n## 本地完整几何（未公开上传）\n\n';h+='<section><h2>本地可旋转GLB（未上传GitHub）</h2><p>真实点原语，GLB米、精确NPZ毫米；来源ID在metadata中。相应NPZ/PLY同目录。点击下载后可用本地3D查看器旋转。</p><ul>'
+    model_index=R/'metrics/GLB_INDEX.json'
+    if model_index.exists():
+        for item in load(model_index):
+            p=Path(item['path']);rel=str(p.relative_to(R));md+='- `'+str(p)+'` — '+item['method']+'\n';h+='<li><a href="../'+quote(rel)+'">'+escape(p.name)+'</a> ('+str(round(item['bytes']/1e6,2))+' MB)</li>'
+    h+='</ul></section><p><a href="../REPRODUCE.md">复现说明</a> · <a href="../provenance/OUTPUT_INDEX.json">全部本地资产路径与SHA</a>。figures/local仅本地；GitHub仅精选P0–P9核心PNG。</p>'
+    md+='\n## 复现与来源\n\n- [复现说明](REPRODUCE.md)\n- [完整本地资产路径与SHA](provenance/OUTPUT_INDEX.json)\n- [最终源码与来源SHA](provenance/FINAL_CODE_AND_SOURCE_MANIFEST.json)\n- [逐层参数](provenance/LAYER_DISPLAY_PARAMETERS.json)\n- [最终审计](provenance/FINAL_REVIEW.json)\n\nfigures/local和完整几何仅本地可用；公开核心PNG均在P0–P9目录。\n'
     h+='<script>function filter(k){document.querySelectorAll("article").forEach(a=>a.hidden=k!=="ALL"&&!a.dataset.name.includes(k))}</script></html>'; (R/'visualizations/index.html').write_text(h);(R/'RESULT_INDEX.md').write_text(md)
 def batch_a_report():
     a=load(R/'metrics/cleaned_input_audit.json');v=load(R/'metrics/view_distribution.json');p=load(R/'metrics/view_partition.json');n=load(R/'metrics/new_reference_plan.json');body='P0–P3已实算：4独立物理组、5视频、9归档P0；62个冻结视频相机候选与3张位姿未知照片；21个方向块。G07为UNQUALIFIED_CAMERA_STRESS。下表方向仅在各视频独立Ring局部坐标内成立，不等同位姿真值；候选坏位姿可能产生虚假的方向跨度。\n\n|组|Raw点|Cleaned点|方向块|新HERO计划|\n|---|---|---|---|---|\n'
