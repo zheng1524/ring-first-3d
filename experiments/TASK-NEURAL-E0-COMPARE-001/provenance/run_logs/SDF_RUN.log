@@ -1,0 +1,22 @@
+/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+4 [27, 128, 128, 128, 128, 65]
+rendering network architecture:
+[97, 128, 128, 3]
+SDF {'step': 1, 'loss': 3.411252021789551, 'rgb': 0.20214912295341492, 'depth': 2.8185625076293945, 'silhouette': 3.8371963500976562, 'eikonal': 0.06820772588253021, 'seconds': 0.5485783529993569}
+SDF {'step': 26, 'loss': 3.9237608909606934, 'rgb': 0.13525524735450745, 'depth': 3.404115915298462, 'silhouette': 3.8371963500976562, 'eikonal': 0.006700698286294937, 'seconds': 1.1984830829997009}
+SDF {'step': 51, 'loss': 3.396594285964966, 'rgb': 0.1299639642238617, 'depth': 2.8827810287475586, 'silhouette': 3.8371963500976562, 'eikonal': 0.0012971253599971533, 'seconds': 1.8833177819997218}
+SDF {'step': 76, 'loss': 4.025447368621826, 'rgb': 0.11867313832044601, 'depth': 3.5229427814483643, 'silhouette': 3.8371963500976562, 'eikonal': 0.0011190108489245176, 'seconds': 2.5314527239997915}
+SDF {'step': 101, 'loss': 3.2693698406219482, 'rgb': 0.1343696564435959, 'depth': 2.751082420349121, 'silhouette': 3.8371963500976562, 'eikonal': 0.001981346635147929, 'seconds': 3.1703430959996695}
+SDF {'step': 126, 'loss': 3.846672296524048, 'rgb': 0.13462190330028534, 'depth': 3.3282132148742676, 'silhouette': 3.8371963500976562, 'eikonal': 0.0011762013891711831, 'seconds': 3.7839595440000267}
+SDF {'step': 151, 'loss': 3.245511293411255, 'rgb': 0.12097303569316864, 'depth': 2.7406253814697266, 'silhouette': 3.8371963500976562, 'eikonal': 0.001933955354616046, 'seconds': 4.456785000999844}
+SDF {'step': 176, 'loss': 3.711656093597412, 'rgb': 0.13028553128242493, 'depth': 3.197474956512451, 'silhouette': 3.8371963500976562, 'eikonal': 0.0017586046596989036, 'seconds': 5.100663808999343}
+SDF {'step': 201, 'loss': 3.11908221244812, 'rgb': 0.12901590764522552, 'depth': 2.6061933040618896, 'silhouette': 3.8371963500976562, 'eikonal': 0.0015336237847805023, 'seconds': 5.774170975999368}
+SDF {'step': 226, 'loss': 3.789402723312378, 'rgb': 0.13451120257377625, 'depth': 3.270930290222168, 'silhouette': 3.8371963500976562, 'eikonal': 0.002416083123534918, 'seconds': 6.415860877999876}
+SDF {'step': 251, 'loss': 3.0766334533691406, 'rgb': 0.12008467316627502, 'depth': 2.572719097137451, 'silhouette': 3.8371963500976562, 'eikonal': 0.0011017231736332178, 'seconds': 6.974127430999943}
+SDF {'step': 276, 'loss': 3.8282461166381836, 'rgb': 0.11168923228979111, 'depth': 3.3326590061187744, 'silhouette': 3.8371963500976562, 'eikonal': 0.0017823041416704655, 'seconds': 7.584812219999549}
+SDF {'step': 301, 'loss': 2.9371376037597656, 'rgb': 0.11515732854604721, 'depth': 2.438110589981079, 'silhouette': 3.8371963500976562, 'eikonal': 0.001500841579400003, 'seconds': 8.15710541899989}
+SDF {'step': 326, 'loss': 3.6842305660247803, 'rgb': 0.11117183417081833, 'depth': 3.1891684532165527, 'silhouette': 3.8371963500976562, 'eikonal': 0.001707353862002492, 'seconds': 8.82195722599954}
+SDF {'step': 351, 'loss': 2.8032872676849365, 'rgb': 0.10562154650688171, 'depth': 2.313812017440796, 'silhouette': 3.8371963500976562, 'eikonal': 0.001339262817054987, 'seconds': 9.413313022999318}
+SDF {'step': 376, 'loss': 3.66146183013916, 'rgb': 0.09518472850322723, 'depth': 3.182331085205078, 'silhouette': 3.8371963500976562, 'eikonal': 0.002265463350340724, 'seconds': 10.063853429000119}
+SDF_RESULT {'arm': 'S', 'scene': 'G01_005', 'official_repo_commit': '12513009cd20a08b35ddc2c55a7e42da2c7baf43', 'status': 'SMOKE_PASS_UNCERTIFIED_GEOMETRY', 'optimizer_steps': 400, 'GT_used': False, 'CPU_fallback': False, 'optimization_seconds': 10.683681646999503, 'peak_GPU_allocated_bytes': 148293120, 'peak_GPU_reserved_bytes': 186646528, 'parameters': 88275, 'stop_reason': 'STEP_LIMIT', 'zero_level_vertices': 29448, 'zero_level_faces': 57176, 'supported_faces': 0, 'supported_vertex_N': 0, 'zero_level_area_mm2': 3142.0375542299707, 'observed_support_area_mm2': 0.0, 'prior_or_unknown_area_mm2': 3142.0375542299707, 'output': '/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/local_results/sdf_scene/surface.npz', 'output_SHA256': '499e768cddee3a631f463972fec43739136eab84367df038f29087a0d92cc7c1', 'support_is_conditional_on_HERO_and_camera': True, 'total_seconds': 13.772074741999859}

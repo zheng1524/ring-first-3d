@@ -1,0 +1,49 @@
+Loading pretrained dinov2_vitg14 from torch hub
+Loading weights from local directory
+Calculated average aspect ratio: 1.778 from 2 images
+Using target resolution 280x154 (W x H) for all views
+Processed view 0 with keys: ['img', 'data_norm_type']
+Processed view 1 with keys: ['img', 'data_norm_type']
+Successfully processed 2 views
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/code/map_run.py", line 72, in main
+    with torch.inference_mode():pred=model.infer(views,memory_efficient_inference=True,minibatch_size=1,use_amp=True,amp_dtype='bf16',apply_mask=True,mask_edges=True,apply_confidence_mask=False,use_multiview_confidence=False)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py", line 2165, in infer
+    preds = self.forward(
+            ^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py", line 1578, in forward
+    self._encode_and_fuse_optional_geometric_inputs(
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py", line 1261, in _encode_and_fuse_optional_geometric_inputs
+    all_encoder_features_across_views = self._encode_and_fuse_ray_dirs(
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py", line 856, in _encode_and_fuse_ray_dirs
+    ray_dirs_features_across_views = self.ray_dirs_encoder(
+                                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/python/uniception/models/encoders/dense_rep_encoder.py", line 266, in forward
+    features = self.conv_in(features)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 554, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 549, in _conv_forward
+    return F.conv2d(
+           ^^^^^^^^^
+RuntimeError: Input type (c10::BFloat16) and bias type (float) should be the same
+
+MAP_RESULT M0 FAILED None 0.19065016999957152
