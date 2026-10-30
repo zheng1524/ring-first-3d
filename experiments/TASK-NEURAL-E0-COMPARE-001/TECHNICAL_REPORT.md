@@ -17,7 +17,7 @@
 
 已读治理、三项实验的报告/结果索引/复现及复用审计、附件初始化/E0/RA请求/任务/验收资料；SHA在[阅读与版本清单](provenance/READING_AND_SOURCE_COMMITS.json)。附件按正式路径导入；根README未覆盖。较早P0-only限制已由直接用户授权覆盖；[授权说明](AUTHORIZATION_OVERRIDE.md)、[追加清理指令](USER_STEERING.md)保留全过程。第一阶段真实提交[c4a3c39](https://github.com/zheng1524/ring-first-3d/commit/c4a3c393c885f17281d04699301b93a587f5f202)曾因资源门禁停止；追加指令后第二阶段[ba4d99a](https://github.com/zheng1524/ring-first-3d/commit/ba4d99afca06cebd3d7d1f1fd0d6625941bb4454)保存真实运行和四核心图。两阶段均核验远端；最终报告提交见本分支最新commit。
 
-新模型只运行**G01 video005、两个输入视角**：`raw00057`、`raw00459`。固定目标`00860`、`00611`在全部模型输出冻结后才读取RGB/Mask。video004只复算历史基线，未运行新模型；G06/G08/G07仅做本地资格审计。没有新增HERO、MASt3R匹配、相机优化、跨视频配准/联合训练、参数网格或第二次SDF优化。
+新模型只运行**G01 video005、两个输入视角**：`raw00057`、`raw00459`。P0曾为SHA/尺寸核验读取固定目标`00860`、`00611`的文件并解码RGB；全部模型输出冻结后才计算两帧RGB/Mask评价，二者未进入几何拟合。video004只复算历史基线，未运行新模型；G06/G08/G07仅做本地资格审计。没有新增HERO、MASt3R匹配、相机优化、跨视频配准/联合训练、参数网格或第二次SDF优化。
 
 ## 固定科研审计表
 
@@ -92,7 +92,7 @@ K遵循像素中心，resize同步焦距/主点；相机为OpenCV c2w（右X/下
 
 ## G01有界真实对照：相同目标与像素分母
 
-所有模型输出在15:47:11（Asia/Shanghai）冻结，[不可变模型清单](provenance/ALL_MODEL_OUTPUTS_FROZEN_BEFORE_EVALUATION.json)早于首次读取B。最终重绘缓存清单晚于首轮评价，已如实标注；重绘未更改模型。图默认展示M3，因为预设最高合法输入条件，不是按评价择优。
+所有模型输出在15:47:11（Asia/Shanghai）冻结，[不可变模型清单](provenance/ALL_MODEL_OUTPUTS_FROZEN_BEFORE_EVALUATION.json)早于首次读取B用于本轮新方法评价；P0源身份核验的文件读取已披露。最终重绘缓存清单晚于首轮评价，已如实标注；重绘未更改模型。图默认展示M3，因为预设最高合法输入条件，不是按评价择优。
 
 统一采用640×360原三角面射线，源RGB重心插值、固定CAD遮挡0.05mm。历史F1/F2为14参考注册表中同视频子集；F3/AllAvailable为36参考子集，**对照包含历史聚合/融合**；另存相同2输入Raw/Cleaned，不能把多数据强基线当同输入方法收益。Mask接触Ring的边界仅是观察标签，不认证隐藏真实息肉轮廓。
 

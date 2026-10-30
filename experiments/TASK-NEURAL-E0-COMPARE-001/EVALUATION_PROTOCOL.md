@@ -15,7 +15,7 @@
 
 ## 本次实际执行补充（2026-10-30）
 
-本次直接用户授权覆盖较早P0-only描述，见 `AUTHORIZATION_OVERRIDE.md`、`USER_STEERING.md`。G01_005固定训练/推理参考为raw00057、raw00459；目标00860与00611只在所有模型输出冻结后读取RGB/Mask。两目标均为HOLDOUT_RECON_ONLY，非全流程盲测。未改相机、选帧或权重来追随目标误差。
+本次直接用户授权覆盖较早P0-only描述，见 `AUTHORIZATION_OVERRIDE.md`、`USER_STEERING.md`。G01_005固定训练/推理参考为raw00057、raw00459；P0源身份审计读取过目标00860/00611文件（SHA/尺寸、RGB解码），不作误差评价或拟合；其RGB/Mask评价只在所有模型输出冻结后开始。两目标均为HOLDOUT_RECON_ONLY，非全流程盲测。未改相机、选帧或权重来追随目标误差。
 
 实际主表采用视角评价任务原封AST `reprojection.py:render/evaluate` 的**原三角面射线**协议；所有方法640×360同目标，源RGB重心插值，固定CAD遮挡容差0.05mm。与历史点中心覆盖明确分开，不把旧报告数值并入本表。CAD实体穿插用0.02mm容差。B Mask完整像素为覆盖分母；共同RGB仅在双方实际支持交集中计算；空集保留NaN。边界F1为2px，IoU保留外逸支持。
 

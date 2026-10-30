@@ -20,3 +20,5 @@ TASK_E0_PY=/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python
 官方代码与原始权重SHA：[模型来源](provenance/MODEL_DEPENDENCIES.md)、[官方revision](provenance/OFFICIAL_SOURCE_REVISIONS.json)、[本地权重下载核验](provenance/MAP_DOWNLOAD_RECOVERY_RESULT.json)。SDF只延迟未用hash-grid import，原生MLP/MonoSDFNetwork/RenderingNetwork AST在verify中与官方源逐一核验；没有自制体渲染器。Map仅有数据/公制/精度边界适配，完整配置在 [Map](config/map_minimal.json)、[SDF](config/sdf_minimal.json)。失败初版源码SHA在各BEFORE_*文件和Git增量版本；最终可执行适配代码随本分支提交。
 
 Source RGB/Mask/pack/native链和冻结相机完整身份：[输入资格](provenance/INPUT_ELIGIBILITY.json)、[旧004真正native补证](provenance/NATIVE_DEPTH_CHAIN_SUPPLEMENT.json)、[源码函数复用](provenance/CODE_REUSE_EXECUTED.json)。旧路径全部只读，除用户明确批准的58个失效下载文件；绝不写Dxy、GT或旧预测。失败保留NaN，不补历史值。
+
+留出访问范围补充：P0为源身份/尺寸核验读取过B文件并解码RGB；没有在P0计算本轮B误差。神经loader只读取两个源视角，不接收B RGB/Mask；模型全部冻结后才开始新方法B评价。因此只称HOLDOUT_RECON_ONLY，不声称整个会话从未接触目标图。见 `provenance/HOLDOUT_ACCESS_SCOPE_NOTE.json`。
