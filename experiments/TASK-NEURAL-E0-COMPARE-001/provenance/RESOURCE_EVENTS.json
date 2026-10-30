@@ -1,0 +1,14 @@
+{
+  "observed_in_session": "2026-10-30 Asia/Shanghai",
+  "first_disk_df": "197G total,184G used,3.3G available",
+  "later_disk_df": "197G total,187G used,1.9M available",
+  "raw_error": "OSError: [Errno 28] No space left on device: /home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/provenance/official_sources",
+  "failed_action": "creating small official-code audit directory, before any weight download",
+  "mitigation": "git sparse-checkout of this newly created worktree only; historical originals and other worktrees retained",
+  "after_sparse_checkout_df": "170M available; later P0 snapshot about 0.3GiB available",
+  "cause_of_other_disk_change": "NOT_ATTRIBUTED; no deletion/cleanup of other assets",
+  "Map_weights_local_downloaded_bytes": 0,
+  "model_stopped_before_P1": true,
+  "cuda_minimal_probe": "PASS",
+  "audit_adapter_error": "KeyError XYZ_mm; original point caches use points_mm/uv or XYZ_mm/pixel_uv; repaired explicit schema-only aliases, no model failure"
+}

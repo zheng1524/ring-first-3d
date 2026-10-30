@@ -1,0 +1,392 @@
+[
+  {
+    "role": "camera_frame_inventory",
+    "path": "/home/liu/ring_first_3d_view_eval/experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/code/inventory.py",
+    "file_SHA256": "6257f1de8a58f8d4e88b29d7691750e66ef4f316052a27806dda0c55ed0dd5f2",
+    "entrypoints": [],
+    "dependencies": [
+      "from io_utils import *",
+      "from itertools import combinations"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  },
+  {
+    "role": "HERO_loader",
+    "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/scripts/run_mvs_adapter3.py",
+    "file_SHA256": "14315d808e71a136dad71877c52336473fb2431428451e0a3b3de6f894e7d481",
+    "entrypoints": [
+      {
+        "name": "load_official",
+        "line": 7,
+        "signature": "size",
+        "AST_SHA256": "fcf164fed2b2363d46e57257e1d879d527923f5c62ec04e943b6be9c05103053"
+      }
+    ],
+    "dependencies": [
+      "from common import *",
+      "import torch, time, argparse, traceback, copy"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  },
+  {
+    "role": "XYZ_and_mesh",
+    "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v1/scripts/common.py",
+    "file_SHA256": "12e9eab72765877219191aa9a26bf37d3ffb0c7deb7b55125c4b5d5864201e1e",
+    "entrypoints": [
+      {
+        "name": "unproject",
+        "line": 40,
+        "signature": "z, pose, uv, K",
+        "AST_SHA256": "fcb42bb587d49575889459c436865761c0a36127864a1f549c2e65feeb1d3f56"
+      },
+      {
+        "name": "depth_mesh",
+        "line": 63,
+        "signature": "depth, mask, pose, K, color",
+        "AST_SHA256": "255e4322b6608e078465c04edd447d772fa51d8593ac0cdf59989553cd51a260"
+      }
+    ],
+    "dependencies": [
+      "from pathlib import Path",
+      "import sys, json, hashlib, datetime, numpy as np, cv2"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  },
+  {
+    "role": "camera",
+    "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/code/common.py",
+    "file_SHA256": "8fafbf6d844b9414833393c35ff9a3f612114c11dee7dfb8ec3db0d96acc8c14",
+    "entrypoints": [
+      {
+        "name": "source",
+        "line": 82,
+        "signature": "cid",
+        "AST_SHA256": "7ae2f36a90989a67decf2a0e225a2827475a2288b6a8de72a6263c3e914a0398"
+      },
+      {
+        "name": "target_source",
+        "line": 91,
+        "signature": "cid",
+        "AST_SHA256": "f3d9c6483d1d8674e62333c4631a6830c078d2cf684a2a22fadbc9375669254f"
+      },
+      {
+        "name": "source",
+        "line": 126,
+        "signature": "cid",
+        "AST_SHA256": "4b282cdc33090c19a26b7c39ceaa3dc40b5c5482ed33fe70790ba6c77791171e"
+      }
+    ],
+    "dependencies": [
+      "from pathlib import Path",
+      "from functools import lru_cache",
+      "import os, sys, json, csv, hashlib, datetime, ast, subprocess",
+      "import numpy as np, cv2, trimesh",
+      "from PIL import Image",
+      "from scipy.sparse import coo_matrix",
+      "from scipy.sparse.csgraph import connected_components",
+      "from scipy.spatial import cKDTree",
+      "from visualization import real_p0_renderer as vis",
+      "from visualization import pointcloud_audit_renderer as diag",
+      "from visualization.same_camera_scene import SameCameraScene"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  },
+  {
+    "role": "cleaning",
+    "path": "/home/liu/ring_first_3d_grazing/experiments/TASK-PHASED-GRAZING-SELECTIVE-AGGREGATION-001/code/cleaning.py",
+    "file_SHA256": "e6a2eeb735bcfa83ca53eb9691d5e9958a819f65fde7bd06755e19434741a0b2",
+    "entrypoints": [
+      {
+        "name": "normal_fields",
+        "line": 3,
+        "signature": "s",
+        "AST_SHA256": "4fe988a5508a705864ec8449317151cb1b09708ef55646ae220769e9765fc96c"
+      },
+      {
+        "name": "main",
+        "line": 11,
+        "signature": "",
+        "AST_SHA256": "676d0764e850d0aa96e6eb0af0fdd1e03b27b0cada9c4c269e8f1ab817c8773d"
+      }
+    ],
+    "dependencies": [
+      "from geometry import *"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  },
+  {
+    "role": "MASt3R_matching",
+    "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/code/matching.py",
+    "file_SHA256": "e86159011da85f49ddb8cb3fc341deb3a45e21e0b2759a9f73274e0d1f3c610e",
+    "entrypoints": [
+      {
+        "name": "views",
+        "line": 4,
+        "signature": "",
+        "AST_SHA256": "b9c331bd9eedcf85de558f9e1b15095b5fbc5a8df751e3786d3cb842c3733e55"
+      },
+      {
+        "name": "source_view",
+        "line": 5,
+        "signature": "cid",
+        "AST_SHA256": "e512d6beeb9acf2797733edb716c5af0f38fa1033e0c6d35335be39b7ebf1bcb"
+      },
+      {
+        "name": "plan",
+        "line": 7,
+        "signature": "",
+        "AST_SHA256": "91488dfbedab05bec7a1baa78dc2e90a2e0e6733c6e3efed2175f3495143ea27"
+      },
+      {
+        "name": "image",
+        "line": 13,
+        "signature": "v",
+        "AST_SHA256": "e3359dfb7699318a7835d9fa5ce55f39b615223cfd20f50c4dad86d8c35909e8"
+      },
+      {
+        "name": "label",
+        "line": 14,
+        "signature": "v",
+        "AST_SHA256": "aeee284c259d1581b5b529a2dd23cfb2134972ec97da737f558e649a9a49a449"
+      },
+      {
+        "name": "annotate",
+        "line": 15,
+        "signature": "p, q, confidence, a, b, method",
+        "AST_SHA256": "e81116abcad55759c99569fc3c17749c9cb801e23fd2be38b7893f559f9ebbea"
+      },
+      {
+        "name": "sift",
+        "line": 26,
+        "signature": "a, b",
+        "AST_SHA256": "3210873531ca7bcf1e21d9af09972b4ef8e411778ba7048d2f0e2e25aad0d057"
+      },
+      {
+        "name": "inputs",
+        "line": 30,
+        "signature": "v, roi",
+        "AST_SHA256": "c4a96fe31ed53866f5b2a9a59755a50c73ae2b7451bf8dbc7ffc924decd8d24c"
+      },
+      {
+        "name": "backmap",
+        "line": 37,
+        "signature": "p, meta",
+        "AST_SHA256": "a8ad89eb1c923555c86b844a6e12c76c2b2f4e908ab26914d8cbabb5ec8164b0"
+      },
+      {
+        "name": "main",
+        "line": 38,
+        "signature": "",
+        "AST_SHA256": "5cc0338d5348f6b2774443e1b1225cfda91c0bc1d82e7bb17bbb88a802db5496"
+      },
+      {
+        "name": "record",
+        "line": 63,
+        "signature": "pair, method, d, origin, seconds",
+        "AST_SHA256": "846e722774282d9e8c2f45faf50f1932f745d393dc8f55390d8528237bb4e042"
+      }
+    ],
+    "dependencies": [
+      "from geometry import *",
+      "import time, traceback, gc"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  },
+  {
+    "role": "candidate_registration",
+    "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/code/registration.py",
+    "file_SHA256": "d168307472f8a6418e9a084aa337d794f4afab9c5f85ad6e93f88bbf5c2cde96",
+    "entrypoints": [
+      {
+        "name": "to_w2c",
+        "line": 6,
+        "signature": "x",
+        "AST_SHA256": "575dbc4932c01075099aff202a2a6d579c7f8ca8ddd84f428898f15cb9203123"
+      },
+      {
+        "name": "pose_parameters",
+        "line": 8,
+        "signature": "W",
+        "AST_SHA256": "7d9ef28aec440fc161724ab6c9df22413394c2a1640bd25a479d3ef7f99b1e00"
+      },
+      {
+        "name": "project_w",
+        "line": 9,
+        "signature": "P, x, K",
+        "AST_SHA256": "2f8ad7ae17e8af7cc64d0571b36c650aea8366e8a7e4d78e89de18f3a8b37bef"
+      },
+      {
+        "name": "ring_stats",
+        "line": 11,
+        "signature": "W, target",
+        "AST_SHA256": "8c8ca4193f5614d2a7592e799ba0daff36442b981a4322e69c05a0c010c6b021"
+      },
+      {
+        "name": "anchors",
+        "line": 14,
+        "signature": "pair, method",
+        "AST_SHA256": "2921f13a182b46e97d490f8708b26d041964589029691f0077c670b11f614557"
+      },
+      {
+        "name": "residuals",
+        "line": 23,
+        "signature": "x, P, image, K, t, s, ringdt",
+        "AST_SHA256": "ef790dd0841b7ecc68c83e0b824be13605ba4ca55f4ad52616c8ee1e79183788"
+      },
+      {
+        "name": "main",
+        "line": 28,
+        "signature": "",
+        "AST_SHA256": "d24f1a2d22bb5709cf6e95149f0ea1e440c004b491adbedad3ca059ef4ae9960"
+      },
+      {
+        "name": "qualify_independent",
+        "line": 58,
+        "signature": "edges",
+        "AST_SHA256": "53c6ea4c9bbf3539ed73e5a70284b74a48dcec9cc02207dee96b54c9d8e5466e"
+      },
+      {
+        "name": "pose_graph",
+        "line": 67,
+        "signature": "edges",
+        "AST_SHA256": "a1716fc41bf8a74d24e11dcc1d0d391cb731871788aa4e760ad8cfcda06ecc22"
+      }
+    ],
+    "dependencies": [
+      "from matching import views, source_view",
+      "from geometry import *",
+      "from scipy.optimize import least_squares",
+      "from scipy.spatial.transform import Rotation"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  },
+  {
+    "role": "Ring_CAD_audit",
+    "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/code/cad_audit.py",
+    "file_SHA256": "044ca8c0e44468058d3e66644b59cd9df394348bb56847ae891d98c58a774006",
+    "entrypoints": [
+      {
+        "name": "main",
+        "line": 3,
+        "signature": "",
+        "AST_SHA256": "db60260dea7ccceb30bb9863a9850ddef2ccfcdb0742bcfd313daa46fad237c6"
+      }
+    ],
+    "dependencies": [
+      "from evaluate import *"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  },
+  {
+    "role": "real_A_to_B",
+    "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/code/geometry.py",
+    "file_SHA256": "2c6b51ca339a5d113dd52285e73a02f7293640c693f8f48c2912ca96ed3d3813",
+    "entrypoints": [
+      {
+        "name": "projection",
+        "line": 18,
+        "signature": "P, C, t, ids=None, kind=None",
+        "AST_SHA256": "5919cf7a3fc17ddf5a59599a5be20c38af08e13740459378bfa6f23245bc0b5b"
+      },
+      {
+        "name": "metric",
+        "line": 26,
+        "signature": "pred, t",
+        "AST_SHA256": "8f27982ca376ed256cc794bf477f6aaa29423b77875a247128094b40498036ed"
+      },
+      {
+        "name": "common_metric",
+        "line": 29,
+        "signature": "pred0, pred1, t",
+        "AST_SHA256": "a310c3f1c93c789ebe70b113a836b3b40c9bc63825c32d5850dbd89143e133b6"
+      }
+    ],
+    "dependencies": [
+      "from common import *"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  },
+  {
+    "role": "renderer",
+    "path": "/home/liu/ring_first_3d_neural_e0/visualization/real_p0_renderer.py",
+    "file_SHA256": "16bbff24b353402f56833c87de19041c05c3f2482682d35ee8e24a36fea64f99",
+    "entrypoints": [
+      {
+        "name": "view",
+        "line": 67,
+        "signature": "ax, points_mm, color, ring, bounds, angle=DEFAULT_ANGLE, title='', size=DEFAULT_POINT_SIZE, highlight=None",
+        "AST_SHA256": "1a09c1f6280c71ca8ccb8d7e85623051b2b70e69514f8fdcef8af2f63ced3e4b"
+      },
+      {
+        "name": "scaled_intrinsics",
+        "line": 78,
+        "signature": "K, source_size, target_size",
+        "AST_SHA256": "f483fab16f2e313736afc91ecb17ce8c16f4f0f4fbdd9361dc083529544667c7"
+      },
+      {
+        "name": "project_camera",
+        "line": 89,
+        "signature": "points_mm, K, c2w",
+        "AST_SHA256": "c7b8bd611b5058c914b8eb6cf1cf138562282f8be30757e276804b95893f6d35"
+      },
+      {
+        "name": "draw_rgb_points",
+        "line": 105,
+        "signature": "ax, projected_xy, rgb, order_key, size=DEFAULT_POINT_SIZE",
+        "AST_SHA256": "e1080ca90cf5b600fea75be2da64750e66ac6326d7affaee641e113b4434c31f"
+      }
+    ],
+    "dependencies": [
+      "from pathlib import Path",
+      "import ast",
+      "import hashlib",
+      "import json",
+      "import numpy as np"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  },
+  {
+    "role": "same_camera",
+    "path": "/home/liu/ring_first_3d_neural_e0/visualization/same_camera_scene.py",
+    "file_SHA256": "fdd64599676bd88f659f6f9b7317835d43c6db2176e9fb9fce8849c25b807cf1",
+    "entrypoints": [
+      {
+        "name": "SameCameraScene",
+        "line": 8,
+        "signature": "class",
+        "AST_SHA256": "f1922740a54da92d79d6478c460e34c3fc063ebe473134ad7681ced3f4feff89"
+      }
+    ],
+    "dependencies": [
+      "from pathlib import Path",
+      "import sys",
+      "import numpy as np",
+      "from . import real_p0_renderer as base"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  },
+  {
+    "role": "GLB_and_source_index",
+    "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/code/evaluate.py",
+    "file_SHA256": "41808371b22ae8aad8b9a4f107e407a8d61efd557784c2da948a94620653731f",
+    "entrypoints": [
+      {
+        "name": "unique_points",
+        "line": 4,
+        "signature": "blocks",
+        "AST_SHA256": "9c60b7b69a682c17c4441f55cfba94692c0fde68cb63a8615a63e2a9c3ede724"
+      },
+      {
+        "name": "export",
+        "line": 31,
+        "signature": "sid, blocks, version",
+        "AST_SHA256": "416779849a5d044b0bdc465dc9fe70fb7225b9518077c333b35d0e02be4554c5"
+      }
+    ],
+    "dependencies": [
+      "from growth import *",
+      "from matplotlib import cm"
+    ],
+    "adapter_needed": "format/units/source support only; no camera, depth, backprojection or rendering replacement"
+  }
+]
