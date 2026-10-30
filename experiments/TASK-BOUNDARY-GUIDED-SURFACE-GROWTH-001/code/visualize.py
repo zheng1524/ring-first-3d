@@ -44,14 +44,14 @@ def grown_data(blocks,total_rounds=None,rgb=False,background_on=False):
     b=background(cid);return dict(P=a['P'],C=C,B=b['P']if background_on else np.empty((0,3)),BC=b['C']if background_on else np.empty((0,3)),p=s['p'],ring=s['ring'],primary=cid)
 def fixed_bounds(sid,angles=[(-65,22)]):
     cc=[c for c in cases()if sceneid(c)==sid];s=source(cc[0]['id']);return diag.square_bounds([source(c['id'])['P']for c in cc]+[s['ring'].vertices],[vis.basis(a)for a in angles])
-def growth_progress(sid,num,local_frames=True):
+def growth_progress(sid,num,local_frames=True,core=True):
     final=load(R/f'local_results/scenes/{sid}_Final.json');N=final['accepted_steps'];steps=load(R/f'metrics/growth_steps_{sid}.json');milestones=list(dict.fromkeys([0,1,min(2,N),max(1,N//2),N]));fig,axes=plt.subplots(2,5,figsize=(22,10),gridspec_kw=dict(height_ratios=[1,.8]));bb=fixed_bounds(sid)[0]
     for j,k in enumerate(milestones):
         d=grown_data(load_scene(sid,k),N);side(axes[0,j],d,sid+' / S'+str(k)+(' Final'if k==N else''),(-65,22),bb);f=frontier(load_scene(sid,k));lines(axes[0,j],f['XYZ_edges'][f['eligible']],'#d38527',lw=.45)
     for j in range(len(milestones),5):axes[0,j].axis('off')
     x=np.arange(1,N+1);delta=np.array([r['delta_area_mm2']for r in steps]);axes[1,0].bar(x,delta,color='#269dcc');axes[1,0].set(title='每轮完整原面 ΔA（暴露代理）',xlabel='轮次',ylabel='mm²');axes[1,1].plot(np.r_[0,x],np.r_[0,np.cumsum(delta)],'o-',ms=2);axes[1,1].set(title='累计新增完整原面（非解剖真面积）',xlabel='轮次',ylabel='mm²');axes[1,2].plot(x,[r['seam_distance_mm']['median']for r in steps],'.-',label='中位');axes[1,2].plot(x,[r['seam_distance_mm']['p95']for r in steps],'.-',label='p95');axes[1,2].legend(fontsize=8);axes[1,2].set(title='边界附近几何距离（未焊接）',xlabel='轮次',ylabel='mm')
     axes[1,3].axis('off');axes[1,3].text(.01,.98,f'接受 {N} 轮\n实际新增HERO参考 {final["new_HERO_attempts"]}\nΔA={delta.sum():.4f} mm²\n'+f'联合调整接纳 {sum(r["joint_alignment"].get("accepted",False)for r in steps)} 轮\n'+final['stop_reason']+'\n\n后期微小增益完整记录；不以轮数当成功率。\n不是GT几何精度。',va='top',fontsize=10);latest=source(steps[-1]['reference'])if steps else source(final['blocks'][0]['reference']);axes[1,4].imshow(latest['frame']);axes[1,4].axis('off');axes[1,4].set_title('最后接纳来源的真实帧\n'+latest['c']['reference'],fontsize=9)
-    cond='UNQUALIFIED_CAMERA_STRESS'if sid.startswith('G07')else case(final['blocks'][0]['reference'])['condition'];fig.suptitle(sid+'｜'+cond+'｜S0→逐轮生长→Final\n粉：初始主面；蓝：工程种子；各生长轮次用turbo连续色标。实际XYZ/完整原面，不平滑补面；同窗口与点大小；橙线为条件边界。',fontsize=13);fig.tight_layout(rect=[0,.01,1,.92]);fig.subplots_adjust(hspace=.25);bar=axes[1,3].inset_axes([.01,.09,.94,.035]);fig.colorbar(cm.ScalarMappable(norm=mcolors.Normalize(0,N+1),cmap='turbo'),cax=bar,orientation='horizontal',ticks=list(dict.fromkeys([1,max(1,N//2),N])));bar.set_xlabel('新增面轮次（粉/蓝另作S0图例）',fontsize=8);bar.tick_params(labelsize=7);put(fig,f'Fig{num}_{sid}_incremental_growth.png')
+    cond='UNQUALIFIED_CAMERA_STRESS'if sid.startswith('G07')else case(final['blocks'][0]['reference'])['condition'];fig.suptitle(sid+'｜'+cond+'｜S0→逐轮生长→Final\n粉：初始主面；蓝：工程种子；各生长轮次用turbo连续色标。实际XYZ/完整原面，不平滑补面；同窗口与点大小；橙线为条件边界。',fontsize=13);fig.tight_layout(rect=[0,.01,1,.92]);fig.subplots_adjust(hspace=.25);bar=axes[1,3].inset_axes([.01,.09,.94,.035]);fig.colorbar(cm.ScalarMappable(norm=mcolors.Normalize(0,N+1),cmap='turbo'),cax=bar,orientation='horizontal',ticks=list(dict.fromkeys([1,max(1,N//2),N])));bar.set_xlabel('新增面轮次（粉/蓝另作S0图例）',fontsize=8);bar.tick_params(labelsize=7);put(fig,f'Fig{num}_{sid}_incremental_growth.png'if core else f'local/{sid}/Incremental_growth.png')
     for k in range(N+1)if local_frames else[]:
         d=grown_data(load_scene(sid,k),N);f,ax=plt.subplots(figsize=(9,7));side(ax,d,sid+f' / S{k} / {cond}',(-65,22),bb);f.suptitle('实际来源XYZ，轮次着色；同一毫米窗口；未补面/平滑',fontsize=10);f.tight_layout();put(f,f'local/{sid}/rounds/S{k:03d}.png')
 def joint_comparison():
@@ -92,10 +92,25 @@ def local_AB_and_scenes():
     if representative:
         from shutil import copyfile
         copyfile(R/representative['figure'],R/'figures/Fig10_standard_A_to_B_F3_G06.png')
+def g01_six_views():
+    a=grown_data(load_scene('G01_004'),rgb=True,background_on=True);b=grown_data(load_scene('G01_005'),rgb=True,background_on=True);edge=next(e for e in load(BASE/'metrics/registration_edges.json')if e['kind']=='CROSS_VIDEO');H=np.linalg.inv(np.array(edge['Ring']['H_source_to_target_world']));d=dict(a,P=np.r_[a['P'],transform(b['P'],H)],C=np.r_[a['C'],b['C']],B=np.r_[a['B'],transform(b['B'],H)],BC=np.r_[a['BC'],b['BC']]);poses=[a['p']['pose'],H@b['p']['pose']];virtual=poses[0].copy();virtual[:3,3]+=2*virtual[:3,0];poses.append(virtual);Ks=[a['p']['K'],b['p']['K'],a['p']['K']];angles=[(0,0),(90,0),(-90,90)];bounds=diag.square_bounds([d['P'],d['B'],d['ring'].vertices],[vis.basis(x)for x in angles]);P=np.r_[d['P'],d['B']];C=np.r_[d['C'],d['BC']];params=[]
+    for depth in [False,True]:
+        fig,axes=plt.subplots(2,3,figsize=(19,11))
+        for j,(K,pose)in enumerate(zip(Ks,poses)):
+            sc=camera_scene(d,K,pose);colors=C
+            if depth:
+                z=vis.project_camera(P,K,pose)[1];colors=diag.colors_for_depth(z)[0]
+            sc.draw(axes[0,j],d['P'],colors[:len(d['P'])],d['B'],colors[len(d['P']):],point_size=.08);sc.scale_bar(axes[0,j]);axes[0,j].set_title(['接近004冻结源相机','接近005（候选H映入004）','第三视点：004横移+2mm，虚拟诊断'][j]+(' / Z色'if depth else' / 源RGB'),fontsize=10)
+        for j,ang in enumerate(angles):
+            col=diag.colors_for_depth(P@vis.basis(ang)[0])[0]if depth else C;side(axes[1,j],d,['Ring X正交','Ring Y正交','Ring Z正交'][j]+(' / 视向坐标色 mm'if depth else' / 源RGB'),ang,bounds[j],colors=col);axes[1,j].set_xlabel([ 'Ring Y / mm','−Ring X / mm','Ring X / mm'][j]);axes[1,j].set_ylabel(['Ring Z / mm','Ring Z / mm','Ring Y / mm'][j])
+        fig.suptitle('G01｜完整F3点云六方向｜CROSS-VIDEO REGISTRATION CANDIDATE — NOT FUSED\n004/005独立模型仅按既有候选H共同诊断；CAD以004为固定锚点。全部实际接纳点和背景，不补面；上行为相机诊断，下行为统一毫米正交。',fontsize=13);fig.tight_layout(rect=[0,.01,1,.93]);put(fig,'local/G01_six_views_depth.png'if depth else'Fig11_G01_six_views_candidate_not_fused.png')
+    save('provenance/G01_SIX_VIEW_PARAMETERS.json',dict(H_005_to_004=H,poses=poses,K=Ks,XYZ_bounds_mm=bounds,point_size=.08,CAD_fixed_to='video004',status='CANDIDATE_NOT_FUSED',GT_used=False))
 if __name__=='__main__':
     arg=sys.argv[1]if len(sys.argv)>1 else'P0'
     if arg=='P0':p0()
     elif arg=='positive':
         for sid,n in [('G06_004',4),('G07_004',5),('G08_005',6)]:growth_progress(sid,n)
         joint_comparison()
-    elif arg=='final':g01_comparison();local_AB_and_scenes()
+    elif arg=='final':
+        for sid in ['G01_004','G01_005']:growth_progress(sid,9,True,False)
+        g01_comparison();local_AB_and_scenes();g01_six_views()

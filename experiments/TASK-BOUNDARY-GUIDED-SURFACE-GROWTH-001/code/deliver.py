@@ -8,11 +8,15 @@ def update(title,body):
         end=text.find('\n## ',start+len(marker));text=text[:start]+(text[end:]if end>=0 else'')
     p.write_text((text+marker+'\n'+body).rstrip()+'\n')
 def index():
-    md='# 结果索引\n\n[技术报告](TECHNICAL_REPORT.md) · [本地HTML图库](visualizations/index.html) · [用户方向调整](USER_STEERING.md)\n\n本地目录：`'+str(R)+'`\n\n';h='<!doctype html><html lang="zh"><meta charset="utf-8"><title>Boundary Growth</title><meta name="viewport" content="width=device-width"><style>body{font:16px system-ui;max-width:1500px;margin:auto;padding:24px;background:#eee}article{background:white;margin:22px 0;padding:12px}img{width:100%;height:auto}button{padding:10px;margin:5px}</style><h1>可信边界引导的增量式可见表面生长</h1><p>真实XYZ与原始三角面；黑色CAD；优化前后分开。工程接纳不等于GT精度；G07不合格压力、G08有限相机。<a href="../TECHNICAL_REPORT.md">报告</a></p><nav>'
+    md='# 结果索引\n\n[技术报告](TECHNICAL_REPORT.md) · [本地HTML图库](visualizations/index.html) · [用户方向调整](USER_STEERING.md) · [复现命令](REPRODUCE.md)\n\n本地目录：`'+str(R)+'`\n\n精选11张PNG公开，其余逐轮图和完整几何仅在本地缓存可打开。\n\n';h='<!doctype html><html lang="zh"><meta charset="utf-8"><title>Boundary Growth</title><meta name="viewport" content="width=device-width"><style>body{font:16px system-ui;max-width:1500px;margin:auto;padding:24px;background:#eee}article{background:white;margin:22px 0;padding:12px}img{width:100%;height:auto}button{padding:10px;margin:5px}</style><h1>可信边界引导的增量式可见表面生长</h1><p>真实XYZ与原始三角面；黑色CAD；优化前后分开。工程接纳不等于GT精度；G07不合格压力、G08有限相机。<a href="../TECHNICAL_REPORT.md">报告</a> · <a href="../REPRODUCE.md">复现命令</a></p><p>精选11张PNG已公开，逐轮图及GLB仅在本地缓存可打开。</p><nav>'
     for k in ['ALL','G01','G06','G07','G08','Fig','local']:h+='<button onclick="filter(\''+k+'\')">'+k+'</button>'
     h+='</nav>'
+    h+='<p>阶段已结束，等待人工验收。G01联合调整有RGB恶化和CAD穿插；跨视频仅候选、未融合。最后两次005新增推理为CUDA失败。'
+    for name in ['RESULT_INDEX.md','REPRODUCE.md','provenance/FINAL_VERIFICATION.json','metrics/GLB_INDEX.csv','metrics/crossvideo_candidate_GLB_INDEX.csv','metrics/OUTPUT_ASSET_INDEX.csv']:
+        if (R/name).exists():h+='<a href="../'+name+'">'+escape(name)+'</a> · '
+    h+='</p>'
     for p in sorted((R/'figures').rglob('*.png')):
-        rel=str(p.relative_to(R));md+='- ['+rel+']('+rel+')\n';h+='<article data-name="'+escape(rel)+'"><h2>'+escape(rel)+'</h2><a href="../'+quote(rel)+'"><img loading="lazy" src="../'+quote(rel)+'"></a></article>'
+        rel=str(p.relative_to(R));label='仅本地'if p.is_relative_to(R/'figures/local')else'公开精选';md+='- '+label+'：['+rel+']('+rel+')\n';h+='<article data-name="'+escape(rel)+'"><h2>'+label+'：'+escape(rel)+'</h2><a href="../'+quote(rel)+'"><img loading="lazy" src="../'+quote(rel)+'"></a></article>'
     md+='\n## 全部指标\n\n';h+='<h2>指标与几何索引</h2><ul>'
     for p in sorted((R/'metrics').glob('*.csv')):
         if any(sid in p.stem and not(R/f'local_results/scenes/{sid}_Final.json').exists()for sid in ['G01_004','G01_005','G06_004','G07_004','G08_005']):continue
