@@ -1,0 +1,49 @@
+Loading pretrained dinov2_vitg14 from torch hub
+Loading weights from local directory
+Calculated average aspect ratio: 1.778 from 2 images
+Using target resolution 280x154 (W x H) for all views
+Processed view 0 with keys: ['img', 'data_norm_type']
+Processed view 1 with keys: ['img', 'data_norm_type']
+Successfully processed 2 views
+MAP_RESULT M0 SMOKE_PASS_UNCERTIFIED_GEOMETRY 6144 0.9164695159997791
+Calculated average aspect ratio: 1.778 from 2 images
+Using target resolution 280x154 (W x H) for all views
+Processed view 0 with keys: ['img', 'data_norm_type', 'intrinsics']
+Processed view 1 with keys: ['img', 'data_norm_type', 'intrinsics']
+Successfully processed 2 views
+MAP_RESULT M1 SMOKE_PASS_UNCERTIFIED_GEOMETRY 6141 0.5173234040003081
+Calculated average aspect ratio: 1.778 from 2 images
+Using target resolution 280x154 (W x H) for all views
+Processed view 0 with keys: ['img', 'data_norm_type', 'intrinsics', 'camera_poses', 'is_metric_scale']
+Processed view 1 with keys: ['img', 'data_norm_type', 'intrinsics', 'camera_poses', 'is_metric_scale']
+Successfully processed 2 views
+MAP_RESULT M2 SMOKE_PASS_UNCERTIFIED_GEOMETRY 6224 0.5554121590002978
+Calculated average aspect ratio: 1.778 from 2 images
+Using target resolution 280x154 (W x H) for all views
+Processed view 0 with keys: ['img', 'data_norm_type', 'depth_z', 'intrinsics', 'camera_poses', 'is_metric_scale']
+Processed view 1 with keys: ['img', 'data_norm_type', 'depth_z', 'intrinsics', 'camera_poses', 'is_metric_scale']
+Successfully processed 2 views
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/code/map_run.py", line 85, in main
+    with torch.inference_mode():pred=model.infer(views,memory_efficient_inference=True,minibatch_size=1,use_amp=True,amp_dtype='bf16',apply_mask=True,mask_edges=True,apply_confidence_mask=False,use_multiview_confidence=False)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py", line 2165, in infer
+    preds = self.forward(
+            ^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py", line 1578, in forward
+    self._encode_and_fuse_optional_geometric_inputs(
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/code/map_run.py", line 66, in <lambda>
+    model._encode_and_fuse_optional_geometric_inputs=lambda views,features:original_geometry(views,fp32_boundary(features))
+                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py", line 1270, in _encode_and_fuse_optional_geometric_inputs
+    all_encoder_features_across_views = self._encode_and_fuse_depths(
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py", line 935, in _encode_and_fuse_depths
+    metric_scale_mask = views[view_idx]["is_metric_scale"][
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'bool' object is not subscriptable
+
+MAP_RESULT M3 FAILED None 0.06829910600026778

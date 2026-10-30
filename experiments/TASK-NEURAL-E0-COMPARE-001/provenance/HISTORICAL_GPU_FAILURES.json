@@ -1,0 +1,38 @@
+[
+  {
+    "reference": "G01_005_growth_r07",
+    "group": "G01",
+    "video": "005",
+    "reference_view": "G01_video005_v005_00344",
+    "source_views": [
+      "G01_video005_v005_00459",
+      "G01_video005_v005_00516",
+      "G01_video005_v005_00172"
+    ],
+    "step": 104,
+    "source_identity": "NEW_HERO_INFERENCE_THIS_TASK",
+    "GT_used": false,
+    "success": false,
+    "status": "RECONSTRUCTION_FAILED",
+    "failure": "Traceback (most recent call last):\n  File \"/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/code/hero_adapter.py\", line 22, in infer\n    with torch.inference_mode(),torch.autocast('cuda',dtype=torch.float16):out=wrapper.preprocess_and_run(cur_image=image(v),src_image=[image(x)for x in source_views],cur_pose=pm,src_pose=ps,cur_intrinsics=k.copy(),src_intrinsics=ks,depth_range=None,num_refinement_steps=cfg()['HERO_refinement_steps'],target_image_size=cfg()['HERO_size'],device='cuda')\n                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/surface_benchmark_v1/vendor/mvsanywhere_minimal/hubconf.py\", line 261, in preprocess_and_run\n    cur_image=cur_image.to(device),\n              ^^^^^^^^^^^^^^^^^^^^\nRuntimeError: CUDA error: unspecified launch failure\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n\n",
+    "seconds": 0.2217679909999788
+  },
+  {
+    "reference": "G01_005_growth_r00",
+    "group": "G01",
+    "video": "005",
+    "reference_view": "G01_video005_v005_00000",
+    "source_views": [
+      "G01_video005_v005_00057",
+      "G01_video005_v005_00172",
+      "G01_video005_v005_00344"
+    ],
+    "step": 104,
+    "source_identity": "NEW_HERO_INFERENCE_THIS_TASK",
+    "GT_used": false,
+    "success": false,
+    "status": "RECONSTRUCTION_FAILED",
+    "failure": "Traceback (most recent call last):\n  File \"/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/code/hero_adapter.py\", line 22, in infer\n    with torch.inference_mode(),torch.autocast('cuda',dtype=torch.float16):out=wrapper.preprocess_and_run(cur_image=image(v),src_image=[image(x)for x in source_views],cur_pose=pm,src_pose=ps,cur_intrinsics=k.copy(),src_intrinsics=ks,depth_range=None,num_refinement_steps=cfg()['HERO_refinement_steps'],target_image_size=cfg()['HERO_size'],device='cuda')\n                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/surface_benchmark_v1/vendor/mvsanywhere_minimal/hubconf.py\", line 261, in preprocess_and_run\n    cur_image=cur_image.to(device),\n              ^^^^^^^^^^^^^^^^^^^^\nRuntimeError: CUDA error: unspecified launch failure\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n\n",
+    "seconds": 0.20440190399995117
+  }
+]

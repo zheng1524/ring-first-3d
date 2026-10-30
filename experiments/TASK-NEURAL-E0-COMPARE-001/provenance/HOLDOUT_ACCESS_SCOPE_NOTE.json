@@ -1,0 +1,22 @@
+{
+  "P0_identity_audit": {
+    "target_files_opened_for_SHA": true,
+    "target_RGB_decoded_for_identity_and_shape": true,
+    "new_method_target_error_computed": false,
+    "used_to_fit_neural_geometry": false
+  },
+  "neural_model_loaders": {
+    "input_references": [
+      "G01_005_raw00057",
+      "G01_005_raw00459"
+    ],
+    "target_RGB_or_Mask_loaded": false
+  },
+  "post_freeze_evaluation": {
+    "immutable_model_freeze": "ALL_MODEL_OUTPUTS_FROZEN_BEFORE_EVALUATION.json",
+    "first_target_evaluation_after_freeze": true
+  },
+  "meaning": "reconstruction-only conditional diagnostic, never whole-session unseen-target blind test",
+  "frozen_data_or_predictions_modified": false,
+  "old_freeze_boolean_scope": "holdout_images_read=False in SDF_MODEL_FROZEN describes that model loader, not P0 identity audit"
+}

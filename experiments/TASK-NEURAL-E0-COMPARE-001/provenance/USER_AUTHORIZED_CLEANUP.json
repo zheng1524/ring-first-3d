@@ -1,0 +1,450 @@
+{
+  "time": "2026-10-30T07:20:09.725017+00:00",
+  "authorization": "latest user explicitly allows obvious stale/useless artifacts after disk recheck",
+  "protected_valid_weight": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v9_ring_guided_recovery/weights/MASt3R_official.pth",
+  "protected_valid_SHA256": "e28f91b488554653e2b46ddae9c78c1143e0bcb2e27d3e26cdb0b717f1568eb2",
+  "original_failure_note": "# 权重未完成，禁止加载\n\n本轮MASt3R官方模型未完整下载，未执行推理。MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric.pth、MASt3R_official_complete.pth、MASt3R_ready.pth均为不完整传输/装配尝试；稀疏装配文件的表观大小不代表所有字节有效。range_parts/resume_*保留传输证据，不是已核验权重。原代码中的加载检查拒绝success=false的下载记录。\n\n官方应有2754910614字节；当前没有完整模型SHA256或张量核验成功证据。未来如续传，必须重新核对所有Range和完整checkpoint，不能用残缺模型产生成绩。本轮停止下载重试，未删除或压缩任何文件。\n",
+  "original_download_failure": {
+    "URL": "https://download.europe.naverlabs.com/ComputerVision/MASt3R/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric.pth",
+    "official_bytes": 2754910614,
+    "reused_prefix_bytes": 433291264,
+    "success": false,
+    "completed_ranges": [
+      [
+        433291264,
+        500400127
+      ],
+      [
+        500400128,
+        567508991
+      ],
+      [
+        567508992,
+        634617855
+      ]
+    ],
+    "error": "TimeoutError('bounded240s transfer window')",
+    "seconds": 257.4520260220006
+  },
+  "before_disk": {
+    "total": 211430510592,
+    "used": 200290648064,
+    "free": 325271552
+  },
+  "deleted_files": [
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/HF_speed_probe.bin",
+      "bytes": 1048576,
+      "allocated_bytes": 1048576,
+      "sha256": "4a4c4cc107a9c1b9192706259ed912bcf27aa916ce9153bd80a80884083d92d7",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric.pth",
+      "bytes": 433291264,
+      "allocated_bytes": 433295360,
+      "sha256": "0c2912c8b2fd6d2d3059435af5124accf544ae6a49de8ecf77eb751fb4410c1a",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/MASt3R_official_complete.pth",
+      "bytes": 1775468544,
+      "allocated_bytes": 1507037184,
+      "sha256": "0aa8a877aab03b466010d887596b1423125e93ddacbe6aa07d4898688247f56f",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/MASt3R_ready.pth",
+      "bytes": 2043904000,
+      "allocated_bytes": 2043908096,
+      "sha256": "ef44d532b08b0a5a78ea4a5f2c290c1728deda8ba4d37c525b407e2d28774613",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1037271040_1104379903.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "fe5eba6f852ed373f46f605d2d07e072dee56e75e56999c88dd9e18c10e32fef",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1104379904_1171488767.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "a984672c52c880fbb12367fd7119453df9e8023d5481dfd847b8d7ec648c6bfa",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1171488768_1238597631.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "126762e6478254a428ccc2d648ddebf4f4977c809c796a50627e3f114f14f65b",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1238597632_1305706495.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "98ed0846a4ee0658d5c300ae72126d4eaf8a023392eebdbf50e30972d3bada45",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1305706496_1372815359.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "b6150afe5be617b951af13efef5b807ba0600829a5f82a644fcb1ae5d0628a2c",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1372815360_1439924223.bin",
+      "bytes": 59768832,
+      "allocated_bytes": 59772928,
+      "sha256": "8136f39b2a4bf5c2237faf37556a96b1c98ac16692d6e2803f27e81bea7f43bd",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1439924224_1507033087.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "1f1d0117728f631e27ecde252e8639dfceda032ea51d6e7e78e5209ef8f3037f",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1507033088_1574141951.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "623ed9a8d4d6a11720bb7404b976b4ed5e5d45c26886211265e47032fe41ce23",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1574141952_1641250815.bin",
+      "bytes": 29360128,
+      "allocated_bytes": 29360128,
+      "sha256": "eb686ed53e74de67bf6bafe4af74e9fe34927f17ae12bb7759feb64b96185b16",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1641250816_1708359679.bin",
+      "bytes": 63963136,
+      "allocated_bytes": 63963136,
+      "sha256": "99dfffbeaa21dc20d35c7b7ebf9fe363986007b6305ecf31c328b5ecc57b5dae",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1708359680_1775468543.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "e4ae4a1a051fa9617de48ed6134b74529ece1f72cca2393d03320865132c60b6",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1775468544_1842577407.bin",
+      "bytes": 14680064,
+      "allocated_bytes": 14680064,
+      "sha256": "e8b59ae5e05f6ac8859722f3e45ca7750dca718eeb1866d5bd52f3e5d1a46b93",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1842577408_1909686271.bin",
+      "bytes": 65011712,
+      "allocated_bytes": 65011712,
+      "sha256": "a9fed77770e59b83a78c4601ff110f187cbf49c5d500c759c2080b2539c30eec",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1909686272_1976795135.bin",
+      "bytes": 26214400,
+      "allocated_bytes": 26214400,
+      "sha256": "dc110b634f3e261f6df00f366b7c278696656c0cbe08898022036d0f14ddceae",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/1976795136_2043903999.bin",
+      "bytes": 7340032,
+      "allocated_bytes": 7340032,
+      "sha256": "8b6221c1e1c677a53d9169d486ec94e1558c7137b205fa4ece351116e645b6eb",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/2043904000_2111012863.bin",
+      "bytes": 0,
+      "allocated_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/2111012864_2178121727.bin",
+      "bytes": 0,
+      "allocated_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/2178121728_2245230591.bin",
+      "bytes": 0,
+      "allocated_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/2245230592_2312339455.bin",
+      "bytes": 0,
+      "allocated_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/2312339456_2379448319.bin",
+      "bytes": 0,
+      "allocated_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/2379448320_2446557183.bin",
+      "bytes": 0,
+      "allocated_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/2446557184_2513666047.bin",
+      "bytes": 0,
+      "allocated_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/2513666048_2580774911.bin",
+      "bytes": 0,
+      "allocated_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/2580774912_2647883775.bin",
+      "bytes": 0,
+      "allocated_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/2647883776_2714992639.bin",
+      "bytes": 0,
+      "allocated_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/2714992640_2754910613.bin",
+      "bytes": 0,
+      "allocated_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/433291264_500400127.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "4500fe3dbc2e71aad790f05928b4e44302e45a8c5fadeb3e01bb1dd735a714d8",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/500400128_567508991.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "2d8db3d10582a6cf9b6b793f82ad673b2659ae9298feea3dfa290465de79317a",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/567508992_634617855.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "8212c1da3fd1d6cecf3b73fb1a875d9f0902f53415ee3aa80de70f74226126bf",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/634617856_701726719.bin",
+      "bytes": 57671680,
+      "allocated_bytes": 57675776,
+      "sha256": "a201d21fb6b76341ee172e953c8bfbf71fee80cb4a56246d0c178f6befc9e2a4",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/701726720_768835583.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "c60b96a7c3837a2def3671b27c53e905cd0f3ec35fe91113931944e0edc6772f",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/768835584_835944447.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "850500d8c8e8a06b4c1083e53e8130be695f3b0d09bcd82d8660e9e112bbb9a8",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/835944448_903053311.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "cb48645188ff83f6e13c52eada300fca3b4ecac7f135a442a4103cc0570aa32b",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/903053312_970162175.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "f730577d796888d9ef18d49f59895c85f51aee183a73846e86a6aee350647c13",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/range_parts/970162176_1037271039.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "ca62ec13fd36b54d733f7e69a95e9b6d7f8cbc0d64b6603cc66a758a2aab3d3f",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_1372815360_1439924223.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67108864,
+      "sha256": "8aab6727f8b42d042ba967ab5807be7a9f0fdf3c69953ade2e553841bdb0d2a1",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_1574141952_1641250815.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "3744e44ccbb9b65db4615dfb1f134dbb529a0f3403c6656c2dcede1d018e0aeb",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_1641250816_1708359679.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "e0ef5ad3b1341d1d31d89ee7f755d61937b6779ee229cc5c08972767c4428efd",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_1775468544_1842577407.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "e2eb9b08fa7046c13dab08805d5063e89603dcbe4460dc76621596a1fdd29448",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_1842577408_1909686271.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67108864,
+      "sha256": "62fc86f2882b5445d74287c46652ca9394d60516781c9df5261a96c9abe7de87",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_1909686272_1976795135.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67108864,
+      "sha256": "c1b593bfebfd449d9b5a68bf9acfe8533dde9daa43aed9c0c0ace33ad8591b2d",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_1976795136_2043903999.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67108864,
+      "sha256": "bcaaa1e5cb042b1e986899aae63f9de515fbfe266da2aeb2933c04b78a9e4ab3",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_2043904000_2111012863.bin",
+      "bytes": 56623104,
+      "allocated_bytes": 56623104,
+      "sha256": "48994c0f5433b64fa2a36946c399c981c2978cc3a1211df47286ac7e7272d656",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_2111012864_2178121727.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67108864,
+      "sha256": "50737f4026bd71c8b84fafb010ac7dc8b57c82b58ec2baed76f420881f65213c",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_2178121728_2245230591.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67108864,
+      "sha256": "a7be2c01a2509de575d9c8ae45ed34ea6e37fae7cc49545199d95af6dd747241",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_2245230592_2312339455.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67112960,
+      "sha256": "91adf2bfdd17c673631ce0c8339a7186e6648b096ecbc6965366354f2f9be897",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_2312339456_2379448319.bin",
+      "bytes": 36700160,
+      "allocated_bytes": 36700160,
+      "sha256": "aadb9aedde6966f61f8be0cb4dd7c4d64c78fbc591ee2930e239bc226e17812a",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_2379448320_2446557183.bin",
+      "bytes": 62914560,
+      "allocated_bytes": 62914560,
+      "sha256": "80934d8a62779c7b327aaedd670c7738ebadb5f5fe8153318944e8d1a88d0322",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_2446557184_2513666047.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67108864,
+      "sha256": "1ab7183ae3d59cd7d69f2fb7c467b9724866bfbb17b690e2b7a5cb7355cc8300",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_2513666048_2580774911.bin",
+      "bytes": 12582912,
+      "allocated_bytes": 12582912,
+      "sha256": "2258c64a253278bec2493b29d7b623b17b8d7e01d6205dac7d4236843c07bc12",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_2580774912_2647883775.bin",
+      "bytes": 62914560,
+      "allocated_bytes": 62918656,
+      "sha256": "9de2dffb4880b3679720c9fac4503c89f3a8b91c8a3ea3bd154b30c7547f7eff",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_2647883776_2714992639.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67108864,
+      "sha256": "6430e470aa30e80326661536482f3125d627bd96d778ed539c0f1daad980e3ed",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_2714992640_2754910613.bin",
+      "bytes": 11534336,
+      "allocated_bytes": 11534336,
+      "sha256": "e92d6482e897365fdb85538a6f971b011db27c5a793bc7e26fcc78233fb4705a",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v8_registration_narrow_baseline/weights/resume_634617856_701726719.bin",
+      "bytes": 67108864,
+      "allocated_bytes": 67108864,
+      "sha256": "df763666bd43ab4da7941d83ebeaf153758748637a3dd5bbf57a6cfd485c8b04",
+      "reason": "explicitly INCOMPLETE_DO_NOT_LOAD; failed range assembly; not a valid model or prediction"
+    }
+  ],
+  "deleted_N": 58,
+  "after_disk": {
+    "total": 211430510592,
+    "used": 193791856640,
+    "free": 6824062976
+  },
+  "deleted_logical_bytes": 6767149056,
+  "deleted_allocated_bytes": 6498820096
+}
