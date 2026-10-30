@@ -1,3 +1,5 @@
+> 以下为P0静态审计快照，先于清理、隔离安装与模型运行。当前实际结果见 [技术报告](../TECHNICAL_REPORT.md)、[最终运行表](../metrics/ARM_FINAL_STATUS.csv)。
+
 # 官方路线、实际依赖及最小 adapter
 
 2026-10-30官方资源实查；文件与Git blob SHA见 `OFFICIAL_SOURCE_REVISIONS.json`，本地读取副本在 `official_sources/`（LOCAL_ONLY，不安装）。读取不等于模型导入或运行成功。

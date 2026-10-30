@@ -12,3 +12,17 @@
 8. **成本/可重复**：模型权重及代码 SHA、GPU/峰显存、推理与优化总时间、依赖/下载、手动步骤、失败计数、随机种子及 smoke 是否可复现；按 P1/P2/P3 实际授权预算列。
 
 结果矩阵每场景至少 M0–M3（不合法为 `NOT_EVALUABLE`）、S0及后续 S1（仅授权才运行）、Raw/Cleaned/F2/F3；可评价单元都要附 `n_frames`, `n_pixels`, `observed_support_fraction`, `camera_quality`, `GT_mode`, `runtime_status`。图采用固定 mm 轴六视角和严格 A→B（真实B / 预测 / 叠加 / 差异 / 未知 / 遮挡），Ring 用独立黑色 CAD。
+
+## 本次实际执行补充（2026-10-30）
+
+本次直接用户授权覆盖较早P0-only描述，见 `AUTHORIZATION_OVERRIDE.md`、`USER_STEERING.md`。G01_005固定训练/推理参考为raw00057、raw00459；目标00860与00611只在所有模型输出冻结后读取RGB/Mask。两目标均为HOLDOUT_RECON_ONLY，非全流程盲测。未改相机、选帧或权重来追随目标误差。
+
+实际主表采用视角评价任务原封AST `reprojection.py:render/evaluate` 的**原三角面射线**协议；所有方法640×360同目标，源RGB重心插值，固定CAD遮挡容差0.05mm。与历史点中心覆盖明确分开，不把旧报告数值并入本表。CAD实体穿插用0.02mm容差。B Mask完整像素为覆盖分母；共同RGB仅在双方实际支持交集中计算；空集保留NaN。边界F1为2px，IoU保留外逸支持。
+
+M0–M3各执行相同2视角，官方预处理固定280×154、patch14，Mask用同一K导出的仿射变换最近邻映射，只限制源输出Polyp域，不作为额外官方网络输入。SDF显式使用Mask损失和固定[0.25,1]深度代理权，绝对HERO Z替换MonoSDF默认scale/shift损失；两个臂Mask使用方式不同，不能称所有监督完全相同。历史F1/F2用14参考注册表相应视频子集，F3/AllAvailable用36参考子集；另列相同2输入Raw/Cleaned。
+
+公制坐标以米送模型，输出乘1000；Map只以第一冻结相机与第一输出相机作刚体规范转换，不作尺度拟合/ICP。M0/M1的此转换仅用于评价定位，不给网络pose/depth。M2/M3的pose是冻结条件输入，网络仍会预测pose，不能说输出pose被硬锁死。公开原输出与转换矩阵。
+
+SDF在模型输出冻结后发现输入域错误：相机在默认吸收边界球外；0观测支持面，不把灰色零水平集纳入可见面指标。Map四配置有数值输出，完整几何正确性未认证。不存在有效双臂科学对照；不选赢家。G01_004仅历史基线重投影，所有新模型NOT_RUN；其他三组只做资格审计。
+
+不可变模型冻结：`ALL_MODEL_OUTPUTS_FROZEN_BEFORE_EVALUATION.json`（2026-10-30 15:47:11 Asia/Shanghai）。最终A→B缓存清单来自CPU重绘，已注明晚于首轮评价；重绘只改布局、未改模型预测。绝对Polyp三维/体积/测量误差及中位绝对相对误差、MAE、p95、最大误差全部NaN/NOT_EVALUABLE，无GT部署变换，不用RGB误差替代。

@@ -1,0 +1,25 @@
+{
+  "arm": "M",
+  "scene": "G01_005",
+  "GT_used": false,
+  "CPU_fallback": false,
+  "rows": [
+    {
+      "mode": "M0",
+      "status": "FAILED",
+      "source_ids": [
+        "G01_005_raw00057",
+        "G01_005_raw00459"
+      ],
+      "model_forward_attempted": true,
+      "GT_used": false,
+      "error": "Traceback (most recent call last):\n  File \"/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/code/map_run.py\", line 72, in main\n    with torch.inference_mode():pred=model.infer(views,memory_efficient_inference=True,minibatch_size=1,use_amp=True,amp_dtype='bf16',apply_mask=True,mask_edges=True,apply_confidence_mask=False,use_multiview_confidence=False)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/utils/_contextlib.py\", line 116, in decorate_context\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py\", line 2165, in infer\n    preds = self.forward(\n            ^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py\", line 1578, in forward\n    self._encode_and_fuse_optional_geometric_inputs(\n  File \"/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py\", line 1261, in _encode_and_fuse_optional_geometric_inputs\n    all_encoder_features_across_views = self._encode_and_fuse_ray_dirs(\n                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py\", line 856, in _encode_and_fuse_ray_dirs\n    ray_dirs_features_across_views = self.ray_dirs_encoder(\n                                     ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1751, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1762, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/python/uniception/models/encoders/dense_rep_encoder.py\", line 266, in forward\n    features = self.conv_in(features)\n               ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1751, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1762, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/conv.py\", line 554, in forward\n    return self._conv_forward(input, self.weight, self.bias)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/nn/modules/conv.py\", line 549, in _conv_forward\n    return F.conv2d(\n           ^^^^^^^^^\nRuntimeError: Input type (c10::BFloat16) and bias type (float) should be the same\n",
+      "seconds": 0.19065016999957152
+    }
+  ],
+  "parameters": 1228491222,
+  "load_seconds": 40.33872220600006,
+  "all_learned_parameter_keys_present": true,
+  "storage_precision": "BF16 encoder/info_sharing; FP32 official AMP-disabled geometry/heads",
+  "FP32_parameters": 92010454
+}

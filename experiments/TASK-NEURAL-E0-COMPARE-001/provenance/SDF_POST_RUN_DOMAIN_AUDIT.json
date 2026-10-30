@@ -1,0 +1,25 @@
+{
+  "diagnosis": "ADAPTER_INPUT_DOMAIN_FAILED; camera origins outside official absorbing SDF bounding sphere",
+  "evidence": [
+    {
+      "source": "G01_005_raw00057",
+      "camera_norm_network_units": 3.2714434103607184,
+      "SDF_clamp_sphere_network_units": 2.5,
+      "camera_inside_clamp_sphere": false,
+      "sphere_sdf_at_camera": -0.7714434103607184
+    },
+    {
+      "source": "G01_005_raw00459",
+      "camera_norm_network_units": 3.8704642415073764,
+      "SDF_clamp_sphere_network_units": 2.5,
+      "camera_inside_clamp_sphere": false,
+      "sphere_sdf_at_camera": -1.3704642415073764
+    }
+  ],
+  "silhouette_loss_min": 3.8371963500976562,
+  "silhouette_loss_max": 3.8371963500976562,
+  "saturated_background_loss_expected": 3.8376418216567427,
+  "optimization_repeated": false,
+  "science_status": "ALGORITHM_NOT_PROVEN; no supported visible surface",
+  "scope": "this one frozen low-budget adapter configuration, not a statement about MonoSDF in general"
+}

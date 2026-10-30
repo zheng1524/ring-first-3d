@@ -1,4 +1,4 @@
-> 当前执行权限与结果以 [AUTHORIZATION_OVERRIDE.md](AUTHORIZATION_OVERRIDE.md) 和本轮报告为准。下方保留附件原草案；用户已授权有限P0/P1，实际因资源门禁未进入P1。
+> 当前任务已获用户有限P0/P1授权，并完成一次SDF优化及Map M0–M3真实运行；未形成有效双臂科学对照。当前状态见 [TECHNICAL_REPORT.md](TECHNICAL_REPORT.md) 和 [USER_STEERING.md](USER_STEERING.md)。下方为原附件草案。
 
 # TASK-NEURAL-E0-COMPARE-001｜P0 Codex 首轮正式任务草案
 

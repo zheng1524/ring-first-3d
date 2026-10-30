@@ -1,0 +1,40 @@
+{
+  "status": "FROZEN_BEFORE_MODEL_FORWARD",
+  "scene": "G01_005",
+  "input_ids": [
+    "G01_005_raw00057",
+    "G01_005_raw00459"
+  ],
+  "targets_excluded": [
+    "G01_video005_v005_00860",
+    "G01_video005_v005_00611"
+  ],
+  "modes": [
+    "M0",
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "official_code_commit": "3d10cf7a3016fc0f9bb13a071ee66c47b10be0d9",
+  "checkpoint_revision": "00f9c245bbcb60522d1ed7f9e9d88462c6e3f38a",
+  "checkpoint_SHA256": "fa06c0fdccefc5048e072c85935d5789b1e36b307f3859033c17f9dcb9fd5201",
+  "resize_mode": "fixed_size",
+  "size_width_height": [
+    280,
+    154
+  ],
+  "weights_device_dtype": "BF16 encoder/info_sharing, FP32 official AMP-disabled geometry and heads",
+  "memory_efficient_inference": true,
+  "minibatch_size": 1,
+  "amp_dtype": "bf16",
+  "apply_mask": true,
+  "mask_edges": true,
+  "apply_confidence_mask": false,
+  "is_metric_scale": true,
+  "unit": "m in model, mm in artifact",
+  "camera_convention": "OpenCV cam2world",
+  "evaluation_gauge": "T_first_frozen_camera * inverse(T_first_output_camera); no scale fitting or ICP",
+  "GT_ACCESS": "DENY",
+  "CPU_fallback": false,
+  "precision_revision": "dtype-only casts at both official AMP-disabled method boundaries; frozen before any target RGB/Mask read"
+}
