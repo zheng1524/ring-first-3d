@@ -1,0 +1,208 @@
+{
+  "task": "TASK-NEURAL-E2P5-DEPTH-AND-NEURAL-WIRING-001",
+  "status": "PROPOSED_NOT_RUN_BLOCKED_BY_CPU_GATES",
+  "GPU": "NOT_AUTHORIZED",
+  "execute": false,
+  "scenes": {
+    "G01_004": [
+      "G01_004_ref03",
+      "G01_004_ref08",
+      "G01_004_ref13"
+    ],
+    "G01_005": [
+      "G01_005_raw00057",
+      "G01_005_raw00459",
+      "G01_005_raw00745"
+    ]
+  },
+  "domains": {
+    "G01_004": {
+      "world_origin_mm": [
+        4.087487329074364,
+        10.43947934575716,
+        -6.159875060120557
+      ],
+      "mm_per_unit": 34.02703180767122,
+      "ROI_radius_mm": 22.466304910342206,
+      "old_bias_network": 0.6,
+      "idealized_old_geometric_init_radius_mm": 20.416219084602734,
+      "proposed_init_radius_mm": 11.233152455171103,
+      "proposed_bias_network": 0.3301243704906005,
+      "official_beta_initial_mm": 3.4061058839478893,
+      "official_beta_for_next_run": "UNSET_REQUIRES_PHYSICAL_UNIT_PREREGISTRATION",
+      "status": "analytic geometric-init idealization only; actual neural head still NOT_EXECUTED"
+    },
+    "G01_005": {
+      "world_origin_mm": [
+        0.2917828830804057,
+        -0.793891385404947,
+        -4.4124351955893335
+      ],
+      "mm_per_unit": 28.3780268204276,
+      "ROI_radius_mm": 10.27908157050465,
+      "old_bias_network": 0.6,
+      "idealized_old_geometric_init_radius_mm": 17.02681609225656,
+      "proposed_init_radius_mm": 5.139540785252325,
+      "proposed_bias_network": 0.1811098713019992,
+      "official_beta_initial_mm": 2.8406404847248026,
+      "official_beta_for_next_run": "UNSET_REQUIRES_PHYSICAL_UNIT_PREREGISTRATION",
+      "status": "analytic geometric-init idealization only; actual neural head still NOT_EXECUTED"
+    }
+  },
+  "model": {
+    "class_name": "official MonoSDFNetwork plain MLP",
+    "official_revision": "12513009cd20a08b35ddc2c55a7e42da2c7baf43",
+    "Grid_MLP": false,
+    "feature_vector_size": 256,
+    "implicit_dims": [
+      256,
+      256,
+      256,
+      256,
+      256,
+      256,
+      256,
+      256
+    ],
+    "multires": 6,
+    "skip_in": [
+      4
+    ],
+    "rendering_dims": [
+      256,
+      256
+    ],
+    "multires_view": 4,
+    "per_image_code": false
+  },
+  "initialization": {
+    "seed": 20261031,
+    "rule": "source ROI shell calibration proposed for NEXT bounded CPU gate; NOT RUN in this two-candidate task",
+    "radius_mm": "0.5*frozen source ROI radius",
+    "shell_point_N": 128,
+    "shell_points": "deterministic Fibonacci sphere in network coordinates",
+    "bias_rule": "create the same seeded raw-head network with bias0; b=median raw SDF on shell; reconstruct same seed with bias=b; no GT or per-group error selection",
+    "acceptance": "all three fixed source probes must have >=50% observed front hits and finite nonzero RGB/Mask/depth shared-parameter gradients",
+    "current_task_new_candidate_executed": false
+  },
+  "beta": {
+    "initial_mm": 0.08,
+    "official_beta_min_network": 0.0001,
+    "parameter_init": "0.08/mm_per_unit - 0.0001",
+    "learned": true
+  },
+  "optimizer": {
+    "type": "Adam",
+    "implicit_and_radiance_lr": 0.0001,
+    "density_beta_lr": 1e-05,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "weight_decay": 0
+  },
+  "ray_sampler": {
+    "type": "finite fixed cells, explicit raw SDF, no absorption tail",
+    "cells_per_ray": 128,
+    "official_adaptive_sampler": "NOT_VALIDATED_NOT_CLAIMED",
+    "GPU_device_port": "NOT_VALIDATED; requires newly authorized five-batch parity gate before updates"
+  },
+  "batch": {
+    "all_references_per_step": 3,
+    "per_view_region_quota": [
+      32,
+      24,
+      16,
+      16,
+      8
+    ],
+    "rays_per_view": 96,
+    "importance": "region population / sampled N",
+    "eikonal_points": 256
+  },
+  "losses": {
+    "RGB": {
+      "weight": 1.0,
+      "Huber_delta": 0.05,
+      "scope": "P_INTERIOR front hit"
+    },
+    "depth": {
+      "weight": 0.1,
+      "Huber_delta_mm": 0.5,
+      "no_scale_shift": true,
+      "missing_depth": "NaN"
+    },
+    "Mask": {
+      "weight": 0.1,
+      "type": "log-optical BCE candidate; requires actual-parameter CPU gradient validation before adoption"
+    },
+    "Eikonal": {
+      "weight": 0.1,
+      "type": "official exact norm penalty"
+    }
+  },
+  "arms": {
+    "E2P5_S0": {
+      "depth": "native",
+      "Mask_weight": 0,
+      "CAD_integral_cap": false,
+      "conflict_weight": 0.25
+    },
+    "E2P5_S1": {
+      "depth": "native",
+      "Mask_weight": 0.1,
+      "CAD_integral_cap": true,
+      "conflict_weight": 0.25
+    },
+    "E2P5_S2": "NOT_RUN_DUPLICATE_EXISTING_D0_D1_WEIGHT_POLICY; no distinct new reliability scheme certified",
+    "E2P5_S3": "CANCELLED_D2_PHYSICAL_BIAS_NOT_IDENTIFIED"
+  },
+  "common_policy": "frozen source qualification already uses Mask/ROI/CAD; no arm claims segmentation-free or zero prior CAD knowledge; source correlation normalization common",
+  "budget": {
+    "max_steps_per_run": 1000,
+    "max_minutes_per_run": 30,
+    "max_GPU_allocated_GiB": 5.0,
+    "concurrent_runs": 1,
+    "planned_runs": 4,
+    "fixed_eval_step": "final1000 only; failed runs keep NaN; no best-target checkpoint selection"
+  },
+  "stop_rules": [
+    "any nonfinite loss/gradient",
+    "any source has no front hits",
+    "source hit coverage<50% or drops>10 percentage points for3 consecutive fixed probes",
+    "camera/native data changes",
+    "VRAM>5GiB or time>30min",
+    "negative/unknown supervision enters loss",
+    "CAD penetration fraction>1% beyond0.1mm on supported surface"
+  ],
+  "evaluation": {
+    "target_identities": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/provenance/EVALUATION_IDENTITIES_FROZEN.json",
+    "strict_holdout_N": 0,
+    "source_probe_every_steps": 25,
+    "metrics": [
+      "visible Mask IoU/boundary F1 + full denominators",
+      "A→B source-RGB error/coverage/spill",
+      "supported visible surface fraction, CONFLICT/PRIOR_ONLY/UNKNOWN",
+      "fixed CAD consistency/penetration (not independent accuracy)",
+      "physical-group independent coverage, MedARE/MAE/p95/max/paired common-success N"
+    ],
+    "GT": "sealed; absolute error NaN until independent evaluation is valid",
+    "historical_baselines": [
+      "Raw",
+      "Cleaned",
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "MapAnything": "independent route, frozen E2 M0–M4; never SDF initializer"
+  },
+  "launch_blockers": [
+    "two tested initializations fail005 three-reference depth/RGB",
+    "current clamp/density tail has zero recovery gradient",
+    "partial-coverage objective loophole",
+    "new calibrated init and stable Mask must pass separately bounded CPU gate",
+    "GPU adapter/sampler parity not validated",
+    "researcher acceptance of strict holdout0 and camera/HERO uncertainty",
+    "new explicit GPU grant"
+  ]
+}

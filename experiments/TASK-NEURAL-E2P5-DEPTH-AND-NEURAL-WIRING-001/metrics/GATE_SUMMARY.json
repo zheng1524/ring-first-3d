@@ -1,0 +1,54 @@
+{
+  "gates": [
+    {
+      "Gate": "DEPTH_CONSISTENCY",
+      "status": "PASS_CONDITIONAL_DIAGNOSTICS",
+      "reason": "12方向、双资格层；不证明物理对应或真实深度精度"
+    },
+    {
+      "Gate": "RING_DEPTH_DIAGNOSTIC",
+      "status": "EVALUABLE_ALL_6_SOURCES",
+      "reason": "原生Ring独立资格、无残差筛选"
+    },
+    {
+      "Gate": "BIAS_IDENTIFIABILITY",
+      "status": "NOT_IDENTIFIED_PHYSICALLY",
+      "reason": "4个条件性稳定方向，设计秩3仍不能分离相机/材质/对应误差"
+    },
+    {
+      "Gate": "OFFICIAL_SDF_CPU",
+      "status": "PASS_ACTUAL_CPU_FORWARD_BACKWARD",
+      "reason": "真实官方670395参数；固定有限采样，官方adaptive未通过"
+    },
+    {
+      "Gate": "THREE_REFERENCE_GRADIENT",
+      "status": "PARTIAL / FAIL_FOR_TWO_VIDEO_SCOPE",
+      "reason": "004/A通过；004/B缺ref13；005/A、B均失败"
+    },
+    {
+      "Gate": "MISS_DEGENERACY",
+      "status": "RISK_IDENTIFIED_NOT_ELIMINATED",
+      "reason": "partial命中仍可降低目标；all-miss gate不足以消除风险"
+    },
+    {
+      "Gate": "GPU_MVP_READINESS",
+      "status": "NOT_READY / NOT_AUTHORIZED",
+      "reason": "新初始化/稳定loss真实参数/设备采样门槛及授权仍缺"
+    }
+  ],
+  "physical_group_N": 1,
+  "video_N": 2,
+  "reference_N": 6,
+  "CPU_unique_scene_candidate_N": 4,
+  "total_CPU_instantiations_including_exact_replay": 6,
+  "new_measurement_success_N": 0,
+  "measurement_error_metrics": null,
+  "paired_common_success_N": 0,
+  "historical_measurement_fallback_N": 0,
+  "official_model_training": "NOT_RUN",
+  "optimizer_step_N": 0,
+  "GPU": "NOT_AUTHORIZED",
+  "MapAnything_forward_N": 0,
+  "new_reconstruction_result": "NOT_CLAIMED",
+  "formal_GPU_ready": false
+}

@@ -1,0 +1,581 @@
+{
+  "task": "TASK-NEURAL-E2P5-DEPTH-AND-NEURAL-WIRING-001",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 43,
+      "sha256": "20988bebbfa40a905a253b09a675ec892587c9d36cb654992997034db2a74653"
+    },
+    {
+      "path": "CODE_REUSE_E2P5.csv",
+      "bytes": 2309,
+      "sha256": "d25a1b01393ff8a2949d1b3da8f51e3af92b36fb80ed8625ff2152a9eb668287"
+    },
+    {
+      "path": "FAILURE_LEDGER.md",
+      "bytes": 3388,
+      "sha256": "552d3165e051af84b89e786d7f30d5e5f1977e4ba37c0dc10875c414bd6b9564"
+    },
+    {
+      "path": "REPRODUCE.md",
+      "bytes": 1870,
+      "sha256": "ae68b3d96bf2a174a1482c18f3dcd45019b86e7d63f825376ddfc260ca794b12"
+    },
+    {
+      "path": "RESULT_INDEX.md",
+      "bytes": 1282,
+      "sha256": "be3b918c014c29658fde27df41ddc3969ccc3288a005b900cb814417be826a47"
+    },
+    {
+      "path": "TASK.md",
+      "bytes": 979,
+      "sha256": "43b31ec546f6ab79793cb700d7fad9f936909611f2ac583567424790f7bc0fec"
+    },
+    {
+      "path": "TECHNICAL_REPORT.md",
+      "bytes": 20747,
+      "sha256": "f0304be8ee568cba30afb7851f365694bdc822976242c8d783c92c729218317c"
+    },
+    {
+      "path": "code/bias_diagnostics.py",
+      "bytes": 7500,
+      "sha256": "28f1ab672f14d8c8b5fbc5b065f2da74016bfbc52c5f11afc451b3456df6a0f0"
+    },
+    {
+      "path": "code/common.py",
+      "bytes": 6037,
+      "sha256": "3e5fd516ff17a48431e7a438abb32e222c6d841eb3c71f38bb9d4c0d592393fe"
+    },
+    {
+      "path": "code/depth_consistency.py",
+      "bytes": 8283,
+      "sha256": "f7d1bb4ca2878ea6a2e228731fa7f6c00f53455986dfa128e8fadd169ab8dd55"
+    },
+    {
+      "path": "code/figures.py",
+      "bytes": 12209,
+      "sha256": "687fa472989640e549e4a65eeb89c69b9691e4fc2e43c13a583c137044994279"
+    },
+    {
+      "path": "code/neural_numerics_audit.py",
+      "bytes": 3732,
+      "sha256": "24bc48b848179267c62bfb0dd14f30a93249a7a015ce0b0492b1c00e27241275"
+    },
+    {
+      "path": "code/official_sdf_cpu_adapter.py",
+      "bytes": 15989,
+      "sha256": "944a8bd30e7a36a165acb10a585d1b4cb8afaec544896072296b9a8318141817"
+    },
+    {
+      "path": "code/preregister.py",
+      "bytes": 3171,
+      "sha256": "1f580c71407475007121059d90eaf8b6bf668ef020449f5acd415f86ca266b41"
+    },
+    {
+      "path": "code/report.py",
+      "bytes": 38932,
+      "sha256": "c8fbc4ffdcf4ed663ebd8e86b189ae043f378fc399dfd3e6c6fc97216aa7d77c"
+    },
+    {
+      "path": "code/ring_depth_audit.py",
+      "bytes": 3091,
+      "sha256": "53577022a893498f6a9116fc0d93bfbe6f16cf4d6ebb63822c9ff24e9ec488d5"
+    },
+    {
+      "path": "code/test_miss_degeneracy.py",
+      "bytes": 14099,
+      "sha256": "53e293ee5cc97ccdb67fdf0c9c8d7e69873c7eceb5394746451fa7563da66f21"
+    },
+    {
+      "path": "code/validate_delivery.py",
+      "bytes": 12085,
+      "sha256": "2b544bdb6ffa16f59772a543a8ca4bc6ec8586040052aec0205d3cab27f17e9b"
+    },
+    {
+      "path": "config/ACTUAL_OFFICIAL_NEURAL_CANDIDATES.json",
+      "bytes": 4516,
+      "sha256": "dd27ab1d085a937aa8f98cb09ce908c7f87c43d0988183da239fd2b7aa967080"
+    },
+    {
+      "path": "config/GPU_MVP_PROPOSED.json",
+      "bytes": 6786,
+      "sha256": "28f6d1fce99cc571f36d9effd5b0d5579f8ebeeefcae7b6585bf83639994d011"
+    },
+    {
+      "path": "config/MISS_DEGENERACY_PREREG.json",
+      "bytes": 691,
+      "sha256": "77024e644548ac56f4c3a0f1fc6f017b50a69db07fdbff285ccc54cc479068db"
+    },
+    {
+      "path": "config/PREREGISTERED.json",
+      "bytes": 2459,
+      "sha256": "7901dc13465e8be308c02329e7e1a820aafd402e408fb30a2f849baee0e1df66"
+    },
+    {
+      "path": "docs/DEPTH_CORRECTION_DECISION.md",
+      "bytes": 1922,
+      "sha256": "cbd0d60102dca9d943913ba1cf5f068d9531c3c48f1be1c6ff1d18034194faac"
+    },
+    {
+      "path": "docs/GPU_MVP_PREREGISTRATION.md",
+      "bytes": 5189,
+      "sha256": "3a53d7bbc698db89328edb184e85408ae487b5e2ef1dba94177653f64198ce59"
+    },
+    {
+      "path": "figures/Fig1_depth_conflicts.png",
+      "bytes": 753874,
+      "sha256": "52b4a908696d3535c4c5e9751a2635409dd76ad2d73cab1f7396413aeeaa6a96"
+    },
+    {
+      "path": "figures/Fig2_ring_depth_residuals.png",
+      "bytes": 433990,
+      "sha256": "58e75806630fba147e7632e7859392a074c2c91ae09cc13b78b96183a0e57e7a"
+    },
+    {
+      "path": "figures/Fig3_official_sdf_cpu.png",
+      "bytes": 303978,
+      "sha256": "c070a37f6eaf1256b3cee93a39bc8a5fd8411eb3e3aa41c8fa3db5cdb04b0709"
+    },
+    {
+      "path": "figures/Fig4_three_reference_gradients.png",
+      "bytes": 1450248,
+      "sha256": "c3fe814cb14f3fdd8cde256fe5e5feafe32a19048c1c84b1541ea8345ab4edc7"
+    },
+    {
+      "path": "inputs/USER_TASK.md",
+      "bytes": 18192,
+      "sha256": "6e89fb15684386e439a885e324dcde7de9c877b4533cab8faef85feb995934ab"
+    },
+    {
+      "path": "metrics/BIAS_DESIGN_IDENTIFIABILITY.csv",
+      "bytes": 926,
+      "sha256": "2d84bd0e2e1780b7e4a5bb5b7979d35cb5352373fe96c76a52e1900623a8d671"
+    },
+    {
+      "path": "metrics/DEGENERACY_EXPLICIT_CONCLUSION.json",
+      "bytes": 1349,
+      "sha256": "4eac62468eb24fbad4e9fb1de5016833a760531b104727d5416b651255475bb1"
+    },
+    {
+      "path": "metrics/DEGENERACY_SELECTION_COUNTEREXAMPLE.csv",
+      "bytes": 4289,
+      "sha256": "d32686328f64bbc0840c328f813813bc01044c4640122c307a28db21c3064bf8"
+    },
+    {
+      "path": "metrics/DEGENERACY_TESTS.csv",
+      "bytes": 4105,
+      "sha256": "ec65be0cae924817a90dc9ce7e8ce9a3d7649133ee3b5a524e62a14978af6499"
+    },
+    {
+      "path": "metrics/DEPTH_BIAS_DIAGNOSTICS.csv",
+      "bytes": 2619,
+      "sha256": "242c3225faf46a0e04c7f3b1dc65d5529dfd6829534e0b8afdcbcc5fe168605f"
+    },
+    {
+      "path": "metrics/DEPTH_PROJECTION_CLOSURE.csv",
+      "bytes": 451,
+      "sha256": "ca20f64883dd12ce447dee15204d8f6e1a6d2f8573448685ce20c62b2553a381"
+    },
+    {
+      "path": "metrics/GATE_SUMMARY.json",
+      "bytes": 1777,
+      "sha256": "ed5b98b1e06a08120dce5e855982a5e1be1e6f2349782113fbefdef09a86fe93"
+    },
+    {
+      "path": "metrics/HERO_PAIRWISE_DEPTH_CONFLICTS.csv",
+      "bytes": 46867,
+      "sha256": "533927f1ca46a8a36dd8ac5e1f4b2fe8c82799498663f2c247628c9d7a5d408c"
+    },
+    {
+      "path": "metrics/LAPLACE_TAIL_CANCELLATION.csv",
+      "bytes": 3819,
+      "sha256": "df7338324ab3616a128f62bee5b07e50d14794ac6b4626283b852014fa7e8428"
+    },
+    {
+      "path": "metrics/MISS_DEGENERACY_GATE.json",
+      "bytes": 563,
+      "sha256": "e978697ee1ff53f29da52b4792bea6d828a82fa1fdab99014df8233ab6743dfe"
+    },
+    {
+      "path": "metrics/NEURAL_GRADIENT_DIRECTIONS.csv",
+      "bytes": 5179,
+      "sha256": "7a145e9fe34b2c831faef38151336170a45f509c3914eb741a1d5fa16e036163"
+    },
+    {
+      "path": "metrics/NEURAL_INITIALIZATION_AND_HITS.csv",
+      "bytes": 2806,
+      "sha256": "8d120588d7de5ce141718c368ddd17cc81a85f6463573cbd7b5cd56d9ec95b52"
+    },
+    {
+      "path": "metrics/NEURAL_PER_REFERENCE_GRADIENTS.csv",
+      "bytes": 5507,
+      "sha256": "b52abd6f3cf1200a1f6e3c7ed1711deb9fead1785670436f0b6e651475556ff7"
+    },
+    {
+      "path": "metrics/OFFICIAL_SDF_CPU_GATE.json",
+      "bytes": 561,
+      "sha256": "33077cbe9034f63067d204e3f785829c1f4461ed35b7513e568e9d2d50ed6ee8"
+    },
+    {
+      "path": "metrics/OFFICIAL_SDF_CPU_RUNS.json",
+      "bytes": 4313,
+      "sha256": "72e775d21c5a16841f53efe05e8301e916162d010a732e1520f8284e675eefbf"
+    },
+    {
+      "path": "metrics/P1_DEPTH_GATE.json",
+      "bytes": 278,
+      "sha256": "a7d02808cd05832ec3571ae85b0c1d9690bec1d289c9978eb453fb736ffba650"
+    },
+    {
+      "path": "metrics/P1_GATE.json",
+      "bytes": 657,
+      "sha256": "26b0a46fdab90d5d702243be35ec12111004ac9e45c3e5eb43eb127b31569eff"
+    },
+    {
+      "path": "metrics/P1_RING_GATE.json",
+      "bytes": 225,
+      "sha256": "674f21205db261b37d704b6c37f6480c0158d702e96d2e22024df64bbecb4343"
+    },
+    {
+      "path": "metrics/PAIRWISE_QUALIFICATION_FLOW.csv",
+      "bytes": 1805,
+      "sha256": "eafa01a82fa5e130c40a28d9490399b82fc45418f3e19b82c1ec5796b1b7592d"
+    },
+    {
+      "path": "metrics/RING_BIAS_EXPLANATION_COUNTERFACTUAL.csv",
+      "bytes": 2789,
+      "sha256": "e49fcff16052b7c864c0da075b55df2cdd987e4286dd88a88794b37b339783b7"
+    },
+    {
+      "path": "metrics/RING_DEPTH_RESIDUALS.csv",
+      "bytes": 5121,
+      "sha256": "3093221a92efa52fd538f703c74b49fc3b83cfd6e2e6fca2fb5284b88e8631ac"
+    },
+    {
+      "path": "metrics/STABLE_MASK_NUMERICAL_CHECKS.csv",
+      "bytes": 271,
+      "sha256": "d68c93165afb95145111ecdfb4ce419866dff32c33d084f1d35becb2d82a8d93"
+    },
+    {
+      "path": "provenance/ATTEMPT001_DEGENERACY_TESTS.csv",
+      "bytes": 4105,
+      "sha256": "80f1eb28e7bcb2c4ac55fcc885891cbda80771535c0ba1512fb6630d048a3a05"
+    },
+    {
+      "path": "provenance/ATTEMPT001_MISS_DEGENERACY_GATE.json",
+      "bytes": 564,
+      "sha256": "ea8e38d8e33db5a1ae4c299bb97050cbece5eee3674a350a31bcece3d7832c87"
+    },
+    {
+      "path": "provenance/ATTEMPT001_STABLE_MASK_NUMERICAL_CHECKS.csv",
+      "bytes": 260,
+      "sha256": "6da547e0bcaf248e2474b338c5419ed6e731a644401509600f0d19785750b117"
+    },
+    {
+      "path": "provenance/AUTHORIZATION.json",
+      "bytes": 1146,
+      "sha256": "ea4de71be442b3b433a589f2c6a4d327c9f72bbab9497b633708c137862fcb93"
+    },
+    {
+      "path": "provenance/ENVIRONMENT.json",
+      "bytes": 582,
+      "sha256": "303534f59884d20b2b431c2bb6863c780fb2d70927d1507c0046faf90be42c2a"
+    },
+    {
+      "path": "provenance/FIGURE_MANIFEST.json",
+      "bytes": 1416,
+      "sha256": "86bacdc38a0f01b083f66fa1d42296df558111ede59f4277d28abbe0713b12a3"
+    },
+    {
+      "path": "provenance/G01_004_ref03_CPU_PIXEL_SELECTION.json",
+      "bytes": 331,
+      "sha256": "1332ca62209887eba01eb33ffd6f1983e65ed9de86bae13d9166c93ea0427a58"
+    },
+    {
+      "path": "provenance/G01_004_ref08_CPU_PIXEL_SELECTION.json",
+      "bytes": 335,
+      "sha256": "e268ac4114507448a6a8c9e3443e786b8a93bc25b04cef20e87f7a21a782f705"
+    },
+    {
+      "path": "provenance/G01_004_ref13_CPU_PIXEL_SELECTION.json",
+      "bytes": 334,
+      "sha256": "cc3d490185e1efba9b77f769e8016e42597d04cd63b93dfa40fe1431eabc8139"
+    },
+    {
+      "path": "provenance/G01_005_raw00057_CPU_PIXEL_SELECTION.json",
+      "bytes": 335,
+      "sha256": "e616b9a3123c7531db22d26dcda0993c3c098d1d0367089cdc672e0a7cb2f401"
+    },
+    {
+      "path": "provenance/G01_005_raw00459_CPU_PIXEL_SELECTION.json",
+      "bytes": 338,
+      "sha256": "bb17a4b8f2e35c7ff598d5fc887c12c4a07cc8046892cef9c2fbe027cc958f38"
+    },
+    {
+      "path": "provenance/G01_005_raw00745_CPU_PIXEL_SELECTION.json",
+      "bytes": 335,
+      "sha256": "60e98bf8b0a0e4fc8e23816f7977bd408f5057e8eb53b527245fbc6f5c029bf3"
+    },
+    {
+      "path": "provenance/GIT_SYNC_STAGE12.json",
+      "bytes": 408,
+      "sha256": "42697e202d143ceb4c08c8f96965229a463c82e1d571e20714c752fca5ba75be"
+    },
+    {
+      "path": "provenance/IDENTICAL_NETWORK_DIAGNOSTIC_REPLAY.json",
+      "bytes": 682,
+      "sha256": "c583d15cfd1af8ca571f4f39948404b0878f3a799a685e1c95407dc3c95e4b0e"
+    },
+    {
+      "path": "provenance/P1_BEFORE_DIAGNOSTICS.json",
+      "bytes": 1056,
+      "sha256": "a8c1ac4502dfa6def4af4f224ed09bd9816e7daf673558f85fc40f55c304d53f"
+    },
+    {
+      "path": "provenance/P1_IMPLEMENTATION_AND_RESULTS.json",
+      "bytes": 2021,
+      "sha256": "c80dffb0542b0670213b42b3f520c3b887b28ce1d89a56b295b5463db806f9ba"
+    },
+    {
+      "path": "provenance/P2_BEFORE_FIRST_OFFICIAL_MODEL.json",
+      "bytes": 3992,
+      "sha256": "346663a14c3e1c29dd3fc0efe659bbdd69c94d493b7d8ca7eefe893f06ec1946"
+    },
+    {
+      "path": "provenance/PROTECTED_START.json",
+      "bytes": 4846,
+      "sha256": "18e06d7dfc68444e8c5b62f37a0e6f0a90c6ca04075a7b5a88c0f57277140139"
+    },
+    {
+      "path": "provenance/READONLY_INPUT_HASHES.json",
+      "bytes": 5984,
+      "sha256": "1e77c9e335eda2021dd26cde2355f813badea962d904a345bf7ec85788a6fd7a"
+    },
+    {
+      "path": "provenance/STABLE_MASK_ATTEMPT001_FAILURE.json",
+      "bytes": 644,
+      "sha256": "980f63c2e8438248b704ff1135fd8c58ff234d0e1abcef05078a05f813333ff7"
+    },
+    {
+      "path": "provenance/STABLE_MASK_FIX_BEFORE_IDENTICAL_REPLAY.json",
+      "bytes": 3260,
+      "sha256": "23b34f45a15d6ff8e3a9a8ae3a99fc55a18fd534aad2a5fcb3ac7ade4608480a"
+    },
+    {
+      "path": "provenance/official_sdf_cpu_adapter_EXECUTED_ATTEMPT001.py.txt",
+      "bytes": 15774,
+      "sha256": "abbb442841f635c1d98adf88a163218e419d2db866677fbb3674490a8a7ade60"
+    },
+    {
+      "path": "provenance/test_miss_degeneracy_attempt001.py.txt",
+      "bytes": 9301,
+      "sha256": "5b2fe537250e9432cd662fc930f1ddd3fbfe9af027d6597d0c14b086a923d4a7"
+    },
+    {
+      "path": "visualizations/index.html",
+      "bytes": 654,
+      "sha256": "e5b5573a9d57fa201d03704cf75f38f8999261ffe8d9a6d8afe515c67e1ebc00"
+    }
+  ],
+  "LOCAL_ONLY": [
+    {
+      "path": "local_results/depth_pairs/G01_004_ref03__G01_004_ref08.npz",
+      "bytes": 822974,
+      "sha256": "eebafc1c6a26df84909960d63c407828891b57e21238e9f074803d7611bef572"
+    },
+    {
+      "path": "local_results/depth_pairs/G01_004_ref03__G01_004_ref13.npz",
+      "bytes": 797709,
+      "sha256": "d7e3befe70c16c9e393aadd4f6c9033506696a9bc2881b5e1610b8774d3de027"
+    },
+    {
+      "path": "local_results/depth_pairs/G01_004_ref08__G01_004_ref03.npz",
+      "bytes": 533375,
+      "sha256": "9b0643fffa740d789b74041c2edd33a4d43a4319e029603d1e29c6799d98533b"
+    },
+    {
+      "path": "local_results/depth_pairs/G01_004_ref08__G01_004_ref13.npz",
+      "bytes": 525195,
+      "sha256": "e512167076febdf30742a7c31a25ca2c5e71bb2be114a0086c7b41f04c0478ec"
+    },
+    {
+      "path": "local_results/depth_pairs/G01_004_ref13__G01_004_ref03.npz",
+      "bytes": 477637,
+      "sha256": "ae53f3ce98f4416a375bd76960a0b9538e55f2badc53c628c164143e15845a05"
+    },
+    {
+      "path": "local_results/depth_pairs/G01_004_ref13__G01_004_ref08.npz",
+      "bytes": 486956,
+      "sha256": "659672b8862b85db1f62ce72fa4d2d0e38ed4534bb69728494448492fa13077d"
+    },
+    {
+      "path": "local_results/depth_pairs/G01_005_raw00057__G01_005_raw00459.npz",
+      "bytes": 662218,
+      "sha256": "0a4936a050e33bb303624eebc77fa50baf2513be6c1df3f35c71952ef21a49ad"
+    },
+    {
+      "path": "local_results/depth_pairs/G01_005_raw00057__G01_005_raw00745.npz",
+      "bytes": 621420,
+      "sha256": "092d9f7bd21ebe06ef440bf6cbe3ed462facf40cf5dcc511035d3ba0bfe320aa"
+    },
+    {
+      "path": "local_results/depth_pairs/G01_005_raw00459__G01_005_raw00057.npz",
+      "bytes": 484332,
+      "sha256": "c1ce66f73fb2c483f82577027fe6c4eaf2923570c6b45ec618813fdd0a7ed1d4"
+    },
+    {
+      "path": "local_results/depth_pairs/G01_005_raw00459__G01_005_raw00745.npz",
+      "bytes": 488987,
+      "sha256": "9650a8343cf67a9e45282a9f570595109f575dded7dca028e02e7bcf3aba736f"
+    },
+    {
+      "path": "local_results/depth_pairs/G01_005_raw00745__G01_005_raw00057.npz",
+      "bytes": 532513,
+      "sha256": "15aec76dd51f45b1c9ec16715e4a6bdd1b469bed65c39818c39fe87e5d8aefb2"
+    },
+    {
+      "path": "local_results/depth_pairs/G01_005_raw00745__G01_005_raw00459.npz",
+      "bytes": 547298,
+      "sha256": "39f3fa3d7ccf5d679e9589ef1bf6a2cd1fb6749b36bb664af1858de0175cea81"
+    },
+    {
+      "path": "local_results/neural/G01_004_A_LEGACY_INIT_CONTROL_G01_004_ref03.npz",
+      "bytes": 4740,
+      "sha256": "a44bfdb3cba8efcb13ff3acd5ede94c7ffe2205d4230201d4259029531ffdb5c"
+    },
+    {
+      "path": "local_results/neural/G01_004_A_LEGACY_INIT_CONTROL_G01_004_ref08.npz",
+      "bytes": 4725,
+      "sha256": "4c9772eee2ebcf73f2cd4b82b49012b9fd344516acfb7ffd6e07d51fee991788"
+    },
+    {
+      "path": "local_results/neural/G01_004_A_LEGACY_INIT_CONTROL_G01_004_ref13.npz",
+      "bytes": 4782,
+      "sha256": "4aa484a19a0b2fdee75f4533aea5ea06920f8d680ceccc9d62973cdc82b3c058"
+    },
+    {
+      "path": "local_results/neural/G01_004_B_SOURCE_ROI_PHYSICAL_G01_004_ref03.npz",
+      "bytes": 4377,
+      "sha256": "569d99fe72283fde70230b19077fa2390cdf0caff6d2c751fba94fe9ce3e2557"
+    },
+    {
+      "path": "local_results/neural/G01_004_B_SOURCE_ROI_PHYSICAL_G01_004_ref08.npz",
+      "bytes": 4367,
+      "sha256": "25b4280879892eec65cbd5ee1a6ef79e8dfefa1487cd75c5385dddfa91c6ec55"
+    },
+    {
+      "path": "local_results/neural/G01_004_B_SOURCE_ROI_PHYSICAL_G01_004_ref13.npz",
+      "bytes": 4254,
+      "sha256": "8d8d251ca212c3da4f1afcbbee48441d3d9aceaf9222b2c50416e9676b0eab91"
+    },
+    {
+      "path": "local_results/neural/G01_005_A_LEGACY_INIT_CONTROL_G01_005_raw00057.npz",
+      "bytes": 4574,
+      "sha256": "737d3a4cc156a9eeaa60b4e5dbb5543d9573ea8f2d241702541986a5fa512a0b"
+    },
+    {
+      "path": "local_results/neural/G01_005_A_LEGACY_INIT_CONTROL_G01_005_raw00459.npz",
+      "bytes": 4587,
+      "sha256": "a7c84cdc6db14d21f4d947a77eae34f6c656a6c614cc4d194bc62261d9c1c516"
+    },
+    {
+      "path": "local_results/neural/G01_005_A_LEGACY_INIT_CONTROL_G01_005_raw00745.npz",
+      "bytes": 4574,
+      "sha256": "21027c23f52011870094109c53712aa72cdef29a4079a6bbfd3f5cc1eb2a0d9e"
+    },
+    {
+      "path": "local_results/neural/G01_005_B_SOURCE_ROI_PHYSICAL_G01_005_raw00057.npz",
+      "bytes": 4090,
+      "sha256": "7ccf069133bba93cc6694471295e8d55f300c4abd0332f471604eff1ad4a14fd"
+    },
+    {
+      "path": "local_results/neural/G01_005_B_SOURCE_ROI_PHYSICAL_G01_005_raw00459.npz",
+      "bytes": 4094,
+      "sha256": "26a0672883f849d2820118cb9e21d3aea95725363fefa78782025378672f2b24"
+    },
+    {
+      "path": "local_results/neural/G01_005_B_SOURCE_ROI_PHYSICAL_G01_005_raw00745.npz",
+      "bytes": 4079,
+      "sha256": "0501dc749506d304930df4112549d2144518883678822f06a92be2dd5cde0865"
+    },
+    {
+      "path": "local_results/ring/G01_004_ref03.npz",
+      "bytes": 215029,
+      "sha256": "3328fed3f063ec65b06c10dc7ecd75df6fe8f84c0203e6d23dcb1c16ed64afd1"
+    },
+    {
+      "path": "local_results/ring/G01_004_ref08.npz",
+      "bytes": 141919,
+      "sha256": "bd2e6da92c42b9ee5c741272861e238f0eb6fc6a90bd87fbfdbab0ac4fc64b6e"
+    },
+    {
+      "path": "local_results/ring/G01_004_ref13.npz",
+      "bytes": 136637,
+      "sha256": "76f4b2bf8d903dbea374316e48a5e9c629b2d80686a4a47691484cb7e06fee88"
+    },
+    {
+      "path": "local_results/ring/G01_005_raw00057.npz",
+      "bytes": 227426,
+      "sha256": "1b46972c2de50a5a8232c8806efd2dd0c6432e5fe9cb411cb30a3b8784bb9102"
+    },
+    {
+      "path": "local_results/ring/G01_005_raw00459.npz",
+      "bytes": 165189,
+      "sha256": "4c04692ff5eebe9a4e35825cbc0666e5018efda8eea591d75c2aaeabe513b978"
+    },
+    {
+      "path": "local_results/ring/G01_005_raw00745.npz",
+      "bytes": 189080,
+      "sha256": "56495622bbe0c4a871808e55650e32ce4f3a0c83f3619e1b66164c6dfb191c33"
+    },
+    {
+      "path": "runtime/DEGENERACY_CORRECTED.log",
+      "bytes": 1882,
+      "sha256": "8b65a285e3e7cc6fccac6792e02feda48498e0726dcb47f902fce6296e4bdce9"
+    },
+    {
+      "path": "runtime/FIGURES.log",
+      "bytes": 27,
+      "sha256": "4168d38c5af209e7de3eec8dc65660f09156a6be0326182f2ca5fcb0f1b48d3f"
+    },
+    {
+      "path": "runtime/P1_BIAS.log",
+      "bytes": 121,
+      "sha256": "f06e8b394636cf565bc7e95c9382371a80b23f2fe7b3360b1d90b212c540af1f"
+    },
+    {
+      "path": "runtime/P1_DEPTH.log",
+      "bytes": 1058,
+      "sha256": "08e90e215a0ee672d741bd078b07fac89d5976786571b756f0ed05b45ad49767"
+    },
+    {
+      "path": "runtime/P1_DEPTH_FINAL.log",
+      "bytes": 1058,
+      "sha256": "08e90e215a0ee672d741bd078b07fac89d5976786571b756f0ed05b45ad49767"
+    },
+    {
+      "path": "runtime/P1_RING.log",
+      "bytes": 345,
+      "sha256": "dd57f9613553711b0ac44079f4a132d82bc0b4c5b1140a630e94ac7d7753b6fc"
+    },
+    {
+      "path": "runtime/P2_OFFICIAL_ATTEMPT001.log",
+      "bytes": 3567,
+      "sha256": "92ed0909acac3b53beed6df6cb136f73f63c3a753957e7e3e90b05cfad446d17"
+    },
+    {
+      "path": "runtime/REPORT.log",
+      "bytes": 81,
+      "sha256": "a688e8bd99510eaa269288c8e83eaee7eac7c4f262930c3a1523b7dc19b35e13"
+    }
+  ],
+  "source_inputs": "READONLY_INPUT_HASHES.json",
+  "self_exclusions": [
+    "manifest",
+    "validation JSON",
+    "active validation logfile",
+    "final git receipt"
+  ],
+  "research_gate": "THREE_REFERENCE_GRADIENT failed; integrity does not change it",
+  "GPU": "NOT_AUTHORIZED"
+}
