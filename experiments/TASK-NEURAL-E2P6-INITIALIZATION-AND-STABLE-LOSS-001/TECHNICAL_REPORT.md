@@ -1,0 +1,169 @@
+# TASK-NEURAL-E2P6-INITIALIZATION-AND-STABLE-LOSS-001 技术报告
+
+本轮仅执行一个预先冻结的几何壳校准规则，并在真实官方神经网络上验证稳定掩膜损失、弱表面锚点及固定分母覆盖门槛。校准后，005三个参考均有真实前表面命中及颜色、深度、掩膜参数梯度；004的ref13旧固定小批量仍仅命中2/6，未达到50%，尽管额外固定射线通过，也不改判。稳定损失的60项检查均有限，但全负场仍缺有效几何梯度；弱锚点仅证明一阶方向，未证明有效表面已恢复。三种损失均保留降低覆盖换取较低误差的风险，新增评价会拒绝这种退化。本轮未读取真值、未改上游、未更新学习参数或启动GPU；两视频联合验收失败，停止初始化搜索，尚不具备正式科学训练条件。
+
+## 1. 验收结论
+
+| 项目 | 结果 | 实际边界 |
+| --- | --- | --- |
+| P1 单一壳规则 | FAIL_STOP_INITIALIZATION_SEARCH | 两视频内外符号与物理beta检查通过；004/ref13 small=2/6失败，不再搜索 |
+| P2 稳定Mask数值 | PASS_BOUNDED_NUMERICAL_TESTS | 60/60有限；48/48高精度目标对照；30/30 FP32/FP64损失及全参数梯度一致 |
+| P3 无交点恢复 | PARTIAL / NOT_VALIDATED_AS_SURFACE_RECOVERY | 全正场有几何梯度；全负场稳定Mask无有效几何梯度；候选锚点96/96一阶方向，不是实际零交叉恢复 |
+| P4 覆盖退化 | EVALUATION_REJECTS / OBJECTIVE_RISK_REMAINS | 三方案各7个低覆盖低损失反例；不能宣称损失已消除退化 |
+| P5 三参考严格门槛 | FAIL_FIXED_SOURCE_GATE | 12个参考×批次均有三类真实梯度，004/ref13旧小批量未达50% |
+| GPU MVP | NOT_READY / NOT_AUTHORIZED | 不冻结为已就绪方案，不启动GPU或训练 |
+
+Q1：**严格意义未通过**。G01_005通过本轮两批三参考条件；G01_004虽六种参考/批次都有真实神经监督，ref13旧小批量仍失败。Q2：**尚不能证明可靠表面恢复**。稳定Mask修复正空场的数值梯度，不能修复所有负饱和场；弱HERO候选产生真实几何方向，但未发生参数更新或恢复后的前交点。Q3：**风险仍在，评价识别改善，目标免疫未证明**。[GPU门槛与三问](GPU_MVP_READINESS.md)、[失败记录](FAILURE_LEDGER.md)。
+
+## 2. 授权、独立分支与固定审计表
+
+本轮仅依据用户正式E2.6请求执行；旧文档是研究背景，未将其GPU建议或历史任务重新视为授权。独立分支`exp/TASK-NEURAL-E2P6-INITIALIZATION-AND-STABLE-LOSS-001`，父提交`1eb9cc7fd49b70cf8370582dded7decb1d1cd4be`，工程/数值结果提交`261556d4c39923577d373197bccc2cdd952284ba`。最终报告版本由包含本文件的Git提交标识。继续同一研究上下文，未重新初始化项目、未重复E1/E2/E2.5审计。
+
+| 审计项目 | 必须汇报 |
+| --- | --- |
+| 目标组数 | 物理G01共1组；2独立视频、6源参考；不是6个独立息肉 |
+| 本算法独立成功 | 新测量0/1（NOT_RUN）；CPU三参考严格门槛1/2视频，完整两视频任务失败；不是重建成功率 |
+| 本算法失败 | 新测量NOT_RUN/NaN；G01_004/ref13 small 2/6失败；无前交点恢复与覆盖目标仍有门槛 |
+| 历史测量值回退 | 0；不读取S0、历史V2、旧照片直径或其他路线预测补齐 |
+| 失败组及具体原因 | G01：004/ref13固定批量覆盖不足；全负场无Mask几何恢复；详见[逐项失败与证据](FAILURE_LEDGER.md)、[图3](figures/Fig3_three_reference_neural_gate.png) |
+| 最终统计样本 | 测量N=0/全分母1，独立测量覆盖率0/1；MedARE、MAE、p95、最大误差均NaN；共同成功配对N=0，无历史融合测量比较 |
+| 是否使用GT选择算法 | 否；GT/Oracle、Dxy及目标评价帧未读；规则、来源像素和阈值均在新预测前冻结 |
+
+GPU调用0、optimizer.step 0、学习参数更新0、MapAnything前向0、checkpoint IO 0。仅初始化构造器按预注册bias构造、相同初始化的控制场和精度副本；没有optimizer实例。模型SHA在各阶段结束后保持不变，详见`provenance/*MODEL_STATES.json`与`ZERO_LEVEL_CONTROL_STATES.json`。禁止将控制副本数称为初始化候选数：**规则始终只有1个**。
+
+## 3. 最小复用与实际网络
+
+官方`model.network.MonoSDFNetwork` revision `12513009cd20a08b35ddc2c55a7e42da2c7baf43`，不是解析球或自制网络。8×256隐式MLP、PE6、skip4、feature256；颜色2×256、方向PE4；共670,395个参数、37个参数张量，两个视频各用自己的共享神经场，未跨视频注册相机或混合监督。
+
+E1的来源资格、E2的有限ROI/五类语义/固定CAD首交点/原生HERO/1或0.25冲突权重、E2.5的真实网络构造与神经梯度接线直接复用。E2有限renderer与有限单元权重以**原AST**执行；新薄适配仅将等价密度绑定改为稳定尾部计算。CPU构造器沿用E2.5对官方两处`.cuda()`常量分配的局部CPU转接（bg_color与beta_min），其余CUDA调用拒绝，本轮未写入官方源码。冻结本地官方副本包含早已审计的hashencoder惰性import改动：从模块顶层移至未使用的Grid构造器，避免plain MLP导入时编译CUDA；并非与upstream字节完全相同，MLP/密度逻辑不变，SHA与E2.5一致。官方adaptive sampler未验收；本轮仍为128个有限单元的CPU诊断器，不称正式GPU训练器。
+
+`full_gradient`实际对所有37个可学习张量调用autograd，未使用项补零，形成670,395维梯度。分别记录implicit/trunk/head/radiance/beta，**非零beta不能冒充几何恢复**。一阶锚点方向还使用完整参数点Jacobian，不是对SDF输出附加标量偏移的证明。[复用函数和SHA](CODE_REUSE_E2P6.csv)、[环境](provenance/ENVIRONMENT.json)。
+
+## 4. P1：唯一初始化规则、物理尺度与失败
+
+规则在[预注册](config/PREREGISTERED.json)和[预测前冻结记录](provenance/BEFORE_CALIBRATION_AND_LOSS_TESTS.json)中先锁定：seed20261031，固定源ROI原点O、尺度s不变，目标壳半径0.5R；128个Fibonacci方向在壳上取点。先以bias0构造官方网络，求raw head壳输出中位数b，再以**相同种子**和bias=b重新构造；没有读取GT、评价目标、重建误差，也没有对不同视频分别搜索半径或参数。两视频b不同是同一规则与各自冻结源ROI的确定性结果。
+
+坐标合同`x_net=(X_mm−O_mm)/s`、`f_mm=s*f_net`、`t_net=t_mm/s`、`beta_mm=s*beta_net`。004 s=34.02703180767122、R=22.466304910342206mm；005 s=28.3780268204276、R=10.27908157050465mm。两原点与E1 ROI中心相同，保持原Ring-First相机。beta初值0.08mm；官方beta_min=0.0001网络单位，对应0.003402703/0.002837803mm下限，不误当0.0001mm。
+
+| 视频 | 校准bias（网络单位） | 目标壳半径mm | 中心SDF mm | 壳中位数mm / abs-p95 mm | beta mm |
+| --- | --- | --- | --- | --- | --- |
+| G01_004 | 0.421399901509468 | 11.2331525 | -4.19972398 | 3.45e-07 / 1.50914 | 0.0799999967 |
+| G01_005 | 0.337392136170886 | 5.13954079 | -1.11853115 | 4.15e-07 / 0.547572 | 0.0800000026 |
+
+中心为负；128个0.25R点负比例、R边界与1.25R点正比例均为1。壳中位数接近0，但abs-p95非零，**这不是完美球壳拟合**，也不是任意方向的全局符号证明。[完整校准与参数SHA](config/SHELL_CALIBRATION_FROZEN.json)。
+
+![官方未训练raw SDF零水平集及前交点](figures/Fig1_initialization_zero_and_front.png)
+
+图1为真实官方raw head的97×97 xz截面，不是合成球，不是三维重建。黑线为实际f=0，绿虚线为预先固定壳；右列每参考取既有small集合中首条合格HERO射线，实线校准后、虚线相同种子旧B，圆点为128单元采样检测的首次正→负交叉线性插值。射线选择未看预测，图中的未命中保留。
+
+### 固定样本与每源50%门槛
+
+small沿用E2.5每源16射线、五类配额6/3/3/3/1（每源6条合格HERO）。extra在预测前按源分区固定随机种子抽64条、配额32/12/10/6/4，**排除全部旧16像素**；004/ref03 extra只有31条合格HERO，其余每源32，未补抽不利像素。extra总384射线、191条合格HERO；small总96射线、36条合格HERO；两批合计480射线、227条合格观测。源/像素身份及packet SHA见[冻结来源](provenance/SOURCE_PROBES_FROZEN.json)。区域总体/采样数作重要性修正，未使用神经输出筛选。
+
+| 源参考 | 旧固定16射线：hit/合格HERO | 不相交额外64：hit/合格HERO | 两批RGB/Mask/Depth几何梯度 | 门槛 |
+| --- | --- | --- | --- | --- |
+| G01_004_ref03 | 5/6 | 28/31 | 均有限且非零 | PASS |
+| G01_004_ref08 | 4/6 | 25/32 | 均有限且非零 | PASS |
+| G01_004_ref13 | 2/6 | 22/32 | 均有限且非零 | FAIL |
+| G01_005_raw00057 | 6/6 | 27/32 | 均有限且非零 | PASS |
+| G01_005_raw00459 | 6/6 | 29/32 | 均有限且非零 | PASS |
+| G01_005_raw00745 | 6/6 | 31/32 | 均有限且非零 | PASS |
+
+预注册要求每源在**small和extra均≥50%**，不是合并分母后掩盖失败。004/ref13 small 2/6=33.3%，extra22/32=68.75%；只能说明小样本对空间分布敏感，不能据此放宽门槛、删参考或换像素。[初始化CSV](INITIALIZATION_VALIDATION.csv)、[停止搜索门槛](metrics/INITIALIZATION_GATE.json)。此后所有网络调用均为相同校准值/固定病理控制的损失诊断，没有第二条初始化规则。
+
+同一old small与历史A、B都比较：[历史固定覆盖](metrics/HISTORICAL_FIXED_COVERAGE.csv)。相对A，004三个源从6/6降到5/6、4/6、2/6，记**3项潜在失败**；相对B无下降。新规则同时改变了相对A的物理beta等因素，不能声称单因子因果比较；不能选择“004用旧A、005用新规则”制造统一方案通过。
+
+## 5. P2：稳定Mask与数学目标
+
+有限、可见ROI段内`τ=Σ_j σ(f_j,β)Δt_j`、`p=1−exp(−τ)`；同一Mask BCE为
+
+`ℓ(y,τ)=(1−y)τ−y log(1−exp(−τ))`。
+
+稳定实现直接计算Laplace `logσ`和`logτ=logsumexp(logσ+logΔt)`。f≥0时`logσ=−log(2β)−f/β`；f<0时`logσ=−logβ+log(1−0.5 exp(f/β))`。正标签在`logτ<−20`时以`log p≈logτ`避免下溢，误差上界约1.04e−9；其余使用`log(−expm1(−τ))`。负标签损失是τ。有限段、Mask身份、权重、CAD截断均不变，未加入整射线吸收尾或让未知区参与监督。
+
+代数目标与**未截断的有限opacity BCE相同**；它不会与旧代码的数值clamp在饱和区给出相同数值或梯度。旧实现把p截在[1e−8,1−1e−8]，FP32上上界可能舍入为1，造成0×log0/非有限值；FP64饱和区虽有限，也会掩盖损失、截断梯度。移除这种数值截断是恢复原BCE，不是换监督目标。原密度正尾`1+expm1`抵消也会造成假空场，新log密度保留该尾。
+
+| 控制 | 稳定Loss及全部参数梯度有限 | 有效隐式+trunk梯度 | 旧BCE非有限损失数 |
+| --- | --- | --- | --- |
+| CALIBRATED_NORMAL | 12/12 | 12/12 | 6 |
+| ALL_POSITIVE_FIELD | 12/12 | 12/12 | 0 |
+| EMPTY_POSITIVE_RAYS | 12/12 | 12/12 | 0 |
+| ALL_NEGATIVE_FIELD | 12/12 | 0/12 | 6 |
+| RING_OCCLUDED_PREFIX | 12/12 | 12/12 | 1 |
+
+正常/全正/空正/全负/Ring前缀均使用实际G01 small射线、真实官方参数；病理场仅按预注册±2ROI/s改变初始化SDF head bias，用来控制输出符号，**随后计算完整神经梯度**，不是初始化搜索或单标量导数演示。FP32与FP64从相同官方构造参数转换；未修改网络以绕过失败。
+
+[60项梯度CSV](STABLE_MASK_GRADIENT_TESTS.csv)：稳定损失和全梯度均有限，但全负的12项不具有效implicit/trunk梯度。旧BCE的13项非有限损失全部发生FP32（正常6、全负6、Ring1），保留空值/false，未改写为0。非有限旧基线不算通过。
+
+[80位目标对照](metrics/MATH_TARGET_EQUIVALENCE.csv)：48个FP64同样本代表射线（每可用标签首条），最大绝对差7.84048381774e-10；不是另造的解析球。[30项精度表](metrics/FP32_FP64_CONSISTENCY.csv)损失及完整梯度余弦/范数均达预注册容差。另在两批全部12项中专门比较implicit向量，避免beta主导余弦：[几何精度表](metrics/PROBE_GEOMETRY_PRECISION.csv)，12/12通过。零几何梯度的FP32/64一致**不算恢复通过**。
+
+![数值和真实神经梯度](figures/Fig2_stable_mask_and_gradients.png)
+
+## 6. P3：opacity不是表面；弱HERO候选的证据上限
+
+有效前面定义沿有序有限段存在raw SDF正→负交叉（含入口到首单元），且opacity质量≥1e−4。反向负→正是出表面，不能代替前面。高opacity不是交叉证明，也不把ROI入口自动当外部。
+
+| 同一神经控制场 | 固定合格HERO数 | 真实前交叉 | 高opacity>0.98 | 高opacity但无前交叉 | 前缀入口为负 |
+| --- | --- | --- | --- | --- | --- |
+| NORMAL | 227 | 191 | 195 | 4 | 0 |
+| POSITIVE | 227 | 0 | 0 | 0 | 0 |
+| NEGATIVE | 227 | 0 | 227 | 227 | 227 |
+
+227为同一2批合格观测总数，每控制独立复核同样像素。[零面/opacity对照](metrics/ZERO_LEVEL_VS_OPACITY.csv)：正常控制有4条正密度尾形成高opacity但无零交叉；全负227条均高opacity、入口负、没有前交叉。全正227条没有前交叉与高opacity。全负时Laplace密度接近1/β、对f的导数趋零，稳定Mask也无法靠消除数值clamp获得有效几何恢复。更改beta不等于重新构成内外正确表面。
+
+因此按原冻结条件触发**唯一最小候选**Reliable-HERO Weak Surface Anchor：每源在合格原生HERO点`X=o+d*(Z/cos)`上，对`f_mm(X)`使用Huber δ=0.5mm，联合权重0.01；同源相关分量1/3、已冻结像素冲突1或0.25、区域重要性修正照旧。HERO点必须处在已有可见ROI/CAD前缀内，**不依赖预测命中**，不使用Ring后错误深度，不把HERO当精确GT，不改原始HERO、不拟合偏移/逐像素校正。
+
+24项（6源×2符号控制×2精度）均有有限真实几何/trunk梯度，最小implicit范数126.675126，beta梯度为0。将同视频3源的完整锚点梯度均值乘0.01；对每源前4个冻结合格点计算完整参数Jacobian与负联合梯度内积，96/96满足`f*df/dε<0`。[锚点梯度](metrics/WEAK_HERO_ANCHOR_GRADIENTS.csv)、[实际全参数方向](metrics/WEAK_HERO_POINT_DIRECTIONS.csv)。这说明原本没交点时可以向几何提供有效方向，**不证明有限参数更新后会出现正确前交点**，也不证明跨视角冲突消失。未施加任何学习参数更新；候选未加入正式主线。
+
+没有加入自由空间约束：源资格可证明到HERO点/CAD之前的可见性，但没有额外证据保证每个ROI入口必在息肉外。只令HERO点接近0也不能确定内外方向或排除伪面，所以Q2仍为NOT_VALIDATED_AS_SURFACE_RECOVERY。
+
+## 7. P4：固定观测分母与覆盖反例
+
+| 参考/批 | 合格/命中/未命中 | Mask / Depth / RGB Loss | 隐式参数梯度 Mask / Depth / RGB | Ring采样数 |
+| --- | --- | --- | --- | --- |
+| G01_004_ref03/small | 6/5/1 | 11.1768 / 3.94566 / 0.206024 | 6157.21 / 394.058 / 0.0260364 | 3 |
+| G01_004_ref08/small | 6/4/2 | 43.5706 / 3.51469 / 0.339676 | 2195.79 / 411.465 / 0.0269642 | 3 |
+| G01_004_ref13/small | 6/2/4 | 3.42673 / 0.995463 / 0.206353 | 334.805 / 346.898 / 0.0278792 | 3 |
+| G01_004_ref03/extra | 31/28/3 | 9.01694 / 4.61008 / 0.256056 | 1218.81 / 319.722 / 0.0237169 | 6 |
+| G01_004_ref08/extra | 32/25/7 | 24.5236 / 3.83795 / 0.323708 | 4489.61 / 391.118 / 0.0179123 | 6 |
+| G01_004_ref13/extra | 32/22/10 | 15.5405 / 4.32841 / 0.252928 | 379.825 / 512.285 / 0.0388615 | 6 |
+| G01_005_raw00057/small | 6/6/0 | 0.10739 / 0.215028 / 0.290332 | 50.818 / 145.655 / 0.051858 | 3 |
+| G01_005_raw00459/small | 6/6/0 | 0.603246 / 0.748213 / 0.279747 | 905.753 / 237.311 / 0.0348912 | 3 |
+| G01_005_raw00745/small | 6/6/0 | 0.401405 / 0.467492 / 0.196413 | 715.567 / 186.74 / 0.0306033 | 3 |
+| G01_005_raw00057/extra | 32/27/5 | 0.0931458 / 0.413262 / 0.271235 | 40.9877 / 173.204 / 0.0510999 | 6 |
+| G01_005_raw00459/extra | 32/29/3 | 0.0651838 / 0.421947 / 0.293581 | 13.4723 / 87.9023 / 0.0327539 | 6 |
+| G01_005_raw00745/extra | 32/31/1 | 0.0770607 / 0.45572 / 0.183574 | 42.3636 / 97.9321 / 0.0255256 | 6 |
+
+逐源持续记录有效HERO总数、前交点/未命中、三项损失、真正隐式参数梯度与Ring射线数；未命中depth保留NaN。原Mask与稳定Mask、候选锚点的逐项参数梯度对照见[全损失梯度CSV](metrics/PER_REFERENCE_LOSSES_AND_GRADIENTS.csv)，共享梯度关系见[方向表](metrics/SHARED_GRADIENT_DIRECTIONS.csv)。每视频同一个参数对象跨3参考和两批使用；联合数据梯度为实际源autograd向量的精确线性和，加一份共享Eikonal，不冒称离散命中计数的可微梯度。
+
+[覆盖退化CSV](COVERAGE_DEGENERACY_VALIDATION.csv)共48行：2视频×2批×保留100%/75%/25%/0命中的4种选择干预×3种目标。保持实际raw SDF、opacity、Mask项和锚点不变，按深度残差移除较难的已命中项，检验hit-gated RGB/Depth平均项的选择漏洞。这是**明确标注的损失选择敏感性控制**，不是一次连续网络运动、不是新模型预测、更不是训练结果。
+
+CURRENT、STABLE_MASK、STABLE_MASK_PLUS_WEAK_ANCHOR各7个反例（共21）出现固定观测覆盖下降且总loss更低。锚点对未命中仍有监督，但在这个选择干预中不变，故没有数学免疫；不能通过将其权重加入后总loss改变宣称覆盖已改善。所有覆盖下降均被新验收标POTENTIAL_FAILURE_COVERAGE_LOWER；全未命中Depth/RGB/total保留空值=NaN/NOT_EVALUABLE，未以0代替。计数只作记录和门槛，没有作为梯度。
+
+**已解决的是评价漏报，未解决的是优化目标风险**。本轮没有实际训练，不能报告覆盖恢复/下降的训练轨迹。下一阶段仍需在有授权的有限验证中证明机制改善覆盖，当前不能宣布Q3通过。[机器结论](metrics/COVERAGE_GATE.json)。
+
+## 8. P5：真实三参考完整验收和遮挡
+
+![六参考、两批真实命中与参数梯度](figures/Fig3_three_reference_neural_gate.png)
+
+每参考每批都有非零有限RGB、稳定Mask、Depth隐式梯度（12/12）；同视频仅一个共享SDF、跨视频独立。每源≥50%的前交点率只有11/12通过，004/ref13 small失败使完整门槛失败。[最终三参考JSON](THREE_REFERENCE_NEURAL_GATE.json)。extra不是完全独立测试集：它来自同六个训练源，只用于规模适中的可重复性检查，不冒充独立临床样本或留出评价。
+
+![真实Ring遮挡和最终可见监督资格](figures/Fig4_ring_visible_supervision.png)
+
+图4使用004/ref13与005/raw00745固定源数据。Ring只画源Ring轮廓，不把黑色CAD覆盖到可见Polyp。五类为P_INTERIOR/P_BOUNDARY/KNOWN_NEGATIVE/RING_OCCLUDED/UNKNOWN；蓝/绿为有限Mask与合格HERO的**数据监督资格**，不代表模型已命中或已重建。右列为固定采样Ring射线，积分段终点≤首次CAD命中−0.05mm。全部12个批次段查询均在已有有限范围内、在首Ring之前；后方无监督。额外[遮挡数量表](metrics/RING_OCCLUSION_COUNTS.csv)区分采样Ring类、所有CAD交点、实际可见Ring前缀及正Mask原生HERO位于CAD之后的排除数，不把样本中排除数为0误称全图无冲突。真实背景代理和资格继续沿用E2，只读且条件启用，没有新建背景预测或改CAD。遮挡顺序通过只能证明自洽，不能消除HERO/相机物理不确定性。
+
+## 9. 失败、来源保护与可复现性
+
+[失败记录](FAILURE_LEDGER.md)包括科学失败和实现事故：P2首跑使用不存在的torch.flatnonzero导致API失败，改为torch.nonzero后按同规则重跑；启动新worktree时仅修复新管理目录；start_sdf返回trace占位NaN曾被发现，按同一网络重放修复trace并断言opacity/交叉/门槛完全不变。原失败日志保留在本地ignored runtime，SHA纳入交付清单，不能将其当成功运行。
+
+保护检查只核对本轮实际复用的来源文件/函数SHA与原工作树状态，不是重做E1/E2/E2.5大审计。Ring-First相机、HERO、CAD、P0、Dxy、原用户脏修改和历史实验保持原样；未清理或删除旧产物。所有新文件限本任务目录。[来源复用](provenance/REUSED_INPUTS.json)、[终态保护](provenance/PROTECTED_END.json)、[交付清单](provenance/DELIVERY_MANIFEST.json)。NPZ射线/中间trace及运行依赖仅留本地，不上传全量源资产、视频或权重。
+
+严格全流程留出仍为0；沿用E2已冻结身份但本轮未开目标帧、不扩大数据审计。既有HERO相关性/冲突不能当独立GT；不批准参考级深度校正。绝对测量误差与历史融合配对均NOT_EVALUABLE/NaN，未生成预测直径。
+
+[复现说明](REPRODUCE.md)、[完整产物索引](RESULT_INDEX.md)、[四图浏览](visualizations/index.html)。最终完整性检查只验证数据/代码/报告一致性，不重新执行神经实验；完整性通过不得掩盖科学门槛失败。本次记录为255/255项完整性检查通过，状态`PASS_INTEGRITY_WITH_RESEARCH_GATES_FAILED`。
+
+## 10. GPU后续门槛
+
+本轮**NOT_READY / NOT_AUTHORIZED**。缺少：不改旧固定门槛的两视频统一初始化通过证据；全负场实际有意义前表面的恢复证据与内外方向依据；对hit-gated选择漏洞有实测改善的可微机制；后续另行授权的设备/有限采样CPU-GPU一致性检查；对HERO不确定性与严格留出0的PM处理；新的明确GPU授权。不得通过反复改壳、增参数、删ref13或读GT填平这些缺口。
+
+由于三问未同时通过，不将旧E2.5建议配置改标为已冻结可启动GPU MVP；只冻结本轮失败状态、来源、数值实现与候选证据，等待PM依据具体机制决定下一项有限任务。
