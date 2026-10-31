@@ -1,0 +1,222 @@
+"""P2: actual frozen official MonoSDF modules, finite E2 adapter, CPU only."""
+from common import *
+import torch,time,psutil
+if __name__=='__main__':sys.modules['official_sdf_cpu_adapter']=sys.modules[__name__]
+
+legacy=import_exact('e25_previous_finite_joint',E2C/'code/finite_joint_adapter.py')
+packet_loader=extract(E2C/'code/continuation_context.py',['source_packet'],dict(globals(),BASE=E2,baseline_asset=e2_asset))['source_packet']
+PARAMETER_GRADIENTS=[];MODEL_SUMMARIES=[];DIRECTION_ROWS=[];INIT_ROWS=[]
+
+
+def forbid_gpu(*args,**kwargs):raise PermissionError('E25_GPU_NOT_AUTHORIZED')
+torch.Tensor.cuda=forbid_gpu
+torch.cuda._lazy_init=forbid_gpu
+torch.set_num_threads(2)
+
+
+class AuthorizedFiniteCPU(legacy.FiniteJointAdapter):
+    """Only new constructor grants official modules; all E2 renderer methods reused."""
+    def __init__(self,model,domain,implicit_override=None):
+        self.model=model;self.implicit=model.implicit_network if implicit_override is None else implicit_override
+        self.radiance=model.rendering_network;self.origin=np.asarray(domain['world_origin_mm'],float)
+        self.scale=float(domain['mm_per_unit']);self.beta=model.density.get_beta()
+        assert all(p.device.type=='cpu' for p in model.parameters()) and self.beta.device.type=='cpu'
+        self.trace={};self.current_ref=None
+    def raw_outputs(self,points_mm):
+        q=super().raw_outputs(points_mm)
+        if self.current_ref is not None:
+            t=self.trace.setdefault(self.current_ref,[])
+            t.append((points_mm.detach().numpy(),q['sdf_mm'].detach().numpy()))
+        return q
+
+
+def proposals(b,scale,cells):
+    t=np.asarray(b['start'])[:,None]+(np.asarray(b['end'])-np.asarray(b['start']))[:,None]*np.linspace(0,1,cells+1)
+    return t/scale
+
+
+def packets_for(scene,refs,cfg):
+    packets=[]
+    for j,ref in enumerate(refs):
+        full=packet_loader(ref);rng=np.random.default_rng(cfg['seed']+j);chosen=[];extra=[]
+        for label,quota in enumerate(cfg['per_reference_CPU_quota']):
+            pool=np.flatnonzero(full['sampling_class']==label);n=min(quota,len(pool));ix=rng.choice(pool,n,replace=False)
+            chosen.extend(ix);extra.extend([len(pool)/n]*n)
+        chosen=np.array(chosen);n=len(full['source_pixel']);small={k:v[chosen] if isinstance(v,np.ndarray)and v.ndim>0 and len(v)==n else v for k,v in full.items()}
+        small['mask_weight']=small['mask_weight']*extra;small['depth_weight']=small['depth_weight']*extra
+        packets.append(small)
+    return packets
+
+
+def model_config(domain,candidate,cfg):
+    sys.path.insert(0,str(E0/'runtime/python'));from pyhocon import ConfigFactory
+    file=SDF/'code/confs/dtu_mlp_3views.conf';conf=ConfigFactory.parse_file(str(file)).get_config('model')
+    conf['Grid_MLP']=False
+    # Official plain-MLP constructor has no hash-grid-only options. Architecture
+    # dims/encoding/features/appearance are otherwise the frozen official config.
+    for key in ['use_grid_feature','divide_factor']:
+        conf['implicit_network'].pop(key,None)
+    if candidate=='A_LEGACY_INIT_CONTROL':
+        conf['implicit_network']['bias']=.6;conf['density']['params_init']['beta']=.1
+    else:
+        conf['implicit_network']['bias']=domain['proposed_init_radius_mm']/domain['mm_per_unit']
+        conf['density']['params_init']['beta']=.08/domain['mm_per_unit']-.0001
+    return conf
+
+
+def construct_official(conf):
+    sys.path[:0]=[str(SDF/'code'),str(E0/'runtime/python')]
+    from model.network import MonoSDFNetwork
+    calls=[]
+    def constructor_cpu(tensor,*args,**kwargs):
+        calls.append(dict(shape=list(tensor.shape),device_before=str(tensor.device),returned_device='cpu'))
+        return tensor.to(device='cpu')
+    torch.Tensor.cuda=constructor_cpu
+    try:model=MonoSDFNetwork(conf)
+    finally:torch.Tensor.cuda=forbid_gpu
+    model=model.double().cpu();model.train(False)
+    assert len(calls)==2,'unexpected CUDA constructor allocations, inspect before proceeding'
+    return model,calls
+
+
+def parameter_hash(model):
+    h=hashlib.sha256()
+    for name,t in model.state_dict().items():h.update(name.encode());h.update(t.detach().cpu().numpy().tobytes())
+    return h.hexdigest()
+
+
+def gradient(loss,params,retain=True):
+    if loss is None:return dict(norm=None,implicit_norm=None,radiance_norm=None,beta_norm=None,finite=False),None
+    gs=torch.autograd.grad(loss,[p for _,p in params],retain_graph=retain,allow_unused=True)
+    allvec=[];ig=[];norms=dict(implicit=0.,radiance=0.,beta=0.)
+    for (name,p),g in zip(params,gs):
+        gg=torch.zeros_like(p) if g is None else g
+        if not bool(torch.isfinite(gg).all()):return dict(norm=None,finite=False),None
+        vec=gg.detach().reshape(-1);allvec.append(vec)
+        k='implicit' if name.startswith('implicit_network') else 'radiance' if name.startswith('rendering_network') else 'beta'
+        norms[k]+=float((vec*vec).sum())
+        if k=='implicit':ig.append(vec)
+    return dict(norm=float(torch.sqrt(sum((v*v).sum() for v in allvec))),implicit_norm=float(np.sqrt(norms['implicit'])),
+        radiance_norm=float(np.sqrt(norms['radiance'])),beta_norm=float(np.sqrt(norms['beta'])),finite=True),torch.cat(ig)
+
+
+def per_view_terms(pred,b):
+    mask=opacity.masked_opacity_loss(pred,dict(mask_weight=b['mask_weight'],mask_target=b['mask_target']))
+    depth,meta=opacity.shared_depth_loss(pred['axial_depth_mm'],b['target_Z'],b['depth_weight'],[b['source']]*len(b['target_Z']),
+        [b['source'].rsplit('_',1)[0]]*len(b['target_Z']),render_hit=pred['render_hit'])
+    ent=meta[b['source']];depth=ent['loss']
+    rgb_valid=(b['sampling_class']==0)&pred['render_hit']&(b['mask_weight']>0)
+    rgb=None
+    if rgb_valid.any():
+        target=torch.tensor(b['RGB'][rgb_valid]);err=pred['rgb_values'][rgb_valid]-target;a=err.abs();delta=.05
+        h=torch.where(a<=delta,.5*err**2/delta,a-.5*delta).mean(-1);w=torch.tensor(b['mask_weight'][rgb_valid]);rgb=(h*w).sum()/w.sum()
+    return dict(mask=mask,depth=depth,rgb=rgb),dict(observed_N=ent['observed_N'],hit_N=ent['valid_N'],miss_N=ent['miss_N'],RGB_N=int(rgb_valid.sum()))
+
+
+def run_candidate(scene,refs,packets,domain,candidate,cfg,conf):
+    start=time.monotonic();torch.random.default_generator.manual_seed(cfg['seed'])
+    model,ports=construct_official(conf);before=parameter_hash(model);params=list(model.named_parameters())
+    adapter=AuthorizedFiniteCPU(model,domain);preds=[];vectors={};responses=[];init=[]
+    for j,b in enumerate(packets):
+        ref=b['source'];adapter.current_ref=ref
+        pred=adapter.render(b,proposals(b,domain['mm_per_unit'],cfg['sample_cells']),j);preds.append(pred)
+        terms,counts=per_view_terms(pred,b);vectors[ref]={}
+        observed=(b['depth_weight']>0)&np.isfinite(b['target_Z'])&(b['target_Z']>0)
+        positive=(b['mask_target']==1)&(b['mask_weight']>0)
+        ranges=[(float(s.min()),float(s.max())) for _,s in adapter.trace[ref]]
+        samples=np.concatenate([p for p,_ in adapter.trace[ref]]);raw=np.concatenate([s for _,s in adapter.trace[ref]])
+        o=b['origin'][0];d=b['direction'][0];along=(samples-o)@d;off=np.linalg.norm(samples-o-along[:,None]*d,axis=1);use=off<1e-5
+        trace_t=along[use];trace_sdf=raw[use];order=np.argsort(trace_t)
+        path=R/f'local_results/neural/{scene}_{candidate}_{ref}.npz';path.parent.mkdir(exist_ok=True)
+        np.savez_compressed(path,source_pixel=b['source_pixel'],opacity=pred['opacity'].detach().numpy(),depth_mm=pred['axial_depth_mm'].detach().numpy(),
+            RGB=pred['rgb_values'].detach().numpy(),render_hit=pred['render_hit'],observed=observed,Mask_target=b['mask_target'],
+            trace_t_mm=trace_t[order],trace_raw_SDF_mm=trace_sdf[order],source_trace_pixel=b['source_pixel'][0])
+        init.append(dict(scene=scene,candidate=candidate,source=ref,ray_N=len(b['source_pixel']),positive_Mask_N=int(positive.sum()),
+            qualified_HERO_N=int(observed.sum()),front_hit_N=int(pred['render_hit'].sum()),observed_hit_N=counts['hit_N'],observed_miss_N=counts['miss_N'],
+            raw_SDF_min_mm=min(x[0] for x in ranges),raw_SDF_max_mm=max(x[1] for x in ranges),
+            beta_network=float(model.density.get_beta().detach()),beta_mm=float(model.density.get_beta().detach())*domain['mm_per_unit'],
+            geometric_bias_network=float(conf['implicit_network']['bias']),fixed_sampler=True,
+            opacity_min=float(pred['opacity'].min().detach()),opacity_max=float(pred['opacity'].max().detach()),
+            source_K_c2w_frozen=True,scene_network_identity=scene+'_'+candidate,untrained=True))
+        for term,value in terms.items():
+            g,vec=gradient(value,params);vectors[ref][term]=vec
+            responses.append(dict(scene=scene,candidate=candidate,source=ref,loss=term,value=None if value is None else float(value.detach()),**counts,
+                gradient_norm=g.get('norm'),implicit_gradient_norm=g.get('implicit_norm'),radiance_gradient_norm=g.get('radiance_norm'),beta_gradient_norm=g.get('beta_norm'),
+                gradient_finite=g['finite'],status='NO_PREDICTED_FRONT_HIT' if value is None else 'MEASURED',official_network=True))
+        data_loss=terms['mask']*.1
+        for key in ['rgb','depth']:
+            if terms[key] is not None:data_loss=data_loss+terms[key]*(1 if key=='rgb' else .1)
+        _,vectors[ref]['data_total']=gradient(data_loss,params)
+        print('REAL_OFFICIAL_CPU',scene,candidate,ref,'depth observed/hit/miss',counts['observed_N'],counts['hit_N'],counts['miss_N'],flush=True)
+    adapter.current_ref=None
+    eik_pts=np.concatenate([b['origin'][:6]+b['direction'][:6]*((b['start'][:6]+b['end'][:6])/2)[:,None] for b in packets])
+    eik=adapter.eikonal(eik_pts);eg,_=gradient(eik,params)
+    responses.append(dict(scene=scene,candidate=candidate,source='SHARED_FIELD',loss='eikonal',value=float(eik.detach()),
+        observed_N=len(eik_pts),hit_N=None,miss_N=None,RGB_N=None,gradient_norm=eg['norm'],implicit_gradient_norm=eg['implicit_norm'],
+        radiance_gradient_norm=eg['radiance_norm'],beta_gradient_norm=eg['beta_norm'],gradient_finite=eg['finite'],status='MEASURED',official_network=True))
+    try:
+        joint,counts=legacy.joint_losses(preds,packets,[scene]*3,dict.fromkeys(refs,1/3),eik,cfg['test_loss_weights'])
+        jg,_=gradient(joint['total'],params);joint_status='PASS_ALL_THREE_SOURCES'
+    except legacy.IncompleteReferenceError as exc:
+        joint_status='FAIL_MISSING_REFERENCE_FRONT_HITS';jg=dict(norm=None,finite=False);counts=exc.counts
+    for i,A in enumerate(refs):
+        for B in refs[i+1:]:
+            for term in ['rgb','mask','depth','data_total']:
+                a=vectors[A][term];b=vectors[B][term];den=None if a is None or b is None else float(torch.linalg.vector_norm(a)*torch.linalg.vector_norm(b))
+                cosine=None if not den else float((a*b).sum()/den)
+                DIRECTION_ROWS.append(dict(scene=scene,candidate=candidate,A=A,B=B,loss=term,implicit_gradient_cosine=cosine,
+                    status='UNAVAILABLE_MISSING_HIT' if cosine is None else 'CONFLICTING' if cosine<0 else 'ALIGNED_OR_ORTHOGONAL',not_independent_HERO_sources=True))
+    after=parameter_hash(model);assert before==after
+    summary=dict(scene=scene,candidate=candidate,actual_class=type(model).__module__+'.'+type(model).__name__,
+        parameter_N=sum(p.numel() for _,p in params),parameter_tensors_N=len(params),constructor_CPU_ports=ports,
+        parameter_SHA_before=before,parameter_SHA_after=after,parameters_unchanged=before==after,
+        joint_status=joint_status,joint_gradient_norm=jg.get('norm'),eikonal_gradient_norm=eg['norm'],
+        time_seconds=time.monotonic()-start,RSS_MB=psutil.Process().memory_info().rss/2**20,
+        model_forward='CPU_DIAGNOSTIC_ONLY',sampler='FIXED_SAMPLER_DIAGNOSTIC_ONLY',official_adaptive_sampler_executed=False,
+        GPU_initialized=torch.cuda.is_initialized(),optimizer_step_N=0)
+    MODEL_SUMMARIES.append(summary);PARAMETER_GRADIENTS.extend(responses);INIT_ROWS.extend(init)
+    table('metrics/NEURAL_PER_REFERENCE_GRADIENTS.csv',PARAMETER_GRADIENTS);table('metrics/NEURAL_GRADIENT_DIRECTIONS.csv',DIRECTION_ROWS)
+    table('metrics/NEURAL_INITIALIZATION_AND_HITS.csv',INIT_ROWS);save('metrics/OFFICIAL_SDF_CPU_RUNS.json',MODEL_SUMMARIES)
+    if candidate=='B_SOURCE_ROI_PHYSICAL':
+        from test_miss_degeneracy import run_degeneracy
+        run_degeneracy(model,domain,packets,scene,cfg,params)
+        assert parameter_hash(model)==before
+    print('CANDIDATE_COMPLETE',scene,candidate,joint_status,'unchanged',before==after,flush=True)
+
+
+def main():
+    assert load(R/'metrics/P1_GATE.json')['P1_complete'],'P1 must finish before P2'
+    cfg=load(R/'config/PREREGISTERED.json');domains=load(E2/'config/SDF_INITIALIZATION_CANDIDATE.json')['scenes'];configs=[];batches={}
+    for scene,refs in selected().items():
+        packets=packets_for(scene,refs,cfg);batches[scene]=packets
+        for candidate in cfg['CPU_neural_candidates']:
+            conf=model_config(domains[scene],candidate,cfg);configs.append(dict(scene=scene,candidate=candidate,configuration=conf.as_plain_ordered_dict()))
+        for b in packets:
+            save('provenance/'+b['source']+'_CPU_PIXEL_SELECTION.json',dict(source=b['source'],pixel=b['source_pixel'],quota=cfg['per_reference_CPU_quota'],selection_prediction_independent=True))
+    save('config/ACTUAL_OFFICIAL_NEURAL_CANDIDATES.json',configs)
+    save('config/MISS_DEGENERACY_PREREG.json',dict(conditions=['NORMAL','PARTIAL_REMOVAL','HEAVY_REMOVAL','ALL_REMOVED'],
+        adversarial_hit_keep_fractions=[1.,.75,.25,0.],observations='frozen real native HERO observations from exact P2 CPU batches',
+        geometric_output_offset_ROI_fractions=[0.,.15,.35,1.2,-1.2],offset='diagnostic raw-head perturbation only; official parameters untouched; fifth case tests ROI-start-inside-field',
+        stable_Mask_candidate='same BCE mathematical target, evaluate log-opacity from log-optical-depth; no clamp1e-8 gradient cutoff',
+        selection_control='A_LEGACY_INIT_CONTROL in both videos; fixed positive control, not model selection',
+        not_a_training_loss_change=True,no_parameter_search=True))
+    freeze('P2_BEFORE_FIRST_OFFICIAL_MODEL.json',dict(P1_complete=True,official_revision=git(SDF,'rev-parse','HEAD'),
+        expected_revision='12513009cd20a08b35ddc2c55a7e42da2c7baf43',
+        reused_adapter=asset(E2C/'code/finite_joint_adapter.py'),official_network=asset(SDF/'code/model/network.py')))
+    for scene,refs in selected().items():
+        for candidate in cfg['CPU_neural_candidates']:
+            run_candidate(scene,refs,batches[scene],domains[scene],candidate,cfg,model_config(domains[scene],candidate,cfg))
+    from test_miss_degeneracy import legacy_selection_control
+    legacy_selection_control(cfg,batches)
+    candidateB=[x for x in MODEL_SUMMARIES if x['candidate']=='B_SOURCE_ROI_PHYSICAL'];passes=all(x['joint_status']=='PASS_ALL_THREE_SOURCES' for x in candidateB)
+    valid_terms=[x for x in PARAMETER_GRADIENTS if x['candidate']=='B_SOURCE_ROI_PHYSICAL' and x['source']!='SHARED_FIELD']
+    valid=all(x['gradient_finite'] and x['gradient_norm'] is not None and x['gradient_norm']>0 for x in valid_terms)
+    save('metrics/OFFICIAL_SDF_CPU_GATE.json',dict(OFFICIAL_SDF_CPU='PASS_ACTUAL_OFFICIAL_CPU_FORWARD_BACKWARD',
+        THREE_REFERENCE_GRADIENT='PASS' if passes and valid else 'FAIL_OR_INCOMPLETE',
+        actual_network_N=4,candidate_N=2,scene_N=2,all_parameters_unchanged=all(x['parameters_unchanged'] for x in MODEL_SUMMARIES),
+        candidateB_joint_pass=passes,candidateB_all_source_loss_gradients=valid,actual_official_adaptive_sampler_pass=False,
+        sampler='FIXED_SAMPLER_DIAGNOSTIC_ONLY',MODEL_TRAINING='NOT_RUN',OPTIMIZER_STEP=0,GPU='NOT_AUTHORIZED',
+        MAPANYTHING_FORWARD='NOT_RUN',NEW_RECONSTRUCTION_RESULT='NOT_CLAIMED'))
+    print('P2_OFFICIAL_CPU_COMPLETE',passes,valid,'no optimizer updates, no GPU',flush=True)
+
+if __name__=='__main__':main()

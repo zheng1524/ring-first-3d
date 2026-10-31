@@ -1,0 +1,8 @@
+{
+  "status": "FAILED_NUMERICAL_CANDIDATE",
+  "reason": "Mask target remained torch.uint8; unary -y wrapped to255, producing invalid negative BCE. Stable candidate results invalid; original network/legacy losses unchanged",
+  "correction": "cast targets and weights to SDF float64 before BCE; replay only two identical seeded candidate-B networks for diagnostic; no additional initialization candidate",
+  "selection_counterexample_amendment": "fixed legacy candidate A used as positive control in BOTH videos, never model selection; B has no complete three-reference hits",
+  "thresholds_changed": false,
+  "model_parameters_updated": false
+}

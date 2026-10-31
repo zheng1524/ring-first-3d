@@ -1,0 +1,31 @@
+{
+  "current_joint_loss_has_potential_coverage_error_tradeoff": true,
+  "selection_control": {
+    "scene": "G01_004",
+    "candidate": "A_LEGACY_INIT_CONTROL",
+    "baseline_coverage": 1.0,
+    "reduced_coverage": 0.3333333333333333,
+    "baseline_hit_depth_loss": 2.087327100086193,
+    "reduced_hit_depth_loss": 0.9024848094118406,
+    "baseline_joint_total": 0.689998688259986,
+    "reduced_joint_total": 0.5951667690788737,
+    "caveat": "selection-only structural counterexample, not a claimed physically attainable field"
+  },
+  "actual_neural_empty_field": {
+    "scene": "G01_005",
+    "candidate": "B_SOURCE_ROI_PHYSICAL",
+    "observed_N": 18,
+    "hit_N": 0,
+    "old_clamped_Mask_offset_gradient": 0.0,
+    "stable_log_Mask_offset_gradient": 3.5532705603879933,
+    "caveat": "continuous output-offset derivative; not a neural optimizer step or recovered geometry"
+  },
+  "required_actions": [
+    "fixed observed denominator and all source coverage in monitoring",
+    "reject missing reference; add partial-coverage floor as a stop rule, never as fake gradient",
+    "validate log-optical BCE candidate on actual neural parameter gradients before future adoption",
+    "calibrate source-geometric initialization in separately approved bounded CPU gate"
+  ],
+  "not_eliminated_by_current_joint_gate": true,
+  "GPU": "NOT_AUTHORIZED"
+}

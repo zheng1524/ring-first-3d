@@ -1,0 +1,226 @@
+[
+  {
+    "scene": "G01_004",
+    "candidate": "A_LEGACY_INIT_CONTROL",
+    "configuration": {
+      "feature_vector_size": 256,
+      "scene_bounding_sphere": 5.0,
+      "Grid_MLP": false,
+      "implicit_network": {
+        "d_in": 3,
+        "d_out": 1,
+        "dims": [
+          256,
+          256,
+          256,
+          256,
+          256,
+          256,
+          256,
+          256
+        ],
+        "geometric_init": true,
+        "bias": 0.6,
+        "skip_in": [
+          4
+        ],
+        "weight_norm": true,
+        "multires": 6
+      },
+      "rendering_network": {
+        "mode": "idr",
+        "d_in": 9,
+        "d_out": 3,
+        "dims": [
+          256,
+          256
+        ],
+        "weight_norm": true,
+        "multires_view": 4
+      },
+      "density": {
+        "params_init": {
+          "beta": 0.1
+        },
+        "beta_min": 0.0001
+      },
+      "ray_sampler": {
+        "near": 2.0,
+        "N_samples": 64,
+        "N_samples_eval": 128,
+        "N_samples_extra": 32,
+        "eps": 0.1,
+        "beta_iters": 10,
+        "max_total_iters": 5
+      }
+    }
+  },
+  {
+    "scene": "G01_004",
+    "candidate": "B_SOURCE_ROI_PHYSICAL",
+    "configuration": {
+      "feature_vector_size": 256,
+      "scene_bounding_sphere": 5.0,
+      "Grid_MLP": false,
+      "implicit_network": {
+        "d_in": 3,
+        "d_out": 1,
+        "dims": [
+          256,
+          256,
+          256,
+          256,
+          256,
+          256,
+          256,
+          256
+        ],
+        "geometric_init": true,
+        "bias": 0.3301243704906005,
+        "skip_in": [
+          4
+        ],
+        "weight_norm": true,
+        "multires": 6
+      },
+      "rendering_network": {
+        "mode": "idr",
+        "d_in": 9,
+        "d_out": 3,
+        "dims": [
+          256,
+          256
+        ],
+        "weight_norm": true,
+        "multires_view": 4
+      },
+      "density": {
+        "params_init": {
+          "beta": 0.0022510719492719435
+        },
+        "beta_min": 0.0001
+      },
+      "ray_sampler": {
+        "near": 2.0,
+        "N_samples": 64,
+        "N_samples_eval": 128,
+        "N_samples_extra": 32,
+        "eps": 0.1,
+        "beta_iters": 10,
+        "max_total_iters": 5
+      }
+    }
+  },
+  {
+    "scene": "G01_005",
+    "candidate": "A_LEGACY_INIT_CONTROL",
+    "configuration": {
+      "feature_vector_size": 256,
+      "scene_bounding_sphere": 5.0,
+      "Grid_MLP": false,
+      "implicit_network": {
+        "d_in": 3,
+        "d_out": 1,
+        "dims": [
+          256,
+          256,
+          256,
+          256,
+          256,
+          256,
+          256,
+          256
+        ],
+        "geometric_init": true,
+        "bias": 0.6,
+        "skip_in": [
+          4
+        ],
+        "weight_norm": true,
+        "multires": 6
+      },
+      "rendering_network": {
+        "mode": "idr",
+        "d_in": 9,
+        "d_out": 3,
+        "dims": [
+          256,
+          256
+        ],
+        "weight_norm": true,
+        "multires_view": 4
+      },
+      "density": {
+        "params_init": {
+          "beta": 0.1
+        },
+        "beta_min": 0.0001
+      },
+      "ray_sampler": {
+        "near": 2.0,
+        "N_samples": 64,
+        "N_samples_eval": 128,
+        "N_samples_extra": 32,
+        "eps": 0.1,
+        "beta_iters": 10,
+        "max_total_iters": 5
+      }
+    }
+  },
+  {
+    "scene": "G01_005",
+    "candidate": "B_SOURCE_ROI_PHYSICAL",
+    "configuration": {
+      "feature_vector_size": 256,
+      "scene_bounding_sphere": 5.0,
+      "Grid_MLP": false,
+      "implicit_network": {
+        "d_in": 3,
+        "d_out": 1,
+        "dims": [
+          256,
+          256,
+          256,
+          256,
+          256,
+          256,
+          256,
+          256
+        ],
+        "geometric_init": true,
+        "bias": 0.1811098713019992,
+        "skip_in": [
+          4
+        ],
+        "weight_norm": true,
+        "multires": 6
+      },
+      "rendering_network": {
+        "mode": "idr",
+        "d_in": 9,
+        "d_out": 3,
+        "dims": [
+          256,
+          256
+        ],
+        "weight_norm": true,
+        "multires_view": 4
+      },
+      "density": {
+        "params_init": {
+          "beta": 0.002719082542497737
+        },
+        "beta_min": 0.0001
+      },
+      "ray_sampler": {
+        "near": 2.0,
+        "N_samples": 64,
+        "N_samples_eval": 128,
+        "N_samples_extra": 32,
+        "eps": 0.1,
+        "beta_iters": 10,
+        "max_total_iters": 5
+      }
+    }
+  }
+]

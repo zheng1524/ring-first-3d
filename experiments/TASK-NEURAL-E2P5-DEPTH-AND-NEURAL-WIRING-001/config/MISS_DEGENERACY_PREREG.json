@@ -1,0 +1,26 @@
+{
+  "conditions": [
+    "NORMAL",
+    "PARTIAL_REMOVAL",
+    "HEAVY_REMOVAL",
+    "ALL_REMOVED"
+  ],
+  "adversarial_hit_keep_fractions": [
+    1.0,
+    0.75,
+    0.25,
+    0.0
+  ],
+  "observations": "frozen real native HERO observations from exact P2 CPU batches",
+  "geometric_output_offset_ROI_fractions": [
+    0.0,
+    0.15,
+    0.35,
+    1.2,
+    -1.2
+  ],
+  "offset": "diagnostic raw-head perturbation only; official parameters untouched; fifth case tests ROI-start-inside-field",
+  "stable_Mask_candidate": "same BCE mathematical target, evaluate log-opacity from log-optical-depth; no clamp1e-8 gradient cutoff",
+  "not_a_training_loss_change": true,
+  "no_parameter_search": true
+}
