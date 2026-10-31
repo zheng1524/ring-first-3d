@@ -1,0 +1,20 @@
+test,pass_,detail
+five ray semantics present,True,"{""VISIBLE_POLYP"": 577, ""VISIBLE_NONPOLYP"": 990, ""RING_CENSORED"": 688, ""BACKGROUND_CENSORED"": 840, ""UNKNOWN"": 6121}"
+visible positive opacity responds to Sphere,True,"{""N"": 577, ""median"": 1.0}"
+Ring/BG censored prefixes do not absorb hidden Sphere,True,"{""N"": 1528, ""p95"": 3.383453674745791e-05}"
+unknown has zero supervision weight,True,
+no hidden segment supervised,True,
+samples only inside finite ROI and before first occluder,True,
+positive mask/occluder contradiction retained as unknown,True,
+E0 saturated tail rejected for an empty Polyp field,True,"{""old_opacity"": 1.0, ""new_max"": 0.0}"
+occluder before ROI evaluates zero SDF samples,True,
+opacity continuous as background crosses Sphere,True,"{""max_adjacent_change"": 0.016119443124160193, ""step_mm"": 0.004000000000001336, ""start"": 3.7164548375547696e-12, ""end"": 1.0}"
+finite opacity matches closed-form Beer-Lambert integral,True,
+adaptive sampler bridge inserts ROI bounds and excludes terminator,True,
+source rays use axial Z to ray length conversion,True,
+world/network units close in mm,True,
+opacity invariant to mm/network gauge,True,
+geometry gradient agrees with independent finite differences,True,"{""autograd"": 3.6098133068375056, ""finite_difference"": 3.6098132963624514}"
+positive/negative Mask losses have opposite nonzero geometry gradients,True,"{""positive"": -4.270880975255878, ""negative"": 23.321489936550343}"
+unknown contributes zero Mask loss,True,
+background mesh first-hit coordinates are axial/ray consistent,True,"{""rear_triangle_hit_N"": 7594, ""max_error_mm"": 0.0, ""selection"": ""actual primitive_id 2/3; no ray-length heuristic""}"

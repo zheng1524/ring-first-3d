@@ -1,0 +1,32 @@
+{
+  "frozen_before_tests": true,
+  "projection_px": 1e-06,
+  "unit_roundtrip_mm": 1e-06,
+  "CAD_mm": 0.05,
+  "bg_agreement_mm": 0.5,
+  "bg_pixel_footprints": 3,
+  "bg_min_support": 1,
+  "background_policy": "only archived quality=true, exact source UV, same-camera cached HERO-derived observed background; sparse, no hole fill; prior not GT",
+  "roi_margin_mm": 1.0,
+  "quadrature_bins": 512,
+  "synthetic_beta_mm": 0.08,
+  "analytic_abs_tol": 1e-05,
+  "opacity_integral_abs_tol": 0.002,
+  "continuity_max_step": 0.03,
+  "gradient_abs_tol": 1e-05,
+  "depth_huber_mm": 0.5,
+  "conflict_weight": 0.25,
+  "weight_policy": "inverse shared-HERO connected-component size; conflicting source target weight 0.25; per-view normalization; equal view loss mean",
+  "rays_per_class_per_view": 64,
+  "seed": 20261031,
+  "ray_semantics": [
+    "VISIBLE_POLYP",
+    "VISIBLE_NONPOLYP",
+    "RING_CENSORED",
+    "BACKGROUND_CENSORED",
+    "UNKNOWN"
+  ],
+  "GPU": "NOT_GRANTED",
+  "model_run_N": 0,
+  "weight_update_N": 0
+}

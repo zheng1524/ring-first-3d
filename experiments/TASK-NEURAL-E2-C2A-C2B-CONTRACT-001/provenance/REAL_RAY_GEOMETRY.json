@@ -1,0 +1,987 @@
+[
+  {
+    "scene": "G01_004",
+    "source": "G01_004_ref03",
+    "source_camera_frame": "G01_004_LOCAL_RING_MM",
+    "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+    "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_003.png",
+    "image_pixel_N": 230400,
+    "class_counts": {
+      "VISIBLE_POLYP": 23465,
+      "VISIBLE_NONPOLYP": 7688,
+      "RING_CENSORED": 7985,
+      "BACKGROUND_CENSORED": 72827,
+      "UNKNOWN": 118435
+    },
+    "reason_counts": {
+      "CAD_CENSORS_BACKGROUND_RAY": 491,
+      "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 7688,
+      "OBSERVED_POLYP_IN_VISIBLE_ROI": 23465,
+      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 878,
+      "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 72827,
+      "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 7494,
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 117557
+    },
+    "positive_Mask_pixel_N": 24343,
+    "positive_Mask_unknown_N": 878,
+    "finite_depth_supervision_N": 23465,
+    "background": {
+      "source": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_004_ref03.npz",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 7171481,
+        "sha256": "8915b6b1ce54f24870e879784550ec5e41e76b0a97831532203b8e51ede839fb"
+      },
+      "status": "QUALIFIED_SOURCE_SPARSE_PROXY",
+      "not_GT": true,
+      "source_frame": "G01_004_ref03",
+      "raw_point_N": 198076,
+      "cached_quality_N": 93593,
+      "eligible_point_N": 93593,
+      "projection_max_px": 3.765876499528531e-13,
+      "quality_projection_max_px": 3.481659405224491e-13,
+      "source_RGB_SHA256": "ef790aaf2bc0a7344418358ca094701c4b0ba53aad507c79eb42a63710320189",
+      "native_HERO": "f6a3b3bdc790716690e0da5dec16692739d0a49836247f4cc73635c45bdd02cc",
+      "producer_code": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/code/assets.py",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 4893,
+        "sha256": "5cfd4df3cd1a3d05bd79ff89f6d213c6c978876693d9b2a3c7fc9e666f272f91"
+      },
+      "producer_config": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/config.json",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 2772,
+        "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
+      },
+      "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+    },
+    "domain": {
+      "id": "VISIBLE_ROI_CENTER_ENVELOPE",
+      "center_mm": [
+        4.087487329074364,
+        10.43947934575716,
+        -6.159875060120557
+      ],
+      "mm_per_unit": 34.02703180767122,
+      "radius_units": 2.5,
+      "near_units": 0.05,
+      "far_units": 8.75,
+      "physical_radius_mm": 85.06757951917805,
+      "physical_reason": "Enclose actual frozen camera+visible source ROI with 10 beta free-space clearance; no error search",
+      "mask_contract": "ROI-truncated finite opacity; official full-ray weight sum is invalid for Polyp silhouette",
+      "ROI_center_mm": [
+        4.087487329074364,
+        10.43947934575716,
+        -6.159875060120557
+      ],
+      "ROI_radius_mm": 22.466304910342206,
+      "official_sampler_executed": false,
+      "neural_forward": false
+    },
+    "ray_artifact": {
+      "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_004_ref03.npz",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 5752440,
+      "sha256": "cf5b6852b6e82ff6d73727f71c4324eeb7ac1e51194cd4e4b820847881d2b863"
+    },
+    "camera_source": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_camera_0.npz",
+      "exists": true,
+      "roles": [
+        "camera_file"
+      ],
+      "bytes": 60006,
+      "sha256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b"
+    },
+    "native_source": {
+      "source": "G01_004_ref03",
+      "scene": "G01_004",
+      "display_pointer": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/predictions/real_0_B7_r03.npz",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_B7_r03.npz",
+      "role": "actual_native_HERO",
+      "status": "AVAILABLE",
+      "bytes": 987444,
+      "sha256": "f6a3b3bdc790716690e0da5dec16692739d0a49836247f4cc73635c45bdd02cc",
+      "expected_SHA256": "f6a3b3bdc790716690e0da5dec16692739d0a49836247f4cc73635c45bdd02cc",
+      "hash_match": true,
+      "keys": [
+        "depth_mm",
+        "K_index",
+        "K_edge",
+        "pose",
+        "c2w",
+        "source_frames",
+        "reference",
+        "sky_mask",
+        "depth_masked",
+        "cost_volume"
+      ],
+      "array_shapes": {
+        "depth_mm": [
+          352,
+          640
+        ],
+        "K_index": [
+          3,
+          3
+        ],
+        "K_edge": [
+          3,
+          3
+        ],
+        "pose": [
+          4,
+          4
+        ],
+        "c2w": [
+          16,
+          4,
+          4
+        ],
+        "source_frames": [
+          6
+        ],
+        "reference": [],
+        "sky_mask": [
+          352,
+          640
+        ],
+        "depth_masked": [
+          352,
+          640
+        ],
+        "cost_volume": [
+          88,
+          160
+        ]
+      },
+      "native_identity": "RAW_CHAIN_CORRECTED"
+    },
+    "independent_model_output": false
+  },
+  {
+    "scene": "G01_004",
+    "source": "G01_004_ref08",
+    "source_camera_frame": "G01_004_LOCAL_RING_MM",
+    "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_008.png",
+    "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_008.png",
+    "image_pixel_N": 230400,
+    "class_counts": {
+      "VISIBLE_POLYP": 13590,
+      "VISIBLE_NONPOLYP": 2450,
+      "RING_CENSORED": 5492,
+      "BACKGROUND_CENSORED": 47235,
+      "UNKNOWN": 161633
+    },
+    "reason_counts": {
+      "CAD_CENSORS_BACKGROUND_RAY": 530,
+      "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 2450,
+      "OBSERVED_POLYP_IN_VISIBLE_ROI": 13590,
+      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 439,
+      "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 47235,
+      "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 4962,
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 161194
+    },
+    "positive_Mask_pixel_N": 14029,
+    "positive_Mask_unknown_N": 439,
+    "finite_depth_supervision_N": 13590,
+    "background": {
+      "source": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_004_ref08.npz",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 7635136,
+        "sha256": "94632e249ffc18d9de3cdec56bc6383bf556b6895c84fc9bb1164ae98bea3fb2"
+      },
+      "status": "QUALIFIED_SOURCE_SPARSE_PROXY",
+      "not_GT": true,
+      "source_frame": "G01_004_ref08",
+      "raw_point_N": 210939,
+      "cached_quality_N": 60018,
+      "eligible_point_N": 60018,
+      "projection_max_px": 3.8458125573015423e-13,
+      "quality_projection_max_px": 2.2737367544323206e-13,
+      "source_RGB_SHA256": "b55fb8006554280cc9eee2ac867151c7fd15eb19f6b98fcba84429d6eece3171",
+      "native_HERO": "7a46ef614af626faff1268fa5559031cc58a448bf43712342b33a57937d6fcc8",
+      "producer_code": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/code/assets.py",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 4893,
+        "sha256": "5cfd4df3cd1a3d05bd79ff89f6d213c6c978876693d9b2a3c7fc9e666f272f91"
+      },
+      "producer_config": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/config.json",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 2772,
+        "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
+      },
+      "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+    },
+    "domain": {
+      "id": "VISIBLE_ROI_CENTER_ENVELOPE",
+      "center_mm": [
+        4.087487329074364,
+        10.43947934575716,
+        -6.159875060120557
+      ],
+      "mm_per_unit": 34.02703180767122,
+      "radius_units": 2.5,
+      "near_units": 0.05,
+      "far_units": 8.75,
+      "physical_radius_mm": 85.06757951917805,
+      "physical_reason": "Enclose actual frozen camera+visible source ROI with 10 beta free-space clearance; no error search",
+      "mask_contract": "ROI-truncated finite opacity; official full-ray weight sum is invalid for Polyp silhouette",
+      "ROI_center_mm": [
+        4.087487329074364,
+        10.43947934575716,
+        -6.159875060120557
+      ],
+      "ROI_radius_mm": 22.466304910342206,
+      "official_sampler_executed": false,
+      "neural_forward": false
+    },
+    "ray_artifact": {
+      "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_004_ref08.npz",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 5297406,
+      "sha256": "0e2f4e1decfee9839eda99d9ffcd789d0566c48faaf0d33f7f12b11f52b2d090"
+    },
+    "camera_source": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_camera_0.npz",
+      "exists": true,
+      "roles": [
+        "camera_file"
+      ],
+      "bytes": 60006,
+      "sha256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b"
+    },
+    "native_source": {
+      "source": "G01_004_ref08",
+      "scene": "G01_004",
+      "display_pointer": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/predictions/real_0_A2_r08.npz",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_A2_r08.npz",
+      "role": "actual_native_HERO",
+      "status": "AVAILABLE",
+      "bytes": 1007180,
+      "sha256": "7a46ef614af626faff1268fa5559031cc58a448bf43712342b33a57937d6fcc8",
+      "expected_SHA256": "7a46ef614af626faff1268fa5559031cc58a448bf43712342b33a57937d6fcc8",
+      "hash_match": true,
+      "keys": [
+        "depth_mm",
+        "K_index",
+        "K_edge",
+        "pose",
+        "c2w",
+        "source_frames",
+        "reference",
+        "sky_mask",
+        "depth_masked",
+        "cost_volume"
+      ],
+      "array_shapes": {
+        "depth_mm": [
+          352,
+          640
+        ],
+        "K_index": [
+          3,
+          3
+        ],
+        "K_edge": [
+          3,
+          3
+        ],
+        "pose": [
+          4,
+          4
+        ],
+        "c2w": [
+          16,
+          4,
+          4
+        ],
+        "source_frames": [
+          7
+        ],
+        "reference": [],
+        "sky_mask": [
+          352,
+          640
+        ],
+        "depth_masked": [
+          352,
+          640
+        ],
+        "cost_volume": [
+          88,
+          160
+        ]
+      },
+      "native_identity": "RAW_CHAIN_CORRECTED"
+    },
+    "independent_model_output": false
+  },
+  {
+    "scene": "G01_004",
+    "source": "G01_004_ref13",
+    "source_camera_frame": "G01_004_LOCAL_RING_MM",
+    "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_013.png",
+    "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_013.png",
+    "image_pixel_N": 230400,
+    "class_counts": {
+      "VISIBLE_POLYP": 12686,
+      "VISIBLE_NONPOLYP": 5076,
+      "RING_CENSORED": 5122,
+      "BACKGROUND_CENSORED": 40648,
+      "UNKNOWN": 166868
+    },
+    "reason_counts": {
+      "CAD_CENSORS_BACKGROUND_RAY": 314,
+      "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 5076,
+      "OBSERVED_POLYP_IN_VISIBLE_ROI": 12686,
+      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 324,
+      "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 40648,
+      "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 4808,
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 166544
+    },
+    "positive_Mask_pixel_N": 13010,
+    "positive_Mask_unknown_N": 324,
+    "finite_depth_supervision_N": 12686,
+    "background": {
+      "source": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_004_ref13.npz",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 7664178,
+        "sha256": "4b2850ecc679c410402d4f9c3951de63abcdc43bc5931970affee901129b5976"
+      },
+      "status": "QUALIFIED_SOURCE_SPARSE_PROXY",
+      "not_GT": true,
+      "source_frame": "G01_004_ref13",
+      "raw_point_N": 212182,
+      "cached_quality_N": 56944,
+      "eligible_point_N": 56944,
+      "projection_max_px": 5.258016244624741e-13,
+      "quality_projection_max_px": 3.410605131648481e-13,
+      "source_RGB_SHA256": "a5d01a25f8acf1466ca355a0b2983344ed1406829f329ef2ffef9a5e54776f87",
+      "native_HERO": "bb34be21e7667c33bbfdb698eecda924fc4ccd936270bcb32a3d26f501fadb51",
+      "producer_code": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/code/assets.py",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 4893,
+        "sha256": "5cfd4df3cd1a3d05bd79ff89f6d213c6c978876693d9b2a3c7fc9e666f272f91"
+      },
+      "producer_config": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/config.json",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 2772,
+        "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
+      },
+      "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+    },
+    "domain": {
+      "id": "VISIBLE_ROI_CENTER_ENVELOPE",
+      "center_mm": [
+        4.087487329074364,
+        10.43947934575716,
+        -6.159875060120557
+      ],
+      "mm_per_unit": 34.02703180767122,
+      "radius_units": 2.5,
+      "near_units": 0.05,
+      "far_units": 8.75,
+      "physical_radius_mm": 85.06757951917805,
+      "physical_reason": "Enclose actual frozen camera+visible source ROI with 10 beta free-space clearance; no error search",
+      "mask_contract": "ROI-truncated finite opacity; official full-ray weight sum is invalid for Polyp silhouette",
+      "ROI_center_mm": [
+        4.087487329074364,
+        10.43947934575716,
+        -6.159875060120557
+      ],
+      "ROI_radius_mm": 22.466304910342206,
+      "official_sampler_executed": false,
+      "neural_forward": false
+    },
+    "ray_artifact": {
+      "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_004_ref13.npz",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 5243703,
+      "sha256": "554429653cb3c664602bc6744227d3b2641a3278ba2657001a5bb77bf834d453"
+    },
+    "camera_source": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_camera_0.npz",
+      "exists": true,
+      "roles": [
+        "camera_file"
+      ],
+      "bytes": 60006,
+      "sha256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b"
+    },
+    "native_source": {
+      "source": "G01_004_ref13",
+      "scene": "G01_004",
+      "display_pointer": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/predictions/real_0_B7_r13.npz",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_B7_r13.npz",
+      "role": "actual_native_HERO",
+      "status": "AVAILABLE",
+      "bytes": 993769,
+      "sha256": "bb34be21e7667c33bbfdb698eecda924fc4ccd936270bcb32a3d26f501fadb51",
+      "expected_SHA256": "bb34be21e7667c33bbfdb698eecda924fc4ccd936270bcb32a3d26f501fadb51",
+      "hash_match": true,
+      "keys": [
+        "depth_mm",
+        "K_index",
+        "K_edge",
+        "pose",
+        "c2w",
+        "source_frames",
+        "reference",
+        "sky_mask",
+        "depth_masked",
+        "cost_volume"
+      ],
+      "array_shapes": {
+        "depth_mm": [
+          352,
+          640
+        ],
+        "K_index": [
+          3,
+          3
+        ],
+        "K_edge": [
+          3,
+          3
+        ],
+        "pose": [
+          4,
+          4
+        ],
+        "c2w": [
+          16,
+          4,
+          4
+        ],
+        "source_frames": [
+          6
+        ],
+        "reference": [],
+        "sky_mask": [
+          352,
+          640
+        ],
+        "depth_masked": [
+          352,
+          640
+        ],
+        "cost_volume": [
+          88,
+          160
+        ]
+      },
+      "native_identity": "RAW_CHAIN_CORRECTED"
+    },
+    "independent_model_output": false
+  },
+  {
+    "scene": "G01_005",
+    "source": "G01_005_raw00057",
+    "source_camera_frame": "G01_005_LOCAL_RING_MM",
+    "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/v005_00057.png",
+    "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00057.png",
+    "image_pixel_N": 230400,
+    "class_counts": {
+      "VISIBLE_POLYP": 19361,
+      "VISIBLE_NONPOLYP": 19629,
+      "RING_CENSORED": 9191,
+      "BACKGROUND_CENSORED": 16015,
+      "UNKNOWN": 166204
+    },
+    "reason_counts": {
+      "CAD_CENSORS_BACKGROUND_RAY": 533,
+      "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 19629,
+      "OBSERVED_POLYP_IN_VISIBLE_ROI": 19361,
+      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 452,
+      "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 16015,
+      "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 8658,
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 165752
+    },
+    "positive_Mask_pixel_N": 19813,
+    "positive_Mask_unknown_N": 452,
+    "finite_depth_supervision_N": 19361,
+    "background": {
+      "source": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_005_raw00057.npz",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 7173946,
+        "sha256": "ee451a86965618d112a1670294294298acb0af705cdee34a6a13b0693bb461e8"
+      },
+      "status": "QUALIFIED_SOURCE_SPARSE_PROXY",
+      "not_GT": true,
+      "source_frame": "G01_005_raw00057",
+      "raw_point_N": 200985,
+      "cached_quality_N": 76604,
+      "eligible_point_N": 76604,
+      "projection_max_px": 2.4868995751603507e-13,
+      "quality_projection_max_px": 2.2737367544323206e-13,
+      "source_RGB_SHA256": "484acb9c2dcc7b5615837c574cc12e8df5c3284adde0295b6f74f6e468c32740",
+      "native_HERO": "967bbe353ab2001306de9382925b8e030fb3bcec922c6214070b4faca8deace4",
+      "producer_code": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/code/assets.py",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 4893,
+        "sha256": "5cfd4df3cd1a3d05bd79ff89f6d213c6c978876693d9b2a3c7fc9e666f272f91"
+      },
+      "producer_config": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/config.json",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 2772,
+        "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
+      },
+      "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+    },
+    "domain": {
+      "id": "VISIBLE_ROI_CENTER_ENVELOPE",
+      "center_mm": [
+        0.2917828830804057,
+        -0.793891385404947,
+        -4.4124351955893335
+      ],
+      "mm_per_unit": 28.3780268204276,
+      "radius_units": 2.5,
+      "near_units": 0.05,
+      "far_units": 8.75,
+      "physical_radius_mm": 70.945067051069,
+      "physical_reason": "Enclose actual frozen camera+visible source ROI with 10 beta free-space clearance; no error search",
+      "mask_contract": "ROI-truncated finite opacity; official full-ray weight sum is invalid for Polyp silhouette",
+      "ROI_center_mm": [
+        0.2917828830804057,
+        -0.793891385404947,
+        -4.4124351955893335
+      ],
+      "ROI_radius_mm": 10.27908157050465,
+      "official_sampler_executed": false,
+      "neural_forward": false
+    },
+    "ray_artifact": {
+      "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_005_raw00057.npz",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 4257039,
+      "sha256": "bbfc57a4b24321e93de211021a2d471cc9f1f0474f806db7af4a00f029a562fc"
+    },
+    "camera_source": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/local005_camera_0.npz",
+      "exists": true,
+      "roles": [
+        "camera_file"
+      ],
+      "bytes": 16257,
+      "sha256": "f50f066a85c152f0ab49a465acc188be329cbccae07555bc9c0c381b8314fc3b"
+    },
+    "native_source": {
+      "source": "G01_005_raw00057",
+      "scene": "G01_005",
+      "display_pointer": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/005_supported_ref00057_surface.npz",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/005_supported_ref00057_surface.npz",
+      "role": "actual_native_HERO",
+      "status": "AVAILABLE",
+      "bytes": 1039748,
+      "sha256": "967bbe353ab2001306de9382925b8e030fb3bcec922c6214070b4faca8deace4",
+      "expected_SHA256": "967bbe353ab2001306de9382925b8e030fb3bcec922c6214070b4faca8deace4",
+      "hash_match": true,
+      "keys": [
+        "depth_mm",
+        "labels",
+        "state",
+        "sparse_independent_support",
+        "pose",
+        "K",
+        "reference",
+        "source_frames",
+        "heldout_frame",
+        "unit",
+        "status",
+        "head_is_2D_component_proxy"
+      ],
+      "array_shapes": {
+        "depth_mm": [
+          360,
+          640
+        ],
+        "labels": [
+          360,
+          640
+        ],
+        "state": [
+          360,
+          640
+        ],
+        "sparse_independent_support": [
+          360,
+          640
+        ],
+        "pose": [
+          4,
+          4
+        ],
+        "K": [
+          3,
+          3
+        ],
+        "reference": [],
+        "source_frames": [
+          3
+        ],
+        "heldout_frame": [],
+        "unit": [],
+        "status": [],
+        "head_is_2D_component_proxy": []
+      },
+      "native_identity": "ORIGIN_RECORDED_NATIVE"
+    },
+    "independent_model_output": false
+  },
+  {
+    "scene": "G01_005",
+    "source": "G01_005_raw00459",
+    "source_camera_frame": "G01_005_LOCAL_RING_MM",
+    "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/v005_00459.png",
+    "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00459.png",
+    "image_pixel_N": 230400,
+    "class_counts": {
+      "VISIBLE_POLYP": 12421,
+      "VISIBLE_NONPOLYP": 14344,
+      "RING_CENSORED": 6384,
+      "BACKGROUND_CENSORED": 12217,
+      "UNKNOWN": 185034
+    },
+    "reason_counts": {
+      "CAD_CENSORS_BACKGROUND_RAY": 60,
+      "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 14344,
+      "OBSERVED_POLYP_IN_VISIBLE_ROI": 12421,
+      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 354,
+      "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 12217,
+      "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 6324,
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 184680
+    },
+    "positive_Mask_pixel_N": 12775,
+    "positive_Mask_unknown_N": 354,
+    "finite_depth_supervision_N": 12421,
+    "background": {
+      "source": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_005_raw00459.npz",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 7554676,
+        "sha256": "5d35616dcda04905409398e2bf8f5ac434a0b6f60a40cdeb32b49b33e5830fbb"
+      },
+      "status": "QUALIFIED_SOURCE_SPARSE_PROXY",
+      "not_GT": true,
+      "source_frame": "G01_005_raw00459",
+      "raw_point_N": 210602,
+      "cached_quality_N": 59089,
+      "eligible_point_N": 59089,
+      "projection_max_px": 3.410605131648481e-13,
+      "quality_projection_max_px": 2.2737367544323206e-13,
+      "source_RGB_SHA256": "21458e5bae3a75b1230fdfd378d270f276a0a21b93bde18463e5d1eea08f2cc4",
+      "native_HERO": "366640ddcbd688393ca9dfe5cad9dfe61e4f55ae82a25030b98b841bcb58c7d5",
+      "producer_code": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/code/assets.py",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 4893,
+        "sha256": "5cfd4df3cd1a3d05bd79ff89f6d213c6c978876693d9b2a3c7fc9e666f272f91"
+      },
+      "producer_config": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/config.json",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 2772,
+        "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
+      },
+      "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+    },
+    "domain": {
+      "id": "VISIBLE_ROI_CENTER_ENVELOPE",
+      "center_mm": [
+        0.2917828830804057,
+        -0.793891385404947,
+        -4.4124351955893335
+      ],
+      "mm_per_unit": 28.3780268204276,
+      "radius_units": 2.5,
+      "near_units": 0.05,
+      "far_units": 8.75,
+      "physical_radius_mm": 70.945067051069,
+      "physical_reason": "Enclose actual frozen camera+visible source ROI with 10 beta free-space clearance; no error search",
+      "mask_contract": "ROI-truncated finite opacity; official full-ray weight sum is invalid for Polyp silhouette",
+      "ROI_center_mm": [
+        0.2917828830804057,
+        -0.793891385404947,
+        -4.4124351955893335
+      ],
+      "ROI_radius_mm": 10.27908157050465,
+      "official_sampler_executed": false,
+      "neural_forward": false
+    },
+    "ray_artifact": {
+      "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_005_raw00459.npz",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 3736648,
+      "sha256": "d74b0855fc5aa8680550ccbdc4713f07c14b018c1e429fa6a65f84676faf9fe2"
+    },
+    "camera_source": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/local005_camera_0.npz",
+      "exists": true,
+      "roles": [
+        "camera_file"
+      ],
+      "bytes": 16257,
+      "sha256": "f50f066a85c152f0ab49a465acc188be329cbccae07555bc9c0c381b8314fc3b"
+    },
+    "native_source": {
+      "source": "G01_005_raw00459",
+      "scene": "G01_005",
+      "display_pointer": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/005_supported_ref00459_surface.npz",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/005_supported_ref00459_surface.npz",
+      "role": "actual_native_HERO",
+      "status": "AVAILABLE",
+      "bytes": 1026283,
+      "sha256": "366640ddcbd688393ca9dfe5cad9dfe61e4f55ae82a25030b98b841bcb58c7d5",
+      "expected_SHA256": "366640ddcbd688393ca9dfe5cad9dfe61e4f55ae82a25030b98b841bcb58c7d5",
+      "hash_match": true,
+      "keys": [
+        "depth_mm",
+        "labels",
+        "state",
+        "sparse_independent_support",
+        "pose",
+        "K",
+        "reference",
+        "source_frames",
+        "heldout_frame",
+        "unit",
+        "status",
+        "head_is_2D_component_proxy"
+      ],
+      "array_shapes": {
+        "depth_mm": [
+          360,
+          640
+        ],
+        "labels": [
+          360,
+          640
+        ],
+        "state": [
+          360,
+          640
+        ],
+        "sparse_independent_support": [
+          360,
+          640
+        ],
+        "pose": [
+          4,
+          4
+        ],
+        "K": [
+          3,
+          3
+        ],
+        "reference": [],
+        "source_frames": [
+          3
+        ],
+        "heldout_frame": [],
+        "unit": [],
+        "status": [],
+        "head_is_2D_component_proxy": []
+      },
+      "native_identity": "ORIGIN_RECORDED_NATIVE"
+    },
+    "independent_model_output": false
+  },
+  {
+    "scene": "G01_005",
+    "source": "G01_005_raw00745",
+    "source_camera_frame": "G01_005_LOCAL_RING_MM",
+    "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/v005_00745.png",
+    "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00745.png",
+    "image_pixel_N": 230400,
+    "class_counts": {
+      "VISIBLE_POLYP": 14557,
+      "VISIBLE_NONPOLYP": 18663,
+      "RING_CENSORED": 7580,
+      "BACKGROUND_CENSORED": 13616,
+      "UNKNOWN": 175984
+    },
+    "reason_counts": {
+      "CAD_CENSORS_BACKGROUND_RAY": 117,
+      "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 18663,
+      "OBSERVED_POLYP_IN_VISIBLE_ROI": 14557,
+      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 316,
+      "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 13616,
+      "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 7463,
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 175668
+    },
+    "positive_Mask_pixel_N": 14873,
+    "positive_Mask_unknown_N": 316,
+    "finite_depth_supervision_N": 14557,
+    "background": {
+      "source": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_005_raw00745.npz",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 7380649,
+        "sha256": "bd09055b0ee58afad8b2e913f9e9dce8b76b10e78df006ef932544bf54933600"
+      },
+      "status": "QUALIFIED_SOURCE_SPARSE_PROXY",
+      "not_GT": true,
+      "source_frame": "G01_005_raw00745",
+      "raw_point_N": 207364,
+      "cached_quality_N": 72852,
+      "eligible_point_N": 72852,
+      "projection_max_px": 3.410605131648481e-13,
+      "quality_projection_max_px": 2.7711166694643907e-13,
+      "source_RGB_SHA256": "4ec0049f15ce89880640b2e90612265932e44afe96b0ceed0aaa76d77abbeef4",
+      "native_HERO": "2cef580d67180aa97da35bedb7b718eb2208776a5df274dc2873633922607a97",
+      "producer_code": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/code/assets.py",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 4893,
+        "sha256": "5cfd4df3cd1a3d05bd79ff89f6d213c6c978876693d9b2a3c7fc9e666f272f91"
+      },
+      "producer_config": {
+        "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/config.json",
+        "role": "",
+        "status": "AVAILABLE",
+        "bytes": 2772,
+        "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
+      },
+      "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+    },
+    "domain": {
+      "id": "VISIBLE_ROI_CENTER_ENVELOPE",
+      "center_mm": [
+        0.2917828830804057,
+        -0.793891385404947,
+        -4.4124351955893335
+      ],
+      "mm_per_unit": 28.3780268204276,
+      "radius_units": 2.5,
+      "near_units": 0.05,
+      "far_units": 8.75,
+      "physical_radius_mm": 70.945067051069,
+      "physical_reason": "Enclose actual frozen camera+visible source ROI with 10 beta free-space clearance; no error search",
+      "mask_contract": "ROI-truncated finite opacity; official full-ray weight sum is invalid for Polyp silhouette",
+      "ROI_center_mm": [
+        0.2917828830804057,
+        -0.793891385404947,
+        -4.4124351955893335
+      ],
+      "ROI_radius_mm": 10.27908157050465,
+      "official_sampler_executed": false,
+      "neural_forward": false
+    },
+    "ray_artifact": {
+      "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_005_raw00745.npz",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 3973214,
+      "sha256": "f79671ee537d934decb5f6fe2b9823d0bd58ba094a080c9e4d47af7dc855f441"
+    },
+    "camera_source": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/local005_camera_0.npz",
+      "exists": true,
+      "roles": [
+        "camera_file"
+      ],
+      "bytes": 16257,
+      "sha256": "f50f066a85c152f0ab49a465acc188be329cbccae07555bc9c0c381b8314fc3b"
+    },
+    "native_source": {
+      "source": "G01_005_raw00745",
+      "scene": "G01_005",
+      "display_pointer": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/raw/005_raw00745_native.npz",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/raw/005_raw00745_native.npz",
+      "role": "actual_native_HERO",
+      "status": "AVAILABLE",
+      "bytes": 989662,
+      "sha256": "2cef580d67180aa97da35bedb7b718eb2208776a5df274dc2873633922607a97",
+      "expected_SHA256": "2cef580d67180aa97da35bedb7b718eb2208776a5df274dc2873633922607a97",
+      "hash_match": true,
+      "keys": [
+        "depth_mm",
+        "K_index_native",
+        "K_full",
+        "reference",
+        "sources",
+        "c2w_mm",
+        "sky_mask",
+        "depth_masked",
+        "cost_volume"
+      ],
+      "array_shapes": {
+        "depth_mm": [
+          352,
+          640
+        ],
+        "K_index_native": [
+          3,
+          3
+        ],
+        "K_full": [
+          3,
+          3
+        ],
+        "reference": [],
+        "sources": [
+          3
+        ],
+        "c2w_mm": [
+          22,
+          4,
+          4
+        ],
+        "sky_mask": [
+          352,
+          640
+        ],
+        "depth_masked": [
+          352,
+          640
+        ],
+        "cost_volume": [
+          88,
+          160
+        ]
+      },
+      "native_identity": "ORIGIN_RECORDED_NATIVE"
+    },
+    "independent_model_output": false
+  }
+]

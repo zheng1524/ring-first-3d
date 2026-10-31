@@ -1,0 +1,129 @@
+{
+  "mandatory_CPU_tests_passed": false,
+  "checks": [
+    {
+      "test": "five ray semantics present",
+      "pass_": true,
+      "detail": {
+        "VISIBLE_POLYP": 577,
+        "VISIBLE_NONPOLYP": 990,
+        "RING_CENSORED": 688,
+        "BACKGROUND_CENSORED": 840,
+        "UNKNOWN": 6121
+      }
+    },
+    {
+      "test": "visible positive opacity responds to Sphere",
+      "pass_": true,
+      "detail": {
+        "N": 577,
+        "median": 1.0
+      }
+    },
+    {
+      "test": "Ring/BG censored prefixes do not absorb hidden Sphere",
+      "pass_": true,
+      "detail": {
+        "N": 1528,
+        "p95": 3.383453674745791e-05
+      }
+    },
+    {
+      "test": "unknown has zero supervision weight",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "no hidden segment supervised",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "samples only inside finite ROI and before first occluder",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "positive mask/occluder contradiction retained as unknown",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "E0 saturated tail rejected for an empty Polyp field",
+      "pass_": true,
+      "detail": {
+        "old_opacity": 1.0,
+        "new_max": 0.0
+      }
+    },
+    {
+      "test": "occluder before ROI evaluates zero SDF samples",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "opacity continuous as background crosses Sphere",
+      "pass_": true,
+      "detail": {
+        "max_adjacent_change": 0.016119443124160193,
+        "step_mm": 0.004000000000001336,
+        "start": 3.7164548375547696e-12,
+        "end": 1.0
+      }
+    },
+    {
+      "test": "finite opacity matches closed-form Beer-Lambert integral",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "adaptive sampler bridge inserts ROI bounds and excludes terminator",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "source rays use axial Z to ray length conversion",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "world/network units close in mm",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "opacity invariant to mm/network gauge",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "geometry gradient agrees with independent finite differences",
+      "pass_": true,
+      "detail": {
+        "autograd": 3.6098133068375056,
+        "finite_difference": 3.6098132963624514
+      }
+    },
+    {
+      "test": "positive/negative Mask losses have opposite nonzero geometry gradients",
+      "pass_": true,
+      "detail": {
+        "positive": -4.270880975255878,
+        "negative": 23.321489936550343
+      }
+    },
+    {
+      "test": "unknown contributes zero Mask loss",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "background mesh first-hit coordinates are axial/ray consistent",
+      "pass_": false,
+      "detail": null
+    }
+  ],
+  "C2a": "FAIL",
+  "C2b": "NOT_STARTED",
+  "GPU": "NOT_GRANTED"
+}
