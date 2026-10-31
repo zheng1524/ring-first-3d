@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-31 Asia/Shanghai",
+  "user_request": "请参考压缩包中的TASK-NEURAL-E1-PIPELINE-RECOVERY-001.md构建任务",
+  "explicit_user_scope": "构建后直接执行获授权的 C0+C1 CPU 审计与合同测试",
+  "allowed": [
+    "C0",
+    "C1",
+    "CPU source and geometry contract tests",
+    "read-only existing caches"
+  ],
+  "not_authorized": [
+    "C2",
+    "C3",
+    "C4",
+    "GPU",
+    "neural forward including CPU",
+    "training",
+    "downloads",
+    "cleanup",
+    "GT",
+    "camera fitting",
+    "ICP",
+    "scale fit"
+  ],
+  "agent_mode": "SINGLE_INSTANCE"
+}
