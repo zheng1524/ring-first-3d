@@ -19,3 +19,18 @@
 | F13 | Map公平性与循环评价，OPEN | M1全HERO比SDF内部深度信息更广；F1/F2/F3有历史祖先优势；M3输入CAD后的Ring残差只为自洽 | [变量](metrics/FUTURE_EXPERIMENT_VARIABLES.csv)、[图4](figures/Fig4_Map_M0_M4_inputs.png) |
 
 所有G01源/帧在主报告列出分母；G06/G08/G07不纳入E2，未假装运行失败。GPU授权始终NOT_GRANTED。磁盘清理授权未被用于删除历史产物。
+
+## 本轮CPU继续执行补充
+
+| ID | 状态 | 原因及处理 | 证据 |
+| --- | --- | --- | --- |
+| C01 | 工作树创建行政错误，已修复 | 新worktree已注册但Git继承稀疏检出缺少自身info目录；仅补建新worktree管理目录，未reset旧库。首次日志重定向前runtime目录未创建，补目录后执行；非数值PASS或科学失败 | [冻结事件](continuation_cpu/provenance/AUTHORIZATION_AND_FREEZE.json) |
+| C02 | 官方神经/sampler NOT_RUN | raw/radiance调用协议和解析四损失图已实现；sampler含CUDA分配和夹持SDF访问，官方模块执行仍被拒绝，不用解析替身冒称官方网络已测 | [API绑定](continuation_cpu/provenance/OFFICIAL_API_BINDING.json)、[72项接线](continuation_cpu/metrics/JOINT_WIRING_GATE.json) |
+| C03 | 三参考全miss的单源，EXPECTED_REJECT | 负控制明确移除一源全部命中，新联合入口抛出IncompleteReferenceError并保留逐源观测/缺失分母，不重归一其余两源来制造通过 | [测试表](continuation_cpu/metrics/JOINT_WIRING_TESTS.csv) |
+| C04 | HERO可见性冲突未消除 | 2759在Ring后，4在0.05mm安全裕量，全部保留正Mask/拒绝深度；没有调整阈值、相机或CAD | [逐源分类](continuation_cpu/metrics/HERO_CONFLICT_CATEGORIES.csv)、[图6](continuation_cpu/figures/Fig6_source_conflicts_common_HERO.png) |
+| C05 | 解析深度miss164，NaN | 572观测/408命中，未作优化；不代表正式MonoSDF结果 | [梯度和分母表](continuation_cpu/metrics/JOINT_LOSS_GRADIENTS.csv)、[图5](continuation_cpu/figures/Fig5_joint_loss_CPU.png) |
+| C06 | 信息匹配只到几何载荷，OPEN | 两路线合格HERO像素相同，但RGB编码/分辨率/置信使用不同；公共资格本身已用Mask/CAD，不得称S0无任何CAD信息 | [共同数据Manifest](continuation_cpu/provenance/COMMON_HERO_GEOMETRY_MANIFEST.json) |
+| C07 | G01新测量0/1，NOT_RUN | 正式网络/初始化/科学预算未执行；严格留出0和真实BG网格认证缺口仍在，GT与历史测量均未读取 | [最新报告第9节](TECHNICAL_REPORT.md#9-本轮继续执行联合损失接线与共同几何输入2026-10-31) |
+| C08 | 本地日志清单回读失败，已修复 | 首次validator清单记录了自身仍在写入的日志，结束后该日志SHA变化；保留预期/实际SHA，改为排除活动日志、结束后由Git交付回执单独核验，不改科学阈值或输入 | [失败SHA回执](continuation_cpu/provenance/LOCAL_LOG_RECEIPT_FAILURE.json) |
+
+新数值合同检查72+70项均通过；没有通过改容差或删源像素制造PASS。行政错误、预期拒绝、解析未命中、未执行的神经模型分别记录。

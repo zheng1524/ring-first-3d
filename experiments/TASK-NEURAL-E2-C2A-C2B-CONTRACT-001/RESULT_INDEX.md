@@ -1,12 +1,9 @@
-# E2交付索引
+# E2当前交付索引
 
-- [完整技术报告](TECHNICAL_REPORT.md)：唯一实验报告，含固定审计表、数值、图、可进入GPU条件判断。
-- [失败/限制记录](FAILURE_LEDGER.md)、[CPU复现](REPRODUCE.md)、[复用审计](CODE_REUSE_E2.csv)。
-- [四张核心图浏览](visualizations/index.html)：全部标注CPU/解析控制，无新模型输出。
-- [C2a总门槛](metrics/C2A_GATE.json)：81；[C2b数据](metrics/C2B_DATA_GATE.json)：44；[Map输入](metrics/C2B_MAP_GATE.json)：150；[最终完整性](metrics/FINAL_VALIDATION.json)：257。
-- [GPU readiness](metrics/GPU_READINESS.json)：false；GPU NOT_GRANTED。
-- [源数据Manifest](provenance/C2B_DATA_MANIFEST.json)、[Map Manifest](provenance/MAP_M0_M4_DATA_MANIFEST.json)、[留出身份](provenance/EVALUATION_IDENTITIES_FROZEN.json)。
-- [最终交付SHA清单](provenance/DELIVERY_MANIFEST.json)、[增量上传实测](provenance/GIT_SYNC_VERIFIED.json)。最终HEAD同步回执在本地runtime/FINAL_GIT_SYNC.json，避免自引用提交SHA。
-- LOCAL_ONLY：local_results与runtime；122输入来源清单为provenance/E2_READONLY_INPUTS_AND_SHAS.json。未上传原视频、深度NPZ、权重、GT。
-
-物理组G01共1组、2视频、6参考；新测量独立输出0/1，误差NaN，无历史回填。C2a/C2b CPU合同通过有明确限制，均不能直接启动正式GPU科学实验。
+- [单份完整技术报告](TECHNICAL_REPORT.md)：第1–8节为原冻结交付，第9节为本轮CPU继续执行。
+- [新增证据索引](continuation_cpu/README.md)、[六张核心图浏览](continuation_cpu/visualizations/index.html)。
+- [最新失败记录](FAILURE_LEDGER.md)、[仅新增CPU复现](REPRODUCE.md)。
+- 本轮新增：联合接线72项、输入合同70项；[完整性核验](continuation_cpu/metrics/FINAL_CONTINUATION_VALIDATION.json)。原275项阶段检查和257项完整性记录保留，未重跑。
+- [共同HERO几何Manifest](continuation_cpu/provenance/COMMON_HERO_GEOMETRY_MANIFEST.json)、[本轮交付Manifest](continuation_cpu/provenance/CONTINUATION_MANIFEST.json)。原Map M0–M4的16配置和30派生深度未改变。
+- [GPU门槛](continuation_cpu/metrics/GPU_READINESS.json)：NOT_READY / NOT_GRANTED。官方神经模型/采样器执行0、更新0、新测量0/1、误差NaN。
+- 原冻结分支exp/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001保持5d4bcbb；本轮独立续作分支exp/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001-cpu-continuation。远端回执在本地runtime/CONTINUATION_FINAL_GIT_SYNC.json。

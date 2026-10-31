@@ -1,0 +1,14 @@
+{
+  "status": "DELIVERY_RECEIPT_FAILED_READBACK",
+  "affected": [
+    {
+      "path": "runtime/CONTINUATION_VALIDATION.log",
+      "manifest_SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "after_writer_closed_SHA256": "7a71b1b2a6bf0b92ccac86e2befaaa95a6a008e483c5b7a1f8c2930217df289a"
+    }
+  ],
+  "reason": "validator recorded its own active logfile before final print; numerical checks passed but this receipt was stale",
+  "correction": "exclude active validation logfile from manifest; final git receipt hashes closed logs",
+  "acceptance_thresholds_changed": false,
+  "source_data_changed": false
+}
