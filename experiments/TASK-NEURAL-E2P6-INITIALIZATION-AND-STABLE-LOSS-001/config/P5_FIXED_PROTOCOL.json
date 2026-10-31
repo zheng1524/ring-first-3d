@@ -1,0 +1,13 @@
+{
+  "splits": [
+    "small",
+    "extra"
+  ],
+  "threshold": 0.5,
+  "Eikonal": "one shared regularizer, first6 fixed P_INTERIOR ray midpoints from each reference",
+  "joint_gradient": "exact linear sum of actual per-reference autograd vectors + one shared Eikonal; no optimizer",
+  "numerical_extra": "FP32/FP64 implicit-parameter Mask gradient comparison on both probe sets",
+  "historical_coverage_comparisons": [
+    "both legacy A and source-ROI B; no cherry-picked old baseline"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "task": "TASK-NEURAL-E2P6-INITIALIZATION-AND-STABLE-LOSS-001",
+  "seed": 20261031,
+  "source_seed_extra": 20261101,
+  "calibration_rule": "ONE_RULE: bias0 seeded official raw head; median128 Fibonacci shell raw outputs; same-seed reconstruct with that bias",
+  "shell_radius_fraction": 0.5,
+  "shell_point_N": 128,
+  "calibration_scenes": {
+    "G01_004": [
+      "G01_004_ref03",
+      "G01_004_ref08",
+      "G01_004_ref13"
+    ],
+    "G01_005": [
+      "G01_005_raw00057",
+      "G01_005_raw00459",
+      "G01_005_raw00745"
+    ]
+  },
+  "beta_mm": 0.08,
+  "beta_min_network": 0.0001,
+  "sample_cells": 128,
+  "old_small_quota": [
+    6,
+    3,
+    3,
+    3,
+    1
+  ],
+  "extra_quota": [
+    32,
+    12,
+    10,
+    6,
+    4
+  ],
+  "extra_excludes_old_small_pixels": true,
+  "source_selection": "frozen source regions only; no model predictions/GT/targets",
+  "minimum_HERO_front_hit_fraction": 0.5,
+  "useful_geometry_gradient_norm_min": 1e-10,
+  "inside_sign_required_fraction": 0.95,
+  "outside_sign_required_fraction": 0.95,
+  "shell_median_abs_tolerance_mm": 1e-05,
+  "physical_beta_abs_tolerance_mm": 1e-06,
+  "FP32_FP64_loss_atol": 0.002,
+  "FP32_FP64_loss_rtol": 0.002,
+  "gradient_norm_relative_tolerance": 0.02,
+  "gradient_cosine_min": 0.995,
+  "mathematical_reference": "mpmath80digits on same actual raw samples; stable log finite-opacity BCE",
+  "reference_atol": 1e-06,
+  "reference_rtol": 1e-06,
+  "pathological_controls": [
+    "CALIBRATED_NORMAL",
+    "ALL_POSITIVE_FIELD",
+    "EMPTY_POSITIVE_RAYS",
+    "ALL_NEGATIVE_FIELD",
+    "RING_OCCLUDED_PREFIX"
+  ],
+  "pathological_bias_delta_ROI": 2.0,
+  "controls_are_not_initialization_search": true,
+  "weak_anchor": {
+    "condition": "only if stable Mask lacks useful geometric gradient/no-front recovery",
+    "type": "qualified native HERO SDF Huber",
+    "delta_mm": 0.5,
+    "weight": 0.01,
+    "source_weights": "same component1/3; existing pixel conflict1/0.25; NEVER hit-gated",
+    "per_reference_direction_probe_N": 4,
+    "minimum_toward_zero_direction_fraction": 0.9,
+    "candidate_only": true
+  },
+  "loss_weights": {
+    "rgb": 1.0,
+    "depth": 0.1,
+    "mask": 0.1,
+    "eikonal": 0.1,
+    "anchor": 0.01
+  },
+  "coverage_evaluation": "any per-source fixed-observed coverage decrease is POTENTIAL_FAILURE regardless of lower total loss",
+  "model_update_N": 0,
+  "optimizer_step_N": 0,
+  "GPU": "NOT_AUTHORIZED",
+  "MapAnything_forward_N": 0,
+  "GT": false
+}

@@ -1,0 +1,16 @@
+{
+  "task": "TASK-NEURAL-E2P6-INITIALIZATION-AND-STABLE-LOSS-001",
+  "base_commit": "1eb9cc7fd49b70cf8370582dded7decb1d1cd4be",
+  "user_grant": "ONE uniform initialization calibration; stable Mask actual full-network CPU gradients; conditional weak HERO anchor; fixed coverage diagnostics",
+  "forbidden": [
+    "GPU",
+    "optimizer.step",
+    "training",
+    "MapAnything inference",
+    "GT/target selection",
+    "upstream modifications",
+    "unbounded calibration search"
+  ],
+  "historical_audits_rerun": false,
+  "worktree_incident": "new sparse info directory repaired; no old worktree reset"
+}
