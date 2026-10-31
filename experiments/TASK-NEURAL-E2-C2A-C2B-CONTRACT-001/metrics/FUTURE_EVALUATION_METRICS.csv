@@ -1,0 +1,8 @@
+metric,denominator,meaning
+visible Mask IoU / boundary F1,all eligible target Polyp pixels plus unknown/censored counts,"observable silhouette, not inferred hidden contour"
+A→B RGB error median/MAE/p95/max + coverage/spill,fixed full target pixels and paired common successful pixels,source RGB only; no B recoloring; low coverage cannot be hidden
+fixed Ring CAD distance median/p95/max; penetration,all valid Ring output pixels plus full input Ring denominator,"metric rigid-anchor consistency, not Polyp GT"
+predicted vs frozen input pose residual,each source/target camera; raw + predeclared gauge,Map output pose never overwrites Ring-First
+HERO cross-source axial-depth consistency,all co-visible source observations and correlated-parent groups,"estimated-prior agreement, not independent depth accuracy"
+observed support / conflict / prior / unknown,full candidate points/faces and independent-source identities,no unobserved backside area/volume claims
+independent group coverage / MedARE / MAE / p95 / max / paired comparison,"G01 one physical group; 004/005 are two scenes, not two cases",absolute 3D/diameter error NaN until eligible independent GT exists

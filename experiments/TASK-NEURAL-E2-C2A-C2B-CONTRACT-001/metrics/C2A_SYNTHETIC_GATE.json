@@ -1,7 +1,7 @@
 {
   "C2a": "SYNTHETIC_CPU_PASS",
   "mandatory_CPU_tests_passed": true,
-  "check_N": 19,
+  "check_N": 27,
   "checks": [
     {
       "test": "five ray semantics present",
@@ -12,6 +12,17 @@
         "RING_CENSORED": 688,
         "BACKGROUND_CENSORED": 840,
         "UNKNOWN": 6121
+      }
+    },
+    {
+      "test": "RA five sampling classes include explicit Polyp boundary band",
+      "pass_": true,
+      "detail": {
+        "P_INTERIOR": 357,
+        "P_BOUNDARY_BAND": 422,
+        "VISIBLE_NONPOLYP": 1612,
+        "RING_OCCLUDED": 688,
+        "UNKNOWN_LOW_CONF": 6137
       }
     },
     {
@@ -46,7 +57,7 @@
       "detail": null
     },
     {
-      "test": "positive mask/occluder contradiction retained as unknown",
+      "test": "observed Polyp keeps positive Mask before Ring even when HERO is behind Ring",
       "pass_": true,
       "detail": null
     },
@@ -127,6 +138,47 @@
         "max_error_mm": 0.0,
         "selection": "actual primitive_id 2/3; no ray-length heuristic"
       }
+    },
+    {
+      "test": "Sphere in front of fixed Ring stays visible",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "Sphere behind fixed Ring is censored, with no fake zero depth",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "ray entirely missing ROI never evaluates SDF",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "thin stalk near background has finite nonzero geometry response",
+      "pass_": true,
+      "detail": {
+        "opacity": 0.9893870091152066,
+        "gradient": 0.24341173590714346
+      }
+    },
+    {
+      "test": "no front-surface hit is NaN with zero depth regression, positive Mask penalty",
+      "pass_": true,
+      "detail": {
+        "miss_N": 1,
+        "Mask_loss": 18.420680743952367
+      }
+    },
+    {
+      "test": "actual E1 scene gauge converts beta as a length G01_004",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "actual E1 scene gauge converts beta as a length G01_005",
+      "pass_": true,
+      "detail": null
     }
   ],
   "official_network_forward_N": 0,

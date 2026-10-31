@@ -1,0 +1,45 @@
+test,pass_,detail
+seeded batch replay exact G01_004,True,
+next iteration refreshes all reference pixel samples G01_004,True,
+three genuinely different source views G01_004,True,
+one shared SDF identity for entire triple G01_004,True,
+positive depth weights remain in every view G01_004,True,
+HERO batch target belongs only to RA P_INTERIOR G01_004_ref03,True,
+importance correction preserves each region population G01_004_ref03,True,
+HERO batch target belongs only to RA P_INTERIOR G01_004_ref08,True,
+importance correction preserves each region population G01_004_ref08,True,
+HERO batch target belongs only to RA P_INTERIOR G01_004_ref13,True,
+importance correction preserves each region population G01_004_ref13,True,
+no source can silently disappear through render misses G01_004_ref03,True,"{""observed_N"": 93, ""render_hit_N"": 79, ""miss_N"": 14}"
+shared analytic SDF receives nonzero depth response from G01_004_ref03,True,"[-1.6307376881291238, 0.047486080308299726]"
+no source can silently disappear through render misses G01_004_ref08,True,"{""observed_N"": 96, ""render_hit_N"": 70, ""miss_N"": 26}"
+shared analytic SDF receives nonzero depth response from G01_004_ref08,True,"[-1.4766292033328876, -0.13941528314891677]"
+no source can silently disappear through render misses G01_004_ref13,True,"{""observed_N"": 96, ""render_hit_N"": 64, ""miss_N"": 32}"
+shared analytic SDF receives nonzero depth response from G01_004_ref13,True,"[-1.4928919360910307, -0.23047813333466646]"
+joint loss finite with finite geometry gradients G01_004,True,
+no parameter or weight update G01_004,True,
+correlation components each have unit total source weight G01_004,True,
+seeded batch replay exact G01_005,True,
+next iteration refreshes all reference pixel samples G01_005,True,
+three genuinely different source views G01_005,True,
+one shared SDF identity for entire triple G01_005,True,
+positive depth weights remain in every view G01_005,True,
+HERO batch target belongs only to RA P_INTERIOR G01_005_raw00057,True,
+importance correction preserves each region population G01_005_raw00057,True,
+HERO batch target belongs only to RA P_INTERIOR G01_005_raw00459,True,
+importance correction preserves each region population G01_005_raw00459,True,
+HERO batch target belongs only to RA P_INTERIOR G01_005_raw00745,True,
+importance correction preserves each region population G01_005_raw00745,True,
+no source can silently disappear through render misses G01_005_raw00057,True,"{""observed_N"": 96, ""render_hit_N"": 59, ""miss_N"": 37}"
+shared analytic SDF receives nonzero depth response from G01_005_raw00057,True,"[-1.425148708693471, -1.002560767692989]"
+no source can silently disappear through render misses G01_005_raw00459,True,"{""observed_N"": 95, ""render_hit_N"": 72, ""miss_N"": 23}"
+shared analytic SDF receives nonzero depth response from G01_005_raw00459,True,"[-1.2784607909350103, -0.9796293192543477]"
+no source can silently disappear through render misses G01_005_raw00745,True,"{""observed_N"": 96, ""render_hit_N"": 64, ""miss_N"": 32}"
+shared analytic SDF receives nonzero depth response from G01_005_raw00745,True,"[-1.4365707898120177, -1.0008946177966103]"
+joint loss finite with finite geometry gradients G01_005,True,
+no parameter or weight update G01_005,True,
+correlation components each have unit total source weight G01_005,True,
+two video SDF probes are separate objects,True,
+mixed video supervision rejected,True,
+nonfinite prediction cannot silently delete a source,True,
+shared-source group duplication does not increase depth evidence,True,"{""two_duplicate_group"": 3.75, ""three_duplicate_group"": 3.75, ""closed_form"": 3.75}"

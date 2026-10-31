@@ -7,24 +7,32 @@
     "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_003.png",
     "image_pixel_N": 230400,
     "class_counts": {
-      "VISIBLE_POLYP": 23465,
+      "VISIBLE_POLYP": 24343,
       "VISIBLE_NONPOLYP": 7688,
       "RING_CENSORED": 7985,
       "BACKGROUND_CENSORED": 72827,
-      "UNKNOWN": 118435
+      "UNKNOWN": 117557
     },
     "reason_counts": {
       "CAD_CENSORS_BACKGROUND_RAY": 491,
       "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 7688,
       "OBSERVED_POLYP_IN_VISIBLE_ROI": 23465,
-      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 878,
       "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 72827,
       "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 7494,
-      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 117557
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 117557,
+      "VISIBLE_POLYP_WITH_HERO_DEPTH_CONFLICT": 878
     },
     "positive_Mask_pixel_N": 24343,
-    "positive_Mask_unknown_N": 878,
-    "finite_depth_supervision_N": 23465,
+    "RA_sampling_counts": {
+      "P_INTERIOR": 21996,
+      "P_BOUNDARY_BAND": 2966,
+      "VISIBLE_NONPOLYP": 77997,
+      "RING_OCCLUDED": 7985,
+      "UNKNOWN_LOW_CONF": 119456
+    },
+    "positive_Mask_unknown_N": 0,
+    "positive_Mask_retained_HERO_rejected_N": 878,
+    "finite_depth_supervision_N": 21608,
     "background": {
       "source": {
         "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_004_ref03.npz",
@@ -58,7 +66,12 @@
         "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
       },
       "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
-      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification",
+      "role": "same-source observed point depth bounds reliable non-Polyp free-space only",
+      "opaque_background_mesh_certified": false,
+      "triangle_occluder_t_B": "NOT_AVAILABLE_FOR_REAL_DATA",
+      "unknown_pixels": "no holes/interpolation or cross-view surface inferred",
+      "foreground_never_truncated_by_source_background_point": true
     },
     "domain": {
       "id": "VISIBLE_ROI_CENTER_ENVELOPE",
@@ -87,8 +100,8 @@
       "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_004_ref03.npz",
       "role": "",
       "status": "AVAILABLE",
-      "bytes": 5752440,
-      "sha256": "cf5b6852b6e82ff6d73727f71c4324eeb7ac1e51194cd4e4b820847881d2b863"
+      "bytes": 5759037,
+      "sha256": "b1b21825e06b4d7be266907d4e7c42a525513a7c9bcae6e54db38d6f7f5ea8ee"
     },
     "camera_source": {
       "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_camera_0.npz",
@@ -173,24 +186,32 @@
     "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_008.png",
     "image_pixel_N": 230400,
     "class_counts": {
-      "VISIBLE_POLYP": 13590,
+      "VISIBLE_POLYP": 14029,
       "VISIBLE_NONPOLYP": 2450,
       "RING_CENSORED": 5492,
       "BACKGROUND_CENSORED": 47235,
-      "UNKNOWN": 161633
+      "UNKNOWN": 161194
     },
     "reason_counts": {
       "CAD_CENSORS_BACKGROUND_RAY": 530,
       "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 2450,
       "OBSERVED_POLYP_IN_VISIBLE_ROI": 13590,
-      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 439,
       "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 47235,
       "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 4962,
-      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 161194
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 161194,
+      "VISIBLE_POLYP_WITH_HERO_DEPTH_CONFLICT": 439
     },
     "positive_Mask_pixel_N": 14029,
-    "positive_Mask_unknown_N": 439,
-    "finite_depth_supervision_N": 13590,
+    "RA_sampling_counts": {
+      "P_INTERIOR": 12266,
+      "P_BOUNDARY_BAND": 2180,
+      "VISIBLE_NONPOLYP": 48829,
+      "RING_OCCLUDED": 5492,
+      "UNKNOWN_LOW_CONF": 161633
+    },
+    "positive_Mask_unknown_N": 0,
+    "positive_Mask_retained_HERO_rejected_N": 439,
+    "finite_depth_supervision_N": 12199,
     "background": {
       "source": {
         "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_004_ref08.npz",
@@ -224,7 +245,12 @@
         "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
       },
       "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
-      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification",
+      "role": "same-source observed point depth bounds reliable non-Polyp free-space only",
+      "opaque_background_mesh_certified": false,
+      "triangle_occluder_t_B": "NOT_AVAILABLE_FOR_REAL_DATA",
+      "unknown_pixels": "no holes/interpolation or cross-view surface inferred",
+      "foreground_never_truncated_by_source_background_point": true
     },
     "domain": {
       "id": "VISIBLE_ROI_CENTER_ENVELOPE",
@@ -253,8 +279,8 @@
       "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_004_ref08.npz",
       "role": "",
       "status": "AVAILABLE",
-      "bytes": 5297406,
-      "sha256": "0e2f4e1decfee9839eda99d9ffcd789d0566c48faaf0d33f7f12b11f52b2d090"
+      "bytes": 5303113,
+      "sha256": "d65020df07adf0849c4bc175ebef3585cc87c546b5db5fd42ab21529f303ca81"
     },
     "camera_source": {
       "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_camera_0.npz",
@@ -339,24 +365,32 @@
     "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_013.png",
     "image_pixel_N": 230400,
     "class_counts": {
-      "VISIBLE_POLYP": 12686,
+      "VISIBLE_POLYP": 13010,
       "VISIBLE_NONPOLYP": 5076,
       "RING_CENSORED": 5122,
       "BACKGROUND_CENSORED": 40648,
-      "UNKNOWN": 166868
+      "UNKNOWN": 166544
     },
     "reason_counts": {
       "CAD_CENSORS_BACKGROUND_RAY": 314,
       "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 5076,
       "OBSERVED_POLYP_IN_VISIBLE_ROI": 12686,
-      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 324,
       "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 40648,
       "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 4808,
-      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 166544
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 166544,
+      "VISIBLE_POLYP_WITH_HERO_DEPTH_CONFLICT": 324
     },
     "positive_Mask_pixel_N": 13010,
-    "positive_Mask_unknown_N": 324,
-    "finite_depth_supervision_N": 12686,
+    "RA_sampling_counts": {
+      "P_INTERIOR": 11272,
+      "P_BOUNDARY_BAND": 2109,
+      "VISIBLE_NONPOLYP": 44972,
+      "RING_OCCLUDED": 5122,
+      "UNKNOWN_LOW_CONF": 166925
+    },
+    "positive_Mask_unknown_N": 0,
+    "positive_Mask_retained_HERO_rejected_N": 324,
+    "finite_depth_supervision_N": 11262,
     "background": {
       "source": {
         "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_004_ref13.npz",
@@ -390,7 +424,12 @@
         "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
       },
       "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
-      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification",
+      "role": "same-source observed point depth bounds reliable non-Polyp free-space only",
+      "opaque_background_mesh_certified": false,
+      "triangle_occluder_t_B": "NOT_AVAILABLE_FOR_REAL_DATA",
+      "unknown_pixels": "no holes/interpolation or cross-view surface inferred",
+      "foreground_never_truncated_by_source_background_point": true
     },
     "domain": {
       "id": "VISIBLE_ROI_CENTER_ENVELOPE",
@@ -419,8 +458,8 @@
       "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_004_ref13.npz",
       "role": "",
       "status": "AVAILABLE",
-      "bytes": 5243703,
-      "sha256": "554429653cb3c664602bc6744227d3b2641a3278ba2657001a5bb77bf834d453"
+      "bytes": 5249175,
+      "sha256": "c20aef2203c6b28d52b2ac8abe097d7c07a6c02dc73f91cb62b36e1266ff5d61"
     },
     "camera_source": {
       "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_camera_0.npz",
@@ -505,24 +544,32 @@
     "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00057.png",
     "image_pixel_N": 230400,
     "class_counts": {
-      "VISIBLE_POLYP": 19361,
+      "VISIBLE_POLYP": 19813,
       "VISIBLE_NONPOLYP": 19629,
       "RING_CENSORED": 9191,
       "BACKGROUND_CENSORED": 16015,
-      "UNKNOWN": 166204
+      "UNKNOWN": 165752
     },
     "reason_counts": {
       "CAD_CENSORS_BACKGROUND_RAY": 533,
       "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 19629,
       "OBSERVED_POLYP_IN_VISIBLE_ROI": 19361,
-      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 452,
       "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 16015,
       "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 8658,
-      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 165752
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 165752,
+      "VISIBLE_POLYP_WITH_HERO_DEPTH_CONFLICT": 452
     },
     "positive_Mask_pixel_N": 19813,
-    "positive_Mask_unknown_N": 452,
-    "finite_depth_supervision_N": 19361,
+    "RA_sampling_counts": {
+      "P_INTERIOR": 17771,
+      "P_BOUNDARY_BAND": 2510,
+      "VISIBLE_NONPOLYP": 35176,
+      "RING_OCCLUDED": 9191,
+      "UNKNOWN_LOW_CONF": 165752
+    },
+    "positive_Mask_unknown_N": 0,
+    "positive_Mask_retained_HERO_rejected_N": 452,
+    "finite_depth_supervision_N": 17691,
     "background": {
       "source": {
         "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_005_raw00057.npz",
@@ -556,7 +603,12 @@
         "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
       },
       "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
-      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification",
+      "role": "same-source observed point depth bounds reliable non-Polyp free-space only",
+      "opaque_background_mesh_certified": false,
+      "triangle_occluder_t_B": "NOT_AVAILABLE_FOR_REAL_DATA",
+      "unknown_pixels": "no holes/interpolation or cross-view surface inferred",
+      "foreground_never_truncated_by_source_background_point": true
     },
     "domain": {
       "id": "VISIBLE_ROI_CENTER_ENVELOPE",
@@ -585,8 +637,8 @@
       "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_005_raw00057.npz",
       "role": "",
       "status": "AVAILABLE",
-      "bytes": 4257039,
-      "sha256": "bbfc57a4b24321e93de211021a2d471cc9f1f0474f806db7af4a00f029a562fc"
+      "bytes": 4262547,
+      "sha256": "154e95c793591daa9d85a4c604f65a111835697ef9ae26aee81034c2d4b1c986"
     },
     "camera_source": {
       "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/local005_camera_0.npz",
@@ -668,24 +720,32 @@
     "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00459.png",
     "image_pixel_N": 230400,
     "class_counts": {
-      "VISIBLE_POLYP": 12421,
+      "VISIBLE_POLYP": 12775,
       "VISIBLE_NONPOLYP": 14344,
       "RING_CENSORED": 6384,
       "BACKGROUND_CENSORED": 12217,
-      "UNKNOWN": 185034
+      "UNKNOWN": 184680
     },
     "reason_counts": {
       "CAD_CENSORS_BACKGROUND_RAY": 60,
       "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 14344,
       "OBSERVED_POLYP_IN_VISIBLE_ROI": 12421,
-      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 354,
       "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 12217,
       "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 6324,
-      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 184680
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 184680,
+      "VISIBLE_POLYP_WITH_HERO_DEPTH_CONFLICT": 354
     },
     "positive_Mask_pixel_N": 12775,
-    "positive_Mask_unknown_N": 354,
-    "finite_depth_supervision_N": 12421,
+    "RA_sampling_counts": {
+      "P_INTERIOR": 11178,
+      "P_BOUNDARY_BAND": 1985,
+      "VISIBLE_NONPOLYP": 26173,
+      "RING_OCCLUDED": 6384,
+      "UNKNOWN_LOW_CONF": 184680
+    },
+    "positive_Mask_unknown_N": 0,
+    "positive_Mask_retained_HERO_rejected_N": 354,
+    "finite_depth_supervision_N": 11076,
     "background": {
       "source": {
         "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_005_raw00459.npz",
@@ -719,7 +779,12 @@
         "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
       },
       "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
-      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification",
+      "role": "same-source observed point depth bounds reliable non-Polyp free-space only",
+      "opaque_background_mesh_certified": false,
+      "triangle_occluder_t_B": "NOT_AVAILABLE_FOR_REAL_DATA",
+      "unknown_pixels": "no holes/interpolation or cross-view surface inferred",
+      "foreground_never_truncated_by_source_background_point": true
     },
     "domain": {
       "id": "VISIBLE_ROI_CENTER_ENVELOPE",
@@ -748,8 +813,8 @@
       "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_005_raw00459.npz",
       "role": "",
       "status": "AVAILABLE",
-      "bytes": 3736648,
-      "sha256": "d74b0855fc5aa8680550ccbdc4713f07c14b018c1e429fa6a65f84676faf9fe2"
+      "bytes": 3741297,
+      "sha256": "8fba9a78764ee66f8ddff5ac792773e2a7e207a91976f197191efc62608800a2"
     },
     "camera_source": {
       "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/local005_camera_0.npz",
@@ -831,24 +896,32 @@
     "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00745.png",
     "image_pixel_N": 230400,
     "class_counts": {
-      "VISIBLE_POLYP": 14557,
+      "VISIBLE_POLYP": 14873,
       "VISIBLE_NONPOLYP": 18663,
       "RING_CENSORED": 7580,
       "BACKGROUND_CENSORED": 13616,
-      "UNKNOWN": 175984
+      "UNKNOWN": 175668
     },
     "reason_counts": {
       "CAD_CENSORS_BACKGROUND_RAY": 117,
       "OBSERVED_NONPOLYP_VISIBLE_PREFIX": 18663,
       "OBSERVED_POLYP_IN_VISIBLE_ROI": 14557,
-      "POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT": 316,
       "QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY": 13616,
       "RING_LABEL_WITH_REAL_CAD_FIRST_HIT": 7463,
-      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 175668
+      "UNKNOWN_OR_UNCERTIFIED_BACKGROUND": 175668,
+      "VISIBLE_POLYP_WITH_HERO_DEPTH_CONFLICT": 316
     },
     "positive_Mask_pixel_N": 14873,
-    "positive_Mask_unknown_N": 316,
-    "finite_depth_supervision_N": 14557,
+    "RA_sampling_counts": {
+      "P_INTERIOR": 12994,
+      "P_BOUNDARY_BAND": 2337,
+      "VISIBLE_NONPOLYP": 31821,
+      "RING_OCCLUDED": 7580,
+      "UNKNOWN_LOW_CONF": 175668
+    },
+    "positive_Mask_unknown_N": 0,
+    "positive_Mask_retained_HERO_rejected_N": 316,
+    "finite_depth_supervision_N": 12953,
     "background": {
       "source": {
         "path": "/home/liu/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/local_results/background/G01_005_raw00745.npz",
@@ -882,7 +955,12 @@
         "sha256": "4c70d1de81f739cd5250fdc6ca303b9a1ac67b98ebb6fd362119e3ffca710dfb"
       },
       "conditions": "archived quality=true; source label0; finite positive Z; original exact UV; no cross-video or hole filling",
-      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification"
+      "uncertainty": "HERO-derived observed geometry proxy, shared-parent error possible; no independent occluder certification",
+      "role": "same-source observed point depth bounds reliable non-Polyp free-space only",
+      "opaque_background_mesh_certified": false,
+      "triangle_occluder_t_B": "NOT_AVAILABLE_FOR_REAL_DATA",
+      "unknown_pixels": "no holes/interpolation or cross-view surface inferred",
+      "foreground_never_truncated_by_source_background_point": true
     },
     "domain": {
       "id": "VISIBLE_ROI_CENTER_ENVELOPE",
@@ -911,8 +989,8 @@
       "path": "/home/liu/ring_first_3d_neural_e2/experiments/TASK-NEURAL-E2-C2A-C2B-CONTRACT-001/local_results/rays/G01_005_raw00745.npz",
       "role": "",
       "status": "AVAILABLE",
-      "bytes": 3973214,
-      "sha256": "f79671ee537d934decb5f6fe2b9823d0bd58ba094a080c9e4d47af7dc855f441"
+      "bytes": 3978378,
+      "sha256": "77997d1503da0577f36b9e8c35c9ed59796da0370953b887a86cdc95163f8645"
     },
     "camera_source": {
       "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/predictions/local005_camera_0.npz",

@@ -1,0 +1,20 @@
+{
+  "C2b": "MULTI_REFERENCE_CPU_CONTRACT_PASS_WITH_LIMITATIONS",
+  "CPU_contract_pass": true,
+  "check_N": 22,
+  "scene_N": 2,
+  "physical_group_N": 1,
+  "views_per_scene": 3,
+  "shared_SDFs": 2,
+  "cross_video_fused": false,
+  "official_model_forward_N": 0,
+  "weight_update_N": 0,
+  "GPU": "NOT_GRANTED",
+  "evidence": "analytic SDF autograd on true frozen camera/source-ray packets; not official MonoSDF training or prediction",
+  "limitations": [
+    "HERO source groups may be correlated",
+    "source conflicts retained",
+    "strict holdout0 from E1",
+    "official neural graph/sampler integration still requires an authorized runtime gate"
+  ]
+}

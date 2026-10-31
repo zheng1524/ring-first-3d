@@ -1,0 +1,43 @@
+{
+  "targets": [
+    {
+      "scene": "G01_004",
+      "target": "G01_video004_004_15",
+      "RGB_SHA256": "4adeea7a666463f411fd69e9d8e9ace1828d8a537af64e47c7b9ae378ae6584c",
+      "Mask_SHA256": "937f772fec435640a7c4e4e8cfc3ef4ec896bc958af46eb67ddf872fdbf26273",
+      "role": "DIAGNOSTIC_ONLY",
+      "strict_holdout": false,
+      "E2_target_pixel_access": "NONE_METADATA_ONLY",
+      "excluded_from_training": true,
+      "forbidden_for_parameter_selection": true,
+      "reason": "historical protocol exposure; no E0-blind test certification"
+    },
+    {
+      "scene": "G01_005",
+      "target": "G01_video005_v005_00860",
+      "RGB_SHA256": "9ea95bd3d8ab9cdc7858616307904fd10a34784fb592cb5da79f2c8ca081c1de",
+      "Mask_SHA256": "a712c6b231673a48bf5950b80abfda330ec9ae0ea4542ec19bf17e4cc17f8c5a",
+      "role": "HOLDOUT_RECON_ONLY",
+      "strict_holdout": false,
+      "E2_target_pixel_access": "NONE_METADATA_ONLY",
+      "excluded_from_training": true,
+      "forbidden_for_parameter_selection": true,
+      "reason": "historical protocol exposure; no E0-blind test certification"
+    },
+    {
+      "scene": "G01_005",
+      "target": "G01_video005_v005_00611",
+      "RGB_SHA256": "e61025a16b6285d887f569774ee245aa80ff07121791d461c9779c241eaadc82",
+      "Mask_SHA256": "f5ef0d7823afdc45f3004dd9831b58992b75c2d0c4ab3e1b2354345bb222db5b",
+      "role": "HOLDOUT_RECON_ONLY",
+      "strict_holdout": false,
+      "E2_target_pixel_access": "NONE_METADATA_ONLY",
+      "excluded_from_training": true,
+      "forbidden_for_parameter_selection": true,
+      "reason": "historical protocol exposure; no E0-blind test certification"
+    }
+  ],
+  "strict_holdout_N": 0,
+  "source": "E1 identity/ancestry results reused; no new E1 audit",
+  "GT": "sealed; world transform uncertified; absolute shape error NOT_EVALUABLE"
+}

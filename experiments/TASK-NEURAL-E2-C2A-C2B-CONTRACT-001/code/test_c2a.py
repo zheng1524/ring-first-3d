@@ -32,6 +32,8 @@ def main():
     out=integrate_visible(o,d,q,raw,beta_mm=.08,bins=cfg['quadrature_bins'],ray_z_cosine=1/factor)
     acc=out['opacity'].detach().numpy();classes=sem['class_id']
     check('five ray semantics present',set(classes)==set(range(5)),dict(zip(SEMANTICS,np.bincount(classes,minlength=5).tolist())))
+    ra,band=sampling_partition(labels,classes,sem['mask_weight'],(n,n),2)
+    check('RA five sampling classes include explicit Polyp boundary band',set(ra)==set(range(5)),dict(zip(RA_CLASSES,np.bincount(ra,minlength=5).tolist())))
     check('visible positive opacity responds to Sphere',float(np.median(acc[classes==0]))>.98,dict(N=int((classes==0).sum()),median=float(np.median(acc[classes==0]))))
     check('Ring/BG censored prefixes do not absorb hidden Sphere',float(np.quantile(acc[np.isin(classes,[2,3])],.95))<.02,dict(N=int(np.isin(classes,[2,3]).sum()),p95=float(np.quantile(acc[np.isin(classes,[2,3])],.95))))
     check('unknown has zero supervision weight',np.all(sem['mask_weight'][classes==4]==0))
@@ -42,7 +44,7 @@ def main():
     # never silently turned into a confident negative or camera adjustment.
     idx=int(np.flatnonzero((classes==2)&q['valid'])[0]);wrong_labels=np.array([1]);qq={k:np.asarray(val)[[idx]]for k,val in q.items()}
     conflict=ray_semantics(wrong_labels,qq,np.array([q['cutoff_mm'][idx]+1]),np.array([True]))
-    check('positive mask/occluder contradiction retained as unknown',conflict['class_id'][0]==4 and conflict['mask_weight'][0]==0)
+    check('observed Polyp keeps positive Mask before Ring even when HERO is behind Ring',conflict['class_id'][0]==0 and conflict['mask_weight'][0]==1 and conflict['mask_target'][0]==1 and conflict['depth_weight'][0]==0)
     # Old error: full ray terminator always absorbs, even with no Polyp.
     empty=integrate_visible(o[:32],d[:32],{k:np.asarray(val)[:32]for k,val in q.items()},lambda p:torch.ones(len(p),dtype=p.dtype)*5,.08)
     old=1-np.exp(-1e10*numpy_density(np.array([-1.]),.1001))[0]
@@ -86,10 +88,47 @@ def main():
     # reused SameCameraScene; constant z rear plane has known exact intersections.
     rear=(bg_primitive>=2)&(bg_primitive<4);expected_t=(18-T[2,3])*factor[rear]
     check('background mesh first-hit coordinates are axial/ray consistent',np.max(abs(bg_t[rear]-expected_t))<.002,dict(rear_triangle_hit_N=int(rear.sum()),max_error_mm=float(np.max(abs(bg_t[rear]-expected_t))),selection='actual primitive_id 2/3; no ray-length heuristic'))
+    # The RA review explicitly requires front/back Ring order, thin stalk near
+    # background, missed ROI, and no-hit depth handling as separate controls.
+    ao=np.array([[5.6,0.,-25.]]);ad=np.array([[0.,0.,1.]])
+    ring_first=rs.cast(np.array([[47.5+100*5.6/25,47.5]]))['t_hit'].numpy()
+    # Use the exact world ray above rather than the image ray aimed at origin.
+    sys.path.insert(0,str(VENDOR));import open3d as o3d
+    ring_first=cad_scene('R10').cast_rays(o3d.core.Tensor(np.c_[ao,ad].astype(np.float32)))['t_hit'].numpy()
+    order=visibility_intervals(ao,ad,[5.6,0.,0.],8,ring_first)
+    front=integrate_visible(ao,ad,order,lambda p:torch.linalg.vector_norm(p-torch.tensor([5.6,0.,-4.]),dim=-1)-1,.08)
+    back=integrate_visible(ao,ad,order,lambda p:torch.linalg.vector_norm(p-torch.tensor([5.6,0.,4.]),dim=-1)-1,.08)
+    check('Sphere in front of fixed Ring stays visible',float(front['opacity'][0])>.98 and front['render_hit'][0])
+    check('Sphere behind fixed Ring is censored, with no fake zero depth',float(back['opacity'][0])<.02 and not back['render_hit'][0]and bool(torch.isnan(back['axial_depth_mm'][0])))
+    missed=visibility_intervals(np.array([[100.,0.,-20.]]),de,[0,0,0],2)
+    miss=integrate_visible(np.array([[100.,0.,-20.]]),de,missed,forbidden)
+    check('ray entirely missing ROI never evaluates SDF',miss['sample_N']==0 and float(miss['opacity'][0])==0)
+    theta_stalk=torch.tensor(.18,dtype=torch.float64,requires_grad=True)
+    def stalk(p):
+        radial=torch.linalg.vector_norm(p[:,[0,2]]-torch.tensor([0.,3.]),dim=-1)-theta_stalk
+        cap=p[:,1].abs()-2
+        q=torch.stack([radial,cap],-1)
+        return torch.linalg.vector_norm(torch.clamp_min(q,0),dim=-1)+torch.clamp_max(q.max(-1).values,0)
+    stalkq=visibility_intervals(oe,de,[0,0,3],4,background_t=np.array([23.4]))
+    so=integrate_visible(oe,de,stalkq,stalk,.08)
+    sg=torch.autograd.grad(so['opacity'][0],theta_stalk)[0]
+    check('thin stalk near background has finite nonzero geometry response',so['render_hit'][0]and float(so['opacity'][0])>.9 and float(sg)>1e-8,dict(opacity=float(so['opacity'][0].detach()),gradient=float(sg)))
+    emptyq=visibility_intervals(oe,de,[0,0,3],4)
+    nohit=integrate_visible(oe,de,emptyq,lambda p:torch.ones(len(p),dtype=p.dtype)*5,.08)
+    dl,dmeta=shared_depth_loss(nohit['axial_depth_mm'],[23.],[1.],['source'],['toy'],render_hit=nohit['render_hit'])
+    occupancy=masked_opacity_loss(nohit,dict(mask_weight=[1.],mask_target=[1.]))
+    check('no front-surface hit is NaN with zero depth regression, positive Mask penalty',bool(torch.isnan(nohit['axial_depth_mm'][0]))and float(dl)==0 and dmeta['source']['miss_N']==1 and float(occupancy)>1,dict(miss_N=dmeta['source']['miss_N'],Mask_loss=float(occupancy)))
+    betarows=[]
+    for sid,qqq in load(E1/'config/SDF_DOMAIN_CANDIDATES.json')['candidates'].items():
+        scale=next(x['mm_per_unit']for x in qqq if x['id']=='VISIBLE_ROI_CENTER_ENVELOPE');sn=torch.tensor([-.5,.2],dtype=torch.float64);bn=torch.tensor(.1001,dtype=torch.float64)
+        sm,bm=implicit_units(sn,bn,scale);en=official_density_func(None,sn,beta=bn)*.5;em=official_density_func(None,sm,beta=bm)*(.5*scale)
+        check('actual E1 scene gauge converts beta as a length '+sid,float(abs(en-em).max())<1e-6)
+        betarows.append(dict(scene=sid,mm_per_network_unit=scale,official_initial_beta_network=.1001,corresponding_beta_mm=float(bm),analytic_probe_beta_mm=.08,not_official_initialization_or_tuning=True))
+    table('metrics/SDF_BETA_UNIT_CONTRACT.csv',betarows)
     counts=[dict(class_name=s,N=int((classes==i).sum()),active_prefix_N=int(((classes==i)&q['valid']).sum()),median_opacity=float(np.median(acc[classes==i])),mask_weight_sum=float(sem['mask_weight'][classes==i].sum()))for i,s in enumerate(SEMANTICS)]
     table('metrics/C2A_SYNTHETIC_CLASSES.csv',counts)
     table('metrics/C2A_TESTS.csv',checks)
-    np.savez_compressed(R/'local_results/C2A_synthetic.npz',opacity=acc.reshape(n,n),class_id=classes.reshape(n,n),sphere_t=sphere_t.reshape(n,n),ring_t=ring_t.reshape(n,n),background_t=bg_t.reshape(n,n),cutoff=q['end_mm'].reshape(n,n),labels=labels.reshape(n,n),K=K,c2w=T,plane_vertices=vertices,plane_faces=faces)
+    np.savez_compressed(R/'local_results/C2A_synthetic.npz',opacity=acc.reshape(n,n),class_id=classes.reshape(n,n),sampling_class_id=ra.reshape(n,n),sphere_t=sphere_t.reshape(n,n),ring_t=ring_t.reshape(n,n),background_t=bg_t.reshape(n,n),cutoff=q['end_mm'].reshape(n,n),labels=labels.reshape(n,n),K=K,c2w=T,plane_vertices=vertices,plane_faces=faces)
     save('metrics/C2A_SYNTHETIC_GATE.json',dict(C2a='SYNTHETIC_CPU_PASS',mandatory_CPU_tests_passed=True,check_N=len(checks),checks=checks,
         official_network_forward_N=0,model_weight_update_N=0,GPU='NOT_GRANTED',official_integration='CALLABLE_RAW_SDF_PROTOCOL_IMPLEMENTED; no official neural execution',
         five_semantics=SEMANTICS,background='synthetic mesh proof; real background use separately gated by cached source quality',

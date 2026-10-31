@@ -1,0 +1,131 @@
+"""Finite visible-Polyp integration; no infinite terminal interval or background density."""
+from context import *
+import torch
+
+SEMANTICS=('VISIBLE_POLYP','VISIBLE_NONPOLYP','RING_CENSORED','BACKGROUND_CENSORED','UNKNOWN')
+_path=SDF/'code/model/density.py';_tree=ast.parse(_path.read_text())
+_class=next(n for n in _tree.body if isinstance(n,ast.ClassDef)and n.name=='LaplaceDensity')
+_func=next(n for n in _class.body if isinstance(n,ast.FunctionDef)and n.name=='density_func')
+_ns=dict(torch=torch)
+exec(compile(ast.Module(body=[_func],type_ignores=[]),str(_path),'exec'),_ns)
+official_density_func=_ns['density_func']
+
+def clip_sampler_edges(proposed_t,start_mm,end_mm):
+    """Bridge for future adaptive sampler output: discard tail, insert bounds.
+
+    Raw Polyp SDF MUST be evaluated at the returned in-ROI cell midpoints;
+    previously clamped outside-sphere SDF/old rendering weights cannot be reused.
+    """
+    t=np.asarray(proposed_t,float)
+    if not np.isfinite(start_mm+end_mm) or end_mm<=start_mm:return np.empty(0)
+    if not np.isfinite(t).all():raise ValueError('NONFINITE_SAMPLER_INPUT')
+    return np.unique(np.r_[start_mm,t[(t>start_mm)&(t<end_mm)],end_mm])
+
+def finite_cell_weights(sdf_mm,edges_mm,beta_mm):
+    edges=torch.as_tensor(edges_mm,dtype=sdf_mm.dtype)
+    delta=edges[...,1:]-edges[...,:-1]
+    if not bool((delta>0).all()):raise ValueError('FINITE_ORDERED_CELLS_REQUIRED')
+    if not bool(torch.isfinite(delta).all()):raise ValueError('INFINITE_TERMINAL_CELL_FORBIDDEN')
+    sigma=official_density_func(None,sdf_mm,beta=torch.as_tensor(beta_mm,dtype=sdf_mm.dtype))
+    energy=sigma*delta;trans=torch.exp(-(torch.cumsum(energy,dim=-1)-energy))
+    return -torch.expm1(-energy)*trans
+
+def visibility_intervals(origins,directions,roi_center,roi_radius,ring_t=None,background_t=None,near_mm=.05,margin_mm=.05):
+    """Unit world directions; t is Euclidean mm, never axial Z. Cameras fixed."""
+    o=np.asarray(origins,float);d=np.asarray(directions,float)
+    if not np.allclose(np.linalg.norm(d,axis=1),1,atol=1e-8):raise ValueError('unit rays required')
+    entry,exit=sphere_interval(o,d,np.asarray(roi_center,float),float(roi_radius))
+    n=len(o);r=np.full(n,np.inf)if ring_t is None else np.asarray(ring_t,float)
+    b=np.full(n,np.inf)if background_t is None else np.asarray(background_t,float)
+    r=np.where(np.isfinite(r)&(r>0),r,np.inf);b=np.where(np.isfinite(b)&(b>0),b,np.inf)
+    start=np.maximum(entry,near_mm);end=np.minimum(exit,np.minimum(r,b)-margin_mm)
+    valid=np.isfinite(start)&np.isfinite(end)&(end>start)
+    return dict(start_mm=np.where(valid,start,0),end_mm=np.where(valid,end,0),valid=valid,
+                ROI_entry_mm=entry,ROI_exit_mm=exit,ring_t_mm=r,background_t_mm=b,
+                first_occluder=np.where(r<=b,'RING','BACKGROUND'),cutoff_mm=np.minimum(r,b))
+
+def ray_semantics(labels,intervals,target_t_mm=None,background_known=None):
+    """Occluded rays constrain only the observed prefix; hidden interval is censored."""
+    labels=np.asarray(labels);n=len(labels);q=intervals
+    target=np.full(n,np.nan)if target_t_mm is None else np.asarray(target_t_mm,float)
+    known=np.zeros(n,bool)if background_known is None else np.asarray(background_known,bool)
+    cls=np.full(n,4,dtype=np.int64);reason=np.full(n,'UNKNOWN_OR_UNCERTIFIED_BACKGROUND',dtype='U80')
+    roi_hit=np.isfinite(q['ROI_exit_mm'])&(q['ROI_exit_mm']>np.maximum(q['ROI_entry_mm'],.05))
+    ring_first=(q['ring_t_mm']<=q['background_t_mm'])&np.isfinite(q['ring_t_mm'])
+    bg_first=(q['background_t_mm']<q['ring_t_mm'])&np.isfinite(q['background_t_mm'])&known
+    polyp=(labels==1)&q['valid']
+    contradiction=polyp&np.isfinite(target)&((target<q['start_mm'])|(target>q['end_mm']))
+    cls[polyp&~contradiction]=0;reason[polyp&~contradiction]='OBSERVED_POLYP_IN_VISIBLE_ROI'
+    reason[contradiction]='POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT'
+    rc=(labels==2)&ring_first;cls[rc]=2;reason[rc]='RING_LABEL_WITH_REAL_CAD_FIRST_HIT'
+    bg=labels==0
+    rc=bg&ring_first&(q['ring_t_mm']<q['ROI_exit_mm']);cls[rc]=2;reason[rc]='CAD_CENSORS_BACKGROUND_RAY'
+    bc=bg&bg_first&(q['background_t_mm']<q['ROI_exit_mm']);cls[bc]=3;reason[bc]='QUALIFIED_BACKGROUND_PROXY_CENSORS_RAY'
+    negative=bg&known&~rc&~bc&roi_hit;cls[negative]=1;reason[negative]='OBSERVED_NONPOLYP_VISIBLE_PREFIX'
+    # A ray missing the ROI has no learnable Polyp segment, even if its visible
+    # image label is known. Keep it UNKNOWN/zero-weight, never invent support.
+    mask_weight=((cls!=4)&q['valid']).astype(float)
+    mask_target=(cls==0).astype(float)
+    depth_weight=((cls==0)&np.isfinite(target)&(target>0)).astype(float)
+    return dict(class_id=cls,labels=[SEMANTICS[i]for i in cls],reason=reason,mask_target=mask_target,
+                mask_weight=mask_weight,depth_weight=depth_weight,hidden_supervised=np.zeros(n,bool))
+
+def integrate_visible(origins,directions,intervals,raw_sdf_mm,beta_mm=.08,bins=512,ray_z_cosine=None):
+    """Differentiable CPU contract. raw_sdf_mm is an injected UNCLAMPED SDF.
+
+    Future official integration supplies raw implicit-network output, converted
+    consistently to mm. Official network/sampler construction is not performed.
+    Only valid finite ROI samples are evaluated. Ring/background are hard stops.
+    """
+    o=torch.as_tensor(origins,dtype=torch.float64);d=torch.as_tensor(directions,dtype=torch.float64)
+    if o.requires_grad or d.requires_grad:raise ValueError('FROZEN_CAMERA_REQUIRED')
+    valid=np.asarray(intervals['valid']);ids=np.flatnonzero(valid);n=len(o)
+    acc=torch.zeros(n,dtype=torch.float64);depth=torch.zeros(n,dtype=torch.float64)
+    if len(ids)==0:return dict(opacity=acc,ray_depth_mm=depth,axial_depth_mm=depth,valid=valid,sample_N=0)
+    a=torch.as_tensor(intervals['start_mm'][ids],dtype=torch.float64);b=torch.as_tensor(intervals['end_mm'][ids],dtype=torch.float64)
+    u=(torch.arange(bins,dtype=torch.float64)+.5)/bins;t=a[:,None]+(b-a)[:,None]*u
+    pts=o[ids,None,:]+d[ids,None,:]*t[:,:,None]
+    sdf=raw_sdf_mm(pts.reshape(-1,3)).reshape(len(ids),bins)
+    beta=torch.as_tensor(beta_mm,dtype=torch.float64)
+    if not bool((beta>0).all()):raise ValueError('positive beta required')
+    edges=a[:,None]+(b-a)[:,None]*torch.linspace(0,1,bins+1,dtype=torch.float64)
+    weights=finite_cell_weights(sdf,edges,beta)
+    mass=weights.sum(1);mean=(weights*t).sum(1)/mass.clamp_min(1e-12)
+    acc=acc.index_copy(0,torch.as_tensor(ids),mass);depth=depth.index_copy(0,torch.as_tensor(ids),mean)
+    cosine=torch.ones(n,dtype=torch.float64)if ray_z_cosine is None else torch.as_tensor(ray_z_cosine,dtype=torch.float64)
+    return dict(opacity=acc,ray_depth_mm=depth,axial_depth_mm=depth*cosine,valid=valid,sample_N=len(ids)*bins,
+                active_ids=ids,t_mm=t,weights=weights,sdf_mm=sdf)
+
+def masked_opacity_loss(pred,sem):
+    p=pred['opacity'];w=torch.as_tensor(sem['mask_weight'],dtype=p.dtype);y=torch.as_tensor(sem['mask_target'],dtype=p.dtype)
+    if not bool((w>0).any()):return p.sum()*0
+    v=w>0;q=p[v].clamp(1e-8,1-1e-8)
+    return (-(y[v]*q.log()+(1-y[v])*torch.log1p(-q))*w[v]).sum()/w[v].sum()
+
+def world_to_network(points_mm,origin_mm,mm_per_unit):
+    return (points_mm-torch.as_tensor(origin_mm,dtype=points_mm.dtype))/float(mm_per_unit)
+
+def shared_depth_loss(predicted_axial_mm,target_axial_mm,weights,view_ids,scene_ids,delta_mm=.5,source_weights=None):
+    """Equal-view average of valid, source-correlation-weighted Huber losses.
+
+    One call represents exactly one video/SDF. Mixed scene IDs are rejected.
+    No per-view scale/shift fit and no prediction-dependent source selection.
+    """
+    if len(set(scene_ids))!=1:raise ValueError('CROSS_VIDEO_SUPERVISION_FORBIDDEN')
+    y=torch.as_tensor(target_axial_mm,dtype=predicted_axial_mm.dtype);w=torch.as_tensor(weights,dtype=y.dtype)
+    if not bool(torch.isfinite(w).all()) or not bool((w>=0).all()):raise ValueError('INVALID_SOURCE_WEIGHTS')
+    valid=torch.isfinite(y)&(w>0)&(y>0)
+    if bool((valid&~torch.isfinite(predicted_axial_mm)).any()):raise ValueError('NONFINITE_PREDICTION_MUST_NOT_DROP_SOURCE')
+    terms=[];view_weights=[];per_view={}
+    for v in sorted(set(view_ids)):
+        ix=torch.tensor([a==v for a in view_ids])&valid
+        if not bool(ix.any()):per_view[v]=dict(valid_N=0,status='NO_VALID_DEPTH');continue
+        error=predicted_axial_mm[ix]-y[ix];a=error.abs();h=torch.where(a<=delta_mm,.5*error**2/delta_mm,a-.5*delta_mm)
+        term=(h*w[ix]).sum()/w[ix].sum();terms.append(term)
+        source_weight=1. if source_weights is None else float(source_weights[v])
+        if not np.isfinite(source_weight)or source_weight<=0:raise ValueError('SOURCE_WEIGHT_MUST_BE_POSITIVE')
+        view_weights.append(source_weight)
+        per_view[v]=dict(valid_N=int(ix.sum()),weight_sum=float(w[ix].sum()),source_dependency_weight=source_weight,loss=term)
+    if not terms:return predicted_axial_mm.sum()*0,per_view
+    vw=torch.tensor(view_weights,dtype=predicted_axial_mm.dtype)
+    return (torch.stack(terms)*vw).sum()/vw.sum(),per_view

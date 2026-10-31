@@ -1,0 +1,33 @@
+{
+  "review_SHA256": "512ad8b3369e9a8888643a2e477463b000d0f8187b64b3ee40a9a0cd4e85140d",
+  "sampling_classes": [
+    "P_INTERIOR",
+    "P_BOUNDARY_BAND",
+    "VISIBLE_NONPOLYP",
+    "RING_OCCLUDED",
+    "UNKNOWN_LOW_CONF"
+  ],
+  "boundary_half_width_px": 2,
+  "region_quota": [
+    96,
+    96,
+    64,
+    32,
+    32
+  ],
+  "total_ray_budget_per_view": 320,
+  "importance": "population(region)/sample_N(region); applied to Mask and source pixel depth weighting",
+  "depth_observation_role": "P_INTERIOR only",
+  "depth_requires_rendered_front_zero_crossing": true,
+  "min_opacity_for_depth": 0.0001,
+  "miss_policy": "NaN depth, no zero regression, fixed positive Mask term retained, per-source miss denominator printed",
+  "source_beta_policy": "beta_mm=beta_network*mm_per_network_unit; 0.08mm is analytic-control beta, not official model initialization",
+  "background_policy": "cached point depth gives only same-source observed free-space bound; no real opaque BG mesh is certified",
+  "M0": "RGB+K+frozen pose",
+  "M1": "M0+native HERO",
+  "M2": "M0+Cleaned single-layer depth",
+  "M3": "M1+qualified visible Ring CAD pixel axial-Z",
+  "M4": "M2 switch F1/F2/F3, three mutually exclusive bounded profiles",
+  "CAD_visible_pixel_rule": "source Ring Mask2 + finite CAD firsthit + source native-Z agreement <=max(0.5mm,3 footprints); never overwrite Polyp Mask1",
+  "scientific_GPU_authorization": "NOT_GRANTED"
+}

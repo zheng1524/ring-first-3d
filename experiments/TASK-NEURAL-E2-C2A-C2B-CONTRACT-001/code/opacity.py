@@ -3,6 +3,7 @@ from context import *
 import torch
 
 SEMANTICS=('VISIBLE_POLYP','VISIBLE_NONPOLYP','RING_CENSORED','BACKGROUND_CENSORED','UNKNOWN')
+RA_CLASSES=('P_INTERIOR','P_BOUNDARY_BAND','VISIBLE_NONPOLYP','RING_OCCLUDED','UNKNOWN_LOW_CONF')
 _path=SDF/'code/model/density.py';_tree=ast.parse(_path.read_text())
 _class=next(n for n in _tree.body if isinstance(n,ast.ClassDef)and n.name=='LaplaceDensity')
 _func=next(n for n in _class.body if isinstance(n,ast.FunctionDef)and n.name=='density_func')
@@ -55,8 +56,11 @@ def ray_semantics(labels,intervals,target_t_mm=None,background_known=None):
     bg_first=(q['background_t_mm']<q['ring_t_mm'])&np.isfinite(q['background_t_mm'])&known
     polyp=(labels==1)&q['valid']
     contradiction=polyp&np.isfinite(target)&((target<q['start_mm'])|(target>q['end_mm']))
-    cls[polyp&~contradiction]=0;reason[polyp&~contradiction]='OBSERVED_POLYP_IN_VISIBLE_ROI'
-    reason[contradiction]='POSITIVE_MASK_DEPTH_OCCLUSION_OR_ROI_CONFLICT'
+    cls[polyp]=0;reason[polyp]='OBSERVED_POLYP_IN_VISIBLE_ROI'
+    # Observed positive Mask means a Polyp must be in FRONT of the cap. A
+    # conflicting HERO depth cannot erase that image observation or replace it
+    # with Ring. Reject only the contradictory depth, retaining positive BCE.
+    reason[contradiction]='VISIBLE_POLYP_WITH_HERO_DEPTH_CONFLICT'
     rc=(labels==2)&ring_first;cls[rc]=2;reason[rc]='RING_LABEL_WITH_REAL_CAD_FIRST_HIT'
     bg=labels==0
     rc=bg&ring_first&(q['ring_t_mm']<q['ROI_exit_mm']);cls[rc]=2;reason[rc]='CAD_CENSORS_BACKGROUND_RAY'
@@ -66,9 +70,26 @@ def ray_semantics(labels,intervals,target_t_mm=None,background_known=None):
     # image label is known. Keep it UNKNOWN/zero-weight, never invent support.
     mask_weight=((cls!=4)&q['valid']).astype(float)
     mask_target=(cls==0).astype(float)
-    depth_weight=((cls==0)&np.isfinite(target)&(target>0)).astype(float)
+    depth_weight=((cls==0)&np.isfinite(target)&(target>0)&~contradiction).astype(float)
     return dict(class_id=cls,labels=[SEMANTICS[i]for i in cls],reason=reason,mask_target=mask_target,
                 mask_weight=mask_weight,depth_weight=depth_weight,hidden_supervised=np.zeros(n,bool))
+
+def sampling_partition(labels,visibility_class,mask_weight,shape,half_width_px=2):
+    """RA five-class sampling, orthogonal to the visibility/occlusion split."""
+    labels=np.asarray(labels).reshape(shape);vis=np.asarray(visibility_class).reshape(shape)
+    eligible=np.asarray(mask_weight).reshape(shape)>0;fg=(labels==1).astype(np.uint8)
+    kernel=np.ones((2*half_width_px+1,2*half_width_px+1),np.uint8)
+    boundary=(cv2.dilate(fg,kernel)>0)&~(cv2.erode(fg,kernel)>0)
+    result=np.full(shape,4,np.uint8)
+    result[(vis==0)&eligible&~boundary]=0
+    result[eligible&boundary&np.isin(vis,[0,1,3])]=1
+    result[eligible&~boundary&np.isin(vis,[1,3])]=2
+    result[vis==2]=3
+    return result.ravel(),boundary.ravel()
+
+def implicit_units(raw_sdf_network,beta_network,mm_per_unit):
+    """Unit conversion, not fitted scale. beta is a length and must also scale."""
+    return raw_sdf_network*float(mm_per_unit),beta_network*float(mm_per_unit)
 
 def integrate_visible(origins,directions,intervals,raw_sdf_mm,beta_mm=.08,bins=512,ray_z_cosine=None):
     """Differentiable CPU contract. raw_sdf_mm is an injected UNCLAMPED SDF.
@@ -81,7 +102,9 @@ def integrate_visible(origins,directions,intervals,raw_sdf_mm,beta_mm=.08,bins=5
     if o.requires_grad or d.requires_grad:raise ValueError('FROZEN_CAMERA_REQUIRED')
     valid=np.asarray(intervals['valid']);ids=np.flatnonzero(valid);n=len(o)
     acc=torch.zeros(n,dtype=torch.float64);depth=torch.zeros(n,dtype=torch.float64)
-    if len(ids)==0:return dict(opacity=acc,ray_depth_mm=depth,axial_depth_mm=depth,valid=valid,sample_N=0)
+    if len(ids)==0:
+        missing=torch.full_like(depth,float('nan'))
+        return dict(opacity=acc,ray_depth_mm=missing,axial_depth_mm=missing,valid=valid,render_hit=np.zeros(n,bool),sample_N=0)
     a=torch.as_tensor(intervals['start_mm'][ids],dtype=torch.float64);b=torch.as_tensor(intervals['end_mm'][ids],dtype=torch.float64)
     u=(torch.arange(bins,dtype=torch.float64)+.5)/bins;t=a[:,None]+(b-a)[:,None]*u
     pts=o[ids,None,:]+d[ids,None,:]*t[:,:,None]
@@ -92,8 +115,12 @@ def integrate_visible(origins,directions,intervals,raw_sdf_mm,beta_mm=.08,bins=5
     weights=finite_cell_weights(sdf,edges,beta)
     mass=weights.sum(1);mean=(weights*t).sum(1)/mass.clamp_min(1e-12)
     acc=acc.index_copy(0,torch.as_tensor(ids),mass);depth=depth.index_copy(0,torch.as_tensor(ids),mean)
+    start_sdf=raw_sdf_mm(o[ids]+d[ids]*a[:,None]).reshape(-1)
+    front=((sdf[:,:-1]>0)&(sdf[:,1:]<=0)).any(1)|((start_sdf>=0)&(sdf[:,0]<0))
+    hit=front&(mass>=1e-4);all_hit=torch.zeros(n,dtype=torch.bool).index_copy(0,torch.as_tensor(ids),hit)
+    depth=torch.where(all_hit,depth,torch.full_like(depth,float('nan')))
     cosine=torch.ones(n,dtype=torch.float64)if ray_z_cosine is None else torch.as_tensor(ray_z_cosine,dtype=torch.float64)
-    return dict(opacity=acc,ray_depth_mm=depth,axial_depth_mm=depth*cosine,valid=valid,sample_N=len(ids)*bins,
+    return dict(opacity=acc,ray_depth_mm=depth,axial_depth_mm=depth*cosine,valid=valid,render_hit=all_hit.detach().numpy(),sample_N=len(ids)*(bins+1),
                 active_ids=ids,t_mm=t,weights=weights,sdf_mm=sdf)
 
 def masked_opacity_loss(pred,sem):
@@ -105,7 +132,7 @@ def masked_opacity_loss(pred,sem):
 def world_to_network(points_mm,origin_mm,mm_per_unit):
     return (points_mm-torch.as_tensor(origin_mm,dtype=points_mm.dtype))/float(mm_per_unit)
 
-def shared_depth_loss(predicted_axial_mm,target_axial_mm,weights,view_ids,scene_ids,delta_mm=.5):
+def shared_depth_loss(predicted_axial_mm,target_axial_mm,weights,view_ids,scene_ids,delta_mm=.5,source_weights=None,render_hit=None):
     """Equal-view average of valid, source-correlation-weighted Huber losses.
 
     One call represents exactly one video/SDF. Mixed scene IDs are rejected.
@@ -113,12 +140,24 @@ def shared_depth_loss(predicted_axial_mm,target_axial_mm,weights,view_ids,scene_
     """
     if len(set(scene_ids))!=1:raise ValueError('CROSS_VIDEO_SUPERVISION_FORBIDDEN')
     y=torch.as_tensor(target_axial_mm,dtype=predicted_axial_mm.dtype);w=torch.as_tensor(weights,dtype=y.dtype)
-    valid=torch.isfinite(y)&torch.isfinite(predicted_axial_mm)&(w>0)&(y>0)
-    terms=[];per_view={}
+    if not bool(torch.isfinite(w).all()) or not bool((w>=0).all()):raise ValueError('INVALID_SOURCE_WEIGHTS')
+    observed=torch.isfinite(y)&(w>0)&(y>0)
+    hit=torch.ones(len(y),dtype=torch.bool)if render_hit is None else torch.as_tensor(render_hit,dtype=torch.bool)
+    valid=observed&hit
+    if bool((valid&~torch.isfinite(predicted_axial_mm)).any()):raise ValueError('NONFINITE_HIT_PREDICTION_MUST_NOT_DROP_SOURCE')
+    terms=[];view_weights=[];per_view={}
     for v in sorted(set(view_ids)):
         ix=torch.tensor([a==v for a in view_ids])&valid
-        if not bool(ix.any()):per_view[v]=dict(valid_N=0,status='NO_VALID_DEPTH');continue
+        obs=torch.tensor([a==v for a in view_ids])&observed
+        if not bool(ix.any()):
+            per_view[v]=dict(valid_N=0,observed_N=int(obs.sum()),miss_N=int(obs.sum()),status='NO_RENDER_HIT'if bool(obs.any())else'NO_VALID_OBSERVATION',loss=None)
+            continue
         error=predicted_axial_mm[ix]-y[ix];a=error.abs();h=torch.where(a<=delta_mm,.5*error**2/delta_mm,a-.5*delta_mm)
-        term=(h*w[ix]).sum()/w[ix].sum();terms.append(term);per_view[v]=dict(valid_N=int(ix.sum()),weight_sum=float(w[ix].sum()),loss=term)
-    if not terms:return predicted_axial_mm.sum()*0,per_view
-    return torch.stack(terms).mean(),per_view
+        term=(h*w[ix]).sum()/w[ix].sum();terms.append(term)
+        source_weight=1. if source_weights is None else float(source_weights[v])
+        if not np.isfinite(source_weight)or source_weight<=0:raise ValueError('SOURCE_WEIGHT_MUST_BE_POSITIVE')
+        view_weights.append(source_weight)
+        per_view[v]=dict(valid_N=int(ix.sum()),observed_N=int(obs.sum()),miss_N=int((obs&~hit).sum()),weight_sum=float(w[ix].sum()),source_dependency_weight=source_weight,loss=term)
+    if not terms:return predicted_axial_mm[torch.isfinite(predicted_axial_mm)].sum()*0,per_view
+    vw=torch.tensor(view_weights,dtype=predicted_axial_mm.dtype)
+    return (torch.stack(terms)*vw).sum()/vw.sum(),per_view

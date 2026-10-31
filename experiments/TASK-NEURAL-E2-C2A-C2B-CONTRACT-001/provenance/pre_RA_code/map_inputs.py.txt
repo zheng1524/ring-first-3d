@@ -1,0 +1,90 @@
+"""C2b Map M0-M4: E1 geometry/projectors and official CPU input utilities."""
+from context import *
+
+def geometry_bridge(D,C,gn):
+    p=E1/'code/map_contract.py';t=ast.parse(p.read_text());m=next(n for n in t.body if isinstance(n,ast.FunctionDef)and n.name=='main')
+    n=next(n for n in m.body if isinstance(n,ast.FunctionDef)and n.name=='geometry');ns=dict(globals(),D=D,C=C,gn=gn)
+    exec(compile(ast.Module(body=[n],type_ignores=[]),str(p),'exec'),ns)
+    REUSE.append(dict(path=str(p),SHA256=sha(p),function='main.geometry',AST_SHA256=hashlib.sha256(ast.dump(n,include_attributes=False).encode()).hexdigest()))
+    return ns['geometry']
+
+def main():
+    require_c2a();assert load(R/'metrics/C2B_DATA_GATE.json')['CPU_contract_pass']
+    save('config/MAP_M0_M4.json',dict(M0='RGB',M1='RGB+K',M2='RGB+K+frozen metric pose',M3='RGB+K+pose+aligned native HERO full view',
+        M4='RGB+K+pose+per-source Cleaned XYZ -> finite visible ROI depth_z',M4_alternatives=['Raw','F1','F2','F3'],
+        definition_status='engineering definition; exact RA text not supplied; align before formal scientific registration',
+        source_views=selected(),visibility='fixed E1 ROI + fixed Ring first hit + qualified BG first hit',
+        official_revision='3d10cf7a3016fc0f9bb13a071ee66c47b10be0d9',model_forward_N=0,GPU='NOT_GRANTED'))
+    freeze('C2B_MAP_BEFORE_TEST.json',dict(stage='after completed C2a and joint-data CPU tests',E1_bridge=asset(E1/'code/map_contract.py')))
+    sys.path[:0]=[str(E0/'runtime/python'),str(MAP)]
+    import torch
+    from mapanything.utils.image import preprocess_inputs
+    from mapanything.utils.inference import validate_input_views_for_inference,preprocess_input_views_for_inference
+    D=registry();C={c['id']:c for c in D['references']};gn=legacy_geometry_namespace(D);geometry=geometry_bridge(D,C,gn)
+    ns=dict(globals(),camera=lambda t:SameCameraScene(ring(t['ring_kind']),np.array(t['K']),np.array(t['c2w']),(640,360),str(VENDOR)),cfg=lambda:dict(CAD_tolerance_mm=.05))
+    project=extract(GROW/'code/geometry.py',['projection'],ns)['projection']
+    conversions=[];manifests=[];tests=[];folder=R/'local_results/map_inputs';folder.mkdir(exist_ok=True)
+    def check(name,ok,detail=None):
+        tests.append(dict(test=name,pass_=bool(ok),detail=detail))
+        if not ok:save('metrics/C2B_MAP_GATE.json',dict(CPU_contract_pass=False,tests=tests,GPU='NOT_GRANTED'));raise AssertionError((name,detail))
+    for scene,refs in selected().items():
+        depths={};meta={};cache={}
+        for family in ['Raw','Cleaned','F1','F2','F3']:
+            for ref in refs:
+                c=C[ref];p=np.load(c['pack']);rays=np.load(R/f'local_results/rays/{ref}.npz');inherited=e1_depth(scene,family)
+                reuse=ref==refs[0]and inherited.is_file()
+                if reuse:
+                    z=np.load(inherited);axial=z['axial_Z_mm'].ravel();who=z['source_index'].ravel();valid=z['validity'].ravel();producer=asset(inherited,'reused E1 validated projection')
+                    parents=[ref]if family in ['Raw','Cleaned']else [x['id']for x in D['references'][:14]if x['scene_id']==scene]if family in ['F1','F2']else gn['f3'](scene)['input_refs']
+                else:
+                    k=family if family in ['F1','F2','F3']else family+'_'+ref
+                    if k not in cache:cache[k]=geometry(scene,family,ref)
+                    geo=cache[k];out=project(geo['P'],geo['C'],dict(K=p['K'],c2w=p['pose'],ring_kind=c['ring']))
+                    axial=out['z'].ravel();who=out['source_id'].ravel();valid=who>=0;parents=geo['parents'];producer=dict(status='NEW_VIEW_USING_EXACT_E1_PROJECTOR',SHA256=sha(GROW/'code/geometry.py'))
+                ray_t=axial*rays['ray_length_factor'];visible=valid&rays['ROI_valid']&(ray_t>=rays['ROI_start_t_mm'])&(ray_t<=rays['ROI_end_t_mm'])
+                depth=np.where(visible,axial/1000,0).reshape(360,640).astype(np.float32);path=folder/(ref+'_'+family+'.npz')
+                np.savez_compressed(path,depth_z_m=depth,validity=visible.reshape(360,640),source_projection_index=who.reshape(360,640),rejected_visibility=(valid&~visible).reshape(360,640),source_K=p['K'],source_c2w_mm=p['pose'])
+                check('nonempty legal finite depth '+ref+' '+family,np.isfinite(depth).all()and(depth>=0).all()and(depth>0).any())
+                check('same-video ancestry '+ref+' '+family,all(C[x]['scene_id']==scene for x in parents))
+                depths[ref,family]=depth
+                info=dict(scene=scene,source_view=ref,family=family,parents=parents,independent_camera_increment=0,E1_projection_reused=reuse,projection_input=producer,
+                    all_pixel_N=230400,projected_valid_N=int(valid.sum()),visible_valid_N=int(visible.sum()),visibility_rejected_N=int((valid&~visible).sum()),Mask_disagreement_N=int((visible&(rays['labels']!=1)).sum()),
+                    parent_RGB_SHA256=[C[x]['files']['RGB']['sha256']for x in parents],HERO_RGB_SHA256=sorted({h for x in parents for h in C[x]['source_alias_hashes']}),input_depth=asset(path))
+                conversions.append(info);meta[ref,family]=info
+        configs=[('M0',None),('M1',None),('M2',None),('M3',None),('M4','Cleaned')]+[('M4_candidate_'+f,f)for f in ['Raw','F1','F2','F3']]
+        for mode,family in configs:
+            raw=[];parents=set();viewmeta=[]
+            for ref in refs:
+                c=C[ref];p=np.load(c['pack']);T=p['pose'].copy();T[:3,3]/=1000
+                v=dict(img=np.asarray(Image.open(c['RGB']).convert('RGB')))
+                if mode!='M0':v['intrinsics']=p['K'].copy()
+                if mode not in ['M0','M1']:v.update(camera_poses=T.copy(),is_metric_scale=torch.tensor([True]))
+                if mode=='M3':
+                    z=p['depth_mm'];v['depth_z']=np.where(np.isfinite(z)&(z>0),z/1000,0).astype(np.float32);parents.add(ref)
+                elif family:v['depth_z']=depths[ref,family];parents.update(meta[ref,family]['parents'])
+                else:parents.add(ref)
+                viewmeta.append(dict(id=ref,RGB=c['files']['RGB'],Mask=c['files']['Mask'],camera=c['files']['camera_file'],native=c['E1_actual_native']if mode=='M3'else None,derived_depth=meta[ref,family]['input_depth']if family else None,raw_keys=sorted(v),input_K=c['K_raw'],input_c2w_mm=c['c2w_mm']))
+                raw.append(v)
+            vv=preprocess_inputs(raw,resize_mode='fixed_size',size=(280,154));validate_input_views_for_inference(vv);processed=preprocess_input_views_for_inference(vv)
+            check('official three-view API '+scene+' '+mode,len(vv)==3)
+            check('source cameras remain exact '+scene+' '+mode,all(np.array_equal(np.load(C[x]['pack'])['K'],np.asarray(C[x]['K_raw']))and np.array_equal(np.load(C[x]['pack'])['pose'],np.asarray(C[x]['c2w_mm']))for x in refs))
+            if mode not in ['M0','M1']:check('official input pose unchanged '+scene+' '+mode,all(np.array_equal(vv[i]['camera_poses'][0].numpy(),raw[i]['camera_poses'])for i in range(3)))
+            if mode=='M3'or family:
+                check('official sparse zero contract '+scene+' '+mode,all(bool(torch.isfinite(v['depth_along_ray']).all())and bool((v['depth_along_ray'][vv[i]['depth_z'][...,None]==0]==0).all())for i,v in enumerate(processed)))
+            ancestry={C[x]['files']['RGB']['sha256']for x in parents}
+            if mode=='M3'or family:ancestry|={h for x in parents for h in C[x]['source_alias_hashes']}
+            overlap=[t['target']for t in D['targets']if t['scene']==scene and t['RGB_SHA256']in ancestry]
+            check('evaluation target absent from input ancestry '+scene+' '+mode,not overlap,overlap)
+            manifests.append(dict(scene=scene,mode=mode,primary=mode in ['M0','M1','M2','M3','M4'],derived_family=family,real_view_N=3,view_ids=refs,views=viewmeta,
+                geometry_parent_refs=sorted(parents),all_ancestor_RGB_SHA256=sorted(ancestry),evaluation_overlap=overlap,
+                information_tier='COMMON_TRIPLE'if family in [None,'Raw','Cleaned']else 'EXTRA_HISTORICAL_PRIOR',
+                legal_input=True,official_input_keys=[sorted(v)for v in vv],official_internal_keys=[sorted(v)for v in processed],
+                model_forward_N=0,weight_update_N=0,GPU='NOT_GRANTED',formal_status='PROPOSED_NOT_RUN',M4_name_status='ENGINEERING_DEFINITION_PENDING_RA_TEXT'if mode.startswith('M4')else 'E1_NATIVE_DEFINITION'))
+            print('MAP_INPUT',scene,mode,'CPU 3-view contract',flush=True)
+    table('metrics/MAP_M0_M4_CONFIGURATIONS.csv',[{k:v for k,v in m.items()if k!='views'}for m in manifests]);table('metrics/MAP_DERIVED_DEPTH_CONVERSIONS.csv',conversions);table('metrics/C2B_MAP_TESTS.csv',tests)
+    save('provenance/MAP_M0_M4_DATA_MANIFEST.json',manifests)
+    save('metrics/C2B_MAP_GATE.json',dict(CPU_contract_pass=True,configuration_N=len(manifests),primary_M0_M4_N=10,derived_source_view_N=len(conversions),E1_projection_reused_N=sum(x['E1_projection_reused']for x in conversions),check_N=len(tests),official_model_forward_N=0,weight_update_N=0,GPU='NOT_GRANTED',M4_definition='primary Cleaned; Raw/F1/F2/F3 are mutually exclusive candidates; RA text alignment pending'))
+    save('provenance/C2B_MAP_EXECUTED_REUSE.json',REUSE)
+    print('C2B_MAP_COMPLETE',len(tests),'checks;',len(manifests),'configs;',len(conversions),'derived view depths',flush=True)
+
+if __name__=='__main__':main()

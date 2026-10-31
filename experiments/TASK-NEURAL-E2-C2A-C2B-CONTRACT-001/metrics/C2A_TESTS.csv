@@ -1,11 +1,12 @@
 test,pass_,detail
 five ray semantics present,True,"{""VISIBLE_POLYP"": 577, ""VISIBLE_NONPOLYP"": 990, ""RING_CENSORED"": 688, ""BACKGROUND_CENSORED"": 840, ""UNKNOWN"": 6121}"
+RA five sampling classes include explicit Polyp boundary band,True,"{""P_INTERIOR"": 357, ""P_BOUNDARY_BAND"": 422, ""VISIBLE_NONPOLYP"": 1612, ""RING_OCCLUDED"": 688, ""UNKNOWN_LOW_CONF"": 6137}"
 visible positive opacity responds to Sphere,True,"{""N"": 577, ""median"": 1.0}"
 Ring/BG censored prefixes do not absorb hidden Sphere,True,"{""N"": 1528, ""p95"": 3.383453674745791e-05}"
 unknown has zero supervision weight,True,
 no hidden segment supervised,True,
 samples only inside finite ROI and before first occluder,True,
-positive mask/occluder contradiction retained as unknown,True,
+observed Polyp keeps positive Mask before Ring even when HERO is behind Ring,True,
 E0 saturated tail rejected for an empty Polyp field,True,"{""old_opacity"": 1.0, ""new_max"": 0.0}"
 occluder before ROI evaluates zero SDF samples,True,
 opacity continuous as background crosses Sphere,True,"{""max_adjacent_change"": 0.016119443124160193, ""step_mm"": 0.004000000000001336, ""start"": 3.7164548375547696e-12, ""end"": 1.0}"
@@ -18,3 +19,10 @@ geometry gradient agrees with independent finite differences,True,"{""autograd""
 positive/negative Mask losses have opposite nonzero geometry gradients,True,"{""positive"": -4.270880975255878, ""negative"": 23.321489936550343}"
 unknown contributes zero Mask loss,True,
 background mesh first-hit coordinates are axial/ray consistent,True,"{""rear_triangle_hit_N"": 7594, ""max_error_mm"": 0.0, ""selection"": ""actual primitive_id 2/3; no ray-length heuristic""}"
+Sphere in front of fixed Ring stays visible,True,
+"Sphere behind fixed Ring is censored, with no fake zero depth",True,
+ray entirely missing ROI never evaluates SDF,True,
+thin stalk near background has finite nonzero geometry response,True,"{""opacity"": 0.9893870091152066, ""gradient"": 0.24341173590714346}"
+"no front-surface hit is NaN with zero depth regression, positive Mask penalty",True,"{""miss_N"": 1, ""Mask_loss"": 18.420680743952367}"
+actual E1 scene gauge converts beta as a length G01_004,True,
+actual E1 scene gauge converts beta as a length G01_005,True,

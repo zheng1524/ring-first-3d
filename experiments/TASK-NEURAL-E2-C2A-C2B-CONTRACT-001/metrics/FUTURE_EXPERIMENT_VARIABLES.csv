@@ -1,0 +1,12 @@
+arm,name,change,inputs,status
+SDF,S0_VALID,shared SDF + RGB/HERO-Z/Eikonal; no explicit Mask BCE,"same triple and source qualification; existing segmentation still defines data/ROI, so not a segmentation-free claim",PROPOSED_NOT_RUN
+SDF,S1_MASK,S0 + finite Polyp Mask BCE; RA region quotas and population correction,same source set/budget; only explicit silhouette term changes,CPU_MASK_CONTRACT_ONLY
+SDF,S2_CAD,S1 + fixed CAD first-hit visibility stop,same source set; no Ring SDF learning,CPU_CAD_CONTRACT_ONLY
+SDF,S3_UNCERTAIN,S2 + source-component normalization and frozen conflict weights,same source set; source weights never chosen by target/GT,CPU_LOSS_CONTRACT_ONLY
+SDF,S4_ANCHOR_OPTIONAL,verified physical MASt3R anchor gradients only if separately wired,no fake correspondences or pose fitting,NOT_IMPLEMENTED_NOT_RUN
+SDF,BG0/BG1,unknown BG censored / qualified cached observed BG proxy enabled,same RGB; eligible-ray denominators differ and must be reported,PROPOSED_NOT_RUN
+Map,M0,RGB + frozen K/pose,same triple,CPU_INPUT_CONTRACT_ONLY
+Map,M1,M0 + native HERO full-depth,full native depth differs from Polyp-only SDF loss; matched-information profile needed,CPU_INPUT_CONTRACT_ONLY
+Map,M2,M0 + one frozen Cleaned depth layer,"same real RGBs, one depth hypothesis per view",CPU_INPUT_CONTRACT_ONLY
+Map,M3,M1 + qualified visible CAD Ring pixel axial-Z,"CAD error is now self-consistency, not independent Polyp accuracy",CPU_INPUT_CONTRACT_ONLY
+Map,M4,"M2 switch F1/F2/F3, three bounded mutually exclusive profiles",historical ancestor information advantage disclosed; Raw only diagnostic,CPU_INPUT_CONTRACT_ONLY

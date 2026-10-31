@@ -1,0 +1,50 @@
+"""Future scientific variables and held-out identity. No target images opened."""
+from context import *
+
+def main():
+    require_c2a();D=registry();targets=[]
+    for t in D['targets']:
+        if t['scene']not in selected():continue
+        targets.append(dict(scene=t['scene'],target=t['target'],RGB_SHA256=t['RGB_SHA256'],Mask_SHA256=t['Mask_SHA256'],
+            role=t['holdout_tier'],strict_holdout=False,E2_target_pixel_access='NONE_METADATA_ONLY',
+            excluded_from_training=True,forbidden_for_parameter_selection=True,reason=t['strict_reason']))
+    save('provenance/EVALUATION_IDENTITIES_FROZEN.json',dict(targets=targets,strict_holdout_N=0,
+        source='E1 identity/ancestry results reused; no new E1 audit',
+        GT='sealed; world transform uncertified; absolute shape error NOT_EVALUABLE'))
+    variables=[
+        dict(arm='SDF',name='S0',change='finite-ROI Mask/RGB/Eikonal; no HERO depth loss',inputs='same three real references per video',status='PROPOSED_NOT_RUN'),
+        dict(arm='SDF',name='S1',change='add uniform per-pixel multi-reference HERO axial-Z loss',inputs='same source set',status='PROPOSED_NOT_RUN'),
+        dict(arm='SDF',name='S2',change='source-component normalization + frozen source-conflict weights',inputs='same source set; weights computed without target B/GT',status='CPU_LOSS_CONTRACT_ONLY'),
+        dict(arm='SDF',name='BG0/BG1',change='unknown BG censored / qualified cached observed BG proxy enabled',inputs='same RGB; eligible-ray denominators differ and must be reported',status='PROPOSED_NOT_RUN'),
+        dict(arm='Map',name='M0..M3',change='RGB / +K / +pose / +native HERO depth',inputs='same three real views; full-native depth information differs from Polyp-only SDF loss',status='CPU_INPUT_CONTRACT_ONLY'),
+        dict(arm='Map',name='M4',change='source Cleaned XYZ projected to finite-visible Polyp depth_z',inputs='same three real views; one legal depth map per RGB',status='CPU_INPUT_CONTRACT_ONLY_RA_NAME_PENDING'),
+        dict(arm='Map',name='M4 prior profiles',change='Raw/F1/F2/F3 mutually exclusive depth hypotheses',inputs='F1/F2/F3 can contain additional historical ancestors; disclose separately',status='CANDIDATES_NOT_FORMAL_NUMBERED_RUNS')]
+    table('metrics/FUTURE_EXPERIMENT_VARIABLES.csv',variables)
+    metrics=[
+        dict(metric='visible Mask IoU / boundary F1',denominator='all eligible target Polyp pixels plus unknown/censored counts',meaning='observable silhouette, not inferred hidden contour'),
+        dict(metric='A→B RGB error median/MAE/p95/max + coverage/spill',denominator='fixed full target pixels and paired common successful pixels',meaning='source RGB only; no B recoloring; low coverage cannot be hidden'),
+        dict(metric='fixed Ring CAD distance median/p95/max; penetration',denominator='all valid Ring output pixels plus full input Ring denominator',meaning='metric rigid-anchor consistency, not Polyp GT'),
+        dict(metric='predicted vs frozen input pose residual',denominator='each source/target camera; raw + predeclared gauge',meaning='Map output pose never overwrites Ring-First'),
+        dict(metric='HERO cross-source axial-depth consistency',denominator='all co-visible source observations and correlated-parent groups',meaning='estimated-prior agreement, not independent depth accuracy'),
+        dict(metric='observed support / conflict / prior / unknown',denominator='full candidate points/faces and independent-source identities',meaning='no unobserved backside area/volume claims'),
+        dict(metric='independent group coverage / MedARE / MAE / p95 / max / paired comparison',denominator='G01 one physical group; 004/005 are two scenes, not two cases',meaning='absolute 3D/diameter error NaN until eligible independent GT exists')]
+    table('metrics/FUTURE_EVALUATION_METRICS.csv',metrics)
+    save('config/FUTURE_COMPARISON.json',dict(variables=variables,metrics=metrics,source_sets=selected(),
+        information_tables=['common three-reference data, explicit per-pixel information use','best allowed information with extra historical prior ancestors'],
+        matched_information_requirement='Map full-view M3 includes BG/Ring HERO; a separately frozen Polyp-visible M3 profile is needed for strict per-pixel comparison with the implemented SDF depth loss',
+        fixed=['source K/c2w','CAD dimensions','ROIs','source identities','heldout target identities','predeclared metric denominators'],
+        scientific_budgets='NOT_SET_REQUIRES_FUTURE_PREREGISTRATION',GPU='NOT_GRANTED',official_forward_N=0))
+    save('metrics/GPU_READINESS.json',dict(C2a_engineering='CPU_PASS_WITH_LIMITATIONS',C2b_engineering='CPU_PASS_WITH_LIMITATIONS',
+        formal_GPU_scientific_experiment_ready=False,GPU_authorization='NOT_GRANTED',
+        remaining_gates=[
+            'RA exact five-ray/M4 definition alignment; full cited review text was not available in this session',
+            'authorized minimal official MonoSDF raw-implicit / finite-cell / RGB / Eikonal / loss-gradient integration gate, not yet executed',
+            'confirm source conflicts and 2763 censored positive-Mask observations; freeze accepted per-view denominators',
+            'independent certification of BG proxy or approve explicit uncertain-proxy ablation',
+            'accept shared-HERO dependence (one component per video), strict holdout0 and conditional camera limits, or obtain independently qualified new evaluation data in another task',
+            'freeze matched-information comparison including M3 full-depth vs Polyp-only distinction, scientific budgets/seeds/stopping rules and output CAD/pose gates',
+            'explicit researcher/RA acceptance and a separate GPU grant'],
+        recommended_next='submit CPU evidence for review; only after new authorization perform bounded official-runtime wiring validation, then decide scientific runs'))
+    print('COMPARISON_FROZEN',len(targets),'fixed diagnostic/reconstruction-only target identities; strict0',flush=True)
+
+if __name__=='__main__':main()

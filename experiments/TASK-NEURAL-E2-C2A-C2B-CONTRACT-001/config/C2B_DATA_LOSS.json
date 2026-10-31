@@ -1,0 +1,24 @@
+{
+  "input_triples": {
+    "G01_004": [
+      "G01_004_ref03",
+      "G01_004_ref08",
+      "G01_004_ref13"
+    ],
+    "G01_005": [
+      "G01_005_raw00057",
+      "G01_005_raw00459",
+      "G01_005_raw00745"
+    ]
+  },
+  "per_pixel": "source-visible Polyp only; conflict=0.25 else1; missing/occluded/unknown0",
+  "Huber_delta_mm": 0.5,
+  "source_weight": "1/shared-HERO connected-component size, applied AFTER per-view pixel normalization",
+  "aggregate": "sum(source_weight * per_view_Huber) / sum(source_weight)",
+  "sampling": "RA five regions, quotas96/96/64/32/32, uniform without replacement; population/sample_N importance",
+  "depth_role": "P_INTERIOR observations only; render misses emit NaN and are recorded, never zero-depth regression",
+  "synthetic_probe": "one Sphere radius=0.5*fixed E1 ROI radius and center-Z offset0 per video; autograd only; no updates",
+  "target_dependent_scale_shift_fit": false,
+  "official_model_forward": false,
+  "GPU": "NOT_GRANTED"
+}

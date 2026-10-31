@@ -8,4 +8,4 @@ C2a：有限ROI Polyp opacity，固定Ring CAD首交点与有条件背景截断�
 
 每阶段在执行前冻结参数/源码SHA。失败保留，禁止放宽评价门槛换PASS。最终报告区分CPU合同成立、官方模型接线待验证与正式GPU科学实验资格；不把本轮解析几何探针当模型重建结果。
 
-`RA_PHASE_E_ADAPTIVE_DESIGN_REVIEW`完整原文尚未在本机找到，已请用户提供路径；执行依据是用户本轮明确任务要求。五类标签及M4的工程定义会逐项明示，正式实验前仍需与RA原文对齐。
+执行中收到研究者下载的完整 `RA_PHASE_E_ADAPTIVE_DESIGN_REVIEW.md`，已按§4.4五类采样、§4.6未命中深度处理和§7.2 Map编号对齐。原文与SHA保存在`inputs/`及授权记录。早期未收到报告时的可运行工程定义与结果保存在`provenance/PRE_RA_*`，不改写E1或旧实验。

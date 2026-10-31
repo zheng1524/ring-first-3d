@@ -1,6 +1,6 @@
 """C2a real adapter: reuse source rays, frozen CAD and qualified cached BG only."""
 from context import *
-from opacity import visibility_intervals,ray_semantics,SEMANTICS
+from opacity import visibility_intervals,ray_semantics,sampling_partition,SEMANTICS,RA_CLASSES
 
 def background_proxy(c,p,grid,factor):
     path=INC/f'local_results/background/{c["id"]}.npz'
@@ -42,6 +42,12 @@ def main():
             bg_t,bg_known,bg_id,bg_meta=background_proxy(c,p,grid,factor);native=p['depth_mm'].ravel();labels=p['labels'].ravel();target_t=native*factor
             q=visibility_intervals(r[:,:3],d,domain['ROI_center_mm'],domain['ROI_radius_mm'],ring_t,bg_t)
             sem=ray_semantics(labels,q,target_t,bg_known)
+            rejected_HERO=(labels==1)&(sem['class_id']==0)&np.isfinite(native)&(native>0)&(sem['depth_weight']==0)
+            ra,band=sampling_partition(labels,sem['class_id'],sem['mask_weight'],(360,640),2)
+            sem['depth_weight']*=ra==0
+            bg_meta.update(role='same-source observed point depth bounds reliable non-Polyp free-space only',opaque_background_mesh_certified=False,
+                triangle_occluder_t_B='NOT_AVAILABLE_FOR_REAL_DATA',unknown_pixels='no holes/interpolation or cross-view surface inferred',
+                foreground_never_truncated_by_source_background_point=bool(np.all(~bg_known[labels==1])))
             # The dense source-native values are merely observations/priors.
             # Only the emitted semantics/weights authorize a supervised sample.
             with np.load(c['camera_file'])as archive:
@@ -52,26 +58,37 @@ def main():
             check('qualified cached background provenance '+cid,bg_meta['status']=='QUALIFIED_SOURCE_SPARSE_PROXY'and bg_meta['quality_projection_max_px']<1e-6,bg_meta['eligible_point_N'])
             check('valid visible positive samples exist '+cid,int((sem['class_id']==0).sum())>0)
             check('unknown/hidden never receive depth loss '+cid,np.all(sem['depth_weight'][sem['class_id']!=0]==0)and not sem['hidden_supervised'].any())
+            check('HERO depth only supervises RA P_INTERIOR '+cid,np.all(sem['depth_weight'][ra!=0]==0))
+            check('RA boundary sampling class exists '+cid,int((ra==1).sum())>0)
+            observed_positive=(labels==1)&q['valid']
+            check('positive image Mask survives conflicting HERO '+cid,np.all(sem['mask_target'][observed_positive]==1)and np.all(sem['mask_weight'][observed_positive]==1))
+            check('background point proxy never overrides observed Polyp '+cid,not bg_known[labels==1].any())
             count=np.bincount(sem['class_id'],minlength=5);reasons={x:int((sem['reason']==x).sum())for x in np.unique(sem['reason'])}
             path=folder/(cid+'.npz')
             np.savez_compressed(path,K=K,c2w_mm=T,source_linear_pixel=np.arange(len(grid),dtype=np.int32),labels=labels.astype(np.uint8),native_axial_Z_mm=native,
                 ray_length_factor=factor,ring_first_t_mm=ring_t,background_first_t_mm=bg_t,background_original_point_id=bg_id,
                 background_known=bg_known,ROI_start_t_mm=q['start_mm'],ROI_end_t_mm=q['end_mm'],ROI_valid=q['valid'],
-                ray_class=sem['class_id'].astype(np.uint8),mask_weight=sem['mask_weight'].astype(np.float32),mask_target=sem['mask_target'].astype(np.uint8),depth_weight=sem['depth_weight'].astype(np.float32))
+                ray_class=sem['class_id'].astype(np.uint8),sampling_class=ra,boundary_band=band,
+                HERO_visibility_conflict=rejected_HERO,
+                mask_weight=sem['mask_weight'].astype(np.float32),mask_target=sem['mask_target'].astype(np.uint8),depth_weight=sem['depth_weight'].astype(np.float32))
             meta=dict(scene=sid,source=cid,source_camera_frame=c['coord_frame'],RGB=c['RGB'],Mask=c['Mask'],image_pixel_N=len(grid),
                 class_counts=dict(zip(SEMANTICS,count.tolist())),reason_counts=reasons,positive_Mask_pixel_N=int((labels==1).sum()),
+                RA_sampling_counts=dict(zip(RA_CLASSES,np.bincount(ra,minlength=5).tolist())),
                 positive_Mask_unknown_N=int(((labels==1)&(sem['class_id']==4)).sum()),
+                positive_Mask_retained_HERO_rejected_N=int(rejected_HERO.sum()),
                 finite_depth_supervision_N=int(sem['depth_weight'].sum()),background=bg_meta,domain=domain,
                 ray_artifact=asset(path),camera_source=c['files']['camera_file'],native_source=c['E1_actual_native'],independent_model_output=False)
             rows.append(meta);assets.extend([asset(c['pack']),asset(c['camera_file']),asset(bg_meta['source']['path'])])
             print('C2A_REAL',cid,dict(zip(SEMANTICS,count.tolist())),flush=True)
     save('provenance/REAL_RAY_GEOMETRY.json',rows);save('provenance/C2A_REAL_INPUTS_FROZEN.json',assets)
-    table('metrics/C2A_REAL_RAY_CLASSES.csv',[dict(scene=x['scene'],source=x['source'],all_pixel_N=x['image_pixel_N'],**x['class_counts'],positive_mask_N=x['positive_Mask_pixel_N'],positive_mask_unknown_N=x['positive_Mask_unknown_N'],depth_supervision_N=x['finite_depth_supervision_N'])for x in rows])
+    table('metrics/C2A_REAL_RAY_CLASSES.csv',[dict(scene=x['scene'],source=x['source'],all_pixel_N=x['image_pixel_N'],**x['class_counts'],positive_mask_N=x['positive_Mask_pixel_N'],positive_mask_unknown_N=x['positive_Mask_unknown_N'],positive_Mask_retained_HERO_rejected_N=x['positive_Mask_retained_HERO_rejected_N'],depth_supervision_N=x['finite_depth_supervision_N'])for x in rows])
     table('metrics/C2A_REAL_LINK_TESTS.csv',checks)
+    table('metrics/RA_FIVE_SAMPLING_CLASSES.csv',[dict(scene=x['scene'],source=x['source'],**x['RA_sampling_counts'])for x in rows])
     save('metrics/C2A_GATE.json',dict(C2a='CPU_CONTRACT_PASS_WITH_REAL_BACKGROUND_LIMITS',mandatory_CPU_tests_passed=True,
         synthetic_check_N=synthetic['check_N'],real_link_check_N=len(checks),real_views_N=6,C2b='CPU_DATA_CONTRACT_STAGE_NOW_PERMITTED',
         real_background='qualified cached source geometry; estimated HERO, not independently certified occluder truth',
         real_positive_conflict_N=sum(x['positive_Mask_unknown_N']for x in rows),GPU='NOT_GRANTED',model_forward_N=0,weight_update_N=0,
+        positive_Mask_retained_HERO_rejected_N=sum(x['positive_Mask_retained_HERO_rejected_N']for x in rows),
         formal_GPU_science='NOT_READY; official raw-SDF/sampler wiring and source/occlusion review still required'))
     print('C2A_ALL_COMPLETE',synthetic['check_N']+len(checks),'checks; C2b may start',flush=True)
 

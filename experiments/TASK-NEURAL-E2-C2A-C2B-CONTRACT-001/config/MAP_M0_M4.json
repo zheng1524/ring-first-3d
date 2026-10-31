@@ -1,0 +1,29 @@
+{
+  "M0": "RGB+K+frozen metric pose",
+  "M1": "M0+aligned native HERO",
+  "M2": "M0+Cleaned single-layer depth",
+  "M3": "M1+qualified visible Ring CAD pixel axial-Z",
+  "M4": "M2 switch F1/F2/F3, exactly three mutually exclusive profiles",
+  "M4_alternatives": [
+    "F1",
+    "F2",
+    "F3"
+  ],
+  "definition_status": "ALIGNED_RA_SECTION_7_2; E1 native labels retained only in PRE_RA records",
+  "source_views": {
+    "G01_004": [
+      "G01_004_ref03",
+      "G01_004_ref08",
+      "G01_004_ref13"
+    ],
+    "G01_005": [
+      "G01_005_raw00057",
+      "G01_005_raw00459",
+      "G01_005_raw00745"
+    ]
+  },
+  "visibility": "fixed E1 ROI + fixed Ring first hit + qualified BG first hit",
+  "official_revision": "3d10cf7a3016fc0f9bb13a071ee66c47b10be0d9",
+  "model_forward_N": 0,
+  "GPU": "NOT_GRANTED"
+}
