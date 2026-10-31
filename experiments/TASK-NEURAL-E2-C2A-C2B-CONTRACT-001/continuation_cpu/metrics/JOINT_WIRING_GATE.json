@@ -1,0 +1,525 @@
+{
+  "status": "PASS_ANALYTIC_CPU_WIRING_ONLY",
+  "check_N": 72,
+  "checks": [
+    {
+      "test": "official clamped method identified get_outputs",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "official clamped method identified get_sdf_vals",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "official radiance signature bound",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "official sampler device assumptions recorded UniformSampler",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "official sampler device assumptions recorded ErrorBoundSampler",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "official legacy affine/scale-shift depth loss not reused",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "three frozen source RGB/ray packets G01_004",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "raw head bypasses both clamped helpers G01_004",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "official per-reference radiance index supplied G01_004",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "official Eikonal expression gives analytic amplitude result G01_004",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "finite sampler contract G01_004_ref03",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "missed depths remain NaN G01_004_ref03",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "RGB restricted to interior/front hits G01_004_ref03",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "all source losses retain denominators G01_004_ref03",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "finite sampler contract G01_004_ref08",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "missed depths remain NaN G01_004_ref08",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "RGB restricted to interior/front hits G01_004_ref08",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "all source losses retain denominators G01_004_ref08",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "finite sampler contract G01_004_ref13",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "missed depths remain NaN G01_004_ref13",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "RGB restricted to interior/front hits G01_004_ref13",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "all source losses retain denominators G01_004_ref13",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "finite geometry gradient G01_004 depth",
+      "pass_": true,
+      "detail": [
+        1.56567498445298,
+        0.0,
+        14.047689111054254
+      ]
+    },
+    {
+      "test": "physical beta gradient G01_004 depth",
+      "pass_": true,
+      "detail": [
+        1.56567498445298,
+        0.0,
+        14.047689111054254
+      ]
+    },
+    {
+      "test": "finite geometry gradient G01_004 mask",
+      "pass_": true,
+      "detail": [
+        0.3188671661429604,
+        0.0,
+        80.41668449025458
+      ]
+    },
+    {
+      "test": "physical beta gradient G01_004 mask",
+      "pass_": true,
+      "detail": [
+        0.3188671661429604,
+        0.0,
+        80.41668449025458
+      ]
+    },
+    {
+      "test": "finite geometry gradient G01_004 rgb",
+      "pass_": true,
+      "detail": [
+        0.005817598866961244,
+        0.1227338432920393,
+        0.004679840343861994
+      ]
+    },
+    {
+      "test": "RGB radiance-parameter gradient G01_004 rgb",
+      "pass_": true,
+      "detail": [
+        0.005817598866961244,
+        0.1227338432920393,
+        0.004679840343861994
+      ]
+    },
+    {
+      "test": "finite geometry gradient G01_004 eikonal",
+      "pass_": true,
+      "detail": [
+        0.20000000000000015,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "test": "finite geometry gradient G01_004 total",
+      "pass_": true,
+      "detail": [
+        0.14513589275493408,
+        0.1227338432920393,
+        9.451117200459105
+      ]
+    },
+    {
+      "test": "RGB radiance-parameter gradient G01_004 total",
+      "pass_": true,
+      "detail": [
+        0.14513589275493408,
+        0.1227338432920393,
+        9.451117200459105
+      ]
+    },
+    {
+      "test": "physical beta gradient G01_004 total",
+      "pass_": true,
+      "detail": [
+        0.14513589275493408,
+        0.1227338432920393,
+        9.451117200459105
+      ]
+    },
+    {
+      "test": "all-miss reference cannot be dropped from joint mean G01_004",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "cross-video joint loss rejected G01_004",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "analytic parameters unchanged G01_004",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "three frozen source RGB/ray packets G01_005",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "raw head bypasses both clamped helpers G01_005",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "official per-reference radiance index supplied G01_005",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "official Eikonal expression gives analytic amplitude result G01_005",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "finite sampler contract G01_005_raw00057",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "missed depths remain NaN G01_005_raw00057",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "RGB restricted to interior/front hits G01_005_raw00057",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "all source losses retain denominators G01_005_raw00057",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "finite sampler contract G01_005_raw00459",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "missed depths remain NaN G01_005_raw00459",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "RGB restricted to interior/front hits G01_005_raw00459",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "all source losses retain denominators G01_005_raw00459",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "finite sampler contract G01_005_raw00745",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "missed depths remain NaN G01_005_raw00745",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "RGB restricted to interior/front hits G01_005_raw00745",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "all source losses retain denominators G01_005_raw00745",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "finite geometry gradient G01_005 depth",
+      "pass_": true,
+      "detail": [
+        1.7262711836588271,
+        0.0,
+        5.339243267696753
+      ]
+    },
+    {
+      "test": "physical beta gradient G01_005 depth",
+      "pass_": true,
+      "detail": [
+        1.7262711836588271,
+        0.0,
+        5.339243267696753
+      ]
+    },
+    {
+      "test": "finite geometry gradient G01_005 mask",
+      "pass_": true,
+      "detail": [
+        1.3743841370345273,
+        0.0,
+        306.6535458686882
+      ]
+    },
+    {
+      "test": "physical beta gradient G01_005 mask",
+      "pass_": true,
+      "detail": [
+        1.3743841370345273,
+        0.0,
+        306.6535458686882
+      ]
+    },
+    {
+      "test": "finite geometry gradient G01_005 rgb",
+      "pass_": true,
+      "detail": [
+        0.004095478786847863,
+        0.12349354003374287,
+        0.002106186137655352
+      ]
+    },
+    {
+      "test": "RGB radiance-parameter gradient G01_005 rgb",
+      "pass_": true,
+      "detail": [
+        0.004095478786847863,
+        0.12349354003374287,
+        0.002106186137655352
+      ]
+    },
+    {
+      "test": "finite geometry gradient G01_005 eikonal",
+      "pass_": true,
+      "detail": [
+        0.20000000000000018,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "test": "finite geometry gradient G01_005 total",
+      "pass_": true,
+      "detail": [
+        0.30143754186385513,
+        0.12349354003374287,
+        31.1971727275018
+      ]
+    },
+    {
+      "test": "RGB radiance-parameter gradient G01_005 total",
+      "pass_": true,
+      "detail": [
+        0.30143754186385513,
+        0.12349354003374287,
+        31.1971727275018
+      ]
+    },
+    {
+      "test": "physical beta gradient G01_005 total",
+      "pass_": true,
+      "detail": [
+        0.30143754186385513,
+        0.12349354003374287,
+        31.1971727275018
+      ]
+    },
+    {
+      "test": "all-miss reference cannot be dropped from joint mean G01_005",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "cross-video joint loss rejected G01_005",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "analytic parameters unchanged G01_005",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "new raw/radiance bridge gradient matches finite differences",
+      "pass_": true,
+      "detail": {
+        "autograd": 3.609813306837507,
+        "finite_difference": 3.609813205152079
+      }
+    },
+    {
+      "test": "RGB-to-geometry derivative matches independent finite difference",
+      "pass_": true,
+      "detail": {
+        "autograd": -0.03358572561888101,
+        "finite_difference": -0.03358572355782741
+      }
+    },
+    {
+      "test": "empty finite intervals perform zero raw/radiance calls",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "new bridge opacity invariant under mm/network gauge",
+      "pass_": true,
+      "detail": {
+        "abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "test": "nonfinite sampler proposals fail explicitly",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "negative physical density beta rejected",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "official neural execution remains blocked",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "test": "new adapter did not import official neural module",
+      "pass_": true,
+      "detail": null
+    }
+  ],
+  "scenes": [
+    {
+      "scene": "G01_004",
+      "counts": {
+        "G01_004_ref03": {
+          "observed_N": 93,
+          "valid_N": 79,
+          "miss_N": 14,
+          "RGB_N": 79,
+          "Mask_N": 288
+        },
+        "G01_004_ref08": {
+          "observed_N": 96,
+          "valid_N": 70,
+          "miss_N": 26,
+          "RGB_N": 70,
+          "Mask_N": 288
+        },
+        "G01_004_ref13": {
+          "observed_N": 96,
+          "valid_N": 64,
+          "miss_N": 32,
+          "RGB_N": 64,
+          "Mask_N": 288
+        }
+      },
+      "model_identity": "G01_004_SHARED_POLYP_SDF",
+      "source_ROI_rule": "radius=0.5*fixed source ROI",
+      "analytic_beta_mm": 0.08,
+      "official_beta": "UNSET",
+      "no_updates": true
+    },
+    {
+      "scene": "G01_005",
+      "counts": {
+        "G01_005_raw00057": {
+          "observed_N": 96,
+          "valid_N": 59,
+          "miss_N": 37,
+          "RGB_N": 59,
+          "Mask_N": 288
+        },
+        "G01_005_raw00459": {
+          "observed_N": 95,
+          "valid_N": 72,
+          "miss_N": 23,
+          "RGB_N": 72,
+          "Mask_N": 288
+        },
+        "G01_005_raw00745": {
+          "observed_N": 96,
+          "valid_N": 64,
+          "miss_N": 32,
+          "RGB_N": 64,
+          "Mask_N": 288
+        }
+      },
+      "model_identity": "G01_005_SHARED_POLYP_SDF",
+      "source_ROI_rule": "radius=0.5*fixed source ROI",
+      "analytic_beta_mm": 0.08,
+      "official_beta": "UNSET",
+      "no_updates": true
+    }
+  ],
+  "GPU": "NOT_GRANTED",
+  "official_neural_forward_N": 0,
+  "official_sampler_execution_N": 0,
+  "weights_loaded_N": 0,
+  "weight_update_N": 0,
+  "official_runtime_verified": false,
+  "formal_GPU_ready": false
+}

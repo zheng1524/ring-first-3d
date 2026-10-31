@@ -1,0 +1,114 @@
+{
+  "methods": [
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/monosdf_official/code/model/network.py",
+      "class_name": "ImplicitNetwork",
+      "method": "forward",
+      "line": 79,
+      "file_SHA256": "ad6a9944efcc07befaa488ccbef40613622e1aaa34b313ddeded8d092ce0a951",
+      "AST_SHA256": "491f6604673c32dcb4191730a718617fa0dc8b45ad0d51855717ca4a5d155cde",
+      "args": [
+        "self",
+        "input"
+      ]
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/monosdf_official/code/model/network.py",
+      "class_name": "ImplicitNetwork",
+      "method": "get_outputs",
+      "line": 111,
+      "file_SHA256": "ad6a9944efcc07befaa488ccbef40613622e1aaa34b313ddeded8d092ce0a951",
+      "AST_SHA256": "3b83933b5a787e2d2f2a65eb433f7a37b65b1476b36cfe77641df671911de059",
+      "args": [
+        "self",
+        "x"
+      ]
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/monosdf_official/code/model/network.py",
+      "class_name": "ImplicitNetwork",
+      "method": "get_sdf_vals",
+      "line": 131,
+      "file_SHA256": "ad6a9944efcc07befaa488ccbef40613622e1aaa34b313ddeded8d092ce0a951",
+      "AST_SHA256": "ae247a5cc2e8ad12022d4ffeede4fef94dc1739118d63bf93e6e7071212be3f8",
+      "args": [
+        "self",
+        "x"
+      ]
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/monosdf_official/code/model/network.py",
+      "class_name": "RenderingNetwork",
+      "method": "forward",
+      "line": 370,
+      "file_SHA256": "ad6a9944efcc07befaa488ccbef40613622e1aaa34b313ddeded8d092ce0a951",
+      "AST_SHA256": "dbc5b842b75c6a8b0dad89d2ca2c346af865040806eed83bc273b9b479193547",
+      "args": [
+        "self",
+        "points",
+        "normals",
+        "view_dirs",
+        "feature_vectors",
+        "indices"
+      ]
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/monosdf_official/code/model/ray_sampler.py",
+      "class_name": "UniformSampler",
+      "method": "get_z_vals",
+      "line": 63,
+      "file_SHA256": "7f44bae416b30b313b13e6ed75e043cd81faee21090d6d487a59b79d36275936",
+      "AST_SHA256": "3cd530092c8fff4b3518ee1709dcef555cd6a0d646f7a46ec5849af27923fd4c",
+      "args": [
+        "self",
+        "ray_dirs",
+        "cam_loc",
+        "model"
+      ]
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/monosdf_official/code/model/ray_sampler.py",
+      "class_name": "ErrorBoundSampler",
+      "method": "get_z_vals",
+      "line": 110,
+      "file_SHA256": "7f44bae416b30b313b13e6ed75e043cd81faee21090d6d487a59b79d36275936",
+      "AST_SHA256": "51dbc2c32b3d4a1f169b8f21eb7012373c561a2a849b8d592df84c7dff5fea46",
+      "args": [
+        "self",
+        "ray_dirs",
+        "cam_loc",
+        "model"
+      ]
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/monosdf_official/code/model/loss.py",
+      "class_name": "MonoSDFLoss",
+      "method": "get_eikonal_loss",
+      "line": 174,
+      "file_SHA256": "7fc870eb7b3724342834b2729b5b0b00f659b5e6ba7fd0aa19a6f921a56bdccf",
+      "AST_SHA256": "b42689329645dac7585bde0342fa6bcef35638403fb41c9a6fd73e296bff3af3",
+      "args": [
+        "self",
+        "grad_theta"
+      ]
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/monosdf_official/code/model/loss.py",
+      "class_name": "MonoSDFLoss",
+      "method": "get_depth_loss",
+      "line": 188,
+      "file_SHA256": "7fc870eb7b3724342834b2729b5b0b00f659b5e6ba7fd0aa19a6f921a56bdccf",
+      "AST_SHA256": "6578321be8c59a0a8676e2a4d4ac37fabb501da9048ddf1ec7c8671ec1378c02",
+      "args": [
+        "self",
+        "depth_pred",
+        "depth_gt",
+        "mask"
+      ]
+    }
+  ],
+  "executed_method": "MonoSDFLoss.get_eikonal_loss exact AST only",
+  "neural_forward_N": 0,
+  "official_sampler_execution_N": 0,
+  "reason": "official sampler has CUDA-specific allocations and calls clamped head; requires separately authorized runtime port/binding"
+}

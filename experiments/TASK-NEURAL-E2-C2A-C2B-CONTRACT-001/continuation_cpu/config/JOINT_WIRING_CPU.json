@@ -1,0 +1,20 @@
+{
+  "test_only": true,
+  "loss_coefficients": {
+    "rgb": 1.0,
+    "mask": 0.1,
+    "depth": 0.1,
+    "eikonal": 0.1
+  },
+  "physical_depth_normalization_mm": 1.0,
+  "rgb_huber_delta": 0.05,
+  "synthetic_beta_mm": 0.08,
+  "proposal_bins": 256,
+  "gradient_nonzero_threshold": 1e-10,
+  "FD_epsilon_mm": 1e-05,
+  "FD_abs_tol": 0.0002,
+  "source_selection": "exact frozen E2 batch; no resampling/parameter search",
+  "scientific_training_coefficients": "UNSET; test coefficients are not approved scientific budgets",
+  "official_runtime": "NOT_EXECUTED; API/source static binding plus analytic callables",
+  "GPU": "NOT_GRANTED"
+}

@@ -1,0 +1,73 @@
+test,pass_,detail
+official clamped method identified get_outputs,True,
+official clamped method identified get_sdf_vals,True,
+official radiance signature bound,True,
+official sampler device assumptions recorded UniformSampler,True,
+official sampler device assumptions recorded ErrorBoundSampler,True,
+official legacy affine/scale-shift depth loss not reused,True,
+three frozen source RGB/ray packets G01_004,True,
+raw head bypasses both clamped helpers G01_004,True,
+official per-reference radiance index supplied G01_004,True,
+official Eikonal expression gives analytic amplitude result G01_004,True,
+finite sampler contract G01_004_ref03,True,
+missed depths remain NaN G01_004_ref03,True,
+RGB restricted to interior/front hits G01_004_ref03,True,
+all source losses retain denominators G01_004_ref03,True,
+finite sampler contract G01_004_ref08,True,
+missed depths remain NaN G01_004_ref08,True,
+RGB restricted to interior/front hits G01_004_ref08,True,
+all source losses retain denominators G01_004_ref08,True,
+finite sampler contract G01_004_ref13,True,
+missed depths remain NaN G01_004_ref13,True,
+RGB restricted to interior/front hits G01_004_ref13,True,
+all source losses retain denominators G01_004_ref13,True,
+finite geometry gradient G01_004 depth,True,"[1.56567498445298, 0.0, 14.047689111054254]"
+physical beta gradient G01_004 depth,True,"[1.56567498445298, 0.0, 14.047689111054254]"
+finite geometry gradient G01_004 mask,True,"[0.3188671661429604, 0.0, 80.41668449025458]"
+physical beta gradient G01_004 mask,True,"[0.3188671661429604, 0.0, 80.41668449025458]"
+finite geometry gradient G01_004 rgb,True,"[0.005817598866961244, 0.1227338432920393, 0.004679840343861994]"
+RGB radiance-parameter gradient G01_004 rgb,True,"[0.005817598866961244, 0.1227338432920393, 0.004679840343861994]"
+finite geometry gradient G01_004 eikonal,True,"[0.20000000000000015, 0.0, 0.0]"
+finite geometry gradient G01_004 total,True,"[0.14513589275493408, 0.1227338432920393, 9.451117200459105]"
+RGB radiance-parameter gradient G01_004 total,True,"[0.14513589275493408, 0.1227338432920393, 9.451117200459105]"
+physical beta gradient G01_004 total,True,"[0.14513589275493408, 0.1227338432920393, 9.451117200459105]"
+all-miss reference cannot be dropped from joint mean G01_004,True,
+cross-video joint loss rejected G01_004,True,
+analytic parameters unchanged G01_004,True,
+three frozen source RGB/ray packets G01_005,True,
+raw head bypasses both clamped helpers G01_005,True,
+official per-reference radiance index supplied G01_005,True,
+official Eikonal expression gives analytic amplitude result G01_005,True,
+finite sampler contract G01_005_raw00057,True,
+missed depths remain NaN G01_005_raw00057,True,
+RGB restricted to interior/front hits G01_005_raw00057,True,
+all source losses retain denominators G01_005_raw00057,True,
+finite sampler contract G01_005_raw00459,True,
+missed depths remain NaN G01_005_raw00459,True,
+RGB restricted to interior/front hits G01_005_raw00459,True,
+all source losses retain denominators G01_005_raw00459,True,
+finite sampler contract G01_005_raw00745,True,
+missed depths remain NaN G01_005_raw00745,True,
+RGB restricted to interior/front hits G01_005_raw00745,True,
+all source losses retain denominators G01_005_raw00745,True,
+finite geometry gradient G01_005 depth,True,"[1.7262711836588271, 0.0, 5.339243267696753]"
+physical beta gradient G01_005 depth,True,"[1.7262711836588271, 0.0, 5.339243267696753]"
+finite geometry gradient G01_005 mask,True,"[1.3743841370345273, 0.0, 306.6535458686882]"
+physical beta gradient G01_005 mask,True,"[1.3743841370345273, 0.0, 306.6535458686882]"
+finite geometry gradient G01_005 rgb,True,"[0.004095478786847863, 0.12349354003374287, 0.002106186137655352]"
+RGB radiance-parameter gradient G01_005 rgb,True,"[0.004095478786847863, 0.12349354003374287, 0.002106186137655352]"
+finite geometry gradient G01_005 eikonal,True,"[0.20000000000000018, 0.0, 0.0]"
+finite geometry gradient G01_005 total,True,"[0.30143754186385513, 0.12349354003374287, 31.1971727275018]"
+RGB radiance-parameter gradient G01_005 total,True,"[0.30143754186385513, 0.12349354003374287, 31.1971727275018]"
+physical beta gradient G01_005 total,True,"[0.30143754186385513, 0.12349354003374287, 31.1971727275018]"
+all-miss reference cannot be dropped from joint mean G01_005,True,
+cross-video joint loss rejected G01_005,True,
+analytic parameters unchanged G01_005,True,
+new raw/radiance bridge gradient matches finite differences,True,"{""autograd"": 3.609813306837507, ""finite_difference"": 3.609813205152079}"
+RGB-to-geometry derivative matches independent finite difference,True,"{""autograd"": -0.03358572561888101, ""finite_difference"": -0.03358572355782741}"
+empty finite intervals perform zero raw/radiance calls,True,
+new bridge opacity invariant under mm/network gauge,True,"{""abs_difference"": 2.220446049250313e-16}"
+nonfinite sampler proposals fail explicitly,True,
+negative physical density beta rejected,True,
+official neural execution remains blocked,True,
+new adapter did not import official neural module,True,
