@@ -1,0 +1,1160 @@
+[
+  {
+    "id": "G01_photo_001",
+    "RGB": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/photo_001.png",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 301655,
+      "sha256": "6030f5c55da0fed524c91bf971a33d2bff39957322c0c5d2cc70f82d1ee5e7e7"
+    },
+    "Mask": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/photo_001.png",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 2265,
+      "sha256": "8c920c9391cf35604ce78f06d70d0c5e1427a9578323ea55dc15214e045cd460"
+    },
+    "K_candidate": [
+      [
+        490.0,
+        0.0,
+        319.5
+      ],
+      [
+        0.0,
+        490.0,
+        179.5
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "c2w": null,
+    "pose_status": "POSE_UNKNOWN_UNREGISTERED",
+    "matching_evidence": [
+      {
+        "pair": "G01_photo001",
+        "group": "G01",
+        "A": "G01_video004_004_08",
+        "B": "G01_photo_001",
+        "method": "SIFT",
+        "status": "MATCHES_RETURNED_NOT_TRUE_CORRESPONDENCE_LABELS",
+        "origin": "NEW_BASELINE_FORWARD",
+        "raw_N": 151,
+        "usable_N": 144,
+        "regions": {
+          "Polyp": {
+            "raw_N": 8,
+            "usable_N": 8,
+            "geometric_candidate_N": 5,
+            "train_inlier_N": 5,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 4,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          },
+          "NearBackground": {
+            "raw_N": 14,
+            "usable_N": 14,
+            "geometric_candidate_N": 9,
+            "train_inlier_N": 5,
+            "held_geometric_N": 2,
+            "spatial_32px_cells": 8,
+            "held_epipolar_px": {
+              "N": 5,
+              "median": 3.7995710766432382,
+              "MAE": 3.9634853168316626,
+              "p05": 1.4838127312871872,
+              "p95": 6.983349975594733,
+              "maximum": 7.33681787154895
+            }
+          },
+          "FarBackground": {
+            "raw_N": 125,
+            "usable_N": 122,
+            "geometric_candidate_N": 112,
+            "train_inlier_N": 82,
+            "held_geometric_N": 22,
+            "spatial_32px_cells": 61,
+            "held_epipolar_px": {
+              "N": 23,
+              "median": 0.7284308830581029,
+              "MAE": 0.8374133735077889,
+              "p05": 0.14432175940146275,
+              "p95": 1.7226316054640338,
+              "maximum": 2.74213195474493
+            }
+          },
+          "Ring": {
+            "raw_N": 4,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          }
+        },
+        "seconds": 0,
+        "physical_accuracy": "NOT_EVALUABLE_NO_GT",
+        "no_neural_pointmap_geometry": true
+      },
+      {
+        "pair": "G01_photo001",
+        "group": "G01",
+        "A": "G01_video004_004_08",
+        "B": "G01_photo_001",
+        "method": "MASt3R_FULL",
+        "status": "MATCHES_RETURNED_NOT_TRUE_CORRESPONDENCE_LABELS",
+        "origin": "NEW_OFFICIAL_FORWARD",
+        "raw_N": 2021,
+        "usable_N": 1940,
+        "regions": {
+          "Polyp": {
+            "raw_N": 150,
+            "usable_N": 141,
+            "geometric_candidate_N": 141,
+            "train_inlier_N": 102,
+            "held_geometric_N": 35,
+            "spatial_32px_cells": 22,
+            "held_epipolar_px": {
+              "N": 35,
+              "median": 0.7300751964589056,
+              "MAE": 0.7077182086810513,
+              "p05": 0.23967892522244644,
+              "p95": 1.1215322359638773,
+              "maximum": 1.4834510472115576
+            }
+          },
+          "NearBackground": {
+            "raw_N": 357,
+            "usable_N": 351,
+            "geometric_candidate_N": 351,
+            "train_inlier_N": 278,
+            "held_geometric_N": 73,
+            "spatial_32px_cells": 54,
+            "held_epipolar_px": {
+              "N": 73,
+              "median": 0.2637480644286346,
+              "MAE": 0.30761665915894987,
+              "p05": 0.024653827935072526,
+              "p95": 0.6910515802540146,
+              "maximum": 0.828368837085478
+            }
+          },
+          "FarBackground": {
+            "raw_N": 1450,
+            "usable_N": 1448,
+            "geometric_candidate_N": 1446,
+            "train_inlier_N": 1119,
+            "held_geometric_N": 300,
+            "spatial_32px_cells": 159,
+            "held_epipolar_px": {
+              "N": 300,
+              "median": 0.342628375338639,
+              "MAE": 0.37968596144481787,
+              "p05": 0.03286319664016902,
+              "p95": 1.008821221567676,
+              "maximum": 1.5197838337574963
+            }
+          },
+          "Ring": {
+            "raw_N": 64,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          }
+        },
+        "seconds": 0.7544091430008848,
+        "physical_accuracy": "NOT_EVALUABLE_NO_GT",
+        "no_neural_pointmap_geometry": true,
+        "peak_GPU_GB": 4.2708096,
+        "input_affine_A": {
+          "scale": [
+            1.25,
+            1.25
+          ],
+          "crop_offset_resized": [
+            0.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            0,
+            0
+          ],
+          "source_crop_size": [
+            640,
+            360
+          ],
+          "resized_size": [
+            512,
+            288
+          ],
+          "network_size": [
+            512,
+            288
+          ]
+        },
+        "input_affine_B": {
+          "scale": [
+            1.25,
+            1.25
+          ],
+          "crop_offset_resized": [
+            0.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            0,
+            0
+          ],
+          "source_crop_size": [
+            640,
+            360
+          ],
+          "resized_size": [
+            512,
+            288
+          ],
+          "network_size": [
+            512,
+            288
+          ]
+        }
+      },
+      {
+        "pair": "G01_photo001",
+        "group": "G01",
+        "A": "G01_video004_004_08",
+        "B": "G01_photo_001",
+        "method": "MASt3R_ROI",
+        "status": "MATCHES_RETURNED_NOT_TRUE_CORRESPONDENCE_LABELS",
+        "origin": "NEW_OFFICIAL_FORWARD",
+        "raw_N": 2983,
+        "usable_N": 2336,
+        "regions": {
+          "Polyp": {
+            "raw_N": 1130,
+            "usable_N": 1091,
+            "geometric_candidate_N": 1091,
+            "train_inlier_N": 884,
+            "held_geometric_N": 207,
+            "spatial_32px_cells": 24,
+            "held_epipolar_px": {
+              "N": 207,
+              "median": 0.15822390301535894,
+              "MAE": 0.1812821247187398,
+              "p05": 0.010705354244809904,
+              "p95": 0.431998081046645,
+              "maximum": 0.6022175104729797
+            }
+          },
+          "NearBackground": {
+            "raw_N": 1281,
+            "usable_N": 1245,
+            "geometric_candidate_N": 1184,
+            "train_inlier_N": 837,
+            "held_geometric_N": 246,
+            "spatial_32px_cells": 33,
+            "held_epipolar_px": {
+              "N": 255,
+              "median": 0.44219066089283526,
+              "MAE": 0.6469406111358001,
+              "p05": 0.03408623917494794,
+              "p95": 1.85774521096114,
+              "maximum": 2.2794385761944276
+            }
+          },
+          "FarBackground": {
+            "raw_N": 62,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          },
+          "Ring": {
+            "raw_N": 510,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          }
+        },
+        "seconds": 1.3880624260000332,
+        "physical_accuracy": "NOT_EVALUABLE_NO_GT",
+        "no_neural_pointmap_geometry": true,
+        "peak_GPU_GB": 4.48445184,
+        "input_affine_A": {
+          "scale": [
+            0.4351464435146444,
+            0.435546875
+          ],
+          "crop_offset_resized": [
+            7.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            265,
+            98
+          ],
+          "source_crop_size": [
+            208,
+            223
+          ],
+          "resized_size": [
+            478,
+            512
+          ],
+          "network_size": [
+            464,
+            512
+          ]
+        },
+        "input_affine_B": {
+          "scale": [
+            0.4807692307692308,
+            0.48046875
+          ],
+          "crop_offset_resized": [
+            2.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            296,
+            90
+          ],
+          "source_crop_size": [
+            225,
+            246
+          ],
+          "resized_size": [
+            468,
+            512
+          ],
+          "network_size": [
+            464,
+            512
+          ]
+        }
+      }
+    ],
+    "eligibility": "DATA_INELIGIBLE_FOR_METRIC_RECON",
+    "reason": "Uncertified K/pose; actual image/match candidate only"
+  },
+  {
+    "id": "G01_photo_002",
+    "RGB": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/photo_002.png",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 301982,
+      "sha256": "065868ccfc9c655aab90e564b38561a901b3291be42142f93abe0c545a563482"
+    },
+    "Mask": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/photo_002.png",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 2363,
+      "sha256": "31a616dc11cb2ce3e81574b3ca354465dbf94c982c840d43f2de1d6d2313b42c"
+    },
+    "K_candidate": [
+      [
+        490.0,
+        0.0,
+        319.5
+      ],
+      [
+        0.0,
+        490.0,
+        179.5
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "c2w": null,
+    "pose_status": "POSE_UNKNOWN_UNREGISTERED",
+    "matching_evidence": [
+      {
+        "pair": "G01_photo002",
+        "group": "G01",
+        "A": "G01_video005_v005_00459",
+        "B": "G01_photo_002",
+        "method": "SIFT",
+        "status": "MATCHES_RETURNED_NOT_TRUE_CORRESPONDENCE_LABELS",
+        "origin": "NEW_BASELINE_FORWARD",
+        "raw_N": 39,
+        "usable_N": 37,
+        "regions": {
+          "Polyp": {
+            "raw_N": 3,
+            "usable_N": 2,
+            "geometric_candidate_N": 1,
+            "train_inlier_N": 1,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 1,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          },
+          "NearBackground": {
+            "raw_N": 5,
+            "usable_N": 5,
+            "geometric_candidate_N": 4,
+            "train_inlier_N": 4,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 4,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          },
+          "FarBackground": {
+            "raw_N": 30,
+            "usable_N": 30,
+            "geometric_candidate_N": 29,
+            "train_inlier_N": 23,
+            "held_geometric_N": 4,
+            "spatial_32px_cells": 20,
+            "held_epipolar_px": {
+              "N": 4,
+              "median": 0.6206441457879377,
+              "MAE": 0.734567192425009,
+              "p05": 0.36298619802846904,
+              "p95": 1.2656404521134483,
+              "maximum": 1.3351093772869762
+            }
+          },
+          "Ring": {
+            "raw_N": 1,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          }
+        },
+        "seconds": 0,
+        "physical_accuracy": "NOT_EVALUABLE_NO_GT",
+        "no_neural_pointmap_geometry": true
+      },
+      {
+        "pair": "G01_photo002",
+        "group": "G01",
+        "A": "G01_video005_v005_00459",
+        "B": "G01_photo_002",
+        "method": "MASt3R_FULL",
+        "status": "MATCHES_RETURNED_NOT_TRUE_CORRESPONDENCE_LABELS",
+        "origin": "NEW_OFFICIAL_FORWARD",
+        "raw_N": 1429,
+        "usable_N": 1334,
+        "regions": {
+          "Polyp": {
+            "raw_N": 130,
+            "usable_N": 120,
+            "geometric_candidate_N": 119,
+            "train_inlier_N": 69,
+            "held_geometric_N": 29,
+            "spatial_32px_cells": 19,
+            "held_epipolar_px": {
+              "N": 29,
+              "median": 0.639772944869334,
+              "MAE": 0.7189930604282475,
+              "p05": 0.045924489069947366,
+              "p95": 1.5593206241232807,
+              "maximum": 1.7707023085900393
+            }
+          },
+          "NearBackground": {
+            "raw_N": 330,
+            "usable_N": 321,
+            "geometric_candidate_N": 315,
+            "train_inlier_N": 240,
+            "held_geometric_N": 61,
+            "spatial_32px_cells": 55,
+            "held_epipolar_px": {
+              "N": 61,
+              "median": 0.4553656952609952,
+              "MAE": 0.5243402226274158,
+              "p05": 0.08719747621308833,
+              "p95": 1.276673560243582,
+              "maximum": 1.4290114208164655
+            }
+          },
+          "FarBackground": {
+            "raw_N": 896,
+            "usable_N": 893,
+            "geometric_candidate_N": 891,
+            "train_inlier_N": 660,
+            "held_geometric_N": 185,
+            "spatial_32px_cells": 106,
+            "held_epipolar_px": {
+              "N": 186,
+              "median": 0.48179339748891997,
+              "MAE": 0.614138297614888,
+              "p05": 0.042243493769465096,
+              "p95": 1.4197429949069067,
+              "maximum": 9.284963085212423
+            }
+          },
+          "Ring": {
+            "raw_N": 73,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          }
+        },
+        "seconds": 0.7361360000013519,
+        "physical_accuracy": "NOT_EVALUABLE_NO_GT",
+        "no_neural_pointmap_geometry": true,
+        "peak_GPU_GB": 4.2708096,
+        "input_affine_A": {
+          "scale": [
+            1.25,
+            1.25
+          ],
+          "crop_offset_resized": [
+            0.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            0,
+            0
+          ],
+          "source_crop_size": [
+            640,
+            360
+          ],
+          "resized_size": [
+            512,
+            288
+          ],
+          "network_size": [
+            512,
+            288
+          ]
+        },
+        "input_affine_B": {
+          "scale": [
+            1.25,
+            1.25
+          ],
+          "crop_offset_resized": [
+            0.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            0,
+            0
+          ],
+          "source_crop_size": [
+            640,
+            360
+          ],
+          "resized_size": [
+            512,
+            288
+          ],
+          "network_size": [
+            512,
+            288
+          ]
+        }
+      },
+      {
+        "pair": "G01_photo002",
+        "group": "G01",
+        "A": "G01_video005_v005_00459",
+        "B": "G01_photo_002",
+        "method": "MASt3R_ROI",
+        "status": "MATCHES_RETURNED_NOT_TRUE_CORRESPONDENCE_LABELS",
+        "origin": "NEW_OFFICIAL_FORWARD",
+        "raw_N": 2763,
+        "usable_N": 2030,
+        "regions": {
+          "Polyp": {
+            "raw_N": 1059,
+            "usable_N": 1020,
+            "geometric_candidate_N": 1020,
+            "train_inlier_N": 794,
+            "held_geometric_N": 222,
+            "spatial_32px_cells": 23,
+            "held_epipolar_px": {
+              "N": 222,
+              "median": 0.2946519698345357,
+              "MAE": 0.33146521791811784,
+              "p05": 0.026173360741775214,
+              "p95": 0.768007987248999,
+              "maximum": 0.9556176417707806
+            }
+          },
+          "NearBackground": {
+            "raw_N": 1047,
+            "usable_N": 1010,
+            "geometric_candidate_N": 894,
+            "train_inlier_N": 646,
+            "held_geometric_N": 183,
+            "spatial_32px_cells": 38,
+            "held_epipolar_px": {
+              "N": 209,
+              "median": 0.5716282311613938,
+              "MAE": 0.9348990031464859,
+              "p05": 0.07703322876034448,
+              "p95": 3.732149686918019,
+              "maximum": 5.02297589856438
+            }
+          },
+          "FarBackground": {
+            "raw_N": 19,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          },
+          "Ring": {
+            "raw_N": 638,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          }
+        },
+        "seconds": 1.612490589999652,
+        "physical_accuracy": "NOT_EVALUABLE_NO_GT",
+        "no_neural_pointmap_geometry": true,
+        "peak_GPU_GB": 4.527723008,
+        "input_affine_A": {
+          "scale": [
+            0.4258064516129032,
+            0.42578125
+          ],
+          "crop_offset_resized": [
+            0.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            146,
+            109
+          ],
+          "source_crop_size": [
+            198,
+            218
+          ],
+          "resized_size": [
+            465,
+            512
+          ],
+          "network_size": [
+            464,
+            512
+          ]
+        },
+        "input_affine_B": {
+          "scale": [
+            0.48,
+            0.48046875
+          ],
+          "crop_offset_resized": [
+            2.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            294,
+            32
+          ],
+          "source_crop_size": [
+            240,
+            246
+          ],
+          "resized_size": [
+            500,
+            512
+          ],
+          "network_size": [
+            496,
+            512
+          ]
+        }
+      }
+    ],
+    "eligibility": "DATA_INELIGIBLE_FOR_METRIC_RECON",
+    "reason": "Uncertified K/pose; actual image/match candidate only"
+  },
+  {
+    "id": "G01_photo_003",
+    "RGB": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/photo_003.png",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 293082,
+      "sha256": "463255b56b1cd92c808eacac6e967dad380fa907915b11b68a531321fd688763"
+    },
+    "Mask": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/photo_003.png",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 2388,
+      "sha256": "afc13977c9cc4f246e39efb80d3ed22ee089d3560b03509cacbcfb560171258d"
+    },
+    "K_candidate": [
+      [
+        490.0,
+        0.0,
+        319.5
+      ],
+      [
+        0.0,
+        490.0,
+        179.5
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "c2w": null,
+    "pose_status": "POSE_UNKNOWN_UNREGISTERED",
+    "matching_evidence": [
+      {
+        "pair": "G01_photo003",
+        "group": "G01",
+        "A": "G01_video005_v005_00459",
+        "B": "G01_photo_003",
+        "method": "SIFT",
+        "status": "MATCHES_RETURNED_NOT_TRUE_CORRESPONDENCE_LABELS",
+        "origin": "NEW_BASELINE_FORWARD",
+        "raw_N": 5,
+        "usable_N": 3,
+        "regions": {
+          "Polyp": {
+            "raw_N": 0,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          },
+          "NearBackground": {
+            "raw_N": 2,
+            "usable_N": 1,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          },
+          "FarBackground": {
+            "raw_N": 2,
+            "usable_N": 2,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          },
+          "Ring": {
+            "raw_N": 1,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          }
+        },
+        "seconds": 0,
+        "physical_accuracy": "NOT_EVALUABLE_NO_GT",
+        "no_neural_pointmap_geometry": true
+      },
+      {
+        "pair": "G01_photo003",
+        "group": "G01",
+        "A": "G01_video005_v005_00459",
+        "B": "G01_photo_003",
+        "method": "MASt3R_FULL",
+        "status": "MATCHES_RETURNED_NOT_TRUE_CORRESPONDENCE_LABELS",
+        "origin": "NEW_OFFICIAL_FORWARD",
+        "raw_N": 1307,
+        "usable_N": 1186,
+        "regions": {
+          "Polyp": {
+            "raw_N": 131,
+            "usable_N": 116,
+            "geometric_candidate_N": 66,
+            "train_inlier_N": 35,
+            "held_geometric_N": 14,
+            "spatial_32px_cells": 14,
+            "held_epipolar_px": {
+              "N": 22,
+              "median": 1.5118364335079302,
+              "MAE": 1.831732021438282,
+              "p05": 0.20777170450724045,
+              "p95": 4.110070910451385,
+              "maximum": 4.1509435019073635
+            }
+          },
+          "NearBackground": {
+            "raw_N": 268,
+            "usable_N": 263,
+            "geometric_candidate_N": 263,
+            "train_inlier_N": 206,
+            "held_geometric_N": 57,
+            "spatial_32px_cells": 41,
+            "held_epipolar_px": {
+              "N": 57,
+              "median": 0.20691923971648474,
+              "MAE": 0.2996813562826399,
+              "p05": 0.030536474725117172,
+              "p95": 0.7667975928214608,
+              "maximum": 1.50092201357707
+            }
+          },
+          "FarBackground": {
+            "raw_N": 815,
+            "usable_N": 807,
+            "geometric_candidate_N": 798,
+            "train_inlier_N": 601,
+            "held_geometric_N": 152,
+            "spatial_32px_cells": 89,
+            "held_epipolar_px": {
+              "N": 155,
+              "median": 0.4327957579204768,
+              "MAE": 0.5317438685769867,
+              "p05": 0.05329951719528687,
+              "p95": 1.3938447066023638,
+              "maximum": 2.5302605745286013
+            }
+          },
+          "Ring": {
+            "raw_N": 93,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          }
+        },
+        "seconds": 0.7836147289999644,
+        "physical_accuracy": "NOT_EVALUABLE_NO_GT",
+        "no_neural_pointmap_geometry": true,
+        "peak_GPU_GB": 4.2708096,
+        "input_affine_A": {
+          "scale": [
+            1.25,
+            1.25
+          ],
+          "crop_offset_resized": [
+            0.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            0,
+            0
+          ],
+          "source_crop_size": [
+            640,
+            360
+          ],
+          "resized_size": [
+            512,
+            288
+          ],
+          "network_size": [
+            512,
+            288
+          ]
+        },
+        "input_affine_B": {
+          "scale": [
+            1.25,
+            1.25
+          ],
+          "crop_offset_resized": [
+            0.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            0,
+            0
+          ],
+          "source_crop_size": [
+            640,
+            360
+          ],
+          "resized_size": [
+            512,
+            288
+          ],
+          "network_size": [
+            512,
+            288
+          ]
+        }
+      },
+      {
+        "pair": "G01_photo003",
+        "group": "G01",
+        "A": "G01_video005_v005_00459",
+        "B": "G01_photo_003",
+        "method": "MASt3R_ROI",
+        "status": "MATCHES_RETURNED_NOT_TRUE_CORRESPONDENCE_LABELS",
+        "origin": "NEW_OFFICIAL_FORWARD",
+        "raw_N": 861,
+        "usable_N": 602,
+        "regions": {
+          "Polyp": {
+            "raw_N": 468,
+            "usable_N": 434,
+            "geometric_candidate_N": 396,
+            "train_inlier_N": 254,
+            "held_geometric_N": 95,
+            "spatial_32px_cells": 21,
+            "held_epipolar_px": {
+              "N": 103,
+              "median": 0.612334371257098,
+              "MAE": 0.8628001184368441,
+              "p05": 0.11246148311994732,
+              "p95": 2.522868189784681,
+              "maximum": 3.1819104382822703
+            }
+          },
+          "NearBackground": {
+            "raw_N": 175,
+            "usable_N": 168,
+            "geometric_candidate_N": 97,
+            "train_inlier_N": 61,
+            "held_geometric_N": 9,
+            "spatial_32px_cells": 18,
+            "held_epipolar_px": {
+              "N": 22,
+              "median": 2.269955001039528,
+              "MAE": 2.8203589414648054,
+              "p05": 0.31535877578263705,
+              "p95": 5.84725219338111,
+              "maximum": 9.678425152132167
+            }
+          },
+          "FarBackground": {
+            "raw_N": 6,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          },
+          "Ring": {
+            "raw_N": 212,
+            "usable_N": 0,
+            "geometric_candidate_N": 0,
+            "train_inlier_N": 0,
+            "held_geometric_N": 0,
+            "spatial_32px_cells": 0,
+            "held_epipolar_px": {
+              "N": 0,
+              "median": null,
+              "MAE": null,
+              "p05": null,
+              "p95": null,
+              "maximum": null
+            }
+          }
+        },
+        "seconds": 1.402000465999663,
+        "physical_accuracy": "NOT_EVALUABLE_NO_GT",
+        "no_neural_pointmap_geometry": true,
+        "peak_GPU_GB": 4.506423296,
+        "input_affine_A": {
+          "scale": [
+            0.4258064516129032,
+            0.42578125
+          ],
+          "crop_offset_resized": [
+            0.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            146,
+            109
+          ],
+          "source_crop_size": [
+            198,
+            218
+          ],
+          "resized_size": [
+            465,
+            512
+          ],
+          "network_size": [
+            464,
+            512
+          ]
+        },
+        "input_affine_B": {
+          "scale": [
+            0.5277207392197125,
+            0.52734375
+          ],
+          "crop_offset_resized": [
+            3.0,
+            0.0
+          ],
+          "source_crop_offset": [
+            186,
+            52
+          ],
+          "source_crop_size": [
+            257,
+            270
+          ],
+          "resized_size": [
+            487,
+            512
+          ],
+          "network_size": [
+            480,
+            512
+          ]
+        }
+      }
+    ],
+    "eligibility": "DATA_INELIGIBLE_FOR_METRIC_RECON",
+    "reason": "Uncertified K/pose; actual image/match candidate only"
+  }
+]

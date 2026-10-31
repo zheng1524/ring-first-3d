@@ -1,0 +1,160 @@
+{
+  "allowed_view_keys": [
+    "camera_poses",
+    "data_norm_type",
+    "depth_z",
+    "idx",
+    "img",
+    "instance",
+    "intrinsics",
+    "is_metric_scale",
+    "ray_directions",
+    "true_shape"
+  ],
+  "proof": [
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/inference.py",
+      "SHA256": "1b3539992a4c4bf83eae5514a4aba26da7cf0e8ae2804428a165715f0edcb7f7",
+      "term": "ALLOWED_VIEW_KEYS",
+      "line": 29,
+      "excerpt": "\n# Hard constraints - exactly what users can provide\nALLOWED_VIEW_KEYS = {\n    \"img\",  # Required - input images\n    \"data_norm_type\",  # Required - normalization type of the input images\n    \"depth_z\",  # Optional - Z depth maps\n    \"ray_directions\",  # Optional - ray directions in camera frame\n    \"intrinsics\",  # Optional - pinhole camera intrinsics (conflicts with ray_directions)"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/inference.py",
+      "SHA256": "1b3539992a4c4bf83eae5514a4aba26da7cf0e8ae2804428a165715f0edcb7f7",
+      "term": "ALLOWED_VIEW_KEYS",
+      "line": 145,
+      "excerpt": "        # Check for invalid keys\n        provided_keys = set(view.keys())\n        invalid_keys = provided_keys - ALLOWED_VIEW_KEYS\n        if invalid_keys:\n            raise ValueError(\n                f\"View {view_idx} contains invalid keys: {invalid_keys}. \"\n                f\"Allowed keys are: {sorted(ALLOWED_VIEW_KEYS)}\"\n            )"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/inference.py",
+      "SHA256": "1b3539992a4c4bf83eae5514a4aba26da7cf0e8ae2804428a165715f0edcb7f7",
+      "term": "ALLOWED_VIEW_KEYS",
+      "line": 149,
+      "excerpt": "            raise ValueError(\n                f\"View {view_idx} contains invalid keys: {invalid_keys}. \"\n                f\"Allowed keys are: {sorted(ALLOWED_VIEW_KEYS)}\"\n            )\n\n        # Check for missing required keys\n        missing_keys = REQUIRED_KEYS - provided_keys\n        if missing_keys:"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/inference.py",
+      "SHA256": "1b3539992a4c4bf83eae5514a4aba26da7cf0e8ae2804428a165715f0edcb7f7",
+      "term": "def validate_input_views_for_inference",
+      "line": 119,
+      "excerpt": "\n\ndef validate_input_views_for_inference(\n    views: List[Dict[str, Any]],\n) -> List[Dict[str, Any]]:\n    \"\"\"\n    Strict validation and preprocessing of input views.\n"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/inference.py",
+      "SHA256": "1b3539992a4c4bf83eae5514a4aba26da7cf0e8ae2804428a165715f0edcb7f7",
+      "term": "def preprocess_input_views_for_inference",
+      "line": 193,
+      "excerpt": "\n\ndef preprocess_input_views_for_inference(\n    views: List[Dict[str, Any]],\n) -> List[Dict[str, Any]]:\n    \"\"\"\n    Pre-process input views to match the expected internal input format.\n"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/inference.py",
+      "SHA256": "1b3539992a4c4bf83eae5514a4aba26da7cf0e8ae2804428a165715f0edcb7f7",
+      "term": "pts3d_cam = depth_z",
+      "line": 240,
+      "excerpt": "            ray_directions = processed_view[\"ray_directions\"]\n            ray_directions_unit_plane = ray_directions / ray_directions[..., 2:3]\n            pts3d_cam = depth_z[..., None] * ray_directions_unit_plane\n            depth_along_ray = torch.norm(pts3d_cam, dim=-1, keepdim=True)\n            processed_view[\"depth_along_ray\"] = depth_along_ray\n            del processed_view[\"depth_z\"]\n\n        # Step 3: Convert camera_poses to expected input keys"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/geometry.py",
+      "SHA256": "11550bd2ee6e78b6e4b05508ff188cd0af8c8f49efc825c2c119ac3a9fd826a1",
+      "term": "def normalize_depth_using_non_zero_pixels",
+      "line": 1523,
+      "excerpt": "\n\ndef normalize_depth_using_non_zero_pixels(depth, return_norm_factor=False):\n    \"\"\"\n    Normalize the depth by the average depth of non-zero depth pixels.\n\n    Args:\n        depth (torch.Tensor): Depth tensor of size [B, H, W, 1]."
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/geometry.py",
+      "SHA256": "11550bd2ee6e78b6e4b05508ff188cd0af8c8f49efc825c2c119ac3a9fd826a1",
+      "term": "valid_depth_mask = depth > 0",
+      "line": 1535,
+      "excerpt": "    assert depth.ndim == 4 and depth.shape[3] == 1\n    # Calculate the sum and count of non-zero depth pixels for each batch\n    valid_depth_mask = depth > 0\n    valid_sum = torch.sum(depth * valid_depth_mask, dim=(1, 2, 3))\n    valid_count = torch.sum(valid_depth_mask, dim=(1, 2, 3))\n\n    # Calculate the norm factor\n    norm_factor = valid_sum / (valid_count + 1e-8)"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/geometry.py",
+      "SHA256": "11550bd2ee6e78b6e4b05508ff188cd0af8c8f49efc825c2c119ac3a9fd826a1",
+      "term": "def apply_log_to_norm",
+      "line": 1666,
+      "excerpt": "\n\ndef apply_log_to_norm(input_data):\n    \"\"\"\n    Normalize the input data and apply a logarithmic transformation based on the normalization factor.\n\n    Args:\n        input_data (torch.Tensor): The input tensor to be normalized and transformed."
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py",
+      "SHA256": "cf6b496f973b9605a78c22165ed3a7620814eebf3ff84c3b0144fdc19b90620f",
+      "term": "def infer(",
+      "line": 2028,
+      "excerpt": "\n    @torch.inference_mode()\n    def infer(\n        self,\n        views: List[Dict[str, Any]],\n        memory_efficient_inference: bool = True,\n        minibatch_size: int = None,\n        use_amp: bool = True,"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py",
+      "SHA256": "cf6b496f973b9605a78c22165ed3a7620814eebf3ff84c3b0144fdc19b90620f",
+      "term": "depth_for_curr_view_input = views[view_idx]",
+      "line": 930,
+      "excerpt": "            ) and per_sample_depth_input_mask_for_curr_view.any():\n                # Get depth for current view\n                depth_for_curr_view_input = views[view_idx][\"depth_along_ray\"][\n                    per_sample_depth_input_mask_for_curr_view\n                ]\n                # Get the metric scale mask\n                if \"is_metric_scale\" in views[view_idx]:\n                    metric_scale_mask = views[view_idx][\"is_metric_scale\"]["
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py",
+      "SHA256": "cf6b496f973b9605a78c22165ed3a7620814eebf3ff84c3b0144fdc19b90620f",
+      "term": "normalize_depth_using_non_zero_pixels",
+      "line": 25,
+      "excerpt": "    apply_log_to_norm,\n    convert_ray_dirs_depth_along_ray_pose_trans_quats_to_pointmap,\n    normalize_depth_using_non_zero_pixels,\n    normalize_pose_translations,\n    transform_pose_using_quats_and_trans_2_to_1,\n)\nfrom mapanything.utils.inference import (\n    postprocess_model_outputs_for_inference,"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py",
+      "SHA256": "cf6b496f973b9605a78c22165ed3a7620814eebf3ff84c3b0144fdc19b90620f",
+      "term": "normalize_depth_using_non_zero_pixels",
+      "line": 988,
+      "excerpt": "                # Normalize the depth\n                scaled_depth_for_curr_view_input, depth_norm_factor = (\n                    normalize_depth_using_non_zero_pixels(\n                        depth_for_curr_view_input, return_norm_factor=True\n                    )\n                )\n                # Assign the depth and depth norm factor to the respective indices\n                depth_for_curr_view[per_sample_depth_input_mask_for_curr_view] = ("
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py",
+      "SHA256": "cf6b496f973b9605a78c22165ed3a7620814eebf3ff84c3b0144fdc19b90620f",
+      "term": "depths = apply_log_to_norm",
+      "line": 1011,
+      "excerpt": "        # Stack the depths for all the views and permute to (B * V, C, H, W)\n        depths = torch.cat(depth_list, dim=0)  # (B * V, H, W, 1)\n        depths = apply_log_to_norm(\n            depths\n        )  # Scale logarithimically (norm is computed along last dim)\n        depths = depths.permute(0, 3, 1, 2).contiguous()  # (B * V, 1, H, W)\n        # Encode the depths using the depth encoder\n        depth_features_across_views = self.depth_encoder("
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py",
+      "SHA256": "cf6b496f973b9605a78c22165ed3a7620814eebf3ff84c3b0144fdc19b90620f",
+      "term": "self.depth_encoder",
+      "line": 193,
+      "excerpt": "        depth_encoder_config[\"enc_embed_dim\"] = self.encoder.enc_embed_dim\n        depth_encoder_config[\"patch_size\"] = self.encoder.patch_size\n        self.depth_encoder = encoder_factory(**depth_encoder_config)\n\n        # Initialize the encoder for log scale factor of depth\n        depth_scale_encoder_config = self.geometric_input_config[\"scale_encoder_config\"]\n        depth_scale_encoder_config[\"enc_embed_dim\"] = self.encoder.enc_embed_dim\n        self.depth_scale_encoder = encoder_factory(**depth_scale_encoder_config)"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/models/mapanything/model.py",
+      "SHA256": "cf6b496f973b9605a78c22165ed3a7620814eebf3ff84c3b0144fdc19b90620f",
+      "term": "self.depth_encoder",
+      "line": 1016,
+      "excerpt": "        depths = depths.permute(0, 3, 1, 2).contiguous()  # (B * V, 1, H, W)\n        # Encode the depths using the depth encoder\n        depth_features_across_views = self.depth_encoder(\n            ViTEncoderNonImageInput(data=depths)\n        ).features\n        # Zero out the depth features where the depth input mask is False\n        depth_features_across_views = (\n            depth_features_across_views"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/cropping.py",
+      "SHA256": "7a605054a478d7d7ddf56fa0f03344ada835309e6cb618a0abdb958e80ce12a2",
+      "term": "interpolation=cv2.INTER_NEAREST",
+      "line": 180,
+      "excerpt": "            input_data,\n            (target_input_w, target_input_h),\n            interpolation=cv2.INTER_NEAREST,\n        )\n    else:\n        resized_input = input_data\n\n    return resized_input, target_input_h, target_input_w"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/cropping.py",
+      "SHA256": "7a605054a478d7d7ddf56fa0f03344ada835309e6cb618a0abdb958e80ce12a2",
+      "term": "interpolation=cv2.INTER_NEAREST",
+      "line": 252,
+      "excerpt": "            fx=scale_final,\n            fy=scale_final,\n            interpolation=cv2.INTER_NEAREST,\n        )\n    if additional_quantities_to_be_resized_with_nearest is not None:\n        resized_additional_quantities = []\n        for quantity in additional_quantities_to_be_resized_with_nearest:\n            resized_additional_quantities.append("
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/cropping.py",
+      "SHA256": "7a605054a478d7d7ddf56fa0f03344ada835309e6cb618a0abdb958e80ce12a2",
+      "term": "interpolation=cv2.INTER_NEAREST",
+      "line": 263,
+      "excerpt": "                    fx=scale_final,\n                    fy=scale_final,\n                    interpolation=cv2.INTER_NEAREST,\n                )\n            )\n        additional_quantities_to_be_resized_with_nearest = resized_additional_quantities\n\n    # No offset here; simple rescaling"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/runtime/map-anything/mapanything/utils/cropping.py",
+      "SHA256": "7a605054a478d7d7ddf56fa0f03344ada835309e6cb618a0abdb958e80ce12a2",
+      "term": "def camera_matrix_of_crop",
+      "line": 283,
+      "excerpt": "\n\ndef camera_matrix_of_crop(\n    input_camera_matrix,\n    input_resolution,\n    output_resolution,\n    scaling=1,\n    offset_factor=0.5,"
+    }
+  ],
+  "raw_preprocessor": "depth_z HxW numpy -> BxHxW CPU tensor",
+  "infer_doc_caveat": "docstring BxHxWx1 differs from actual image/preprocess pair; actual BxHxW gets expanded by depth_z[...,None]",
+  "invalid": "nonpositive must be sanitized BEFORE abs norm; NaN not legal; zero encodes missing depth",
+  "forward_N": 0
+}

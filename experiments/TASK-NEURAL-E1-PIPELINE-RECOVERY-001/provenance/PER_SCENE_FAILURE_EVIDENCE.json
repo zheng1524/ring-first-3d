@@ -1,0 +1,96 @@
+[
+  {
+    "scene": "G01_004",
+    "reason": "C0 LIMITED: raw sequential frame identity unverified; cross-video transform unregistered. Three real references have shared HERO ancestors and depth conflicts. SDF mask adapter invalid; no new model run.",
+    "source": "G01_004_ref03",
+    "target": "G01_video004_004_15",
+    "target_RGB": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_015.png",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 297128,
+      "sha256": "4adeea7a666463f411fd69e9d8e9ace1828d8a537af64e47c7b9ae378ae6584c"
+    },
+    "parent_HERO": [],
+    "figure": "/home/liu/ring_first_3d_neural_e1/experiments/TASK-NEURAL-E1-PIPELINE-RECOVERY-001/figures/local/G01_004_failure_evidence.png",
+    "figure_SHA256": "912fe99f6b00e0a51324c3bf89b32653184310ad3861fb8805e91b65c85a2b28",
+    "new_model_run_N": 0,
+    "measurement_mm": null
+  },
+  {
+    "scene": "G01_005",
+    "reason": "C0 LIMITED: strict full-pipeline holdout=0. SDF full-ray opacity saturates. Old M3 CAD offset ~22 mm and predicted pose residual retained. These are old failures, no new model run.",
+    "source": "G01_005_raw00057",
+    "target": "G01_video005_v005_00860",
+    "target_RGB": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/v005_00860.png",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 292391,
+      "sha256": "9ea95bd3d8ab9cdc7858616307904fd10a34784fb592cb5da79f2c8ca081c1de"
+    },
+    "parent_HERO": [],
+    "figure": "/home/liu/ring_first_3d_neural_e1/experiments/TASK-NEURAL-E1-PIPELINE-RECOVERY-001/figures/local/G01_005_failure_evidence.png",
+    "figure_SHA256": "cc4fdc71c52c76b7d708586a3806078d5d441993295cddc2da8c559bb88c416d",
+    "new_model_run_N": 0,
+    "measurement_mm": null
+  },
+  {
+    "scene": "G06_004",
+    "reason": "Known source leakage: raw00351 was an input to historical HERO G06_004_ref04. It remains DIAGNOSTIC_ONLY. No strict blind test is created by re-labelling.",
+    "source": "G06_004_ref04",
+    "target": "G06_video004_key02_raw00351",
+    "target_RGB": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/groups/G06/inputs/key02_raw00351.png",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 271350,
+      "sha256": "504b702751c3b2bbc492da3f3831e04da02a816c4ecfc10c5792b50b1e0f417c"
+    },
+    "parent_HERO": [
+      "G06_004_ref04"
+    ],
+    "figure": "/home/liu/ring_first_3d_neural_e1/experiments/TASK-NEURAL-E1-PIPELINE-RECOVERY-001/figures/local/G06_004_failure_evidence.png",
+    "figure_SHA256": "6d2e5ac1398a85c5ba1a27f3cee13c24f403f0b4485f9d73c244267871574676",
+    "new_model_run_N": 0,
+    "measurement_mm": null
+  },
+  {
+    "scene": "G08_005",
+    "reason": "LIMITED_STRESS: no pre-frozen strictly independent holdout. raw00943/raw01080 remain diagnostic targets. Conditional geometry conversion is not scientific success.",
+    "source": "G08_005_ref04",
+    "target": "G08_video005_key06_raw00943",
+    "target_RGB": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/groups/G08/inputs/key06_raw00943.png",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 245519,
+      "sha256": "7d62b2478f4b19b4e9cd280a67db792cea5331e61f172cf20fc9938689dfaf5f"
+    },
+    "parent_HERO": [],
+    "figure": "/home/liu/ring_first_3d_neural_e1/experiments/TASK-NEURAL-E1-PIPELINE-RECOVERY-001/figures/local/G08_005_failure_evidence.png",
+    "figure_SHA256": "a83a076ef347b6316a81c8b9c0c6061c92ec9b14b3c2282f97cb1df508ca2d3c",
+    "new_model_run_N": 0,
+    "measurement_mm": null
+  },
+  {
+    "scene": "G07_004",
+    "reason": "UNQUALIFIED_CAMERA_STRESS: frozen camera is not certified for normal success. raw00293 was an input to historical HERO G07_004_ref04. CPU adapter conversion is not camera qualification.",
+    "source": "G07_004_ref04",
+    "target": "G07_video004_key03_raw00293",
+    "target_RGB": {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/groups/G07/inputs/key03_raw00293.png",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 252622,
+      "sha256": "066a83d375b936877ac04427cdd4a4e1a23a62e2d1ff0c6e4a8ae6c46def8320"
+    },
+    "parent_HERO": [
+      "G07_004_ref04"
+    ],
+    "figure": "/home/liu/ring_first_3d_neural_e1/experiments/TASK-NEURAL-E1-PIPELINE-RECOVERY-001/figures/local/G07_004_failure_evidence.png",
+    "figure_SHA256": "25b9a55479d7a2b89311692b9324ad108d46fd7e7a0bac4c7f843ec2cea88231",
+    "new_model_run_N": 0,
+    "measurement_mm": null
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "old_expected_failure_detected": true,
+  "old_failing_class_rows": 24,
+  "saturated_mask_BCE_expected": 3.8371960322395657,
+  "E0_recorded_silhouette_min": 3.8371963500976562,
+  "E0_recorded_silhouette_max": 3.8371963500976562,
+  "candidate_invalid_class_rows": 0,
+  "analytic_tests_pass": true,
+  "ray_Z_max_error_mm": 1.4210854715202004e-14,
+  "official_sampler_execution": "BLOCKED_STATIC_ANALYSIS_ONLY",
+  "E0_full_ray_mask_loss": "ADAPTER_INVALID_FOR_ALL_DOMAINS: forced terminal absorption is not foreground opacity",
+  "candidate_geometry": "CPU_GEOMETRY_PASS",
+  "candidate_mask_adapter": "Synthetic finite opacity and real-ray empty-space controls only; FUTURE_REQUIRED, not wired into neural loss",
+  "candidate_strict_uniform_sampling_fail_N": 44,
+  "C1_SDF": "ADAPTER_INVALID",
+  "reason": "E0 full-ray weights.sum mask is saturated by the official terminal absorber even after camera-envelope gauge repair. No runnable SDF loss adapter is certified here.",
+  "next_SDF_branch": "STOP_SDF_BRANCH; no training. Submit CPU evidence and future finite-ROI mask design for separate review.",
+  "model_run_N": 0
+}

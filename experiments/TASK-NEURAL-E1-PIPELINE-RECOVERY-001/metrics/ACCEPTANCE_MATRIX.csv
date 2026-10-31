@@ -1,0 +1,20 @@
+gate,status,evidence,path
+C0-01,GATE_PASS,独立分支、基点/来源SHA、旧工作树状态及哈希,provenance/SOURCE_COMMITS.json
+C0-02,GATE_PASS,36/36真实来源与native链；display别名另纠正,metrics/NATIVE_DEPTH_AUDIT.csv
+C0-03,GATE_PASS,Raw/Cleaned/F1/F2/F3父系，不增加独立观察数,provenance/E1_SOURCE_DAG.json
+C0-04,PASS_WITH_LIMITATIONS,两视频各3真实候选，有角度/共视；深度冲突显著,metrics/REFERENCE_COVISIBILITY.csv
+C0-05,PASS_WITH_LIMITATIONS,G06/G08/G07分层；三照片未认证；两视频未融合,provenance/PHOTO_QUALIFICATION.json
+C0-06,HOLDOUT_STRICT_UNAVAILABLE,strict holdout=0；raw00351/raw00293污染确认,provenance/SOURCE_LEAKAGE_LEDGER.csv
+C0-07,GATE_PASS,精确源码SHA、签名、可执行范围及最小桥接,CODE_REUSE_E1.csv
+C1-01,GATE_PASS,36真实几何、合成Ray/Z负例、相机逐值相同,metrics/OPENCV_METRIC_TESTS.csv
+C1-02,GATE_PASS,R10/R5真实CAD；5场景前后遮挡及最近层合成控制,metrics/SYNTHETIC_CAD_ZBUFFER_TESTS.csv
+C1-03,EXPECTED_FAIL_E0,官方真实规则静态拦截，BCE定量匹配旧400步,metrics/SDF_GATE_STATUS.json
+C1-04,ADAPTER_INVALID / STOP_SDF_BRANCH,两种物理域射线几何可行，但旧全射线轮廓合同仍无效,metrics/SDF_RAY_DOMAIN_SUMMARY.csv
+C1-05,FUTURE_REQUIRED / NOT_WIRED,本轮不装配可微loss，ROI轮廓/多源loss未入图,metrics/SDF_FUTURE_LOSS_CONTRACT.csv
+C1-06,GATE_PASS_CPU_ONLY,官方固定rev原生M0–M3：两视频各3源，8组合CPU预处理,metrics/MAP_NATIVE_CPU_CONTRACT.csv
+C1-07,GATE_PASS_CPU_ONLY,32/32源几何光栅化/来源索引/单位/无效值合同,metrics/MAP_GEOMETRY_ADAPTER_CONTRACT.csv
+C1-08,GATE_PASS_CPU_ONLY,互斥先验、层冲突、原生/派生/不支持矩阵,metrics/MAP_LEGAL_INPUT_MATRIX.csv
+C1-09,E0_FAILURE_REPRODUCED_CPU,旧M3约22mm CAD偏差与输入/输出pose残差,metrics/E0_M3_FAILURE_RECHECK.csv
+C1-10,GATE_PASS_SCHEMA_ONLY,支持域6标签冻结，F3/三角面插值不冒充新观察,config/CPU_CONTRACT.json
+C1-11,DELIVERED,4核心PNG、5逐场景证据、本地HTML、单份中文报告,visualizations/index.html
+C1-12,GATE_PASS,0 GPU/模型forward/训练/下载/GT；412旧文件SHA不变,metrics/FINAL_VALIDATION.json

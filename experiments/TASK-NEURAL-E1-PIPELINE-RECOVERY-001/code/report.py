@@ -107,7 +107,7 @@ def main():
     '稀疏点仅落到其实际投影像素，未按邻近填洞；只有原有三角面才光栅化。每个本地产物包含axial_Z_mm、depth_z_m、validity、来源点/三角面ID、来源参考与UV/重心、surface_origin、Ring_occluded、UNKNOWN、冻结相机及预处理来源索引。官方validity不是原生字段，作为审计元数据保留，绝不塞入infer。','',
     '无效深度在适配器中严格写0，正深度用m。官方`normalize_depth_using_non_zero_pixels`以`depth>0`计数，0归一化/编码后仍为0，证明它表示缺失条件；NaN乘mask仍会传播，CPU负例确认污染，故拒绝NaN进入官方utils。不能据此声称模型对稀疏输入科学有效。保存全部F1/F2/F3互斥层及20对同RGB先验冲突表，不融合为一个“更好”结果。M4/M5正式名称未启用。','',
     '![多参考HERO冲突](figures/Fig3_HERO_geometry_conflicts.png)','',
-    '| 旧M3来源 | Ring有效/原Mask像素 | CAD距离 median / MAE / p95 / max（mm） | 冻结条件pose相对输出pose的平移 / 转角 |','| --- | --- | --- | --- |']
+    '| 旧M3来源 | Ring有效/预处理Mask像素（280×154） | CAD距离 median / MAE / p95 / max（mm） | 冻结条件pose相对输出pose的平移 / 转角 |','| --- | --- | --- | --- |']
     for r in old:
         st=json.loads(r['CAD_distance_mm']);lines.append(f"| {r['source']} | {r['Ring_output_valid_N']}/{r['Ring_input_pixel_N']} | {st['median']:.3f} / {st['MAE']:.3f} / {st['p95']:.3f} / {st['maximum']:.3f} | {float(r['pose_translation_residual_mm']):.6g}mm / {float(r['pose_rotation_residual_deg']):.6g}° |")
     lines+=['','这是旧E0 M3缓存，表达转换仅复用其原先保存的首相机刚体gauge，没有新ICP/尺度拟合/pose优化。首相机本来就是该gauge锚点，约0.012° trace残差主要是旧float32矩阵数值精度，不代表独立定位精度。第二视角约9.94mm残差及约22mm的CAD偏差均保留，输出pose从未成为本轮输入。','',
