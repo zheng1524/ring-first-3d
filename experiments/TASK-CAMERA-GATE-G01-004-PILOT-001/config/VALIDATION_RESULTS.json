@@ -1,0 +1,173 @@
+{
+  "status": "PASS_ENGINEERING_NOT_CAMERA_CERTIFICATION",
+  "checks": [
+    {
+      "check": "exact_five_camera_scope_nine_pairs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "protocol_identical_to_pre_run_freeze",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "K_c2w_Mask_RGB_numeric_identity_and_proper_rotations",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all_original_input_and_cached_match_hashes_unchanged",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "all_historical_worktree_HEAD_status_dirty_hashes_unchanged",
+      "status": "PASS",
+      "detail": {
+        "worktree_N": 22
+      }
+    },
+    {
+      "check": "labelled_generated_control_c2w_to_F_direction",
+      "status": "PASS",
+      "detail": {
+        "synthetic_control_not_project_truth": true,
+        "max_px": 2.6186881835338966e-13
+      }
+    },
+    {
+      "check": "Sampson_reciprocal_symmetry_and_transpose_negative_control",
+      "status": "PASS",
+      "detail": {
+        "wrong_transpose_median_px": 36.82745264822552
+      }
+    },
+    {
+      "check": "control_triangulation_reprojects_with_mm_coordinates",
+      "status": "PASS",
+      "detail": {
+        "max_mm": 1.9761969838327786e-14
+      }
+    },
+    {
+      "check": "actual_nonunit_ray_axial_Z_roundtrip",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "zero_baseline_F_unresolved_not_success",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Ring_continuous_yaw_symmetry_control",
+      "status": "PASS",
+      "detail": {
+        "sampled_curve_max_px": 0.10491299870449877,
+        "sampling_control_only": true
+      }
+    },
+    {
+      "check": "Ring_rank_never_claimed_full_SE3",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "RGB_only_priority_selection_never_hops_to_pose_PASS",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all_correspondences_use_exact_frozen_spatial_holdout",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "cached_real_match_coordinates_retained_exactly",
+      "status": "PASS",
+      "detail": {
+        "existing_match_caches": 14
+      }
+    },
+    {
+      "check": "only_five_CPU_SIFT_pairs_supplemented_four_reused",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "required_ref13_cannot_be_replaced_by_two_fit_relations",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "no_HERO_metric_used_for_qualification",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "no_optimization_without_FIT_error_trigger",
+      "status": "PASS",
+      "detail": {
+        "optimizer_calls": 0
+      }
+    },
+    {
+      "check": "all_twenty_HERO_directions_keep_fixed_target_denominators",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "original_Test12_hash_frozen_before_HERO",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "complete_isolated_CPU_reproduction",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "three_real_project_figures_decode",
+      "status": "PASS",
+      "detail": [
+        {
+          "path": "/home/liu/ring_first_3d_camera_gate/experiments/TASK-CAMERA-GATE-G01-004-PILOT-001/figures/Figure1_Ring_validation.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1727606,
+          "sha256": "de2ff21581fca6713a97b8065d8cb4a56b195a7abdecd76fe57037d2d07b56cd"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_camera_gate/experiments/TASK-CAMERA-GATE-G01-004-PILOT-001/figures/Figure2_real_matching_geometry.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 4388474,
+          "sha256": "16514bacd9dd5d5566b020863fb481ae9a7d13021af5ce4f9b32cb0093e2b68d"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_camera_gate/experiments/TASK-CAMERA-GATE-G01-004-PILOT-001/figures/Figure3_original_HERO_projection.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 3118571,
+          "sha256": "c89e82f7c795c5a7566296de7aa6dcd43a84f5f1dd5683658ae4c251816b5f0a"
+        }
+      ]
+    },
+    {
+      "check": "reports_and_protocol_links_resolve",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "no_neural_training_weights_or_new_video_processing_in_task_code",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "qualified_camera_N": 0,
+  "camera_denominator": 5,
+  "GT": false,
+  "GPU": 0,
+  "optimizer_calls": 0
+}

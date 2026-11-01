@@ -1,0 +1,104 @@
+{
+  "ENG01": {
+    "action": "new worktree sparse-checkout",
+    "exit_code": 128,
+    "reason": "new worktree administrative info directory missing",
+    "resolution": "create info only in own new worktree; sparse checkout then successful"
+  },
+  "ENG02": {
+    "reason": "ENG02 preliminary reducer counted two relations but omitted the frozen required ref13 identity for new candidates; require every frozen baseline identity. Thresholds, RGB-only selection, data and optimization unchanged.",
+    "user_requirement": "ref03/ref08 for fitting, ref13 extra held-out check",
+    "before": {
+      "G01_004_ref03": {
+        "original_status": "INSUFFICIENT_EVIDENCE",
+        "reasons": [
+          "RGB_GEOMETRY_OR_CHEIRALITY_PARALLAX_NOT_PASSED"
+        ]
+      },
+      "G01_004_ref08": {
+        "original_status": "INSUFFICIENT_EVIDENCE",
+        "reasons": [
+          "RGB_GEOMETRY_OR_CHEIRALITY_PARALLAX_NOT_PASSED"
+        ]
+      },
+      "G01_004_ref13": {
+        "original_status": "INSUFFICIENT_EVIDENCE",
+        "reasons": [
+          "RGB_GEOMETRY_OR_CHEIRALITY_PARALLAX_NOT_PASSED"
+        ]
+      },
+      "G01_004_new_r00": {
+        "original_status": "INSUFFICIENT_EVIDENCE",
+        "reasons": [
+          "RING_NOT_WITHIN_FROZEN_TOLERANCE_OR_INSUFFICIENT_BOUNDARY",
+          "FEWER_THAN_TWO_SUFFICIENT_EXTERNAL_RGB_RELATIONS"
+        ]
+      },
+      "G01_004_growth_r04": {
+        "original_status": "CONDITIONAL_USABLE",
+        "reasons": [
+          "CONDITIONAL_ON_FROZEN_REFERENCE_FAMILY_AND_PINHOLE_K; NOT_ABSOLUTE_GT"
+        ]
+      }
+    },
+    "after": {
+      "G01_004_ref03": {
+        "original_status": "INSUFFICIENT_EVIDENCE",
+        "reasons": [
+          "RGB_GEOMETRY_OR_CHEIRALITY_PARALLAX_NOT_PASSED"
+        ]
+      },
+      "G01_004_ref08": {
+        "original_status": "INSUFFICIENT_EVIDENCE",
+        "reasons": [
+          "RGB_GEOMETRY_OR_CHEIRALITY_PARALLAX_NOT_PASSED"
+        ]
+      },
+      "G01_004_ref13": {
+        "original_status": "INSUFFICIENT_EVIDENCE",
+        "reasons": [
+          "RGB_GEOMETRY_OR_CHEIRALITY_PARALLAX_NOT_PASSED"
+        ]
+      },
+      "G01_004_new_r00": {
+        "original_status": "INSUFFICIENT_EVIDENCE",
+        "reasons": [
+          "RING_NOT_WITHIN_FROZEN_TOLERANCE_OR_INSUFFICIENT_BOUNDARY",
+          "INSUFFICIENT_REQUIRED_RGB_RELATION:ref08",
+          "INSUFFICIENT_REQUIRED_RGB_RELATION:ref13"
+        ]
+      },
+      "G01_004_growth_r04": {
+        "original_status": "INSUFFICIENT_EVIDENCE",
+        "reasons": [
+          "INSUFFICIENT_REQUIRED_RGB_RELATION:ref13"
+        ]
+      }
+    },
+    "preserved_local_artifact": {
+      "path": "/home/liu/ring_first_3d_camera_gate/experiments/TASK-CAMERA-GATE-G01-004-PILOT-001/runtime/ORIGINAL_QUALIFICATION_INITIAL001.json",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 859,
+      "sha256": "be06c3696f8221ce089342bfba872957e14dad38c92de1953f635ac116a3efdb"
+    },
+    "metrics_unchanged": {
+      "path": "/home/liu/ring_first_3d_camera_gate/experiments/TASK-CAMERA-GATE-G01-004-PILOT-001/config/ORIGINAL_TEST12.json",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 101937,
+      "sha256": "607df9de76ec83a76e642d5a2f191271448a4e272619db06f0be86add3d6bdeb"
+    },
+    "correction_not_rerun": true,
+    "optimizer_calls": 0
+  },
+  "visual_annotation": {
+    "Fig2": "explicitly label raw usable matches for insufficient pairs, versus held RGB-F consensus for sufficient pairs",
+    "metrics_changed": false
+  },
+  "reproduction_numeric_categories": 6,
+  "engineering_checks_passed": 25,
+  "qualified_cameras": 0,
+  "camera_denominator": 5,
+  "PM_review_pending": true
+}
