@@ -1,0 +1,20 @@
+{
+  "status": "ANCHOR_NOT_BENEFICIAL",
+  "scope": "one matched actual optimizer update, both rejected; no100-step comparison",
+  "safe_final_step_A": 0,
+  "safe_final_step_B": 0,
+  "actual_updates_A": 1,
+  "actual_updates_B": 1,
+  "A_extra_hits": 50,
+  "B_extra_hits": 51,
+  "extra_fixed_denominator": 96,
+  "A_small_hits": 10,
+  "B_small_hits": 11,
+  "small_fixed_denominator": 18,
+  "B_pointwise_coverage_not_worse_than_A": true,
+  "coverage_preserved_relative_to_initial": false,
+  "reason": "B gains1 train hit and1 small hit but both lose coverage vs initialization and hit same hard stop; no trustworthy geometric benefit",
+  "native_depth_corrected": false,
+  "GT_opened": false,
+  "strict_view_holdout_N": 0
+}

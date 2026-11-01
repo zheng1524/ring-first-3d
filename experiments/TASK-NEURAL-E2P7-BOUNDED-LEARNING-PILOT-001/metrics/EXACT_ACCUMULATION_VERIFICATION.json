@@ -1,0 +1,30 @@
+{
+  "rows": [
+    {
+      "arm": "A",
+      "complete_parameter_N": 670395,
+      "exact_training_backward_accumulation_max_error": 1.4901161193847656e-08,
+      "pass_same_original_tolerance": true,
+      "unchanged_tolerance": 2e-07,
+      "all_gradient_finite": true,
+      "original_component_sum_max_error": 1.3113021850585938e-06,
+      "no_optimizer_created": true,
+      "no_parameter_update": true
+    },
+    {
+      "arm": "B",
+      "complete_parameter_N": 670395,
+      "exact_training_backward_accumulation_max_error": 1.4901161193847656e-08,
+      "pass_same_original_tolerance": true,
+      "unchanged_tolerance": 2e-07,
+      "all_gradient_finite": true,
+      "original_component_sum_max_error": 1.3075768947601318e-06,
+      "no_optimizer_created": true,
+      "no_parameter_update": true
+    }
+  ],
+  "all_exact_checks_pass": true,
+  "original_failed_check_retained": true,
+  "explanation": "linear component-gradient sums round differently from per-view FP32 loss.backward; coordinatewise first-step Adam can amplify cancellation near eps",
+  "additional_optimizer_steps": 0
+}
