@@ -1,0 +1,195 @@
+{
+  "task": "TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001",
+  "scene": "G01_005",
+  "references": [
+    "G01_005_raw00057",
+    "G01_005_raw00459",
+    "G01_005_raw00745"
+  ],
+  "parent_commit": "a69a17099e4ed5ff34ed8e1be49157fbda329615",
+  "seed": 20261031,
+  "initialization": {
+    "scene": "G01_005",
+    "rule": "ONE_RULE: bias0 seeded official raw head; median128 Fibonacci shell raw outputs; same-seed reconstruct with that bias",
+    "bias_network": 0.33739213617088626,
+    "radius_mm": 5.139540785252325,
+    "signs": {
+      "center_SDF_mm": -1.1185311542308676,
+      "inner_negative_fraction": 1.0,
+      "ROI_boundary_positive_fraction": 1.0,
+      "outside_ROI_positive_fraction": 1.0,
+      "shell_median_mm": 4.148148202241103e-07,
+      "shell_abs_p95_mm": 0.5475723449323343
+    },
+    "zero_shell_sign_gate": true,
+    "beta_mm": 0.0800000026032508,
+    "model_parameter_SHA256": "7b5b64e57523d72ededf4c27f2314dd84776066f66197056c44bf014b2b3c81c",
+    "probe_bias0_SHA256": "1271a6d137ca55f7b2fb96a5f0d4a8ee84553d55765650300d635846b32d8748",
+    "constructor_CPU_ports": [
+      {
+        "shape": [
+          3
+        ],
+        "device_before": "cpu",
+        "returned_device": "cpu"
+      },
+      {
+        "shape": [],
+        "device_before": "cpu",
+        "returned_device": "cpu"
+      }
+    ],
+    "seed": 20261031,
+    "optimizer_step_N": 0,
+    "search_N": 1,
+    "immutable_after_diagnostics": true
+  },
+  "domain": {
+    "world_origin_mm": [
+      0.2917828830804057,
+      -0.793891385404947,
+      -4.4124351955893335
+    ],
+    "mm_per_unit": 28.3780268204276,
+    "ROI_radius_mm": 10.27908157050465,
+    "old_bias_network": 0.6,
+    "idealized_old_geometric_init_radius_mm": 17.02681609225656,
+    "proposed_init_radius_mm": 5.139540785252325,
+    "proposed_bias_network": 0.1811098713019992,
+    "official_beta_initial_mm": 2.8406404847248026,
+    "official_beta_for_next_run": "UNSET_REQUIRES_PHYSICAL_UNIT_PREREGISTRATION",
+    "status": "analytic geometric-init idealization only; actual neural head still NOT_EXECUTED"
+  },
+  "arms": {
+    "A": {
+      "anchor": 0.0
+    },
+    "B": {
+      "anchor": 0.01
+    }
+  },
+  "source_component_weight": 0.3333333333333333,
+  "train_split": "extra",
+  "monitor_split": "small",
+  "train_rays_per_ref": 64,
+  "train_HERO_per_ref": 32,
+  "monitor_rays_per_ref": 16,
+  "monitor_HERO_per_ref": 6,
+  "Eikonal": "first6 fixed P_INTERIOR extra midpoints per reference,18 total; one shared regularizer",
+  "losses": {
+    "rgb": 1.0,
+    "depth": 0.1,
+    "mask": 0.1,
+    "eikonal": 0.1,
+    "RGB_Huber": 0.05,
+    "Depth_Huber_mm": 0.5,
+    "Anchor_Huber_mm": 0.5
+  },
+  "optimizer": {
+    "type": "Adam",
+    "implicit_lr": 0.0001,
+    "rendering_lr": 0.0001,
+    "beta_lr": 1e-05,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "weight_decay": 0
+  },
+  "MAX_STEPS": 100,
+  "max_seconds_per_arm": 1800,
+  "max_allocated_bytes": 5368709120,
+  "checkpoint_steps": [
+    0,
+    25,
+    50,
+    75,
+    100
+  ],
+  "monitor_every": 5,
+  "source_gradient_accumulation": "sum3 per-reference backward(loss/3), then shared Eikonal once; one optimizer.step",
+  "AMP": false,
+  "TF32": false,
+  "augmentation": false,
+  "adaptive_sampler": false,
+  "parity": {
+    "loss_atol": 0.002,
+    "loss_rtol": 0.002,
+    "implicit_cosine_min": 0.995,
+    "implicit_norm_relative_max": 0.02,
+    "depth_max_abs_mm": 0.05,
+    "front_cross_max_abs_mm": 0.05,
+    "opacity_max_abs": 0.002,
+    "RGB_max_abs": 0.002,
+    "hit_set_equal": true
+  },
+  "sampler_compare": {
+    "cells": [
+      128,
+      256
+    ],
+    "rule": "128 only if every source/split passes; otherwise256, record NOT_FULLY_CONVERGED; no further density search",
+    "mask_relative_max": 0.02,
+    "depth_max_abs_mm": 0.05,
+    "opacity_max_abs": 0.01,
+    "RGB_max_abs": 0.01,
+    "implicit_cosine_min": 0.995,
+    "implicit_norm_relative_max": 0.1,
+    "hit_set_equal": true
+  },
+  "stopping": {
+    "nonfinite": true,
+    "zero_hits": true,
+    "minimum_per_reference_coverage": 0.5,
+    "coverage_drop_pp": 0.1,
+    "consecutive_fixed_probes": 3,
+    "CAD_penetration_mm": 0.1,
+    "CAD_fraction": 0.01,
+    "unknown_or_behind_Ring": true
+  },
+  "baseline_E26": {
+    "extra": [
+      27,
+      29,
+      31
+    ],
+    "small": [
+      6,
+      6,
+      6
+    ]
+  },
+  "geometry_probe": {
+    "grid_N": 49,
+    "extent_ROI": 1.0,
+    "surface_grid_final_N": 65,
+    "slice_axis": "xz, y=ROI origin",
+    "render_stride": 4,
+    "mesh_support": "project fixed cameras; positive source Mask; in visible ROI/CAD prefix; nearest native HERO residual <=1mm supports, >1mm conflict; else unknown",
+    "HERO_support_tolerance_mm": 1.0,
+    "invisible_faces": "omit from visible surface, never close or fill"
+  },
+  "evaluation": {
+    "pixel_monitor_only": true,
+    "strict_view_holdout_N": 0,
+    "GT_opened": false,
+    "beneficial": "B final has no per-source/split coverage loss vs A or own init; >=5% reductions in >=2 of small RGB/Depth/Mask, third <=5% worse; no new CAD/zero-set failure",
+    "feasible": "complete100 steps; no per-source monitor coverage decrease; >=5% reductions in >=2 of small RGB/Depth/Mask, third<=5% worse; changed surface and no topology/CAD inflation flags",
+    "geometry_flags": "ROI boundary negative fraction>0.05; >1 substantial zero-surface components; >10% source Polyp spill increase; any Ring penetration stop; raw mesh unsealed"
+  },
+  "authorized": [
+    "G01_005 official neural GPU updates",
+    "Adam",
+    "small state_dict checkpoints",
+    "serial A/B <=100 steps each"
+  ],
+  "forbidden": [
+    "G01_004 training",
+    "GT/Oracle",
+    "MapAnything",
+    "upstream edits",
+    "HERO/camera/CAD correction",
+    "longer training",
+    "hyperparameter search"
+  ]
+}

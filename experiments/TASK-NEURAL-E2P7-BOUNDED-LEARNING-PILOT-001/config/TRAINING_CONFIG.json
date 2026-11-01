@@ -1,0 +1,40 @@
+{
+  "scene": "G01_005",
+  "references": [
+    "G01_005_raw00057",
+    "G01_005_raw00459",
+    "G01_005_raw00745"
+  ],
+  "arms": {
+    "A": {
+      "anchor": 0.0
+    },
+    "B": {
+      "anchor": 0.01
+    }
+  },
+  "optimizer": {
+    "type": "Adam",
+    "implicit_lr": 0.0001,
+    "rendering_lr": 0.0001,
+    "beta_lr": 1e-05,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "weight_decay": 0
+  },
+  "losses": {
+    "rgb": 1.0,
+    "depth": 0.1,
+    "mask": 0.1,
+    "eikonal": 0.1,
+    "RGB_Huber": 0.05,
+    "Depth_Huber_mm": 0.5,
+    "Anchor_Huber_mm": 0.5
+  },
+  "MAX_STEPS": 100,
+  "max_seconds_per_arm": 1800,
+  "max_allocated_bytes": 5368709120,
+  "source_gradient_accumulation": "sum3 per-reference backward(loss/3), then shared Eikonal once; one optimizer.step"
+}

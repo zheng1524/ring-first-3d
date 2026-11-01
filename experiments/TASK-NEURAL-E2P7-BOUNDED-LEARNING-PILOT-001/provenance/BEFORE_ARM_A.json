@@ -1,0 +1,120 @@
+{
+  "UTC": "2026-11-01T06:38:50.006047+00:00",
+  "code": [
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/code/common.py",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 5581,
+      "sha256": "44735851ce7f2b366d93ef6734a284be2995312b05e57b72ffb6132329a5e264"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/code/evaluate.py",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 7032,
+      "sha256": "eb8d0984d82a570c0ea488317735b0e82e5f383f30c586602863e6c56f10cd2c"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/code/fixed_renderer.py",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 5310,
+      "sha256": "bd514ef67c72d757f4d84f6da11f3c331b37f5b74a35234edf9ed61fe830d040"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/code/gpu_model_adapter.py",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 3161,
+      "sha256": "1268b15b25c17750b9d93cc89f7996a03badea472c1bf4261aae9f546e8a7001"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/code/preflight.py",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 7195,
+      "sha256": "28ccead809b63e52f0cc9f1057cf4b7709818c155ec24961ee2a8d63f253a714"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/code/preregister.py",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 4646,
+      "sha256": "f7e2d0a445070b8431c944d3d05e2384c892d51948bb73ff6bf9e3537cb6ef69"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/code/train_arm.py",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 7205,
+      "sha256": "d303d758ff025e36b6a493bb5c1180d94c91a97bcca3bd22308ebd740570176c"
+    }
+  ],
+  "config": [
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/config/EIKONAL_TRAIN_POINTS.json",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 1456,
+      "sha256": "dfb1f30f6deeae54e42e4188c554021e8f884f40f6eaa08a8f73b9ed50643366"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/config/PREREGISTERED.json",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 5748,
+      "sha256": "c3dbf05566f8942c8d6c332552202e97570e16e3e6087050b1c25f30626e8c31"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/config/RUN_EXECUTION_PROTOCOL.json",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 694,
+      "sha256": "344cb88b9181ed9574cf1d447dbd14899912e5b0407768185fb3e4460bfa6d39"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/config/SELECTED_SAMPLING.json",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 103,
+      "sha256": "3dfe5a8625e69bd917132a993b91ac78e8b9f21d4b8b99c0ea63304e144082f6"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/config/TRAINING_CONFIG.json",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 772,
+      "sha256": "9c0937d4afd9739b6bd16b0c83d0383002f0d94c4761808295178aa378707fb0"
+    }
+  ],
+  "extra": {
+    "initial_model": {
+      "canonical_SHA256": "7b5b64e57523d72ededf4c27f2314dd84776066f66197056c44bf014b2b3c81c",
+      "FP32_SHA256": "c02a788808d3944b35f9901a32cc05600bd1e15ff5c57afb25f2a12f2a2fbac8",
+      "constructor_CPU_ports": [
+        {
+          "shape": [
+            3
+          ],
+          "device_before": "cpu",
+          "returned_device": "cpu"
+        },
+        {
+          "shape": [],
+          "device_before": "cpu",
+          "returned_device": "cpu"
+        }
+      ],
+      "canonical_device": "cpu",
+      "target_device": "cuda:0",
+      "random_initialization_on_GPU": false
+    },
+    "step_budget": 100,
+    "optimizer_step_N": 0,
+    "small_never_updates": true
+  },
+  "GT_opened": false,
+  "GPU": "AUTHORIZED_BOUNDED_E27",
+  "optimizer_step_N": 0
+}
