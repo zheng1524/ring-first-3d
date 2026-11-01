@@ -1,0 +1,69 @@
+{
+  "task": "TASK-E3-A-SOURCE-AUDIT-AND-PROBLEM-DEFINITION-001",
+  "main_physical_groups": [
+    "G01",
+    "G06",
+    "G08",
+    "G07"
+  ],
+  "main_scenes": [
+    "G01_004",
+    "G01_005",
+    "G06_004",
+    "G07_004",
+    "G08_005"
+  ],
+  "additional_catalog_groups": [
+    "G02",
+    "G03",
+    "G04",
+    "G05"
+  ],
+  "source_scope": "all36 E1 sources + all4 additional catalog HERO; no new inference",
+  "camera_gate": "source_camera_qualified true AND not UNQUALIFIED; group-level NORMAL/LIMITED is NOT per-source certification",
+  "parent_gate": "record every HERO input pose state separately; even screened reference may have candidate-only parents",
+  "camera_bins": {
+    "azimuth_width_deg": 10,
+    "elevation_width_deg": 10
+  },
+  "normal_bins": {
+    "azimuth_N": 12,
+    "elevation_N": 6,
+    "minimum_area_fraction": 0.01
+  },
+  "geometric_voxel_mm": 0.5,
+  "pair_sample_vertices_max": 2048,
+  "pair_depth_diagnostic_mm": 0.5,
+  "pair_depth_pixel_footprints": 3,
+  "pair_cycle_max_px": 2,
+  "normal_compatibility_cos_min": 0.8,
+  "physical_correspondence_requires_independent_evidence": true,
+  "stretch_proxy_max_edge_over_footprint": 8,
+  "fragment_proxy_component_area_fraction": 0.01,
+  "CAD_margin_mm": 0.05,
+  "selection": "preserve existing G01 triples / other screened legacy primary; add <=1 G01 bridge, <=2 other bridges by deterministic raw spatial+normal coverage; never SDF outcomes",
+  "source_budget_G01": 4,
+  "source_budget_other": 3,
+  "graph_edge_min_mutual_source_fraction": 0.1,
+  "ROI_rule": "AABB of every reference-screened raw original vertex and full CAD, margin=max(2mm,0.25*CAD outer diameter); unqualified/candidate envelopes separately disclosed",
+  "ROI_uses_quantile_crop": false,
+  "diagnostic_slice_N": 121,
+  "slice_surface_distance_mm": 0.25,
+  "true_same_surface_conflict": "not inferable from depth residual alone; preserve unresolved unless independent correspondence certification",
+  "representative_regions": [
+    "HEAD",
+    "RING_NEAR",
+    "ABOVE_RING",
+    "BELOW_RING",
+    "SIDE",
+    "THIN_BASE_PROXY",
+    "STRETCH_PROXY",
+    "MINOR_COMPONENT_PROXY"
+  ],
+  "new_LocalField_implemented": false,
+  "global_fit_N": 0,
+  "geometry_deformation_N": 0,
+  "model_forward_N": 0,
+  "GPU_training_N": 0,
+  "GT_opened": false
+}

@@ -1,0 +1,361 @@
+[
+  {
+    "capability": "native HERO adapter",
+    "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/scripts/run_mvs_adapter3.py",
+    "sha256": "14315d808e71a136dad71877c52336473fb2431428451e0a3b3de6f894e7d481",
+    "branch": "main",
+    "commit": "4483e25ede3eee1b6eaf96254d2544152f935c0d",
+    "functions": [
+      {
+        "name": "load_official",
+        "line": 7,
+        "signature": "size",
+        "AST_SHA256": "fcf164fed2b2363d46e57257e1d879d527923f5c62ec04e943b6be9c05103053"
+      }
+    ],
+    "input_output": "RGB + fixed K/c2w -> archived native depth; no new call",
+    "units": "mm native axial Z",
+    "local_unuploaded_dependency": true,
+    "validation": "STATIC_ONLY_INFERENCE_NOT_AUTHORIZED",
+    "required_inputs": "native packs exist for 40 sources; weights not opened",
+    "minimum_adaptation": "No inference adapter required this round"
+  },
+  {
+    "capability": "original geometric pipeline",
+    "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v1/scripts/common.py",
+    "sha256": "12e9eab72765877219191aa9a26bf37d3ffb0c7deb7b55125c4b5d5864201e1e",
+    "branch": "main",
+    "commit": "4483e25ede3eee1b6eaf96254d2544152f935c0d",
+    "functions": [
+      {
+        "name": "unproject",
+        "line": 40,
+        "signature": "z, pose, uv, K",
+        "AST_SHA256": "fcb42bb587d49575889459c436865761c0a36127864a1f549c2e65feeb1d3f56"
+      },
+      {
+        "name": "depth_mesh",
+        "line": 63,
+        "signature": "depth, mask, pose, K, color",
+        "AST_SHA256": "255e4322b6608e078465c04edd447d772fa51d8593ac0cdf59989553cd51a260"
+      }
+    ],
+    "input_output": "Z,pose,UV,K -> XYZ; depth/mask/color -> original image-adjacent faces",
+    "units": "mm axial Z / world mm",
+    "local_unuploaded_dependency": true,
+    "validation": "unproject executed all36; depth_mesh static only",
+    "required_inputs": "36 raw mesh / original UV+faces exist; cfg file present",
+    "minimum_adaptation": "Keep archived face IDs; do not retriangulate; archived .75mm jump cfg required"
+  },
+  {
+    "capability": "exact source-index geometry loader",
+    "path": "/home/liu/ring_first_3d_neural_e0/experiments/TASK-NEURAL-E0-COMPARE-001/code/evidence.py",
+    "sha256": "90db9e31b3f37f1a6760306c16ee90367cd914f51874ab02973ae3d9af90c6b0",
+    "branch": "exp/TASK-NEURAL-E0-COMPARE-001",
+    "commit": "26a3f82b2b6644b78c8560650fdc319fbb30322f",
+    "functions": [
+      {
+        "name": "points",
+        "line": 13,
+        "signature": "cid",
+        "AST_SHA256": "84bf0ae40c9025d81c601c61547f8219c71dd65507968a63decbd271dc3ebf2a"
+      },
+      {
+        "name": "combine",
+        "line": 19,
+        "signature": "sid, kind, only_ids=None",
+        "AST_SHA256": "65276ed8a6a5d5bf065f6cca9044dc7cd8291e0631ae20556c59949c656d12f5"
+      },
+      {
+        "name": "f3",
+        "line": 27,
+        "signature": "sid",
+        "AST_SHA256": "0a8cc9b8100b0fc559145560f4717ae4f9e0e6e4a296ce253af10719e305f48f"
+      }
+    ],
+    "input_output": "frozen source registry -> original XYZ/RGB/UV/faces; historical face subsets",
+    "units": "mm",
+    "local_unuploaded_dependency": true,
+    "validation": "EXECUTED_EXACT_AST",
+    "required_inputs": "all36 raw/Cleaned; first14 F2; five F3 joint NPZ",
+    "minimum_adaptation": "source-only namespace; skip legacy neural/MapAnything mains"
+  },
+  {
+    "capability": "original face topology",
+    "path": "/home/liu/ring_first_3d/experiments/TASK-PHASEC-SPARSE-STRETCH-CLEAN-VIS-001/code/run.py",
+    "sha256": "df0ac71b18a315751b54735d80d79776c9dc571cb90a21d06e7fab210a525449",
+    "branch": "exp/TASK-PHASEC-SPARSE-STRETCH-CLEAN-VIS-001",
+    "commit": "3c87cf25b690c56df7607f3b3a11f70a6c3453b3",
+    "functions": [
+      {
+        "name": "source_components",
+        "line": 46,
+        "signature": "pack, uv",
+        "AST_SHA256": "571830ae1c52dceea374184f307a9a50b9892d2a7961647d8068f10ae1edd0b6"
+      },
+      {
+        "name": "face_components",
+        "line": 67,
+        "signature": "faces",
+        "AST_SHA256": "b57a15aea8e5556f454c6bb15ed0b6f286d92401a817b4b6a0d3f8eb355e00ae"
+      },
+      {
+        "name": "edge_counts",
+        "line": 72,
+        "signature": "faces",
+        "AST_SHA256": "ec87522b0422835893b251d44e7fd8c296619fd8574fcf7cc6977b05f4acc17a"
+      }
+    ],
+    "input_output": "original faces -> shared-edge components/boundary counts",
+    "units": "indices; areas separately mm2",
+    "local_unuploaded_dependency": true,
+    "validation": "EXECUTED_EXACT_AST",
+    "required_inputs": "all36 indexed original meshes",
+    "minimum_adaptation": "bind returned namespace explicitly; no topology mutation"
+  },
+  {
+    "capability": "historical reprojection and geometry",
+    "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/code/geometry.py",
+    "sha256": "2c6b51ca339a5d113dd52285e73a02f7293640c693f8f48c2912ca96ed3d3813",
+    "branch": "exp/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001",
+    "commit": "fa50f68f27fd1679276e3ac549322cda05fc4191",
+    "functions": [
+      {
+        "name": "mesh_scene",
+        "line": 11,
+        "signature": "P, F",
+        "AST_SHA256": "9781ef4fc2c05c2d4a2c4e5eca925c057a865e546f40c587e02cb9601cd11696"
+      },
+      {
+        "name": "raymesh",
+        "line": 15,
+        "signature": "P, F, t",
+        "AST_SHA256": "b429f442b9c9a8351bebc2804479e9550b665193aeb2eb7ecbe5bd8442c41889"
+      },
+      {
+        "name": "projection",
+        "line": 18,
+        "signature": "P, C, t, ids=None, kind=None",
+        "AST_SHA256": "5919cf7a3fc17ddf5a59599a5be20c38af08e13740459378bfa6f23245bc0b5b"
+      },
+      {
+        "name": "common_metric",
+        "line": 29,
+        "signature": "pred0, pred1, t",
+        "AST_SHA256": "a310c3f1c93c789ebe70b113a836b3b40c9bc63825c32d5850dbd89143e133b6"
+      },
+      {
+        "name": "area",
+        "line": 35,
+        "signature": "P, F",
+        "AST_SHA256": "a6e15042fd8e222f9327288ddb69e77525ffcfa333ce2de127055269a5fe4388"
+      },
+      {
+        "name": "topology",
+        "line": 40,
+        "signature": "s, deleted",
+        "AST_SHA256": "f5135bbb01130dba95866c7a1a75d102bee3dee21d5f8dc34e461d5a205abdfe"
+      },
+      {
+        "name": "direction",
+        "line": 42,
+        "signature": "P, N, reliable, weights, pose",
+        "AST_SHA256": "d684eb41a8f59cd90722598ee6a538901f73759b50b8fc2781691f822b650511"
+      }
+    ],
+    "input_output": "original XYZ/F + frozen target K/c2w -> ray hits / fixed-pixel statistics",
+    "units": "camera axial mm; area mm2",
+    "local_unuploaded_dependency": true,
+    "validation": "STATIC_AUDIT_AND_MATCHED_CURRENT_WRAPPERS",
+    "required_inputs": "five scene meshes/cameras available",
+    "minimum_adaptation": "CID wrapper uses same Open3D BVH + existing camera_rays; full old module main prohibited"
+  },
+  {
+    "capability": "historical CAD audit",
+    "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/code/cad_audit.py",
+    "sha256": "044ca8c0e44468058d3e66644b59cd9df394348bb56847ae891d98c58a774006",
+    "branch": "exp/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001",
+    "commit": "fa50f68f27fd1679276e3ac549322cda05fc4191",
+    "functions": [
+      {
+        "name": "main",
+        "line": 3,
+        "signature": "",
+        "AST_SHA256": "db60260dea7ccceb30bb9863a9850ddef2ccfcdb0742bcfd313daa46fad237c6"
+      }
+    ],
+    "input_output": "fixed Ring + source geometry -> archived CAD diagnostics",
+    "units": "mm",
+    "local_unuploaded_dependency": true,
+    "validation": "STATIC_ONLY_MAIN_NOT_CALLED",
+    "required_inputs": "Ring CAD files and old reports available",
+    "minimum_adaptation": "reuse SameCameraScene for queries; never call historical main"
+  },
+  {
+    "capability": "MASt3R historical matches",
+    "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/code/matching.py",
+    "sha256": "e86159011da85f49ddb8cb3fc341deb3a45e21e0b2759a9f73274e0d1f3c610e",
+    "branch": "exp/TASK-VIEW-PARTITION-MAST3R-FUSION-001",
+    "commit": "4adfe3aac780bf319aebf9cdd137f42e1e0eb055",
+    "functions": [
+      {
+        "name": "backmap",
+        "line": 37,
+        "signature": "p, meta",
+        "AST_SHA256": "a8ad89eb1c923555c86b844a6e12c76c2b2f4e908ab26914d8cbabb5ec8164b0"
+      },
+      {
+        "name": "main",
+        "line": 38,
+        "signature": "",
+        "AST_SHA256": "5cc0338d5348f6b2774443e1b1225cfda91c0bc1d82e7bb17bbb88a802db5496"
+      }
+    ],
+    "input_output": "RGB pair + affine maps -> existing match candidate NPZ",
+    "units": "pixels; NOT metric geometry",
+    "local_unuploaded_dependency": true,
+    "validation": "CACHE_ONLY_MAIN_NOT_CALLED",
+    "required_inputs": "matching_comparison.json, registration_edges.json, CROSSVIDEO_GATE.json exist",
+    "minimum_adaptation": "cached matches are not independent physical correspondence labels"
+  },
+  {
+    "capability": "historical pose qualification",
+    "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/code/registration.py",
+    "sha256": "d168307472f8a6418e9a084aa337d794f4afab9c5f85ad6e93f88bbf5c2cde96",
+    "branch": "exp/TASK-VIEW-PARTITION-MAST3R-FUSION-001",
+    "commit": "4adfe3aac780bf319aebf9cdd137f42e1e0eb055",
+    "functions": [
+      {
+        "name": "anchors",
+        "line": 14,
+        "signature": "pair, method",
+        "AST_SHA256": "2921f13a182b46e97d490f8708b26d041964589029691f0077c670b11f614557"
+      },
+      {
+        "name": "qualify_independent",
+        "line": 58,
+        "signature": "edges",
+        "AST_SHA256": "53c6ea4c9bbf3539ed73e5a70284b74a48dcec9cc02207dee96b54c9d8e5466e"
+      },
+      {
+        "name": "pose_graph",
+        "line": 67,
+        "signature": "edges",
+        "AST_SHA256": "a1716fc41bf8a74d24e11dcc1d0d391cb731871788aa4e760ad8cfcda06ecc22"
+      }
+    ],
+    "input_output": "cached matches + frozen geometry -> archived candidate transform / diagnostic checks",
+    "units": "mm",
+    "local_unuploaded_dependency": true,
+    "validation": "STATIC_ONLY_NO_PNP_OR_OPTIMIZATION",
+    "required_inputs": "cross-video gate fusion_certified=false; photos c2w null",
+    "minimum_adaptation": "do not adopt pose_graph operational unified flag as certified registration"
+  },
+  {
+    "capability": "shared frozen renderer/camera",
+    "path": "/home/liu/ring_first_3d_e3a/visualization/real_p0_renderer.py",
+    "sha256": "16bbff24b353402f56833c87de19041c05c3f2482682d35ee8e24a36fea64f99",
+    "branch": "exp/TASK-E3-A-SOURCE-AUDIT-AND-PROBLEM-DEFINITION-001",
+    "commit": "fcdcefb13c00a3c940926dd2266137847eb768b6",
+    "functions": [
+      {
+        "name": "basis",
+        "line": 57,
+        "signature": "angle=DEFAULT_ANGLE",
+        "AST_SHA256": "c8bdde7257f6c58b237630879c51d081d8df4fdc7f670ce507a8c2e192925a05"
+      },
+      {
+        "name": "configure",
+        "line": 44,
+        "signature": "",
+        "AST_SHA256": "34fbbd57128f14963144b19682570f8a0d7ac8c5973eb51612afcb8bc3f432cc"
+      },
+      {
+        "name": "project_camera",
+        "line": 89,
+        "signature": "points_mm, K, c2w",
+        "AST_SHA256": "c7b8bd611b5058c914b8eb6cf1cf138562282f8be30757e276804b95893f6d35"
+      },
+      {
+        "name": "camera_rays",
+        "line": 98,
+        "signature": "uv, K, c2w",
+        "AST_SHA256": "51e85fd4c5a9437abcdbd8eb1c10b72adadb5612bc29cae904074028319fd81a"
+      }
+    ],
+    "input_output": "real XYZ,K,c2w -> projected UV and unnormalized world rays",
+    "units": "axial ray t = camera Z mm",
+    "local_unuploaded_dependency": true,
+    "validation": "EXECUTED",
+    "required_inputs": "bundled original renderer and provenance available",
+    "minimum_adaptation": "audit figures add original triangle PolyCollection using exact basis; P0 code unchanged"
+  },
+  {
+    "capability": "fixed opaque CAD raycast",
+    "path": "/home/liu/ring_first_3d_e3a/visualization/same_camera_scene.py",
+    "sha256": "fdd64599676bd88f659f6f9b7317835d43c6db2176e9fb9fce8849c25b807cf1",
+    "branch": "exp/TASK-E3-A-SOURCE-AUDIT-AND-PROBLEM-DEFINITION-001",
+    "commit": "fcdcefb13c00a3c940926dd2266137847eb768b6",
+    "functions": [
+      {
+        "name": "SameCameraScene",
+        "line": 8,
+        "signature": "class",
+        "AST_SHA256": "f1922740a54da92d79d6478c460e34c3fc063ebe473134ad7681ced3f4feff89"
+      }
+    ],
+    "input_output": "CAD,K,c2w,image_size -> original CAD first ray intersections",
+    "units": "axial Z mm",
+    "local_unuploaded_dependency": true,
+    "validation": "EXECUTED",
+    "required_inputs": "both Ring CAD assets exist",
+    "minimum_adaptation": "existing .002mm raster ordering epsilon, separate future uncertainty margin"
+  },
+  {
+    "capability": "source guard and integrity",
+    "path": "/home/liu/ring_first_3d_neural_e1/experiments/TASK-NEURAL-E1-PIPELINE-RECOVERY-001/code/common.py",
+    "sha256": "0af5b736e5c99c7c021c24c6a593ca37ec7f353101cc1b032e3c057a44de9fbd",
+    "branch": "exp/TASK-NEURAL-E1-PIPELINE-RECOVERY-001",
+    "commit": "af71a6f85328f487b4a319d47e429c3606f5ca33",
+    "functions": [
+      {
+        "name": "extract",
+        "line": 88,
+        "signature": "path, names, ns=None",
+        "AST_SHA256": "4cb1484c90d9769a0b92e0d9ac81f6e4005647907b0026537cd560c91d4148b3"
+      },
+      {
+        "name": "guard",
+        "line": 26,
+        "signature": "event, args",
+        "AST_SHA256": "0757e981194c7f7142446bfe7c65c780a94aef69100938293b3a795f0cce9b5a"
+      },
+      {
+        "name": "protected_state",
+        "line": 112,
+        "signature": "",
+        "AST_SHA256": "79b3dbe3e3e950662c00ed0b63304435e939178b3fba6d88dae3a0bd86cf0bfb"
+      }
+    ],
+    "input_output": "exact AST helpers -> scoped read-only inputs / source SHAs / worktree status",
+    "units": "N/A",
+    "local_unuploaded_dependency": true,
+    "validation": "EXECUTED_EXACT_AST",
+    "required_inputs": "E1 registry/reuse source and all history worktrees exist",
+    "minimum_adaptation": "deny Torch/checkpoint imports and scope writes to E3-A"
+  },
+  {
+    "capability": "E2.7 failure lineage",
+    "path": "/home/liu/ring_first_3d_neural_e2p7/experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001/code/common.py",
+    "sha256": "44735851ce7f2b366d93ef6734a284be2995312b05e57b72ffb6132329a5e264",
+    "branch": "exp/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001",
+    "commit": "fcdcefb13c00a3c940926dd2266137847eb768b6",
+    "functions": [],
+    "input_output": "small existing report/metrics -> failed one-step pilot evidence",
+    "units": "mm; voxel volume is not physical volume",
+    "local_unuploaded_dependency": true,
+    "validation": "STATIC_ONLY_NO_IMPORT",
+    "required_inputs": "E2.7 technical report exists",
+    "minimum_adaptation": "never import neural/GPU-authorized runtime; no E2.7 re-execution"
+  }
+]

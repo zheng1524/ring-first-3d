@@ -1,0 +1,250 @@
+{
+  "status": "PASS_DELIVERY_INTEGRITY_ONLY",
+  "checks": [
+    {
+      "check": "all_referenced_original_input_hashes_unchanged",
+      "status": "PASS",
+      "detail": {
+        "files": 376,
+        "mismatches": []
+      }
+    },
+    {
+      "check": "historical_worktrees_HEAD_status_and_existing_modifications_unchanged",
+      "status": "PASS",
+      "detail": {
+        "worktrees": 19
+      }
+    },
+    {
+      "check": "all36_main_and4_supplemental_sources_in_full94_manifest",
+      "status": "PASS",
+      "detail": {
+        "main": 36,
+        "native": 40,
+        "records": 94
+      }
+    },
+    {
+      "check": "original_face_identity_intact_all36",
+      "status": "PASS",
+      "detail": {
+        "faces": 1070754
+      }
+    },
+    {
+      "check": "reference_vs_upstream_camera_qualification_separated",
+      "status": "PASS",
+      "detail": "17 screened / 8 all-parent noncandidate, not absolute certification"
+    },
+    {
+      "check": "existing_E1_projection_unprojection_tolerances",
+      "status": "PASS",
+      "detail": {
+        "max_pixel_error": 3.410605131648481e-13,
+        "max_mm_error": 0.0,
+        "frozen_existing_tolerances": {
+          "frozen_before_tests": true,
+          "projection_px": 1e-06,
+          "unprojection_mm": 1e-06,
+          "mesh_XYZ_mm": 1e-05,
+          "rotation": 1e-06,
+          "CAD_occlusion_tolerance_mm": 0.05,
+          "source_raster_axial_mm": 0.002,
+          "analytic_zero_crossing_mm": 1e-05,
+          "conflict_mm_min": 0.5,
+          "conflict_pixel_footprints": 3,
+          "ray_per_class": 64,
+          "seed": 20261031,
+          "sdf_domain_candidates_max": 2,
+          "domain_target_fraction_required": 1.0,
+          "domain_near_no_absorber_fraction_required": 1.0,
+          "domain_min_class_sampling_fraction": 0.95,
+          "analytic_beta_network": 0.1001,
+          "absorber_transmittance_min": 0.99,
+          "visible_support_labels": [
+            "MULTI_VIEW_OBSERVED_SUPPORTED",
+            "SINGLE_VIEW_OBSERVED_SUPPORTED",
+            "CONFLICT",
+            "RING_OCCLUDED",
+            "PRIOR_ONLY",
+            "UNKNOWN"
+          ],
+          "model_run_N": 0
+        }
+      }
+    },
+    {
+      "check": "source_DAG_all_edges_resolved_and_acyclic",
+      "status": "PASS",
+      "detail": {
+        "nodes": 229,
+        "edges": 383,
+        "missing_edges": [],
+        "visited": 229
+      }
+    },
+    {
+      "check": "all40_HERO_actual_RGB_parent_SHA_sets_match_DAG",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "252_directed_pairs_same_video_no_certification_inflation",
+      "status": "PASS",
+      "detail": 252
+    },
+    {
+      "check": "representative_selection_never_promotes_unqualified_reference",
+      "status": "PASS",
+      "detail": {
+        "G01_004": [
+          "G01_004_ref03",
+          "G01_004_ref08",
+          "G01_004_ref13"
+        ],
+        "G01_005": [
+          "G01_005_raw00057",
+          "G01_005_raw00459",
+          "G01_005_raw00745",
+          "G01_005_growth_r20"
+        ],
+        "G06_004": [
+          "G06_004_ref04",
+          "G06_004_new_r00",
+          "G06_004_growth_r03"
+        ],
+        "G07_004": [],
+        "G08_005": [
+          "G08_005_ref04",
+          "G08_005_growth_r03"
+        ]
+      }
+    },
+    {
+      "check": "frozen_ROI_contains_every_reference_screened_original_vertex",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "108_limited_original_triangle_queries",
+      "status": "PASS",
+      "detail": {
+        "query_N": 108,
+        "global_sign_not_assigned": true
+      }
+    },
+    {
+      "check": "288_real_source_region_records_no_manual_truth_fabricated",
+      "status": "PASS",
+      "detail": 288
+    },
+    {
+      "check": "108_existing_historical_output_coverage_records",
+      "status": "PASS",
+      "detail": "no new fusion; per-source rays, original source sets differ"
+    },
+    {
+      "check": "growth22_not_in_historical_F2_not_zero_retention",
+      "status": "PASS",
+      "detail": 22
+    },
+    {
+      "check": "fixed_denominators_36_and9_targets_65_memberships",
+      "status": "PASS",
+      "detail": {
+        "sources": 36,
+        "target_N": 9,
+        "target_Polyp_pixel_denominator": 150539
+      }
+    },
+    {
+      "check": "strict_independent_evaluation_not_claimed",
+      "status": "PASS",
+      "detail": 0
+    },
+    {
+      "check": "two_RA_documents_actual_read_receipts_match_SHA",
+      "status": "PASS",
+      "detail": [
+        [
+          "RA_PHASE_E3_LOCAL_TO_GLOBAL_SDF_FUSION_REVIEW_v1.1.md",
+          "9d47963873a453888503277aef6bc8aae530bdcf5438354646f86dbe6e3db294"
+        ],
+        [
+          "RA_PHASE_E3_ALGORITHM_AND_EXPERIMENT_BLUEPRINT_v1.2.md",
+          "67d3671a83d881b74554aac3a11a95ce77ff0792c8f09ca6c1fc9bc08c23d9e9"
+        ]
+      ]
+    },
+    {
+      "check": "all_required_reports_exist",
+      "status": "PASS",
+      "detail": [
+        "TASK.md",
+        "TECHNICAL_REPORT.md",
+        "FAILURE_LEDGER.md",
+        "RESULT_INDEX.md",
+        "REPRODUCE.md",
+        "docs/E3_CODE_REUSE_AUDIT.md",
+        "docs/E3_SOURCE_SELECTION_PROPOSAL.md",
+        "docs/E3_CONFLICT_CASEBOOK.md",
+        "docs/E3_LOCAL_FIELD_CONTRACT.md",
+        "docs/E3_GLOBAL_FIELD_PROBLEM_DEFINITION.md",
+        "docs/E3_EVALUATION_PROTOCOL.md",
+        "docs/E3_HYPOTHESIS_PREREGISTRATION.md"
+      ]
+    },
+    {
+      "check": "four_real_project_PNGs_decode",
+      "status": "PASS",
+      "detail": [
+        {
+          "path": "figures/Fig1_sources_and_views.png",
+          "bytes": 979442
+        },
+        {
+          "path": "figures/Fig2_existing_HERO_geometry.png",
+          "bytes": 1121103
+        },
+        {
+          "path": "figures/Fig3_geometry_failure_cases.png",
+          "bytes": 1894733
+        },
+        {
+          "path": "figures/Fig4_observation_support_domains.png",
+          "bytes": 989169
+        }
+      ]
+    },
+    {
+      "check": "audit_code_parses_no_model_training_fitting_or_field_implementation",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "relative_report_links_resolve",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "scientifically_not_certified": [
+    "absolute metric camera correctness",
+    "same physical surface conflict truth",
+    "strict full-pipeline heldout accuracy",
+    "true thin-stalk anatomy",
+    "hidden anatomy",
+    "new algorithm efficacy"
+  ],
+  "execution_boundary": {
+    "model_forward_N": 0,
+    "new_HERO_inference_N": 0,
+    "optimizer_step_N": 0,
+    "GPU_use_N": 0,
+    "new_fusion_or_global_fit_N": 0,
+    "geometry_deformation_N": 0,
+    "GT_or_Oracle_read": false,
+    "history_measurement_fallback_N": 0,
+    "scope": "E3-A targeted source audit only"
+  }
+}
