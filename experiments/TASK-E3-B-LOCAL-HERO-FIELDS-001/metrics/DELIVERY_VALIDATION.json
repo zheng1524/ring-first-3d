@@ -1,0 +1,188 @@
+{
+  "status": "PASS_ENGINEERING_INTEGRITY_AND_LOCAL_NUMERICS",
+  "checks": [
+    {
+      "check": "all_frozen_native_input_assets_SHA_unchanged",
+      "status": "PASS",
+      "detail": {
+        "asset_N": 153,
+        "mismatches": []
+      }
+    },
+    {
+      "check": "17_source_IDS_exactly_inherited",
+      "status": "PASS",
+      "detail": [
+        "G01_004_ref03",
+        "G01_004_ref08",
+        "G01_004_ref13",
+        "G01_005_raw00057",
+        "G01_005_raw00459",
+        "G01_005_raw00745",
+        "G01_005_growth_r03",
+        "G01_005_growth_r20",
+        "G01_005_growth_r12",
+        "G01_005_growth_r15",
+        "G01_005_growth_r11",
+        "G06_004_ref04",
+        "G06_004_new_r00",
+        "G06_004_growth_r01",
+        "G06_004_growth_r03",
+        "G08_005_ref04",
+        "G08_005_growth_r03"
+      ]
+    },
+    {
+      "check": "no_fused_geometry_allowed",
+      "status": "PASS",
+      "detail": "raw XYZ/native resize equality and original face arrays checked independently"
+    },
+    {
+      "check": "12_representatives_passed_before_all17",
+      "status": "PASS",
+      "detail": 12
+    },
+    {
+      "check": "34_local_fields_built_and_numerically_checked",
+      "status": "PASS",
+      "detail": 34
+    },
+    {
+      "check": "all5_RESERVED_retained",
+      "status": "PASS",
+      "detail": {
+        "all_sources": 17,
+        "reserved": 5
+      }
+    },
+    {
+      "check": "all461023_original_faces_retained_at_UDF_zero",
+      "status": "PASS",
+      "detail": 461023
+    },
+    {
+      "check": "boundary_sign_violations_zero",
+      "status": "PASS",
+      "detail": "topological boundary not closed or assigned global sign"
+    },
+    {
+      "check": "34_full_ROI_domain_partitions",
+      "status": "PASS",
+      "detail": {
+        "grid_queries": 531250
+      }
+    },
+    {
+      "check": "68_real_source_and_invalid_depth_controls",
+      "status": "PASS",
+      "detail": 68
+    },
+    {
+      "check": "51_local_sign_and_real_Ring_controls",
+      "status": "PASS",
+      "detail": {
+        "checks": 51,
+        "local_sign_queries": 1088
+      }
+    },
+    {
+      "check": "all_source_unique_voxel_faces_kept",
+      "status": "PASS",
+      "detail": 52964
+    },
+    {
+      "check": "B0_non_equivalence_explicitly_recorded_not_hidden",
+      "status": "PASS",
+      "detail": {
+        "min_raw_vertex_band_fraction": 0.9683944374209861,
+        "criterion_unchanged_mm": 0.25
+      }
+    },
+    {
+      "check": "historical_worktree_HEAD_and_existing_modifications_unchanged",
+      "status": "PASS",
+      "detail": {
+        "worktrees": 20
+      }
+    },
+    {
+      "check": "actual_F2_F3_input_reads_denied",
+      "status": "PASS",
+      "detail": [
+        {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/glb/G01_005_Joint_sources.npz",
+          "status": "DENIED_BEFORE_FILE_READ",
+          "reason": "FUSION_OUTPUT_NOT_ALLOWED_AS_INPUT: /home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/glb/G01_005_Joint_sources.npz"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/local_results/pointcloud_blocks/G01_005/ViewPartition_Cleaned_F2/G01_005_raw00057.npz",
+          "status": "DENIED_BEFORE_FILE_READ",
+          "reason": "FUSION_OUTPUT_NOT_ALLOWED_AS_INPUT: /home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/local_results/pointcloud_blocks/G01_005/ViewPartition_Cleaned_F2/G01_005_raw00057.npz"
+        }
+      ]
+    },
+    {
+      "check": "all34_final_factory_query_schemas",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "no_training_pose_fit_global_fit_or_isosurface_calls",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "four_actual_project_figures_decode",
+      "status": "PASS",
+      "detail": [
+        {
+          "path": "figures/Fig1_multiview_HERO.png",
+          "bytes": 1855707,
+          "sha256": "1c4be6609bd9e4d960b4f31bedada9ee091751b63f147fd42f28797c44babc25"
+        },
+        {
+          "path": "figures/Fig2_local_fields.png",
+          "bytes": 433853,
+          "sha256": "8ef0fb4c9f7d4d1b6952a7a8c74027246513cf35e664a6aba726165ebb74feee"
+        },
+        {
+          "path": "figures/Fig3_multiview_coverage.png",
+          "bytes": 726410,
+          "sha256": "a7222fe56676d0ac96d81217b1c6a7b1b03da7b9ec9207c113480c9ebc16f398"
+        },
+        {
+          "path": "figures/Fig4_real_geometry.png",
+          "bytes": 1735795,
+          "sha256": "b8c1f39fc855674aa0b5ec252d2e4d8d5580340638064dfe5d69d7932c721a29"
+        }
+      ]
+    },
+    {
+      "check": "all_required_deliverables_exist",
+      "status": "PASS",
+      "detail": [
+        "TECHNICAL_REPORT.md",
+        "FAILURE_LEDGER.md",
+        "REPRODUCE.md",
+        "HERO_NATIVE_INPUT_MANIFEST.json",
+        "LOCAL_FIELD_MANIFEST.json",
+        "LOCAL_FIELD_QUALIFICATION.csv",
+        "SOURCE_COVERAGE_INCREMENT.csv",
+        "LOCAL_FIELD_DOMAIN_STATS.csv"
+      ]
+    },
+    {
+      "check": "all_report_and_figure_links_resolve",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "B0_full_Raw_Mesh_equivalence": "NOT_PASSED",
+  "physical_accuracy": "NOT_EVALUABLE",
+  "consensus_readiness": "CONDITIONAL_RESEARCH_INPUT_READY",
+  "GPU": 0,
+  "model_forward": 0,
+  "new_fusion": 0,
+  "global_fit": 0,
+  "geometry_deletion": 0
+}

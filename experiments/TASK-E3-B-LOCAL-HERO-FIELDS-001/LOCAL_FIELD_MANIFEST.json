@@ -1,0 +1,1810 @@
+{
+  "task": "TASK-E3-B-LOCAL-HERO-FIELDS-001",
+  "source_N": 17,
+  "field_N": 34,
+  "source_scope": "all17 E3-A reference-screened sources, including all5 RESERVED",
+  "fields": [
+    {
+      "source_id": "G01_004_ref03",
+      "scene": "G01_004",
+      "role": "CORE",
+      "source_family": "family:G01_004_growth_r01",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_B7_r03.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 987444,
+          "sha256": "f6a3b3bdc790716690e0da5dec16692739d0a49836247f4cc73635c45bdd02cc",
+          "expected_SHA256": "f6a3b3bdc790716690e0da5dec16692739d0a49836247f4cc73635c45bdd02cc",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/meshes/004_ref03_Polyp_A.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 998253,
+          "sha256": "f961941cdf929b85b9f016c73ab004cb6d235dc893ea635d89e187b14a8c3526",
+          "expected_SHA256": "f961941cdf929b85b9f016c73ab004cb6d235dc893ea635d89e187b14a8c3526",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 46805,
+      "domain": {
+        "world_frame": "G01_004_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -10.930831125659115,
+          -9.2999997135,
+          -17.676695265507643
+        ],
+        "maximum_mm": [
+          19.105805783807842,
+          29.284734581991778,
+          5.356945145266531
+        ],
+        "center_mm": [
+          4.087487329074364,
+          9.992367434245889,
+          -6.159875060120556
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G01_004_ref03",
+          "G01_004_ref08",
+          "G01_004_ref13"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -7.830831221159115,
+            -6.109147394135594,
+            -26.865860530874365
+          ],
+          [
+            36.781970282196035,
+            47.53301252735386,
+            2.907672890748234
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -7.830831221159115,
+            -5.3057759859774585,
+            -14.576695361007644
+          ],
+          [
+            16.005805879307843,
+            26.18473467749178,
+            2.2569452407665302
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G01_004_ref03",
+      "original_face_identity_SHA256": "3f61e41d173319995514618692496262406e5de8dfbf3f5fceab495dda6001ee",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G01_004_ref08",
+      "scene": "G01_004",
+      "role": "CORE",
+      "source_family": "family:G01_004_growth_r01",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_A2_r08.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1007180,
+          "sha256": "7a46ef614af626faff1268fa5559031cc58a448bf43712342b33a57937d6fcc8",
+          "expected_SHA256": "7a46ef614af626faff1268fa5559031cc58a448bf43712342b33a57937d6fcc8",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/meshes/004_ref08_Polyp_A.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 570837,
+          "sha256": "30ee6fc4f561fc1315b7e1af4023b7d0b1db192491f9d073c180faa08009adf8",
+          "expected_SHA256": "30ee6fc4f561fc1315b7e1af4023b7d0b1db192491f9d073c180faa08009adf8",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 26621,
+      "domain": {
+        "world_frame": "G01_004_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -10.930831125659115,
+          -9.2999997135,
+          -17.676695265507643
+        ],
+        "maximum_mm": [
+          19.105805783807842,
+          29.284734581991778,
+          5.356945145266531
+        ],
+        "center_mm": [
+          4.087487329074364,
+          9.992367434245889,
+          -6.159875060120556
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G01_004_ref03",
+          "G01_004_ref08",
+          "G01_004_ref13"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -7.830831221159115,
+            -6.109147394135594,
+            -26.865860530874365
+          ],
+          [
+            36.781970282196035,
+            47.53301252735386,
+            2.907672890748234
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -7.830831221159115,
+            -5.3057759859774585,
+            -14.576695361007644
+          ],
+          [
+            16.005805879307843,
+            26.18473467749178,
+            2.2569452407665302
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G01_004_ref08",
+      "original_face_identity_SHA256": "c4fa340f6b043ba103fa546970f0c1abdf5dcf8ea77b8703a12a8f389b0dbaac",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G01_004_ref13",
+      "scene": "G01_004",
+      "role": "CORE",
+      "source_family": "family:G01_004_growth_r01",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_B7_r13.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 993769,
+          "sha256": "bb34be21e7667c33bbfdb698eecda924fc4ccd936270bcb32a3d26f501fadb51",
+          "expected_SHA256": "bb34be21e7667c33bbfdb698eecda924fc4ccd936270bcb32a3d26f501fadb51",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/meshes/004_ref13_Polyp_A.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 526349,
+          "sha256": "fb428c3944d17a2dc7c8074963c59f7a4ae552c477849389b7b111ca65984c55",
+          "expected_SHA256": "fb428c3944d17a2dc7c8074963c59f7a4ae552c477849389b7b111ca65984c55",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 24453,
+      "domain": {
+        "world_frame": "G01_004_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -10.930831125659115,
+          -9.2999997135,
+          -17.676695265507643
+        ],
+        "maximum_mm": [
+          19.105805783807842,
+          29.284734581991778,
+          5.356945145266531
+        ],
+        "center_mm": [
+          4.087487329074364,
+          9.992367434245889,
+          -6.159875060120556
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G01_004_ref03",
+          "G01_004_ref08",
+          "G01_004_ref13"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -7.830831221159115,
+            -6.109147394135594,
+            -26.865860530874365
+          ],
+          [
+            36.781970282196035,
+            47.53301252735386,
+            2.907672890748234
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -7.830831221159115,
+            -5.3057759859774585,
+            -14.576695361007644
+          ],
+          [
+            16.005805879307843,
+            26.18473467749178,
+            2.2569452407665302
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G01_004_ref13",
+      "original_face_identity_SHA256": "2ffafc80f483040a4b9af4c394aa37dada9d82efdc93278332489e5d5c712db8",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G01_005_raw00057",
+      "scene": "G01_005",
+      "role": "CORE",
+      "source_family": "family:G01_005_growth_r11",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/raw/005_supported_ref00057.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1082830,
+          "sha256": "998d1ebd07b94a66efe2ed996536f33e66e9f0775aef981b87632fdf35bc4a14"
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/meshes/005_raw00057_Polyp_A.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 807798,
+          "sha256": "746d0a4e801bab40a581bd7c454c9f267cd932ee95f7a9d7ea45f63edaf37915",
+          "expected_SHA256": "746d0a4e801bab40a581bd7c454c9f267cd932ee95f7a9d7ea45f63edaf37915",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 37730,
+      "domain": {
+        "world_frame": "G01_005_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.089433910556872,
+          -15.817306601547445
+        ],
+        "maximum_mm": [
+          9.2999997135,
+          9.2999997135,
+          5.637147229229354
+        ],
+        "center_mm": [
+          0.0,
+          -0.39471709852843606,
+          -5.090079686159045
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G01_005_raw00057",
+          "G01_005_raw00459",
+          "G01_005_raw00745",
+          "G01_005_growth_r03",
+          "G01_005_growth_r20",
+          "G01_005_growth_r12",
+          "G01_005_growth_r15",
+          "G01_005_growth_r11"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.917373953632688,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.89288939499615,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G01_005_raw00057",
+      "original_face_identity_SHA256": "08616f1b144c4631baf8833cc3a7d390f563851f1f386bf3248f78e9b582f08a",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G01_005_raw00459",
+      "scene": "G01_005",
+      "role": "CORE",
+      "source_family": "family:G01_005_growth_r11",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/raw/005_supported_ref00459.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1034137,
+          "sha256": "6e4582dc5bc5c393ab28dd2de969a0fdf5fb24cd35dee121f20fb54e000c4f9f"
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/meshes/005_raw00459_Polyp_A.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 517090,
+          "sha256": "8a78f0dcee947ceed2e69f4ea3a0ce8c78eb998472c7f008bd8e44e369d3b657",
+          "expected_SHA256": "8a78f0dcee947ceed2e69f4ea3a0ce8c78eb998472c7f008bd8e44e369d3b657",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 24030,
+      "domain": {
+        "world_frame": "G01_005_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.089433910556872,
+          -15.817306601547445
+        ],
+        "maximum_mm": [
+          9.2999997135,
+          9.2999997135,
+          5.637147229229354
+        ],
+        "center_mm": [
+          0.0,
+          -0.39471709852843606,
+          -5.090079686159045
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G01_005_raw00057",
+          "G01_005_raw00459",
+          "G01_005_raw00745",
+          "G01_005_growth_r03",
+          "G01_005_growth_r20",
+          "G01_005_growth_r12",
+          "G01_005_growth_r15",
+          "G01_005_growth_r11"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.917373953632688,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.89288939499615,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G01_005_raw00459",
+      "original_face_identity_SHA256": "57dd48f3ef47a78d535cfd5d863ef140099f38c43be5621bbe2e066e10202266",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G01_005_raw00745",
+      "scene": "G01_005",
+      "role": "CORE",
+      "source_family": "family:G01_005_growth_r11",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/raw/005_raw00745_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 989662,
+          "sha256": "2cef580d67180aa97da35bedb7b718eb2208776a5df274dc2873633922607a97",
+          "expected_SHA256": "2cef580d67180aa97da35bedb7b718eb2208776a5df274dc2873633922607a97",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/meshes/005_raw00745_Polyp_A.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 602476,
+          "sha256": "d2cfc517a0b9a05f30dbaf88f55a99d408133da2fc258221fbde8fb90cc55139",
+          "expected_SHA256": "d2cfc517a0b9a05f30dbaf88f55a99d408133da2fc258221fbde8fb90cc55139",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 28016,
+      "domain": {
+        "world_frame": "G01_005_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.089433910556872,
+          -15.817306601547445
+        ],
+        "maximum_mm": [
+          9.2999997135,
+          9.2999997135,
+          5.637147229229354
+        ],
+        "center_mm": [
+          0.0,
+          -0.39471709852843606,
+          -5.090079686159045
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G01_005_raw00057",
+          "G01_005_raw00459",
+          "G01_005_raw00745",
+          "G01_005_growth_r03",
+          "G01_005_growth_r20",
+          "G01_005_growth_r12",
+          "G01_005_growth_r15",
+          "G01_005_growth_r11"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.917373953632688,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.89288939499615,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G01_005_raw00745",
+      "original_face_identity_SHA256": "ec37201d747c5bdebf3d61bd5374305f80a69ae22b348c5449f5f664741aeda6",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G01_005_growth_r03",
+      "scene": "G01_005",
+      "role": "RESERVED",
+      "source_family": "family:G01_005_growth_r11",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_005_growth_r03/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 417124,
+          "sha256": "088fb3b681c06cd8e177e8ee73be6dc9e1cedfd8f57a3f8dab7bd7bdd5053cac",
+          "expected_SHA256": "088fb3b681c06cd8e177e8ee73be6dc9e1cedfd8f57a3f8dab7bd7bdd5053cac",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_005_growth_r03/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 671934,
+          "sha256": "ac522b5b1b06fbd82198758b8ffd6b9b41a04b7e54affef4fd91ff100a131826",
+          "expected_SHA256": "ac522b5b1b06fbd82198758b8ffd6b9b41a04b7e54affef4fd91ff100a131826",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 31498,
+      "domain": {
+        "world_frame": "G01_005_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.089433910556872,
+          -15.817306601547445
+        ],
+        "maximum_mm": [
+          9.2999997135,
+          9.2999997135,
+          5.637147229229354
+        ],
+        "center_mm": [
+          0.0,
+          -0.39471709852843606,
+          -5.090079686159045
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G01_005_raw00057",
+          "G01_005_raw00459",
+          "G01_005_raw00745",
+          "G01_005_growth_r03",
+          "G01_005_growth_r20",
+          "G01_005_growth_r12",
+          "G01_005_growth_r15",
+          "G01_005_growth_r11"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.917373953632688,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.89288939499615,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G01_005_growth_r03",
+      "original_face_identity_SHA256": "145a7ee1a76c3813cbbc544138cfca9c02a534de2b0185b6b0230798736e1b68",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G01_005_growth_r20",
+      "scene": "G01_005",
+      "role": "BRIDGE",
+      "source_family": "family:G01_005_growth_r11",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_005_growth_r20/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 379217,
+          "sha256": "9dbdb81fe18bc297b36df9c4b358518bbbe696222d5008f538b917335675e3f3",
+          "expected_SHA256": "9dbdb81fe18bc297b36df9c4b358518bbbe696222d5008f538b917335675e3f3",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_005_growth_r20/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 598109,
+          "sha256": "11f828434be6f70ef04e9879a97ee9f47af616342ad98094f4f4bd100a317c1b",
+          "expected_SHA256": "11f828434be6f70ef04e9879a97ee9f47af616342ad98094f4f4bd100a317c1b",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 27765,
+      "domain": {
+        "world_frame": "G01_005_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.089433910556872,
+          -15.817306601547445
+        ],
+        "maximum_mm": [
+          9.2999997135,
+          9.2999997135,
+          5.637147229229354
+        ],
+        "center_mm": [
+          0.0,
+          -0.39471709852843606,
+          -5.090079686159045
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G01_005_raw00057",
+          "G01_005_raw00459",
+          "G01_005_raw00745",
+          "G01_005_growth_r03",
+          "G01_005_growth_r20",
+          "G01_005_growth_r12",
+          "G01_005_growth_r15",
+          "G01_005_growth_r11"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.917373953632688,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.89288939499615,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G01_005_growth_r20",
+      "original_face_identity_SHA256": "9e6f38ea4396d38da6f0000a55ddadb0bc1bfb3b108d5b38ea9f68c95da9f086",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G01_005_growth_r12",
+      "scene": "G01_005",
+      "role": "RESERVED",
+      "source_family": "family:G01_005_growth_r11",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_005_growth_r12/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 380108,
+          "sha256": "17b68ae67ef1f4bfd71bc9f87d5692241d995ee9c556edadc8c509e059e6ce2a",
+          "expected_SHA256": "17b68ae67ef1f4bfd71bc9f87d5692241d995ee9c556edadc8c509e059e6ce2a",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_005_growth_r12/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 495664,
+          "sha256": "d8f27dbc37b303e145f4a1ec67e03acb169fe1c0db2a1a946b35c534937369d9",
+          "expected_SHA256": "d8f27dbc37b303e145f4a1ec67e03acb169fe1c0db2a1a946b35c534937369d9",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 23028,
+      "domain": {
+        "world_frame": "G01_005_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.089433910556872,
+          -15.817306601547445
+        ],
+        "maximum_mm": [
+          9.2999997135,
+          9.2999997135,
+          5.637147229229354
+        ],
+        "center_mm": [
+          0.0,
+          -0.39471709852843606,
+          -5.090079686159045
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G01_005_raw00057",
+          "G01_005_raw00459",
+          "G01_005_raw00745",
+          "G01_005_growth_r03",
+          "G01_005_growth_r20",
+          "G01_005_growth_r12",
+          "G01_005_growth_r15",
+          "G01_005_growth_r11"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.917373953632688,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.89288939499615,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G01_005_growth_r12",
+      "original_face_identity_SHA256": "366f7cdcd4c1ceb5160d3534847660377a9865676c71f74f23e510e242ce578e",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G01_005_growth_r15",
+      "scene": "G01_005",
+      "role": "RESERVED",
+      "source_family": "family:G01_005_growth_r11",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_005_growth_r15/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 390972,
+          "sha256": "5b282a4fd37dcc99d447283d10f9c5fe424707ad3fd5e579d0a802ce544c6f79",
+          "expected_SHA256": "5b282a4fd37dcc99d447283d10f9c5fe424707ad3fd5e579d0a802ce544c6f79",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_005_growth_r15/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 588594,
+          "sha256": "348572af67620c199ee9a9139cf041b8382d18eb0efb4bb782ceecb277f165a8",
+          "expected_SHA256": "348572af67620c199ee9a9139cf041b8382d18eb0efb4bb782ceecb277f165a8",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 27422,
+      "domain": {
+        "world_frame": "G01_005_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.089433910556872,
+          -15.817306601547445
+        ],
+        "maximum_mm": [
+          9.2999997135,
+          9.2999997135,
+          5.637147229229354
+        ],
+        "center_mm": [
+          0.0,
+          -0.39471709852843606,
+          -5.090079686159045
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G01_005_raw00057",
+          "G01_005_raw00459",
+          "G01_005_raw00745",
+          "G01_005_growth_r03",
+          "G01_005_growth_r20",
+          "G01_005_growth_r12",
+          "G01_005_growth_r15",
+          "G01_005_growth_r11"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.917373953632688,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.89288939499615,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G01_005_growth_r15",
+      "original_face_identity_SHA256": "bcf0999d58ed6fc708cabfc2a011005dced3009f7d8e2397d20db61aceba0d11",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G01_005_growth_r11",
+      "scene": "G01_005",
+      "role": "RESERVED",
+      "source_family": "family:G01_005_growth_r11",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_005_growth_r11/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 397337,
+          "sha256": "75a9b34d28c5de1886d19909edbee5afcef85d83d261853af020545ded433b5f",
+          "expected_SHA256": "75a9b34d28c5de1886d19909edbee5afcef85d83d261853af020545ded433b5f",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_005_growth_r11/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 510194,
+          "sha256": "d155bd626025caba17e07cf621a08cbafa971569ba9ae59e149239f13605b71f",
+          "expected_SHA256": "d155bd626025caba17e07cf621a08cbafa971569ba9ae59e149239f13605b71f",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 23646,
+      "domain": {
+        "world_frame": "G01_005_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.089433910556872,
+          -15.817306601547445
+        ],
+        "maximum_mm": [
+          9.2999997135,
+          9.2999997135,
+          5.637147229229354
+        ],
+        "center_mm": [
+          0.0,
+          -0.39471709852843606,
+          -5.090079686159045
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G01_005_raw00057",
+          "G01_005_raw00459",
+          "G01_005_raw00745",
+          "G01_005_growth_r03",
+          "G01_005_growth_r20",
+          "G01_005_growth_r12",
+          "G01_005_growth_r15",
+          "G01_005_growth_r11"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.917373953632688,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -5.3093236288353385,
+            -6.9894340060568725,
+            -12.717306697047444
+          ],
+          [
+            5.89288939499615,
+            5.474778020952387,
+            2.5371473247293537
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G01_005_growth_r11",
+      "original_face_identity_SHA256": "20fb9557606a9869a4dd1394dcee41b285e49438ce514127e879bf18ed7d1e71",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G06_004_ref04",
+      "scene": "G06_004",
+      "role": "CORE",
+      "source_family": "family:G06_004_growth_r01",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/groups/G06/predictions/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 838128,
+          "sha256": "cad19f131e828d93b60aa3a86e62c38abb25ac21b277a76fd3ddf4bb5348cb9d",
+          "expected_SHA256": "cad19f131e828d93b60aa3a86e62c38abb25ac21b277a76fd3ddf4bb5348cb9d",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/meshes/G06_004_P0_RAW_OPEN.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 380588,
+          "sha256": "0191fdbeb4ab90849a224fd0ea4384b50c153b1459acdd4c89056989f66ff0c8",
+          "expected_SHA256": "0191fdbeb4ab90849a224fd0ea4384b50c153b1459acdd4c89056989f66ff0c8",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 17829,
+      "domain": {
+        "world_frame": "G06_004_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.568232710778615,
+          -4.8761123124146994
+        ],
+        "maximum_mm": [
+          9.978695665350157,
+          9.2999997135,
+          3.6999999285
+        ],
+        "center_mm": [
+          0.3393479759250786,
+          -0.6341164986393073,
+          -0.5880561919573497
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G06_004_ref04",
+          "G06_004_new_r00",
+          "G06_004_growth_r01",
+          "G06_004_growth_r03"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -4.785400182115563,
+            -7.468232806278615,
+            -1.7761124079146988
+          ],
+          [
+            6.878695760850157,
+            4.883317600261799,
+            0.24146051677269753
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -4.363369562790446,
+            -7.468232806278615,
+            -1.7761124079146988
+          ],
+          [
+            6.878695760850157,
+            4.777236698587453,
+            0.24146051677269753
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G06_004_ref04",
+      "original_face_identity_SHA256": "799ce94226d0de998a3bb5c1e0b779a5e5c3121d5232f9da7744fca7f3df3fe8",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G06_004_new_r00",
+      "scene": "G06_004",
+      "role": "BRIDGE",
+      "source_family": "family:G06_004_growth_r01",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/local_results/derived_depth/G06_004_new_r00/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 386445,
+          "sha256": "c65cf57add76567e337e61e10ec9e5af5a1961213b29d2330f7bcabe66020352",
+          "expected_SHA256": "c65cf57add76567e337e61e10ec9e5af5a1961213b29d2330f7bcabe66020352",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/local_results/derived_depth/G06_004_new_r00/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 339194,
+          "sha256": "38513e8e7cfd49f8ca48ce46b0e86c6425d3e75c734fec234a9921a9a776c560",
+          "expected_SHA256": "38513e8e7cfd49f8ca48ce46b0e86c6425d3e75c734fec234a9921a9a776c560",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 15851,
+      "domain": {
+        "world_frame": "G06_004_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.568232710778615,
+          -4.8761123124146994
+        ],
+        "maximum_mm": [
+          9.978695665350157,
+          9.2999997135,
+          3.6999999285
+        ],
+        "center_mm": [
+          0.3393479759250786,
+          -0.6341164986393073,
+          -0.5880561919573497
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G06_004_ref04",
+          "G06_004_new_r00",
+          "G06_004_growth_r01",
+          "G06_004_growth_r03"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -4.785400182115563,
+            -7.468232806278615,
+            -1.7761124079146988
+          ],
+          [
+            6.878695760850157,
+            4.883317600261799,
+            0.24146051677269753
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -4.363369562790446,
+            -7.468232806278615,
+            -1.7761124079146988
+          ],
+          [
+            6.878695760850157,
+            4.777236698587453,
+            0.24146051677269753
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G06_004_new_r00",
+      "original_face_identity_SHA256": "8452c949783e264eff25c21a4fa64d2f7317ea7c42debaf94f1f709ce0a4fecb",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G06_004_growth_r01",
+      "scene": "G06_004",
+      "role": "RESERVED",
+      "source_family": "family:G06_004_growth_r01",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G06_004_growth_r01/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 375710,
+          "sha256": "202d2f71aac197ca7df1a1db789211856699d32d146c00d9a76647ee05a80095",
+          "expected_SHA256": "202d2f71aac197ca7df1a1db789211856699d32d146c00d9a76647ee05a80095",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G06_004_growth_r01/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 350739,
+          "sha256": "903d7d9a80d2db731ac31b5ec64d9a4bd205b55a071ecb1648681a0420e8d319",
+          "expected_SHA256": "903d7d9a80d2db731ac31b5ec64d9a4bd205b55a071ecb1648681a0420e8d319",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 16408,
+      "domain": {
+        "world_frame": "G06_004_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.568232710778615,
+          -4.8761123124146994
+        ],
+        "maximum_mm": [
+          9.978695665350157,
+          9.2999997135,
+          3.6999999285
+        ],
+        "center_mm": [
+          0.3393479759250786,
+          -0.6341164986393073,
+          -0.5880561919573497
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G06_004_ref04",
+          "G06_004_new_r00",
+          "G06_004_growth_r01",
+          "G06_004_growth_r03"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -4.785400182115563,
+            -7.468232806278615,
+            -1.7761124079146988
+          ],
+          [
+            6.878695760850157,
+            4.883317600261799,
+            0.24146051677269753
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -4.363369562790446,
+            -7.468232806278615,
+            -1.7761124079146988
+          ],
+          [
+            6.878695760850157,
+            4.777236698587453,
+            0.24146051677269753
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G06_004_growth_r01",
+      "original_face_identity_SHA256": "27b242b30f6de3de5493155a9746a7b984a06a4f478d785dccf026c3bd36090d",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G06_004_growth_r03",
+      "scene": "G06_004",
+      "role": "BRIDGE",
+      "source_family": "family:G06_004_growth_r01",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G06_004_growth_r03/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 339182,
+          "sha256": "e977144bdeaffb1182c0d0409f1e4af9c564ce1ffb08c332d6f6763a05f1cbb9",
+          "expected_SHA256": "e977144bdeaffb1182c0d0409f1e4af9c564ce1ffb08c332d6f6763a05f1cbb9",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G06_004_growth_r03/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 353689,
+          "sha256": "f77d4f19717e665865add5802f7f1eeea5944afab9ace1d003437c9db9b86ebd",
+          "expected_SHA256": "f77d4f19717e665865add5802f7f1eeea5944afab9ace1d003437c9db9b86ebd",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 16550,
+      "domain": {
+        "world_frame": "G06_004_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -10.568232710778615,
+          -4.8761123124146994
+        ],
+        "maximum_mm": [
+          9.978695665350157,
+          9.2999997135,
+          3.6999999285
+        ],
+        "center_mm": [
+          0.3393479759250786,
+          -0.6341164986393073,
+          -0.5880561919573497
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G06_004_ref04",
+          "G06_004_new_r00",
+          "G06_004_growth_r01",
+          "G06_004_growth_r03"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -4.785400182115563,
+            -7.468232806278615,
+            -1.7761124079146988
+          ],
+          [
+            6.878695760850157,
+            4.883317600261799,
+            0.24146051677269753
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -4.363369562790446,
+            -7.468232806278615,
+            -1.7761124079146988
+          ],
+          [
+            6.878695760850157,
+            4.777236698587453,
+            0.24146051677269753
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G06_004_growth_r03",
+      "original_face_identity_SHA256": "0efcdfaf0d5f5951f61ac56dc3dc334d2799d8018b54fcba8d0deb3e13ce94a9",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G08_005_ref04",
+      "scene": "G08_005",
+      "role": "CORE",
+      "source_family": "family:G08_005_growth_r01",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/groups/G08/predictions/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 915137,
+          "sha256": "983cd0dbfc4ac068c695e180406621115b91e5969276abb30fb81f4f2a8fa30b",
+          "expected_SHA256": "983cd0dbfc4ac068c695e180406621115b91e5969276abb30fb81f4f2a8fa30b",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/pointcloud_surface_filter_vnext/meshes/G08_004_P0_RAW_OPEN.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 812088,
+          "sha256": "6acd53e06d48218dc7af12e3c26e62025995cadaf671131d3d3dbd47a59a23fa",
+          "expected_SHA256": "6acd53e06d48218dc7af12e3c26e62025995cadaf671131d3d3dbd47a59a23fa",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 38284,
+      "domain": {
+        "world_frame": "G08_005_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -13.376439845593572,
+          -7.496318558970282
+        ],
+        "maximum_mm": [
+          13.079851522015597,
+          14.089413601808898,
+          3.6999999285
+        ],
+        "center_mm": [
+          1.8899259042577983,
+          0.35648687810766333,
+          -1.898159315235141
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G08_005_ref04",
+          "G08_005_growth_r03"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -5.641747585269748,
+            -10.276439941093571,
+            -4.573693218036237
+          ],
+          [
+            10.081543321330447,
+            11.072825431674381,
+            0.525726759889448
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -5.449304633329525,
+            -10.276439941093571,
+            -4.3963186544702815
+          ],
+          [
+            9.979851617515596,
+            10.989413697308898,
+            0.525726759889448
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G08_005_ref04",
+      "original_face_identity_SHA256": "9181429e26ea7fba27108423ba5255037ef0ca85d86c2b68f8565ba14bd7b510",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    },
+    {
+      "source_id": "G08_005_growth_r03",
+      "scene": "G08_005",
+      "role": "BRIDGE",
+      "source_family": "family:G08_005_growth_r01",
+      "B0": {
+        "factory": "projective_local_field.ProjectiveLocalField",
+        "kind": "PROJECTIVE_AXIAL",
+        "input_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G08_005_growth_r03/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 359677,
+          "sha256": "fb3ab3a12e43dbbfc4a0e082256c836373c7c0057d47a22edf9107bc77eb52ca",
+          "expected_SHA256": "fb3ab3a12e43dbbfc4a0e082256c836373c7c0057d47a22edf9107bc77eb52ca",
+          "hash_match": true
+        }
+      },
+      "B1": {
+        "factory": "mesh_local_field.MeshLocalField",
+        "kind": "UNSIGNED_DISTANCE / ORIENTED_LOCAL_CONDITIONAL",
+        "input_mesh": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G08_005_growth_r03/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 745343,
+          "sha256": "768c9ff594a297a355c363896f6c96dd413ab7cf364a9d285abfb1541d3e3b75",
+          "expected_SHA256": "768c9ff594a297a355c363896f6c96dd413ab7cf364a9d285abfb1541d3e3b75",
+          "hash_match": true
+        }
+      },
+      "original_geometry_fused": false,
+      "original_face_N": 35087,
+      "domain": {
+        "world_frame": "G08_005_LOCAL_RING_MM",
+        "Ring_origin_mm": [
+          -9.428843238980494e-09,
+          -1.985003557527611e-09,
+          -2.2711396508661662e-15
+        ],
+        "Ring_normal": [
+          0,
+          0,
+          1
+        ],
+        "source_to_world": "identity in archived source local Ring frame; no cross-video transform",
+        "minimum_mm": [
+          -9.2999997135,
+          -13.376439845593572,
+          -7.496318558970282
+        ],
+        "maximum_mm": [
+          13.079851522015597,
+          14.089413601808898,
+          3.6999999285
+        ],
+        "center_mm": [
+          1.8899259042577983,
+          0.35648687810766333,
+          -1.898159315235141
+        ],
+        "margin_mm": 3.0999999045,
+        "qualified_reference_ids": [
+          "G08_005_ref04",
+          "G08_005_growth_r03"
+        ],
+        "all_available_candidate_envelope_mm": [
+          [
+            -5.641747585269748,
+            -10.276439941093571,
+            -4.573693218036237
+          ],
+          [
+            10.081543321330447,
+            11.072825431674381,
+            0.525726759889448
+          ]
+        ],
+        "Polyp_envelope_mm": [
+          [
+            -5.449304633329525,
+            -10.276439941093571,
+            -4.3963186544702815
+          ],
+          [
+            9.979851617515596,
+            10.989413697308898,
+            0.525726759889448
+          ]
+        ],
+        "status": "FROZEN_CONDITIONAL_GLOBAL_ROI",
+        "boundary_uncertainty": "safety margin is protocol, not calibrated camera/shape error; no quantile cropping",
+        "Ring_origin_is_not_zero_surface": true
+      },
+      "band_mm": 0.25,
+      "input_manifest": "HERO_NATIVE_INPUT_MANIFEST.json",
+      "runtime_sample_cache": "/home/liu/ring_first_3d_e3b/experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001/local_results/G08_005_growth_r03",
+      "original_face_identity_SHA256": "1198d9480c85deac9a125e2a28a039d3070baf6dea89b6953ab1a60657cac138",
+      "no_serialized_neural_weights": true,
+      "field_constructed_on_CPU": true,
+      "numerical_contract_pass": true
+    }
+  ],
+  "no_cross_video_field": true,
+  "no_global_field_fitted": true,
+  "field_loader": "construct factory(source_id), validates immutable whitelist hashes",
+  "sign_scope": "local conditional camera-facing orientation only",
+  "G07": "UNQUALIFIED_STRESS_IDENTITY_RETAINED_NOT_BUILT_NOT_IN_FORMAL_SUCCESS_RATE",
+  "query_contract": {
+    "Omega": "frozen per-video ROI intersected with source legal support/free/visibility domain",
+    "w": "reliability_factors, uncalibrated, not a correctness probability",
+    "P": "native whitelist lineage + original face/vertex/UV identity",
+    "unknown": "active value NaN",
+    "no_global_inside_outside": true
+  },
+  "preservation_caveat": "B1 immutable all Raw faces; B0 native nearest field not exactly equivalent to historical bilinear-resized Raw Mesh; no band expansion"
+}
