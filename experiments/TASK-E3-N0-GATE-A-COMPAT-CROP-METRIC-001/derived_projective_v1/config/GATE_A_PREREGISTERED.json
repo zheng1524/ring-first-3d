@@ -1,0 +1,167 @@
+{
+  "task": "TASK-E3-N0-GATE-A-COMPAT-CROP-METRIC-001",
+  "parent_commit": "d69ade170352d1b5a1e46239f9516ab38c575648",
+  "frozen_UTC": "2026-11-02T12:50:35.140913+00:00",
+  "dtype": "FP64 for analytic geometry; inherited FP32 Open3D raycast for CAD; output depth FP32",
+  "sources": [
+    "G01_004_ref08",
+    "G01_004_ref13",
+    "G01_004_ref03",
+    "G01_004_growth_r04",
+    "G01_004_new_r00",
+    "G01_004_growth_r14"
+  ],
+  "CORE_directed_pairs": [
+    [
+      "G01_004_ref08",
+      "G01_004_ref13"
+    ],
+    [
+      "G01_004_ref13",
+      "G01_004_ref08"
+    ],
+    [
+      "G01_004_ref08",
+      "G01_004_ref03"
+    ],
+    [
+      "G01_004_ref03",
+      "G01_004_ref08"
+    ],
+    [
+      "G01_004_ref13",
+      "G01_004_ref03"
+    ],
+    [
+      "G01_004_ref03",
+      "G01_004_ref13"
+    ]
+  ],
+  "conditional_pairs": [
+    [
+      "G01_004_growth_r04",
+      "G01_004_ref08"
+    ],
+    [
+      "G01_004_ref08",
+      "G01_004_growth_r04"
+    ],
+    [
+      "G01_004_growth_r04",
+      "G01_004_ref13"
+    ],
+    [
+      "G01_004_ref13",
+      "G01_004_growth_r04"
+    ],
+    [
+      "G01_004_growth_r04",
+      "G01_004_ref03"
+    ],
+    [
+      "G01_004_ref03",
+      "G01_004_growth_r04"
+    ],
+    [
+      "G01_004_new_r00",
+      "G01_004_ref08"
+    ],
+    [
+      "G01_004_ref08",
+      "G01_004_new_r00"
+    ],
+    [
+      "G01_004_new_r00",
+      "G01_004_ref13"
+    ],
+    [
+      "G01_004_ref13",
+      "G01_004_new_r00"
+    ],
+    [
+      "G01_004_new_r00",
+      "G01_004_ref03"
+    ],
+    [
+      "G01_004_ref03",
+      "G01_004_new_r00"
+    ],
+    [
+      "G01_004_growth_r14",
+      "G01_004_ref08"
+    ],
+    [
+      "G01_004_ref08",
+      "G01_004_growth_r14"
+    ],
+    [
+      "G01_004_growth_r14",
+      "G01_004_ref13"
+    ],
+    [
+      "G01_004_ref13",
+      "G01_004_growth_r14"
+    ],
+    [
+      "G01_004_growth_r14",
+      "G01_004_ref03"
+    ],
+    [
+      "G01_004_ref03",
+      "G01_004_growth_r14"
+    ]
+  ],
+  "point_protocol": "ALL original native legal Polyp depth pixels, every identity retained; exceeds1000/source and covers all geometry strata",
+  "crop": {
+    "fraction_margin_each_side": 0.2,
+    "minimum_margin_native_px": 16,
+    "output_WH": [
+      320,
+      240
+    ],
+    "aspect": "smallest integer4k x3k virtual rectangle enclosing expanded bbox",
+    "frame_outside": "virtual padding, never clip ROI",
+    "nearest": "floor(inverse_affine_output_center+0.5), explicit original source pixel ID; no depth interpolation",
+    "pixel_affine": "u'=a(u-u0+0.5)-0.5; v'=a(v-v0+0.5)-0.5; K'=A K",
+    "a_per_source": true
+  },
+  "thresholds": {
+    "analytic_XYZ_max_mm": 1e-05,
+    "analytic_target_projection_max_px": 0.0001,
+    "Ring_roundtrip_max_mm": 1e-05,
+    "CAD_order_epsilon_mm": 0.002,
+    "minimum_points_per_source": 1000,
+    "minimum_thin_width_output_px": 3,
+    "ROI_bbox_loss_max_N": 0,
+    "invalid_depth_nonzero_max_N": 0
+  },
+  "thin_proxy": "all local8-neighbour maxima of cv2 distance transform, width=2*DT; no connected component removed; proxy not certified anatomy; native predicted width and actual output width separately",
+  "metric_candidates": {
+    "N": 128,
+    "n_features": 17,
+    "count_shape": [
+      128,
+      128,
+      128
+    ],
+    "margin": "max(2mm, 10% of max source extent) each side, then cube",
+    "A": "all native Polyp depths plus Ring CAD",
+    "B_DIAGNOSTIC_ONLY": "native points within1mm of own original Raw Mesh, inherited D0 native/Raw disagreement criterion; no input removed",
+    "selection": "NO automatic selection if far-point cube inflation or thin footprint problem; mark REQUEST_RESEARCHER_ROI_DECISION",
+    "inflation_diagnostic": "compare all vs B cube side; >1.5x is an explicit warning proxy, not anatomical truth"
+  },
+  "output_policy": "No volume inference, no forward, no GT database; empty-shape/reset checks only; no fullROI dense scientific model",
+  "official_commit": "4f0c14f67ad9d2368b68cbeb78c237a6328971e5",
+  "primary": "shapenet_noise_005",
+  "backup": "tanks_and_temples STATIC_ONLY",
+  "prohibited": {
+    "GPU": 0,
+    "NeuralFusion_forward": 0,
+    "Translator_forward": 0,
+    "training": 0,
+    "new_HERO": 0,
+    "camera_changes": 0,
+    "new_TSDF": 0,
+    "GT": false
+  }
+}

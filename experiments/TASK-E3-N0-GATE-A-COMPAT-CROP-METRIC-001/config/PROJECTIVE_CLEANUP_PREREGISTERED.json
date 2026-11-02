@@ -1,0 +1,29 @@
+{
+  "user_authorization": "User: these reviewed points look at the Polyp edge in2D but extremely far from the body in3D and are not credible; authorizes one multi-angle projection cleanup before ROI selection.",
+  "authorization_scope": "55 reviewed original native candidates only; no model inference or general G2/G3",
+  "candidate_ids": {
+    "path": "/home/liu/ring_first_3d_e3n0/experiments/TASK-E3-N0-GATE-A-COMPAT-CROP-METRIC-001/HUMAN_REVIEW_POINTS.csv",
+    "role": "",
+    "status": "AVAILABLE",
+    "bytes": 9767,
+    "sha256": "f270142a5cd41cc62388e9803e14caea4d17750b7106ba45b613b3dea81efe81"
+  },
+  "observer_order": [
+    "G01_004_ref08",
+    "G01_004_ref13",
+    "G01_004_ref03",
+    "G01_004_growth_r04"
+  ],
+  "silhouette_margin_archived_px": 8,
+  "margin_basis": "ceil(max CORE historical Ring p95)+2px =8px; fixed before projective cleanup results",
+  "minimum_distinct_opposing_view_blocks": 2,
+  "support_veto_mm": 0.25,
+  "CAD_epsilon_mm": 0.002,
+  "exclusion_rule": "Human-reviewed candidate; at least2 distinct inherited view blocks project inside image onto BG at >8 archived-pixel distance outside Polyp; no CAD occlusion; zero unoccluded near-depth Polyp support. Only derived valid-depth mask becomes0.",
+  "other_states": "Ring/CAD-hidden/outside-image/depth-layer conflict/unknown are not contradictions; silhouette evidence conditional on inherited cameras and possible real BG occlusion, never physical truth.",
+  "protected": "All other original pixels unchanged, including single-source unique surfaces; exactly one pass; no parameter search",
+  "output": "new derived depth/validity arrays; original RGB/Mask/native depth/cameras unchanged",
+  "RAW_or_GT_oracle_used_to_generate_depth": false,
+  "neural_forward": 0,
+  "GPU": 0
+}

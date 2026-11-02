@@ -1,0 +1,865 @@
+{
+  "shapenet_noise_005": {
+    "config_json": {
+      "path": "/home/liu/ring_first_3d_e3n0/experiments/TASK-E3-N0-GATE-A-COMPAT-CROP-METRIC-001/runtime/neuralfusion_official/pretrained_models/shapenet_noise_005/version_0/config.json",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 2745,
+      "sha256": "10f351113c9b13ee688db596203a2a8c83c861116292a9fd7dfbbbbb9add418b"
+    },
+    "hparams_yaml": {
+      "path": "/home/liu/ring_first_3d_e3n0/experiments/TASK-E3-N0-GATE-A-COMPAT-CROP-METRIC-001/runtime/neuralfusion_official/pretrained_models/shapenet_noise_005/version_0/hparams.yaml",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 8155,
+      "sha256": "3de2659b2b2ef4d9e2911e8bc616bddc57936a6d8d7c706ec8c5c2d3621c63c4"
+    },
+    "checkpoint_pipeline_config": {
+      "use_count_renderer": true,
+      "use_count": true,
+      "minimal_gpu": false,
+      "n_features": 17,
+      "routing": false,
+      "routing_threshold": 0.8,
+      "superresolution": false,
+      "update": true,
+      "renderer": "standard",
+      "FUSION": {
+        "n_samples": 3,
+        "n_layers": 1,
+        "extraction": "nearest",
+        "integration": "nearest",
+        "net": "FusionNet",
+        "activation": "torch.nn.Tanh()",
+        "normalization": "layer",
+        "encoder_filter_size": 3,
+        "uncertainty": false,
+        "depth": true,
+        "position": false,
+        "direction": true,
+        "resx": 320,
+        "resy": 240
+      },
+      "RENDERER": {
+        "kernel": 5,
+        "superresolve": false,
+        "activation": "torch.nn.Tanh()",
+        "sdf_head": true,
+        "occ_head": true,
+        "normal_head": false,
+        "conf_head": false,
+        "output_scale": 0.04,
+        "mode": "float"
+      }
+    },
+    "state": [
+      {
+        "key": "_pipeline._fusion.encoder.0.block.0.weight",
+        "shape": [
+          140,
+          141,
+          3,
+          3
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.0.bias",
+        "shape": [
+          140
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.1.weight",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.1.bias",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.3.weight",
+        "shape": [
+          140,
+          140,
+          3,
+          3
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.3.bias",
+        "shape": [
+          140
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.4.weight",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.4.bias",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.0.weight",
+        "shape": [
+          112,
+          281,
+          3,
+          3
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.0.bias",
+        "shape": [
+          112
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.1.weight",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.1.bias",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.3.weight",
+        "shape": [
+          112,
+          112,
+          3,
+          3
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.3.bias",
+        "shape": [
+          112
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.4.weight",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.4.bias",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer_context1.0.weight",
+        "shape": [
+          17,
+          2125
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer_context1.0.bias",
+        "shape": [
+          17
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer1.0.weight",
+        "shape": [
+          32,
+          34
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer1.0.bias",
+        "shape": [
+          32
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer2.0.weight",
+        "shape": [
+          16,
+          49
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer2.0.bias",
+        "shape": [
+          16
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer3.0.weight",
+        "shape": [
+          8,
+          33
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer3.0.bias",
+        "shape": [
+          8
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer4.0.weight",
+        "shape": [
+          17,
+          25
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer4.0.bias",
+        "shape": [
+          17
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.sdf_head.0.weight",
+        "shape": [
+          1,
+          17
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.sdf_head.0.bias",
+        "shape": [
+          1
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.occ_head.0.weight",
+        "shape": [
+          1,
+          17
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.occ_head.0.bias",
+        "shape": [
+          1
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      }
+    ],
+    "config_match": true,
+    "contract": {
+      "missing": [],
+      "unexpected": [],
+      "shape_mismatches": [],
+      "match": true
+    }
+  },
+  "tanks_and_temples": {
+    "config_json": {
+      "path": "/home/liu/ring_first_3d_e3n0/experiments/TASK-E3-N0-GATE-A-COMPAT-CROP-METRIC-001/runtime/neuralfusion_official/pretrained_models/tanks_and_temples/version_0/config.json",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 2966,
+      "sha256": "5fc47cec290b07cf3f6c73d6d1a71e17ea7241c560197ab3cac7eb7b49f09b9a"
+    },
+    "hparams_yaml": {
+      "path": "/home/liu/ring_first_3d_e3n0/experiments/TASK-E3-N0-GATE-A-COMPAT-CROP-METRIC-001/runtime/neuralfusion_official/pretrained_models/tanks_and_temples/version_0/hparams.yaml",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 8851,
+      "sha256": "4410d4fa1632ea7861256b6a9e5e267329d50bad98b24ec23d61e39fed3e8cd2"
+    },
+    "checkpoint_pipeline_config": {
+      "use_count_renderer": false,
+      "use_count": false,
+      "minimal_gpu": false,
+      "n_features": 9,
+      "routing": false,
+      "routing_threshold": 0.8,
+      "superresolution": false,
+      "update": true,
+      "renderer": "standard",
+      "FUSION": {
+        "n_samples": 6,
+        "n_layers": 1,
+        "extraction": "nearest",
+        "integration": "nearest",
+        "net": "FusionNet",
+        "activation": "torch.nn.Tanh()",
+        "normalization": "layer",
+        "encoder_filter_size": 3,
+        "uncertainty": false,
+        "depth": true,
+        "position": false,
+        "direction": true,
+        "resx": 320,
+        "resy": 240
+      },
+      "RENDERER": {
+        "kernel": 5,
+        "superresolve": false,
+        "activation": "torch.nn.Tanh()",
+        "sdf_head": true,
+        "occ_head": true,
+        "normal_head": false,
+        "conf_head": false,
+        "output_scale": 0.06,
+        "mode": "float"
+      }
+    },
+    "state": [
+      {
+        "key": "_pipeline._fusion.encoder.0.block.0.weight",
+        "shape": [
+          156,
+          157,
+          3,
+          3
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.0.bias",
+        "shape": [
+          156
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.1.weight",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.1.bias",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.3.weight",
+        "shape": [
+          156,
+          156,
+          3,
+          3
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.3.bias",
+        "shape": [
+          156
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.4.weight",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.4.bias",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.0.weight",
+        "shape": [
+          117,
+          313,
+          3,
+          3
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.0.bias",
+        "shape": [
+          117
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.1.weight",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.1.bias",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.3.weight",
+        "shape": [
+          117,
+          117,
+          3,
+          3
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.3.bias",
+        "shape": [
+          117
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.4.weight",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.4.bias",
+        "shape": [
+          240,
+          320
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer_context1.0.weight",
+        "shape": [
+          8,
+          1000
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer_context1.0.bias",
+        "shape": [
+          8
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer1.0.weight",
+        "shape": [
+          32,
+          16
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer1.0.bias",
+        "shape": [
+          32
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer2.0.weight",
+        "shape": [
+          16,
+          40
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer2.0.bias",
+        "shape": [
+          16
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer3.0.weight",
+        "shape": [
+          8,
+          24
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer3.0.bias",
+        "shape": [
+          8
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer4.0.weight",
+        "shape": [
+          8,
+          16
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.layer4.0.bias",
+        "shape": [
+          8
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.sdf_head.0.weight",
+        "shape": [
+          1,
+          8
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.sdf_head.0.bias",
+        "shape": [
+          1
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.occ_head.0.weight",
+        "shape": [
+          1,
+          8
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      {
+        "key": "_pipeline._translator.occ_head.0.bias",
+        "shape": [
+          1
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      }
+    ],
+    "config_match": true
+  },
+  "negative_mixed_checkpoint": {
+    "missing": [],
+    "unexpected": [],
+    "shape_mismatches": [
+      {
+        "key": "_pipeline._translator.layer2.0.weight",
+        "expected": [
+          16,
+          49
+        ],
+        "actual": [
+          16,
+          40
+        ]
+      },
+      {
+        "key": "_pipeline._translator.layer4.0.bias",
+        "expected": [
+          17
+        ],
+        "actual": [
+          8
+        ]
+      },
+      {
+        "key": "_pipeline._translator.occ_head.0.weight",
+        "expected": [
+          1,
+          17
+        ],
+        "actual": [
+          1,
+          8
+        ]
+      },
+      {
+        "key": "_pipeline._translator.layer_context1.0.weight",
+        "expected": [
+          17,
+          2125
+        ],
+        "actual": [
+          8,
+          1000
+        ]
+      },
+      {
+        "key": "_pipeline._translator.layer_context1.0.bias",
+        "expected": [
+          17
+        ],
+        "actual": [
+          8
+        ]
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.0.bias",
+        "expected": [
+          112
+        ],
+        "actual": [
+          117
+        ]
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.0.weight",
+        "expected": [
+          112,
+          281,
+          3,
+          3
+        ],
+        "actual": [
+          117,
+          313,
+          3,
+          3
+        ]
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.0.weight",
+        "expected": [
+          140,
+          141,
+          3,
+          3
+        ],
+        "actual": [
+          156,
+          157,
+          3,
+          3
+        ]
+      },
+      {
+        "key": "_pipeline._translator.sdf_head.0.weight",
+        "expected": [
+          1,
+          17
+        ],
+        "actual": [
+          1,
+          8
+        ]
+      },
+      {
+        "key": "_pipeline._translator.layer4.0.weight",
+        "expected": [
+          17,
+          25
+        ],
+        "actual": [
+          8,
+          16
+        ]
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.0.bias",
+        "expected": [
+          140
+        ],
+        "actual": [
+          156
+        ]
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.3.bias",
+        "expected": [
+          112
+        ],
+        "actual": [
+          117
+        ]
+      },
+      {
+        "key": "_pipeline._fusion.decoder.0.block.3.weight",
+        "expected": [
+          112,
+          112,
+          3,
+          3
+        ],
+        "actual": [
+          117,
+          117,
+          3,
+          3
+        ]
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.3.weight",
+        "expected": [
+          140,
+          140,
+          3,
+          3
+        ],
+        "actual": [
+          156,
+          156,
+          3,
+          3
+        ]
+      },
+      {
+        "key": "_pipeline._translator.layer3.0.weight",
+        "expected": [
+          8,
+          33
+        ],
+        "actual": [
+          8,
+          24
+        ]
+      },
+      {
+        "key": "_pipeline._fusion.encoder.0.block.3.bias",
+        "expected": [
+          140
+        ],
+        "actual": [
+          156
+        ]
+      },
+      {
+        "key": "_pipeline._translator.layer1.0.weight",
+        "expected": [
+          32,
+          34
+        ],
+        "actual": [
+          32,
+          16
+        ]
+      }
+    ],
+    "match": false
+  },
+  "runtime": {
+    "python": "3.12.13",
+    "torch": "2.7.1+cu128",
+    "torch_compiled_CUDA": "12.8",
+    "CUDA_VISIBLE_DEVICES": "",
+    "nvidia_driver_text": "NVRM version: NVIDIA UNIX x86_64 Kernel Module  570.133.07  Fri Mar 14 13:12:07 UTC 2025\nGCC version:  gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.2) \n",
+    "Lightning": "not installed/not imported; official training wrapper intentionally bypassed",
+    "graphics": "audited dependency only, not installed/imported",
+    "max_RSS_MiB": 785.26171875,
+    "total_seconds": 0.2393905419994553
+  }
+}
