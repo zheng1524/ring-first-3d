@@ -1,0 +1,208 @@
+{
+  "method": "NN",
+  "version": "V2",
+  "stage": "F0",
+  "topology": {
+    "vertices_N": 10851,
+    "faces_N": 21522,
+    "area_mm2": 332.1928196916759,
+    "is_watertight": true,
+    "boundary_edge_N": 0,
+    "nonmanifold_edge_N": 0,
+    "bounds_mm": [
+      [
+        -6.4920654296875,
+        -5.1309709548950195,
+        -12.764153480529785
+      ],
+      [
+        5.34092378616333,
+        4.325570583343506,
+        1.5641053915023804
+      ]
+    ],
+    "components_N": 95,
+    "largest_component_area_fraction": 0.49988584635948813
+  },
+  "rays": [
+    {
+      "method": "NN",
+      "version": "V2",
+      "stage": "F0",
+      "source": "G01_004_ref08",
+      "source_in_fusion": true,
+      "role": "IN_SAMPLE",
+      "fixed_V2_observation_N": 13574,
+      "version_available_N": 13574,
+      "version_unavailable_N": 0,
+      "CAD_occluded_N": 499,
+      "CAD_visible_N": 13075,
+      "hit_N": 12480,
+      "miss_N": 595,
+      "hit_fraction": 0.9544933078393881,
+      "agree_N": 7904,
+      "near_N": 2026,
+      "far_N": 2550,
+      "agree_fraction_fixed_visible": 0.6045124282982791,
+      "depth_error_hit_only_mm": {
+        "N": 12480,
+        "median": 0.07075691223144531,
+        "MAE": 0.2343917544071491,
+        "p95": 0.5955821990966796,
+        "maximum": 5.341033935546875
+      },
+      "point_retention_at_0p25mm": 0.9586233269598471,
+      "native_point_distance_mm": {
+        "N": 13075,
+        "median": 0.10844054073095322,
+        "MAE": 0.11858837306499481,
+        "p95": 0.244033433496952,
+        "maximum": 1.530186653137207
+      }
+    },
+    {
+      "method": "NN",
+      "version": "V2",
+      "stage": "F0",
+      "source": "G01_004_ref13",
+      "source_in_fusion": false,
+      "role": "HELD_OUT_SHARED_HERO_UPSTREAM",
+      "fixed_V2_observation_N": 12623,
+      "version_available_N": 12623,
+      "version_unavailable_N": 0,
+      "CAD_occluded_N": 345,
+      "CAD_visible_N": 12278,
+      "hit_N": 11026,
+      "miss_N": 1252,
+      "hit_fraction": 0.8980289949503176,
+      "agree_N": 2533,
+      "near_N": 415,
+      "far_N": 8078,
+      "agree_fraction_fixed_visible": 0.2063039582993973,
+      "depth_error_hit_only_mm": {
+        "N": 11026,
+        "median": 0.6550102233886719,
+        "MAE": 0.6548772784557789,
+        "p95": 1.1934175491333008,
+        "maximum": 5.3553924560546875
+      },
+      "point_retention_at_0p25mm": 0.3934679915295651,
+      "native_point_distance_mm": {
+        "N": 12278,
+        "median": 0.40314626693725586,
+        "MAE": 0.4397770166397095,
+        "p95": 0.8778472453355789,
+        "maximum": 6.486435890197754
+      }
+    },
+    {
+      "method": "NN",
+      "version": "V2",
+      "stage": "F0",
+      "source": "G01_004_ref03",
+      "source_in_fusion": false,
+      "role": "HELD_OUT_SHARED_HERO_UPSTREAM",
+      "fixed_V2_observation_N": 23559,
+      "version_available_N": 23559,
+      "version_unavailable_N": 0,
+      "CAD_occluded_N": 780,
+      "CAD_visible_N": 22779,
+      "hit_N": 19497,
+      "miss_N": 3282,
+      "hit_fraction": 0.8559199262478598,
+      "agree_N": 1755,
+      "near_N": 542,
+      "far_N": 17200,
+      "agree_fraction_fixed_visible": 0.07704464638482814,
+      "depth_error_hit_only_mm": {
+        "N": 19497,
+        "median": 0.8225383758544922,
+        "MAE": 0.8745348678403385,
+        "p95": 1.8285881042480472,
+        "maximum": 5.604946136474609
+      },
+      "point_retention_at_0p25mm": 0.2123886035383467,
+      "native_point_distance_mm": {
+        "N": 22779,
+        "median": 0.5613528490066528,
+        "MAE": 0.5333636999130249,
+        "p95": 0.9280392348766325,
+        "maximum": 7.955090522766113
+      }
+    }
+  ],
+  "Raw_faces": [
+    {
+      "method": "NN",
+      "version": "V2",
+      "stage": "F0",
+      "source": "G01_004_ref08",
+      "original_face_N": 26621,
+      "original_area_mm2": 154.97732427200998,
+      "retained_face_N": 25606,
+      "area_retention_at_0p25mm": 0.946422275887728,
+      "face_retention_at_0p25mm": 0.961872206153037,
+      "distance_mm": {
+        "N": 26621,
+        "median": 0.10940586030483246,
+        "MAE": 0.11768098920583725,
+        "p95": 0.24148374795913696,
+        "maximum": 0.7024312615394592
+      }
+    },
+    {
+      "method": "NN",
+      "version": "V2",
+      "stage": "F0",
+      "source": "G01_004_ref13",
+      "original_face_N": 24453,
+      "original_area_mm2": 156.93053086696824,
+      "retained_face_N": 9399,
+      "area_retention_at_0p25mm": 0.4571764232096738,
+      "face_retention_at_0p25mm": 0.3843700159489633,
+      "distance_mm": {
+        "N": 24453,
+        "median": 0.42258894443511963,
+        "MAE": 0.4404074549674988,
+        "p95": 0.8845958352088927,
+        "maximum": 1.876953125
+      }
+    },
+    {
+      "method": "NN",
+      "version": "V2",
+      "stage": "F0",
+      "source": "G01_004_ref03",
+      "original_face_N": 46805,
+      "original_area_mm2": 158.36463772755945,
+      "retained_face_N": 9590,
+      "area_retention_at_0p25mm": 0.23021424279646077,
+      "face_retention_at_0p25mm": 0.20489263967524837,
+      "distance_mm": {
+        "N": 46805,
+        "median": 0.563389778137207,
+        "MAE": 0.5325263142585754,
+        "p95": 0.9268112897872924,
+        "maximum": 4.481260776519775
+      }
+    }
+  ],
+  "ref08_current_input_checks": {
+    "nonempty_finite_geometry": true,
+    "native_hit": true,
+    "depth_error": false,
+    "point_retention": true
+  },
+  "ref08_current_input_values": {
+    "native_CAD_visible_N": 13075,
+    "native_hit_fraction": 0.9544933078393881,
+    "native_depth_error_p95_including_misses_mm": 1.2402408599853485,
+    "native_depth_error_p95_status": "FINITE",
+    "native_point_retention_0p25mm": 0.9586233269598471
+  },
+  "F0_pass": false,
+  "physical_accuracy": "NOT_CERTIFIED",
+  "GT_read": false,
+  "mesh_geometry_postprocessed": false,
+  "progression_ok": false
+}

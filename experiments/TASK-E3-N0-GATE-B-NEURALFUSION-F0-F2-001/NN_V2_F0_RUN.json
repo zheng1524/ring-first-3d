@@ -1,0 +1,33 @@
+{
+  "method": "OFFICIAL_FUSION_PIPELINE_AND_TRANSLATOR",
+  "version": "V2",
+  "stage": "F0",
+  "sources": [
+    "G01_004_ref08"
+  ],
+  "new_forward_source": "G01_004_ref08",
+  "model_parameters": 1403920,
+  "strict_loading": true,
+  "official_GPU_unprojection_error_max_mm": 5.638616840232223e-06,
+  "fusion_seconds": 0.3625159930015798,
+  "total_seconds": 1.2775220139992598,
+  "peak_GPU_allocated_MiB": 657.9306640625,
+  "peak_GPU_reserved_MiB": 694.0,
+  "observed_voxel_N": 15442,
+  "negative_sdf_voxel_N": 6357,
+  "known_SDF_range": [
+    -0.02421792782843113,
+    0.034998491406440735
+  ],
+  "complete_mesh_faces": 21522,
+  "unknown_boundary_face_N": 13423,
+  "all_mesh_faces_preserved": true,
+  "learned_parameters_bitwise_unchanged": true,
+  "checkpoint_SHA_unchanged": true,
+  "optimizer_steps": 0,
+  "eval_mode": true,
+  "inference_mode": true,
+  "GT_read": false,
+  "torch": "2.7.1+cu128",
+  "GPU": "NVIDIA GeForce RTX 3060 Laptop GPU"
+}

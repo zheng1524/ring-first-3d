@@ -1,0 +1,240 @@
+{
+  "task": "TASK-E3-N0-GATE-B-NEURALFUSION-F0-F2-001",
+  "frozen_UTC": "2026-11-02T18:14:49.189778+00:00",
+  "source_order": [
+    "G01_004_ref08",
+    "G01_004_ref13",
+    "G01_004_ref03"
+  ],
+  "versions": [
+    "V6",
+    "V2"
+  ],
+  "sequences": {
+    "F0": [
+      "G01_004_ref08"
+    ],
+    "F1": [
+      "G01_004_ref08",
+      "G01_004_ref13"
+    ],
+    "F2": [
+      "G01_004_ref08",
+      "G01_004_ref13",
+      "G01_004_ref03"
+    ]
+  },
+  "domain": {
+    "O_mm": [
+      -9.749887029020503,
+      -8.530236711407907,
+      -20.608446703928504
+    ],
+    "L_mm": 27.959,
+    "N": 128,
+    "voxel_mm": 0.2184296875,
+    "resolution_model": 0.0078125,
+    "metric_to_model": [
+      [
+        0.03576665832111306,
+        0.0,
+        0.0,
+        0.3487208780364284
+      ],
+      [
+        0.0,
+        0.03576665832111306,
+        0.0,
+        0.3050980618551417
+      ],
+      [
+        0.0,
+        0.0,
+        0.03576665832111306,
+        0.7370952717882794
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "model_to_metric": [
+      [
+        27.959,
+        0.0,
+        0.0,
+        -9.749887029020503
+      ],
+      [
+        0.0,
+        27.959,
+        0.0,
+        -8.530236711407907
+      ],
+      [
+        0.0,
+        0.0,
+        27.959,
+        -20.608446703928504
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "world_cube_min_mm": [
+      -9.749887029020503,
+      -8.530236711407907,
+      -20.608446703928504
+    ],
+    "world_cube_max_mm": [
+      18.209112970979497,
+      19.428763288592094,
+      7.350553296071496
+    ],
+    "model_bbox": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "world_to_model": "(X_mm-O_mm)/L_mm",
+    "ring_outer_diameter_voxels": 56.76884008727065,
+    "source_extent_min_mm": [
+      -7.125340914949968,
+      -6.199999809,
+      -16.14155264435012
+    ],
+    "source_extent_max_mm": [
+      15.584566856908962,
+      17.098526386184187,
+      2.883659236493113
+    ],
+    "cohort": "A2_INCREMENTAL",
+    "total_retained_N": 105875,
+    "per_source": [
+      {
+        "source": "G01_004_ref08",
+        "retained_N": 13732,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 3.3232593448441795e-15,
+        "camera_scale_max_mm": 9.815939294793599e-15
+      },
+      {
+        "source": "G01_004_ref13",
+        "retained_N": 12720,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 3.3232593448441795e-15,
+        "camera_scale_max_mm": 1.1298994650709936e-14
+      },
+      {
+        "source": "G01_004_ref03",
+        "retained_N": 23764,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 2.5121479338940403e-15,
+        "camera_scale_max_mm": 1.5597771546078607e-14
+      },
+      {
+        "source": "G01_004_growth_r04",
+        "retained_N": 20870,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 2.5121479338940403e-15,
+        "camera_scale_max_mm": 1.1218764088004042e-14
+      },
+      {
+        "source": "G01_004_new_r00",
+        "retained_N": 22627,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 3.552713678800501e-15,
+        "camera_scale_max_mm": 1.0526422178258575e-14
+      },
+      {
+        "source": "G01_004_growth_r14",
+        "retained_N": 12162,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 3.2023728339893768e-15,
+        "camera_scale_max_mm": 1.1191892758188623e-14
+      }
+    ],
+    "all_points_enclosed": true,
+    "ring_inverse_max_mm": 3.3893637946200144e-15,
+    "ring_inverse_outer_mm": 12.399999618000004
+  },
+  "official_commit": "4f0c14f67ad9d2368b68cbeb78c237a6328971e5",
+  "checkpoint": {
+    "name": "shapenet_noise_005",
+    "path": "/home/liu/ring_first_3d_e3n0/experiments/TASK-E3-N0-GATE-A-COMPAT-CROP-METRIC-001/runtime/neuralfusion_official/pretrained_models/shapenet_noise_005/version_0/checkpoints/best.ckpt",
+    "bytes": 16882708,
+    "Git_blob_SHA": "3f222e0cfc3239299b95fe4957ff19613f35a9c2",
+    "sha256": "3ac6dc9f219449e8aa5a26dec0a77691714e55d4e29da688c79630bf46068bff",
+    "official_commit": "4f0c14f67ad9d2368b68cbeb78c237a6328971e5"
+  },
+  "official_architecture_modified": false,
+  "pretrained_only": true,
+  "optimizer_steps": 0,
+  "empty_latent_shape": [
+    128,
+    128,
+    128,
+    17
+  ],
+  "empty_count_shape": [
+    128,
+    128,
+    128
+  ],
+  "integration": "one forward per new view; retained latent/count prefixes; reset between V6 and V2",
+  "translation": "exact official get_translation AST function, 128-grid observed indices; both SDF/occupancy saved",
+  "extraction": "official sdf iso0, known=nonzero latent; unknown sentinel +0.04 ONLY for marching cubes, unknown not a measured free-space observation; boundary faces audited separately; no mesh repairs/deletions",
+  "Open3D": {
+    "engine": "ScalableTSDFVolume",
+    "voxel_mm": 0.2184296875,
+    "sdf_trunc_mm": 0.87371875,
+    "depth_trunc_mm": 100,
+    "depth_scale": 1,
+    "internal_units": "m",
+    "color": "RGB8",
+    "depth_sampling_stride": 1
+  },
+  "evaluation": {
+    "native_fixed_denominator": "all V2-valid native Polyp pixels, all3CORE reported each prefix; V6 availability flagged separately",
+    "raw_face_denominator": "all original HERO face centroids/areas; no fusion as prediction input",
+    "agreement_mm": 0.25,
+    "neighborhood_mm": 0.25,
+    "CAD_tolerance_mm": 0.002,
+    "miss_is_loss": true,
+    "primary_known_vs_unknown_separate": true,
+    "holdout": "ref13 at F0; ref03 at F0/F1; shared upstream HERO RGB, NOT independent blind test"
+  },
+  "F0_gate": {
+    "basis": "inherit D0 engineering gate; no3px rule",
+    "native_CAD_visible_V6_hit_fraction_min": 0.9,
+    "native_CAD_visible_depth_error_p95_mm_max": 0.2,
+    "native_CAD_visible_point_retention_at_0p25mm_min": 0.9,
+    "finite_model": true,
+    "scale_inverse_mm_max": 1e-05,
+    "failure": "No F1/F2 if V6 F0 fails; V2 F0 and same-input Open3D remain bounded diagnosis; no threshold tuning",
+    "depth_error_p95_denominator": "all current-input CAD-visible native observations, MISS=+inf; hit-only metrics also reported separately"
+  },
+  "later_prefix_stop": "stop further views if prior-view agreement falls >0.10 absolute or new primary-view depth p95 >1mm or nonfinite/empty output",
+  "not_authorized": [
+    "training",
+    "weight updates",
+    "F3-F5",
+    "reverse order",
+    "new HERO",
+    "camera adjustment",
+    "GT/Oracle"
+  ],
+  "old_3px_gate": false
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "issue": "GitHub UTF8 text saved with extra terminal newline; upstream blob assertion rejected it before inputs/model execution",
+    "resolution": "restored exact official terminal newline bytes; official Git blob hash now matches",
+    "GPU_forward_before_issue": 0
+  },
+  {
+    "issue": "scikit-image missing; inference import rejected before any network forward",
+    "resolution": "isolated task-local scikit-image0.23.2 and tifffile2024.8.30; no shared env mutation",
+    "neural_forward_calls": 0
+  },
+  {
+    "issue": "NumPy quantile inf-inf gives NaN when >5% native rays miss",
+    "resolution": "same denominator and threshold; p95 explicitly +inf when upper quantile is a missing ray; Open3D F0 gate remains FAIL",
+    "scientific_threshold_changed": false
+  }
+]
