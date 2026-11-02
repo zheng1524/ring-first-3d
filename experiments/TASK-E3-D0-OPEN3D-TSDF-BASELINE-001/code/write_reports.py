@@ -162,7 +162,7 @@ cd /home/liu/ring_first_3d_e3d0/experiments/TASK-E3-D0-OPEN3D-TSDF-BASELINE-001
 
 SINGLE 和 SINGLE_RESOLUTION_CONTROL 用相同 --name 接口。每次在新目录生成官方实际 Mesh 与观测带；完整官方 TSDF volume 在内存中真实构建。数值坐标输出 mm；GLB 查看器的默认米单位不代表数据已缩放。没有简化/补洞/清理。
 
-本轮执行链（用于理解与独立新工作树复现，**不要覆盖已存在的冻结记录**）：
+本轮历史执行链（包含当时父提交检查与保留的失败断言，**不要在已有交付目录重跑或覆盖冻结记录**；独立复现请使用上方已实测的 replay_baseline.py 接口，该接口不要求当前 HEAD 等于历史父提交）：
 
 1. freeze_inputs.py：从已审计来源建立 6 来源清单、5区选择、参数及 SHA。存在 TSDF_CONFIG.json 时拒绝重冻。
 2. run_tsdf.py single：生成 SINGLE 与官方 mm/m 对照。严格验收故意保留实际 FAIL，进程会报断言；不是假装通过的命令。
