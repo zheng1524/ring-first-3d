@@ -1,0 +1,131 @@
+{
+  "per_source": [
+    {
+      "source": "G01_004_ref08",
+      "original_Mask_WH": [
+        640,
+        360
+      ],
+      "native_WH": [
+        640,
+        352
+      ],
+      "native_units_per_archive_y_px": 0.9777777777777777,
+      "EDT_vs_KD_integer_max_px": 5.284661597215745e-14,
+      "independent_continuous_brute_max_px": 2.1538326677728037e-14,
+      "mapping_roundtrip_max_native_px": 8.526512829121202e-14,
+      "insidePolyp_primary_le2_N": 154,
+      "native_legacy_DT_le2_N": 151,
+      "BG_authorized_N": 4
+    },
+    {
+      "source": "G01_004_ref13",
+      "original_Mask_WH": [
+        640,
+        360
+      ],
+      "native_WH": [
+        640,
+        352
+      ],
+      "native_units_per_archive_y_px": 0.9777777777777777,
+      "EDT_vs_KD_integer_max_px": 4.3076653355456074e-14,
+      "independent_continuous_brute_max_px": 4.1744385725905886e-14,
+      "mapping_roundtrip_max_native_px": 8.526512829121202e-14,
+      "insidePolyp_primary_le2_N": 84,
+      "native_legacy_DT_le2_N": 100,
+      "BG_authorized_N": 13
+    },
+    {
+      "source": "G01_004_ref03",
+      "original_Mask_WH": [
+        640,
+        360
+      ],
+      "native_WH": [
+        640,
+        352
+      ],
+      "native_units_per_archive_y_px": 0.9777777777777777,
+      "EDT_vs_KD_integer_max_px": 2.4424906541753444e-14,
+      "independent_continuous_brute_max_px": 1.2601031329495527e-14,
+      "mapping_roundtrip_max_native_px": 2.842170943040401e-14,
+      "insidePolyp_primary_le2_N": 184,
+      "native_legacy_DT_le2_N": 217,
+      "BG_authorized_N": 21
+    },
+    {
+      "source": "G01_004_growth_r04",
+      "original_Mask_WH": [
+        640,
+        360
+      ],
+      "native_WH": [
+        640,
+        352
+      ],
+      "native_units_per_archive_y_px": 0.9777777777777777,
+      "EDT_vs_KD_integer_max_px": 2.1538326677728037e-14,
+      "independent_continuous_brute_max_px": 1.687538997430238e-14,
+      "mapping_roundtrip_max_native_px": 2.842170943040401e-14,
+      "insidePolyp_primary_le2_N": 148,
+      "native_legacy_DT_le2_N": 152,
+      "BG_authorized_N": 17
+    },
+    {
+      "source": "G01_004_new_r00",
+      "original_Mask_WH": [
+        640,
+        360
+      ],
+      "native_WH": [
+        640,
+        352
+      ],
+      "native_units_per_archive_y_px": 0.9777777777777777,
+      "EDT_vs_KD_integer_max_px": 2.4424906541753444e-14,
+      "independent_continuous_brute_max_px": 1.3322676295501878e-14,
+      "mapping_roundtrip_max_native_px": 2.842170943040401e-14,
+      "insidePolyp_primary_le2_N": 87,
+      "native_legacy_DT_le2_N": 141,
+      "BG_authorized_N": 5
+    },
+    {
+      "source": "G01_004_growth_r14",
+      "original_Mask_WH": [
+        640,
+        360
+      ],
+      "native_WH": [
+        640,
+        352
+      ],
+      "native_units_per_archive_y_px": 0.9777777777777777,
+      "EDT_vs_KD_integer_max_px": 2.4868995751603507e-14,
+      "independent_continuous_brute_max_px": 1.9539925233402755e-14,
+      "mapping_roundtrip_max_native_px": 2.842170943040401e-14,
+      "insidePolyp_primary_le2_N": 1,
+      "native_legacy_DT_le2_N": 2,
+      "BG_authorized_N": 1
+    }
+  ],
+  "boundary_definition": {
+    "input": "unchanged original archived640x360 Polyp labels",
+    "native_WH": [
+      640,
+      352
+    ],
+    "archive_WH": [
+      640,
+      360
+    ],
+    "native_to_archive": "exact inherited K_archive @ inv(K_native), with half-pixel pixel centers",
+    "distance": "Euclidean distance from continuous mapped candidate center to nearest NON-Polyp original MASK PIXEL CENTER; not to cell edge; no extra0.5 subtraction",
+    "metric_native_units": "original y coordinates times352/360; original x times640/640",
+    "implementation": "original-mask exact scipy EDT for integer centers; equivalent KDTree for continuous mapped query",
+    "image_exterior": "one virtual non-Polyp pixel border",
+    "membership": "floor(archive_uv+0.5); native legacy label must agree; mismatch is exception, retained",
+    "crop_grid": "never measure boundary in320x240"
+  },
+  "legacy_counts_are_diagnostic_not_decisions": true
+}

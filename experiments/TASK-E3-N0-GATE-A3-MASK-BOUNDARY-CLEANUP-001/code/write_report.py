@@ -1,0 +1,206 @@
+"""Single final A3 report, including human-approved background and260 amendments."""
+from common import *
+
+def write(name,content):(R/name).write_text(content.strip()+'\n')
+
+def main():
+    sm=load(R/'CLEANUP_SUMMARY.json');comp=load(R/'FOUR_VERSION_COMPARISON.json');versions=comp['versions'];reg=read_csv(R/'FOUR_VERSION_REGION_RETENTION.csv');met=read_csv(R/'FOUR_VERSION_SOURCE_VERSION_METRICS.csv');geo=read_csv(R/'FOUR_VERSION_GEOMETRY_VALIDATION.csv');mv=load(R/'config/V4_MULTIVIEW_REUSE.json');protect=load(R/'config/FINAL_V4_PROTECTION.json');accept=load(R/'GATE_A3_ACCEPTANCE.json');replay=load(R/'runtime/replay_final_verified/REPLAY_VERIFY.json')
+    assert replay['all_identical'] and len(replay['files'])==22
+    candidates=read_csv(R/'CANDIDATE_DISTANCE_AUDIT.csv');v4=load(R/'V4_DERIVED_INPUT_MANIFEST.json')['sources'];src=[]
+    for cid in IDS:
+        a=[r for r in candidates if r['source']==cid];n=next(r for r in v4 if r['source']==cid)
+        src.append(f"| {cid.split('004_')[1]} | {len(a)} | {sum(r['insidePolyp_edge_le2']=='True' for r in a)} | {sum(r['user_approved_BG']=='True' for r in a)} | {sum(r['V2_new_suppress']=='True' for r in a)} | {sum(r['V3_new_suppress']=='True' for r in a)} | {n['incremental_from_V3_N']} | {n['V4_N']:,} |")
+    src='\n'.join(src)
+    totals=[]
+    for v in versions:
+        mm=[r for r in met if r['version']==v['version']];totals.append(f"| {v['version']} | {v['retained_N']:,} | {v['new_suppressed_N']:,} | {v['retained_raw_far_gt1mm_N']} | {v['suppressed_raw_near_le1mm_N']} | {sum(int(r['native_component_N'])for r in mm)} | {sum(int(r['native_hole_pixels_N'])for r in mm)} | {v['diagnostic_min_enclosing_L_mm']:.3f} |")
+    totals='\n'.join(totals)
+    regions='\n'.join(f"| {version} | "+' | '.join(str(sum(int(r['lost_N'])for r in reg if r['version']==version and r['region']==name))for name in ['head','side','body'])+' |'for version in ['V1','V2','V3','V4'])
+    coord=load(R/'MASK_COORDINATE_AUDIT.json')['per_source'];maxmap=max(r['mapping_roundtrip_max_native_px']for r in coord);maxdist=max(r['independent_continuous_brute_max_px']for r in coord);maxgeom=max(float(r['analytic_XYZ_max_mm'])for r in geo)
+    write('TECHNICAL_REPORT.md',f'''# TASK-E3-N0-GATE-A3-MASK-BOUNDARY-CLEANUP-001
+
+日期：2026-11-03，Asia/Shanghai。父提交`75ba88303f5ca2e3eee362451d7a717d92506e10`；独立分支`exp/TASK-E3-N0-GATE-A3-MASK-BOUNDARY-CLEANUP-001`。
+
+本轮复用A2的1929个橙黄色原生候选，在原始Mask坐标冻结2原生像素规则。658点位于Polyp内部边缘，1210点更深入；另61点映到背景，按研究者补充授权一并屏蔽。V2/V3分别保留105156/103946点。研究者随后指定正式V4为V3再清除260个此前池外Raw距离异常代理，最终保留103686点，C/D不变；5px试算已归档废止。异常代理数从906逐步降至565、381、121，但新增缺口不能被掩盖。V2保留全部内部候选；V3在r14头部形成507像素孔洞，V4继承该缺失并增加侧面屏蔽。新增260点的多视角核对仍发现16点有近深度支持，清理不等于物理真错认证。103项工程检查通过，22份CSV重放一致；旧3px指标不再阻塞A3。结果交研究者审核，不启动Gate B。
+
+## 范围与有效授权
+
+本轮是CPU输入清理与对照，原始HERO/Raw三角面、RGB、Polyp/Ring Mask、Pixel ID、K/c2w、Ring CAD均不变。没有模型权重读取、NeuralFusion前向、GPU、训练、TSDF、位姿优化、GT/Oracle。旧Gate A/A2失败记录不回写；研究者已明确废止旧3px薄结构硬门槛，A3没有再以它阻塞。
+
+有效版本定义如下，人工补充指令逐条保留，不能混用早期试算：
+
+| 版本 | 规则 | 定义依据 |
+| --- | --- | --- |
+| V1 | A2完成时的105875点派生输入 | 父提交及原输入SHA |
+| V2（原主方案） | B类中原始Polyp内距离≤2原生像素的658点，加原始Mask背景61点屏蔽 | 初始2px协议＋[背景补充授权](config/USER_BACKGROUND_OVERRIDE.json) |
+| V3（激进对照） | 全部1929个B类屏蔽，红A继续屏蔽，原C/D不改 | 用户批准全部橙黄消融 |
+| **正式V4** | **V3再屏蔽恰好260个已确认身份的池外异常代理** | 最新指令“清除260个异常代理作为V4。清理后提交报告”，[冻结规则](config/V4_260_PREREGISTERED.json) |
+
+原始106144→早期46点清理106098→A2/V1为105875的三个历史分母完整保留。V4相对V3新增260，相对V1累计2189，不能把二者混计。本轮所有屏蔽只写新depth/valid副本，depth=0且valid=False表示Unknown，不填假深度。每个屏蔽点保存原ID及原值，可以精确恢复。
+
+最初“Mask外保留”的结果在`pre_background_override/`按原字节保留，补充背景授权后才生成正式V2/V3。研究者曾要求5px，试算写出输入/统计后被明确暂停替换；其结果和合并JSON异常记录保存在`superseded_5px_diagnostic/`，**不作为正式V4**。正式V4是在观察残留后人工指定的探索性版本，不冒称初始盲验协议。
+
+## 来源、复用与Mask距离定义
+
+固定六来源顺序为ref08/ref13/ref03/growth_r04/new_r00/growth_r14，视频G01_004独立。复用A2原1929个`B_DEPTH_LAYER_RETAIN`，未重新选视角、重做来源审计或重建历史融合。相机资格原样保留：五pilot仍是INSUFFICIENT_EVIDENCE，r14未独立完整Camera Gate；“CORE”不是相机GT。
+
+[CODE_REUSE_MATRIX.md](CODE_REUSE_MATRIX.md)列出实际函数路径。使用原Gate A make_crop/unproject、D0 source/cast/ringscene、real_p0_renderer的K缩放/投影及SameCameraScene黑色CAD。没有重新实现相机/射线方法。自己的Raw距离只来自同一原始HERO的原生/归档面离散化诊断，不是历史融合预测或物理GT。
+
+原Mask为640×360，原生深度为640×352。使用冻结`K_archive @ inv(K_native)`的像素中心仿射，将原生整数(u,v)投到原Mask连续坐标；纵向等价`v_a=(v+0.5)*360/352-0.5`。Mask成员查询`floor(uv_a+0.5)`，不使用320×240裁后坐标。
+
+**本轮边界定义：候选中心到最近非Polyp原Mask像素中心的欧氏距离，不是到像素格边线。** 在原Mask网格上，x距离权重1，y距离权重352/360，换算为原生像素单位；不额外减0.5。整数原Mask中心以exact EDT核验，连续映射位置以等价KDTree查询，外图一圈虚拟非Polyp中心。没有对深度插值或平滑。
+
+原生/原Mask往返最大{maxmap:.3e}px，独立暴力背景中心距离核对最大{maxdist:.3e}px。合成控制确认相邻三排内部中心距离为1/2/3、2px包含边界，且纵向单位按352/360转换。A2 legacy native DT数值另存为诊断，因网格和查询中心不同不等价；**没有根据删除数量选取更有利的定义**。
+
+1929点原Pixel ID与XYZ均正确；1868点映入原始Polyp，其中658≤2px、1210>2px。61点在原Mask是背景0，而legacy原生最近邻语义为Polyp1；它们原先保留，研究者明确批准“非polyp和ring”区域也删除后，才加入V2/V3。Ring2候选和身份错误数为0；若存在仍受保护。背景不是Polyp内部，内部距离列记NaN，单独列授权，不把它们混成“719个Polyp边缘点”。
+
+| 来源 | B总数 | Polyp≤2px | 背景授权 | V2新增 | V3新增 | V4相对V3新增 | V4有效N |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+{src}
+
+原始逐点距离见[CANDIDATE_DISTANCE_AUDIT.csv](CANDIDATE_DISTANCE_AUDIT.csv)，V1–V3动作见[CLEANUP_DECISIONS.csv](CLEANUP_DECISIONS.csv)，正式V4逐ID见[V4_260_CANDIDATES.csv](V4_260_CANDIDATES.csv)。
+
+## 四版本几何与异常/覆盖对照
+
+全部版本使用同一裁剪A、K_crop、原K/c2w、原始Mask和Pixel ID采样图。共同模型域固定为V1的L=27.959mm、128³、0.2184296875mm/格，未因清理而给某版本额外提高网格分辨率。24个源×版本的解析XYZ最大{maxgeom:.3e}mm，公制/相机变换可逆，出界0；所有有效裁后深度精确来自对应原生像素，Ring/BG/Unknown/padding语义有效深度没有混入。
+
+表中Raw>1mm仅是异常代理；各版本都用V1完整105875点作为覆盖基准。孔洞是有效域补洞差集的像素统计，原生连通域采用8邻接。孔洞/分量计数不是解剖真值，且孔洞合并可能导致计数下降。
+
+| 版本 | 有效原生N | 相对V1屏蔽N | Raw>1mm代理N | 被屏蔽且Raw≤1mm的N | 六源连通分量总N | 原生孔洞像素N | 各自全包框诊断L mm |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+{totals}
+
+V2异常代理906→565，减少341（37.64%）；但719个原有效输入样本消失，其中378个与自身Raw面距离≤1mm。故不能说它只删错误，也不能把更低误差或更小框当作无损。仍有565个Raw异常代理，说明橙黄边缘清理没有穷尽问题。
+
+V3进一步清除全部B后还剩381个代理，组成是原C89、D32和池外260；B在V3剩余有效数经ID复核为0。“全部橙黄清除”始终只表示固定B池，不等于所有异常几何清除。原C/D各300/358个有效输入始终保留；在它们之外还有大量未审查点。
+
+**正式V4精确屏蔽这260个池外代理：ref03=30、new_r00=31、growth_r14=199，其余来源增量0。** 这不是扩大Mask阈值，也不是重新搜索候选。最终异常代理121个，全是原C89/D32，逐ID留在[V4_REMAINING_ANOMALY_PROXIES.csv](V4_REMAINING_ANOMALY_PROXIES.csv)。原C/D没有因结果不好被改标签或删除。
+
+V4各自全包框诊断L=25.636mm，但比较仍使用共同27.959mm域；较小框只供研究者参考，不自动变更未来正式模型域。所有保留点均包围，未直接裁掉框外点制造结果。
+
+## 新增260点的多视角审计及局限
+
+清理前冻结260个Native ID与XYZ；再精确抽取执行A2已有observer投影循环，查询其他5源的真实Mask、冻结K/c2w、CAD首交和V3有效深度，共1300条证据。使用原8归档像素轮廓余量、0.25mm支持容差、0.002mm CAD排序。ref08/r04共享B3不独立计票，r14不能承担负票。没有运行新匹配/深度/相机算法。
+
+其中**16点存在近深度支持，219点存在深度层竞争**（两者可重叠）。因此，V4不能称为“260个已由多视角证明错误的面”。本次删除的依据是研究者明确指定这260个诊断代理；多视角结果只记录风险，没有根据结果悄悄改变指定列表。它们在A2未审查，不能将新见支持偷偷写回成历史D类；原C/D保护范围没有被改变。全部动作可逆。
+
+完整证据见[V4_260_MULTIVIEW_EVIDENCE.csv](V4_260_MULTIVIEW_EVIDENCE.csv)与[逐点汇总](V4_260_MULTIVIEW_SUMMARY.csv)。候选位于Mask边缘及Raw远端，不等于物理错误GT；原生HERO与归档Raw的离散化差异也可能贡献距离。这里如实保留可能误删真实可见样本的风险。
+
+## 头部、细柄、侧面、主体与新增缺口
+
+区域在V1上固定：头部投影区为原生Polyp连通分量中与Ring内孔相机射线重合最多者；其余Polyp分量称侧面区；主体内部为原始Mask距离>2px。它们是几何/分割代理，不能替代独立解剖标注。
+
+| 版本 | 头部投影区损失（分母59631） | 侧面区损失（46244） | 主体内部损失（98654） |
+| --- | ---: | ---: | ---: |
+{regions}
+
+V2全部1210个内部B点和98654个主体内部样本保留；仍屏蔽头部边缘4点与侧面区715点。因此**不能认证V2没有丢失真实有效表面**。即使深度不准确，这些原像素也承载真实RGB/Mask可见观察，不能只看总保留率宣布无损。
+
+V3比V2额外损失1210个内部候选；r14头部新增507个原生孔洞像素（裁后对应628），真实RGB对应区域明确在Polyp头部内部。该缺面仍被V4继承。V4相对V3再丢失260个侧面区样本，其中72个属于固定>2px主体内部代理；原生孔洞815→852。连通分量44→31部分来自碎片被屏蔽，不能解释为真实曲面连接恢复。
+
+原生medial-ridge宽≤6px的既有“可能细柄”代理在六源均无样本，记NOT_EVALUABLE，不据此宣称没有真实细柄。另检查此前r14原生(282,215)连接处：四版本中心点都保留，但V4使其邻近边缘产生新缺口，图中公开展示。没有用旧3px指标重新阻塞，也没有假定所有细柄/独有侧面已经得到物理认证。
+
+详见[FOUR_VERSION_REGION_RETENTION.csv](FOUR_VERSION_REGION_RETENTION.csv)、[连通分量](FOUR_VERSION_COMPONENT_RETENTION.csv)及[新增缺口](FOUR_VERSION_NEW_GAP_STATISTICS.csv)。未做闭运算、补洞、补面或碎片二次删除。
+
+## 原极端深度断层
+
+继续跟踪同一ref03/native130428→130429、r04/117402→117401、r00/79723→79722，原跨1像素轴向跳变12.49/11.60/19.37mm，对应正向XYZ配对13.42/11.64/19.56mm。V2/V3/V4均将被采样的远层设为Unknown，相应误差记NaN，不计成0或“深度修复”。r04连原较近像素也被屏蔽，说明覆盖确有代价。
+
+裁剪逆NN本身取值正确，无双线性混合；本轮只是改变有效性，没有恢复缺失表面。所有深度跳变统计维持V1固定邻接对分母，同时列不可用对数，见[固定分母跳变](FOUR_VERSION_FIXED_DENOMINATOR_DEPTH_JUMPS.csv)与[固定原案例](FOUR_VERSION_FIXED_DEPTH_CASES.csv)。
+
+## 验证、保护和复现
+
+V1–V3的60项合同、正式V4的43项合同全部PASS；其含义是身份/参数/几何/可逆性和边界保护正确，**不是103项物理准确性认证**。[GATE_A3_ACCEPTANCE.json](GATE_A3_ACCEPTANCE.json)明确为`A3_ENGINEERING_PASS_WITH_LIMITATIONS`，物理真值和真实有效表面是否误删仍NOT_CERTIFIED。旧3px不再阻塞，历史Gate A/A2文件SHA不变。
+
+{protect['historical_worktree_N']}个历史工作树与{protect['old_source_asset_SHA_checks']}项源/旧交付SHA检查保持；V4清理前冻结的31项V1/V2/V3表/输入数组也全部保持。原始106144点ID/坐标继续由旧不可变身份账本完整保留；大深度NPZ、裁后数组及旧试算大文件只在本地列SHA，不上传。
+
+最终隔离重放在`runtime/replay_final_verified`完成，**22份关键CSV逐字节一致**。复现入口[REPRODUCE.md](REPRODUCE.md)拒绝覆盖已有输出。旧5px合并JSON的实现错误、一次重放缺源路径和绘图退出143均留[FAILURE_LEDGER.md](FAILURE_LEDGER.md)，修复只涉及清单/隔离IO/绘图，没有搜索参数或覆盖旧数据。
+
+## 四张核心图
+
+![原始RGB/Mask与候选](figures/Fig1_RGB_Mask_Decisions.png)
+![四版本统一三维对照](figures/Fig2_Three_Version_3D.png)
+![固定深度断层](figures/Fig3_Depth_Discontinuities.png)
+![主体与缺口证据](figures/Fig4_Surface_Retention_Gaps.png)
+
+所有点均由真实原生HERO和冻结相机产生，RGB为真实源；黑色Ring为原CAD实体。图2是固定ID显示预算的输入点云拼接展示，不是新融合结果或三维重建；统计使用全部点。原始Raw三角面没有删除，查看旧Raw Mesh不会随本轮派生输入屏蔽而改变。
+
+## 对研究问题的回答及停止
+
+1. 1929个B中**658个在原始Polyp内部≤2原生像素**，1210个更深入，61个为人工批准的背景点；不能把719都称作Polyp边缘点。
+2. V2确实减少外伸异常代理（906→565），V4进一步降至121；仍不能把代理减少称为所有错误面已清干净。
+3. V2完整保留内部B及固定主体内部样本。V3/V4有更明显的内部/侧面损失，已公开。
+4. V2丢失719个原有效样本，并增加孔洞和碎片；没有GT证明其真实有效表面无损，结论是存在误删风险。
+5. V3比V2造成更严重缺面，尤其r14头部507像素孔洞。正式V4只增加260点清理，不修复该缺面。
+6. **V2值得作为V1/V2受控NeuralFusion输入消融候选**，V3/V4宜作为激进对照，保留固定真实观察分母并评价缺面。它们不自动替换正式基线。V4含人工诊断代理删除及16个新见近支持点，研究者应结合图和逐点证据审阅其可接受性。
+7. 最新要求已完成：V4从V3清除恰好260点，保留103686点；剩余C89/D32代理清单保留，不自行继续删除。5px方案已经废止。
+
+本轮仅交付输入、CPU证据、代码及报告；**Gate B未获授权、未启动**。提交后停止，等待研究者审核。
+
+## 固定审计表
+
+| 审计项目 | 必须汇报 |
+| --- | --- |
+| 目标组数 | 1物理组，G01_004单视频，固定6来源 |
+| 本算法独立成功 | 1/1组生成四版本派生输入及CPU合同；工程验收带局限通过；物理测量/神经重建NOT_RUN |
+| 本算法失败 | 真实有效表面无损未能认证；V3/V4头部/侧面缺口；仍有121个C/D异常代理；测量误差NaN |
+| 历史测量值回退 | 0；无S0/V2旧预测/旧直径/历史融合回填 |
+| 失败组及具体原因 | G01_004，见FAILURE_LEDGER、Fig4、区域/孔洞统计、V4新见支持及残留逐ID清单 |
+| 最终统计样本 | 原106144、早期106098、V1 105875、V2 105156、V3 103946、V4 103686；始终保留V1固定观察分母；真实GT样本0 |
+| 是否使用GT选择算法 | 否。2px先冻结；背景61及正式V4的260为显式人工补充。5px探索已废止，未按评价目标搜索参数 |
+''')
+    write('FAILURE_LEDGER.md','''# FAILURE_LEDGER
+
+| ID | 范围 | 实际问题 | 保留与处理 |
+| --- | --- | --- | --- |
+| F01 | V2 | 删除719个原有效观察，其中378个距自身Raw≤1mm；孔洞47→208，连通分量15→31 | 不宣布只删错点；SOURCE_VERSION_METRICS、Fig4；无修补 |
+| F02 | V3/V4 | 全B清理损失1210个内部候选，r14头部孔洞507原生像素；V4继承 | 原RGB/Mask并列，Fig4第一行；不是物理真错标签 |
+| F03 | 正式V4 | 人工指定260点的补充投影中，16有近支持、219有层竞争（可重叠） | 按明确指定执行，但标记可能误删；1300条证据及原值可逆 |
+| F04 | 正式V4 | 新增260个侧面样本缺失，其中72属于固定主体内部；孔洞815→852 | 四版本同尺度对照、逐组件统计；不以较小框制造PASS |
+| F05 | 残留 | V4仍有Raw距离>1mm代理121，C89/D32 | 原C/D全部保留；V4_REMAINING_ANOMALY_PROXIES.csv；不声称全部错误面已清除 |
+| F06 | 身份/Mask | 61个B在legacy原生语义为Polyp而原Mask映射为BG | 初始结果保留；用户明确批准后在V2/V3屏蔽；距离列NaN，不混作内部2px |
+| F07 | 细柄与真表面 | 六源既有细柄ridge代理无样本；真实细柄/独有面无损不能认证 | NOT_EVALUABLE；连接处原ID与RGB检查保留；旧3px已废止 |
+| F08 | 极端断层 | 原ref03/r04/r00远层观察被屏蔽后对应误差NaN | 缺失不记0，不声称恢复或纠正深度；FIXED_DEPTH_CASES |
+| E01 | 已废止5px试算 | 输入/统计完成后合并dict重复versions字段导致TypeError | 原源代码/试算/异常归档superseded_5px_diagnostic，不作为正式V4；随后用户改定义 |
+| E02 | 隔离重放 | 首次正式V4重放未把精确analyze.py绑定到隔离code路径 | 正式结果不变；只复制同SHA小源码至新重放目录；最终22CSV一致 |
+| E03 | 绘图 | 三版本版面重排进程在图写出后返回143；初稿比例尺在缩放窗外造成大留白 | 最终四版本PNG重新生成并检验；仅展示布局修改，不改数值 |
+
+60+43工程合同通过不代表上述科学问题解决。原始数据、历史失败与所有人工授权前版本均保留，GPU/神经前向为0。
+''')
+    write('REPRODUCE.md','''# Reproduce final A3 and formal V4
+
+父提交75ba88303f5ca2e3eee362451d7a717d92506e10。需要原六源文件及Gate A/A2不可变本地缓存；config/PROTECTED_START.json、DERIVED_INPUT_MANIFEST.json、V4_DERIVED_INPUT_MANIFEST.json提供路径/SHA。没有模型下载或主环境升级。
+
+从本分支repo根目录运行，output必须是尚不存在的本任务runtime子目录：
+
+```bash
+/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python -B experiments/TASK-E3-N0-GATE-A3-MASK-BOUNDARY-CLEANUP-001/code/replay.py --output /home/liu/ring_first_3d_e3n0_a3/experiments/TASK-E3-N0-GATE-A3-MASK-BOUNDARY-CLEANUP-001/runtime/replay_new
+```
+
+入口复制原始冻结协议和背景补充授权、精确小型分析源码，然后依次执行mask_cleanup、analyze及正式v4（V3减260）。不执行废止5px目录，不覆盖原结果。最终22份关键CSV与本轮结果逐字节核对。已实测runtime/replay_final_verified/REPLAY_VERIFY.json全部一致。
+
+原始执行为preregister.py→mask_cleanup.py→analyze.py→audit.py；研究者背景授权前的版本已归档。正式V4单独冻结260点ID和规则，再调用原A2多视角投影循环及原分析main，执行audit_v4.py。preregister.py只用于初始父HEAD，禁止在最终提交重写历史冻结。图像由figures.py生成，不是神经重建。
+
+源环境：Python3.12.13，NumPy1.26.4，Open3D0.19历史vendor及已有SciPy/OpenCV。CUDA不可见，Torch/训练导入与权重读取被守卫拒绝。GT/Oracle/Dxy及历史输出写入受阻；仅任务派生文件可写。LOCAL_RESULTS_INDEX记录大数组，所有原生ID/三维坐标仍可回溯到原账本；只上传小代码/配置/表和四核心PNG。
+''')
+    write('CODE_REUSE_MATRIX.md','''# Executed reuse
+
+| 来源 | 实际复用 | 本轮新增/保护 |
+| --- | --- | --- |
+| A2/code/common.py及Gate A/code/common.py | 精确AST绑定新R/REPO，六源身份与只读守卫、SHA、原生/归档语义 | 只加A3派生文件白名单；无旧main、无神经import |
+| A2 PROJECTIVE_CLEANUP_DECISIONS/EVIDENCE | 直接继承1929个B、原C/D和红A动作 | 不重选视角，不改历史类别 |
+| Gate A/code/crop.py make_crop/ridge_proxy | 原20%/16px ROI、像素中心A、K'=AK、nearest Pixel ID采样 | Mask距离不在裁后图测；旧3px只废止A3阻塞，历史结果保留 |
+| Gate A/code/metric_domain.py make_domain | 同一原点/立方/边距规则，用于诊断包围框 | 比较共同域始终固定V1 27.959mm；不据小框删除 |
+| D0/code/common.py source/cast/ringscene/ringmesh | 实际执行原相机、CAD首交、原始Raw身份核对 | 不运行TSDF或融合模块 |
+| E1 exact unproject + visualization/real_p0_renderer.py | 原反投影、缩放内参、相机射线、投影 | 不拟合新位姿或改变公制尺度 |
+| visualization/same_camera_scene.py | 固定真实观察相机、黑色CAD实体光栅与遮挡 | 无纹理平面、补面、神经输出 |
+| A2/code/cleanup.py main observer-loop | 正式V4精确AST抽取，仅对260点执行1300条投影证据 | 观察者原资格，r14不能负票；不执行旧删除归约 |
+| 本轮code/analyze.py main | V4通过精确AST仅执行V4数据，独立输出至v4_validation | 旧V1/V2/V3表/数组SHA不变，未重新计算旧版本 |
+| 同一原HERO的既有native-Raw距离账本 | 1mm诊断代理，原来只用于观察；本次人工明确指定260用于屏蔽 | 非其他路线/融合结果，不认证物理错误GT |
+
+新增仅为原Mask距离查询（exact EDT/KDTree）、原ID派生屏蔽、审计组合和图表。实际文件/AST SHA见config/EXECUTED_REUSE.json、config/V4_MULTIVIEW_REUSE.json。旧5px只留归档，正式入口没有调用它。
+''')
+    save('config/EXECUTION_ISSUES.json',dict(withdrawn5px='input/statistics completed then duplicate versions keyword prevented final aggregation; archived and superseded by user260 directive',first_replay='isolated output lacked code/analyze.py; fixed exact-source binding, formal results unchanged',final_replay=asset(R/'runtime/replay_final_verified/REPLAY_VERIFY.json'),plotting='initial3-variant layout process returned143 after writing figures; final4-variant figure process exit0',selection_parameters_changed_without_user=False,GT_read=False,GPU=0))
+    print('FINAL_A3_REPORTS_WRITTEN',flush=True)
+
+if __name__=='__main__':main()

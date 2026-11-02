@@ -1,0 +1,223 @@
+{
+  "task": "TASK-E3-N0-GATE-A3-MASK-BOUNDARY-CLEANUP-001",
+  "parent_commit": "75ba88303f5ca2e3eee362451d7a717d92506e10",
+  "source_order": [
+    "G01_004_ref08",
+    "G01_004_ref13",
+    "G01_004_ref03",
+    "G01_004_growth_r04",
+    "G01_004_new_r00",
+    "G01_004_growth_r14"
+  ],
+  "versions": [
+    "V1",
+    "V2",
+    "V3"
+  ],
+  "orange_input": {
+    "path": "/home/liu/ring_first_3d_e3n0_a2/experiments/TASK-E3-N0-GATE-A2-PROJECTIVE-CLEANUP-001/PROJECTIVE_CLEANUP_DECISIONS.csv",
+    "role": "",
+    "status": "AVAILABLE",
+    "bytes": 1122456,
+    "sha256": "9591064814dc09aae5c24539112b242187c57cc8d503ab48d7d021d7291d23cf"
+  },
+  "expected_B": 1929,
+  "V1_N": 105875,
+  "primary_rule": "B only; inside original Polyp Mask, exact native identity and certain mapping; distance<=2 native pixels -> V2 suppress; >2 retain",
+  "boundary_native_px": 2.0,
+  "search_rounds": 1,
+  "mask_coordinate_definition": {
+    "input": "unchanged original archived640x360 Polyp labels",
+    "native_WH": [
+      640,
+      352
+    ],
+    "archive_WH": [
+      640,
+      360
+    ],
+    "native_to_archive": "exact inherited K_archive @ inv(K_native), with half-pixel pixel centers",
+    "distance": "Euclidean distance from continuous mapped candidate center to nearest NON-Polyp original MASK PIXEL CENTER; not to cell edge; no extra0.5 subtraction",
+    "metric_native_units": "original y coordinates times352/360; original x times640/640",
+    "implementation": "original-mask exact scipy EDT for integer centers; equivalent KDTree for continuous mapped query",
+    "image_exterior": "one virtual non-Polyp pixel border",
+    "membership": "floor(archive_uv+0.5); native legacy label must agree; mismatch is exception, retained",
+    "crop_grid": "never measure boundary in320x240"
+  },
+  "V1": "A2 exact baseline copies, including historical46 and A2red223",
+  "V2": "mask only qualified orange<=2px",
+  "V3": "mask all identity/membership/mapping-qualified orange; exceptions protected under explicit no-auto-delete rule; if any, report V3_ALL_B_INCOMPLETE, never silently drop them",
+  "safety": "all non-B, redA prior exclusions, purpleC, greenD unchanged; outside/identity/mapping failures retained in V2/V3 and listed",
+  "reversible": true,
+  "common_model_domain": {
+    "O_mm": [
+      -9.749887029020503,
+      -8.530236711407907,
+      -20.608446703928504
+    ],
+    "L_mm": 27.959,
+    "N": 128,
+    "voxel_mm": 0.2184296875,
+    "resolution_model": 0.0078125,
+    "metric_to_model": [
+      [
+        0.03576665832111306,
+        0.0,
+        0.0,
+        0.3487208780364284
+      ],
+      [
+        0.0,
+        0.03576665832111306,
+        0.0,
+        0.3050980618551417
+      ],
+      [
+        0.0,
+        0.0,
+        0.03576665832111306,
+        0.7370952717882794
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "model_to_metric": [
+      [
+        27.959,
+        0.0,
+        0.0,
+        -9.749887029020503
+      ],
+      [
+        0.0,
+        27.959,
+        0.0,
+        -8.530236711407907
+      ],
+      [
+        0.0,
+        0.0,
+        27.959,
+        -20.608446703928504
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "world_cube_min_mm": [
+      -9.749887029020503,
+      -8.530236711407907,
+      -20.608446703928504
+    ],
+    "world_cube_max_mm": [
+      18.209112970979497,
+      19.428763288592094,
+      7.350553296071496
+    ],
+    "model_bbox": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "world_to_model": "(X_mm-O_mm)/L_mm",
+    "ring_outer_diameter_voxels": 56.76884008727065,
+    "source_extent_min_mm": [
+      -7.125340914949968,
+      -6.199999809,
+      -16.14155264435012
+    ],
+    "source_extent_max_mm": [
+      15.584566856908962,
+      17.098526386184187,
+      2.883659236493113
+    ],
+    "cohort": "A2_INCREMENTAL",
+    "total_retained_N": 105875,
+    "per_source": [
+      {
+        "source": "G01_004_ref08",
+        "retained_N": 13732,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 3.3232593448441795e-15,
+        "camera_scale_max_mm": 9.815939294793599e-15
+      },
+      {
+        "source": "G01_004_ref13",
+        "retained_N": 12720,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 3.3232593448441795e-15,
+        "camera_scale_max_mm": 1.1298994650709936e-14
+      },
+      {
+        "source": "G01_004_ref03",
+        "retained_N": 23764,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 2.5121479338940403e-15,
+        "camera_scale_max_mm": 1.5597771546078607e-14
+      },
+      {
+        "source": "G01_004_growth_r04",
+        "retained_N": 20870,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 2.5121479338940403e-15,
+        "camera_scale_max_mm": 1.1218764088004042e-14
+      },
+      {
+        "source": "G01_004_new_r00",
+        "retained_N": 22627,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 3.552713678800501e-15,
+        "camera_scale_max_mm": 1.0526422178258575e-14
+      },
+      {
+        "source": "G01_004_growth_r14",
+        "retained_N": 12162,
+        "OUT_OF_GRID_N": 0,
+        "metric_inverse_max_mm": 3.2023728339893768e-15,
+        "camera_scale_max_mm": 1.1191892758188623e-14
+      }
+    ],
+    "all_points_enclosed": true,
+    "ring_inverse_max_mm": 3.3893637946200144e-15,
+    "ring_inverse_outer_mm": 12.399999618000004
+  },
+  "crop": "exact inherited make_crop with originalMask; A/K/c2w all unchanged, same nearest IDs",
+  "diagnostics": {
+    "raw_distance_proxy_mm": 1.0,
+    "jump_mm": 1.0,
+    "area_proxy": "Z^2/(fx*fy), not actual surface area",
+    "component": "8-connectivity for native/crop valid masks; holes=fill_holes(valid)-valid; no repair",
+    "body": "distance>2 native px under primary ORIGINAL-mask metric; V1-fixed denominator",
+    "head": "original nativePolyp connected component with maximum overlap of camera rays through inner Ring at RingZ=0",
+    "side": "other original Polyp components; anatomical proxy, not certified tissue label",
+    "possible_thin": "existing native medial-ridge width<=6 proxy diagnostic only; if none NOT_EVALUABLE, no new hard gate",
+    "fixed_cases": "reuse A2 ref03/r04/r00 fixed original/selectedIDs; distinguish suppressed observation from corrected error",
+    "fixed_jump_denominator": "V1 legal4-neighbour pairs; unavailable pairs reported separately",
+    "historical_3px_gate": "REVOKED_BY_USER_FOR_A3_ONLY; historical GateA/A2 FAIL kept unchanged"
+  },
+  "acceptance": "engineering integrity PASS required; scientific improvement assessed separately; no3px blocker; no GT certification of real surface loss; recommend at most controlled V1/V2 future ablation, not automatic GateB",
+  "prohibited": [
+    "GPU",
+    "NNforward",
+    "training",
+    "newHERO",
+    "newTSDF",
+    "camera optimization",
+    "GT/Oracle",
+    "original mutations"
+  ]
+}
