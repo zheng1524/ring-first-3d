@@ -20,3 +20,9 @@
 | /home/liu/ring_first_3d_e3n0/experiments/TASK-CAMERA-GATE-G01-004-PILOT-001/CAMERA_QUALIFICATION.csv | Camera Gate | read only, retain INSUFFICIENT_EVIDENCE | No | cca5c1d70d68d58216c7c5e64cf7a0d17b7468d4707b83ac29c8e4a5e4bdf969 |
 
 Only new geometry is the explicit per-view crop affine / identity sampler (crop.py). Existing source loader, native K, inverse projection, pinhole projection and CAD raycasting are executed unchanged. No D0 module main is imported, avoiding writes to D0 or its model-import guard. Original Raw Mesh is only a comparison/domain diagnostic, never a pseudo-depth input.
+
+## Post-review exact execution reuse
+
+Official `pipeline.utils.unproject` was called only as a pure CPU geometric function (no module forward). SHA256 `f10b2fc43bd7feadb89cc88d22f8bf8c8fed77abd278d88af19ac6b9dcf2b5f6`.
+
+`build_crops.main`, `cross_view.main`, `metric_domain.make_domain/main` were reused by exact AST binding for derived data and safe replay; `SameCameraScene.draw` was also imported unchanged for Fig2. No projection/unprojection duplication. Execution fingerprints are in config/DERIVED_EXECUTION_PROVENANCE.json and config/CODE_REUSE_AFTER_SCOPE_UPDATE.json.

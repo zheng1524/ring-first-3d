@@ -1,0 +1,80 @@
+{
+  "status": "GATE_A_FAIL",
+  "subtype": "GATE_A_FAIL_GEOMETRY",
+  "reason": "r14 single2px mask-edge ridge proxy violates frozen3px threshold; formal crop/domain acceptance pending PM. No claim that true stalk disappeared.",
+  "gates": [
+    {
+      "gate": "A1",
+      "status": "PASS",
+      "reason": "fixed6 sources, original SHA/DAG/K/c2w/CAD unchanged"
+    },
+    {
+      "gate": "A2",
+      "status": "FAIL_THIN_PROXY_ANALYTIC_PASS",
+      "reason": "all analytic XYZ<1e-5mm and no bbox loss; r14 output ridge proxy2px<3px, anatomy unresolved"
+    },
+    {
+      "gate": "A3",
+      "status": "PASS_TRANSFORM_ONLY",
+      "reason": "6CORE+18conditional pairs, all original point IDs retained in validation before/after cleanup; not camera certification"
+    },
+    {
+      "gate": "A4",
+      "status": "PASS_INVERSE_CANDIDATE_PENDING_PM",
+      "reason": "same29.641mm retained-input cube, reversible; all retained points enclosed; no formal domain freeze"
+    },
+    {
+      "gate": "A5",
+      "status": "PASS",
+      "reason": "Ring/BG/Unknown/Pad depth0, NaN handled explicitly"
+    },
+    {
+      "gate": "A6",
+      "status": "PASS_CPU_STRICT_FORWARD_NOT_TESTED",
+      "reason": "official ShapeNet30 state tensors/1,403,920 params exact strict load; backup only static"
+    },
+    {
+      "gate": "A7",
+      "status": "PASS",
+      "reason": "historical source/unproject/K/project/CAD functions executed unchanged via AST/import"
+    },
+    {
+      "gate": "A8",
+      "status": "PASS",
+      "reason": "no GT, neural forward, CUDA, newTSDF/HERO/camera fitting; only user-approved derived copies modified"
+    }
+  ],
+  "raw_contract_PASS": 42,
+  "raw_contract_FAIL": 2,
+  "primary_official_model_strict_load": true,
+  "analytic_same_identity_world_max_mm": 1.5888218580782548e-14,
+  "analytic_target_projection_max_px": 1.7288250917028504e-13,
+  "user_authorized_cleanup": {
+    "rounds": 1,
+    "candidates": 55,
+    "derived_excluded": 46,
+    "retained_unresolved": 9,
+    "original_data_mutation": 0
+  },
+  "proposed_metric_cube_L_mm": 29.641,
+  "physical_voxel_mm": 0.2315703125,
+  "source_order": [
+    "G01_004_ref08",
+    "G01_004_ref13",
+    "G01_004_ref03",
+    "G01_004_growth_r04",
+    "G01_004_new_r00",
+    "G01_004_growth_r14"
+  ],
+  "GT": false,
+  "GPU": 0,
+  "NeuralFusion_forward": 0,
+  "Translator_forward": 0,
+  "new_TSDF": 0,
+  "new_HERO": 0,
+  "training": 0,
+  "Gate_B_authorized": false,
+  "next_stage_started": false,
+  "final_protection": "PASS",
+  "safe_replay_identical_CSV_N": 9
+}

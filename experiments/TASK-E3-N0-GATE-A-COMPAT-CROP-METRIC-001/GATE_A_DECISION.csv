@@ -1,0 +1,9 @@
+gate,status,reason
+A1,PASS,"fixed6 sources, original SHA/DAG/K/c2w/CAD unchanged"
+A2,FAIL_THIN_PROXY_ANALYTIC_PASS,"all analytic XYZ<1e-5mm and no bbox loss; r14 output ridge proxy2px<3px, anatomy unresolved"
+A3,PASS_TRANSFORM_ONLY,"6CORE+18conditional pairs, all original point IDs retained in validation before/after cleanup; not camera certification"
+A4,PASS_INVERSE_CANDIDATE_PENDING_PM,"same29.641mm retained-input cube, reversible; all retained points enclosed; no formal domain freeze"
+A5,PASS,"Ring/BG/Unknown/Pad depth0, NaN handled explicitly"
+A6,PASS_CPU_STRICT_FORWARD_NOT_TESTED,"official ShapeNet30 state tensors/1,403,920 params exact strict load; backup only static"
+A7,PASS,historical source/unproject/K/project/CAD functions executed unchanged via AST/import
+A8,PASS,"no GT, neural forward, CUDA, newTSDF/HERO/camera fitting; only user-approved derived copies modified"
