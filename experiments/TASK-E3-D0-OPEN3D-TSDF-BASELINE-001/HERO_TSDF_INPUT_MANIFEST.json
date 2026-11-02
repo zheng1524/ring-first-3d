@@ -1,0 +1,1218 @@
+{
+  "task": "TASK-E3-D0-OPEN3D-TSDF-BASELINE-001",
+  "sources": [
+    {
+      "source_id": "G01_004_ref03",
+      "assets": {
+        "native_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_B7_r03.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 987444,
+          "sha256": "f6a3b3bdc790716690e0da5dec16692739d0a49836247f4cc73635c45bdd02cc",
+          "expected_SHA256": "f6a3b3bdc790716690e0da5dec16692739d0a49836247f4cc73635c45bdd02cc",
+          "hash_match": true
+        },
+        "archived_direct_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/depths/004_ref03.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1056105,
+          "sha256": "c42a1c9fd4906ef1b355ae3eefe3d78c675959a9eb97e1d5c0c4ff481c55351e",
+          "expected_SHA256": "c42a1c9fd4906ef1b355ae3eefe3d78c675959a9eb97e1d5c0c4ff481c55351e",
+          "hash_match": true
+        },
+        "raw_XYZ": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/points/004_ref03_Polyp_source.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 849531,
+          "sha256": "f4ed693a5ee896cbe175d9cbcebf2b7386661707fd8f5d2bf3cfb4d1888a779a",
+          "expected_SHA256": "f4ed693a5ee896cbe175d9cbcebf2b7386661707fd8f5d2bf3cfb4d1888a779a",
+          "hash_match": true
+        },
+        "raw_mesh": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/meshes/004_ref03_Polyp_A.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 998253,
+          "sha256": "f961941cdf929b85b9f016c73ab004cb6d235dc893ea635d89e187b14a8c3526",
+          "expected_SHA256": "f961941cdf929b85b9f016c73ab004cb6d235dc893ea635d89e187b14a8c3526",
+          "hash_match": true
+        },
+        "RGB": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 277938,
+          "sha256": "ef790aaf2bc0a7344418358ca094701c4b0ba53aad507c79eb42a63710320189",
+          "expected_SHA256": "ef790aaf2bc0a7344418358ca094701c4b0ba53aad507c79eb42a63710320189",
+          "hash_match": true
+        },
+        "Mask": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_003.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 2372,
+          "sha256": "8387a9f79f738c3738739d16ce544eb92f79e3f0c9cdd72d50fe5aaaf13b8b2e",
+          "expected_SHA256": "8387a9f79f738c3738739d16ce544eb92f79e3f0c9cdd72d50fe5aaaf13b8b2e",
+          "hash_match": true
+        },
+        "camera_file": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_camera_0.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 60006,
+          "sha256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b",
+          "expected_SHA256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b",
+          "hash_match": true
+        },
+        "Ring_CAD": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/inputs/R10_ring.obj",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1028404,
+          "sha256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "expected_SHA256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "hash_match": true
+        }
+      },
+      "K_native": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          479.1111111111111,
+          175.49999999999997
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "K_archived": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c2w_mm": [
+        [
+          0.9927256025890222,
+          -0.07403497995661765,
+          0.09494577245504902,
+          -9.880543930367976
+        ],
+        [
+          -0.11980399432117389,
+          -0.6857175637921019,
+          0.7179404053622538,
+          -22.31537625669534
+        ],
+        [
+          0.011953280259195126,
+          -0.7240927043202742,
+          -0.6895990680396811,
+          18.21668763098684
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "native_shape": [
+        352,
+        640
+      ],
+      "archived_shape": [
+        360,
+        640
+      ],
+      "native_Polyp_N": 23771,
+      "depth_mm_stats": {
+        "N": 23771,
+        "median": 27.83724594116211,
+        "MAE": 28.400832696675323,
+        "p95": 32.42808151245117,
+        "maximum": 47.462955474853516
+      },
+      "pixel_footprint_mm": {
+        "N": 23771,
+        "median": 0.05810185894370079,
+        "MAE": 0.059278175390099934,
+        "p95": 0.06768384575843811,
+        "maximum": 0.09906461089849472
+      },
+      "native_to_raw_resize_max_mm": 0.0,
+      "raw_XYZ_roundtrip_max_mm": 0.0,
+      "HERO_upstream_RGB": [
+        {
+          "id": "G01_video004_004_03",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+          "sha256": "ef790aaf2bc0a7344418358ca094701c4b0ba53aad507c79eb42a63710320189"
+        },
+        {
+          "id": "G01_video004_004_06",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_006.png",
+          "sha256": "f325154c3bf1811be56043795815ece1336dd73a33fb16ee8ba22819e36b57fe"
+        },
+        {
+          "id": "G01_video004_004_00",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_000.png",
+          "sha256": "6d29c62b0e58061a4c13a4980ed5a333ea5fdcec29f12c472fc924680d59a028"
+        },
+        {
+          "id": "G01_video004_004_04",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_004.png",
+          "sha256": "c1bbcee47808afe2ec2f0a86741f7cad03fe4623d2a22681ecbbc5871d6b6861"
+        },
+        {
+          "id": "G01_video004_004_01",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_001.png",
+          "sha256": "3c66cc7eb3ed5ae93b664ec392d18a1741cfbd440b87a17fb7506f8f1ef80918"
+        },
+        {
+          "id": "G01_video004_004_05",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_005.png",
+          "sha256": "e2b6e99912aa737055cf17489fd234f00662f03d2a10118a5aa364d10a9653ff"
+        },
+        {
+          "id": "G01_video004_004_02",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_002.png",
+          "sha256": "049da27ef05dec34aff4035bf476a7022ca806472d2ddef6913a4053411fc5af"
+        }
+      ],
+      "world_frame": "G01_004_LOCAL_RING_MM",
+      "geometry_fused_or_adjusted": false
+    },
+    {
+      "source_id": "G01_004_ref08",
+      "assets": {
+        "native_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_A2_r08.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1007180,
+          "sha256": "7a46ef614af626faff1268fa5559031cc58a448bf43712342b33a57937d6fcc8",
+          "expected_SHA256": "7a46ef614af626faff1268fa5559031cc58a448bf43712342b33a57937d6fcc8",
+          "hash_match": true
+        },
+        "archived_direct_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/depths/004_ref08.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1033466,
+          "sha256": "01b45c98a4a782cd9477daa56308401359c3ba4f8a293a414df08e41d4dbe7bf",
+          "expected_SHA256": "01b45c98a4a782cd9477daa56308401359c3ba4f8a293a414df08e41d4dbe7bf",
+          "hash_match": true
+        },
+        "raw_XYZ": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/points/004_ref08_Polyp_source.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 485441,
+          "sha256": "212cdfecad3170a11e1dd0e6436de846061d776686bdf2430fa2204475818173",
+          "expected_SHA256": "212cdfecad3170a11e1dd0e6436de846061d776686bdf2430fa2204475818173",
+          "hash_match": true
+        },
+        "raw_mesh": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/meshes/004_ref08_Polyp_A.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 570837,
+          "sha256": "30ee6fc4f561fc1315b7e1af4023b7d0b1db192491f9d073c180faa08009adf8",
+          "expected_SHA256": "30ee6fc4f561fc1315b7e1af4023b7d0b1db192491f9d073c180faa08009adf8",
+          "hash_match": true
+        },
+        "RGB": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_008.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 284880,
+          "sha256": "b55fb8006554280cc9eee2ac867151c7fd15eb19f6b98fcba84429d6eece3171",
+          "expected_SHA256": "b55fb8006554280cc9eee2ac867151c7fd15eb19f6b98fcba84429d6eece3171",
+          "hash_match": true
+        },
+        "Mask": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_008.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 2080,
+          "sha256": "d64b0bf273067738df151a5acb45d7b096648aacca104b3212ba37e795eef39b",
+          "expected_SHA256": "d64b0bf273067738df151a5acb45d7b096648aacca104b3212ba37e795eef39b",
+          "hash_match": true
+        },
+        "camera_file": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_camera_0.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 60006,
+          "sha256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b",
+          "expected_SHA256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b",
+          "hash_match": true
+        },
+        "Ring_CAD": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/inputs/R10_ring.obj",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1028404,
+          "sha256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "expected_SHA256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "hash_match": true
+        }
+      },
+      "K_native": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          479.1111111111111,
+          175.49999999999997
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "K_archived": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c2w_mm": [
+        [
+          0.9966096300107716,
+          -0.0608726101601329,
+          -0.05535133875603262,
+          -1.7275715222425923
+        ],
+        [
+          -0.00032308493817806324,
+          -0.6756469649710095,
+          0.7372252534616448,
+          -28.505497588538912
+        ],
+        [
+          -0.08227478949177155,
+          -0.7347079039031471,
+          -0.6733759388011491,
+          25.480887415567995
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "native_shape": [
+        352,
+        640
+      ],
+      "archived_shape": [
+        360,
+        640
+      ],
+      "native_Polyp_N": 13749,
+      "depth_mm_stats": {
+        "N": 13749,
+        "median": 37.095558166503906,
+        "MAE": 37.65270130163852,
+        "p95": 42.32543182373047,
+        "maximum": 51.798423767089844
+      },
+      "pixel_footprint_mm": {
+        "N": 13749,
+        "median": 0.07742579281330109,
+        "MAE": 0.07858866177777289,
+        "p95": 0.08834157884120941,
+        "maximum": 0.108113594353199
+      },
+      "native_to_raw_resize_max_mm": 0.0,
+      "raw_XYZ_roundtrip_max_mm": 0.0,
+      "HERO_upstream_RGB": [
+        {
+          "id": "G01_video004_004_08",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_008.png",
+          "sha256": "b55fb8006554280cc9eee2ac867151c7fd15eb19f6b98fcba84429d6eece3171"
+        },
+        {
+          "id": "G01_video004_004_03",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+          "sha256": "ef790aaf2bc0a7344418358ca094701c4b0ba53aad507c79eb42a63710320189"
+        },
+        {
+          "id": "G01_video004_004_13",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_013.png",
+          "sha256": "a5d01a25f8acf1466ca355a0b2983344ed1406829f329ef2ffef9a5e54776f87"
+        },
+        {
+          "id": "G01_video004_004_07",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_007.png",
+          "sha256": "85d0ea00b263e51c0b90064880f7ee3cbdd9957218541a4ddc34b5305b167e47"
+        },
+        {
+          "id": "G01_video004_004_09",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_009.png",
+          "sha256": "bd7aedf52648ec1e13aa8b1b3cfc741f70aacf3a990ced030d5b8b18ae62fbb6"
+        },
+        {
+          "id": "G01_video004_004_05",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_005.png",
+          "sha256": "e2b6e99912aa737055cf17489fd234f00662f03d2a10118a5aa364d10a9653ff"
+        },
+        {
+          "id": "G01_video004_004_11",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_011.png",
+          "sha256": "38c95d2bf1e1030c04f65df0cef5ca0bb74edde5e3eb8a9a0ff0bc80cc8c40ee"
+        },
+        {
+          "id": "G01_video004_004_06",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_006.png",
+          "sha256": "f325154c3bf1811be56043795815ece1336dd73a33fb16ee8ba22819e36b57fe"
+        }
+      ],
+      "world_frame": "G01_004_LOCAL_RING_MM",
+      "geometry_fused_or_adjusted": false
+    },
+    {
+      "source_id": "G01_004_ref13",
+      "assets": {
+        "native_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_B7_r13.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 993769,
+          "sha256": "bb34be21e7667c33bbfdb698eecda924fc4ccd936270bcb32a3d26f501fadb51",
+          "expected_SHA256": "bb34be21e7667c33bbfdb698eecda924fc4ccd936270bcb32a3d26f501fadb51",
+          "hash_match": true
+        },
+        "archived_direct_depth": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/depths/004_ref13.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1030042,
+          "sha256": "a9f5c5508ffcc62ed395320c3e62e5c64cc08f35ee44b33a7387ffc5e9466943",
+          "expected_SHA256": "a9f5c5508ffcc62ed395320c3e62e5c64cc08f35ee44b33a7387ffc5e9466943",
+          "hash_match": true
+        },
+        "raw_XYZ": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/points/004_ref13_Polyp_source.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 451111,
+          "sha256": "7145a32cdb7715b02aaecaee1bc008304f619d70ad078d545dc826274ca20f8f",
+          "expected_SHA256": "7145a32cdb7715b02aaecaee1bc008304f619d70ad078d545dc826274ca20f8f",
+          "hash_match": true
+        },
+        "raw_mesh": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/meshes/004_ref13_Polyp_A.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 526349,
+          "sha256": "fb428c3944d17a2dc7c8074963c59f7a4ae552c477849389b7b111ca65984c55",
+          "expected_SHA256": "fb428c3944d17a2dc7c8074963c59f7a4ae552c477849389b7b111ca65984c55",
+          "hash_match": true
+        },
+        "RGB": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_013.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 280793,
+          "sha256": "a5d01a25f8acf1466ca355a0b2983344ed1406829f329ef2ffef9a5e54776f87",
+          "expected_SHA256": "a5d01a25f8acf1466ca355a0b2983344ed1406829f329ef2ffef9a5e54776f87",
+          "hash_match": true
+        },
+        "Mask": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_013.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 2065,
+          "sha256": "808694c3a8fe91143a4e6fa70c97b5a4c9fae802eb4b1468aef772600645e8a6",
+          "expected_SHA256": "808694c3a8fe91143a4e6fa70c97b5a4c9fae802eb4b1468aef772600645e8a6",
+          "hash_match": true
+        },
+        "camera_file": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_camera_0.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 60006,
+          "sha256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b",
+          "expected_SHA256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b",
+          "hash_match": true
+        },
+        "Ring_CAD": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/inputs/R10_ring.obj",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1028404,
+          "sha256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "expected_SHA256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "hash_match": true
+        }
+      },
+      "K_native": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          479.1111111111111,
+          175.49999999999997
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "K_archived": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c2w_mm": [
+        [
+          0.9749007103303042,
+          -0.0745762329067393,
+          -0.20977843188209064,
+          5.6996425571329725
+        ],
+        [
+          0.09958296387676764,
+          -0.6966621999402907,
+          0.7104540889317712,
+          -28.79867713985793
+        ],
+        [
+          -0.19912769346072257,
+          -0.7135125539608914,
+          -0.6717499512744441,
+          26.389060144884287
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "native_shape": [
+        352,
+        640
+      ],
+      "archived_shape": [
+        360,
+        640
+      ],
+      "native_Polyp_N": 12745,
+      "depth_mm_stats": {
+        "N": 12745,
+        "median": 37.91139221191406,
+        "MAE": 38.50068667903046,
+        "p95": 43.586116790771484,
+        "maximum": 53.54631042480469
+      },
+      "pixel_footprint_mm": {
+        "N": 12745,
+        "median": 0.07912860065698624,
+        "MAE": 0.08035857543296653,
+        "p95": 0.09097287803888321,
+        "maximum": 0.11176177859306335
+      },
+      "native_to_raw_resize_max_mm": 0.0,
+      "raw_XYZ_roundtrip_max_mm": 0.0,
+      "HERO_upstream_RGB": [
+        {
+          "id": "G01_video004_004_13",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_013.png",
+          "sha256": "a5d01a25f8acf1466ca355a0b2983344ed1406829f329ef2ffef9a5e54776f87"
+        },
+        {
+          "id": "G01_video004_004_08",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_008.png",
+          "sha256": "b55fb8006554280cc9eee2ac867151c7fd15eb19f6b98fcba84429d6eece3171"
+        },
+        {
+          "id": "G01_video004_004_14",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_014.png",
+          "sha256": "87c37ba90df77b382c605d9abb126207445d2817fcbe833c6445cd8504197ae5"
+        },
+        {
+          "id": "G01_video004_004_11",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_011.png",
+          "sha256": "38c95d2bf1e1030c04f65df0cef5ca0bb74edde5e3eb8a9a0ff0bc80cc8c40ee"
+        },
+        {
+          "id": "G01_video004_004_06",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_006.png",
+          "sha256": "f325154c3bf1811be56043795815ece1336dd73a33fb16ee8ba22819e36b57fe"
+        },
+        {
+          "id": "G01_video004_004_09",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_009.png",
+          "sha256": "bd7aedf52648ec1e13aa8b1b3cfc741f70aacf3a990ced030d5b8b18ae62fbb6"
+        },
+        {
+          "id": "G01_video004_004_12",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_012.png",
+          "sha256": "4f567aac742bbe1f812adbe6cc06c8040e81d63616f651fd588780f0e470f389"
+        }
+      ],
+      "world_frame": "G01_004_LOCAL_RING_MM",
+      "geometry_fused_or_adjusted": false
+    },
+    {
+      "source_id": "G01_004_growth_r04",
+      "assets": {
+        "native_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r04/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 397315,
+          "sha256": "3caa8f3caab78224f372b907ad72d3478b55de7dd1040216f9dcf9f63fc3494a",
+          "expected_SHA256": "3caa8f3caab78224f372b907ad72d3478b55de7dd1040216f9dcf9f63fc3494a",
+          "hash_match": true
+        },
+        "archived_direct_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r04/pack_full.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1045674,
+          "sha256": "2b9d0b80720ef818d0a38fd74d45a4563849e14840af72159cf1e8ad5b5e9d1f",
+          "expected_SHA256": "2b9d0b80720ef818d0a38fd74d45a4563849e14840af72159cf1e8ad5b5e9d1f",
+          "hash_match": true
+        },
+        "raw_XYZ": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r04/Raw_source_points.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 805553,
+          "sha256": "71cc9ef558bc91f6a322f757e6c55de05f3d7fcd2af3e145d1518bb9199bee1f",
+          "expected_SHA256": "71cc9ef558bc91f6a322f757e6c55de05f3d7fcd2af3e145d1518bb9199bee1f",
+          "hash_match": true
+        },
+        "raw_mesh": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r04/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 874922,
+          "sha256": "694f39f086ff33a00976d79620b7c20dd9b51bdaf361265ce9956051d9da0230",
+          "expected_SHA256": "694f39f086ff33a00976d79620b7c20dd9b51bdaf361265ce9956051d9da0230",
+          "hash_match": true
+        },
+        "RGB": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_004.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 281304,
+          "sha256": "c1bbcee47808afe2ec2f0a86741f7cad03fe4623d2a22681ecbbc5871d6b6861",
+          "expected_SHA256": "c1bbcee47808afe2ec2f0a86741f7cad03fe4623d2a22681ecbbc5871d6b6861",
+          "hash_match": true
+        },
+        "Mask": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_004.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 2305,
+          "sha256": "b4d53e447b3c12623822fe0e5f28a3f68f8768091d163e33c8d2725e1035637b",
+          "expected_SHA256": "b4d53e447b3c12623822fe0e5f28a3f68f8768091d163e33c8d2725e1035637b",
+          "hash_match": true
+        },
+        "camera_file": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r04/camera_candidate.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 60006,
+          "sha256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b",
+          "expected_SHA256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b",
+          "hash_match": true
+        },
+        "Ring_CAD": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/inputs/R10_ring.obj",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1028404,
+          "sha256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "expected_SHA256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "hash_match": true
+        }
+      },
+      "K_native": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          479.1111111111111,
+          175.49999999999997
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "K_archived": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c2w_mm": [
+        [
+          0.9940091675093324,
+          -0.07057323035365197,
+          0.0834577381963731,
+          -5.853918844698757
+        ],
+        [
+          -0.1091316627292825,
+          -0.6828157631025233,
+          0.7223938772225725,
+          -24.05931484092127
+        ],
+        [
+          0.006004589690070773,
+          -0.7271740182488436,
+          -0.6864269022164593,
+          19.217746481838752
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "native_shape": [
+        352,
+        640
+      ],
+      "archived_shape": [
+        360,
+        640
+      ],
+      "native_Polyp_N": 20901,
+      "depth_mm_stats": {
+        "N": 20901,
+        "median": 29.304588317871094,
+        "MAE": 29.945005144561218,
+        "p95": 34.22319412231445,
+        "maximum": 46.41696548461914
+      },
+      "pixel_footprint_mm": {
+        "N": 20901,
+        "median": 0.0611644946038723,
+        "MAE": 0.06250116982367654,
+        "p95": 0.07143060117959976,
+        "maximum": 0.09688141942024231
+      },
+      "native_to_raw_resize_max_mm": 0.0,
+      "raw_XYZ_roundtrip_max_mm": 0.0,
+      "HERO_upstream_RGB": [
+        {
+          "id": "G01_video004_004_04",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_004.png",
+          "sha256": "c1bbcee47808afe2ec2f0a86741f7cad03fe4623d2a22681ecbbc5871d6b6861"
+        },
+        {
+          "id": "G01_video004_004_07",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_007.png",
+          "sha256": "85d0ea00b263e51c0b90064880f7ee3cbdd9957218541a4ddc34b5305b167e47"
+        },
+        {
+          "id": "G01_video004_004_03",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+          "sha256": "ef790aaf2bc0a7344418358ca094701c4b0ba53aad507c79eb42a63710320189"
+        },
+        {
+          "id": "G01_video004_004_08",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_008.png",
+          "sha256": "b55fb8006554280cc9eee2ac867151c7fd15eb19f6b98fcba84429d6eece3171"
+        }
+      ],
+      "world_frame": "G01_004_LOCAL_RING_MM",
+      "geometry_fused_or_adjusted": false
+    },
+    {
+      "source_id": "G01_004_new_r00",
+      "assets": {
+        "native_depth": {
+          "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/local_results/derived_depth/G01_004_new_r00/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 390134,
+          "sha256": "0c5020f1b830a0c29b9153aa23a49dda756dc7640f2693a67ee79a9557244bb1",
+          "expected_SHA256": "0c5020f1b830a0c29b9153aa23a49dda756dc7640f2693a67ee79a9557244bb1",
+          "hash_match": true
+        },
+        "archived_direct_depth": {
+          "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/local_results/derived_depth/G01_004_new_r00/pack_full.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1067439,
+          "sha256": "965d8961d03f227338629d276edc7850feb86b8325cef3a7d5eedcd843bd713b",
+          "expected_SHA256": "965d8961d03f227338629d276edc7850feb86b8325cef3a7d5eedcd843bd713b",
+          "hash_match": true
+        },
+        "raw_XYZ": {
+          "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/local_results/derived_depth/G01_004_new_r00/Raw_source_points.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 874701,
+          "sha256": "83d8b6f42a747e9c2280941d64b68336d160cc101647dae45756a7a17d381283",
+          "expected_SHA256": "83d8b6f42a747e9c2280941d64b68336d160cc101647dae45756a7a17d381283",
+          "hash_match": true
+        },
+        "raw_mesh": {
+          "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/local_results/derived_depth/G01_004_new_r00/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 952553,
+          "sha256": "595ce531f572e634e9579b377fcd45fcb2e024e81d7860894ae5ad385b73c1c3",
+          "expected_SHA256": "595ce531f572e634e9579b377fcd45fcb2e024e81d7860894ae5ad385b73c1c3",
+          "hash_match": true
+        },
+        "RGB": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_000.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 252400,
+          "sha256": "6d29c62b0e58061a4c13a4980ed5a333ea5fdcec29f12c472fc924680d59a028",
+          "expected_SHA256": "6d29c62b0e58061a4c13a4980ed5a333ea5fdcec29f12c472fc924680d59a028",
+          "hash_match": true
+        },
+        "Mask": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_000.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 2329,
+          "sha256": "b6c383f8fd7c30644bb79c440daa7144e278cf65e051e2ad4f0495ad9b7b58c9",
+          "expected_SHA256": "b6c383f8fd7c30644bb79c440daa7144e278cf65e051e2ad4f0495ad9b7b58c9",
+          "hash_match": true
+        },
+        "camera_file": {
+          "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/local_results/derived_depth/G01_004_new_r00/camera_candidate.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 60579,
+          "sha256": "60d9a1e9dba2fc972399831e092c59ed6d1e947bbfc37313204ad34e00c8b406",
+          "expected_SHA256": "60d9a1e9dba2fc972399831e092c59ed6d1e947bbfc37313204ad34e00c8b406",
+          "hash_match": true
+        },
+        "Ring_CAD": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/inputs/R10_ring.obj",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1028404,
+          "sha256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "expected_SHA256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "hash_match": true
+        }
+      },
+      "K_native": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          479.1111111111111,
+          175.49999999999997
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "K_archived": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c2w_mm": [
+        [
+          0.9739517426581115,
+          -0.09831093151138917,
+          0.2043354196378852,
+          -15.158233035625662
+        ],
+        [
+          -0.2135766747840459,
+          -0.7004500734157848,
+          0.6809953734351005,
+          -22.145555620015447
+        ],
+        [
+          0.0761774701694508,
+          -0.7068979101660896,
+          -0.7032014914954304,
+          17.397166715702667
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "native_shape": [
+        352,
+        640
+      ],
+      "archived_shape": [
+        360,
+        640
+      ],
+      "native_Polyp_N": 22815,
+      "depth_mm_stats": {
+        "N": 22815,
+        "median": 28.384967803955078,
+        "MAE": 29.087739647006927,
+        "p95": 32.38945388793945,
+        "maximum": 87.18414306640625
+      },
+      "pixel_footprint_mm": {
+        "N": 22815,
+        "median": 0.05924506112933159,
+        "MAE": 0.060711886565589394,
+        "p95": 0.0676032230257988,
+        "maximum": 0.18197061121463776
+      },
+      "native_to_raw_resize_max_mm": 0.0,
+      "raw_XYZ_roundtrip_max_mm": 0.0,
+      "HERO_upstream_RGB": [
+        {
+          "id": "G01_video004_004_00",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_000.png",
+          "sha256": "6d29c62b0e58061a4c13a4980ed5a333ea5fdcec29f12c472fc924680d59a028"
+        },
+        {
+          "id": "G01_video004_004_01",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_001.png",
+          "sha256": "3c66cc7eb3ed5ae93b664ec392d18a1741cfbd440b87a17fb7506f8f1ef80918"
+        },
+        {
+          "id": "G01_video004_004_03",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+          "sha256": "ef790aaf2bc0a7344418358ca094701c4b0ba53aad507c79eb42a63710320189"
+        },
+        {
+          "id": "G01_video004_004_02",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_002.png",
+          "sha256": "049da27ef05dec34aff4035bf476a7022ca806472d2ddef6913a4053411fc5af"
+        }
+      ],
+      "world_frame": "G01_004_LOCAL_RING_MM",
+      "geometry_fused_or_adjusted": false
+    },
+    {
+      "source_id": "G01_004_growth_r14",
+      "assets": {
+        "native_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r14/HERO_native.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 392487,
+          "sha256": "80e696f6585b781edbf4a415baf254388e5dc37a01216afb728a1f3ab83e59a0",
+          "expected_SHA256": "80e696f6585b781edbf4a415baf254388e5dc37a01216afb728a1f3ab83e59a0",
+          "hash_match": true
+        },
+        "archived_direct_depth": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r14/pack_full.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1030848,
+          "sha256": "fb4b990418c741ead975bfbd25e4ec12cec35732f459181cfacb1cce2fa50352",
+          "expected_SHA256": "fb4b990418c741ead975bfbd25e4ec12cec35732f459181cfacb1cce2fa50352",
+          "hash_match": true
+        },
+        "raw_XYZ": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r14/Raw_source_points.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 465877,
+          "sha256": "55900f29ff301cf5061b28782dae285d52aa5a96b99e1448724ae81a4dd46f75",
+          "expected_SHA256": "55900f29ff301cf5061b28782dae285d52aa5a96b99e1448724ae81a4dd46f75",
+          "hash_match": true
+        },
+        "raw_mesh": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r14/Raw_open_mesh.ply",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 501763,
+          "sha256": "8ebca032135830eb2bd85b5dbf4a71f019178c475bb28ba5311517644d69887f",
+          "expected_SHA256": "8ebca032135830eb2bd85b5dbf4a71f019178c475bb28ba5311517644d69887f",
+          "hash_match": true
+        },
+        "RGB": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_014.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 303398,
+          "sha256": "87c37ba90df77b382c605d9abb126207445d2817fcbe833c6445cd8504197ae5",
+          "expected_SHA256": "87c37ba90df77b382c605d9abb126207445d2817fcbe833c6445cd8504197ae5",
+          "hash_match": true
+        },
+        "Mask": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_014.png",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 2054,
+          "sha256": "d255b0fca26b3493124ab8f6c48e5d118c08c3225ded3101e37a2514c1d6b0fa",
+          "expected_SHA256": "d255b0fca26b3493124ab8f6c48e5d118c08c3225ded3101e37a2514c1d6b0fa",
+          "hash_match": true
+        },
+        "camera_file": {
+          "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r14/camera_candidate.npz",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 60006,
+          "sha256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b",
+          "expected_SHA256": "d1fa77a98d1e8d609fc6d70fcdca659eb85a763fd92bf0c0670504ce5714ca0b",
+          "hash_match": true
+        },
+        "Ring_CAD": {
+          "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/inputs/R10_ring.obj",
+          "role": "",
+          "status": "AVAILABLE",
+          "bytes": 1028404,
+          "sha256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "expected_SHA256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+          "hash_match": true
+        }
+      },
+      "K_native": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          479.1111111111111,
+          175.49999999999997
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "K_archived": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c2w_mm": [
+        [
+          0.9678722566101288,
+          -0.08337780243664916,
+          -0.2372160132563814,
+          8.299239426125284
+        ],
+        [
+          0.11229321862040982,
+          -0.7007796394017247,
+          0.7044843007845224,
+          -29.24392584025016
+        ],
+        [
+          -0.22497450508065456,
+          -0.7084885595835853,
+          -0.6689024091770719,
+          26.54809947106696
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "native_shape": [
+        352,
+        640
+      ],
+      "archived_shape": [
+        360,
+        640
+      ],
+      "native_Polyp_N": 12163,
+      "depth_mm_stats": {
+        "N": 12163,
+        "median": 37.79663848876953,
+        "MAE": 38.45423037996224,
+        "p95": 43.50338363647461,
+        "maximum": 54.79291915893555
+      },
+      "pixel_footprint_mm": {
+        "N": 12163,
+        "median": 0.07888908684253693,
+        "MAE": 0.08026161178864412,
+        "p95": 0.0908001959323883,
+        "maximum": 0.11436370015144348
+      },
+      "native_to_raw_resize_max_mm": 0.0,
+      "raw_XYZ_roundtrip_max_mm": 0.0,
+      "HERO_upstream_RGB": [
+        {
+          "id": "G01_video004_004_14",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_014.png",
+          "sha256": "87c37ba90df77b382c605d9abb126207445d2817fcbe833c6445cd8504197ae5"
+        },
+        {
+          "id": "G01_video004_004_11",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_011.png",
+          "sha256": "38c95d2bf1e1030c04f65df0cef5ca0bb74edde5e3eb8a9a0ff0bc80cc8c40ee"
+        },
+        {
+          "id": "G01_video004_004_12",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_012.png",
+          "sha256": "4f567aac742bbe1f812adbe6cc06c8040e81d63616f651fd588780f0e470f389"
+        },
+        {
+          "id": "G01_video004_004_10",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_010.png",
+          "sha256": "debc2f24ffe9ab637cce2f365486daf2df237be6ae561f41ce7e0742184ed790"
+        }
+      ],
+      "world_frame": "G01_004_LOCAL_RING_MM",
+      "geometry_fused_or_adjusted": false
+    }
+  ],
+  "source_count": 6,
+  "all_existing_source_count": 11,
+  "selection": {
+    "path": "/home/liu/ring_first_3d_e3d0/experiments/TASK-E3-D0-OPEN3D-TSDF-BASELINE-001/VIEW_COVERAGE_SELECTION.csv",
+    "role": "",
+    "status": "AVAILABLE",
+    "bytes": 2408,
+    "sha256": "643d6f3cb898c19ab0c156bdef22037d04391b7968ac2ebab2b45cf74099b89c"
+  },
+  "upstream_audit": {
+    "path": "/home/liu/ring_first_3d_neural_e1/experiments/TASK-NEURAL-E1-PIPELINE-RECOVERY-001/provenance/INPUT_ELIGIBILITY.json",
+    "role": "",
+    "status": "AVAILABLE",
+    "bytes": 590458,
+    "sha256": "bbee4fdc634e6f1643810f9b1df30ceeb23852c4e700903571b309a828989b3d"
+  },
+  "view_partition": {
+    "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/metrics/view_distribution.json",
+    "role": "",
+    "status": "AVAILABLE",
+    "bytes": 158073,
+    "sha256": "9246bb341735bb75fc133c253cd196a14b5d54b04df8b2f00c0ae0220177b612"
+  },
+  "CAD": {
+    "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/inputs/R10_ring.obj",
+    "role": "",
+    "status": "AVAILABLE",
+    "bytes": 1028404,
+    "sha256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92"
+  },
+  "forbidden_inputs": [
+    "F1/F2/F3",
+    "historical adjusted/fused Mesh",
+    "E2.7",
+    "other video"
+  ],
+  "reused": [
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v1/scripts/common.py",
+      "file_SHA256": "12e9eab72765877219191aa9a26bf37d3ffb0c7deb7b55125c4b5d5864201e1e",
+      "name": "unproject",
+      "line": 40,
+      "signature": "z, pose, uv, K",
+      "AST_SHA256": "fcb42bb587d49575889459c436865761c0a36127864a1f549c2e65feeb1d3f56",
+      "status": "AST_EXTRACTED_EXACT_NO_MODULE_MAIN"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "task": "TASK-E3-D0-OPEN3D-TSDF-BASELINE-001",
+  "parent_commit": "6423b2709d1b528124ba6cc855883ba8a437e28c",
+  "frozen_UTC": "2026-11-02T07:32:52.840173+00:00",
+  "open3d_version": "0.19.0",
+  "engine": "official ScalableTSDFVolume RGB8 + extract_triangle_mesh",
+  "voxel_length_mm": 0.1,
+  "sdf_trunc_mm": 0.4,
+  "depth_trunc_mm": 100.0,
+  "volume_unit_resolution": 16,
+  "depth_sampling_stride": 1,
+  "depth_scale": 1.0,
+  "internal_unit": "m",
+  "export_unit": "mm",
+  "G0": [
+    "G01_004_ref03",
+    "G01_004_ref08",
+    "G01_004_ref13"
+  ],
+  "G1": [
+    "G01_004_ref03",
+    "G01_004_ref08",
+    "G01_004_ref13",
+    "G01_004_growth_r04",
+    "G01_004_new_r00",
+    "G01_004_growth_r14"
+  ],
+  "Single": [
+    "G01_004_ref08"
+  ],
+  "uniform_official_weights": true,
+  "selection_rule": "G0 + task-required r04 + unique original HERO in uncovered B1 and B4; no mesh inspection",
+  "mask": "native nearest categorical mask: only finite positive label1; zero otherwise; no far-depth unknown; no CAD/E3C filtering",
+  "RGB": "archived RGB INTER_AREA to native",
+  "K": "frozen half-pixel-preserving archived-to-native scale",
+  "CAD": "black geometry for diagnostics/rendering; never integrated, never used for post-hoc deletion",
+  "ROI": "inherited frame; no clipping of source or TSDF geometry",
+  "parameter_basis": {
+    "native_pixel_footprint_mm": {
+      "N": 106144,
+      "median": 0.0635249987244606,
+      "MAE": 0.06765797113862006,
+      "p95": 0.08487893640995026,
+      "maximum": 0.18197061121463776
+    },
+    "noise_proxy_mm": 0.25,
+    "noise_proxy_origin": "E3B finite band, not calibrated sensor noise; no GT",
+    "voxel_choice": "0.1 mm comparable to native pixel spacing",
+    "trunc_choice": "4 voxels; larger than inherited 0.25 mm uncertainty proxy; unvalidated science parameter"
+  },
+  "optional_resolution_control": {
+    "allowed_max": 1,
+    "voxel_mm": 0.05,
+    "sdf_trunc_mm": 0.4,
+    "trigger": "single-source p95 native-ray error >0.2 mm OR native valid-depth hit fraction <0.90, after adapter algebra checks pass; this would diagnose discretization, not replace primary G0/G1",
+    "run": false
+  },
+  "engineering_gate": {
+    "raw_XYZ_mm": 1e-06,
+    "native_resize_mm": 2e-05,
+    "roundtrip_pixel": 1e-08,
+    "metric_scale_mesh_Hausdorff_mm": 0.002,
+    "single_native_hit_fraction_min": 0.9,
+    "single_native_depth_p95_mm_max": 0.2,
+    "point_retention_at_0p2_mm_min": 0.9,
+    "scope": "interface fidelity only; no anatomical accuracy claim"
+  },
+  "evaluation": {
+    "max_faces_per_source": 12000,
+    "original_face_sampling": "linspace fixed original Face ID; all original face centroids for preservation metric",
+    "distance_threshold_mm": 0.25,
+    "depth_agreement_mm": 0.25,
+    "mask_pixel_stride": 2,
+    "case_count": 3,
+    "case_selection": "source with largest CORE loss (G0), largest G1-G0 area-retention decrease, largest G1-G0 increase; deterministic ties source order",
+    "Unknown": "output with no original source agreeing in finite image Mask and axial depth within 0.25 mm; no physical truth implied"
+  },
+  "prohibited": {
+    "GT": false,
+    "GPU": 0,
+    "new_inference": 0,
+    "camera_updates": 0,
+    "custom_weights": 0,
+    "geometry_deletion": 0,
+    "search": 0
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "unit_surface_distance_mm": {
+    "N": 49584,
+    "median": 3.2428433769382536e-06,
+    "MAE": 4.329990072933219e-06,
+    "p95": 1.1984832781308788e-05,
+    "maximum": 0.0020026694983243942
+  },
+  "unit_surface_max_mm": 0.0020026694983243942,
+  "original_vertex_only_control_was_not_mesh_Hausdorff": true,
+  "thresholds_changed": false,
+  "results": {
+    "SINGLE": {
+      "checks": {
+        "unit_equivalence_surface": false,
+        "native_first_hit": false,
+        "native_depth_error_full_denominator": false,
+        "point_retention": true
+      },
+      "pass_": false,
+      "native_valid_N": 13749,
+      "hit_N": 12313,
+      "hit_fraction": 0.8955560404393047,
+      "miss_N": 1436,
+      "finite_hit_depth_error_mm": {
+        "N": 12313,
+        "median": 0.01204681396484375,
+        "MAE": 0.019142927573947664,
+        "p95": 0.05780410766601561,
+        "maximum": 0.68072509765625
+      },
+      "full_denominator_depth_p95_mm": null,
+      "full_denominator_p95_is_infinite": true,
+      "retention_at_0p2_mm": 0.986908138773729,
+      "near_mask_boundary_miss_N": 881,
+      "interior_miss_N": 555,
+      "miss_xyz": {
+        "N": 1436,
+        "median": 0.04197058454155922,
+        "MAE": 0.1577593118447801,
+        "p95": 0.5627769976854324,
+        "maximum": 6.320404052734375
+      }
+    },
+    "SINGLE_RESOLUTION_CONTROL": {
+      "checks": {
+        "unit_equivalence_surface": false,
+        "native_first_hit": true,
+        "native_depth_error_full_denominator": true,
+        "point_retention": true
+      },
+      "pass_": false,
+      "native_valid_N": 13749,
+      "hit_N": 13201,
+      "hit_fraction": 0.9601425558222416,
+      "miss_N": 548,
+      "finite_hit_depth_error_mm": {
+        "N": 13201,
+        "median": 0.0041961669921875,
+        "MAE": 0.005934754354232605,
+        "p95": 0.0175933837890625,
+        "maximum": 0.14576339721679688
+      },
+      "full_denominator_depth_p95_mm": 0.0268402099609375,
+      "full_denominator_p95_is_infinite": false,
+      "retention_at_0p2_mm": 0.9996363371881591,
+      "near_mask_boundary_miss_N": 412,
+      "interior_miss_N": 136,
+      "miss_xyz": {
+        "N": 548,
+        "median": 0.009144848212599754,
+        "MAE": 0.018860719204775354,
+        "p95": 0.06343391239643097,
+        "maximum": 1.115063190460205
+      }
+    }
+  }
+}

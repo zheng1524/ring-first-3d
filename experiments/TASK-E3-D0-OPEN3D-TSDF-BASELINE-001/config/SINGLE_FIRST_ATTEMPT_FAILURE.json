@@ -1,0 +1,82 @@
+{
+  "checks": {
+    "raw_XYZ_roundtrip": true,
+    "native_resize": true,
+    "pixel_roundtrip": true,
+    "unit_equivalence": false,
+    "unknown_zero": true,
+    "empty_mask_empty_mesh": true,
+    "native_first_hit": false,
+    "native_depth_error": false,
+    "point_retention": true
+  },
+  "engineering_pass": false,
+  "native_valid_depth_N": 13749,
+  "native_hit_N": 12313,
+  "native_hit_fraction": 0.8955560404393047,
+  "native_depth_abs_error_mm": {
+    "N": 12313,
+    "median": 0.01204681396484375,
+    "MAE": 0.019142927573947664,
+    "p95": 0.05780410766601561,
+    "maximum": 0.68072509765625
+  },
+  "native_distance_mm": {
+    "N": 13749,
+    "median": 0.008987692184746265,
+    "MAE": 0.02532265412619396,
+    "p95": 0.04908460155129425,
+    "maximum": 6.320404052734375
+  },
+  "native_retention_at_0p2_mm": 0.986908138773729,
+  "original_face_sample_retention_at_0p2_mm": 0.9981666666666666,
+  "raw_face_sample_distance_mm": {
+    "N": 12000,
+    "median": 0.008328706957399845,
+    "MAE": 0.011804406749056114,
+    "p95": 0.028139829076826568,
+    "maximum": 0.43072500824928284
+  },
+  "unit_mm_vs_m_max_bidirectional_vertex_distance_mm": 0.0020732573582789016,
+  "pixel_roundtrip_max": 1.4210854715202004e-13,
+  "depth_roundtrip_max_mm": 2.842170943040401e-14,
+  "bounds_mm": [
+    [
+      -6.25,
+      -4.989558939315436,
+      -11.790628457098556
+    ],
+    [
+      5.7847120737173965,
+      3.95,
+      1.8416340810803609
+    ]
+  ],
+  "raw_bounds_mm": [
+    [
+      -6.551333108480246,
+      -5.01078728851547,
+      -12.74109060375007
+    ],
+    [
+      7.279684149980548,
+      5.7629229755301985,
+      1.8159097032514353
+    ]
+  ],
+  "bounds_center_shift_mm": 1.1819352509769123,
+  "Ring_bounds_mm": [
+    [
+      -6.199999809,
+      -6.199999809,
+      -0.600000024
+    ],
+    [
+      6.199999809,
+      6.199999809,
+      0.600000024
+    ]
+  ],
+  "Ring_unchanged_SHA256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+  "boundary_and_anatomical_quality": "reported separately; no GT"
+}
