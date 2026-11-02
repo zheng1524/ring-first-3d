@@ -1,0 +1,38 @@
+{
+  "initial_diagnosis": {
+    "source": "G01_004_growth_r14",
+    "old_crop_uv": [
+      99,
+      143
+    ],
+    "mapped_native_uv": [
+      282,
+      214
+    ],
+    "archive_uv": [
+      282.0,
+      218.875
+    ],
+    "old_output_width_proxy_px": 2.0,
+    "current_output_width_proxy_px": 0.0,
+    "current_is_local_ridge": false,
+    "current_native_width_proxy_px": 0.0,
+    "current_native_is_local_ridge": false,
+    "native_depth_mm": 38.53308868408203,
+    "output_depth_mm": 0.0,
+    "native_9x9_valid_N": 22,
+    "crop_9x9_valid_N": 16,
+    "native_9x9_depth_range_mm": [
+      38.13247299194336,
+      47.30345916748047
+    ],
+    "original_mask_unchanged": true,
+    "incremental_excluded_at_thin_pixel": false,
+    "status": "THIN_STRUCTURE_UNRESOLVED_BY_CROP",
+    "anatomy": "a crop medial-ridge corner proxy, not a certified stalk; inspect true RGB and native Mask; anatomy remains unconfirmed",
+    "old_3px_gate": "FAIL_PRESERVED",
+    "proposed_v0_2": "separate sampling topology/identity preservation from anatomical thinness; require source-traced native narrow region + RGB/human evidence before applying anatomical minimum width. PROPOSAL_ONLY, not accepted"
+  },
+  "issue": "Prior narrative coordinate was off by1 row; corrected using preserved actual pixel identity in HUMAN_REVIEW_CONTEXT, not by choosing a better point",
+  "corrective_action": "thin diagnostic only; no cleanup/crop/depth/threshold changed"
+}

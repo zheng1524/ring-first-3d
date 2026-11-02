@@ -1,0 +1,107 @@
+{
+  "task": "TASK-E3-N0-GATE-A2-PROJECTIVE-CLEANUP-001",
+  "parent_commit": "4b60db5d9402c2bb87692ba3b2b7819f3c7c1423",
+  "source_order": [
+    "G01_004_ref08",
+    "G01_004_ref13",
+    "G01_004_ref03",
+    "G01_004_growth_r04",
+    "G01_004_new_r00",
+    "G01_004_growth_r14"
+  ],
+  "original_denominator": 106144,
+  "baseline_denominator": 106098,
+  "historical_excluded_N": 46,
+  "candidate_generation": {
+    "previous_unresolved_9": "mandatory first",
+    "per_source_axis_extrema": "all unique argmin/argmax points; mandatory",
+    "global_boundary_band_mm": 0.25,
+    "native_4neighbour_jump_mm": 1.0,
+    "native_mask_boundary_px": 2.0,
+    "raw_face_distance_mm": 1.0,
+    "rules": [
+      "within0.25mm of retained input global axis bounds",
+      "native legal4-neighbour jump>=1mm",
+      "own Raw distance>1mm AND native Mask boundary<=2px"
+    ],
+    "max_review_pool_per_source": 512,
+    "sort": "previous9, source_axis_extrema, global_boundary, depth_jump, raw_edge; native_pixel_ID ascending within priority",
+    "unreviewed_anomalies": "listed in full discovery CSV; never removed",
+    "threshold_basis": "reuse0.25mm support, D0 raw1mm diagnostic; jump4x0.25; bounded candidate-only flags, never deletion criteria"
+  },
+  "projection": {
+    "observer_order": [
+      "G01_004_ref08",
+      "G01_004_ref13",
+      "G01_004_ref03",
+      "G01_004_growth_r04",
+      "G01_004_new_r00",
+      "G01_004_growth_r14"
+    ],
+    "silhouette_margin_archived_px": 8.0,
+    "support_tolerance_mm": 0.25,
+    "CAD_epsilon_mm": 0.002,
+    "independent_opposing_blocks": 2,
+    "negative_voters": [
+      "G01_004_ref08",
+      "G01_004_ref13",
+      "G01_004_ref03",
+      "G01_004_growth_r04",
+      "G01_004_new_r00"
+    ],
+    "r14": "positive/unknown observations only, never negative voter",
+    "archived_depth_sampling": "exact original archival depth pack, as Gate A; native baseline validity must also hold; either native or archived near depth is a conservative support veto",
+    "categories": "D near support -> retain; B any eligible Polyp layer competition -> retain; A >=2 distinct block silhouette contradictions and no support/layer competition -> derived exclude; C otherwise retain Unknown",
+    "legal_negative": "inside real RGB, positive axial Z, BG>8px outside Polyp, no Ring CAD first-hit occlusion, no Ring Mask, inherited conditional camera, no known visibility/order conflict",
+    "camera_truth": "same inherited conditional usage; pilot INSUFFICIENT_EVIDENCE preserved; engineering proxy, not physicalGT",
+    "occlusion": "CAD/Ring/field/boundary/invalid-depth/known layer occlusion never negative votes; unknown true background geometry remains a limitation",
+    "same_block": "ref08 and r04=B3 count once; RGB correlation not statistical independence",
+    "protected_CORE": "CORE native interior>2px AND own original Raw distance<=1mm retained even if silhouette votes disagree; signal camera/visibility ambiguity instead",
+    "r14_near": "uncertified positive near-depth vetoes removal but does not certify support"
+  },
+  "domain": {
+    "exact_function": {
+      "path": "/home/liu/ring_first_3d_e3n0/experiments/TASK-E3-N0-GATE-A-COMPAT-CROP-METRIC-001/code/metric_domain.py",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 3678,
+      "sha256": "fdd9848775e6451e6a468539ab3347f5a24327fd9df25225503a3b4b19014b67"
+    },
+    "rule": "make_domain, all retained XYZ + unchanged CAD, margin=max(2mm,10% maximum span), cube round up0.001mm",
+    "N": 128,
+    "target_size": "no25.735mm target",
+    "all_unresolved_retained": true
+  },
+  "crop": {
+    "exact_prior_protocol": {
+      "path": "/home/liu/ring_first_3d_e3n0/experiments/TASK-E3-N0-GATE-A-COMPAT-CROP-METRIC-001/config/GATE_A_PREREGISTERED.json",
+      "role": "",
+      "status": "AVAILABLE",
+      "bytes": 4229,
+      "sha256": "a0e8010458095705d3bc30e50d9f6ef5ac21322725d495a058cf15b54685c5bf"
+    },
+    "rule_changed": false,
+    "thin_hard_gate_px": 3.0,
+    "thin_alternative": "diagnostic proposal only, cannot change frozen gate",
+    "analytic_max_mm": 1e-05,
+    "projection_max_px": 0.0001
+  },
+  "resampling": {
+    "extremes": "top1 maximum per source, all three downsampled sources; fixed original identities",
+    "jump_threshold_mm": 1.0,
+    "method": "diagnose forward original-to-output pairing separately from actual inverse NN sampling",
+    "candidate_revision": "proposal only; no interpolation, no automatic extra filtering"
+  },
+  "forbidden": [
+    "GPU",
+    "NeuralFusion.forward",
+    "training",
+    "newHERO",
+    "newTSDF",
+    "pose_optimization",
+    "GT/Oracle",
+    "original_mask_or_HERO_mutation"
+  ],
+  "cleanup_rounds": 1,
+  "allowed_output": "new task derived copies only"
+}

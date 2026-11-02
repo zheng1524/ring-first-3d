@@ -1,0 +1,39 @@
+{
+  "status": "GATE_A2_FAIL",
+  "engineering_execution": "COMPLETED",
+  "original_N": 106144,
+  "baseline_N": 106098,
+  "final_N": 105875,
+  "incremental_excluded_N": 223,
+  "current_L_mm": 27.959,
+  "current_voxel_mm": 0.2184296875,
+  "old_Gate_A": "GATE_A_FAIL_PRESERVED",
+  "Gate_A_overall_PASS": false,
+  "Gate_B_recommended_now": false,
+  "Gate_B_authorized": false,
+  "failures": [
+    {
+      "test": "FROZEN_3PX_GATE",
+      "status": "FAIL",
+      "detail": "r14 remains1; A2 effective validity introduces5 r04 and65 r00 sub3px ridge proxies; FAIL retained",
+      "criterion_type": "INHERITED_HARD_GATE"
+    },
+    {
+      "test": "RESAMPLING_COMPETING_LAYERS_RESOLVED",
+      "status": "FAIL",
+      "detail": "correct exact NN implementation, but three competing native layers remain; unresolved input limitation",
+      "criterion_type": "DIAGNOSTIC_OPEN_ISSUE_NOT_A_NEW_HARD_GATE"
+    }
+  ],
+  "limitations": [
+    "conditional cameras and uncertified real background visibility",
+    "bounded review1641 anomaly flags retained",
+    "no anatomical GT for independent surface/side protection",
+    "exact NN but source-layer ambiguity",
+    "old3px width gate remains; new effective-validity edge ridges also below3px"
+  ],
+  "proposed_followup": "PM review r14 source-traced anatomical width criterion and discontinuity validity proposal; no automatic crop/Mask revision or inference",
+  "decision_basis": "existing3px hard gate remains failed; source-layer ambiguity is a diagnostic limitation, not a new numerical hard gate",
+  "derived_candidate_promoted_to_baseline": false,
+  "active_input_baseline_N": 106098
+}
