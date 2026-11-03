@@ -1,0 +1,32 @@
+{
+  "selection": "G01 starts ref08/ref13/ref03 if admitted; then uncovered-block-first farthest direction+camera-center sampling over ALL remaining admitted11, strict/conditional Gate and Ring pass tie priorities, source ID final tie; no NF outputs",
+  "second_group": "maximize (strict fraction, Ring-pass fraction, negative median Ring p95, block count, valid-depth fraction, admitted count); input-only; no inferred missing views",
+  "cleanup": "accepted V6 baseline for existing6; raw-native baseline for others; one A2 candidate/projection pass for selected sources of each group; B proposals use latest all-B screen except Ring/identity unknown; no new manual spatial cuts",
+  "candidate_generation": {
+    "previous_unresolved_9": "mandatory first",
+    "per_source_axis_extrema": "all unique argmin/argmax points; mandatory",
+    "global_boundary_band_mm": 0.25,
+    "native_4neighbour_jump_mm": 1.0,
+    "native_mask_boundary_px": 2.0,
+    "raw_face_distance_mm": 1.0,
+    "rules": [
+      "within0.25mm of retained input global axis bounds",
+      "native legal4-neighbour jump>=1mm",
+      "own Raw distance>1mm AND native Mask boundary<=2px"
+    ],
+    "max_review_pool_per_source": 512,
+    "sort": "previous9, source_axis_extrema, global_boundary, depth_jump, raw_edge; native_pixel_ID ascending within priority",
+    "unreviewed_anomalies": "listed in full discovery CSV; never removed",
+    "threshold_basis": "reuse0.25mm support, D0 raw1mm diagnostic; jump4x0.25; bounded candidate-only flags, never deletion criteria"
+  },
+  "silhouette_margin_archived_px": 8.0,
+  "support_tolerance_mm": 0.25,
+  "CAD_epsilon_mm": 0.002,
+  "independent_opposing_blocks": 2,
+  "CORE_protection": "G01 existing CORE and other-group legacy ref source: interior>2 native px and original Raw distance<=1mm",
+  "mask_boundary": "A2 native-label distanceTransform L2 mask5 only for candidate/protection; no new edge threshold search; B is all-B, not A3<=2px",
+  "crop": "exact unchanged Gate A make_crop; raw label bbox; no3px gate",
+  "domain": "all retained native XYZ+actual CAD; max(2mm,.1span) margin; ceil .001mm;128cube",
+  "evaluation": "fixed RAW native Polyp finite-positive denominator; deletions unavailable, misses explicit; all original Raw faces; CAD separate; .25mm support proxy",
+  "runtime": "complete forward and reverse all prefixes; quality never early-stop; engineering faults only; no training"
+}

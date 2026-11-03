@@ -1,0 +1,399 @@
+{
+  "task": "TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001",
+  "orders": {
+    "G01_004": [
+      "G01_004_ref08",
+      "G01_004_ref13",
+      "G01_004_ref03",
+      "G01_004_growth_r14",
+      "G01_004_new_r00",
+      "G01_004_growth_r06",
+      "G01_004_growth_r10",
+      "G01_004_growth_r04"
+    ],
+    "G06_004": [
+      "G06_004_ref04",
+      "G06_004_growth_r01",
+      "G06_004_growth_r06",
+      "G06_004_growth_r03",
+      "G06_004_new_r00"
+    ]
+  },
+  "domains": {
+    "G01_004": {
+      "O_mm": [
+        -10.215909842259386,
+        -9.69264371041585,
+        -15.412920371585015
+      ],
+      "L_mm": 20.106,
+      "N": 128,
+      "voxel_mm": 0.157078125,
+      "world_cube_min_mm": [
+        -10.215909842259386,
+        -9.69264371041585,
+        -15.412920371585015
+      ],
+      "world_cube_max_mm": [
+        9.890090157740616,
+        10.413356289584152,
+        4.693079628414987
+      ],
+      "source_extent_min_mm": [
+        -6.614332267329665,
+        -6.199999809,
+        -13.412499996822028
+      ],
+      "source_extent_max_mm": [
+        6.288512582810897,
+        6.920712388168305,
+        2.6926592536519998
+      ],
+      "margin_mm": 2.0,
+      "world_to_model": "(X_mm-O_mm)/L_mm",
+      "ring_inverse_max_mm": 3.977578321938144e-15,
+      "ring_outer_diameter_inverse_mm": 12.399999618000002,
+      "ring_outer_diameter_voxels": 78.94160703789913
+    },
+    "G06_004": {
+      "O_mm": [
+        -8.481196105412133,
+        -9.463708290205902,
+        -9.399141793752284
+      ],
+      "L_mm": 17.664,
+      "N": 128,
+      "voxel_mm": 0.138,
+      "world_cube_min_mm": [
+        -8.481196105412133,
+        -9.463708290205902,
+        -9.399141793752284
+      ],
+      "world_cube_max_mm": [
+        9.182803894587868,
+        8.200291709794099,
+        8.264858206247718
+      ],
+      "source_extent_min_mm": [
+        -6.199999809,
+        -7.463416389411804,
+        -1.7342836115045657
+      ],
+      "source_extent_max_mm": [
+        6.901607598175737,
+        6.199999809,
+        0.600000024
+      ],
+      "margin_mm": 2.0,
+      "world_to_model": "(X_mm-O_mm)/L_mm",
+      "ring_inverse_max_mm": 3.8088902694984756e-15,
+      "ring_outer_diameter_inverse_mm": 12.399999617999999,
+      "ring_outer_diameter_voxels": 89.85506969565218
+    }
+  },
+  "grid_N": 128,
+  "latent_features": 17,
+  "checkpoint": {
+    "name": "shapenet_noise_005",
+    "path": "/home/liu/ring_first_3d_e3n0/experiments/TASK-E3-N0-GATE-A-COMPAT-CROP-METRIC-001/runtime/neuralfusion_official/pretrained_models/shapenet_noise_005/version_0/checkpoints/best.ckpt",
+    "bytes": 16882708,
+    "Git_blob_SHA": "3f222e0cfc3239299b95fe4957ff19613f35a9c2",
+    "sha256": "3ac6dc9f219449e8aa5a26dec0a77691714e55d4e29da688c79630bf46068bff",
+    "official_commit": "4f0c14f67ad9d2368b68cbeb78c237a6328971e5"
+  },
+  "official_commit": "4f0c14f67ad9d2368b68cbeb78c237a6328971e5",
+  "reverse_orders": {
+    "G01_004": [
+      "G01_004_growth_r04",
+      "G01_004_growth_r10",
+      "G01_004_growth_r06",
+      "G01_004_new_r00",
+      "G01_004_growth_r14",
+      "G01_004_ref03",
+      "G01_004_ref13",
+      "G01_004_ref08"
+    ],
+    "G06_004": [
+      "G06_004_new_r00",
+      "G06_004_growth_r03",
+      "G06_004_growth_r06",
+      "G06_004_growth_r01",
+      "G06_004_ref04"
+    ]
+  },
+  "qualification": {
+    "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/config/CAMERA_GATE_RESULTS.json",
+    "bytes": 496202,
+    "sha256": "b2b4147e0b1c8b5883211d10b77fe9bd7a491324e4c9d937f9b65e6ddb66c74b"
+  },
+  "selection": {
+    "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/config/VIEW_SELECTION_FROZEN.json",
+    "bytes": 7697,
+    "sha256": "514cec541eb4e76d9aea7c02c72d46553b515827b7da458a69732244e8f5b0e7"
+  },
+  "cleanup_rules": {
+    "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/config/PREPARATION_RULES.json",
+    "bytes": 2417,
+    "sha256": "d26ee474859c2ea9f62286660ad639fbc60ca104e1fa2d0515b42637e81c5c80"
+  },
+  "input_geometry": [
+    {
+      "scene": "G01_004",
+      "source": "G01_004_ref08",
+      "native_retained_N": 13370,
+      "crop_N": 14800,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 1.102200432789045e-14,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G01_004_ref08.npz",
+        "bytes": 975628,
+        "sha256": "722c496210d189d146ededae4e407e68faeba5432cc8dd114a265bc40cd829db"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_ref08.npz",
+        "bytes": 371175,
+        "sha256": "5bee4770d98f0a06fa5499b81276a88cd9d0de295069e7d892e93b88ff28fcef"
+      }
+    },
+    {
+      "scene": "G01_004",
+      "source": "G01_004_ref13",
+      "native_retained_N": 12378,
+      "crop_N": 14443,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 1.3053503572900977e-14,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G01_004_ref13.npz",
+        "bytes": 955528,
+        "sha256": "2bbde25000dfc101a0645608abfade4c2d7e477fe872d857b2d8003347e4666c"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_ref13.npz",
+        "bytes": 370473,
+        "sha256": "72920e41fbd0c89889825e4ff29b8e2a615778573d944a5886ba2eb0d13ee1ba"
+      }
+    },
+    {
+      "scene": "G01_004",
+      "source": "G01_004_ref03",
+      "native_retained_N": 23230,
+      "crop_N": 16132,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 8.881784197001252e-15,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G01_004_ref03.npz",
+        "bytes": 1040145,
+        "sha256": "6df2c6f9775b66bf568c6e5be030d72a27a13f8f990e41874eeb04f571705f23"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_ref03.npz",
+        "bytes": 388396,
+        "sha256": "30a6c47aeed4310a22301f48b3cb38898684abbb0209f72851f8322d97f48b7d"
+      }
+    },
+    {
+      "scene": "G01_004",
+      "source": "G01_004_growth_r14",
+      "native_retained_N": 10967,
+      "crop_N": 13514,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 1.0950198975068616e-14,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G01_004_growth_r14.npz",
+        "bytes": 919935,
+        "sha256": "f9612c9276db8398be53f22ad35c0f4a0845081f0b9311e837a62a1bcd6d14de"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_growth_r14.npz",
+        "bytes": 368065,
+        "sha256": "08fb3d8198b7195131e0a699e7a9c815e8f4a8af360e1fce369b958093328793"
+      }
+    },
+    {
+      "scene": "G01_004",
+      "source": "G01_004_new_r00",
+      "native_retained_N": 22216,
+      "crop_N": 15765,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 8.140289677804162e-15,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G01_004_new_r00.npz",
+        "bytes": 970169,
+        "sha256": "2ca0fbdbe8c66eac640c2e8927bc0d332566df0d6aada7f31b433d6a40f0abc2"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_new_r00.npz",
+        "bytes": 383756,
+        "sha256": "65111c1f66012eb2a7016d62ba53111ee32ff806631361b5df74a42bc225b3b1"
+      }
+    },
+    {
+      "scene": "G01_004",
+      "source": "G01_004_growth_r06",
+      "native_retained_N": 15474,
+      "crop_N": 15107,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 1.0658141036401503e-14,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G01_004_growth_r06.npz",
+        "bytes": 1016143,
+        "sha256": "0ef46bd9ad48530ae1644916c2ca67e654c11aa8a90c018f2e0cf24039da6fd3"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_growth_r06.npz",
+        "bytes": 375258,
+        "sha256": "0ddc8e316e780f1130163c62b02d55c74b0a448dec6e69161bec869cf2b0451e"
+      }
+    },
+    {
+      "scene": "G01_004",
+      "source": "G01_004_growth_r10",
+      "native_retained_N": 14059,
+      "crop_N": 15175,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 1.0877919644084147e-14,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G01_004_growth_r10.npz",
+        "bytes": 1005964,
+        "sha256": "e3d96b3389e307c11d72dad304ddda990ddc679fe653e7ddb7224d4054632701"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_growth_r10.npz",
+        "bytes": 375363,
+        "sha256": "90aaf4a01b49f59af5c935c9905b94fd55486692ee1c2835ee9b4428a806293e"
+      }
+    },
+    {
+      "scene": "G01_004",
+      "source": "G01_004_growth_r04",
+      "native_retained_N": 20393,
+      "crop_N": 15766,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 8.331852114593072e-15,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G01_004_growth_r04.npz",
+        "bytes": 1051733,
+        "sha256": "e981862c7cf5f0bbaeb47d840f9aae4ff66ebd6c7bb0f1968fab3de3fa2cc3e6"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_growth_r04.npz",
+        "bytes": 384772,
+        "sha256": "289c4392f0ca470cc43988504b0abb010cbba30f2904fa99bb1d27730aba4236"
+      }
+    },
+    {
+      "scene": "G06_004",
+      "source": "G06_004_ref04",
+      "native_retained_N": 9074,
+      "crop_N": 15096,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 1.0417181877766436e-14,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G06_004_ref04.npz",
+        "bytes": 845297,
+        "sha256": "b3a2fdf4621f95e54d783d7b66992d1a31415611b11a54f85e5966043f72f3c5"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G06_004_ref04.npz",
+        "bytes": 361469,
+        "sha256": "108156f2faae8df21376928e68b4b0d4e00e5fafcdbc3e7f6ca4089bcb6c31b2"
+      }
+    },
+    {
+      "scene": "G06_004",
+      "source": "G06_004_growth_r01",
+      "native_retained_N": 8396,
+      "crop_N": 14960,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 1.0805156823142815e-14,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G06_004_growth_r01.npz",
+        "bytes": 757397,
+        "sha256": "25e6d986a919ac0013417729843c6c69e5bfd7607b430c368f2f556652115c13"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G06_004_growth_r01.npz",
+        "bytes": 363545,
+        "sha256": "d4b21a993f7ec6eae24af27eb282968e7cd054f5e0432c2c06506d58c6b40ba9"
+      }
+    },
+    {
+      "scene": "G06_004",
+      "source": "G06_004_growth_r06",
+      "native_retained_N": 12788,
+      "crop_N": 15336,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 9.648087210223558e-15,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G06_004_growth_r06.npz",
+        "bytes": 926993,
+        "sha256": "271e23690b50229929efdc808fcd251a43eb4bc68005e8ed60ffdd2d11f08849"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G06_004_growth_r06.npz",
+        "bytes": 364890,
+        "sha256": "7b62274c870389c8af7ec7644bf272756cea1d1758e0e6ceefc3d0f1210d6fb1"
+      }
+    },
+    {
+      "scene": "G06_004",
+      "source": "G06_004_growth_r03",
+      "native_retained_N": 8452,
+      "crop_N": 14523,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 1.1816445329460086e-14,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G06_004_growth_r03.npz",
+        "bytes": 826482,
+        "sha256": "13ac25bb5eda4c979c057c253d683aa1acfb20a49ebfcd9d7f826ff9117f1edf"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G06_004_growth_r03.npz",
+        "bytes": 363594,
+        "sha256": "a03e3edb389d47de23a668c634c9fdb91265b92097842b4f139c0649a6e430ec"
+      }
+    },
+    {
+      "scene": "G06_004",
+      "source": "G06_004_new_r00",
+      "native_retained_N": 8117,
+      "crop_N": 15389,
+      "out_of_grid_N": 0,
+      "crop_roundtrip_max_mm": 1.1949218545369531e-14,
+      "source_ID_depth_exact": true,
+      "crop": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G06_004_new_r00.npz",
+        "bytes": 827831,
+        "sha256": "61f1b78858aa7cba466959c66a5b88a1a8ce72a03e37d79e24106136bddbaf88"
+      },
+      "native": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G06_004_new_r00.npz",
+        "bytes": 361063,
+        "sha256": "dc5a3fd195573b73335fb3140a73563bc5b316f9e565ec15eb1fc8dff414dcae"
+      }
+    }
+  ],
+  "quality_stop": false,
+  "optimizer_steps": 0,
+  "GT": false,
+  "enhanced_20_30": false,
+  "evaluation": {
+    "agreement_mm": 0.25,
+    "CAD_epsilon_mm": 0.002,
+    "denominator": "all original valid native Polyp pixels for selected sources, fixed for all prefixes/orders; cleanup availability separate",
+    "face_denominator": "all original Raw faces and areas",
+    "normal_smoothing_geometry": false
+  }
+}
