@@ -1,0 +1,449 @@
+{
+  "task": "TASK-RING-FIRST-POSE-DEPTH-IDENTIFIABILITY-001",
+  "created": "2026-11-03T17:02:07.945995+00:00",
+  "parent": "50239b5f2ef94e1a182a4d5b7c04ac512e681d11",
+  "pairs": [
+    {
+      "A": "G01_004_ref08",
+      "B": "G01_004_growth_r14",
+      "historical_pair": {
+        "A": "G01_004_ref08",
+        "group": "G01",
+        "video": "004",
+        "status": "FROZEN_BEFORE_RGB_ERROR",
+        "B": "004_14",
+        "B_raw_frame": 1118,
+        "B_index": 14,
+        "B_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_014.png",
+        "B_Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_014.png",
+        "B_K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "B_c2w": [
+          [
+            0.9678722566101288,
+            -0.08337780243664916,
+            -0.2372160132563814,
+            8.299239426125284
+          ],
+          [
+            0.11229321862040982,
+            -0.7007796394017247,
+            0.7044843007845224,
+            -29.24392584025016
+          ],
+          [
+            -0.22497450508065456,
+            -0.7084885595835853,
+            -0.6689024091770719,
+            26.54809947106696
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "view_angle_deg": 14.460288204715235,
+        "baseline_mm": 10.11044784609651,
+        "B_not_A_HERO_input": true,
+        "whole_pipeline_holdout": false,
+        "qualification": "FROZEN_CAMERA_CONDITIONAL",
+        "timeline_risk": true,
+        "selection": "closest to 12deg among qualified 3-25deg and >=0.5mm baseline; no image error"
+      },
+      "primary": true
+    },
+    {
+      "A": "G01_004_ref03",
+      "B": "G01_004_growth_r07",
+      "historical_pair": {
+        "A": "G01_004_ref03",
+        "group": "G01",
+        "video": "004",
+        "status": "FROZEN_BEFORE_RGB_ERROR",
+        "B": "004_07",
+        "B_raw_frame": 602,
+        "B_index": 7,
+        "B_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_007.png",
+        "B_Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_007.png",
+        "B_K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "B_c2w": [
+          [
+            0.9975764532615322,
+            -0.06355811743128267,
+            -0.028312287204216108,
+            -4.1924500988970115
+          ],
+          [
+            -0.0211944564831192,
+            -0.6651494657988389,
+            0.746409393806043,
+            -27.877332682067134
+          ],
+          [
+            -0.0662722786127649,
+            -0.744000372215035,
+            -0.6648845247344541,
+            27.031884807852286
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "view_angle_deg": 13.629266036707943,
+        "baseline_mm": 11.874235637731346,
+        "B_not_A_HERO_input": true,
+        "whole_pipeline_holdout": false,
+        "qualification": "FROZEN_CAMERA_CONDITIONAL",
+        "timeline_risk": true,
+        "selection": "closest to 12deg among qualified 3-25deg and >=0.5mm baseline; no image error"
+      },
+      "primary": false
+    },
+    {
+      "A": "G06_004_ref04",
+      "B": "G06_004_growth_r01",
+      "historical_pair": {
+        "A": "G06_004_ref04",
+        "group": "G06",
+        "video": "004",
+        "status": "FROZEN_BEFORE_RGB_ERROR",
+        "B": "key01_raw00229",
+        "B_raw_frame": 229,
+        "B_index": 1,
+        "B_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/groups/G06/inputs/key01_raw00229.png",
+        "B_Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/groups/G06/observations/key01_raw00229_labels.png",
+        "B_K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "B_c2w": [
+          [
+            0.28177112930036424,
+            0.5929921183827156,
+            -0.7542979373091089,
+            32.32112313263827
+          ],
+          [
+            0.9441728862352987,
+            -0.03149265329351372,
+            0.3279417230037069,
+            -7.285695596682677
+          ],
+          [
+            0.17071201361035748,
+            -0.8045921701859358,
+            -0.5687608004113708,
+            23.663219273828155
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "view_angle_deg": 10.796898497519145,
+        "baseline_mm": 7.637890816624019,
+        "B_not_A_HERO_input": true,
+        "whole_pipeline_holdout": false,
+        "qualification": "FROZEN_CAMERA_CONDITIONAL",
+        "timeline_risk": false,
+        "selection": "closest to 12deg among qualified 3-25deg and >=0.5mm baseline; no image error"
+      },
+      "primary": false
+    },
+    {
+      "A": "G08_005_ref04",
+      "B": "G08_005_growth_r03",
+      "historical_pair": {
+        "pair_id": "G08_005_ref04__to__key03_raw00531",
+        "group": "G08",
+        "A": "G08_005_ref04",
+        "B": "key03_raw00531",
+        "B_target": {
+          "id": "key03_raw00531",
+          "RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/groups/G08/inputs/key03_raw00531.png",
+          "Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_surface_gt_vnext/groups/G08/observations/key03_raw00531_labels.png",
+          "K": [
+            [
+              490.0,
+              0.0,
+              319.5
+            ],
+            [
+              0.0,
+              490.0,
+              179.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "c2w": [
+            [
+              0.1612311204105086,
+              0.5150330760126882,
+              -0.8418702135270498,
+              40.23406135627372
+            ],
+            [
+              0.9869126289191696,
+              -0.08169685658713621,
+              0.13902908509960876,
+              -4.680789128381236
+            ],
+            [
+              0.0028264272545801545,
+              -0.8532681608009817,
+              -0.5214647227495692,
+              22.733898450013292
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "index": 3,
+          "raw_frame": 531,
+          "ring_case": "G08_005_ref04",
+          "not_in_any_source_HERO_inputs": true,
+          "source_camera_status": "LOCAL_GEOMETRY_SCREENED",
+          "support_identity": "FROZEN_TARGET_NOT_DEPTH_INPUT"
+        },
+        "H_A_to_B_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "pose_status": "LIMITED_STRESS",
+        "selection": "EXISTING_FROZEN_SELECTION_OR_P2_PAIR; no new target-error selection",
+        "executable": true,
+        "failure_reason": "",
+        "whole_pipeline_independent": false
+      },
+      "primary": false
+    }
+  ],
+  "B_orders": {
+    "G01_004": [
+      "G01_004_ref08",
+      "G01_004_growth_r14",
+      "G01_004_ref13",
+      "G01_004_ref03",
+      "G01_004_new_r00",
+      "G01_004_growth_r06",
+      "G01_004_growth_r10",
+      "G01_004_growth_r04"
+    ],
+    "G06_004": [
+      "G06_004_ref04",
+      "G06_004_growth_r01",
+      "G06_004_growth_r06",
+      "G06_004_growth_r03",
+      "G06_004_new_r00"
+    ]
+  },
+  "B_counts": {
+    "G01_004": [
+      2,
+      4,
+      8
+    ],
+    "G06_004": [
+      2,
+      4,
+      5
+    ]
+  },
+  "selection": "Historical Phase-C exact pairs, G08 frozen view-eval pair; N0 fixed view order, no current result selection",
+  "SIFT": {
+    "features": 8000,
+    "contrast": 0.01,
+    "ratio": 0.72,
+    "mutual": true,
+    "seed": 0,
+    "essential_threshold_px": 2.0,
+    "confidence": 0.999,
+    "iterations": 2000,
+    "minimum_fit": 12,
+    "minimum_cheirality": 8,
+    "spatial_holdout": "(floor(p.x/16)+3floor(q.y/16))%5==0"
+  },
+  "A": {
+    "kinds": [
+      "Raw",
+      "Cleaned"
+    ],
+    "renderer": "exact AST historical reprojection.py render; original A triangles/RGB; 640x360; CAD .05mm",
+    "scale": "Only SIFT translation norm borrowed from RF, not direction/rotation; A pose fixed; CAD stays original A-world",
+    "metrics": "fixed B Polyp mask denominator; RGB on RF & SIFT shared valid Polyp pixels, all common count reported",
+    "failure": "No RF fallback for SIFT failure"
+  },
+  "B": {
+    "pose": "T_i=T_i0 exp_SE3([delta_t_mm,delta_omega_rad]); RIGHT body frame; A fixed; Ring world and scale fixed",
+    "depth": "native axial Z_i+b_i; source native integer pixel IDs frozen",
+    "parameter_scale": {
+      "translation_mm": 0.1,
+      "rotation_deg": 0.1,
+      "depth_mm": 0.1
+    },
+    "residual_scale": {
+      "epipolar_px": 2.0,
+      "reprojection_px": 2.0,
+      "silhouette_px": 3.0,
+      "depth_mm": 0.25,
+      "ring_px": 3.0
+    },
+    "modality_balance": "Each modality divided by sqrt(number of its scalar residuals); raw unit/noise scaled Jacobians also reported",
+    "C1": [
+      "epipolar",
+      "reprojection",
+      "silhouette"
+    ],
+    "C2": [
+      "epipolar",
+      "reprojection",
+      "silhouette",
+      "depth"
+    ],
+    "C3": [
+      "epipolar",
+      "reprojection",
+      "silhouette",
+      "depth",
+      "ring"
+    ],
+    "max_reprojection_matches_per_ordered_pair": 64,
+    "max_depth_per_ordered_pair": 128,
+    "max_silhouette_per_ordered_pair": 32,
+    "max_ring_per_camera": 128,
+    "depth_visibility": "cleaned source + target, original mask interior>2px, finite positive; CAD first hit within .05mm; target observed depth not more than .25mm in front of candidate. Reliable-freespace proxy front conflicts kept; hidden/unknown excluded",
+    "silhouette": "source boundary>2px from Ring, target within8px boundary; signed mask distance proxy, not material correspondence; no claim of full physical silhouette observability",
+    "differential_steps_normalized": [
+      0.01,
+      0.005,
+      0.0025
+    ],
+    "difference_relative_tolerance": 0.05,
+    "rank_relative_thresholds": [
+      0.01,
+      0.001,
+      0.0001,
+      1e-06
+    ],
+    "rank_primary": 0.001,
+    "structural_relative_threshold": 1e-08,
+    "sensitivity_translation_mm": [
+      -0.2,
+      -0.1,
+      -0.05,
+      0,
+      0.05,
+      0.1,
+      0.2
+    ],
+    "sensitivity_rotation_deg": [
+      -0.25,
+      -0.1,
+      -0.05,
+      0,
+      0.05,
+      0.1,
+      0.25
+    ],
+    "sensitivity_depth_mm": [
+      -0.2,
+      -0.1,
+      -0.05,
+      0,
+      0.05,
+      0.1,
+      0.2
+    ],
+    "grid": "one 5x5 target body-tz vs target-depth bias in [-.2,-.1,0,.1,.2]mm; diagnostic not selection",
+    "minimum_correspondences_for_physical_claim": 12,
+    "structural_claim": "Only stable null after gauge fixing and finite-difference checks; unstable/insufficient evidence = NOT_EVALUABLE",
+    "ring": "actual CAD compatible analytic torus contours; camera canonicalized by world yaw to respect exact Ring rotational symmetry; fixed observed Ring contour, baseline curve normal correspondences; no correspondence/material ID assumption",
+    "unknown": "masked/occluded correspondence cannot certify accuracy; input correlations and same-HERO reuse limit information interpretation"
+  },
+  "no_GT": true,
+  "optimizer_steps": 0,
+  "new_HERO": 0,
+  "GPU": 0,
+  "new_fusion": 0,
+  "cleanup_algorithm_changed": false
+}
