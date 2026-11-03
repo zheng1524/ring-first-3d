@@ -1,0 +1,162 @@
+{
+  "tag": "G01_004_reverse_F1",
+  "scene": "G01_004",
+  "order": "reverse",
+  "stage": "F1",
+  "sources": [
+    "G01_004_growth_r04",
+    "G01_004_growth_r10"
+  ],
+  "source_added": "G01_004_growth_r10",
+  "actual_official_call_events": [
+    {
+      "module": "_extractor",
+      "input_shapes": [
+        [
+          1,
+          76800,
+          3
+        ],
+        [
+          1,
+          1,
+          3
+        ],
+        [
+          1,
+          240,
+          320
+        ],
+        [
+          128,
+          128,
+          128,
+          17
+        ]
+      ],
+      "output_shape": null
+    },
+    {
+      "module": "_fusion",
+      "input_shapes": [
+        [
+          1,
+          141,
+          240,
+          320
+        ]
+      ],
+      "output_shape": [
+        1,
+        112,
+        240,
+        320
+      ]
+    },
+    {
+      "module": "_integrator",
+      "input_shapes": [
+        [
+          1,
+          112,
+          240,
+          320
+        ],
+        [
+          1,
+          76800,
+          3
+        ],
+        [
+          1,
+          1,
+          3
+        ],
+        [
+          1,
+          240,
+          320
+        ],
+        [
+          128,
+          128,
+          128,
+          17
+        ],
+        [
+          128,
+          128,
+          128
+        ]
+      ],
+      "output_shape": null
+    },
+    {
+      "module": "_translator",
+      "input_shapes": [
+        [
+          42957,
+          3
+        ],
+        [
+          1,
+          17,
+          128,
+          128,
+          128
+        ]
+      ],
+      "output_shape": [
+        42957,
+        2
+      ]
+    }
+  ],
+  "Translator_query_N": 42957,
+  "known_voxel_N": 42957,
+  "latent_shape": [
+    128,
+    128,
+    128,
+    17
+  ],
+  "count_external_max": 0.0,
+  "latent_count_channel_max": 2.0,
+  "negative_known_SDF_N": 19445,
+  "SDF_known_range": [
+    -0.027018941938877106,
+    0.035221513360738754
+  ],
+  "zero_cross": true,
+  "vertices_N": 28174,
+  "faces_N": 56284,
+  "unknown_boundary_face_N": 30074,
+  "fractional_MC_vertices_N": 28174,
+  "official_GPU_unprojection_max_mm": 5.16436301975682e-06,
+  "fusion_seconds": 0.06655702199998359,
+  "total_seconds": 1.1206319389999635,
+  "peak_GPU_MiB": 1198.3662109375,
+  "weights_bitwise_unchanged": true,
+  "strict_parameter_N": 1403920,
+  "optimizer_steps": 0,
+  "GT": false,
+  "quality_stop": false,
+  "saved_states": [
+    {
+      "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/local_results/G01_004_reverse_F1_latent.npz",
+      "bytes": 2877587,
+      "sha256": "f256ec503717ce746133b4037f1bc0a85cdf2be818638d3063bc7722b7c5a4bb"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/local_results/G01_004_reverse_F1_field.npz",
+      "bytes": 577672,
+      "sha256": "e31787084b10607800500f25718a305d8d92128f8939d6b9f4e7d522c1c39ca9"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/local_results/G01_004_reverse_F1_MC_identity.npz",
+      "bytes": 892340,
+      "sha256": "540c75b5287a95662442417d54fe59d454638bb9ea902df6c2f5c05af70338ca"
+    }
+  ],
+  "shading_geometry_identical": true
+}

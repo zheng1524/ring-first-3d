@@ -8,6 +8,7 @@ def asset(p):return dict(path=str(p),sha256=hashlib.sha256(p.read_bytes()).hexdi
 def save(name,value):
     p=R/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n')
 def main():
+    assert not (R/'config/EXPERIMENT_FROZEN.json').exists(),'PREFLIGHT_ONLY_DO_NOT_OVERWRITE_FROZEN_EXPERIMENT'
     docs=[]
     for task,commit in [
         ('TASK-E3-A-SOURCE-AUDIT-AND-PROBLEM-DEFINITION-001','8f5f7ea59efb32a0f633409386431811444ee399'),

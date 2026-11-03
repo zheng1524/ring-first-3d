@@ -4,6 +4,7 @@ import json,hashlib,datetime
 R=Path(__file__).resolve().parents[1];REPO=R.parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
+    assert not (R/'config/EXPERIMENT_FROZEN.json').exists(),'VERSION_ALREADY_FROZEN_USE_CHANGELOG'
     roots={
       'Camera Gate':REPO/'experiments/TASK-CAMERA-GATE-G01-004-PILOT-001',
       'Gate A':REPO/'experiments/TASK-E3-N0-GATE-A-COMPAT-CROP-METRIC-001',

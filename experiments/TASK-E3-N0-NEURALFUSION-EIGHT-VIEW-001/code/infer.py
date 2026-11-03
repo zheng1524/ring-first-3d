@@ -25,7 +25,8 @@ def instrument(pipe):
 def run(scene,order):
     p=protocol();source_order=p['orders'][scene]if order=='forward'else p['reverse_orders'][scene];checkpoint=p['checkpoint'];assert sha(checkpoint['path'])==checkpoint['sha256']
     assert sha(R/'config/EXPERIMENT_FROZEN.json')==load(R/'provenance/BEFORE_GPU.json')['protocol']['sha256']
-    for a in load(R/'provenance/BEFORE_GPU.json')['inputs']:assert sha(a['path'])==a['sha256']
+    for a in load(R/'provenance/BEFORE_GPU.json')['inputs']:
+        old=Path(a['path']);assert sha(R/'frozen_inputs'/old.parent.name/old.name)==a['sha256']
     torch.set_num_threads(2);torch.manual_seed(42);torch.backends.cudnn.benchmark=False;device=torch.device('cuda:0');torch.cuda.set_device(device)
     config=EasyDict(load(NF/'pretrained_models/shapenet_noise_005/version_0/config.json'));config.PIPELINE.device=device
     with torch.serialization.safe_globals([EasyDict]):ckpt=torch.load(checkpoint['path'],map_location='cpu',weights_only=True)
