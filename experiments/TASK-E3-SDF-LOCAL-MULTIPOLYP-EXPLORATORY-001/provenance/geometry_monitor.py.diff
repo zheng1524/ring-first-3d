@@ -1,0 +1,20 @@
+--- /home/liu/ring_first_3d_e3_sdf_full/experiments/TASK-E3-SDF-MONOSDF-FULL-TRAINING-REVALIDATION-001/code/geometry_monitor.py
++++ /home/liu/ring_first_3d_e3_sdf_multi/experiments/TASK-E3-SDF-LOCAL-MULTIPOLYP-EXPLORATORY-001/code/geometry_monitor.py
+@@ -68,7 +68,7 @@
+     folder = R/'local_results'/tag
+     folder.mkdir(exist_ok=True)
+     g = protocol()['geometry']; scale = g['mm_per_model_unit']; center = np.array(g['C_mm'])
+-    resolution = 512 if final else 128
++    resolution = protocol()['mesh']['final_resolution'] if final else protocol()['mesh']['coarse_checkpoint_resolution']
+     was_training = model.training
+     model.eval()
+     torch.cuda.empty_cache()
+@@ -110,7 +110,7 @@
+         retained_visible = visible & n['available']
+         keep_distance = distance(scene, n['X']) if len(F) else np.full(len(hit), np.inf)
+         full95 = full_error(error[visible])
+-        row = dict(tag=tag, arm=arm, step=step, source=cid, in_training=cid==SOURCES[0],
++        row = dict(tag=tag, arm=arm, step=step, source=cid, in_training=cid in SOURCES,
+             fixed_original_N=len(hit), fixed_visible_N=den, CAD_occluded_N=int((~visible).sum()),
+             available_input_N=int(n['available'].sum()),
+             hit_N=int((visible & finite).sum()), miss_N=int((visible & ~finite).sum()),

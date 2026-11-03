@@ -1,0 +1,43 @@
+{
+  "scene": "G06_004",
+  "records": [
+    {
+      "source": "G06_004_ref04",
+      "forward_backward_seconds": 1.175281874000575,
+      "optimizer_updates": 0,
+      "peak_allocated_MiB": 4315.25146484375,
+      "batch_rays": 1024,
+      "loss": 6.612817764282227,
+      "parameter_changes": 0
+    },
+    {
+      "source": "G06_004_growth_r01",
+      "forward_backward_seconds": 0.41783428300004744,
+      "optimizer_updates": 0,
+      "peak_allocated_MiB": 4315.77490234375,
+      "batch_rays": 1024,
+      "loss": 7.1284685134887695,
+      "parameter_changes": 0
+    },
+    {
+      "source": "G06_004_growth_r06",
+      "forward_backward_seconds": 0.4037392549998913,
+      "optimizer_updates": 0,
+      "peak_allocated_MiB": 4315.77490234375,
+      "batch_rays": 1024,
+      "loss": 6.477105140686035,
+      "parameter_changes": 0
+    }
+  ],
+  "full_official_chain_calls": {
+    "adaptive_sampler": 3,
+    "implicit_get_outputs": 3,
+    "rendering_network": 3,
+    "volume_rendering": 3
+  },
+  "formal_updates": 0,
+  "unchanged": true,
+  "mean_seconds": 0.6656184706668379,
+  "planning": "add20-60percent CPU/input/checkpoint/extraction and Adam allowance; no convergence inference",
+  "GT": false
+}

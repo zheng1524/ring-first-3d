@@ -1,0 +1,29 @@
+{
+  "stages": [
+    "three_reference"
+  ],
+  "arm": "M1",
+  "historical_M1_updates": 0,
+  "user_decision": "M1 基线1000步，累计到10000步",
+  "baseline": 1000,
+  "target_total": 10000,
+  "comparison_steps": [
+    1000,
+    2000,
+    5000,
+    10000
+  ],
+  "optimizer_reset_at_baseline": false,
+  "scene": "G01_004",
+  "sources": [
+    "G01_004_ref08",
+    "G01_004_ref13",
+    "G01_004_ref03"
+  ],
+  "total_rays_per_update": 1024,
+  "gradient_accumulation": false,
+  "learning_rate": "5e-4; same1000 warmup and .1 exponential over200k (not compressed to10k)",
+  "all_stage_mesh_resolution": 256,
+  "geometry_quality_early_stop": false,
+  "physical_GT": "NOT_EVALUABLE"
+}

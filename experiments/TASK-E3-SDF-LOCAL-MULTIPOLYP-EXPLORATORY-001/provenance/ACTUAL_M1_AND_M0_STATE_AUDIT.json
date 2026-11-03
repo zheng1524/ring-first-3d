@@ -1,0 +1,69 @@
+{
+  "historical_formal_M1_updates": 0,
+  "M1_resource_25_not_formal": true,
+  "new_user_approved_baseline": 1000,
+  "target": 10000,
+  "prior_M0_not_relabelled_M1": true,
+  "recoverable_M0_optimizer_step": 11000,
+  "Adam_state_steps": [
+    11000
+  ],
+  "complete_fields": [
+    "model",
+    "optimizer",
+    "scheduler",
+    "step",
+    "loss_step",
+    "torch_rng",
+    "cuda_rng",
+    "python_rng",
+    "numpy_rng",
+    "input_freeze"
+  ],
+  "LR_at_checkpoint": [
+    0.00044051936480819917
+  ],
+  "scheduler": {
+    "base_lrs": [
+      0.0005
+    ],
+    "last_epoch": 11000,
+    "_step_count": 11001,
+    "_get_lr_called_within_step": false,
+    "_last_lr": [
+      0.00044051936480819917
+    ],
+    "lr_lambdas": [
+      null
+    ]
+  },
+  "wall_seconds_to_preserved_M0_checkpoint": 5104.335620981,
+  "gradient_accumulation": false,
+  "G01_new_M1": "fresh same official initialization; no historical formal M1 state exists; prior M0 retained as comparison",
+  "G01_inputs": [
+    {
+      "source": "G01_004_ref08",
+      "all_array_values_identical": true,
+      "prior_sha256": "2ff447b03dd1b276b9a7a56855f8a774d938cb939bfe77b97432dd4fed610ca2",
+      "new_sha256": "2ff447b03dd1b276b9a7a56855f8a774d938cb939bfe77b97432dd4fed610ca2"
+    },
+    {
+      "source": "G01_004_ref13",
+      "all_array_values_identical": true,
+      "prior_sha256": "ff91a8b27fac0e2383f4d07d371cea077945f02d95195a6ef01f0217f63966bd",
+      "new_sha256": "ff91a8b27fac0e2383f4d07d371cea077945f02d95195a6ef01f0217f63966bd"
+    },
+    {
+      "source": "G01_004_ref03",
+      "all_array_values_identical": true,
+      "prior_sha256": "e61cdd12deeaf92990dc0ad39bf52548fb53d32a071ac19dd4ad8350f2e400bc",
+      "new_sha256": "e61cdd12deeaf92990dc0ad39bf52548fb53d32a071ac19dd4ad8350f2e400bc"
+    }
+  ],
+  "checkpoint": {
+    "path": "/home/liu/ring_first_3d_e3_sdf_multi/experiments/TASK-E3-SDF-LOCAL-MULTIPOLYP-EXPLORATORY-001/checkpoints/G01_previous_M0_handoff.pt",
+    "bytes": 8099447,
+    "sha256": "3dc21244858dd8312e96823ea1fd767e231f97093d92c02432ae7b030e048914"
+  },
+  "GT": false
+}
