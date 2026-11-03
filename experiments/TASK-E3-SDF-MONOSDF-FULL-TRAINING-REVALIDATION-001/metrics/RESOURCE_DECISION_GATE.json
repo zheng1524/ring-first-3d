@@ -1,0 +1,89 @@
+{
+  "status": "AWAITING_RESEARCHER_RESOURCE_DECISION",
+  "trigger": "user task section IV: estimate and pause if full training resource requirement exceeds environment",
+  "GPU": "RTX 3060 Laptop, 6144 MiB",
+  "primary_runs": 4,
+  "updates_per_run": 200000,
+  "planned_primary_updates": 800000,
+  "measured_disposable_optimizer_updates": 100,
+  "formal_optimizer_updates": 0,
+  "extra_post_port_GPU_forward_backward_without_update": 1,
+  "observed_bare_train_hours": 68.5778418666672,
+  "planning_wall_hours": [
+    80,
+    110
+  ],
+  "planning_range_is_not_a_statistical_confidence_interval": true,
+  "limitations": [
+    "20 timed early updates per arm; not late-training thermal or sampler validation",
+    "CPU input preparation, checkpoint and extraction outside timed scope",
+    "larger late-stage adaptive queries can still cause OOM; full run not guaranteed"
+  ],
+  "available_disk_bytes": 13761286144,
+  "local_storage_plan": {
+    "model_and_Adam_per_checkpoint_MiB_approx": 7.672061920166016,
+    "checkpoint_count_per_run": 12,
+    "four_final_512_cubed_fp32_fields_GiB": 2.0,
+    "note": "mesh size and temporary fields remain data-dependent; keep only indexed large local outputs"
+  },
+  "hardware_not_claimed_incapable": true,
+  "further_GPU_work_before_decision": false,
+  "measurements": [
+    {
+      "stage": "single",
+      "arm": "M0",
+      "measured_updates": 25,
+      "timed_updates": 20,
+      "mean_seconds": 0.30575925824999783,
+      "median_seconds": 0.3028067904999716,
+      "p95_seconds": 0.31320769460003817,
+      "estimated_200k_train_hours": 16.98662545833321,
+      "peak_allocated_MiB": 4318.40576171875,
+      "peak_reserved_MiB": 4564.0,
+      "timed_scope": "GPU forward/loss/backward/Adam; excludes packet preparation and extraction",
+      "scientific_status": "NOT_EVALUABLE_RESOURCE_TEST_ONLY"
+    },
+    {
+      "stage": "single",
+      "arm": "M1",
+      "measured_updates": 25,
+      "timed_updates": 20,
+      "mean_seconds": 0.3113083164499983,
+      "median_seconds": 0.3108592319999275,
+      "p95_seconds": 0.31724829809999733,
+      "estimated_200k_train_hours": 17.29490646944435,
+      "peak_allocated_MiB": 4318.408203125,
+      "peak_reserved_MiB": 4598.0,
+      "timed_scope": "GPU forward/loss/backward/Adam; excludes packet preparation and extraction",
+      "scientific_status": "NOT_EVALUABLE_RESOURCE_TEST_ONLY"
+    },
+    {
+      "stage": "three_CORE",
+      "arm": "M0",
+      "measured_updates": 25,
+      "timed_updates": 20,
+      "mean_seconds": 0.30522654485000655,
+      "median_seconds": 0.3045756634999748,
+      "p95_seconds": 0.3134546597999986,
+      "estimated_200k_train_hours": 16.957030269444807,
+      "peak_allocated_MiB": 4318.40576171875,
+      "peak_reserved_MiB": 4564.0,
+      "timed_scope": "GPU forward/loss/backward/Adam; excludes packet preparation and extraction",
+      "scientific_status": "NOT_EVALUABLE_RESOURCE_TEST_ONLY"
+    },
+    {
+      "stage": "three_CORE",
+      "arm": "M1",
+      "measured_updates": 25,
+      "timed_updates": 20,
+      "mean_seconds": 0.31210703405000684,
+      "median_seconds": 0.3118954199999848,
+      "p95_seconds": 0.3165409846000557,
+      "estimated_200k_train_hours": 17.339279669444824,
+      "peak_allocated_MiB": 4318.408203125,
+      "peak_reserved_MiB": 4598.0,
+      "timed_scope": "GPU forward/loss/backward/Adam; excludes packet preparation and extraction",
+      "scientific_status": "NOT_EVALUABLE_RESOURCE_TEST_ONLY"
+    }
+  ]
+}

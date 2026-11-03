@@ -1,0 +1,248 @@
+{
+  "task": "TASK-E3-SDF-MONOSDF-FULL-TRAINING-REVALIDATION-001",
+  "phase": "RESOURCE_PREFLIGHT_NOT_FORMAL_TRAINING",
+  "seed": 20261103,
+  "scene": "G01_004",
+  "sources": [
+    "G01_004_ref08",
+    "G01_004_ref13",
+    "G01_004_ref03"
+  ],
+  "stages": {
+    "single": [
+      "G01_004_ref08"
+    ],
+    "three_CORE": [
+      "G01_004_ref08",
+      "G01_004_ref13",
+      "G01_004_ref03"
+    ]
+  },
+  "arms": [
+    "M0",
+    "M1"
+  ],
+  "official_commit": "12513009cd20a08b35ddc2c55a7e42da2c7baf43",
+  "geometry": {
+    "C_mm": [
+      -0.16290984225938487,
+      0.36035628958415167,
+      -5.359920371585014
+    ],
+    "mm_per_model_unit": 10.053,
+    "box_model": [
+      [
+        -1,
+        -1,
+        -1
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "source": "same N0 frozen G01 metric cube; shared single/three and M0/M1",
+    "SDF_mm": "mm_per_model_unit * raw_official_SDF",
+    "camera": "c2w R unchanged, translation=(C_camera_mm-C_mm)/s",
+    "depth": "axial Z_mm/s; ray samples are Euclidean distance, not axial Z"
+  },
+  "official_training_budget": {
+    "paper_iterations": 200000,
+    "rays_per_update": 1024,
+    "learning_rate": 0.0005,
+    "sched_decay_rate": 0.1,
+    "official_nepoch_cli_default": 2000,
+    "warning": "official dataset __len__ remains full n_images even num_views3; do NOT use new1/3image epoch count to silently shorten200k",
+    "total_primary_runs": 4,
+    "total_primary_updates": 800000
+  },
+  "sampler": {
+    "N_samples": 64,
+    "N_samples_eval": 128,
+    "N_samples_extra": 32,
+    "eps": 0.1,
+    "beta_iters": 10,
+    "max_total_iters": 5,
+    "finite_bounds": "true per-ray ROI cube intersection and earliest actual CAD-.05mm; official ErrorBoundSampler core unchanged",
+    "infinite_terminal_absorption": false
+  },
+  "network": {
+    "Grid_MLP": false,
+    "dims": [
+      256,
+      256,
+      256,
+      256,
+      256,
+      256,
+      256,
+      256
+    ],
+    "feature_vector_size": 256,
+    "multires": 6,
+    "skip_in": [
+      4
+    ],
+    "rendering_dims": [
+      256,
+      256
+    ],
+    "multires_view": 4,
+    "bias": 0.6,
+    "beta_init_model": 0.1,
+    "beta_min_model": 0.0001,
+    "inside_outside": false,
+    "absorbing_sphere_disabled": true
+  },
+  "optimizer": {
+    "type": "official plain MLP Adam",
+    "lr": 0.0005,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "schedule": "1000-step linear warmup from baseLR/1000 then official exponential0.1 over200k; identical M0/M1",
+    "gradient_clip": null
+  },
+  "losses": {
+    "shared": {
+      "rgb": "official L1 on fixed legal Polyp scope",
+      "eikonal_weight": 0.1,
+      "smooth_weight": 0.005,
+      "depth": "official scale-and-shift invariant shape loss; actual HERO depth in model units, no Omnidata50+.5 transform",
+      "depth_weight": 0.1,
+      "normal_l1_weight": 0.05,
+      "normal_cos_weight": 0.05,
+      "end_step": 12800,
+      "normal_validity": "real derived normals only; no fake all-ones normals",
+      "prediction_crossing_gate": "official depth/normal crossing gate retained; risk explicitly evaluated"
+    },
+    "M1": {
+      "surface_weight": 1.0,
+      "surface": "smooth_L1(f_mm/.25,0), all qualified HERO points independent of predicted hit",
+      "first_surface_weight": 0.1,
+      "first_surface": "smooth_L1((first_pos_to_neg_axial_mm-HERO_mm)/.25,0), fixed HERO denominator; miss counts remain separate, no fake hit",
+      "free_space_weight": 0.1,
+      "free_space": "weak relu(.05-f_mm)/.25 at source HERO-0.5mm along actual ray, only if inside allowed interval before CAD; no ROI entry outside assumption",
+      "positive_mask_weight": 0.1,
+      "positive_mask": "stable finite log optical opacity target1; no Ring/background unknown negative labels",
+      "conflict": "1/.25 front-violation proxy, not physical truth; all sources retained; one shared upstream family source-balanced"
+    },
+    "M0_M1_difference": "M1-only absolute anchors/first-depth/free-space/positive-opacity; same official backbone/sampling/renderer, seed/batch/steps"
+  },
+  "checkpoint_steps": [
+    0,
+    1,
+    10,
+    100,
+    1000,
+    5000,
+    10000,
+    25000,
+    50000,
+    100000,
+    150000,
+    200000
+  ],
+  "mesh": {
+    "official_function": "utils.plots.get_surface_trace",
+    "coarse_checkpoint_resolution": 128,
+    "final_resolution": 512,
+    "all_components_preserved": true,
+    "mesh_postprocess": false
+  },
+  "recovery": {
+    "max_additional_runs": 1,
+    "predeclared_candidate": "same init/input, baseLR5e-5, same200k update budget; only if severe shrink diagnosed; not automatically selected by appearance",
+    "primary_runs_not_stopped_for_geometry": true
+  },
+  "resource_benchmark": {
+    "warmup_updates": 5,
+    "timed_updates": 20,
+    "arms": [
+      "M0",
+      "M1"
+    ],
+    "batch_rays": 1024,
+    "microbatch_fallback": "no silent effective-batch reduction; if1024 OOM report and propose exact gradient-accumulation adaptation separately",
+    "formal_training_updates": 0,
+    "disposable_parameters": true
+  },
+  "evaluation": {
+    "native_denominator": "all original valid native Polyp for CORE; raw/retained availability and CAD flags separate; identical M0/M1",
+    "agreement_mm": 0.25,
+    "physical_GT": "NOT_EVALUABLE",
+    "image_holdout": "no independent unseen frames; held pixels only monitoring, not blind view"
+  },
+  "permitted": "G01_004 only; no source or camera changes, no new HERO, no GT/Oracle/Dxy",
+  "sources_detail": [
+    {
+      "source": "G01_004_ref08",
+      "qualification": "INSUFFICIENT_EVIDENCE",
+      "block": "G01_video004_B3",
+      "native_retained_N": 13370,
+      "crop_retained_N": 14800,
+      "eligible_crop_HERO_N": 14234,
+      "normal_eligible_N": 13209,
+      "normal_rule": "true central XYZ derivatives, 4 legal neighbours, <=.75mm axial jump, >2 native Mask px interior, oriented toward actual camera; camera coordinates",
+      "input_baseline": "N0 frozen V6 baseline + N0 fixed A2 pass; no new cleanup this task",
+      "native_asset": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_ref08.npz",
+        "bytes": 371175,
+        "sha256": "5bee4770d98f0a06fa5499b81276a88cd9d0de295069e7d892e93b88ff28fcef"
+      },
+      "crop_asset": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G01_004_ref08.npz",
+        "bytes": 975628,
+        "sha256": "722c496210d189d146ededae4e407e68faeba5432cc8dd114a265bc40cd829db"
+      },
+      "conditional_conflict_N": 86
+    },
+    {
+      "source": "G01_004_ref13",
+      "qualification": "INSUFFICIENT_EVIDENCE",
+      "block": "G01_video004_B5",
+      "native_retained_N": 12378,
+      "crop_retained_N": 14443,
+      "eligible_crop_HERO_N": 14044,
+      "normal_eligible_N": 12936,
+      "normal_rule": "true central XYZ derivatives, 4 legal neighbours, <=.75mm axial jump, >2 native Mask px interior, oriented toward actual camera; camera coordinates",
+      "input_baseline": "N0 frozen V6 baseline + N0 fixed A2 pass; no new cleanup this task",
+      "native_asset": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_ref13.npz",
+        "bytes": 370473,
+        "sha256": "72920e41fbd0c89889825e4ff29b8e2a615778573d944a5886ba2eb0d13ee1ba"
+      },
+      "crop_asset": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G01_004_ref13.npz",
+        "bytes": 955528,
+        "sha256": "2bbde25000dfc101a0645608abfade4c2d7e477fe872d857b2d8003347e4666c"
+      },
+      "conditional_conflict_N": 10954
+    },
+    {
+      "source": "G01_004_ref03",
+      "qualification": "INSUFFICIENT_EVIDENCE",
+      "block": "G01_video004_B2",
+      "native_retained_N": 23230,
+      "crop_retained_N": 16132,
+      "eligible_crop_HERO_N": 15567,
+      "normal_eligible_N": 14759,
+      "normal_rule": "true central XYZ derivatives, 4 legal neighbours, <=.75mm axial jump, >2 native Mask px interior, oriented toward actual camera; camera coordinates",
+      "input_baseline": "N0 frozen V6 baseline + N0 fixed A2 pass; no new cleanup this task",
+      "native_asset": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_ref03.npz",
+        "bytes": 388396,
+        "sha256": "30a6c47aeed4310a22301f48b3cb38898684abbb0209f72851f8322d97f48b7d"
+      },
+      "crop_asset": {
+        "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/crops/G01_004_ref03.npz",
+        "bytes": 1040145,
+        "sha256": "6df2c6f9775b66bf568c6e5be030d72a27a13f8f990e41874eeb04f571705f23"
+      },
+      "conditional_conflict_N": 13959
+    }
+  ]
+}

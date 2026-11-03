@@ -1,0 +1,21 @@
+{
+  "authorized_stages": [
+    "single"
+  ],
+  "arms": [
+    "M0",
+    "M1"
+  ],
+  "steps_per_arm": 200000,
+  "data_protocol": {
+    "path": "/home/liu/ring_first_3d_e3_sdf_full/experiments/TASK-E3-SDF-MONOSDF-FULL-TRAINING-REVALIDATION-001/config/PREREGISTERED.json",
+    "bytes": 8910,
+    "sha256": "e4bd610f91d456081a1b55ac86c868fde352cd4a5bcbce508e0fdaebc40a7e4a"
+  },
+  "initialization": "official geometric initialization bias .6, shared seed; no new shell search",
+  "stop_rule": "no geometry-quality early stopping; genuine nonfinite/hardware interruption only",
+  "recovery": "one registered LR candidate only; not automatically run; no new resource budget assumed",
+  "evaluation": "all three CORE original-native denominators; ref13/ref03 diagnostic not independent GT",
+  "training_source": "G01_004_ref08",
+  "three_CORE_training": false
+}

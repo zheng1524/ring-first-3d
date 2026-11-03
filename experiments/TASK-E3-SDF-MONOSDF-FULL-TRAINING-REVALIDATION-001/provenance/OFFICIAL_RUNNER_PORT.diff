@@ -1,0 +1,20 @@
+--- official/MonoSDFTrainRunner.run
++++ adapted/MonoSDFTrainRunner.run
+@@ -3,7 +3,7 @@
+         if self.GPU_INDEX == 0 :
+             self.writer = SummaryWriter(log_dir=os.path.join(self.plots_dir, 'logs'))
+ 
+-        self.iter_step = 0
++        self.iter_step = self.resume_step
+         for epoch in range(self.start_epoch, self.nepochs + 1):
+ 
+             if self.GPU_INDEX == 0 and epoch % self.checkpoint_freq == 0:
+@@ -96,6 +96,8 @@
+                 
+                 self.train_dataset.change_sampling_idx(self.num_pixels)
+                 self.scheduler.step()
++                del model_outputs, loss_output, loss, psnr
++                self.after_update()
+ 
+         if self.GPU_INDEX == 0:
+             self.save_checkpoints(epoch)

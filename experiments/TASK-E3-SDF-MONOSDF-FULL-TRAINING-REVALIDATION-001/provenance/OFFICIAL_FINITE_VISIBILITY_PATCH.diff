@@ -1,0 +1,35 @@
+--- official/UniformSampler.get_z_vals
++++ adapted/UniformSampler.get_z_vals
+@@ -1,9 +1,5 @@
+ def get_z_vals(self, ray_dirs, cam_loc, model):
+-    if not self.take_sphere_intersection:
+-        near, far = self.near * torch.ones(ray_dirs.shape[0], 1).cuda(), self.far * torch.ones(ray_dirs.shape[0], 1).cuda()
+-    else:
+-        _, far = self.near_far_from_cube(cam_loc, ray_dirs, bound=self.scene_bounding_sphere)
+-        near = self.near * torch.ones(ray_dirs.shape[0], 1).cuda()
++    near, far = model._visibility_bounds
+ 
+     t_vals = torch.linspace(0., 1., steps=self.N_samples).cuda()
+     z_vals = near * (1. - t_vals) + far * (t_vals)
+--- official/ErrorBoundSampler.get_z_vals
++++ adapted/ErrorBoundSampler.get_z_vals
+@@ -126,7 +126,7 @@
+ 
+     z_samples = samples
+     #TODO Use near and far from intersection
+-    near, far = self.near * torch.ones(ray_dirs.shape[0], 1).cuda(), self.far * torch.ones(ray_dirs.shape[0],1).cuda()
++    near, far = model._visibility_bounds
+     if self.inverse_sphere_bg: # if inverse sphere then need to add the far sphere intersection
+         far = rend_util.get_sphere_intersections(cam_loc, ray_dirs, r=self.scene_bounding_sphere)[:,1:]
+ 
+--- official/MonoSDFNetwork.volume_rendering
++++ adapted/MonoSDFNetwork.volume_rendering
+@@ -3,7 +3,7 @@
+     density = density_flat.reshape(-1, z_vals.shape[1])  # (batch_size * num_pixels) x N_samples
+ 
+     dists = z_vals[:, 1:] - z_vals[:, :-1]
+-    dists = torch.cat([dists, torch.tensor([1e10]).cuda().unsqueeze(0).repeat(dists.shape[0], 1)], -1)
++    dists = torch.cat([dists, torch.tensor([0.0]).cuda().unsqueeze(0).repeat(dists.shape[0], 1)], -1)
+ 
+     # LOG SPACE
+     free_energy = dists * density

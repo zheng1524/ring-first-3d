@@ -1,0 +1,19 @@
+--- official/get_surface_trace
++++ adapted/get_surface_trace
+@@ -6,6 +6,7 @@
+     for i, pnts in enumerate(torch.split(points, 100000, dim=0)):
+         z.append(sdf(pnts.cuda()).detach().cpu().numpy())
+     z = np.concatenate(z, axis=0)
++    np.save(str(path)+"/sdf_"+str(epoch)+"_model.npy", z.reshape(resolution,resolution,resolution).transpose(1,0,2))
+ 
+     if (not (np.min(z) > level or np.max(z) < level)):
+ 
+@@ -29,7 +30,7 @@
+                             lighting=dict(diffuse=1, ambient=0, specular=0),
+                             lightposition=dict(x=0, y=0, z=-1), showlegend=True)]
+         '''
+-        meshexport = trimesh.Trimesh(verts, faces, normals)
++        meshexport = trimesh.Trimesh(verts, faces, vertex_normals=normals, process=False)
+         meshexport.export('{0}/surface_{1}.ply'.format(path, epoch), 'ply')
+ 
+         if return_mesh:
