@@ -15,5 +15,6 @@
 |H03|HERO 参考间存在冲突|SSI 可吸收尺度/偏移，首次 gate 存在覆盖选择风险；M1 保护可能相互冲突，不能预先声称解决|E2.5、E3-C/N0历史报告；本轮冻结权重|
 |H04|可靠法向不是独立真值|由同源 HERO 四邻导数估计，排除跳变和无效点；仍继承原深度误差|[法向审计](metrics/INPUT_AND_NORMAL_AUDIT.csv)|
 |H05|长期硬件资源未证实|短测试峰值能容纳，不保证后期自适应查询、提取临时场或热负载；实际 OOM/数值故障须保留中断点，不称充分训练失败|[资源估算](metrics/RESOURCE_DECISION_GATE.json)|
+|E04|独立CPU回放首个命令缺依赖路径|单独stdin脚本未加入既有E0 runtime/python，因此skimage导入失败；正式训练已有正确路径，未受影响。回放脚本补该只读路径，不安装/修改环境、不追加训练更新|provenance/RUNTIME_ACCEPTANCE_AUDIT.py|
 
 没有 GT 读取、历史预测回退、相机/HERO/CAD 修改、新 HERO 推理或 DXY 修改。没有删除困难参考。长程科学问题在200k完成并审阅前保留 NOT_EVALUABLE；原始暂停回执和历史失败均保留。

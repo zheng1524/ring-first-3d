@@ -50,6 +50,10 @@ M0 保留官方损失组件；M1 增加来源可靠性加权的原生 HERO 零�
 
 `render_progress.py` 根据已保存真实检查点生成四图，未运行臂显式标记 NOT_RUN；最终图与局部解释仍需训练完成后审阅。物理连续/光滑/闭合不代表真实准确。当前 [资源预检图](figures/PREFLIGHT_Inputs_And_Resources.png) 只展示真实输入和资源测量，不冒充学习结果。
 
+已保存进度图：[训练曲线](figures/Fig1_Training_Progress.png)、[毫米Mesh比较](figures/Fig2_Metric_Geometry_Comparison.png)、[真实图像/首层](figures/Fig3_Real_Image_First_Surface.png)、[原始SDF切片](figures/Fig4_Raw_SDF_Local_Diagnostics.png)。它们标注实际检查点步数，可能早于当前实时训练；不是最终200k验收图。
+
+真实执行核查见 [OFFICIAL_RUNTIME_ACCEPTANCE](metrics/OFFICIAL_RUNTIME_ACCEPTANCE.json)：0/1/10/100步原场CPU重放MC，原三角面顺序完全一致，毫米逆映射<2e−6mm；首步37个参数张量均真正变化。空零面诊断另有控制测试，MISS被保留且不会因没有Mesh触发科学停止。
+
 ## 6. 固定审计表
 
 |审计项目|必须汇报|
