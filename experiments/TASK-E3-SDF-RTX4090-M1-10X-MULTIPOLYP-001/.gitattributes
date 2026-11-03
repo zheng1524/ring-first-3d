@@ -1,0 +1,5 @@
+# Preserve exact upstream context in the audited IO patch.
+provenance/*.diff -whitespace
+code/portable_training/train_full.py -whitespace
+# Unmodified official Git blobs, including upstream formatting and license.
+vendor/official_exact/** -whitespace

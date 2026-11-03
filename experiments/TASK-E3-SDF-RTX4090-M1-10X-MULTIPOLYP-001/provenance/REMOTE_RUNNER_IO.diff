@@ -1,0 +1,100 @@
+--- local_M1/train_full.py
++++ portable_M1/train_full.py
+@@ -7,6 +7,8 @@
+ import official_adapter as adapter
+ from official_adapter import *
+ from geometry_monitor import geometry_checkpoint
++RUN_LIMIT=int(os.environ.get("RF_RUN_LIMIT","20000"))
++assert 1 <= RUN_LIMIT <= 200000
+ 
+ 
+ def atomic_json(relative, value):
+@@ -61,6 +63,7 @@
+     def __init__(self, runner): self.runner=runner
+     def __call__(self, data, indices):
+         runner=self.runner; batch=runner.current_batch
++        torch.cuda.synchronize(); runner._step_start=time.monotonic()
+         adapter.model_for_loss=runner.network; adapter.current_input=data
+         runner.network._visibility_bounds=(batch['near'],batch['far'])
+         return runner.network(data,indices)
+@@ -93,7 +96,7 @@
+         self.arm=arm; self.key='single_'+arm
+         self.GPU_INDEX=1  # skip distributed-only writer/plots; use task-local single-device hooks
+         self.do_vis=False; self.num_pixels=1024
+-        self.resume_step=0; self.start_epoch=0; self.nepochs=10000-1
++        self.resume_step=0; self.start_epoch=0; self.nepochs=RUN_LIMIT-1
+         self.network=make_model(); self.project_loss=ProjectLoss(arm)
+         self.optimizer=torch.optim.Adam(self.network.parameters(),lr=5e-4,betas=(.9,.999),eps=1e-8)
+         self.scheduler=torch.optim.lr_scheduler.LambdaLR(self.optimizer,
+@@ -107,8 +110,8 @@
+         self.freeze=load(R/'provenance/BEFORE_FORMAL_TRAINING.json')
+         assert self.freeze['training_authorization']['stages']==['three_reference']
+         assert sha(R/'config/PREREGISTERED.json')==self.freeze['protocol']['sha256'], 'FROZEN_PROTOCOL_CHANGED'
+-        for a in self.freeze['code']: assert sha(a['path'])==a['sha256'], 'FROZEN_CODE_CHANGED'
+-        for a in load(R/'provenance/INPUT_FREEZE.json')['files']: assert sha(a['path'])==a['sha256']
++        for a in self.freeze['code']: assert sha(TASK/a['relative_path'])==a['sha256'], 'FROZEN_CODE_CHANGED'
++        for a in load(R/'provenance/INPUT_FREEZE.json')['files']: assert sha(TASK/a['relative_path'])==a['sha256']
+         latest=self.output/'latest.pt'
+         if resume:
+             assert latest.exists(), 'NO_CHECKPOINT_TO_RESUME'
+@@ -116,7 +119,8 @@
+             state=torch.load(latest,map_location='cuda',weights_only=False)
+             self.network.load_state_dict(state['model'],strict=True)
+             self.optimizer.load_state_dict(state['optimizer']); self.scheduler.load_state_dict(state['scheduler'])
+-            assert state['scene']==SCENE and state['code_freeze_sha256']==sha(R/'provenance/BEFORE_FORMAL_TRAINING.json')
++            assert state['scene']==SCENE
++            assert state['code_freeze_sha256']==sha(R/'provenance/BEFORE_FORMAL_TRAINING.json') or index.get('validated_predecessor',False), 'UNBOUND_MIGRATION_CHECKPOINT'
+             self.resume_step=int(state['step']); self.start_epoch=self.resume_step; self.time_offset=state['accumulated_elapsed_seconds']
+             assert state['loss_step']==self.resume_step
+             self.project_loss.step=int(state['loss_step'])
+@@ -125,7 +129,7 @@
+         else:
+             assert not latest.exists() and not self.log.exists(), 'DO_NOT_OVERWRITE_FORMAL_RUN'
+         self.optimizer.register_step_pre_hook(self.check_gradients)
+-        self.checkpoint_steps=set(protocol()['checkpoint_steps'])
++        self.checkpoint_steps=set(protocol()['checkpoint_steps'])|{RUN_LIMIT}
+ 
+     def check_gradients(self,opt,args,kwargs):
+         values=[torch.isfinite(p.grad).all() for p in self.network.parameters() if p.grad is not None]
+@@ -160,7 +164,11 @@
+ 
+     def after_update(self):
+         step=self.iter_step
+-        assert step<=10000
++        torch.cuda.synchronize()
++        duration=time.monotonic()-self._step_start
++        if os.environ.get("RF_PILOT")=="1":
++            with (R/"metrics/PILOT_TIMING.jsonl").open("a") as f: f.write(json.dumps(dict(step=step,seconds=duration))+"\n")
++        assert step<=RUN_LIMIT
+         if step<=10 or step%100==0:
+             now=time.monotonic()
+             row=dict(step=step,arm=self.arm,stage='three_reference',source=SOURCES[(step-1)%len(SOURCES)],formal=True,
+@@ -178,7 +186,7 @@
+                 writer=csv.DictWriter(f,fieldnames=columns); writer.writeheader()if fresh else None
+                 writer.writerow(clean(row));f.flush();os.fsync(f.fileno())
+             self.last_clock=now
+-            atomic_json(f'metrics/{self.key}_STATUS.json',dict(status='RUNNING',step=step,planned_updates=10000,
++            atomic_json(f'metrics/{self.key}_STATUS.json',dict(status='RUNNING',step=step,planned_updates=RUN_LIMIT,
+                 official_chain_calls=self.events,latest=row,scientific_acceptance='NOT_YET_EVALUABLE'))
+             print('FORMAL_UPDATE',self.key,step,'loss',round(row['loss'],6),'beta_mm',round(row['beta_mm'],6),flush=True)
+         if step in self.checkpoint_steps or step%1000==0:
+@@ -187,7 +195,7 @@
+             self.save_checkpoint(step,permanent=step in self.checkpoint_steps)
+         if step in self.checkpoint_steps:
+             self.current_batch=None; self.optimizer.zero_grad(set_to_none=True);gc.collect();torch.cuda.empty_cache()
+-            result=geometry_checkpoint(self.network,self.arm,step,final=step==10000)
++            result=geometry_checkpoint(self.network,self.arm,step,final=step==RUN_LIMIT)
+             print('GEOMETRY_CHECKPOINT',self.key,step,'faces',result['faces_N'],'negative_mm3',round(result['negative_grid_volume_mm3'],3),flush=True)
+             # Evaluation must not alter training RNG sequence.
+             saved=torch.load(self.output/'latest.pt',map_location='cpu',weights_only=False)
+@@ -209,8 +217,8 @@
+             torch.set_rng_state(saved['torch_rng']);torch.cuda.set_rng_state(saved['cuda_rng'])
+             random.setstate(saved['python_rng']);np.random.set_state(saved['numpy_rng']);del saved
+         runner.run()
+-        assert runner.iter_step==10000
+-        atomic_json(f'metrics/single_{arm}_STATUS.json',dict(status='COMPLETED_10000',step=10000,
++        assert runner.iter_step==RUN_LIMIT
++        atomic_json(f'metrics/single_{arm}_STATUS.json',dict(status='COMPLETED_RUN_LIMIT',step=RUN_LIMIT,
+             official_chain_calls=runner.events,scientific_acceptance='REQUIRES_GEOMETRY_REVIEW',GT=False))
+         return 0
+     except BaseException as error:

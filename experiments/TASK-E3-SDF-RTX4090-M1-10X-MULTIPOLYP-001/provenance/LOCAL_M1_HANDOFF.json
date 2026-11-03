@@ -1,0 +1,22 @@
+{
+  "timestamp_UTC": "2026-11-03T07:10:20.393803+00:00",
+  "reason": "migrate same M1 chain to authorized4090; avoid duplicate optimization",
+  "baseline_reference_step": 2000,
+  "primary_target_per_group": 20000,
+  "handoff_complete_step": 4000,
+  "source": {
+    "step": 4000,
+    "arm": "M1",
+    "path": "/home/liu/ring_first_3d_e3_sdf_multi/experiments/TASK-E3-SDF-LOCAL-MULTIPOLYP-EXPLORATORY-001/groups/G01_004/checkpoints/single_M1/latest.pt",
+    "bytes": 8110583,
+    "sha256": "63a1b05b681fd47929afe2b05437f18bc5ccb9ad28c63056179315cb00859985"
+  },
+  "destination": "/home/liu/ring_first_3d_e3_sdf_4090/experiments/TASK-E3-SDF-RTX4090-M1-10X-MULTIPOLYP-001/checkpoints/M1_HANDOFF_G01_step004000.pt",
+  "sha256": "63a1b05b681fd47929afe2b05437f18bc5ccb9ad28c63056179315cb00859985",
+  "owned_commands": {
+    "19343": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python -B /home/liu/ring_first_3d_e3_sdf_multi/experiments/TASK-E3-SDF-LOCAL-MULTIPOLYP-EXPLORATORY-001/code/run_all.py ",
+    "19413": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python -B /home/liu/ring_first_3d_e3_sdf_multi/experiments/TASK-E3-SDF-LOCAL-MULTIPOLYP-EXPLORATORY-001/code/train_full.py M1 "
+  },
+  "other_user_tasks_signalled": 0,
+  "exact_live_step_after_checkpoint": "may be at next forward; only complete checkpoint claimed"
+}
