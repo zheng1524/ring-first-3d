@@ -1,0 +1,122 @@
+{
+  "task": "TASK-E4-PMGR-R1",
+  "date": "2026-11-05 Asia/Shanghai",
+  "parent_commit": "b8c41565d467c922fdf2f45d3a4adf92f332813d",
+  "case_order": [
+    "G01_004",
+    "G06_004"
+  ],
+  "scenes": {
+    "G01_004": {
+      "initial": "E2",
+      "P1": [
+        "G01_004_ref08",
+        "G01_004_ref13",
+        "G01_004_ref03"
+      ],
+      "former_B": "G01_004_growth_r14",
+      "tier": "CONDITIONAL_RESEARCH_ALL_ARE_INSUFFICIENT_EVIDENCE",
+      "P2": [
+        "G01_004_ref08",
+        "G01_004_ref13",
+        "G01_004_ref03",
+        "G01_004_growth_r04",
+        "G01_004_growth_r06",
+        "G01_004_growth_r10",
+        "G01_004_growth_r14"
+      ]
+    },
+    "G06_004": {
+      "initial": "E1",
+      "P1": [
+        "G06_004_growth_r01",
+        "G06_004_growth_r03",
+        "G06_004_growth_r06"
+      ],
+      "former_B": "G06_004_growth_r06",
+      "tier": "CONDITIONAL_RESEARCH_MIXED_GATE",
+      "P2": [
+        "G06_004_growth_r01",
+        "G06_004_growth_r03",
+        "G06_004_growth_r06",
+        "G06_004_new_r00",
+        "G06_004_ref04"
+      ]
+    }
+  },
+  "stop": {
+    "minimum_candidates": 10,
+    "cumulative_rejection_fraction_gt": 0.5,
+    "rolling_window": 10,
+    "rolling_rejection_fraction_gt": 0.5,
+    "count_backtracking_and_feasible_direction_trials": true,
+    "scope": "GLOBAL_STOP_NO_SECOND_CASE_ON_TRIGGER",
+    "P0_infeasible_global_stop": true
+  },
+  "P0": {
+    "solver": "single SLSQP solve, nine live parameters",
+    "max_iterations": 60,
+    "gap_mm": 0.05,
+    "minimum_volume_ratio": 0.85,
+    "axis_ratio_bounds": [
+      0.8,
+      1.25
+    ],
+    "center_domain_equivalent_diameter_fraction": 0.25,
+    "rotation_component_change_rad": 0.5,
+    "mean_Mask_IoU_drop_max": 0.03,
+    "per_view_Mask_IoU_drop_max": 0.05,
+    "relative_depth_MAE_increase_mm_max": 0.15,
+    "native_hit_fraction_drop_max": 0.05,
+    "clearance_certification": "1-Lipschitz ellipsoid level on CAD barycentric subdivision4 + covering radius; full-mesh FCL; O3D signs; independent Blender BVH and EXACT Boolean",
+    "single_run_selection": "minimum declared training objective among feasible points of this one SLSQP solve, no alternate initialization search"
+  },
+  "P1": {
+    "modes": 12,
+    "max_iterations": 12,
+    "ftol": 0.001
+  },
+  "P2": {
+    "modes": 32,
+    "max_iterations": 18,
+    "ftol": 1e-05
+  },
+  "optimizer": {
+    "method": "residual Gauss-Newton LM + SLSQP feasible-direction QP",
+    "lambda_initial": 0.01,
+    "lambda_good_factor": 0.33,
+    "lambda_bad_factor": 3.0,
+    "candidate_trials_per_iteration": 4,
+    "pixel_radius": "max(1,p75 real bidirectional contour error); image Jacobian bound, no uniform world-mm step cap",
+    "rho_good": 0.75,
+    "rho_bad": 0.25
+  },
+  "loss": {
+    "Mask": 1.0,
+    "Depth": 1.0,
+    "HERO": 0.1,
+    "Reg": 0.02,
+    "contour_sigma_archive_px": 3.0,
+    "relative_depth_sigma_mm": 0.25,
+    "HERO_sigma_mm": 0.5,
+    "pose_prior": 0.002,
+    "RGB_photometric": 0.0,
+    "Base": 0.0
+  },
+  "accept": {
+    "per_view_contour_increase_from_newP0_px_max": 0.5,
+    "native_coverage_drop_from_newP0": 0.05,
+    "no_intersection": true,
+    "actual_mesh_path": "positive-gap path: adaptive Lipschitz/FCL when certifiable; contact case: endpoints independently resolved by Blender exact solid intersection and three midpoint checks; finite midpoint fallback is not certified continuous CCD",
+    "min_triangle_area_ratio": 0.15
+  },
+  "fixed_ROI_and_metric": true,
+  "GT": false,
+  "camera_update": false,
+  "cleanup_update": false,
+  "DXY_readonly": true,
+  "official_ring_unchanged": true,
+  "independent_holdout": false,
+  "no_80_arm_restart": true,
+  "basis": "dense mass-constrained Rayleigh eigensolve, excludes live9 tangent,32 fixed reference fields"
+}

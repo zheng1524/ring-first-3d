@@ -1,0 +1,194 @@
+{
+  "timestamp": "2026-11-05T01:55:25.684942+08:00",
+  "formal_optimization_launched": false,
+  "source_files": [
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/01_PROTOCOL.md",
+      "sha256": "e6a1046c75ef14d2a44a2f44455afec64a7061f0d8c6ab0b4047e879702c5e5b"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/blender_check.py",
+      "sha256": "a92c5984e0636f0bfaaf646e8307736052f0a1605f0397fb71f5137823f3aa53"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/camera_renderer.py",
+      "sha256": "129f8f9b7cb50ffb4b3ca7083e7df795fd7512f29ac6e542f18702a06cab58a1"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/collision.py",
+      "sha256": "857ab1fc813d989ba7e5b329b99d5b7656d3dc5d32e517451f691a3bf6f86d51"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/env.sh",
+      "sha256": "808e6e8888cc98ac84c7b7470af41b019091b2449e46703f81311eaa9a5c97d9"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/geometry.py",
+      "sha256": "26907348b2c0a4d2c1f0fcc7aa8c2fb0decd0841e99f8225057cbff89727df06"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/inputs.py",
+      "sha256": "482e3984bcbfcf195502ccd522ce2a5f3ab9009344f4a5bceaedb3448f18509a"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/legacy_mesh.py",
+      "sha256": "d9be483cd1927f342eab8becca5fe67f30e6787b2007b1b3ab7aa73255992b46"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/mesh_checks.py",
+      "sha256": "1f8b8f196b769d9c91b0c1a79e0fc6a922d63bce9625cf349618c4f5756a0281"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/observations.py",
+      "sha256": "03f6ca4ba537c223004171029c6eabbe2a84ad24f48dfbf57588457d7b02704e"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/prepare.py",
+      "sha256": "8ca3f6f12e578f3f656be118fdc825f3803ccc2f3964bb859570ea83997ec210"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/run.py",
+      "sha256": "9b12d586bb6592bd80fdfa4ce502437e968d2f0a2e6d7138fb4337f2a4701bf8"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/code/validate.py",
+      "sha256": "1006b2c40d8fc333f3c30d7880071e3819ec5c2b56f82c7323171db1c53aaef6"
+    },
+    {
+      "path": "experiments/TASK-E4-PMGR-R1/config/LOCKED_PROTOCOL.json",
+      "sha256": "6dfdead52cef1de38fb0754956c74d0da1cf697eb24c53c9e11668fc1d3c1836"
+    }
+  ],
+  "numerical_validation": [
+    {
+      "name": "CONTROL_GAP_POSITIVE_FCL",
+      "passed": true,
+      "minimum_distance": 0.04999999999999982,
+      "triangle_collision_N": 0
+    },
+    {
+      "name": "CONTROL_GAP_POSITIVE_BLENDER",
+      "passed": true,
+      "Blender_version": "5.0.1",
+      "build_hash": "a3db93c5b259",
+      "body_vertices": 8,
+      "CAD_vertices": 8,
+      "BVH_intersecting_triangle_pairs": 0,
+      "first_intersections": [],
+      "EXACT_intersection_volume_mm3": 0.0,
+      "body_vertex_unsigned_nearest_mm": 0.04999995231628418,
+      "GT_or_existing_blend_opened": false,
+      "scene_start": "--factory-startup"
+    },
+    {
+      "name": "CONTROL_GAP_NEGATIVE_FCL",
+      "passed": true,
+      "minimum_distance": 0.0,
+      "triangle_collision_N": 1
+    },
+    {
+      "name": "CONTROL_GAP_NEGATIVE_BLENDER",
+      "passed": true,
+      "Blender_version": "5.0.1",
+      "build_hash": "a3db93c5b259",
+      "body_vertices": 8,
+      "CAD_vertices": 8,
+      "BVH_intersecting_triangle_pairs": 16,
+      "first_intersections": [
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          11,
+          7
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "EXACT_intersection_volume_mm3": 0.20000004768371585,
+      "body_vertex_unsigned_nearest_mm": 0.0,
+      "GT_or_existing_blend_opened": false,
+      "scene_start": "--factory-startup"
+    },
+    {
+      "name": "LIVE_NINE_VERTEX_JACOBIAN",
+      "passed": true,
+      "max_error_mm": 2.0916735010700904e-10
+    },
+    {
+      "name": "CLOSED_OUTWARD_AND_CORRECT_SIGN",
+      "passed": true,
+      "signed_inside_outside_mm": [
+        -5.847607135772705,
+        94.0037841796875
+      ]
+    },
+    {
+      "name": "REAL_CONTOUR_DEPTH_GEOMETRIC_GRADIENT",
+      "passed": true,
+      "gradient": 0.3466433572926676,
+      "FD": 0.3466433542431701,
+      "relative_difference": 8.797218958717465e-09
+    },
+    {
+      "name": "SIX_OF_TEN_REJECTED_GLOBAL_STOP",
+      "passed": true
+    }
+  ],
+  "no_threshold_changed_after_formal_run": true
+}
