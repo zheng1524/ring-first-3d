@@ -30,7 +30,7 @@ def save_stage(scene,arm,stage,body,q,ob,status,extra=None):
     folder=R/'local_results'/scene/arm;folder.mkdir(parents=True,exist_ok=True);V=body.vertices(q);np.savez_compressed(folder/(stage+'.npz'),V=V,F=body.F,q=q);trimesh.Trimesh(V,body.F,process=False).export(folder/(stage+'.ply'));ev=ob.evaluate(q,stage='P2',gradient=False,return_images=True)
     for cid,im in ev['images'].items():np.savez_compressed(folder/(stage+'__'+cid+'.npz'),**im)
     col=endpoint(ob.col,V,body.F,scene+'_'+arm+'_'+stage+'_CONTACT');bl=blender_check(scene+'_'+arm+'_'+stage,scene,V,body.F);assert not col['collision']and bl['EXACT_intersection_volume_mm3']<=1e-8
-    q0=np.r_[body.p,np.zeros(len(q)-9)];delta=np.linalg.norm(V-body.vertices(q0),axis=1);total=np.linalg.norm(V-body.vertices(body.p),axis=1);qr,qa=quality(V,body.F,body.vertices(body.p));assert not qr
+    q0=np.r_[q[:9],np.zeros(len(q)-9)];delta=np.linalg.norm(V-body.vertices(q0),axis=1);total=np.linalg.norm(V-body.vertices(body.p),axis=1);qr,qa=quality(V,body.F,body.vertices(body.p));assert not qr
     result=dict(case=scene,arm=arm,stage=stage,status=status,active_detail_N=len(q)-9,fixed_common_objective=ev['E'],data_objective=ev['data_E'],reg=ev['reg'],barrier=ev['barrier'],per_view=ev['per_view'],collision=col,Blender=bl,quality=qa,maximum_P0_move_mm=float(total.max()),median_P0_move_mm=float(np.median(total)),maximum_nonellipsoid_displacement_mm=float(delta.max()),median_nonellipsoid_displacement_mm=float(np.median(delta)),q=q,extra=extra)
     save('metrics/'+scene+'_'+arm+'_'+stage+'.json',result);return result
 
@@ -83,5 +83,5 @@ def run_stage(scene,arm,stage,body,q,ob,B,damping,budget,records):
         # Exhausted proposals block this iteration, not all future stages/cases.
         if not accepted and damping>=1e8:break
         if accepted and actual<1e-7 and np.linalg.norm(current['g'])<1e-4:converged=True;break
-    status='NUMERICAL_FAULT'if num_fault else('CONVERGED'if converged else('STAGE_BLOCKED_NO_ACCEPTABLE_UPDATE'if accepted_N==0 else'BUDGET_COMPLETED'))
+    status='NUMERICAL_FAULT'if num_fault else('CONVERGED'if converged else('STAGE_BLOCKED_NO_ACCEPTABLE_UPDATE'if accepted_N==0 else('TRUST_REGION_NUMERICAL_LIMIT_PARTIAL_ACCEPTANCE'if iteration+1<budget else'BUDGET_COMPLETED')))
     return q,B,damping,dict(status=status,accepted_N=accepted_N,rejected_N=rejected_N,elapsed_seconds=time.perf_counter()-start,fault=num_fault,budget_iterations=budget,attempted_iterations=iteration+1)
