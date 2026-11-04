@@ -1,0 +1,8 @@
+{
+  "problem": "conservative_p0 and save_stage(P0) used same metrics filename",
+  "impact": "single-solve intermediate trace lost; historical and accepted endpoint arrays, all update candidates and full acceptance logs preserved",
+  "remedy": "run.py output-only path changed to _P0_FEASIBILITY.json for reproduction; final feasibility metrics recomputed without optimization into separate RECONSTRUCTED file",
+  "frozen_executed_commit": "eea53d7",
+  "formal_optimization_repeated": false,
+  "thresholds_changed": false
+}

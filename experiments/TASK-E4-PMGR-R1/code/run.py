@@ -72,7 +72,8 @@ def conservative_p0(scene,row,model,obsn,col):
     bl=blender_check(scene+'_HISTORICAL_P0',scene,V0,model.F);bn=blender_check(scene+'_CONSERVATIVE_P0',scene,V,model.F)
     if bn['BVH_intersecting_triangle_pairs']or bn['EXACT_intersection_volume_mm3']>1e-8:bad.append('BLENDER_INTERSECTION')
     resultdict=dict(status='P0_INFEASIBLE'if bad else'P0_FEASIBLE',reasons=bad,scope='single preregistered local solve, not a global infeasibility theorem',optimizer_success=bool(result.success),optimizer_message=result.message,optimizer_iterations=int(result.nit),trace=trace,old_p=old,new_p=p,old_evaluations=old_ev,new_evaluations=new_ev,old_collision=col.check(V0,model.F,True),new_collision=coll,old_Blender=bl,new_Blender=bn,analytic_clearance_lower_bound_mm=float(cert[:-1].min()+constraint.target-constraint.cover),CAD_cover_radius_mm=constraint.cover,CAD_certificate_sample_N=len(constraint.points),mean_IoU_change=float(drop.mean()),worst_IoU_change=float(drop.min()),volume_ratio=volume(V,model.F)/volume(V0,model.F),axis_ratios=np.exp(p[6:9]-old[6:9]))
-    save('metrics/'+scene+'_P0.json',resultdict);np.savez_compressed(R/'local_results'/(scene+'_HISTORICAL_P0.npz'),V=V0,F=model.F,q=old);np.savez_compressed(R/'local_results'/(scene+'_P0_CANDIDATE.npz'),V=V,F=model.F,q=p);return resultdict,p
+    # Output-only fix after the stopped R1 run: do not collide with save_stage(P0).
+    save('metrics/'+scene+'_P0_FEASIBILITY.json',resultdict);np.savez_compressed(R/'local_results'/(scene+'_HISTORICAL_P0.npz'),V=V0,F=model.F,q=old);np.savez_compressed(R/'local_results'/(scene+'_P0_CANDIDATE.npz'),V=V,F=model.F,q=p);return resultdict,p
 class MajorityStop(RuntimeError):pass
 class Counter:
     def __init__(self):self.rows=[]
