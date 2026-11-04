@@ -147,6 +147,9 @@ G01中两种+.1mm扰动的总E都由21.25降至约18.9，产生相近改善；�
 
 完成诊断后停止，等待研究者/PM审核。不会据此自动恢复MonoSDF、NeuralFusion或执行相机—深度联合优化。
 '''
+    if (R/'metrics/PANEL2_SIFT_VISUALIZATION.json').exists():
+        title=report.splitlines()[0]
+        report=report.replace(title,title+'\n\n研究者要求的新版显示已完成：[原Panel2五面板 + SIFT图库](visualization_panel2_sift/index.html)；[复用与检查说明](VISUALIZATION_UPDATE.md)。原四张科研图及全部数值保留。',1)
     (R/'TECHNICAL_REPORT.md').write_text(report)
     (R/'FAILURE_LEDGER.md').write_text('''# 失败及证据不足台账
 

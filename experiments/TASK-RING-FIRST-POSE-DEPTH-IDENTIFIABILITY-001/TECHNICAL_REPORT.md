@@ -1,5 +1,7 @@
 # Ring-First 位姿消融与相机—HERO 深度可辨识性诊断
 
+研究者要求的新版显示已完成：[原Panel2五面板 + SIFT图库](visualization_panel2_sift/index.html)；[复用与检查说明](VISUALIZATION_UPDATE.md)。原四张科研图及全部数值保留。
+
 2026-11-04（Asia/Shanghai）。任务 `TASK-RING-FIRST-POSE-DEPTH-IDENTIFIABILITY-001`，独立分支 `exp/TASK-RING-FIRST-POSE-DEPTH-IDENTIFIABILITY-001`，父提交50239b5。状态：实验 A、B 的冻结 CPU 诊断完成；未证明绝对相机精度或真实误差归因，不升级相机资格或重建主线。原始 HERO、K/c2w、Mask、CAD、DXY 和历史清理没有修改；没有训练、新 HERO、融合或补全。
 
 ## 结论先行
