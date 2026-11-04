@@ -1,0 +1,254 @@
+{
+  "G0": "AUDIT_COMPLETE_FORMAL_QUALIFICATION_INCOMPLETE",
+  "G1": "NOT_PASSED",
+  "independent_non_degenerate_qualified_cases": 0,
+  "formal_Is": "NOT_EVALUABLE",
+  "S1_control_contracts_pass": true,
+  "source_freeze_export_integrity_checks_pass": true,
+  "source_freeze_export_integrity_checks_N": 324,
+  "real_root_completeness_contract_all_pass": false,
+  "root_failure": {
+    "scene": "G01_004",
+    "arm": "A1-3",
+    "source": "G01_004_ref08",
+    "fixed_ray_index": 0,
+    "native_uv": [
+      369,
+      133
+    ],
+    "native_pixel_id": 85489,
+    "old_33_samples_hit": false,
+    "diagnostic_grid_N": 4097,
+    "diagnostic_roots_mm": [
+      39.226640316611,
+      39.390338839334255
+    ],
+    "minimum_radial_implicit_value": -0.00023619997182344754,
+    "diagnosis": "Two close roots in a single 33-grid cell: a narrow grazing interval is missed. Dense mesh retains hit at 1x/2x/4x, ruling out a coarse-mesh-only explanation.",
+    "formal_root_contract": "FAIL",
+    "changes_formal_output": false,
+    "GT_used": false
+  },
+  "models": [
+    {
+      "scene": "G01_004",
+      "arm": "A1-0",
+      "start": 0,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G01_004",
+      "arm": "A1-1",
+      "start": 0,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G01_004",
+      "arm": "A1-2",
+      "start": 2,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G01_004",
+      "arm": "A1-3",
+      "start": 1,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [
+        "ROOT_BRACKETING_CONTRACT_FAIL",
+        "NUMERICALLY_UNSTABLE_J"
+      ],
+      "numerically_eligible_on_fixed_tests": false,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G06_004",
+      "arm": "A1-0",
+      "start": 1,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G06_004",
+      "arm": "A1-1",
+      "start": 1,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [
+        "LOW_B_HEAD_IOU",
+        "EXCESS_B_OUTSIDE"
+      ],
+      "numerically_eligible_on_fixed_tests": false,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G06_004",
+      "arm": "A1-2",
+      "start": 2,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [
+        "NUMERICALLY_UNSTABLE_J"
+      ],
+      "numerically_eligible_on_fixed_tests": false,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G06_004",
+      "arm": "A1-3",
+      "start": 1,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G06_004",
+      "arm": "A1-2+H",
+      "start": 0,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G06_004",
+      "arm": "A1-3+H",
+      "start": 0,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G08_005",
+      "arm": "A1-0",
+      "start": 1,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [
+        "LOCALLY_UNIDENTIFIABLE"
+      ],
+      "numerically_eligible_on_fixed_tests": false,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G08_005",
+      "arm": "A1-1",
+      "start": 0,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G08_005",
+      "arm": "A1-2",
+      "start": 2,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [
+        "NUMERICALLY_UNSTABLE_J"
+      ],
+      "numerically_eligible_on_fixed_tests": false,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G08_005",
+      "arm": "A1-3",
+      "start": 2,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G08_005",
+      "arm": "A1-2+H",
+      "start": 2,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [
+        "NUMERICALLY_UNSTABLE_J"
+      ],
+      "numerically_eligible_on_fixed_tests": false,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G08_005",
+      "arm": "A1-3+H",
+      "start": 2,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G07_004",
+      "arm": "A1-0",
+      "start": 1,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G07_004",
+      "arm": "A1-1",
+      "start": 2,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G07_004",
+      "arm": "A1-2",
+      "start": 2,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [
+        "NUMERICALLY_UNSTABLE_J"
+      ],
+      "numerically_eligible_on_fixed_tests": false,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    },
+    {
+      "scene": "G07_004",
+      "arm": "A1-3",
+      "start": 2,
+      "A_objective_selection_unchanged": true,
+      "postfit_model_contract_failures": [],
+      "numerically_eligible_on_fixed_tests": true,
+      "strict_independent_qualified_real_case": false,
+      "G1": "NOT_PASSED"
+    }
+  ],
+  "A2_executions": 0,
+  "B1_B2_executions": 0,
+  "scientific_gate_override": false,
+  "stop": "WAIT_FOR_RESEARCHER_PM_REVIEW"
+}

@@ -1,0 +1,5341 @@
+[
+  {
+    "scene": "G01_004",
+    "kind": "Ip",
+    "arm": "A1-0",
+    "family": "ellipsoid",
+    "start": 0,
+    "parameter_N": 9,
+    "initial": [
+      0.20214374414147607,
+      -0.2416282423094876,
+      -0.20398405429508903,
+      0.0,
+      0.0,
+      0.0,
+      1.5782673104741365,
+      1.1968546145778887,
+      1.1644174112118026
+    ],
+    "p": [
+      0.16361339124508217,
+      -0.08520586808023053,
+      -0.920452890597897,
+      -0.1017187946598205,
+      0.005988439375933414,
+      0.005488477506751363,
+      1.6258815000428462,
+      1.3492177921301605,
+      0.9120763055566539
+    ],
+    "R0": [
+      [
+        0.9962000611920471,
+        0.06178752499683887,
+        -0.06138191782379096
+      ],
+      [
+        -0.08693805791845786,
+        0.6632543546044342,
+        -0.7433272732677191
+      ],
+      [
+        -0.005216528187260382,
+        0.74583909984193,
+        0.6661057160696423
+      ]
+    ],
+    "seconds": 0.15432192100024622,
+    "nfev": 17,
+    "actual_residual_evaluations": 180,
+    "solver_success": true,
+    "solver_status": 3,
+    "termination": "`xtol` termination condition is satisfied.",
+    "initial_objective": 0.16268752946136222,
+    "objective": 0.08544266297631632,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G01_004_ref08",
+      "G01_004_ref13",
+      "G01_004_ref03"
+    ],
+    "source_weights": [
+      0.2916645187896283,
+      0.32367647816897777,
+      0.3846590030413939
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 7523,
+        "full_polyp_denominator": 12424,
+        "predicted_N": 7202,
+        "hit_N": 7051,
+        "miss_N": 472,
+        "outside_N": 151,
+        "head_IoU": 0.918816783945791,
+        "head_hit_fraction": 0.9372590721786521,
+        "outside_fraction": 0.020966398222715912,
+        "full_Polyp_hit_fraction": 0.5680135222150676,
+        "boundary_px": {
+          "N": 564,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 1.9230562397085413,
+          "p95": 4.123105625617661,
+          "maximum": 12.206555615733702
+        },
+        "reference": "G01_004_growth_r14",
+        "CAD_occluded_N": 1484,
+        "CAD_occluded_fraction": 0.17084964310384526,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -1.5991653087250697,
+          "median_abs": 1.5991653087250697,
+          "MAE": 1.563467044674572,
+          "p95": 2.7787445989134385,
+          "maximum": 3.525108494581538
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 1.4813753543824113
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 8441,
+        "full_polyp_denominator": 14029,
+        "predicted_N": 8438,
+        "hit_N": 8074,
+        "miss_N": 367,
+        "outside_N": 364,
+        "head_IoU": 0.9169789892106758,
+        "head_hit_fraction": 0.9565217391304348,
+        "outside_fraction": 0.04313818440388718,
+        "full_Polyp_hit_fraction": 0.5762349419060517,
+        "boundary_px": {
+          "N": 608,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 2.051625171245292,
+          "p95": 4.123105625617661,
+          "maximum": 5.0
+        },
+        "reference": "G01_004_ref08",
+        "CAD_occluded_N": 1538,
+        "CAD_occluded_fraction": 0.15417000801924619,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": -0.7510783263286669,
+          "median_abs": 0.7510783263286669,
+          "MAE": 0.8859736324145775,
+          "p95": 1.8740315579498965,
+          "maximum": 1.9172859593436655
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.8859736324145775
+      },
+      {
+        "head_denominator": 7942,
+        "full_polyp_denominator": 13010,
+        "predicted_N": 7735,
+        "hit_N": 7594,
+        "miss_N": 348,
+        "outside_N": 141,
+        "head_IoU": 0.9395026599035011,
+        "head_hit_fraction": 0.9561823218332913,
+        "outside_fraction": 0.018228829993535877,
+        "full_Polyp_hit_fraction": 0.5842428900845503,
+        "boundary_px": {
+          "N": 583,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 1.4485207992374054,
+          "p95": 3.146049894151538,
+          "maximum": 4.0
+        },
+        "reference": "G01_004_ref13",
+        "CAD_occluded_N": 1463,
+        "CAD_occluded_fraction": 0.15905631659056316,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -1.2935270532032774,
+          "median_abs": 1.2935270532032774,
+          "MAE": 1.618138175939843,
+          "p95": 3.217101914472139,
+          "maximum": 3.434719051857165
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 1.5326295399436027
+      },
+      {
+        "head_denominator": 13379,
+        "full_polyp_denominator": 24343,
+        "predicted_N": 13402,
+        "hit_N": 13042,
+        "miss_N": 337,
+        "outside_N": 360,
+        "head_IoU": 0.9492685057136618,
+        "head_hit_fraction": 0.9748112713954705,
+        "outside_fraction": 0.026861662438442024,
+        "full_Polyp_hit_fraction": 0.5367867559462679,
+        "boundary_px": {
+          "N": 782,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.6972450389136868,
+          "p95": 4.47213595499958,
+          "maximum": 24.331050121192877
+        },
+        "reference": "G01_004_ref03",
+        "CAD_occluded_N": 2919,
+        "CAD_occluded_fraction": 0.17884933521230317,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -0.8371642663753462,
+          "median_abs": 0.8371642663753462,
+          "MAE": 1.1073614062105694,
+          "p95": 1.8278676511033602,
+          "maximum": 1.9798112762023514
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 1.053776318322409
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        0.16361339124508217,
+        -0.08520586808023053,
+        -0.920452890597897
+      ],
+      "rotation": [
+        [
+          0.9968710153248733,
+          0.061937794734952534,
+          -0.04911098032545414
+        ],
+        [
+          -0.0788521187187249,
+          0.7357858837222999,
+          -0.6726079665663813
+        ],
+        [
+          -0.005524688111049581,
+          0.6743758913976428,
+          0.7383675473115747
+        ]
+      ],
+      "axes_mm": [
+        5.082897637432098,
+        3.854409401863183,
+        2.4894861047863683
+      ],
+      "model_axis_full_extents_mm": [
+        10.165795274864198,
+        7.708818803726368,
+        4.978972209572737
+      ],
+      "world_bounds_mm": [
+        [
+          -4.908834773449626,
+          -3.402789090870133,
+          -4.103964164476504
+        ],
+        [
+          5.236061555939791,
+          3.2323773547096715,
+          2.2630583832807103
+        ]
+      ],
+      "axis_ratio": 2.0417457352581927,
+      "peak_above_model_plane_mm": 2.4894861047863683,
+      "area_mm2": 179.66806828763904,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G01_004",
+    "kind": "Ip",
+    "arm": "A1-1",
+    "family": "ellipsoid",
+    "start": 0,
+    "parameter_N": 9,
+    "initial": [
+      -0.15826927363494558,
+      -0.4978143067698948,
+      1.0328147642746242,
+      0.0,
+      0.0,
+      0.0,
+      1.7938750981724558,
+      1.3581029647935001,
+      1.314122612860063
+    ],
+    "p": [
+      0.17039498284475027,
+      1.057271845439515,
+      -2.625482015140516,
+      0.28784613900043254,
+      -0.13389610986502884,
+      0.23131474379811562,
+      1.6606663851097208,
+      1.4791950814958532,
+      1.7989586016556138
+    ],
+    "R0": [
+      [
+        0.9966239339261828,
+        0.0629348429126325,
+        -0.05272513511658264
+      ],
+      [
+        -0.08096913223223703,
+        0.6471034450519042,
+        -0.7580904504262771
+      ],
+      [
+        -0.01359168683637682,
+        0.7598001954129253,
+        0.6500145606826222
+      ]
+    ],
+    "seconds": 0.06477132700001675,
+    "nfev": 15,
+    "actual_residual_evaluations": 286,
+    "solver_success": true,
+    "solver_status": 2,
+    "termination": "`ftol` termination condition is satisfied.",
+    "initial_objective": 1.7693739755882583,
+    "objective": 0.1081455065369983,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G01_004_ref08",
+      "G01_004_ref13",
+      "G01_004_ref03"
+    ],
+    "source_weights": [
+      0.2916645187896283,
+      0.32367647816897777,
+      0.3846590030413939
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 7523,
+        "full_polyp_denominator": 12424,
+        "predicted_N": 7946,
+        "hit_N": 6865,
+        "miss_N": 658,
+        "outside_N": 1081,
+        "head_IoU": 0.7978847047884705,
+        "head_hit_fraction": 0.9125348929948159,
+        "outside_fraction": 0.1360432922225019,
+        "full_Polyp_hit_fraction": 0.6192852543464262,
+        "boundary_px": {
+          "N": 775,
+          "median": 3.1622776601683795,
+          "median_abs": 3.1622776601683795,
+          "MAE": 6.655531355952487,
+          "p95": 22.135943621178654,
+          "maximum": 24.186773244895647
+        },
+        "reference": "G01_004_growth_r14",
+        "CAD_occluded_N": 2298,
+        "CAD_occluded_fraction": 0.22432643498633345,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": -0.2497409007689484,
+          "median_abs": 0.4835911381860214,
+          "MAE": 0.4325738426269576,
+          "p95": 0.7356351096209707,
+          "maximum": 0.7623821248188491
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.4097521122985879
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 8441,
+        "full_polyp_denominator": 14029,
+        "predicted_N": 9054,
+        "hit_N": 8036,
+        "miss_N": 405,
+        "outside_N": 1018,
+        "head_IoU": 0.849561264404271,
+        "head_hit_fraction": 0.952019902855112,
+        "outside_fraction": 0.11243649215816214,
+        "full_Polyp_hit_fraction": 0.6313350915959798,
+        "boundary_px": {
+          "N": 805,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 6.120762261613659,
+          "p95": 24.478451099648588,
+          "maximum": 27.0
+        },
+        "reference": "G01_004_ref08",
+        "CAD_occluded_N": 2299,
+        "CAD_occluded_fraction": 0.20250154144279045,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": 0.2057936936614837,
+          "median_abs": 0.39821659265351883,
+          "MAE": 0.36282081270381816,
+          "p95": 0.5853927848842222,
+          "maximum": 0.611253541593463
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.36282081270381816
+      },
+      {
+        "head_denominator": 7942,
+        "full_polyp_denominator": 13010,
+        "predicted_N": 8368,
+        "hit_N": 7482,
+        "miss_N": 460,
+        "outside_N": 886,
+        "head_IoU": 0.8475305845038514,
+        "head_hit_fraction": 0.9420800805842358,
+        "outside_fraction": 0.10587954110898662,
+        "full_Polyp_hit_fraction": 0.6351268255188317,
+        "boundary_px": {
+          "N": 786,
+          "median": 2.23606797749979,
+          "median_abs": 2.23606797749979,
+          "MAE": 6.188994544554715,
+          "p95": 23.942432162002355,
+          "maximum": 25.495097567963924
+        },
+        "reference": "G01_004_ref13",
+        "CAD_occluded_N": 2344,
+        "CAD_occluded_fraction": 0.21882001493651979,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -0.12710470193219692,
+          "median_abs": 0.20436917029098112,
+          "MAE": 0.32543674783173154,
+          "p95": 1.153955728491513,
+          "maximum": 1.4003790399329716
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 0.3207219510922483
+      },
+      {
+        "head_denominator": 13379,
+        "full_polyp_denominator": 24343,
+        "predicted_N": 14930,
+        "hit_N": 12563,
+        "miss_N": 816,
+        "outside_N": 2367,
+        "head_IoU": 0.7978534230915788,
+        "head_hit_fraction": 0.9390088945362135,
+        "outside_fraction": 0.15853985264567985,
+        "full_Polyp_hit_fraction": 0.6078954935710471,
+        "boundary_px": {
+          "N": 1055,
+          "median": 2.23606797749979,
+          "median_abs": 2.23606797749979,
+          "MAE": 10.162624578978429,
+          "p95": 42.99181977000315,
+          "maximum": 45.5411901469428
+        },
+        "reference": "G01_004_ref03",
+        "CAD_occluded_N": 3825,
+        "CAD_occluded_fraction": 0.20394561450279924,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -0.03749766611788985,
+          "median_abs": 0.2273972434662852,
+          "MAE": 0.256749582762789,
+          "p95": 0.48262105785034737,
+          "maximum": 0.4988555674472792
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 0.25632773384011465
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        0.17039498284475027,
+        1.057271845439515,
+        -2.625482015140516
+      ],
+      "rotation": [
+        [
+          0.9658591177741858,
+          -0.19889582692624236,
+          -0.16600185132641662
+        ],
+        [
+          -0.0683901292525991,
+          0.42228397954436653,
+          -0.9038799869678417
+        ],
+        [
+          0.24987787983990153,
+          0.8843736148548866,
+          0.39426432062160577
+        ]
+      ],
+      "axes_mm": [
+        5.262816738889219,
+        4.389411140351861,
+        6.043350650874063
+      ],
+      "model_axis_full_extents_mm": [
+        10.525633477778436,
+        8.778822280703722,
+        12.086701301748121
+      ],
+      "world_bounds_mm": [
+        [
+          -5.081266846903892,
+          -4.716952077867688,
+          -7.366296242289808
+        ],
+        [
+          5.422056812593393,
+          6.831495768746718,
+          2.115332212008775
+        ]
+      ],
+      "axis_ratio": 1.376802139885584,
+      "peak_above_model_plane_mm": 6.043350650874061,
+      "area_mm2": 342.4007838955595,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G01_004",
+    "kind": "Ip",
+    "arm": "A1-2",
+    "family": "ellipsoid",
+    "start": 2,
+    "parameter_N": 9,
+    "initial": [
+      0.8318194119993151,
+      0.31476144628476527,
+      -0.4902754805014195,
+      0.11870471067187661,
+      -0.0041845527183688195,
+      -0.0478658556813389,
+      1.6479630061257262,
+      1.3017325726345883,
+      0.8609367509911636
+    ],
+    "p": [
+      0.2916465105453969,
+      -0.07554588510303062,
+      -0.993285815740864,
+      -0.7945519468195418,
+      0.1771815317594664,
+      0.3090594913734526,
+      1.5640543915837777,
+      1.4933071561242406,
+      1.1259874916820407
+    ],
+    "R0": [
+      [
+        0.9962000611920471,
+        0.06178752499683887,
+        -0.06138191782379096
+      ],
+      [
+        -0.08693805791845786,
+        0.6632543546044342,
+        -0.7433272732677191
+      ],
+      [
+        -0.005216528187260382,
+        0.74583909984193,
+        0.6661057160696423
+      ]
+    ],
+    "seconds": 0.2825915469998108,
+    "nfev": 28,
+    "actual_residual_evaluations": 299,
+    "solver_success": true,
+    "solver_status": 3,
+    "termination": "`xtol` termination condition is satisfied.",
+    "initial_objective": 7.489104512883436,
+    "objective": 0.7844650596712435,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G01_004_ref08",
+      "G01_004_ref13",
+      "G01_004_ref03"
+    ],
+    "source_weights": [
+      0.2916645187896283,
+      0.32367647816897777,
+      0.3846590030413939
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 7523,
+        "full_polyp_denominator": 12424,
+        "predicted_N": 6814,
+        "hit_N": 6772,
+        "miss_N": 751,
+        "outside_N": 42,
+        "head_IoU": 0.8951751487111699,
+        "head_hit_fraction": 0.9001728034028977,
+        "outside_fraction": 0.006163780452010567,
+        "full_Polyp_hit_fraction": 0.5453155183515775,
+        "boundary_px": {
+          "N": 557,
+          "median": 2.23606797749979,
+          "median_abs": 2.23606797749979,
+          "MAE": 2.4799229946604493,
+          "p95": 4.242640687119285,
+          "maximum": 5.0990195135927845
+        },
+        "reference": "G01_004_growth_r14",
+        "CAD_occluded_N": 1526,
+        "CAD_occluded_fraction": 0.18297362110311752,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": -0.2747948365655155,
+          "median_abs": 0.3993235877878085,
+          "MAE": 0.39821659446920626,
+          "p95": 0.7256241411481806,
+          "maximum": 0.7339597388504089
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.37968952016055546
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 8441,
+        "full_polyp_denominator": 14029,
+        "predicted_N": 7826,
+        "hit_N": 7800,
+        "miss_N": 641,
+        "outside_N": 26,
+        "head_IoU": 0.9212235738750443,
+        "head_hit_fraction": 0.9240611301978439,
+        "outside_fraction": 0.0033222591362126247,
+        "full_Polyp_hit_fraction": 0.5559911611661558,
+        "boundary_px": {
+          "N": 597,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 1.9531807334888909,
+          "p95": 4.242640687119285,
+          "maximum": 5.0
+        },
+        "reference": "G01_004_ref08",
+        "CAD_occluded_N": 1504,
+        "CAD_occluded_fraction": 0.1612004287245445,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": 0.005610838036229637,
+          "median_abs": 0.2509648579297874,
+          "MAE": 0.29392919984919397,
+          "p95": 0.6463434210705419,
+          "maximum": 0.6668911780663649
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.29392919984919397
+      },
+      {
+        "head_denominator": 7942,
+        "full_polyp_denominator": 13010,
+        "predicted_N": 7285,
+        "hit_N": 7270,
+        "miss_N": 672,
+        "outside_N": 15,
+        "head_IoU": 0.9136609274852331,
+        "head_hit_fraction": 0.915386552505666,
+        "outside_fraction": 0.002059025394646534,
+        "full_Polyp_hit_fraction": 0.5588009223674096,
+        "boundary_px": {
+          "N": 575,
+          "median": 2.23606797749979,
+          "median_abs": 2.23606797749979,
+          "MAE": 2.095214342018875,
+          "p95": 4.0,
+          "maximum": 5.0
+        },
+        "reference": "G01_004_ref13",
+        "CAD_occluded_N": 1500,
+        "CAD_occluded_fraction": 0.1707455890722823,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": -0.1279100103932933,
+          "median_abs": 0.18391230175853934,
+          "MAE": 0.37257885772232413,
+          "p95": 1.06677144879948,
+          "maximum": 1.2419551371057338
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.3572565005070336
+      },
+      {
+        "head_denominator": 13379,
+        "full_polyp_denominator": 24343,
+        "predicted_N": 12305,
+        "hit_N": 12162,
+        "miss_N": 1217,
+        "outside_N": 143,
+        "head_IoU": 0.8994231622541045,
+        "head_hit_fraction": 0.9090365498168772,
+        "outside_fraction": 0.011621292157659488,
+        "full_Polyp_hit_fraction": 0.49977406235878896,
+        "boundary_px": {
+          "N": 765,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 3.201698667731935,
+          "p95": 8.06225774829855,
+          "maximum": 25.317977802344327
+        },
+        "reference": "G01_004_ref03",
+        "CAD_occluded_N": 2776,
+        "CAD_occluded_fraction": 0.18407267422584708,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -0.07217584225066176,
+          "median_abs": 0.11723859637119105,
+          "MAE": 0.15309654828531147,
+          "p95": 0.3936403331382509,
+          "maximum": 0.5325692436508085
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 0.1591530140174795
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        0.2916465105453969,
+        -0.07554588510303062,
+        -0.993285815740864
+      ],
+      "rotation": [
+        [
+          0.966196515543457,
+          -0.25425169086550264,
+          0.04266580649319885
+        ],
+        [
+          0.255798381302828,
+          0.9660671769939253,
+          -0.03579661517295209
+        ],
+        [
+          -0.03211668529806896,
+          0.045500409086296226,
+          0.9984479111593375
+        ]
+      ],
+      "axes_mm": [
+        4.778154535824842,
+        4.451793978276215,
+        3.083260039750742
+      ],
+      "model_axis_full_extents_mm": [
+        9.556309071649684,
+        8.903587956552425,
+        6.166520079501483
+      ],
+      "world_bounds_mm": [
+        [
+          -4.461986996280281,
+          -4.5467905199961285,
+          -4.071760361991048
+        ],
+        [
+          5.045280017371075,
+          4.395698749790068,
+          2.08518873050932
+        ]
+      ],
+      "axis_ratio": 1.5497085793033272,
+      "peak_above_model_plane_mm": 3.0832600397507415,
+      "area_mm2": 210.54643683187655,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G01_004",
+    "kind": "Ip",
+    "arm": "A1-3",
+    "family": "star",
+    "start": 1,
+    "parameter_N": 16,
+    "initial": [
+      0.14473260477311797,
+      -0.4353974034571636,
+      -0.5195530604891547,
+      0.05071844265300789,
+      0.0902879944037247,
+      0.04133379977615831,
+      1.4765868865175311,
+      0.9924635753327253,
+      0.915228456299765,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "p": [
+      0.2775535074135474,
+      0.2319651561388934,
+      -1.6048415094466113,
+      0.3001658449972515,
+      0.32360660462538515,
+      0.10556254738500287,
+      1.6603650100615206,
+      1.2659662964347334,
+      1.506267021250452,
+      -0.06455821608659576,
+      -0.13660972400953975,
+      0.029480900642823042,
+      -0.03077672634824011,
+      -0.09198881535334445,
+      -0.18529750375037,
+      0.09203050355611608
+    ],
+    "R0": [
+      [
+        0.9962000611920471,
+        0.06178752499683887,
+        -0.06138191782379096
+      ],
+      [
+        -0.08693805791845786,
+        0.6632543546044342,
+        -0.7433272732677191
+      ],
+      [
+        -0.005216528187260382,
+        0.74583909984193,
+        0.6661057160696423
+      ]
+    ],
+    "seconds": 2.6761262629997873,
+    "nfev": 21,
+    "actual_residual_evaluations": 406,
+    "solver_success": true,
+    "solver_status": 4,
+    "termination": "Both `ftol` and `xtol` termination conditions are satisfied.",
+    "initial_objective": 2.627662042619424,
+    "objective": 0.676241020727752,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G01_004_ref08",
+      "G01_004_ref13",
+      "G01_004_ref03"
+    ],
+    "source_weights": [
+      0.2916645187896283,
+      0.32367647816897777,
+      0.3846590030413939
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 7523,
+        "full_polyp_denominator": 12424,
+        "predicted_N": 6838,
+        "hit_N": 6722,
+        "miss_N": 801,
+        "outside_N": 116,
+        "head_IoU": 0.8799581097002226,
+        "head_hit_fraction": 0.89352651867606,
+        "outside_fraction": 0.016964024568587307,
+        "full_Polyp_hit_fraction": 0.5418544752092723,
+        "boundary_px": {
+          "N": 607,
+          "median": 2.8284271247461903,
+          "median_abs": 2.8284271247461903,
+          "MAE": 3.565064022757483,
+          "p95": 12.806248474865697,
+          "maximum": 14.142135623730951
+        },
+        "reference": "G01_004_growth_r14",
+        "CAD_occluded_N": 1842,
+        "CAD_occluded_fraction": 0.21221198156682028,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 13,
+        "relative_depth_miss_pair_N": 3,
+        "relative_depth_mm": {
+          "N": 13,
+          "median": -0.2831121984903504,
+          "median_abs": 0.3331467329068616,
+          "MAE": 0.29750017476684465,
+          "p95": 0.5001905352232029,
+          "maximum": 0.5280978926390603
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 29,
+        "depth_ray_hit_fraction": 0.90625,
+        "censored_relative_depth_score_mm": 0.2885938919980613
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 8441,
+        "full_polyp_denominator": 14029,
+        "predicted_N": 7841,
+        "hit_N": 7760,
+        "miss_N": 681,
+        "outside_N": 81,
+        "head_IoU": 0.9105843698662286,
+        "head_hit_fraction": 0.9193223551711882,
+        "outside_fraction": 0.010330315010840453,
+        "full_Polyp_hit_fraction": 0.5534250481146197,
+        "boundary_px": {
+          "N": 597,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 2.194961064258096,
+          "p95": 4.123105625617661,
+          "maximum": 4.47213595499958
+        },
+        "reference": "G01_004_ref08",
+        "CAD_occluded_N": 1770,
+        "CAD_occluded_fraction": 0.18416397877432109,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": 0.03626981552166342,
+          "median_abs": 0.18791847454217958,
+          "MAE": 0.20463692915772688,
+          "p95": 0.44582195125395285,
+          "maximum": 0.4532687391399719
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 0.20747212108536894
+      },
+      {
+        "head_denominator": 7942,
+        "full_polyp_denominator": 13010,
+        "predicted_N": 7277,
+        "hit_N": 7222,
+        "miss_N": 720,
+        "outside_N": 55,
+        "head_IoU": 0.9030886582468426,
+        "head_hit_fraction": 0.9093427348274994,
+        "outside_fraction": 0.007558059639961523,
+        "full_Polyp_hit_fraction": 0.555880092236741,
+        "boundary_px": {
+          "N": 576,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 2.3270695701988404,
+          "p95": 5.385164807134504,
+          "maximum": 6.0
+        },
+        "reference": "G01_004_ref13",
+        "CAD_occluded_N": 1817,
+        "CAD_occluded_fraction": 0.19980206729711897,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 13,
+        "relative_depth_miss_pair_N": 3,
+        "relative_depth_mm": {
+          "N": 13,
+          "median": -0.05699184871117069,
+          "median_abs": 0.07728150181605997,
+          "MAE": 0.20528189251997184,
+          "p95": 0.583710773104353,
+          "maximum": 0.6106933164486534
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 29,
+        "depth_ray_hit_fraction": 0.90625,
+        "censored_relative_depth_score_mm": 0.21366653767247712
+      },
+      {
+        "head_denominator": 13379,
+        "full_polyp_denominator": 24343,
+        "predicted_N": 12256,
+        "hit_N": 12030,
+        "miss_N": 1349,
+        "outside_N": 226,
+        "head_IoU": 0.8842337375964718,
+        "head_hit_fraction": 0.8991703415800882,
+        "outside_fraction": 0.01843994778067885,
+        "full_Polyp_hit_fraction": 0.49804872037135933,
+        "boundary_px": {
+          "N": 864,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 5.888593301190176,
+          "p95": 24.596747752497688,
+          "maximum": 25.495097567963924
+        },
+        "reference": "G01_004_ref03",
+        "CAD_occluded_N": 3298,
+        "CAD_occluded_fraction": 0.21203548926321203,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": 0.0007409620844072151,
+          "median_abs": 0.12242369390608587,
+          "MAE": 0.11590733866469331,
+          "p95": 0.2220290576093205,
+          "maximum": 0.24658297558348252
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 0.12428812999814998
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        0.2775535074135474,
+        0.2319651561388934,
+        -1.6048415094466113
+      ],
+      "rotation": [
+        [
+          0.9669550241282906,
+          -0.014146231965329652,
+          0.2545542485095079
+        ],
+        [
+          0.23810939991011962,
+          0.4069462800150049,
+          -0.8818722349957459
+        ],
+        [
+          -0.09111473529292578,
+          0.9133425476255512,
+          0.3968671008150809
+        ]
+      ],
+      "axes_mm": [
+        5.261230896219576,
+        3.546518068664604,
+        4.509864105536166
+      ],
+      "model_axis_full_extents_mm": [
+        10.543158132669712,
+        7.127842896520515,
+        9.061700705027889
+      ],
+      "world_bounds_mm": [
+        [
+          -4.9970162104007185,
+          -4.489213490261005,
+          -5.40190029175026
+        ],
+        [
+          5.471027038921922,
+          4.358554351295938,
+          2.1379578486942625
+        ]
+      ],
+      "axis_ratio": 1.4834919192165925,
+      "peak_above_model_plane_mm": 4.677057002323837,
+      "area_mm2": 248.22224023946558,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G06_004",
+    "kind": "IIa",
+    "arm": "A1-0",
+    "family": "ellipsoid",
+    "start": 1,
+    "parameter_N": 9,
+    "initial": [
+      -0.14928869367602476,
+      -0.9008102092275817,
+      -2.0297340656077076,
+      0.05071844265300789,
+      0.0902879944037247,
+      0.04133379977615831,
+      1.741222539644631,
+      1.166547549761591,
+      -0.5368710273638184
+    ],
+    "p": [
+      1.6640421284627285,
+      -1.0345418415259013,
+      -0.6030719529561475,
+      -0.29023437556214143,
+      -0.05258451092443803,
+      -0.03852229773225245,
+      1.8248090379109723,
+      1.3481207220593343,
+      -0.34927103629448847
+    ],
+    "R0": [
+      [
+        0.09655657769892151,
+        -0.6180164708283191,
+        0.7802130921023956
+      ],
+      [
+        0.9950811678294468,
+        0.042500287056566166,
+        -0.0894829315081594
+      ],
+      [
+        0.02214264515040201,
+        0.7850155204739705,
+        0.6190802337990807
+      ]
+    ],
+    "seconds": 0.08862817799990808,
+    "nfev": 20,
+    "actual_residual_evaluations": 183,
+    "solver_success": true,
+    "solver_status": 3,
+    "termination": "`xtol` termination condition is satisfied.",
+    "initial_objective": 1.854966946793034,
+    "objective": 0.18003002991509923,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G06_004_growth_r01",
+      "G06_004_growth_r03"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 13047,
+        "full_polyp_denominator": 13047,
+        "predicted_N": 11548,
+        "hit_N": 10849,
+        "miss_N": 2198,
+        "outside_N": 699,
+        "head_IoU": 0.7892477811727048,
+        "head_hit_fraction": 0.8315321529853607,
+        "outside_fraction": 0.06052996189816418,
+        "full_Polyp_hit_fraction": 0.8315321529853607,
+        "boundary_px": {
+          "N": 1469,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 3.7353139771939508,
+          "p95": 13.0,
+          "maximum": 18.439088914585774
+        },
+        "reference": "G06_004_growth_r06",
+        "CAD_occluded_N": 3889,
+        "CAD_occluded_fraction": 0.251927187925115,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 11,
+        "relative_depth_miss_pair_N": 5,
+        "relative_depth_mm": {
+          "N": 11,
+          "median": -2.365320903242221,
+          "median_abs": 2.365320903242221,
+          "MAE": 2.3999972922072175,
+          "p95": 2.7115686884475707,
+          "maximum": 2.7613901894134685
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 27,
+        "depth_ray_hit_fraction": 0.84375,
+        "censored_relative_depth_score_mm": 1.728123138392462
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 8571,
+        "full_polyp_denominator": 8571,
+        "predicted_N": 8786,
+        "hit_N": 8131,
+        "miss_N": 440,
+        "outside_N": 655,
+        "head_IoU": 0.8813136787340126,
+        "head_hit_fraction": 0.9486640998716602,
+        "outside_fraction": 0.07455042112451628,
+        "full_Polyp_hit_fraction": 0.9486640998716602,
+        "boundary_px": {
+          "N": 1257,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.7372239010875596,
+          "p95": 5.439502695606092,
+          "maximum": 16.15549442140351
+        },
+        "reference": "G06_004_growth_r01",
+        "CAD_occluded_N": 2775,
+        "CAD_occluded_fraction": 0.24003113917481186,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -2.1765682230245886,
+          "median_abs": 2.1765682230245886,
+          "MAE": 2.285115231960655,
+          "p95": 2.832900435997437,
+          "maximum": 3.006337467493239
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 2.157920529963114
+      },
+      {
+        "head_denominator": 8640,
+        "full_polyp_denominator": 8640,
+        "predicted_N": 8923,
+        "hit_N": 8118,
+        "miss_N": 522,
+        "outside_N": 805,
+        "head_IoU": 0.8595023822128111,
+        "head_hit_fraction": 0.9395833333333333,
+        "outside_fraction": 0.09021629496806007,
+        "full_Polyp_hit_fraction": 0.9395833333333333,
+        "boundary_px": {
+          "N": 1273,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 2.101178656206187,
+          "p95": 7.127081707490458,
+          "maximum": 17.08800749063506
+        },
+        "reference": "G06_004_growth_r03",
+        "CAD_occluded_N": 2865,
+        "CAD_occluded_fraction": 0.24304377332880897,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -2.3667734967481877,
+          "median_abs": 2.3667734967481877,
+          "MAE": 2.318107545518344,
+          "p95": 2.7545479871116774,
+          "maximum": 2.9176544834532763
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 2.1888508239234477
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        1.6640421284627285,
+        -1.0345418415259013,
+        -0.6030719529561475
+      ],
+      "rotation": [
+        [
+          0.15988371628644665,
+          -0.8096621599746384,
+          0.5646984894362987
+        ],
+        [
+          0.9865584897990762,
+          0.1114994074492873,
+          -0.11945806102487913
+        ],
+        [
+          0.033757124756130914,
+          0.5762074876671255,
+          0.8166060174187662
+        ]
+      ],
+      "axes_mm": [
+        6.20161063350018,
+        3.850183163331469,
+        0.7052019690367548
+      ],
+      "model_axis_full_extents_mm": [
+        12.40322126700036,
+        7.700366326662936,
+        1.410403938073509
+      ],
+      "world_bounds_mm": [
+        [
+          -1.630713153400037,
+          -7.167770930864754,
+          -2.903755727142343
+        ],
+        [
+          4.958797410325494,
+          5.0986872478129515,
+          1.6976118212300484
+        ]
+      ],
+      "axis_ratio": 8.794091488387428,
+      "peak_above_model_plane_mm": 0.7052019690367546,
+      "area_mm2": 158.86774170246207,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G06_004",
+    "kind": "IIa",
+    "arm": "A1-1",
+    "family": "ellipsoid",
+    "start": 1,
+    "parameter_N": 9,
+    "initial": [
+      0.6243553812728926,
+      -0.9745256159278471,
+      -0.31879106214160124,
+      0.05071844265300789,
+      0.0902879944037247,
+      0.04133379977615831,
+      1.8616340313743789,
+      1.3053484066179863,
+      -0.5368710273638184
+    ],
+    "p": [
+      1.9281741441678102,
+      0.536958827618585,
+      -1.7277734183899827,
+      -0.7999999999999999,
+      -0.1261149516848885,
+      -0.3502131604355566,
+      2.0746213147801456,
+      1.9161444113476627,
+      0.594516466124889
+    ],
+    "R0": [
+      [
+        0.0941022409199728,
+        -0.6014650142168441,
+        0.7933376361467864
+      ],
+      [
+        0.9951953882910657,
+        0.03519077090214899,
+        -0.09136601538596063
+      ],
+      [
+        0.027035298741359248,
+        0.798123703642765,
+        0.601886738768617
+      ]
+    ],
+    "seconds": 0.06857072599996172,
+    "nfev": 20,
+    "actual_residual_evaluations": 381,
+    "solver_success": true,
+    "solver_status": 2,
+    "termination": "`ftol` termination condition is satisfied.",
+    "initial_objective": 3.4776548274179473,
+    "objective": 0.09089705589306785,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G06_004_growth_r01",
+      "G06_004_growth_r03"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 13047,
+        "full_polyp_denominator": 13047,
+        "predicted_N": 25333,
+        "hit_N": 12686,
+        "miss_N": 361,
+        "outside_N": 12647,
+        "head_IoU": 0.4937339456682494,
+        "head_hit_fraction": 0.9723308040162489,
+        "outside_fraction": 0.49923025302964513,
+        "full_Polyp_hit_fraction": 0.9723308040162489,
+        "boundary_px": {
+          "N": 1689,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 11.959900351507853,
+          "p95": 59.412996765455766,
+          "maximum": 68.11754546370561
+        },
+        "reference": "G06_004_growth_r06",
+        "CAD_occluded_N": 4992,
+        "CAD_occluded_fraction": 0.1646166529266282,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -0.2259536512426692,
+          "median_abs": 0.2259536512426692,
+          "MAE": 0.23604757040794386,
+          "p95": 0.405147960669424,
+          "maximum": 0.41225410696290865
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 0.23691959725744738
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 8571,
+        "full_polyp_denominator": 8571,
+        "predicted_N": 16278,
+        "hit_N": 8358,
+        "miss_N": 213,
+        "outside_N": 7920,
+        "head_IoU": 0.5068219028561033,
+        "head_hit_fraction": 0.9751487574378719,
+        "outside_fraction": 0.4865462587541467,
+        "full_Polyp_hit_fraction": 0.9751487574378719,
+        "boundary_px": {
+          "N": 1386,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 9.14293835213956,
+          "p95": 42.99708554886712,
+          "maximum": 48.373546489791295
+        },
+        "reference": "G06_004_growth_r01",
+        "CAD_occluded_N": 3320,
+        "CAD_occluded_fraction": 0.16940504133074805,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": -0.005657282682925313,
+          "median_abs": 0.06606066020254886,
+          "MAE": 0.07707060899859242,
+          "p95": 0.20521354597960517,
+          "maximum": 0.2907433887656694
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.07707060899859242
+      },
+      {
+        "head_denominator": 8640,
+        "full_polyp_denominator": 8640,
+        "predicted_N": 17212,
+        "hit_N": 8429,
+        "miss_N": 211,
+        "outside_N": 8783,
+        "head_IoU": 0.48378580037880964,
+        "head_hit_fraction": 0.9755787037037037,
+        "outside_fraction": 0.5102835231234023,
+        "full_Polyp_hit_fraction": 0.9755787037037037,
+        "boundary_px": {
+          "N": 1405,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 9.701342665602368,
+          "p95": 46.15841287526151,
+          "maximum": 51.42956348249516
+        },
+        "reference": "G06_004_growth_r03",
+        "CAD_occluded_N": 3442,
+        "CAD_occluded_fraction": 0.1666505277428101,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": -0.11643780976113405,
+          "median_abs": 0.11643780976113405,
+          "MAE": 0.13836258822312608,
+          "p95": 0.2867175764580736,
+          "maximum": 0.3029859074340493
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.13836258822312608
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        1.9281741441678102,
+        0.536958827618585,
+        -1.7277734183899827
+      ],
+      "rotation": [
+        [
+          0.43559909677258907,
+          -0.8923720254734016,
+          0.11800675846494241
+        ],
+        [
+          0.8994120304037447,
+          0.4367642153192537,
+          -0.017176139891432084
+        ],
+        [
+          -0.03621362251857755,
+          0.11361860925506566,
+          0.9928642330021898
+        ]
+      ],
+      "axes_mm": [
+        7.9615309740037326,
+        6.794710292820314,
+        1.812154494995344
+      ],
+      "model_axis_full_extents_mm": [
+        15.923061948007469,
+        13.589420585640628,
+        3.6243089899906886
+      ],
+      "world_bounds_mm": [
+        [
+          -5.059754463284019,
+          -7.214346710607428,
+          -3.7062599447062485
+        ],
+        [
+          8.91610275161964,
+          8.288264365844597,
+          0.25071310792628343
+        ]
+      ],
+      "axis_ratio": 4.393406299513215,
+      "peak_above_model_plane_mm": 1.812154494995344,
+      "area_mm2": 384.1948973238463,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": [
+      "LOW_B_HEAD_IOU",
+      "EXCESS_B_OUTSIDE"
+    ]
+  },
+  {
+    "scene": "G06_004",
+    "kind": "IIa",
+    "arm": "A1-2",
+    "family": "ellipsoid",
+    "start": 2,
+    "parameter_N": 9,
+    "initial": [
+      0.5377981135501724,
+      -0.15065135948565278,
+      -2.0004564856199725,
+      0.11870471067187661,
+      -0.0041845527183688195,
+      -0.0478658556813389,
+      1.9125986592528261,
+      1.4758165470634539,
+      -0.59116273267242
+    ],
+    "p": [
+      0.5178131465552002,
+      -0.990521132332842,
+      -1.2982858878990602,
+      -0.7972165124788424,
+      -0.17345730207572005,
+      -0.27093400187614,
+      1.8580229219598603,
+      1.6750278164715322,
+      -0.09470562960892757
+    ],
+    "R0": [
+      [
+        0.09655657769892151,
+        -0.6180164708283191,
+        0.7802130921023956
+      ],
+      [
+        0.9950811678294468,
+        0.042500287056566166,
+        -0.0894829315081594
+      ],
+      [
+        0.02214264515040201,
+        0.7850155204739705,
+        0.6190802337990807
+      ]
+    ],
+    "seconds": 0.15732300099989516,
+    "nfev": 21,
+    "actual_residual_evaluations": 238,
+    "solver_success": true,
+    "solver_status": 4,
+    "termination": "Both `ftol` and `xtol` termination conditions are satisfied.",
+    "initial_objective": 14.446451811945513,
+    "objective": 0.3269789105733474,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G06_004_growth_r01",
+      "G06_004_growth_r03"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 13047,
+        "full_polyp_denominator": 13047,
+        "predicted_N": 12417,
+        "hit_N": 11937,
+        "miss_N": 1110,
+        "outside_N": 480,
+        "head_IoU": 0.8824573076070082,
+        "head_hit_fraction": 0.9149229707978845,
+        "outside_fraction": 0.038656680357574295,
+        "full_Polyp_hit_fraction": 0.9149229707978845,
+        "boundary_px": {
+          "N": 1462,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 2.166837466817118,
+          "p95": 8.06225774829855,
+          "maximum": 17.029386365926403
+        },
+        "reference": "G06_004_growth_r06",
+        "CAD_occluded_N": 4254,
+        "CAD_occluded_fraction": 0.2551736548497391,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 13,
+        "relative_depth_miss_pair_N": 3,
+        "relative_depth_mm": {
+          "N": 13,
+          "median": -0.2900701192867601,
+          "median_abs": 0.2900701192867601,
+          "MAE": 0.2769577620927812,
+          "p95": 0.4590374631879342,
+          "maximum": 0.4691380137117491
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 29,
+        "depth_ray_hit_fraction": 0.90625,
+        "censored_relative_depth_score_mm": 0.27190318170038474
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 8571,
+        "full_polyp_denominator": 8571,
+        "predicted_N": 8466,
+        "hit_N": 7981,
+        "miss_N": 590,
+        "outside_N": 485,
+        "head_IoU": 0.8812941696113075,
+        "head_hit_fraction": 0.931163224827908,
+        "outside_fraction": 0.05728797543113631,
+        "full_Polyp_hit_fraction": 0.931163224827908,
+        "boundary_px": {
+          "N": 1232,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.6630992051038909,
+          "p95": 5.0,
+          "maximum": 15.524174696260024
+        },
+        "reference": "G06_004_growth_r01",
+        "CAD_occluded_N": 2943,
+        "CAD_occluded_fraction": 0.25795424664738364,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": 0.03300566496573509,
+          "median_abs": 0.038792923523910616,
+          "MAE": 0.06693695933550511,
+          "p95": 0.16021781098634483,
+          "maximum": 0.16845166702040615
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.08981983941856697
+      },
+      {
+        "head_denominator": 8640,
+        "full_polyp_denominator": 8640,
+        "predicted_N": 8662,
+        "hit_N": 8086,
+        "miss_N": 554,
+        "outside_N": 576,
+        "head_IoU": 0.8773871527777778,
+        "head_hit_fraction": 0.9358796296296297,
+        "outside_fraction": 0.0664973447240822,
+        "full_Polyp_hit_fraction": 0.9358796296296297,
+        "boundary_px": {
+          "N": 1240,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.7459643813937265,
+          "p95": 5.830951894845301,
+          "maximum": 13.92838827718412
+        },
+        "reference": "G06_004_growth_r03",
+        "CAD_occluded_N": 3052,
+        "CAD_occluded_fraction": 0.2605429400717091,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": -0.08212424696391452,
+          "median_abs": 0.12313840304902968,
+          "MAE": 0.1333294902757746,
+          "p95": 0.2698252438728495,
+          "maximum": 0.31372795565675204
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.14791330399130276
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        0.5178131465552002,
+        -0.990521132332842,
+        -1.2982858878990602
+      ],
+      "rotation": [
+        [
+          0.3977298083723867,
+          -0.9137108299906109,
+          0.08332777862113686
+        ],
+        [
+          0.9165353330460251,
+          0.3914993750995235,
+          -0.08179989348950481
+        ],
+        [
+          0.04211867531483251,
+          0.10890710929297168,
+          0.9931592313094473
+        ]
+      ],
+      "axes_mm": [
+        6.4110490889247735,
+        5.338943657581939,
+        0.9096406663388159
+      ],
+      "model_axis_full_extents_mm": [
+        12.822098177849545,
+        10.677887315163876,
+        1.8192813326776314
+      ],
+      "world_bounds_mm": [
+        [
+          -4.9851334744975,
+          -7.226508633046603,
+          -2.405413141743228
+        ],
+        [
+          6.020759767607901,
+          5.245466368380919,
+          -0.19115863405489208
+        ]
+      ],
+      "axis_ratio": 7.047891905194172,
+      "peak_above_model_plane_mm": 0.9096406663388157,
+      "area_mm2": 228.44155935898976,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G06_004",
+    "kind": "IIa",
+    "arm": "A1-3",
+    "family": "height",
+    "start": 1,
+    "parameter_N": 11,
+    "initial": [
+      -0.14928869367602476,
+      -0.9008102092275817,
+      -2.0297340656077076,
+      0.05071844265300789,
+      0.0902879944037247,
+      0.04133379977615831,
+      1.741222539644631,
+      1.166547549761591,
+      -0.5368710273638184,
+      0.0,
+      0.0
+    ],
+    "p": [
+      1.0929843712506544,
+      -1.0203558926100604,
+      -0.6781479662108302,
+      -0.7943415436227284,
+      -0.1357436895384528,
+      -0.21642100780364773,
+      1.8327801566377806,
+      1.6903264471662303,
+      -0.5114801544752196,
+      0.007850188365027431,
+      -0.03675147779693441
+    ],
+    "R0": [
+      [
+        0.09655657769892151,
+        -0.6180164708283191,
+        0.7802130921023956
+      ],
+      [
+        0.9950811678294468,
+        0.042500287056566166,
+        -0.0894829315081594
+      ],
+      [
+        0.02214264515040201,
+        0.7850155204739705,
+        0.6190802337990807
+      ]
+    ],
+    "seconds": 1.0878416030000153,
+    "nfev": 20,
+    "actual_residual_evaluations": 373,
+    "solver_success": true,
+    "solver_status": 4,
+    "termination": "Both `ftol` and `xtol` termination conditions are satisfied.",
+    "initial_objective": 7.819518369027118,
+    "objective": 0.33713504331197286,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G06_004_growth_r01",
+      "G06_004_growth_r03"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 13047,
+        "full_polyp_denominator": 13047,
+        "predicted_N": 13006,
+        "hit_N": 12223,
+        "miss_N": 824,
+        "outside_N": 783,
+        "head_IoU": 0.8838033261026753,
+        "head_hit_fraction": 0.9368437188625738,
+        "outside_fraction": 0.06020298323850531,
+        "full_Polyp_hit_fraction": 0.9368437188625738,
+        "boundary_px": {
+          "N": 1464,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 2.1571774578740377,
+          "p95": 6.324555320336759,
+          "maximum": 17.029386365926403
+        },
+        "reference": "G06_004_growth_r06",
+        "CAD_occluded_N": 4283,
+        "CAD_occluded_fraction": 0.2477297703742264,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": -0.1685070223956302,
+          "median_abs": 0.1685070223956302,
+          "MAE": 0.1928299800249711,
+          "p95": 0.4010214913976505,
+          "maximum": 0.4101343384495806
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.1999762325218497
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 8571,
+        "full_polyp_denominator": 8571,
+        "predicted_N": 8614,
+        "hit_N": 8165,
+        "miss_N": 406,
+        "outside_N": 449,
+        "head_IoU": 0.905210643015521,
+        "head_hit_fraction": 0.9526309648815774,
+        "outside_fraction": 0.05212444857209194,
+        "full_Polyp_hit_fraction": 0.9526309648815774,
+        "boundary_px": {
+          "N": 1234,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.3405685622768277,
+          "p95": 3.0,
+          "maximum": 15.524174696260024
+        },
+        "reference": "G06_004_growth_r01",
+        "CAD_occluded_N": 3019,
+        "CAD_occluded_fraction": 0.2595203300954182,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": 0.06597891368033615,
+          "median_abs": 0.09990585203135893,
+          "MAE": 0.10934012202928978,
+          "p95": 0.21176547600325968,
+          "maximum": 0.21681150615992806
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.10934012202928978
+      },
+      {
+        "head_denominator": 8640,
+        "full_polyp_denominator": 8640,
+        "predicted_N": 8906,
+        "hit_N": 8257,
+        "miss_N": 383,
+        "outside_N": 649,
+        "head_IoU": 0.8889008504682958,
+        "head_hit_fraction": 0.9556712962962963,
+        "outside_fraction": 0.07287222097462386,
+        "full_Polyp_hit_fraction": 0.9556712962962963,
+        "boundary_px": {
+          "N": 1240,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.577190252623715,
+          "p95": 4.47213595499958,
+          "maximum": 14.866068747318506
+        },
+        "reference": "G06_004_growth_r03",
+        "CAD_occluded_N": 3114,
+        "CAD_occluded_fraction": 0.25906821963394344,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -0.07080097599994417,
+          "median_abs": 0.10703149396501743,
+          "MAE": 0.13077850163590626,
+          "p95": 0.31660182110872054,
+          "maximum": 0.34240906376910374
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 0.1382298452836621
+      }
+    ],
+    "geometry": {
+      "vertices": 3073,
+      "faces": 6048,
+      "components": 1,
+      "watertight": false,
+      "center_mm": [
+        1.0929843712506544,
+        -1.0203558926100604,
+        -0.6781479662108302
+      ],
+      "rotation": [
+        [
+          0.33821868356668283,
+          -0.9364644417324469,
+          0.09296489368119935
+        ],
+        [
+          0.9404035267236883,
+          0.3326164959118052,
+          -0.07076350452741594
+        ],
+        [
+          0.035345848583243994,
+          0.11135805322512027,
+          0.9931515770363766
+        ]
+      ],
+      "axes_mm": [
+        6.251241953938813,
+        5.4212501680522,
+        0.5996074100695613
+      ],
+      "model_axis_full_extents_mm": [
+        12.502483907877629,
+        10.8425003361044,
+        0.599607410069562
+      ],
+      "world_bounds_mm": [
+        [
+          -4.406477180567796,
+          -7.166683311374603,
+          -1.320833359530442
+        ],
+        [
+          6.592445923069105,
+          5.125971526154483,
+          0.003139547406826204
+        ]
+      ],
+      "axis_ratio": 10.425558205182282,
+      "peak_above_model_plane_mm": 0.5996074100695614,
+      "area_mm2": 107.14788266537995,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G06_004",
+    "kind": "IIa",
+    "arm": "A1-2+H",
+    "family": "ellipsoid",
+    "start": 0,
+    "parameter_N": 9,
+    "initial": [
+      -0.09187755430766667,
+      -0.7070410480799056,
+      -1.714165059413642,
+      0.0,
+      0.0,
+      0.0,
+      1.8429029636012364,
+      1.3709385890067542,
+      -0.2876820724517809
+    ],
+    "p": [
+      1.0985881415065588,
+      -1.092320782054489,
+      -0.8500570923962246,
+      -0.7996906019470593,
+      -0.19462638863898188,
+      -0.32072255377975506,
+      1.8370629444898856,
+      1.663444786759141,
+      -0.08405206923111874
+    ],
+    "R0": [
+      [
+        0.09655657769892151,
+        -0.6180164708283191,
+        0.7802130921023956
+      ],
+      [
+        0.9950811678294468,
+        0.042500287056566166,
+        -0.0894829315081594
+      ],
+      [
+        0.02214264515040201,
+        0.7850155204739705,
+        0.6190802337990807
+      ]
+    ],
+    "seconds": 0.2005515809996723,
+    "nfev": 20,
+    "actual_residual_evaluations": 255,
+    "solver_success": true,
+    "solver_status": 2,
+    "termination": "`ftol` termination condition is satisfied.",
+    "initial_objective": 14.53535940709449,
+    "objective": 0.4432477099448415,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G06_004_growth_r01",
+      "G06_004_growth_r03"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 13047,
+        "full_polyp_denominator": 13047,
+        "predicted_N": 12619,
+        "hit_N": 11883,
+        "miss_N": 1164,
+        "outside_N": 736,
+        "head_IoU": 0.8621490241601973,
+        "head_hit_fraction": 0.9107840882961601,
+        "outside_fraction": 0.05832474839527697,
+        "full_Polyp_hit_fraction": 0.9107840882961601,
+        "boundary_px": {
+          "N": 1459,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 2.5100810547653802,
+          "p95": 10.0,
+          "maximum": 17.029386365926403
+        },
+        "reference": "G06_004_growth_r06",
+        "CAD_occluded_N": 4164,
+        "CAD_occluded_fraction": 0.24810820473097778,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 13,
+        "relative_depth_miss_pair_N": 3,
+        "relative_depth_mm": {
+          "N": 13,
+          "median": -0.26270025074232706,
+          "median_abs": 0.26270025074232706,
+          "MAE": 0.2271034810488988,
+          "p95": 0.37914614387039897,
+          "maximum": 0.4020966014912979
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 29,
+        "depth_ray_hit_fraction": 0.90625,
+        "censored_relative_depth_score_mm": 0.23139657835223026
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 8571,
+        "full_polyp_denominator": 8571,
+        "predicted_N": 8455,
+        "hit_N": 7981,
+        "miss_N": 590,
+        "outside_N": 474,
+        "head_IoU": 0.8823659480375898,
+        "head_hit_fraction": 0.931163224827908,
+        "outside_fraction": 0.056061502069781194,
+        "full_Polyp_hit_fraction": 0.931163224827908,
+        "boundary_px": {
+          "N": 1231,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.641892027757213,
+          "p95": 5.0,
+          "maximum": 15.524174696260024
+        },
+        "reference": "G06_004_growth_r01",
+        "CAD_occluded_N": 2931,
+        "CAD_occluded_fraction": 0.2574213946952398,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": 0.017220582091724168,
+          "median_abs": 0.04648188589522917,
+          "MAE": 0.053117504224805955,
+          "p95": 0.1132122231925539,
+          "maximum": 0.11425964813503953
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.07772781619670521
+      },
+      {
+        "head_denominator": 8640,
+        "full_polyp_denominator": 8640,
+        "predicted_N": 8705,
+        "hit_N": 8044,
+        "miss_N": 596,
+        "outside_N": 661,
+        "head_IoU": 0.8648532415869261,
+        "head_hit_fraction": 0.9310185185185185,
+        "outside_fraction": 0.07593337162550258,
+        "full_Polyp_hit_fraction": 0.9310185185185185,
+        "boundary_px": {
+          "N": 1237,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.9156743791373347,
+          "p95": 6.324555320336759,
+          "maximum": 14.866068747318506
+        },
+        "reference": "G06_004_growth_r03",
+        "CAD_occluded_N": 3023,
+        "CAD_occluded_fraction": 0.2577592087312415,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": -0.11044043665432568,
+          "median_abs": 0.1209446430109935,
+          "MAE": 0.1462964478960837,
+          "p95": 0.27012203002723073,
+          "maximum": 0.2906936778505269
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.15925939190907323
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        1.0985881415065588,
+        -1.092320782054489,
+        -0.8500570923962246
+      ],
+      "rotation": [
+        [
+          0.44514289020330444,
+          -0.8921101834035482,
+          0.07737717989909045
+        ],
+        [
+          0.8946781976566852,
+          0.43948190752473293,
+          -0.08004108692545005
+        ],
+        [
+          0.037399598115945905,
+          0.10485739662088421,
+          0.9937837775062824
+        ]
+      ],
+      "axes_mm": [
+        6.278072109962366,
+        5.27745928962125,
+        0.9193833832629149
+      ],
+      "model_axis_full_extents_mm": [
+        12.556144219924734,
+        10.554918579242496,
+        1.8387667665258296
+      ],
+      "world_bounds_mm": [
+        [
+          -4.3760441447367615,
+          -7.1691934574219545,
+          -1.9437234528424208
+        ],
+        [
+          6.573220427749879,
+          4.984551893312977,
+          0.2436092680499714
+        ]
+      ],
+      "axis_ratio": 6.828568173248171,
+      "peak_above_model_plane_mm": 0.9193833832629149,
+      "area_mm2": 221.69762927674876,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G06_004",
+    "kind": "IIa",
+    "arm": "A1-3+H",
+    "family": "height",
+    "start": 0,
+    "parameter_N": 11,
+    "initial": [
+      -0.09187755430766667,
+      -0.7070410480799056,
+      -1.714165059413642,
+      0.0,
+      0.0,
+      0.0,
+      1.8429029636012364,
+      1.3709385890067542,
+      -0.2876820724517809,
+      0.0,
+      0.0
+    ],
+    "p": [
+      1.3113457256418797,
+      -1.035429003215662,
+      -0.4668378480009326,
+      -0.7999999632942475,
+      -0.13675459353984715,
+      -0.21626725442675376,
+      1.8260749440125745,
+      1.6963824268504282,
+      -0.5009045504667847,
+      0.004614631608101443,
+      -0.04185323212073011
+    ],
+    "R0": [
+      [
+        0.09655657769892151,
+        -0.6180164708283191,
+        0.7802130921023956
+      ],
+      [
+        0.9950811678294468,
+        0.042500287056566166,
+        -0.0894829315081594
+      ],
+      [
+        0.02214264515040201,
+        0.7850155204739705,
+        0.6190802337990807
+      ]
+    ],
+    "seconds": 1.0791753520002203,
+    "nfev": 20,
+    "actual_residual_evaluations": 351,
+    "solver_success": true,
+    "solver_status": 2,
+    "termination": "`ftol` termination condition is satisfied.",
+    "initial_objective": 13.138341934968135,
+    "objective": 0.3828145295698836,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G06_004_growth_r01",
+      "G06_004_growth_r03"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 13047,
+        "full_polyp_denominator": 13047,
+        "predicted_N": 13247,
+        "hit_N": 12293,
+        "miss_N": 754,
+        "outside_N": 954,
+        "head_IoU": 0.8780087136633098,
+        "head_hit_fraction": 0.9422089369203648,
+        "outside_fraction": 0.07201630557862157,
+        "full_Polyp_hit_fraction": 0.9422089369203648,
+        "boundary_px": {
+          "N": 1468,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 2.2732360367287963,
+          "p95": 6.082762530298219,
+          "maximum": 17.029386365926403
+        },
+        "reference": "G06_004_growth_r06",
+        "CAD_occluded_N": 4272,
+        "CAD_occluded_fraction": 0.24384953479079857,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": -0.16243561047832245,
+          "median_abs": 0.16243561047832245,
+          "MAE": 0.1820323412288296,
+          "p95": 0.37870705756762707,
+          "maximum": 0.39752641040310976
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.1905282985752259
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 8571,
+        "full_polyp_denominator": 8571,
+        "predicted_N": 8687,
+        "hit_N": 8211,
+        "miss_N": 360,
+        "outside_N": 476,
+        "head_IoU": 0.9075936774621421,
+        "head_hit_fraction": 0.9579978998949947,
+        "outside_fraction": 0.0547945205479452,
+        "full_Polyp_hit_fraction": 0.9579978998949947,
+        "boundary_px": {
+          "N": 1237,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.3230090322202155,
+          "p95": 3.0,
+          "maximum": 15.524174696260024
+        },
+        "reference": "G06_004_growth_r01",
+        "CAD_occluded_N": 3025,
+        "CAD_occluded_fraction": 0.2582821038251366,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": 0.06254853741666722,
+          "median_abs": 0.09255233377699668,
+          "MAE": 0.10175151833273821,
+          "p95": 0.20005275453790894,
+          "maximum": 0.22086542309285306
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.10175151833273821
+      },
+      {
+        "head_denominator": 8640,
+        "full_polyp_denominator": 8640,
+        "predicted_N": 8999,
+        "hit_N": 8284,
+        "miss_N": 356,
+        "outside_N": 715,
+        "head_IoU": 0.885515766969535,
+        "head_hit_fraction": 0.9587962962962963,
+        "outside_fraction": 0.07945327258584287,
+        "full_Polyp_hit_fraction": 0.9587962962962963,
+        "boundary_px": {
+          "N": 1241,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.6289185846920256,
+          "p95": 4.47213595499958,
+          "maximum": 15.811388300841896
+        },
+        "reference": "G06_004_growth_r03",
+        "CAD_occluded_N": 3116,
+        "CAD_occluded_fraction": 0.2572018159306645,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -0.07383501546851079,
+          "median_abs": 0.11186655129878176,
+          "MAE": 0.13538204335890497,
+          "p95": 0.327935980455485,
+          "maximum": 0.35484680635639876
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 0.14254566564897342
+      }
+    ],
+    "geometry": {
+      "vertices": 3073,
+      "faces": 6048,
+      "components": 1,
+      "watertight": false,
+      "center_mm": [
+        1.3113457256418797,
+        -1.035429003215662,
+        -0.4668378480009326
+      ],
+      "rotation": [
+        [
+          0.338403986306559,
+          -0.936946225650046,
+          0.08726117287753414
+        ],
+        [
+          0.9402746544664367,
+          0.333043130053088,
+          -0.07046877104409562
+        ],
+        [
+          0.036963714908725104,
+          0.10589638220720561,
+          0.9936899113987079
+        ]
+      ],
+      "axes_mm": [
+        6.209466261435491,
+        5.454180761792455,
+        0.6059822701816657
+      ],
+      "model_axis_full_extents_mm": [
+        12.418932522870984,
+        10.908361523584905,
+        0.6059822701816663
+      ],
+      "world_bounds_mm": [
+        [
+          -4.214067711089488,
+          -7.148066336745626,
+          -1.0882857424935204
+        ],
+        [
+          6.836759162373246,
+          5.077208330314302,
+          0.21333471276232535
+        ]
+      ],
+      "axis_ratio": 10.246943791893404,
+      "peak_above_model_plane_mm": 0.6059822701816657,
+      "area_mm2": 107.09367643114531,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G08_005",
+    "kind": "IIa",
+    "arm": "A1-0",
+    "family": "ellipsoid",
+    "start": 1,
+    "parameter_N": 9,
+    "initial": [
+      0.8910991488419789,
+      -0.059128963554328035,
+      -4.962130297761539,
+      0.05071844265300789,
+      0.0902879944037247,
+      0.04133379977615831,
+      1.9777611177232304,
+      1.5596658765308502,
+      -0.5368710273638184
+    ],
+    "p": [
+      1.7122757929375512,
+      0.1361073724572545,
+      -3.6685884974597482,
+      -0.26599185091933486,
+      0.10481461864781483,
+      -0.1470186205784652,
+      2.352348987565071,
+      1.7381740469800067,
+      -0.2876820724517809
+    ],
+    "R0": [
+      [
+        0.16841872730929802,
+        -0.55832643961519,
+        0.8123464280207933
+      ],
+      [
+        0.9819319465509361,
+        0.022891124316453154,
+        -0.18784474645360336
+      ],
+      [
+        0.08628316541600783,
+        0.8293054824696111,
+        0.5520938616862531
+      ]
+    ],
+    "seconds": 0.10900683399995614,
+    "nfev": 12,
+    "actual_residual_evaluations": 229,
+    "solver_success": true,
+    "solver_status": 2,
+    "termination": "`ftol` termination condition is satisfied.",
+    "initial_objective": 6.606085403410627,
+    "objective": 0.08068697709720023,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G08_005_growth_r01",
+      "G08_005_growth_r02"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 19631,
+        "full_polyp_denominator": 19631,
+        "predicted_N": 18749,
+        "hit_N": 18078,
+        "miss_N": 1553,
+        "outside_N": 671,
+        "head_IoU": 0.8904541424490198,
+        "head_hit_fraction": 0.9208904284040548,
+        "outside_fraction": 0.035788575390687506,
+        "full_Polyp_hit_fraction": 0.9208904284040548,
+        "boundary_px": {
+          "N": 1558,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 2.5123425757517905,
+          "p95": 6.708203932499369,
+          "maximum": 7.615773105863909
+        },
+        "reference": "G08_005_ref04",
+        "CAD_occluded_N": 2398,
+        "CAD_occluded_fraction": 0.11339669929540833,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 13,
+        "relative_depth_miss_pair_N": 3,
+        "relative_depth_mm": {
+          "N": 13,
+          "median": -1.347086472986355,
+          "median_abs": 1.347086472986355,
+          "MAE": 1.7641309175195539,
+          "p95": 3.623748441946354,
+          "maximum": 4.182260772369595
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 29,
+        "depth_ray_hit_fraction": 0.90625,
+        "censored_relative_depth_score_mm": 1.4802313704846375
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 17007,
+        "full_polyp_denominator": 17007,
+        "predicted_N": 17085,
+        "hit_N": 16547,
+        "miss_N": 460,
+        "outside_N": 538,
+        "head_IoU": 0.9431176973496723,
+        "head_hit_fraction": 0.9729523137531605,
+        "outside_fraction": 0.03148961076968101,
+        "full_Polyp_hit_fraction": 0.9729523137531605,
+        "boundary_px": {
+          "N": 1451,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.2329540327637472,
+          "p95": 3.0,
+          "maximum": 4.0
+        },
+        "reference": "G08_005_growth_r01",
+        "CAD_occluded_N": 2082,
+        "CAD_occluded_fraction": 0.10862419784003756,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": -2.251984172705882,
+          "median_abs": 2.251984172705882,
+          "MAE": 2.2391724881786375,
+          "p95": 4.393892020650714,
+          "maximum": 4.5750826007077166
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 2.2391724881786375
+      },
+      {
+        "head_denominator": 16330,
+        "full_polyp_denominator": 16330,
+        "predicted_N": 16248,
+        "hit_N": 15801,
+        "miss_N": 529,
+        "outside_N": 447,
+        "head_IoU": 0.941825117720689,
+        "head_hit_fraction": 0.967605633802817,
+        "outside_fraction": 0.027511078286558344,
+        "full_Polyp_hit_fraction": 0.967605633802817,
+        "boundary_px": {
+          "N": 1425,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.258016125249796,
+          "p95": 3.1622776601683795,
+          "maximum": 5.0
+        },
+        "reference": "G08_005_growth_r02",
+        "CAD_occluded_N": 1991,
+        "CAD_occluded_fraction": 0.10916168649597018,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": -1.6226380389707167,
+          "median_abs": 1.6226380389707167,
+          "MAE": 2.4153317267299235,
+          "p95": 5.558775855848419,
+          "maximum": 5.601953032181655
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 2.4153317267299235
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        1.7122757929375512,
+        0.1361073724572545,
+        -3.6685884974597482
+      ],
+      "rotation": [
+        [
+          0.18615168127518672,
+          -0.7293337304535564,
+          0.6583463079421955
+        ],
+        [
+          0.9781495339693701,
+          0.20070468890844018,
+          -0.054232066581225764
+        ],
+        [
+          -0.09257991549966749,
+          0.6540565246772371,
+          0.7507589638314078
+        ]
+      ],
+      "axes_mm": [
+        10.510229148625,
+        5.686949833234211,
+        0.75
+      ],
+      "model_axis_full_extents_mm": [
+        21.020458297250002,
+        11.373899666468422,
+        1.5
+      ],
+      "world_bounds_mm": [
+        [
+          -2.8987620674711527,
+          -10.205498889645906,
+          -7.553502375532505
+        ],
+        [
+          6.323313653346255,
+          10.477713634560416,
+          0.21632538061300766
+        ]
+      ],
+      "axis_ratio": 14.013638864833332,
+      "peak_above_model_plane_mm": 0.75,
+      "area_mm2": 387.523396277832,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G08_005",
+    "kind": "IIa",
+    "arm": "A1-1",
+    "family": "ellipsoid",
+    "start": 0,
+    "parameter_N": 9,
+    "initial": [
+      2.6861439132113567,
+      -0.6772743729595998,
+      -1.9886142594965914,
+      0.0,
+      0.0,
+      0.0,
+      2.302585092994046,
+      1.8825016153000413,
+      -0.2876820724517809
+    ],
+    "p": [
+      1.5432256597829594,
+      -0.18036516522803564,
+      -3.290562139014986,
+      -0.7999999991415482,
+      0.09533182662810631,
+      -0.07180145978763969,
+      2.2367543052985295,
+      2.107963866641385,
+      1.0986122886681082
+    ],
+    "R0": [
+      [
+        0.16297422310340165,
+        -0.5370740937451716,
+        0.8276417222637131
+      ],
+      [
+        0.9830474245932899,
+        0.016968442357815805,
+        -0.18256459942839307
+      ],
+      [
+        0.08400692593079925,
+        0.8433643873153241,
+        0.5307347233825059
+      ]
+    ],
+    "seconds": 0.04737902600027155,
+    "nfev": 13,
+    "actual_residual_evaluations": 248,
+    "solver_success": true,
+    "solver_status": 2,
+    "termination": "`ftol` termination condition is satisfied.",
+    "initial_objective": 7.675061049496965,
+    "objective": 0.41476736683754284,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "source_ids": [
+      "G08_005_growth_r01",
+      "G08_005_growth_r02"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 19631,
+        "full_polyp_denominator": 19631,
+        "predicted_N": 19482,
+        "hit_N": 18082,
+        "miss_N": 1549,
+        "outside_N": 1400,
+        "head_IoU": 0.859778422328943,
+        "head_hit_fraction": 0.9210941877642504,
+        "outside_fraction": 0.07186120521507032,
+        "full_Polyp_hit_fraction": 0.9210941877642504,
+        "boundary_px": {
+          "N": 1546,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 3.4480850885969034,
+          "p95": 11.694000880462369,
+          "maximum": 15.297058540778355
+        },
+        "reference": "G08_005_ref04",
+        "CAD_occluded_N": 2704,
+        "CAD_occluded_fraction": 0.12187866221941765,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 13,
+        "relative_depth_miss_pair_N": 3,
+        "relative_depth_mm": {
+          "N": 13,
+          "median": -0.02207416920831662,
+          "median_abs": 0.43606619098427046,
+          "MAE": 0.496337539096117,
+          "p95": 1.205626417446791,
+          "maximum": 1.2810553147956298
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 29,
+        "depth_ray_hit_fraction": 0.90625,
+        "censored_relative_depth_score_mm": 0.45014925051559507
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 17007,
+        "full_polyp_denominator": 17007,
+        "predicted_N": 17375,
+        "hit_N": 15751,
+        "miss_N": 1256,
+        "outside_N": 1624,
+        "head_IoU": 0.845418925446836,
+        "head_hit_fraction": 0.9261480566825425,
+        "outside_fraction": 0.09346762589928058,
+        "full_Polyp_hit_fraction": 0.9261480566825425,
+        "boundary_px": {
+          "N": 1436,
+          "median": 2.23606797749979,
+          "median_abs": 2.23606797749979,
+          "MAE": 3.6016892553009847,
+          "p95": 9.486832980505138,
+          "maximum": 13.341664064126334
+        },
+        "reference": "G08_005_growth_r01",
+        "CAD_occluded_N": 2300,
+        "CAD_occluded_fraction": 0.11689961880559085,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 13,
+        "relative_depth_miss_pair_N": 3,
+        "relative_depth_mm": {
+          "N": 13,
+          "median": 0.06481095441279194,
+          "median_abs": 0.3547277799167574,
+          "MAE": 0.3728895593492598,
+          "p95": 0.6920270391535054,
+          "maximum": 0.737087015980805
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 29,
+        "depth_ray_hit_fraction": 0.90625,
+        "censored_relative_depth_score_mm": 0.3498477669712736
+      },
+      {
+        "head_denominator": 16330,
+        "full_polyp_denominator": 16330,
+        "predicted_N": 16631,
+        "hit_N": 15102,
+        "miss_N": 1228,
+        "outside_N": 1529,
+        "head_IoU": 0.8456240550982698,
+        "head_hit_fraction": 0.9248009797917942,
+        "outside_fraction": 0.09193674463351573,
+        "full_Polyp_hit_fraction": 0.9248009797917942,
+        "boundary_px": {
+          "N": 1412,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 3.5490224700601813,
+          "p95": 10.0,
+          "maximum": 12.36931687685298
+        },
+        "reference": "G08_005_growth_r02",
+        "CAD_occluded_N": 2232,
+        "CAD_occluded_fraction": 0.11832688331654562,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": 0.19248712529748602,
+          "median_abs": 0.3056686038054863,
+          "MAE": 0.3909512128846576,
+          "p95": 0.774040353042723,
+          "maximum": 0.7966333467998297
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.3733323112740754
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        1.5432256597829594,
+        -0.18036516522803564,
+        -3.290562139014986
+      ],
+      "rotation": [
+        [
+          0.1676842913150139,
+          -0.9634070064776907,
+          0.20911460569715412
+        ],
+        [
+          0.9853214219926011,
+          0.17066632383000283,
+          -0.0038342238890621866
+        ],
+        [
+          -0.031994902854367194,
+          0.2066880397605223,
+          0.9778836231430059
+        ]
+      ],
+      "axes_mm": [
+        9.362892825552457,
+        8.231463851738893,
+        2.9999999999999956
+      ],
+      "model_axis_full_extents_mm": [
+        18.72578565110492,
+        16.46292770347778,
+        5.999999999999993
+      ],
+      "world_bounds_mm": [
+        [
+          -6.56510025263857,
+          -9.510266548859844,
+          -6.693633628440667
+        ],
+        [
+          9.65155157220449,
+          9.149536218403773,
+          0.11250935041069399
+        ]
+      ],
+      "axis_ratio": 3.120964275184157,
+      "peak_above_model_plane_mm": 2.999999999999996,
+      "area_mm2": 588.7652536830552,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G08_005",
+    "kind": "IIa",
+    "arm": "A1-2",
+    "family": "ellipsoid",
+    "start": 2,
+    "parameter_N": 9,
+    "initial": [
+      1.5781859560681761,
+      0.6910298861876009,
+      -4.9328527177738035,
+      0.11870471067187661,
+      -0.0041845527183688195,
+      -0.0478658556813389,
+      2.1491372373314253,
+      1.8689348738327132,
+      -0.59116273267242
+    ],
+    "p": [
+      0.8856704277424441,
+      0.11769731951363901,
+      -3.8089894376736297,
+      -0.7490035233499811,
+      0.04277005966888882,
+      -0.1848261194736343,
+      2.301205798105721,
+      2.0359338343239375,
+      1.0733543150202216
+    ],
+    "R0": [
+      [
+        0.16841872730929802,
+        -0.55832643961519,
+        0.8123464280207933
+      ],
+      [
+        0.9819319465509361,
+        0.022891124316453154,
+        -0.18784474645360336
+      ],
+      [
+        0.08628316541600783,
+        0.8293054824696111,
+        0.5520938616862531
+      ]
+    ],
+    "seconds": 0.2102868749998379,
+    "nfev": 28,
+    "actual_residual_evaluations": 317,
+    "solver_success": true,
+    "solver_status": 4,
+    "termination": "Both `ftol` and `xtol` termination conditions are satisfied.",
+    "initial_objective": 9.576407039497704,
+    "objective": 1.8158435322856235,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G08_005_growth_r01",
+      "G08_005_growth_r02"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 19631,
+        "full_polyp_denominator": 19631,
+        "predicted_N": 19060,
+        "hit_N": 18411,
+        "miss_N": 1220,
+        "outside_N": 649,
+        "head_IoU": 0.9078402366863906,
+        "head_hit_fraction": 0.9378533951403393,
+        "outside_fraction": 0.03405036726128017,
+        "full_Polyp_hit_fraction": 0.9378533951403393,
+        "boundary_px": {
+          "N": 1545,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 2.1577169602939903,
+          "p95": 6.324555320336759,
+          "maximum": 8.54400374531753
+        },
+        "reference": "G08_005_ref04",
+        "CAD_occluded_N": 2563,
+        "CAD_occluded_fraction": 0.11853119363640569,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": 0.00519552651090649,
+          "median_abs": 0.3429259929449273,
+          "MAE": 0.41263468691453703,
+          "p95": 0.9578771871558085,
+          "maximum": 1.0988907875962255
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.3923053510502199
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 17007,
+        "full_polyp_denominator": 17007,
+        "predicted_N": 17150,
+        "hit_N": 16282,
+        "miss_N": 725,
+        "outside_N": 868,
+        "head_IoU": 0.9108811188811189,
+        "head_hit_fraction": 0.9573704945022637,
+        "outside_fraction": 0.05061224489795919,
+        "full_Polyp_hit_fraction": 0.9573704945022637,
+        "boundary_px": {
+          "N": 1439,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.9986037563287096,
+          "p95": 6.0,
+          "maximum": 7.0710678118654755
+        },
+        "reference": "G08_005_growth_r01",
+        "CAD_occluded_N": 2180,
+        "CAD_occluded_fraction": 0.11277806518365235,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": -0.10777553517306515,
+          "median_abs": 0.36505422809930366,
+          "MAE": 0.49030242784445477,
+          "p95": 1.2762508938757045,
+          "maximum": 1.9315514293043137
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.4602646243638979
+      },
+      {
+        "head_denominator": 16330,
+        "full_polyp_denominator": 16330,
+        "predicted_N": 16395,
+        "hit_N": 15600,
+        "miss_N": 730,
+        "outside_N": 795,
+        "head_IoU": 0.910948905109489,
+        "head_hit_fraction": 0.9552969993876301,
+        "outside_fraction": 0.0484903934126258,
+        "full_Polyp_hit_fraction": 0.9552969993876301,
+        "boundary_px": {
+          "N": 1415,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.9821422807574618,
+          "p95": 5.656854249492381,
+          "maximum": 6.324555320336759
+        },
+        "reference": "G08_005_growth_r02",
+        "CAD_occluded_N": 2115,
+        "CAD_occluded_fraction": 0.11426256077795786,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": 0.1518092731336722,
+          "median_abs": 0.44565421060028854,
+          "MAE": 0.507366098868201,
+          "p95": 1.3331328532982158,
+          "maximum": 1.462855165934208
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.47519533650967594
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        0.8856704277424441,
+        0.11769731951363901,
+        -3.8089894376736297
+      ],
+      "rotation": [
+        [
+          0.28936811841407833,
+          -0.9274705650044971,
+          0.23677931306542588
+        ],
+        [
+          0.9558429848319682,
+          0.29322602017385785,
+          -0.0195624497574883
+        ],
+        [
+          -0.051286259300224984,
+          0.23198459462481405,
+          0.9713664949254481
+        ]
+      ],
+      "axes_mm": [
+        9.986216559016796,
+        7.659401398767688,
+        2.925175020670046
+      ],
+      "model_axis_full_extents_mm": [
+        19.972433118033596,
+        15.318802797535378,
+        5.850350041340091
+      ],
+      "world_bounds_mm": [
+        [
+          -6.814330276212243,
+          -9.683602001276709,
+          -7.198840297515153
+        ],
+        [
+          8.585671131697131,
+          9.918996640303986,
+          -0.41913857783210684
+        ]
+      ],
+      "axis_ratio": 3.413886857521891,
+      "peak_above_model_plane_mm": 2.9251750206700455,
+      "area_mm2": 582.7354480393288,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G08_005",
+    "kind": "IIa",
+    "arm": "A1-3",
+    "family": "height",
+    "start": 2,
+    "parameter_N": 11,
+    "initial": [
+      1.5781859560681761,
+      0.6910298861876009,
+      -4.9328527177738035,
+      0.11870471067187661,
+      -0.0041845527183688195,
+      -0.0478658556813389,
+      2.1491372373314253,
+      1.8689348738327132,
+      -0.59116273267242,
+      0.0,
+      0.0
+    ],
+    "p": [
+      -1.0423528408198264,
+      0.44441353030651815,
+      -4.408499481086021,
+      -0.7999999662003449,
+      -0.030402978191174775,
+      -0.28116319183917204,
+      2.3973529068746737,
+      2.2092913424417944,
+      1.4231971728927477,
+      -0.24969769484701262,
+      0.04736293808825679
+    ],
+    "R0": [
+      [
+        0.16841872730929802,
+        -0.55832643961519,
+        0.8123464280207933
+      ],
+      [
+        0.9819319465509361,
+        0.022891124316453154,
+        -0.18784474645360336
+      ],
+      [
+        0.08628316541600783,
+        0.8293054824696111,
+        0.5520938616862531
+      ]
+    ],
+    "seconds": 1.9508080829996288,
+    "nfev": 29,
+    "actual_residual_evaluations": 668,
+    "solver_success": true,
+    "solver_status": 2,
+    "termination": "`ftol` termination condition is satisfied.",
+    "initial_objective": 9.51702938469753,
+    "objective": 2.271434307209737,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G08_005_growth_r01",
+      "G08_005_growth_r02"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 19631,
+        "full_polyp_denominator": 19631,
+        "predicted_N": 20254,
+        "hit_N": 19025,
+        "miss_N": 606,
+        "outside_N": 1229,
+        "head_IoU": 0.912032598274209,
+        "head_hit_fraction": 0.9691304569303653,
+        "outside_fraction": 0.06067937197590599,
+        "full_Polyp_hit_fraction": 0.9691304569303653,
+        "boundary_px": {
+          "N": 1592,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 2.1013402089370157,
+          "p95": 5.0,
+          "maximum": 12.206555615733702
+        },
+        "reference": "G08_005_ref04",
+        "CAD_occluded_N": 3152,
+        "CAD_occluded_fraction": 0.13466632487396393,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": -0.027235412492139233,
+          "median_abs": 0.972309981322546,
+          "MAE": 0.8984644844137049,
+          "p95": 1.895026014648419,
+          "maximum": 2.3024736495382214
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.8984644844137049
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 17007,
+        "full_polyp_denominator": 17007,
+        "predicted_N": 18248,
+        "hit_N": 16767,
+        "miss_N": 240,
+        "outside_N": 1481,
+        "head_IoU": 0.9069125919515362,
+        "head_hit_fraction": 0.9858881636973011,
+        "outside_fraction": 0.08115957913195966,
+        "full_Polyp_hit_fraction": 0.9858881636973011,
+        "boundary_px": {
+          "N": 1480,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 2.0643874395778723,
+          "p95": 5.0,
+          "maximum": 10.816653826391969
+        },
+        "reference": "G08_005_growth_r01",
+        "CAD_occluded_N": 2493,
+        "CAD_occluded_fraction": 0.12019671182681645,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": 0.19773460858780112,
+          "median_abs": 0.2938973474237727,
+          "MAE": 0.35460048959674095,
+          "p95": 0.9578519298210626,
+          "maximum": 1.1514095784604734
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.35460048959674095
+      },
+      {
+        "head_denominator": 16330,
+        "full_polyp_denominator": 16330,
+        "predicted_N": 17481,
+        "hit_N": 16128,
+        "miss_N": 202,
+        "outside_N": 1353,
+        "head_IoU": 0.9120624328451055,
+        "head_hit_fraction": 0.987630128597673,
+        "outside_fraction": 0.0773983181740175,
+        "full_Polyp_hit_fraction": 0.987630128597673,
+        "boundary_px": {
+          "N": 1460,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 1.9752594232008698,
+          "p95": 5.0,
+          "maximum": 12.529964086141668
+        },
+        "reference": "G08_005_growth_r02",
+        "CAD_occluded_N": 2555,
+        "CAD_occluded_fraction": 0.12752046316630067,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": -0.33865912155973277,
+          "median_abs": 0.578137691181599,
+          "MAE": 0.8915216953312504,
+          "p95": 2.049491587704601,
+          "maximum": 2.374807643266081
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.8915216953312504
+      }
+    ],
+    "geometry": {
+      "vertices": 3073,
+      "faces": 6048,
+      "components": 1,
+      "watertight": false,
+      "center_mm": [
+        -1.0423528408198264,
+        0.44441353030651815,
+        -4.408499481086021
+      ],
+      "rotation": [
+        [
+          0.402344730977461,
+          -0.8969367218754599,
+          0.18336639388388148
+        ],
+        [
+          0.91459839569179,
+          0.4026373479924969,
+          -0.03732211944106548
+        ],
+        [
+          -0.040354579079439984,
+          0.18272296777601096,
+          0.9823359023238684
+        ]
+      ],
+      "axes_mm": [
+        10.994035592431253,
+        9.10925876011536,
+        4.150368696775104
+      ],
+      "model_axis_full_extents_mm": [
+        21.988071184862513,
+        18.218517520230726,
+        4.1839388707174505
+      ],
+      "world_bounds_mm": [
+        [
+          -10.329847793443175,
+          -10.256041939677713,
+          -6.1310823833681525
+        ],
+        [
+          8.245142111803524,
+          11.144869000290749,
+          -0.162891908710181
+        ]
+      ],
+      "axis_ratio": 2.64892986518855,
+      "peak_above_model_plane_mm": 4.18393887071745,
+      "area_mm2": 349.0195343987655,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G08_005",
+    "kind": "IIa",
+    "arm": "A1-2+H",
+    "family": "ellipsoid",
+    "start": 2,
+    "parameter_N": 9,
+    "initial": [
+      1.5781859560681761,
+      0.6910298861876009,
+      -4.9328527177738035,
+      0.11870471067187661,
+      -0.0041845527183688195,
+      -0.0478658556813389,
+      2.1491372373314253,
+      1.8689348738327132,
+      -0.59116273267242
+    ],
+    "p": [
+      1.6562415899123764,
+      0.03879237000138983,
+      -3.2831792144360654,
+      -0.7824248623855672,
+      0.06035940578908601,
+      -0.17856688039609991,
+      2.273587967426135,
+      2.05020476526467,
+      1.0986122712739894
+    ],
+    "R0": [
+      [
+        0.16841872730929802,
+        -0.55832643961519,
+        0.8123464280207933
+      ],
+      [
+        0.9819319465509361,
+        0.022891124316453154,
+        -0.18784474645360336
+      ],
+      [
+        0.08628316541600783,
+        0.8293054824696111,
+        0.5520938616862531
+      ]
+    ],
+    "seconds": 0.2569782540003871,
+    "nfev": 26,
+    "actual_residual_evaluations": 333,
+    "solver_success": true,
+    "solver_status": 3,
+    "termination": "`xtol` termination condition is satisfied.",
+    "initial_objective": 18.669220445247714,
+    "objective": 2.191305590482264,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "source_ids": [
+      "G08_005_growth_r01",
+      "G08_005_growth_r02"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 19631,
+        "full_polyp_denominator": 19631,
+        "predicted_N": 19280,
+        "hit_N": 18434,
+        "miss_N": 1197,
+        "outside_N": 846,
+        "head_IoU": 0.9002295258094447,
+        "head_hit_fraction": 0.939025011461464,
+        "outside_fraction": 0.04387966804979253,
+        "full_Polyp_hit_fraction": 0.939025011461464,
+        "boundary_px": {
+          "N": 1545,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 2.3599960225230556,
+          "p95": 6.324555320336759,
+          "maximum": 10.198039027185569
+        },
+        "reference": "G08_005_ref04",
+        "CAD_occluded_N": 2556,
+        "CAD_occluded_fraction": 0.11705440556878549,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": 0.14672218567124062,
+          "median_abs": 0.48644370783516067,
+          "MAE": 0.48234442157030444,
+          "p95": 0.9830883437774176,
+          "maximum": 1.056904479939206
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.4533013688740164
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 17007,
+        "full_polyp_denominator": 17007,
+        "predicted_N": 17165,
+        "hit_N": 16221,
+        "miss_N": 786,
+        "outside_N": 944,
+        "head_IoU": 0.9036265389114813,
+        "head_hit_fraction": 0.9537837361086612,
+        "outside_fraction": 0.05499563064375182,
+        "full_Polyp_hit_fraction": 0.9537837361086612,
+        "boundary_px": {
+          "N": 1438,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 2.187329152494012,
+          "p95": 6.0,
+          "maximum": 8.94427190999916
+        },
+        "reference": "G08_005_growth_r01",
+        "CAD_occluded_N": 2195,
+        "CAD_occluded_fraction": 0.11337809917355372,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": -0.08719116161029206,
+          "median_abs": 0.3570944123691291,
+          "MAE": 0.4441363113716922,
+          "p95": 1.182285727462217,
+          "maximum": 1.8965402651350871
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.41986927245023065
+      },
+      {
+        "head_denominator": 16330,
+        "full_polyp_denominator": 16330,
+        "predicted_N": 16454,
+        "hit_N": 15537,
+        "miss_N": 793,
+        "outside_N": 917,
+        "head_IoU": 0.9008523221429814,
+        "head_hit_fraction": 0.9514390691977954,
+        "outside_fraction": 0.05573112920870305,
+        "full_Polyp_hit_fraction": 0.9514390691977954,
+        "boundary_px": {
+          "N": 1415,
+          "median": 1.0,
+          "median_abs": 1.0,
+          "MAE": 2.2186145511337725,
+          "p95": 6.082762530298219,
+          "maximum": 7.280109889280518
+        },
+        "reference": "G08_005_growth_r02",
+        "CAD_occluded_N": 2119,
+        "CAD_occluded_fraction": 0.11409034620147526,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": 0.17790919092540847,
+          "median_abs": 0.3984633866073324,
+          "MAE": 0.47281939952775637,
+          "p95": 1.1679144993801105,
+          "maximum": 1.254991505550855
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.4449669745867868
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        1.6562415899123764,
+        0.03879237000138983,
+        -3.2831792144360654
+      ],
+      "rotation": [
+        [
+          0.27719399063584554,
+          -0.9381781389985118,
+          0.2073288958651538
+        ],
+        [
+          0.9589613403748335,
+          0.2835353981505592,
+          0.0009086595108133848
+        ],
+        [
+          -0.059637565526080426,
+          0.19856852092135072,
+          0.9782708741842566
+        ]
+      ],
+      "axes_mm": [
+        9.714192567412752,
+        7.769491865493292,
+        2.99999994781764
+      ],
+      "model_axis_full_extents_mm": [
+        19.428385134825504,
+        15.538983730986581,
+        5.9999998956352805
+      ],
+      "world_bounds_mm": [
+        [
+          -6.136449223783222,
+          -9.52948278890103,
+          -6.648549404265518
+        ],
+        [
+          9.448932403607975,
+          9.60706752890381,
+          0.08219097539338671
+        ]
+      ],
+      "axis_ratio": 3.2380642454608624,
+      "peak_above_model_plane_mm": 2.99999994781764,
+      "area_mm2": 579.3392600741292,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G08_005",
+    "kind": "IIa",
+    "arm": "A1-3+H",
+    "family": "height",
+    "start": 2,
+    "parameter_N": 11,
+    "initial": [
+      1.5781859560681761,
+      0.6910298861876009,
+      -4.9328527177738035,
+      0.11870471067187661,
+      -0.0041845527183688195,
+      -0.0478658556813389,
+      2.1491372373314253,
+      1.8689348738327132,
+      -0.59116273267242,
+      0.0,
+      0.0
+    ],
+    "p": [
+      1.2894264639653623,
+      -0.07550860531787015,
+      -2.897779759059339,
+      -0.799999999999159,
+      -0.021819044014530234,
+      -0.2855990721238651,
+      2.335786732915314,
+      2.173655533257831,
+      1.3345715789004604,
+      -0.2499999942299424,
+      -0.035375866897743934
+    ],
+    "R0": [
+      [
+        0.16841872730929802,
+        -0.55832643961519,
+        0.8123464280207933
+      ],
+      [
+        0.9819319465509361,
+        0.022891124316453154,
+        -0.18784474645360336
+      ],
+      [
+        0.08628316541600783,
+        0.8293054824696111,
+        0.5520938616862531
+      ]
+    ],
+    "seconds": 1.2903403010000147,
+    "nfev": 18,
+    "actual_residual_evaluations": 415,
+    "solver_success": true,
+    "solver_status": 2,
+    "termination": "`ftol` termination condition is satisfied.",
+    "initial_objective": 13.826849349689288,
+    "objective": 2.7833858414461443,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "source_ids": [
+      "G08_005_growth_r01",
+      "G08_005_growth_r02"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 19631,
+        "full_polyp_denominator": 19631,
+        "predicted_N": 20862,
+        "hit_N": 19295,
+        "miss_N": 336,
+        "outside_N": 1567,
+        "head_IoU": 0.9102273799415039,
+        "head_hit_fraction": 0.9828842137435688,
+        "outside_fraction": 0.07511264500047934,
+        "full_Polyp_hit_fraction": 0.9828842137435688,
+        "boundary_px": {
+          "N": 1601,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 2.2409711446607914,
+          "p95": 6.324555320336759,
+          "maximum": 15.0
+        },
+        "reference": "G08_005_ref04",
+        "CAD_occluded_N": 3198,
+        "CAD_occluded_fraction": 0.13291770573566083,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": 0.05415170530301694,
+          "median_abs": 0.5368168200546748,
+          "MAE": 0.6292259563035976,
+          "p95": 1.316612170306275,
+          "maximum": 2.0356301538498514
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.6292259563035976
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 17007,
+        "full_polyp_denominator": 17007,
+        "predicted_N": 18474,
+        "hit_N": 16772,
+        "miss_N": 235,
+        "outside_N": 1702,
+        "head_IoU": 0.8964669410444172,
+        "head_hit_fraction": 0.9861821602869407,
+        "outside_fraction": 0.09212947926816066,
+        "full_Polyp_hit_fraction": 0.9861821602869407,
+        "boundary_px": {
+          "N": 1486,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 2.354288764695348,
+          "p95": 6.0,
+          "maximum": 12.206555615733702
+        },
+        "reference": "G08_005_growth_r01",
+        "CAD_occluded_N": 2657,
+        "CAD_occluded_fraction": 0.12573943495338602,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": 0.028050900152784664,
+          "median_abs": 0.24898734285850566,
+          "MAE": 0.32719061149647066,
+          "p95": 0.8486963821414069,
+          "maximum": 1.1350600714260395
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.32719061149647066
+      },
+      {
+        "head_denominator": 16330,
+        "full_polyp_denominator": 16330,
+        "predicted_N": 17759,
+        "hit_N": 16127,
+        "miss_N": 203,
+        "outside_N": 1632,
+        "head_IoU": 0.8978398841999777,
+        "head_hit_fraction": 0.9875688916105327,
+        "outside_fraction": 0.0918970662762543,
+        "full_Polyp_hit_fraction": 0.9875688916105327,
+        "boundary_px": {
+          "N": 1464,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 2.3229119299826633,
+          "p95": 6.0,
+          "maximum": 13.45362404707371
+        },
+        "reference": "G08_005_growth_r02",
+        "CAD_occluded_N": 2632,
+        "CAD_occluded_fraction": 0.12907655338139376,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": -0.5782714330663055,
+          "median_abs": 0.7997503810918261,
+          "MAE": 0.9616336786694992,
+          "p95": 2.019488199711599,
+          "maximum": 2.5326503750567184
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.9616336786694992
+      }
+    ],
+    "geometry": {
+      "vertices": 3073,
+      "faces": 6048,
+      "components": 1,
+      "watertight": false,
+      "center_mm": [
+        1.2894264639653623,
+        -0.07550860531787015,
+        -2.897779759059339
+      ],
+      "rotation": [
+        [
+          0.4012966759854007,
+          -0.896886718145855,
+          0.18589027047327125
+        ],
+        [
+          0.9146053032825042,
+          0.403354788487456,
+          -0.028320554580694466
+        ],
+        [
+          -0.04957940147467275,
+          0.18138117161876893,
+          0.98216228472265
+        ]
+      ],
+      "axes_mm": [
+        10.33758965303466,
+        8.790358828842878,
+        3.7983682966623036
+      ],
+      "model_axis_full_extents_mm": [
+        20.675179306069317,
+        17.580717657685753,
+        3.828693790610154
+      ],
+      "world_bounds_mm": [
+        [
+          -7.616287096508852,
+          -10.168263634055313,
+          -4.572318298327243
+        ],
+        [
+          10.195140024439578,
+          10.017246423419573,
+          0.9726231629839361
+        ]
+      ],
+      "axis_ratio": 2.721586967256043,
+      "peak_above_model_plane_mm": 3.8286937906101524,
+      "area_mm2": 314.30171292150453,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G07_004",
+    "kind": "Is",
+    "arm": "A1-0",
+    "family": "ellipsoid",
+    "start": 1,
+    "parameter_N": 9,
+    "initial": [
+      2.201785117925644,
+      0.21032588488444462,
+      -3.0108141198551452,
+      0.05071844265300789,
+      0.0902879944037247,
+      0.04133379977615831,
+      1.7049428582499262,
+      1.3274975360846275,
+      1.1969234225419139
+    ],
+    "p": [
+      1.1173632856470328,
+      0.5717111067040667,
+      -2.5258946043698587,
+      -0.5914388548746814,
+      -0.023067591740197412,
+      0.04510031353442501,
+      1.8163355367955274,
+      1.78221852011988,
+      0.5506219004844536
+    ],
+    "R0": [
+      [
+        0.129413796156724,
+        -0.7690420569392814,
+        0.6259603693708612
+      ],
+      [
+        0.9827125113654425,
+        0.18375507801471913,
+        0.022587414850525903
+      ],
+      [
+        -0.1323940684854543,
+        0.6122159634985056,
+        0.7795276933294065
+      ]
+    ],
+    "seconds": 0.2098449380000602,
+    "nfev": 31,
+    "actual_residual_evaluations": 446,
+    "solver_success": true,
+    "solver_status": 2,
+    "termination": "`ftol` termination condition is satisfied.",
+    "initial_objective": 3.030999547295694,
+    "objective": 0.12579470926156053,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G07_004_ref04",
+      "G07_004_growth_r02"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 17590,
+        "full_polyp_denominator": 17590,
+        "predicted_N": 17178,
+        "hit_N": 15568,
+        "miss_N": 2022,
+        "outside_N": 1610,
+        "head_IoU": 0.8108333333333333,
+        "head_hit_fraction": 0.8850483229107448,
+        "outside_fraction": 0.09372453137734311,
+        "full_Polyp_hit_fraction": 0.8850483229107448,
+        "boundary_px": {
+          "N": 1398,
+          "median": 3.0,
+          "median_abs": 3.0,
+          "MAE": 4.5172464048471435,
+          "p95": 12.649110640673518,
+          "maximum": 14.7648230602334
+        },
+        "reference": "G07_004_new_r06",
+        "CAD_occluded_N": 3799,
+        "CAD_occluded_fraction": 0.18110311293321257,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": 1.3768542170194884,
+          "median_abs": 1.3768542170194884,
+          "MAE": 1.4258603587489689,
+          "p95": 2.2530406659581907,
+          "maximum": 2.706401614729433
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 1.2788778139053478
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 19784,
+        "full_polyp_denominator": 19784,
+        "predicted_N": 20222,
+        "hit_N": 19263,
+        "miss_N": 521,
+        "outside_N": 959,
+        "head_IoU": 0.9286506291278985,
+        "head_hit_fraction": 0.9736655883542257,
+        "outside_fraction": 0.04742359806151716,
+        "full_Polyp_hit_fraction": 0.9736655883542257,
+        "boundary_px": {
+          "N": 1508,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 1.7832874478120857,
+          "p95": 5.0,
+          "maximum": 8.94427190999916
+        },
+        "reference": "G07_004_ref04",
+        "CAD_occluded_N": 4406,
+        "CAD_occluded_fraction": 0.1789020626928699,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": 0.9556801987960721,
+          "median_abs": 1.213425851031758,
+          "MAE": 1.6804685460326838,
+          "p95": 4.004602495907796,
+          "maximum": 4.290176638661514
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 1.6804685460326838
+      },
+      {
+        "head_denominator": 19060,
+        "full_polyp_denominator": 19060,
+        "predicted_N": 19309,
+        "hit_N": 18477,
+        "miss_N": 583,
+        "outside_N": 832,
+        "head_IoU": 0.9288658757289363,
+        "head_hit_fraction": 0.9694123819517314,
+        "outside_fraction": 0.043088715106944946,
+        "full_Polyp_hit_fraction": 0.9694123819517314,
+        "boundary_px": {
+          "N": 1523,
+          "median": 1.4142135623730951,
+          "median_abs": 1.4142135623730951,
+          "MAE": 1.6401614011328194,
+          "p95": 3.605551275463989,
+          "maximum": 7.615773105863909
+        },
+        "reference": "G07_004_growth_r02",
+        "CAD_occluded_N": 4438,
+        "CAD_occluded_fraction": 0.18688676464395504,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": 0.9570522412252203,
+          "median_abs": 0.9570522412252203,
+          "MAE": 0.9623707087280363,
+          "p95": 1.9959349253697152,
+          "maximum": 2.069627127987335
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 0.917847539432534
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        1.1173632856470328,
+        0.5717111067040667,
+        -2.5258946043698587
+      ],
+      "rotation": [
+        [
+          0.09697609893339247,
+          -0.9914946394565732,
+          0.0867987106156584
+        ],
+        [
+          0.9907130033924437,
+          0.10451371570116248,
+          0.08697487073552304
+        ],
+        [
+          -0.09530677386621186,
+          0.07755812761546332,
+          0.9924219645372618
+        ]
+      ],
+      "axes_mm": [
+        6.1492832898744805,
+        5.94302652803843,
+        1.7343312640050335
+      ],
+      "model_axis_full_extents_mm": [
+        12.298566579748968,
+        11.886053056076861,
+        3.468662528010067
+      ],
+      "world_bounds_mm": [
+        [
+          -4.803673192539431,
+          -5.550387200515753,
+          -4.40161396703388
+        ],
+        [
+          7.038399763833496,
+          6.693809413923885,
+          -0.6501752417058371
+        ]
+      ],
+      "axis_ratio": 3.545622118161063,
+      "peak_above_model_plane_mm": 1.7343312640050335,
+      "area_mm2": 267.2931402163779,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G07_004",
+    "kind": "Is",
+    "arm": "A1-1",
+    "family": "ellipsoid",
+    "start": 2,
+    "parameter_N": 9,
+    "initial": [
+      2.90337353660407,
+      1.5426192113531396,
+      -2.2819577526726404,
+      0.11870471067187661,
+      -0.0041845527183688195,
+      -0.0478658556813389,
+      2.2370285184663796,
+      1.7931630604453004,
+      1.0281294982292293
+    ],
+    "p": [
+      -1.2721010512518514,
+      0.3366610808545448,
+      -5.597141800352258,
+      0.4634628641392624,
+      0.005665830925879823,
+      0.06942536849352325,
+      1.882315999270648,
+      1.7050674024212709,
+      2.0298380508099405
+    ],
+    "R0": [
+      [
+        0.137271796226082,
+        -0.7585780807348076,
+        0.6369582006612057
+      ],
+      [
+        0.9834283403967935,
+        0.1812548132418797,
+        0.003923261533448202
+      ],
+      [
+        -0.11842783990799441,
+        0.6258641930206162,
+        0.7708883567867525
+      ]
+    ],
+    "seconds": 0.03863894300002357,
+    "nfev": 11,
+    "actual_residual_evaluations": 210,
+    "solver_success": true,
+    "solver_status": 2,
+    "termination": "`ftol` termination condition is satisfied.",
+    "initial_objective": 3.325448645361375,
+    "objective": 0.0561680053389743,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G07_004_ref04",
+      "G07_004_growth_r02"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 17590,
+        "full_polyp_denominator": 17590,
+        "predicted_N": 20210,
+        "hit_N": 17052,
+        "miss_N": 538,
+        "outside_N": 3158,
+        "head_IoU": 0.8218623481781376,
+        "head_hit_fraction": 0.9694144400227402,
+        "outside_fraction": 0.1562592775853538,
+        "full_Polyp_hit_fraction": 0.9694144400227402,
+        "boundary_px": {
+          "N": 1446,
+          "median": 3.0,
+          "median_abs": 3.0,
+          "MAE": 4.581061435438678,
+          "p95": 16.62072407213164,
+          "maximum": 17.72004514666935
+        },
+        "reference": "G07_004_new_r06",
+        "CAD_occluded_N": 4187,
+        "CAD_occluded_fraction": 0.17161946140918966,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": 0.21820859286146188,
+          "median_abs": 0.24464831819799215,
+          "MAE": 0.3979501847854525,
+          "p95": 0.999475886105933,
+          "maximum": 1.057677806176585
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.3979501847854525
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 19784,
+        "full_polyp_denominator": 19784,
+        "predicted_N": 21369,
+        "hit_N": 18973,
+        "miss_N": 811,
+        "outside_N": 2396,
+        "head_IoU": 0.8554102795311092,
+        "head_hit_fraction": 0.9590072786089769,
+        "outside_fraction": 0.11212504094716645,
+        "full_Polyp_hit_fraction": 0.9590072786089769,
+        "boundary_px": {
+          "N": 1538,
+          "median": 2.8284271247461903,
+          "median_abs": 2.8284271247461903,
+          "MAE": 3.869422686275885,
+          "p95": 12.701744044572443,
+          "maximum": 18.601075237738275
+        },
+        "reference": "G07_004_ref04",
+        "CAD_occluded_N": 4976,
+        "CAD_occluded_fraction": 0.18887834503700893,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": 0.15867714444933867,
+          "median_abs": 0.24987158844028734,
+          "MAE": 0.3321644449041509,
+          "p95": 0.7632687355575709,
+          "maximum": 0.9753359969661091
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.32189388929113205
+      },
+      {
+        "head_denominator": 19060,
+        "full_polyp_denominator": 19060,
+        "predicted_N": 19722,
+        "hit_N": 18350,
+        "miss_N": 710,
+        "outside_N": 1372,
+        "head_IoU": 0.8981010180109632,
+        "head_hit_fraction": 0.9627492130115425,
+        "outside_fraction": 0.06956698103640604,
+        "full_Polyp_hit_fraction": 0.9627492130115425,
+        "boundary_px": {
+          "N": 1586,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 2.7913556685229217,
+          "p95": 7.280109889280518,
+          "maximum": 22.360679774997898
+        },
+        "reference": "G07_004_growth_r02",
+        "CAD_occluded_N": 5041,
+        "CAD_occluded_fraction": 0.20356984210313775,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": -0.16714265508694304,
+          "median_abs": 0.299313448990409,
+          "MAE": 0.3419193394145339,
+          "p95": 0.8075018234451727,
+          "maximum": 1.0724187311882645
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.3419193394145339
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        -1.2721010512518514,
+        0.3366610808545448,
+        -5.597141800352258
+      ],
+      "rotation": [
+        [
+          0.09179226441454434,
+          -0.4011606674728452,
+          0.9113968943695121
+        ],
+        [
+          0.9934881521113981,
+          0.09893127094647496,
+          -0.056514557798809935
+        ],
+        [
+          -0.06749423536814275,
+          0.9106496156599732,
+          0.4076294956089576
+        ]
+      ],
+      "axes_mm": [
+        6.56870036426583,
+        5.501756486422727,
+        7.612853363505115
+      ],
+      "model_axis_full_extents_mm": [
+        13.137400728531665,
+        11.00351297284546,
+        15.225706727010227
+      ],
+      "world_bounds_mm": [
+        [
+          -8.574890125735289,
+          -6.223969966812638,
+          -11.504929355007597
+        ],
+        [
+          6.030688023231585,
+          6.897292128521728,
+          0.31064575430308317
+        ]
+      ],
+      "axis_ratio": 1.3837132527206844,
+      "peak_above_model_plane_mm": 7.612853363505114,
+      "area_mm2": 538.3921010446564,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G07_004",
+    "kind": "Is",
+    "arm": "A1-2",
+    "family": "ellipsoid",
+    "start": 2,
+    "parameter_N": 9,
+    "initial": [
+      2.8888719251518413,
+      0.9604847346263735,
+      -2.98153653986741,
+      0.11870471067187661,
+      -0.0041845527183688195,
+      -0.0478658556813389,
+      1.8763189778581213,
+      1.6367665333864905,
+      1.1426317172333125
+    ],
+    "p": [
+      0.4183930804247101,
+      0.4630094739681042,
+      -3.6436503255200385,
+      -0.6458048434754673,
+      0.09718115888893784,
+      0.3796097335619996,
+      1.7973917389989669,
+      1.8059688577501873,
+      1.4544943922581024
+    ],
+    "R0": [
+      [
+        0.129413796156724,
+        -0.7690420569392814,
+        0.6259603693708612
+      ],
+      [
+        0.9827125113654425,
+        0.18375507801471913,
+        0.022587414850525903
+      ],
+      [
+        -0.1323940684854543,
+        0.6122159634985056,
+        0.7795276933294065
+      ]
+    ],
+    "seconds": 0.21183504800001174,
+    "nfev": 27,
+    "actual_residual_evaluations": 316,
+    "solver_success": true,
+    "solver_status": 4,
+    "termination": "Both `ftol` and `xtol` termination conditions are satisfied.",
+    "initial_objective": 6.370290997569453,
+    "objective": 1.5168747870869508,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G07_004_ref04",
+      "G07_004_growth_r02"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 17590,
+        "full_polyp_denominator": 17590,
+        "predicted_N": 19066,
+        "hit_N": 16615,
+        "miss_N": 975,
+        "outside_N": 2451,
+        "head_IoU": 0.8290504465845018,
+        "head_hit_fraction": 0.9445707788516202,
+        "outside_fraction": 0.12855344592468268,
+        "full_Polyp_hit_fraction": 0.9445707788516202,
+        "boundary_px": {
+          "N": 1437,
+          "median": 3.605551275463989,
+          "median_abs": 3.605551275463989,
+          "MAE": 4.288116068630701,
+          "p95": 9.219544457292887,
+          "maximum": 11.180339887498949
+        },
+        "reference": "G07_004_new_r06",
+        "CAD_occluded_N": 3656,
+        "CAD_occluded_fraction": 0.16090132910835314,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": 0.415452286457171,
+          "median_abs": 0.415452286457171,
+          "MAE": 0.4654225469856379,
+          "p95": 0.8628064999722449,
+          "maximum": 1.0168151575380975
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.4654225469856379
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 19784,
+        "full_polyp_denominator": 19784,
+        "predicted_N": 21062,
+        "hit_N": 18876,
+        "miss_N": 908,
+        "outside_N": 2186,
+        "head_IoU": 0.8591715976331361,
+        "head_hit_fraction": 0.9541043267286696,
+        "outside_fraction": 0.10378881397777989,
+        "full_Polyp_hit_fraction": 0.9541043267286696,
+        "boundary_px": {
+          "N": 1529,
+          "median": 3.0,
+          "median_abs": 3.0,
+          "MAE": 3.6985154701897622,
+          "p95": 9.0,
+          "maximum": 15.264337522473747
+        },
+        "reference": "G07_004_ref04",
+        "CAD_occluded_N": 4191,
+        "CAD_occluded_fraction": 0.16596047994297708,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 14,
+        "relative_depth_miss_pair_N": 2,
+        "relative_depth_mm": {
+          "N": 14,
+          "median": 0.05093751643461886,
+          "median_abs": 0.28091871055353934,
+          "MAE": 0.48448283415549803,
+          "p95": 1.3968083146018169,
+          "maximum": 1.46128123941617
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 30,
+        "depth_ray_hit_fraction": 0.9375,
+        "censored_relative_depth_score_mm": 0.4551724798860608
+      },
+      {
+        "head_denominator": 19060,
+        "full_polyp_denominator": 19060,
+        "predicted_N": 19451,
+        "hit_N": 17937,
+        "miss_N": 1123,
+        "outside_N": 1514,
+        "head_IoU": 0.8718285214348207,
+        "head_hit_fraction": 0.941080797481637,
+        "outside_fraction": 0.07783661508405737,
+        "full_Polyp_hit_fraction": 0.941080797481637,
+        "boundary_px": {
+          "N": 1543,
+          "median": 2.8284271247461903,
+          "median_abs": 2.8284271247461903,
+          "MAE": 3.10476122474164,
+          "p95": 7.615773105863909,
+          "maximum": 17.4928556845359
+        },
+        "reference": "G07_004_growth_r02",
+        "CAD_occluded_N": 4227,
+        "CAD_occluded_fraction": 0.17852014528254076,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": -0.11863529441114196,
+          "median_abs": 0.2236702656947216,
+          "MAE": 0.30234693298856885,
+          "p95": 0.8130345653661077,
+          "maximum": 0.9440326502731224
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.30234693298856885
+      }
+    ],
+    "geometry": {
+      "vertices": 4514,
+      "faces": 9024,
+      "components": 1,
+      "watertight": true,
+      "center_mm": [
+        0.4183930804247101,
+        0.4630094739681042,
+        -3.6436503255200385
+      ],
+      "rotation": [
+        [
+          -0.2503628863256821,
+          -0.9676645811901686,
+          0.030719431321704408
+        ],
+        [
+          0.9639650428900456,
+          -0.24620682635073537,
+          0.10076504723509627
+        ],
+        [
+          -0.0899434335383408,
+          0.05484028599810701,
+          0.9944358811884151
+        ]
+      ],
+      "axes_mm": [
+        6.033888964935119,
+        6.085864930490986,
+        4.282317745140529
+      ],
+      "model_axis_full_extents_mm": [
+        12.067777929870235,
+        12.171729860981971,
+        8.564635490281054
+      ],
+      "world_bounds_mm": [
+        [
+          -5.661207238528551,
+          -5.558135456884012,
+          -7.906628380610633
+        ],
+        [
+          6.497993399377972,
+          6.48415440482022,
+          0.6193277295705562
+        ]
+      ],
+      "axis_ratio": 1.4211614580438547,
+      "peak_above_model_plane_mm": 4.282317745140527,
+      "area_mm2": 374.0121411900826,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  },
+  {
+    "scene": "G07_004",
+    "kind": "Is",
+    "arm": "A1-3",
+    "family": "cap",
+    "start": 2,
+    "parameter_N": 10,
+    "initial": [
+      2.8888719251518413,
+      0.9604847346263735,
+      -2.98153653986741,
+      0.11870471067187661,
+      -0.0041845527183688195,
+      -0.0478658556813389,
+      1.8763189778581213,
+      1.6367665333864905,
+      1.1426317172333125,
+      0.0
+    ],
+    "p": [
+      -0.008712233913267902,
+      0.3886193175270805,
+      -4.364121494170899,
+      -0.7915392997765935,
+      -0.009789566319464335,
+      0.03791172175023329,
+      1.8214179421685808,
+      1.8804496861743993,
+      1.6242405664666433,
+      -0.0669995420072057
+    ],
+    "R0": [
+      [
+        0.129413796156724,
+        -0.7690420569392814,
+        0.6259603693708612
+      ],
+      [
+        0.9827125113654425,
+        0.18375507801471913,
+        0.022587414850525903
+      ],
+      [
+        -0.1323940684854543,
+        0.6122159634985056,
+        0.7795276933294065
+      ]
+    ],
+    "seconds": 0.3982883270000457,
+    "nfev": 29,
+    "actual_residual_evaluations": 370,
+    "solver_success": true,
+    "solver_status": 3,
+    "termination": "`xtol` termination condition is satisfied.",
+    "initial_objective": 6.358717597739308,
+    "objective": 1.183216398198917,
+    "active_bounds": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_ids": [
+      "G07_004_ref04",
+      "G07_004_growth_r02"
+    ],
+    "source_weights": [
+      0.5,
+      0.5
+    ],
+    "B_metrics": [
+      {
+        "head_denominator": 17590,
+        "full_polyp_denominator": 17590,
+        "predicted_N": 18411,
+        "hit_N": 16816,
+        "miss_N": 774,
+        "outside_N": 1595,
+        "head_IoU": 0.8765181131091999,
+        "head_hit_fraction": 0.9559977259806708,
+        "outside_fraction": 0.08663299114659714,
+        "full_Polyp_hit_fraction": 0.9559977259806708,
+        "boundary_px": {
+          "N": 1442,
+          "median": 2.0,
+          "median_abs": 2.0,
+          "MAE": 2.930625996867771,
+          "p95": 9.992442890089812,
+          "maximum": 11.180339887498949
+        },
+        "reference": "G07_004_new_r06",
+        "CAD_occluded_N": 3628,
+        "CAD_occluded_fraction": 0.1646172693860883,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 16,
+        "relative_depth_miss_pair_N": 0,
+        "relative_depth_mm": {
+          "N": 16,
+          "median": 0.3975183819192516,
+          "median_abs": 0.3975183819192516,
+          "MAE": 0.46334886687363386,
+          "p95": 0.9191195554444436,
+          "maximum": 0.9802086326280168
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 32,
+        "depth_ray_hit_fraction": 1.0,
+        "censored_relative_depth_score_mm": 0.46334886687363386
+      }
+    ],
+    "A_metrics": [
+      {
+        "head_denominator": 19784,
+        "full_polyp_denominator": 19784,
+        "predicted_N": 20710,
+        "hit_N": 18943,
+        "miss_N": 841,
+        "outside_N": 1767,
+        "head_IoU": 0.8789847338870586,
+        "head_hit_fraction": 0.9574909017387788,
+        "outside_fraction": 0.0853211009174312,
+        "full_Polyp_hit_fraction": 0.9574909017387788,
+        "boundary_px": {
+          "N": 1544,
+          "median": 2.8284271247461903,
+          "median_abs": 2.8284271247461903,
+          "MAE": 3.1902094452736898,
+          "p95": 8.54400374531753,
+          "maximum": 20.0
+        },
+        "reference": "G07_004_ref04",
+        "CAD_occluded_N": 4202,
+        "CAD_occluded_fraction": 0.1686737315350032,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": 0.05544174635601706,
+          "median_abs": 0.14435964905738885,
+          "MAE": 0.31432048031573034,
+          "p95": 0.9906876524439965,
+          "maximum": 1.064559344891098
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 0.3103004502959972
+      },
+      {
+        "head_denominator": 19060,
+        "full_polyp_denominator": 19060,
+        "predicted_N": 19460,
+        "hit_N": 17952,
+        "miss_N": 1108,
+        "outside_N": 1508,
+        "head_IoU": 0.8728121353558926,
+        "head_hit_fraction": 0.9418677859391396,
+        "outside_fraction": 0.07749229188078109,
+        "full_Polyp_hit_fraction": 0.9418677859391396,
+        "boundary_px": {
+          "N": 1570,
+          "median": 2.8284271247461903,
+          "median_abs": 2.8284271247461903,
+          "MAE": 3.240128324595905,
+          "p95": 8.54400374531753,
+          "maximum": 21.02379604162864
+        },
+        "reference": "G07_004_growth_r02",
+        "CAD_occluded_N": 4256,
+        "CAD_occluded_fraction": 0.179456906729634,
+        "evaluation": "CONDITIONAL_NOT_PARAMETER_FIT",
+        "GT": "NOT_EVALUABLE",
+        "relative_depth_fixed_pair_N": 16,
+        "relative_depth_hit_pair_N": 15,
+        "relative_depth_miss_pair_N": 1,
+        "relative_depth_mm": {
+          "N": 15,
+          "median": -0.018762612348581342,
+          "median_abs": 0.30452820434677363,
+          "MAE": 0.32038582430335294,
+          "p95": 0.8288816691640986,
+          "maximum": 1.0328259321316402
+        },
+        "depth_fixed_ray_N": 32,
+        "depth_hit_ray_N": 31,
+        "depth_ray_hit_fraction": 0.96875,
+        "censored_relative_depth_score_mm": 0.3159867102843934
+      }
+    ],
+    "geometry": {
+      "vertices": 4609,
+      "faces": 9120,
+      "components": 1,
+      "watertight": false,
+      "center_mm": [
+        -0.008712233913267902,
+        0.3886193175270805,
+        -4.364121494170899
+      ],
+      "rotation": [
+        [
+          0.09689020495788876,
+          -0.9892051969074083,
+          -0.10993346439821663
+        ],
+        [
+          0.9888102094163567,
+          0.08308187048151368,
+          0.12390227016190643
+        ],
+        [
+          -0.11343129170206681,
+          -0.1207082483042009,
+          0.9861860173690012
+        ]
+      ],
+      "axes_mm": [
+        6.1806159956175515,
+        6.556452545438063,
+        5.0745637795580585
+      ],
+      "model_axis_full_extents_mm": [
+        12.361231389316771,
+        13.112904452355789,
+        5.414557228674804
+      ],
+      "world_bounds_mm": [
+        [
+          -6.543489880074891,
+          -5.773721233730703,
+          -5.754313118388329
+        ],
+        [
+          6.524991028710237,
+          6.554511882106658,
+          0.7507819775932516
+        ]
+      ],
+      "axis_ratio": 1.2920228871394857,
+      "peak_above_model_plane_mm": 5.0745637795580585,
+      "area_mm2": 234.5390579156337,
+      "degenerate_faces": 0,
+      "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+      "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+      "finite": true
+    },
+    "numerical_failures": []
+  }
+]
