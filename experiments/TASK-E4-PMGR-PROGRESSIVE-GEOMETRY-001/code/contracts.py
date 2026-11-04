@@ -21,6 +21,14 @@ def main():
     check('ALL_FULL_MASK_MASS_PRESERVED',all(abs((obs(c)['target']*obs(c)['known_mass']).sum()*4-(source(c)['labels']==1).sum())<1e-8 for c in p.ids))
     A=np.array([[1.,0,1],[0,1,1],[0,0,0],[0,0,0]]);Q,s,rank=decompose(A);check('SVD_RANK_AND_COMPACT_PROJECTOR',rank==2 and np.linalg.norm(A-Q@(Q.T@A))<1e-10)
     si=self_intersections(p.b['V'],p.F);check('P0_NO_NONADJACENT_SELF_INTERSECTION',si['intersections']==0,**si)
+    bad=R/'local_results/REJECTED_V1P1_MINIMUM_BOUND/G01_004__E1__s0__PMGR/P3.npz'
+    if bad.exists():
+        # A real previously accepted violating mesh, with the previous-step
+        # state already penetrated, must STILL violate the immutable P0 limit.
+        with torch.no_grad():old_loss,old_parts,_=p.objective(tensor(np.zeros(128)))
+        guard=Guard(p,old_parts);badV=np.load(bad)['V'];guard.last_ring=guard.ring(badV)
+        why,checks,_=guard.check(badV,badV,old_parts,old_parts,0.,1.)
+        check('REAL_CAD_CUMULATIVE_PENETRATION_REJECTED','RING_PENETRATION'in why,ring_min_mm=checks['ring_min_signed_mm'])
     # Actual triangle/triangle crossing, not just a normal-flip surrogate.
     vv=np.array([[-1,0,0],[1,0,0],[0,2,0],[0,.5,-1],[0,.5,1],[0,1.5,.2]],float);ff=np.array([[0,1,2],[3,4,5]])
     check('TRIANGLE_CROSSING_DETECTED',self_intersections(vv,ff)['intersections']>0)
