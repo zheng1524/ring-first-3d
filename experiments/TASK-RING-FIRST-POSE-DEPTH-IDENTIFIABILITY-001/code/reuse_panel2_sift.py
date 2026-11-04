@@ -57,7 +57,7 @@ def rgb_error(pred,B):return abs(pred['RGBA'][:,:,:3].astype(float)-B).mean(2)
 
 def append_comparison(base,full_rf,full_sift,rf,sf,B,mask,pose,depth,cid,bid):
     """The old full five-panel PNG is copied byte-for-byte above the new strip."""
-    width,height=base.size;dpi=180
+    width,height=base.size;dpi=180;failed=pose.get('SIFT_S0_status')!='POSE_RETURNED_NO_METRIC_SCALE'
     fig=plt.figure(figsize=(16,8.2),dpi=dpi)
     gs=fig.add_gridspec(2,4,height_ratios=[1,.8],wspace=.12,hspace=.25)
     # Same physical pixel size/aspect and point renderer for both pose views.
@@ -66,13 +66,17 @@ def append_comparison(base,full_rf,full_sift,rf,sf,B,mask,pose,depth,cid,bid):
     # Common source layer class and same target region; both actual point-center supports.
     roi,_=NS['background_eval_roi'](mask)
     cp=(rf['layer']==1)&(sf['layer']==1)&(mask==1);cb=(rf['layer']==0)&(sf['layer']==0)&roi;common=cp|cb
-    ax=fig.add_subplot(gs[1,0]);small=cv2.resize(full_sift,(640,360),interpolation=cv2.INTER_AREA);valid=sf['layer']>=0;overlay=B/255.;overlay[valid]=.5*overlay[valid]+.5*small[valid]/255.;ax.imshow(overlay);ax.set_title('7a｜SIFT 与真实B 50%叠加',fontsize=9);ax.axis('off')
+    ax=fig.add_subplot(gs[1,0]);small=cv2.resize(full_sift,(640,360),interpolation=cv2.INTER_AREA);valid=sf['layer']>=0;overlay=B/255.;overlay[valid]=.5*overlay[valid]+.5*small[valid]/255.;ax.imshow(small if failed else overlay);ax.set_title('7a｜NOT_EVALUABLE：无SIFT叠加'if failed else'7a｜SIFT 与真实B 50%叠加',fontsize=9);ax.axis('off')
     for j,(p,label)in enumerate([(rf,'Ring-First'),(sf,'SIFT + RF-scale')]):
-        ax=fig.add_subplot(gs[1,j+1]);err=np.where(common,rgb_error(p,B),np.nan);ax.imshow(err,cmap='magma',vmin=0,vmax=80);ax.set_facecolor('#ccc');ax.axis('off');ax.set_title('7'+('b'if j==0 else'c')+'｜'+label+' RGB差异\n相同P/BG共同区；0–80/255',fontsize=9)
+        ax=fig.add_subplot(gs[1,j+1]);err=np.where(common,rgb_error(p,B),np.nan);ax.imshow(err,cmap='magma',vmin=0,vmax=80);ax.set_facecolor('#ccc');ax.axis('off');ax.set_title('7'+('b'if j==0 else'c')+'｜'+label+(' RGB差异\nNOT_EVALUABLE：共同区为空'if failed else' RGB差异\n相同P/BG共同区；0–80/255'),fontsize=9)
+        if failed:ax.text(.5,.5,'NOT_EVALUABLE\nSIFT无位姿，不能比较RGB',ha='center',va='center',transform=ax.transAxes,fontsize=9)
     ax=fig.add_subplot(gs[1,3]);panel=np.full((360,640,3),.82);rv=(rf['layer']==1)|(rf['layer']==0);sv=(sf['layer']==1)|(sf['layer']==0)
     panel[rv&sv]=[.15,.7,.35];panel[rv&~sv]=[.9,.2,.2];panel[sv&~rv]=[.2,.45,.95];panel[(rf['layer']==2)|(sf['layer']==2)]=0;ax.imshow(panel);ax.set_title('7d｜共同支持绿，RF独有红\nSIFT独有蓝；非物理正确性标签',fontsize=9);ax.axis('off')
+    if failed:
+        ax.clear();ax.imshow(np.full((360,640,3),.9));ax.text(.5,.5,'NOT_EVALUABLE\nSIFT无位姿；不计算双方支持差异',ha='center',va='center',transform=ax.transAxes,fontsize=9);ax.set_title('7d｜支持差异不可评价',fontsize=9);ax.axis('off')
     fig.suptitle('追加SIFT对比｜上方五面板：原PANEL2-003风格；下方两种位姿共用同一Raw HERO、背景XYZ、CAD和点大小',fontsize=11,y=.995)
     note=f"A={cid} → B={CC[bid]['reference']}｜R差异 {pose['rotation_difference_deg']:.3f}° / t方向差异 {pose['translation_direction_difference_deg']:.3f}°（相对RF，非GT）\n当前相机资格 A={GATE[cid]['qualification']}；B={GATE[bid]['qualification']}。SIFT仅借RF平移长度；背景仅DISPLAY_ONLY。\n旧Raw场景显示 / P={depth['Polyp_N']:,}, BG={depth['Background_N']:,}；与Cleaned三角面正式评价分开。所有点、原生ID、相机与已保存指标不变。"
+    if failed:note=f"A={cid} → B={CC[bid]['reference']}｜SIFT={pose['SIFT_S0_status']}；R/t差异与双方RGB均NOT_EVALUABLE\n当前相机资格 A={GATE[cid]['qualification']}；B={GATE[bid]['qualification']}。未借RF位姿填充；背景仅DISPLAY_ONLY。\n原Raw场景 / P={depth['Polyp_N']:,}, BG={depth['Background_N']:,}；SIFT失败不是零误差或零覆盖。"
     fig.text(.025,.015,note,fontsize=8);fig.subplots_adjust(left=.025,right=.99,top=.93,bottom=.12);fig.canvas.draw();strip=Image.fromarray(np.asarray(fig.canvas.buffer_rgba()).copy());plt.close(fig)
     check('new SIFT strip same canvas width',strip.width==width)
     out=Image.new('RGBA',(width,height+strip.height),'white');out.paste(base,(0,0));out.paste(strip,(0,height))

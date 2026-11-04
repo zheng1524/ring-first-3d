@@ -150,6 +150,9 @@ G01中两种+.1mm扰动的总E都由21.25降至约18.9，产生相近改善；�
     if (R/'metrics/PANEL2_SIFT_VISUALIZATION.json').exists():
         title=report.splitlines()[0]
         report=report.replace(title,title+'\n\n研究者要求的新版显示已完成：[原Panel2五面板 + SIFT图库](visualization_panel2_sift/index.html)；[复用与检查说明](VISUALIZATION_UPDATE.md)。原四张科研图及全部数值保留。',1)
+    if (R/'metrics/LARGE_ANGLE_DISPLAY.json').exists():
+        title=report.splitlines()[0]
+        report=report.replace(title,title+'\n\n研究者追加要求的大视角版本：[大视角图库](visualization_large_angle/index.html) · [覆盖率/轮廓误差说明](METRICS_EXPLAINED.md) · [新帧对结果与失败](LARGE_ANGLE_UPDATE.md)。原帧对与原始结论保留。',1)
     (R/'TECHNICAL_REPORT.md').write_text(report)
     (R/'FAILURE_LEDGER.md').write_text('''# 失败及证据不足台账
 

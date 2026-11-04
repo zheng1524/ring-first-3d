@@ -14,3 +14,5 @@
 | GT/测量 | 未执行独立物理精度或Dxy测量，不能计算MedARE/MAE/p95/max | 全部NaN/NOT_EVALUABLE；无历史测量回退 | OUT_OF_SCOPE |
 
 本轮没有SIFT返回失败组（4/4数值恢复），不等于4/4相机科学认证。没有训练/OOM/参数发散。没有将无足够证据改写为结构性不可辨识；没有把诊断最小值采纳为新的相机/HERO。
+
+研究者追加大视角补充：新批SIFT仅G06返回，G01两对和G08分别只有1、3、10个有效拟合匹配，均不足12；保留NOT_EVALUABLE，无RF回填。原批4/4与新批1/4不混算。初次失败叠加显示原B的问题已修为明确文字面板，数值SHA未变。详见[LARGE_ANGLE_UPDATE.md](LARGE_ANGLE_UPDATE.md)。

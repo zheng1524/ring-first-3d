@@ -19,3 +19,5 @@ cd /home/liu/ring_first_3d_pose_depth
 SIFT固定种子，缓存优先级及方向逆转均记录origin。新增匹配也保留原始点索引。未知区域不补深度。旧模型/GT/融合输出访问被审计hook拒绝；CUDA_VISIBLE_DEVICES为空。
 
 新版Panel2五面板+SIFT的显示重绘见[可视化补充](VISUALIZATION_UPDATE.md)，单独运行code/reuse_panel2_sift.py即可，不需要重算A/B科学实验。
+
+大视角补充使用code/large_angle_panel2.py；它先按冻结光轴夹角选择同视频帧对，再以原SIFT规则和Panel2显示执行。见LARGE_ANGLE_UPDATE.md，不重写旧帧对或A/B结果。
