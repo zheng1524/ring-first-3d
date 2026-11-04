@@ -25,8 +25,9 @@ def target_data(mask,labels,cad,T,K):
     dt=cv2.distanceTransform(bmap,cv2.DIST_L2,cv2.DIST_MASK_PRECISE)
     # Area pooling uses EVERY original pixel; the model is quadratured at fixed
     # 4x4 cell centers. Fine contour pixels remain in the reverse contour term.
-    fraction=mask.reshape(90,4,160,4).mean((1,3));unknown=ring.reshape(90,4,160,4).mean((1,3));u,v=np.meshgrid(np.arange(160)*4+1.5,np.arange(90)*4+1.5);grid=np.c_[u.ravel(),v.ravel()]
-    known=1-unknown.ravel();fg=fraction.ravel();pixmass=.5*fg/max(fg.sum(),1)+.5*(1-fg)/max((1-fg).sum(),1);pixmass*=known
+    known=(~ring).reshape(90,4,160,4).mean((1,3)).ravel();fg_mass=(mask&~ring).reshape(90,4,160,4).mean((1,3)).ravel();fg=fg_mass/np.maximum(known,1e-15);bg_mass=known-fg_mass
+    u,v=np.meshgrid(np.arange(160)*4+1.5,np.arange(90)*4+1.5);grid=np.c_[u.ravel(),v.ravel()]
+    pixmass=.5*fg_mass/max(fg_mass.sum(),1)+.5*bg_mass/max(bg_mass.sum(),1)
     # CAD cache is exact fixed-camera first depth at grid centers.
     rays=vis.camera_rays(grid,K,T)
     return dict(mask=mask,ring=ring,boundary=boundary,dt=dt,grid=grid,region=fg,region_weights=pixmass,grid_rays=rays,grid_CAD=cad)
