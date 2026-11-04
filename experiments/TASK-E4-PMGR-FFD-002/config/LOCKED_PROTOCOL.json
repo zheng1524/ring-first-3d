@@ -1,0 +1,122 @@
+{
+  "task": "TASK-E4-PMGR-FFD-002",
+  "approved_version": "v1.1; user explicitly confirmed replacement of majority stop",
+  "scenes": {
+    "G01_004": {
+      "initial": "E2",
+      "P1": [
+        "G01_004_ref08",
+        "G01_004_ref13",
+        "G01_004_ref03"
+      ],
+      "former_B": "G01_004_growth_r14",
+      "tier": "CONDITIONAL_RESEARCH_ALL_ARE_INSUFFICIENT_EVIDENCE",
+      "P2": [
+        "G01_004_ref08",
+        "G01_004_ref13",
+        "G01_004_ref03",
+        "G01_004_growth_r04",
+        "G01_004_growth_r06",
+        "G01_004_growth_r10",
+        "G01_004_growth_r14"
+      ]
+    },
+    "G06_004": {
+      "initial": "E1",
+      "P1": [
+        "G06_004_growth_r01",
+        "G06_004_growth_r03",
+        "G06_004_growth_r06"
+      ],
+      "former_B": "G06_004_growth_r06",
+      "tier": "CONDITIONAL_RESEARCH_MIXED_GATE",
+      "P2": [
+        "G06_004_growth_r01",
+        "G06_004_growth_r03",
+        "G06_004_growth_r06",
+        "G06_004_new_r00",
+        "G06_004_ref04"
+      ]
+    }
+  },
+  "scene_order": [
+    "G01_004",
+    "G06_004"
+  ],
+  "arm_order": [
+    "C2",
+    "C1",
+    "C3"
+  ],
+  "mode_counts": [
+    12,
+    48,
+    96
+  ],
+  "iterations": [
+    36,
+    48,
+    48
+  ],
+  "trials_per_iteration": 4,
+  "pixel_size": [
+    320,
+    180
+  ],
+  "native_depth_N": 512,
+  "relative_pair_N": 256,
+  "loss": {
+    "BCE": 1.0,
+    "Dice": 0.5,
+    "signed_distance": 0.1,
+    "Depth": 0.3,
+    "HERO": 0.05,
+    "Laplacian": 0.02,
+    "edge_strain": 0.01,
+    "coefficient": 0.002,
+    "pose": 0.0005,
+    "Ring_barrier": 0.0005
+  },
+  "Unknown": "union original Ring mask and frozen CAD footprint, one 3x3 dilation at 320x180; identical fixed mask on both sides",
+  "depth_sigma_mm": 0.25,
+  "HERO_sigma_mm": 0.5,
+  "soft_retreat": ".2 E + .8 tau log(1+E/tau); tau=.5 insufficient,1 conditional; every source remains nonzero",
+  "P1_noncore_factor": 0.5,
+  "Ring_barrier_gap_mm": 0.08,
+  "Ring_barrier_sigma_mm": 0.03,
+  "P3_support": "initial P0 within .75mm of qualified HERO and visible in >=2 view partitions; new fields zero outside fixed support",
+  "trust": {
+    "initial_damping": 0.1,
+    "rho_accept_gt": 0.0,
+    "rho_good": 0.75,
+    "rho_bad": 0.25,
+    "good_damping_factor": 0.5,
+    "bad_damping_factor": 4.0,
+    "pixel_radius": "max(1,p75 observed signed-distance at predicted full-mask contour); all sources",
+    "stage_budget_continuation": true,
+    "majority_stop": false
+  },
+  "no_holdout": true,
+  "GT": false,
+  "DXY_readonly": true,
+  "model_topology": [
+    642,
+    1280
+  ],
+  "safe_G01_P0": "R1/local_results/G01_004/P0.npz SHA frozen; do not use LAST_SAFE as starting shape",
+  "G06_P0": "single nine-parameter SLSQP feasibility solve, gap>=.05mm and volume>=.85 historical, bounds same R1, stable new objective",
+  "peak_budget_GiB": 0.8,
+  "safety_reserve_GiB": 4,
+  "per_arm_budget_equal": true,
+  "formal_optimization_started": false,
+  "raster_supersampling": 1,
+  "preflight_renderer_fix": "Use installed native nvdiffrast AA; global C1 continuity NOT established. Trust actual-versus-predicted reduction handles raster events; no dynamic contour sample denominator.",
+  "local_gradient_check": {
+    "h": [
+      0.0001,
+      0.0003
+    ],
+    "maximum_relative_difference": 0.15,
+    "note": "Two-scale local Taylor check; h=.001 crosses pixel events, failed checks explicitly retained. 4x/8x supersampling did not remove event sensitivity and not used. No training or evaluation threshold tuned."
+  }
+}

@@ -1,0 +1,197 @@
+[
+  {
+    "name": "FFD_ZERO_IDENTITY",
+    "passed": true
+  },
+  {
+    "name": "PYGEM_CORNER_DISPLACEMENT_REFERENCE",
+    "passed": true
+  },
+  {
+    "name": "FFD_CONTROL_AUTOGRAD",
+    "passed": true,
+    "FD": 2.022400000001312,
+    "gradient": 2.0224
+  },
+  {
+    "name": "FROZEN_SAFE_P0_EXACT_IDENTITY",
+    "passed": true,
+    "max_mm": 0.0,
+    "P0_sha256": "529a78bb8cfa1fb7402a66e871d2aea601ce8a851af5532a13e7975d1caee6a6"
+  },
+  {
+    "name": "P1_P2_ZERO_RESIDUAL_TRANSFER",
+    "passed": true
+  },
+  {
+    "name": "MASK_AUTOGRAD_BOTH_PARAMETER_BLOCKS",
+    "passed": true,
+    "live9_norm": 0.03365395416528771,
+    "FFD_norm": 0.01195778283978379,
+    "no_AA_gradient_norm": 0.0
+  },
+  {
+    "name": "LIVE9_REAL_MASK_FD_LOCAL_0.0001",
+    "passed": true,
+    "FD": 0.0014901161193847656,
+    "gradient": 0.001463399208150804,
+    "relative_difference": 0.017929415624999966,
+    "h": 0.0001,
+    "maximum_vertex_movement_mm": 6.90638987568768e-05,
+    "scope": "local antialias derivative only; larger raster-event failures retained separately"
+  },
+  {
+    "name": "LIVE9_REAL_MASK_FD_LOCAL_0.0003",
+    "passed": true,
+    "FD": 0.0014404455820719402,
+    "gradient": 0.001463399208150804,
+    "relative_difference": 0.015685143159171733,
+    "h": 0.0003,
+    "maximum_vertex_movement_mm": 0.00020719164546703652,
+    "scope": "local antialias derivative only; larger raster-event failures retained separately"
+  },
+  {
+    "name": "FFD_REAL_MASK_FD_LOCAL_0.0001",
+    "passed": true,
+    "FD": -0.0035762786865234375,
+    "gradient": -0.0035329143749126104,
+    "relative_difference": 0.012125540376435916,
+    "h": 0.0001,
+    "maximum_vertex_movement_mm": 6.648676329441848e-05,
+    "scope": "local antialias derivative only; larger raster-event failures retained separately"
+  },
+  {
+    "name": "FFD_REAL_MASK_FD_LOCAL_0.0003",
+    "passed": true,
+    "FD": -0.003576278686523438,
+    "gradient": -0.0035329143749126104,
+    "relative_difference": 0.012125540376436036,
+    "h": 0.0003,
+    "maximum_vertex_movement_mm": 0.00019946028988503887,
+    "scope": "local antialias derivative only; larger raster-event failures retained separately"
+  },
+  {
+    "name": "REAL_RING_FIRST_OCCLUSION",
+    "passed": true,
+    "occluded_pixel_N": 548,
+    "maximum_opacity": 0.0
+  },
+  {
+    "name": "SYMMETRIC_FIXED_UNKNOWN_INVARIANCE",
+    "passed": true,
+    "unknown_pixel_N": 2341,
+    "difference": 0.0
+  },
+  {
+    "name": "A_TO_B_CAMERA_PIXEL_CENTER",
+    "passed": true,
+    "max_pixel_error": 6.748930968569766e-05,
+    "world_points_from": "ref08",
+    "projected_camera": "G01_004_growth_r06"
+  },
+  {
+    "name": "CUDA_RASTER_VS_FROZEN_CPU_CAMERA",
+    "passed": true,
+    "IoU": 0.9991689750692521,
+    "CPU": "same actual triangles; not GT"
+  },
+  {
+    "name": "FCL_BLENDER_GAP_0.05",
+    "passed": true,
+    "FCL_collisions": 0,
+    "Blender": {
+      "Blender_version": "5.0.1",
+      "build_hash": "a3db93c5b259",
+      "body_vertices": 8,
+      "CAD_vertices": 8,
+      "BVH_intersecting_triangle_pairs": 0,
+      "first_intersections": [],
+      "EXACT_intersection_volume_mm3": 0.0,
+      "body_vertex_unsigned_nearest_mm": 0.04999995231628418,
+      "GT_or_existing_blend_opened": false,
+      "scene_start": "--factory-startup"
+    }
+  },
+  {
+    "name": "FCL_BLENDER_GAP_-0.05",
+    "passed": true,
+    "FCL_collisions": 1,
+    "Blender": {
+      "Blender_version": "5.0.1",
+      "build_hash": "a3db93c5b259",
+      "body_vertices": 8,
+      "CAD_vertices": 8,
+      "BVH_intersecting_triangle_pairs": 16,
+      "first_intersections": [
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          11,
+          7
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "EXACT_intersection_volume_mm3": 0.20000004768371585,
+      "body_vertex_unsigned_nearest_mm": 0.0,
+      "GT_or_existing_blend_opened": false,
+      "scene_start": "--factory-startup"
+    }
+  }
+]
