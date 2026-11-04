@@ -1,0 +1,496 @@
+{
+  "tests": [
+    {
+      "test": "ellipsoid_actual_first_hit_vs_exported_mesh",
+      "passed": true,
+      "common_hit_N": 15,
+      "max_error_mm": 0.0029734457200163433,
+      "axial_coordinate_error_mm": 0.0,
+      "watertight": true
+    },
+    {
+      "test": "star_actual_first_hit_vs_exported_mesh",
+      "passed": true,
+      "common_hit_N": 15,
+      "max_error_mm": 0.002661314293959549,
+      "axial_coordinate_error_mm": 0.0,
+      "watertight": true
+    },
+    {
+      "test": "cap_actual_first_hit_vs_exported_mesh",
+      "passed": true,
+      "common_hit_N": 15,
+      "max_error_mm": 0.0011672335315893179,
+      "axial_coordinate_error_mm": 0.0,
+      "watertight": false
+    },
+    {
+      "test": "height_actual_first_hit_vs_exported_mesh",
+      "passed": true,
+      "common_hit_N": 15,
+      "max_error_mm": 0.0005184533377295963,
+      "axial_coordinate_error_mm": 0.0,
+      "watertight": false
+    },
+    {
+      "test": "different_hidden_thickness_identical_frontal_xy_support_ORTHOGRAPHIC_CONTROL",
+      "passed": true,
+      "max_xy_difference_mm": 0.0,
+      "hidden_thickness_change_mm": 2.0
+    },
+    {
+      "test": "different_hidden_underside_identical_front_first_depth_PERSPECTIVE_CONTROL",
+      "passed": true,
+      "max_first_depth_difference_mm": 0.0,
+      "common_hit_N": 15
+    },
+    {
+      "test": "synthetic_head_stalk_separation",
+      "passed": true,
+      "full_pixels": 6502,
+      "cue_pixels": 5366,
+      "head_retention": 0.9985071841761523,
+      "stalk_only_retained": 15
+    }
+  ],
+  "controls": {
+    "ellipsoid": {
+      "p": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0986122886681098,
+        0.6931471805599453,
+        0.4054651081081644
+      ],
+      "R0": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "vertices": 4514,
+        "faces": 9024,
+        "components": 1,
+        "watertight": true,
+        "center_mm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "axes_mm": [
+          3.0000000000000004,
+          2.0,
+          1.5
+        ],
+        "model_axis_full_extents_mm": [
+          6.000000000000001,
+          4.0,
+          3.0
+        ],
+        "world_bounds_mm": [
+          [
+            -3.0000000000000004,
+            -2.0,
+            -1.5
+          ],
+          [
+            3.0000000000000004,
+            2.0,
+            1.5
+          ]
+        ],
+        "axis_ratio": 2.0000000000000004,
+        "peak_above_model_plane_mm": 1.5,
+        "area_mm2": 57.753715011536855,
+        "degenerate_faces": 0,
+        "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+        "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+        "finite": true
+      }
+    },
+    "star": {
+      "p": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0986122886681098,
+        0.6931471805599453,
+        0.4054651081081644,
+        0.1,
+        -0.1,
+        0.05,
+        0.0,
+        0.04,
+        0.0,
+        -0.08
+      ],
+      "R0": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "vertices": 4514,
+        "faces": 9024,
+        "components": 1,
+        "watertight": true,
+        "center_mm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "axes_mm": [
+          3.0000000000000004,
+          2.0,
+          1.5
+        ],
+        "model_axis_full_extents_mm": [
+          6.020015267680572,
+          4.012461991280693,
+          3.0015102875784168
+        ],
+        "world_bounds_mm": [
+          [
+            -2.9749930264337263,
+            -1.9671442325950643,
+            -1.5483576816392826
+          ],
+          [
+            3.045022241246845,
+            2.0453177586856293,
+            1.4531526059391342
+          ]
+        ],
+        "axis_ratio": 2.0000000000000004,
+        "peak_above_model_plane_mm": 1.4531526059391342,
+        "area_mm2": 57.91379262331921,
+        "degenerate_faces": 0,
+        "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+        "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+        "finite": true
+      }
+    },
+    "cap": {
+      "p": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0986122886681098,
+        0.6931471805599453,
+        0.4054651081081644,
+        -0.2
+      ],
+      "R0": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "vertices": 4609,
+        "faces": 9120,
+        "components": 1,
+        "watertight": false,
+        "center_mm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "axes_mm": [
+          3.0000000000000004,
+          2.0,
+          1.5
+        ],
+        "model_axis_full_extents_mm": [
+          6.000000000000001,
+          4.0,
+          1.8
+        ],
+        "world_bounds_mm": [
+          [
+            -3.0000000000000004,
+            -2.0,
+            -0.30000000000000004
+          ],
+          [
+            3.0000000000000004,
+            2.0,
+            1.5
+          ]
+        ],
+        "axis_ratio": 2.0000000000000004,
+        "peak_above_model_plane_mm": 1.5,
+        "area_mm2": 33.69397876153461,
+        "degenerate_faces": 0,
+        "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+        "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+        "finite": true
+      }
+    },
+    "height": {
+      "p": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0986122886681098,
+        0.6931471805599453,
+        -0.2231435513142097,
+        0.1,
+        -0.1
+      ],
+      "R0": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "vertices": 3073,
+        "faces": 6048,
+        "components": 1,
+        "watertight": false,
+        "center_mm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "axes_mm": [
+          3.0000000000000004,
+          2.0,
+          0.8
+        ],
+        "model_axis_full_extents_mm": [
+          6.000000000000001,
+          4.0,
+          0.8019747036252695
+        ],
+        "world_bounds_mm": [
+          [
+            -3.0000000000000004,
+            -2.0,
+            0.0
+          ],
+          [
+            3.0000000000000004,
+            2.0,
+            0.8019747036252695
+          ]
+        ],
+        "axis_ratio": 3.7500000000000004,
+        "peak_above_model_plane_mm": 0.8019747036252695,
+        "area_mm2": 20.220486116037605,
+        "degenerate_faces": 0,
+        "self_intersection": "EXCLUDED_BY_POSITIVE_RADIAL_OR_SINGLE_VALUED_FAMILY; no unconstrained deformation",
+        "hidden_surface": "ellipsoid/star closed backside PRIOR_INFERRED; cap/height open, no generated underside",
+        "finite": true
+      }
+    },
+    "relative_depth_1views": {
+      "singular_values": [
+        10.823967329752398,
+        7.817216991401984,
+        3.0623648429258967,
+        1.1544122502851428,
+        0.762455013439139,
+        0.5086510552925088,
+        0.21893057625649043,
+        0.11994379790894077,
+        0.0006965429605560655
+      ],
+      "effective_rank_1e_3": 8,
+      "parameters": [
+        -1.6882301442137525e-12,
+        1.1501053616957958e-13,
+        -4.817241622780233e-10,
+        0.07999999999357306,
+        0.11999999999466704,
+        0.04000000000088828,
+        1.0986122886915168,
+        0.6931471805836394,
+        0.3364722366174014
+      ],
+      "truth": [
+        0.0,
+        0.0,
+        0.0,
+        0.08,
+        0.12,
+        0.04,
+        1.0986122886681098,
+        0.6931471805599453,
+        0.3364722366212129
+      ],
+      "parameter_error_norm": 4.829652138631116e-10,
+      "objective": 4.553936233659857e-25,
+      "solver_status": 1
+    },
+    "relative_depth_3views": {
+      "singular_values": [
+        16.609526104520743,
+        14.915062062500073,
+        8.701940967113183,
+        3.973254651605011,
+        1.9132155384965919,
+        1.3300218913607105,
+        1.1508218772125802,
+        0.5196772011695417,
+        0.3495775189671771
+      ],
+      "effective_rank_1e_3": 9,
+      "parameters": [
+        -4.785467446966001e-15,
+        -1.6272705793415323e-14,
+        -7.752506650480498e-15,
+        0.07999999999999156,
+        0.1199999999999998,
+        0.040000000000021664,
+        1.0986122886681207,
+        0.6931471805599358,
+        0.33647223662121434
+      ],
+      "truth": [
+        0.0,
+        0.0,
+        0.0,
+        0.08,
+        0.12,
+        0.04,
+        1.0986122886681098,
+        0.6931471805599453,
+        0.3364722366212129
+      ],
+      "parameter_error_norm": 3.313377999657809e-14,
+      "objective": 7.8123735343295595e-25,
+      "solver_status": 1
+    }
+  },
+  "all_pass": true,
+  "real_data_parameter_selection": false
+}

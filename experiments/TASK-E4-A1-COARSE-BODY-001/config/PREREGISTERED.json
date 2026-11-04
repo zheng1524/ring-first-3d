@@ -1,0 +1,214 @@
+{
+  "task": "TASK-E4-A1-COARSE-BODY-001",
+  "parent_commit": "6550275d518020f50ae7a02dd9b8c6907ca6189b",
+  "UTC": "2026-11-04T08:20:20.608759+00:00",
+  "scenes": {
+    "G01_004": {
+      "kind": "Ip",
+      "group": "G01",
+      "A": [
+        "G01_004_ref08",
+        "G01_004_ref13",
+        "G01_004_ref03"
+      ],
+      "B": [
+        "G01_004_growth_r14"
+      ],
+      "tier": "CONDITIONAL_CAMERA_AND_HEAD_CUE",
+      "EH_extra": false
+    },
+    "G06_004": {
+      "kind": "IIa",
+      "group": "G06",
+      "A": [
+        "G06_004_growth_r01",
+        "G06_004_growth_r03"
+      ],
+      "B": [
+        "G06_004_growth_r06"
+      ],
+      "tier": "CONDITIONAL_RESEARCH",
+      "EH_extra": true
+    },
+    "G08_005": {
+      "kind": "IIa",
+      "group": "G08",
+      "A": [
+        "G08_005_growth_r01",
+        "G08_005_growth_r02"
+      ],
+      "B": [
+        "G08_005_ref04"
+      ],
+      "tier": "PRESSURE_LIMITED_CAMERA",
+      "EH_extra": true
+    },
+    "G07_004": {
+      "kind": "Is",
+      "group": "G07",
+      "A": [
+        "G07_004_ref04",
+        "G07_004_growth_r02"
+      ],
+      "B": [
+        "G07_004_new_r06"
+      ],
+      "tier": "PRESSURE_HISTORICAL_HERO_CHAIN_UNQUALIFIED",
+      "EH_extra": false
+    }
+  },
+  "no_A2_execution": true,
+  "no_B1_B2": true,
+  "no_GT_real": true,
+  "GPU": 0,
+  "new_HERO": 0,
+  "camera_optimization": 0,
+  "arms": {
+    "A1-0": [
+      "C",
+      "R"
+    ],
+    "A1-1": [
+      "H",
+      "R"
+    ],
+    "A1-2": [
+      "C",
+      "D",
+      "R"
+    ],
+    "A1-3": [
+      "C",
+      "D",
+      "R"
+    ],
+    "A1-2+H": [
+      "C",
+      "D",
+      "H",
+      "R"
+    ],
+    "A1-3+H": [
+      "C",
+      "D",
+      "H",
+      "R"
+    ]
+  },
+  "models": {
+    "ellipsoid_parameters": 9,
+    "Ip_star_L3_parameters": 16,
+    "Is_open_cap_parameters": 10,
+    "IIa_compact_height_parameters": 11
+  },
+  "cue": "Ip fixed opening .35*DTmax and maximal-thickness connected component; original masks unchanged; head proxy not truth. Other classes original Polyp mask. P contour>3px from Ring; Q contact directions weight.35, not treated as measured anatomical contour.",
+  "observations": {
+    "support_directions": 24,
+    "depth_pixels_per_view": 32,
+    "depth_pairs_per_view": 16,
+    "HERO_points_per_view": 96,
+    "head_interior_depth_px": 2,
+    "depth_gradient_limit_mm": 0.75,
+    "source_CAD_tolerance_mm": 0.05,
+    "HERO_area_quadrature": "original incident face area/3, deterministic cumulative-area sampling; equal per-view mass and upstream RGB correlation normalization",
+    "noise_scale": {
+      "contour_px": 3.0,
+      "relative_depth_mm": 0.25,
+      "HERO_mm": 0.25
+    },
+    "weights": {
+      "C": 1.0,
+      "D": 1.0,
+      "H": 1.0,
+      "R": 0.05
+    },
+    "robust": "soft_l1, f_scale1, each modality normalized sqrt(row count), view/correlation weights fixed before fits",
+    "missing": "No fake first depths. Undefined relative-depth pair residual is censored, source-ray convex-support feasibility penalized in C; fixed-denominator miss counts and .25mm censored-score reported. Coverage loss/low hit gate prevents PASS; no discrete hit count used as differentiable loss."
+  },
+  "bounds": {
+    "center_offset_mm": 10.0,
+    "semiaxes_mm": [
+      0.25,
+      15.0
+    ],
+    "rotation_vector_component_rad": 0.8,
+    "IIa_ellipsoid_thickness_mm": [
+      0.05,
+      3.0
+    ],
+    "IIa_peak_mm": [
+      0.05,
+      5.0
+    ],
+    "star_coeff": [
+      -0.2,
+      0.2
+    ],
+    "star_log_radius_bound": 0.2,
+    "cap_cut": [
+      -0.65,
+      0.4
+    ],
+    "height_skew": [
+      -0.25,
+      0.25
+    ]
+  },
+  "optimization": {
+    "method": "scipy least_squares trf, float64, 3-point central numerical derivative",
+    "max_nfev": 60,
+    "initializations": [
+      0,
+      1,
+      2
+    ],
+    "seed": 20261104,
+    "ftol": 1e-05,
+    "xtol": 1e-05,
+    "gtol": 1e-05,
+    "select": "minimum A training objective only, no B values or visual choice; all starts retained",
+    "mesh_points": "24 longitude x13 latitude for optimizer; export96x49",
+    "initialization": "A1-0/2/3 only A 2D centroid-ray triangulation, source camera frame, apparent widths and fixed class priors; A1-1 only qualified/conditional HERO point statistics; no B initialization. Star/cap/height common core initialization with A1-2."
+  },
+  "stability": {
+    "central_steps": [
+      0.001,
+      0.0005
+    ],
+    "scales": {
+      "center_mm": 1.0,
+      "rotation_rad": 0.1,
+      "log_axis": 0.2,
+      "shape": 0.1
+    },
+    "rank_thresholds": [
+      0.01,
+      0.001,
+      0.0001,
+      1e-06
+    ],
+    "J_tolerance": 0.1,
+    "uncertainty": "range across all starts and fixed perturbation fits, not calibrated CI",
+    "fixed_perturbations": [
+      "A head support +1px",
+      "relative depth weight x.9",
+      "relative depth weight x1.1",
+      "last fit view removed",
+      "first fit camera right-body tx+.05mm and ry+.1deg"
+    ],
+    "perturb_budget_nfev": 30
+  },
+  "gates": {
+    "min_head_IoU": 0.5,
+    "min_fixed_depth_ray_hit": 0.8,
+    "maximum_outside_fraction": 0.35,
+    "max_axis_ratio": 20.0,
+    "minimum_whitened_singular_ratio": 0.001,
+    "minimum_relative_improvement": 0.05,
+    "nondegenerate": "finite, positive, no spikes/nonmanifold/self-crossing certificate; budget exhaustion not automatically converged",
+    "G1": "at least one qualified real case with frozen independent holdout and nondegenerate result; conditional upstream/selection/Gate dependencies cannot certify strict G1"
+  },
+  "A_B": "B not fit to parameters, but all existing B were used by upstream cameras, HERO/selection or Gate; label CONDITIONAL, not full-pipeline blind test",
+  "synthetic": "Separate generated truth only; ellipsoid/cap/wide compact mound/head-stalk counterexamples; no synthetic score tunes real parameters. Models frozen before synthetic tests.",
+  "background": "catalog existing data and Phase-D plane usability only; no fitting, attachment residual, gap measurement or new plane inference this round"
+}
