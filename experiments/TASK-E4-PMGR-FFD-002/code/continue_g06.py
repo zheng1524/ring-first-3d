@@ -13,6 +13,9 @@ def main():
     data=Data(scene);data.freeze();bases={}
     for kind in ['ffd','spectral']:
         m=Body(row,p);b=construct_basis(scene,m,kind);bases[kind]=b;np.savez_compressed(R/'inputs'/(scene+'_'+kind+'_BASIS.npz'),fields=b['fields'],F=b['F'],V0=b['V0'],mass=b['mass']);save('metrics/'+scene+'_'+kind+'_BASIS.json',{k:v for k,v in b.items()if k not in ['fields','F','V0','mass']});print('BASIS',scene,kind,[x['available']for x in b['stages']],flush=True)
+    gate,checks=check_case(scene,row,p,bases['ffd']['fields'])
+    if not gate:
+        save('metrics/G06_CONTINUATION_FINISHED.json',dict(timestamp=datetime.datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(),finished=True,status='NUMERICAL_GATE_FAILED_BEFORE_UPDATES',checks=checks));print('G06_NUMERICAL_GATE_FAILED; no updates');return
     case=dict(case=scene,status='RUNNING',P0_admission='CONDITIONAL_PHYSICAL_START_WITH_MASK_REGRESSION',original_initialization_warning=asset(R/'metrics/G06_004_SAFE_P0.json'),arms=[])
     for arm in protocol()['arm_order']:
         start=time.perf_counter();kind='spectral'if arm=='C1'else'ffd';b=bases[kind];m=Body(row,p,b['fields']);ob=Objective(scene,m,data);nfinal=min(96,m.fields.shape[-1]);q=np.r_[p,np.zeros(nfinal if arm=='C3'else min(12,nfinal))];B=None;damping=.1;records=[];stages=[]

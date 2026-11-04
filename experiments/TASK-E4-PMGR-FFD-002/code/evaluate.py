@@ -23,7 +23,7 @@ def main():
     assert load(R/'metrics/RUN_FINISHED.json')['finished'];results=load(R/'metrics/RESULTS.json');allrows=[];summary=[];common=[];classes=[]
     for case in results:
         scene=case['case']
-        if case['status']=='NOT_EXECUTABLE':summary.append(dict(case=scene,arm='ALL',status='NOT_EXECUTABLE',reason=case['reason']));continue
+        if not case.get('arms'):summary.append(dict(case=scene,arm='ALL',status=case['status'],reason=case.get('reason','No admitted numerical run')));continue
         data=Data(scene);items=[];p0arr=dict(np.load(R/'local_results'/scene/'C2/P0.npz'))
         for arm in ['C0','C1','C2','C3']:
             names=['P0','P1_PARTIAL']if arm=='C0'else['P0','P1','P2','P3']
@@ -51,6 +51,9 @@ def main():
                 e=ar['z'][p[:,0]]-ar['z'][p[:,1]]-o['delta'][joint];common.append(dict(case=scene,arm=arm,stage=st,source=cid,fixed_pair_N=256,joint_common_N=int(joint.sum()),**absolute_stats(e)));pooled.setdefault((arm,st),[]).append(e)
         for(arm,st),e in pooled.items():
             ee=np.concatenate(e);common.append(dict(case=scene,arm=arm,stage=st,source='ALL',fixed_pair_N=256*len(data.ids),joint_common_N=len(ee),**absolute_stats(ee)))
-    table('metrics/FIXED_DENOMINATOR_METRICS.csv',allrows);table('metrics/STAGE_COMPARISON.csv',summary);table('metrics/COMMON_PAIR_COMPARISON.csv',common);table('metrics/OBSERVED_INFERRED_AREAS.csv',classes);save('metrics/EVALUATION.json',dict(per_source=allrows,summary=summary,common_pairs=common,evidence_areas=classes,GT='NOT_EVALUABLE',no_holdout=True,no_source_removed=True));print('EVALUATED',len(summary),'real saved stages',flush=True)
+    qa=load(R/'metrics/POST_HOC_CASE_MASK_GRADIENTS.json')if(R/'metrics/POST_HOC_CASE_MASK_GRADIENTS.json').exists()else[];gates={s:all(x['passed']for x in qa if x['case']==s)for s in protocol()['scene_order']}
+    for group in [allrows,summary,common,classes]:
+        for x in group:x['case_Mask_numerical_QA']='PASS_LOCAL_ONLY'if gates.get(x['case'],False)else'FAIL_POST_HOC';x['scientific_accuracy']='NOT_EVALUABLE'
+    table('metrics/FIXED_DENOMINATOR_METRICS.csv',allrows);table('metrics/STAGE_COMPARISON.csv',summary);table('metrics/COMMON_PAIR_COMPARISON.csv',common);table('metrics/OBSERVED_INFERRED_AREAS.csv',classes);save('metrics/EVALUATION.json',dict(per_source=allrows,summary=summary,common_pairs=common,evidence_areas=classes,GT='NOT_EVALUABLE',no_holdout=True,no_source_removed=True,case_Mask_numerical_QA=gates,overall_engineering_acceptance=all(gates.values()),validation_timing='original pretraining gate covered G01; G06 QA was post hoc and failed, no retroactive gate claim'));print('EVALUATED',len(summary),'real saved stages',flush=True)
 
 if __name__=='__main__':main()

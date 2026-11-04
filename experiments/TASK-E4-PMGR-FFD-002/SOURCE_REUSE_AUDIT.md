@@ -12,3 +12,9 @@
 | `visualization/real_p0_renderer.py` | `inputs.py::vis`读取相机射线/半像素内参/真实公制展示；原生Kn与轴向Z不变 | 本仓库版本及所有来源SHA随冻结清单；不加载Blender GT |
 
 IPC Toolkit、libigl、Fast FFD仅保留任务书中的备选身份，本轮默认不调用；FCL路径不能认证时仍拒绝，不以缺少IPC为由接受穿透。代码中不存在按Ip/Is/IIa类别切换。
+
+## 实际运行版本补记
+
+已安装nvdiffrast0.4.0，本地既有源码commit253ac4fcea7de5f396371124af597e6cc957bfae，tracked源码无修改；build/egg-info为原环境构建产物，未清理。官方阅读HEAD：PhysicsNeMo30ecd227ffed3467cc9c17492c343fae55653145、PyTorch3D e4ad6e5687a360ccdc6ebd91348e8dbbac97bf31；它们不是本轮安装依赖。
+
+G06真实Mask有限差分事后FAIL，库成熟不构成自动验收。当前case_gate.py按同规则逐组阻塞失败，原执行结果保留；见TECHNICAL_REPORT。

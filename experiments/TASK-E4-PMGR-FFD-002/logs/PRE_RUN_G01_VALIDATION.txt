@@ -1,0 +1,19 @@
+FFD_ZERO_IDENTITY True
+PYGEM_CORNER_DISPLACEMENT_REFERENCE tensor(True)
+FFD_CONTROL_AUTOGRAD True
+FROZEN_SAFE_P0_EXACT_IDENTITY True
+P1_P2_ZERO_RESIDUAL_TRANSFER True
+/home/liu/ring_first_3d_e4_ffd/experiments/TASK-E4-PMGR-FFD-002/code/objective.py:19: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:203.)
+  self.L=tensor(L);self.ix=torch.as_tensor(self.edges,device='cuda',dtype=torch.long);self.F=torch.as_tensor(body.F,device='cuda',dtype=torch.long)
+MASK_AUTOGRAD_BOTH_PARAMETER_BLOCKS True
+LIVE9_REAL_MASK_FD_LOCAL_0.0001 True
+LIVE9_REAL_MASK_FD_LOCAL_0.0003 True
+FFD_REAL_MASK_FD_LOCAL_0.0001 True
+FFD_REAL_MASK_FD_LOCAL_0.0003 True
+REAL_RING_FIRST_OCCLUSION True
+SYMMETRIC_FIXED_UNKNOWN_INVARIANCE True
+A_TO_B_CAMERA_PIXEL_CENTER True
+CUDA_RASTER_VS_FROZEN_CPU_CAMERA True
+FCL_BLENDER_GAP_0.05 True
+FCL_BLENDER_GAP_-0.05 True
+VALIDATION_ALL_PASS 16 seconds/objective 0.09334613000100944

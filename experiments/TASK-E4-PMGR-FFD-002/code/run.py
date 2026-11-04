@@ -1,6 +1,7 @@
 from optimize import *
 from p0 import safe_p0
 from data import Data
+from case_gate import check_case
 import traceback
 
 def historical(scene,row,p,data):
@@ -24,6 +25,9 @@ def main():
         bases={}
         for kind in ['ffd','spectral']:
             model=Body(row,p);basis=construct_basis(scene,model,kind);bases[kind]=basis;np.savez_compressed(R/'inputs'/(scene+'_'+kind+'_BASIS.npz'),fields=basis['fields'],F=basis['F'],V0=basis['V0'],mass=basis['mass']);save('metrics/'+scene+'_'+kind+'_BASIS.json',{k:v for k,v in basis.items()if k not in ['fields','F','V0','mass']});print('BASIS',scene,kind,[x['available']for x in basis['stages']],flush=True)
+        gate,checks=check_case(scene,row,p,bases['ffd']['fields'])
+        if not gate:
+            results.append(dict(case=scene,status='NUMERICAL_GATE_FAILED',reason='same-scale per-case Mask finite differences failed; do not train',gate=checks,arms=[]));save('metrics/RESULTS.json',results);continue
         case=dict(case=scene,status='RUNNING',arms=[])
         for arm in protocol()['arm_order']:
             start=time.perf_counter();kind='spectral'if arm=='C1'else'ffd';basis=bases[kind];m=Body(row,p,basis['fields']);ob=Objective(scene,m,data);nfinal=min(96,len(m.fields[0,0]));n0=nfinal if arm=='C3'else min(12,nfinal);q=np.r_[p,np.zeros(n0)];B=None;damping=.1;records=[];stages=[]

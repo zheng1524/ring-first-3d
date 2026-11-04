@@ -30,7 +30,9 @@ def safe_p0(scene):
     for a,z in zip(oldmet['per_view'],met['per_view']):
         if z['native_hit_N']<a['native_hit_N']-.05*512:reasons.append('P0_HERO_COVERAGE_LOSS:'+a['source'])
         if a['relative_depth_mm']['MAE']is not None and z['relative_depth_mm']['MAE']is not None and z['relative_depth_mm']['MAE']>a['relative_depth_mm']['MAE']+.15:reasons.append('P0_RELATIVE_DEPTH_REGRESSION:'+a['source'])
-    save('metrics/'+scene+'_SAFE_P0.json',dict(status='P0_INFEASIBLE'if reasons else'P0_FEASIBLE',scope='single registered local solve, not global impossibility',reasons=reasons,p=p,old_p=old,trace=trace,optimizer=result_info,collision=col,Blender=b,volume_ratio=vr,mean_IoU_change=float(drops.mean()),old_metrics=oldmet['per_view'],new_metrics=met['per_view']))
+    # v1.1 correction: observation regression is a warning, not an extra veto.
+    hard=[x for x in reasons if x.startswith(('SAFE_POSITIVE_GAP','P0_EXCESS_SHRINK'))];warning=[x for x in reasons if x not in hard]
+    save('metrics/'+scene+'_SAFE_P0.json',dict(status='P0_INFEASIBLE'if hard else('P0_PHYSICAL_START_WITH_OBSERVATION_WARNING'if warning else'P0_FEASIBLE'),scope='single registered local solve, not global impossibility; observation warnings never veto training',reasons=hard,observation_warnings=warning,p=p,old_p=old,trace=trace,optimizer=result_info,collision=col,Blender=b,volume_ratio=vr,mean_IoU_change=float(drops.mean()),old_metrics=oldmet['per_view'],new_metrics=met['per_view']))
     np.savez_compressed(R/'local_results'/(scene+'_P0_CANDIDATE.npz'),V=V,F=model.F,q=p)
-    if reasons:raise RuntimeError('P0_INFEASIBLE:'+','.join(reasons))
+    if hard:raise RuntimeError('P0_INFEASIBLE:'+','.join(hard))
     return row,p
