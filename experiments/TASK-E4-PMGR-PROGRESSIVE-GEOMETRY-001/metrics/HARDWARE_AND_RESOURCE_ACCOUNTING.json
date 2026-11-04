@@ -1,0 +1,21 @@
+{
+  "CPU": "AMD Ryzen 7 6800H with Radeon Graphics",
+  "logical_CPUs": 16,
+  "Linux_total_RAM_MiB": 15167,
+  "GPU": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "GPU_total_MiB": 6144,
+  "driver": "570.133.07",
+  "CUDA": "12.8",
+  "observed_GPU_temperature_C": 49,
+  "OMP_threads": 2,
+  "Open3D_threads": 2,
+  "other_user_tasks_terminated": 0,
+  "GPU_compute": "serial explicit mesh optimization and rendering; no neural models trained",
+  "memory_note": "run peak_GPU_bytes is cumulative torch allocated peak to date, not isolated per-arm total device peak; nvidia-smi observed process context approximately224MiB during optimization; external rasterizer and driver allocations not all covered by torch counter",
+  "render_cap_formula": "per run: 120*(1+7)*n_A + 3*(1+2*137+8)*n_A + (1+3)*n_A + (1+4)*(n_A+n_B); shared P0 J cache reduces actual calls; no wall-clock equality claimed",
+  "formal_completed_run_seconds": 2260.2457724990054,
+  "rejected_completed_diagnostic_runs": 43,
+  "rejected_completed_diagnostic_seconds": 1112.1061140479906,
+  "interrupted_diagnostic_seconds": "NOT_FULLY_COUNTED; progress and snapshots preserved",
+  "active_rank_FD_seconds": 419.78678092099653
+}
