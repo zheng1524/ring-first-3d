@@ -1,0 +1,182 @@
+{
+  "task": "TASK-E4-PMGR-PROGRESSIVE-GEOMETRY-001",
+  "parent_commit": "4a09aedc669092d264f070ccac4fd12851097dd1",
+  "date": "2026-11-04 Asia/Shanghai",
+  "scenes": {
+    "G01_004": {
+      "kind": "Ip",
+      "group": "G01",
+      "A": [
+        "G01_004_ref08",
+        "G01_004_ref13",
+        "G01_004_ref03"
+      ],
+      "B": [
+        "G01_004_growth_r14"
+      ],
+      "tier": "CONDITIONAL_CAMERA_AND_HEAD_CUE",
+      "E1_available": true
+    },
+    "G06_004": {
+      "kind": "IIa",
+      "group": "G06",
+      "A": [
+        "G06_004_growth_r01",
+        "G06_004_growth_r03"
+      ],
+      "B": [
+        "G06_004_growth_r06"
+      ],
+      "tier": "CONDITIONAL_RESEARCH",
+      "E1_available": true
+    },
+    "G08_005": {
+      "kind": "IIa",
+      "group": "G08",
+      "A": [
+        "G08_005_growth_r01",
+        "G08_005_growth_r02"
+      ],
+      "B": [
+        "G08_005_ref04"
+      ],
+      "tier": "PRESSURE_LIMITED_CAMERA",
+      "E1_available": true
+    },
+    "G07_004": {
+      "kind": "Is",
+      "group": "G07",
+      "A": [
+        "G07_004_ref04",
+        "G07_004_growth_r02"
+      ],
+      "B": [
+        "G07_004_new_r06"
+      ],
+      "tier": "PRESSURE_HISTORICAL_HERO_CHAIN_UNQUALIFIED",
+      "E1_available": true
+    }
+  },
+  "initials": [
+    "E1",
+    "E2"
+  ],
+  "seeds": [
+    0,
+    1
+  ],
+  "seed_meaning": "same frozen A-selected E1/E2 P0; common deterministic optimizer gradient subsampling schedule",
+  "arms": [
+    "PMGR",
+    "C1_DIRECT_HIGH_DOF",
+    "C2_FREQ_ONLY_PROGRESSIVE"
+  ],
+  "supplemental": [
+    "C1_count_matched",
+    "C2_count_matched"
+  ],
+  "mesh": {
+    "icosphere_subdivisions": 3,
+    "vertices": 642,
+    "faces": 1280,
+    "constant_template": true,
+    "P0_parameters_frozen": true
+  },
+  "budgets": [
+    12,
+    44,
+    128
+  ],
+  "steps_per_stage": 40,
+  "total_gradient_evaluations": 120,
+  "renderer": "NVlabs/nvdiffrast 253ac4fcea7de5f396371124af597e6cc957bfae; CUDA; actual triangle silhouettes. Native axial first-depth via Open3D face selection and differentiable exact ray/triangle plane.",
+  "render_size": [
+    320,
+    180
+  ],
+  "depth_pool": 512,
+  "depth_pairs": 256,
+  "gradient_pairs": 128,
+  "gradient_anchors": 256,
+  "loss": {
+    "M": 1.0,
+    "D": 1.0,
+    "H": 0.1,
+    "Base": 0.0,
+    "Reg": 0.02,
+    "depth_sigma_mm": 0.25,
+    "hero_sigma_mm": 0.5,
+    "hero_bound_mm": 2.0,
+    "mask": "balanced squared foreground fraction residual plus contour-distance-weighted silhouette residual; all source pixels pooled with conditional Ring-known mass",
+    "depth": "native axial pair differences; censored rows unknown, never zero-as-valid; fixed denominator and coverage guard",
+    "H_definition": "bounded closest-visible-triangle distance to same HERO source; not independent of D",
+    "frequency": "squared normalized eigenvalue coefficient L2",
+    "unknown": "4x P0 displacement regularization on initially unobserved vertices; identical all arms"
+  },
+  "optimizer": {
+    "method": "Adam proposal with exact accepted-state rollback; lr in coefficient mm",
+    "lr_mm": 0.02,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "line_search_trials": 7,
+    "backtrack": 0.5,
+    "global_tolerance": 1e-07,
+    "view_relative_tolerance": 0.05,
+    "view_absolute_tolerance": 0.01
+  },
+  "trust": {
+    "tau_over_equivalent_diameter": 0.0125,
+    "tau_clip_mm": [
+      0.075,
+      0.2
+    ],
+    "max_total_displacement_over_diameter": 0.25,
+    "coverage_drop_absolute": 0.02,
+    "coverage_relative_to": "both P0 and last accepted per-source",
+    "max_H_MAE_increase_mm": 0.1,
+    "min_face_area_ratio": 0.1,
+    "max_P0_normal_flip_dot": 0.0,
+    "ring_penetration_tolerance_mm": 0.01,
+    "ring_penetration": "P0 collisions explicitly reported; allow no deeper existing penetration and no new vertex penetration; triangle collision proxy separately reported; cannot certify all continuous contacts",
+    "self_intersection": "non-adjacent triangle intersection test at accepted candidates"
+  },
+  "gate": {
+    "whitened_fd_mm": 0.01,
+    "fd_consistency_mm": 0.005,
+    "rank_relative_singular": 0.001,
+    "geometric_rank_relative": 1e-08,
+    "independent_J_ratio_min": 0.05,
+    "visible_energy_fraction_min": 0.05,
+    "source_gradient_conflict_max": 0.35,
+    "minimum_J_norm": 0.01,
+    "single_view": "allow with explicit low-confidence label; same unknown prior all arms",
+    "P0_tangent_in_J": true
+  },
+  "P0_gate": {
+    "hard_agreement_min": 0.99,
+    "depth_p95_mm_max": 0.15,
+    "analytic_depth_p95_mm_max": 0.3,
+    "analytic_iou_min": 0.97,
+    "archive_native_roundtrip_px_max": 1e-08,
+    "finite_nonzero_gradient": true
+  },
+  "evaluation": {
+    "A_B_frozen": true,
+    "B_used_for_training": false,
+    "B_identity": "CONDITIONAL_UPSTREAM_GATE_SELECTION",
+    "fixed_original_pixel_denominator": true,
+    "common_ray_paired": true,
+    "GT": "NOT_EVALUABLE"
+  },
+  "base": "OFF all scenes: no currently qualified same-coordinate background/source chain; never Ring plane",
+  "no_class_dispatch": true,
+  "no_GT": true,
+  "no_camera_update": true,
+  "no_cleanup": true,
+  "no_neural": true,
+  "no_mode_search": true,
+  "stopping": "fixed budget; retain last safe geometry even if rejected; hard coordinate/numerical/intersection failures stop affected arm only",
+  "comparison": "primary candidate-matched; supplemental count-matched only posthoc counts, frequency prefix, no B selection"
+}
