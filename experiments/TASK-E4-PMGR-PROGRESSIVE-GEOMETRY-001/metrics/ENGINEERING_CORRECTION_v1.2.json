@@ -1,0 +1,50 @@
+{
+  "reason": "Independent replay rejected v1.1: intersection of two signed-distance LOWER bounds needs maximum, not minimum. Minimum left the old-step bound active and allowed accumulation.",
+  "preserved": "/home/liu/ring_first_3d_e4_pmgr/experiments/TASK-E4-PMGR-PROGRESSIVE-GEOMETRY-001/local_results/REJECTED_V1P1_MINIMUM_BOUND",
+  "protocol_thresholds_unchanged": true,
+  "correction": "max(min(P0,0),min(last,0))-.01mm; immutable-P0 assertion at every saved checkpoint",
+  "all_arms_restart_same_budget": true,
+  "GT_B_not_used": true,
+  "pre_rerun_files": [
+    {
+      "path": "code/camera_renderer.py",
+      "sha256": "129f8f9b7cb50ffb4b3ca7083e7df795fd7512f29ac6e542f18702a06cab58a1"
+    },
+    {
+      "path": "code/contracts.py",
+      "sha256": "0a5a1f72c312c6913a253a42a4b2e6545c0423ddfb077752de1ff53195c48623"
+    },
+    {
+      "path": "code/inputs.py",
+      "sha256": "a66367b0af0b8c75e53c74c0779bef7e8c9eb81a8c38dcff343dbc19f38cef77"
+    },
+    {
+      "path": "code/losses.py",
+      "sha256": "d6b2f49e77db17baa73205485adfd8a554226f2f8121c371182724f418d0dc74"
+    },
+    {
+      "path": "code/mesh_basis.py",
+      "sha256": "ecc1570380aaffcdcb9df2e6c7fce907ce1993257ed6bbb518723f67ab74bb42"
+    },
+    {
+      "path": "code/observability.py",
+      "sha256": "868ee96f7ac11646b0dc9615246aa2bc785e2d48a051dc9fed9c690e8c92751f"
+    },
+    {
+      "path": "code/prepare.py",
+      "sha256": "ab9ff682f054e968e51ff25f6971bb89f29bab03f0d84a7656407d6e83f21f59"
+    },
+    {
+      "path": "code/run.py",
+      "sha256": "ce67249b150cc2458c7306f411e41a20aacd46eea5976ad09726ceab93b6a4ce"
+    },
+    {
+      "path": "code/trust_region.py",
+      "sha256": "28c54183af94965023353346e0d2e4bcd554dfc95109250dd35318b6094cf934"
+    },
+    {
+      "path": "code/validate.py",
+      "sha256": "44e4a5b10fb2ade804659ca2d13ea03bb4709efa5b45b06455b27a59151b3ca3"
+    }
+  ]
+}

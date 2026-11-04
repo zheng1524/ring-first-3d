@@ -29,6 +29,8 @@ def optimize(scene,initial,seed,arm,counts=None):
         ev,ar=evaluate(p,a,cid);eval0[cid]=ev;evalarrays0[cid]=ar
     def snapshot(stage,lastparts,active):
         V=shape(p.b,a);cp=folder/(stage+'.npz');np.savez_compressed(cp,a=a,adam_m=m,adam_v=v,adam_t=adam_t,active=np.array(active),V=V,F=p.F,gradient_evaluations=attempt_grad,accepted_updates=accepted,seed=seed,protocol_sha256=sha(R/'config/LOCKED_PROTOCOL.json'))
+        frozen_violation=guard.ring(V)<np.minimum(guard.ring0,0)-.010001
+        if frozen_violation.any():raise RuntimeError('SAVED_GEOMETRY_VIOLATES_IMMUTABLE_P0_RING_BOUND')
         mesh=trimesh.Trimesh(V,p.F,process=False);mesh.export(folder/(stage+'.ply'))
         evals=[]
         for cid in pr['scenes'][scene]['A']+pr['scenes'][scene]['B']:
@@ -71,7 +73,7 @@ def optimize(scene,initial,seed,arm,counts=None):
         save('metrics/runs/'+key+'__progress.json',dict(key=key,stages=stages,steps=steps))
         print('STAGE',key,stage,len(active),jac['rank'],'seconds',round(time.monotonic()-start,1),flush=True)
         if fails:break
-    result=dict(key=key,scene=scene,initial=initial,seed=seed,arm=arm,qualification=pr['scenes'][scene]['tier'],status='HARD_FAILURE'if fails else'FIXED_BUDGET_COMPLETED',failures=fails,stages=stages,steps=steps,mode_rows=mode_rows,spectra=spectra,seconds=time.monotonic()-start,render_calls=p.renderer.calls,gradient_evaluations=attempt_grad,accepted_updates=accepted,trust_tau_mm=p.tau,P0_ring_min_signed_mm=float(guard.ring0.min()),P0_ring_inside_N=int((guard.ring0<-.01).sum()),P0_self_intersection=guard.base_self,peak_GPU_bytes=torch.cuda.max_memory_allocated(),initial_source=asset(A1/'metrics/PRIMARY_A_ONLY.json'),protocol=asset(R/'config/LOCKED_PROTOCOL.json'))
+    result=dict(key=key,scene=scene,initial=initial,seed=seed,arm=arm,qualification=pr['scenes'][scene]['tier'],status='HARD_FAILURE'if fails else'FIXED_BUDGET_COMPLETED',failures=fails,stages=stages,steps=steps,mode_rows=mode_rows,spectra=spectra,seconds=time.monotonic()-start,render_calls=p.renderer.calls,gradient_evaluations=attempt_grad,accepted_updates=accepted,trust_tau_mm=p.tau,P0_ring_min_signed_mm=float(guard.ring0.min()),P0_ring_inside_N=int((guard.ring0<-.01).sum()),P0_self_intersection=guard.base_self,peak_GPU_bytes=torch.cuda.max_memory_allocated(),initial_source=asset(A1/'metrics/PRIMARY_A_ONLY.json'),protocol=asset(R/'config/LOCKED_PROTOCOL.json'),core_code=[asset(R/'code'/f)for f in ['run.py','trust_region.py','losses.py','observability.py']])
     save('metrics/runs/'+key+'.json',result);return result
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--scene');ap.add_argument('--initial');ap.add_argument('--seed',type=int);ap.add_argument('--arm');args=ap.parse_args();check_input_freeze();pr=protocol()

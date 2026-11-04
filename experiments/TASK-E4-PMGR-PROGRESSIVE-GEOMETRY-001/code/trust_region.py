@@ -36,7 +36,10 @@ class Guard:
         rd=self.ring(V)
         # A per-step epsilon alone accumulates penetration. The immutable P0
         # limit must hold simultaneously with the previous accepted state.
-        if np.any(rd<np.minimum(np.minimum(self.last_ring,self.ring0),0)-.01):reasons.append('RING_PENETRATION')
+        # BOTH lower bounds must hold: their intersection is the maximum,
+        # not the minimum. min() would silently keep the looser old-step bound.
+        limit=np.maximum(np.minimum(self.last_ring,0),np.minimum(self.ring0,0))-.01
+        if np.any(rd<limit):reasons.append('RING_PENETRATION')
         si=dict(intersections=None,coplanar_candidates=None)
         if not reasons:
             si=self_intersections(V,self.F)
