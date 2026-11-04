@@ -34,7 +34,9 @@ class Guard:
         if ratio.min()<.1:reasons.append('AREA_COLLAPSE')
         if dot.min()<=0:reasons.append('FACE_FOLD')
         rd=self.ring(V)
-        if np.any(rd<np.minimum(self.last_ring,0)-.01):reasons.append('RING_PENETRATION')
+        # A per-step epsilon alone accumulates penetration. The immutable P0
+        # limit must hold simultaneously with the previous accepted state.
+        if np.any(rd<np.minimum(np.minimum(self.last_ring,self.ring0),0)-.01):reasons.append('RING_PENETRATION')
         si=dict(intersections=None,coplanar_candidates=None)
         if not reasons:
             si=self_intersections(V,self.F)
