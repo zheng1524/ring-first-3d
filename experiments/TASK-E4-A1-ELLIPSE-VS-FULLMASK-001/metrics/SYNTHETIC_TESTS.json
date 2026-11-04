@@ -1,0 +1,63 @@
+{
+  "tests": [
+    {
+      "name": "true_mask_lower_loss_than_translation_or_scale",
+      "passed": true,
+      "true_cost": 0.05496359729193532,
+      "translation_cost": 1.2640766865110313,
+      "scale_cost": 2.014982413304385
+    },
+    {
+      "name": "mask_residual_gradient_finite_and_two_steps",
+      "passed": true,
+      "J_relative_difference": 0.032679999918645265,
+      "translation_gradient_norm": 4.653607262912457
+    },
+    {
+      "name": "full_mask_detects_nonconvex_hole_24_support_misses",
+      "passed": true,
+      "same_24_support": true,
+      "base_cost": 0.05496359729193532,
+      "hole_cost": 2.766240101931375
+    },
+    {
+      "name": "Ring_pixels_unknown_not_negative_polyp_evidence",
+      "passed": true,
+      "unknown_grid_N": 24
+    },
+    {
+      "name": "ellipsoid_axial_roots_vs_actual_triangles",
+      "passed": true,
+      "common_hit_N": 8519,
+      "depth_error_mm": {
+        "N": 8519,
+        "median": 0.0018964773030454296,
+        "median_abs": 0.0018964773030454296,
+        "MAE": 0.003378829457551784,
+        "p95": 0.01646676367840172,
+        "maximum": 0.03723407613857077
+      },
+      "rays_parameter": "axial camera Z, not unit-ray range"
+    },
+    {
+      "name": "actual_frozen_CAD_occlusion_order_control",
+      "passed": true,
+      "blocked_pixels": 3890,
+      "clear_behind_grid_N": 593,
+      "CAD": {
+        "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/inputs/R10_ring.obj",
+        "sha256": "2ba8248b407be25ea38c712736c26efacfc8472683a011fc96638726c7b65f92",
+        "bytes": 1028404
+      },
+      "synthetic_control": true
+    },
+    {
+      "name": "same_target_arm_identity_and_class_metadata_invariance",
+      "passed": true,
+      "max_arm_residual_difference": 0.0,
+      "max_class_label_difference": 0.0
+    }
+  ],
+  "all_pass": true,
+  "GT": "GENERATED_CONTROL_ONLY_NO_REAL_GT"
+}
