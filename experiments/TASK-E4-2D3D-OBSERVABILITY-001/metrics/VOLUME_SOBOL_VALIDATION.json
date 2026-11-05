@@ -1,0 +1,52 @@
+{
+  "method": "single fixed 2^18 scrambled Sobol quadrature in independent P0 bounds; actual mesh signed occupancy for every state; proxy not exact Boolean",
+  "seed": 20261105,
+  "N": 262144,
+  "GT_volume_mm3": 19.76550370216369,
+  "GT_added_mm3": 7.651809516906736,
+  "GT_removed_mm3": 7.416214988708494,
+  "single_sign_unavoidable_difference_lower_bound_mm3": 7.416214988708494,
+  "rows": [
+    {
+      "state": "P0",
+      "volume_mm3": 19.529909173965446,
+      "symmetric_difference_mm3": 15.068024505615229,
+      "pred_added_mm3": 0.0,
+      "pred_removed_mm3": 0.0,
+      "added_recovered_mm3": 0.0,
+      "removed_recovered_mm3": 0.0,
+      "added_recovery_ratio": 0.0,
+      "removed_recovery_ratio": 0.0,
+      "wrong_added_mm3": 0.0,
+      "wrong_removed_mm3": 0.0
+    },
+    {
+      "state": "ORIGINAL",
+      "volume_mm3": 20.03242728996276,
+      "symmetric_difference_mm3": 15.213391342163082,
+      "pred_added_mm3": 0.5025181159973143,
+      "pred_removed_mm3": 0.0,
+      "added_recovered_mm3": 0.1785756397247314,
+      "removed_recovered_mm3": 0.0,
+      "added_recovery_ratio": 0.023337700622338683,
+      "removed_recovery_ratio": 0.0,
+      "wrong_added_mm3": 0.32394247627258294,
+      "wrong_removed_mm3": 0.0
+    },
+    {
+      "state": "SUBPIXEL_TARGET",
+      "volume_mm3": 20.01049694824218,
+      "symmetric_difference_mm3": 15.245346982955928,
+      "pred_added_mm3": 0.48058777427673327,
+      "pred_removed_mm3": 0.0,
+      "added_recovered_mm3": 0.15163264846801752,
+      "removed_recovered_mm3": 0.0,
+      "added_recovery_ratio": 0.0198165738617753,
+      "removed_recovery_ratio": 0.0,
+      "wrong_added_mm3": 0.3289551258087157,
+      "wrong_removed_mm3": 0.0
+    }
+  ],
+  "no_predictions_or_original_metrics_changed": true,
+  "reason": "coarse node quadrature can alias a flat native CAD base; validates evaluation precision, not parameter selection"
+}

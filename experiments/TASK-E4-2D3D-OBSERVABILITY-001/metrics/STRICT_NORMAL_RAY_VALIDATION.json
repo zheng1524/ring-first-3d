@@ -1,0 +1,37 @@
+{
+  "rows": [
+    {
+      "arm": "ORIGINAL",
+      "fixed_N": 9044,
+      "valid_N": 8269,
+      "missing_N": 775,
+      "GT_origin_inside_N": 113,
+      "error_mm": {
+        "N": 8269,
+        "median_signed": 0.23406606912612915,
+        "median_absolute": 0.3360403776168823,
+        "MAE": 0.35665135016203764,
+        "p95": 0.6100959420204161,
+        "maximum": 0.9795390963554382
+      }
+    },
+    {
+      "arm": "SUBPIXEL_TARGET",
+      "fixed_N": 9044,
+      "valid_N": 8269,
+      "missing_N": 775,
+      "GT_origin_inside_N": 113,
+      "error_mm": {
+        "N": 8269,
+        "median_signed": 0.23406606912612915,
+        "median_absolute": 0.3344871401786804,
+        "MAE": 0.35687392753273994,
+        "p95": 0.6100959420204161,
+        "maximum": 1.2013261318206787
+      }
+    }
+  ],
+  "definition": "identical initial normals, X+0.8n and direction -n; origin must be outside initial/GT/pred and first hit within1.6mm; failures NaN",
+  "supersedes": "NATIVE_POSTERIOR.normal_rays omitted outside-origin condition; that preliminary table and arrays remain retained",
+  "predictions_and_main_nearest_surface_metrics_unchanged": true
+}
