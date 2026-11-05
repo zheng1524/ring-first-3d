@@ -7,6 +7,12 @@
       "max_error_mm": 1.7763568394002505e-15
     },
     {
+      "test": "actual_trilinear_field_gradient",
+      "passed": true,
+      "max_component_error": 9.756115915138253e-10,
+      "at_grid_planes": "positive side, C0 field not C1"
+    },
+    {
       "test": "real_camera_projection_Jacobian",
       "passed": true,
       "relative_error": 2.396069402647582e-10
@@ -82,16 +88,16 @@
       "test": "common_contour_pipeline_underprediction_expand",
       "passed": true,
       "correspondences_N": 128,
-      "normal_velocity_median_mm": 0.30972562563779527,
-      "actual_volume_delta_mm3": 0.0926367758049409,
+      "normal_velocity_median_mm": 0.3097962448862926,
+      "actual_volume_delta_mm3": 0.08955638587968195,
       "control_only": true
     },
     {
       "test": "common_contour_pipeline_overprediction_shrink",
       "passed": true,
       "correspondences_N": 104,
-      "normal_velocity_median_mm": -0.3587055902331545,
-      "actual_volume_delta_mm3": -0.09089098164267995,
+      "normal_velocity_median_mm": -0.3593837597671913,
+      "actual_volume_delta_mm3": -0.0881485009593419,
       "control_only": true
     },
     {

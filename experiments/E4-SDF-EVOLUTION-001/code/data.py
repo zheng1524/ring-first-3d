@@ -41,7 +41,7 @@ class Data:
             for j,k,dist,direction in a:
                 target=d['contour'][k];line=np.linspace(uv[j],target,max(2,int(np.ceil(dist))+1));pix=np.clip(np.rint(line).astype(int),[0,0],[319,179])
                 if dist>20 or not d['known'][pix[:,1],pix[:,0]].all():continue
-                B,_=grid.basis(pp[j:j+1]);g=np.asarray(B@grad)[0];gn=np.linalg.norm(g);n=g/max(gn,1e-12);w=project_jacobian(pp[j:j+1],d['K'],T)[0]@n
+                B,_=grid.basis(pp[j:j+1]);g=grid.query_gradient(phi,pp[j:j+1])[0];gn=np.linalg.norm(g);n=g/max(gn,1e-12);w=project_jacobian(pp[j:j+1],d['K'],T)[0]@n
                 if np.linalg.norm(w)<1.:continue
                 r=uv[j]-target;v=float(-r@w/(w@w));sd=float(d['sd'][tuple(np.clip(np.rint(uv[j]).astype(int),[0,0],[319,179])[::-1])])
                 # Prevent nearest-contour tangential mismatches reversing the actual inside/outside correction.

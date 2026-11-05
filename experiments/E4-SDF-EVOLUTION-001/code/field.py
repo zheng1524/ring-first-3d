@@ -20,6 +20,19 @@ class Field:
     def value(self,phi,X):
         B,v=self.basis(X);a=B@phi;a[~v]=np.nan;return a
     def gradient(self,phi):return np.stack(np.gradient(phi.reshape(self.shape),self.h,edge_order=2),-1).reshape(-1,3)
+    def query_gradient(self,phi,X):
+        """Exact derivative of the selected trilinear cell, not interpolated nodal FD gradients.
+
+        At grid planes a C0 field has two one-sided derivatives. Choose the
+        positive-side cell deterministically; no claim of a unique C1 normal.
+        """
+        t=(np.asarray(X)-self.origin)/self.h;i=np.floor(t).astype(int);i=np.clip(i,0,np.array(self.shape)-2);f=np.clip(t-i,0,1);out=np.zeros((len(X),3))
+        for a in [0,1]:
+            for b in [0,1]:
+                for c in [0,1]:
+                    off=np.array([a,b,c]);q=phi[np.ravel_multi_index((i+off).T,self.shape)];w=np.where(off,f,1-f)
+                    for k in range(3):out[:,k]+=q*(1 if off[k]else-1)*np.prod(np.delete(w,k,axis=1),axis=1)/self.h
+        return out
     def mesh(self,phi):
         V,F,_,_=marching_cubes(phi.reshape(self.shape).astype(np.float32),0.,spacing=(self.h,)*3,gradient_direction='ascent',allow_degenerate=False)
         V=V+self.origin;F=F.astype(np.int32)

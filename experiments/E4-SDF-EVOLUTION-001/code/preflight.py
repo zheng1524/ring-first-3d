@@ -14,6 +14,9 @@ def main():
     def record(test,passed,**kw):rows.append(dict(test=test,passed=bool(passed),**kw));print(test,passed,flush=True)
     rng=np.random.default_rng(20261105);P=g.origin+(np.array(g.shape)-1)*g.h*(.05+.9*rng.random((100,3)));B,valid=g.basis(P);plane=g.points@np.array([.2,-.7,.3])+1
     err=max(abs(B@plane-(P@np.array([.2,-.7,.3])+1)));record('trilinear_metric_axis_and_partition',err<1e-10 and max(abs(B.sum(1).A.ravel()-1))<1e-12,max_error_mm=err)
+    # Actual field derivative on real, interior-cell points; not just camera Jacobian.
+    P=g.origin+(np.array(g.shape)-2)*g.h*(.05+.9*rng.random((100,3)))+.00123
+    exact=g.query_gradient(phi,P);fd=np.column_stack([(g.value(phi,P+np.eye(3)[k]*1e-6)-g.value(phi,P-np.eye(3)[k]*1e-6))/2e-6 for k in range(3)]);err=np.max(abs(exact-fd));record('actual_trilinear_field_gradient',err<1e-7,max_component_error=err,at_grid_planes='positive side, C0 field not C1')
     P=V[::max(1,len(V)//50)];s=source(protocol()['fit'][0]);J=project_jacobian(P,s['K'],s['T']);fd=np.empty_like(J)
     for k in range(3):
         off=np.eye(3)[k]*1e-5;fd[:,:,k]=(vis.project_camera(P+off,s['K'],s['T'])[0]-vis.project_camera(P-off,s['K'],s['T'])[0])/2e-5

@@ -31,6 +31,10 @@ class Evolution:
         lo=np.maximum(-p['CFL_field_mm'], -p['total_field_correction_mm']-offset);hi=np.minimum(p['CFL_field_mm'],p['total_field_correction_mm']-offset)
         self.restrict_bounds(self.C,p['CAD_field_margin_mm']-self.C@phi,lo,hi,True)
         hp=self.HP@phi;self.restrict_bounds(self.HP,-self.protect_tol-hp,lo,hi,True);self.restrict_bounds(self.HP,self.protect_tol-hp,lo,hi,False)
+        # The physical protection promised by the protocol is a mesh-distance
+        # constraint, not merely a small field value in a nonexact SDF.
+        H=self.hero[self.eligible][self.protect];rt=mesh_scene(V,F);cp=rt.compute_closest_points(o3d.core.Tensor(H.astype(np.float32)))['points'].numpy().astype(float);sd=signed(rt,H);QP,_=g.basis(cp);qg=np.maximum(np.linalg.norm(g.query_gradient(phi,cp),axis=1),1e-12)
+        self.restrict_bounds(QP,qg*(-self.protect_tol-sd),lo,hi,True);self.restrict_bounds(QP,qg*(self.protect_tol-sd),lo,hi,False)
         assert (lo<=hi+1e-12).all(),'INFEASIBLE_BOX';assert (lo<=1e-10).all()and(hi>=-1e-10).all(),'CURRENT_FIELD_NOT_FEASIBLE'
         fixed=(hi-lo)<1e-10;active&=~fixed;ix=np.flatnonzero(active);N=len(ix)
         matrices=[];targets=[];blocks=[]
@@ -70,6 +74,8 @@ class Evolution:
         grad=np.linalg.norm(self.g.gradient(newphi),axis=1);near=abs(newphi)<.5;quant=np.quantile(grad[near],[.01,.5,.99])
         if quant[0]<p['gradient_p01_lower']or quant[2]>p['gradient_p99_upper']:reasons.append('SDF_METRIC_DISTORTION')
         hp=np.abs(self.HP@newphi);cv=self.C@newphi
+        actual_HERO=rt.compute_distance(o3d.core.Tensor(self.hero[self.eligible][self.protect].astype(np.float32))).numpy()
+        if (actual_HERO>self.protect_tol+1e-5).any():reasons.append('PROTECTED_HERO_ACTUAL_MESH_DISTANCE')
         if (hp>self.protect_tol+1e-7).any():reasons.append('PROTECTED_HERO')
         if cv.min()<p['CAD_field_margin_mm']-1e-7:reasons.append('CAD_SAMPLED_FIELD')
-        return reasons,dict(volume_mm3=vol,volume_ratio=vol/self.initial_volume,components=components,actual_surface_move_mm=stats(move),gradient_quantiles=quant,protected_HERO_abs_mm=stats(hp),CAD_sample_min_field_mm=float(cv.min()))
+        return reasons,dict(volume_mm3=vol,volume_ratio=vol/self.initial_volume,components=components,actual_surface_move_mm=stats(move),gradient_quantiles=quant,protected_HERO_abs_mm=stats(hp),protected_HERO_actual_mesh_distance_mm=stats(actual_HERO),CAD_sample_min_field_mm=float(cv.min()))
