@@ -1,0 +1,111 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "test": "trilinear_metric_axis_and_partition",
+      "passed": true,
+      "max_error_mm": 1.7763568394002505e-15
+    },
+    {
+      "test": "real_camera_projection_Jacobian",
+      "passed": true,
+      "relative_error": 2.396069402647582e-10
+    },
+    {
+      "test": "P0_to_metric_SDF_roundtrip",
+      "passed": true,
+      "roundtrip_surface_error_mm": {
+        "N": 11152,
+        "median": 4.915124804938387e-07,
+        "MAE": 0.0011049974311230812,
+        "p95": 0.008617529971525064,
+        "maximum": 0.020698970183730125
+      },
+      "signs_mm": [
+        -5.691394329071045,
+        94.21562957763672
+      ],
+      "Ring": {
+        "collision": false,
+        "triangle_collision": false,
+        "distance_mm": 0.0899015287568565,
+        "body_vertex_min_signed_mm": 0.09197046607732773,
+        "CAD_vertex_min_signed_mm": 0.09000206738710403,
+        "numeric_eps_mm": 4.730224463653565e-05,
+        "body_face": 10071,
+        "CAD_face": 4262,
+        "nearest_points": [
+          [
+            -0.25,
+            5.020713206737736,
+            -0.38419183753849195
+          ],
+          [
+            -0.2545461876241598,
+            5.094712719260684,
+            -0.333342165
+          ]
+        ],
+        "contacts": []
+      },
+      "closed": true,
+      "V": 10510,
+      "F": 21016
+    },
+    {
+      "test": "initial_independent_Blender",
+      "passed": true,
+      "Blender": {
+        "Blender_version": "5.0.1",
+        "build_hash": "a3db93c5b259",
+        "body_vertices": 10510,
+        "CAD_vertices": 16384,
+        "BVH_intersecting_triangle_pairs": 0,
+        "first_intersections": [],
+        "EXACT_intersection_volume_mm3": 0.0,
+        "body_vertex_unsigned_nearest_mm": 0.09197046607732773,
+        "GT_or_existing_blend_opened": false,
+        "scene_start": "--factory-startup"
+      }
+    },
+    {
+      "test": "level_set_expansion",
+      "passed": true,
+      "volume_delta_mm3": 2.569108782146664
+    },
+    {
+      "test": "level_set_contraction",
+      "passed": true,
+      "volume_delta_mm3": -2.4435912219826044
+    },
+    {
+      "test": "common_contour_pipeline_underprediction_expand",
+      "passed": true,
+      "correspondences_N": 128,
+      "normal_velocity_median_mm": 0.30972562563779527,
+      "actual_volume_delta_mm3": 0.0926367758049409,
+      "control_only": true
+    },
+    {
+      "test": "common_contour_pipeline_overprediction_shrink",
+      "passed": true,
+      "correspondences_N": 104,
+      "normal_velocity_median_mm": -0.3587055902331545,
+      "actual_volume_delta_mm3": -0.09089098164267995,
+      "control_only": true
+    },
+    {
+      "test": "initial_constraint_box_feasibility",
+      "passed": true,
+      "CAD_min_field_mm": 0.0891578071544127,
+      "protected_HERO_N": 895,
+      "qualified_HERO_N": 2048,
+      "all_fit_fixed_N": 2048
+    },
+    {
+      "test": "zero_force_identity",
+      "passed": true,
+      "reinitialization": false
+    }
+  ]
+}
