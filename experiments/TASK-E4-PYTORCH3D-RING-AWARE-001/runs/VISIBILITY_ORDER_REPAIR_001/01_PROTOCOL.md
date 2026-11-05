@@ -1,0 +1,5 @@
+# Single numerical repair, frozen before re-run
+
+Preserve original root experiment, predictions, source and GT evaluation. No changes to cameras, Mask, initial mesh, source views, official renderer, SGD, regularization or 300-step budget. Only Ring visibility changes from differentiating soft zbuf to discrete depth order, re-evaluated each forward pass; it is piecewise constant in depth, with no claimed smooth depth gradient. Actual silhouette vertex gradients remain active for front conflicts, C background and visible positives. A/B/D unknown negatives and CAD-hidden fragments stay protected. No clipping, new loss or hyperparameter search.
+
+Previous actual zbuf backward was 1e8–1e13 despite 1e-4-scale finite differences. This repair is justified by numerical evidence only, not by GT results. Official/camera gates reused because assets and projection code are unchanged. New actual vertex/fragment controls and a 100x baseline-gradient safety guard must pass before execution. Both conditions repeat from same P0, same seed and view order to preserve a paired comparison. Fixed final step 300; do not select an intermediate Mesh. Freeze this run before reading GT.

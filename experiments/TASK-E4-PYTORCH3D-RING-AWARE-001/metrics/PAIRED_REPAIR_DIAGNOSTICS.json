@@ -1,0 +1,89 @@
+{
+  "hidden_proxy": [
+    {
+      "case": "virtual",
+      "arm": "Baseline",
+      "P0_material_vertices_total": 9044,
+      "P0_front_surface_CAD_occluded_observed_Ring_N": 0,
+      "Ring_hidden_material_outward_signed_mm": "NOT_EVALUABLE_NO_OCCLUDED_P0_VERTICES",
+      "Ring_hidden_mean_signed_outward_mm": null,
+      "Ring_hidden_inward_vertex_N": null,
+      "all_P0_mean_signed_outward_mm": 0.033983814673101416,
+      "operator": "Fixed P0 vertex IDs and initial area-weighted vertex normals. Material displacement proxy, not nearest-surface distance or true tissue error.",
+      "GT": "NOT_USED"
+    },
+    {
+      "case": "virtual",
+      "arm": "RingAware",
+      "P0_material_vertices_total": 9044,
+      "P0_front_surface_CAD_occluded_observed_Ring_N": 0,
+      "Ring_hidden_material_outward_signed_mm": "NOT_EVALUABLE_NO_OCCLUDED_P0_VERTICES",
+      "Ring_hidden_mean_signed_outward_mm": null,
+      "Ring_hidden_inward_vertex_N": null,
+      "all_P0_mean_signed_outward_mm": 0.03399187027695813,
+      "operator": "Fixed P0 vertex IDs and initial area-weighted vertex normals. Material displacement proxy, not nearest-surface distance or true tissue error.",
+      "GT": "NOT_USED"
+    },
+    {
+      "case": "real",
+      "arm": "Baseline",
+      "P0_material_vertices_total": 642,
+      "P0_front_surface_CAD_occluded_observed_Ring_N": 65,
+      "Ring_hidden_material_outward_signed_mm": {
+        "N": 65,
+        "MAE": 1.1552566680639273,
+        "median": 1.247904361509295,
+        "p95": 1.4185712863442885,
+        "maximum": 1.4495150347711792
+      },
+      "Ring_hidden_mean_signed_outward_mm": -1.1552566680639273,
+      "Ring_hidden_inward_vertex_N": 65,
+      "all_P0_mean_signed_outward_mm": -0.9697719098341323,
+      "operator": "Fixed P0 vertex IDs and initial area-weighted vertex normals. Material displacement proxy, not nearest-surface distance or true tissue error.",
+      "GT": "NOT_USED"
+    },
+    {
+      "case": "real",
+      "arm": "RingAware",
+      "P0_material_vertices_total": 642,
+      "P0_front_surface_CAD_occluded_observed_Ring_N": 65,
+      "Ring_hidden_material_outward_signed_mm": {
+        "N": 65,
+        "MAE": 0.899249468884762,
+        "median": 0.9076887629746209,
+        "p95": 1.323295179407373,
+        "maximum": 1.3487348884834187
+      },
+      "Ring_hidden_mean_signed_outward_mm": -0.899249468884762,
+      "Ring_hidden_inward_vertex_N": 65,
+      "all_P0_mean_signed_outward_mm": -0.9241543698079303,
+      "operator": "Fixed P0 vertex IDs and initial area-weighted vertex normals. Material displacement proxy, not nearest-surface distance or true tissue error.",
+      "GT": "NOT_USED"
+    }
+  ],
+  "paired_final_mesh_differences": [
+    {
+      "case": "virtual",
+      "actual_same_index_vertex_difference_mm": {
+        "N": 9044,
+        "MAE": 0.0006235653400356813,
+        "median": 0.0003739986689473983,
+        "p95": 0.0013018947253347147,
+        "maximum": 0.06541193781988837
+      },
+      "scope": "RingAware vs Baseline; same fixed topology and initial vertex IDs"
+    },
+    {
+      "case": "real",
+      "actual_same_index_vertex_difference_mm": {
+        "N": 642,
+        "MAE": 0.16524949129473465,
+        "median": 0.08038582312960423,
+        "p95": 0.606440496230424,
+        "maximum": 1.3426318401485153
+      },
+      "scope": "RingAware vs Baseline; same fixed topology and initial vertex IDs"
+    }
+  ],
+  "GT_used": false
+}

@@ -1,0 +1,40 @@
+{
+  "task": "TASK-E4-PYTORCH3D-RING-AWARE-001",
+  "seed": 20261106,
+  "official_commit": "e4ad6e5687a360ccdc6ebd91348e8dbbac97bf31",
+  "official_steps": 2000,
+  "project_steps": 300,
+  "project_image_size": [
+    180,
+    320
+  ],
+  "sigma": 0.0001,
+  "faces_per_pixel": 50,
+  "optimizer": {
+    "name": "SGD",
+    "lr": 1.0,
+    "momentum": 0.9
+  },
+  "weights": {
+    "silhouette": 1.0,
+    "edge": 1.0,
+    "normal": 0.01,
+    "laplacian": 1.0
+  },
+  "project_checkpoints": [
+    0,
+    100,
+    200,
+    300
+  ],
+  "cases": [
+    "virtual",
+    "real"
+  ],
+  "GT_access": "postfreeze except independent projection gate",
+  "hyperparameter_search": false,
+  "visibility_version": "discrete_depth_order_recomputed_each_forward_no_zbuf_backward",
+  "previous_soft_tau_depth_mm_not_used": 0.05,
+  "numerical_repair_only": true,
+  "gradient_safety_ratio_to_baseline": 100
+}
