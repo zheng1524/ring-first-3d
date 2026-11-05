@@ -1,0 +1,181 @@
+{
+  "sources": [
+    {
+      "role": "native CAD GT generation source",
+      "path": "/home/liu/polyp_research/experiments/geometric_validation_v1/assets/IIa6.5.blend",
+      "sha256": "5119f02ca976399a33d3dccccb8212e01489ce27605e22ae9753af7fd786aab1",
+      "bytes": 167751,
+      "optimizer_access": false,
+      "unit": "source vertices meters; world vertices ×1000 then frozen rigid centering, no local edit"
+    },
+    {
+      "role": "native target mesh",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/audit_only/NATIVE_CAD_GT.npz",
+      "sha256": "d9ddcd09a07dafda8f517f22806411bd99f4bdc54110dd3a8ad71e0c8d4b0c1e",
+      "bytes": 33366,
+      "optimizer_access": false,
+      "unit": "mm"
+    },
+    {
+      "role": "independent P0 field",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/BASE_FIELD.npz",
+      "sha256": "f34fa3f21b668566ab20e2c85fc284941df96a37a5d719588ce2f86fdc845d2e",
+      "bytes": 785140,
+      "optimizer_access": true,
+      "unit": "mm SDF from Ring-only ellipsoid"
+    },
+    {
+      "role": "independent P0 mesh",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/BASE_SOURCE_MESH.npz",
+      "sha256": "34a47793aad14708c591ad453a9fc1f07d954d26b665f4b6ce33bc8ae0013058",
+      "bytes": 162698,
+      "optimizer_access": true,
+      "unit": "mm, DMTet"
+    },
+    {
+      "role": "Ring CAD",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/RING_CAD.npz",
+      "sha256": "3e55938b82f88bf4f32b960c2a499d465a0d0e4a5673108bcfc105e648e9ec3a",
+      "bytes": 211672,
+      "optimizer_access": true,
+      "unit": "mm"
+    },
+    {
+      "role": "frozen cameras",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/CAMERAS.json",
+      "sha256": "e7bba6fa4667902ffc8fa2a02dc1a6c1aa1b087263a28a987b51a214e99e2eb6",
+      "bytes": 5394,
+      "optimizer_access": true,
+      "unit": "c2w translation mm, K pixel-center and edge conventions explicit"
+    },
+    {
+      "role": "actual fixed-scene Blender emission label; not clinical RGB",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/BASE__IIa6.5_R10_obs00.png",
+      "sha256": "b07ba096d5b65769dbb1bc5fe0161bb8a541793a7311496f0e3f2a6661cdaf34",
+      "bytes": 53748,
+      "optimizer_access": false,
+      "unit": "native 640x360 pixel centers"
+    },
+    {
+      "role": "actual fixed-scene Blender emission label; not clinical RGB",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/BASE__IIa6.5_R10_obs01.png",
+      "sha256": "0711895806bb669bd886e43d8b63a1ea186f0d579a6eeea3cf57d4995a5d4ff6",
+      "bytes": 56764,
+      "optimizer_access": false,
+      "unit": "native 640x360 pixel centers"
+    },
+    {
+      "role": "actual fixed-scene Blender emission label; not clinical RGB",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/BASE__IIa6.5_R10_obs03.png",
+      "sha256": "21ba250a4bb1d232cfce0c26143064cc0426abc6c266d3aec4087e4eb1b901db",
+      "bytes": 53587,
+      "optimizer_access": false,
+      "unit": "native 640x360 pixel centers"
+    },
+    {
+      "role": "actual fixed-scene Blender emission label; not clinical RGB",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/BASE__IIa6.5_R10_obs04.png",
+      "sha256": "2705f0627ec2f67a9401088987e8f704dd5ba576a598c896a63ebac5ab30f790",
+      "bytes": 54174,
+      "optimizer_access": false,
+      "unit": "native 640x360 pixel centers"
+    },
+    {
+      "role": "actual fixed-scene Blender emission label; not clinical RGB",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/BASE__IIa6.5_R10_obs05.png",
+      "sha256": "074e636538629ccd0214f10607385e84ea225cb7e889bbe6b3cb44f51ddb8395",
+      "bytes": 57268,
+      "optimizer_access": false,
+      "unit": "native 640x360 pixel centers"
+    },
+    {
+      "role": "actual fixed-scene Blender emission label; not clinical RGB",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/TARGET__IIa6.5_R10_obs00.png",
+      "sha256": "daa097773b4d8160aa00921f2aeb873454b8a557e841b6b6b2151ca5b0bf3e02",
+      "bytes": 53990,
+      "optimizer_access": true,
+      "unit": "native 640x360 pixel centers"
+    },
+    {
+      "role": "actual fixed-scene Blender emission label; not clinical RGB",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/TARGET__IIa6.5_R10_obs01.png",
+      "sha256": "d8e23d681e5bf059a5c11bf6b19e50dc0a28fa1d9e4b5ba70cf4731fe041a776",
+      "bytes": 57473,
+      "optimizer_access": true,
+      "unit": "native 640x360 pixel centers"
+    },
+    {
+      "role": "actual fixed-scene Blender emission label; not clinical RGB",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/TARGET__IIa6.5_R10_obs03.png",
+      "sha256": "3ef57509ed8b0b68e91ede85431d14b8d134f327462e66afa4699a52354c65d9",
+      "bytes": 53700,
+      "optimizer_access": true,
+      "unit": "native 640x360 pixel centers"
+    },
+    {
+      "role": "actual fixed-scene Blender emission label; not clinical RGB",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/TARGET__IIa6.5_R10_obs04.png",
+      "sha256": "b5c65259db8e394502a1e91948e89ed02702ee71466c6800beae7addd27e7ee6",
+      "bytes": 54225,
+      "optimizer_access": true,
+      "unit": "native 640x360 pixel centers"
+    },
+    {
+      "role": "actual fixed-scene Blender emission label; not clinical RGB",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/TARGET__IIa6.5_R10_obs05.png",
+      "sha256": "2ecc359c3460108ee5b60424851c8f37df4d64f6f309f0749b2cc2165b911df7",
+      "bytes": 57694,
+      "optimizer_access": true,
+      "unit": "native 640x360 pixel centers"
+    }
+  ],
+  "old_BASE_FIELD_prohibited": true,
+  "old_synthetic_Targets_not_native_N0": true,
+  "native_CAD_q_GT": "DOES_NOT_EXIST",
+  "FOV": [
+    {
+      "view": "IIa6.5_R10_obs00",
+      "horizontal_FOV_deg": 66.78722254611812,
+      "role": "UPDATE_HOLDOUT"
+    },
+    {
+      "view": "IIa6.5_R10_obs01",
+      "horizontal_FOV_deg": 66.78722254611812,
+      "role": "FIT"
+    },
+    {
+      "view": "IIa6.5_R10_obs03",
+      "horizontal_FOV_deg": 66.78722254611812,
+      "role": "FIT"
+    },
+    {
+      "view": "IIa6.5_R10_obs04",
+      "horizontal_FOV_deg": 66.78722254611812,
+      "role": "UPDATE_HOLDOUT"
+    },
+    {
+      "view": "IIa6.5_R10_obs05",
+      "horizontal_FOV_deg": 66.78722254611812,
+      "role": "FIT"
+    }
+  ],
+  "simulation_camera_qualification": "known Blender control extrinsics, not clinical Camera Gate certification",
+  "GT_firewall": {
+    "passed": true,
+    "blocked": [
+      "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/audit_only/NATIVE_CAD_GT.npz",
+      "/home/liu/ring_first_3d_e4_sdf_localization/experiments/E4-SDF-LOCALIZATION-BLENDER-001/inputs/BASE_FIELD.npz",
+      "/home/liu/ring_first_3d_e4_sdf_localization/experiments/E4-SDF-LOCALIZATION-BLENDER-001/audit_only/TARGET_GT.npz",
+      "/home/liu/polyp_research/experiments/geometric_validation_v1/assets/IIa6.5.blend"
+    ],
+    "allowed_initial_only": "new independent ellipsoid field; frozen Ring/cameras/target 2D labels",
+    "old_native_SDF_blocked": true
+  },
+  "software": {
+    "Python": "3.12.13",
+    "NumPy": "1.26.4",
+    "SciPy": "1.15.3",
+    "Open3D": "0.19.0"
+  },
+  "RA_file": "not found in Downloads; task document explicitly sufficient"
+}

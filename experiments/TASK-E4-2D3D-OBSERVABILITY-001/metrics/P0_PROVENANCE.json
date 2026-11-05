@@ -1,0 +1,37 @@
+{
+  "rule": "Ring center +0.10 inner-radius along +Z; axes=(0.5,0.5,0.15)*inner-radius; no target/GT use",
+  "center_mm": [
+    -3.236839580811335e-07,
+    -3.940224813092641e-09,
+    0.8329444867558777
+  ],
+  "axes_mm": [
+    2.5,
+    2.5,
+    0.75
+  ],
+  "source": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-2D3D-OBSERVABILITY-001/inputs/RING_CAD.npz",
+    "sha256": "3e55938b82f88bf4f32b960c2a499d465a0d0e4a5673108bcfc105e648e9ec3a",
+    "bytes": 211672
+  },
+  "GT_or_target_access": false,
+  "nodes": 53016,
+  "tets": 114488,
+  "quality": {
+    "closed": true,
+    "winding": true,
+    "components": 1,
+    "volume_mm3": 19.49524117745506,
+    "area_mm2": 45.991884180701284,
+    "normal_angle_deg": {
+      "N": 27126,
+      "median_signed": 0.7734341048354214,
+      "median_absolute": 0.7734341048354214,
+      "MAE": 1.9532610178373992,
+      "p95": 8.388967262188642,
+      "maximum": 41.734100416805965
+    }
+  },
+  "SDF_from": "closed independent ellipsoid nearest signed distance, no native CAD field"
+}

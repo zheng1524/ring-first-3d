@@ -1,0 +1,97 @@
+{
+  "task": "TASK-E4-2D3D-OBSERVABILITY-001",
+  "authorized": "Gate A only",
+  "seed": 20261105,
+  "P0_center_mm": [
+    -3.236839580811335e-07,
+    -3.940224813092641e-09,
+    0.8329444867558777
+  ],
+  "P0_axes_mm": [
+    2.5,
+    2.5,
+    0.75
+  ],
+  "P0_rotation_rad": [
+    0,
+    0,
+    0
+  ],
+  "P0_rule": "Ring center +0.10 inner-radius along +Z; axes=(0.5,0.5,0.15)*inner-radius; no target/GT use",
+  "inner_radius_mm": 5.0,
+  "correction_radius_mm": 1.7999999999999998,
+  "center_bounds_mm": [
+    [
+      -3.250000323683958,
+      -3.250000003940225,
+      -0.6670555132441223
+    ],
+    [
+      3.249999676316042,
+      3.249999996059775,
+      2.3329444867558777
+    ]
+  ],
+  "amplitude_bounds_mm": [
+    -0.6,
+    0.6
+  ],
+  "max_iterations": 12,
+  "max_function_evaluations": 500,
+  "Powell_xtol_mm": 0.01,
+  "Powell_ftol": 1e-05,
+  "fit_views": [
+    "IIa6.5_R10_obs01",
+    "IIa6.5_R10_obs03",
+    "IIa6.5_R10_obs05"
+  ],
+  "holdout_views": [
+    "IIa6.5_R10_obs00",
+    "IIa6.5_R10_obs04"
+  ],
+  "seed_rule": "unchanged mask-only weighted initial visible silhouette points; sign by fit-mask area",
+  "projection_gate": {
+    "min_IoU": 0.99,
+    "max_p95_contour_px": 1,
+    "max_point_projection_px": 0.001
+  },
+  "camera_decision": "user authorized consistent choice: retain archived K/c2w, actual horizontal field angle from K; no 70deg overwrite",
+  "parameter_units": [
+    "mm",
+    "mm",
+    "mm",
+    "mm SDF coefficient; physical displacement measured separately"
+  ],
+  "A2": {
+    "epsilon_mm": 0.02,
+    "half_epsilon_mm": 0.01,
+    "surface_normalization_step_mm": 0.02,
+    "noise_px": 0.5,
+    "query_grid_stride_px": 4,
+    "query_target_band_px": 12,
+    "controlled_displacement_target_mm": 0.3,
+    "perturbation_bound": "same parameter bounds; report if 0.2--0.5mm unavailable"
+  },
+  "Gate_B": {
+    "status": "NOT_AUTHORIZED",
+    "axes_R1": 1.15,
+    "axes_R2": 0.85,
+    "translation_R3_mm": [
+      0.5,
+      0,
+      0
+    ],
+    "optional_TRF": "only after observable/correct objective/Powell search failure established and human approval"
+  },
+  "Gate_C": {
+    "status": "NOT_AUTHORIZED",
+    "case": "Ip4_R5"
+  },
+  "Gate_D": {
+    "status": "NOT_AUTHORIZED",
+    "Ring_noise_px": [
+      1,
+      5
+    ]
+  }
+}
