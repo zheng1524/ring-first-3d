@@ -1,0 +1,66 @@
+{
+  "task": "E4-SDF-SAME-KERNEL-BIDIRECTIONAL-001",
+  "first_case": "IIa6.5",
+  "three_type_scope": "Not applicable: two symmetric controls of the same IIa only",
+  "h_mm": 0.15,
+  "correction": "one Wendland C4 compact radial SDF correction",
+  "parameters": [
+    "center_x_mm",
+    "center_y_mm",
+    "center_z_mm",
+    "amplitude_mm"
+  ],
+  "correction_radius_mm": 1.8200001027435067,
+  "center_bounds_mm": [
+    [
+      -3.575000411365181,
+      -4.225000238511711,
+      -0.9750000550411642
+    ],
+    [
+      3.575000411365181,
+      4.225000238511711,
+      2.4050002335570753
+    ]
+  ],
+  "amplitude_bounds_mm": [
+    -0.6,
+    0.6
+  ],
+  "initial_amplitude_abs_mm": 0.05,
+  "max_iterations": 12,
+  "max_function_evaluations": 500,
+  "Powell_xtol_mm": 0.01,
+  "Powell_ftol": 1e-05,
+  "GT_allowed": "generation and independent post-freeze audit only",
+  "GT_loss": false,
+  "fit_views": [
+    "IIa6.5_R10_obs01",
+    "IIa6.5_R10_obs03",
+    "IIa6.5_R10_obs05"
+  ],
+  "holdout_views": [
+    "IIa6.5_R10_obs00",
+    "IIa6.5_R10_obs04"
+  ],
+  "projection_gate": {
+    "min_IoU": 0.99,
+    "max_p95_contour_px": 1.0,
+    "max_point_projection_px": 0.001
+  },
+  "renderer": "Open3D pixel-center rays, frozen full CAD occlusion; no PyTorch3D claim",
+  "loss": "mean symmetric visible silhouette contour distance / fixed source normalization + 0.2 fixed-mask XOR; no GT coordinates or target edit",
+  "seed_rule": "weighted visible base silhouette points from target Mask discrepancy only; no GT edit location",
+  "evaluation_thresholds": {
+    "center_error_mm": 0.5,
+    "wrong_region_displacement_p95_mm": 0.05,
+    "direction_correct": true,
+    "at_least_half_GT_peak": true,
+    "normal_angle_p95_growth_limit_deg": 5,
+    "relative_peak_error_max": 0.25,
+    "centroid_error_max_mm": 0.5
+  },
+  "parameter_search": false,
+  "run": "A_expansion",
+  "experiment_scope": "ONLY symmetric same-kernel expansion/contraction; no Ip/Is"
+}

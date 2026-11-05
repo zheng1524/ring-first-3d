@@ -1,0 +1,57 @@
+{
+  "base_quality": {
+    "closed": true,
+    "winding": true,
+    "components": 1,
+    "volume_mm3": 19.58355882000998,
+    "area_mm2": 58.64803001660893,
+    "normal_angle_deg": {
+      "N": 34116,
+      "median_signed": 0.016204826116894444,
+      "median_absolute": 0.016204826116894444,
+      "MAE": 3.4071614564911483,
+      "p95": 17.120220338085936,
+      "maximum": 167.65366003118692
+    }
+  },
+  "target_quality": {
+    "closed": true,
+    "winding": true,
+    "components": 1,
+    "volume_mm3": 18.99196578652447,
+    "area_mm2": 56.9622371216138,
+    "normal_angle_deg": {
+      "N": 33300,
+      "median_signed": 0.09771499827982379,
+      "median_absolute": 0.09771499827982379,
+      "MAE": 3.6941110072319856,
+      "p95": 18.75711695170166,
+      "maximum": 171.71954350727842
+    }
+  },
+  "source_files": [
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/E4-SDF-LOCALIZATION-BLENDER-001/runs/SAME_KERNEL_BIDIRECTIONAL_001/cases/B_contraction/inputs/BASE_FIELD.npz",
+      "sha256": "6aa6d8901addeb152d7365e12ef4df2d9cf1495fa6b087588ce1e9e6c8e35aed",
+      "bytes": 895507
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/E4-SDF-LOCALIZATION-BLENDER-001/runs/SAME_KERNEL_BIDIRECTIONAL_001/cases/B_contraction/inputs/RING_CAD.npz",
+      "sha256": "3e55938b82f88bf4f32b960c2a499d465a0d0e4a5673108bcfc105e648e9ec3a",
+      "bytes": 211672
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/E4-SDF-LOCALIZATION-BLENDER-001/runs/SAME_KERNEL_BIDIRECTIONAL_001/cases/B_contraction/inputs/CAMERAS.json",
+      "sha256": "e7bba6fa4667902ffc8fa2a02dc1a6c1aa1b087263a28a987b51a214e99e2eb6",
+      "bytes": 5394
+    }
+  ],
+  "GT_roundtrip_exact": true,
+  "initial_uses_same_grid": true,
+  "amplitude_abs_fixed_mm": 0.39,
+  "derivative_test_reused_from": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/E4-SDF-LOCALIZATION-BLENDER-001/metrics/DMTET_DERIVATIVE_TEST.json",
+    "sha256": "a1d5f3609a226e078e5205ecdedb5fb74ca25d66da40925f965b7953d2fa148d",
+    "bytes": 288
+  }
+}
