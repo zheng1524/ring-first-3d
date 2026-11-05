@@ -1,0 +1,155 @@
+{
+  "source": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/data.py",
+    "sha256": "037435909b2f2e40672d630fd0fef708ba1db1dde46f388fc4c8871d667d9f93",
+    "bytes": 4901
+  },
+  "field": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/field.py",
+    "sha256": "238d7ce0045e1105cec43fad756d6a49faa3f0f1e5ea241cdaf3395f95fb25cc",
+    "bytes": 4294
+  },
+  "solver": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/solver.py",
+    "sha256": "fb2c94f1ef25f913a9fc7e9be506245f63d41fd2228692171aa05c6ce566b7c1",
+    "bytes": 8232
+  },
+  "run_code_commit": "3a5e8bd",
+  "delivery_commit": "319e8a9",
+  "actual_iter1_rows": 591,
+  "face_midpoint_max_error_mm": 0.0,
+  "face_id_scope": "current extraction/iteration face IDs, not persistent across remeshing or HERO original faces",
+  "per_source": [
+    {
+      "source": "G01_004_growth_r14",
+      "rows": 152,
+      "pred_to_obs": 103,
+      "obs_to_pred": 49,
+      "max_many_to_one_target_multiplicity": 15,
+      "ambiguous_target_pixels_N": 23,
+      "distance_px": {
+        "N": 152,
+        "median_signed": 1.7822234939106971,
+        "median_absolute": 1.7822234939106971,
+        "MAE": 2.6913729834654956,
+        "p95": 9.509654893382073,
+        "maximum": 11.489384214077385
+      },
+      "velocity_formula_error_mm": {
+        "N": 152,
+        "median_signed": 0.0,
+        "median_absolute": 0.0,
+        "MAE": 0.0,
+        "p95": 0.0,
+        "maximum": 0.0
+      }
+    },
+    {
+      "source": "G01_004_ref03",
+      "rows": 153,
+      "pred_to_obs": 79,
+      "obs_to_pred": 74,
+      "max_many_to_one_target_multiplicity": 6,
+      "ambiguous_target_pixels_N": 18,
+      "distance_px": {
+        "N": 153,
+        "median_signed": 1.2015975594580464,
+        "median_absolute": 1.2015975594580464,
+        "MAE": 3.9811200639071957,
+        "p95": 17.33565075236313,
+        "maximum": 19.07918676077048
+      },
+      "velocity_formula_error_mm": {
+        "N": 153,
+        "median_signed": 0.0,
+        "median_absolute": 0.0,
+        "MAE": 0.0,
+        "p95": 0.0,
+        "maximum": 0.0
+      }
+    },
+    {
+      "source": "G01_004_ref08",
+      "rows": 157,
+      "pred_to_obs": 104,
+      "obs_to_pred": 53,
+      "max_many_to_one_target_multiplicity": 10,
+      "ambiguous_target_pixels_N": 19,
+      "distance_px": {
+        "N": 157,
+        "median_signed": 1.1622668069853894,
+        "median_absolute": 1.1622668069853894,
+        "MAE": 2.866345409017815,
+        "p95": 11.902453858533253,
+        "maximum": 14.186027718971655
+      },
+      "velocity_formula_error_mm": {
+        "N": 157,
+        "median_signed": 0.0,
+        "median_absolute": 0.0,
+        "MAE": 0.0,
+        "p95": 0.0,
+        "maximum": 0.0
+      }
+    },
+    {
+      "source": "G01_004_ref13",
+      "rows": 129,
+      "pred_to_obs": 77,
+      "obs_to_pred": 52,
+      "max_many_to_one_target_multiplicity": 7,
+      "ambiguous_target_pixels_N": 19,
+      "distance_px": {
+        "N": 129,
+        "median_signed": 1.6178583067606604,
+        "median_absolute": 1.6178583067606604,
+        "MAE": 2.611610225718722,
+        "p95": 9.744356956730133,
+        "maximum": 11.523514821544317
+      },
+      "velocity_formula_error_mm": {
+        "N": 129,
+        "median_signed": 0.0,
+        "median_absolute": 0.0,
+        "MAE": 0.0,
+        "p95": 0.0,
+        "maximum": 0.0
+      }
+    }
+  ],
+  "GT_position_accuracy": "NOT_EVALUABLE_FOR_REAL_G01",
+  "findings": [
+    {
+      "kind": "IMPLEMENTATION_CORRECT",
+      "item": "face_id maps to an edge midpoint on the current actual triangle; velocity algebra matches stored rows"
+    },
+    {
+      "kind": "IMPLEMENTATION_LIMIT",
+      "item": "exact-edge ray casts can miss; abs(hit-Z)<0.2mm may accept a back contour within that tolerance; not a strict first-layer proof"
+    },
+    {
+      "kind": "COORDINATE_DISCRETIZATION",
+      "item": "320 pixel center maps to original 2i+0.5 but fixed target labels sample 2i+1; half-original-pixel convention ambiguity, not proof of pose error"
+    },
+    {
+      "kind": "GEOMETRIC_CORRESPONDENCE",
+      "item": "Euclidean contour NN is many-to-one and has no target surface identity, anatomical component, cycle-consistency or target first-depth evidence"
+    },
+    {
+      "kind": "GEOMETRIC_CORRESPONDENCE",
+      "item": "same candidate matched to target curve is not a 3D point correspondence; target apparent contour generator moves as shape changes"
+    },
+    {
+      "kind": "MAPPING_LIMIT",
+      "item": "normal-only displacement explains only normal image motion; full 2D NN residual can contain tangential mismatch and give inappropriate depth/shape corrections"
+    },
+    {
+      "kind": "DISCRETIZATION_LIMIT",
+      "item": "trilinear cell gradient is one-sided C0; marching-cubes planar zero facets do not coincide everywhere with the trilinear zero surface"
+    },
+    {
+      "kind": "MULTIVIEW_IDENTIFIABILITY",
+      "item": "camera-axis motion, unobserved/back-facing edits and correlated/nearby views can leave silhouettes identical; low residual does not establish update location"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "Kaolin_commit": "ee8b7eca1e56b1b9fd1509fc406f8d8ccbc9240b",
+  "Kaolin_reuse": "unaltered standalone official torch-only marching_tetrahedra module; full Kaolin not installed",
+  "files": [
+    {
+      "source": "https://raw.githubusercontent.com/NVIDIAGameWorks/kaolin/ee8b7eca1e56b1b9fd1509fc406f8d8ccbc9240b/kaolin/ops/conversions/tetmesh.py",
+      "path": "experiments/E4-SDF-LOCALIZATION-BLENDER-001/code/vendor/kaolin_tetmesh.py",
+      "sha256": "43869e671a19c6081157f554a44425eae6a975a8e282217e734d041a44f8e66f"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/NVIDIAGameWorks/kaolin/ee8b7eca1e56b1b9fd1509fc406f8d8ccbc9240b/LICENSE",
+      "path": "experiments/E4-SDF-LOCALIZATION-BLENDER-001/code/vendor/KAOLIN_LICENSE",
+      "sha256": "1f81d44e1506aef37184653d2d31d00ae6e4f453d431de971c2879be960665b8"
+    }
+  ],
+  "PyTorch3D": "NOT_INSTALLED: compiled renderer and version-dependent C++/CUDA; bounded fallback selected, not claimed tested",
+  "fallback": "official Kaolin DMTet CPU mesh + existing Open3D ray geometry + SciPy low-dimensional optimizer",
+  "nvdiffrec": "reference only, no source copy or model weights",
+  "no_new_framework_build": true
+}
