@@ -1,0 +1,638 @@
+{
+  "gates": {
+    "actual_expansion_and_contraction": true,
+    "at_least_3_accepted": true,
+    "training_objective_improved": true,
+    "protected_HERO_contract": true,
+    "physical_mesh_checks": true,
+    "update_holdout_Mask_ratio_le_1p05": true,
+    "update_holdout_coverage_ratio_ge_0p98": true
+  },
+  "all_numeric_gates_pass": true,
+  "validation_Mask_ratio": 0.6621006297334062,
+  "validation_native_hit_ratio": 1.0290486564996368,
+  "asset_checks": [
+    {
+      "path": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/local_results/G01_004/P0.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/config/CAMERA_GATE_RESULTS.json",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/config/LOCKED_PROTOCOL.json",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/inputs/G01_004_ref08.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_ref08.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/depths/004_ref08.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_008.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_008.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_camera_0.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_A2_r08.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/inputs/R10_ring.obj",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_ffd/experiments/TASK-E4-PMGR-FFD-002/inputs/G01_004_ref08_FIXED_MASK.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/inputs/G01_004_ref13.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_ref13.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/depths/004_ref13.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_013.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_013.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_B7_r13.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_ffd/experiments/TASK-E4-PMGR-FFD-002/inputs/G01_004_ref13_FIXED_MASK.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/inputs/G01_004_ref03.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_ref03.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/independent_confidence_fusion_v1/depths/004_ref03.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_003.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v2/raw/real_0_B7_r03.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_ffd/experiments/TASK-E4-PMGR-FFD-002/inputs/G01_004_ref03_FIXED_MASK.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/inputs/G01_004_growth_r14.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_growth_r14.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r14/pack_full.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_014.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_014.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r14/camera_candidate.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r14/HERO_native.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_ffd/experiments/TASK-E4-PMGR-FFD-002/inputs/G01_004_growth_r14_FIXED_MASK.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/inputs/G01_004_growth_r04.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_growth_r04.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r04/pack_full.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_004.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_004.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r04/camera_candidate.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r04/HERO_native.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_ffd/experiments/TASK-E4-PMGR-FFD-002/inputs/G01_004_growth_r04_FIXED_MASK.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/inputs/G01_004_growth_r06.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_growth_r06.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r06/pack_full.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_006.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_006.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r06/camera_candidate.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r06/HERO_native.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_ffd/experiments/TASK-E4-PMGR-FFD-002/inputs/G01_004_growth_r06_FIXED_MASK.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/inputs/G01_004_growth_r10.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e3n0_eight/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/frozen_inputs/native/G01_004_growth_r10.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r10/pack_full.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_010.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_010.png",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r10/camera_candidate.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_boundary_growth/experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/local_results/derived_depth/G01_004_growth_r10/HERO_native.npz",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_ffd/experiments/TASK-E4-PMGR-FFD-002/inputs/G01_004_growth_r10_FIXED_MASK.npz",
+      "unchanged": true
+    }
+  ],
+  "implementation_checks": [
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/inputs.py",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/field.py",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/data.py",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/solver.py",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/run.py",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/preflight.py",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/collision.py",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/mesh_checks.py",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/blender_check.py",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/code/prepare.py",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/config/LOCKED_PROTOCOL.json",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/01_PROTOCOL.md",
+      "unchanged": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/IMPLEMENTATION_CORRECTION.md",
+      "unchanged": true
+    }
+  ],
+  "physical_checks": [
+    {
+      "stage": "INITIAL",
+      "closed": true,
+      "outward_positive_volume": true,
+      "signs": [
+        -5.691394329071045,
+        94.21562957763672
+      ],
+      "Ring": {
+        "collision": false,
+        "triangle_collision": false,
+        "distance_mm": 0.0899015287568565,
+        "body_vertex_min_signed_mm": 0.09197046607732773,
+        "CAD_vertex_min_signed_mm": 0.09000206738710403,
+        "numeric_eps_mm": 4.730224463653565e-05,
+        "body_face": 10071,
+        "CAD_face": 4262,
+        "nearest_points": [
+          [
+            -0.25,
+            5.020713206737736,
+            -0.38419183753849195
+          ],
+          [
+            -0.2545461876241598,
+            5.094712719260684,
+            -0.333342165
+          ]
+        ],
+        "contacts": []
+      },
+      "coplanar_narrow_phase": [
+        {
+          "faces": [
+            209,
+            237
+          ],
+          "projected_intersection_area_mm2": 0.0,
+          "A_mm": [
+            [
+              -5.745822191238403,
+              0.0,
+              -4.25
+            ],
+            [
+              -5.70966362953186,
+              0.0,
+              -4.5
+            ],
+            [
+              -5.694278955459595,
+              -0.25,
+              -4.5
+            ]
+          ],
+          "B_mm": [
+            [
+              -5.725048303604126,
+              0.25,
+              -4.5
+            ],
+            [
+              -5.688889980316162,
+              0.25,
+              -4.75
+            ],
+            [
+              -5.673505067825317,
+              0.0,
+              -4.75
+            ]
+          ],
+          "method": "OpenCV intersectConvexConvex float32, narrow-phase projected triangle area",
+          "resolution": "NO_POSITIVE_AREA_INTERSECTION_DETECTED"
+        },
+        {
+          "faces": [
+            10885,
+            11270
+          ],
+          "projected_intersection_area_mm2": 0.0,
+          "A_mm": [
+            [
+              0.0,
+              6.040329933166504,
+              -5.5
+            ],
+            [
+              0.25,
+              6.033022880554199,
+              -5.5
+            ],
+            [
+              0.0,
+              6.0,
+              -5.664254665374756
+            ]
+          ],
+          "B_mm": [
+            [
+              0.5,
+              5.964332580566406,
+              -5.75
+            ],
+            [
+              0.25,
+              5.971639633178711,
+              -5.75
+            ],
+            [
+              0.25,
+              6.0,
+              -5.634494781494141
+            ]
+          ],
+          "method": "OpenCV intersectConvexConvex float32, narrow-phase projected triangle area",
+          "resolution": "NO_POSITIVE_AREA_INTERSECTION_DETECTED"
+        },
+        {
+          "faces": [
+            10520,
+            10907
+          ],
+          "projected_intersection_area_mm2": 0.0,
+          "A_mm": [
+            [
+              -0.25,
+              6.0322418212890625,
+              -2.75
+            ],
+            [
+              0.0,
+              6.03087043762207,
+              -2.75
+            ],
+            [
+              -0.25,
+              6.07759952545166,
+              -3.0
+            ]
+          ],
+          "B_mm": [
+            [
+              0.0,
+              6.076228141784668,
+              -3.0
+            ],
+            [
+              0.25,
+              6.029499053955078,
+              -2.75
+            ],
+            [
+              0.25,
+              6.074856758117676,
+              -3.0
+            ]
+          ],
+          "method": "OpenCV intersectConvexConvex float32, narrow-phase projected triangle area",
+          "resolution": "NO_POSITIVE_AREA_INTERSECTION_DETECTED"
+        },
+        {
+          "faces": [
+            10520,
+            10904
+          ],
+          "projected_intersection_area_mm2": 0.0,
+          "A_mm": [
+            [
+              -0.25,
+              6.0322418212890625,
+              -2.75
+            ],
+            [
+              0.0,
+              6.03087043762207,
+              -2.75
+            ],
+            [
+              -0.25,
+              6.07759952545166,
+              -3.0
+            ]
+          ],
+          "B_mm": [
+            [
+              0.0,
+              6.076228141784668,
+              -3.0
+            ],
+            [
+              0.25,
+              6.074856758117676,
+              -3.0
+            ],
+            [
+              0.0,
+              6.121586799621582,
+              -3.25
+            ]
+          ],
+          "method": "OpenCV intersectConvexConvex float32, narrow-phase projected triangle area",
+          "resolution": "NO_POSITIVE_AREA_INTERSECTION_DETECTED"
+        },
+        {
+          "faces": [
+            20933,
+            20934
+          ],
+          "projected_intersection_area_mm2": 0.0,
+          "A_mm": [
+            [
+              5.5453081130981445,
+              1.75,
+              -3.0
+            ],
+            [
+              5.637667655944824,
+              1.5,
+              -3.25
+            ],
+            [
+              5.580659866333008,
+              1.75,
+              -3.25
+            ]
+          ],
+          "B_mm": [
+            [
+              5.566964149475098,
+              1.5,
+              -2.75
+            ],
+            [
+              5.602315902709961,
+              1.5,
+              -3.0
+            ],
+            [
+              5.509956359863281,
+              1.75,
+              -2.75
+            ]
+          ],
+          "method": "OpenCV intersectConvexConvex float32, narrow-phase projected triangle area",
+          "resolution": "NO_POSITIVE_AREA_INTERSECTION_DETECTED"
+        }
+      ],
+      "coplanar_unresolved_N": 0,
+      "intersections": 0,
+      "coplanar_candidates": 5
+    },
+    {
+      "stage": "ACCEPTED_10",
+      "closed": true,
+      "outward_positive_volume": true,
+      "signs": [
+        -5.444640159606934,
+        94.17542266845703
+      ],
+      "Ring": {
+        "collision": false,
+        "triangle_collision": false,
+        "distance_mm": 0.07204051157745811,
+        "body_vertex_min_signed_mm": 0.0746496394276619,
+        "CAD_vertex_min_signed_mm": 0.07248014956712723,
+        "numeric_eps_mm": 4.730224463653565e-05,
+        "body_face": 8850,
+        "CAD_face": 4647,
+        "nearest_points": [
+          [
+            -1.0,
+            4.979315493009681,
+            -0.424241147157475
+          ],
+          [
+            -1.0118768175319792,
+            5.035416880240226,
+            -0.380635977
+          ]
+        ],
+        "contacts": []
+      },
+      "coplanar_narrow_phase": [],
+      "coplanar_unresolved_N": 0,
+      "intersections": 0,
+      "coplanar_candidates": 0
+    },
+    {
+      "stage": "FINAL",
+      "closed": true,
+      "outward_positive_volume": true,
+      "signs": [
+        -5.3895463943481445,
+        94.15345001220703
+      ],
+      "Ring": {
+        "collision": false,
+        "triangle_collision": false,
+        "distance_mm": 0.08940015057164954,
+        "body_vertex_min_signed_mm": 0.09160634130239487,
+        "CAD_vertex_min_signed_mm": 0.08949954807758331,
+        "numeric_eps_mm": 4.730224463653565e-05,
+        "body_face": 10287,
+        "CAD_face": 4262,
+        "nearest_points": [
+          [
+            -0.25,
+            5.021265250597851,
+            -0.38410819294433685
+          ],
+          [
+            -0.2545124001282365,
+            5.094714795008086,
+            -0.333342165
+          ]
+        ],
+        "contacts": []
+      },
+      "coplanar_narrow_phase": [],
+      "coplanar_unresolved_N": 0,
+      "intersections": 0,
+      "coplanar_candidates": 0
+    }
+  ],
+  "full_triangle_continuous_path_certified": false,
+  "accepted_endpoints_checked": true,
+  "no_GT": true,
+  "historical_measurement_fallback": 0,
+  "target_cases": 1,
+  "numerical_output_cases": 1,
+  "scientific_accuracy": "NOT_EVALUABLE",
+  "unknown_shape_truth": "NOT_EVALUABLE",
+  "no_ablation_no_FFD_no_GPU": true,
+  "scope_stopped": true
+}
