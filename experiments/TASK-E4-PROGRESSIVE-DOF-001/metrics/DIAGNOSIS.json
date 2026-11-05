@@ -1,0 +1,199 @@
+{
+  "regions": [
+    {
+      "stage": "S1",
+      "GT_z_interval_mm": [
+        0.0,
+        1.430000178515911
+      ],
+      "prediction_volume_below_GT_min_z_mm3": 6.180220972595213,
+      "prediction_volume_above_GT_max_z_mm3": 0.0,
+      "GT_samples_in_local_support_N": 1924,
+      "GT_samples_outside_local_support_N": 4076,
+      "GT_error_inside_local_support_mm": {
+        "N": 1924,
+        "median_signed": 0.17536842823028564,
+        "median_absolute": 0.17536842823028564,
+        "MAE": 0.1901712417602539,
+        "p95": 0.4471127450466156,
+        "maximum": 0.6147768497467041
+      },
+      "GT_error_outside_local_support_mm": {
+        "N": 4076,
+        "median_signed": 0.31427574157714844,
+        "median_absolute": 0.31427574157714844,
+        "MAE": 0.32965171337127686,
+        "p95": 0.7784929871559143,
+        "maximum": 0.8580374717712402
+      },
+      "GT_error_over_0p2mm_N": 3604,
+      "fraction_large_GT_errors_outside_local_support": 0.7605438401775805,
+      "selection_was_fit_residual_only": true
+    },
+    {
+      "stage": "S2",
+      "GT_z_interval_mm": [
+        0.0,
+        1.430000178515911
+      ],
+      "prediction_volume_below_GT_min_z_mm3": 6.11556172640991,
+      "prediction_volume_above_GT_max_z_mm3": 0.0,
+      "GT_samples_in_local_support_N": 1924,
+      "GT_samples_outside_local_support_N": 4076,
+      "GT_error_inside_local_support_mm": {
+        "N": 1924,
+        "median_signed": 0.17494601011276245,
+        "median_absolute": 0.17494601011276245,
+        "MAE": 0.18710805475711823,
+        "p95": 0.44511343836784356,
+        "maximum": 0.614022970199585
+      },
+      "GT_error_outside_local_support_mm": {
+        "N": 4076,
+        "median_signed": 0.31332483887672424,
+        "median_absolute": 0.31332483887672424,
+        "MAE": 0.32900482416152954,
+        "p95": 0.7798066884279251,
+        "maximum": 0.8593119978904724
+      },
+      "GT_error_over_0p2mm_N": 3587,
+      "fraction_large_GT_errors_outside_local_support": 0.7624756063562866,
+      "selection_was_fit_residual_only": true
+    }
+  ],
+  "local_components": [
+    {
+      "stage": "S2",
+      "local_actual_Eulerian_displacement_on_same_global_zero_set_mm": {
+        "N": 9044,
+        "median_signed": 0.0,
+        "median_absolute": 0.0,
+        "MAE": 0.00017310995599565087,
+        "p95": 0.0012099300918634987,
+        "maximum": 0.007162017282098532
+      },
+      "largest_outward_mm": 0.007162017282098532,
+      "largest_inward_mm": 0.003366962308064103,
+      "full_minus_global_only_Chamfer_MAE_mm": -0.0009961724281311035,
+      "full_minus_global_only_FIXED_GT_to_prediction_MAE_mm": -5.558133125305176e-05,
+      "full_minus_global_only_symmetric_difference_mm3": -0.0015037033996598836,
+      "fixed_GT_samples_unchanged": true,
+      "sampled_symmetric_Chamfer_precision_caution": "prediction-area Monte Carlo points change when mesh tessellation changes; micron-scale changes not certified as meaningful"
+    }
+  ],
+  "search": [
+    {
+      "stage": "S1",
+      "final_loss": 0.03434213353427932,
+      "best_already_tested_probe": {
+        "eps": 0.02,
+        "parameter": 1,
+        "side": "plus",
+        "loss": 0.03198412559803148,
+        "decrease": 0.0023580079362478384,
+        "raw_parameter_step": 0.020000000000000004,
+        "clipped": false
+      },
+      "consistent_directions": [
+        {
+          "parameter": 1,
+          "side": "plus",
+          "probe_records": [
+            {
+              "eps": 0.02,
+              "parameter": 1,
+              "side": "plus",
+              "loss": 0.03198412559803148,
+              "decrease": 0.0023580079362478384,
+              "raw_parameter_step": 0.020000000000000004,
+              "clipped": false
+            },
+            {
+              "eps": 0.01,
+              "parameter": 1,
+              "side": "plus",
+              "loss": 0.032912241974323735,
+              "decrease": 0.0014298915599555845,
+              "raw_parameter_step": 0.009999999999999995,
+              "clipped": false
+            }
+          ],
+          "distinct_actual_steps": 2
+        },
+        {
+          "parameter": 2,
+          "side": "minus",
+          "probe_records": [
+            {
+              "eps": 0.02,
+              "parameter": 2,
+              "side": "minus",
+              "loss": 0.03422045691806035,
+              "decrease": 0.00012167661621896586,
+              "raw_parameter_step": -0.0011874822662278905,
+              "clipped": true
+            },
+            {
+              "eps": 0.01,
+              "parameter": 2,
+              "side": "minus",
+              "loss": 0.03422045691806035,
+              "decrease": 0.00012167661621896586,
+              "raw_parameter_step": -0.0011874822662278905,
+              "clipped": true
+            }
+          ],
+          "distinct_actual_steps": 1
+        }
+      ],
+      "GT_not_used": true,
+      "no_new_probe_evaluations": true,
+      "no_probe_selected_as_prediction": true
+    },
+    {
+      "stage": "S2",
+      "final_loss": 0.0321849819929638,
+      "best_already_tested_probe": {
+        "eps": 0.02,
+        "parameter": 2,
+        "side": "minus",
+        "loss": 0.0315463453755577,
+        "decrease": 0.0006386366174061034,
+        "raw_parameter_step": -0.0017729729867342892,
+        "clipped": true
+      },
+      "consistent_directions": [
+        {
+          "parameter": 2,
+          "side": "minus",
+          "probe_records": [
+            {
+              "eps": 0.02,
+              "parameter": 2,
+              "side": "minus",
+              "loss": 0.0315463453755577,
+              "decrease": 0.0006386366174061034,
+              "raw_parameter_step": -0.0017729729867342892,
+              "clipped": true
+            },
+            {
+              "eps": 0.01,
+              "parameter": 2,
+              "side": "minus",
+              "loss": 0.0315463453755577,
+              "decrease": 0.0006386366174061034,
+              "raw_parameter_step": -0.0017729729867342892,
+              "clipped": true
+            }
+          ],
+          "distinct_actual_steps": 1
+        }
+      ],
+      "GT_not_used": true,
+      "no_new_probe_evaluations": true,
+      "no_probe_selected_as_prediction": true
+    }
+  ],
+  "GT_used_only_after_freeze": true,
+  "one_run_cannot_uniquely_separate_observation_representation_search": true
+}
