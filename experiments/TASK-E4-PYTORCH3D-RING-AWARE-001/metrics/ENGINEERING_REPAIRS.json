@@ -1,0 +1,14 @@
+[
+  {
+    "id": "SERIALIZATION_01",
+    "reason": "Official 2000-step training finished; 9-place OBJ render maximum difference .01636 exceeds .001 audit gate. Exact repeated identical-Mesh render showed ~8.96e-5 CUDA variability. Keep the failed attempt, switch OBJ serialization to 16 decimal places and retain binary source output; replay same training without changing optimizer/loss/budget/seed. No project optimization yet.",
+    "retained_attempt": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/local_results/official_attempt01_decimal9",
+    "not_hyperparameter_search": true
+  },
+  {
+    "id": "RASTER_CAPACITY_02",
+    "reason": "Project P0 has densely tessellated DMTet triangles. Official default coarse bin capacity overflowed before optimization, producing incomplete projection (obs03 IoU .880). Fix capacity to at least every face of the input mesh, identical in both arms. No camera, mask or geometry changed; same .98 IoU gate.",
+    "old_gate": "metrics/PROJECTION_GATE_FAILED_BIN_CAPACITY.json",
+    "threshold_changed": false
+  }
+]

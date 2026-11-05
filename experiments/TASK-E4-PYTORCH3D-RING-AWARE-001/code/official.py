@@ -18,7 +18,7 @@ def main():
     def full_loss(m):
         with torch.no_grad():return float(torch.stack([((rr(m,cameras=cams[j])[0,...,3]-targets[j])**2).mean()for j in range(20)]).mean())
     init=full_loss(src);hist=[];t0=time.time()
-    save_obj(str(out/'INITIAL.obj'),src.verts_packed(),src.faces_packed())
+    save_obj(str(out/'INITIAL.obj'),src.verts_packed(),src.faces_packed(),decimal_places=16)
     init_images=[rr(src,cameras=cams[j])[0,...,3].detach().cpu().numpy()for j in [0,5,10,15]]
     firstgrad=None
     for i in range(2000):
@@ -31,14 +31,15 @@ def main():
         opt.step();hist.append(dict(step=i+1,total=float(total.detach()),gradient_norm=grad,**{k:float(v.detach())for k,v in loss.items()}))
         if(i+1)%100==0:print('official',i+1,'loss',hist[-1]['total'],'elapsed',time.time()-t0,flush=True)
         if(i+1)in[500,1000,2000]:
-            m=src.offset_verts(offset.detach());save_obj(str(out/('STEP_%04d.obj'%(i+1))),m.verts_packed(),m.faces_packed())
+            m=src.offset_verts(offset.detach());save_obj(str(out/('STEP_%04d.obj'%(i+1))),m.verts_packed(),m.faces_packed(),decimal_places=16)
     final=src.offset_verts(offset.detach());end=full_loss(final)
-    save_obj(str(out/'FINAL.obj'),final.verts_packed(),final.faces_packed());vv,ff,_=load_obj(str(out/'FINAL.obj'),load_textures=False,device=device);reload=Meshes(verts=[vv],faces=[ff.verts_idx])
+    np.savez_compressed(out/'FINAL_SOURCE_FLOAT32.npz',V=final.verts_packed().detach().cpu().numpy(),F=final.faces_packed().detach().cpu().numpy())
+    save_obj(str(out/'FINAL.obj'),final.verts_packed(),final.faces_packed(),decimal_places=16);vv,ff,_=load_obj(str(out/'FINAL.obj'),load_textures=False,device=device);reload=Meshes(verts=[vv],faces=[ff.verts_idx])
     with torch.no_grad():
         rerender_error=max(float((rr(reload,cameras=cams[j])-rr(final,cameras=cams[j])).abs().max())for j in range(20))
     images=dict(target=np.array([targets[j].cpu().numpy()for j in [0,5,10,15]]),initial=np.array(init_images),final=np.array([rr(final,cameras=cams[j])[0,...,3].detach().cpu().numpy()for j in[0,5,10,15]]))
     np.savez_compressed(out/'RENDER_COMPARISON.npz',**images)
     table('metrics/OFFICIAL_TRAINING.csv',hist)
-    result=dict(official_commit=load(R/'config/FROZEN.json')['official_commit'],steps=2000,views=20,optimizer='SGD(lr=1,momentum=.9)',initial_full_silhouette_L2=init,final_full_silhouette_L2=end,first_full_vertex_gradient=firstgrad,actual_vertex_displacement=stats(offset.detach().norm(dim=1).cpu().numpy()),OBJ_reload_max_rgba_error=rerender_error,elapsed_seconds=time.time()-t0,passed=end<init and firstgrad>0 and rerender_error<.001,changes_from_notebook=['No texture/RGB stage (not requested)','Deterministic seed; headless logs/OBJ instead of notebook animation','Same SoftSilhouette target dataset rendered one view at a time to limit transient GPU memory'])
+    result=dict(official_commit=load(R/'config/FROZEN.json')['official_commit'],steps=2000,views=20,optimizer='SGD(lr=1,momentum=.9)',initial_full_silhouette_L2=init,final_full_silhouette_L2=end,first_full_vertex_gradient=firstgrad,actual_vertex_displacement=stats(offset.detach().norm(dim=1).cpu().numpy()),OBJ_reload_max_rgba_error=rerender_error,OBJ_vertices_exact=torch.equal(vv,final.verts_packed()),OBJ_faces_exact=torch.equal(ff.verts_idx,final.faces_packed()),elapsed_seconds=time.time()-t0,passed=end<init and firstgrad>0 and rerender_error<.001,changes_from_notebook=['No texture/RGB stage (not requested)','Deterministic seed; headless logs/OBJ instead of notebook animation','Same SoftSilhouette target dataset rendered one view at a time to limit transient GPU memory','OBJ written at 16 decimal places for a high-fidelity export audit'])
     save('metrics/OFFICIAL_REPRODUCTION.json',result);print(result,flush=True)
 if __name__=='__main__':main()

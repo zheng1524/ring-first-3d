@@ -11,7 +11,7 @@ for d in ['runtime/mpl','runtime/tmp','inputs','metrics','figures','assets_index
     (R/d).mkdir(parents=True, exist_ok=True)
 os.environ.update(OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='2', MPLCONFIGDIR=str(R/'runtime/mpl'), PYTHONDONTWRITEBYTECODE='1')
 sys.dont_write_bytecode = True
-sys.path[:0] = [str(R/'runtime/packages'), str(R/'runtime/pytorch3d'), str(EV/'runtime/packages'), '/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor']
+sys.path[:0] = [str(R/'runtime/packages'), str(R/'runtime/pytorch3d'), str(EV/'runtime/packages'), str(R1/'runtime/packages'), '/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor']
 import numpy as np, cv2, trimesh
 from PIL import Image
 from scipy.spatial import cKDTree

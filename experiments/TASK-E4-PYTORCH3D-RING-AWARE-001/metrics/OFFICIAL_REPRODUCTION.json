@@ -1,0 +1,27 @@
+{
+  "official_commit": "e4ad6e5687a360ccdc6ebd91348e8dbbac97bf31",
+  "steps": 2000,
+  "views": 20,
+  "optimizer": "SGD(lr=1,momentum=.9)",
+  "initial_full_silhouette_L2": 0.18613247573375702,
+  "final_full_silhouette_L2": 0.002302019391208887,
+  "first_full_vertex_gradient": 0.0368327870965004,
+  "actual_vertex_displacement": {
+    "N": 2562,
+    "MAE": 0.4100571870803833,
+    "median": 0.44146931171417236,
+    "p95": 0.6916348785161972,
+    "maximum": 0.722635805606842
+  },
+  "OBJ_reload_max_rgba_error": 0.0067435503005981445,
+  "OBJ_vertices_exact": true,
+  "OBJ_faces_exact": true,
+  "elapsed_seconds": 35.131041526794434,
+  "passed": false,
+  "changes_from_notebook": [
+    "No texture/RGB stage (not requested)",
+    "Deterministic seed; headless logs/OBJ instead of notebook animation",
+    "Same SoftSilhouette target dataset rendered one view at a time to limit transient GPU memory",
+    "OBJ written at 16 decimal places for a high-fidelity export audit"
+  ]
+}

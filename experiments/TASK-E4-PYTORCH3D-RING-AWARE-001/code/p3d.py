@@ -17,7 +17,11 @@ class Case:
         self.name=name;self.meta=getcase(name); a=np.load(R/'inputs'/name/'INITIAL.npz'); self.V=a['V'];self.F=a['F'];self.center=self.V.mean(0);self.scale=float(abs(self.V-self.center).max()); self.base=mesh((self.V-self.center)/self.scale,self.F)
         a=np.load(R/'inputs'/name/'RING.npz');self.ringV=a['V'];self.ringF=a['F'];self.ring=mesh((self.ringV-self.center)/self.scale,self.ringF)
         self.size=(180,320);self.renderer=renderer(self.size)
-        self.hard=MeshRasterizer(raster_settings=RasterizationSettings(image_size=self.size,blur_radius=0.,faces_per_pixel=1))
+        # A bin cannot overflow if it can contain every triangle of this one-mesh call.
+        # This fixes an engine capacity issue, with no changes to cameras or silhouette loss.
+        self.capacity=max(len(self.F),len(self.ringF))+1
+        self.renderer.rasterizer.raster_settings.max_faces_per_bin=self.capacity
+        self.hard=MeshRasterizer(raster_settings=RasterizationSettings(image_size=self.size,blur_radius=0.,faces_per_pixel=1,max_faces_per_bin=self.capacity))
         self.views={}
         for v in self.meta['views']:
             a=np.load(R/'inputs'/name/(v['id']+'.npz'));lab=a['labels'];h,w=lab.shape;K=a['K'].copy();T=a['T'].copy()
