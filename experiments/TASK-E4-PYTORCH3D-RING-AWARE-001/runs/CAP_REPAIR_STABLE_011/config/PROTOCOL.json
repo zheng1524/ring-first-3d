@@ -1,0 +1,152 @@
+{
+  "task": "TASK-E4-CAP-REPAIR-STABLE-PYTORCH3D-011",
+  "run": "CAP_REPAIR_STABLE_011",
+  "cases": [
+    "G01",
+    "G02",
+    "G03",
+    "G07",
+    "G04",
+    "G05",
+    "G06",
+    "G08",
+    "G09"
+  ],
+  "seed": 20261106,
+  "steps": 300,
+  "checkpoints": [
+    0,
+    25,
+    50,
+    60,
+    100,
+    150,
+    180,
+    200,
+    250,
+    300
+  ],
+  "arms": [
+    "C"
+  ],
+  "optimizer": {
+    "name": "Adam accepted-state proposal + PMGR backtracking",
+    "lr": 0.02,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "line_trials": 8,
+    "backtrack": 0.5,
+    "min_lr": 1e-05,
+    "reject_lr_factor": 0.5,
+    "full_step_lr_growth": 1.05
+  },
+  "mode": "GLOBAL6_100_THEN_LOCAL_200",
+  "relative_weights": {
+    "edge": 1.0,
+    "laplacian": 1.0,
+    "normal": 0.01,
+    "unsupported": 0.01
+  },
+  "depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap_r": 10.0,
+    "miss_cost": 9.5,
+    "min_ray_face_cosine": 0.001,
+    "CAD_clearance_mm": 0.05
+  },
+  "boundary": {
+    "rule": "w=0.1+0.9*(1-exp(-(d/8)^2)); d=min(distance to Background,distance to Ring) on original RGB label lattice; pixel-center EDT; no resized-mask distances",
+    "scale_px": 8.0,
+    "floor": 0.1
+  },
+  "relative_depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap": 9.5,
+    "interior_weight_min": 0.5,
+    "scales_native_px": [
+      4,
+      16,
+      48
+    ],
+    "max_pairs_per_scale": 128,
+    "path_max_adjacent_jump_mm": 0.5,
+    "min_pixel_separation": 2,
+    "missing_pair_cost": 9.5
+  },
+  "stop": {
+    "max_gradient_norm": 100.0,
+    "max_candidate_step_mm": 2.0,
+    "volume_ratio_range": [
+      0.1,
+      10.0
+    ],
+    "scope": "numerical/hardware emergency only; CAD contact and poor loss not an early stop"
+  },
+  "GT": "NO_GT_OR_ORACLE_READ",
+  "multiview_HERO": "diagnostics after prediction freeze only; never optimization, weighting, selection or ranking",
+  "reuse_B": [],
+  "model_selection": "fixed final accepted state after300outer attempts; no bestcheckpoint; acceptedAdamsteps reported separately",
+  "base_strategy": {
+    "directed_source": "009 B blue side exact; weakbasecannotcancelcap"
+  },
+  "sphere": {
+    "used": false
+  },
+  "stages": [
+    {
+      "name": "GLOBAL",
+      "start": 0,
+      "end": 60,
+      "modes": 0
+    },
+    {
+      "name": "LOW",
+      "start": 60,
+      "end": 180,
+      "modes": 16,
+      "requires_prior_accepted": 5
+    },
+    {
+      "name": "DETAIL",
+      "start": 180,
+      "end": 300,
+      "modes": 48,
+      "requires_low_accepted": 10
+    }
+  ],
+  "C_repair": {
+    "rule": "BROAD original contact + B vertices both sides => cap; base quality only uncertainty",
+    "plane": "exact directed009B reference45px, no side fromnearzeroHEROmedian",
+    "existing_caps": "reuse exact frozen C parameters and mesh",
+    "new_caps": "B-blue footprint/height initial, same0096->7->9 TRF30 perstage; softblue geometric reference .005, originalmask/HERO primary",
+    "plane_normal_and_offset_optimized": false
+  },
+  "update_chart": {
+    "cap": "global footprint affine+positive height; low/mid spectral normal variation with boundary-vanishing envelope and positive-height chart",
+    "noncap": "translation/scales + spectrum normal field",
+    "global_translation_bound_over_body_diameter": 0.1,
+    "global_logscale_bound": 0.15,
+    "global_yaw_bound": 0.1,
+    "local_amplitude_bound_over_height_or_size": 0.5
+  },
+  "trust": {
+    "per_step_over_diameter": 0.0125,
+    "per_step_clip_mm": [
+      0.075,
+      0.2
+    ],
+    "hard_emergency_mm": 2.0,
+    "minimum_area_ratio": 0.1,
+    "normal_dot_positive": true,
+    "ring_numeric_epsilon_mm": 1e-05,
+    "initial_and_last_signed_bounds": true,
+    "loss_tolerance": 1e-07,
+    "no_new_collision_for_initially_safe": true,
+    "QP_if_ring_blocked": "one mature SLSQP linearized active-contact direction projection, max64constraints, maxiter50"
+  },
+  "initial_conditions": "all nine cases; no historicalCameraGateexclusion; collisions recorded and cannot worsen"
+}
