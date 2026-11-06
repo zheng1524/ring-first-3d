@@ -1,0 +1,5 @@
+from visual import *
+def main():
+ for c in['G05','G09']:
+  bs=load(R/'inputs'/c/'BASE_SELECTION.json');fig,axs=plt.subplots(2,3,figsize=(15,10));rgb(axs[0,0],c,bs['primary'],['OLD_C','INITIAL']);axs[0,0].set_title(c+' frozen RGB, Mask; old C yellow / new C blue',fontsize=9);meshpanel(axs[0,1],c,'B',(0,-65),title='009 B blue/gray and exact directed reference');meshpanel(axs[0,2],c,'OLD_C',(0,-65),title='009 untruncated C');meshpanel(axs[1,0],c,'C_START',(25,-65),title='B-blue initialized 6-parameter cap');meshpanel(axs[1,1],c,'INITIAL',(0,-65),title='011 fitted cap side; basal closure gray');meshpanel(axs[1,2],c,'INITIAL',(35,-65),title='011 fitted cap oblique; +n is inherited');fig.suptitle(c+' separate initialization diagnosis | '+bs['uncertainty_label']+'\nNo plane rotation/shift; B is a soft reference, original Mask/HERO fit the actual retained cap. No real 3D GT.',fontsize=12);fig.tight_layout(rect=[0,0,1,.92]);finish(fig,'full/'+c+'_Cap_Repair.png',150)
+if __name__=='__main__':main()

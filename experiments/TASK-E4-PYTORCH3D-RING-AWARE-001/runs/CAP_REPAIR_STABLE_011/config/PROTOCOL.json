@@ -146,7 +146,9 @@
     "initial_and_last_signed_bounds": true,
     "loss_tolerance": 1e-07,
     "no_new_collision_for_initially_safe": true,
-    "QP_if_ring_blocked": "one mature SLSQP linearized active-contact direction projection, max64constraints, maxiter50"
+    "QP_if_ring_blocked": "one mature SLSQP linearized active-contact direction projection, max64constraints, maxiter50",
+    "max_total_displacement_over_D": 0.25,
+    "D_definition": "maximum extent of retained INITIAL visible surface; no volume truth"
   },
   "initial_conditions": "all nine cases; no historicalCameraGateexclusion; collisions recorded and cannot worsen"
 }

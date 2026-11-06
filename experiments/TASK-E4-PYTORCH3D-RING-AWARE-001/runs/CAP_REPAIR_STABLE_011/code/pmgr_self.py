@@ -13,4 +13,13 @@ def self_intersections(V,F):
     # intersections. Conservative candidate rejection includes these warnings.
     na=np.cross(A[:,1]-A[:,0],A[:,2]-A[:,0]);nb=np.cross(B[:,1]-B[:,0],B[:,2]-B[:,0]);na/=np.maximum(np.linalg.norm(na,axis=1)[:,None],1e-15);nb/=np.maximum(np.linalg.norm(nb,axis=1)[:,None],1e-15)
     cop=(abs((na*nb).sum(1))>1-1e-9)&(abs(((B[:,0]-A[:,0])*na).sum(1))<1e-8)
-    return dict(intersections=int(found.sum()),coplanar_candidates=int(cop.sum()))
+    cop_found=0
+    for axis in range(3):
+        select=cop&(np.argmax(abs(na),axis=1)==axis)
+        if not select.any():continue
+        axes=[k for k in range(3)if k!=axis];aa=A[select][:,:,axes];bb=B[select][:,:,axes];hit=np.ones(len(aa),bool)
+        for tri in[aa,bb]:
+            for k in range(3):
+                e=tri[:,(k+1)%3]-tri[:,k];normal=np.c_[-e[:,1],e[:,0]];pa=np.einsum('nvc,nc->nv',aa,normal);pb=np.einsum('nvc,nc->nv',bb,normal);overlap=np.minimum(pa.max(1),pb.max(1))-np.maximum(pa.min(1),pb.min(1));hit&=overlap>1e-9*np.linalg.norm(normal,axis=1)
+        cop_found+=int(hit.sum())
+    return dict(intersections=int(found.sum())+cop_found,proper_crossings=int(found.sum()),coplanar_intersections=cop_found,coplanar_candidates=int(cop.sum()))
