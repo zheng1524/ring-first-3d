@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/code/train_progressive.py", line 60, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/code/train_progressive.py", line 17, in main
+    for a in freeze['files']:assert sha(a['path'])==a['sha256'],a['path']
+                                    ^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/code/common.py", line 20, in sha
+    def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+                                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/code/train_progressive.py", line 13, in track
+    if args.arm!='D':raise PermissionError('NO_DEPTH_IN_B_C')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: NO_DEPTH_IN_B_C

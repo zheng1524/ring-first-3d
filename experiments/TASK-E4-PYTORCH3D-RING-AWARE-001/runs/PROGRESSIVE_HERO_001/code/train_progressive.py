@@ -12,9 +12,9 @@ def main():
             if '/depth_observations/'in pp:
                 if args.arm!='D':raise PermissionError('NO_DEPTH_IN_B_C')
                 reads.append(pp)
-    sys.addaudithook(track)
     gate=load(R/'metrics/PREFLIGHT.json');assert gate['passed'];freeze=load(R/'assets_index/PREOPT_FREEZE.json')
     for a in freeze['files']:assert sha(a['path'])==a['sha256'],a['path']
+    sys.addaudithook(track)  # Integrity hashing above is not observation loading.
     cfg=load(R/'config/PROTOCOL.json');c=Case(args.case);prior=RelativePrior(c);depth=Depth(c)if args.arm=='D'else None
     torch.manual_seed(cfg['seed']);np.random.seed(cfg['seed']);out=R/'local_results'/args.case/args.arm;out.mkdir(parents=True,exist_ok=True);assert not(out/'FINAL.npz').exists()
     v0=c.base.verts_packed().detach();F=c.base.faces_packed();global_q=torch.zeros(6,device=device,requires_grad=True);local=torch.zeros_like(v0,requires_grad=True);origin=v0;stage='LOCAL'if args.arm=='B'else'GLOBAL6'

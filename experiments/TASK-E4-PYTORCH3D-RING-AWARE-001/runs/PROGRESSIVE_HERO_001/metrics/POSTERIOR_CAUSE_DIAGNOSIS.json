@@ -1,0 +1,238 @@
+{
+  "virtual_z_diagnostic": [
+    {
+      "arm": "P0",
+      "vertices_below_GT_minZ": 0,
+      "mesh_zmin_mm": 0.08297925442457199,
+      "GT_zmin_mm": 0.0,
+      "occupancy_proxy_below_GT_minZ_mm3": 0.0,
+      "not_used_as_training_constraint": true,
+      "solid_volume_caveat": "B/C/D self-intersect; proxy diagnostic, not certified Boolean volume"
+    },
+    {
+      "arm": "A",
+      "vertices_below_GT_minZ": 0,
+      "mesh_zmin_mm": 0.030603559791534285,
+      "GT_zmin_mm": 0.0,
+      "occupancy_proxy_below_GT_minZ_mm3": 0.0,
+      "not_used_as_training_constraint": true,
+      "solid_volume_caveat": "B/C/D self-intersect; proxy diagnostic, not certified Boolean volume"
+    },
+    {
+      "arm": "B",
+      "vertices_below_GT_minZ": 4,
+      "mesh_zmin_mm": -0.05615255039981093,
+      "GT_zmin_mm": 0.0,
+      "occupancy_proxy_below_GT_minZ_mm3": 0.0,
+      "not_used_as_training_constraint": true,
+      "solid_volume_caveat": "B/C/D self-intersect; proxy diagnostic, not certified Boolean volume"
+    },
+    {
+      "arm": "C",
+      "vertices_below_GT_minZ": 3955,
+      "mesh_zmin_mm": -0.9611602107887575,
+      "GT_zmin_mm": 0.0,
+      "occupancy_proxy_below_GT_minZ_mm3": 12.951222048747333,
+      "not_used_as_training_constraint": true,
+      "solid_volume_caveat": "B/C/D self-intersect; proxy diagnostic, not certified Boolean volume"
+    },
+    {
+      "arm": "D",
+      "vertices_below_GT_minZ": 4087,
+      "mesh_zmin_mm": -1.0108315030937502,
+      "GT_zmin_mm": 0.0,
+      "occupancy_proxy_below_GT_minZ_mm3": 13.662239552013862,
+      "not_used_as_training_constraint": true,
+      "solid_volume_caveat": "B/C/D self-intersect; proxy diagnostic, not certified Boolean volume"
+    }
+  ],
+  "global_stage_results": [
+    {
+      "case": "virtual",
+      "arm": "C",
+      "stage1_metrics": {
+        "case": "virtual",
+        "arm": "C",
+        "step": 100,
+        "status": "COMPLETED",
+        "fit_IoU": 0.8180301711508035,
+        "holdout_IoU": 0.8866751071517116,
+        "fit_coverage": 0.9019304953360742,
+        "holdout_coverage": 0.9254244016571924,
+        "Chamfer_MAE_mm": 0.37179511363990575,
+        "Chamfer_p95_mm": 0.8834664314985275,
+        "Chamfer_median_mm": 0.3266807496547699,
+        "Chamfer_max_mm": 0.9709698557853699,
+        "symmetric_difference_mm3": 22.618766488322894,
+        "volume_mm3": 41.39868254290451,
+        "volume_ratio_P0": 2.1235275914811105,
+        "roughness_p95_deg": 8.146420267643013,
+        "Ring_collision": false,
+        "components": 1,
+        "watertight": true,
+        "P0_hidden_N": 0,
+        "hidden_material_outward_mm": null,
+        "fit_depth_fixed_N": 1536,
+        "fit_depth_hit_rate": 0.923828125,
+        "fit_depth_fixed_loss": 1.03775781072955,
+        "fit_depth_conditional_MAE_mm": 0.37993800761248947,
+        "holdout_depth_fixed_N": 1024,
+        "holdout_depth_hit_rate": 0.953125,
+        "holdout_depth_fixed_loss": 0.7722335216072873,
+        "holdout_depth_conditional_MAE_mm": 0.3851955627982063
+      },
+      "global_translation_normalized": [
+        0.07867772877216339,
+        0.012703118845820427,
+        -0.2060430645942688
+      ],
+      "axis_factors": [
+        0.9622912406921387,
+        1.2809680700302124,
+        1.722713828086853
+      ],
+      "stage2_start_identical": true
+    },
+    {
+      "case": "virtual",
+      "arm": "D",
+      "stage1_metrics": {
+        "case": "virtual",
+        "arm": "D",
+        "step": 100,
+        "status": "COMPLETED",
+        "fit_IoU": 0.8166025071589202,
+        "holdout_IoU": 0.8691243134593687,
+        "fit_coverage": 0.8735278174291943,
+        "holdout_coverage": 0.8895025514880555,
+        "Chamfer_MAE_mm": 0.3335401467412809,
+        "Chamfer_p95_mm": 0.9302226483821868,
+        "Chamfer_median_mm": 0.2224089801311493,
+        "Chamfer_max_mm": 1.021074652671814,
+        "symmetric_difference_mm3": 19.702065655030623,
+        "volume_mm3": 38.083428216024195,
+        "volume_ratio_P0": 1.9534730485953222,
+        "roughness_p95_deg": 8.141209115772918,
+        "Ring_collision": false,
+        "components": 1,
+        "watertight": true,
+        "P0_hidden_N": 0,
+        "hidden_material_outward_mm": null,
+        "fit_depth_fixed_N": 1536,
+        "fit_depth_hit_rate": 0.904296875,
+        "fit_depth_fixed_loss": 1.0393487776792538,
+        "fit_depth_conditional_MAE_mm": 0.22725940647439008,
+        "holdout_depth_fixed_N": 1024,
+        "holdout_depth_hit_rate": 0.935546875,
+        "holdout_depth_fixed_loss": 0.7579586690688538,
+        "holdout_depth_conditional_MAE_mm": 0.2401643226543856
+      },
+      "global_translation_normalized": [
+        0.030677126720547676,
+        0.06748013198375702,
+        -0.23884598910808563
+      ],
+      "axis_factors": [
+        0.9428319931030273,
+        1.2328832149505615,
+        1.680549144744873
+      ],
+      "stage2_start_identical": true
+    },
+    {
+      "case": "real",
+      "arm": "C",
+      "stage1_metrics": {
+        "case": "real",
+        "arm": "C",
+        "step": 100,
+        "status": "COMPLETED",
+        "fit_IoU": 0.807102694021887,
+        "holdout_IoU": 0.8078646010677334,
+        "fit_coverage": 0.8453054177686413,
+        "holdout_coverage": 0.8468197248041579,
+        "Chamfer_MAE_mm": null,
+        "Chamfer_p95_mm": null,
+        "Chamfer_median_mm": null,
+        "Chamfer_max_mm": null,
+        "symmetric_difference_mm3": null,
+        "volume_mm3": 819.0616103935023,
+        "volume_ratio_P0": 0.9535953834415241,
+        "roughness_p95_deg": 6.431207386608465,
+        "Ring_collision": true,
+        "components": 1,
+        "watertight": true,
+        "P0_hidden_N": 65,
+        "hidden_material_outward_mm": 0.06012097669020871,
+        "fit_depth_fixed_N": 1536,
+        "fit_depth_hit_rate": 0.888671875,
+        "fit_depth_fixed_loss": 2.2010893882529046,
+        "fit_depth_conditional_MAE_mm": 0.8490629389879534,
+        "holdout_depth_fixed_N": 1533,
+        "holdout_depth_hit_rate": 0.8988910632746249,
+        "holdout_depth_fixed_loss": 2.453944562328558,
+        "holdout_depth_conditional_MAE_mm": 1.057820131390044
+      },
+      "global_translation_normalized": [
+        -0.040521007031202316,
+        -0.0302576944231987,
+        0.06439622491598129
+      ],
+      "axis_factors": [
+        0.9775376319885254,
+        0.9151126742362976,
+        1.0659972429275513
+      ],
+      "stage2_start_identical": true
+    },
+    {
+      "case": "real",
+      "arm": "D",
+      "stage1_metrics": {
+        "case": "real",
+        "arm": "D",
+        "step": 100,
+        "status": "COMPLETED",
+        "fit_IoU": 0.7852231512878592,
+        "holdout_IoU": 0.7752849620835036,
+        "fit_coverage": 0.9104785103926631,
+        "holdout_coverage": 0.9025509675667106,
+        "Chamfer_MAE_mm": null,
+        "Chamfer_p95_mm": null,
+        "Chamfer_median_mm": null,
+        "Chamfer_max_mm": null,
+        "symmetric_difference_mm3": null,
+        "volume_mm3": 1009.4225089810325,
+        "volume_ratio_P0": 1.1752237344438836,
+        "roughness_p95_deg": 5.917751963683855,
+        "Ring_collision": true,
+        "components": 1,
+        "watertight": true,
+        "P0_hidden_N": 65,
+        "hidden_material_outward_mm": 0.7876640240010335,
+        "fit_depth_fixed_N": 1536,
+        "fit_depth_hit_rate": 0.931640625,
+        "fit_depth_fixed_loss": 3.329580980060991,
+        "fit_depth_conditional_MAE_mm": 1.688784428575437,
+        "holdout_depth_fixed_N": 1533,
+        "holdout_depth_hit_rate": 0.9315068493150684,
+        "holdout_depth_fixed_loss": 3.2875577969666856,
+        "holdout_depth_conditional_MAE_mm": 1.6512719645833538
+      },
+      "global_translation_normalized": [
+        -0.040354758501052856,
+        -0.07430322468280792,
+        0.09292982518672943
+      ],
+      "axis_factors": [
+        1.092697262763977,
+        1.059278130531311,
+        1.0153379440307617
+      ],
+      "stage2_start_identical": true
+    }
+  ],
+  "GT_used_after_prediction_freeze": true,
+  "training_rule_unchanged": true,
+  "scope": "Evidence of low-DOF silhouette ambiguity and remaining hidden-side inference; no claim to uniquely separate every optimizer/representation effect."
+}

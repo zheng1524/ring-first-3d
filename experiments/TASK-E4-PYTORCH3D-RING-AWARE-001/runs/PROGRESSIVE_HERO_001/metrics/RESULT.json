@@ -1,0 +1,317 @@
+{
+  "status": "COMPLETED_FIXED_PILOT_GEOMETRY_GATE_FAILED",
+  "target_cases": 2,
+  "new_runs": 6,
+  "completed_300_step_runs": 6,
+  "geometry_passed_runs": 0,
+  "A_rerun": false,
+  "shape_protection": "helps real shrinkage, does not prevent all distortion",
+  "progressive": "not superior in this fixed configuration",
+  "depth": "valid additional supervision; not sufficient geometry qualification",
+  "recommendation": "retain B prior and D depth modules as candidates, stop promoting current C/D configurations; no framework migration this round",
+  "SDFStudio_implemented": false,
+  "GT_tuning": false,
+  "stopped_for_human_review": true,
+  "failures": [
+    {
+      "case": "virtual",
+      "arm": "B",
+      "numerical_status": "COMPLETED_300",
+      "geometry_status": "FAIL",
+      "reason": "CONFIRMED_SELF_INTERSECTION",
+      "fault": {
+        "case": "virtual",
+        "arm": "B",
+        "max_vertex_penetration_into_Ring_mm": 0.0,
+        "vertices_inside_Ring_over_1micron": 0,
+        "Blender_Ring_pair_N": 0,
+        "Blender_nonadjacent_pair_N": 21,
+        "FCL_self_pairs_confirmed": 21,
+        "FCL_self_pairs_checked": 21,
+        "self_pairs": [
+          {
+            "face_i": 6882,
+            "face_j": 6890,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 6882,
+            "face_j": 15563,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 6882,
+            "face_j": 15562,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 6555,
+            "face_j": 15551,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 6555,
+            "face_j": 15846,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 6555,
+            "face_j": 6882,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 9463,
+            "face_j": 9466,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 10026,
+            "face_j": 10244,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 755,
+            "face_j": 10026,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 755,
+            "face_j": 10028,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 755,
+            "face_j": 10029,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 750,
+            "face_j": 10029,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 751,
+            "face_j": 10029,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 751,
+            "face_j": 771,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 771,
+            "face_j": 10040,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 768,
+            "face_j": 10040,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 9460,
+            "face_j": 9464,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 9460,
+            "face_j": 9465,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 9461,
+            "face_j": 9465,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 9461,
+            "face_j": 9466,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 9462,
+            "face_j": 9466,
+            "FCL_surface_overlap": true
+          }
+        ],
+        "geometry_modified": false
+      },
+      "three_dimensional_accuracy": "NOT_ESTABLISHED",
+      "GT_solid_difference_volume": "NOT_EVALUABLE_SELF_INTERSECTION",
+      "evidence": "figures/Fig1_P0_A_B_C_D_Actual_Meshes.png"
+    },
+    {
+      "case": "virtual",
+      "arm": "C",
+      "numerical_status": "COMPLETED_300",
+      "geometry_status": "FAIL",
+      "reason": "CONFIRMED_SELF_INTERSECTION",
+      "fault": {
+        "case": "virtual",
+        "arm": "C",
+        "max_vertex_penetration_into_Ring_mm": 0.0,
+        "vertices_inside_Ring_over_1micron": 0,
+        "Blender_Ring_pair_N": 0,
+        "Blender_nonadjacent_pair_N": 5,
+        "FCL_self_pairs_confirmed": 5,
+        "FCL_self_pairs_checked": 5,
+        "self_pairs": [
+          {
+            "face_i": 4604,
+            "face_j": 13656,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 13655,
+            "face_j": 13961,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 4607,
+            "face_j": 13656,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 4608,
+            "face_j": 13961,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 13656,
+            "face_j": 13961,
+            "FCL_surface_overlap": true
+          }
+        ],
+        "geometry_modified": false
+      },
+      "three_dimensional_accuracy": "NOT_ESTABLISHED",
+      "GT_solid_difference_volume": "NOT_EVALUABLE_SELF_INTERSECTION",
+      "evidence": "figures/Fig1_P0_A_B_C_D_Actual_Meshes.png"
+    },
+    {
+      "case": "virtual",
+      "arm": "D",
+      "numerical_status": "COMPLETED_300",
+      "geometry_status": "FAIL",
+      "reason": "CONFIRMED_SELF_INTERSECTION",
+      "fault": {
+        "case": "virtual",
+        "arm": "D",
+        "max_vertex_penetration_into_Ring_mm": 0.0,
+        "vertices_inside_Ring_over_1micron": 0,
+        "Blender_Ring_pair_N": 0,
+        "Blender_nonadjacent_pair_N": 7,
+        "FCL_self_pairs_confirmed": 7,
+        "FCL_self_pairs_checked": 7,
+        "self_pairs": [
+          {
+            "face_i": 4604,
+            "face_j": 13656,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 4920,
+            "face_j": 13961,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 4920,
+            "face_j": 13960,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 13657,
+            "face_j": 13961,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 4921,
+            "face_j": 13961,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 13656,
+            "face_j": 13961,
+            "FCL_surface_overlap": true
+          },
+          {
+            "face_i": 4607,
+            "face_j": 13656,
+            "FCL_surface_overlap": true
+          }
+        ],
+        "geometry_modified": false
+      },
+      "three_dimensional_accuracy": "NOT_ESTABLISHED",
+      "GT_solid_difference_volume": "NOT_EVALUABLE_SELF_INTERSECTION",
+      "evidence": "figures/Fig1_P0_A_B_C_D_Actual_Meshes.png"
+    },
+    {
+      "case": "real",
+      "arm": "B",
+      "numerical_status": "COMPLETED_300",
+      "geometry_status": "FAIL",
+      "reason": "RING_PENETRATION",
+      "fault": {
+        "case": "real",
+        "arm": "B",
+        "max_vertex_penetration_into_Ring_mm": 0.0054864403791725636,
+        "vertices_inside_Ring_over_1micron": 1,
+        "Blender_Ring_pair_N": 28,
+        "Blender_nonadjacent_pair_N": 0,
+        "FCL_self_pairs_confirmed": 0,
+        "FCL_self_pairs_checked": 0,
+        "self_pairs": [],
+        "geometry_modified": false
+      },
+      "three_dimensional_accuracy": "NOT_ESTABLISHED",
+      "GT_solid_difference_volume": "NOT_EVALUABLE_NO_GT",
+      "evidence": "figures/Fig1_P0_A_B_C_D_Actual_Meshes.png"
+    },
+    {
+      "case": "real",
+      "arm": "C",
+      "numerical_status": "COMPLETED_300",
+      "geometry_status": "FAIL",
+      "reason": "RING_PENETRATION",
+      "fault": {
+        "case": "real",
+        "arm": "C",
+        "max_vertex_penetration_into_Ring_mm": 0.04118899255990982,
+        "vertices_inside_Ring_over_1micron": 3,
+        "Blender_Ring_pair_N": 134,
+        "Blender_nonadjacent_pair_N": 0,
+        "FCL_self_pairs_confirmed": 0,
+        "FCL_self_pairs_checked": 0,
+        "self_pairs": [],
+        "geometry_modified": false
+      },
+      "three_dimensional_accuracy": "NOT_ESTABLISHED",
+      "GT_solid_difference_volume": "NOT_EVALUABLE_NO_GT",
+      "evidence": "figures/Fig1_P0_A_B_C_D_Actual_Meshes.png"
+    },
+    {
+      "case": "real",
+      "arm": "D",
+      "numerical_status": "COMPLETED_300",
+      "geometry_status": "FAIL",
+      "reason": "RING_PENETRATION",
+      "fault": {
+        "case": "real",
+        "arm": "D",
+        "max_vertex_penetration_into_Ring_mm": 0.05326433107256889,
+        "vertices_inside_Ring_over_1micron": 5,
+        "Blender_Ring_pair_N": 212,
+        "Blender_nonadjacent_pair_N": 0,
+        "FCL_self_pairs_confirmed": 0,
+        "FCL_self_pairs_checked": 0,
+        "self_pairs": [],
+        "geometry_modified": false
+      },
+      "three_dimensional_accuracy": "NOT_ESTABLISHED",
+      "GT_solid_difference_volume": "NOT_EVALUABLE_NO_GT",
+      "evidence": "figures/Fig1_P0_A_B_C_D_Actual_Meshes.png"
+    }
+  ]
+}

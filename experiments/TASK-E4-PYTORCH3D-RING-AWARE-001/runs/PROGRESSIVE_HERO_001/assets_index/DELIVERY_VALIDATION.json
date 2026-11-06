@@ -1,0 +1,107 @@
+{
+  "passed": true,
+  "engineering_delivery_only_not_geometry_pass": true,
+  "checks": {
+    "PREOPT_FREEZE": {
+      "passed": true,
+      "N": 51,
+      "bad": []
+    },
+    "PREDICTIONS_FROZEN_BEFORE_EVALUATION": {
+      "passed": true,
+      "N": 207,
+      "bad": []
+    },
+    "HISTORY_PROTECTION": {
+      "passed": true,
+      "N": 482,
+      "bad": []
+    },
+    "A_unmodified": {
+      "passed": true,
+      "N": 30,
+      "bad": []
+    },
+    "Ring_renderer_exact": {
+      "passed": true
+    },
+    "fairness": {
+      "passed": true
+    },
+    "depth_gradients": {
+      "passed": true
+    },
+    "checkpoint_recovery_state": {
+      "passed": true,
+      "rows": [
+        {
+          "case": "virtual",
+          "arm": "B",
+          "checkpoint_N": 9,
+          "all_optimizer_and_rng_states": true
+        },
+        {
+          "case": "virtual",
+          "arm": "C",
+          "checkpoint_N": 9,
+          "all_optimizer_and_rng_states": true
+        },
+        {
+          "case": "virtual",
+          "arm": "D",
+          "checkpoint_N": 9,
+          "all_optimizer_and_rng_states": true
+        },
+        {
+          "case": "real",
+          "arm": "B",
+          "checkpoint_N": 9,
+          "all_optimizer_and_rng_states": true
+        },
+        {
+          "case": "real",
+          "arm": "C",
+          "checkpoint_N": 9,
+          "all_optimizer_and_rng_states": true
+        },
+        {
+          "case": "real",
+          "arm": "D",
+          "checkpoint_N": 9,
+          "all_optimizer_and_rng_states": true
+        }
+      ]
+    },
+    "syntax": {
+      "passed": true
+    },
+    "four_real_figures": {
+      "passed": true,
+      "files": [
+        {
+          "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/figures/Fig1_P0_A_B_C_D_Actual_Meshes.png",
+          "bytes": 1132018,
+          "sha256": "eec2cd92eed2b76553e5e5f0e0aa78092bc4fab73bd90fdff4b3a4886c2d546c"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/figures/Fig2_Fixed_Holdout_Projection.png",
+          "bytes": 444435,
+          "sha256": "c256dd21318c52edbf7a360f792373fd2868ff25e34c6d826ebb00d2b92dc212"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/figures/Fig3_Stage_Geometry_And_Depth.png",
+          "bytes": 332180,
+          "sha256": "c8079cf8b999d1815f3258655c44a03cf243643f387508d90a2e73398cc94446"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/figures/Fig4_Fixed_Ray_Depth_Residuals.png",
+          "bytes": 1678410,
+          "sha256": "1936b4e7365443fdbdb42604e0122982d1010a83d74611416b63c315bbfffa65"
+        }
+      ]
+    },
+    "honest_geometry_failure": {
+      "passed": true
+    }
+  }
+}
