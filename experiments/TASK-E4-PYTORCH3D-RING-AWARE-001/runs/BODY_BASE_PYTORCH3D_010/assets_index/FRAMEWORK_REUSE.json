@@ -1,0 +1,27 @@
+{
+  "official_PyTorch3D_commit": "e4ad6e5687a360ccdc6ebd91348e8dbbac97bf31",
+  "ico_sphere": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/utils/ico_sphere.py",
+    "bytes": 2232,
+    "sha256": "01def7c883accb25c2e331ea21887072e60e57a797db78e77033ea3e6b1587d1"
+  },
+  "generator_is_not_pretrained_reconstruction": true,
+  "upstream": [
+    "BODY_BASE_INIT_009",
+    "VISIBILITY_ORDER_REPAIR_001",
+    "PROGRESSIVE_HERO_001",
+    "BOUNDARY_RELATIVE_DEPTH_D2_001"
+  ],
+  "changes": [
+    "unit/acute plane equivalence; no old file edit",
+    "exact B halfspace clipping and tagged cap",
+    "data-only sphere and common physical normalization",
+    "p3d.Case input route + same normalization; all rendering/aware math unchanged",
+    "Depth constructor FIT-only, skip RGB-only views",
+    "100global6+200local old schedule; cap boundary tangential constraint only when metadata present",
+    "same D2E3 losses/SGD/priors"
+  ],
+  "new_dependencies": false,
+  "new_HERO": false,
+  "new_camera_recovery": false
+}

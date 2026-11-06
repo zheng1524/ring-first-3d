@@ -1,0 +1,100 @@
+{
+  "task": "TASK-E4-BODY-BASE-PYTORCH3D-010",
+  "run": "BODY_BASE_PYTORCH3D_010",
+  "cases": [
+    "G01",
+    "G02",
+    "G03",
+    "G07",
+    "G04",
+    "G05",
+    "G06",
+    "G08",
+    "G09"
+  ],
+  "seed": 20261106,
+  "steps": 300,
+  "checkpoints": [
+    0,
+    25,
+    50,
+    75,
+    100,
+    150,
+    200,
+    250,
+    300
+  ],
+  "arms": [
+    "P",
+    "S"
+  ],
+  "optimizer": {
+    "name": "SGD",
+    "lr": 1.0,
+    "momentum": 0.9
+  },
+  "mode": "GLOBAL6_100_THEN_LOCAL_200",
+  "relative_weights": {
+    "edge": 1.0,
+    "laplacian": 1.0,
+    "normal": 0.01,
+    "unsupported": 0.01
+  },
+  "depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap_r": 10.0,
+    "miss_cost": 9.5,
+    "min_ray_face_cosine": 0.001,
+    "CAD_clearance_mm": 0.05
+  },
+  "boundary": {
+    "rule": "w=0.1+0.9*(1-exp(-(d/8)^2)); d=min(distance to Background,distance to Ring) on original RGB label lattice; pixel-center EDT; no resized-mask distances",
+    "scale_px": 8.0,
+    "floor": 0.1
+  },
+  "relative_depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap": 9.5,
+    "interior_weight_min": 0.5,
+    "scales_native_px": [
+      4,
+      16,
+      48
+    ],
+    "max_pairs_per_scale": 128,
+    "path_max_adjacent_jump_mm": 0.5,
+    "min_pixel_separation": 2,
+    "missing_pair_cost": 9.5
+  },
+  "stop": {
+    "max_gradient_norm": 100.0,
+    "max_candidate_step_mm": 2.0,
+    "volume_ratio_range": [
+      0.1,
+      10.0
+    ],
+    "scope": "numerical/hardware emergency only; CAD contact and poor loss not an early stop"
+  },
+  "GT": "no real GT geometry read",
+  "multiview_HERO": "diagnostics after prediction freeze only; never optimization, weighting, selection or ranking",
+  "reuse_B": [],
+  "model_selection": "fixed final300 only; report stopped runs as failures, never best-checkpoint selection",
+  "base_strategy": {
+    "plane_sign": "normalized and acute aligned, d flips synchronously; common original internal anchor",
+    "retained_side": "reliable original Polyp interior median",
+    "contact": "frozen data-only original 009 contact; BROAD => clip regardless old base quality",
+    "reliable_plane": "same primary45px",
+    "weak_plane": "smallest ROI upper30/45/60 with N>=100 and inlier>=0.5; otherwise nearest available plane, uncertainty preserved",
+    "clip": "exact original B triangle halfspace intersection; no re-fit or smoothing",
+    "cap": "ear-clipped inferred planar closure, excluded from all observation losses; boundary vertices normal motion projected away in global/local stages"
+  },
+  "sphere": {
+    "generator": "official ico_sphere(level=3)",
+    "source": "primary FIT real Mask bounding box + median reliable original axial HERO; center ray through bbox center, depth zmedian+0.5r; r=max(metric half-width,metric half-height),minimum0.25mm",
+    "B_read_for_S": false,
+    "normalization": "same sphere-derived center and radius for both routes per case"
+  }
+}
