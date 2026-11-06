@@ -1,0 +1,281 @@
+[
+  {
+    "name": "virtual_IIa",
+    "identity": "IIa6.5_R10 native static Blender",
+    "views": [
+      {
+        "id": "IIa6.5_R10_obs00",
+        "role": "UPDATE_HOLDOUT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "IIa6.5_R10_obs01",
+        "role": "FIT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "IIa6.5_R10_obs03",
+        "role": "FIT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "IIa6.5_R10_obs04",
+        "role": "UPDATE_HOLDOUT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "IIa6.5_R10_obs05",
+        "role": "FIT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      }
+    ],
+    "initialization": "Gate A independent Ring-only P0; exact source mesh",
+    "GT": "posterior only",
+    "unit": "mm",
+    "case_kind": "virtual",
+    "morphology": "IIa"
+  },
+  {
+    "name": "virtual_Ip",
+    "case_kind": "virtual",
+    "morphology": "Ip",
+    "identity": "Ip4_R10",
+    "views": [
+      {
+        "id": "Ip4_R10_obs00",
+        "role": "UPDATE_HOLDOUT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "Ip4_R10_obs01",
+        "role": "FIT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "Ip4_R10_obs03",
+        "role": "FIT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "Ip4_R10_obs04",
+        "role": "UPDATE_HOLDOUT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "Ip4_R10_obs05",
+        "role": "FIT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      }
+    ],
+    "unit": "mm",
+    "initialization": "same generic Ring-only Gate A ellipsoid translated with Ring; no GT-dependent fitting",
+    "GT": "IDEAL_GT_DEPTH_UPPER_BOUND plus posterior geometry"
+  },
+  {
+    "name": "virtual_Is",
+    "case_kind": "virtual",
+    "morphology": "Is",
+    "identity": "Is14_R10",
+    "views": [
+      {
+        "id": "Is14_R10_obs00",
+        "role": "UPDATE_HOLDOUT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "Is14_R10_obs01",
+        "role": "FIT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "Is14_R10_obs03",
+        "role": "FIT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "Is14_R10_obs04",
+        "role": "UPDATE_HOLDOUT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "Is14_R10_obs05",
+        "role": "FIT",
+        "qualification": "KNOWN_BLENDER_CAMERA",
+        "width": 640,
+        "height": 360
+      }
+    ],
+    "unit": "mm",
+    "initialization": "same generic Ring-only Gate A ellipsoid translated with Ring; no GT-dependent fitting",
+    "GT": "IDEAL_GT_DEPTH_UPPER_BOUND plus posterior geometry"
+  },
+  {
+    "name": "real_Ip",
+    "identity": "GP_Ip_12.0mm_closed_R10_single_refY/video004",
+    "views": [
+      {
+        "id": "G01_004_ref08",
+        "role": "FIT",
+        "qualification": "INSUFFICIENT_EVIDENCE",
+        "width": 640,
+        "height": 360,
+        "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_008.png",
+        "source_Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_008.png"
+      },
+      {
+        "id": "G01_004_ref13",
+        "role": "FIT",
+        "qualification": "INSUFFICIENT_EVIDENCE",
+        "width": 640,
+        "height": 360,
+        "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_013.png",
+        "source_Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_013.png"
+      },
+      {
+        "id": "G01_004_ref03",
+        "role": "FIT",
+        "qualification": "INSUFFICIENT_EVIDENCE",
+        "width": 640,
+        "height": 360,
+        "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_003.png",
+        "source_Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_003.png"
+      },
+      {
+        "id": "G01_004_growth_r04",
+        "role": "UPDATE_HOLDOUT",
+        "qualification": "INSUFFICIENT_EVIDENCE",
+        "width": 640,
+        "height": 360,
+        "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_004.png",
+        "source_Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_004.png"
+      },
+      {
+        "id": "G01_004_growth_r06",
+        "role": "UPDATE_HOLDOUT",
+        "qualification": "INSUFFICIENT_EVIDENCE",
+        "width": 640,
+        "height": 360,
+        "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_006.png",
+        "source_Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_006.png"
+      },
+      {
+        "id": "G01_004_growth_r10",
+        "role": "UPDATE_HOLDOUT",
+        "qualification": "INSUFFICIENT_EVIDENCE",
+        "width": 640,
+        "height": 360,
+        "source_RGB": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_010.png",
+        "source_Mask": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_010.png"
+      }
+    ],
+    "unit": "mm",
+    "initialization": "R1 conservative P0; used all seven views, HOLDOUT is update-stage only",
+    "GT": "NOT_EVALUABLE",
+    "case_kind": "real",
+    "morphology": "Ip"
+  },
+  {
+    "name": "real_IIa",
+    "case_kind": "real",
+    "morphology": "IIa",
+    "identity": "G06_004",
+    "views": [
+      {
+        "id": "G06_004_growth_r01",
+        "role": "FIT",
+        "qualification": "CONDITIONAL_USABLE",
+        "admission": "CONDITIONAL_RESEARCH_INPUT",
+        "block": "G06_video004_B1",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "G06_004_growth_r03",
+        "role": "FIT",
+        "qualification": "CONDITIONAL_USABLE",
+        "admission": "CONDITIONAL_RESEARCH_INPUT",
+        "block": "G06_video004_B2",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "G06_004_growth_r06",
+        "role": "UPDATE_HOLDOUT",
+        "qualification": "INSUFFICIENT_EVIDENCE",
+        "admission": "CONDITIONAL_RESEARCH_INPUT",
+        "block": "G06_video004_B3",
+        "width": 640,
+        "height": 360
+      }
+    ],
+    "unit": "mm",
+    "initialization": "exact frozen PMGR E2 P0 V/F; update-stage holdout only",
+    "GT": "NOT_EVALUABLE"
+  },
+  {
+    "name": "real_Is",
+    "case_kind": "real",
+    "morphology": "Is",
+    "identity": "G07_004",
+    "views": [
+      {
+        "id": "G07_004_ref04",
+        "role": "FIT",
+        "qualification": "CONDITIONAL_USABLE",
+        "admission": "CONDITIONAL_RESEARCH_INPUT",
+        "block": "G07_video004_B1",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "G07_004_growth_r02",
+        "role": "FIT",
+        "qualification": "CONDITIONAL_USABLE",
+        "admission": "CONDITIONAL_RESEARCH_INPUT",
+        "block": "G07_video004_B1",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "id": "G07_004_new_r06",
+        "role": "UPDATE_HOLDOUT",
+        "qualification": "INSUFFICIENT_EVIDENCE",
+        "admission": "CONDITIONAL_RESEARCH_INPUT",
+        "block": "G07_video004_B2",
+        "width": 640,
+        "height": 360
+      }
+    ],
+    "unit": "mm",
+    "initialization": "exact frozen PMGR E2 P0 V/F; update-stage holdout only",
+    "GT": "NOT_EVALUABLE"
+  }
+]

@@ -1,0 +1,86 @@
+{
+  "task": "TASK-E4-D2",
+  "run": "BOUNDARY_RELATIVE_DEPTH_D2_001",
+  "cases": [
+    "virtual_IIa",
+    "virtual_Ip",
+    "virtual_Is",
+    "real_Ip",
+    "real_IIa",
+    "real_Is"
+  ],
+  "seed": 20261106,
+  "steps": 300,
+  "checkpoints": [
+    0,
+    25,
+    50,
+    75,
+    100,
+    150,
+    200,
+    250,
+    300
+  ],
+  "arms": [
+    "B",
+    "E1",
+    "E2",
+    "E3"
+  ],
+  "optimizer": {
+    "name": "SGD",
+    "lr": 1.0,
+    "momentum": 0.9
+  },
+  "mode": "LOCAL_VERTEX_ONLY",
+  "relative_weights": {
+    "edge": 1.0,
+    "laplacian": 1.0,
+    "normal": 0.01,
+    "unsupported": 0.01
+  },
+  "depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap_r": 10.0,
+    "miss_cost": 9.5,
+    "min_ray_face_cosine": 0.001,
+    "CAD_clearance_mm": 0.05
+  },
+  "boundary": {
+    "rule": "w=0.1+0.9*(1-exp(-(d/8)^2)); d=min(distance to Background,distance to Ring) on original RGB label lattice; pixel-center EDT; no resized-mask distances",
+    "scale_px": 8.0,
+    "floor": 0.1
+  },
+  "relative_depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap": 9.5,
+    "interior_weight_min": 0.5,
+    "scales_native_px": [
+      4,
+      16,
+      48
+    ],
+    "max_pairs_per_scale": 128,
+    "path_max_adjacent_jump_mm": 0.5,
+    "min_pixel_separation": 2,
+    "missing_pair_cost": 9.5
+  },
+  "stop": {
+    "max_gradient_norm": 100.0,
+    "max_candidate_step_mm": 2.0,
+    "volume_ratio_range": [
+      0.1,
+      10.0
+    ]
+  },
+  "GT": "virtual ideal depth generation and independent projection audit only; 3D evaluation after prediction freeze",
+  "multiview_HERO": "diagnostics after prediction freeze only; never optimization, weighting, selection or ranking",
+  "reuse_B": [
+    "virtual_IIa",
+    "real_Ip"
+  ],
+  "model_selection": "fixed step300 only; no best checkpoint"
+}
