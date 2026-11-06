@@ -1,0 +1,51 @@
+{
+  "name": "PROGRESSIVE_HERO_001",
+  "seed": 20261106,
+  "steps": 300,
+  "global_steps": 100,
+  "checkpoints": [
+    0,
+    25,
+    50,
+    75,
+    100,
+    150,
+    200,
+    250,
+    300
+  ],
+  "arms": [
+    "B",
+    "C",
+    "D"
+  ],
+  "A_frozen_root": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/VISIBILITY_ORDER_REPAIR_001",
+  "optimizer": {
+    "name": "SGD",
+    "lr": 1.0,
+    "momentum": 0.9
+  },
+  "relative_weights": {
+    "edge": 1.0,
+    "laplacian": 1.0,
+    "normal": 0.01,
+    "unsupported": 0.01
+  },
+  "depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap_r": 10.0,
+    "miss_cost": 9.5,
+    "min_ray_face_cosine": 0.001,
+    "CAD_clearance_mm": 0.05
+  },
+  "stop": {
+    "max_gradient_norm": 100.0,
+    "max_candidate_step_mm": 2.0,
+    "volume_ratio_range": [
+      0.1,
+      10.0
+    ]
+  },
+  "GT": "virtual D ideal-depth upper bound only; no GT mesh access in optimizer"
+}
