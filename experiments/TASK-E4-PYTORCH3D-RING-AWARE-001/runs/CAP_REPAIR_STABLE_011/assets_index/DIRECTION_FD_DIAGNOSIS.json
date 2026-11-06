@@ -1,0 +1,652 @@
+{
+  "base": 0.03094731643795967,
+  "repeat_no_grad": 0.03094731643795967,
+  "parts": {
+    "silhouette": 0.012053223326802254,
+    "absolute": 1.0906367301940918,
+    "relative": 0.7766343951225281,
+    "prior": 0.0002213819680036977,
+    "total": 0.03094731643795967,
+    "depth": [
+      {
+        "source": "G01_004_ref08",
+        "fixed_N": 256,
+        "active_N": 236,
+        "fixed_pair_N": 313,
+        "active_pair_N": 291,
+        "absolute_loss": 1.266912966913974,
+        "relative_loss": 0.7214413045988203,
+        "raw_fixed_denominator_cost": 1.326545551003877,
+        "weighted_fixed_denominator": 216.9830435453602,
+        "depth_MAE_active_mm": 0.5430799812546451
+      },
+      {
+        "source": "G01_004_ref13",
+        "fixed_N": 256,
+        "active_N": 241,
+        "fixed_pair_N": 324,
+        "active_pair_N": 313,
+        "absolute_loss": 0.73132795791528,
+        "relative_loss": 0.3763513709565338,
+        "raw_fixed_denominator_cost": 0.888757210772694,
+        "weighted_fixed_denominator": 214.90263066716716,
+        "depth_MAE_active_mm": 0.36147042565145177
+      },
+      {
+        "source": "G01_004_ref03",
+        "fixed_N": 256,
+        "active_N": 225,
+        "fixed_pair_N": 349,
+        "active_pair_N": 304,
+        "absolute_loss": 1.27366930886962,
+        "relative_loss": 1.2321105274917397,
+        "raw_fixed_denominator_cost": 1.4700821837074853,
+        "weighted_fixed_denominator": 225.8321717759754,
+        "depth_MAE_active_mm": 0.3982405572264863
+      }
+    ]
+  },
+  "trials": [
+    {
+      "method": "Adam",
+      "step": 0.001,
+      "delta": 0.00029250793159008026,
+      "parts": {
+        "silhouette": 0.012007325887680054,
+        "absolute": 1.0963999032974243,
+        "relative": 0.8045358657836914,
+        "prior": 0.00022314210946206003,
+        "total": 0.03123982436954975,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.2635827600850646,
+            "relative_loss": 0.72098444347049,
+            "raw_fixed_denominator_cost": 1.322713236859404,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.541049667420774
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.7251393054703253,
+            "relative_loss": 0.37603016567639236,
+            "raw_fixed_denominator_cost": 0.8822723210915513,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.3575271183927501
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 224,
+            "fixed_pair_N": 349,
+            "active_pair_N": 300,
+            "absolute_loss": 1.3004775096280268,
+            "relative_loss": 1.3165929962991763,
+            "raw_fixed_denominator_cost": 1.4948934792490178,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.3920436158189406
+          }
+        ]
+      }
+    },
+    {
+      "method": "Adam",
+      "step": 0.0001,
+      "delta": 0.00038151443004608154,
+      "parts": {
+        "silhouette": 0.012048613280057907,
+        "absolute": 1.100541114807129,
+        "relative": 0.8053251504898071,
+        "prior": 0.00022155711485538632,
+        "total": 0.03132883086800575,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.2665789894985318,
+            "relative_loss": 0.7213938750968802,
+            "raw_fixed_denominator_cost": 1.3261612990040141,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.542877722399299
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.730706276580556,
+            "relative_loss": 0.3763199114175406,
+            "raw_fixed_denominator_cost": 0.8881066141716445,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.3610762554055724
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 224,
+            "fixed_pair_N": 349,
+            "active_pair_N": 300,
+            "absolute_loss": 1.3043378686015954,
+            "relative_loss": 1.318261727404011,
+            "raw_fixed_denominator_cost": 1.498663036349606,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.39404286614370265
+          }
+        ]
+      }
+    },
+    {
+      "method": "Adam",
+      "step": 1e-05,
+      "delta": 0.000390470027923584,
+      "parts": {
+        "silhouette": 0.012052762322127819,
+        "absolute": 1.100957989692688,
+        "relative": 0.8054044842720032,
+        "prior": 0.00022139944485388696,
+        "total": 0.031337786465883255,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.266879537480472,
+            "relative_loss": 0.7214365583354717,
+            "raw_fixed_denominator_cost": 1.326507092187912,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.5430597450011861
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.7312657722853063,
+            "relative_loss": 0.3763481774247085,
+            "raw_fixed_denominator_cost": 0.8886921350569534,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.36143101982036624
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 224,
+            "fixed_pair_N": 349,
+            "active_pair_N": 300,
+            "absolute_loss": 1.3047284211440082,
+            "relative_loss": 1.3184286480949774,
+            "raw_fixed_denominator_cost": 1.4990447498555581,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.39424845075424064
+          }
+        ]
+      }
+    },
+    {
+      "method": "Adam",
+      "step": 1e-06,
+      "delta": 0.0003913678228855133,
+      "parts": {
+        "silhouette": 0.012053178623318672,
+        "absolute": 1.1009995937347412,
+        "relative": 0.8054124116897583,
+        "prior": 0.00022138369968160987,
+        "total": 0.031338684260845184,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.266909645375161,
+            "relative_loss": 0.721440826265017,
+            "raw_fixed_denominator_cost": 1.326541709313546,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.5430779624773461
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.7313217339091551,
+            "relative_loss": 0.37635102455069236,
+            "raw_fixed_denominator_cost": 0.8887506953711584,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.3614664689715359
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 224,
+            "fixed_pair_N": 349,
+            "active_pair_N": 300,
+            "absolute_loss": 1.3047675376832162,
+            "relative_loss": 1.3184453823922488,
+            "raw_fixed_denominator_cost": 1.4990829916520934,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.3942690337849342
+          }
+        ]
+      }
+    },
+    {
+      "method": "Adam",
+      "step": 1e-07,
+      "delta": 0.0003914572298526764,
+      "parts": {
+        "silhouette": 0.012053219601511955,
+        "absolute": 1.1010037660598755,
+        "relative": 0.8054131865501404,
+        "prior": 0.00022138215717859566,
+        "total": 0.03133877366781235,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.2669125758335855,
+            "relative_loss": 0.7214412716314036,
+            "raw_fixed_denominator_cost": 1.3265451049289443,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.5430797346962818
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.7313273417567295,
+            "relative_loss": 0.376351303846127,
+            "raw_fixed_denominator_cost": 0.8887565677657073,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.3614700367330638
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 224,
+            "fixed_pair_N": 349,
+            "active_pair_N": 300,
+            "absolute_loss": 1.3047714739827345,
+            "relative_loss": 1.318447039597787,
+            "raw_fixed_denominator_cost": 1.499086824357307,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.3942710992887345
+          }
+        ]
+      }
+    },
+    {
+      "method": "Adam",
+      "step": 1e-08,
+      "delta": 0.0,
+      "parts": {
+        "silhouette": 0.012053223326802254,
+        "absolute": 1.0906367301940918,
+        "relative": 0.7766343951225281,
+        "prior": 0.00022138199710752815,
+        "total": 0.03094731643795967,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.2669129134164823,
+            "relative_loss": 0.7214413077600271,
+            "raw_fixed_denominator_cost": 1.3265454924769298,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.5430799515330246
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.7313278961814944,
+            "relative_loss": 0.37635137307269123,
+            "raw_fixed_denominator_cost": 0.8887571354646578,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.3614703846932608
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 225,
+            "fixed_pair_N": 349,
+            "active_pair_N": 304,
+            "absolute_loss": 1.2736692464531092,
+            "relative_loss": 1.2321104834520242,
+            "raw_fixed_denominator_cost": 1.4700821215532642,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.398240538281808
+          }
+        ]
+      }
+    },
+    {
+      "method": "gradient",
+      "step": 0.001,
+      "delta": -3.127381205558777e-06,
+      "parts": {
+        "silhouette": 0.012052024714648724,
+        "absolute": 1.0904719829559326,
+        "relative": 0.7766063213348389,
+        "prior": 0.00022138297208584845,
+        "total": 0.030944189056754112,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.2669139560855167,
+            "relative_loss": 0.7214256805953776,
+            "raw_fixed_denominator_cost": 1.3265311667038677,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.543091024643597
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.7311030991329819,
+            "relative_loss": 0.37635985310991477,
+            "raw_fixed_denominator_cost": 0.8885290411098191,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.36132436621803055
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 225,
+            "fixed_pair_N": 349,
+            "active_pair_N": 304,
+            "absolute_loss": 1.2733988439861639,
+            "relative_loss": 1.232033445793756,
+            "raw_fixed_denominator_cost": 1.4698173236141536,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.3980793851790011
+          }
+        ]
+      }
+    },
+    {
+      "method": "gradient",
+      "step": 0.0001,
+      "delta": 0.0003911517560482025,
+      "parts": {
+        "silhouette": 0.012053104117512703,
+        "absolute": 1.1009877920150757,
+        "relative": 0.8054105639457703,
+        "prior": 0.0002213820698671043,
+        "total": 0.031338468194007874,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.2669130514611022,
+            "relative_loss": 0.721439743167959,
+            "raw_fixed_denominator_cost": 1.3265440921501332,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.5430810775247408
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.7313054806570352,
+            "relative_loss": 0.3763521902681456,
+            "raw_fixed_denominator_cost": 0.8887344041940181,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.3614558163355578
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 224,
+            "fixed_pair_N": 349,
+            "active_pair_N": 300,
+            "absolute_loss": 1.3047448074516397,
+            "relative_loss": 1.318439805597042,
+            "raw_fixed_denominator_cost": 1.499060722482113,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.3942551291143895
+          }
+        ]
+      }
+    },
+    {
+      "method": "gradient",
+      "step": 1e-05,
+      "delta": 0.00039143115282058716,
+      "parts": {
+        "silhouette": 0.012053212150931358,
+        "absolute": 1.10100257396698,
+        "relative": 0.8054129481315613,
+        "prior": 0.00022138198255561292,
+        "total": 0.03133874759078026,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.266912974299523,
+            "relative_loss": 0.7214411411680048,
+            "raw_fixed_denominator_cost": 1.3265454100333014,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.5430800903576043
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.7313256683421703,
+            "relative_loss": 0.3763513811939964,
+            "raw_fixed_denominator_cost": 0.888754891508168,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.3614689306808078
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 224,
+            "fixed_pair_N": 349,
+            "active_pair_N": 300,
+            "absolute_loss": 1.3047691501685394,
+            "relative_loss": 1.3184464470166541,
+            "raw_fixed_denominator_cost": 1.499084549844544,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.39426967375877814
+          }
+        ]
+      }
+    },
+    {
+      "method": "gradient",
+      "step": 1e-06,
+      "delta": -3.725290298461914e-09,
+      "parts": {
+        "silhouette": 0.012053221464157104,
+        "absolute": 1.0906366109848022,
+        "relative": 0.7766343951225281,
+        "prior": 0.00022138195345178246,
+        "total": 0.030947312712669373,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.2669129750847137,
+            "relative_loss": 0.7214413077250114,
+            "raw_fixed_denominator_cost": 1.3265455396683237,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.5430799850183509
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.731327778073469,
+            "relative_loss": 0.3763513275777713,
+            "raw_fixed_denominator_cost": 0.8887570193414474,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.36147030238722444
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 225,
+            "fixed_pair_N": 349,
+            "active_pair_N": 304,
+            "absolute_loss": 1.2736691157689433,
+            "relative_loss": 1.2321104647868493,
+            "raw_fixed_denominator_cost": 1.470081990799656,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.3982404442946878
+          }
+        ]
+      }
+    },
+    {
+      "method": "gradient",
+      "step": 1e-07,
+      "delta": 0.0,
+      "parts": {
+        "silhouette": 0.012053223326802254,
+        "absolute": 1.0906367301940918,
+        "relative": 0.7766343951225281,
+        "prior": 0.00022138195345178246,
+        "total": 0.03094731643795967,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.266912985590193,
+            "relative_loss": 0.7214413096249472,
+            "raw_fixed_denominator_cost": 1.326545575066922,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.5430799978798647
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.7313279473346187,
+            "relative_loss": 0.37635138494761156,
+            "raw_fixed_denominator_cost": 0.8887571904550535,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.361470419954576
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 225,
+            "fixed_pair_N": 349,
+            "active_pair_N": 304,
+            "absolute_loss": 1.273669271631159,
+            "relative_loss": 1.2321105039933158,
+            "raw_fixed_denominator_cost": 1.4700821464276204,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.39824053957183914
+          }
+        ]
+      }
+    },
+    {
+      "method": "gradient",
+      "step": 1e-08,
+      "delta": 0.0,
+      "parts": {
+        "silhouette": 0.012053223326802254,
+        "absolute": 1.0906367301940918,
+        "relative": 0.7766343951225281,
+        "prior": 0.00022138195345178246,
+        "total": 0.03094731643795967,
+        "depth": [
+          {
+            "source": "G01_004_ref08",
+            "fixed_N": 256,
+            "active_N": 236,
+            "fixed_pair_N": 313,
+            "active_pair_N": 291,
+            "absolute_loss": 1.266912966913974,
+            "relative_loss": 0.7214413045988203,
+            "raw_fixed_denominator_cost": 1.326545551003877,
+            "weighted_fixed_denominator": 216.9830435453602,
+            "depth_MAE_active_mm": 0.5430799812546451
+          },
+          {
+            "source": "G01_004_ref13",
+            "fixed_N": 256,
+            "active_N": 241,
+            "fixed_pair_N": 324,
+            "active_pair_N": 313,
+            "absolute_loss": 0.7313279405525239,
+            "relative_loss": 0.3763513568124053,
+            "raw_fixed_denominator_cost": 0.8887571858721445,
+            "weighted_fixed_denominator": 214.90263066716716,
+            "depth_MAE_active_mm": 0.36147041189335405
+          },
+          {
+            "source": "G01_004_ref03",
+            "fixed_N": 256,
+            "active_N": 225,
+            "fixed_pair_N": 349,
+            "active_pair_N": 304,
+            "absolute_loss": 1.2736692929183964,
+            "relative_loss": 1.232110503720556,
+            "raw_fixed_denominator_cost": 1.4700821679706841,
+            "weighted_fixed_denominator": 225.8321717759754,
+            "depth_MAE_active_mm": 0.39824054827399513
+          }
+        ]
+      }
+    }
+  ],
+  "optimizer_steps": 0
+}

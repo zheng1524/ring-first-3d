@@ -40,7 +40,8 @@
     "backtrack": 0.5,
     "min_lr": 1e-05,
     "reject_lr_factor": 0.5,
-    "full_step_lr_growth": 1.05
+    "full_step_lr_growth": 1.05,
+    "fallback": "after rejected Adam/contact line searches, use unpreconditioned -lr_max*gradient, same 8 backtracks and geometry guard; accepted gradient restart clears Adam moments and restores lr max, full rejection exact rollback"
   },
   "mode": "GLOBAL6_100_THEN_LOCAL_200",
   "relative_weights": {
@@ -150,5 +151,6 @@
     "max_total_displacement_over_D": 0.25,
     "D_definition": "maximum extent of retained INITIAL visible surface; no volume truth"
   },
-  "initial_conditions": "all nine cases; no historicalCameraGateexclusion; collisions recorded and cannot worsen"
+  "initial_conditions": "all nine cases; no historicalCameraGateexclusion; collisions recorded and cannot worsen",
+  "engineering_amendment": "V1 gradient/active-set diagnosis retained; no C input or loss change; applies equally to all nine formal final runs"
 }
