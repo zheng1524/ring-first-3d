@@ -1,0 +1,28 @@
+{
+  "tests": [
+    {
+      "side": 1.0,
+      "expected_area": 1.0,
+      "computed_area": 1.0,
+      "status": "CLOSED_LOOP_SHOELACE_EVEN_ODD_PROXY",
+      "passed": true
+    },
+    {
+      "side": 2.0,
+      "expected_area": 4.0,
+      "computed_area": 4.0,
+      "status": "CLOSED_LOOP_SHOELACE_EVEN_ODD_PROXY",
+      "passed": true
+    },
+    {
+      "side": 3.0,
+      "expected_area": 9.0,
+      "computed_area": 9.0,
+      "status": "CLOSED_LOOP_SHOELACE_EVEN_ODD_PROXY",
+      "passed": true
+    }
+  ],
+  "implementation": "trimesh triangle-plane section, closed polyline shoelace with even-odd nesting; no Shapely required",
+  "no_mesh_edit": true,
+  "virtual_GT_Ip_Is_not_certified_solid": true
+}

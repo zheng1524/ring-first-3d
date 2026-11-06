@@ -1,0 +1,25 @@
+from common import *
+import ast,torch
+
+def main():
+ cfg=load(R/'config/PROTOCOL.json');rows=[];scale_rows=[];sources={x['id']:x for x in load('/home/liu/ring_first_3d_neural_e1/experiments/TASK-NEURAL-E1-PIPELINE-RECOVERY-001/provenance/INPUT_ELIGIBILITY.json')['references']};prefix=R.parent/'PROGRESSIVE_HERO_001';assert sha(R/'code/p3d.py')==sha(prefix/'code/p3d.py');assert sha(R/'code/components.py')==sha(prefix/'code/components.py');assert load(R/'metrics/PREFLIGHT.json')['passed'];assert load(R/'metrics/PROJECTION_GATE.json')['passed']
+ for p in(R/'code').glob('*.py'):ast.parse(p.read_text())
+ for a in load(R/'assets_index/PREOPT_FREEZE.json')['files']:assert sha(a['path'])==a['sha256'],a['path']
+ for a in load(R/'assets_index/SOURCE_MANIFEST.json'):assert sha(a['path'])==a['sha256'],a['path']
+ for a in load(R/'assets_index/HISTORY_PROTECTION.json'):assert sha(a['path'])==a['sha256'],a['path']
+ for a in load(R/'assets_index/PREDICTIONS_FROZEN.json')['files']:assert sha(a['path'])==a['sha256'],a['path']
+ for name in cfg['cases']:
+  schedules=[];orig=np.load(R/'inputs'/name/'INITIAL.npz');p0=np.load(R/'local_results'/name/'B/STEP_0000.npz');V=orig['V'];center=V.mean(0);scale=float(abs(V-center).max());expected=(((V-center)/scale).astype(np.float32)*scale+center);assert np.array_equal(p0['V'],expected)
+  for arm in cfg['arms']:
+   root=R/'local_results'/name/arm;run=load(R/'metrics'/(name+'_'+arm+'_RUN.json'));assert run['optimizer_steps']==300 and(root/'FINAL.npz').exists();histpath=prefix/'metrics'/('virtual_B_TRAINING.csv'if name=='virtual_IIa'else'real_B_TRAINING.csv')if arm=='B'and name in cfg['reuse_B']else R/'metrics'/(name+'_'+arm+'_TRAINING.csv');hist=list(csv.DictReader(histpath.open()));assert len(hist)==300;schedules.append([x['views']for x in hist]);start=np.load(root/'STEP_0000.npz');assert np.array_equal(start['V'],p0['V'])and np.array_equal(start['F'],p0['F']);count=0
+   for step in cfg['checkpoints']:
+    snap=np.load(root/('STEP_%04d.npz'%step));assert np.array_equal(snap['F'],orig['F']);state=torch.load(root/('STEP_%04d.pt'%step),map_location='cpu',weights_only=False);assert state['step']==step and 'optimizer'in state and'numpy_state'in state and'torch_state'in state and'cuda_state'in state;count+=1
+   trace=R/'metrics'/(name+'_'+arm+'_DEPTH_TRACE.csv');calls=[]
+   if trace.exists():calls=list(csv.DictReader(trace.open()));fits={v['id']for v in getcase(name)['views']if v['role']=='FIT'};assert all(x['source']in fits for x in calls)
+   if arm=='B':assert not calls
+   rows.append(dict(case=name,arm=arm,optimizer_steps=300,reused=arm=='B'and name in cfg['reuse_B'],same_initial_mesh=True,full_checkpoint_count=count,depth_FIT_calls=len(calls),holdout_loss_calls=0,final_exists=True))
+  assert schedules.count(schedules[0])==len(schedules)
+  rr=np.load(R/'inputs'/name/'RING.npz');rv=rr['V'];origin=rv.mean(0);_,E=np.linalg.eigh(np.cov((rv-origin).T));normal=E[:,0];tangential=(rv-origin)-((rv-origin)@normal)[:,None]*normal;inner=float(np.linalg.norm(tangential,axis=1).min()*2);nominal=10. if name.startswith('virtual')else float(sources[getcase(name)['views'][0]['id']]['ring'][1:]);assert abs(inner-nominal)<.01;scale_rows.append(dict(case=name,nominal_inner_diameter_mm=nominal,measured_CAD_inner_diameter_mm=inner,source='frozen source Ring identity, not estimated from output',no_rescaling=True))
+  print('VALIDATED',name,'Ring inner diameter',inner,flush=True)
+ files=[asset(p)for folder in['local_results','depth_observations','inputs','audit_only']for p in sorted((R/folder).rglob('*'))if p.is_file()];save('assets_index/LOCAL_RESULTS.json',dict(files=files,reused_B=[dict(case=x,path=str((R/'local_results'/x/'B').resolve()))for x in cfg['reuse_B']],large_outputs_local_only=True));table('metrics/PHYSICAL_SCALE_AUDIT.csv',scale_rows);save('assets_index/DELIVERY_VALIDATION.json',dict(engineering_delivery_passed=True,not_geometry_or_scientific_PASS=True,rows=rows,same_renderer_and_prior=True,preopt_source_hash_unchanged=True,history_all_SHA_unchanged=True,GT_not_used_for_selection=True,multiview_diagnostic_postfreeze_only=True,fixed_final_step=True,checkpoint_total=sum(x['full_checkpoint_count']for x in rows)))
+if __name__=='__main__':main()

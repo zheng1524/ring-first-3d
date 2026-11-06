@@ -1,0 +1,86 @@
+{
+  "rows": [
+    {
+      "historical_arm": "P0",
+      "source": {
+        "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/inputs/virtual/INITIAL.npz",
+        "bytes": 162698,
+        "sha256": "34a47793aad14708c591ad453a9fc1f07d954d26b665f4b6ce33bc8ae0013058"
+      },
+      "maximum_height_from_GT_base_mm": 1.5829097032546997,
+      "minimum_z_mm": 0.08297925442457199,
+      "GT_height_mm": 1.430000178515911,
+      "Chamfer_mm": {
+        "N": 12000,
+        "MAE": 0.3238800492223395,
+        "median": 0.3001709282398224,
+        "p95": 0.6887328207492827,
+        "maximum": 1.0548566579818726
+      },
+      "not_same_condition_ablation": true,
+      "not_used_as_current_B_E_control": true
+    },
+    {
+      "historical_arm": "B",
+      "source": {
+        "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/local_results/virtual/B/FINAL.npz",
+        "bytes": 202710,
+        "sha256": "d2e7d6c10bb3f6629d22b3f1c7856ffe545b681ed646e51239fe36540e2bfeff"
+      },
+      "maximum_height_from_GT_base_mm": 1.887956472217529,
+      "minimum_z_mm": -0.05615255039981093,
+      "GT_height_mm": 1.430000178515911,
+      "Chamfer_mm": {
+        "N": 12000,
+        "MAE": 0.2982827975708827,
+        "median": 0.3138451427221298,
+        "p95": 0.5488575071096418,
+        "maximum": 1.047397255897522
+      },
+      "not_same_condition_ablation": true,
+      "not_used_as_current_B_E_control": true
+    },
+    {
+      "historical_arm": "C",
+      "source": {
+        "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/local_results/virtual/C/FINAL.npz",
+        "bytes": 204291,
+        "sha256": "fdaf93172c0a35a084674dac06005c7ff54dd751186b63d5bfb394e0b240005d"
+      },
+      "maximum_height_from_GT_base_mm": 1.7047024686927488,
+      "minimum_z_mm": -0.9611602107887575,
+      "GT_height_mm": 1.430000178515911,
+      "Chamfer_mm": {
+        "N": 12000,
+        "MAE": 0.3532805889994291,
+        "median": 0.30369772017002106,
+        "p95": 0.8654225140810012,
+        "maximum": 0.9607163071632385
+      },
+      "not_same_condition_ablation": true,
+      "not_used_as_current_B_E_control": true
+    },
+    {
+      "historical_arm": "D",
+      "source": {
+        "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/local_results/virtual/D/FINAL.npz",
+        "bytes": 204548,
+        "sha256": "b288eae132bcc79ab583e0e96388e35c1291710afd8bd5efb81012434478f3dd"
+      },
+      "maximum_height_from_GT_base_mm": 1.6173528154487302,
+      "minimum_z_mm": -1.0108315030937502,
+      "GT_height_mm": 1.430000178515911,
+      "Chamfer_mm": {
+        "N": 12000,
+        "MAE": 0.3122381954896215,
+        "median": 0.1983514502644539,
+        "p95": 0.9104469656944272,
+        "maximum": 1.0105825662612915
+      },
+      "not_same_condition_ablation": true,
+      "not_used_as_current_B_E_control": true
+    }
+  ],
+  "interpretation": "prior GLOBAL6+local differs from this LOCAL-only D2; visually higher bulge is not evidence of better full 3D geometry",
+  "no_selection": true
+}
