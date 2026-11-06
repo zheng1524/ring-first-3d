@@ -1,0 +1,654 @@
+{
+  "engineering_delivery_passed": false,
+  "scientific_improvement_not_implied": true,
+  "checks": [
+    {
+      "test": "HISTORY_PROTECTION.json",
+      "passed": true,
+      "N": 1183,
+      "mismatches": []
+    },
+    {
+      "test": "PREOPT_FREEZE.json",
+      "passed": true,
+      "N": 239,
+      "mismatches": []
+    },
+    {
+      "test": "PREDICTIONS_FROZEN.json",
+      "passed": true,
+      "N": 326,
+      "mismatches": []
+    },
+    {
+      "test": "V1_source_archive_mapping",
+      "passed": true
+    },
+    {
+      "test": "nine_independent_physical_groups",
+      "passed": true
+    },
+    {
+      "test": "three_each_morphology",
+      "passed": true
+    },
+    {
+      "test": "preflight_tests",
+      "passed": true
+    },
+    {
+      "test": "restart_contract",
+      "passed": true
+    },
+    {
+      "test": "35_real_projection_rows",
+      "passed": true
+    },
+    {
+      "test": "seven_caps_rule_derived",
+      "passed": true
+    },
+    {
+      "test": "seven_exact_frozen_Cs",
+      "passed": true
+    },
+    {
+      "test": "G05_G09_are_parametric_caps",
+      "passed": true
+    },
+    {
+      "test": "G05_uncertainty_preserved",
+      "passed": true
+    },
+    {
+      "test": "nine_routes_full_proposal_budget",
+      "passed": true
+    },
+    {
+      "test": "accepted_guard_audit",
+      "passed": true
+    },
+    {
+      "test": "Adam_clock_replay",
+      "passed": true
+    },
+    {
+      "test": "strict_full_objective_cross_process_replay_1e_7",
+      "passed": false,
+      "failed": [
+        {
+          "case": "G02",
+          "difference": 1.648440957069397e-06
+        }
+      ],
+      "threshold_unchanged": 1e-07
+    },
+    {
+      "test": "G01_directed009plane_retained",
+      "passed": true
+    },
+    {
+      "test": "G01_topology_and_caps_unchanged",
+      "passed": true
+    },
+    {
+      "test": "G01_sourceC_geometry_exact",
+      "passed": true
+    },
+    {
+      "test": "G01_update_counts_honest",
+      "passed": true
+    },
+    {
+      "test": "G01_fixed_objective_tolerance",
+      "passed": true
+    },
+    {
+      "test": "G01_all_checkpoints",
+      "passed": true
+    },
+    {
+      "test": "G01_no_unauthorized_S_or_B_route",
+      "passed": true
+    },
+    {
+      "test": "G01_004_ref08_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G01_004_ref08_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G01_004_ref13_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G01_004_ref13_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G01_004_ref03_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G01_004_ref03_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G01_004_growth_r04_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G01_004_growth_r04_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G01_004_growth_r06_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G01_004_growth_r06_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G01_004_growth_r10_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G01_004_growth_r10_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G01_complete_local_visualization",
+      "passed": true
+    },
+    {
+      "test": "G02_directed009plane_retained",
+      "passed": true
+    },
+    {
+      "test": "G02_topology_and_caps_unchanged",
+      "passed": true
+    },
+    {
+      "test": "G02_strict_cap_halfspace_boundary",
+      "passed": true
+    },
+    {
+      "test": "G02_sourceC_geometry_exact",
+      "passed": true
+    },
+    {
+      "test": "G02_update_counts_honest",
+      "passed": true
+    },
+    {
+      "test": "G02_fixed_objective_tolerance",
+      "passed": true
+    },
+    {
+      "test": "G02_all_checkpoints",
+      "passed": true
+    },
+    {
+      "test": "G02_no_unauthorized_S_or_B_route",
+      "passed": true
+    },
+    {
+      "test": "G02_key04_raw00570_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G02_key04_raw00570_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G02_key01_raw00219_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G02_key02_raw00336_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G02_key06_raw00804_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G02_complete_local_visualization",
+      "passed": true
+    },
+    {
+      "test": "G03_directed009plane_retained",
+      "passed": true
+    },
+    {
+      "test": "G03_topology_and_caps_unchanged",
+      "passed": true
+    },
+    {
+      "test": "G03_sourceC_geometry_exact",
+      "passed": true
+    },
+    {
+      "test": "G03_update_counts_honest",
+      "passed": true
+    },
+    {
+      "test": "G03_fixed_objective_tolerance",
+      "passed": true
+    },
+    {
+      "test": "G03_all_checkpoints",
+      "passed": true
+    },
+    {
+      "test": "G03_no_unauthorized_S_or_B_route",
+      "passed": true
+    },
+    {
+      "test": "G03_key04_raw00554_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G03_key04_raw00554_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G03_key00_raw00100_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G03_key07_raw00896_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G03_key06_raw00782_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G03_complete_local_visualization",
+      "passed": true
+    },
+    {
+      "test": "G07_directed009plane_retained",
+      "passed": true
+    },
+    {
+      "test": "G07_topology_and_caps_unchanged",
+      "passed": true
+    },
+    {
+      "test": "G07_strict_cap_halfspace_boundary",
+      "passed": true
+    },
+    {
+      "test": "G07_sourceC_geometry_exact",
+      "passed": true
+    },
+    {
+      "test": "G07_update_counts_honest",
+      "passed": true
+    },
+    {
+      "test": "G07_fixed_objective_tolerance",
+      "passed": true
+    },
+    {
+      "test": "G07_all_checkpoints",
+      "passed": true
+    },
+    {
+      "test": "G07_no_unauthorized_S_or_B_route",
+      "passed": true
+    },
+    {
+      "test": "G07_004_ref04_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G07_004_ref04_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G07_004_growth_r02_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G07_004_growth_r02_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G07_004_new_r06_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G07_004_new_r06_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G07_complete_local_visualization",
+      "passed": true
+    },
+    {
+      "test": "G04_directed009plane_retained",
+      "passed": true
+    },
+    {
+      "test": "G04_topology_and_caps_unchanged",
+      "passed": true
+    },
+    {
+      "test": "G04_strict_cap_halfspace_boundary",
+      "passed": true
+    },
+    {
+      "test": "G04_sourceC_geometry_exact",
+      "passed": true
+    },
+    {
+      "test": "G04_update_counts_honest",
+      "passed": true
+    },
+    {
+      "test": "G04_fixed_objective_tolerance",
+      "passed": true
+    },
+    {
+      "test": "G04_all_checkpoints",
+      "passed": true
+    },
+    {
+      "test": "G04_no_unauthorized_S_or_B_route",
+      "passed": true
+    },
+    {
+      "test": "G04_key04_raw00437_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G04_key04_raw00437_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G04_key07_raw00706_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G04_key05_raw00527_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G04_key06_raw00617_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G04_complete_local_visualization",
+      "passed": true
+    },
+    {
+      "test": "G05_directed009plane_retained",
+      "passed": true
+    },
+    {
+      "test": "G05_topology_and_caps_unchanged",
+      "passed": true
+    },
+    {
+      "test": "G05_strict_cap_halfspace_boundary",
+      "passed": true
+    },
+    {
+      "test": "G05_update_counts_honest",
+      "passed": true
+    },
+    {
+      "test": "G05_fixed_objective_tolerance",
+      "passed": true
+    },
+    {
+      "test": "G05_all_checkpoints",
+      "passed": true
+    },
+    {
+      "test": "G05_no_unauthorized_S_or_B_route",
+      "passed": true
+    },
+    {
+      "test": "G05_key04_raw00542_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G05_key04_raw00542_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G05_key00_raw00097_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G05_key02_raw00320_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G05_key06_raw00764_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G05_complete_local_visualization",
+      "passed": true
+    },
+    {
+      "test": "G06_directed009plane_retained",
+      "passed": true
+    },
+    {
+      "test": "G06_topology_and_caps_unchanged",
+      "passed": true
+    },
+    {
+      "test": "G06_strict_cap_halfspace_boundary",
+      "passed": true
+    },
+    {
+      "test": "G06_sourceC_geometry_exact",
+      "passed": true
+    },
+    {
+      "test": "G06_update_counts_honest",
+      "passed": true
+    },
+    {
+      "test": "G06_fixed_objective_tolerance",
+      "passed": true
+    },
+    {
+      "test": "G06_all_checkpoints",
+      "passed": true
+    },
+    {
+      "test": "G06_no_unauthorized_S_or_B_route",
+      "passed": true
+    },
+    {
+      "test": "G06_004_growth_r01_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G06_004_growth_r01_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G06_004_growth_r03_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G06_004_growth_r03_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G06_004_growth_r06_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G06_004_growth_r06_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G06_complete_local_visualization",
+      "passed": true
+    },
+    {
+      "test": "G08_directed009plane_retained",
+      "passed": true
+    },
+    {
+      "test": "G08_topology_and_caps_unchanged",
+      "passed": true
+    },
+    {
+      "test": "G08_strict_cap_halfspace_boundary",
+      "passed": true
+    },
+    {
+      "test": "G08_sourceC_geometry_exact",
+      "passed": true
+    },
+    {
+      "test": "G08_update_counts_honest",
+      "passed": true
+    },
+    {
+      "test": "G08_fixed_objective_tolerance",
+      "passed": true
+    },
+    {
+      "test": "G08_all_checkpoints",
+      "passed": true
+    },
+    {
+      "test": "G08_no_unauthorized_S_or_B_route",
+      "passed": true
+    },
+    {
+      "test": "G08_005_growth_r01_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G08_005_growth_r01_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G08_005_growth_r02_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G08_005_growth_r02_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G08_005_ref04_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G08_005_ref04_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G08_complete_local_visualization",
+      "passed": true
+    },
+    {
+      "test": "G09_directed009plane_retained",
+      "passed": true
+    },
+    {
+      "test": "G09_topology_and_caps_unchanged",
+      "passed": true
+    },
+    {
+      "test": "G09_strict_cap_halfspace_boundary",
+      "passed": true
+    },
+    {
+      "test": "G09_update_counts_honest",
+      "passed": true
+    },
+    {
+      "test": "G09_fixed_objective_tolerance",
+      "passed": true
+    },
+    {
+      "test": "G09_all_checkpoints",
+      "passed": true
+    },
+    {
+      "test": "G09_no_unauthorized_S_or_B_route",
+      "passed": true
+    },
+    {
+      "test": "G09_key04_raw00587_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G09_key04_raw00587_fixed_HERO_ID_weight_pair_exact010",
+      "passed": true
+    },
+    {
+      "test": "G09_key07_raw00949_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G09_key02_raw00346_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G09_key06_raw00828_raw_RGB_Mask_camera_exact",
+      "passed": true
+    },
+    {
+      "test": "G09_complete_local_visualization",
+      "passed": true
+    },
+    {
+      "test": "independent_geometry_evaluation_complete",
+      "passed": true
+    },
+    {
+      "test": "no_real_GT_accuracy_claim",
+      "passed": true
+    },
+    {
+      "test": "all_code_ast_parse",
+      "passed": true,
+      "N": 35
+    },
+    {
+      "test": "five_core_plus_immutable_original_images_decode",
+      "passed": true
+    },
+    {
+      "test": "separate_cap_process_figures",
+      "passed": true
+    },
+    {
+      "test": "all_local_report_links_exist",
+      "passed": true,
+      "bad": []
+    }
+  ],
+  "Python": "3.12.13",
+  "packages": {
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "torch": "2.7.1+cu128",
+    "pytorch3d": "runtime metadata unregistered",
+    "open3d": "0.19.0",
+    "trimesh": "5.1.1",
+    "python-fcl": "0.7.0.11",
+    "Pillow": "12.3.0"
+  },
+  "mainline_promoted": false,
+  "GT_accuracy": "NOT_EVALUABLE"
+}

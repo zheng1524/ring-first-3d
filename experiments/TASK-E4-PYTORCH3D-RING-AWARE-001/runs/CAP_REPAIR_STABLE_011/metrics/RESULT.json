@@ -1,0 +1,46 @@
+{
+  "task": "TASK-E4-CAP-REPAIR-STABLE-PYTORCH3D-011",
+  "cases": 9,
+  "final_model_N": 9,
+  "outer_proposals": 2700,
+  "accepted_updates": 448,
+  "gradient_restarts": 64,
+  "fit_IoU_improved_N": 7,
+  "holdout_IoU_improved_N": 7,
+  "fixed_depth_cost_reduced_N": 8,
+  "majority_rejected_cases": [
+    "G01",
+    "G02",
+    "G03",
+    "G07",
+    "G04",
+    "G05",
+    "G06",
+    "G08",
+    "G09"
+  ],
+  "depth_coverage_drop_cases": [
+    "G01"
+  ],
+  "final_self_intersection_cases": [],
+  "illegal_cap_underground_cases": [],
+  "zero_CAD_intersection_cases": [
+    "G01",
+    "G02",
+    "G04",
+    "G08",
+    "G09"
+  ],
+  "GT_accuracy": "NOT_EVALUABLE",
+  "historical_measurement_fallback_N": 0,
+  "mainline_promoted": false,
+  "status": "AWAITING_HUMAN_REVIEW",
+  "strict_objective_replay_passed": false,
+  "objective_replay_failures": [
+    {
+      "case": "G02",
+      "difference": 1.648440957069397e-06
+    }
+  ],
+  "full_engineering_acceptance_passed": false
+}

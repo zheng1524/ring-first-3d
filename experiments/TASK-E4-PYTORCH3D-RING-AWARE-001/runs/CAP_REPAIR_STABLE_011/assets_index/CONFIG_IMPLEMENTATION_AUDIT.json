@@ -1,0 +1,75 @@
+{
+  "actual_route": "corrected C only; no P or S",
+  "actual_stages": [
+    {
+      "name": "GLOBAL",
+      "start": 0,
+      "end": 60,
+      "modes": 0
+    },
+    {
+      "name": "LOW",
+      "start": 60,
+      "end": 180,
+      "modes": 16,
+      "requires_prior_accepted": 5
+    },
+    {
+      "name": "DETAIL",
+      "start": 180,
+      "end": 300,
+      "modes": 48,
+      "requires_low_accepted": 10
+    }
+  ],
+  "actual_objective": "RingAware + P0-relative prior + .01 absolute D2 + .01 relative D2, all FIT",
+  "actual_geometry": {
+    "per_step_over_diameter": 0.0125,
+    "per_step_clip_mm": [
+      0.075,
+      0.2
+    ],
+    "hard_emergency_mm": 2.0,
+    "minimum_area_ratio": 0.1,
+    "normal_dot_positive": true,
+    "ring_numeric_epsilon_mm": 1e-05,
+    "initial_and_last_signed_bounds": true,
+    "loss_tolerance": 1e-07,
+    "no_new_collision_for_initially_safe": true,
+    "QP_if_ring_blocked": "one mature SLSQP linearized active-contact direction projection, max64constraints, maxiter50",
+    "max_total_displacement_over_D": 0.25,
+    "D_definition": "maximum extent of retained INITIAL visible surface; no volume truth"
+  },
+  "optimizer": {
+    "name": "Adam accepted-state proposal + PMGR backtracking",
+    "lr": 0.02,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "line_trials": 8,
+    "backtrack": 0.5,
+    "min_lr": 1e-05,
+    "reject_lr_factor": 0.5,
+    "full_step_lr_growth": 1.05,
+    "fallback": "after rejected Adam/contact line searches, use unpreconditioned -lr_max*gradient, same 8 backtracks and geometry guard; accepted gradient restart clears Adam moments and restores lr max, full rejection exact rollback"
+  },
+  "inactive_inherited_fields": {
+    "mode": "GLOBAL6_100_THEN_LOCAL_200",
+    "stop": {
+      "max_gradient_norm": 100.0,
+      "max_candidate_step_mm": 2.0,
+      "volume_ratio_range": [
+        0.1,
+        10.0
+      ],
+      "scope": "numerical/hardware emergency only; CAD contact and poor loss not an early stop"
+    },
+    "reuse_B": []
+  },
+  "reason": "inherited010schema fields are not read by011train; preserve frozen config bytes, authoritative stages/trust and frozen code are identified explicitly",
+  "strictly_no_P0_volume_constraint": true,
+  "finite_gradient_required_but_old_gnorm100_gate_not_used": true,
+  "sphere_experiment_not_run": true,
+  "posthoc_documentation_only": true
+}
