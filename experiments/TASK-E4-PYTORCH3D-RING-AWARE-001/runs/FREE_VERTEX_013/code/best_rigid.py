@@ -2,7 +2,7 @@
 96 fixed proper rotation seeds. One selected pose serves all geometric metrics.
 """
 from common import *
-from evaluate import area_samples,distance,occupied
+from evaluate import area_samples,distance,occupied,pointcast
 from scipy.spatial.transform import Rotation
 from scipy.spatial import ConvexHull
 from scipy.spatial.distance import pdist
@@ -65,6 +65,16 @@ def main():
     T,trials=align(V,F,GV,GF,scales[n]['diameter_true_mm']);save(cache,trials)
    assert np.linalg.det(T[:3,:3])>.999999 and np.allclose(T[:3,:3].T@T[:3,:3],np.eye(3),atol=1e-8);AV=apply(V,T);np.savez_compressed(aligned,V=AV,F=F,F_solid=Fs,inferred_base_faces=z['inferred_base_faces'],T=T);trimesh.Trimesh(AV,Fs,process=False).export(out/(tag+'_mm.ply'));transforms.append(dict(case=n,label=tag,T=T,R=T[:3,:3],t_mm=T[:3,3],det_R=np.linalg.det(T[:3,:3]),scale=1.,best_score=trials['best']['score_mm'],second_score=trials['second']['score_mm'],second_T=trials['second']['T'],score_gap=trials['score_gap_mm'],evaluation=EVAL_LABEL))
    pr=scene(AV,F);gr=scene(GV,GF);P=area_samples(AV,F,8192);G=area_samples(GV,GF,8192);dp=distance(gr,P);dg=distance(pr,G);st=stats(np.r_[dp,dg]);row.update(Chamfer_MAE_mm=st['MAE'],Chamfer_median_mm=st['median'],Chamfer_p95_mm=st['p95'],Chamfer_max_mm=st['maximum'],prediction_to_GT_mm=stats(dp),GT_to_prediction_mm=stats(dg),not_evaluable_reason='',prediction_visible_eligible_faces=len(F),inferred_cap_faces=int(z['inferred_base_faces'].sum()))
+   ev=R/'local_results/native_eval'/n/(tag+'_FACE_EVIDENCE.npz')
+   if ev.exists():
+    evidence=np.load(ev)['face_supported'];fid=pr.compute_closest_points(o3d.core.Tensor(P.astype(np.float32)))['primitive_ids'].numpy().astype(int);support=evidence[np.clip(fid,0,len(evidence)-1)];row.update(observation_supported_proxy_to_GT_mm=stats(dp[support]),unobserved_or_unverified_back_to_GT_mm=stats(dp[~support]),supported_surface_sample_N=int(support.sum()),unverified_surface_sample_N=int((~support).sum()))
+   capfaces=Fs[z['inferred_base_faces']]
+   if len(capfaces):row['inferred_bottom_to_GT_mm']=stats(distance(gr,area_samples(AV,capfaces,1024)))
+   rr=np.load(R/'inputs'/n/'RING.npz');ringrt=scene(rr['V'],rr['F']);GT_ring=(GV-T[:3,3])@T[:3,:3];GT_samples_ring=(G-T[:3,3])@T[:3,:3];g_original=scene(GT_ring,GF);gsupport=np.zeros(len(G),bool)
+   for v in c['views']:
+    if v['role']!='FIT':continue
+    a=np.load(R/'inputs'/n/(v['id']+'.npz'));uv,zz,rz=pointcast(ringrt,GT_samples_ring,a['K'],a['T']);_,_,gz=pointcast(g_original,GT_samples_ring,a['K'],a['T']);inside=(zz>0)&(uv[:,0]>=0)&(uv[:,0]<640)&(uv[:,1]>=0)&(uv[:,1]<360);ix=np.clip(np.rint(uv).astype(int),[0,0],[639,359]);gsupport|=inside&(a['labels'][ix[:,1],ix[:,0]]==1)&(zz<rz)&(abs(zz-gz)<.05)
+   row.update(GT_supported_under_best_pose_to_prediction_mm=stats(dg[gsupport]),GT_unverified_under_best_pose_to_prediction_mm=stats(dg[~gsupport]),GT_best_pose_supported_sample_N=int(gsupport.sum()),surface_evidence='Frozen FIT cameras/Mask/CAD + first-ray visibility; evidence proxy not anatomical truth. No subset used for pose ranking.')
    for tol in [.1,.25,.5,1.]:
     precision=float((dp<=tol).mean());recall=float((dg<=tol).mean());row['surface_precision_'+str(tol)+'mm']=precision;row['surface_recall_'+str(tol)+'mm']=recall;row['surface_Fscore_'+str(tol)+'mm']=2*precision*recall/max(1e-20,precision+recall)
    row['surface_overlap_proxy_0.5mm']=row['surface_Fscore_0.5mm'];row['surface_proxy_definition']='toleranceFscore; NOT solidIoU, works for open/selfintersectingGT';base=src.get('author_base')
