@@ -1,0 +1,165 @@
+{
+  "task": "TASK-E4-PYTORCH3D-013",
+  "run": "FREE_VERTEX_013",
+  "cases": [
+    "G01",
+    "G02",
+    "G03",
+    "G07",
+    "G04",
+    "G05",
+    "G06",
+    "G08",
+    "G09",
+    "G10",
+    "G11"
+  ],
+  "seed": 20261108,
+  "optimizer": {
+    "name": "free-vertex Adam candidate +8 backtracks + exact rollback + steepest restart",
+    "lr": 0.02,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "line_trials": 8,
+    "backtrack": 0.5,
+    "min_lr": 1e-05,
+    "reject_lr_factor": 0.5,
+    "full_step_lr_growth": 1.05,
+    "fallback": "after rejected Adam/contact line searches, use unpreconditioned -lr_max*gradient, same 8 backtracks and geometry guard; accepted gradient restart clears Adam moments and restores lr max, full rejection exact rollback",
+    "contact_QP": "not used: low-dimensional dense QP does not scale to thousands of XYZ coordinates"
+  },
+  "relative_weights": {
+    "edge": 1.0,
+    "laplacian": 1.0,
+    "normal": 0.01,
+    "unsupported": 0.01
+  },
+  "depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap_r": 10.0,
+    "miss_cost": 9.5,
+    "min_ray_face_cosine": 0.001,
+    "CAD_clearance_mm": 0.05
+  },
+  "boundary": {
+    "rule": "w=0.1+0.9*(1-exp(-(d/8)^2)); d=min(distance to Background,distance to Ring) on original RGB label lattice; pixel-center EDT; no resized-mask distances",
+    "scale_px": 8.0,
+    "floor": 0.1
+  },
+  "relative_depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap": 9.5,
+    "interior_weight_min": 0.5,
+    "scales_native_px": [
+      4,
+      16,
+      48
+    ],
+    "max_pairs_per_scale": 128,
+    "path_max_adjacent_jump_mm": 0.5,
+    "min_pixel_separation": 2,
+    "missing_pair_cost": 9.5
+  },
+  "GT": "NO_GT_READ_UNTIL_ALL_PREDICTIONS_AND_RING_SCALE_FROZEN",
+  "multiview_HERO": "diagnostics after prediction freeze only; never optimization, weighting, selection or ranking",
+  "model_selection": "last accepted state at fixed stop; no best checkpoint",
+  "base_strategy": {
+    "directed_source": "009 B blue side exact; weakbasecannotcancelcap"
+  },
+  "trust": {
+    "per_step_over_diameter": 0.0125,
+    "per_step_clip_mm": [
+      0.075,
+      0.2
+    ],
+    "hard_emergency_mm": 2.0,
+    "minimum_area_ratio": 0.1,
+    "normal_dot_positive": true,
+    "ring_numeric_epsilon_mm": 1e-05,
+    "initial_and_last_signed_bounds": true,
+    "loss_tolerance": 1e-07,
+    "no_new_collision_for_initially_safe": true,
+    "max_total_displacement_over_D": 0.25,
+    "D_definition": "maximum extent of retained INITIAL visible surface; no volume truth"
+  },
+  "initial_conditions": "all nine cases; no historicalCameraGateexclusion; collisions recorded and cannot worsen",
+  "max_proposals": 800,
+  "max_accepted": 300,
+  "consecutive_rejection_stop": 80,
+  "accepted_checkpoints": [
+    0,
+    1,
+    10,
+    25,
+    50,
+    100,
+    200,
+    300
+  ],
+  "attempt_checkpoints": [
+    50,
+    100,
+    200,
+    400,
+    600,
+    800
+  ],
+  "initialization": "exact011FINAL only",
+  "parameterization": "per-vertex world-mm XYZ; cap rim tangent to inherited plane, inferred cap center follows rim mean",
+  "pilot_cases": [
+    "G03",
+    "G01",
+    "G02",
+    "G10"
+  ],
+  "loss_arm": "A0",
+  "optimizer_arm": "O0",
+  "total_trust_D": 0.25,
+  "pilot_budget": {
+    "max_proposals": 120,
+    "max_accepted": 60,
+    "consecutive_rejection_stop": 40
+  },
+  "loss_weights": {
+    "foreground": 0.05,
+    "background": 0.05,
+    "distance": 0.01,
+    "distance_scale_native_px": 20.0,
+    "ramp_attempts": 40
+  },
+  "selection": {
+    "use": "FIT_ONLY",
+    "score": "equal-case gain of 0.5 recall_far_missing +0.5 recall -0.5 FP_per_Mask -0.02 boundary_MAE_px -0.02 raw_fixed_depth_cost",
+    "far_native_px": 10,
+    "choose": "largest mean paired gain; tie within1e-5 prefer fewer terms; geometry never relaxed; no per-case winner",
+    "minimum_general_evidence": "positive gain in >=3/4 pilot cases, no case loss of recall>0.05 or raw depth cost increase>0.5; otherwise label mixed exploratory",
+    "combined": "best eligible loss and optimizer then one fixed verification; if no eligible optimizer use O0; no repeated grid"
+  },
+  "optimizers": {
+    "O0": "012 exactly",
+    "O1": "same directions/physics; lr floor .002 restart recovery and adaptive step trust floor tau/16 ceilingtau",
+    "O2": "sameO0; first40proposals project directions to shared sixparameter translation/axis-scale chart, then free vertices",
+    "O3": "sameO0; after full directions fail, deterministic top4 radius2edge local gradient patches, same full objective/physics",
+    "O4": "sameO0 except total trust1.0D"
+  },
+  "alignment": {
+    "initial_rotations": 96,
+    "coarse_samples": 2048,
+    "refine_candidates": 8,
+    "refine_samples": 8192,
+    "symmetric_ICP_iterations": 50,
+    "rank": "bidirectional MAE",
+    "scale": false,
+    "GT_access": "AFTER_ALL_FINAL_PREDICTIONS_AND_RING_FREEZE",
+    "Fscore_mm": [
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ]
+  }
+}
