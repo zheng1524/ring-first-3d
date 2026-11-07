@@ -6,7 +6,10 @@ import matplotlib.pyplot as plt
 import open3d as o3d
 SRC=REPO/'experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/code/figures.py'
 for node in ast.parse(SRC.read_text()).body:
- if isinstance(node,ast.FunctionDef)and node.name in ['actual_mesh_image','edge']:exec(compile(ast.get_source_segment(SRC.read_text(),node),str(SRC)+':reuse','exec'),globals())
+ if isinstance(node,ast.FunctionDef)and node.name in ['actual_mesh_image','edge']:
+  source=ast.get_source_segment(SRC.read_text(),node)
+  if node.name=='actual_mesh_image':source=source.replace('azim,color):','azim,color,face_colors=None):').replace('rgb[sel]=np.array(col)*shade[:,None]', 'rgb[sel]=np.array(col)*shade[:,None]\n        if idx==0 and face_colors is not None:rgb[sel]=np.asarray(face_colors)[fid[sel]]*shade[:,None]')
+  exec(compile(source,str(SRC)+':reuse','exec'),globals())
 
 def review_view(n):
  return next(x['view']for x in load(R/'config/REVIEW_VIEWS_FROM_INITIAL.json')if x['case']==n)
@@ -22,7 +25,7 @@ def zmodel(n,tag):
  return dict(np.load(R/'local_results'/n/(tag+'.npz')))
 def bound(n):return np.r_[*[zmodel(n,t)['V']for t in ['011','012','013']],np.load(R/'inputs'/n/'RING.npz')['V']]
 def panel(ax,n,tag,angle=(25,-65)):
- z=zmodel(n,tag);r=np.load(R/'inputs'/n/'RING.npz');im,sc=actual_mesh_image(z['V'],z.get('F_solid',z['F']),r['V'],r['F'],bound(n),*angle,COL.get(tag,'#a652af'));ax.imshow(im);ax.plot([20,20+2*sc],[375,375],c='black');ax.text(20,365,'2 mm at viewer center',fontsize=5);ax.axis('off');ax.set_title(n+' '+tag,fontsize=8)
+ z=zmodel(n,tag);r=np.load(R/'inputs'/n/'RING.npz');F=z.get('F_solid',z['F']);colors=np.tile(matplotlib.colors.to_rgb(COL.get(tag,'#a652af')),(len(F),1));colors[z.get('inferred_base_faces',np.zeros(len(F),bool))]=[.65,.65,.65];im,sc=actual_mesh_image(z['V'],F,r['V'],r['F'],bound(n),*angle,COL.get(tag,'#a652af'),colors);ax.imshow(im);ax.plot([20,20+2*sc],[375,375],c='black');ax.text(20,365,'2 mm at viewer center',fontsize=5);ax.axis('off');ax.set_title(n+' '+tag,fontsize=8)
 def rgb(ax,n,cid,tags=['011','012','013']):
  a=np.load(R/'inputs'/n/(cid+'.npz'));r=np.load(R/'inputs'/n/'RING.npz');cad=cast(scene(r['V'],r['F']),a['K'],a['T'],360,640);ax.imshow(a['RGB']);edge(ax,a['labels']==1,'lime');edge(ax,a['labels']==2,'cyan')
  for tag in tags:
@@ -34,7 +37,7 @@ def overview():
   n=c['name'];cid=review_view(n);rgb(ax[i,0],n,cid)
   for j,t in enumerate(['011','012','013'],1):panel(ax[i,j],n,t)
   panel(ax[i,4],n,'013',(0,-65))
- fig.suptitle('Eleven independent real physical groups | frozen 011 / 012 / 013 actual meshes\nSame per-case mm scale and viewer; no smoothing, trimming or inferred intermediate geometry. Black fixed CAD. New G10/G11: recipe-equivalent 011, new012 replication.');finish(fig,'Fig1_Eleven_Actual_Meshes.png')
+ fig.suptitle('Eleven independent real physical groups | frozen 011 / 012 / 013 actual meshes\nSame per-case mm scale and viewer; no smoothing, trimming or inferred intermediate geometry. Black fixed CAD; gray inferred base, never observed tissue. New G10/G11: recipe-equivalent 011, new012 replication.');finish(fig,'Fig1_Eleven_Actual_Meshes.png')
 def ip_review():
  fig,ax=plt.subplots(5,5,figsize=(22,19))
  for i,n in enumerate(['G01','G02','G03','G10','G11']):

@@ -42,3 +42,12 @@ $PY -B "$R/code/report013.py"
 ```
 
 详细路径和输出见`RESULT_INDEX.md`。NPZ/PLY的世界坐标单位mm；GLB如导出会换算为标准m并明确记录，不改变科学坐标。没有额外平滑、删除、补洞或GT驱动后处理。
+
+追加预注册`02_OPTIMIZER_SCALE_AMENDMENT.md`之后，实际串行驱动改为：
+
+```bash
+$PY -B "$R/code/driver_amended.py"
+$PY -B "$R/code/freeze_scale013.py"
+```
+
+旧驱动只在其已运行子任务保存FINAL后停止，记录`runtime/DRIVER_REPLACEMENT.json`，既有运行跳过，不覆盖重跑。O3N使用`train_normalized.py`，其他臂仍用冻结的原013训练脚本；原012完整重现仍使用`train012_exact.py`。最初协议/源码hash和追加修正的hash分别保留。

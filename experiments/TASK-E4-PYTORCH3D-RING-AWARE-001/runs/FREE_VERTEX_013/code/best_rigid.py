@@ -51,9 +51,12 @@ def align(V,F,GV,GF,D):
 def feret(V,n):
  n=np.asarray(n,float);n/=np.linalg.norm(n);a=np.eye(3)[np.argmin(abs(n))];u=np.cross(n,a);u/=np.linalg.norm(u);v=np.cross(n,u);P=np.c_[V@u,V@v];h=P[ConvexHull(P).vertices];return float(np.sqrt(pdist(h,'sqeuclidean').max()))
 def main():
+ import argparse
+ ap=argparse.ArgumentParser();ap.add_argument('--case');args=ap.parse_args();prefix='metrics/eval_case/'+args.case+'_'if args.case else 'metrics/'
  for a in load(R/'assets_index/SCALE_LOCK_BEFORE_GT.json')['files']:assert sha(a['path'])==a['sha256']
  sources={x['case']:x for x in load(R/'evaluation_only/GT_SOURCE_LOCK.json')};scales={x['case']:x for x in load(R/'metrics/RING_SCALE_VALIDATION.json')};native={(x['case'],x['label']):x for x in load(R/'metrics/NATIVE_SUMMARY.json')};rows=[];transforms=[];validity={x['case']:x for x in load(R/'metrics/GT_VALIDITY.json')}
  for c in load(R/'config/CASE_LOCK.json'):
+  if args.case and c['name']!=args.case:continue
   n=c['name'];src=sources[n];gtpath=R/'evaluation_only'/n/'ORIGINAL_BLENDER_GT_MM.npz'
   for tag in ['FINAL011','FINAL012','FINAL013']:
    row=dict(case=n,type=c['morphology'],label=tag,target_groups=11,evaluation=EVAL_LABEL,GT_used_for_training=False,scale_changed_by_registration=False,IoU_3D=None,IoU_3D_status='NOT_EVALUABLE',Dxy_AE_mm=None,Dxy_relative_error=None,Chamfer_MAE_mm=None,height_max_AE_mm=None,H95_AE_mm=None,GT_source_status=src['status']);nn=native.get((n,tag),{});row.update(FIT_2D_IoU_original_cameras=nn.get('FIT_IoU'),HOLDOUT_2D_IoU_original_cameras=nn.get('HOLDOUT_IoU'))
@@ -86,6 +89,6 @@ def main():
     if not z['inferred_base_faces'].any()and src.get('GT_bottom_reliable',False):row.update(IoU_3D=iou,IoU_3D_status='VALID_SOLID_SAMPLED_ESTIMATE')
     else:row['IoU_3D_status']='NOT_EVALUABLE_STRICT_INFERRED_OR_UNCERTAIN_BASE'
    else:row['IoU_3D_status']='NOT_EVALUABLE_ENTITY_VALIDITY'
-   rows.append(row);save('metrics/BLENDER_GEOMETRIC_METRICS_PARTIAL.json',rows);print('BEST_RIGID',n,tag,'chamfer',row['Chamfer_MAE_mm'],'Dxy',row['Dxy_AE_mm'],flush=True)
- save('metrics/BLENDER_GEOMETRIC_METRICS.json',rows);table('metrics/BLENDER_GEOMETRIC_METRICS.csv',rows);save('metrics/BLENDER_RIGID_ALIGNMENT.json',transforms);table('metrics/BLENDER_RIGID_ALIGNMENT.csv',transforms)
+   rows.append(row);save(prefix+'BLENDER_GEOMETRIC_METRICS_PARTIAL.json',rows);print('BEST_RIGID',n,tag,'chamfer',row['Chamfer_MAE_mm'],'Dxy',row['Dxy_AE_mm'],flush=True)
+ save(prefix+'BLENDER_GEOMETRIC_METRICS.json',rows);table(prefix+'BLENDER_GEOMETRIC_METRICS.csv',rows);save(prefix+'BLENDER_RIGID_ALIGNMENT.json',transforms);table(prefix+'BLENDER_RIGID_ALIGNMENT.csv',transforms)
 if __name__=='__main__':main()

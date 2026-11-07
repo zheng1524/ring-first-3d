@@ -1,0 +1,86 @@
+{
+  "loss": "A3",
+  "optimizer": "O3N",
+  "total_trust_D": 1.0,
+  "combination": "AMENDED_A3_O3N_1D",
+  "combo_check": [
+    {
+      "arm": "BASELINE",
+      "mean_gain": 0.0,
+      "positive_cases": 0,
+      "recall_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "depth_cost_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_score_gains": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "eligible": true,
+      "general_evidence": false
+    },
+    {
+      "arm": "COMBINED_VERIFY",
+      "mean_gain": -7.394324235729388e-05,
+      "positive_cases": 0,
+      "recall_change": [
+        0.0,
+        0.0,
+        0.0013132468086162197,
+        0.0
+      ],
+      "depth_cost_change": [
+        2.328554789232662e-05,
+        -3.5266081491180934e-07,
+        -0.00010286768277486136,
+        -4.423782229423523e-09
+      ],
+      "paired_score_gains": [
+        -4.657109578531937e-07,
+        7.053216344310442e-09,
+        -0.00029531440016328236,
+        8.847561572267182e-11
+      ],
+      "eligible": true,
+      "general_evidence": false
+    },
+    {
+      "arm": "AMENDED_A3_O3N_1D",
+      "mean_gain": 0.0674654465283443,
+      "positive_cases": 3,
+      "recall_change": [
+        0.056444835960753226,
+        0.0022784340487344013,
+        0.04481267557991209,
+        0.010112888456743852
+      ],
+      "depth_cost_change": [
+        -0.012453635533650642,
+        0.019291857878367097,
+        0.00899457496901353,
+        0.00044189649634063244
+      ],
+      "paired_score_gains": [
+        0.3013792255035601,
+        0.013057379694295546,
+        -0.059019664991828535,
+        0.014444845907350068
+      ],
+      "eligible": true,
+      "general_evidence": true
+    }
+  ],
+  "GT_read": false,
+  "selection_scope": "predeclared FIT only plus one explicit preGT dimension amendment; general evidence separate",
+  "epoch": 1794084420.7362435
+}
