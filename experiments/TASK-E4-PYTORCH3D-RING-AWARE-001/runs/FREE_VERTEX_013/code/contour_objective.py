@@ -11,9 +11,9 @@ class ContourDistance:
  def __init__(self,c):
   self.c=c;F=c.F;edges=np.sort(np.concatenate([F[:,[0,1]],F[:,[1,2]],F[:,[2,0]]]),axis=1);faces=np.tile(np.arange(len(F)),3);u,inv=np.unique(edges,axis=0,return_inverse=True);adj=np.full((len(u),2),-1,int)
   for i,k in enumerate(inv):adj[k,0 if adj[k,0]<0 else 1]=faces[i]
-  self.edges=u;self.adj=adj;self.data={}
+  self.edges=u;self.adj=adj;self.data={};self.last={}
   for cid in c.fit:
-   d=c.views[cid];target=d['labels']==1;ct=contour(target);cm=np.ones(target.shape,bool);xy=np.rint(ct).astype(int);cm[xy[:,1],xy[:,0]]=False;dt=distance_transform_edt(cm);ids=np.linspace(0,len(ct)-1,min(256,len(ct))).astype(int);self.data[cid]=(tensor(dt[None,None]),tensor(ct[ids],torch.float64))
+   d=c.views[cid];target=d['labels']==1;ct=contour(target);cm=np.ones(target.shape,bool);xy=np.rint(ct).astype(int);cm[xy[:,1],xy[:,0]]=False;dt=distance_transform_edt(cm);ids=np.linspace(0,len(ct)-1,min(256,len(ct))).astype(int);self.data[cid]=(tensor(dt[None,None],torch.float64),tensor(ct[ids],torch.float64))
  def __call__(self,V,cid):
   c=self.c;d=c.views[cid];T=d['T'];W=V.detach().cpu().numpy();tri=W[c.F];n=np.cross(tri[:,1]-tri[:,0],tri[:,2]-tri[:,0]);front=(n*(T[:3,3]-tri.mean(1))).sum(1)>0;ad=self.adj;take=(ad[:,1]<0)|(front[ad[:,0]]!=front[np.maximum(ad[:,1],0)]);ed=self.edges[take]
   if not len(ed):return V.sum()*0,dict(contour_samples=0)
@@ -27,7 +27,8 @@ class ContourDistance:
   small=np.clip(np.rint((un+.5)*.5-.5).astype(int),[0,0],[319,179]);classes=d['classes'].detach().cpu().numpy()[small[:,1],small[:,0]];native=np.clip(np.rint(un).astype(int),[0,0],[w-1,h-1]);ok&=~(np.isin(classes,[1,2,4])&(d['labels'][native[:,1],native[:,0]]!=1))
   ids=np.flatnonzero(ok);ids=ids[np.linspace(0,len(ids)-1,min(512,len(ids))).astype(int)]if len(ids)else ids
   if not len(ids):return V.sum()*0,dict(contour_samples=0)
-  uv=uv[tensor(ids,torch.int64)];dt,ct=self.data[cid];grid=torch.stack([2*uv[:,0]/(w-1)-1,2*uv[:,1]/(h-1)-1],1).float()[None,None];forward=tf.grid_sample(dt.float(),grid,align_corners=True,padding_mode='border').reshape(-1).double();nn=cKDTree(uv.detach().cpu().numpy()).query(ct.cpu().numpy())[1];reverse=(ct-uv[tensor(nn,torch.int64)]).norm(dim=1)
+  uv=uv[tensor(ids,torch.int64)];dt,ct=self.data[cid];grid=torch.stack([2*uv[:,0]/(w-1)-1,2*uv[:,1]/(h-1)-1],1)[None,None];forward=tf.grid_sample(dt,grid,align_corners=True,padding_mode='border').reshape(-1).double();nn=cKDTree(uv.detach().cpu().numpy()).query(ct.cpu().numpy())[1];reverse=(ct-uv[tensor(nn,torch.int64)]).norm(dim=1)
+  self.last[cid]=dict(eid=eid[ids],t=tt[ids],nn=nn)
   def hub(x):x=x/20.;return torch.where(x<1,.5*x*x,x-.5)
   loss=.5*(hub(forward).mean()+hub(reverse).mean());return loss,dict(contour_samples=len(ids),forward_native_px=float(forward.mean().detach()),reverse_native_px=float(reverse.mean().detach()))
 

@@ -55,5 +55,5 @@ def guard_optimizer():
         p=Path(os.fsdecode(args[0])).resolve(); mode=args[1] if isinstance(args[1],str) else ''; flags=args[2] if isinstance(args[2],int) else 0
         writing=any(x in mode for x in 'wax+') or flags&(os.O_WRONLY|os.O_RDWR|os.O_CREAT|os.O_TRUNC)
         if writing and str(p).startswith('/home/liu/') and not p.is_relative_to(R): raise PermissionError('TASK_LOCAL_WRITES_ONLY:'+str(p))
-        if not writing and ('/audit_only/' in str(p) or p.suffix=='.blend' or 'NATIVE_CAD_GT' in p.name): raise PermissionError('NO_PROJECT_GT_IN_OPTIMIZATION:'+str(p))
+        if not writing and ('/audit_only/' in str(p) or '/evaluation_only/' in str(p) or p.suffix=='.blend' or 'NATIVE_CAD_GT' in p.name or 'BLENDER_GEOMETRIC_METRICS' in p.name): raise PermissionError('NO_PROJECT_GT_IN_OPTIMIZATION:'+str(p))
     sys.addaudithook(guard)

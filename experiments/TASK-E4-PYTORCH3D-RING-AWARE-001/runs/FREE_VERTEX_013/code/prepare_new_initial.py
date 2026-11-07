@@ -41,7 +41,7 @@ def publish_final():
   if n not in ['G10','G11']:continue
   shutil.copytree(f/'inputs'/n,MASTER/'inputs'/n,dirs_exist_ok=True);a=dict(np.load(f/'local_results'/n/'FINAL.npz'));np.savez_compressed(MASTER/'inputs'/n/'INITIAL.npz',**a);shutil.copyfile(f/'inputs'/n/'INITIAL.npz',MASTER/'inputs'/n/'C_011.npz');c['initialization']='new independent 009+011 recipe-equivalent FINAL, not historic011';save(MASTER/'inputs'/n/'CASE.json',c)
   for p in (f/'depth_observations').glob(n+'*.npz'):shutil.copyfile(p,MASTER/'depth_observations'/p.name)
- save(MASTER/'config/CASE_LOCK.json',meta);print('NEW_FINAL_INITIALIZATIONS_PUBLISHED')
+ save(MASTER/'assets_index/CASE_INITIALIZATION_RECEIPT.json',meta);print('NEW_FINAL_INITIALIZATIONS_PUBLISHED')
 if __name__=='__main__':
  import sys
  publish_final()if '--publish-final'in sys.argv else main()
