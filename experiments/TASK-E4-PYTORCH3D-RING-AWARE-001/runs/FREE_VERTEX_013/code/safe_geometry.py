@@ -14,7 +14,7 @@ class GeometryGuard:
   why=[];move=float(np.linalg.norm(V-old,axis=1).max());tri=V[self.F];cross=np.cross(tri[:,1]-tri[:,0],tri[:,2]-tri[:,0]);area=np.linalg.norm(cross,axis=1);ratio=area/np.maximum(self.area0,1e-20);dot=np.einsum('ij,ij->i',cross,self.cross0);info=dict(max_step_mm=move,min_area_ratio=float(ratio.min()),minimum_normal_dot=float(dot.min()),Ring_surface_collision=None,Ring_min_signed_mm=None,self_intersections=None,coplanar_warnings=None)
   if not np.isfinite(V).all():why.append('NONFINITE')
   if move>self.chart.tau+1e-8:why.append('STEP_TRUST')
-  if np.linalg.norm(V-self.V0,axis=1).max()>.25*self.chart.D+1e-8:why.append('TOTAL_TRUST')
+  if np.linalg.norm(V-self.V0,axis=1).max()>float(getattr(self.chart,'total_trust_D',.25))*self.chart.D+1e-8:why.append('TOTAL_TRUST')
   if ratio.min()<.1:why.append('AREA_DEGENERACY')
   if(dot<=0).any():why.append('FACE_ORIENTATION')
   if self.chart.cap:
