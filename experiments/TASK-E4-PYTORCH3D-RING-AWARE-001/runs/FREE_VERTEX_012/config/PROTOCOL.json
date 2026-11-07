@@ -1,0 +1,111 @@
+{
+  "task": "TASK-E4-FREE-VERTEX-PYTORCH3D-012",
+  "run": "FREE_VERTEX_012",
+  "cases": [
+    "G01",
+    "G02",
+    "G03",
+    "G07",
+    "G04",
+    "G05",
+    "G06",
+    "G08",
+    "G09"
+  ],
+  "seed": 20261108,
+  "optimizer": {
+    "name": "free-vertex Adam candidate +8 backtracks + exact rollback + steepest restart",
+    "lr": 0.02,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "line_trials": 8,
+    "backtrack": 0.5,
+    "min_lr": 1e-05,
+    "reject_lr_factor": 0.5,
+    "full_step_lr_growth": 1.05,
+    "fallback": "after rejected Adam/contact line searches, use unpreconditioned -lr_max*gradient, same 8 backtracks and geometry guard; accepted gradient restart clears Adam moments and restores lr max, full rejection exact rollback",
+    "contact_QP": "not used: low-dimensional dense QP does not scale to thousands of XYZ coordinates"
+  },
+  "relative_weights": {
+    "edge": 1.0,
+    "laplacian": 1.0,
+    "normal": 0.01,
+    "unsupported": 0.01
+  },
+  "depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap_r": 10.0,
+    "miss_cost": 9.5,
+    "min_ray_face_cosine": 0.001,
+    "CAD_clearance_mm": 0.05
+  },
+  "boundary": {
+    "rule": "w=0.1+0.9*(1-exp(-(d/8)^2)); d=min(distance to Background,distance to Ring) on original RGB label lattice; pixel-center EDT; no resized-mask distances",
+    "scale_px": 8.0,
+    "floor": 0.1
+  },
+  "relative_depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap": 9.5,
+    "interior_weight_min": 0.5,
+    "scales_native_px": [
+      4,
+      16,
+      48
+    ],
+    "max_pairs_per_scale": 128,
+    "path_max_adjacent_jump_mm": 0.5,
+    "min_pixel_separation": 2,
+    "missing_pair_cost": 9.5
+  },
+  "GT": "NO_GT_READ_UNTIL_ALL_PREDICTIONS_AND_RING_SCALE_FROZEN",
+  "multiview_HERO": "diagnostics after prediction freeze only; never optimization, weighting, selection or ranking",
+  "model_selection": "last accepted state at fixed stop; no best checkpoint",
+  "base_strategy": {
+    "directed_source": "009 B blue side exact; weakbasecannotcancelcap"
+  },
+  "trust": {
+    "per_step_over_diameter": 0.0125,
+    "per_step_clip_mm": [
+      0.075,
+      0.2
+    ],
+    "hard_emergency_mm": 2.0,
+    "minimum_area_ratio": 0.1,
+    "normal_dot_positive": true,
+    "ring_numeric_epsilon_mm": 1e-05,
+    "initial_and_last_signed_bounds": true,
+    "loss_tolerance": 1e-07,
+    "no_new_collision_for_initially_safe": true,
+    "max_total_displacement_over_D": 0.25,
+    "D_definition": "maximum extent of retained INITIAL visible surface; no volume truth"
+  },
+  "initial_conditions": "all nine cases; no historicalCameraGateexclusion; collisions recorded and cannot worsen",
+  "max_proposals": 800,
+  "max_accepted": 300,
+  "consecutive_rejection_stop": 80,
+  "accepted_checkpoints": [
+    0,
+    1,
+    10,
+    25,
+    50,
+    100,
+    200,
+    300
+  ],
+  "attempt_checkpoints": [
+    50,
+    100,
+    200,
+    400,
+    600,
+    800
+  ],
+  "initialization": "exact011FINAL only",
+  "parameterization": "per-vertex world-mm XYZ; cap rim tangent to inherited plane, inferred cap center follows rim mean"
+}
