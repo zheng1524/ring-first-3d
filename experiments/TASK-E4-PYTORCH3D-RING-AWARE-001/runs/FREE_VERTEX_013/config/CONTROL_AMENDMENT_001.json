@@ -1,0 +1,27 @@
+{
+  "reason": "Dimensionally tiny unpreconditioned local fallback underuses existing physical trust despite accepted updates; one bounded engineering verification, not search",
+  "GT_read": false,
+  "epoch": 1794083731.5762591,
+  "pilot_cases": [
+    "G03",
+    "G01",
+    "G02",
+    "G10"
+  ],
+  "new_control": "O3N",
+  "loss": "A0",
+  "local_direction": "same top4 two-edge-hop gradient patches, scale each nonzero projected world displacement to existing tau before same8backtracks; no new tau parameter",
+  "budget": {
+    "max_proposals": 120,
+    "max_accepted": 60,
+    "consecutive_rejection_stop": 40
+  },
+  "one_extra_combination": {
+    "loss": "A3",
+    "optimizer": "O3N",
+    "total_trust_D": 1.0,
+    "reason": "input-only surface-to-missing-ray lower bound exceeds original0.25D, max7.192mm vs4.778mm; 1D already specified in independentO4"
+  },
+  "final_selection": "reuse original FIT-only score and safety/coverage eligibility; compare original combined verification with one fixed A3/O3N/1D verification; no per-case winner; no heldout/GT",
+  "no_further_tuning": true
+}
