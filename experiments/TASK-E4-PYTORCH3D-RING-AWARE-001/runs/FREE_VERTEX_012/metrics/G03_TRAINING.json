@@ -1,0 +1,5098 @@
+[
+  {
+    "case": "G03",
+    "attempt": 1,
+    "accepted": true,
+    "accepted_total": 1,
+    "consecutive_rejections": 0,
+    "accepted_method": "ADAM",
+    "alpha": 0.0078125,
+    "loss": 0.02501543238759041,
+    "gradient_norm": 0.0016142064243861757,
+    "actual_step_mm": 0.00027061844952314747,
+    "max_total_displacement_mm": 0.00027061844952314747,
+    "lr": 0.02,
+    "rejection_reasons": [
+      "RING_WORSENING"
+    ],
+    "parts": {
+      "silhouette": 0.01640881970524788,
+      "absolute": 0.5401870608329773,
+      "relative": 0.31656745076179504,
+      "prior": 3.90683017030824e-05,
+      "total": 0.02501543238759041,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.620561169096396,
+          "relative_loss": 0.9497023373862284,
+          "raw_fixed_denominator_cost": 1.7044392069892398,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933891631396624
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 0.00027061844952314747,
+      "min_area_ratio": 0.9994926620196061,
+      "minimum_normal_dot": 2.4505860021821224,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 4.184199497103691e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09703046828508377,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 2,
+    "accepted": true,
+    "accepted_total": 2,
+    "consecutive_rejections": 0,
+    "accepted_method": "STEEPEST_RESTART",
+    "alpha": 1.0,
+    "loss": 0.025015385821461678,
+    "gradient_norm": 0.0016132192373992044,
+    "actual_step_mm": 6.910726453207576e-06,
+    "max_total_displacement_mm": 0.0002771822889729154,
+    "lr": 0.02,
+    "rejection_reasons": [
+      "RING_WORSENING"
+    ],
+    "parts": {
+      "silhouette": 0.01640878990292549,
+      "absolute": 0.5401858687400818,
+      "relative": 0.31656673550605774,
+      "prior": 3.9068268961273134e-05,
+      "total": 0.025015385821461678,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6205576542367728,
+          "relative_loss": 0.949700223334566,
+          "raw_fixed_denominator_cost": 1.704435573951774,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933868185523532
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 6.910726453207576e-06,
+      "min_area_ratio": 0.9994926570873316,
+      "minimum_normal_dot": 2.4505859947164037,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 4.091019945917651e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09702948480844498,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 3,
+    "accepted": true,
+    "accepted_total": 3,
+    "consecutive_rejections": 0,
+    "accepted_method": "STEEPEST_RESTART",
+    "alpha": 0.5,
+    "loss": 0.02501535788178444,
+    "gradient_norm": 0.0016132074493484846,
+    "actual_step_mm": 3.455462320359224e-06,
+    "max_total_displacement_mm": 0.0002804648757098345,
+    "lr": 0.02,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408771276474,
+      "absolute": 0.5401853322982788,
+      "relative": 0.3165663778781891,
+      "prior": 3.9068243495421484e-05,
+      "total": 0.02501535788178444,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.620555924073702,
+          "relative_loss": 0.9496991264579675,
+          "raw_fixed_denominator_cost": 1.7044337821552706,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933856812422326
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 3.455462320359224e-06,
+      "min_area_ratio": 0.9994926546211953,
+      "minimum_normal_dot": 2.4505859909825727,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 4.04610182158649e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09702883660793304,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 4,
+    "accepted": true,
+    "accepted_total": 4,
+    "consecutive_rejections": 0,
+    "accepted_method": "STEEPEST_RESTART",
+    "alpha": 0.125,
+    "loss": 0.025015350431203842,
+    "gradient_norm": 0.0016132010266278248,
+    "actual_step_mm": 8.638780022989823e-07,
+    "max_total_displacement_mm": 0.0002812855837615385,
+    "lr": 0.02,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.0164087675511837,
+      "absolute": 0.5401851534843445,
+      "relative": 0.3165662884712219,
+      "prior": 3.906826168531552e-05,
+      "total": 0.025015350431203842,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.620555438419362,
+          "relative_loss": 0.9496988335635194,
+          "raw_fixed_denominator_cost": 1.704433291363653,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933853514956676
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 8.638780022989823e-07,
+      "min_area_ratio": 0.9994926540046618,
+      "minimum_normal_dot": 2.4505859900491154,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 4.0315702790394425e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.0970286875963211,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 5,
+    "accepted": true,
+    "accepted_total": 5,
+    "consecutive_rejections": 0,
+    "accepted_method": "STEEPEST_RESTART",
+    "alpha": 0.03125,
+    "loss": 0.025015350431203842,
+    "gradient_norm": 0.0016131990154265028,
+    "actual_step_mm": 2.1597016309126606e-07,
+    "max_total_displacement_mm": 0.0002814907638012489,
+    "lr": 0.02,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.0164087675511837,
+      "absolute": 0.5401850938796997,
+      "relative": 0.31656625866889954,
+      "prior": 3.906826168531552e-05,
+      "total": 0.025015350431203842,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6205552911890675,
+          "relative_loss": 0.9496987568593571,
+          "raw_fixed_denominator_cost": 1.704433144186789,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.59338525865034
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 2.1597016309126606e-07,
+      "min_area_ratio": 0.9994926538505284,
+      "minimum_normal_dot": 2.4505859898157545,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 4.0315702790394425e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.0970286875963211,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 6,
+    "accepted": false,
+    "accepted_total": 5,
+    "consecutive_rejections": 1,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025015350431203842,
+    "gradient_norm": 0.0016131992110791607,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0002814907638012489,
+    "lr": 0.01,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.0164087675511837,
+      "absolute": 0.5401850938796997,
+      "relative": 0.31656625866889954,
+      "prior": 3.906826168531552e-05,
+      "total": 0.025015350431203842,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6205552911890675,
+          "relative_loss": 0.9496987568593571,
+          "raw_fixed_denominator_cost": 1.704433144186789,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.59338525865034
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.3992679716981685e-08,
+      "min_area_ratio": 0.9994926538119955,
+      "minimum_normal_dot": 2.45058598975741,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 4.0315702790394425e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.0970286875963211,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 7,
+    "accepted": false,
+    "accepted_total": 5,
+    "consecutive_rejections": 2,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025015350431203842,
+    "gradient_norm": 0.001613199215092384,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0002814907638012489,
+    "lr": 0.005,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.0164087675511837,
+      "absolute": 0.5401850938796997,
+      "relative": 0.31656625866889954,
+      "prior": 3.906826168531552e-05,
+      "total": 0.025015350431203842,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6205552911890675,
+          "relative_loss": 0.9496987568593571,
+          "raw_fixed_denominator_cost": 1.704433144186789,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.59338525865034
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.3992679716981685e-08,
+      "min_area_ratio": 0.9994926538119955,
+      "minimum_normal_dot": 2.45058598975741,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 4.0315702790394425e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.0970286875963211,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 8,
+    "accepted": false,
+    "accepted_total": 5,
+    "consecutive_rejections": 3,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025015350431203842,
+    "gradient_norm": 0.0016131992101868816,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0002814907638012489,
+    "lr": 0.0025,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.0164087675511837,
+      "absolute": 0.5401850938796997,
+      "relative": 0.31656625866889954,
+      "prior": 3.906826168531552e-05,
+      "total": 0.025015350431203842,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6205552911890675,
+          "relative_loss": 0.9496987568593571,
+          "raw_fixed_denominator_cost": 1.704433144186789,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.59338525865034
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.3992679716981685e-08,
+      "min_area_ratio": 0.9994926538119955,
+      "minimum_normal_dot": 2.45058598975741,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 4.0315702790394425e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.0970286875963211,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 9,
+    "accepted": true,
+    "accepted_total": 6,
+    "consecutive_rejections": 0,
+    "accepted_method": "ADAM",
+    "alpha": 0.0078125,
+    "loss": 0.025014728307724,
+    "gradient_norm": 0.0016131992077224949,
+    "actual_step_mm": 3.3827303163137646e-05,
+    "max_total_displacement_mm": 0.0003153177434591342,
+    "lr": 0.0025,
+    "rejection_reasons": [
+      "RING_WORSENING"
+    ],
+    "parts": {
+      "silhouette": 0.01640840619802475,
+      "absolute": 0.5401661396026611,
+      "relative": 0.31655919551849365,
+      "prior": 3.906831261701882e-05,
+      "total": 0.025014728307724,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204984536127789,
+          "relative_loss": 0.9496775757484028,
+          "raw_fixed_denominator_cost": 1.7043749463326963,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933476317240963
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 3.3827303163137646e-05,
+      "min_area_ratio": 0.9994373391667672,
+      "minimum_normal_dot": 2.450548621952031,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 1.3225248949311208e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09699816256761551,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 10,
+    "accepted": true,
+    "accepted_total": 7,
+    "consecutive_rejections": 0,
+    "accepted_method": "STEEPEST_RESTART",
+    "alpha": 0.5,
+    "loss": 0.02501470036804676,
+    "gradient_norm": 0.0016130758523193447,
+    "actual_step_mm": 3.4558217255509326e-06,
+    "max_total_displacement_mm": 0.00031859998861523723,
+    "lr": 0.02,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408387571573257,
+      "absolute": 0.5401656031608582,
+      "relative": 0.316558837890625,
+      "prior": 3.9068316254997626e-05,
+      "total": 0.02501470036804676,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204967295504291,
+          "relative_loss": 0.9496765283260697,
+          "raw_fixed_denominator_cost": 1.7043731660987342,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933464882759104
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 3.4558217255509326e-06,
+      "min_area_ratio": 0.9994373368513546,
+      "minimum_normal_dot": 2.4505486183216005,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 1.2627184332814068e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09699755907058716,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 11,
+    "accepted": true,
+    "accepted_total": 8,
+    "consecutive_rejections": 0,
+    "accepted_method": "STEEPEST_RESTART",
+    "alpha": 0.25,
+    "loss": 0.025014687329530716,
+    "gradient_norm": 0.0016130699729496793,
+    "actual_step_mm": 1.727934216036488e-06,
+    "max_total_displacement_mm": 0.00032024123983842595,
+    "lr": 0.02,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.01640838012099266,
+      "absolute": 0.5401653051376343,
+      "relative": 0.3165586590766907,
+      "prior": 3.906832353095524e-05,
+      "total": 0.025014687329530716,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204958402403948,
+          "relative_loss": 0.949675946476565,
+          "raw_fixed_denominator_cost": 1.7043722354462179,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933458682510964
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 1.727934216036488e-06,
+      "min_area_ratio": 0.9994373356936382,
+      "minimum_normal_dot": 2.450548616506379,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 1.254872404388152e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09699741005897522,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 12,
+    "accepted": true,
+    "accepted_total": 9,
+    "consecutive_rejections": 0,
+    "accepted_method": "STEEPEST_RESTART",
+    "alpha": 0.015625,
+    "loss": 0.025014687329530716,
+    "gradient_norm": 0.0016130670331856703,
+    "actual_step_mm": 1.0799682493062374e-07,
+    "max_total_displacement_mm": 0.0003203438208608324,
+    "lr": 0.02,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.01640838012099266,
+      "absolute": 0.5401652455329895,
+      "relative": 0.3165586590766907,
+      "prior": 3.906832716893405e-05,
+      "total": 0.025014687329530716,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204957892185148,
+          "relative_loss": 0.9496759425300952,
+          "raw_fixed_denominator_cost": 1.7043721808717,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933458353545285
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 1.0799682493062374e-07,
+      "min_area_ratio": 0.9994373356212818,
+      "minimum_normal_dot": 2.450548616392928,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 1.254872404388152e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09699741005897522,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 13,
+    "accepted": true,
+    "accepted_total": 10,
+    "consecutive_rejections": 0,
+    "accepted_method": "STEEPEST_RESTART",
+    "alpha": 0.0078125,
+    "loss": 0.025014687329530716,
+    "gradient_norm": 0.001613066842034609,
+    "actual_step_mm": 5.3998412680650766e-08,
+    "max_total_displacement_mm": 0.0003203951115418966,
+    "lr": 0.02,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.01640838012099266,
+      "absolute": 0.5401652455329895,
+      "relative": 0.3165586590766907,
+      "prior": 3.9068330806912854e-05,
+      "total": 0.025014687329530716,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204957650089904,
+          "relative_loss": 0.9496759392047124,
+          "raw_fixed_denominator_cost": 1.7043721591334724,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933458192337318
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.3998412680650766e-08,
+      "min_area_ratio": 0.9994373355851028,
+      "minimum_normal_dot": 2.450548616336201,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 1.254872404388152e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09699741005897522,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 14,
+    "accepted": false,
+    "accepted_total": 10,
+    "consecutive_rejections": 1,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014687329530716,
+    "gradient_norm": 0.001613066974854223,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003203951115418966,
+    "lr": 0.01,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.01640838012099266,
+      "absolute": 0.5401652455329895,
+      "relative": 0.3165586590766907,
+      "prior": 3.9068330806912854e-05,
+      "total": 0.025014687329530716,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204957650089904,
+          "relative_loss": 0.9496759392047124,
+          "raw_fixed_denominator_cost": 1.7043721591334724,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933458192337318
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.399841307000689e-08,
+      "min_area_ratio": 0.9994373355489242,
+      "minimum_normal_dot": 2.4505486162794785,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 1.249268461833708e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09699737280607224,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 15,
+    "accepted": false,
+    "accepted_total": 10,
+    "consecutive_rejections": 2,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014687329530716,
+    "gradient_norm": 0.0016130669802490712,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003203951115418966,
+    "lr": 0.005,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.01640838012099266,
+      "absolute": 0.5401652455329895,
+      "relative": 0.3165586590766907,
+      "prior": 3.9068330806912854e-05,
+      "total": 0.025014687329530716,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204957650089904,
+          "relative_loss": 0.9496759392047124,
+          "raw_fixed_denominator_cost": 1.7043721591334724,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933458192337318
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.399841307000689e-08,
+      "min_area_ratio": 0.9994373355489242,
+      "minimum_normal_dot": 2.4505486162794785,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 1.249268461833708e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09699737280607224,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 16,
+    "accepted": false,
+    "accepted_total": 10,
+    "consecutive_rejections": 3,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014687329530716,
+    "gradient_norm": 0.001613066963019268,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003203951115418966,
+    "lr": 0.0025,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.01640838012099266,
+      "absolute": 0.5401652455329895,
+      "relative": 0.3165586590766907,
+      "prior": 3.9068330806912854e-05,
+      "total": 0.025014687329530716,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204957650089904,
+          "relative_loss": 0.9496759392047124,
+          "raw_fixed_denominator_cost": 1.7043721591334724,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933458192337318
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.399841307000689e-08,
+      "min_area_ratio": 0.9994373355489242,
+      "minimum_normal_dot": 2.4505486162794785,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 1.249268461833708e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09699737280607224,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 17,
+    "accepted": false,
+    "accepted_total": 10,
+    "consecutive_rejections": 4,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014687329530716,
+    "gradient_norm": 0.00161306696917222,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003203951115418966,
+    "lr": 0.00125,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.01640838012099266,
+      "absolute": 0.5401652455329895,
+      "relative": 0.3165586590766907,
+      "prior": 3.9068330806912854e-05,
+      "total": 0.025014687329530716,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204957650089904,
+          "relative_loss": 0.9496759392047124,
+          "raw_fixed_denominator_cost": 1.7043721591334724,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933458192337318
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.399841307000689e-08,
+      "min_area_ratio": 0.9994373355489242,
+      "minimum_normal_dot": 2.4505486162794785,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": 1.249268461833708e-05,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09699737280607224,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 18,
+    "accepted": true,
+    "accepted_total": 11,
+    "consecutive_rejections": 0,
+    "accepted_method": "ADAM",
+    "alpha": 0.0078125,
+    "loss": 0.025014376267790794,
+    "gradient_norm": 0.0016130669803234574,
+    "actual_step_mm": 1.691365136799179e-05,
+    "max_total_displacement_mm": 0.000337308477105264,
+    "lr": 0.00125,
+    "rejection_reasons": [
+      "RING_WORSENING"
+    ],
+    "parts": {
+      "silhouette": 0.016408199444413185,
+      "absolute": 0.5401557683944702,
+      "relative": 0.31655511260032654,
+      "prior": 3.906836354872212e-05,
+      "total": 0.025014376267790794,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.620467292826023,
+          "relative_loss": 0.9496653265493861,
+          "raw_fixed_denominator_cost": 1.704342997478009,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933269790499527
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 1.691365136799179e-05,
+      "min_area_ratio": 0.9994118791486359,
+      "minimum_normal_dot": 2.450530319696223,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.0132789611816406e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698179364204407,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 19,
+    "accepted": true,
+    "accepted_total": 12,
+    "consecutive_rejections": 0,
+    "accepted_method": "STEEPEST_RESTART",
+    "alpha": 0.5,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129972937021077,
+    "actual_step_mm": 3.45605111718252e-06,
+    "max_total_displacement_mm": 0.00034059083696264545,
+    "lr": 0.02,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547549724579,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204655708177949,
+          "relative_loss": 0.9496642644523151,
+          "raw_fixed_denominator_cost": 1.704341225471662,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933258366756038
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 3.45605111718252e-06,
+      "min_area_ratio": 0.9994118769030937,
+      "minimum_normal_dot": 2.450530316116692,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 20,
+    "accepted": true,
+    "accepted_total": 13,
+    "consecutive_rejections": 0,
+    "accepted_method": "STEEPEST_RESTART",
+    "alpha": 0.03125,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912837657488,
+    "actual_step_mm": 2.160062942471315e-07,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 0.02,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 2.160062942471315e-07,
+      "min_area_ratio": 0.9994118767627466,
+      "minimum_normal_dot": 2.4505303158930993,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 21,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 1,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912823654759,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 0.01,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 22,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 2,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912849254862,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 0.005,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 23,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 3,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912823193164,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 0.0025,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 24,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 4,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912795078125,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 0.00125,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 25,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 5,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912712113722,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 0.000625,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 26,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 6,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991271802509,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 0.0003125,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 27,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 7,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912808434078,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 0.00015625,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 28,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 8,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912775304596,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 7.8125e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 29,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 9,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912704321665,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 3.90625e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 30,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 10,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991287964804,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1.953125e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 31,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 11,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912771833273,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 32,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 12,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912871433868,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 33,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 13,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912737373356,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 34,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 14,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912795374538,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 35,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 15,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991274415621,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 36,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 16,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912914784187,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 37,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 17,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912818287193,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 38,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 18,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991284398834,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 39,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 19,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912705318305,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 40,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 20,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912821386296,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 41,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 21,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912838279625,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 42,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 22,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912832147431,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 43,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 23,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912903673394,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 44,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 24,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912806117984,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 45,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 25,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912706873229,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 46,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 26,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912853261263,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 47,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 27,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912832495497,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 48,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 28,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912865279119,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 49,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 29,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912775695355,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 50,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 30,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991278329144,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 51,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 31,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912688304902,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 52,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 32,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912733168876,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 53,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 33,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991277767474,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 54,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 34,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912862687175,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 55,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 35,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912655792594,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 56,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 36,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912868618494,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 57,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 37,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991272084333,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 58,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 38,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991272236754,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 59,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 39,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912707147874,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 60,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 40,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912836586957,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 61,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 41,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912792150454,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 62,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 42,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912782499262,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 63,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 43,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912773869958,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 64,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 44,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912779205737,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 65,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 45,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912840713969,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 66,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 46,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991278086049,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 67,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 47,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991272955796,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 68,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 48,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912815368392,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 69,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 49,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912794575186,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 70,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 50,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991279192708,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 71,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 51,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912805649474,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 72,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 52,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991267434506,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 73,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 53,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912873631403,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 74,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 54,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991277618162,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 75,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 55,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912884874005,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 76,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 56,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912821517655,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 77,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 57,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.00161299128612382,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 78,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 58,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912813019104,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 79,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 59,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991286347371,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 80,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 60,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912840573625,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 81,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 61,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912865628395,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 82,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 62,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912781531947,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 83,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 63,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912831674559,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 84,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 64,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912830785095,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 85,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 65,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912880585326,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 86,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 66,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912859384,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 87,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 67,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912782439169,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 88,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 68,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912774983724,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 89,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 69,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912768821746,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 90,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 70,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912748628857,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 91,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 71,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912848285252,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 92,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 72,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.001612991276456726,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 93,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 73,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912791251258,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 94,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 74,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912710301203,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 95,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 75,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912839714375,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 96,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 76,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912772100724,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 97,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 77,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912674822213,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 98,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 78,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912738848614,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 99,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 79,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912760105352,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  },
+  {
+    "case": "G03",
+    "attempt": 100,
+    "accepted": false,
+    "accepted_total": 13,
+    "consecutive_rejections": 80,
+    "accepted_method": null,
+    "alpha": 0.0,
+    "loss": 0.025014350190758705,
+    "gradient_norm": 0.0016129912894346766,
+    "actual_step_mm": 0.0,
+    "max_total_displacement_mm": 0.0003407959927839827,
+    "lr": 1e-05,
+    "rejection_reasons": [
+      "RING_WORSENING",
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "parts": {
+      "silhouette": 0.016408182680606842,
+      "absolute": 0.5401551723480225,
+      "relative": 0.3165547251701355,
+      "prior": 3.906834535882808e-05,
+      "total": 0.025014350190758705,
+      "depth": [
+        {
+          "source": "G03_key04_raw00554",
+          "fixed_N": 256,
+          "active_N": 228,
+          "fixed_pair_N": 343,
+          "active_pair_N": 311,
+          "absolute_loss": 1.6204654565700973,
+          "relative_loss": 0.9496641970187947,
+          "raw_fixed_denominator_cost": 1.7043411081068298,
+          "weighted_fixed_denominator": 229.0347476909815,
+          "depth_MAE_active_mm": 0.5933257609475854
+        }
+      ]
+    },
+    "last_candidate_check": {
+      "max_step_mm": 5.400156739128234e-08,
+      "min_area_ratio": 0.9994118767276604,
+      "minimum_normal_dot": 2.450530315837204,
+      "Ring_surface_collision": true,
+      "Ring_min_signed_mm": -1.5266238051481196e-06,
+      "self_intersections": 0,
+      "coplanar_warnings": 0,
+      "Ring_violation_sample_N": 0,
+      "reverse_Ring_min_signed_mm": 0.09698114544153214,
+      "reverse_Ring_inside_N": 0
+    }
+  }
+]
