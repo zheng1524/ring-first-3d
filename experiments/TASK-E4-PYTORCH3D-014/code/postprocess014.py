@@ -57,8 +57,24 @@ def main():
  assert freeze.exists(),'No evaluation before final prediction and scale freeze'
  for a in load(freeze)['files']:assert sha(a['path'])==a['sha256'],a['path']
  models=prediction_index();save('config/EVAL_MODELS.json',models);summary=[];per=[]
- for m in models:
-  a,b=native(m);summary.append(a);per+=b;print('NATIVE_EVAL',m['case'],m['label'],flush=True)
+ # CPU-only, independent physical groups. Within one group keep model order
+ # serial so the fixed camera-depth cache is never written concurrently.
+ def native_group(n):
+  results=[]
+  for m in models:
+   if m['case']!=n:continue
+   a,b=native(m);results.append((a,b));print('NATIVE_EVAL',m['case'],m['label'],flush=True)
+  return results
+ with concurrent.futures.ThreadPoolExecutor(max_workers=3)as pool:
+  groups=list(pool.map(native_group,[c['name']for c in load(R/'config/CASE_LOCK.json')]))
+ regressions=[]
+ for group in groups:
+  for a,b in group:
+   summary.append(a);per+=b;p=R/'metrics/scores'/(a['label']+'_'+a['case']+'.json')
+   if p.exists():
+    old=load(p)['mean']['FIT'];err=max(abs(a['FIT'][k]-old[k])for k in old);regressions.append(dict(case=a['case'],label=a['label'],max_common_FIT_mean_difference=err))
+ assert all(x['max_common_FIT_mean_difference']<1e-10 for x in regressions),'Native scoring changed against its frozen serial FIT outputs'
+ save('provenance/NATIVE_EVALUATOR_PARALLEL_REGRESSION.json',dict(epoch=time.time(),CPU_workers=3,parallel_across_physical_groups_only=True,serial_within_group=True,metric_formulas_unchanged=True,regressions=regressions,all_serial_FIT_scores_reproduced=True))
  save('metrics/NATIVE_SUMMARY.json',summary);table('metrics/NATIVE_SUMMARY.csv',summary);save('metrics/PER_VIEW_METRICS.json',per);table('PER_VIEW_METRICS.csv',per);geometric_audit(models)
  # Independent Blender BVH geometry check on frozen predictions, no GT loading.
  script=OLD13/'code/blender_geometry_checks.py'

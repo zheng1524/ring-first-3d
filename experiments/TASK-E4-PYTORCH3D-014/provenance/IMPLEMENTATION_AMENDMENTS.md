@@ -5,3 +5,6 @@
 3. 完整32阶CAD查询在C0/G06出现资源瓶颈。基于精确已知CAD环面的Lipschitz外界剔除保证在材料外的点；所有可能穿透点仍查询同一实际CAD、同32阶采样及1e-5mm阈值。G06初始逐面负距离与完整查询最大差0；3.65s→0.16s。正间隙为保守下界，最终独立64阶全查询报告实际值。原6例未使用加速，负距离判定数学相同。旧C0源文件按原预冻结SHA精确恢复在source_versions，供复现。
 4. 主动中断自己的慢G06子进程，保留原JSON/日志和optimizer checkpoint，从精确检查点恢复参数、Adam及CPU/CUDA/NumPy状态。回退到最近已保存接受点，不冒称零浪费或位级复现。资源中断不视为科学失败；原始故障记录保留。
 5. E阶段的细分密度先验实现只在存在SHAPE_REFERENCE.npz时启用，C/D数学不变；逐病例保存实际执行源码快照。BMesh float32插值用原三角面双精度重表达，原顶点不变；不平滑、不生成目标形状。
+
+
+2026-11-08 21:49 local: post-freeze native evaluation scheduled with3 CPU workers across independent physical groups, serial models within each group, ordered aggregation. No score, camera, Mask, ray, or geometric formula changes. Every existing common-FIT serial score will be compared with native post-evaluation at1e-10 tolerance; failures stop evaluation, not trigger retraining. GPU remains strictly serial. No GT accessed for this engineering adaptation.
