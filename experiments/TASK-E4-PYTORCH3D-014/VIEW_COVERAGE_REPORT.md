@@ -25,3 +25,13 @@
 输入完整性、观测质量、主体结果分开报告。这里的数值pose成功不是相机GT，也不是测量正确。主体结果尚在运行，最终11组分母不变，历史测量回退0，未使用GT选择方法。
 
 本轮C4_ALL只包括可执行FIT候选，保留51个Mesh-update HOLDOUT，不宣称全原视频帧训练，也不将上游可能用过的RGB称端到端独立测试。交付版VIEW_INVENTORY.csv另合并122个无pose候选、34照片和22视频资产，共1004条不同record_kind记录；826条PROJECTABLE_VIEW对应分区。原阶段冻结CSV按SHA完整保存在metrics/PROJECTABLE_VIEW_INVENTORY_FROZEN.csv，完成说明在provenance/INVENTORY_DELIVERY_COMPLETION.json。
+
+| 审计项目 | 必须汇报 |
+| --- | --- |
+| 目标组数 | 11个独立真实物理组，不将多视频或多实验臂算成独立病例 |
+| 本算法独立成功 | 11/11生成本路线FINAL014数值模型；继承人工授权011初值，数值输出不等于测量正确 |
+| 本算法失败 | 数值模型失败0/11；几何验收失败或自交精度分歧3/11；另G01有Ring接触精度分歧；高度NaN 1/11，严格实体IoU NaN 9/11；逐组见FAILURE_LEDGER.md，未剔除困难病例 |
+| 历史测量值回退 | 0；011/012/013仅作明确标识的初值或评价对照，没有补填014测量值 |
+| 失败组及具体原因 | metrics/FAILURES.csv、逐臂运行日志、全部原始模型及核心图 |
+| 最终统计样本 | 数值模型11/11；各评价项实际可计算N分别汇报，空白CSV为NaN而非0 |
+| 是否使用GT选择算法 | 否；C/D/E仅用预登记FIT规则；全部模型/尺度先冻结，GT访问时间在provenance/GT_ACCESS_START.json |

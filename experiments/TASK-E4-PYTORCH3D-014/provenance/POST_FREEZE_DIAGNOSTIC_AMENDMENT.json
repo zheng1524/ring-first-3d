@@ -1,0 +1,50 @@
+{
+  "epoch": 1794157023.0608468,
+  "changes": [
+    {
+      "name": "wait_evaluate.py",
+      "old_sha256": "f6ef75f3b916d772110d28c2de31590d9ff326bc781d1caeaa1680703372e979",
+      "new_sha256": "a934f67e8031166792b2a9333b948a77dca9899768f7f49db574c0d043503151"
+    },
+    {
+      "name": "report014.py",
+      "old_sha256": "563b3bc37e02ff2f888a8f427fd7adf4c5f10d509ba99711b272e9939c5517e5",
+      "new_sha256": "0b1d747d645049e571784be918c384cb38955bd2020470358399b03cf50c0595"
+    },
+    {
+      "name": "figures_final.py",
+      "old_sha256": "1c4d0d880120ae3283734529881af9969ae7da7ddca543e25de4e4cb13834530",
+      "new_sha256": "6581bc0f689eb25acfa4701486731ed5584ab0aa58e64fa0b5b2368ad9eadbb4"
+    },
+    {
+      "name": "gradient_probe014.py",
+      "old_sha256": "2cc4e393c1b5848e607d0949bcb2b5c9039fa17c564025197097680dffaad81b",
+      "new_sha256": "e4bac0c96ad6e73c5b4daed08bfa55b668a907874f6bfaccb4e35181daba4810"
+    },
+    {
+      "name": "validate_delivery.py",
+      "old_sha256": "3abd9e402f534cb6b44a015d9aa92f4f09d0051f0eff8e24c499f872b43a9b48",
+      "new_sha256": "b427b1534e165bec412c23416135da152415eb6b1ab15685d2eaf61a7dd01b43"
+    }
+  ],
+  "training_renderer_loss_geometry_and_prediction_sources_unchanged": true,
+  "predictions_unchanged": true,
+  "original_1e_minus4_test_FAIL_retained": true,
+  "roles": {
+    "gradient_probe014": "diagnostic raw evidence/record-only; original threshold unchanged",
+    "wait_evaluate": "continue independent evaluation while retaining failed precision checks",
+    "report014": "reporting/linking completed evidence only",
+    "figures_final": "Fig8 axes/layout only; previous image retained",
+    "validate_delivery": "integrity checks only"
+  },
+  "new_readonly_diagnostics": [
+    "gradient_repeat_control.py",
+    "posthoc_diagnostics.py"
+  ],
+  "GT_identity_delivery_copy": {
+    "source": "experiments/TASK-E4-PYTORCH3D-014/evaluation_only/GT_SOURCE_LOCK.json",
+    "destination": "experiments/TASK-E4-PYTORCH3D-014/provenance/GT_SOURCE_IDENTITY_LOCK.json",
+    "identical_sha256": "e0cac63d714f029e1436c907ec3f3fba3b12f519eca3b6df324a6878a28d0c96"
+  },
+  "no_new_optimizer_updates": true
+}

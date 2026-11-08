@@ -44,6 +44,9 @@ def main():
  for r in runs:
   if r['status']!='ACCEPTED_TARGET_REACHED':fail.append(dict(case=r['case'],stage=r['tag'],reason=r['status'],accepted=r['accepted'],attempts=r['attempts'],evidence='arms/'+r['tag']+'/metrics/'+r['case']+'_TRAINING.json'))
  fail+= [dict(case='G01',stage='POSE',reason='B1 held background residual remains large; B2 not justified; time-negative control drifts0.381mm',evidence='POSE_CORRECTION_REPORT.md'),dict(case='G08',stage='OBSERVATION',reason='video00640 raw candidates have no anchored metric camera; retained unknown, not fabricated',evidence='metrics/UNPOSED_RAW_CANDIDATES.json'),dict(case='ALL',stage='OBSERVATION',reason='34 independent photos lack verified metric projection; retained in inventory',evidence='config/RAW_ASSETS.json'),dict(case='G06',stage='ENGINEERING_RESOLVED',reason='C0 resource interruption; exact optimizer/RNG checkpoint resume, original log retained',evidence='provenance/G06_RESOURCE_INTERRUPT.json'),dict(case='G01',stage='ENGINEERING_RESOLVED',reason='Repeated-key score serialization failure after first C0 model; no retraining',evidence='provenance/IMPLEMENTATION_AMENDMENTS.md')]
+ gradient_tests=load(R/'metrics/GRADIENT_ADDITIVITY_CHECKS.json');gradient_fail=[d for d in gradient_tests if not d['original_test_pass']]
+ for d in gradient_fail:fail.append(dict(case=d['case'],stage=d['arm']+'_READ_ONLY_GRADIENT',reason=f"Original1e-4 relative additivity check FAIL: {d['relative_additivity_error']:.8g}; numerical repeat floor separately measured, no threshold relaxation",evidence='metrics/GRADIENT_ADDITIVITY_CHECKS.csv'))
+ fail.append(dict(case='G01',stage='FINAL014_RING_CONTACT_PRECISION',reason='FCL/Open3D double show no intersection; float32 Open3D reproduces4 Blender Ring-contact pairs, separation about5.89e-10mm; original evidence retained as unresolved precision-sensitive contact',evidence='metrics/G01_RING_CONTACT_DISAGREEMENT.json'))
  unknown=load(R/'metrics/UNPOSED_RAW_CANDIDATES.json')
  for n in names:
   missing=[r for r in unknown if r['case']==n]
@@ -59,17 +62,30 @@ def main():
 | --- | --- |
 | 目标组数 | 11个独立真实物理组，不将多视频或多实验臂算成独立病例 |
 | 本算法独立成功 | 11/11生成本路线FINAL014数值模型；继承人工授权011初值，数值输出不等于测量正确 |
-| 本算法失败 | 数值模型失败0/11；几何验收失败{badgeom}/11；高度NaN {height_na}/11，严格实体IoU NaN {iou_na}/11；逐组见FAILURE_LEDGER.md，未剔除困难病例 |
+| 本算法失败 | 数值模型失败0/11；几何验收失败或自交精度分歧{badgeom}/11；另G01有Ring接触精度分歧；高度NaN {height_na}/11，严格实体IoU NaN {iou_na}/11；逐组见FAILURE_LEDGER.md，未剔除困难病例 |
 | 历史测量值回退 | 0；011/012/013仅作明确标识的初值或评价对照，没有补填014测量值 |
 | 失败组及具体原因 | metrics/FAILURES.csv、逐臂运行日志、全部原始模型及核心图 |
 | 最终统计样本 | 数值模型11/11；各评价项实际可计算N分别汇报，空白CSV为NaN而非0 |
 | 是否使用GT选择算法 | 否；C/D/E仅用预登记FIT规则；全部模型/尺度先冻结，GT访问时间在provenance/GT_ACCESS_START.json |
 '''
  invalid=sum(not r['Ring_numeric_nonworsening']for r in final);good=int((cd_delta<0).sum());ec=np.array([G[n,'E2_adaptive']['Chamfer_MAE_mm']-G[n,'E1_global']['Chamfer_MAE_mm']for n in names]);questions=[('Q1','SUPPORTED','资产索引、方向聚类、代表帧、SIFT/PnP、渲染及最佳SE3评价复用；旧Polyp-HERO配准和稀疏Ring检查拒绝复用。CODE_REUSE_AUDIT.md'),('Q2','PARTIALLY_SUPPORTED'if any(G[n,'C4_ALL']['Chamfer_MAE_mm']<G[n,'C0']['Chamfer_MAE_mm']for n in names)else'NOT_SUPPORTED','见VIEW_COUNT_ABLATION.csv；新增条件相机并不等于可靠新观测，不能将数量效应与输入误差混为一谈。'),('Q3','SUPPORTED','候选方向/块/实际N见metrics/VIEW_COVERAGE.csv和VIEW_SELECTION.json；这不是经GT认证的物理覆盖。'),('Q4','PARTIALLY_SUPPORTED','逐视角FN、FP、Ring-front与边界误差全部保留；以PER_VIEW_METRICS.csv和Fig4/8为据，局部改善不自动代表全局改善。'),('Q5','PARTIALLY_SUPPORTED','存在稳定大yaw坐标修正候选，不能区分纯Gauge差异与真实位姿错误。BG独立残差仍大。'),('Q6','NOT_SUPPORTED','尚不能证明Ring/背景/息肉独立投影都稳定改善；负对照非零漂移。B2 NOT_EVALUABLE。'),('Q7','PARTIALLY_SUPPORTED','B_A_ONLY/B0_UNCORRECTED/C1_8共享Mesh原004指标见Fig3与逐视频表；不期待005必然新增可见面积。'),('Q8','PARTIALLY_SUPPORTED','D0-D3的FN/FP分别记录，未单独为G02选择方法；LOSS_ABLATION.csv。'),('Q9','PARTIALLY_SUPPORTED','观察、远轮廓梯度、CAD/几何回缩、局部密度同时可能限制。Fig5/6与G03逐候选拒绝原因提供实证，不能仅凭Dxy近似就声称长柄恢复。'),('Q10','SUPPORTED'if ec.mean()<0 and(ec<0).sum()>=6 else'PARTIALLY_SUPPORTED'if(ec<0).any()else'NOT_SUPPORTED',f'E2-E1配对平均Chamfer差{ec.mean():.4f}mm，改善{int((ec<0).sum())}/11；共同粗网格先验控制及不训练细分几何检查另列；软光栅密度影响也单列。'),('Q11','PARTIALLY_SUPPORTED', 'G07-G11逐例见Fig7和配对表，不以整体均值掩盖未改善病例。'),('Q12','PARTIALLY_SUPPORTED',f'014相对013的Chamfer改善{good}/11；最佳刚性对齐是形状评价，不是相机定位精度。'),('Q13','SUPPORTED','官方渲染、共享参数梯度、有限安全更新和真实Mesh输出可运行；工程可行性不代表主线已验收。'),('Q14','PARTIALLY_SUPPORTED','仍需可靠公制视角/背景静态性、可观测几何对应、接触约束可行方向和网格表达研究。未执行SDFStudio/BundleSDF或其他新路线。')]
+ # Interpret the completed evidence, without changing any frozen model choice.
+ vb={v['arm']:v for v in load(R/'metrics/G01_VIDEO_STABILITY_AND_COVERAGE.json')};g02old=N['G02',C]['FIT'];g02new=N['G02','D_D2_bidir']['FIT'];coverage_delta=np.mean([G[n,'C4_ALL']['Chamfer_MAE_mm']-G[n,'C0']['Chamfer_MAE_mm']for n in names]);more_side=[n for n in ['G07','G08','G09','G10','G11']if G[n,'FINAL014']['Chamfer_MAE_mm']<G[n,'FINAL013']['Chamfer_MAE_mm']]
+ overrides={
+ 'Q2':('PARTIALLY_SUPPORTED',f'C0实际视角数依组变化，并非每组均为3。C4相对C0平均Chamfer变化{coverage_delta:.5f}mm，二维均值有小幅改善；G03仍缺完整长柄，不能证明仅增加视角即可解决。'),
+ 'Q4':('PARTIALLY_SUPPORTED','G02的C0→C4背景FP/Mask从0.4446降至0.3411，但Recall从0.8355降至0.8246；错误越界改善伴随额外漏覆盖。其他组见同固定分母配对表。'),
+ 'Q7':('NOT_SUPPORTED',f"B1=C1_8加入005后，004 FIT IoU {vb['B_A_ONLY']['004_FIT_IoU']:.4f}→{vb['C1_8']['004_FIT_IoU']:.4f}、HOLDOUT {vb['B_A_ONLY']['004_UPDATE_HOLDOUT_IoU']:.4f}→{vb['C1_8']['004_UPDATE_HOLDOUT_IoU']:.4f}。004受支持顶点相对A-only平均漂移{vb['C1_8']['A_supported_vertex_drift_from_Aonly_mm']['MAE']:.3f}mm。005-only支持只是观测代理，不是新增真实表面。不能认证不破坏004。"),
+ 'Q8':('PARTIALLY_SUPPORTED',f"G02固定视角D0→D2的FP/Mask {g02old['FP_per_mask']:.4f}→{g02new['FP_per_mask']:.4f}，Recall {g02old['Recall']:.4f}→{g02new['Recall']:.4f}。正负损失能调节取舍，但未证明同步改善3D；最终G02 Chamfer恶化。"),
+ 'Q9':('PARTIALLY_SUPPORTED','G03远轮廓代理涉及239顶点，4个局部候选带只覆盖30个；远区图像梯度非零，深度梯度范数更大。约47.5%目标轮廓样本落在Ring不确定带；Ring包含/穿透保护是主要拒绝原因。细分未恢复长柄，不能把失败唯一归因于顶点密度或零梯度。'),
+ 'Q10':('NOT_SUPPORTED',f'E2相对E1平均Chamfer差{ec.mean():.5f}mm，仅{int((ec<0).sum())}/11改善；相对E0有局部收益，但未显示优于全局细分。E1事后GT均值较好不用于改选已冻结E0。'),
+ 'Q11':('PARTIALLY_SUPPORTED',f'G07–G11中Chamfer改善为{more_side}，G08/G10恶化；G09虽轻微改善但作者基底Hmax误差{G["G09","FINAL014"]["height_max_AE_mm"]:.3f}mm，不能称低隆起形态已恢复。逐例报告及Fig7保留失败。'),
+ 'Q12':('PARTIALLY_SUPPORTED',f"二维/三维变化同向{consistency['same_change_direction_N']}/11，但3例IoU提高且Chamfer恶化；整体Chamfer0.4474→0.4806mm，G03长柄缺失与GT→预测p95恶化一致。G03 Hmax误差小不能掩盖低端缺失。"),
+ }
+ questions=[(q,*overrides[q])if q in overrides else(q,status,evidence)for q,status,evidence in questions]
  table('metrics/SCIENTIFIC_QUESTIONS.csv',[dict(question=q,status=s,evidence=e)for q,s,e in questions]);table('metrics/FINAL_INTERPRETATION.json.csv',paired)
  report=f'''# TASK-E4-PYTORCH3D-014 技术报告
 
-11个独立物理组完成统一共享Mesh实验与冻结后Blender评价。原九例精确继承011 FINAL；G10/G11继承013中已冻结的配方等效011初值，不能冒称历史011原实验曾包含这两例。方法仅用预登记FIT规则选定：C={C}，D粗结果={D}，E={E}；同一方法用于全部组。014相对013的双向Chamfer改善{good}/11，配对平均变化{cd_delta.mean():.4f}mm；独立64阶Ring非恶化检查仍失败{invalid}/11，均未删面掩盖。是否采用交由人工审核，未替换正式主线。
+11个独立物理组完成统一共享Mesh实验与冻结后Blender评价。原九例精确继承011 FINAL；G10/G11继承013中已冻结的配方等效011初值，不能冒称历史011原实验曾包含这两例。方法仅用预登记FIT规则选定：C={C}，D粗结果={D}，E={E}；同一方法用于全部组。014相对013的双向Chamfer改善{good}/11，配对平均变化{cd_delta.mean():.4f}mm；独立64阶Ring非恶化检查仍失败{invalid}/11，均未删面掩盖。总体为混合结果，不支持将014整体提升为正式主线。013自身也有Ring漏检风险，不能为保留其外伸形状而回退稀疏几何保护。是否采用任何组件交由人工审核。
 
 {audit}
 
@@ -81,11 +97,17 @@ def main():
 
 G01主004恒Identity，005一个共享SE3研究候选，无尺度。使用真实静态背景RGB三角化和Ring先验，未用Polyp HERO/ICP。留出BG MAE341.99→73.72px但p95仍452px；逆向FIT仅18点；真正同视频时间负对照产生0.381mm/0.214°漂移。不能认证相机修复，B2未执行。原相机不覆盖。004/005的共同Mesh稳定性与新增覆盖分开，见POSE_CORRECTION_REPORT.md、Fig2/3。
 
+G01稳定性与新增观测代理分开报告（同一冻结B1评价相机；004本身保持原始Identity）：
+
+{md(list(vb.values()),['arm','004_FIT_IoU','004_UPDATE_HOLDOUT_IoU','005_FIT_IoU','005_UPDATE_HOLDOUT_IoU','A_support_area_fraction','B_only_support_area_fraction'])}
+
+B1相对A-only的004支持顶点平均漂移约0.165mm、p95约0.488mm。005-only比例是基于Mask、CAD与当前Mesh首次射线的面心可见支持代理，不是新增真实表面，更不是GT覆盖。额外稳定性和代理面积在预测冻结后只读计算，不用于训练、选权或选模，见metrics/G01_VIDEO_STABILITY_AND_COVERAGE.csv。
+
 ## C/D/E：受控几何实验
 
-C0/8/16/32/全部候选均同011初值，视频、方向块均衡。无HERO新帧仅轮廓。原始HERO同视角绝对/相对深度及边界权重固定，深度集合独立归一，不随新增无深度视角稀释。跨视角HERO不进入损失、权重、筛选或停止。部分原生HERO文件保存在历史surface_fusion_v2/raw目录，该目录名不代表读取历史融合Mesh或测量预测；本轮仅使用来源锁定的原生深度与人工授权011初值，不以其他路线结果补填失败。22份实际HERO监督的原生640×352深度像素与640×360 RGB像素具有不同fy/cy，已按冻结RGB_uv映射验证相机射线相同，c2w一致；见provenance/DEPTH_RENDER_CAMERA_CONSISTENCY.json，不把两套K数值不同误判为相机错误。
+C0/8/16/32/全部候选均同011初值，视频、方向块均衡。无HERO新帧仅轮廓。原始HERO同视角绝对/相对深度及边界权重固定，深度集合独立归一，不随新增无深度视角稀释。跨视角HERO不进入损失、权重、筛选或停止。部分原生HERO文件保存在历史surface_fusion_v2/raw目录，该目录名不代表读取历史融合Mesh或测量预测；本轮仅使用来源锁定的原生深度与人工授权011初值，不以其他路线结果补填失败。22份冻结HERO观测（含留出）的原生640×352深度像素与640×360 RGB像素具有不同fy/cy，已按冻结RGB_uv映射验证相机射线相同，c2w一致；见provenance/DEPTH_RENDER_CAMERA_CONSISTENCY.json，不把两套K数值不同误判为相机错误。实际优化使用16份FIT观测、共4096条固定射线；其余6份为留出，未进入损失。
 
-013 A3已含分离FN/FP和双向轮廓，因此D1仅增强FP权重、D2仅增强已有双向轮廓、D3组合，均为预登记小增量，不冒称新机制。全部条件沿用相同Adam、4个通用局部方向、8级回缩及精确回滚。候选80/接受40，正式延续160/接受80，固定停滞30/60；未按GT挑选checkpoint。
+013 A3已含分离FN/FP和双向轮廓，因此D1仅增强FP权重、D2仅增强已有双向轮廓、D3组合，均为预登记小增量，不冒称新机制。全部条件沿用相同Adam、4个通用局部方向、8级回缩及精确回滚。候选80/接受40，正式延续160/接受80，固定停滞30/60；未按GT挑选checkpoint。前40候选使用冻结的0.25→1权重渐增，故跨轮总目标不必单调；同一候选的接受比较仍使用同一当轮权重。
 
 E0/E1/E2从同一冻结粗结果出发。官方SubdivideMeshes全局一次或BMesh局部插值，不平滑、不造柄。实际未训练几何误差、面积和体积变化记录在metrics/refinement。共同粗网格限制先验+面积归一细尺度残差控制密度影响；每例仿射对照见DENSITY_NORMALIZATION_CONTROLS.csv，初始软轮廓光栅变化另列，不能将软alpha变化当作真实几何改善。
 
@@ -95,7 +117,13 @@ E0/E1/E2从同一冻结粗结果出发。官方SubdivideMeshes全局一次或BMe
 
 旧稀疏Ring检查的真实盲区在控制中复现：旧最小距离+3.8499mm，新密集查询−0.5735mm，FCL亦相交。新候选32阶面内采样+FCL+反向包含+Open3D自交检查，最终独立64阶检查；同一CAD的可证明外部剔除和场景缓存仅做等价加速，逐例查询对照保留。正间隙可为保守下界，材料穿透查询仍使用实际CAD；不声称有限采样是连续空间完全证明。
 
+G01另有Ring接触精度分歧：FCL与Open3D双精度均无交，间隙约5.89e-10mm；将坐标量化为float32后Open3D复现Blender的4对Ring接触候选。未测得64阶材料穿透，不将接触对数当作穿透深度；原始分歧保留，不能称数值上稳健的正间隙。
+
+G10的精度敏感近接触：Open3D原始双精度坐标为0对自交，先量化为float32再交由Open3D则复现Blender的2对；FCL双精度对偶查询未判碰撞，最小距离约9.54e-11mm。不能据此宣称原BVH结果PASS，也不将其夸大为大尺度穿透；原始失败保留，严格实体IoU仍为NOT_EVALUABLE。NPZ双精度为原始预测，PLY/GLB展示量化须注意该退化。见metrics/G10_SELF_INTERSECTION_DISAGREEMENT.json。
+
 第一次C0/G01后处理重复字典键错误已修复并复用原FINAL；C0/G06资源中断从完整Adam/RNG检查点恢复，原日志保留，尾段有重做成本，不冒称位级无缝重现。见provenance/IMPLEMENTATION_AMENDMENTS.md。逐轮各损失和实际参数梯度、真实位移、接受/拒绝全部留存。
+
+只读分项梯度检查：原1e-4相对加和一致性标准失败{len(gradient_fail)}/{len(gradient_tests)}，均保留FAIL，未放宽阈值。G02最初分项加和误差约0.0001681，但同状态FULL-vs-FULL重复梯度误差更大、约0.0003899，目标重复差约−3.18e-8；说明该阈值低于实测重复计算波动，尚未定位到具体kernel。全部预测在此诊断前已冻结；record-only仅允许其他独立评价继续，不修改梯度公式、损失、训练状态或验收结果。见GRADIENT_ADDITIVITY_CHECKS.csv、G02_GRADIENT_REPEAT_CONTROL.json及原始异常日志；不得将这些检查统称全部PASS。
 
 ## F：独立GT评价
 
@@ -116,9 +144,14 @@ E0/E1/E2从同一冻结粗结果出发。官方SubdivideMeshes全局一次或BMe
 ## 原始结果与可视化
 
 Fig1–10在figures/，原始模型/参数与运行时间见RESULT_INDEX.md。全部C/D/E、历史三阶段和014的逐参考指标见PER_VIEW_METRICS.csv；配对比较见metrics/PAIRED_FINAL013_014.csv，失败见FAILURE_LEDGER.md。没有根据GT重训、删面、后平滑或重选病例。完成后停止，等待研究者与PM审核。
-''';(R/'TECHNICAL_REPORT.md').write_text(report);(R/'FINAL_FINDINGS.md').write_text('# 最终发现\n\n'+f'统一方法C={C} / coarse={D} / E={E}。014 Chamfer相对013改善{good}/11，均值差{cd_delta.mean():.4f}mm；独立Ring非恶化失败{invalid}/11。\n\n'+md([dict(问题=q,判断=s,证据=e)for q,s,e in questions],['问题','判断','证据'])+'\n\n'+audit)
- (R/'FAILURE_LEDGER.md').write_text('# 失败记录（原始结果完整保留）\n\n'+audit+'\n\n'+md(fail,['case','stage','reason','evidence'])+'\n\n逐候选级原因数并非独立物理病例数，见metrics/REJECTION_REASON_COUNTS.csv。未修改阈值制造PASS。')
- index=[asset(p)for p in sorted((R/'arms').glob('*/local_results/*/FINAL.*'))];save('provenance/LOCAL_CHECKPOINT_AND_MESH_INDEX.json',dict(files=index,large_artifacts_local_only=True));(R/'RESULT_INDEX.md').write_text('# 结果索引\n\n'+ '\n'.join(f'- [{p.name}](figures/{p.name})'for p in sorted((R/'figures').glob('Fig*.png')))+'\n\n最终原始模型：meshes/Gxx/FINAL014_mm.npz；可审阅模型：review_models/Gxx/FINAL014_mm.ply、FINAL014_scene_m.glb。NPZ/PLY为mm，GLB仅展示转换为m。\n\n全部阶段：arms/<condition>/local_results/Gxx/；FINAL.pt包含参数、Adam、随机状态、迭代与配置。源文件哈希、绝对路径及字节数见provenance/LOCAL_CHECKPOINT_AND_MESH_INDEX.json；输入视频/HERO/权重不复制上传。\n\n统一指标：VIEW_COUNT_ABLATION.csv / LOSS_ABLATION.csv / MESH_REFINEMENT_ABLATION.csv / PER_VIEW_METRICS.csv / BLENDER_ALIGNMENT_METRICS.csv。')
+''';(R/'TECHNICAL_REPORT.md').write_text(report);(R/'FINAL_FINDINGS.md').write_text('# 最终发现\n\n不建议将014整体替换历史基线；保留新视角组织与几何保护作为待审组件，不宣称三维普遍改善。\n\n'+f'统一方法C={C} / coarse={D} / E={E}。014 Chamfer相对013改善{good}/11，均值差{cd_delta.mean():.4f}mm；独立Ring非恶化失败{invalid}/11。\n\n'+md([dict(问题=q,判断=s,证据=e)for q,s,e in questions],['问题','判断','证据'])+'\n\n'+audit)
+ public_fail=[]
+ for item in fail:
+  q=dict(item);ev=q.get('evidence','')
+  q['evidence']=('[运行汇总](metrics/ALL_RUNS.csv) / [拒绝统计](metrics/REJECTION_REASON_COUNTS.csv)；完整日志见本地索引'if ev.startswith('arms/')else f'[{ev}]({ev})')if ev else''
+  public_fail.append(q)
+ (R/'FAILURE_LEDGER.md').write_text('# 失败记录（原始结果完整保留）\n\n'+audit+'\n\n'+md(public_fail,['case','stage','reason','evidence'])+'\n\n逐候选级原因数并非独立物理病例数，见metrics/REJECTION_REASON_COUNTS.csv。未修改阈值制造PASS。')
+ index=[asset(p)for p in sorted((R/'arms').glob('*/local_results/*/*'))if p.is_file()and p.suffix in ['.pt','.npz','.ply']];save('provenance/LOCAL_CHECKPOINT_AND_MESH_INDEX.json',dict(files=index,large_artifacts_local_only=True));(R/'RESULT_INDEX.md').write_text('# 结果索引\n\n'+ '\n'.join(f'- [{p.name}](figures/{p.name})'for p in sorted((R/'figures').glob('Fig*.png')))+'\n\n最终原始模型：meshes/Gxx/FINAL014_mm.npz；可审阅模型：review_models/Gxx/FINAL014_mm.ply、FINAL014_scene_m.glb。NPZ/PLY为mm，GLB仅展示转换为m。\n\n全部阶段：arms/<condition>/local_results/Gxx/；FINAL.pt包含参数、Adam、随机状态、迭代与配置。源文件哈希、绝对路径及字节数见provenance/LOCAL_CHECKPOINT_AND_MESH_INDEX.json；输入视频/HERO/权重不复制上传。\n\n统一指标：VIEW_COUNT_ABLATION.csv / LOSS_ABLATION.csv / MESH_REFINEMENT_ABLATION.csv / PER_VIEW_METRICS.csv / BLENDER_ALIGNMENT_METRICS.csv。')
  (R/'REPRODUCE.md').write_text('''# 复现
 
 工作树：/home/liu/ring_first_3d_e4_sdf_localization；Python：/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python；Blender：/home/liu/blender/blender-5.0.1-linux-x64/blender。依赖复用，无新大模型下载。完整数据需要恢复provenance中的SHA对应路径，不能只clone代码就假设原视频/HERO/预训练INIT权重存在。
@@ -126,14 +159,17 @@ Fig1–10在figures/，原始模型/参数与运行时间见RESULT_INDEX.md。�
 1. 在独立新副本准备TASK/config/code；保留现有014冻结结果不覆盖。
 2. 依次运行code/inventory.py、prepare_views.py、expand_cameras.py、propagate_background.py、pose_correction.py、true_time_negative.py --solve、pose_audit.py、partition_views.py（--solve仅限无旧结果的新复现副本）。现有目录运行true_time_negative.py仅核对244条冻结背景观测，不重跑优化；B1仅研究候选，具体采用策略见POSE_ADOPTION_AUDIT。
 3. CPU控制：code/geometry_preflight.py、depth_camera_audit.py、true_time_negative.py。正式串行GPU：code/driver014.py C，然后code/pipeline_remaining.py。后者包括工程检查点恢复、B控制、D/E及最终冻结。
-4. 全部预测与尺度冻结后运行code/wait_evaluate.py：只读梯度诊断→固定原生观测→64阶几何/Blender BVH→统一最佳SE3。GT访问由显式冻结门控。
-5. code/figures_A.py、figures_B.py、figures_final.py、report014.py。中断后已完成FINAL不重训；未完成的训练从完整ACCEPTED checkpoint恢复。旧的源码版本按SHA归档。若需逐字节重现早期C0实现，使用provenance/source_versions对应快照；后续工程加速的等价检查另列。相同种子不宣称CUDA原子运算的位级一致。
+4. 全部预测与尺度冻结后运行code/wait_evaluate.py：只读梯度诊断（record-only保留原加和测试FAIL，不放宽阈值）→固定原生观测→64阶几何/Blender BVH→统一最佳SE3。GT访问由显式冻结门控。
+5. code/figures_A.py、figures_B.py、figures_final.py、posthoc_diagnostics.py、report014.py；最后运行validate_delivery.py。中断后已完成FINAL不重训；未完成的训练从完整ACCEPTED checkpoint恢复。旧的源码版本按SHA归档。若需逐字节重现早期C0实现，使用provenance/source_versions对应快照；后续工程加速的等价检查另列。相同种子不宣称CUDA原子运算的位级一致。
 
 本实验的正式预测与尺度已冻结，train014.py禁止在原目录继续更新。检查点迁移必须建立新隔离运行，保持参数、优化器、RNG和原始坐标；仅加载权重不能称完整续训。除评价GT访问外，优化器路径禁止读取audit_only/evaluation_only/.blend及原始GT资产。
 ''')
- for name in ['VIEW_COVERAGE_REPORT.md','POSE_CORRECTION_REPORT.md']:
+ details=[p for p in sorted((R/'figures/details').glob('*.png'))if 'Initial_Dual_Axis'not in p.name]
+ with (R/'RESULT_INDEX.md').open('a')as f:
+  f.write('\n\n## 详细图与诊断\n\n'+'\n'.join(f'- [{p.name}](figures/details/{p.name})'for p in details)+'\n\n逐病例：[PER_CASE_ANALYSIS.md](PER_CASE_ANALYSIS.md)；[G03机制诊断](G03_FAILURE_DIAGNOSIS.md)。数值底噪和原阈值失败：[GRADIENT_ADDITIVITY_CHECKS.csv](metrics/GRADIENT_ADDITIVITY_CHECKS.csv)。视频稳定性：[G01_VIDEO_STABILITY_AND_COVERAGE.csv](metrics/G01_VIDEO_STABILITY_AND_COVERAGE.csv)。\n\nLOCAL_CHECKPOINT_AND_MESH_INDEX包含全部初始、接受检查点、FINAL、拒绝示例和机制数组的绝对路径、SHA及字节数。PREFLIGHT是资源/接口预检，不能计入134个正式条件/对照或11个物理组的分母。\n')
+ for name in ['VIEW_COVERAGE_REPORT.md','POSE_CORRECTION_REPORT.md','CODE_REUSE_AUDIT.md']:
   p=R/name;text=p.read_text()
-  if '| 审计项目 |'not in text:p.write_text(text+'\n\n'+audit)
+  p.write_text(text.split('| 审计项目 |')[0].rstrip()+'\n\n'+audit)
  # Per-case evidence, including the difficult G07-G11: never hide them in a mean.
  sections=[]
  for n in names:
@@ -158,10 +194,10 @@ Fig1–10在figures/，原始模型/参数与运行时间见RESULT_INDEX.md。�
   r=next(v for v in runs if v['case']=='G03'and v['tag']==tag);reasons=next(v for v in rejected if v['case']=='G03'and v['arm']==tag);g03rows.append(dict(stage=tag,accepted=r['accepted'],attempts=r['attempts'],max_displacement_mm=r['maximum_displacement_mm'],vertices=r['vertices'],faces=r['faces'],dominant_rejection=max(reasons['reason_counts'],key=reasons['reason_counts'].get)if reasons['reason_counts']else'NONE'))
  gd=[]
  for tag in [C,'D_D1_split','D_D2_bidir','D_D3_combo']:
-  p=R/'arms'/tag/'metrics/G03_GRADIENT_DIAGNOSTIC.json';d=load(p);arr=np.load(p.with_suffix('.npz'));mask=arr['far_associated'];im=arr['silhouette']+arr['missing']+arr['extra']+arr['contour'];deep=arr['absolute']+arr['relative'];gd.append(dict(arm=tag,far_associated_vertices=d['far_associated_vertex_N'],far_vertices_in_local_candidate_bands=d['far_vertices_in_jointgradient_local_bands_N'],image_gradient_on_far_vertices=float(np.linalg.norm(im[mask])),depth_gradient_on_far_vertices=float(np.linalg.norm(deep[mask])),Ring_uncertain_target_contour_samples=sum(v['Ring_uncertainty_band_target_N']for v in d['localization']),target_contour_samples=sum(v['target_contour_N']for v in d['localization'])))
+  p=R/'arms'/tag/'metrics/G03_GRADIENT_DIAGNOSTIC.json';d=load(p);arr=np.load(p.with_suffix('.npz'));mask=arr['far_associated'];im=arr['silhouette']+arr['missing']+arr['extra']+arr['contour'];deep=arr['absolute']+arr['relative'];gd.append(dict(arm=tag,far_associated_vertices=d['far_associated_vertex_N'],far_vertices_in_local_candidate_bands=d['far_vertices_in_jointgradient_local_bands_N'],image_gradient_on_far_vertices=float(np.linalg.norm(im[mask])),depth_gradient_on_far_vertices=float(np.linalg.norm(deep[mask])),image_depth_cosine_far=float(np.sum(im[mask]*deep[mask])/max(1e-30,np.linalg.norm(im[mask])*np.linalg.norm(deep[mask]))),Ring_uncertain_target_contour_samples=sum(v['Ring_uncertainty_band_target_N']for v in d['localization']),target_contour_samples=sum(v['target_contour_N']for v in d['localization'])))
  table('metrics/G03_UPDATE_BOTTLENECK.csv',g03rows);table('metrics/G03_LOCALIZATION_GRADIENTS.csv',gd);gb=[]
  for tag in ['FINAL011','FINAL013','FINAL014']:
   v=G['G03',tag];gb.append(dict(stage=tag,Dxy_AE_mm=v['Dxy_AE_mm'],author_axis_span_mm=v.get('prediction_top_to_bottom_span_mm'),GT_span_mm=v.get('GT_top_to_bottom_span_mm'),lowest_point_vs_author_base_mm=v.get('lowest_point_vs_author_base_mm'),GT_to_pred_p95_mm=v['GT_to_prediction_mm']['p95'],Chamfer_MAE_mm=v['Chamfer_MAE_mm']))
- text='# G03 更新瓶颈的实际证据\n\n'+md(g03rows,['stage','accepted','attempts','max_displacement_mm','vertices','faces','dominant_rejection'])+'\n\n'+md(gd,['arm','far_associated_vertices','far_vertices_in_local_candidate_bands','image_gradient_on_far_vertices','depth_gradient_on_far_vertices','Ring_uncertain_target_contour_samples','target_contour_samples'])+'\n\n'+md(gb,['stage','Dxy_AE_mm','author_axis_span_mm','GT_span_mm','lowest_point_vs_author_base_mm','GT_to_pred_p95_mm','Chamfer_MAE_mm'])+'\n\n远目标只表示二维最近投影代理，不是真实三维对应；Ring带目标也可能是遮挡截断边而非真实主体外轮廓。本轮只诊断、不事后过滤或调整权重。局部候选带由总梯度选择，不能假设已覆盖全部远漏轮廓区域。应结合实际梯度分量、覆盖比例和逐候选Ring/目标拒绝原因，区分区域分配、约束不可行与顶点密度。旧013的大变形同时存在稀疏Ring漏检，不能将更严格物理检查后的位移减小单独归因于学习率。FACE_ORIENTATION检查使用候选面法向与该阶段初始面法向点积为正这一保守代理；大于90°的合法面片转向也可能被拒绝，不能把该拒绝原因直接等同于已证明的网格翻面或自交。AREA_DEGENERACY同样是相对初始面积的10%限制。这些固定保护与定位/优化的限制共同存在，本轮没有为G03放宽。\n\nE1/E2增顶点本身不改变形状；只有继续更新后的实际Mesh和GT空间缺失才构成恢复证据。Dxy或高度跨度接近不能替代柄部完整性判断。三维GT只是冻结后的独立审计，未参与定位、选择或停止。\n\n'+audit;(R/'G03_FAILURE_DIAGNOSIS.md').write_text(text)
+ text='# G03 更新瓶颈的实际证据\n\n'+md(g03rows,['stage','accepted','attempts','max_displacement_mm','vertices','faces','dominant_rejection'])+'\n\n'+md(gd,['arm','far_associated_vertices','far_vertices_in_local_candidate_bands','image_gradient_on_far_vertices','depth_gradient_on_far_vertices','image_depth_cosine_far','Ring_uncertain_target_contour_samples','target_contour_samples'])+'\n\n'+md(gb,['stage','Dxy_AE_mm','author_axis_span_mm','GT_span_mm','lowest_point_vs_author_base_mm','GT_to_pred_p95_mm','Chamfer_MAE_mm'])+'\n\n远目标只表示二维最近投影代理，不是真实三维对应；Ring带目标也可能是遮挡截断边而非真实主体外轮廓。本轮只诊断、不事后过滤或调整权重。局部候选带由总梯度选择，不能假设已覆盖全部远漏轮廓区域。应结合实际梯度分量、覆盖比例和逐候选Ring/目标拒绝原因，区分区域分配、约束不可行与顶点密度。旧013的G03材料穿透约0.05297mm，014约0.00618mm（011已有约0.00615mm）。旧013的大变形同时存在稀疏Ring漏检，不能将更严格物理检查后的位移减小单独归因于学习率。FACE_ORIENTATION检查使用候选面法向与该阶段初始面法向点积为正这一保守代理；大于90°的合法面片转向也可能被拒绝，不能把该拒绝原因直接等同于已证明的网格翻面或自交。AREA_DEGENERACY同样是相对初始面积的10%限制。这些固定保护与定位/优化的限制共同存在，本轮没有为G03放宽。\n\nE1/E2增顶点本身不改变形状；只有继续更新后的实际Mesh和GT空间缺失才构成恢复证据。Dxy或高度跨度接近不能替代柄部完整性判断。三维GT只是冻结后的独立审计，未参与定位、选择或停止。\n\n'+audit;(R/'G03_FAILURE_DIAGNOSIS.md').write_text(text)
  print('REPORT014_WRITTEN',len(final),len(fail),len(runs),flush=True)
 if __name__=='__main__':main()

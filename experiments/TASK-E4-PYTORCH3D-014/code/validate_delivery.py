@@ -6,6 +6,10 @@ def main():
  for name in required:assert(R/name).exists(),name
  for p in (R/'code').glob('*.py'):ast.parse(p.read_text())
  frozen=load(R/'provenance/ALL_014_PREDICTIONS_AND_SCALE_FROZEN_BEFORE_GT.json');assert all(sha(a['path'])==a['sha256']for a in frozen['files']);checks.append(dict(check='all predictions and scales still frozen',passed=True,files=len(frozen['files'])))
+ assert sha(frozen['scale']['path'])==frozen['scale']['sha256']
+ train_names={'common.py','strategy.py','pmgr_self.py','p3d.py','free_model.py','components.py','depth_terms.py','contour_objective.py','normalized_local.py','safe_geometry.py','multiview.py','train014.py','refine_mesh.py','refinement_prior.py'}
+ source=[a for a in frozen['code']if Path(a['path']).name in train_names];assert len(source)==len(train_names)and all(sha(a['path'])==a['sha256']for a in source)
+ checks.append(dict(check='all frozen training rendering loss geometry and refinement source hashes unchanged',passed=True,files=len(source)))
  old=load(R/'provenance/HISTORY_013.json');changed=[a['path']for a in old['files']if not Path(a['path']).exists()or sha(a['path'])!=a['sha256']];assert not changed,changed;checks.append(dict(check='protected013 inputs/code/results unchanged',passed=True,files=len(old['files'])))
  cases=[c['name']for c in load(R/'config/CASE_LOCK.json')];expected=['C0','C1_8','C2_16','C3_32','C4_ALL','D_D1_split','D_D2_bidir','D_D3_combo','E0_none','E1_global','E2_adaptive','FINAL_014']
  for tag in expected:
@@ -26,6 +30,11 @@ def main():
   if r.get('fixed_depth_N'):assert r['depth_hit_N']+r['depth_miss_N']==r['fixed_depth_N']
  checks.append(dict(check='same one properSE3 permodel, no scale; native fixed denominators',passed=True,models=len(rows)))
  assert load(R/'provenance/GT_ACCESS_START.json')['epoch']>frozen['epoch'];checks.append(dict(check='GTaccess after every prediction and metric-scale freeze',passed=True))
+ for stage in ['C','D','E']:assert load(R/'config'/(stage+'_SELECTION.json'))['epoch']<frozen['epoch']
+ grad=load(R/'metrics/GRADIENT_ADDITIVITY_CHECKS.json');assert len(grad)==44 and all(q['all_components_finite']for q in grad)
+ gfail=sum(not q['original_test_pass']for q in grad);assert all(q['original_threshold']==1e-4 for q in grad)
+ assert f'失败{gfail}/44'in(R/'TECHNICAL_REPORT.md').read_text()
+ checks.append(dict(check='44 finite gradient decompositions and original failed precision checks reported without threshold relaxation',passed=True,original_additivity_failures=gfail))
  for n in cases:
   for f in ['FINAL014_mm.npz','FINAL014_mm.ply','FINAL014_scene_m.glb']:assert(R/'review_models'/n/f).exists(),(n,f)
  report=(R/'TECHNICAL_REPORT.md').read_text()

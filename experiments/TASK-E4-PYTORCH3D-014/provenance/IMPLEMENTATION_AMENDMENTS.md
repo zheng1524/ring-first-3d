@@ -8,3 +8,6 @@
 
 
 2026-11-08 21:49 local: post-freeze native evaluation scheduled with3 CPU workers across independent physical groups, serial models within each group, ordered aggregation. No score, camera, Mask, ray, or geometric formula changes. Every existing common-FIT serial score will be compared with native post-evaluation at1e-10 tolerance; failures stop evaluation, not trigger retraining. GPU remains strictly serial. No GT accessed for this engineering adaptation.
+
+
+2026-11-09 post-freeze, before GT: G02 read-only split-gradient sum failed original1e-4 relative threshold (0.00016808; absolute3.0075e-7); all components finite. Same-state FULL-vs-FULL repeat control is worse:0.00038989relative /6.9764e-7absolute, lossdifference−3.1849e-8. Specific kernel not localized; numerical/nondeterministic execution floor demonstrated. Original diagnostic criterion remains unchanged and FAIL is retained; --record-only saves failures and continues independent geometric evaluation without promoting them toPASS. No optimizer, weight, prediction, camera, data or metric formula changed. Original console traceback retained under runtime/EVALUATION_GRADIENT_INITIAL_FAILURE.log. All44 outcomes will be reported in GRADIENT_ADDITIVITY_CHECKS.
