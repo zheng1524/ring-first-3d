@@ -1,0 +1,30 @@
+{
+  "epoch": 1794134670.3358648,
+  "method": "D_D2_bidir",
+  "all": [
+    {
+      "tag": "C4_ALL",
+      "group_N": 8,
+      "mean_FIT_selection_score": 0.783694100627832
+    },
+    {
+      "tag": "D_D1_split",
+      "group_N": 8,
+      "mean_FIT_selection_score": 0.7817375265838897
+    },
+    {
+      "tag": "D_D2_bidir",
+      "group_N": 8,
+      "mean_FIT_selection_score": 0.7861953070720846
+    },
+    {
+      "tag": "D_D3_combo",
+      "group_N": 8,
+      "mean_FIT_selection_score": 0.7852284501338403
+    }
+  ],
+  "GT_read": false,
+  "HOLDOUT_used_for_selection": false,
+  "HOLDOUT_preloaded_by_renderer_but_not_in_loss": true,
+  "rule": "equalcase FIT score meanIoU-.1FP_perMask-.01boundaryMAEpx-.01fixeddepthcost; no HOLDOUT/GT; lastaccepted only"
+}

@@ -1,0 +1,32 @@
+{
+  "epoch": 1794134670.3361983,
+  "coarse": "D_D2_bidir",
+  "view": "C4_ALL",
+  "loss": "D2_bidir",
+  "local_signal": "FIT apparent contour gradient >=75th nonzero quantile in at least2views, highest20%vertices; OR edge stretch>1.5 with nonzero FIT signal",
+  "single_subdivision": true,
+  "normalization": "common coarse restriction, area-averaged fine residual .01; optimizer reset",
+  "GT_read": false,
+  "code": [
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/code/refine_mesh.py",
+      "bytes": 7725,
+      "sha256": "6664b9dcac13aca5c797044f6fb7965990c7976a4fcfcbd739e2f9fcae397ebb"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/code/bmesh_subdivide.py",
+      "bytes": 1046,
+      "sha256": "cdcf593f32827977cb4709a7cd5c1a5b0a548153b53cd20c05a0ffb0c18c0fee"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/code/refinement_prior.py",
+      "bytes": 1008,
+      "sha256": "80df6b3c9bd4f67044bb3a1c9567327f5a6b0ab43b801eaae186d599d92614d4"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/code/density_preflight.py",
+      "bytes": 1084,
+      "sha256": "9486310e3e2edd71a22d1207476acc78bdae8c2dbec7e6ccc3d282b5c2f7eb3e"
+    }
+  ]
+}

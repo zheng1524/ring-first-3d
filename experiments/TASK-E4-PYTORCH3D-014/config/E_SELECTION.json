@@ -1,0 +1,25 @@
+{
+  "epoch": 1794142766.1387148,
+  "method": "E0_none",
+  "all": [
+    {
+      "tag": "E0_none",
+      "group_N": 8,
+      "mean_FIT_selection_score": 0.7896184505261896
+    },
+    {
+      "tag": "E1_global",
+      "group_N": 8,
+      "mean_FIT_selection_score": 0.7823583413220201
+    },
+    {
+      "tag": "E2_adaptive",
+      "group_N": 8,
+      "mean_FIT_selection_score": 0.7818012635016165
+    }
+  ],
+  "GT_read": false,
+  "HOLDOUT_used_for_selection": false,
+  "HOLDOUT_preloaded_by_renderer_but_not_in_loss": true,
+  "rule": "equalcase FIT score meanIoU-.1FP_perMask-.01boundaryMAEpx-.01fixeddepthcost; no HOLDOUT/GT; lastaccepted only"
+}

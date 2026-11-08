@@ -9,7 +9,7 @@ def self_intersections(V,F):
 
 def dense_face_distance(rs,V,F,ringV,divisions=32,ringF=None):
  """All potentially contacting triangle interiors; bounding-box culling is geometric only."""
- tri=V[F];lo=ringV.min(0)-.02;hi=ringV.max(0)+.02;idx=np.flatnonzero((tri.min(1)<=hi).all(1)&(tri.max(1)>=lo).all(1));out=np.ones(len(F),float)
+ tri=V[F];lo=ringV.min(0)-.02;hi=ringV.max(0)+.02;idx=np.flatnonzero((tri.min(1)<=hi).all(1)&(tri.max(1)>=lo).all(1));separation=np.maximum(np.maximum(ringV.min(0)-tri.max(1),tri.min(1)-ringV.max(0)),0);out=np.linalg.norm(separation,axis=1)
  bary=np.array([(i/divisions,j/divisions,1-(i+j)/divisions)for i in range(divisions+1)for j in range(divisions+1-i)])
  # A 1-Lipschitz analytic torus bound only culls points provably outside the
  # closed, matching CAD. All potentially penetrating samples still use the

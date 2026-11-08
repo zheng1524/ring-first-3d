@@ -30,7 +30,7 @@ class ContourDistance:
   ids=np.flatnonzero(ok);ids=ids[np.linspace(0,len(ids)-1,min(512,len(ids))).astype(int)]if len(ids)else ids
   if not len(ids):return V.sum()*0,dict(contour_samples=0)
   uv=uv[tensor(ids,torch.int64)];dt,ct=self.data[cid];grid=torch.stack([2*uv[:,0]/(w-1)-1,2*uv[:,1]/(h-1)-1],1)[None,None];forward=tf.grid_sample(dt,grid,align_corners=True,padding_mode='border').reshape(-1).double();nn=cKDTree(uv.detach().cpu().numpy()).query(ct.cpu().numpy())[1];reverse=(ct-uv[tensor(nn,torch.int64)]).norm(dim=1)
-  self.last[cid]=dict(eid=eid[ids],t=tt[ids],nn=nn)
+  self.last[cid]=dict(eid=eid[ids],t=tt[ids],nn=nn,forward_native_px=forward.detach().cpu().numpy(),reverse_native_px=reverse.detach().cpu().numpy(),target_contour_uv=ct.detach().cpu().numpy())
   def hub(x):x=x/20.;return torch.where(x<1,.5*x*x,x-.5)
   loss=.5*(hub(forward).mean()+hub(reverse).mean());return loss,dict(contour_samples=len(ids),forward_native_px=float(forward.mean().detach()),reverse_native_px=float(reverse.mean().detach()))
 

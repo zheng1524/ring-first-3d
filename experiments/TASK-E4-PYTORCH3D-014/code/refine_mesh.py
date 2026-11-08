@@ -5,6 +5,20 @@ from scipy import sparse
 import subprocess
 MASTER=Path(__file__).resolve().parents[1]
 BLENDER='/home/liu/blender/blender-5.0.1-linux-x64/blender'
+def restore_bmesh_interpolation(V,F,W,G,parent):
+ """Restore exact double-precision edge/face interpolation using BMesh lineage."""
+ assert np.linalg.norm(W[:len(V)]-V,axis=1).max()<1e-4;original_float=W.copy();W=W.copy();W[:len(V)]=V;incidence=[set()for _ in W]
+ for face,pid in zip(G,parent):
+  for index in face:incidence[index].add(int(pid))
+ for index in range(len(V),len(W)):
+  parents=sorted(incidence[index]);shared=set(F[parents[0]])
+  for pid in parents[1:]:shared&=set(F[pid])
+  if len(shared)==2:W[index]=V[sorted(shared)].mean(0)
+  elif len(shared)==3:
+   tri=V[F[parents[0]]];candidates=np.r_[(tri+np.roll(tri,-1,axis=0))*.5,tri.mean(0,keepdims=True)];W[index]=candidates[np.linalg.norm(candidates-original_float[index],axis=1).argmin()]
+  else:raise RuntimeError('Unexpected BMesh vertex/parent incidence; do not guess face lineage')
+ assert np.linalg.norm(W-original_float,axis=1).max()<1e-4,'BMesh output is not interpolation on its actual parent edge/face'
+ return W
 def flags(c,ch):
  V=tensor(c.V,torch.float64).requires_grad_(True);cd=ContourDistance(c);signal=np.zeros(len(c.V));count=np.zeros(len(c.V),int);perview=[]
  for cid in c.fit:
@@ -33,7 +47,7 @@ def prepare(name,arm,source,targetroot):
   subprocess.run([BLENDER,'-b','--factory-startup','-t','2','--python',str(MASTER/'code/bmesh_subdivide.py'),'--',str(request),str(out)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT);zz=np.load(out);W,G=zz['V'],zz['F_solid'];parent=zz['parent_coarse_face'];assert(parent>=0).all()and(parent<len(F)).all()
   # BMesh stores float32 coordinates. Re-express its interpolation in the
   # original double-precision triangles; keep old vertices exactly unchanged.
-  cp0=scene(V,F).compute_closest_points(__import__('open3d').core.Tensor(W.astype(np.float32)));fi0=cp0['primitive_ids'].numpy().astype(int);uv0=cp0['primitive_uvs'].numpy().astype(float);bb=np.c_[1-uv0.sum(1),uv0];W=(V[F[fi0]]*bb[:,:,None]).sum(1);assert np.linalg.norm(zz['V'][:len(V)]-V,axis=1).max()<1e-4;W[:len(V)]=V
+  W=restore_bmesh_interpolation(V,F,W,G,parent)
  oldscene=scene(V,F);inf=c.inferred[parent];body=G[~inf];edges=np.sort(np.r_[body[:,[0,1]],body[:,[1,2]],body[:,[2,0]]],axis=1);ed,nn=np.unique(edges,axis=0,return_counts=True);boundary=np.zeros(len(W),bool)
  if c.inferred.any():boundary[np.unique(ed[nn==1])]=True
  newmesh=trimesh.Trimesh(W,G,process=False);oldmesh=trimesh.Trimesh(V,F,process=False);oldsample=np.r_[V,V[F].mean(1),V[F[:,[0,1]]].mean(1),V[F[:,[1,2]]].mean(1),V[F[:,[2,0]]].mean(1)];newscene=scene(W,G);d1=oldscene.compute_distance(__import__('open3d').core.Tensor(W.astype(np.float32))).numpy();d2=newscene.compute_distance(__import__('open3d').core.Tensor(oldsample.astype(np.float32))).numpy();zero=float(max(d1.max(),d2.max()));assert zero<1e-4,'Subdivision altered shape'
