@@ -22,7 +22,8 @@ def sample(labels):
                 counts=np.zeros(2);side_sites=[]
                 for offset in [.25,.5]:
                     q=exits[j]+sgn*n*max(1.,offset*width);side_sites.append(q.tolist());radius=max(1.,.15*width)
-                    x0=max(0,int(np.floor(q[0]-radius)));x1=min(w,int(np.ceil(q[0]+radius))+1);y0=max(0,int(np.floor(q[1]-radius)));y1=min(h,int(np.ceil(q[1]+radius))+1)
+                    x0=min(w,max(0,int(np.floor(q[0]-radius))));x1=max(0,min(w,int(np.ceil(q[0]+radius))+1));y0=min(h,max(0,int(np.floor(q[1]-radius))));y1=max(0,min(h,int(np.ceil(q[1]+radius))+1))
+                    if x1<=x0 or y1<=y0:continue
                     yy,xx=np.mgrid[y0:y1,x0:x1];valid=((xx-q[0])**2+(yy-q[1])**2<=radius**2)&(~rm[y0:y1,x0:x1])
                     if len(xx) and valid.any():
                         vals=labels[y0:y1,x0:x1][valid];counts += [(vals==1).sum(),(vals==0).sum()]

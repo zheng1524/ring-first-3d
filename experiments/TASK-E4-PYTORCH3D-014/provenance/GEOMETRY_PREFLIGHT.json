@@ -1,0 +1,32 @@
+{
+  "epoch": 1794123125.5146918,
+  "code": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/code/geometry_preflight.py",
+    "bytes": 1428,
+    "sha256": "1869344350d1f926a051d545c6d108ce90b6896fa5f490cb2eada06e8110a6bc"
+  },
+  "guard": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/code/safe_geometry.py",
+    "bytes": 4471,
+    "sha256": "621bec3ecffb65eabf74118a420d98e2eabd9d2c6e0a7cc98a07018efa1e649b"
+  },
+  "checks": [
+    {
+      "test": "triangle-interior material penetration missed by old vertices/midpoints/centroid",
+      "old_min_mm": 3.8498940467834473,
+      "new_dense_min_mm": -0.5734977722167969,
+      "FCL": true,
+      "PASS": true
+    },
+    {
+      "test": "nonadjacent crossing triangles",
+      "Open3D_intersections": 1,
+      "PASS": true
+    },
+    {
+      "test": "separated triangles",
+      "PASS": true
+    }
+  ],
+  "mesh_writes_to_history": 0
+}

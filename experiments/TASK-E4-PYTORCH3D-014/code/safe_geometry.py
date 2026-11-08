@@ -7,12 +7,26 @@ def self_intersections(V,F):
  m=o3d.geometry.TriangleMesh(o3d.utility.Vector3dVector(V),o3d.utility.Vector3iVector(F));p=np.asarray(m.get_self_intersecting_triangles()).reshape(-1,2)
  return dict(intersections=len(p),coplanar_candidates=0,engine='Open3D nonadjacent triangle intersection',pairs=p.tolist())
 
-def dense_face_distance(rs,V,F,ringV,divisions=32):
+def dense_face_distance(rs,V,F,ringV,divisions=32,ringF=None):
  """All potentially contacting triangle interiors; bounding-box culling is geometric only."""
  tri=V[F];lo=ringV.min(0)-.02;hi=ringV.max(0)+.02;idx=np.flatnonzero((tri.min(1)<=hi).all(1)&(tri.max(1)>=lo).all(1));out=np.ones(len(F),float)
  bary=np.array([(i/divisions,j/divisions,1-(i+j)/divisions)for i in range(divisions+1)for j in range(divisions+1-i)])
+ # A 1-Lipschitz analytic torus bound only culls points provably outside the
+ # closed, matching CAD. All potentially penetrating samples still use the
+ # actual CAD signed query. The bound is at least one complete CAD edge long.
+ radius=(np.linalg.norm(ringV[:,:2],axis=1).max()+np.linalg.norm(ringV[:,:2],axis=1).min())/2;wire=np.ptp(ringV[:,2])/2
+ use_bound=ringF is not None
+ if use_bound:
+  residual=np.sqrt((np.linalg.norm(ringV[:,:2],axis=1)-radius)**2+ringV[:,2]**2)-wire;use_bound=np.max(abs(residual))<1e-5
+ if use_bound:
+  tt=ringV[ringF];bound=max(np.linalg.norm(tt[:,1]-tt[:,0],axis=1).max(),np.linalg.norm(tt[:,2]-tt[:,1],axis=1).max(),np.linalg.norm(tt[:,0]-tt[:,2],axis=1).max())+1e-5
  for start in range(0,len(idx),64):
-  ii=idx[start:start+64];p=np.einsum('bv,ivc->ibc',bary,tri[ii]);sd=rs.compute_signed_distance(o3d.core.Tensor(p.reshape(-1,3).astype(np.float32)),nsamples=3).numpy();out[ii]=sd.reshape(len(ii),-1).min(1)
+  ii=idx[start:start+64];p=np.einsum('bv,ivc->ibc',bary,tri[ii]).reshape(-1,3)
+  if use_bound:
+   phi=np.sqrt((np.linalg.norm(p[:,:2],axis=1)-radius)**2+p[:,2]**2)-wire;take=phi<=bound;sd=np.maximum(phi-bound,0.)
+   if take.any():sd[take]=rs.compute_signed_distance(o3d.core.Tensor(p[take].astype(np.float32)),nsamples=3,nthreads=2).numpy()
+  else:sd=rs.compute_signed_distance(o3d.core.Tensor(p.astype(np.float32)),nsamples=3,nthreads=2).numpy()
+  out[ii]=sd.reshape(len(ii),-1).min(1)
  return out
 
 def points(V,F,edges):return np.r_[V,V[F].mean(1),V[edges].mean(1)]
@@ -20,8 +34,8 @@ class GeometryGuard:
  def __init__(self,c,chart):
   self.c=c;self.chart=chart;self.F=c.F_solid;self.V0=np.array(c.V);self.edges=np.unique(np.sort(np.r_[self.F[:,[0,1]],self.F[:,[1,2]],self.F[:,[2,0]]],axis=1),axis=0);self.rs=scene(c.ringV,c.ringF);self.manager=trimesh.collision.CollisionManager();self.manager.add_object('Ring',trimesh.Trimesh(c.ringV,c.ringF,process=False));self.cross0=np.cross(c.V[self.F[:,1]]-c.V[self.F[:,0]],c.V[self.F[:,2]]-c.V[self.F[:,0]]);self.area0=np.linalg.norm(self.cross0,axis=1);self.sd0=self.ring_distance(c.V);self.lastsd=self.sd0.copy();self.reverse0=self.reverse(c.V);self.lastreverse=self.reverse0.copy();self.col0=self.collision(c.V);self.initial_self=self_intersections(c.V,self.F);self.topology=trimesh.Trimesh(c.V,self.F,process=False);self.plane=chart.plane;self.eps=1e-5
  def collision(self,V):return bool(self.manager.in_collision_single(trimesh.Trimesh(V,self.F,process=False)))
- def ring_distance(self,V):return dense_face_distance(self.rs,V,self.F,self.c.ringV,32)
- def reverse(self,V):return scene(V,self.F).compute_signed_distance(o3d.core.Tensor(np.asarray(np.r_[self.c.ringV,self.c.ringV[self.c.ringF].mean(1)],np.float32)),nsamples=3).numpy().astype(float)
+ def ring_distance(self,V):return dense_face_distance(self.rs,V,self.F,self.c.ringV,32,self.c.ringF)
+ def reverse(self,V):return scene(V,self.F).compute_signed_distance(o3d.core.Tensor(np.asarray(np.r_[self.c.ringV,self.c.ringV[self.c.ringF].mean(1)],np.float32)),nsamples=3,nthreads=2).numpy().astype(float)
  def inspect(self,V,old):
   why=[];move=float(np.linalg.norm(V-old,axis=1).max());tri=V[self.F];cross=np.cross(tri[:,1]-tri[:,0],tri[:,2]-tri[:,0]);area=np.linalg.norm(cross,axis=1);ratio=area/np.maximum(self.area0,1e-20);dot=np.einsum('ij,ij->i',cross,self.cross0);info=dict(max_step_mm=move,min_area_ratio=float(ratio.min()),minimum_normal_dot=float(dot.min()),Ring_surface_collision=None,Ring_min_signed_mm=None,self_intersections=None,coplanar_warnings=None)
   if not np.isfinite(V).all():why.append('NONFINITE')
