@@ -51,3 +51,5 @@ $PY -B "$R/code/freeze_scale013.py"
 ```
 
 旧驱动只在其已运行子任务保存FINAL后停止，记录`runtime/DRIVER_REPLACEMENT.json`，既有运行跳过，不覆盖重跑。O3N使用`train_normalized.py`，其他臂仍用冻结的原013训练脚本；原012完整重现仍使用`train012_exact.py`。最初协议/源码hash和追加修正的hash分别保留。
+
+最终评价使用`code/evaluate_all_rigid.py`并行三个独立CPU病例，合并33行；新增GT原始身份、单位及纯主体对象记录在assets_index/BLENDER_SOURCE_RECEIPT.json。G11作者基底不足仅停止高度指标。最后运行`final_geometry_diagnostics.py`、`dense_ring_audit.py`、`report013.py`、`write_final_findings.py`与`delivery_validate.py`。加密Ring审计是冻结后失败诊断，不参与重新选择模型。
