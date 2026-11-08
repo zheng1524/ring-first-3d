@@ -1,0 +1,99 @@
+{
+  "task": "TASK-E4-PYTORCH3D-014",
+  "cases": [
+    "G01",
+    "G02",
+    "G03",
+    "G07",
+    "G04",
+    "G05",
+    "G06",
+    "G08",
+    "G09",
+    "G10",
+    "G11"
+  ],
+  "seed": 20261108,
+  "candidate_temporal_frames_per_video": 40,
+  "counts": [
+    8,
+    16,
+    32,
+    "ALL_EXECUTABLE_CANDIDATES"
+  ],
+  "inventory_raw_frames": true,
+  "raw_unsampled": "inventory only; no per-frameRGBsha claimed unless actuallydecoded",
+  "pool_scope": "all fixed40+historical candidates, not every raw video frame",
+  "retain_all_original_HERO_references": true,
+  "old_gate_rejects_case": false,
+  "holdout": "013UPDATE_HOLDOUT protected for Mesh update; additionally fixedtemporal slots8/24 of40 for newly sampledvideos",
+  "candidate_budget": {
+    "max_proposals": 80,
+    "max_accepted": 40,
+    "consecutive_rejection_stop": 30
+  },
+  "formal_budget": {
+    "max_proposals": 160,
+    "max_accepted": 80,
+    "consecutive_rejection_stop": 60
+  },
+  "seed_groups_for_method_selection": [
+    "G01",
+    "G02",
+    "G03",
+    "G07",
+    "G08",
+    "G09",
+    "G10",
+    "G11"
+  ],
+  "selection": "equalcase FIT score meanIoU-.1FP_perMask-.01boundaryMAEpx-.01fixeddepthcost; no HOLDOUT/GT; lastaccepted only",
+  "video_weights": "equal videos, directionblocks equal mass withinvideo, equalviews perblock",
+  "depth": "same original native HERO, sameviewabs/rel+boundaryweight; no newHERO inference required, no crossviewdepth gradients/gates",
+  "C_arms": [
+    "C0",
+    "C1_8",
+    "C2_16",
+    "C3_32",
+    "C4_ALL"
+  ],
+  "D_arms": [
+    "D0_013",
+    "D1_split",
+    "D2_bidir",
+    "D3_combo"
+  ],
+  "E_arms": [
+    "E0_none",
+    "E1_global",
+    "E2_adaptive"
+  ],
+  "Ringguard": {
+    "barycentric_divisions": 32,
+    "post_audit_divisions": 64,
+    "epsilon_mm": 1e-05,
+    "FCL": true,
+    "reference_initial_and_last": true
+  },
+  "GT": "NO_ACCESS_UNTIL_ALL_FINAL_PREDICTIONS_AND_SCALE_FROZEN",
+  "optimization_gpu": "serial; per-view backward accumulation tobound memory",
+  "B1": {
+    "fit_BG_min": 24,
+    "held_BG_min": 8,
+    "minimum_image_cells": 8,
+    "seeds_yaw_deg": [
+      0,
+      90,
+      -90,
+      180
+    ],
+    "max_translation_mm": 3.0,
+    "tilt_prior_deg": 5,
+    "yaw_prior_deg": 45,
+    "translation_prior_mm": 0.5,
+    "max_nfev": 80,
+    "selection": "FIT_BG+Ringprior only",
+    "observability_rank_relative": 0.001
+  },
+  "B2": "onlyifB1heldevidenceandmultiinitrepeatability supported; otherwiseNOT_EVALUABLE"
+}
