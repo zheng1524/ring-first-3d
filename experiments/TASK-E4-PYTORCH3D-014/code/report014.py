@@ -9,6 +9,7 @@ def fmt(x):
 def md(rows,cols):return '| '+' | '.join(cols)+' |\n| '+' | '.join('---'for _ in cols)+' |\n'+'\n'.join('| '+' | '.join(fmt(r.get(k))for k in cols)+' |'for r in rows)
 def main():
  assert(R/'provenance/INDEPENDENT_EVALUATION_COMPLETE.json').exists();cases=load(R/'config/CASE_LOCK.json');names=[c['name']for c in cases];native=load(R/'metrics/NATIVE_SUMMARY.json');gt=load(R/'metrics/BLENDER_ALIGNMENT_METRICS.json');geom=load(R/'metrics/POST_GEOMETRY_AUDIT.json');N={(r['case'],r['label']):r for r in native};G={(r['case'],r['label']):r for r in gt};Q={(r['case'],r['label']):r for r in geom};C=load(R/'config/C_SELECTION.json')['method'];D=load(R/'config/D_SELECTION.json')['method'];E=load(R/'config/E_SELECTION.json')['method'];final=[];fail=[];runs=[];grad=[]
+ blender={(q['case'],q['label']):q for q in load(R/'metrics/POST_GEOMETRY_VALIDITY.json')}
  for tag in ['C0','C1_8','C2_16','C3_32','C4_ALL','D_D1_split','D_D2_bidir','D_D3_combo','E0_none','E1_global','E2_adaptive','FINAL_014','B_A_ONLY','B0_UNCORRECTED']:
   for n in names:
    p=R/'arms'/tag/'metrics'/(n+'_RUN.json')
@@ -17,6 +18,8 @@ def main():
    if p.exists():grad+=load(p)['rows']
  for n in names:
   a=N[n,'FINAL014'];b=G[n,'FINAL014'];q=Q[n,'FINAL014'];run=next(v for v in runs if v['case']==n and v['tag']=='FINAL_014');final.append(dict(case=n,type=next(c['morphology']for c in cases if c['name']==n),FIT_IoU=a['FIT_IoU'],HOLDOUT_IoU=a['HOLDOUT_IoU'],HERO_fixed_N=a['FIT_HERO_fixed_N'],HERO_hit_rate=a['FIT_HERO_hit_rate'],HERO_fixed_cost=a['FIT_HERO_fixed_cost'],HERO_MAE_active_mm=a['FIT_HERO_MAE_active_mm'],Chamfer_mm=b['Chamfer_MAE_mm'],Dxy_AE_mm=b['Dxy_AE_mm'],Dxy_ARE_percent=100*b['Dxy_relative_error']if b['Dxy_relative_error']is not None else None,height_AE_mm=b['height_max_AE_mm'],H95_AE_mm=b['H95_AE_mm'],IoU3D=b['IoU_3D'],IoU3D_status=b['IoU_3D_status'],Ring_penetration_mm=q['Ring_max_material_penetration_mm'],Ring_new_vs011_mm=q['new_penetration_vs011_mm'],Ring_numeric_nonworsening=q['Ring_worsening_within_epsilon'],self_intersections=q['self_intersections_Open3D'],nonmanifold_edges=q['nonmanifold_edges_N'],final_attempts=run['attempts'],final_accepted=run['accepted'],final_displacement_mm=run['maximum_displacement_mm']))
+  final[-1].update(Blender_self_intersections=blender[n,'FINAL014']['self_intersections_N'],Blender_Ring_pairs=blender[n,'FINAL014']['Ring_pairs_N'])
+  if blender[n,'FINAL014']['self_intersections_N']:fail.append(dict(case=n,stage='FINAL014',reason='Independent Blender BVH nonadjacent self-intersection pairs detected',evidence='metrics/POST_GEOMETRY_VALIDITY.json'))
   if not q['Ring_worsening_within_epsilon']:fail.append(dict(case=n,stage='FINAL014',reason='Independent64-stage Ring worsening exceeds frozen1e-5mm epsilon',evidence='metrics/POST_GEOMETRY_AUDIT.csv',amount_mm=q['new_penetration_vs011_mm']))
   if q['self_intersections_Open3D']or q['nonmanifold_edges_N']:fail.append(dict(case=n,stage='FINAL014',reason='Mesh entity validity failure',evidence='metrics/POST_GEOMETRY_AUDIT.csv'))
   if b['Chamfer_MAE_mm']>=G[n,'FINAL013']['Chamfer_MAE_mm']:fail.append(dict(case=n,stage='FINAL014',reason='No Chamfer improvement against013 under the same best rigid evaluator',evidence='BLENDER_ALIGNMENT_METRICS.csv'))
@@ -30,6 +33,9 @@ def main():
  for tag in ['FINAL011','FINAL012','FINAL013','FINAL014']:
   rr=[G[n,tag]for n in names];ae=np.array([r['Dxy_AE_mm']for r in rr if r['Dxy_AE_mm']is not None]);re=np.array([r['Dxy_relative_error']for r in rr if r['Dxy_relative_error']is not None]);cd=np.array([r['Chamfer_MAE_mm']for r in rr if r['Chamfer_MAE_mm']is not None]);summary.append(dict(stage=tag,target_N=11,numerical_models_N=sum((n,tag)in N for n in names),Dxy_evaluable_N=len(ae),Dxy_median_ARE_percent=float(100*np.median(re)),Dxy_MAE_mm=float(ae.mean()),Dxy_p95_AE_mm=float(np.quantile(ae,.95)),Dxy_max_AE_mm=float(ae.max()),Chamfer_group_mean_mm=float(cd.mean()),height_evaluable_N=sum(r['height_max_AE_mm']is not None for r in rr),strict_solid_IoU_evaluable_N=sum(r['IoU_3D']is not None for r in rr)))
  table('metrics/PAIRED_STAGE_STATISTICS.csv',summary);save('metrics/PAIRED_STAGE_STATISTICS.json',summary);cd_delta=np.array([G[n,'FINAL014']['Chamfer_MAE_mm']-G[n,'FINAL013']['Chamfer_MAE_mm']for n in names]);iou_delta=np.array([N[n,'FINAL014']['FIT_IoU']-N[n,'FINAL013']['FIT_IoU']for n in names]);paired=[dict(case=n,Chamfer014_minus013_mm=float(cd_delta[i]),IoU014_minus013=float(iou_delta[i]),DxyAE014_minus013_mm=G[n,'FINAL014']['Dxy_AE_mm']-G[n,'FINAL013']['Dxy_AE_mm'])for i,n in enumerate(names)];table('metrics/PAIRED_FINAL013_014.csv',paired)
+ rho=spearmanr(iou_delta,-cd_delta).statistic if len(np.unique(iou_delta))>1 and len(np.unique(cd_delta))>1 else None
+ consistency=dict(physical_group_N=len(names),comparison='FINAL014 minus FINAL013, same014 native cameras and same bestSE3 evaluator; whole-pipeline descriptive comparison, not an isolated-factor test',FIT_IoU_improved_N=int((iou_delta>0).sum()),Chamfer_improved_N=int((cd_delta<0).sum()),FIT_IoU_improved_but_Chamfer_worsened_N=int(((iou_delta>0)&(cd_delta>0)).sum()),same_change_direction_N=int((np.sign(iou_delta)==np.sign(-cd_delta)).sum()),Spearman_IoU_change_vs_Chamfer_improvement=float(rho)if rho is not None else None,GT_used_for_method_selection=False,not_a_predeclared_scientific_acceptance_gate=True)
+ save('metrics/METRIC_CONSISTENCY.json',consistency)
  rejected=[]
  for root in sorted((R/'arms').iterdir()):
   for p in (root/'metrics').glob('*_CANDIDATES.json'):
@@ -48,7 +54,7 @@ def main():
   for video in sorted({r['video']for r in per if r['case']==n and r['tag']=='FINAL014'}):
    vv=[r for r in per if r['case']==n and r['tag']=='FINAL014'and r['video']==video];posequality.append(dict(case=n,video=video,posed_N=len(vv),median_Ring_CAD_Mask_IoU=float(np.median([r['Ring_CAD_mask_IoU_diagnostic']for r in vv])),zero_CAD_projection_N=sum(r['CAD_visible_pixel_N']==0 for r in vv),old_Gate_used_for_rejection=False,qualification='numeric derived pose, not certified camera'))
  table('metrics/INPUT_POSE_QUALITY_BY_VIDEO.csv',posequality)
- badgeom=sum(not r['Ring_numeric_nonworsening']or r['self_intersections']or r['nonmanifold_edges']for r in final);height_na=sum(r['height_AE_mm']is None for r in final);iou_na=sum(r['IoU3D']is None for r in final)
+ badgeom=sum(not r['Ring_numeric_nonworsening']or r['self_intersections']or r['Blender_self_intersections']or r['nonmanifold_edges']for r in final);height_na=sum(r['height_AE_mm']is None for r in final);iou_na=sum(r['IoU3D']is None for r in final)
  audit=f'''| 审计项目 | 必须汇报 |
 | --- | --- |
 | 目标组数 | 11个独立真实物理组，不将多视频或多实验臂算成独立病例 |
@@ -77,7 +83,7 @@ G01主004恒Identity，005一个共享SE3研究候选，无尺度。使用真实
 
 ## C/D/E：受控几何实验
 
-C0/8/16/32/全部候选均同011初值，视频、方向块均衡。无HERO新帧仅轮廓。原始HERO同视角绝对/相对深度及边界权重固定，深度集合独立归一，不随新增无深度视角稀释。跨视角HERO不进入损失、权重、筛选或停止。
+C0/8/16/32/全部候选均同011初值，视频、方向块均衡。无HERO新帧仅轮廓。原始HERO同视角绝对/相对深度及边界权重固定，深度集合独立归一，不随新增无深度视角稀释。跨视角HERO不进入损失、权重、筛选或停止。22份实际HERO监督的原生640×352深度像素与640×360 RGB像素具有不同fy/cy，已按冻结RGB_uv映射验证相机射线相同，c2w一致；见provenance/DEPTH_RENDER_CAMERA_CONSISTENCY.json，不把两套K数值不同误判为相机错误。
 
 013 A3已含分离FN/FP和双向轮廓，因此D1仅增强FP权重、D2仅增强已有双向轮廓、D3组合，均为预登记小增量，不冒称新机制。全部条件沿用相同Adam、4个通用局部方向、8级回缩及精确回滚。候选80/接受40，正式延续160/接受80，固定停滞30/60；未按GT挑选checkpoint。
 
@@ -101,6 +107,8 @@ E0/E1/E2从同一冻结粗结果出发。官方SubdivideMeshes全局一次或BMe
 
 主轮廓指标继承013的观测Ring忽略规则，另报告全像素可见IoU和Ring前方冲突，不能用主IoU隐藏物理冲突。HERO原始合格观测分母另行按射线数汇总，不把无深度视角的零项当作深度正确。命中MAE必须结合固定N、命中率和9.5未命中代价。GT表面距离为统一面积采样估计；NA保留，推断底盖不混称可见真实组织。真实部署基底与作者基底可能不同，刚性对齐后的高度/体积属于条件形状比较，不代表真实部署测量精度。
 
+014相对013的二维—三维变化同向为{consistency['same_change_direction_N']}/11，FIT IoU改善但Chamfer恶化为{consistency['FIT_IoU_improved_but_Chamfer_worsened_N']}/11；IoU变化与Chamfer改善的Spearman相关为{fmt(consistency['Spearman_IoU_change_vs_Chamfer_improvement'])}。这只是11个物理组的描述性配对关系，不是用GT设立新的验收门槛，也不能替代逐例形态判读。见metrics/METRIC_CONSISTENCY.json及PER_CASE_ANALYSIS.md。
+
 ## 十四项科研问题
 
 {md([dict(问题=q,判断=s,证据=e)for q,s,e in questions],['问题','判断','证据'])}
@@ -117,7 +125,7 @@ Fig1–10在figures/，原始模型/参数与运行时间见RESULT_INDEX.md。�
 
 1. 在独立新副本准备TASK/config/code；保留现有014冻结结果不覆盖。
 2. 依次运行code/inventory.py、prepare_views.py、expand_cameras.py、propagate_background.py、pose_correction.py、true_time_negative.py --solve、pose_audit.py、partition_views.py（--solve仅限无旧结果的新复现副本）。现有目录运行true_time_negative.py仅核对244条冻结背景观测，不重跑优化；B1仅研究候选，具体采用策略见POSE_ADOPTION_AUDIT。
-3. CPU控制：code/geometry_preflight.py。正式串行GPU：code/driver014.py C，然后code/pipeline_remaining.py。后者包括工程检查点恢复、B控制、D/E及最终冻结。
+3. CPU控制：code/geometry_preflight.py、depth_camera_audit.py、true_time_negative.py。正式串行GPU：code/driver014.py C，然后code/pipeline_remaining.py。后者包括工程检查点恢复、B控制、D/E及最终冻结。
 4. 全部预测与尺度冻结后运行code/wait_evaluate.py：只读梯度诊断→固定原生观测→64阶几何/Blender BVH→统一最佳SE3。GT访问由显式冻结门控。
 5. code/figures_A.py、figures_B.py、figures_final.py、report014.py。中断后已完成FINAL不重训；未完成的训练从完整ACCEPTED checkpoint恢复。旧的源码版本按SHA归档。若需逐字节重现早期C0实现，使用provenance/source_versions对应快照；后续工程加速的等价检查另列。相同种子不宣称CUDA原子运算的位级一致。
 
@@ -154,6 +162,6 @@ Fig1–10在figures/，原始模型/参数与运行时间见RESULT_INDEX.md。�
  table('metrics/G03_UPDATE_BOTTLENECK.csv',g03rows);table('metrics/G03_LOCALIZATION_GRADIENTS.csv',gd);gb=[]
  for tag in ['FINAL011','FINAL013','FINAL014']:
   v=G['G03',tag];gb.append(dict(stage=tag,Dxy_AE_mm=v['Dxy_AE_mm'],author_axis_span_mm=v.get('prediction_top_to_bottom_span_mm'),GT_span_mm=v.get('GT_top_to_bottom_span_mm'),lowest_point_vs_author_base_mm=v.get('lowest_point_vs_author_base_mm'),GT_to_pred_p95_mm=v['GT_to_prediction_mm']['p95'],Chamfer_MAE_mm=v['Chamfer_MAE_mm']))
- text='# G03 更新瓶颈的实际证据\n\n'+md(g03rows,['stage','accepted','attempts','max_displacement_mm','vertices','faces','dominant_rejection'])+'\n\n'+md(gd,['arm','far_associated_vertices','far_vertices_in_local_candidate_bands','image_gradient_on_far_vertices','depth_gradient_on_far_vertices','Ring_uncertain_target_contour_samples','target_contour_samples'])+'\n\n'+md(gb,['stage','Dxy_AE_mm','author_axis_span_mm','GT_span_mm','lowest_point_vs_author_base_mm','GT_to_pred_p95_mm','Chamfer_MAE_mm'])+'\n\n远目标只表示二维最近投影代理，不是真实三维对应；Ring带目标也可能是遮挡截断边而非真实主体外轮廓。本轮只诊断、不事后过滤或调整权重。局部候选带由总梯度选择，不能假设已覆盖全部远漏轮廓区域。应结合实际梯度分量、覆盖比例和逐候选Ring/目标拒绝原因，区分区域分配、约束不可行与顶点密度。旧013的大变形同时存在稀疏Ring漏检，不能将更严格物理检查后的位移减小单独归因于学习率。\n\nE1/E2增顶点本身不改变形状；只有继续更新后的实际Mesh和GT空间缺失才构成恢复证据。Dxy或高度跨度接近不能替代柄部完整性判断。三维GT只是冻结后的独立审计，未参与定位、选择或停止。\n\n'+audit;(R/'G03_FAILURE_DIAGNOSIS.md').write_text(text)
+ text='# G03 更新瓶颈的实际证据\n\n'+md(g03rows,['stage','accepted','attempts','max_displacement_mm','vertices','faces','dominant_rejection'])+'\n\n'+md(gd,['arm','far_associated_vertices','far_vertices_in_local_candidate_bands','image_gradient_on_far_vertices','depth_gradient_on_far_vertices','Ring_uncertain_target_contour_samples','target_contour_samples'])+'\n\n'+md(gb,['stage','Dxy_AE_mm','author_axis_span_mm','GT_span_mm','lowest_point_vs_author_base_mm','GT_to_pred_p95_mm','Chamfer_MAE_mm'])+'\n\n远目标只表示二维最近投影代理，不是真实三维对应；Ring带目标也可能是遮挡截断边而非真实主体外轮廓。本轮只诊断、不事后过滤或调整权重。局部候选带由总梯度选择，不能假设已覆盖全部远漏轮廓区域。应结合实际梯度分量、覆盖比例和逐候选Ring/目标拒绝原因，区分区域分配、约束不可行与顶点密度。旧013的大变形同时存在稀疏Ring漏检，不能将更严格物理检查后的位移减小单独归因于学习率。FACE_ORIENTATION检查使用候选面法向与该阶段初始面法向点积为正这一保守代理；大于90°的合法面片转向也可能被拒绝，不能把该拒绝原因直接等同于已证明的网格翻面或自交。AREA_DEGENERACY同样是相对初始面积的10%限制。这些固定保护与定位/优化的限制共同存在，本轮没有为G03放宽。\n\nE1/E2增顶点本身不改变形状；只有继续更新后的实际Mesh和GT空间缺失才构成恢复证据。Dxy或高度跨度接近不能替代柄部完整性判断。三维GT只是冻结后的独立审计，未参与定位、选择或停止。\n\n'+audit;(R/'G03_FAILURE_DIAGNOSIS.md').write_text(text)
  print('REPORT014_WRITTEN',len(final),len(fail),len(runs),flush=True)
 if __name__=='__main__':main()
