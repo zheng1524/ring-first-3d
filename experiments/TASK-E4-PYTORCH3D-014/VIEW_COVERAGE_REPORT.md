@@ -23,3 +23,5 @@
 视角数量及实际角度跨度详见metrics/VIEW_COVERAGE.csv、VIEW_SELECTION.json。各视频、各方向块均衡，重复帧不能无限增加梯度。G08-video006的40个未定相机候选保留，无旧Gate拒绝整组；G08已有005仍进入所有Mesh对照。
 
 输入完整性、观测质量、主体结果分开报告。这里的数值pose成功不是相机GT，也不是测量正确。主体结果尚在运行，最终11组分母不变，历史测量回退0，未使用GT选择方法。
+
+本轮C4_ALL只包括可执行FIT候选，保留51个Mesh-update HOLDOUT，不宣称全原视频帧训练，也不将上游可能用过的RGB称端到端独立测试。交付版VIEW_INVENTORY.csv另合并122个无pose候选、34照片和22视频资产，共1004条不同record_kind记录；826条PROJECTABLE_VIEW对应分区。原阶段冻结CSV按SHA完整保存在metrics/PROJECTABLE_VIEW_INVENTORY_FROZEN.csv，完成说明在provenance/INVENTORY_DELIVERY_COMPLETION.json。

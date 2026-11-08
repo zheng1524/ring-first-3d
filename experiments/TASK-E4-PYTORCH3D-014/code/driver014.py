@@ -27,9 +27,12 @@ def select(tags,label):
   pp=[MASTER/'metrics/scores'/(tag+'_'+n+'.json')for n in groups];vals=[load(p)['mean']['FIT']['selection_score']for p in pp if p.exists()];values.append(dict(tag=tag,group_N=len(vals),mean_FIT_selection_score=float(np.mean(vals))if len(vals)==len(groups)else None))
  good=[v for v in values if v['mean_FIT_selection_score']is not None]
  if not good:raise RuntimeError('No complete FIT-only method candidate: '+label)
- chosen=max(good,key=lambda v:v['mean_FIT_selection_score'])['tag'];save('config/'+label+'_SELECTION.json',dict(epoch=time.time(),method=chosen,all=values,GT_read=False,HOLDOUT_read=False,rule=load(MASTER/'config/PROTOCOL.json')['selection']));return chosen
+ chosen=max(good,key=lambda v:v['mean_FIT_selection_score'])['tag'];target=MASTER/'config'/(label+'_SELECTION.json')
+ if target.exists():save('provenance/selection_history/'+label+'_'+sha(target)+'.json',load(target))
+ save('config/'+label+'_SELECTION.json',dict(epoch=time.time(),method=chosen,all=values,GT_read=False,HOLDOUT_used_for_selection=False,HOLDOUT_preloaded_by_renderer_but_not_in_loss=True,rule=load(MASTER/'config/PROTOCOL.json')['selection']));return chosen
 
 def main():
+ assert not(MASTER/'provenance/ALL_014_PREDICTIONS_AND_SCALE_FROZEN_BEFORE_GT.json').exists(),'Frozen run: no method reselection or training after GT gate'
  ap=argparse.ArgumentParser();ap.add_argument('phase',choices=['C','D']);a=ap.parse_args()
  if a.phase=='C':
   tags=['C0','C1_8','C2_16','C3_32','C4_ALL']

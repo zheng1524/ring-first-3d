@@ -22,7 +22,9 @@ class ContourDistance:
   # First actual body/CAD intersection along the true source camera ray.
   rays=np.c_[np.broadcast_to(T[:3,3],(len(P),3)),(P.detach().cpu().numpy()-T[:3,3])/np.maximum(z[:,None],1e-12)].astype(np.float32)
   import open3d as o3d
-  rt=scene(W,c.F);rs=scene(c.ringV,c.ringF);zs=rt.cast_rays(o3d.core.Tensor(rays))['t_hit'].numpy();zr=rs.cast_rays(o3d.core.Tensor(rays))['t_hit'].numpy();tol=max(.02,.002*np.ptp(W,axis=0).max());ok&=(~np.isfinite(zs)|(zs>=z-tol))&(zr>=z-.05)
+  if not hasattr(self,'_ring_scene'):self._ring_scene=scene(c.ringV,c.ringF)
+  if not hasattr(self,'_body_V')or not np.array_equal(W,self._body_V):self._body_scene=scene(W,c.F);self._body_V=W.copy()
+  rt=self._body_scene;rs=self._ring_scene;zs=rt.cast_rays(o3d.core.Tensor(rays),nthreads=2)['t_hit'].numpy();zr=rs.cast_rays(o3d.core.Tensor(rays),nthreads=2)['t_hit'].numpy();tol=max(.02,.002*np.ptp(W,axis=0).max());ok&=(~np.isfinite(zs)|(zs>=z-tol))&(zr>=z-.05)
   # Existing Ring uncertainty excludes ambiguous negative target-boundary evidence.
   small=np.clip(np.rint((un+.5)*.5-.5).astype(int),[0,0],[319,179]);classes=d['classes'].detach().cpu().numpy()[small[:,1],small[:,0]];native=np.clip(np.rint(un).astype(int),[0,0],[w-1,h-1]);ok&=~(np.isin(classes,[1,2,4])&(d['labels'][native[:,1],native[:,0]]!=1))
   ids=np.flatnonzero(ok);ids=ids[np.linspace(0,len(ids)-1,min(512,len(ids))).astype(int)]if len(ids)else ids

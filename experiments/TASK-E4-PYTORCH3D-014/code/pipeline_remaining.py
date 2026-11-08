@@ -18,7 +18,7 @@ def video_controls():
     if v['video']=='004':continue
     p=root/'inputs/G01'/(v['id']+'.npz');z=dict(np.load(p));z['T']=np.array(v['T_original'])
     if p.is_symlink():p.unlink()
-    np.savez_compressed(p,**z)
+    np.savez_compressed(p,**z);v['T']=v['T_original'];v['Delta_T']=np.eye(4).tolist();v['partition_fixed_from_C1_B1_for_control']=True
   casep.write_text(json.dumps(meta,ensure_ascii=False,indent=2));save('provenance/'+tag+'_VIEW_FREEZE.json',dict(epoch=time.time(),case=asset(casep),camera_mode=tag,GT_used=False));run(tag,'C1_8','D0_013',cases=['G01'])
 
 def refine_stage():
@@ -49,9 +49,10 @@ def refine_stage():
   n=c['name'];source=root/'local_results'/n/'FINAL.npz'
   if not source.exists():raise RuntimeError('Final prediction actually missing: '+n)
   rg=np.load(MASTER/'inputs'/n/'RING.npz');diam=2*np.linalg.norm(rg['V'][:,:2],axis=1).min();true=5. if c['ring']=='R5'else 10.;factor=true/diam;assert abs(factor-1)<1e-6,'Metric CAD mismatch; do not secretly rescale';out=MASTER/'meshes'/n;out.mkdir(exist_ok=True);dest=out/'FINAL014_mm.npz';shutil.copyfile(source,dest);files.append(asset(dest));scales.append(dict(case=n,diameter_true_mm=true,CAD_inner_diameter_mm=float(diam),derived_scale_factor=float(factor),applied_scale_factor=1.,scale_locked=True,source='fixed CAD in existing Ring-First metric frame',GT_used=False))
- save('metrics/RING_SCALE_VALIDATION.json',scales);table('metrics/RING_SCALE_VALIDATION.csv',scales);save('provenance/ALL_014_PREDICTIONS_AND_SCALE_FROZEN_BEFORE_GT.json',dict(epoch=time.time(),files=files,scale=asset(MASTER/'metrics/RING_SCALE_VALIDATION.json'),code=[asset(p)for p in (MASTER/'code').glob('*.py')],GT_used=False));print('ALL_FINAL_PREDICTIONS_FROZEN_NO_GT',flush=True)
+ files+=[asset(p)for p in sorted((MASTER/'arms').glob('*/local_results/*/*.npz'))];files+=[asset(p)for p in sorted((MASTER/'arms').glob('*/config/ARM.json'))];save('metrics/RING_SCALE_VALIDATION.json',scales);table('metrics/RING_SCALE_VALIDATION.csv',scales);save('provenance/ALL_014_PREDICTIONS_AND_SCALE_FROZEN_BEFORE_GT.json',dict(epoch=time.time(),files=files,scale=asset(MASTER/'metrics/RING_SCALE_VALIDATION.json'),code=[asset(p)for p in (MASTER/'code').glob('*.py')],GT_used=False));print('ALL_FINAL_PREDICTIONS_FROZEN_NO_GT',flush=True)
 
 def main():
+ assert not(MASTER/'provenance/ALL_014_PREDICTIONS_AND_SCALE_FROZEN_BEFORE_GT.json').exists(),'This experimental prediction set is frozen'
  while not(MASTER/'config/C_SELECTION.json').exists():time.sleep(5)
  # Resume any objective engineering interruption from exact optimizer checkpoints.
  for tag in ['C0','C1_8','C2_16','C3_32','C4_ALL']:run(tag,tag,'D0_013')

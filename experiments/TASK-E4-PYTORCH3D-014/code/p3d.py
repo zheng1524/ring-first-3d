@@ -15,6 +15,7 @@ def renderer(size):
 class Case:
     def __init__(self,name,route=None):
         self.name=name;self.meta=getcase(name); a=np.load(R/'inputs'/name/('INITIAL.npz' if route is None else route+'_INITIAL.npz')); self.V=a['V'];self.F=a['F'];self.F_solid=a['F_solid'] if 'F_solid' in a else self.F;self.inferred=a['inferred_base_faces'] if 'inferred_base_faces' in a else np.zeros(len(self.F),bool);self.boundary=a['boundary_vertex'] if 'boundary_vertex' in a else np.zeros(len(self.V),bool); norm=load(R/'inputs'/name/'NORMALIZATION.json'); self.center=np.array(norm['center']);self.scale=norm['scale_mm'];self.base=mesh((self.V-self.center)/self.scale,self.F)
+        self.parent_coarse_face=a['parent_coarse_face']if 'parent_coarse_face'in a else np.arange(len(self.F_solid))
         a=np.load(R/'inputs'/name/'RING.npz');self.ringV=a['V'];self.ringF=a['F'];self.ring=mesh((self.ringV-self.center)/self.scale,self.ringF)
         self.size=(180,320);self.renderer=renderer(self.size)
         # A bin cannot overflow if it can contain every triangle of this one-mesh call.
