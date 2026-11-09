@@ -1,0 +1,32 @@
+{
+  "epoch": 1794236693.4024856,
+  "code": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/code/geometry_preflight.py",
+    "bytes": 1428,
+    "sha256": "1869344350d1f926a051d545c6d108ce90b6896fa5f490cb2eada06e8110a6bc"
+  },
+  "guard": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/code/safe_geometry.py",
+    "bytes": 5586,
+    "sha256": "5ff32cc404300406ec05f0b147f332691186ead64df88ff2ad4f69569fd715fc"
+  },
+  "checks": [
+    {
+      "test": "triangle-interior material penetration missed by old vertices/midpoints/centroid",
+      "old_min_mm": 3.8498940467834473,
+      "new_dense_min_mm": -0.5734977722167969,
+      "FCL": true,
+      "PASS": true
+    },
+    {
+      "test": "nonadjacent crossing triangles",
+      "Open3D_intersections": 1,
+      "PASS": true
+    },
+    {
+      "test": "separated triangles",
+      "PASS": true
+    }
+  ],
+  "mesh_writes_to_history": 0
+}
