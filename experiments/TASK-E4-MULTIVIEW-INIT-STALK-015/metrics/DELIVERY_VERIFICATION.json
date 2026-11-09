@@ -1,0 +1,77 @@
+{
+  "epoch": 1794241502.6829457,
+  "integrity_checks": {
+    "prediction_N_81": true,
+    "frozen_prediction_hashes_unchanged": true,
+    "GT_after_all_predictions_frozen": true,
+    "GT_first_access_freeze_hash_valid": true,
+    "scale_freeze_unchanged": true,
+    "PHASE_A_SELECTED_before_GT": true,
+    "PHASE_B_SELECTED_before_GT": true,
+    "33_phase_A_routes": true,
+    "15_phase_B_routes": true,
+    "81_unique_rigid_transforms": true,
+    "SE3_scale1_no_mirror": true,
+    "81_CD_Dxy_results": true,
+    "81_exact_review_geometry_copies": true,
+    "11_final_body_PLY": true,
+    "historical_assets_unchanged": true,
+    "phase_A_24_training_sources_unchanged": true,
+    "phase_B_changes_only_documented_IO_and_output": true,
+    "all_current_sources_parse": true,
+    "4_core_figures_exist": true,
+    "11_case_and5_stalk_figures": true
+  },
+  "all_integrity_checks_pass": true,
+  "target_groups": 11,
+  "phase_A_routes": 33,
+  "phase_B_routes": 15,
+  "evaluation_models": 81,
+  "audited_historical_files": 2091,
+  "unchanged_historical_files": 2091,
+  "changed_historical_files": [],
+  "missing_historical_files": [],
+  "maximum_rotation_orthogonality_or_determinant_error": 3.708144902248023e-14,
+  "phase_B_changed_files": [
+    "postprocess_all.py",
+    "phase_b.py",
+    "prepare_evaluation.py",
+    "best_rigid015.py",
+    "final_figures.py"
+  ],
+  "documented_amendments": [
+    "PHASE_B_ENGINEERING_IO_FIX.json",
+    "EVAL_VIEW_METADATA_ADAPTER.json",
+    "OUTPUT_LAYOUT_FIX.json",
+    "FINAL_REVIEW_PUBLICATION_ADAPTER.json",
+    "FIRST_GT_ACCESS_PRESERVATION.json"
+  ],
+  "scientific_success": false,
+  "B0_status": "B0_NOT_PASSED_THIS_RUN",
+  "retained_failed_test": "G02 initial gradient additivity 0.00038848 > 0.0001",
+  "retained_final_gradient_failures": [
+    {
+      "case": "G02",
+      "arm": "Stalk-C",
+      "error": 0.00026243245988130377,
+      "threshold": 0.0001,
+      "evidence": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/arms/Stalk-C/metrics/G02_FINAL_COMPONENT_GRADIENTS.json"
+    },
+    {
+      "case": "G02",
+      "arm": "Stalk-A",
+      "error": 0.0019999065189854367,
+      "threshold": 0.0001,
+      "evidence": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/arms/Stalk-A/metrics/G02_FINAL_COMPONENT_GRADIENTS.json"
+    },
+    {
+      "case": "G02",
+      "arm": "Stalk-B",
+      "error": 0.00012181409070793,
+      "threshold": 0.0001,
+      "evidence": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/arms/Stalk-B/metrics/G02_FINAL_COMPONENT_GRADIENTS.json"
+    }
+  ],
+  "no_historical_measurement_fallback": true,
+  "no_new_training_after_GT": true
+}

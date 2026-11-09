@@ -25,7 +25,10 @@ def main():
   n=m['case'];link(Path(m['source']),R/'local_results/metric'/n/(m['label']+'.npz'));g=audit(n,Path(m['source']));g['label']=m['label'];validity.append(g)
  save('metrics/POST_GEOMETRY_VALIDITY.json',validity)
  # No geometry or author dimensions are accessed before the above marker.
- old=REPO/'experiments/TASK-E4-PYTORCH3D-014';sources=load(old/'evaluation_only/GT_SOURCE_LOCK.json');save('evaluation_only/GT_SOURCE_LOCK.json',sources);save('provenance/GT_FIRST_ACCESS.json',dict(epoch=time.time(),prediction_freeze=asset(R/'provenance/ALL_PREDICTIONS_AND_SCALE_FROZEN_BEFORE_GT.json'),source_lock=asset(old/'evaluation_only/GT_SOURCE_LOCK.json'),not_used_for_selection=True))
+ old=REPO/'experiments/TASK-E4-PYTORCH3D-014';sources=load(old/'evaluation_only/GT_SOURCE_LOCK.json');save('evaluation_only/GT_SOURCE_LOCK.json',sources)
+ if not(R/'provenance/GT_FIRST_ACCESS.json').exists():save('provenance/GT_FIRST_ACCESS.json',dict(epoch=time.time(),prediction_freeze=asset(R/'provenance/ALL_PREDICTIONS_AND_SCALE_FROZEN_BEFORE_GT.json'),source_lock=asset(old/'evaluation_only/GT_SOURCE_LOCK.json'),not_used_for_selection=True))
+ else:
+  first=load(R/'provenance/GT_FIRST_ACCESS.json');assert first['prediction_freeze']['sha256']==sha(R/'provenance/ALL_PREDICTIONS_AND_SCALE_FROZEN_BEFORE_GT.json'),'Do not overwrite original GT first access'
  gtvalid=[]
  for c in cases:
   n=c['name'];src=old/'evaluation_only'/n/'ORIGINAL_BLENDER_GT_MM.npz'

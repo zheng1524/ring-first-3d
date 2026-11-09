@@ -59,7 +59,7 @@ def main():
   if args.case and c['name']!=args.case:continue
   n=c['name'];src=sources[n];gtpath=R/'evaluation_only'/n/'ORIGINAL_BLENDER_GT_MM.npz'
   for tag in [m['label'] for m in load(R/'config/EVAL_MODELS.json') if m['case']==n]:
-   row=dict(case=n,type=c['morphology'],label=tag,target_groups=11,evaluation=EVAL_LABEL,GT_used_for_training=False,scale_changed_by_registration=False,IoU_3D=None,IoU_3D_status='NOT_EVALUABLE',Dxy_AE_mm=None,Dxy_relative_error=None,Chamfer_MAE_mm=None,height_max_AE_mm=None,H95_AE_mm=None,GT_source_status=src['status']);nn=native.get((n,tag),{});row.update(FIT_2D_IoU_fixed014_evaluation_cameras=nn.get('FIT_IoU'),HOLDOUT_2D_IoU_fixed014_evaluation_cameras=nn.get('HOLDOUT_IoU'))
+   row=dict(case=n,type=c['morphology'],label=tag,target_groups=11,evaluation=EVAL_LABEL,GT_used_for_training=False,scale_changed_by_registration=False,IoU_3D=None,IoU_3D_status='NOT_EVALUABLE',Dxy_AE_mm=None,Dxy_relative_error=None,Chamfer_MAE_mm=None,height_max_AE_mm=None,H95_AE_mm=None,GT_source_status=src['status']);nn=native.get((n,tag),{});row.update(FIT_2D_IoU_fixed015_evaluation_cameras=nn.get('FIT_IoU'),HOLDOUT_2D_IoU_fixed015_evaluation_cameras=nn.get('HOLDOUT_IoU'))
    path=R/'local_results/metric'/n/(tag+'.npz')
    if not gtpath.exists()or not path.exists():row['not_evaluable_reason']=src.get('reason','NO_SOURCE');rows.append(row);continue
    out=R/'local_results/aligned'/n;out.mkdir(parents=True,exist_ok=True);cache=R/'metrics/alignment'/(n+'_'+tag+'_STARTS.json');aligned=out/(tag+'.npz');z=np.load(path);g=np.load(gtpath);V,F,Fs=z['V'],z['F'],z['F_solid'];GV,GF=g['V'],g['F']
@@ -74,7 +74,7 @@ def main():
    capfaces=Fs[z['inferred_base_faces']]
    if len(capfaces):row['inferred_bottom_to_GT_mm']=stats(distance(gr,area_samples(AV,capfaces,1024)))
    rr=np.load(R/'inputs'/n/'RING.npz');ringrt=scene(rr['V'],rr['F']);GT_ring=(GV-T[:3,3])@T[:3,:3];GT_samples_ring=(G-T[:3,3])@T[:3,:3];g_original=scene(GT_ring,GF);gsupport=np.zeros(len(G),bool)
-   for v in c['views']:
+   for v in getcase(n)['views']:
     if v['role']!='FIT':continue
     a=np.load(R/'inputs'/n/(v['id']+'.npz'));uv,zz,rz=pointcast(ringrt,GT_samples_ring,a['K'],a['T']);_,_,gz=pointcast(g_original,GT_samples_ring,a['K'],a['T']);inside=(zz>0)&(uv[:,0]>=0)&(uv[:,0]<640)&(uv[:,1]>=0)&(uv[:,1]<360);ix=np.clip(np.rint(uv).astype(int),[0,0],[639,359]);gsupport|=inside&(a['labels'][ix[:,1],ix[:,0]]==1)&(zz<rz)&(abs(zz-gz)<.05)
    row.update(GT_supported_under_best_pose_to_prediction_mm=stats(dg[gsupport]),GT_unverified_under_best_pose_to_prediction_mm=stats(dg[~gsupport]),GT_best_pose_supported_sample_N=int(gsupport.sum()),surface_evidence='Frozen FIT cameras/Mask/CAD + first-ray visibility; evidence proxy not anatomical truth. No subset used for pose ranking.')

@@ -14,7 +14,7 @@ def main():
  for i,c in enumerate(cases):
   n=c['name'];cid=selection[n]['FIT'][0];rgb_panel(ax[i,0],n,cid);ax[i,0].set_title(n+' '+c['morphology']+' real RGB/Mask',fontsize=8);mm=models(n);rr=np.load(R/'inputs'/n/'RING.npz');bounds=np.concatenate([m['V']for m in mm]+[rr['V']])
   for j,m in enumerate(mm):model_panel(ax[i,j+1],n,m,bounds);ax[i,j+1].set_title(TAGS[j%3]+(' INITIAL'if j<3 else' FINAL'),fontsize=8)
- fig.suptitle('All11 independent specimens | A/B/C initializers + identical downstream Mesh optimization\nBlack CAD / gray inferred cap / own frozen mm frame per case. All cases, no favorable-sample selection.',fontsize=13);fig.subplots_adjust(top=.972,hspace=.18,wspace=.02);finish(fig,'Fig1_All11_Initializers_And_Updates.png',105)
+ fig.suptitle('All11 independent specimens | A/B/C initializers + identical downstream Mesh optimization\nBlack CAD / gray inferred cap / own frozen mm frame per case. All cases, no favorable-sample selection.',fontsize=13);fig.subplots_adjust(top=.958,hspace=.18,wspace=.02);finish(fig,'Fig1_All11_Initializers_And_Updates.png',105)
  fig,ax=plt.subplots(len(ips),5,figsize=(19,3.6*len(ips)))
  for i,n in enumerate(ips):
   rgb_panel(ax[i,0],n,selection[n]['HOLDOUT'][0]);ax[i,0].set_title(n+' real HOLDOUT',fontsize=8);common=dict(np.load(R/'arms'/choice/'local_results'/n/'FINAL.npz'));mm=[common]
@@ -24,7 +24,7 @@ def main():
   for j,m in enumerate(mm):
    if m is None:ax[i,j+1].text(.1,.5,'NO RESIDUAL SIGNAL\nNo optimized prediction');ax[i,j+1].axis('off');continue
    model_panel(ax[i,j+1],n,m,bounds,angle=(12,-65));ax[i,j+1].set_title(['Common Phase A FINAL','Stalk-A','Stalk-B','Stalk-C'][j],fontsize=8)
- fig.suptitle('All5 Ip | common FIT-only selected initialization + three stalk updates\nActual connected meshes, identical camera/scale per specimen. Proxy seed is not anatomical ground truth.');fig.subplots_adjust(top=.95,hspace=.18,wspace=.02);finish(fig,'Fig2_All5_Ip_Stalk_Comparison.png',115)
+ fig.suptitle('All5 Ip | common FIT-only selected initialization + three stalk updates\nActual connected meshes, identical camera/scale per specimen. Proxy seed is not anatomical ground truth.');fig.subplots_adjust(top=.93,hspace=.18,wspace=.02);finish(fig,'Fig2_All5_Ip_Stalk_Comparison.png',115)
  # Gradient and actual executed displacement are separate quantities.
  fig,ax=plt.subplots(len(ips),3,figsize=(16,3.5*len(ips)))
  for i,n in enumerate(ips):
@@ -33,7 +33,7 @@ def main():
   p=R/'arms/Stalk-B/local_results'/n/'FINAL.npz'
   if p.exists():
    z=dict(np.load(p));move=np.linalg.norm(z['V']-v,axis=1);col=plt.get_cmap('magma')(np.clip(move[f].mean(1)/max(1e-15,move.max()),0,1))[:,:3];model_panel(ax[i,2],n,z,bounds,face_colors=col);ax[i,2].set_title('Stalk-B actual total displacement max %.4f mm'%move.max(),fontsize=8)
- fig.suptitle('Current FIT-only mechanism evidence | red far-associated / gold old-band-covered\nNearest image-contour association is a geometric proxy; actual gradient and actual optimizer motion are reported separately.');fig.subplots_adjust(top=.95,hspace=.2);finish(fig,'Fig3_Current_Coverage_Gradient_And_Motion.png',115)
+ fig.suptitle('Current FIT-only mechanism evidence | red far-associated / gold old-band-covered\nNearest image-contour association is a geometric proxy; actual gradient and actual optimizer motion are reported separately.');fig.subplots_adjust(top=.93,hspace=.2);finish(fig,'Fig3_Current_Coverage_Gradient_And_Motion.png',115)
  # Pure-body GT comparisons use exactly the stored rigid transform, no rescaling.
  fig=plt.figure(figsize=(20,3*len(cases)))
  for i,c in enumerate(cases):
@@ -44,6 +44,6 @@ def main():
    ax=fig.add_subplot(len(cases),3,i*3+j+1,projection='3d');ax.add_collection3d(Poly3DCollection(g['V'][g['F']],facecolors=(.6,.6,.6,.18),edgecolors='none'))
    if z is not None:ax.add_collection3d(Poly3DCollection(z['V'][z['F']],facecolors=(.33,.22,.68,.68),edgecolors='none'))
    ax.set(xlim=(center[0]-rad,center[0]+rad),ylim=(center[1]-rad,center[1]+rad),zlim=(center[2]-rad,center[2]+rad));ax.set_box_aspect((1,1,1));ax.view_init(20,-65);ax.set_title(n+' '+TAGS[j]+' FINAL / mm',fontsize=8);ax.tick_params(labelsize=5)
- fig.suptitle('After Ring-based Metric Recovery and Best 6-DoF Rigid Alignment\nGray Blender / purple prediction; one SE(3) per prediction, fixed scale1. Ring/background excluded from registration.');fig.subplots_adjust(top=.97,hspace=.18);finish(fig,'Fig4_All11_Rigid_Aligned_GT_Comparison.png',110)
+ fig.suptitle('After Ring-based Metric Recovery and Best 6-DoF Rigid Alignment\nGray Blender / purple prediction; one SE(3) per prediction, fixed scale1. Ring/background excluded from registration.');fig.subplots_adjust(top=.958,hspace=.18);finish(fig,'Fig4_All11_Rigid_Aligned_GT_Comparison.png',110)
  print('FOUR_CORE_FIGURES_COMPLETE',flush=True)
 if __name__=='__main__':main()

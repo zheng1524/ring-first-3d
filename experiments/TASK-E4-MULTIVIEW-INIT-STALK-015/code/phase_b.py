@@ -23,7 +23,7 @@ def main():
    if tag=='Stalk-C'and seed['status']!='RESIDUAL_ASSOCIATION_PROXY':
     records.append(dict(case=n,arm=tag,status='NO_KNOWN_VISIBLE_RESIDUAL_SIGNAL',optimized_result=None,reason=seed.get('reason'),GT_read=False));continue
    if not final.exists():command('train_stalk.py',[n]+(['--resume']if list(folder.glob('*.pt'))else[]),tag)
-   run=load(root/'metrics'/(n+'_RUN.json'));records.append(dict(case=n,arm=tag,**run));dest=R/'metrics/scores'/(n+'_'+tag+'_FINAL.json')
+   run=load(root/'metrics'/(n+'_RUN.json'));records.append(dict(run,arm=tag));dest=R/'metrics/scores'/(n+'_'+tag+'_FINAL.json')
    if not dest.exists():save(dest.relative_to(R),evaluate(n,final,True,tag+'_FINAL'))
   save('metrics/PHASE_B_RUNS.json',records);command('preview_stalk.py',[n]);print('PHASE_B_CASE_COMPLETE',n,len(records),flush=True)
  files=[dict(asset(R/'arms'/q['arm']/'local_results'/q['case']/'FINAL.npz'),case=q['case'],arm=q['arm'])for q in records if q.get('optimized_result','OK')is not None];save('provenance/PHASE_B_PREDICTIONS_FROZEN.json',dict(epoch=time.time(),files=files,GT_read=False,missing=[q for q in records if q.get('optimized_result','OK')is None]));save('runtime/STATUS.json',dict(phase='PHASE_B_COMPLETE',completed_stalk=len(records),epoch=time.time()));print('PHASE_B_COMPLETE',len(records),flush=True)

@@ -14,7 +14,10 @@ def evaluate_one(n):
 
 def main():
  if not(R/'provenance/FROZEN_FINAL_BODIES_FIT_ONLY.json').exists():command('select_stalk.py',[])
+ for n in load(R/'config/PROTOCOL.json')['phase_B']['cases']:
+  for tag in ['Stalk-A','Stalk-B','Stalk-C']:
+   if(R/'arms'/tag/'local_results'/n/'FINAL.npz').exists()and not(R/'arms'/tag/'metrics'/(n+'_FINAL_COMPONENT_GRADIENTS.json')).exists():command('final_gradient_diagnostic.py',[n],tag)
  command('prepare_evaluation.py',[]);save('runtime/STATUS.json',dict(phase='FROZEN_PREDICTION_BEST_RIGID_EVALUATION',epoch=time.time(),training_complete=True))
  with ThreadPoolExecutor(max_workers=2)as pool:list(pool.map(evaluate_one,[c['name']for c in load(R/'config/CASE_LOCK.json')]))
- command('summarize_results.py',[]);command('final_figures.py',[]);command('six_view_details.py',[]);save('runtime/STATUS.json',dict(phase='ALL_CORE_OUTPUTS_READY_FOR_REVIEW',epoch=time.time(),GT_used_for_optimization=False));print('ALL_CORE_OUTPUTS_READY',flush=True)
+ command('summarize_results.py',[]);command('b0_evidence.py',[]);command('final_figures.py',[]);command('six_view_details.py',[]);command('stalk_mechanism_tables.py',[]);command('publish_review_meshes.py',[]);command('stalk_gt_review.py',[]);command('finalize_review.py',[]);command('final_delivery_audit.py',[]);print('ALL_CORE_OUTPUTS_READY',flush=True)
 if __name__=='__main__':main()

@@ -1,9 +1,7 @@
-# 当前运行状态（阶段性记录，非完成报告）
+# 最终运行状态
 
-最新人工追加：每个预测单独以固定尺度六自由度ICP对齐Blender后比较形状。已写入独立评价协议，原章程与冻结协议不回写。
+Phase A 33/33、Phase B 15/15 已结束；81/81 个模型完成独立固定尺度刚性评价。核心四图、逐病例和六视图、参数与检查点索引已生成。预测、Ring 尺度及 FIT-only 选择均早于第一次 Blender 几何读取冻结。
 
-11组初始化三对照共33条正在串行执行，随后按FIT-only规则冻结全组同一初始化主线，再执行5个Ip的三条柄部路线。保护原HOLDOUT。所有真实预测与尺度冻结前不开放Blender几何。
+全部组保留，历史测量值回退为 0。G03/Stalk-A 数值输出为最后有效状态但接受更新为 0；不能称为成功柄部恢复。全11组 B0 本轮不通过；其他失败见 FAILURE_LEDGER.md。当前已停止优化，等待人工审核，不推进 HERO 适配或追加调参。
 
-当前权威状态：`runtime/STATUS.json`。逐病例真实Mesh图在`figures/phase_A/`，Phase B之后在`figures/phase_B/`。正式报告尚未生成前，不能称实验完成、科学成功或B0通过。
-
-长时作业PID索引在runtime。后续步骤已有独立顺序驱动，等待先决阶段完成，不会并行占用GPU。没有无限阈值搜索或根据GT反复优化。
+本地权威状态 runtime/STATUS.json，交付完整性 metrics/DELIVERY_VERIFICATION.json，技术结论 TECHNICAL_REPORT_SUMMARY.md。
