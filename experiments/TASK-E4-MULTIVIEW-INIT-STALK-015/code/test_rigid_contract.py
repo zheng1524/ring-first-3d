@@ -1,0 +1,4 @@
+"""Synthetic algebraic control only; not project Blender GT."""
+from best_rigid015 import rigid,apply,Rotation
+from common import *
+rng=np.random.default_rng(20261109);P=rng.normal(size=(32,3))*[1,2,.3];rot=Rotation.from_rotvec([.2,-.4,.1]).as_matrix();t=np.array([2.,-1.,.3]);G=P@rot.T+t;T=rigid(P,G);error=float(abs(apply(P,T)-G).max());S=rigid(P,G*1.2);err_scale=float(np.linalg.norm(apply(P,S)-G*1.2,axis=1).mean());ok=error<1e-12 and np.allclose(T[:3,:3].T@T[:3,:3],np.eye(3))and np.linalg.det(T[:3,:3])>.999999 and err_scale>.01;save('metrics/RIGID_ALGEBRAIC_CONTROL.json',dict(pass_test=ok,SE3_recovery_max_error=error,rotation_determinant=float(np.linalg.det(T[:3,:3])),scaled_target_residual=err_scale,free_scale_used=False,project_GT_read=False));assert ok;print('RIGID_SE3_CONTROL_PASS',flush=True)
