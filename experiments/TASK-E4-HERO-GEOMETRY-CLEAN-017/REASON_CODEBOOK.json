@@ -1,0 +1,27 @@
+{
+  "bits": {
+    "0": "joint extreme perspective+tangent stretch (correlated geometric family)",
+    "1": "native depth range >0.5 mm",
+    "2": "needle or normal incoherence/kink (correlated shape family)",
+    "3": "source mapped-native Mask distance <=2 px",
+    "4": "at least2 CAD samples signed <-0.02 mm",
+    "5": "limited k32 nearest nonadjacent competition proxy",
+    "6": "original Mesh boundary vertex incident",
+    "7": "small original component area proxy, never deletion alone",
+    "8": "native depth/Mask binding not valid",
+    "9": "unknown due qualification/grazing/legitimate CAD occlusion",
+    "10": "initial rim conjunction rejected",
+    "11": "initial CAD conjunction rejected",
+    "12": "nonmanifold source vertex incident",
+    "13": "face spans independently source-patch-supported native discontinuity",
+    "14": "final two-sided gap face rejection"
+  },
+  "state_map": {
+    "0": "TRUSTED",
+    "1": "UNCERTAIN",
+    "2": "REJECTED",
+    "3": "UNKNOWN"
+  },
+  "none": "no warning under this finite internal diagnostic, not physical truth",
+  "dependencies": "geometry indicators are correlated; no independent statistical votes or calibrated probability"
+}

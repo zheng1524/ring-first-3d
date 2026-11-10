@@ -1,0 +1,1 @@
+NATIVE_GRID is a diagnostic discretization of unchanged original native depth. Its lattice triangles are newly indexed for source evidence, NOT original archive face IDs and NOT a reconstruction/adapter input. Use final_results/<source>/ARCHIVE_RAW/CLEANED_SUBSET.npz for the exact original-face subset. No filtered archive faces are restored or filled.

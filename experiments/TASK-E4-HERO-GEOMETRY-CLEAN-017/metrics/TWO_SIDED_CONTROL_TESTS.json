@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "control": "continuous_perspective_plane_0.0",
+      "confirmed_false_gaps": 0,
+      "tested": 0,
+      "passed": true
+    },
+    {
+      "control": "continuous_perspective_plane_65.0",
+      "confirmed_false_gaps": 0,
+      "tested": 0,
+      "passed": true
+    },
+    {
+      "control": "continuous_perspective_plane_80.0",
+      "confirmed_false_gaps": 0,
+      "tested": 1140,
+      "passed": true
+    },
+    {
+      "control": "two_flat_layers_sharp_depth_step",
+      "confirmed_gap_edges": 44,
+      "tested": 91,
+      "passed": true,
+      "interpretation": "gap-invalid interpolation faces; both supported endpoint layers remain valid"
+    },
+    {
+      "control": "unsupported_single_pixel_spike",
+      "confirmed_gap_edges": 0,
+      "passed": true,
+      "interpretation": "no independent support for spike endpoint; remains uncertain, not auto-deleted"
+    }
+  ],
+  "GT_used": false
+}

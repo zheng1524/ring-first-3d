@@ -1,0 +1,132 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "name": "ordinary",
+      "state": "TRUSTED",
+      "passed": true
+    },
+    {
+      "name": "long_edge_only",
+      "state": "UNCERTAIN",
+      "passed": true
+    },
+    {
+      "name": "low_density_only",
+      "state": "UNCERTAIN",
+      "passed": true
+    },
+    {
+      "name": "sharp_normal_only",
+      "state": "UNCERTAIN",
+      "passed": true
+    },
+    {
+      "name": "boundary_only",
+      "state": "UNCERTAIN",
+      "passed": true
+    },
+    {
+      "name": "Ring_proximity_not_input",
+      "state": "TRUSTED",
+      "passed": true
+    },
+    {
+      "name": "Ring_inside_alone",
+      "state": "UNCERTAIN",
+      "passed": true
+    },
+    {
+      "name": "hidden_behind_CAD",
+      "state": "UNKNOWN",
+      "passed": true
+    },
+    {
+      "name": "unknown_native_ID",
+      "state": "UNKNOWN",
+      "passed": true
+    },
+    {
+      "name": "grazing_extreme",
+      "state": "UNKNOWN",
+      "passed": true
+    },
+    {
+      "name": "joint_edge_tear",
+      "state": "REJECTED",
+      "passed": true
+    },
+    {
+      "name": "interior_uncertain",
+      "state": "UNCERTAIN",
+      "passed": true
+    },
+    {
+      "name": "CAD_joint_penetration",
+      "state": "REJECTED",
+      "passed": true
+    },
+    {
+      "name": "exact_perspective_plane_0.0",
+      "rejected": 0,
+      "max_tangent_stretch": {
+        "N": 4050,
+        "mean": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "maximum": 1.0
+      },
+      "max_perspective_stretch": {
+        "N": 4050,
+        "mean": 1.0000000000000013,
+        "median": 1.0000000000000018,
+        "p95": 1.0000000000000018,
+        "maximum": 1.0000000000000018
+      },
+      "passed": true
+    },
+    {
+      "name": "exact_perspective_plane_65.0",
+      "rejected": 0,
+      "max_tangent_stretch": {
+        "N": 4050,
+        "mean": 1.0000000000000069,
+        "median": 1.0000000000000064,
+        "p95": 1.0000000000000149,
+        "maximum": 1.000000000000015
+      },
+      "max_perspective_stretch": {
+        "N": 4050,
+        "mean": 2.4978674074268166,
+        "median": 2.406308989398959,
+        "p95": 3.399313944800621,
+        "maximum": 3.483680856825458
+      },
+      "passed": true
+    },
+    {
+      "name": "exact_perspective_plane_80.0",
+      "rejected": 0,
+      "max_tangent_stretch": {
+        "N": 2305,
+        "mean": 1.0000000000000049,
+        "median": 1.0000000000000049,
+        "p95": 1.0000000000000095,
+        "maximum": 1.0000000000000147
+      },
+      "max_perspective_stretch": {
+        "N": 4050,
+        "mean": 9.237090795660807,
+        "median": 6.002091562958693,
+        "p95": 28.127138994402973,
+        "maximum": 34.606710757163995
+      },
+      "passed": true
+    },
+    {
+      "name": "half_pixel_roundtrip_and_sample_centre_EDT",
+      "passed": true
+    }
+  ],
+  "GT_used": false
+}
