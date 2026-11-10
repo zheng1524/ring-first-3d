@@ -1,0 +1,48 @@
+{
+  "seed": 20261109,
+  "depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap_r": 10.0,
+    "miss_cost": 9.5,
+    "min_ray_face_cosine": 0.001,
+    "CAD_clearance_mm": 0.05
+  },
+  "phase_A": {
+    "initializations": [
+      "Init-A",
+      "Init-B",
+      "Init-C"
+    ],
+    "initializer_TRF_max_nfev": 20,
+    "stability_TRF_max_nfev": 8,
+    "downstream": {
+      "max_proposals": 80,
+      "max_accepted": 40,
+      "consecutive_rejection_stop": 30
+    },
+    "selection": "one global method, FIT only; median(1-IoU + .02*fixed_depth_cost); ineligible if more added dense-Ring/self geometry failures than Init-A; no HOLDOUT/GT ranking"
+  },
+  "phase_B": {
+    "cases": [
+      "G01",
+      "G02",
+      "G03",
+      "G10",
+      "G11"
+    ],
+    "methods": [
+      "Stalk-A",
+      "Stalk-B",
+      "Stalk-C"
+    ],
+    "max_proposals": 80,
+    "max_accepted": 40,
+    "consecutive_rejection_stop": 30
+  },
+  "loss": "014 MultiObjective D0_013; original013 silhouette/FN/FP/bidirectional coefficients, independent fixed-depth normalization",
+  "guard": "unchanged014 dense32/FCL/reverse/self every candidate; independent64 audit",
+  "no_cross_video_correction": true,
+  "no_new_HERO": true,
+  "no_GT_selection": true
+}

@@ -1,0 +1,89 @@
+{
+  "parts": {
+    "silhouette": 0.0043983859941363335,
+    "missing": 0.2361260950565338,
+    "extra": 0.00250681908801198,
+    "contour": 0.08903348087939003,
+    "absolute": 0.0,
+    "relative": 0.0,
+    "prior": 0.00011628435458987951,
+    "total": 0.017336650841464338
+  },
+  "component_rows": [
+    {
+      "view": "Ip4_R10_obs01",
+      "component": "silhouette",
+      "weighted_value": 0.0043983859941363335,
+      "gradient_norm": 0.0006785949564885603,
+      "finite": true
+    },
+    {
+      "view": "Ip4_R10_obs01",
+      "component": "missing",
+      "weighted_value": 0.011806304566562176,
+      "gradient_norm": 0.0022569846362627565,
+      "finite": true
+    },
+    {
+      "view": "Ip4_R10_obs01",
+      "component": "extra",
+      "weighted_value": 0.00012534095731098205,
+      "gradient_norm": 2.906838426565592e-05,
+      "finite": true
+    },
+    {
+      "view": "Ip4_R10_obs01",
+      "component": "contour",
+      "weighted_value": 0.0008903348087939003,
+      "gradient_norm": 0.00037154940204197696,
+      "finite": true
+    },
+    {
+      "view": "ALL",
+      "component": "prior",
+      "weighted_value": 0.00011628435458987951,
+      "gradient_norm": 0.0004353973126694718,
+      "finite": true
+    }
+  ],
+  "same_graph": [
+    {
+      "view": "Ip4_R10_obs01",
+      "component_sum_vs_joint_relative_error": 9.642468784822845e-08,
+      "repeat_same_graph_relative_error": 2.834585825696956e-08,
+      "component_norm_sum_over_joint": 1.126414743165657
+    }
+  ],
+  "additivity_relative_error": 9.550675324995707e-08,
+  "threshold": 0.0001,
+  "pass_additivity": true,
+  "image_depth_cosine": 0.0,
+  "image_prior_cosine": 0.04769999251051093,
+  "full_gradient_norm": 0.0030140935207312396,
+  "all_finite": true,
+  "case": "virtual_Ip",
+  "fit": [
+    "Ip4_R10_obs01"
+  ],
+  "contour_rank_histogram": {
+    "0": 588,
+    "1": 11,
+    "2": 43,
+    "3": 0
+  },
+  "image_shadow_reasons": [],
+  "image_shadow_check": {
+    "max_step_mm": 0.2,
+    "min_area_ratio": 0.8875871217113193,
+    "minimum_normal_dot": 0.00017926437836570918,
+    "Ring_surface_collision": false,
+    "Ring_min_signed_mm": 0.02012441579919866,
+    "self_intersections": 0,
+    "coplanar_warnings": 0,
+    "Ring_violation_sample_N": 0,
+    "reverse_Ring_min_signed_mm": 2.530817985534668,
+    "reverse_Ring_inside_N": 0
+  },
+  "depth_kind": "NO_DEPTH_SUPERVISION",
+  "GT_read": false
+}

@@ -1,0 +1,20 @@
+Blender 5.0.1 (hash a3db93c5b259 built 2025-12-16 01:30:59)
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/code/render_virtual_grid016.py", line 8, in <module>
+    sc=bpy.context.scene;sc.render.engine='CYCLES';sc.cycles.device='CPU';sc.cycles.samples=32;sc.cycles.seed=20261110016;sc.cycles.use_denoising=False;sc.render.threads_mode='FIXED';sc.render.threads=2;sc.unit_settings.scale_length=.001;sc.view_settings.view_transform='Raw';sc.render.image_settings.file_format='PNG';sc.render.image_settings.color_mode='RGB';sc.render.film_transparent=False;sc.cycles.pixel_filter_type='BOX';sc.cycles.filter_width=1.;sc.world.use_nodes=True;sc.world.node_tree.nodes['Background'].inputs[0].default_value=(0,0,0,1)
+                                                                                               ^^^^^^^^^^^^^^
+ValueError: bpy_struct: item.attr = val: CyclesRenderSettings.seed value not in 'int' range ((-0x7fffffff - 1), 0x7fffffff)
+
+Blender quit
+/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/code/render_virtual_grid016.py:8: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  sc=bpy.context.scene;sc.render.engine='CYCLES';sc.cycles.device='CPU';sc.cycles.samples=32;sc.cycles.seed=20261110;sc.cycles.use_denoising=False;sc.render.threads_mode='FIXED';sc.render.threads=2;sc.unit_settings.scale_length=.001;sc.view_settings.view_transform='Raw';sc.render.image_settings.file_format='PNG';sc.render.image_settings.color_mode='RGB';sc.render.film_transparent=False;sc.cycles.pixel_filter_type='BOX';sc.cycles.filter_width=1.;sc.world.use_nodes=True;sc.world.node_tree.nodes['Background'].inputs[0].default_value=(0,0,0,1)
+/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/code/render_virtual_grid016.py:10: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.meshes.new(name);m.from_pydata(V.tolist(),[],F.tolist());m.update();o=bpy.data.objects.new(name,m);sc.collection.objects.link(o);mat=bpy.data.materials.new(name);mat.use_nodes=True;n=mat.node_tree.nodes;n.clear();output=n.new('ShaderNodeOutputMaterial');em=n.new('ShaderNodeEmission');em.inputs['Color'].default_value=color;mat.node_tree.links.new(em.outputs[0],output.inputs['Surface']);m.materials.append(mat)
+00:00.566  render           | Saved: '/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/local_results/virtual_render320/Ip4_R10_obs00.png'
+00:00.799  render           | Saved: '/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/local_results/virtual_render320/Ip4_R10_obs01.png'
+00:01.023  render           | Saved: '/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/local_results/virtual_render320/Ip4_R10_obs03.png'
+00:01.251  render           | Saved: '/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/local_results/virtual_render320/Ip4_R10_obs04.png'
+00:01.481  render           | Saved: '/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/local_results/virtual_render320/Ip4_R10_obs05.png'
+Blender 5.0.1 (hash a3db93c5b259 built 2025-12-16 01:30:59)
+
+Blender quit

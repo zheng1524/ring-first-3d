@@ -1,0 +1,35 @@
+{
+  "epoch": 1794249917.9667637,
+  "items": [
+    {
+      "stage": "preparation before any optimization",
+      "error": "Parser spacing and nullable raw_frame handling",
+      "repair": "Explicit expression spacing; missing time contributes no fabricated temporal score",
+      "prediction_changed": false
+    },
+    {
+      "stage": "virtual gate before any virtual optimization",
+      "error": "Nearest-neighbor640-to320 binary target mismatch",
+      "repair": "Same static Blender cameras/body/CAD, direct320 target; original thresholds and failed gate preserved",
+      "evidence": "VIRTUAL_GRID_REPAIR_AMENDMENT.json"
+    },
+    {
+      "stage": "Blender rendering before target images existed",
+      "error": "Cycles seed integer outside int32 range",
+      "repair": "Valid deterministic seed20261110; original log retained",
+      "evidence": "runtime/virtual_grid_blender.log"
+    },
+    {
+      "stage": "GT evaluation source-copy setup",
+      "error": "Relative source path FileNotFound",
+      "repair": "Use absolute task root; no model or source data changed"
+    },
+    {
+      "stage": "post-freeze loss-value reporting",
+      "error": "Raw MultiObjective parts require coefficients before summation",
+      "repair": "Preserve raw values and add weighted deltas and sum-error check",
+      "evidence": "ACTUAL_COMPONENT_VALUE_LABEL_REPAIR.json"
+    }
+  ],
+  "no_historical_output_overwritten": true
+}

@@ -1,0 +1,70 @@
+{
+  "tag": "V3_COHERENT",
+  "scene": "virtual",
+  "GT_source": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BOUNDARY_RELATIVE_DEPTH_D2_001/audit_only/virtual_Ip/GT.npz",
+    "bytes": 40948,
+    "sha256": "e3a3be3bf87f8dd8e20bed3e1e5a7e58a71c1b47f8623c2e3947c322e6b55a10"
+  },
+  "known_frame_no_ICP": true,
+  "stages": [
+    {
+      "stage": "INITIAL",
+      "Chamfer_mm": {
+        "N": 16384,
+        "MAE": 0.6252707029405327,
+        "median": 0.42883116006851196,
+        "p95": 1.9178659975528711,
+        "maximum": 2.4305882453918457
+      },
+      "prediction_to_GT_mm": {
+        "N": 8192,
+        "MAE": 0.4338138911602907,
+        "median": 0.39054417610168457,
+        "p95": 1.1339267313480375,
+        "maximum": 1.8892852067947388
+      },
+      "GT_to_prediction_mm": {
+        "N": 8192,
+        "MAE": 0.8167275147207746,
+        "median": 0.4773803949356079,
+        "p95": 2.168590271472931,
+        "maximum": 2.4305882453918457
+      },
+      "highest_world_Z_mm": 3.889700363855809,
+      "GT_highest_world_Z_mm": 4.3659277725964785
+    },
+    {
+      "stage": "FINAL",
+      "Chamfer_mm": {
+        "N": 16384,
+        "MAE": 0.6231143969572814,
+        "median": 0.42811739444732666,
+        "p95": 1.9177803695201865,
+        "maximum": 2.4305732250213623
+      },
+      "prediction_to_GT_mm": {
+        "N": 8192,
+        "MAE": 0.43930528005560454,
+        "median": 0.3972886651754379,
+        "p95": 1.157994920015335,
+        "maximum": 1.8937923908233643
+      },
+      "GT_to_prediction_mm": {
+        "N": 8192,
+        "MAE": 0.8069235138589583,
+        "median": 0.47234348952770233,
+        "p95": 2.168536078929901,
+        "maximum": 2.4305732250213623
+      },
+      "highest_world_Z_mm": 3.8896941733814083,
+      "GT_highest_world_Z_mm": 4.3659277725964785
+    }
+  ],
+  "direction_evaluable_vertex_N": 596,
+  "nearest_GT_direction_cosine_positive_fraction": 0.7919463087248322,
+  "material_vertex_unsigned_GT_distance_change_mm": -0.006993671402041771,
+  "direction_caveat": "Closest-surface error-reduction proxy, not authored material correspondence or independent anatomical stalk label",
+  "strict_solid_volume_IoU": "NOT_EVALUABLE_NATIVE_GT_SELF_INTERSECTIONS",
+  "GT_not_in_fit": true
+}

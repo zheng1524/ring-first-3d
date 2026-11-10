@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/code/after_real_gpu016.py", line 26, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/code/after_real_gpu016.py", line 18, in main
+    save('runtime/STATUS.json',dict(phase='NUMERIC_VISIBILITY_BRANCH_ISOLATION',epoch=time.time()));command('raster_branch016.py','DIAGNOSTIC');command('virtual_gate016.py')
+                                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/code/after_real_gpu016.py", line 10, in command
+    if rc:raise RuntimeError('Preserve failed-stage evidence: '+script+' '+str(tag))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Preserve failed-stage evidence: virtual_gate016.py None

@@ -1,0 +1,4384 @@
+[
+  {
+    "case": "G01",
+    "attempt": 1,
+    "accepted": true,
+    "accepted_total": 1,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 1.0,
+    "objective": 0.011662715755767985,
+    "gradient_norm": 0.0012879028759530786,
+    "max_step_mm": 0.16097907231973865,
+    "max_total_mm": 0.16097907231973865,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.00482472696652015,
+      "missing": 0.051073543230692534,
+      "extra": 0.0008780094678513705,
+      "contour": 0.2593868189500267,
+      "absolute": 0.36013351854211134,
+      "relative": 0.1612045342451347,
+      "prior": 0.00022940717462915927,
+      "total": 0.011662715755767985
+    },
+    "reasons": [],
+    "coverage": {
+      "far_associated_N": 100,
+      "expanded_geometric_band_N": 325,
+      "far_with_actual_nonzero_candidate_N": 100,
+      "image_gradient_norm": 0.0012314540883130358,
+      "full_gradient_norm": 0.0012879028759530786,
+      "image_full_gradient_cosine": 0.9408951166948306,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231973888,
+            "new_max_mm": 0.16097907231973888,
+            "raw_edge_jump_norm": 0.6957662898468494,
+            "new_edge_jump_norm": 0.5783887844752351,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907231973888,
+            "new_max_mm": 0.16097907231973888,
+            "raw_edge_jump_norm": 0.6957662898468494,
+            "new_edge_jump_norm": 0.5783887844752351,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034640047366704375,
+            "new_max_mm": 0.034640047366704375,
+            "raw_edge_jump_norm": 1.892227365682622,
+            "new_edge_jump_norm": 0.9948121398209369,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.3341689235971939e-05,
+            "new_max_mm": 1.3341689235971939e-05,
+            "raw_edge_jump_norm": 5.410236865914588e-05,
+            "new_edge_jump_norm": 4.5028536955348684e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231587597,
+            "new_max_mm": 0.16097907231587597,
+            "raw_edge_jump_norm": 0.5240878935118365,
+            "new_edge_jump_norm": 0.4500360922820232,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232100758,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4551719870482378,
+            "new_edge_jump_norm": 0.4065304517695387,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723190545,
+            "new_max_mm": 0.1609790723190545,
+            "raw_edge_jump_norm": 0.43465616870938195,
+            "new_edge_jump_norm": 0.3844527181380747,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723180679,
+            "new_max_mm": 0.1609790723180679,
+            "raw_edge_jump_norm": 0.6024737077343476,
+            "new_edge_jump_norm": 0.5004957216938999,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 2,
+    "accepted": true,
+    "accepted_total": 2,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 1.0,
+    "objective": 0.010611809422258773,
+    "gradient_norm": 0.0013062984475411988,
+    "max_step_mm": 0.1609790723197884,
+    "max_total_mm": 0.3219443048884465,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004548876204838355,
+      "missing": 0.047140430162350325,
+      "extra": 0.000923573155887425,
+      "contour": 0.2572643268779563,
+      "absolute": 0.32783818108858126,
+      "relative": 0.11010558917469973,
+      "prior": 0.0002529405173845589,
+      "total": 0.010611809422258773
+    },
+    "reasons": [],
+    "coverage": {
+      "far_associated_N": 98,
+      "expanded_geometric_band_N": 320,
+      "far_with_actual_nonzero_candidate_N": 98,
+      "image_gradient_norm": 0.0012095299516395796,
+      "full_gradient_norm": 0.0013062984475411988,
+      "image_full_gradient_cosine": 0.8856765659278586,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231979783,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6108787719485737,
+            "new_edge_jump_norm": 0.5139531949447612,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907231979783,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6108787719485737,
+            "new_edge_jump_norm": 0.5139531949447612,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034640070862057754,
+            "new_max_mm": 0.034640070862057754,
+            "raw_edge_jump_norm": 1.9103217299439583,
+            "new_edge_jump_norm": 1.0586111063441883,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.3901756416401857e-05,
+            "new_max_mm": 1.3901756416401857e-05,
+            "raw_edge_jump_norm": 5.434413719506777e-05,
+            "new_edge_jump_norm": 4.4672743578389544e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231999228,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5443028492274427,
+            "new_edge_jump_norm": 0.45972179140000086,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723122228,
+            "new_max_mm": 0.1609790723122228,
+            "raw_edge_jump_norm": 0.48452920013495904,
+            "new_edge_jump_norm": 0.43431948540762666,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790722992761,
+            "new_max_mm": 0.1609790722992761,
+            "raw_edge_jump_norm": 0.5104573696906343,
+            "new_edge_jump_norm": 0.45250700501991026,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230822092,
+            "new_max_mm": 0.16097907230822092,
+            "raw_edge_jump_norm": 0.8279639916331712,
+            "new_edge_jump_norm": 0.7404316594836944,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 3,
+    "accepted": true,
+    "accepted_total": 3,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 1.0,
+    "objective": 0.010017651238825517,
+    "gradient_norm": 0.0012418977776426233,
+    "max_step_mm": 0.16097907231978875,
+    "max_total_mm": 0.48272309413125686,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004294813734789689,
+      "missing": 0.043928123886386554,
+      "extra": 0.0009280779457185418,
+      "contour": 0.2554423994412413,
+      "absolute": 0.300345271424977,
+      "relative": 0.09687266440443938,
+      "prior": 0.00028150519938208163,
+      "total": 0.010017651238825517
+    },
+    "reasons": [],
+    "coverage": {
+      "far_associated_N": 96,
+      "expanded_geometric_band_N": 317,
+      "far_with_actual_nonzero_candidate_N": 96,
+      "image_gradient_norm": 0.0011952638940504576,
+      "full_gradient_norm": 0.0012418977776426233,
+      "image_full_gradient_cosine": 0.8939347331231493,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231983546,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5334958722323699,
+            "new_edge_jump_norm": 0.458508269950936,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907231983546,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5334958722323699,
+            "new_edge_jump_norm": 0.458508269950936,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03464016260905075,
+            "new_max_mm": 0.03464016260905075,
+            "raw_edge_jump_norm": 1.892095861956144,
+            "new_edge_jump_norm": 1.0013855773897862,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.644462708624262e-05,
+            "new_max_mm": 1.644462708624262e-05,
+            "raw_edge_jump_norm": 5.0558989187015366e-05,
+            "new_edge_jump_norm": 4.429608427263197e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723228672,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4475489073932788,
+            "new_edge_jump_norm": 0.39676272380214556,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231789163,
+            "new_max_mm": 0.16097907231789163,
+            "raw_edge_jump_norm": 0.5341893856733065,
+            "new_edge_jump_norm": 0.47903155654205554,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723182034,
+            "new_max_mm": 0.1609790723182034,
+            "raw_edge_jump_norm": 0.4718868349976616,
+            "new_edge_jump_norm": 0.42946884117612044,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229877464,
+            "new_max_mm": 0.16097907229877464,
+            "raw_edge_jump_norm": 0.7317840217368214,
+            "new_edge_jump_norm": 0.6150740923348106,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 4,
+    "accepted": true,
+    "accepted_total": 4,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 1.0,
+    "objective": 0.009759177195565192,
+    "gradient_norm": 0.001257823244318585,
+    "max_step_mm": 0.1609790723197887,
+    "max_total_mm": 0.4971885839785408,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004178888257592916,
+      "missing": 0.04214507279296716,
+      "extra": 0.0009634259506128729,
+      "contour": 0.25450781135639866,
+      "absolute": 0.29101641965756125,
+      "relative": 0.08294204544650649,
+      "prior": 0.00031304077128879726,
+      "total": 0.009759177195565192
+    },
+    "reasons": [],
+    "coverage": {
+      "far_associated_N": 89,
+      "expanded_geometric_band_N": 306,
+      "far_with_actual_nonzero_candidate_N": 89,
+      "image_gradient_norm": 0.0012361918191119196,
+      "full_gradient_norm": 0.001257823244318585,
+      "image_full_gradient_cosine": 0.8917088522955556,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231991151,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5601178569583747,
+            "new_edge_jump_norm": 0.5005162776913448,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907231991151,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5601178569583747,
+            "new_edge_jump_norm": 0.5005162776913448,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03464013814903563,
+            "new_max_mm": 0.03464013814903563,
+            "raw_edge_jump_norm": 1.9003957751050453,
+            "new_edge_jump_norm": 1.0180980112395572,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.66257852779664e-05,
+            "new_max_mm": 1.66257852779664e-05,
+            "raw_edge_jump_norm": 5.0587644042553984e-05,
+            "new_edge_jump_norm": 4.46915427559933e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232400507,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.45482956657700635,
+            "new_edge_jump_norm": 0.40343076425227686,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231513867,
+            "new_max_mm": 0.16097907231513867,
+            "raw_edge_jump_norm": 0.5918893065331663,
+            "new_edge_jump_norm": 0.5325692343556343,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232859376,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4924046061399943,
+            "new_edge_jump_norm": 0.4476660053363452,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232391936,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.39386824859097375,
+            "new_edge_jump_norm": 0.36102189539773244,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 5,
+    "accepted": true,
+    "accepted_total": 5,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 1.0,
+    "objective": 0.009269161450382977,
+    "gradient_norm": 0.0011743493010789125,
+    "max_step_mm": 0.16097907231978892,
+    "max_total_mm": 0.6311411331325022,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004055967958023151,
+      "missing": 0.040735850110650056,
+      "extra": 0.0009542036103084683,
+      "contour": 0.2526758756530489,
+      "absolute": 0.2770314905692055,
+      "relative": 0.05003345341644497,
+      "prior": 0.00035742291947826743,
+      "total": 0.009269161450382977
+    },
+    "reasons": [],
+    "coverage": {
+      "far_associated_N": 90,
+      "expanded_geometric_band_N": 308,
+      "far_with_actual_nonzero_candidate_N": 90,
+      "image_gradient_norm": 0.0011122176847979033,
+      "full_gradient_norm": 0.0011743493010789125,
+      "image_full_gradient_cosine": 0.8564771945818825,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.1609790723197961,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6603659862878022,
+            "new_edge_jump_norm": 0.5855738346383146,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.1609790723197961,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6603659862878022,
+            "new_edge_jump_norm": 0.5855738346383146,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03464012958033033,
+            "new_max_mm": 0.03464012958033033,
+            "raw_edge_jump_norm": 1.8721279509919546,
+            "new_edge_jump_norm": 1.0107048591150893,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.5956705639581632e-05,
+            "new_max_mm": 1.5956705639581632e-05,
+            "raw_edge_jump_norm": 4.694267598129102e-05,
+            "new_edge_jump_norm": 4.2192813023914595e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232306644,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.43207951394657496,
+            "new_edge_jump_norm": 0.38923052161703736,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723092445,
+            "new_max_mm": 0.1609790723092445,
+            "raw_edge_jump_norm": 0.6916207731745063,
+            "new_edge_jump_norm": 0.6599741962848167,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723351917,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5741831594888056,
+            "new_edge_jump_norm": 0.5123285137644155,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231942804,
+            "new_max_mm": 0.16097907231942804,
+            "raw_edge_jump_norm": 0.3958280561606285,
+            "new_edge_jump_norm": 0.3638923907709055,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 6,
+    "accepted": true,
+    "accepted_total": 6,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 1.0,
+    "objective": 0.009228136534313609,
+    "gradient_norm": 0.0010592107477936851,
+    "max_step_mm": 0.16097907231978859,
+    "max_total_mm": 0.7093542018098795,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0039779046084731816,
+      "missing": 0.03913656398653984,
+      "extra": 0.001012943343569835,
+      "contour": 0.2518007084196637,
+      "absolute": 0.27092462578506293,
+      "relative": 0.049865192976945236,
+      "prior": 0.00040184633689932525,
+      "total": 0.009228136534313609
+    },
+    "reasons": [],
+    "coverage": {
+      "far_associated_N": 84,
+      "expanded_geometric_band_N": 290,
+      "far_with_actual_nonzero_candidate_N": 84,
+      "image_gradient_norm": 0.0009648379408786279,
+      "full_gradient_norm": 0.0010592107477936851,
+      "image_full_gradient_cosine": 0.775062818798617,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231997177,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5597744317196148,
+            "new_edge_jump_norm": 0.5099864663946899,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907231997177,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5597744317196148,
+            "new_edge_jump_norm": 0.5099864663946899,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463999940287012,
+            "new_max_mm": 0.03463999940287012,
+            "raw_edge_jump_norm": 1.8972645414507776,
+            "new_edge_jump_norm": 1.0324131435286257,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.392504786824343e-05,
+            "new_max_mm": 1.392504786824343e-05,
+            "raw_edge_jump_norm": 4.328911695650466e-05,
+            "new_edge_jump_norm": 3.895619669256815e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723204917,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.42318064925199417,
+            "new_edge_jump_norm": 0.3841395466392814,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232128192,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5700438680040651,
+            "new_edge_jump_norm": 0.4918349535892378,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234001144,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5755370918149775,
+            "new_edge_jump_norm": 0.5275297824237747,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232067574,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5317531096995779,
+            "new_edge_jump_norm": 0.4858909063570575,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 7,
+    "accepted": true,
+    "accepted_total": 7,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 1.0,
+    "objective": 0.009284011997686437,
+    "gradient_norm": 0.001173325066010284,
+    "max_step_mm": 0.16097907231978836,
+    "max_total_mm": 0.794041311716359,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003922938051012655,
+      "missing": 0.039541561901569364,
+      "extra": 0.00090486573947904,
+      "contour": 0.25023386962611643,
+      "absolute": 0.27081346856755784,
+      "relative": 0.0492360057513718,
+      "prior": 0.000435552530689165,
+      "total": 0.009284011997686437
+    },
+    "reasons": [],
+    "coverage": {
+      "far_associated_N": 90,
+      "expanded_geometric_band_N": 302,
+      "far_with_actual_nonzero_candidate_N": 90,
+      "image_gradient_norm": 0.0009033312052896808,
+      "full_gradient_norm": 0.001173325066010284,
+      "image_full_gradient_cosine": 0.7019870337790008,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.160979072320139,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.562817517805608,
+            "new_edge_jump_norm": 0.5271644073082,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.160979072320139,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.562817517805608,
+            "new_edge_jump_norm": 0.5271644073082,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034639854510059694,
+            "new_max_mm": 0.034639854510059694,
+            "raw_edge_jump_norm": 1.8935302889427987,
+            "new_edge_jump_norm": 1.0474807294727444,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.174636575841456e-05,
+            "new_max_mm": 1.174636575841456e-05,
+            "raw_edge_jump_norm": 4.914923036914131e-05,
+            "new_edge_jump_norm": 4.3051022811348254e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231945283,
+            "new_max_mm": 0.16097907231945283,
+            "raw_edge_jump_norm": 0.5231025298243007,
+            "new_edge_jump_norm": 0.4616091672734708,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232061173,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5312436104658551,
+            "new_edge_jump_norm": 0.4858769373660403,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232596992,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4859969343532224,
+            "new_edge_jump_norm": 0.41706314823344776,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723218511,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6576868482647895,
+            "new_edge_jump_norm": 0.5907328977308858,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 8,
+    "accepted": true,
+    "accepted_total": 8,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 1.0,
+    "objective": 0.009367268826634589,
+    "gradient_norm": 0.0011866500467191726,
+    "max_step_mm": 0.16097907231973366,
+    "max_total_mm": 0.8436087464817372,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003937024033317964,
+      "missing": 0.03756807247797648,
+      "extra": 0.001113991206511855,
+      "contour": 0.25119212165368743,
+      "absolute": 0.27171668492946366,
+      "relative": 0.047751835493330494,
+      "prior": 0.00045714981388300657,
+      "total": 0.009367268826634589
+    },
+    "reasons": [],
+    "coverage": {
+      "far_associated_N": 87,
+      "expanded_geometric_band_N": 295,
+      "far_with_actual_nonzero_candidate_N": 87,
+      "image_gradient_norm": 0.0009508160464917146,
+      "full_gradient_norm": 0.0011866500467191726,
+      "image_full_gradient_cosine": 0.7409503917341251,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231973338,
+            "new_max_mm": 0.16097907231973338,
+            "raw_edge_jump_norm": 0.6079063670612022,
+            "new_edge_jump_norm": 0.510677805865135,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907231973338,
+            "new_max_mm": 0.16097907231973338,
+            "raw_edge_jump_norm": 0.6079063670612022,
+            "new_edge_jump_norm": 0.510677805865135,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463972847978077,
+            "new_max_mm": 0.03463972847978077,
+            "raw_edge_jump_norm": 1.8933976175473715,
+            "new_edge_jump_norm": 1.0234385071154537,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.023377063999934e-05,
+            "new_max_mm": 1.023377063999934e-05,
+            "raw_edge_jump_norm": 5.0578574158902486e-05,
+            "new_edge_jump_norm": 4.494878365307462e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231573325,
+            "new_max_mm": 0.16097907231573325,
+            "raw_edge_jump_norm": 0.49814600202834325,
+            "new_edge_jump_norm": 0.4419617243483627,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232344733,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.463122299472103,
+            "new_edge_jump_norm": 0.40635841552990815,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231981134,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6662827126958264,
+            "new_edge_jump_norm": 0.5922030713708021,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231014408,
+            "new_max_mm": 0.16097907231014408,
+            "raw_edge_jump_norm": 0.6305544497779918,
+            "new_edge_jump_norm": 0.6002265594900942,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 9,
+    "accepted": true,
+    "accepted_total": 9,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.5,
+    "objective": 0.009393410029762381,
+    "gradient_norm": 0.0025975257963133497,
+    "max_step_mm": 0.0804895361598903,
+    "max_total_mm": 0.8469225189826471,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0038538263722633316,
+      "missing": 0.03820811944703261,
+      "extra": 0.0009581091386886934,
+      "contour": 0.2505364392914336,
+      "absolute": 0.27156404237194,
+      "relative": 0.04972462074351086,
+      "prior": 0.0004575327329803258,
+      "total": 0.009393410029762381
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 89,
+      "expanded_geometric_band_N": 302,
+      "far_with_actual_nonzero_candidate_N": 89,
+      "image_gradient_norm": 0.0009950622047185337,
+      "full_gradient_norm": 0.0025975257963133497,
+      "image_full_gradient_cosine": 0.35789871972417553,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.1609790723197806,
+            "new_max_mm": 0.1609790723197806,
+            "raw_edge_jump_norm": 0.5994455276204456,
+            "new_edge_jump_norm": 0.5054543565479489,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.1609790723197806,
+            "new_max_mm": 0.1609790723197806,
+            "raw_edge_jump_norm": 0.5994455276204456,
+            "new_edge_jump_norm": 0.5054543565479489,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03464058319414096,
+            "new_max_mm": 0.03464058319414096,
+            "raw_edge_jump_norm": 1.8722739751307735,
+            "new_edge_jump_norm": 0.9907233099349021,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 3.946197934834756e-05,
+            "new_max_mm": 3.946197934834756e-05,
+            "raw_edge_jump_norm": 0.00011170148795786265,
+            "new_edge_jump_norm": 0.00010362795254804337,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231940733,
+            "new_max_mm": 0.16097907231940733,
+            "raw_edge_jump_norm": 0.40757744945806207,
+            "new_edge_jump_norm": 0.37533514032432425,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231759254,
+            "new_max_mm": 0.16097907231759254,
+            "raw_edge_jump_norm": 0.5239752074242842,
+            "new_edge_jump_norm": 0.4418223494898066,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723283714,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.48449075080257176,
+            "new_edge_jump_norm": 0.42823748483821344,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232770992,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5614971472433853,
+            "new_edge_jump_norm": 0.5076313775581538,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 10,
+    "accepted": true,
+    "accepted_total": 10,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 1.0,
+    "objective": 0.00946007120117234,
+    "gradient_norm": 0.0009163277467326318,
+    "max_step_mm": 0.16097907231978775,
+    "max_total_mm": 0.8903687648899582,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0038087612328430013,
+      "missing": 0.037060786783695225,
+      "extra": 0.0010174082107065865,
+      "contour": 0.24848519066276853,
+      "absolute": 0.27192289155101135,
+      "relative": 0.05068316787950806,
+      "prior": 0.0005051661282777786,
+      "total": 0.00946007120117234
+    },
+    "reasons": [],
+    "coverage": {
+      "far_associated_N": 86,
+      "expanded_geometric_band_N": 299,
+      "far_with_actual_nonzero_candidate_N": 86,
+      "image_gradient_norm": 0.0006253401642217659,
+      "full_gradient_norm": 0.0009163277467326318,
+      "image_full_gradient_cosine": 0.5187452924094678,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907232000805,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6717512631024009,
+            "new_edge_jump_norm": 0.5961492603215951,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907232000805,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6717512631024009,
+            "new_edge_jump_norm": 0.5961492603215951,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034639445239032854,
+            "new_max_mm": 0.034639445239032854,
+            "raw_edge_jump_norm": 1.910482575364809,
+            "new_edge_jump_norm": 1.0308380328127078,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.760713219296592e-06,
+            "new_max_mm": 7.760713219296592e-06,
+            "raw_edge_jump_norm": 3.872802990395318e-05,
+            "new_edge_jump_norm": 3.492249551318583e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230873673,
+            "new_max_mm": 0.16097907230873673,
+            "raw_edge_jump_norm": 0.47433462088170825,
+            "new_edge_jump_norm": 0.4200976128939494,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231109027,
+            "new_max_mm": 0.16097907231109027,
+            "raw_edge_jump_norm": 0.5102320239575643,
+            "new_edge_jump_norm": 0.4546029654661478,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231888978,
+            "new_max_mm": 0.16097907231888978,
+            "raw_edge_jump_norm": 0.6893436648848738,
+            "new_edge_jump_norm": 0.601467065304658,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231864425,
+            "new_max_mm": 0.16097907231864425,
+            "raw_edge_jump_norm": 0.6302400344202211,
+            "new_edge_jump_norm": 0.6179919352455646,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 11,
+    "accepted": true,
+    "accepted_total": 11,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.25,
+    "objective": 0.009529517648740639,
+    "gradient_norm": 0.0009901054136074326,
+    "max_step_mm": 0.040244768079947014,
+    "max_total_mm": 0.9113418535058957,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003778233037640651,
+      "missing": 0.037609012921651204,
+      "extra": 0.0009315137343946845,
+      "contour": 0.2481391225966415,
+      "absolute": 0.2714753950231841,
+      "relative": 0.050900090099745166,
+      "prior": 0.0005161892622709274,
+      "total": 0.009529517648740639
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 87,
+      "expanded_geometric_band_N": 290,
+      "far_with_actual_nonzero_candidate_N": 87,
+      "image_gradient_norm": 0.0006068957094417919,
+      "full_gradient_norm": 0.0009901054136074326,
+      "image_full_gradient_cosine": 0.5006445566819139,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231980213,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.9712916194938734,
+            "new_edge_jump_norm": 0.8169734409751908,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907231980213,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.9712916194938734,
+            "new_edge_jump_norm": 0.8169734409751908,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463852130273459,
+            "new_max_mm": 0.03463852130273459,
+            "raw_edge_jump_norm": 1.9056035280079318,
+            "new_edge_jump_norm": 1.0467068001403927,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.897579505773932e-06,
+            "new_max_mm": 7.897579505773932e-06,
+            "raw_edge_jump_norm": 4.10055675565715e-05,
+            "new_edge_jump_norm": 3.771007816895097e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231314085,
+            "new_max_mm": 0.16097907231314085,
+            "raw_edge_jump_norm": 0.4612055037427141,
+            "new_edge_jump_norm": 0.41834308540722953,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231086153,
+            "new_max_mm": 0.16097907231086153,
+            "raw_edge_jump_norm": 0.5878390367016134,
+            "new_edge_jump_norm": 0.5216001524654098,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232533698,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6137126679537318,
+            "new_edge_jump_norm": 0.5302601692856675,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723135046,
+            "new_max_mm": 0.1609790723135046,
+            "raw_edge_jump_norm": 0.5196118601788402,
+            "new_edge_jump_norm": 0.46734208982081993,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 12,
+    "accepted": true,
+    "accepted_total": 12,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.25,
+    "objective": 0.00961022675855244,
+    "gradient_norm": 0.0009569082810575439,
+    "max_step_mm": 0.040244768079947126,
+    "max_total_mm": 0.916642651040912,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.00377623257227242,
+      "missing": 0.03694396056234837,
+      "extra": 0.0009935345229071875,
+      "contour": 0.24839437770570183,
+      "absolute": 0.2714229871826792,
+      "relative": 0.051133475727298455,
+      "prior": 0.0005275407456792891,
+      "total": 0.00961022675855244
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 87,
+      "expanded_geometric_band_N": 290,
+      "far_with_actual_nonzero_candidate_N": 87,
+      "image_gradient_norm": 0.0005561581082085559,
+      "full_gradient_norm": 0.0009569082810575439,
+      "image_full_gradient_cosine": 0.42238592077903875,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231986616,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8229062974822204,
+            "new_edge_jump_norm": 0.6900305064880692,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907231986616,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8229062974822204,
+            "new_edge_jump_norm": 0.6900305064880692,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463881542849625,
+            "new_max_mm": 0.03463881542849625,
+            "raw_edge_jump_norm": 1.9216825270163813,
+            "new_edge_jump_norm": 1.0590745774757588,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 8.506777639428353e-06,
+            "new_max_mm": 8.506777639428353e-06,
+            "raw_edge_jump_norm": 4.010568791470677e-05,
+            "new_edge_jump_norm": 3.709765168643171e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230730826,
+            "new_max_mm": 0.16097907230730826,
+            "raw_edge_jump_norm": 0.45940880596640277,
+            "new_edge_jump_norm": 0.41762590009504297,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232359665,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5324862544800276,
+            "new_edge_jump_norm": 0.4841575473538767,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723194234,
+            "new_max_mm": 0.1609790723194234,
+            "raw_edge_jump_norm": 0.6581523779019173,
+            "new_edge_jump_norm": 0.56423220673953,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723374465,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6663349373491891,
+            "new_edge_jump_norm": 0.6700400270980189,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 13,
+    "accepted": true,
+    "accepted_total": 13,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.25,
+    "objective": 0.009684263101510989,
+    "gradient_norm": 0.0009717704741992206,
+    "max_step_mm": 0.04024476807994724,
+    "max_total_mm": 0.9271763315804799,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003756440027306477,
+      "missing": 0.037266355877121286,
+      "extra": 0.0009408867277670651,
+      "contour": 0.2473560109267092,
+      "absolute": 0.27116315773300304,
+      "relative": 0.05141417594390944,
+      "prior": 0.0005374881438910961,
+      "total": 0.009684263101510989
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 90,
+      "expanded_geometric_band_N": 299,
+      "far_with_actual_nonzero_candidate_N": 90,
+      "image_gradient_norm": 0.0005102417515369578,
+      "full_gradient_norm": 0.0009717704741992206,
+      "image_full_gradient_cosine": 0.3794785098466348,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.1609790723198573,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.7878838480843844,
+            "new_edge_jump_norm": 0.6518976677530117,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.1609790723198573,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.7878838480843844,
+            "new_edge_jump_norm": 0.6518976677530117,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034639100672703406,
+            "new_max_mm": 0.034639100672703406,
+            "raw_edge_jump_norm": 1.9104790542108085,
+            "new_edge_jump_norm": 1.030197859039959,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.921590089663885e-06,
+            "new_max_mm": 7.921590089663885e-06,
+            "raw_edge_jump_norm": 4.04261464564711e-05,
+            "new_edge_jump_norm": 3.622994227174126e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232448205,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4684584722759126,
+            "new_edge_jump_norm": 0.42483885191085163,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723095499,
+            "new_max_mm": 0.1609790723095499,
+            "raw_edge_jump_norm": 0.5004721497997288,
+            "new_edge_jump_norm": 0.45920523839584065,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723056412,
+            "new_max_mm": 0.1609790723056412,
+            "raw_edge_jump_norm": 0.5627156500941999,
+            "new_edge_jump_norm": 0.5077145231451402,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234729175,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.7640121416184955,
+            "new_edge_jump_norm": 0.6878062917658397,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 14,
+    "accepted": true,
+    "accepted_total": 14,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.0625,
+    "objective": 0.009764473307964514,
+    "gradient_norm": 0.0009904950995373194,
+    "max_step_mm": 0.010061192019978238,
+    "max_total_mm": 0.9296186741756797,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003754121414385736,
+      "missing": 0.03713129696746668,
+      "extra": 0.0009514547923269371,
+      "contour": 0.2472951523923175,
+      "absolute": 0.2711667205111016,
+      "relative": 0.051513662570278375,
+      "prior": 0.000540289853233844,
+      "total": 0.009764473307964514
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 87,
+      "expanded_geometric_band_N": 290,
+      "far_with_actual_nonzero_candidate_N": 87,
+      "image_gradient_norm": 0.0005038547080160451,
+      "full_gradient_norm": 0.0009904950995373194,
+      "image_full_gradient_cosine": 0.3215617334935643,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.1609790723196481,
+            "new_max_mm": 0.1609790723196481,
+            "raw_edge_jump_norm": 0.7234413153450373,
+            "new_edge_jump_norm": 0.6079140894329036,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.1609790723196481,
+            "new_max_mm": 0.1609790723196481,
+            "raw_edge_jump_norm": 0.7234413153450373,
+            "new_edge_jump_norm": 0.6079140894329036,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463938991943569,
+            "new_max_mm": 0.03463938991943569,
+            "raw_edge_jump_norm": 1.93440771071755,
+            "new_edge_jump_norm": 1.0605963424199367,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 9.322875782996123e-06,
+            "new_max_mm": 9.322875782996123e-06,
+            "raw_edge_jump_norm": 4.1802827127990594e-05,
+            "new_edge_jump_norm": 3.743201758218803e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723198532,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.46501081077466205,
+            "new_edge_jump_norm": 0.4291191066845797,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.160979072323576,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4761533890965617,
+            "new_edge_jump_norm": 0.42954845003263026,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232585337,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.535013145134691,
+            "new_edge_jump_norm": 0.4870446427318715,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232396172,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8024666991341189,
+            "new_edge_jump_norm": 0.7864012316249942,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 15,
+    "accepted": true,
+    "accepted_total": 15,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.0078125,
+    "objective": 0.00984640501395856,
+    "gradient_norm": 0.0009851025307135058,
+    "max_step_mm": 0.0012576490024983288,
+    "max_total_mm": 0.9300957590024682,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003753802731322745,
+      "missing": 0.037115457157293946,
+      "extra": 0.0009526462391174088,
+      "contour": 0.24728000425954258,
+      "absolute": 0.271165919993783,
+      "relative": 0.051531099007599335,
+      "prior": 0.0005407730350270867,
+      "total": 0.00984640501395856
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 87,
+      "expanded_geometric_band_N": 290,
+      "far_with_actual_nonzero_candidate_N": 87,
+      "image_gradient_norm": 0.0004703704996497945,
+      "full_gradient_norm": 0.0009851025307135058,
+      "image_full_gradient_cosine": 0.2761471525537648,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231980074,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8518390472771747,
+            "new_edge_jump_norm": 0.7208243560385608,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907231980074,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8518390472771747,
+            "new_edge_jump_norm": 0.7208243560385608,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463945286692389,
+            "new_max_mm": 0.03463945286692389,
+            "raw_edge_jump_norm": 1.9302563748043131,
+            "new_edge_jump_norm": 1.058316688653513,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 9.710014763198968e-06,
+            "new_max_mm": 9.710014763198968e-06,
+            "raw_edge_jump_norm": 4.158991717271836e-05,
+            "new_edge_jump_norm": 3.741098440219607e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723234515,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.45913457404312513,
+            "new_edge_jump_norm": 0.42403351333151995,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723190983,
+            "new_max_mm": 0.1609790723190983,
+            "raw_edge_jump_norm": 0.480912662678241,
+            "new_edge_jump_norm": 0.43295738507159437,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230544964,
+            "new_max_mm": 0.16097907230544964,
+            "raw_edge_jump_norm": 0.5276814550191758,
+            "new_edge_jump_norm": 0.48086153800716064,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232338007,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8127734176001526,
+            "new_edge_jump_norm": 0.8024047818324699,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 16,
+    "accepted": true,
+    "accepted_total": 16,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.009843839109468405,
+    "gradient_norm": 0.000986227204116119,
+    "max_step_mm": 0.034639461920793535,
+    "max_total_mm": 0.9287324593213991,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0037579612185557683,
+      "missing": 0.03664442722996076,
+      "extra": 0.0009979369215822468,
+      "contour": 0.24890869213141978,
+      "absolute": 0.2660241172941277,
+      "relative": 0.047939112491290244,
+      "prior": 0.0005420827656053007,
+      "total": 0.009843839109468405
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 87,
+      "expanded_geometric_band_N": 290,
+      "far_with_actual_nonzero_candidate_N": 87,
+      "image_gradient_norm": 0.000472735776078586,
+      "full_gradient_norm": 0.000986227204116119,
+      "image_full_gradient_cosine": 0.27389279774673253,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907232038547,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8454562142040171,
+            "new_edge_jump_norm": 0.7153440005083068,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907232038547,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8454562142040171,
+            "new_edge_jump_norm": 0.7153440005083068,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463946192079335,
+            "new_max_mm": 0.03463946192079335,
+            "raw_edge_jump_norm": 1.9294115903340472,
+            "new_edge_jump_norm": 1.0585879921024925,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 9.769663107178536e-06,
+            "new_max_mm": 9.769663107178536e-06,
+            "raw_edge_jump_norm": 4.164428918659197e-05,
+            "new_edge_jump_norm": 3.748239477120657e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231846928,
+            "new_max_mm": 0.16097907231846928,
+            "raw_edge_jump_norm": 0.4581282012267629,
+            "new_edge_jump_norm": 0.4231335992565497,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232388045,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.48117017031264364,
+            "new_edge_jump_norm": 0.43318056943746197,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231765016,
+            "new_max_mm": 0.16097907231765016,
+            "raw_edge_jump_norm": 0.5242424598659957,
+            "new_edge_jump_norm": 0.47778792152107036,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231666245,
+            "new_max_mm": 0.16097907231666245,
+            "raw_edge_jump_norm": 0.8192817238129904,
+            "new_edge_jump_norm": 0.7986744396928364,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 17,
+    "accepted": true,
+    "accepted_total": 17,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.25,
+    "objective": 0.009911426951794538,
+    "gradient_norm": 0.0008516064713635833,
+    "max_step_mm": 0.04024476807992756,
+    "max_total_mm": 0.9377765769121889,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0037271603321035697,
+      "missing": 0.03702481302122275,
+      "extra": 0.0009319548960775137,
+      "contour": 0.247448463696031,
+      "absolute": 0.2659574814219091,
+      "relative": 0.048463075652471904,
+      "prior": 0.0005533022922463715,
+      "total": 0.009911426951794538
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 85,
+      "expanded_geometric_band_N": 303,
+      "far_with_actual_nonzero_candidate_N": 85,
+      "image_gradient_norm": 0.0005484390415734329,
+      "full_gradient_norm": 0.0008516064713635833,
+      "image_full_gradient_cosine": 0.4404568523725765,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231970995,
+            "new_max_mm": 0.16097907231970995,
+            "raw_edge_jump_norm": 1.0102056197854365,
+            "new_edge_jump_norm": 0.8070150384683603,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907231970995,
+            "new_max_mm": 0.16097907231970995,
+            "raw_edge_jump_norm": 1.0102056197854365,
+            "new_edge_jump_norm": 0.8070150384683603,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03466936793311327,
+            "new_max_mm": 0.03466936793311327,
+            "raw_edge_jump_norm": 1.4359157509843221,
+            "new_edge_jump_norm": 0.7865818550043943,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.522310987297557e-06,
+            "new_max_mm": 7.522310987297557e-06,
+            "raw_edge_jump_norm": 3.589421289413979e-05,
+            "new_edge_jump_norm": 3.265790522496293e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232351616,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.47486281670024544,
+            "new_edge_jump_norm": 0.427071303844362,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232480899,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6284587430068808,
+            "new_edge_jump_norm": 0.5881287738141746,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231428274,
+            "new_max_mm": 0.16097907231428274,
+            "raw_edge_jump_norm": 0.5342984253347731,
+            "new_edge_jump_norm": 0.48201692010851743,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723251897,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5703338546469972,
+            "new_edge_jump_norm": 0.4795559808919977,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 18,
+    "accepted": true,
+    "accepted_total": 18,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.03125,
+    "objective": 0.009991266284518527,
+    "gradient_norm": 0.000804014682380287,
+    "max_step_mm": 0.005030596009992312,
+    "max_total_mm": 0.939805300148708,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0037254602958758675,
+      "missing": 0.03693579062819481,
+      "extra": 0.0009384836225459973,
+      "contour": 0.24737725471247476,
+      "absolute": 0.2659690153358396,
+      "relative": 0.0485066373603914,
+      "prior": 0.0005551512585952878,
+      "total": 0.009991266284518527
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 87,
+      "expanded_geometric_band_N": 304,
+      "far_with_actual_nonzero_candidate_N": 87,
+      "image_gradient_norm": 0.0005020430076482605,
+      "full_gradient_norm": 0.000804014682380287,
+      "image_full_gradient_cosine": 0.37000533595351204,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231975006,
+            "new_max_mm": 0.16097907231975006,
+            "raw_edge_jump_norm": 0.9778154628727691,
+            "new_edge_jump_norm": 0.8359765927999042,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907231975006,
+            "new_max_mm": 0.16097907231975006,
+            "raw_edge_jump_norm": 0.9778154628727691,
+            "new_edge_jump_norm": 0.8359765927999042,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034637731248986316,
+            "new_max_mm": 0.034637731248986316,
+            "raw_edge_jump_norm": 2.118573542065451,
+            "new_edge_jump_norm": 1.1326229003707475,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.3369963795564845e-06,
+            "new_max_mm": 7.3369963795564845e-06,
+            "raw_edge_jump_norm": 3.3873700904301516e-05,
+            "new_edge_jump_norm": 3.055316481098075e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231520509,
+            "new_max_mm": 0.16097907231520509,
+            "raw_edge_jump_norm": 0.4862416162970811,
+            "new_edge_jump_norm": 0.4335068585979805,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230129255,
+            "new_max_mm": 0.16097907230129255,
+            "raw_edge_jump_norm": 0.6710852847418979,
+            "new_edge_jump_norm": 0.6217294264804794,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230275177,
+            "new_max_mm": 0.16097907230275177,
+            "raw_edge_jump_norm": 0.5160428124339786,
+            "new_edge_jump_norm": 0.46570916904582815,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232624947,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8412170722962617,
+            "new_edge_jump_norm": 0.8477514965810868,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 19,
+    "accepted": true,
+    "accepted_total": 19,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.015625,
+    "objective": 0.010072446098182817,
+    "gradient_norm": 0.0007920192744902097,
+    "max_step_mm": 0.0025152980049970913,
+    "max_total_mm": 0.9409474251032862,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0037247745009760065,
+      "missing": 0.03689923534790674,
+      "extra": 0.0009411923141063501,
+      "contour": 0.247332475649941,
+      "absolute": 0.26597366223064633,
+      "relative": 0.04853147553293015,
+      "prior": 0.0005561290890909731,
+      "total": 0.010072446098182817
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 88,
+      "expanded_geometric_band_N": 304,
+      "far_with_actual_nonzero_candidate_N": 88,
+      "image_gradient_norm": 0.0004777411432874497,
+      "full_gradient_norm": 0.0007920192744902097,
+      "image_full_gradient_cosine": 0.330685856039005,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231980713,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.9087965475986164,
+            "new_edge_jump_norm": 0.7937714814030951,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907231980713,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.9087965475986164,
+            "new_edge_jump_norm": 0.7937714814030951,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034637760573040965,
+            "new_max_mm": 0.034637760573040965,
+            "raw_edge_jump_norm": 2.120737667656686,
+            "new_edge_jump_norm": 1.1362314194166279,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.322477999779992e-06,
+            "new_max_mm": 7.322477999779992e-06,
+            "raw_edge_jump_norm": 3.350509265145535e-05,
+            "new_edge_jump_norm": 3.0181436453353796e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232275688,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.48649197801009747,
+            "new_edge_jump_norm": 0.43365548038443696,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230882794,
+            "new_max_mm": 0.16097907230882794,
+            "raw_edge_jump_norm": 0.6458130685597208,
+            "new_edge_jump_norm": 0.6107157989488123,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723521274,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5117083477133075,
+            "new_edge_jump_norm": 0.4620294452352226,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231675146,
+            "new_max_mm": 0.16097907231675146,
+            "raw_edge_jump_norm": 0.8488476423305634,
+            "new_edge_jump_norm": 0.8502025968687967,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 20,
+    "accepted": true,
+    "accepted_total": 20,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.01005049352429863,
+    "gradient_norm": 0.0007890813764233496,
+    "max_step_mm": 0.03463778838040799,
+    "max_total_mm": 0.9384415445789618,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0037448095701013997,
+      "missing": 0.03654245374103387,
+      "extra": 0.0009885938353060434,
+      "contour": 0.24978707608037853,
+      "absolute": 0.25703676763887445,
+      "relative": 0.04579656517054531,
+      "prior": 0.0005433361511677504,
+      "total": 0.01005049352429863
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 87,
+      "expanded_geometric_band_N": 304,
+      "far_with_actual_nonzero_candidate_N": 87,
+      "image_gradient_norm": 0.00047339760586360643,
+      "full_gradient_norm": 0.0007890813764233496,
+      "image_full_gradient_cosine": 0.3189158429858225,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231954242,
+            "new_max_mm": 0.16097907231954242,
+            "raw_edge_jump_norm": 0.8801806639873431,
+            "new_edge_jump_norm": 0.7646809047678298,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_1",
+            "raw_max_mm": 0.16097907231954242,
+            "new_max_mm": 0.16097907231954242,
+            "raw_edge_jump_norm": 0.8801806639873431,
+            "new_edge_jump_norm": 0.7646809047678298,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034637788380408194,
+            "new_max_mm": 0.034637788380408194,
+            "raw_edge_jump_norm": 2.1247868694555243,
+            "new_edge_jump_norm": 1.1558331992473325,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.3042053422085865e-06,
+            "new_max_mm": 7.3042053422085865e-06,
+            "raw_edge_jump_norm": 3.341306319359306e-05,
+            "new_edge_jump_norm": 3.00853664248057e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232270275,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.486758535775607,
+            "new_edge_jump_norm": 0.4338497742559259,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723094688,
+            "new_max_mm": 0.1609790723094688,
+            "raw_edge_jump_norm": 0.6396356383125724,
+            "new_edge_jump_norm": 0.6046099667076744,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907235679676,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5081063091050085,
+            "new_edge_jump_norm": 0.4588513730260936,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790722896387,
+            "new_max_mm": 0.1609790722896387,
+            "raw_edge_jump_norm": 0.8541319229955607,
+            "new_edge_jump_norm": 0.8486774916334278,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 21,
+    "accepted": true,
+    "accepted_total": 21,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.25,
+    "objective": 0.010099478021290768,
+    "gradient_norm": 0.0008827586083924161,
+    "max_step_mm": 0.04024476807990244,
+    "max_total_mm": 0.9481397544405212,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0037051225236306587,
+      "missing": 0.036515934765338896,
+      "extra": 0.0009522993253388753,
+      "contour": 0.24844112293353812,
+      "absolute": 0.25711694492598314,
+      "relative": 0.04638184712781604,
+      "prior": 0.0005540190613828599,
+      "total": 0.010099478021290768
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 92,
+      "expanded_geometric_band_N": 307,
+      "far_with_actual_nonzero_candidate_N": 92,
+      "image_gradient_norm": 0.0006723285293133455,
+      "full_gradient_norm": 0.0008827586083924161,
+      "image_full_gradient_cosine": 0.5734469465995351,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231961087,
+            "new_max_mm": 0.16097907231961087,
+            "raw_edge_jump_norm": 0.996843854167032,
+            "new_edge_jump_norm": 0.8492914053441155,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907231961087,
+            "new_max_mm": 0.16097907231961087,
+            "raw_edge_jump_norm": 0.996843854167032,
+            "new_edge_jump_norm": 0.8492914053441155,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03466668189778239,
+            "new_max_mm": 0.03466668189778239,
+            "raw_edge_jump_norm": 1.1761974286426844,
+            "new_edge_jump_norm": 0.6385099452935211,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.112025002702905e-06,
+            "new_max_mm": 7.112025002702905e-06,
+            "raw_edge_jump_norm": 3.6107476318848694e-05,
+            "new_edge_jump_norm": 3.298772596499429e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231553657,
+            "new_max_mm": 0.16097907231553657,
+            "raw_edge_jump_norm": 0.46742340758265144,
+            "new_edge_jump_norm": 0.4205238282843837,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231730751,
+            "new_max_mm": 0.16097907231730751,
+            "raw_edge_jump_norm": 0.546385066509281,
+            "new_edge_jump_norm": 0.5003655259346241,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723317851,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5351446718435192,
+            "new_edge_jump_norm": 0.47405077752644703,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231353084,
+            "new_max_mm": 0.16097907231353084,
+            "raw_edge_jump_norm": 0.9167510948649232,
+            "new_edge_jump_norm": 0.685667488929739,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 22,
+    "accepted": true,
+    "accepted_total": 22,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.03125,
+    "objective": 0.010179998866006101,
+    "gradient_norm": 0.0007582577874582293,
+    "max_step_mm": 0.005030596009993664,
+    "max_total_mm": 0.950399243781946,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003703191480599343,
+      "missing": 0.03647530923287074,
+      "extra": 0.0009538744188224274,
+      "contour": 0.2483799727558502,
+      "absolute": 0.2571127774999818,
+      "relative": 0.04643457464754648,
+      "prior": 0.0005559748387895525,
+      "total": 0.010179998866006101
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 91,
+      "expanded_geometric_band_N": 308,
+      "far_with_actual_nonzero_candidate_N": 91,
+      "image_gradient_norm": 0.00047494201712687415,
+      "full_gradient_norm": 0.0007582577874582293,
+      "image_full_gradient_cosine": 0.3381828799947077,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.1609790723199768,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.908241722050846,
+            "new_edge_jump_norm": 0.8094132897748161,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.1609790723199768,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.908241722050846,
+            "new_edge_jump_norm": 0.8094132897748161,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.0346371543646862,
+            "new_max_mm": 0.0346371543646862,
+            "raw_edge_jump_norm": 2.116857117346488,
+            "new_edge_jump_norm": 1.110842185390945,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.11221450691493e-06,
+            "new_max_mm": 7.11221450691493e-06,
+            "raw_edge_jump_norm": 3.23132821705476e-05,
+            "new_edge_jump_norm": 2.8999230536988928e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232623213,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.47982663170360457,
+            "new_edge_jump_norm": 0.4284297113960436,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233301043,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.7492083258317227,
+            "new_edge_jump_norm": 0.6428704818167764,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230912323,
+            "new_max_mm": 0.16097907230912323,
+            "raw_edge_jump_norm": 0.5306148946565624,
+            "new_edge_jump_norm": 0.484677959029692,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723162761,
+            "new_max_mm": 0.1609790723162761,
+            "raw_edge_jump_norm": 0.873037465463468,
+            "new_edge_jump_norm": 0.7899245966139241,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 23,
+    "accepted": true,
+    "accepted_total": 23,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.010219333507338137,
+    "gradient_norm": 0.0007480180964702021,
+    "max_step_mm": 0.03463717551628674,
+    "max_total_mm": 0.950439618403416,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0037117105287810164,
+      "missing": 0.03640244603157044,
+      "extra": 0.0009671028975086908,
+      "contour": 0.24927023823071212,
+      "absolute": 0.254230429121694,
+      "relative": 0.04462456687061447,
+      "prior": 0.0005480192485265434,
+      "total": 0.010219333507338137
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 92,
+      "expanded_geometric_band_N": 308,
+      "far_with_actual_nonzero_candidate_N": 92,
+      "image_gradient_norm": 0.00045815804837047805,
+      "full_gradient_norm": 0.0007480180964702021,
+      "image_full_gradient_cosine": 0.3030655226492252,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907232020497,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8494760339967697,
+            "new_edge_jump_norm": 0.7442285246838742,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907232020497,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8494760339967697,
+            "new_edge_jump_norm": 0.7442285246838742,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463717551628681,
+            "new_max_mm": 0.03463717551628681,
+            "raw_edge_jump_norm": 2.1181855360715507,
+            "new_edge_jump_norm": 1.1081376055557983,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.093907678997665e-06,
+            "new_max_mm": 7.093907678997665e-06,
+            "raw_edge_jump_norm": 3.206899719265537e-05,
+            "new_edge_jump_norm": 2.8686832838925716e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723234911,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.48103902045540153,
+            "new_edge_jump_norm": 0.42931795559570646,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232885114,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5251754581199153,
+            "new_edge_jump_norm": 0.4798976335889799,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231525677,
+            "new_max_mm": 0.16097907231525677,
+            "raw_edge_jump_norm": 0.7442159098942736,
+            "new_edge_jump_norm": 0.6370453117724064,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232063996,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8757679683728926,
+            "new_edge_jump_norm": 0.7960403829592864,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 24,
+    "accepted": true,
+    "accepted_total": 24,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.25,
+    "objective": 0.010279646226161013,
+    "gradient_norm": 0.0008123848600065679,
+    "max_step_mm": 0.04024476807993871,
+    "max_total_mm": 0.95880405687853,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003679787654740115,
+      "missing": 0.03628908495108286,
+      "extra": 0.0009458972354574748,
+      "contour": 0.24849873499061975,
+      "absolute": 0.25441975974698283,
+      "relative": 0.04529838363194761,
+      "prior": 0.0005599615979008377,
+      "total": 0.010279646226161013
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 90,
+      "expanded_geometric_band_N": 307,
+      "far_with_actual_nonzero_candidate_N": 90,
+      "image_gradient_norm": 0.0006073433698592054,
+      "full_gradient_norm": 0.0008123848600065679,
+      "image_full_gradient_cosine": 0.515635672965521,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.1609790723197539,
+            "new_max_mm": 0.1609790723197539,
+            "raw_edge_jump_norm": 1.053335701157403,
+            "new_edge_jump_norm": 0.8406288999499155,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.1609790723197539,
+            "new_max_mm": 0.1609790723197539,
+            "raw_edge_jump_norm": 1.053335701157403,
+            "new_edge_jump_norm": 0.8406288999499155,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034667394026895226,
+            "new_max_mm": 0.034667394026895226,
+            "raw_edge_jump_norm": 1.1805031716382144,
+            "new_edge_jump_norm": 0.6534519088792496,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.074957725430295e-06,
+            "new_max_mm": 7.074957725430295e-06,
+            "raw_edge_jump_norm": 3.340038278522267e-05,
+            "new_edge_jump_norm": 3.0515285477876732e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231039427,
+            "new_max_mm": 0.16097907231039427,
+            "raw_edge_jump_norm": 0.4608772205542084,
+            "new_edge_jump_norm": 0.4130406156769526,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723129845,
+            "new_max_mm": 0.1609790723129845,
+            "raw_edge_jump_norm": 0.5104099423794439,
+            "new_edge_jump_norm": 0.46434667896163345,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229195763,
+            "new_max_mm": 0.16097907229195763,
+            "raw_edge_jump_norm": 0.7113715214365218,
+            "new_edge_jump_norm": 0.6546090596117407,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231210595,
+            "new_max_mm": 0.16097907231210595,
+            "raw_edge_jump_norm": 0.5296163122078681,
+            "new_edge_jump_norm": 0.4484050909552347,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 25,
+    "accepted": true,
+    "accepted_total": 25,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.03125,
+    "objective": 0.010358883196276085,
+    "gradient_norm": 0.0007530160999495686,
+    "max_step_mm": 0.005030596009988247,
+    "max_total_mm": 0.9609387389772736,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0036771269437546523,
+      "missing": 0.0362694937735796,
+      "extra": 0.0009445620293263347,
+      "contour": 0.2483353778415957,
+      "absolute": 0.25441519467280144,
+      "relative": 0.045351892339274114,
+      "prior": 0.0005617947317659855,
+      "total": 0.010358883196276085
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 91,
+      "expanded_geometric_band_N": 307,
+      "far_with_actual_nonzero_candidate_N": 91,
+      "image_gradient_norm": 0.0004810685056543094,
+      "full_gradient_norm": 0.0007530160999495686,
+      "image_full_gradient_cosine": 0.3542256966165513,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.1609790723196036,
+            "new_max_mm": 0.1609790723196036,
+            "raw_edge_jump_norm": 0.9226753234721718,
+            "new_edge_jump_norm": 0.8318475207056102,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.1609790723196036,
+            "new_max_mm": 0.1609790723196036,
+            "raw_edge_jump_norm": 0.9226753234721718,
+            "new_edge_jump_norm": 0.8318475207056102,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463680556438322,
+            "new_max_mm": 0.03463680556438322,
+            "raw_edge_jump_norm": 2.1103492213808868,
+            "new_edge_jump_norm": 1.1425224927297064,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.8117932746782435e-06,
+            "new_max_mm": 6.8117932746782435e-06,
+            "raw_edge_jump_norm": 3.129826601744768e-05,
+            "new_edge_jump_norm": 2.8404880998531842e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232745967,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.47391957464769885,
+            "new_edge_jump_norm": 0.4217534659646201,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229401012,
+            "new_max_mm": 0.16097907229401012,
+            "raw_edge_jump_norm": 0.5007359053359176,
+            "new_edge_jump_norm": 0.4534041655431216,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234067796,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6441898463076029,
+            "new_edge_jump_norm": 0.5744054500641187,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234587164,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.9004894211723128,
+            "new_edge_jump_norm": 0.8488209564635909,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 26,
+    "accepted": true,
+    "accepted_total": 26,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.0078125,
+    "objective": 0.010439953101996451,
+    "gradient_norm": 0.0007393689954099369,
+    "max_step_mm": 0.0012576490024981928,
+    "max_total_mm": 0.96149004974169,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0036766068078577514,
+      "missing": 0.03626486286520958,
+      "extra": 0.0009443847365522136,
+      "contour": 0.24829581120668165,
+      "absolute": 0.2544146049913147,
+      "relative": 0.045366600633139596,
+      "prior": 0.0005622616154141724,
+      "total": 0.010439953101996451
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 91,
+      "expanded_geometric_band_N": 307,
+      "far_with_actual_nonzero_candidate_N": 91,
+      "image_gradient_norm": 0.0004613106213577621,
+      "full_gradient_norm": 0.0007393689954099369,
+      "image_full_gradient_cosine": 0.31234655013884566,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.160979072320405,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.863123342442034,
+            "new_edge_jump_norm": 0.762010098171636,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.160979072320405,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.863123342442034,
+            "new_edge_jump_norm": 0.762010098171636,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034636801720663704,
+            "new_max_mm": 0.034636801720663704,
+            "raw_edge_jump_norm": 2.1214026783724726,
+            "new_edge_jump_norm": 1.1453118313356403,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.798721600477038e-06,
+            "new_max_mm": 6.798721600477038e-06,
+            "raw_edge_jump_norm": 3.0953829996155714e-05,
+            "new_edge_jump_norm": 2.8012367969009347e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723129037,
+            "new_max_mm": 0.1609790723129037,
+            "raw_edge_jump_norm": 0.4742834057157865,
+            "new_edge_jump_norm": 0.4220772369280266,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231600844,
+            "new_max_mm": 0.16097907231600844,
+            "raw_edge_jump_norm": 0.5007585382431361,
+            "new_edge_jump_norm": 0.452381318782604,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723202532,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6386690014445232,
+            "new_edge_jump_norm": 0.5723082822473623,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723372134,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.9036511141342013,
+            "new_edge_jump_norm": 0.8406087136879735,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 27,
+    "accepted": true,
+    "accepted_total": 27,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.010452836920227132,
+    "gradient_norm": 0.0007376739390530535,
+    "max_step_mm": 0.03463680372460418,
+    "max_total_mm": 0.9594420468919653,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003693608233394722,
+      "missing": 0.03612282959123452,
+      "extra": 0.0009684333480739346,
+      "contour": 0.24553813702110472,
+      "absolute": 0.2512739168972543,
+      "relative": 0.044049135655673755,
+      "prior": 0.0005466025904752314,
+      "total": 0.010452836920227132
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 91,
+      "expanded_geometric_band_N": 307,
+      "far_with_actual_nonzero_candidate_N": 91,
+      "image_gradient_norm": 0.0004625270660353215,
+      "full_gradient_norm": 0.0007376739390530535,
+      "image_full_gradient_cosine": 0.30837083123240266,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907232043523,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8579375266086832,
+            "new_edge_jump_norm": 0.7553938404799,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907232043523,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8579375266086832,
+            "new_edge_jump_norm": 0.7553938404799,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034636803724604225,
+            "new_max_mm": 0.034636803724604225,
+            "raw_edge_jump_norm": 2.121992257399088,
+            "new_edge_jump_norm": 1.1454641698707428,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.776950372513721e-06,
+            "new_max_mm": 6.776950372513721e-06,
+            "raw_edge_jump_norm": 3.090378561502196e-05,
+            "new_edge_jump_norm": 2.7952701880014676e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232702424,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4742222968021529,
+            "new_edge_jump_norm": 0.4220900980774181,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233007155,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.49713016699934826,
+            "new_edge_jump_norm": 0.4491539052904976,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723329352,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6374633047211418,
+            "new_edge_jump_norm": 0.5712730114636513,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233520223,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.910047003579335,
+            "new_edge_jump_norm": 0.8351757742902075,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 28,
+    "accepted": true,
+    "accepted_total": 28,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.015625,
+    "objective": 0.010529126333392083,
+    "gradient_norm": 0.0008362365931003695,
+    "max_step_mm": 0.002515298004996239,
+    "max_total_mm": 0.959998826633337,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0036892534311239915,
+      "missing": 0.036098579441507656,
+      "extra": 0.0009661953236597278,
+      "contour": 0.2454899302136605,
+      "absolute": 0.25128006447042184,
+      "relative": 0.04409077585993869,
+      "prior": 0.0005473574856296182,
+      "total": 0.010529126333392083
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 91,
+      "expanded_geometric_band_N": 313,
+      "far_with_actual_nonzero_candidate_N": 91,
+      "image_gradient_norm": 0.0006619733672850031,
+      "full_gradient_norm": 0.0008362365931003695,
+      "image_full_gradient_cosine": 0.570454867229868,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231987948,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 1.1102867205908857,
+            "new_edge_jump_norm": 0.9405903248966847,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907231987948,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 1.1102867205908857,
+            "new_edge_jump_norm": 0.9405903248966847,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.0346503614402558,
+            "new_max_mm": 0.0346503614402558,
+            "raw_edge_jump_norm": 1.072133520226967,
+            "new_edge_jump_norm": 0.6039797360504028,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.761496249279344e-06,
+            "new_max_mm": 6.761496249279344e-06,
+            "raw_edge_jump_norm": 3.433918137880941e-05,
+            "new_edge_jump_norm": 3.1407934788643064e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723135082,
+            "new_max_mm": 0.1609790723135082,
+            "raw_edge_jump_norm": 0.45929510382035105,
+            "new_edge_jump_norm": 0.4126811949125313,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907236530004,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.49388469664317836,
+            "new_edge_jump_norm": 0.45635044669185354,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907228993105,
+            "new_max_mm": 0.16097907228993105,
+            "raw_edge_jump_norm": 0.8660544554559894,
+            "new_edge_jump_norm": 0.7242179648671933,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233339032,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5878748596680572,
+            "new_edge_jump_norm": 0.4880081463948844,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 29,
+    "accepted": true,
+    "accepted_total": 29,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.0078125,
+    "objective": 0.010607964094498514,
+    "gradient_norm": 0.0008122121572697334,
+    "max_step_mm": 0.0012576490024980898,
+    "max_total_mm": 0.960316678673026,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003687188774347305,
+      "missing": 0.03608652365704377,
+      "extra": 0.0009651992159585157,
+      "contour": 0.24548638801026018,
+      "absolute": 0.25128330809922095,
+      "relative": 0.04411296282579114,
+      "prior": 0.0005477741360664368,
+      "total": 0.010607964094498514
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 93,
+      "expanded_geometric_band_N": 313,
+      "far_with_actual_nonzero_candidate_N": 93,
+      "image_gradient_norm": 0.0006335751815897954,
+      "full_gradient_norm": 0.0008122121572697334,
+      "image_full_gradient_cosine": 0.5387858354873224,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231975458,
+            "new_max_mm": 0.16097907231975458,
+            "raw_edge_jump_norm": 1.1312893034698044,
+            "new_edge_jump_norm": 0.9620832403261008,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907231975458,
+            "new_max_mm": 0.16097907231975458,
+            "raw_edge_jump_norm": 1.1312893034698044,
+            "new_edge_jump_norm": 0.9620832403261008,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463687925547714,
+            "new_max_mm": 0.03463687925547714,
+            "raw_edge_jump_norm": 2.1052970899109287,
+            "new_edge_jump_norm": 1.0884014774013293,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.732499201125366e-06,
+            "new_max_mm": 6.732499201125366e-06,
+            "raw_edge_jump_norm": 3.359682657867042e-05,
+            "new_edge_jump_norm": 3.060940640892669e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232031614,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.45959934964612503,
+            "new_edge_jump_norm": 0.4128879319969366,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907225422303,
+            "new_max_mm": 0.16097907225422303,
+            "raw_edge_jump_norm": 0.4898342803629435,
+            "new_edge_jump_norm": 0.4524652688755493,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231840208,
+            "new_max_mm": 0.16097907231840208,
+            "raw_edge_jump_norm": 0.5936389038543023,
+            "new_edge_jump_norm": 0.4921637256246171,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232197853,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.9222104480970416,
+            "new_edge_jump_norm": 0.7703606578505523,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 30,
+    "accepted": true,
+    "accepted_total": 30,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.010664431775427256,
+    "gradient_norm": 0.000800981700352816,
+    "max_step_mm": 0.03463689819393137,
+    "max_total_mm": 0.9590531590828473,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0036652558405573165,
+      "missing": 0.03598205869396527,
+      "extra": 0.0009540492629942793,
+      "contour": 0.24934771010329027,
+      "absolute": 0.25004442985530795,
+      "relative": 0.04345992191130253,
+      "prior": 0.0005376528715714812,
+      "total": 0.010664431775427256
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 93,
+      "expanded_geometric_band_N": 313,
+      "far_with_actual_nonzero_candidate_N": 93,
+      "image_gradient_norm": 0.0006220384715590225,
+      "full_gradient_norm": 0.000800981700352816,
+      "image_full_gradient_cosine": 0.5233891800170597,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231914757,
+            "new_max_mm": 0.16097907231914757,
+            "raw_edge_jump_norm": 1.1456217662953154,
+            "new_edge_jump_norm": 0.9736982474249651,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907231914757,
+            "new_max_mm": 0.16097907231914757,
+            "raw_edge_jump_norm": 1.1456217662953154,
+            "new_edge_jump_norm": 0.9736982474249651,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463689819393136,
+            "new_max_mm": 0.03463689819393136,
+            "raw_edge_jump_norm": 2.1057308907723895,
+            "new_edge_jump_norm": 1.1012693678144578,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.705589932466517e-06,
+            "new_max_mm": 6.705589932466517e-06,
+            "raw_edge_jump_norm": 3.323525171213175e-05,
+            "new_edge_jump_norm": 3.0225775880962003e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232709188,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4596136157682175,
+            "new_edge_jump_norm": 0.41293904319783037,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723062564,
+            "new_max_mm": 0.1609790723062564,
+            "raw_edge_jump_norm": 0.48601114338252577,
+            "new_edge_jump_norm": 0.4488471072212535,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233501912,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8632417272766733,
+            "new_edge_jump_norm": 0.7256410485187031,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.160979072294641,
+            "new_max_mm": 0.160979072294641,
+            "raw_edge_jump_norm": 0.5981919914209399,
+            "new_edge_jump_norm": 0.4953395483738243,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 31,
+    "accepted": true,
+    "accepted_total": 31,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.25,
+    "objective": 0.010736975618469626,
+    "gradient_norm": 0.0007946036064121415,
+    "max_step_mm": 0.040244768079946994,
+    "max_total_mm": 0.9662238520407588,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003651806378426651,
+      "missing": 0.03587348150710265,
+      "extra": 0.0009470015046341966,
+      "contour": 0.24823882911751483,
+      "absolute": 0.25018072173667044,
+      "relative": 0.043831749554731965,
+      "prior": 0.0005512078641913831,
+      "total": 0.010736975618469626
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 92,
+      "expanded_geometric_band_N": 307,
+      "far_with_actual_nonzero_candidate_N": 92,
+      "image_gradient_norm": 0.0006107377955779487,
+      "full_gradient_norm": 0.0007946036064121415,
+      "image_full_gradient_cosine": 0.5202063930375042,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231994002,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.9962092602759336,
+            "new_edge_jump_norm": 0.8692494153991184,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907231994002,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.9962092602759336,
+            "new_edge_jump_norm": 0.8692494153991184,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03464743898565055,
+            "new_max_mm": 0.03464743898565055,
+            "raw_edge_jump_norm": 1.0845679967655568,
+            "new_edge_jump_norm": 0.6198405519148563,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.595543447684156e-06,
+            "new_max_mm": 6.595543447684156e-06,
+            "raw_edge_jump_norm": 3.178605409372412e-05,
+            "new_edge_jump_norm": 3.041763657420304e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723185525,
+            "new_max_mm": 0.1609790723185525,
+            "raw_edge_jump_norm": 0.44805077028266865,
+            "new_edge_jump_norm": 0.4089913372731095,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723203415,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4708771471272251,
+            "new_edge_jump_norm": 0.41347226986503033,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233472464,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.576972051348907,
+            "new_edge_jump_norm": 0.4755672679924927,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232631564,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5103187825062825,
+            "new_edge_jump_norm": 0.4607287091097032,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 32,
+    "accepted": true,
+    "accepted_total": 32,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.125,
+    "objective": 0.010807852881317009,
+    "gradient_norm": 0.0007280850895756667,
+    "max_step_mm": 0.020122384039973594,
+    "max_total_mm": 0.9697600720469483,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003635953064076602,
+      "missing": 0.035895576576391856,
+      "extra": 0.0009281593239090093,
+      "contour": 0.24735669726465337,
+      "absolute": 0.2503097832401997,
+      "relative": 0.04427834434579842,
+      "prior": 0.0005584778264164925,
+      "total": 0.010807852881317009
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 93,
+      "expanded_geometric_band_N": 306,
+      "far_with_actual_nonzero_candidate_N": 93,
+      "image_gradient_norm": 0.00047885123423163916,
+      "full_gradient_norm": 0.0007280850895756667,
+      "image_full_gradient_cosine": 0.3390226664658867,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907232036293,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.9525976938568358,
+            "new_edge_jump_norm": 0.8427863400426688,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907232036293,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.9525976938568358,
+            "new_edge_jump_norm": 0.8427863400426688,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463717137493612,
+            "new_max_mm": 0.03463717137493612,
+            "raw_edge_jump_norm": 2.1383305794954,
+            "new_edge_jump_norm": 1.1523917857905823,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.7568494713902855e-06,
+            "new_max_mm": 6.7568494713902855e-06,
+            "raw_edge_jump_norm": 3.1074854689464724e-05,
+            "new_edge_jump_norm": 2.8874218266002235e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230716532,
+            "new_max_mm": 0.16097907230716532,
+            "raw_edge_jump_norm": 0.460094679090793,
+            "new_edge_jump_norm": 0.4163867350638752,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723113566,
+            "new_max_mm": 0.1609790723113566,
+            "raw_edge_jump_norm": 0.655487459785125,
+            "new_edge_jump_norm": 0.5607416098353719,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723221638,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4325836481896458,
+            "new_edge_jump_norm": 0.39737837815217997,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907228109617,
+            "new_max_mm": 0.16097907228109617,
+            "raw_edge_jump_norm": 0.5032916450335394,
+            "new_edge_jump_norm": 0.45060732881382826,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 33,
+    "accepted": true,
+    "accepted_total": 33,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.010844950645771359,
+    "gradient_norm": 0.0006979199156812144,
+    "max_step_mm": 0.034637921653075644,
+    "max_total_mm": 0.9688424040787442,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0036583052792896822,
+      "missing": 0.03593557166556517,
+      "extra": 0.000945282900162662,
+      "contour": 0.245778503789437,
+      "absolute": 0.24832742764343516,
+      "relative": 0.04250036787632978,
+      "prior": 0.0005411545280367136,
+      "total": 0.010844950645771359
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 91,
+      "expanded_geometric_band_N": 302,
+      "far_with_actual_nonzero_candidate_N": 91,
+      "image_gradient_norm": 0.0004121070617558294,
+      "full_gradient_norm": 0.0006979199156812144,
+      "image_full_gradient_cosine": 0.18497068605948272,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907232035014,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.7655676392439574,
+            "new_edge_jump_norm": 0.6543014623520278,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907232035014,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.7655676392439574,
+            "new_edge_jump_norm": 0.6543014623520278,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034637921653075436,
+            "new_max_mm": 0.034637921653075436,
+            "raw_edge_jump_norm": 2.126969797873358,
+            "new_edge_jump_norm": 1.147265251199141,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.633738658147348e-06,
+            "new_max_mm": 6.633738658147348e-06,
+            "raw_edge_jump_norm": 2.96770403480994e-05,
+            "new_edge_jump_norm": 2.7631267502450658e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231140388,
+            "new_max_mm": 0.16097907231140388,
+            "raw_edge_jump_norm": 0.4701539574322699,
+            "new_edge_jump_norm": 0.42384390677632783,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723014194,
+            "new_max_mm": 0.1609790723014194,
+            "raw_edge_jump_norm": 0.5261304447541914,
+            "new_edge_jump_norm": 0.47120865969816605,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229973313,
+            "new_max_mm": 0.16097907229973313,
+            "raw_edge_jump_norm": 0.5003466324734999,
+            "new_edge_jump_norm": 0.4457338271304941,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723014283,
+            "new_max_mm": 0.1609790723014283,
+            "raw_edge_jump_norm": 0.4365891658825503,
+            "new_edge_jump_norm": 0.40123725028379537,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 34,
+    "accepted": true,
+    "accepted_total": 34,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.25,
+    "objective": 0.010923363373812384,
+    "gradient_norm": 0.0008177639066243205,
+    "max_step_mm": 0.04024476807988428,
+    "max_total_mm": 0.9705445890024738,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0036293383998175464,
+      "missing": 0.03564818799495697,
+      "extra": 0.0009423689586886515,
+      "contour": 0.24820798845983852,
+      "absolute": 0.24856622266952796,
+      "relative": 0.04306081542670425,
+      "prior": 0.0005512026837095618,
+      "total": 0.010923363373812384
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 91,
+      "expanded_geometric_band_N": 312,
+      "far_with_actual_nonzero_candidate_N": 91,
+      "image_gradient_norm": 0.0006592787582021666,
+      "full_gradient_norm": 0.0008177639066243205,
+      "image_full_gradient_cosine": 0.5812341325344595,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.1609790723195361,
+            "new_max_mm": 0.1609790723195361,
+            "raw_edge_jump_norm": 0.9367124410821269,
+            "new_edge_jump_norm": 0.7998542826124985,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.1609790723195361,
+            "new_max_mm": 0.1609790723195361,
+            "raw_edge_jump_norm": 0.9367124410821269,
+            "new_edge_jump_norm": 0.7998542826124985,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.0346724003478636,
+            "new_max_mm": 0.0346724003478636,
+            "raw_edge_jump_norm": 1.015222782837217,
+            "new_edge_jump_norm": 0.6011827648969146,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.673878465869132e-06,
+            "new_max_mm": 6.673878465869132e-06,
+            "raw_edge_jump_norm": 3.4089280963514835e-05,
+            "new_edge_jump_norm": 3.160948440501279e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232370823,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4450060590010285,
+            "new_edge_jump_norm": 0.4027742810279045,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723018846,
+            "new_max_mm": 0.1609790723018846,
+            "raw_edge_jump_norm": 0.5468351702620617,
+            "new_edge_jump_norm": 0.49916382064890547,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232868378,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5474496383406978,
+            "new_edge_jump_norm": 0.4614091028472763,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234559902,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.829972430916674,
+            "new_edge_jump_norm": 0.734994979008668,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 35,
+    "accepted": true,
+    "accepted_total": 35,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.25,
+    "objective": 0.010998460649831938,
+    "gradient_norm": 0.0006684162203517067,
+    "max_step_mm": 0.04024476807988281,
+    "max_total_mm": 0.9858256827144717,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0036215971844891707,
+      "missing": 0.03569151473542054,
+      "extra": 0.0009305671245480576,
+      "contour": 0.2456576323715474,
+      "absolute": 0.24871831342620357,
+      "relative": 0.04378866211889641,
+      "prior": 0.0005660833558067679,
+      "total": 0.010998460649831938
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 90,
+      "expanded_geometric_band_N": 306,
+      "far_with_actual_nonzero_candidate_N": 90,
+      "image_gradient_norm": 0.0004123082092266755,
+      "full_gradient_norm": 0.0006684162203517067,
+      "image_full_gradient_cosine": 0.24656491584249784,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231952954,
+            "new_max_mm": 0.16097907231952954,
+            "raw_edge_jump_norm": 0.916459131512227,
+            "new_edge_jump_norm": 0.7955711349147393,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907231952954,
+            "new_max_mm": 0.16097907231952954,
+            "raw_edge_jump_norm": 0.916459131512227,
+            "new_edge_jump_norm": 0.7955711349147393,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034636523601652015,
+            "new_max_mm": 0.034636523601652015,
+            "raw_edge_jump_norm": 2.1588523695609685,
+            "new_edge_jump_norm": 1.151635893873892,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.585516043342834e-06,
+            "new_max_mm": 6.585516043342834e-06,
+            "raw_edge_jump_norm": 2.9035373102978284e-05,
+            "new_edge_jump_norm": 2.6519372997829497e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231830055,
+            "new_max_mm": 0.16097907231830055,
+            "raw_edge_jump_norm": 0.4556188382627346,
+            "new_edge_jump_norm": 0.4094174933249701,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231661596,
+            "new_max_mm": 0.16097907231661596,
+            "raw_edge_jump_norm": 0.7114392012588295,
+            "new_edge_jump_norm": 0.6991130800902182,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233082892,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6159264096325314,
+            "new_edge_jump_norm": 0.5055908786482971,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230445688,
+            "new_max_mm": 0.16097907230445688,
+            "raw_edge_jump_norm": 0.7133965642509897,
+            "new_edge_jump_norm": 0.6369387877782676,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 36,
+    "accepted": true,
+    "accepted_total": 36,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.015625,
+    "objective": 0.011077689651807669,
+    "gradient_norm": 0.000693133531083255,
+    "max_step_mm": 0.0025152980049946067,
+    "max_total_mm": 0.9872688176724521,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0036194901991014675,
+      "missing": 0.03567972195645173,
+      "extra": 0.0009292836475651711,
+      "contour": 0.24565089716754007,
+      "absolute": 0.24873910132468485,
+      "relative": 0.0438442522211621,
+      "prior": 0.0005669285892508924,
+      "total": 0.011077689651807669
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 90,
+      "expanded_geometric_band_N": 297,
+      "far_with_actual_nonzero_candidate_N": 90,
+      "image_gradient_norm": 0.00043685731914427234,
+      "full_gradient_norm": 0.000693133531083255,
+      "image_full_gradient_cosine": 0.27925561091804413,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231968164,
+            "new_max_mm": 0.16097907231968164,
+            "raw_edge_jump_norm": 0.9564359634104842,
+            "new_edge_jump_norm": 0.8608372565921587,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907231968164,
+            "new_max_mm": 0.16097907231968164,
+            "raw_edge_jump_norm": 0.9564359634104842,
+            "new_edge_jump_norm": 0.8608372565921587,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463661334054698,
+            "new_max_mm": 0.03463661334054698,
+            "raw_edge_jump_norm": 2.1340689474637715,
+            "new_edge_jump_norm": 1.1150845347574714,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.4604443821923505e-06,
+            "new_max_mm": 6.4604443821923505e-06,
+            "raw_edge_jump_norm": 2.9901704466250996e-05,
+            "new_edge_jump_norm": 2.7314562027453592e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232584704,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.47004482311298507,
+            "new_edge_jump_norm": 0.4201682847987483,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232709815,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.7541548350708677,
+            "new_edge_jump_norm": 0.6889091874406396,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230625122,
+            "new_max_mm": 0.16097907230625122,
+            "raw_edge_jump_norm": 0.7213888897906484,
+            "new_edge_jump_norm": 0.627615135854369,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233071426,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6648229477905431,
+            "new_edge_jump_norm": 0.5441801232933177,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 37,
+    "accepted": true,
+    "accepted_total": 37,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.0078125,
+    "objective": 0.011157683617567209,
+    "gradient_norm": 0.0006791501202113614,
+    "max_step_mm": 0.0012576490024936117,
+    "max_total_mm": 0.9879986108907531,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0036185720081751537,
+      "missing": 0.03567424888412159,
+      "extra": 0.0009287701842064658,
+      "contour": 0.2456500747782592,
+      "absolute": 0.2487496001600093,
+      "relative": 0.04387250805286484,
+      "prior": 0.0005673629348166287,
+      "total": 0.011157683617567209
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 88,
+      "expanded_geometric_band_N": 296,
+      "far_with_actual_nonzero_candidate_N": 88,
+      "image_gradient_norm": 0.0004186235892127183,
+      "full_gradient_norm": 0.0006791501202113614,
+      "image_full_gradient_cosine": 0.23241029981669803,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231914527,
+            "new_max_mm": 0.16097907231914527,
+            "raw_edge_jump_norm": 0.9061776422089493,
+            "new_edge_jump_norm": 0.8057286287458744,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907231914527,
+            "new_max_mm": 0.16097907231914527,
+            "raw_edge_jump_norm": 0.9061776422089493,
+            "new_edge_jump_norm": 0.8057286287458744,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463667094024504,
+            "new_max_mm": 0.03463667094024504,
+            "raw_edge_jump_norm": 2.1304624483278607,
+            "new_edge_jump_norm": 1.1146301321216732,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.4307702349217105e-06,
+            "new_max_mm": 6.4307702349217105e-06,
+            "raw_edge_jump_norm": 2.9427961601211487e-05,
+            "new_edge_jump_norm": 2.685506588672737e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723073282,
+            "new_max_mm": 0.1609790723073282,
+            "raw_edge_jump_norm": 0.4703303616922244,
+            "new_edge_jump_norm": 0.42053258813269534,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233381858,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.7425672156260257,
+            "new_edge_jump_norm": 0.6726728468692871,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232431896,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.7180119579317531,
+            "new_edge_jump_norm": 0.6229662513568381,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723061304,
+            "new_max_mm": 0.1609790723061304,
+            "raw_edge_jump_norm": 0.6609167112026914,
+            "new_edge_jump_norm": 0.5411711977709035,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 38,
+    "accepted": true,
+    "accepted_total": 38,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.011177607153181427,
+    "gradient_norm": 0.0006739095076972791,
+    "max_step_mm": 0.034636724063446575,
+    "max_total_mm": 0.9764185438028719,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.003624919747623304,
+      "missing": 0.0357033501068751,
+      "extra": 0.0009303024387918413,
+      "contour": 0.24340083679582086,
+      "absolute": 0.24713937167967956,
+      "relative": 0.042266042509620856,
+      "prior": 0.0005529056652449071,
+      "total": 0.011177607153181427
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 88,
+      "expanded_geometric_band_N": 296,
+      "far_with_actual_nonzero_candidate_N": 88,
+      "image_gradient_norm": 0.00041466993070641807,
+      "full_gradient_norm": 0.0006739095076972791,
+      "image_full_gradient_cosine": 0.21568145970046004,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.1609790723191785,
+            "new_max_mm": 0.1609790723191785,
+            "raw_edge_jump_norm": 0.8906256122883528,
+            "new_edge_jump_norm": 0.7881557884724127,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.1609790723191785,
+            "new_max_mm": 0.1609790723191785,
+            "raw_edge_jump_norm": 0.8906256122883528,
+            "new_edge_jump_norm": 0.7881557884724127,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463672406344682,
+            "new_max_mm": 0.03463672406344682,
+            "raw_edge_jump_norm": 2.130830497975975,
+            "new_edge_jump_norm": 1.1151108812747206,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.4046286979664475e-06,
+            "new_max_mm": 6.4046286979664475e-06,
+            "raw_edge_jump_norm": 2.9230011121351998e-05,
+            "new_edge_jump_norm": 2.6672504451885498e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231550002,
+            "new_max_mm": 0.16097907231550002,
+            "raw_edge_jump_norm": 0.4703583251975347,
+            "new_edge_jump_norm": 0.4206730930905048,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232956946,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.7385611200768781,
+            "new_edge_jump_norm": 0.6661621136971685,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232347639,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.7156084909237431,
+            "new_edge_jump_norm": 0.6192711266102637,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231408934,
+            "new_max_mm": 0.16097907231408934,
+            "raw_edge_jump_norm": 0.6563321228181562,
+            "new_edge_jump_norm": 0.5376659863161412,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 39,
+    "accepted": true,
+    "accepted_total": 39,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.25,
+    "objective": 0.011241545571754169,
+    "gradient_norm": 0.0008135948649090172,
+    "max_step_mm": 0.040244768079946924,
+    "max_total_mm": 0.9946570514483799,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0036214707574496654,
+      "missing": 0.03526133187115193,
+      "extra": 0.0009676250105258078,
+      "contour": 0.24238242362158927,
+      "absolute": 0.2472981724057643,
+      "relative": 0.04276580199297687,
+      "prior": 0.0005635743145830929,
+      "total": 0.011241545571754169
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 93,
+      "expanded_geometric_band_N": 313,
+      "far_with_actual_nonzero_candidate_N": 93,
+      "image_gradient_norm": 0.0006601582214472178,
+      "full_gradient_norm": 0.0008135948649090172,
+      "image_full_gradient_cosine": 0.6079133537837312,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.1609790723198052,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 1.0834464335276472,
+            "new_edge_jump_norm": 0.903848991648205,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.1609790723198052,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 1.0834464335276472,
+            "new_edge_jump_norm": 0.903848991648205,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03461872556384086,
+            "new_max_mm": 0.03461872556384086,
+            "raw_edge_jump_norm": 1.0259432322426483,
+            "new_edge_jump_norm": 0.6049312467619228,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.615880348457325e-06,
+            "new_max_mm": 6.615880348457325e-06,
+            "raw_edge_jump_norm": 3.303693776468659e-05,
+            "new_edge_jump_norm": 3.133451101112132e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233165618,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.45173819201911825,
+            "new_edge_jump_norm": 0.4096633657766045,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232583172,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5824800629205451,
+            "new_edge_jump_norm": 0.47887484242352796,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.160979072321604,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5320086964658799,
+            "new_edge_jump_norm": 0.44487070103640525,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231023303,
+            "new_max_mm": 0.16097907231023303,
+            "raw_edge_jump_norm": 0.4419033554030966,
+            "new_edge_jump_norm": 0.40357916126306276,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "G01",
+    "attempt": 40,
+    "accepted": true,
+    "accepted_total": 40,
+    "stall": 0,
+    "method": "PCOH_ALL_FAR_IMAGE_COVERAGE",
+    "alpha": 0.0625,
+    "objective": 0.011320728994958982,
+    "gradient_norm": 0.0006978150662634926,
+    "max_step_mm": 0.010061192019986537,
+    "max_total_mm": 0.999469540855885,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0036114457063376897,
+      "missing": 0.035323579857746756,
+      "extra": 0.0009508426689232389,
+      "contour": 0.24266656815529938,
+      "absolute": 0.24735468733514115,
+      "relative": 0.04296858523657443,
+      "prior": 0.0005656637367792428,
+      "total": 0.011320728994958982
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "far_associated_N": 92,
+      "expanded_geometric_band_N": 309,
+      "far_with_actual_nonzero_candidate_N": 92,
+      "image_gradient_norm": 0.0004655289810604028,
+      "full_gradient_norm": 0.0006978150662634926,
+      "image_full_gradient_cosine": 0.37385386514481167,
+      "coverage_is_proxy_not_true_stalk": true,
+      "coordination": {
+        "pinned_vertex_N": 4,
+        "free_N": 638,
+        "contact_face_N": 2,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ALL_FAR_IMAGE_COVERAGE",
+            "raw_max_mm": 0.16097907231986147,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8150225302088329,
+            "new_edge_jump_norm": 0.7028975281874642,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "FAR_COMPONENT_0",
+            "raw_max_mm": 0.16097907231986147,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.8150225302088329,
+            "new_edge_jump_norm": 0.7028975281874642,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034635993307988985,
+            "new_max_mm": 0.034635993307988985,
+            "raw_edge_jump_norm": 2.130654643898078,
+            "new_edge_jump_norm": 1.1530579747666332,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.455416258586273e-06,
+            "new_max_mm": 6.455416258586273e-06,
+            "raw_edge_jump_norm": 3.094068208105239e-05,
+            "new_edge_jump_norm": 2.8385659017726058e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723073966,
+            "new_max_mm": 0.1609790723073966,
+            "raw_edge_jump_norm": 0.45974928376119495,
+            "new_edge_jump_norm": 0.4145174510048349,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232680925,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5106871242332364,
+            "new_edge_jump_norm": 0.44547430404338184,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233540776,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.43999987070171964,
+            "new_edge_jump_norm": 0.4070927998089994,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229157113,
+            "new_max_mm": 0.16097907229157113,
+            "raw_edge_jump_norm": 0.7053614559705006,
+            "new_edge_jump_norm": 0.6276388074808391,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    }
+  }
+]

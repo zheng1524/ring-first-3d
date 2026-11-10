@@ -1,0 +1,56 @@
+{
+  "name": "virtual_Ip",
+  "case_kind": "virtual",
+  "morphology": "Ip",
+  "identity": "Ip4_R10",
+  "views": [
+    {
+      "id": "Ip4_R10_obs00",
+      "role": "UPDATE_HOLDOUT",
+      "qualification": "KNOWN_BLENDER_CAMERA",
+      "width": 640,
+      "height": 360,
+      "video": "VIRTUAL_STATIC",
+      "direction_block": 1
+    },
+    {
+      "id": "Ip4_R10_obs01",
+      "role": "FIT",
+      "qualification": "KNOWN_BLENDER_CAMERA",
+      "width": 640,
+      "height": 360,
+      "video": "VIRTUAL_STATIC",
+      "direction_block": 2
+    },
+    {
+      "id": "Ip4_R10_obs03",
+      "role": "NOT_FIT_CONTROL",
+      "qualification": "KNOWN_BLENDER_CAMERA",
+      "width": 640,
+      "height": 360,
+      "video": "VIRTUAL_STATIC",
+      "direction_block": 3
+    },
+    {
+      "id": "Ip4_R10_obs04",
+      "role": "UPDATE_HOLDOUT",
+      "qualification": "KNOWN_BLENDER_CAMERA",
+      "width": 640,
+      "height": 360,
+      "video": "VIRTUAL_STATIC",
+      "direction_block": 4
+    },
+    {
+      "id": "Ip4_R10_obs05",
+      "role": "NOT_FIT_CONTROL",
+      "qualification": "KNOWN_BLENDER_CAMERA",
+      "width": 640,
+      "height": 360,
+      "video": "VIRTUAL_STATIC",
+      "direction_block": 5
+    }
+  ],
+  "unit": "mm",
+  "initialization": "same generic Ring-only Gate A ellipsoid translated with Ring; no GT-dependent fitting",
+  "GT": "IDEAL_GT_DEPTH_UPPER_BOUND plus posterior geometry"
+}

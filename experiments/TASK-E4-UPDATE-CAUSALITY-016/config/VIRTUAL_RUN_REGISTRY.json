@@ -1,0 +1,54 @@
+[
+  {
+    "case": "virtual_Ip",
+    "tag": "V1_SINGLE",
+    "kind": "NEW_ROUTE",
+    "scene": "virtual",
+    "script": "train_virtual_grid016.py",
+    "final": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/arms/V1_SINGLE/local_results/virtual_Ip/FINAL.npz",
+    "fit": [
+      "Ip4_R10_obs01"
+    ],
+    "heldout": [
+      "Ip4_R10_obs00",
+      "Ip4_R10_obs04"
+    ],
+    "input_grid_repair": "direct Blender320; native Mask/cameras unchanged"
+  },
+  {
+    "case": "virtual_Ip",
+    "tag": "V3_SPREAD",
+    "kind": "NEW_ROUTE",
+    "scene": "virtual",
+    "script": "train_virtual_grid016.py",
+    "final": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/arms/V3_SPREAD/local_results/virtual_Ip/FINAL.npz",
+    "fit": [
+      "Ip4_R10_obs01",
+      "Ip4_R10_obs03",
+      "Ip4_R10_obs05"
+    ],
+    "heldout": [
+      "Ip4_R10_obs00",
+      "Ip4_R10_obs04"
+    ],
+    "input_grid_repair": "direct Blender320; native Mask/cameras unchanged"
+  },
+  {
+    "case": "virtual_Ip",
+    "tag": "V3_COHERENT",
+    "kind": "NEW_ROUTE",
+    "scene": "virtual",
+    "script": "train_virtual_grid016.py",
+    "final": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-UPDATE-CAUSALITY-016/arms/V3_COHERENT/local_results/virtual_Ip/FINAL.npz",
+    "fit": [
+      "Ip4_R10_obs01",
+      "Ip4_R10_obs03",
+      "Ip4_R10_obs05"
+    ],
+    "heldout": [
+      "Ip4_R10_obs00",
+      "Ip4_R10_obs04"
+    ],
+    "input_grid_repair": "direct Blender320; native Mask/cameras unchanged"
+  }
+]
