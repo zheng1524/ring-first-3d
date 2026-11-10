@@ -1,0 +1,135 @@
+{
+  "case": "G05",
+  "primary": "G05_key04_raw00542",
+  "base_status": "WEAK",
+  "plane": [
+    0.005148042536183524,
+    0.10599221880330513,
+    0.9943536328747424,
+    5.553545876027981
+  ],
+  "primary_ROI": [
+    5,
+    45
+  ],
+  "trials": [
+    {
+      "upper_px": 30,
+      "N": 5000,
+      "plane": [
+        0.11939709983381869,
+        0.19676978084095417,
+        0.97315260154771,
+        4.059091153977458
+      ],
+      "inlier_fraction": 0.5838,
+      "inlier_N": 2919,
+      "residual_mm": {
+        "N": 5000,
+        "MAE": 0.7237292428111783,
+        "median": 0.1846432684726942,
+        "p95": 3.122641566574119,
+        "maximum": 4.504508610414251
+      }
+    },
+    {
+      "upper_px": 45,
+      "N": 5000,
+      "plane": [
+        0.005148042536183524,
+        0.10599221880330513,
+        0.9943536328747424,
+        5.553545876027981
+      ],
+      "inlier_fraction": 0.481,
+      "inlier_N": 2405,
+      "residual_mm": {
+        "N": 5000,
+        "MAE": 0.5837833364426457,
+        "median": 0.3500994711057648,
+        "p95": 1.497737274014148,
+        "maximum": 1.6555460333461456
+      }
+    },
+    {
+      "upper_px": 60,
+      "N": 5000,
+      "plane": [
+        0.03405910700552442,
+        0.16280392424589898,
+        0.986070413043674,
+        4.905976784883396
+      ],
+      "inlier_fraction": 0.461,
+      "inlier_N": 2305,
+      "residual_mm": {
+        "N": 5000,
+        "MAE": 0.6392541043336197,
+        "median": 0.3706221259239224,
+        "p95": 1.9116980364388372,
+        "maximum": 2.3464786532338113
+      }
+    }
+  ],
+  "max_normal_change_deg": 8.456206307415904,
+  "max_anchor_offset_change_mm": 0.8756444149729248,
+  "contact_status": "BROAD",
+  "contact_N": 1877,
+  "contact_supported_N": 1089,
+  "contact_fraction": 0.5801811401172083,
+  "truncate_allowed": true,
+  "plane_basis": [
+    [
+      0.0,
+      -0.999986748741225,
+      0.005148042536183524
+    ],
+    [
+      0.9943668094866522,
+      0.0005456596815815297,
+      0.10599221880330513
+    ],
+    [
+      -0.10599362335223668,
+      0.005119042631806384,
+      0.9943536328747424
+    ]
+  ],
+  "anchor": [
+    4.856787491045944,
+    -0.14869182319298174,
+    -5.594376552213689
+  ],
+  "base_independent_of_Ring_plane": true,
+  "P0_used_for_contact": false,
+  "camera_historical_tag_not_used_for_base_status": true,
+  "selected_plane": [
+    0.005148042536183524,
+    0.10599221880330513,
+    0.9943536328747424,
+    5.553545876027981
+  ],
+  "selected_ROI_upper_px": 45,
+  "uncertain_base": true,
+  "directed_plane_source": "009 BASE.json exactly as blue/gray renderer, normalized without sign change",
+  "retained_side_rule": "009 B blue positive side; not internal HERO median",
+  "original_B_blue_vertex_N": 318,
+  "original_B_gray_vertex_N": 324,
+  "B_blue_height_mm": {
+    "N": 318,
+    "MAE": 3.2953577031047274,
+    "median": 3.297962589822939,
+    "p95": 6.237764835930621,
+    "maximum": 6.567295905434074
+  },
+  "HERO_signed_height_quantiles": [
+    1.1259997397398864,
+    3.7944936949316315,
+    6.0166453552625265,
+    6.104148882159608,
+    6.19953027100823
+  ],
+  "HERO_positive_fraction": 1.0,
+  "direction_warning": false,
+  "uncertainty_label": "UNCERTAIN_BASE"
+}

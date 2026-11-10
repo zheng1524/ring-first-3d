@@ -1,0 +1,135 @@
+{
+  "case": "G01",
+  "primary": "G01_004_ref08",
+  "base_status": "WEAK",
+  "plane": [
+    0.098520080489705,
+    0.14779845524258522,
+    0.9840982727188416,
+    11.19785488074668
+  ],
+  "primary_ROI": [
+    5,
+    45
+  ],
+  "trials": [
+    {
+      "upper_px": 30,
+      "N": 5000,
+      "plane": [
+        0.2374594366836128,
+        0.07581561049544919,
+        0.9684343081154776,
+        10.599820005088715
+      ],
+      "inlier_fraction": 0.4422,
+      "inlier_N": 2211,
+      "residual_mm": {
+        "N": 5000,
+        "MAE": 0.8484064519723744,
+        "median": 0.3511169146842201,
+        "p95": 3.0428656872578874,
+        "maximum": 3.695059623739782
+      }
+    },
+    {
+      "upper_px": 45,
+      "N": 5000,
+      "plane": [
+        0.098520080489705,
+        0.14779845524258522,
+        0.9840982727188416,
+        11.19785488074668
+      ],
+      "inlier_fraction": 0.3448,
+      "inlier_N": 1724,
+      "residual_mm": {
+        "N": 5000,
+        "MAE": 0.6903966468138503,
+        "median": 0.4672868574054112,
+        "p95": 1.8160467036991068,
+        "maximum": 2.23772083850187
+      }
+    },
+    {
+      "upper_px": 60,
+      "N": 5000,
+      "plane": [
+        0.08452913178675073,
+        0.16008361115419795,
+        0.9834775357471109,
+        10.982443820860592
+      ],
+      "inlier_fraction": 0.3126,
+      "inlier_N": 1563,
+      "residual_mm": {
+        "N": 5000,
+        "MAE": 0.7237316141552096,
+        "median": 0.5216174602563797,
+        "p95": 1.9585538545273675,
+        "maximum": 2.7637849274907023
+      }
+    }
+  ],
+  "max_normal_change_deg": 9.019704599806365,
+  "max_anchor_offset_change_mm": 0.46509417889173577,
+  "contact_status": "SMALL",
+  "contact_N": 726,
+  "contact_supported_N": 29,
+  "contact_fraction": 0.03994490358126722,
+  "truncate_allowed": false,
+  "plane_basis": [
+    [
+      0.0,
+      -0.9951350630644576,
+      0.098520080489705
+    ],
+    [
+      0.9889092538739125,
+      0.014632300927990107,
+      0.14779845524258522
+    ],
+    [
+      -0.14852100054383463,
+      0.09742741928867196,
+      0.9840982727188416
+    ]
+  ],
+  "anchor": [
+    -1.4170902928794065,
+    -4.119806220070181,
+    -10.618189590899982
+  ],
+  "base_independent_of_Ring_plane": true,
+  "P0_used_for_contact": false,
+  "camera_historical_tag_not_used_for_base_status": true,
+  "selected_plane": [
+    0.098520080489705,
+    0.14779845524258522,
+    0.9840982727188416,
+    11.19785488074668
+  ],
+  "selected_ROI_upper_px": 45,
+  "uncertain_base": true,
+  "directed_plane_source": "009 BASE.json exactly as blue/gray renderer, normalized without sign change",
+  "retained_side_rule": "009 B blue positive side; not internal HERO median",
+  "original_B_blue_vertex_N": 642,
+  "original_B_gray_vertex_N": 0,
+  "B_blue_height_mm": {
+    "N": 642,
+    "MAE": 7.315792634206369,
+    "median": 7.315792634206369,
+    "p95": 13.062394936780946,
+    "maximum": 13.686171217540956
+  },
+  "HERO_signed_height_quantiles": [
+    4.9985047590719915,
+    10.793363494772624,
+    12.750449657027078,
+    12.92248734571496,
+    13.043890148096285
+  ],
+  "HERO_positive_fraction": 1.0,
+  "direction_warning": false,
+  "uncertainty_label": "UNCERTAIN_BASE"
+}

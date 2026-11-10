@@ -1,0 +1,38 @@
+{
+  "seed": 20261110,
+  "depth": {
+    "weight": 0.01,
+    "sigma_mm": 0.5,
+    "Huber_cap_r": 10.0,
+    "miss_cost": 9.5,
+    "min_ray_face_cosine": 0.001,
+    "CAD_clearance_mm": 0.05
+  },
+  "HERO_size": [
+    352,
+    640
+  ],
+  "HERO_refinement_steps": 1,
+  "mesh_max_depth_jump_mm": 0.75,
+  "budget": {
+    "max_proposals": 80,
+    "max_accepted": 40,
+    "consecutive_rejection_stop": 30
+  },
+  "learning_rate": 0.02,
+  "hero_sigma_mm": 0.5,
+  "lambda_H": 0.01,
+  "lambda_S": 1.0,
+  "lambda_P": 1.0,
+  "Ring": "unchanged hard GeometryGuard indicator, not a fabricated differentiable penalty",
+  "hero_raster": "official P3D hard bin_size=0 at original native HERO resolution; perspective-correct barycentric world positions; no zbuf-as-mm",
+  "silhouette_raster": "same016 objective/settings except official naive bin_size=0 for all arms to remove coarse-bin reentry instability",
+  "loss_huber": "uncapped Huber, hit gradients do not saturate to zero",
+  "miss": "fixed per-observation worst-feasible Huber+1 from initial axial vertex range plus total trust D; zero missing gradient explicitly reported",
+  "observations": "all eligible native source pixels whose exact own-view original Raw first-hit face is TRUSTED/full and source is Polyp, positive depth, before Ring; no256 thinning",
+  "heldout": "asset recovery/labeling separate; optimizer CASE FIT only and read firewall excludes all held paths; inherited initialization ancestry disclosed",
+  "new_optimizers": false,
+  "ARAP": false,
+  "new_SDF": false,
+  "GT": false
+}

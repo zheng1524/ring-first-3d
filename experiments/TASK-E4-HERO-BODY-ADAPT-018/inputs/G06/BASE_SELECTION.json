@@ -1,0 +1,135 @@
+{
+  "case": "G06",
+  "primary": "G06_004_growth_r01",
+  "base_status": "RELIABLE",
+  "plane": [
+    -0.015541576012328582,
+    -0.056302058100415636,
+    0.9982928115882186,
+    1.292363936453022
+  ],
+  "primary_ROI": [
+    5,
+    45
+  ],
+  "trials": [
+    {
+      "upper_px": 30,
+      "N": 5000,
+      "plane": [
+        -0.03391734208622138,
+        -0.03885016310222377,
+        0.9986692539238088,
+        1.4174479752455633
+      ],
+      "inlier_fraction": 0.8228,
+      "inlier_N": 4114,
+      "residual_mm": {
+        "N": 5000,
+        "MAE": 0.16030369373007367,
+        "median": 0.12277941389216729,
+        "p95": 0.43457175204559295,
+        "maximum": 0.6813485491539584
+      }
+    },
+    {
+      "upper_px": 45,
+      "N": 5000,
+      "plane": [
+        -0.015541576012328582,
+        -0.056302058100415636,
+        0.9982928115882186,
+        1.292363936453022
+      ],
+      "inlier_fraction": 0.743,
+      "inlier_N": 3715,
+      "residual_mm": {
+        "N": 5000,
+        "MAE": 0.2320017585249806,
+        "median": 0.1618431902984847,
+        "p95": 0.6604947671749404,
+        "maximum": 1.2387083297043802
+      }
+    },
+    {
+      "upper_px": 60,
+      "N": 5000,
+      "plane": [
+        -0.03239238918295247,
+        -0.051350695772030434,
+        0.9981552179730108,
+        1.4771289930701132
+      ],
+      "inlier_fraction": 0.6576,
+      "inlier_N": 3288,
+      "residual_mm": {
+        "N": 5000,
+        "MAE": 0.3429949961865487,
+        "median": 0.19567617091721834,
+        "p95": 1.187551758969057,
+        "maximum": 1.7930260327338134
+      }
+    }
+  ],
+  "max_normal_change_deg": 1.4522118211725457,
+  "max_anchor_offset_change_mm": 0.1610297706742969,
+  "contact_status": "BROAD",
+  "contact_N": 636,
+  "contact_supported_N": 622,
+  "contact_fraction": 0.9779874213836478,
+  "truncate_allowed": true,
+  "plane_basis": [
+    [
+      -0.0,
+      -0.9998792224139138,
+      -0.015541576012328582
+    ],
+    [
+      0.9984133975482905,
+      0.000875128411515208,
+      -0.056302058100415636
+    ],
+    [
+      0.0563088589484747,
+      -0.015516917709723993,
+      0.9982928115882186
+    ]
+  ],
+  "anchor": [
+    1.2158048550915899,
+    -0.6519184836861116,
+    -1.312413302007343
+  ],
+  "base_independent_of_Ring_plane": true,
+  "P0_used_for_contact": false,
+  "camera_historical_tag_not_used_for_base_status": true,
+  "selected_plane": [
+    -0.015541576012328582,
+    -0.056302058100415636,
+    0.9982928115882186,
+    1.292363936453022
+  ],
+  "selected_ROI_upper_px": 45,
+  "uncertain_base": false,
+  "directed_plane_source": "009 BASE.json exactly as blue/gray renderer, normalized without sign change",
+  "retained_side_rule": "009 B blue positive side; not internal HERO median",
+  "original_B_blue_vertex_N": 376,
+  "original_B_gray_vertex_N": 266,
+  "B_blue_height_mm": {
+    "N": 376,
+    "MAE": 0.7188244882199671,
+    "median": 0.715801012387234,
+    "p95": 1.3615989085273383,
+    "maximum": 1.4302023043856387
+  },
+  "HERO_signed_height_quantiles": [
+    0.4242419900510387,
+    1.2659833863661591,
+    1.4815219232456283,
+    1.5024662418861818,
+    1.512857706853123
+  ],
+  "HERO_positive_fraction": 1.0,
+  "direction_warning": false,
+  "uncertainty_label": "STABLE_PLANE_PROXY_NOT_ANATOMICAL_GT"
+}

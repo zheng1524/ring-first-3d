@@ -1,0 +1,10 @@
+"""Integrity tests on frozen source identities, exact face subsets and FULL inclusion."""
+from common import *
+def main():
+ plan=load(R/'config/VIEW_PLAN.json');rows=[];hold={r['RGB_SHA256']for r in plan if r['role']=='HOLDOUT'};fitN=0
+ for r in plan:
+  root=R/('hero_fit'if r['role']=='FIT'else'holdout/hero')/r['view_id'];s=load(root/'SOURCE.json');ev=np.load(root/'FACE_EVIDENCE.npz');tr=np.load(root/'TRUSTED_HERO.npz');full=np.load(root/'OBS_FULL.npz');a=np.load(root/'OBS_TRUSTED.npz');assert np.array_equal(ev['V'],tr['V']);assert np.array_equal(ev['F'][ev['state']==0],tr['F']);assert np.array_equal(np.flatnonzero(ev['state']==0),tr['original_face_id']);assert set(a['pixel_id']).issubset(set(full['pixel_id']));native=np.load(root/'HERO_native.npz')['depth_mm'];assert np.array_equal(native.ravel()[a['pixel_id']].astype(float),a['z']);assert np.array_equal(native.ravel()[full['pixel_id']].astype(float),full['z']);assert not hold.intersection(x['sha256']for x in s['parent_RGB']);assert sha(root/'OBS_TRUSTED.npz')==load(root/'CLEANING.json')['TRUSTED_unchanged_SHA256'];rows.append(dict(group=r['group'],view=r['view_id'],role=r['role'],real_face_subset=True,retained_coordinates_unchanged=True,exact_native_depths=True,TRUSTED_subset_of_FULL=True,TRUSTED_byte_unchanged_since_R1=True,FULL_N=len(full['z']),TRUSTED_N=len(a['z']),FULL_orphan_native_pixels=int((full['face_id']<0).sum()),FIT_parent_HOLDOUT_RGB_excluded=True))
+  if r['role']=='FIT':fitN+=len(a['z'])
+ old=load(R/'provenance/INPUT_PLAN_FROZEN.json');unchanged=[dict(path=x['path'],unchanged=sha(x['path'])==x['sha256'])for x in old['files']if not Path(x['path']).is_relative_to(R)];assert all(x['unchanged']for x in unchanged)
+ save('metrics/INPUT_AND_NATIVE_SUBSET_TESTS.json',dict(all43_passed=len(rows)==43,FIT_TRUSTED_observations=fitN,rows=rows,upstream_unchanged=unchanged,GT_used=False));table('metrics/INPUT_AND_NATIVE_SUBSET_TESTS.csv',rows);print('ALL43_NATIVE_SUBSET_AND_FROZEN_ASSET_TESTS_PASS',fitN,flush=True)
+if __name__=='__main__':main()

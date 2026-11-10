@@ -1,0 +1,3 @@
+# 018 pre-registration
+
+29 FIT +14 HOLDOUT, frozen016 S1_BALANCED IDs. All per-view HERO must be complete before a group trains. Each group has one shared Mesh initialized from016 S1 FINAL. B0 static, B1 full HERO, B2 TRUSTED only, OLD_DEPTH separate. G01 adds single/two sources with same8 FIT silhouettes. Budgets80 proposals/40 accepted/30stall; unchanged GeometryGuard. All weights fixed, no GT or HOLDOUT selection. Hard Ring indicator, no extra finite Ring penalty. No oldD2 in newHERO arms. Native-resolution P3D correspondence; no-hit fixed denominator cost but no invented no-hit gradient. No subdivision unless measured resolution bottleneck.

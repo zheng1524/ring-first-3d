@@ -1,0 +1,5028 @@
+[
+  {
+    "case": "G01",
+    "attempt": 1,
+    "accepted": true,
+    "accepted_total": 1,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.024405823010558617,
+    "gradient_norm": 0.00215643634588062,
+    "max_step_mm": 0.03464015212930157,
+    "max_total_mm": 0.03464015212930157,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.005524368749724493,
+      "missing": 0.05744883418083191,
+      "extra": 0.0008962899737525731,
+      "contour": 0.2796763203236655,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 1.7104004777196948,
+      "prior": 0.0002418067742837593,
+      "Ring_indicator": 0.0,
+      "total": 0.024405823010558617,
+      "ramp": 0.26875,
+      "weighted_HERO": 0.017104004777196948,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0002418067742837593,
+      "weighted_silhouette": 0.007060011459077909
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 9,
+        "free_N": 633,
+        "contact_face_N": 5,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03464015212930152,
+            "new_max_mm": 0.03464015212930152,
+            "raw_edge_jump_norm": 1.5383598184664835,
+            "new_edge_jump_norm": 0.8062223318470128,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.4935221198109732e-05,
+            "new_max_mm": 1.4935221198109732e-05,
+            "raw_edge_jump_norm": 6.141598393267567e-05,
+            "new_edge_jump_norm": 5.399252437057647e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231896313,
+            "new_max_mm": 0.16097907231896313,
+            "raw_edge_jump_norm": 0.4993567893580799,
+            "new_edge_jump_norm": 0.4315666162822926,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232606376,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.46863791681835576,
+            "new_edge_jump_norm": 0.4067242451447563,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231116748,
+            "new_max_mm": 0.16097907231116748,
+            "raw_edge_jump_norm": 0.5687975217084108,
+            "new_edge_jump_norm": 0.4740755996376516,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231931585,
+            "new_max_mm": 0.16097907231931585,
+            "raw_edge_jump_norm": 0.6370272554538939,
+            "new_edge_jump_norm": 0.49891411180143347,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11424,
+        "Ring_occluded_N": 0,
+        "miss_N": 342,
+        "robust_nonzero_derivative_N": 11424,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 1.3411711338364005,
+        "depth_MAE_mm": 0.2395352640888256,
+        "depth_median_mm": 0.20139412209277197,
+        "depth_p95_mm": 0.5316667460087282,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 18862,
+        "Ring_occluded_N": 0,
+        "miss_N": 519,
+        "robust_nonzero_derivative_N": 18862,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 2.079629821602989,
+        "depth_MAE_mm": 0.7447839306702442,
+        "depth_median_mm": 0.679925071113864,
+        "depth_p95_mm": 1.2527383691620728,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 2,
+    "accepted": true,
+    "accepted_total": 2,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.023521414160460344,
+    "gradient_norm": 0.0020491373309458197,
+    "max_step_mm": 0.034678654070186096,
+    "max_total_mm": 0.06931880596944409,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.005446081127350529,
+      "missing": 0.05658774574597676,
+      "extra": 0.0008864584330391758,
+      "contour": 0.28293410818164183,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 1.619045748289834,
+      "prior": 0.00024524828768335283,
+      "Ring_indicator": 0.0,
+      "total": 0.023521414160460344,
+      "ramp": 0.2875,
+      "weighted_HERO": 0.01619045748289834,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00024524828768335283,
+      "weighted_silhouette": 0.00708570838987865
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 9,
+        "free_N": 633,
+        "contact_face_N": 5,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.0346786540701863,
+            "new_max_mm": 0.0346786540701863,
+            "raw_edge_jump_norm": 1.2786310087794512,
+            "new_edge_jump_norm": 0.6359656335797444,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.4718749646228548e-05,
+            "new_max_mm": 1.4718749646228548e-05,
+            "raw_edge_jump_norm": 5.987493621994652e-05,
+            "new_edge_jump_norm": 5.190566428457183e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723116307,
+            "new_max_mm": 0.1609790723116307,
+            "raw_edge_jump_norm": 0.5048084219945966,
+            "new_edge_jump_norm": 0.43510689412004583,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231845457,
+            "new_max_mm": 0.16097907231845457,
+            "raw_edge_jump_norm": 0.4628651667629281,
+            "new_edge_jump_norm": 0.4021662742297578,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231433348,
+            "new_max_mm": 0.16097907231433348,
+            "raw_edge_jump_norm": 0.5718779901578014,
+            "new_edge_jump_norm": 0.47477105675831877,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723122025,
+            "new_max_mm": 0.1609790723122025,
+            "raw_edge_jump_norm": 0.6393266404075828,
+            "new_edge_jump_norm": 0.5000369552369227,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11432,
+        "Ring_occluded_N": 0,
+        "miss_N": 334,
+        "robust_nonzero_derivative_N": 11432,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 1.2877252085386683,
+        "depth_MAE_mm": 0.21076775735566017,
+        "depth_median_mm": 0.16830272412339298,
+        "depth_p95_mm": 0.5063482658183227,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 18886,
+        "Ring_occluded_N": 0,
+        "miss_N": 495,
+        "robust_nonzero_derivative_N": 18886,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 1.9503662880409995,
+        "depth_MAE_mm": 0.7018035872483916,
+        "depth_median_mm": 0.641899040126745,
+        "depth_p95_mm": 1.2041309331676793,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 3,
+    "accepted": true,
+    "accepted_total": 3,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.022563116907935936,
+    "gradient_norm": 0.0019804790752859266,
+    "max_step_mm": 0.03467460168893375,
+    "max_total_mm": 0.10399340530215836,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0053707575684206355,
+      "missing": 0.05548526056938701,
+      "extra": 0.0009044656665840497,
+      "contour": 0.28769685454002225,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 1.519315651460543,
+      "prior": 0.000254663493251428,
+      "Ring_indicator": 0.0,
+      "total": 0.022563116907935936,
+      "ramp": 0.30625,
+      "weighted_HERO": 0.01519315651460543,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.000254663493251428,
+      "weighted_silhouette": 0.007115296900079077
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 9,
+        "free_N": 633,
+        "contact_face_N": 5,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03467460168893364,
+            "new_max_mm": 0.03467460168893364,
+            "raw_edge_jump_norm": 1.0309148349910744,
+            "new_edge_jump_norm": 0.5306890206975359,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.5001251015414925e-05,
+            "new_max_mm": 1.5001251015414925e-05,
+            "raw_edge_jump_norm": 5.99425126269567e-05,
+            "new_edge_jump_norm": 5.184711184138855e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231598843,
+            "new_max_mm": 0.16097907231598843,
+            "raw_edge_jump_norm": 0.502911398928935,
+            "new_edge_jump_norm": 0.43415083664389553,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231577382,
+            "new_max_mm": 0.16097907231577382,
+            "raw_edge_jump_norm": 0.4667204037392073,
+            "new_edge_jump_norm": 0.40457790268251353,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231129044,
+            "new_max_mm": 0.16097907231129044,
+            "raw_edge_jump_norm": 0.5703343526169856,
+            "new_edge_jump_norm": 0.47331251869120694,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231893466,
+            "new_max_mm": 0.16097907231893466,
+            "raw_edge_jump_norm": 0.6393772597771339,
+            "new_edge_jump_norm": 0.50015151913582,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11448,
+        "Ring_occluded_N": 0,
+        "miss_N": 318,
+        "robust_nonzero_derivative_N": 11448,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 1.214375490378195,
+        "depth_MAE_mm": 0.1872167486877884,
+        "depth_median_mm": 0.1409712175098221,
+        "depth_p95_mm": 0.494685365614351,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 18911,
+        "Ring_occluded_N": 0,
+        "miss_N": 470,
+        "robust_nonzero_derivative_N": 18911,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 1.824255812542891,
+        "depth_MAE_mm": 0.661041324706713,
+        "depth_median_mm": 0.603196322921896,
+        "depth_p95_mm": 1.1546518569301067,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 4,
+    "accepted": true,
+    "accepted_total": 4,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.021662329815289084,
+    "gradient_norm": 0.001915332508211092,
+    "max_step_mm": 0.03474454903079312,
+    "max_total_mm": 0.1387006909230112,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0052971300255093305,
+      "missing": 0.054259206271833844,
+      "extra": 0.000935899502817645,
+      "contour": 0.2881328671281824,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 1.4266553597495197,
+      "prior": 0.00026529390015639365,
+      "Ring_indicator": 0.0,
+      "total": 0.021662329815289084,
+      "ramp": 0.325,
+      "weighted_HERO": 0.014266553597495197,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00026529390015639365,
+      "weighted_silhouette": 0.007130482317637493
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 14,
+        "free_N": 628,
+        "contact_face_N": 11,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03474454903079329,
+            "new_max_mm": 0.03474454903079329,
+            "raw_edge_jump_norm": 0.782994702800163,
+            "new_edge_jump_norm": 0.4234265035789273,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.5389898555095098e-05,
+            "new_max_mm": 1.5389898555095098e-05,
+            "raw_edge_jump_norm": 5.998619588068129e-05,
+            "new_edge_jump_norm": 5.191085577474407e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231440503,
+            "new_max_mm": 0.16097907231440503,
+            "raw_edge_jump_norm": 0.5012068466465157,
+            "new_edge_jump_norm": 0.4332654907687169,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231188552,
+            "new_max_mm": 0.16097907231188552,
+            "raw_edge_jump_norm": 0.4523186497241418,
+            "new_edge_jump_norm": 0.39417744464598203,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230210015,
+            "new_max_mm": 0.16097907230210015,
+            "raw_edge_jump_norm": 0.5681045637047442,
+            "new_edge_jump_norm": 0.47107775893603077,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231743722,
+            "new_max_mm": 0.16097907231743722,
+            "raw_edge_jump_norm": 0.6379756851762903,
+            "new_edge_jump_norm": 0.4996152534238402,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11462,
+        "Ring_occluded_N": 0,
+        "miss_N": 304,
+        "robust_nonzero_derivative_N": 11462,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 1.1538608001229054,
+        "depth_MAE_mm": 0.16876420484290444,
+        "depth_median_mm": 0.11736936756638272,
+        "depth_p95_mm": 0.491964804885686,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 18937,
+        "Ring_occluded_N": 0,
+        "miss_N": 444,
+        "robust_nonzero_derivative_N": 18937,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 1.699449919376134,
+        "depth_MAE_mm": 0.6219694341044874,
+        "depth_median_mm": 0.5654080257240501,
+        "depth_p95_mm": 1.116213123116543,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 5,
+    "accepted": true,
+    "accepted_total": 5,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.0207968469805798,
+    "gradient_norm": 0.0018421519158493204,
+    "max_step_mm": 0.03484962744448533,
+    "max_total_mm": 0.17254989701140644,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.005225109997101956,
+      "missing": 0.05295028889344798,
+      "extra": 0.0009769477328518406,
+      "contour": 0.2883747592163838,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 1.3377132145676551,
+      "prior": 0.00027644220972433686,
+      "Ring_indicator": 0.0,
+      "total": 0.0207968469805798,
+      "ramp": 0.34375,
+      "weighted_HERO": 0.013377132145676552,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00027644220972433686,
+      "weighted_silhouette": 0.0071432726251789095
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 20,
+        "free_N": 622,
+        "contact_face_N": 15,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03484962744448556,
+            "new_max_mm": 0.03484962744448556,
+            "raw_edge_jump_norm": 0.7258077349595428,
+            "new_edge_jump_norm": 0.42033330960049126,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.5458677980585664e-05,
+            "new_max_mm": 1.5458677980585664e-05,
+            "raw_edge_jump_norm": 5.9461037174732306e-05,
+            "new_edge_jump_norm": 5.2306126447399985e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231683795,
+            "new_max_mm": 0.16097907231683795,
+            "raw_edge_jump_norm": 0.505542870740139,
+            "new_edge_jump_norm": 0.4358925854130947,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.160979072319785,
+            "new_max_mm": 0.160979072319785,
+            "raw_edge_jump_norm": 0.4590168563516216,
+            "new_edge_jump_norm": 0.4012132089759584,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231300282,
+            "new_max_mm": 0.16097907231300282,
+            "raw_edge_jump_norm": 0.5563453164087299,
+            "new_edge_jump_norm": 0.4869900031592743,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723226707,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.635235101629134,
+            "new_edge_jump_norm": 0.5395623326456899,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11479,
+        "Ring_occluded_N": 0,
+        "miss_N": 287,
+        "robust_nonzero_derivative_N": 11479,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 1.090610119098238,
+        "depth_MAE_mm": 0.15821473520704452,
+        "depth_median_mm": 0.10162912493913723,
+        "depth_p95_mm": 0.5042164150051545,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 18961,
+        "Ring_occluded_N": 0,
+        "miss_N": 420,
+        "robust_nonzero_derivative_N": 18961,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 1.584816310037072,
+        "depth_MAE_mm": 0.5855995990605292,
+        "depth_median_mm": 0.5286421621097581,
+        "depth_p95_mm": 1.0751767530552918,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 6,
+    "accepted": true,
+    "accepted_total": 6,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.019955245883820017,
+    "gradient_norm": 0.0017617278608776199,
+    "max_step_mm": 0.03499646006560274,
+    "max_total_mm": 0.20714990016220036,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.005156176966718501,
+      "missing": 0.05168122798204422,
+      "extra": 0.0010176991911268688,
+      "contour": 0.28976463558048954,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 1.2504860294991458,
+      "prior": 0.0002886437578126788,
+      "Ring_indicator": 0.0,
+      "total": 0.019955245883820017,
+      "ramp": 0.3625,
+      "weighted_HERO": 0.012504860294991458,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0002886437578126788,
+      "weighted_silhouette": 0.00716174183101588
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 20,
+        "free_N": 622,
+        "contact_face_N": 15,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03499646006560276,
+            "new_max_mm": 0.03499646006560276,
+            "raw_edge_jump_norm": 0.6957182512447528,
+            "new_edge_jump_norm": 0.407909118468695,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.53904071777891e-05,
+            "new_max_mm": 1.53904071777891e-05,
+            "raw_edge_jump_norm": 5.835632082607347e-05,
+            "new_edge_jump_norm": 5.113658640265975e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233074377,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5073895927621875,
+            "new_edge_jump_norm": 0.43657294790066975,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723173248,
+            "new_max_mm": 0.1609790723173248,
+            "raw_edge_jump_norm": 0.47196681390444767,
+            "new_edge_jump_norm": 0.41352208931314083,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233709371,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5384262925985881,
+            "new_edge_jump_norm": 0.4775178158713058,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723241295,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6277263042483863,
+            "new_edge_jump_norm": 0.5357718687240434,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11498,
+        "Ring_occluded_N": 0,
+        "miss_N": 268,
+        "robust_nonzero_derivative_N": 11498,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 1.025414987590431,
+        "depth_MAE_mm": 0.15440352458616585,
+        "depth_median_mm": 0.09433936772616391,
+        "depth_p95_mm": 0.5283093172110767,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 18984,
+        "Ring_occluded_N": 0,
+        "miss_N": 397,
+        "robust_nonzero_derivative_N": 18984,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 1.4755570714078603,
+        "depth_MAE_mm": 0.5505886961927695,
+        "depth_median_mm": 0.4930604164785457,
+        "depth_p95_mm": 1.0451108538341347,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 7,
+    "accepted": true,
+    "accepted_total": 7,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.019241669781368615,
+    "gradient_norm": 0.0016985013547824248,
+    "max_step_mm": 0.03514195990616056,
+    "max_total_mm": 0.24228352278936163,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.005086145105047358,
+      "missing": 0.05050187475151485,
+      "extra": 0.0010488618799071345,
+      "contour": 0.29098051779737544,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 1.1762153392254426,
+      "prior": 0.00030132211395539343,
+      "Ring_indicator": 0.0,
+      "total": 0.019241669781368615,
+      "ramp": 0.38125,
+      "weighted_HERO": 0.011762153392254426,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00030132211395539343,
+      "weighted_silhouette": 0.007178194275158796
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 24,
+        "free_N": 618,
+        "contact_face_N": 19,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03514195990616096,
+            "new_max_mm": 0.03514195990616096,
+            "raw_edge_jump_norm": 0.6507251325589524,
+            "new_edge_jump_norm": 0.3955619245637414,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.5463471175483657e-05,
+            "new_max_mm": 1.5463471175483657e-05,
+            "raw_edge_jump_norm": 5.831812342003921e-05,
+            "new_edge_jump_norm": 5.086759482854707e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231886474,
+            "new_max_mm": 0.16097907231886474,
+            "raw_edge_jump_norm": 0.5102086781575593,
+            "new_edge_jump_norm": 0.43757533093483364,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723315258,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4800968734437578,
+            "new_edge_jump_norm": 0.4205426745086819,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723149957,
+            "new_max_mm": 0.1609790723149957,
+            "raw_edge_jump_norm": 0.518305915135645,
+            "new_edge_jump_norm": 0.4671548769295127,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723231077,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.61510489927882,
+            "new_edge_jump_norm": 0.5304879197521689,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11512,
+        "Ring_occluded_N": 0,
+        "miss_N": 254,
+        "robust_nonzero_derivative_N": 11512,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.9820069846373702,
+        "depth_MAE_mm": 0.15764063577786383,
+        "depth_median_mm": 0.09857024897621613,
+        "depth_p95_mm": 0.550378213086666,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19008,
+        "Ring_occluded_N": 0,
+        "miss_N": 373,
+        "robust_nonzero_derivative_N": 19008,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 1.370423693813515,
+        "depth_MAE_mm": 0.5180189133864945,
+        "depth_median_mm": 0.45644800254203943,
+        "depth_p95_mm": 1.020153025266461,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 8,
+    "accepted": true,
+    "accepted_total": 8,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.018519698693073794,
+    "gradient_norm": 0.0016500865751924595,
+    "max_step_mm": 0.035272872180337186,
+    "max_total_mm": 0.2774725679709178,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.005012685096719198,
+      "missing": 0.04940313887264993,
+      "extra": 0.001068784295865852,
+      "contour": 0.2911331666813596,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 1.1019050873152398,
+      "prior": 0.0003139915643259883,
+      "Ring_indicator": 0.0,
+      "total": 0.018519698693073794,
+      "ramp": 0.4,
+      "weighted_HERO": 0.011019050873152398,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0003139915643259883,
+      "weighted_silhouette": 0.007186656255595407
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 29,
+        "free_N": 613,
+        "contact_face_N": 22,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.035272872180337395,
+            "new_max_mm": 0.035272872180337395,
+            "raw_edge_jump_norm": 0.6001443177798128,
+            "new_edge_jump_norm": 0.37699850765640674,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.5541829833755825e-05,
+            "new_max_mm": 1.5541829833755825e-05,
+            "raw_edge_jump_norm": 5.866980555998357e-05,
+            "new_edge_jump_norm": 5.072912346828419e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232049416,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5144974699198728,
+            "new_edge_jump_norm": 0.4395415029571132,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723030102,
+            "new_max_mm": 0.1609790723030102,
+            "raw_edge_jump_norm": 0.48410155666566207,
+            "new_edge_jump_norm": 0.4269491547863116,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233960834,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.49812255254236026,
+            "new_edge_jump_norm": 0.4544134166529832,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234501183,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5660944140281139,
+            "new_edge_jump_norm": 0.46818330130513847,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11527,
+        "Ring_occluded_N": 0,
+        "miss_N": 239,
+        "robust_nonzero_derivative_N": 11527,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.9382006462597448,
+        "depth_MAE_mm": 0.1662720829830864,
+        "depth_median_mm": 0.10521932996439176,
+        "depth_p95_mm": 0.5668255686578467,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19034,
+        "Ring_occluded_N": 0,
+        "miss_N": 347,
+        "robust_nonzero_derivative_N": 19034,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 1.265609528370735,
+        "depth_MAE_mm": 0.4868144874974688,
+        "depth_median_mm": 0.422409379805444,
+        "depth_p95_mm": 0.9949421888474314,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 9,
+    "accepted": true,
+    "accepted_total": 9,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.01790711083249207,
+    "gradient_norm": 0.001591436114065417,
+    "max_step_mm": 0.0354414698673695,
+    "max_total_mm": 0.3119379362392713,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004939902806654572,
+      "missing": 0.04836699904667006,
+      "extra": 0.0010833634684483209,
+      "contour": 0.2958394569395811,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 1.0367369579732224,
+      "prior": 0.00032564374851062894,
+      "Ring_indicator": 0.0,
+      "total": 0.01790711083249207,
+      "ramp": 0.41875,
+      "weighted_HERO": 0.010367369579732224,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00032564374851062894,
+      "weighted_silhouette": 0.007214097504249216
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 32,
+        "free_N": 610,
+        "contact_face_N": 25,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03544146986736951,
+            "new_max_mm": 0.03544146986736951,
+            "raw_edge_jump_norm": 0.5774849441909017,
+            "new_edge_jump_norm": 0.35974886481434765,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.5611811076766388e-05,
+            "new_max_mm": 1.5611811076766388e-05,
+            "raw_edge_jump_norm": 5.806978555369949e-05,
+            "new_edge_jump_norm": 5.0068691413615295e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723176682,
+            "new_max_mm": 0.1609790723176682,
+            "raw_edge_jump_norm": 0.5137353153286426,
+            "new_edge_jump_norm": 0.4385904228934277,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723131545,
+            "new_max_mm": 0.1609790723131545,
+            "raw_edge_jump_norm": 0.499003766493639,
+            "new_edge_jump_norm": 0.44212403809119233,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232711245,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.485145783568924,
+            "new_edge_jump_norm": 0.44570376555520796,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790722926714,
+            "new_max_mm": 0.1609790722926714,
+            "raw_edge_jump_norm": 0.5539576914957115,
+            "new_edge_jump_norm": 0.4666033187268107,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11540,
+        "Ring_occluded_N": 0,
+        "miss_N": 226,
+        "robust_nonzero_derivative_N": 11540,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.905140669630892,
+        "depth_MAE_mm": 0.1792134713338476,
+        "depth_median_mm": 0.11730933071820715,
+        "depth_p95_mm": 0.5909541181185277,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19059,
+        "Ring_occluded_N": 0,
+        "miss_N": 322,
+        "robust_nonzero_derivative_N": 19059,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 1.168333246315553,
+        "depth_MAE_mm": 0.4579380799415104,
+        "depth_median_mm": 0.39137263955354484,
+        "depth_p95_mm": 0.9731569481102378,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 10,
+    "accepted": true,
+    "accepted_total": 10,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.01721787244481667,
+    "gradient_norm": 0.0015425663513991595,
+    "max_step_mm": 0.035688587063306215,
+    "max_total_mm": 0.34562711337913116,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004868129682209756,
+      "missing": 0.04734291177656915,
+      "extra": 0.00109756731803322,
+      "contour": 0.2958444804651079,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.9659003597668214,
+      "prior": 0.000336784083629027,
+      "Ring_indicator": 0.0,
+      "total": 0.01721787244481667,
+      "ramp": 0.4375,
+      "weighted_HERO": 0.009659003597668215,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.000336784083629027,
+      "weighted_silhouette": 0.00722208476351943
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 32,
+        "free_N": 610,
+        "contact_face_N": 25,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.035688587063306985,
+            "new_max_mm": 0.035688587063306985,
+            "raw_edge_jump_norm": 0.57512218091498,
+            "new_edge_jump_norm": 0.3485412074731999,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.5769398378597252e-05,
+            "new_max_mm": 1.5769398378597252e-05,
+            "raw_edge_jump_norm": 5.7524790517400855e-05,
+            "new_edge_jump_norm": 4.9496278810169656e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232781494,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5128314825535969,
+            "new_edge_jump_norm": 0.4377680083826152,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232696396,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5206713681717939,
+            "new_edge_jump_norm": 0.4489033123175621,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232648437,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.48270322134125393,
+            "new_edge_jump_norm": 0.440785859369494,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232144293,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5647507649300593,
+            "new_edge_jump_norm": 0.46909370162094716,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11559,
+        "Ring_occluded_N": 0,
+        "miss_N": 207,
+        "robust_nonzero_derivative_N": 11559,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.8540013109555656,
+        "depth_MAE_mm": 0.19434940052390381,
+        "depth_median_mm": 0.13432409974387838,
+        "depth_p95_mm": 0.6173577542454304,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19083,
+        "Ring_occluded_N": 0,
+        "miss_N": 298,
+        "robust_nonzero_derivative_N": 19083,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 1.077799408578077,
+        "depth_MAE_mm": 0.4308036435054351,
+        "depth_median_mm": 0.36133554412377933,
+        "depth_p95_mm": 0.955836551832954,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 11,
+    "accepted": true,
+    "accepted_total": 11,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.016630806069569258,
+    "gradient_norm": 0.0015065127201289437,
+    "max_step_mm": 0.03598109093150911,
+    "max_total_mm": 0.37852298865728384,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.00479746639676806,
+      "missing": 0.046312430666552634,
+      "extra": 0.0011134723123783867,
+      "contour": 0.2954963965131592,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.9055426355921934,
+      "prior": 0.0003478075668681413,
+      "Ring_indicator": 0.0,
+      "total": 0.016630806069569258,
+      "ramp": 0.45625000000000004,
+      "weighted_HERO": 0.009055426355921934,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0003478075668681413,
+      "weighted_silhouette": 0.007227572146779182
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 32,
+        "free_N": 610,
+        "contact_face_N": 25,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.0359810909315089,
+            "new_max_mm": 0.0359810909315089,
+            "raw_edge_jump_norm": 0.5747170134862574,
+            "new_edge_jump_norm": 0.34314033144897327,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.5967597226730145e-05,
+            "new_max_mm": 1.5967597226730145e-05,
+            "raw_edge_jump_norm": 5.7164768317614415e-05,
+            "new_edge_jump_norm": 4.913221644014131e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231589215,
+            "new_max_mm": 0.16097907231589215,
+            "raw_edge_jump_norm": 0.5115024639723265,
+            "new_edge_jump_norm": 0.4364697722084776,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232486616,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.511055540043334,
+            "new_edge_jump_norm": 0.4317804459206424,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229540498,
+            "new_max_mm": 0.16097907229540498,
+            "raw_edge_jump_norm": 0.5513439193979752,
+            "new_edge_jump_norm": 0.46667047326372385,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232596925,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.49786448728493377,
+            "new_edge_jump_norm": 0.44562852757643223,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11573,
+        "Ring_occluded_N": 0,
+        "miss_N": 193,
+        "robust_nonzero_derivative_N": 11573,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.8214674803179809,
+        "depth_MAE_mm": 0.21102620206899275,
+        "depth_median_mm": 0.150575768984055,
+        "depth_p95_mm": 0.6417377198452313,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19108,
+        "Ring_occluded_N": 0,
+        "miss_N": 273,
+        "robust_nonzero_derivative_N": 19108,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.9896177908664058,
+        "depth_MAE_mm": 0.40558874737892237,
+        "depth_median_mm": 0.3324219559180257,
+        "depth_p95_mm": 0.9415043282049209,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 12,
+    "accepted": true,
+    "accepted_total": 12,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.015966129343576593,
+    "gradient_norm": 0.0014864236767604382,
+    "max_step_mm": 0.036326933489033736,
+    "max_total_mm": 0.4103855556252593,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004728251110969318,
+      "missing": 0.04527636037932501,
+      "extra": 0.0011317963621372148,
+      "contour": 0.29554385805674716,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.8372765880980183,
+      "prior": 0.00035908527206629515,
+      "Ring_indicator": 0.0,
+      "total": 0.015966129343576593,
+      "ramp": 0.475,
+      "weighted_HERO": 0.008372765880980184,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00035908527206629515,
+      "weighted_silhouette": 0.0072342781905301145
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 32,
+        "free_N": 610,
+        "contact_face_N": 25,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03632693348903322,
+            "new_max_mm": 0.03632693348903322,
+            "raw_edge_jump_norm": 0.569921641158722,
+            "new_edge_jump_norm": 0.3387911459722823,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.6225291203555225e-05,
+            "new_max_mm": 1.6225291203555225e-05,
+            "raw_edge_jump_norm": 5.708242156403124e-05,
+            "new_edge_jump_norm": 4.899088520709451e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723206586,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5122405170672655,
+            "new_edge_jump_norm": 0.4371321287687547,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232036712,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4824878724407544,
+            "new_edge_jump_norm": 0.41504240014901084,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907236533607,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5721561036462497,
+            "new_edge_jump_norm": 0.49234260805404967,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234815972,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5366504045448476,
+            "new_edge_jump_norm": 0.4575553489907928,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11590,
+        "Ring_occluded_N": 0,
+        "miss_N": 176,
+        "robust_nonzero_derivative_N": 11590,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.779232644187615,
+        "depth_MAE_mm": 0.22803138384208438,
+        "depth_median_mm": 0.1663632368778991,
+        "depth_p95_mm": 0.6600938227493882,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19138,
+        "Ring_occluded_N": 0,
+        "miss_N": 243,
+        "robust_nonzero_derivative_N": 19138,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.8953205320084217,
+        "depth_MAE_mm": 0.38250279813319993,
+        "depth_median_mm": 0.30488489187444756,
+        "depth_p95_mm": 0.9283827056869994,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 13,
+    "accepted": true,
+    "accepted_total": 13,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.01541522066552807,
+    "gradient_norm": 0.001462342860632398,
+    "max_step_mm": 0.03664483395713509,
+    "max_total_mm": 0.4440918644711801,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004659703945637576,
+      "missing": 0.04424960849185784,
+      "extra": 0.0011508077085535559,
+      "contour": 0.29487744124129045,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.7807997868064648,
+      "prior": 0.00037073870771564543,
+      "Ring_indicator": 0.0,
+      "total": 0.01541522066552807,
+      "ramp": 0.49375,
+      "weighted_HERO": 0.007807997868064648,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00037073870771564543,
+      "weighted_silhouette": 0.007236484089747777
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 32,
+        "free_N": 610,
+        "contact_face_N": 25,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03664483395713625,
+            "new_max_mm": 0.03664483395713625,
+            "raw_edge_jump_norm": 0.5624885771398107,
+            "new_edge_jump_norm": 0.333042722947483,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.6241428443592937e-05,
+            "new_max_mm": 1.6241428443592937e-05,
+            "raw_edge_jump_norm": 5.68007524022413e-05,
+            "new_edge_jump_norm": 4.857310091732081e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723186905,
+            "new_max_mm": 0.1609790723186905,
+            "raw_edge_jump_norm": 0.5135161179096899,
+            "new_edge_jump_norm": 0.4378782730000013,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723170326,
+            "new_max_mm": 0.1609790723170326,
+            "raw_edge_jump_norm": 0.46272206820539363,
+            "new_edge_jump_norm": 0.4040760728341405,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233208797,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5902073497836723,
+            "new_edge_jump_norm": 0.5719921199175672,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907235035425,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5021184871282693,
+            "new_edge_jump_norm": 0.44457528352531267,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11604,
+        "Ring_occluded_N": 0,
+        "miss_N": 162,
+        "robust_nonzero_derivative_N": 11604,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.7466199033633943,
+        "depth_MAE_mm": 0.24354476888662857,
+        "depth_median_mm": 0.1814095998603591,
+        "depth_p95_mm": 0.6899029980082492,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19163,
+        "Ring_occluded_N": 0,
+        "miss_N": 218,
+        "robust_nonzero_derivative_N": 19163,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.8149796702495352,
+        "depth_MAE_mm": 0.3615623258648158,
+        "depth_median_mm": 0.2796967849307137,
+        "depth_p95_mm": 0.9166104066172078,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 14,
+    "accepted": true,
+    "accepted_total": 14,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.014784714770050915,
+    "gradient_norm": 0.0014509194395980664,
+    "max_step_mm": 0.03693411138377832,
+    "max_total_mm": 0.48102453166044784,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004591751416834692,
+      "missing": 0.04323118449085288,
+      "extra": 0.0011703325952920648,
+      "contour": 0.2977154726267834,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.7146540288987411,
+      "prior": 0.0003828423214145005,
+      "Ring_indicator": 0.0,
+      "total": 0.014784714770050915,
+      "ramp": 0.5125,
+      "weighted_HERO": 0.007146540288987411,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0003828423214145005,
+      "weighted_silhouette": 0.007255332159649003
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 32,
+        "free_N": 610,
+        "contact_face_N": 25,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.036934111383778966,
+            "new_max_mm": 0.036934111383778966,
+            "raw_edge_jump_norm": 0.5566020366900368,
+            "new_edge_jump_norm": 0.3266863128553633,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.6227721364259527e-05,
+            "new_max_mm": 1.6227721364259527e-05,
+            "raw_edge_jump_norm": 5.669695478002907e-05,
+            "new_edge_jump_norm": 4.8342303569342046e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723188914,
+            "new_max_mm": 0.1609790723188914,
+            "raw_edge_jump_norm": 0.5148776536339646,
+            "new_edge_jump_norm": 0.4387729864326871,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723236907,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.45851069597078636,
+            "new_edge_jump_norm": 0.4047107650238829,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231522585,
+            "new_max_mm": 0.16097907231522585,
+            "raw_edge_jump_norm": 0.5941850027496889,
+            "new_edge_jump_norm": 0.5163375394006561,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232149192,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5383547664900697,
+            "new_edge_jump_norm": 0.49226920225496706,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11621,
+        "Ring_occluded_N": 0,
+        "miss_N": 145,
+        "robust_nonzero_derivative_N": 11621,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.7031140787444464,
+        "depth_MAE_mm": 0.2574691704969638,
+        "depth_median_mm": 0.19620761377656493,
+        "depth_p95_mm": 0.7092611452417117,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19194,
+        "Ring_occluded_N": 0,
+        "miss_N": 187,
+        "robust_nonzero_derivative_N": 19194,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.7261939790530358,
+        "depth_MAE_mm": 0.34296926513007403,
+        "depth_median_mm": 0.25708494480861077,
+        "depth_p95_mm": 0.90984817030313,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 15,
+    "accepted": true,
+    "accepted_total": 15,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.014273659691575414,
+    "gradient_norm": 0.0014311858986276334,
+    "max_step_mm": 0.03719513346387619,
+    "max_total_mm": 0.518134287314611,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004526284717333813,
+      "missing": 0.042220402508974075,
+      "extra": 0.0011926243702570596,
+      "contour": 0.29694775905858634,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.6621434630143284,
+      "prior": 0.00039524681051261723,
+      "Ring_indicator": 0.0,
+      "total": 0.014273659691575414,
+      "ramp": 0.53125,
+      "weighted_HERO": 0.006621434630143284,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00039524681051261723,
+      "weighted_silhouette": 0.007256978250919513
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 32,
+        "free_N": 610,
+        "contact_face_N": 25,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03719513346387591,
+            "new_max_mm": 0.03719513346387591,
+            "raw_edge_jump_norm": 0.5527562693196855,
+            "new_edge_jump_norm": 0.3197778251003327,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.6264402532920383e-05,
+            "new_max_mm": 1.6264402532920383e-05,
+            "raw_edge_jump_norm": 5.647783805311636e-05,
+            "new_edge_jump_norm": 4.809288346405634e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723132293,
+            "new_max_mm": 0.1609790723132293,
+            "raw_edge_jump_norm": 0.5146147197324303,
+            "new_edge_jump_norm": 0.43871726006522543,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230938366,
+            "new_max_mm": 0.16097907230938366,
+            "raw_edge_jump_norm": 0.44844963098336854,
+            "new_edge_jump_norm": 0.4008198727299057,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790722984109,
+            "new_max_mm": 0.1609790722984109,
+            "raw_edge_jump_norm": 0.5349517450345546,
+            "new_edge_jump_norm": 0.4672903623319336,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790722811094,
+            "new_max_mm": 0.1609790722811094,
+            "raw_edge_jump_norm": 0.5683928620348054,
+            "new_edge_jump_norm": 0.5057175706311571,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11635,
+        "Ring_occluded_N": 0,
+        "miss_N": 131,
+        "robust_nonzero_derivative_N": 11635,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.668662176744533,
+        "depth_MAE_mm": 0.2694074859882423,
+        "depth_median_mm": 0.2103113674577699,
+        "depth_p95_mm": 0.73101129731373,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19218,
+        "Ring_occluded_N": 0,
+        "miss_N": 163,
+        "robust_nonzero_derivative_N": 19218,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.6556247492841236,
+        "depth_MAE_mm": 0.32676708375688285,
+        "depth_median_mm": 0.2356107495662343,
+        "depth_p95_mm": 0.9023907199799268,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 16,
+    "accepted": true,
+    "accepted_total": 16,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.013725417854100575,
+    "gradient_norm": 0.001420030227063584,
+    "max_step_mm": 0.037427681652775734,
+    "max_total_mm": 0.5553952332823597,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004465154061714808,
+      "missing": 0.04123323659102121,
+      "extra": 0.0012182015505257165,
+      "contour": 0.2958157802296318,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.6057991788002924,
+      "prior": 0.00040787062607705593,
+      "Ring_indicator": 0.0,
+      "total": 0.013725417854100575,
+      "ramp": 0.55,
+      "weighted_HERO": 0.006057991788002925,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00040787062607705593,
+      "weighted_silhouette": 0.007259555440020595
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 32,
+        "free_N": 610,
+        "contact_face_N": 25,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03742768165277558,
+            "new_max_mm": 0.03742768165277558,
+            "raw_edge_jump_norm": 0.550115757306681,
+            "new_edge_jump_norm": 0.3134567222129002,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.6023697241581097e-05,
+            "new_max_mm": 1.6023697241581097e-05,
+            "raw_edge_jump_norm": 5.62794581682229e-05,
+            "new_edge_jump_norm": 4.756271267889939e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232123648,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5208373621691297,
+            "new_edge_jump_norm": 0.44261337611246354,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231425906,
+            "new_max_mm": 0.16097907231425906,
+            "raw_edge_jump_norm": 0.47957943937831254,
+            "new_edge_jump_norm": 0.43277359223916756,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233030223,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5432198485814015,
+            "new_edge_jump_norm": 0.4589796783219623,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907225297342,
+            "new_max_mm": 0.16097907225297342,
+            "raw_edge_jump_norm": 0.5299113735113242,
+            "new_edge_jump_norm": 0.44941430908421587,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11650,
+        "Ring_occluded_N": 0,
+        "miss_N": 116,
+        "robust_nonzero_derivative_N": 11650,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.6297527194192424,
+        "depth_MAE_mm": 0.2796562129264279,
+        "depth_median_mm": 0.22458244289170182,
+        "depth_p95_mm": 0.7559424792081862,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19245,
+        "Ring_occluded_N": 0,
+        "miss_N": 136,
+        "robust_nonzero_derivative_N": 19245,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.5818456381813425,
+        "depth_MAE_mm": 0.31274611794612583,
+        "depth_median_mm": 0.21709428888733484,
+        "depth_p95_mm": 0.8929960473767271,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 17,
+    "accepted": true,
+    "accepted_total": 17,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.013217635793170389,
+    "gradient_norm": 0.0013680961904982269,
+    "max_step_mm": 0.037630690456792015,
+    "max_total_mm": 0.5926661658966397,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.00441100118526568,
+      "missing": 0.04029628965589735,
+      "extra": 0.0012472011181267183,
+      "contour": 0.29740234160899376,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.5513628453843082,
+      "prior": 0.00042013730853796005,
+      "Ring_indicator": 0.0,
+      "total": 0.013217635793170389,
+      "ramp": 0.56875,
+      "weighted_HERO": 0.0055136284538430825,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00042013730853796005,
+      "weighted_silhouette": 0.007283870030789346
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 35,
+        "free_N": 607,
+        "contact_face_N": 27,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03763069045679244,
+            "new_max_mm": 0.03763069045679244,
+            "raw_edge_jump_norm": 0.5500343696161749,
+            "new_edge_jump_norm": 0.30925642065567877,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.5269423962420145e-05,
+            "new_max_mm": 1.5269423962420145e-05,
+            "raw_edge_jump_norm": 5.473129930578461e-05,
+            "new_edge_jump_norm": 4.601987617612131e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723198262,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5270099606257419,
+            "new_edge_jump_norm": 0.4464607299151688,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231700523,
+            "new_max_mm": 0.16097907231700523,
+            "raw_edge_jump_norm": 0.5393162013823251,
+            "new_edge_jump_norm": 0.4929761331379056,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232323658,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5776840887028877,
+            "new_edge_jump_norm": 0.519455033909113,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723424823,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5799396123525926,
+            "new_edge_jump_norm": 0.4836943344213689,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11665,
+        "Ring_occluded_N": 0,
+        "miss_N": 101,
+        "robust_nonzero_derivative_N": 11665,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.5877014372667051,
+        "depth_MAE_mm": 0.2870934570633023,
+        "depth_median_mm": 0.23683178483253187,
+        "depth_p95_mm": 0.776056755240752,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19270,
+        "Ring_occluded_N": 0,
+        "miss_N": 111,
+        "robust_nonzero_derivative_N": 19270,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.5150242535019115,
+        "depth_MAE_mm": 0.3008588229645639,
+        "depth_median_mm": 0.20048248803049162,
+        "depth_p95_mm": 0.8889637407864535,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 18,
+    "accepted": true,
+    "accepted_total": 18,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.0128244378460546,
+    "gradient_norm": 0.0012845758277664073,
+    "max_step_mm": 0.03785693380259841,
+    "max_total_mm": 0.6300092348318567,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004364369825149575,
+      "missing": 0.03945142320460743,
+      "extra": 0.0012759828047516444,
+      "contour": 0.29645492806067913,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.5090258029532442,
+      "prior": 0.0004317697312217206,
+      "Ring_indicator": 0.0,
+      "total": 0.0128244378460546,
+      "ramp": 0.5875,
+      "weighted_HERO": 0.005090258029532442,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0004317697312217206,
+      "weighted_silhouette": 0.007302410085300438
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 40,
+        "free_N": 602,
+        "contact_face_N": 30,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.037856933802598296,
+            "new_max_mm": 0.037856933802598296,
+            "raw_edge_jump_norm": 0.5498720545198675,
+            "new_edge_jump_norm": 0.3038170882405516,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.4115474410420454e-05,
+            "new_max_mm": 1.4115474410420454e-05,
+            "raw_edge_jump_norm": 5.144782006000258e-05,
+            "new_edge_jump_norm": 4.3048025964815345e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723249015,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5324440444324243,
+            "new_edge_jump_norm": 0.4500077765149566,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723153865,
+            "new_max_mm": 0.1609790723153865,
+            "raw_edge_jump_norm": 0.6206126700058566,
+            "new_edge_jump_norm": 0.5706704952587448,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232269995,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5761167475494989,
+            "new_edge_jump_norm": 0.5494711275050735,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231792866,
+            "new_max_mm": 0.16097907231792866,
+            "raw_edge_jump_norm": 0.6265685988204824,
+            "new_edge_jump_norm": 0.561085495641613,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11677,
+        "Ring_occluded_N": 0,
+        "miss_N": 89,
+        "robust_nonzero_derivative_N": 11677,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.5542279091859159,
+        "depth_MAE_mm": 0.2926807859571755,
+        "depth_median_mm": 0.2491041319645717,
+        "depth_p95_mm": 0.7974716941301377,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19289,
+        "Ring_occluded_N": 0,
+        "miss_N": 92,
+        "robust_nonzero_derivative_N": 19289,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.46382369672057233,
+        "depth_MAE_mm": 0.29151285840025903,
+        "depth_median_mm": 0.18778935965463361,
+        "depth_p95_mm": 0.8833559565916718,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 19,
+    "accepted": true,
+    "accepted_total": 19,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.012429876791760462,
+    "gradient_norm": 0.001175897944628336,
+    "max_step_mm": 0.038465745179721525,
+    "max_total_mm": 0.6677322228542167,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004325089769230948,
+      "missing": 0.038710614666342735,
+      "extra": 0.001302707836859756,
+      "contour": 0.2953534081915255,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.4658387832728081,
+      "prior": 0.00044291524682193995,
+      "Ring_indicator": 0.0,
+      "total": 0.012429876791760462,
+      "ramp": 0.60625,
+      "weighted_HERO": 0.004658387832728081,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00044291524682193995,
+      "weighted_silhouette": 0.007328573712210441
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 40,
+        "free_N": 602,
+        "contact_face_N": 30,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.038465745179721324,
+            "new_max_mm": 0.038465745179721324,
+            "raw_edge_jump_norm": 0.5478676427518943,
+            "new_edge_jump_norm": 0.30362057178674434,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.2475834222887397e-05,
+            "new_max_mm": 1.2475834222887397e-05,
+            "raw_edge_jump_norm": 4.7505855021693495e-05,
+            "new_edge_jump_norm": 3.9354201225540445e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232096184,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5475204423002143,
+            "new_edge_jump_norm": 0.45944500276958933,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723134055,
+            "new_max_mm": 0.1609790723134055,
+            "raw_edge_jump_norm": 0.6360574926213204,
+            "new_edge_jump_norm": 0.6245864190967266,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723077957,
+            "new_max_mm": 0.1609790723077957,
+            "raw_edge_jump_norm": 0.6412769687342923,
+            "new_edge_jump_norm": 0.6712516219616862,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907228608582,
+            "new_max_mm": 0.16097907228608582,
+            "raw_edge_jump_norm": 0.4756301497077641,
+            "new_edge_jump_norm": 0.41022855052869484,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11691,
+        "Ring_occluded_N": 0,
+        "miss_N": 75,
+        "robust_nonzero_derivative_N": 11691,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.512168161390403,
+        "depth_MAE_mm": 0.2963953823210527,
+        "depth_median_mm": 0.2600752675692206,
+        "depth_p95_mm": 0.816636033690056,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19306,
+        "Ring_occluded_N": 0,
+        "miss_N": 75,
+        "robust_nonzero_derivative_N": 19306,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.4195094051552132,
+        "depth_MAE_mm": 0.2844747986690473,
+        "depth_median_mm": 0.1780486833885071,
+        "depth_p95_mm": 0.8772573399486712,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 20,
+    "accepted": true,
+    "accepted_total": 20,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.012106150001432281,
+    "gradient_norm": 0.0010536712815306948,
+    "max_step_mm": 0.038981062776147664,
+    "max_total_mm": 0.7054901398727663,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004295950238075521,
+      "missing": 0.0380840270469586,
+      "extra": 0.0013296818069647998,
+      "contour": 0.29468561162027995,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.42831559474932357,
+      "prior": 0.00045358034549281,
+      "Ring_indicator": 0.0,
+      "total": 0.012106150001432281,
+      "ramp": 0.625,
+      "weighted_HERO": 0.004283155947493236,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00045358034549281,
+      "weighted_silhouette": 0.007369413708446234
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 40,
+        "free_N": 602,
+        "contact_face_N": 30,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03898106277614749,
+            "new_max_mm": 0.03898106277614749,
+            "raw_edge_jump_norm": 0.5460281447059531,
+            "new_edge_jump_norm": 0.3037505311703326,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 1.0930184334482163e-05,
+            "new_max_mm": 1.0930184334482163e-05,
+            "raw_edge_jump_norm": 4.2688690178672286e-05,
+            "new_edge_jump_norm": 3.586783427472553e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723225761,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.543635327720126,
+            "new_edge_jump_norm": 0.46570081347994774,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233131342,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5436414447357462,
+            "new_edge_jump_norm": 0.5206675541794689,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232527017,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6282843142449528,
+            "new_edge_jump_norm": 0.7626580406234081,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723127977,
+            "new_max_mm": 0.1609790723127977,
+            "raw_edge_jump_norm": 0.44683238091024224,
+            "new_edge_jump_norm": 0.3994852058537736,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11704,
+        "Ring_occluded_N": 0,
+        "miss_N": 62,
+        "robust_nonzero_derivative_N": 11704,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.47191382363901424,
+        "depth_MAE_mm": 0.29861558984103576,
+        "depth_median_mm": 0.26993197745653674,
+        "depth_p95_mm": 0.830172406220797,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19319,
+        "Ring_occluded_N": 0,
+        "miss_N": 62,
+        "robust_nonzero_derivative_N": 19319,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.38471736585963295,
+        "depth_MAE_mm": 0.27871916180216055,
+        "depth_median_mm": 0.17275049410220333,
+        "depth_p95_mm": 0.8656793552112972,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 21,
+    "accepted": true,
+    "accepted_total": 21,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.011810077947306813,
+    "gradient_norm": 0.0009070051678778178,
+    "max_step_mm": 0.03941516440516463,
+    "max_total_mm": 0.7430069058472901,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004279787574584285,
+      "missing": 0.03757742730279763,
+      "extra": 0.0013596292378173936,
+      "contour": 0.2934039837277832,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.392456429753979,
+      "prior": 0.0004636514058802277,
+      "Ring_indicator": 0.0,
+      "total": 0.011810077947306813,
+      "ramp": 0.64375,
+      "weighted_HERO": 0.00392456429753979,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0004636514058802277,
+      "weighted_silhouette": 0.007421862243886796
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 40,
+        "free_N": 602,
+        "contact_face_N": 30,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03941516440516484,
+            "new_max_mm": 0.03941516440516484,
+            "raw_edge_jump_norm": 0.5408349252575556,
+            "new_edge_jump_norm": 0.3027887482338473,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 8.913939102437411e-06,
+            "new_max_mm": 8.913939102437411e-06,
+            "raw_edge_jump_norm": 3.702422666301565e-05,
+            "new_edge_jump_norm": 3.0985269258621356e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723339808,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5394860559444766,
+            "new_edge_jump_norm": 0.46282738134323403,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723090363,
+            "new_max_mm": 0.1609790723090363,
+            "raw_edge_jump_norm": 0.4918237897857324,
+            "new_edge_jump_norm": 0.4587530974187856,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723139728,
+            "new_max_mm": 0.1609790723139728,
+            "raw_edge_jump_norm": 0.4373694333138224,
+            "new_edge_jump_norm": 0.392895043351081,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233911277,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5989162069283865,
+            "new_edge_jump_norm": 0.836595698346804,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11717,
+        "Ring_occluded_N": 0,
+        "miss_N": 49,
+        "robust_nonzero_derivative_N": 11717,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.43032923592212763,
+        "depth_MAE_mm": 0.299434714858661,
+        "depth_median_mm": 0.2748518344984845,
+        "depth_p95_mm": 0.8524574337877563,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19331,
+        "Ring_occluded_N": 0,
+        "miss_N": 50,
+        "robust_nonzero_derivative_N": 19331,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.3545836235858304,
+        "depth_MAE_mm": 0.2747616694662755,
+        "depth_median_mm": 0.16919978507596412,
+        "depth_p95_mm": 0.859252768279152,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 22,
+    "accepted": true,
+    "accepted_total": 22,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.011625231382908642,
+    "gradient_norm": 0.0007576310594726428,
+    "max_step_mm": 0.039792806517945735,
+    "max_total_mm": 0.7799970792474167,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004276520637277927,
+      "missing": 0.037177466683917575,
+      "extra": 0.0013938574249752693,
+      "contour": 0.29153864779549954,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.3666843482275103,
+      "prior": 0.00047274859389290214,
+      "Ring_indicator": 0.0,
+      "total": 0.011625231382908642,
+      "ramp": 0.6625000000000001,
+      "weighted_HERO": 0.003666843482275103,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00047274859389290214,
+      "weighted_silhouette": 0.007485639306740637
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 41,
+        "free_N": 601,
+        "contact_face_N": 32,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03979280651794459,
+            "new_max_mm": 0.03979280651794459,
+            "raw_edge_jump_norm": 0.5366356951844118,
+            "new_edge_jump_norm": 0.30426659693791674,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.603697871994626e-06,
+            "new_max_mm": 6.603697871994626e-06,
+            "raw_edge_jump_norm": 3.134919067103487e-05,
+            "new_edge_jump_norm": 2.6532717388660106e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233920794,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5349329833909888,
+            "new_edge_jump_norm": 0.46967711920978666,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234799588,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.44005195314532997,
+            "new_edge_jump_norm": 0.40473202371998906,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233727024,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4519926298289518,
+            "new_edge_jump_norm": 0.4047638193014759,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723164117,
+            "new_max_mm": 0.1609790723164117,
+            "raw_edge_jump_norm": 0.5805375737452085,
+            "new_edge_jump_norm": 0.7272422124081415,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11726,
+        "Ring_occluded_N": 0,
+        "miss_N": 40,
+        "robust_nonzero_derivative_N": 11726,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.4005504285481536,
+        "depth_MAE_mm": 0.29874197976992634,
+        "depth_median_mm": 0.27601131608413,
+        "depth_p95_mm": 0.8656729331037454,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19340,
+        "Ring_occluded_N": 0,
+        "miss_N": 41,
+        "robust_nonzero_derivative_N": 19340,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.33281826790686697,
+        "depth_MAE_mm": 0.27287994367357,
+        "depth_median_mm": 0.169340637081973,
+        "depth_p95_mm": 0.8541488236284578,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 23,
+    "accepted": true,
+    "accepted_total": 23,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.011455441132203903,
+    "gradient_norm": 0.000675767209769432,
+    "max_step_mm": 0.04010542442313702,
+    "max_total_mm": 0.8157318272084363,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004285446795014043,
+      "missing": 0.03687022522919708,
+      "extra": 0.0014332659775391219,
+      "contour": 0.29112847418421,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.3400869313952355,
+      "prior": 0.00048109961790032685,
+      "Ring_indicator": 0.0,
+      "total": 0.011455441132203903,
+      "ramp": 0.6812499999999999,
+      "weighted_HERO": 0.003400869313952355,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00048109961790032685,
+      "weighted_silhouette": 0.007573472200351221
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.04010542442313597,
+            "new_max_mm": 0.04010542442313597,
+            "raw_edge_jump_norm": 0.5348022299022658,
+            "new_edge_jump_norm": 0.30579177103183625,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 5.2243829052853625e-06,
+            "new_max_mm": 5.2243829052853625e-06,
+            "raw_edge_jump_norm": 2.848292835068039e-05,
+            "new_edge_jump_norm": 2.635301494461219e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232285025,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4270718893843955,
+            "new_edge_jump_norm": 0.3905336475561157,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232977146,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5953077439826331,
+            "new_edge_jump_norm": 0.5334929910333974,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723127237,
+            "new_max_mm": 0.1609790723127237,
+            "raw_edge_jump_norm": 0.507290000446478,
+            "new_edge_jump_norm": 0.47431433954284324,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234451408,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.579748330499747,
+            "new_edge_jump_norm": 0.7242685004131068,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11736,
+        "Ring_occluded_N": 0,
+        "miss_N": 30,
+        "robust_nonzero_derivative_N": 11736,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.36585891904863876,
+        "depth_MAE_mm": 0.29735483757881037,
+        "depth_median_mm": 0.2741699089089664,
+        "depth_p95_mm": 0.8791358692148368,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19348,
+        "Ring_occluded_N": 0,
+        "miss_N": 33,
+        "robust_nonzero_derivative_N": 19348,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.3143149437418322,
+        "depth_MAE_mm": 0.2721366422661796,
+        "depth_median_mm": 0.1711170186390767,
+        "depth_p95_mm": 0.8501295186268674,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 24,
+    "accepted": true,
+    "accepted_total": 24,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.011397991904411403,
+    "gradient_norm": 0.0006568593344551848,
+    "max_step_mm": 0.04035253178409602,
+    "max_total_mm": 0.8495505393453145,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004303016712785594,
+      "missing": 0.036637417144245565,
+      "extra": 0.0014757229364477098,
+      "contour": 0.29061376473268086,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.3238247979435877,
+      "prior": 0.000488470948766917,
+      "Ring_indicator": 0.0,
+      "total": 0.011397991904411403,
+      "ramp": 0.7,
+      "weighted_HERO": 0.003238247979435877,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.000488470948766917,
+      "weighted_silhouette": 0.0076712729762086086
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.04035253178409593,
+            "new_max_mm": 0.04035253178409593,
+            "raw_edge_jump_norm": 0.5361087908378969,
+            "new_edge_jump_norm": 0.30995929885102075,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 5.518829504412565e-06,
+            "new_max_mm": 5.518829504412565e-06,
+            "raw_edge_jump_norm": 2.7756624894058933e-05,
+            "new_edge_jump_norm": 2.515626845508462e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233761066,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4280341876843979,
+            "new_edge_jump_norm": 0.394565500255052,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232716294,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.46153925497660564,
+            "new_edge_jump_norm": 0.42018325555418584,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723392114,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.840576687520105,
+            "new_edge_jump_norm": 0.7782328611274483,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234317113,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5957972485551841,
+            "new_edge_jump_norm": 0.6399469858838391,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11743,
+        "Ring_occluded_N": 0,
+        "miss_N": 23,
+        "robust_nonzero_derivative_N": 11743,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.33996424184132323,
+        "depth_MAE_mm": 0.29496530845244573,
+        "depth_median_mm": 0.27050950187160083,
+        "depth_p95_mm": 0.8891682104866091,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19351,
+        "Ring_occluded_N": 0,
+        "miss_N": 30,
+        "robust_nonzero_derivative_N": 19351,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.3076853540458522,
+        "depth_MAE_mm": 0.27298421359478464,
+        "depth_median_mm": 0.17533264452098862,
+        "depth_p95_mm": 0.8480909237803651,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 25,
+    "accepted": true,
+    "accepted_total": 25,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.011423921902545734,
+    "gradient_norm": 0.0007101145013174092,
+    "max_step_mm": 0.04053879892843469,
+    "max_total_mm": 0.8810567119947165,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004326302545248634,
+      "missing": 0.036461660431491,
+      "extra": 0.0015196140092383654,
+      "contour": 0.29204450185046366,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.31386079574095127,
+      "prior": 0.0004949894500896335,
+      "Ring_indicator": 0.0,
+      "total": 0.011423921902545734,
+      "ramp": 0.71875,
+      "weighted_HERO": 0.0031386079574095126,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0004949894500896335,
+      "weighted_silhouette": 0.007790324495046588
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.040538798928435094,
+            "new_max_mm": 0.040538798928435094,
+            "raw_edge_jump_norm": 0.5387455241806742,
+            "new_edge_jump_norm": 0.3201327207640364,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 5.8884046101020885e-06,
+            "new_max_mm": 5.8884046101020885e-06,
+            "raw_edge_jump_norm": 2.963686573756577e-05,
+            "new_edge_jump_norm": 2.577628832347757e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723110288,
+            "new_max_mm": 0.1609790723110288,
+            "raw_edge_jump_norm": 0.528533604580826,
+            "new_edge_jump_norm": 0.47351575274920715,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230585845,
+            "new_max_mm": 0.16097907230585845,
+            "raw_edge_jump_norm": 0.4280338988051202,
+            "new_edge_jump_norm": 0.3939385290192609,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229391062,
+            "new_max_mm": 0.16097907229391062,
+            "raw_edge_jump_norm": 0.5220593251627678,
+            "new_edge_jump_norm": 0.4806205342484546,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723374209,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5845419175574013,
+            "new_edge_jump_norm": 0.6073373393197219,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11747,
+        "Ring_occluded_N": 0,
+        "miss_N": 19,
+        "robust_nonzero_derivative_N": 11747,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.3235064024581763,
+        "depth_MAE_mm": 0.2917714503930944,
+        "depth_median_mm": 0.2624053553851198,
+        "depth_p95_mm": 0.89701926938175,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19353,
+        "Ring_occluded_N": 0,
+        "miss_N": 28,
+        "robust_nonzero_derivative_N": 19353,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.3042151890237263,
+        "depth_MAE_mm": 0.2750557433153118,
+        "depth_median_mm": 0.1816292535329751,
+        "depth_p95_mm": 0.8468656220600178,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 26,
+    "accepted": true,
+    "accepted_total": 26,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.01150552239370156,
+    "gradient_norm": 0.000801046230783455,
+    "max_step_mm": 0.04066257616034374,
+    "max_total_mm": 0.9096018824218464,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004351646264290644,
+      "missing": 0.03634150388340155,
+      "extra": 0.0015606009530731374,
+      "contour": 0.2928505595020468,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.3096143196076558,
+      "prior": 0.0005003199330531061,
+      "Ring_indicator": 0.0,
+      "total": 0.01150552239370156,
+      "ramp": 0.7375,
+      "weighted_HERO": 0.0030961431960765578,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0005003199330531061,
+      "weighted_silhouette": 0.007909059264571895
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.04066257616034324,
+            "new_max_mm": 0.04066257616034324,
+            "raw_edge_jump_norm": 0.5392787580124558,
+            "new_edge_jump_norm": 0.33046203646491173,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.178048564045704e-06,
+            "new_max_mm": 6.178048564045704e-06,
+            "raw_edge_jump_norm": 3.326515902479172e-05,
+            "new_edge_jump_norm": 2.7054634289227196e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231480796,
+            "new_max_mm": 0.16097907231480796,
+            "raw_edge_jump_norm": 0.6217612255876732,
+            "new_edge_jump_norm": 0.5277442197108694,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229568212,
+            "new_max_mm": 0.16097907229568212,
+            "raw_edge_jump_norm": 0.4361450799878961,
+            "new_edge_jump_norm": 0.3990975670285284,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723139615,
+            "new_max_mm": 0.1609790723139615,
+            "raw_edge_jump_norm": 0.5634579456370833,
+            "new_edge_jump_norm": 0.47805532304133247,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723432837,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5541276126825957,
+            "new_edge_jump_norm": 0.6406507778888872,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11749,
+        "Ring_occluded_N": 0,
+        "miss_N": 17,
+        "robust_nonzero_derivative_N": 11749,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.3134616507247908,
+        "depth_MAE_mm": 0.2881563961433228,
+        "depth_median_mm": 0.2554620601039659,
+        "depth_p95_mm": 0.9132768098289669,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19353,
+        "Ring_occluded_N": 0,
+        "miss_N": 28,
+        "robust_nonzero_derivative_N": 19353,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.30576698849052075,
+        "depth_MAE_mm": 0.2782534262159965,
+        "depth_median_mm": 0.188518368569909,
+        "depth_p95_mm": 0.8458848081564123,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 27,
+    "accepted": true,
+    "accepted_total": 27,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 0.5,
+    "objective": 0.011583606321367828,
+    "gradient_norm": 0.0008807253054936823,
+    "max_step_mm": 0.02036005856339371,
+    "max_total_mm": 0.9260127149153162,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0043621742192448834,
+      "missing": 0.03631367596487203,
+      "extra": 0.0015755746862851083,
+      "contour": 0.2915764713066061,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.3081860085272662,
+      "prior": 0.0005018376396037638,
+      "Ring_indicator": 0.0,
+      "total": 0.011583606321367828,
+      "ramp": 0.7562500000000001,
+      "weighted_HERO": 0.003081860085272662,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0005018376396037638,
+      "weighted_silhouette": 0.007999908596491401
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.040720117126786796,
+            "new_max_mm": 0.040720117126786796,
+            "raw_edge_jump_norm": 0.5404388738944695,
+            "new_edge_jump_norm": 0.34642602814123685,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 7.771866117051211e-06,
+            "new_max_mm": 7.771866117051211e-06,
+            "raw_edge_jump_norm": 3.6343607672430246e-05,
+            "new_edge_jump_norm": 2.952201114332879e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232291137,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5991383592228553,
+            "new_edge_jump_norm": 0.508769895254693,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723317326,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4422773527644573,
+            "new_edge_jump_norm": 0.40286420803754314,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233021935,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5433956444637088,
+            "new_edge_jump_norm": 0.6250386091223549,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231754555,
+            "new_max_mm": 0.16097907231754555,
+            "raw_edge_jump_norm": 0.8223803240743013,
+            "new_edge_jump_norm": 0.6085634392122174,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11749,
+        "Ring_occluded_N": 0,
+        "miss_N": 17,
+        "robust_nonzero_derivative_N": 11749,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.3113755330856008,
+        "depth_MAE_mm": 0.2859179795977824,
+        "depth_median_mm": 0.25161977420948745,
+        "depth_p95_mm": 0.9199007940744935,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19354,
+        "Ring_occluded_N": 0,
+        "miss_N": 27,
+        "robust_nonzero_derivative_N": 19354,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.30499648396893153,
+        "depth_MAE_mm": 0.280377401174882,
+        "depth_median_mm": 0.19208753995786054,
+        "depth_p95_mm": 0.8455581580561449,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 28,
+    "accepted": true,
+    "accepted_total": 28,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 0.0625,
+    "objective": 0.011672486507140156,
+    "gradient_norm": 0.000909142415241482,
+    "max_step_mm": 0.0025456961909761564,
+    "max_total_mm": 0.9285168613902642,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004362982529629435,
+      "missing": 0.03631321402887504,
+      "extra": 0.001576589899034136,
+      "contour": 0.29154108210037033,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.30800496839729774,
+      "prior": 0.000501781003549695,
+      "Ring_indicator": 0.0,
+      "total": 0.011672486507140156,
+      "ramp": 0.7749999999999999,
+      "weighted_HERO": 0.0030800496839729773,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.000501781003549695,
+      "weighted_silhouette": 0.008090655819617484
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.04073113905562139,
+            "new_max_mm": 0.04073113905562139,
+            "raw_edge_jump_norm": 0.5478352006444674,
+            "new_edge_jump_norm": 0.3720422542757081,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 8.32772191319143e-06,
+            "new_max_mm": 8.32772191319143e-06,
+            "raw_edge_jump_norm": 3.745275472496749e-05,
+            "new_edge_jump_norm": 3.0468556501854253e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232390854,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5882168685581265,
+            "new_edge_jump_norm": 0.4993569371221185,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229435873,
+            "new_max_mm": 0.16097907229435873,
+            "raw_edge_jump_norm": 0.44795369990328465,
+            "new_edge_jump_norm": 0.4066717742456263,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234774053,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5393649856091889,
+            "new_edge_jump_norm": 0.6247339588705203,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907223927652,
+            "new_max_mm": 0.16097907223927652,
+            "raw_edge_jump_norm": 0.5877534043744852,
+            "new_edge_jump_norm": 0.5129579260101832,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11749,
+        "Ring_occluded_N": 0,
+        "miss_N": 17,
+        "robust_nonzero_derivative_N": 11749,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.310851485185955,
+        "depth_MAE_mm": 0.28549345790477193,
+        "depth_median_mm": 0.25119172587277916,
+        "depth_p95_mm": 0.9195712277020793,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19354,
+        "Ring_occluded_N": 0,
+        "miss_N": 27,
+        "robust_nonzero_derivative_N": 19354,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.3051584516086405,
+        "depth_MAE_mm": 0.28068060236516285,
+        "depth_median_mm": 0.19248304593371657,
+        "depth_p95_mm": 0.8457714659296006,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 29,
+    "accepted": true,
+    "accepted_total": 29,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 0.015625,
+    "objective": 0.011762256091638208,
+    "gradient_norm": 0.0009097711705170026,
+    "max_step_mm": 0.000636251136434688,
+    "max_total_mm": 0.9291377050263899,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004363035990132226,
+      "missing": 0.03631350936161147,
+      "extra": 0.0015766367109285458,
+      "contour": 0.29153065065782696,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.30797398449177865,
+      "prior": 0.0005016905488446355,
+      "Ring_indicator": 0.0,
+      "total": 0.011762256091638208,
+      "ramp": 0.79375,
+      "weighted_HERO": 0.0030797398449177865,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0005016905488446355,
+      "weighted_silhouette": 0.008180825697875786
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.04072007273181616,
+            "new_max_mm": 0.04072007273181616,
+            "raw_edge_jump_norm": 0.5712158379360786,
+            "new_edge_jump_norm": 0.42265275337539127,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 8.37639578380235e-06,
+            "new_max_mm": 8.37639578380235e-06,
+            "raw_edge_jump_norm": 3.746169888046297e-05,
+            "new_edge_jump_norm": 3.045680892107474e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723270555,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5864411375664652,
+            "new_edge_jump_norm": 0.4977960387442078,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229201017,
+            "new_max_mm": 0.16097907229201017,
+            "raw_edge_jump_norm": 0.44803354905357123,
+            "new_edge_jump_norm": 0.40630386259078916,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232688946,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5390039577354655,
+            "new_edge_jump_norm": 0.6244899511502207,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907236407977,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5844293375900401,
+            "new_edge_jump_norm": 0.509890548186998,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11749,
+        "Ring_occluded_N": 0,
+        "miss_N": 17,
+        "robust_nonzero_derivative_N": 11749,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.31073562264643273,
+        "depth_MAE_mm": 0.285392017690052,
+        "depth_median_mm": 0.25099466205002585,
+        "depth_p95_mm": 0.9196864987072377,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19354,
+        "Ring_occluded_N": 0,
+        "miss_N": 27,
+        "robust_nonzero_derivative_N": 19354,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.3052123463371246,
+        "depth_MAE_mm": 0.2807715677987896,
+        "depth_median_mm": 0.19261386124344426,
+        "depth_p95_mm": 0.8456918849625413,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 30,
+    "accepted": true,
+    "accepted_total": 30,
+    "stall": 0,
+    "method": "PCOH_STEEPEST_RESTART",
+    "alpha": 1.0,
+    "objective": 0.011852424828585782,
+    "gradient_norm": 0.0009095528633166646,
+    "max_step_mm": 8.38987028073179e-06,
+    "max_total_mm": 0.9291366129120096,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004363022731720573,
+      "missing": 0.0363135344038407,
+      "extra": 0.0015766192615653078,
+      "contour": 0.2915306529371602,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.3079739058718728,
+      "prior": 0.0005016889772377908,
+      "Ring_indicator": 0.0,
+      "total": 0.011852424828585782,
+      "ramp": 0.8125,
+      "weighted_HERO": 0.003079739058718728,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0005016889772377908,
+      "weighted_silhouette": 0.008270996792629264
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.04069157739836961,
+            "new_max_mm": 0.04069157739836961,
+            "raw_edge_jump_norm": 0.6037576786100687,
+            "new_edge_jump_norm": 0.49075720966616015,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 8.389870280484227e-06,
+            "new_max_mm": 8.389870280484227e-06,
+            "raw_edge_jump_norm": 3.745408604831217e-05,
+            "new_edge_jump_norm": 3.0447290951600213e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232262298,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5856723845466918,
+            "new_edge_jump_norm": 0.4971728036877962,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230895292,
+            "new_max_mm": 0.16097907230895292,
+            "raw_edge_jump_norm": 0.44786772074707065,
+            "new_edge_jump_norm": 0.40608321962001775,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723275612,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5390620125974429,
+            "new_edge_jump_norm": 0.6232383386223832,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907228247094,
+            "new_max_mm": 0.16097907228247094,
+            "raw_edge_jump_norm": 0.584832515635453,
+            "new_edge_jump_norm": 0.5095280340993438,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11749,
+        "Ring_occluded_N": 0,
+        "miss_N": 17,
+        "robust_nonzero_derivative_N": 11749,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.31073489239407226,
+        "depth_MAE_mm": 0.28539155938923655,
+        "depth_median_mm": 0.2509942226295294,
+        "depth_p95_mm": 0.9196855718318548,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19354,
+        "Ring_occluded_N": 0,
+        "miss_N": 27,
+        "robust_nonzero_derivative_N": 19354,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.30521291934967326,
+        "depth_MAE_mm": 0.28077215393932775,
+        "depth_median_mm": 0.19261407081382131,
+        "depth_p95_mm": 0.8456930587182925,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 31,
+    "accepted": true,
+    "accepted_total": 31,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 1.0,
+    "objective": 0.011862486485708488,
+    "gradient_norm": 0.0009092196672968106,
+    "max_step_mm": 0.03463950399363208,
+    "max_total_mm": 0.927380926134243,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004328825743868947,
+      "missing": 0.03612308452526728,
+      "extra": 0.0015570365940220654,
+      "contour": 0.2929270371453814,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.3051680540773477,
+      "prior": 0.000480944145238027,
+      "Ring_indicator": 0.0,
+      "total": 0.011862486485708488,
+      "ramp": 0.83125,
+      "weighted_HERO": 0.003051680540773477,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.000480944145238027,
+      "weighted_silhouette": 0.008329861799696983
+    },
+    "reasons": [],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034639503993631866,
+            "new_max_mm": 0.034639503993631866,
+            "raw_edge_jump_norm": 1.8786351217572013,
+            "new_edge_jump_norm": 0.966164633052213,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 8.393151231438612e-06,
+            "new_max_mm": 8.393151231438612e-06,
+            "raw_edge_jump_norm": 3.743952327141007e-05,
+            "new_edge_jump_norm": 3.0434833532805827e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233404166,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5851575924731436,
+            "new_edge_jump_norm": 0.4967797501796003,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232073638,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.44761857138053496,
+            "new_edge_jump_norm": 0.4058059266289048,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233726047,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.539374592561233,
+            "new_edge_jump_norm": 0.6216276546927878,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231078157,
+            "new_max_mm": 0.16097907231078157,
+            "raw_edge_jump_norm": 0.5858506895902983,
+            "new_edge_jump_norm": 0.5098717055646779,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11750,
+        "Ring_occluded_N": 0,
+        "miss_N": 16,
+        "robust_nonzero_derivative_N": 11750,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.28977307588964624,
+        "depth_MAE_mm": 0.2730369452758822,
+        "depth_median_mm": 0.23879401788521193,
+        "depth_p95_mm": 0.9007311747047418,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19352,
+        "Ring_occluded_N": 0,
+        "miss_N": 29,
+        "robust_nonzero_derivative_N": 19352,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.3205630322650492,
+        "depth_MAE_mm": 0.29504771699434995,
+        "depth_median_mm": 0.20870158772213543,
+        "depth_p95_mm": 0.8532213444189544,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 32,
+    "accepted": true,
+    "accepted_total": 32,
+    "stall": 0,
+    "method": "PCOH_STEEPEST_RESTART",
+    "alpha": 1.0,
+    "objective": 0.011952722924377225,
+    "gradient_norm": 0.0008296421696232257,
+    "max_step_mm": 6.967481630649169e-06,
+    "max_total_mm": 0.9273800961750054,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.0043288134943900835,
+      "missing": 0.03612314102550348,
+      "extra": 0.0015570169651053017,
+      "contour": 0.2929270494781286,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.30516800081186163,
+      "prior": 0.0004809427773579955,
+      "Ring_indicator": 0.0,
+      "total": 0.011952722924377225,
+      "ramp": 0.8500000000000001,
+      "weighted_HERO": 0.003051680008118616,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0004809427773579955,
+      "weighted_silhouette": 0.008420100138900613
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03465203903499522,
+            "new_max_mm": 0.03465203903499522,
+            "raw_edge_jump_norm": 1.435206335307255,
+            "new_edge_jump_norm": 0.7307510452546617,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.967481631028942e-06,
+            "new_max_mm": 6.967481631028942e-06,
+            "raw_edge_jump_norm": 3.525560731443173e-05,
+            "new_edge_jump_norm": 2.8531592405926663e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723323575,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.6004865592191665,
+            "new_edge_jump_norm": 0.5105180617944973,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230237096,
+            "new_max_mm": 0.16097907230237096,
+            "raw_edge_jump_norm": 0.4262823006708057,
+            "new_edge_jump_norm": 0.38697389348829553,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231864103,
+            "new_max_mm": 0.16097907231864103,
+            "raw_edge_jump_norm": 0.4978052695283084,
+            "new_edge_jump_norm": 0.42749905433349067,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232774336,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4238563165859713,
+            "new_edge_jump_norm": 0.3818609741793057,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11750,
+        "Ring_occluded_N": 0,
+        "miss_N": 16,
+        "robust_nonzero_derivative_N": 11750,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.28977259062468436,
+        "depth_MAE_mm": 0.2730366162907825,
+        "depth_median_mm": 0.23879421031888626,
+        "depth_p95_mm": 0.90072925537147,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19352,
+        "Ring_occluded_N": 0,
+        "miss_N": 29,
+        "robust_nonzero_derivative_N": 19352,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.3205634109990389,
+        "depth_MAE_mm": 0.2950481304448549,
+        "depth_median_mm": 0.20870191908591096,
+        "depth_p95_mm": 0.8532222080039694,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 33,
+    "accepted": true,
+    "accepted_total": 33,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 0.5,
+    "objective": 0.012036327177260293,
+    "gradient_norm": 0.0008278821274913716,
+    "max_step_mm": 0.0173195937327221,
+    "max_total_mm": 0.9350333326864648,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.00428598055926462,
+      "missing": 0.036412698320216604,
+      "extra": 0.0014814305080411334,
+      "contour": 0.2898549628785115,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.3120968164928388,
+      "prior": 0.0004652372153941542,
+      "Ring_indicator": 0.0,
+      "total": 0.012036327177260293,
+      "ramp": 0.8687499999999999,
+      "weighted_HERO": 0.0031209681649283882,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0004652372153941542,
+      "weighted_silhouette": 0.00845012179693775
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463918746544408,
+            "new_max_mm": 0.03463918746544408,
+            "raw_edge_jump_norm": 2.064924940287448,
+            "new_edge_jump_norm": 1.0484820626874518,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.964723497310612e-06,
+            "new_max_mm": 6.964723497310612e-06,
+            "raw_edge_jump_norm": 3.520147249316017e-05,
+            "new_edge_jump_norm": 2.848081123584129e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231847405,
+            "new_max_mm": 0.16097907231847405,
+            "raw_edge_jump_norm": 0.6000075854457393,
+            "new_edge_jump_norm": 0.510173094352643,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232891057,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4261067254394492,
+            "new_edge_jump_norm": 0.3867485848112125,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723141922,
+            "new_max_mm": 0.1609790723141922,
+            "raw_edge_jump_norm": 0.49567803241425606,
+            "new_edge_jump_norm": 0.4260090716822342,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234865122,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4235528728679853,
+            "new_edge_jump_norm": 0.38165127694245016,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11747,
+        "Ring_occluded_N": 0,
+        "miss_N": 19,
+        "robust_nonzero_derivative_N": 11747,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.2921644155047295,
+        "depth_MAE_mm": 0.2674519936790379,
+        "depth_median_mm": 0.22996643396114536,
+        "depth_p95_mm": 0.894280107227577,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19350,
+        "Ring_occluded_N": 0,
+        "miss_N": 31,
+        "robust_nonzero_derivative_N": 19350,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.33202921748094816,
+        "depth_MAE_mm": 0.3030512762514474,
+        "depth_median_mm": 0.21746487542877446,
+        "depth_p95_mm": 0.8513035173872271,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 34,
+    "accepted": true,
+    "accepted_total": 34,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 0.03125,
+    "objective": 0.012123244133628218,
+    "gradient_norm": 0.0006994770138445444,
+    "max_step_mm": 0.0010825749903350984,
+    "max_total_mm": 0.935212509826507,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004284105768116811,
+      "missing": 0.03642143205636077,
+      "extra": 0.0014784019957813951,
+      "contour": 0.2898329815177095,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.31206289494596345,
+      "prior": 0.00046443656901828945,
+      "Ring_indicator": 0.0,
+      "total": 0.012123244133628218,
+      "ramp": 0.8875,
+      "weighted_HERO": 0.0031206289494596345,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00046443656901828945,
+      "weighted_silhouette": 0.008538178615150294
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03464239969072734,
+            "new_max_mm": 0.03464239969072734,
+            "raw_edge_jump_norm": 1.643787638179092,
+            "new_edge_jump_norm": 0.8443944571565452,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.169127102204412e-06,
+            "new_max_mm": 6.169127102204412e-06,
+            "raw_edge_jump_norm": 3.0045463847386527e-05,
+            "new_edge_jump_norm": 2.4051860042938885e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232915315,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5934434171823865,
+            "new_edge_jump_norm": 0.506080116842795,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230958972,
+            "new_max_mm": 0.16097907230958972,
+            "raw_edge_jump_norm": 0.41924996261412995,
+            "new_edge_jump_norm": 0.3892312154015841,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232756983,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.47511566811478884,
+            "new_edge_jump_norm": 0.6857284337215193,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230879507,
+            "new_max_mm": 0.16097907230879507,
+            "raw_edge_jump_norm": 0.47088027963681267,
+            "new_edge_jump_norm": 0.42996633874790685,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11747,
+        "Ring_occluded_N": 0,
+        "miss_N": 19,
+        "robust_nonzero_derivative_N": 11747,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.2918026043474291,
+        "depth_MAE_mm": 0.26719055004498005,
+        "depth_median_mm": 0.22925034083912976,
+        "depth_p95_mm": 0.8943495502240772,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19350,
+        "Ring_occluded_N": 0,
+        "miss_N": 31,
+        "robust_nonzero_derivative_N": 19350,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.3323231855444978,
+        "depth_MAE_mm": 0.30342976199672494,
+        "depth_median_mm": 0.2181593768420811,
+        "depth_p95_mm": 0.8509169819438235,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 35,
+    "accepted": true,
+    "accepted_total": 35,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 0.0078125,
+    "objective": 0.012212112607070495,
+    "gradient_norm": 0.0006920805268441754,
+    "max_step_mm": 0.00027067827048813086,
+    "max_total_mm": 0.9352458572128038,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004283682482006649,
+      "missing": 0.03642260862721337,
+      "extra": 0.0014777849816406767,
+      "contour": 0.2897990921933893,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.31205315693879987,
+      "prior": 0.00046423269668594003,
+      "Ring_indicator": 0.0,
+      "total": 0.012212112607070495,
+      "ramp": 0.90625,
+      "weighted_HERO": 0.0031205315693879987,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00046423269668594003,
+      "weighted_silhouette": 0.008627348340996557
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034646818622475116,
+            "new_max_mm": 0.034646818622475116,
+            "raw_edge_jump_norm": 1.6048086543720848,
+            "new_edge_jump_norm": 0.8251002804347509,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.110407581471683e-06,
+            "new_max_mm": 6.110407581471683e-06,
+            "raw_edge_jump_norm": 2.9740459232394777e-05,
+            "new_edge_jump_norm": 2.378376350854918e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907230359657,
+            "new_max_mm": 0.16097907230359657,
+            "raw_edge_jump_norm": 0.5929412221810905,
+            "new_edge_jump_norm": 0.505808882932489,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229960887,
+            "new_max_mm": 0.16097907229960887,
+            "raw_edge_jump_norm": 0.41857069037099925,
+            "new_edge_jump_norm": 0.3885895249480533,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232784328,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4742974127563466,
+            "new_edge_jump_norm": 0.6825219462337984,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723432498,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4761400582950089,
+            "new_edge_jump_norm": 0.4336026695616209,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11747,
+        "Ring_occluded_N": 0,
+        "miss_N": 19,
+        "robust_nonzero_derivative_N": 11747,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.2917202487129869,
+        "depth_MAE_mm": 0.26712961486888764,
+        "depth_median_mm": 0.22893124512016527,
+        "depth_p95_mm": 0.8943897128919225,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19350,
+        "Ring_occluded_N": 0,
+        "miss_N": 31,
+        "robust_nonzero_derivative_N": 19350,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.3323860651646128,
+        "depth_MAE_mm": 0.30351553540387216,
+        "depth_median_mm": 0.21831832377582217,
+        "depth_p95_mm": 0.8507538926049857,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 36,
+    "accepted": true,
+    "accepted_total": 36,
+    "stall": 0,
+    "method": "PCOH_STEEPEST_RESTART",
+    "alpha": 1.0,
+    "objective": 0.012301973410136067,
+    "gradient_norm": 0.0006892739860495324,
+    "max_step_mm": 6.090980478976008e-06,
+    "max_total_mm": 0.9352451776601324,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004283674514024622,
+      "missing": 0.03642263718777232,
+      "extra": 0.0014777732366282078,
+      "contour": 0.2897991000699323,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.3120531536564549,
+      "prior": 0.0004642317071557045,
+      "Ring_indicator": 0.0,
+      "total": 0.012301973410136067,
+      "ramp": 0.925,
+      "weighted_HERO": 0.003120531536564549,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0004642317071557045,
+      "weighted_silhouette": 0.008717210166415813
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034682602922012674,
+            "new_max_mm": 0.034682602922012674,
+            "raw_edge_jump_norm": 1.602082791219067,
+            "new_edge_jump_norm": 0.8243722603722019,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.090980479152706e-06,
+            "new_max_mm": 6.090980479152706e-06,
+            "raw_edge_jump_norm": 2.9620022016264907e-05,
+            "new_edge_jump_norm": 2.368489639161197e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232282438,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.5926635870391497,
+            "new_edge_jump_norm": 0.5056415120731815,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232723316,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4183053380228036,
+            "new_edge_jump_norm": 0.3883072677174325,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723226613,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4742309707704784,
+            "new_edge_jump_norm": 0.6777711150634438,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723342973,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.478795616072154,
+            "new_edge_jump_norm": 0.4356387294256377,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11747,
+        "Ring_occluded_N": 0,
+        "miss_N": 19,
+        "robust_nonzero_derivative_N": 11747,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.2917200140347769,
+        "depth_MAE_mm": 0.26712949142921977,
+        "depth_median_mm": 0.22893308033472692,
+        "depth_p95_mm": 0.8943894273785418,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19350,
+        "Ring_occluded_N": 0,
+        "miss_N": 31,
+        "robust_nonzero_derivative_N": 19350,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.33238629327813296,
+        "depth_MAE_mm": 0.30351577592207923,
+        "depth_median_mm": 0.21831835422417356,
+        "depth_p95_mm": 0.8507534366187239,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 37,
+    "accepted": true,
+    "accepted_total": 37,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 0.25,
+    "objective": 0.012382986035574785,
+    "gradient_norm": 0.000688467949834828,
+    "max_step_mm": 0.00865972641807749,
+    "max_total_mm": 0.9359921592134423,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004275698900326258,
+      "missing": 0.036378640681505196,
+      "extra": 0.0014713534037582576,
+      "contour": 0.2895180299246022,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.3129817854788328,
+      "prior": 0.0004590962780639529,
+      "Ring_indicator": 0.0,
+      "total": 0.012382986035574785,
+      "ramp": 0.9437500000000001,
+      "weighted_HERO": 0.0031298178547883282,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0004590962780639529,
+      "weighted_silhouette": 0.008794071902722503
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463890567230906,
+            "new_max_mm": 0.03463890567230906,
+            "raw_edge_jump_norm": 2.0334450929525536,
+            "new_edge_jump_norm": 1.01410943866159,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 6.085048008106393e-06,
+            "new_max_mm": 6.085048008106393e-06,
+            "raw_edge_jump_norm": 2.958819839419291e-05,
+            "new_edge_jump_norm": 2.3659875095657083e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231942998,
+            "new_max_mm": 0.16097907231942998,
+            "raw_edge_jump_norm": 0.5923286123199238,
+            "new_edge_jump_norm": 0.505409054135944,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790722994254,
+            "new_max_mm": 0.1609790722994254,
+            "raw_edge_jump_norm": 0.4181550612836909,
+            "new_edge_jump_norm": 0.388174995456798,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231155797,
+            "new_max_mm": 0.16097907231155797,
+            "raw_edge_jump_norm": 0.47440610529450117,
+            "new_edge_jump_norm": 0.6724311497656864,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907233179526,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.48145608150843416,
+            "new_edge_jump_norm": 0.4376785828597013,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11746,
+        "Ring_occluded_N": 0,
+        "miss_N": 20,
+        "robust_nonzero_derivative_N": 11746,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.2924524634744642,
+        "depth_MAE_mm": 0.2652128058753307,
+        "depth_median_mm": 0.22339738211584148,
+        "depth_p95_mm": 0.8946144353000278,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19350,
+        "Ring_occluded_N": 0,
+        "miss_N": 31,
+        "robust_nonzero_derivative_N": 19350,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.3335111074832015,
+        "depth_MAE_mm": 0.3055031154832722,
+        "depth_median_mm": 0.22174484649449866,
+        "depth_p95_mm": 0.8502726229550196,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 38,
+    "accepted": true,
+    "accepted_total": 38,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 0.0625,
+    "objective": 0.012468434402858811,
+    "gradient_norm": 0.000647283889416391,
+    "max_step_mm": 0.002164710761463011,
+    "max_total_mm": 0.9360766187943134,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004272862841996054,
+      "missing": 0.03638340739740265,
+      "extra": 0.0014674622733663353,
+      "contour": 0.28949157740946413,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.31298957487338963,
+      "prior": 0.00045774629688821733,
+      "Ring_indicator": 0.0,
+      "total": 0.012468434402858811,
+      "ramp": 0.9624999999999999,
+      "weighted_HERO": 0.0031298957487338962,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00045774629688821733,
+      "weighted_silhouette": 0.008880792357236697
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03463537218340751,
+            "new_max_mm": 0.03463537218340751,
+            "raw_edge_jump_norm": 1.536651684766117,
+            "new_edge_jump_norm": 0.7755220002786459,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 5.720945078897551e-06,
+            "new_max_mm": 5.720945078897551e-06,
+            "raw_edge_jump_norm": 2.8020350765617435e-05,
+            "new_edge_jump_norm": 2.2157827649381984e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232828754,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.591167973628021,
+            "new_edge_jump_norm": 0.506445701827218,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723225792,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.41100353099466325,
+            "new_edge_jump_norm": 0.3776858442831543,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229252353,
+            "new_max_mm": 0.16097907229252353,
+            "raw_edge_jump_norm": 0.4726698526899213,
+            "new_edge_jump_norm": 0.4272908077116267,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907234135156,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.46284480034759595,
+            "new_edge_jump_norm": 0.6256823353621197,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11746,
+        "Ring_occluded_N": 0,
+        "miss_N": 20,
+        "robust_nonzero_derivative_N": 11746,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.29184051969534824,
+        "depth_MAE_mm": 0.2647055642653152,
+        "depth_median_mm": 0.22249208317634128,
+        "depth_p95_mm": 0.893652620454823,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19350,
+        "Ring_occluded_N": 0,
+        "miss_N": 31,
+        "robust_nonzero_derivative_N": 19350,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.334138630051431,
+        "depth_MAE_mm": 0.30624993519721433,
+        "depth_median_mm": 0.22284631432777857,
+        "depth_p95_mm": 0.8508171854703552,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 39,
+    "accepted": true,
+    "accepted_total": 39,
+    "stall": 0,
+    "method": "PCOH_ADAM",
+    "alpha": 0.0078125,
+    "objective": 0.01255762797381964,
+    "gradient_norm": 0.0006351572378320095,
+    "max_step_mm": 0.0002707017217270328,
+    "max_total_mm": 0.9360849666940633,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004272486781701446,
+      "missing": 0.03638391921089755,
+      "extra": 0.00146697482947881,
+      "contour": 0.2894850637754136,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.3129928855820781,
+      "prior": 0.0004575806378852576,
+      "Ring_indicator": 0.0,
+      "total": 0.01255762797381964,
+      "ramp": 0.98125,
+      "weighted_HERO": 0.003129928855820781,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.0004575806378852576,
+      "weighted_silhouette": 0.0089701184801136
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.034649820381046095,
+            "new_max_mm": 0.034649820381046095,
+            "raw_edge_jump_norm": 1.4527480446865453,
+            "new_edge_jump_norm": 0.7382119941371866,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 5.599353202023541e-06,
+            "new_max_mm": 5.599353202023541e-06,
+            "raw_edge_jump_norm": 2.7492553028599877e-05,
+            "new_edge_jump_norm": 2.1710581698131717e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907229695005,
+            "new_max_mm": 0.16097907229695005,
+            "raw_edge_jump_norm": 0.5914297054921805,
+            "new_edge_jump_norm": 0.5070382631235415,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.160979072341195,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.40952209893670716,
+            "new_edge_jump_norm": 0.3757730171901304,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723531377,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4719740676051017,
+            "new_edge_jump_norm": 0.42633061366712943,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231280784,
+            "new_max_mm": 0.16097907231280784,
+            "raw_edge_jump_norm": 0.4615706682698944,
+            "new_edge_jump_norm": 0.6175471189984215,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11746,
+        "Ring_occluded_N": 0,
+        "miss_N": 20,
+        "robust_nonzero_derivative_N": 11746,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.29175747061393287,
+        "depth_MAE_mm": 0.26463762699559895,
+        "depth_median_mm": 0.22235279528734253,
+        "depth_p95_mm": 0.8935469326333969,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19350,
+        "Ring_occluded_N": 0,
+        "miss_N": 31,
+        "robust_nonzero_derivative_N": 19350,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.33422830055022335,
+        "depth_MAE_mm": 0.30635004217915585,
+        "depth_median_mm": 0.22299476320768008,
+        "depth_p95_mm": 0.8509641695773238,
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "case": "G01",
+    "attempt": 40,
+    "accepted": true,
+    "accepted_total": 40,
+    "stall": 0,
+    "method": "PCOH_STEEPEST_RESTART",
+    "alpha": 1.0,
+    "objective": 0.012647385163424568,
+    "gradient_norm": 0.0006330238796256138,
+    "max_step_mm": 5.577015016026465e-06,
+    "max_total_mm": 0.9360843991164463,
+    "lr": 0.02,
+    "parts": {
+      "silhouette": 0.004272480081352922,
+      "missing": 0.03638394383920564,
+      "extra": 0.0014669651023319196,
+      "contour": 0.2894850634029991,
+      "absolute": 0.0,
+      "relative": 0.0,
+      "hero": 0.31299289571210354,
+      "prior": 0.00045757999760098755,
+      "Ring_indicator": 0.0,
+      "total": 0.012647385163424568,
+      "ramp": 1.0,
+      "weighted_HERO": 0.0031299289571210353,
+      "weighted_old_absolute": 0.0,
+      "weighted_old_relative": 0.0,
+      "weighted_prior": 0.00045757999760098755,
+      "weighted_silhouette": 0.009059876208702545
+    },
+    "reasons": [
+      "FULL_FIT_OBJECTIVE"
+    ],
+    "coverage": {
+      "coordination": {
+        "pinned_vertex_N": 44,
+        "free_N": 598,
+        "contact_face_N": 34,
+        "lambda_sobolev": 1.0,
+        "contact_margin_mm": 0.02,
+        "projection": "Dirichlet coordinate subspace; not exact projection onto the full nonlinear feasible set",
+        "proposals": [
+          {
+            "raw_method": "ADAM",
+            "raw_max_mm": 0.03468700780395168,
+            "new_max_mm": 0.03468700780395168,
+            "raw_edge_jump_norm": 1.4442590984239039,
+            "new_edge_jump_norm": 0.7378334984400292,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "STEEPEST_RESTART",
+            "raw_max_mm": 5.577015016375059e-06,
+            "new_max_mm": 5.577015016375059e-06,
+            "raw_edge_jump_norm": 2.7409794753972534e-05,
+            "new_edge_jump_norm": 2.163863793272154e-05,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_0_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907231651773,
+            "new_max_mm": 0.16097907231651773,
+            "raw_edge_jump_norm": 0.5911209699785889,
+            "new_edge_jump_norm": 0.5068646033249204,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_1_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232949962,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4092120014046132,
+            "new_edge_jump_norm": 0.37548198266424887,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_2_TAU_NORMALIZED",
+            "raw_max_mm": 0.16097907232741515,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4743644907533038,
+            "new_edge_jump_norm": 0.42805647673674363,
+            "pinned_delta_max_mm": 0.0
+          },
+          {
+            "raw_method": "LOCAL_3_TAU_NORMALIZED",
+            "raw_max_mm": 0.1609790723302752,
+            "new_max_mm": 0.16097907231978864,
+            "raw_edge_jump_norm": 0.4613375519844991,
+            "new_edge_jump_norm": 0.614809110582527,
+            "pinned_delta_max_mm": 0.0
+          }
+        ]
+      }
+    },
+    "per_view_HERO": [
+      {
+        "view": "G01_004_ref08",
+        "fixed_N": 11766,
+        "active_N": 11746,
+        "Ring_occluded_N": 0,
+        "miss_N": 20,
+        "robust_nonzero_derivative_N": 11746,
+        "miss_gradient_supported": false,
+        "fixed_W": 11766.0,
+        "unweighted_loss": 0.29175723795562103,
+        "depth_MAE_mm": 0.26463749486452165,
+        "depth_median_mm": 0.22235279941133257,
+        "depth_p95_mm": 0.8935461921904011,
+        "weight": 0.5
+      },
+      {
+        "view": "G01_004_new_r00",
+        "fixed_N": 19381,
+        "active_N": 19350,
+        "Ring_occluded_N": 0,
+        "miss_N": 31,
+        "robust_nonzero_derivative_N": 19350,
+        "miss_gradient_supported": false,
+        "fixed_W": 19381.0,
+        "unweighted_loss": 0.334228553468586,
+        "depth_MAE_mm": 0.3063502605497742,
+        "depth_median_mm": 0.22299497277805713,
+        "depth_p95_mm": 0.8509653356502005,
+        "weight": 0.5
+      }
+    ]
+  }
+]

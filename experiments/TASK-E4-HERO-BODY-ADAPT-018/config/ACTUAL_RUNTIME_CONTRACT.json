@@ -1,0 +1,16 @@
+{
+  "actual_torch_numpy_training_seed": 20261108,
+  "protocol_recorded_seed": 20261110,
+  "explanation": "legacy016 trainer retained hardcoded seed; all14 main arms identical actual seed, no result-based reseeding or rerun. Dataset OLD sampler uses its separately frozen seed20261110.",
+  "actual_sigma_H_mm": 0.5,
+  "actual_lambda_H": 0.01,
+  "actual_lambda_S": 1.0,
+  "actual_lambda_P": 1.0,
+  "Ring": "hard relative nonworsening guard",
+  "actual_budget": {
+    "max_proposals": 80,
+    "max_accepted": 40,
+    "consecutive_rejection_stop": 30
+  },
+  "no_retroactive_protocol_overwrite": true
+}
