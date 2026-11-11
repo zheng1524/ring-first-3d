@@ -140,14 +140,14 @@ def sift_figures():
  tr=load(R/'observations/CROSS_COMMON_TRACKS.json');H0=np.array(load(R/'results/B0_RoMa.json')['T']);H=np.array(load(R/'results/B3.json')['T']);XA=np.array([t['X004_independent']for t in tr]);XB=np.array([t['X005_independent']for t in tr]);XB0=XB@H0[:3,:3].T+H0[:3,3];X=np.array(load(R/'results/B3.json')['X']);rv=np.load(R/'inputs/G01/RING.npz');fig=plt.figure(figsize=(15,10));ax=fig.add_subplot(2,2,1,projection='3d');ax.scatter(*XA.T,c='tab:blue',label='004 independently triangulated');ax.scatter(*XB0.T,c='tab:orange',label='005 independent mapped by fullRoMa')
  for i,(a,b)in enumerate(zip(XA,XB0)):ax.plot(*np.array([a,b]).T,c='gray',lw=.8);ax.text(*a,str(i),fontsize=5)
  from mpl_toolkits.mplot3d.art3d import Poly3DCollection
- ax.add_collection3d(Poly3DCollection(rv['V'][rv['F']],facecolors='black',edgecolors='none'));ax.set(xlabel='X mm',ylabel='Y mm',zlabel='Z mm');ax.legend(fontsize=6);ax.set_title('18 actual named tracks; independent positions, NOT GT')
- ax=fig.add_subplot(2,2,2);d=np.linalg.norm(XA-XB0,axis=1);ax.bar(np.arange(len(tr)),d);ax.axhline(.75,c='red',ls='--',label='old 0.75mm diagnostic, NOT rejection rule');ax.set(xlabel='actual track ID',ylabel='independent 3D separation at RoMa (mm)');ax.legend(fontsize=6)
+ ax.add_collection3d(Poly3DCollection(rv['V'][rv['F']],facecolors='black',edgecolors='none'));ax.set(xlabel='X mm',ylabel='Y mm',zlabel='Z mm');ax.legend(fontsize=6);ax.set_title('18 actual named tracks; independent positions, NOT GT');ax.set_box_aspect([np.ptp(ax.get_xlim()),np.ptp(ax.get_ylim()),np.ptp(ax.get_zlim())])
+ ax=fig.add_subplot(2,2,2);d=np.linalg.norm(XA-XB0,axis=1);ax.bar(np.arange(len(tr)),d);ax.axhline(.75,c='red',ls='--',label='old 0.75mm diagnostic, NOT rejection rule');ax.set(ylabel='independent 3D separation at RoMa (mm)');ax.set_xticks(np.arange(len(tr)));ax.tick_params(axis='x',labelsize=7);ax.legend(fontsize=6)
  for j,k in enumerate([0,9]):
   ax=fig.add_subplot(2,2,3+j);t=tr[k];obs=[next(o for o in t['observations']if o['side']==s)for s in [0,1]];strips=[]
   for o in obs:
    im=np.array(Image.open(o['RGB_source']).convert('RGB'));u,v=np.rint(o['uv']).astype(int);left=max(0,u-45);top=max(0,v-45);crop=im[top:min(im.shape[0],v+46),left:min(im.shape[1],u+46)];crop=cv2.resize(crop,(240,240));strips.append(crop)
   ax.imshow(np.concatenate(strips,axis=1));ax.axis('off');ax.set_title('Track '+str(k)+' actual RGB neighborhoods (display resized)\n'+obs[0]['view']+' → '+obs[1]['view']+' | featureIDs '+str([o['feature_id']for o in obs]))
- fig.suptitle('Fig1 | 020 independent triangulations can disagree despite real multiview descriptor/RANSAC identities\nNo spatial-nearest identity, no 3D-consistency pruning. Old robust3D proposal had5/18 inliers; bars use fullRoMa, a different transform.');fig.tight_layout(rect=[0,0,1,.93]);finish(fig,'Fig1_020_Named_Track_Problem.png')
+ fig.suptitle('Fig1 | 020 independent triangulations can disagree despite real multiview descriptor/RANSAC identities\nNo spatial-nearest identity, no 3D-consistency pruning. Old robust3D proposal had5/18 inliers; bars use fullRoMa, a different transform.');fig.tight_layout(rect=[0,0,1,.93]);fig.subplots_adjust(hspace=.32);finish(fig,'Fig1_020_Named_Track_Problem.png')
  fig,axs=plt.subplots(2,3,figsize=(17,10));axs[0,0].remove();ax=fig.add_subplot(2,3,1,projection='3d');ax.scatter(*XA.T,c='tab:blue',s=10,label='004 independent');ax.scatter(*XB0.T,c='tab:orange',s=10,label='005 independent atRoMa');ax.scatter(*X.T,c='green',s=14,label='one optimized X per identity')
  for a,b,c in zip(XA,XB0,X):ax.plot(*np.array([a,c,b]).T,c='gray',lw=.5)
  ax.set(xlabel='X mm',ylabel='Y mm',zlabel='Z mm');ax.legend(fontsize=6)
@@ -155,7 +155,7 @@ def sift_figures():
  ax.add_collection3d(Poly3DCollection(rv['V'][rv['F']],facecolors='black',edgecolors='none'))
  for vid,col in [('004','#2474b5'),('005','#dc841e')]:
   cc=[v for v in load(R/'config/VIEWS.json')if v['video']==vid];cc=sorted(cc,key=temporal_frame);c=np.array([((H@np.asarray(v['T']))if vid=='005'else np.asarray(v['T']))[:3,3]for v in cc]);ax.plot(*c.T,'.-',c=col,ms=2,label=vid+' cameras')
- ax.legend(fontsize=5)
+ ax.legend(fontsize=5);ax.set_box_aspect([np.ptp(ax.get_xlim()),np.ptp(ax.get_ylim()),np.ptp(ax.get_zlim())])
  vv=load(R/'config/VIEWS.json')
  for j,side in enumerate([0,1],1):
   cid=max(collections.Counter(o['view']for t in tr for o in t['observations']if o['side']==side),key=lambda cid:sum(o['view']==cid for t in tr for o in t['observations']));v=next(v for v in vv if v['id']==cid);im=np.load(v['cache']);ax=axs[0,j];ax.imshow(im['RGB']);C=np.asarray(v['T']);C=H@C if side else C

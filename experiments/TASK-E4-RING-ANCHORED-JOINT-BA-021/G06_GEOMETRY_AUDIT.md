@@ -83,6 +83,23 @@
 
 Ring实际顶点/面心到有效闭合主体的有符号距离；仅在主体封闭、法向一致、无非邻接自交时计算。阈值−0.001mm，与表面相交/FCL及主体→CAD检查互补；有限采样不保证不存在任何穿透。推断底盖仅用于明确标识的模型实体诊断。
 
+### 原生TRUSTED HERO与CAD材料
+
+| source | referenced_vertex_N | original_face_N | vertices_inside_CAD_beyond02mm_N | face_centers_inside_CAD_beyond02mm_N | min_signed_CAD_distance_mm | inside_face_centroid_area_proxy_mm2 |
+| --- | --- | --- | --- | --- | --- | --- |
+| G06_004_growth_r01 | 7841 | 14958 | 0 | 0 | 0.074841 | 0.000000 |
+| G06_004_growth_r03 | 7914 | 15111 | 0 | 0 | 0.087006 | 0.000000 |
+| G06_v004_raw00940 | 14524 | 28151 | 0 | 0 | 0.081477 | 0.000000 |
+| G06_004_new_r00 | 7553 | 14366 | 0 | 0 | 0.100227 | 0.000000 |
+| G06_v004_raw00721 | 10695 | 20603 | 0 | 0 | 0.049968 | 0.000000 |
+| G06_v004_raw00348 | 7413 | 14129 | 0 | 0 | 0.042655 | 0.000000 |
+| G06_004_ref04 | 8551 | 16379 | 0 | 0 | 0.101760 | 0.000000 |
+| G06_004_growth_r06 | 12197 | 23553 | 0 | 0 | -0.012087 | 0.000000 |
+| G06_v004_raw00282 | 7600 | 14472 | 0 | 0 | 0.088006 | 0.000000 |
+| G06_v004_raw00633 | 9120 | 17503 | 0 | 0 | 0.037206 | 0.000000 |
+
+全部原始来源独立记录；统一材料距离阈值−0.02mm、11射线多数符号。面积为被判入材料的原面面心面积代理，跨来源重复，不是精确穿入体积或唯一面积。未因靠近Ring删除/移动任何原面，也不把TRUSTED标签当实体无穿透证书。
+
 ### 主体的来源支持/未知面积代理
 
 | body | visible_mesh_area_mm2 | supported_centroid_area_proxy_mm2 | front_disagreement_area_proxy_mm2 | behind_only_area_proxy_mm2 | unknown_area_proxy_mm2 | supported_area_fraction |

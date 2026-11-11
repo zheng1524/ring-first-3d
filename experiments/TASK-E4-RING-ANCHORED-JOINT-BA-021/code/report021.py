@@ -5,7 +5,7 @@ import ast,platform
 
 def write(name,s):(R/name).write_text(s,encoding='utf8')
 def main():
- markers=['BA_INDEPENDENT_EVALUATION_COMPLETE','FOUR_GROUP_REPORTS_COMPLETE','ALL_FIGURES_COMPLETE','IDENTIFIABILITY_COMPLETE','PER_VIEW_COMPLETE','SHADOW_COMPLETE','BODY_ERROR_MAPS_COMPLETE','COVERAGE_FIGURES_COMPLETE','CO_VISIBLE_COMPLETE','REVERSE_RING_COMPLETE','COLLISION_FIGURES_COMPLETE']
+ markers=['BA_INDEPENDENT_EVALUATION_COMPLETE','FOUR_GROUP_REPORTS_COMPLETE','ALL_FIGURES_COMPLETE','IDENTIFIABILITY_COMPLETE','PER_VIEW_COMPLETE','SHADOW_COMPLETE','BODY_ERROR_MAPS_COMPLETE','COVERAGE_FIGURES_COMPLETE','CO_VISIBLE_COMPLETE','REVERSE_RING_COMPLETE','COLLISION_FIGURES_COMPLETE','HERO_CROSS_METHOD_COMMON_COMPLETE']
  while not all((R/'runtime'/(m+'.json')).exists()for m in markers):time.sleep(5)
  reg=load(R/'metrics/REGISTRATION_COMPARISON.json');m={a['method']:a for a in reg};sf=load(R/'metrics/SYMMETRIC_SIFT_EVALUATION.json');ss={(a['method'],a['role']):a for a in sf};hero=load(R/'metrics/HERO_INDEPENDENT_AGGREGATE.json');hh={a['method']:a for a in hero};unused=load(R/'metrics/UNUSED_SIFT_TRACK_EVALUATION.json');uu={(a['method'],a['role']):a for a in unused};inf=load(R/'metrics/BA_IDENTIFIABILITY.json');ii={a['arm']:a for a in inf};neg=load(R/'metrics/NEGATIVE_CONTROL.json');score=load(R/'metrics/FOUR_GROUP_GEOMETRY_SCORECARD.json');p=load(R/'config/PROTOCOL.json');run=[]
  for name in ['B1','B2','B3','NEG_B1','NEG_B2','NEG_B3','SENS_B2_LightGlue','SENS_B2_020R2']:
@@ -45,11 +45,16 @@ def main():
 9. **负对照更稳定吗？** 统一列出Identity、020旧负对照和021三条负对照的实际mm/deg漂移与留出。没有事后设通过阈值；即使小量漂移，也不等于原轨迹绝对正确。
 10. **HERO是否真正改善？** RoMa→B2→B3支持率{h0['support_fraction_fixed']:.3%}→{h2['support_fraction_fixed']:.3%}→{h3['support_fraction_fixed']:.3%}，Unknown{h0['unknown_fraction_fixed']:.3%}→{h2['unknown_fraction_fixed']:.3%}→{h3['unknown_fraction_fixed']:.3%}；条件MAE {h0['known_MAE_mm']:.6f}→{h2['known_MAE_mm']:.6f}→{h3['known_MAE_mm']:.6f}mm。N固定{h0['fixed_source_target_observation_denominator']:,}；降低条件MAE但减少支持不能叫全面一致性提高。HERO是独立代理，非GT。
 11. **共享SE3不能解释残余冲突？** 有。同视频内HERO相对关系不会被一个视频级共同刚体改变；四组还存在源间分歧、合法后方和Unknown。G01有向对表明确区分同视频与跨视频，可复核共享刚体的能力边界；不能强拉原面以消除残差。
-12. **G03为何没有完整长柄？** 本轮重新显示全部9份原生长柄片和短棱主体，原间隙/错层保留。G03多源深度MAE/P95={next(x for x in score if x['group']=='G03')['HERO_pair_MAE_mm']:.3f}/{next(x for x in score if x['group']=='G03')['HERO_pair_p95_mm']:.3f}mm；主体覆盖和正确首层代理、丢失/新增命中见独立报告。018 B2实际是642顶点自由位移+接触固定/Sobolev协调，COH16不是16个谱模式。历史016的未命中梯度/候选支持和方向限制证据仍适用作机制假说；本轮静态几何不能单独证明唯一原因，也不能将某一份长柄HERO直接当真值。
+12. **G03为何没有完整长柄？** 本轮重新显示全部9份原生长柄片和短棱主体，原间隙/错层保留。G03多源深度MAE/P95={next(x for x in score if x['group']=='G03')['HERO_pair_MAE_mm']:.3f}/{next(x for x in score if x['group']=='G03')['HERO_pair_p95_mm']:.3f}mm；主体覆盖和正确首层代理、丢失/新增命中见独立报告。进一步按同一原生ID核验：G03共同命中误差下降，但新增FIT/HOLDOUT射线均值7.204/7.816mm，三维连线和原面ID证明新命中落在错误的主体短翼/首层，而非恢复完整长柄。018 B2实际是642顶点自由位移+接触固定/Sobolev协调，COH16不是16个谱模式。历史016的未命中梯度/候选支持和方向限制证据仍适用作机制假说；本轮静态几何不能单独证明唯一原因，也不能将某一份长柄HERO直接当真值。
 13. **G05/G06拼接条件？** G06来源一致性相对最好，G05次之，可作为未来局部原面保留/接缝验证候选。两者仍有继承CAD微小相交，G06局部面积压缩/边长伸长明显，G05基底WEAK；均不自动获得最终融合PASS。具体区域和原面ID见各组报告。
 14. **哪些组继续跨视频？** G01已有完整双视频证据，适合继续低维几何可辨识性研究；G03/G05/G06仅按真实清点登记其他视频RGB/Mask/已有相机/HERO/SIFT，不将004叠加冒充跨视频结果。缺少相机或HERO标MISSING，不新推理或假定已恢复。
 15. **是否需要逐帧微调？** 本轮不足以直接授权全部逐帧BA。应先核对未参与轨迹的逐视角残差、Schur信息、种子敏感性及停滞提案；只有能用独立证据定位到轨迹误差时，再提出有限相机实验，避免逐帧自由度吸收错误对应/HERO误差。当前不执行相机微调。
 '''
+ verdict='## 本轮明确结论\n\n**BA执行完成，但未证明共同地标BA带来更好的独立跨视频几何。** B2对B1只增加共同X自由度，训练目标0.071305→0.067097；HOLDOUT IoU却0.897414→0.895871，未参与轨迹HOLDOUT F 1.151664→1.201915，固定HERO支持34.7308%→34.3268%。条件MAE 0.810128→0.801347mm不能单独称收益：严格共同2,088,128条观测的MAE仅0.796258→0.795371mm，新增25,584而丢失35,836条有效观测。\n\nB3对B2略改善Ring内/外缘（1.060930→1.045076、1.314954→1.290889px）和主体留出IoU，但共同HERO集合MAE微增0.799743→0.799823mm，支持率再略降；没有全面额外几何收益证据。B2/B3均未超过020 Mask-only的独立代理组合；不据此把旧候选重新命名为021输出。\n\n共同点没有无限漂移：B2最大0.290942mm，消元后位姿信息仍秩6、条件数约497；点自由度把固定点位姿信息trace降至约1/3。此结果依赖固定相机和背景匹配模型，不是绝对精度认证。未解决的固定独立锚梯度冲突仍明显（B1余弦−0.869、B2−0.916）；共同点两视频梯度近反向可只是平衡，不能称冲突消失。\n\n**停滞包含优化实现限制。** B2/B3终点点变量单独提案可降低FIT目标约5.80e−5/4.33e−5，但整个位姿+点提案被拒。小步实际值与AD一阶预测也存在偏差，涉及光栅离散/非线性及动量方向，尚未通过隔离FD证明唯一根因。拒绝后恢复相同Adam状态会重复相同提案；不能把停滞仅归因数据或宣称全局收敛。本轮只保留影子诊断，不另调参提交新候选。\n\n同视频负对照B2为0.06349mm/0.42624°、B3为0.03937mm/0.28703°，均小于020的0.07610mm/0.52239°，但B1更小，不能据此宣称共同点自由度独立更稳定；没有事后通过阈值。不同种子还改变先验中心，终点差0.079–0.134mm/0.146–0.162°，未按其HOLDOUT择优。\n\n**四组科研决策：** G05/G06的同层可见原面可作为未来局部保留/接缝小试候选；G05基底WEAK、G06局部面片压缩/拉长及两者继承CAD微穿入仍须处理。G03共同命中改善但新命中落到错误首层，不能称长柄恢复。G01仍有同视频及跨视频分歧，不能直接全局拼接。当前证据不足以跳到逐帧相机BA；先定位轨迹/匹配/渲染目标误差。\n\n**严格数值检查保留失败：** 历史020 R2旋转的正交误差约5.17e−8、det−1约3.07e−8，原样继承到SENS_B2_020R2，未通过预设1e−9严格检查。主B1/B2/B3及其SE3增量通过；未放宽阈值或改写冻结矩阵。此项是有限精度历史种子问题，不是新增尺度自由度；其量级远小于毫米级HERO分歧，不能据此解释整体几何失败。交付检查收集全部结果并保留失败，不把它制造为全PASS。\n\n'
+ bind=load(R/'config/POSTFREEZE_INTERPRETATION_BINDING.json')['prediction_signatures']
+ for n in ['B1','B2','B3']:
+  frozen=load(R/'results'/(n+'.json'));signature=hashlib.sha256(np.asarray(frozen['T'],np.float64).tobytes()+np.asarray(frozen['X'],np.float64).tobytes()).hexdigest()
+  if signature!=bind[n]:verdict='本回放的预测与021交付冻结预测不同，因此不自动复用人工写定的021结论；以下表格均来自本回放实际指标，需重新解释，禁止历史值回退。\n\n';break
  intro=f'''# 021 共同地标BA与四组定量几何审计
 
 实际完成B1/B2/B3、3条同视频负对照、2条固定历史初值敏感性；4个历史B0仅作冻结参考。全部68视角保留，18条实际共同轨迹/553个FIT像素共同约束一个共享SE3；B2/B3确实优化共同XYZ，没有ICP替代。TaskB四组51个原生来源、六视角/GLB、逐面和固定原生ID指标全部完成。
@@ -61,9 +66,11 @@ IoU无单位，边界为原640×360像素，平移mm、旋转deg。留出仅3个
 
 '''
  quartet=md(score,['group','TRUSTED_sources_N','HERO_pair_MAE_mm','HERO_pair_p95_mm','co_visible_first_layer_candidate_N','co_visible_candidate_MAE_mm','co_visible_candidate_p95_mm','HERO_support_fraction','native_TRUSTED_pixel_N','B0_FIT_HERO_MAE_mm','B2_FIT_HERO_MAE_mm','gained_FIT_N','lost_FIT_N','B2_HOLDOUT_IoU','B2_Ring_FCL_surface_collision','B2_max_edge_stretch','B2_min_area_ratio'])
- summary=intro+questions+'\n## 四组统一定量摘要\n\n'+quartet+'\n'+ ' · '.join(glink(g)for g in GROUPS)+'\n\n历史可比较深度包含合法后方，首层共视候选另列且仍是几何代理。完整分母、误差尾部、CAD/Unknown、逐面定位见各组报告；来源面积不能相加称唯一解剖面积。\n\n'+audit+'\n八张核心图、四组完整图集及GLB见[RESULT_INDEX](RESULT_INDEX.md)。全部结果提交人工审核，不启动融合或逐帧BA。\n'
+ summary=intro+verdict+questions+'\n## 四组统一定量摘要\n\n'+quartet+'\n'+ ' · '.join(glink(g)for g in GROUPS)+'\n\n历史可比较深度包含合法后方，首层共视候选另列且仍是几何代理。完整分母、误差尾部、CAD/Unknown、逐面定位见各组报告；来源面积不能相加称唯一解剖面积。\n\n'+audit+'\n八张核心图、四组完整图集及GLB见[RESULT_INDEX](RESULT_INDEX.md)。全部结果提交人工审核，不启动融合或逐帧BA。\n'
  write('TECHNICAL_REPORT_SUMMARY.md',summary)
+ common=load(R/'metrics/HERO_EXACT_CROSS_METHOD_COMMON.json');changes=load(R/'metrics/HERO_EXACT_COMMON_GAINED_LOST.json')
  details=summary+'\n## 完整同分母位姿比较\n\n'+core+'\n## 实际优化与拒绝\n\n'+md(run,['arm','iterations','accepted','rejected','initial_loss','final_loss','last_segment_seconds','completed_compute_lower_bound_seconds','max_X_displacement_mm','rejections'])+'\nB1曾随会话中断，从ITER030恢复q/X/Adam。原段日志到574.4s；上表总计算时间为已完成检查点的下界，不包含未落盘工作和等待，不伪称精确端到端墙钟。其他秒数为各实际进程段。后期反复拒绝不等于全局收敛。\n\n## 独立SIFT与未参与轨迹\n\n'+md(siftrows,['method','role','fixed_anchor_F','fixed_anchor_E','forward_N','forward_MAE_px','forward_p95_px','reverse_N','reverse_MAE_px','reverse_p95_px','unused_track_F','unused_forward_N','unused_forward_MAE_px','unused_reverse_N','unused_reverse_MAE_px','unused_status'])+'\nF为逐轨迹归一鲁棒向量目标，px统计为真实观察点分布；二者权重口径不同。未参与BA集合排除18条源track及相同目标feature像素；若某方向N0则双向目标NOT_EVALUABLE，不能把空集合0当好结果。\n\n## 共同点消元信息与漂移\n\n'+md(jt,['arm','landmarks_N','observations_N','Schur_rank','Schur_condition','Schur_to_fixed_trace','max_X_drift_mm','video004_MAE_px','video005_MAE_px','point_gradient_video_cosine'])+'\n采用实际点局部Jacobian和向量Huber IRLS权重组装块稀疏信息，S=A−Σ Bk Dk⁺ Bkᵀ。这里是冻结后诊断，不是声称使用Schur BA优化器；不将RoMa/点先验加入观测秩。低条件数/满秩仍依赖固定相机与匹配模型，非物理置信度。不同历史种子还改变pose先验中心，因此敏感性不是完全固定先验的纯局部极小值试验；未根据结果择优。\n\n## 固定21来源跨视频HERO\n\n'+md(hero,['method','source_count','ordered_cross_source_target_pairs','fixed_source_target_observation_denominator','known_N','support_fraction_fixed','front_proxy_fraction_fixed','behind_fraction_fixed','Ring_occluded_fraction_fixed','unknown_fraction_fixed','known_MAE_mm'])+'\n使用020同一原源/目标配对、固定分母、实际CAD首次可见性；目标深度自身落在CAD之后则Unknown。前方是几何分歧代理，后方保留自遮挡解释。共同有效N变化不能从误差均值中消失。固定CORE原生射线多层见HERO_MULTILAYER_NATIVE_RAY_PROXY，非错误双层GT。\n\n## 同视频负对照\n\n'+md(neg,['method','translation_mm','rotation_deg','FIT_N','FIT_IoU','HOLDOUT_N','HOLDOUT_IoU','FIT_SIFT','HOLDOUT_SIFT'])+'\n## 冻结后影子提案\n\n'+md(load(R/'metrics/ENDPOINT_SHADOW_PROPOSALS.json'),['arm','mode','alpha','delta_loss','predicted_gradient_dot','actual_delta_translation_mm','actual_delta_rotation_deg','max_X_step_mm','fixed_state_repeat_loss_range'])+'\n影子只解释终点提案，不提交新输出，也不是历史各次拒绝的精确重放；全部冻结矩阵SHA保持不变。特别核对恢复Adam旧状态后的相同非下降方向、整方向回溯与Float32光栅数值抖动，不把停滞全部推给输入。\n'
+ details+='\n## 跨候选严格共同原生HERO观测与尾部\n\n'+md(common,['method','fixed_source_target_denominator','known_error_mm','all9_common_N','all9_common_error_mm'])+'\n'+md(changes,['method_before','method_after','fixed_source_target_denominator','common_N','gained_N','lost_N','common_before_error_mm','common_after_error_mm','gained_after_error_mm','lost_before_error_mm'])+'\n所有9方法共同有效1,999,947条原生源–目标重复观测，固定分母2,893,126；原Pixel ID和逐方法known/dz存于evaluation/HERO_common_ids，不补深度，不重配准。仍沿用020可比较口径，包括单列的后方/合法自遮挡；不能冒充真实同表面GT。\n'
  write('TECHNICAL_REPORT.md',details)
  method='''# 021 方法与实现忠实性
 
@@ -90,7 +97,7 @@ IoU无单位，边界为原640×360像素，平移mm、旋转deg。留出仅3个
 
 Ring-First历史链只读核对：multigroup run_geometry→V6 local_ring_sfm initialize/triangulate_training/BA、ring_pose_contact decode/solve及v6实体轮廓；当前014背景SIFT/PnP扩展与018原生K/相机回执一致。输入完整性核对可读取原图/原生数组做哈希、像素绑定和坐标自检，但不评价021候选或反馈BA；G01的HOLDOUT几何指标、body/HERO一致性评价严格在全部位姿冻结后。轨迹连线复用018/019已验证raw-index绑定，不把历史声明帧号当新认证。ADDITIONAL_CAMERA_SOURCE_AUDIT记录文件SHA，未重估原始轨迹；不将整个历史初始化链描述为无深度。
 
-官方接口参考：[PyTorch3D SE3](https://github.com/facebookresearch/pytorch3d/blob/main/pytorch3d/transforms/se3.py)、[SciPy least_squares](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html)、[Open3D RaycastingScene](https://www.open3d.org/docs/release/python_api/open3d.t.geometry.RaycastingScene.html)。实际安装版本与源码位置见ENVIRONMENT_AND_CODE.json，不要求下载新包。
+官方接口参考：[PyTorch3D SE3](https://github.com/facebookresearch/pytorch3d/blob/main/pytorch3d/transforms/se3.py)、[SciPy least_squares](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html)、[Open3D RaycastingScene](https://www.open3d.org/docs/release/python_api/open3d.t.geometry.RaycastingScene.html)。实际安装版本与源码位置见[环境与源码回执](provenance/ENVIRONMENT_AND_CODE.json)，不要求下载新包。
 
 源码运行中唯一训练侧修补是中断恢复时不覆盖INITIAL/首次freeze；原训练源码另存ba_source_before_resume_preservation_fix，目标/输入/预算未改变。初次开发读取旧特征缓存把des写成desc，已在正式冻结前修正，并逐项验证全部原描述子；无数据重建替代。
 '''
@@ -101,6 +108,7 @@ Ring-First历史链只读核对：multigroup run_geometry→V6 local_ring_sfm in
 | --- | --- |
 | 特征缓存字段适配错误 | 准备期KeyError desc，实际缓存键为des；正式freeze之前修正，553条描述子及547链接逐项核对，无原数据修改 |
 | 执行中断 | B1进程随会话中断退出，无数值错误trace；ITER030恢复q/X/Adam，旧INITIAL和首次预注册保留，累计耗时给下界而非伪造精确墙钟 |
+| 严格旋转矩阵检查失败 | SENS_B2_020R2继承历史R2正交误差5.17e−8和det偏离3.07e−8，1e−9检查失败；冻结矩阵不变，阈值不放宽。全部检查继续收集，不把失败改为PASS。FROZEN_ROTATION_NUMERICAL_AUDIT保留所有历史/新矩阵及正确SE3增量的独立数值 |
 | 优化后期停滞 | 各路线真实接受数/拒绝原因见运行表；保留整个100次轨迹。终点影子分解q/X提案，只诊断不提交结果，不把停滞说成科学否定BA |
 | 非零点漂移不等于正确 | 地标只是RGB支持，背景重复纹理/高光/固定相机误差仍可能；协方差未校准；原独立3D差不能等同错匹配 |
 | 仅背景共同地标 | 18条全背景，没有Polyp同名三维纹理锚；类别权重无法创造缺失观测；全部实际帧保留但部分SIFT方向/帧N0 |
@@ -144,6 +152,8 @@ $PY -B $T21/code/tolerance_check021.py
 $PY -B $T21/code/raster_pixel_audit021.py
 $PY -B $T21/code/ba021.py
 $PY -B $T21/code/eval021.py
+$PY -B $T21/code/hero_common021.py
+$PY -B $T21/code/rotation_audit021.py
 $PY -B $T21/code/identifiability021.py
 $PY -B $T21/code/shadow021.py
 $PY -B $T21/code/per_view021.py
@@ -156,6 +166,7 @@ $PY -B $T21/code/coverage_figures021.py
 $PY -B $T21/code/collision_figures021.py
 $PY -B $T21/code/visualize021.py
 $PY -B $T21/code/group_reports021.py
+$PY -B $T21/code/g03_gain_diagnostic021.py
 $PY -B $T21/code/report021.py
 $PY -B $T21/code/verify021.py
 ```
@@ -164,11 +175,11 @@ $PY -B $T21/code/verify021.py
 
 可只重画已冻结evaluation上的图，不需要再次BA/HERO。完整GLB只在本地索引，不能把未上传文件说成在Git。单位从头到尾mm，GLB标准m仅固定.001换算。
 ''')
- index='# 021 结果索引\n\n'+md([dict(item='完整报告/方法/失败',path='TECHNICAL_REPORT_SUMMARY.md / TECHNICAL_REPORT.md / METHOD_AND_INPUT_AUDIT.md / FAILURE_LEDGER.md'),dict(item='四份独立定量报告',path='G01_GEOMETRY_AUDIT.md / G03_GEOMETRY_AUDIT.md / G05_GEOMETRY_AUDIT.md / G06_GEOMETRY_AUDIT.md'),dict(item='统一量化与决策',path='FOUR_GROUP_GEOMETRY_SCORECARD.csv / FOUR_GROUP_RESEARCH_DECISION.md'),dict(item='18真实身份/553像素/描述子',path='observations/CROSS_COMMON_TRACKS.json / CROSS_PIXEL_DESCRIPTOR_INDEX.csv / CROSS_DESCRIPTORS.npz'),dict(item='输入来源与SHA',path='config/FOUR_GROUP_INPUTS.json / provenance/UPSTREAM_READONLY.json / ADDITIONAL_CAMERA_SOURCE_AUDIT.json'),dict(item='全部矩阵与优化X',path='results/*.json / optimization/*/FINAL.json / HISTORY.json / ITER_*.pt'),dict(item='B1/B2/B3全部68派生相机',path='derived/ALL68_CAMERAS_B*.json / T004_from005_B*.json'),dict(item='全部005逐帧/双向SIFT',path='metrics/ALL005_FRAME_METRICS.csv / SIFT_READABLE_SUMMARY.csv / SIFT_ALL68_PER_VIEW.csv / UNUSED_SIFT_TRACK_EVALUATION.json'),dict(item='Schur信息/点漂移/初值/影子',path='metrics/BA_IDENTIFIABILITY.json / COMMON_POINT_MOVEMENT.csv / INITIALIZATION_SENSITIVITY.json / ENDPOINT_SHADOW_PROPOSALS.csv'),dict(item='同视频负对照',path='metrics/NEGATIVE_CONTROL.json / NEGATIVE_PER_VIEW.csv'),dict(item='21源跨视频HERO固定分母',path='metrics/HERO_INDEPENDENT_PER_PAIR.csv / HERO_INDEPENDENT_AGGREGATE.csv / HERO_MULTILAYER_NATIVE_RAY_PROXY.csv'),dict(item='四组完整逐源/逐面/原生Pixel ID',path='metrics/groups/ / evaluation/groups/*/*SOURCE_EVIDENCE.npz / *_RING_MATERIAL.npz / *_BODY_FACE_MM_ERROR.npz'),dict(item='其他视频轻量清点',path='metrics/OTHER_VIDEO_ASSET_INVENTORY.json/csv'),dict(item='大文件路径/SHA',path='assets_index/LOCAL_RESULTS.json')],['item','path'])+'\n## 八张核心图\n\n[全部18条实际RGB身份审计](figures/All18_Actual_RGB_Track_Identity_Audit.png)。\n\n'
+ index='# 021 结果索引\n\n'+md([dict(item='完整报告/方法/失败',path='TECHNICAL_REPORT_SUMMARY.md / TECHNICAL_REPORT.md / METHOD_AND_INPUT_AUDIT.md / FAILURE_LEDGER.md'),dict(item='四份独立定量报告',path='G01_GEOMETRY_AUDIT.md / G03_GEOMETRY_AUDIT.md / G05_GEOMETRY_AUDIT.md / G06_GEOMETRY_AUDIT.md'),dict(item='统一量化与决策',path='FOUR_GROUP_GEOMETRY_SCORECARD.csv / FOUR_GROUP_RESEARCH_DECISION.md'),dict(item='18真实身份/553像素/描述子',path='observations/CROSS_COMMON_TRACKS.json / CROSS_PIXEL_DESCRIPTOR_INDEX.csv / CROSS_DESCRIPTORS.npz'),dict(item='输入来源与SHA',path='config/FOUR_GROUP_INPUTS.json / provenance/UPSTREAM_READONLY.json / ADDITIONAL_CAMERA_SOURCE_AUDIT.json'),dict(item='全部矩阵与优化X',path='results/*.json / optimization/*/FINAL.json / HISTORY.json / ITER_*.pt'),dict(item='B1/B2/B3全部68派生相机',path='derived/ALL68_CAMERAS_B*.json / T004_from005_B*.json'),dict(item='全部005逐帧/双向SIFT',path='metrics/ALL005_FRAME_METRICS.csv / SIFT_READABLE_SUMMARY.csv / SIFT_ALL68_PER_VIEW.csv / UNUSED_SIFT_TRACK_EVALUATION.json'),dict(item='Schur信息/点漂移/初值/影子',path='metrics/BA_IDENTIFIABILITY.json / COMMON_POINT_MOVEMENT.csv / INITIALIZATION_SENSITIVITY.json / ENDPOINT_SHADOW_PROPOSALS.csv'),dict(item='同视频负对照',path='metrics/NEGATIVE_CONTROL.json / NEGATIVE_PER_VIEW.csv'),dict(item='21源跨视频HERO固定分母与严格共同集合',path='metrics/HERO_INDEPENDENT_PER_PAIR.csv / HERO_EXACT_CROSS_METHOD_COMMON.csv / HERO_EXACT_COMMON_GAINED_LOST.csv / HERO_MULTILAYER_NATIVE_RAY_PROXY.csv'),dict(item='四组完整逐源/逐面/原生Pixel ID',path='metrics/groups/ / evaluation/groups/*/*SOURCE_EVIDENCE.npz / *_RING_MATERIAL.npz / *_BODY_FACE_MM_ERROR.npz'),dict(item='其他视频轻量清点',path='metrics/OTHER_VIDEO_ASSET_INVENTORY.json/csv'),dict(item='大文件路径/SHA',path='assets_index/LOCAL_RESULTS.json')],['item','path'])+'\n## 八张核心图\n\n[全部18条实际RGB身份审计](figures/All18_Actual_RGB_Track_Identity_Audit.png)。\n\n'
  for f in sorted((R/'figures').glob('Fig*.png')):index+=f'- [{f.stem}](figures/{f.name})\n'
  index+='\n## 四组完整图集与本地GLB\n\n'
  for g in GROUPS:index+=f'- {glink(g)} · [六视角](figures/groups/{g}/Six_View_HERO_Body_Evidence.png) · [主体毫米误差](figures/groups/{g}/Body_Surface_Native_Depth_Error_mm.png) · GLB：`{R}/derived/{g}/{g}_INDEPENDENT_LAYERS_NOT_FUSION.glb`；独立图层与全部源SHA见`derived/{g}/SOURCE_LAYER_INDEX.json`。\n'
- index+='\nG01同尺度阶段对照：[RoMa→020R3→021B3](figures/groups/G01/Before020_After020_After021.png)。全部图层保持原面；不是融合Mesh。GLB/大数组未强制上传，完整本地路径和SHA均在索引。\n';write('RESULT_INDEX.md',index)
+ index+='\nG01同尺度阶段对照：[RoMa→020R3→021B3](figures/groups/G01/Before020_After020_After021.png)。G03额外[新增首层错误诊断](figures/groups/G03/New_First_Hits_Are_Not_Correct_Surface.png)，逐射线原生ID见G03_NEW_HIT_FAILURE_LOCATIONS.csv。全部图层保持原面；不是融合Mesh。GLB/大数组未强制上传，完整本地路径和SHA均在索引。\n';write('RESULT_INDEX.md',index)
  # Full local outputs are indexed, not silently uploaded.
  large=[asset(p)for d in ['derived','evaluation','optimization','observations']for p in(R/d).rglob('*')if p.is_file()and p.suffix in ['.npz','.pt','.glb']];save('assets_index/LOCAL_RESULTS.json',large)
  import torch,scipy,cv2,trimesh,open3d,numpy
