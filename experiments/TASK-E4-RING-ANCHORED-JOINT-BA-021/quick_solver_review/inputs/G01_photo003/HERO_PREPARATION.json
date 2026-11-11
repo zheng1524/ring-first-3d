@@ -1,0 +1,294 @@
+{
+  "id": "G01_photo003",
+  "target_capture_type": "INDEPENDENT_PHOTO",
+  "target_RGB": {
+    "path": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Ip_12.0mm_closed_R10_single_refY_003.jpg",
+    "bytes": 711918,
+    "sha256": "f4f17fb3ab5ad9a8778b9fbebedd22e277d0b6a951bd108665181aa18f9aae00"
+  },
+  "target_cache": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/quick_solver_review/inputs/G01_photo003/PHOTO_RGB_MASK_K.npz",
+  "target_pose": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/quick_solver_review/results/photos/G01_photo003/FINAL.json",
+    "bytes": 4434,
+    "sha256": "ae365cb1d810b7b8199a3072736e291bcf92308df8d73fa03902336b8604c87b"
+  },
+  "coordinate_chain": "photo independently estimated into004; source005 uses frozen021B3; no per-frame adjustment",
+  "candidate_support_views": [
+    "G01_video004_004_15",
+    "G01_004_ref13",
+    "G01_v004_raw00852"
+  ],
+  "support_candidates_not_executed": true,
+  "support_RGB": [
+    {
+      "id": "G01_video004_004_15",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_015.png",
+      "sha256": "4adeea7a666463f411fd69e9d8e9ace1828d8a537af64e47c7b9ae378ae6584c",
+      "native_c2w": [
+        [
+          0.9569952135633965,
+          -0.10367052516568256,
+          -0.2709475658289278,
+          10.008971472224927
+        ],
+        [
+          0.11808921020191183,
+          -0.7138787843457839,
+          0.6902405520504244,
+          -27.380137157228145
+        ],
+        [
+          -0.26498131943712233,
+          -0.6925528885744808,
+          -0.6709362092453383,
+          25.001880101266938
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "source_pose_mm_world004": [
+        [
+          0.9569952135633965,
+          -0.10367052516568256,
+          -0.2709475658289278,
+          10.008971472224927
+        ],
+        [
+          0.11808921020191183,
+          -0.7138787843457839,
+          0.6902405520504244,
+          -27.380137157228145
+        ],
+        [
+          -0.26498131943712233,
+          -0.6925528885744808,
+          -0.6709362092453383,
+          25.001880101266938
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "source_intrinsics_index": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "video": "004"
+    },
+    {
+      "id": "G01_004_ref13",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_013.png",
+      "sha256": "a5d01a25f8acf1466ca355a0b2983344ed1406829f329ef2ffef9a5e54776f87",
+      "native_c2w": [
+        [
+          0.9749007103303042,
+          -0.0745762329067393,
+          -0.20977843188209064,
+          5.6996425571329725
+        ],
+        [
+          0.09958296387676764,
+          -0.6966621999402907,
+          0.7104540889317712,
+          -28.79867713985793
+        ],
+        [
+          -0.19912769346072257,
+          -0.7135125539608914,
+          -0.6717499512744441,
+          26.389060144884287
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "source_pose_mm_world004": [
+        [
+          0.9749007103303042,
+          -0.0745762329067393,
+          -0.20977843188209064,
+          5.6996425571329725
+        ],
+        [
+          0.09958296387676764,
+          -0.6966621999402907,
+          0.7104540889317712,
+          -28.79867713985793
+        ],
+        [
+          -0.19912769346072257,
+          -0.7135125539608914,
+          -0.6717499512744441,
+          26.389060144884287
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "source_intrinsics_index": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "video": "004"
+    },
+    {
+      "id": "G01_v004_raw00852",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/inputs/G01_v004_raw00852.png",
+      "sha256": "3fd060701f25f6f8a29116348379da23383704bde4dba1aba6e74892b74a459b",
+      "native_c2w": [
+        [
+          0.9920043911595046,
+          -0.061594787630092435,
+          -0.11015157764219634,
+          2.134640186932121
+        ],
+        [
+          0.03669883562864981,
+          -0.694304247692356,
+          0.7187453005758389,
+          -29.43476533905415
+        ],
+        [
+          -0.12074967239608701,
+          -0.7170409289386175,
+          -0.686492405524695,
+          22.61162963422552
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "source_pose_mm_world004": [
+        [
+          0.9920043911595046,
+          -0.061594787630092435,
+          -0.11015157764219634,
+          2.134640186932121
+        ],
+        [
+          0.03669883562864981,
+          -0.694304247692356,
+          0.7187453005758389,
+          -29.43476533905415
+        ],
+        [
+          -0.12074967239608701,
+          -0.7170409289386175,
+          -0.686492405524695,
+          22.61162963422552
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "source_intrinsics_index": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "video": "004"
+    }
+  ],
+  "native_target_size": [
+    352,
+    640
+  ],
+  "depth_convention": "official axialZ meters converted once to mm",
+  "intrinsics": "working K_index+0.5 → official edge conventions; resize verified in018",
+  "HERO_checkpoint": {
+    "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/weights/mvsanywhere_hero_full.ckpt",
+    "sha256": "00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d",
+    "bytes": 2420601860
+  },
+  "HERO_checkpoint_SHA_matches": true,
+  "official_loader_source": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/code/infer018.py",
+    "bytes": 5445,
+    "sha256": "e556d77563ede58d3cb202631f1b855b9a8c0d5a8c930f9f273c2712368b2125"
+  },
+  "official_core_loader": {
+    "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/scripts/run_mvs_adapter3.py",
+    "bytes": 7276,
+    "sha256": "14315d808e71a136dad71877c52336473fb2431428451e0a3b3de6f894e7d481"
+  },
+  "cleaning_source": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/code/clean018.py",
+    "bytes": 7380,
+    "sha256": "a8083e7e6a3c9b296f114bc8194232f0bb43b058ed49ccb391dca4c5bf0c4a8a"
+  },
+  "frozen017_rule": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/config/PROTOCOL.json",
+    "bytes": 4302,
+    "sha256": "b843c1786de9d14d532f86fafd69fc5bbed0e669633de192d0eaa241e845f7d8"
+  },
+  "execute_inference": false,
+  "reason": [
+    "PHOTO_HELD_MAE_GT3PX",
+    "PHOTO_HELD_P95_GT6PX",
+    "RING_CONTOUR_GATE"
+  ],
+  "camera_gate_not_passed": true,
+  "native_depth_status": "MISSING_NOT_INFERRED",
+  "TRUSTED_face_subset_status": "MISSING_NO_DEPTH",
+  "TRUSTED_area_mm2": null,
+  "uncertain_not_strong_supervision": true,
+  "unknown_not_negative_evidence": true,
+  "not_a_model_inference_failure": true
+}

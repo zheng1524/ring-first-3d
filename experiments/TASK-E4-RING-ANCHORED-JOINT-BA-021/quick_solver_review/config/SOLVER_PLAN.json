@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-12",
+  "solver": "SciPy L-BFGS-B",
+  "maxiter": 25,
+  "maxfun": 90,
+  "maxls": 12,
+  "objective": "unchanged BA.evaluate incl original RoMa pose prior / joint-triangulated X0 point prior",
+  "candidate_set": [
+    "A1 fromB1",
+    "A2 fromB2",
+    "A3 fromB3"
+  ],
+  "HOLDOUT": false,
+  "photos_in_BA": false,
+  "FD_steps": [
+    0.01,
+    0.001
+  ],
+  "point_variable_scale_mm": 0.6,
+  "infeasible_domain": "Infinity barrier, original sphere/whitened/cheirality bounds unchanged",
+  "no_hyperparameter_search": true
+}

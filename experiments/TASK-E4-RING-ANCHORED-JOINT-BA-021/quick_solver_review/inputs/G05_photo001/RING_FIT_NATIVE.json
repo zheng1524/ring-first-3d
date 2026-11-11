@@ -1,0 +1,86 @@
+{
+  "valid": true,
+  "version": "RING_VISIBLE_ARC_CENTERLINE_v2.0",
+  "coordinate_system": "native_image_px",
+  "radius_unit": "native_px_radius",
+  "diameter_unit": "native_px_diameter",
+  "wire_diameter_mm": 1.2,
+  "reference_inner_diameter_mm": 10.0,
+  "history_prediction_used": false,
+  "attempts": [
+    {
+      "branch": "visible_inner_arc_RANSAC",
+      "valid": true,
+      "center_gap_norm": 0.00610689430698304,
+      "wire_major_mm": 1.3262219890158589,
+      "wire_minor_mm": 1.2227868532183797,
+      "outer_inner_major_ratio": 1.2686351642786573,
+      "angle_gap_deg": 0.45843505859375,
+      "centerline_frontality": 0.6700746030920485,
+      "mask_band_recall": 0.9565323437690552,
+      "mask_band_precision": 0.9733888839641875,
+      "inner_arc_coverage": 1.0,
+      "inner_normalized_residual": 0.008934846881043377,
+      "inner_sector_instability": 0.008345878088246828,
+      "reason": "ok"
+    }
+  ],
+  "reason": "ok",
+  "branch": "visible_inner_arc_RANSAC",
+  "inner": {
+    "cx": 1066.7637023925781,
+    "cy": 563.7587432861328,
+    "major_radius": 192.17286682128906,
+    "minor_radius": 122.2672119140625,
+    "angle_deg": 179.13961029052734
+  },
+  "outer": {
+    "cx": 1066.0824584960938,
+    "cy": 562.6150512695312,
+    "major_radius": 243.79725646972656,
+    "minor_radius": 169.86529541015625,
+    "angle_deg": 179.5980453491211
+  },
+  "centerline": {
+    "cx": 1066.423080444336,
+    "cy": 563.186897277832,
+    "major_radius": 217.9850616455078,
+    "minor_radius": 146.06625366210938,
+    "angle_deg": -0.6311721801757856
+  },
+  "diagnostics": {
+    "center_gap_norm": 0.00610689430698304,
+    "wire_major_mm": 1.3262219890158589,
+    "wire_minor_mm": 1.2227868532183797,
+    "outer_inner_major_ratio": 1.2686351642786573,
+    "angle_gap_deg": 0.45843505859375,
+    "centerline_frontality": 0.6700746030920485,
+    "mask_band_recall": 0.9565323437690552,
+    "mask_band_precision": 0.9733888839641875,
+    "inner_arc_coverage": 1.0,
+    "inner_normalized_residual": 0.008934846881043377,
+    "inner_sector_instability": 0.008345878088246828,
+    "reason": "ok"
+  },
+  "transform_native_to_ringplane": [
+    [
+      0.9999393241254784,
+      -0.01101580988768465,
+      -1060.1544144996724
+    ],
+    [
+      0.016439676771589865,
+      1.4922805901182858,
+      -857.9645261609177
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "reference_kind": "centerline",
+  "reference_diameter_mm": 11.2,
+  "reference_diameter_rectified_px": 435.97015380859375,
+  "mm_per_rectified_px": 0.02568983198083141
+}
