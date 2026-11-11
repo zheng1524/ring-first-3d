@@ -1,0 +1,35 @@
+{
+  "status": "PAUSED_FOR_HUMAN_DIAGNOSIS",
+  "stage": "A_GEOMETRIC_PREFLIGHT",
+  "stage_A_completed": false,
+  "stage_A_formal_solver_runs": 0,
+  "stage_A_derived_camera_outputs_N": 0,
+  "stage_A_video_inputs_N": 98,
+  "stage_A_groups_N": 4,
+  "geometric_J_gate": false,
+  "local_J_h1e5_all_groups_pass": true,
+  "multistep_gate_h1e4_failed_groups": [
+    "G01",
+    "G05",
+    "G06"
+  ],
+  "serious_implementation_issue": "CAD ray miss +Inf satisfies inherited visibility comparison; actual relinearized geometric objective may reverse local descent direction",
+  "stage_B": "NOT_RUN_STAGE_A_GATE",
+  "stage_B_photo_runs": 0,
+  "body_updates": 0,
+  "new_HERO_inferences": 0,
+  "GT_used": false,
+  "no_automatic_algorithm_repair": true,
+  "reason_source_files": [
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/geometric_pose_optimization/config/JACOBIAN_GATE.json",
+      "bytes": 260,
+      "sha256": "2888dbf621629093513dbcd398ba41ef6c6e4e9ab8ba9b44893bf8669fc90754"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/geometric_pose_optimization/metrics/CAD_VISIBILITY_SWITCH_CAUSES.json",
+      "bytes": 25477,
+      "sha256": "19ec1d09d130326010acced15bfa53215043d9eeec18178247999c2ab3bc5ce4"
+    }
+  ]
+}

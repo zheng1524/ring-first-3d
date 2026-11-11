@@ -1,0 +1,16 @@
+{
+ "task":"TASK-E4-021-GEOMETRIC-POSE-OPTIMIZATION", "date":"2026-11-12", "GT":false,
+ "groups":["G01","G03","G05","G06"], "scope":"all canonical video views in frozen021 VIEWS (G01) and FOUR_GROUP_INPUTS (others); historical aliases not duplicate cameras",
+ "initial":"G01 uses predetermined021B3 shared004 world; others frozen004 Ring world", "pose":"OpenCV c2w mm; camera-centred world-frame left SE3 retraction Exp(Ad_Trans(c0) xi) C0; no scale",
+ "HOLDOUT":"protected image cameras receive no independent local fitting; G01shared may transform005HOLDOUT from FIT only; held tracks ID modulo5=0 excluded from fit",
+ "solver":"SciPy least_squares TRF (bounded trust region, not claiming Ceres binary); float64 exact torch autograd/JVP",
+ "SIFT":"existing nativeRGB SIFT6000/.01 mutual0.72, RANSAC1.5px; existing153/980 G01 maps; other groups same mature019 triangulator >=3FIT views,parallax>.5deg,max reproj<2px; fallback actual2D2D only, no inventedXYZ",
+ "pixel_sigma":3.0, "lambda_Ring":1.0, "lambda_SIFT":0.2,"lambda_prior":0.01,
+ "robust":"Huber at3px vector norm per observation; normalized per channel, video and track; no dynamic exclusion from HERO",
+ "Ring":"original fullCAD occluding edges, actualMask-supported Inner/Outer only; canonical yaw removed only for axisymmetricRing geometry; local nearest-segment identity fixed during trust-region solve, correspondences/visibility relinearized outside; actual objective recomputed before accepting",
+ "outer_iterations":5,"inner_max_nfev":20,"backtracks":6,"prior_translation_scale_mm":0.6,"prior_rotation_scale_deg":5.0,
+ "parameter_box":0.95,"translation_bound_mm":1.2,"rotation_bound_deg":10.0,"camera_center_bound_mm":1.2,
+ "jacobian_steps":[0.001,0.0001,0.00001],"jacobian_relative_Frobenius_limit":0.001,"jacobian_absolute_limit":0.00001,
+ "severe_independent_degradation":"paired heldSIFT MAE increase >max(1px,25percent); or paired fixed-depth diagnostic MAE>max(.5mm,25percent) with coverage loss>10percent. Investigate; no automatic promotion. Camera ambiguity/rank<6 under data-only J triggers human diagnosis; prior does not count as observability",
+ "no_new_HERO":true,"no_body_update":true,"no_crossvideo_for_other_groups":true,"P2":"optional only after P1 validated; no automatic addition of joint structure variables"
+}

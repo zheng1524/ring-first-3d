@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-12",
+  "sources": [
+    {
+      "name": "Ceres tutorial",
+      "url": "https://ceres-solver.org/nnls_tutorial.html",
+      "review": "residual autodiff and robust losses"
+    },
+    {
+      "name": "COLMAP",
+      "url": "https://github.com/colmap/colmap/blob/main/src/colmap/estimators/bundle_adjustment_ceres.cc",
+      "review": "Ceres BA and gauge structure, not run"
+    },
+    {
+      "name": "ORB-SLAM3",
+      "url": "https://github.com/UZ-SLAMLab/ORB_SLAM3/blob/master/src/Optimizer.cc",
+      "review": "PoseOptimization fixedXYZ edges, Huber and Levenberg; no system deployment"
+    },
+    {
+      "name": "DROID-SLAM",
+      "url": "https://github.com/princeton-vl/DROID-SLAM/blob/main/droid_slam/geom/ba.py",
+      "review": "linearization, normal blocks, Schur and retraction; no learned network used"
+    },
+    {
+      "name": "SciPy",
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html",
+      "review": "TRF supports bounds; LM does not, actual local version recorded in REPRODUCE"
+    }
+  ],
+  "installed_interfaces": {
+    "pycolmap": "4.2.1, no exposed custom Problem/Ceres API",
+    "pyceres": false,
+    "g2o": false
+  },
+  "selected": "SciPy bounded TRF wrapper with torch float64 J; NOT RUN because preflight failed"
+}
