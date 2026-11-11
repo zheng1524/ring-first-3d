@@ -22,8 +22,26 @@ def inputs():
 def gradients():
  results=[];views=load(R/'config/VIEWS.json');ids=[v['id']for v in views if v['video']=='005'and v['role']=='FIT']
  for arm in ['R0','R1','R2','R3','R3_MASK_ONLY','R3_INNER_OUTER','R4']:
-  H=tensor(load(R/'results'/(arm+'.json'))['T'],torch.float64);obj=Objective(ids,'CROSS','R3');q=torch.zeros(6,device=device,dtype=torch.float64,requires_grad=True);val,parts=obj.evaluate(q,H,component_gradient=True);T=obj.transform(q,H);sf=obj.feature;F,E,report=sf.evaluate(T);F0,_,_=sf.evaluate(T,mode='single');F1=2*F-F0;g0=torch.autograd.grad(F0,q,retain_graph=True)[0].detach().cpu().numpy();g1=torch.autograd.grad(F1,q)[0].detach().cpu().numpy();g=parts['component_gradient_normalized_pose'];g['F_forward']=g0;g['F_reverse']=g1;combined=sum(obj.rw[k]*g[k]for k in obj.rw)+.2*g['F']+.02*g['E'];parts.update(gradient_reference='fresh left tangent exp(q*[.6mm,5deg]) H_endpoint; same units for all methods; no optimization',forward_reverse_cosine=float(np.dot(g0,g1)/max(np.linalg.norm(g0)*np.linalg.norm(g1),1e-20)),combined_Ring_SIFT_gradient=combined,forward_reverse_sum_relative_error=float(np.linalg.norm(.5*(g0+g1)-g['F'])/max(np.linalg.norm(g['F']),1e-20)));results.append(dict(arm=arm,**parts));print('SHADOW_GRADIENT020',arm,flush=True)
+  body=None
+  if arm=='R4':
+   import importlib.util
+   spec=importlib.util.spec_from_file_location('body019_post_freeze_only',REPO/'experiments/TASK-E4-RING-POLYP-REGISTRATION-019/code/renderer019.py');mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod);body=mod.FrozenRenderer(ids)
+  H=tensor(load(R/'results'/(arm+'.json'))['T'],torch.float64);obj=Objective(ids,'CROSS','R4'if arm=='R4'else'R3',body);q=torch.zeros(6,device=device,dtype=torch.float64,requires_grad=True);val,parts=obj.evaluate(q,H,component_gradient=True);T=obj.transform(q,H);sf=obj.feature;F,E,report=sf.evaluate(T);F0,_,_=sf.evaluate(T,mode='single');F1=2*F-F0;g0=torch.autograd.grad(F0,q,retain_graph=True)[0].detach().cpu().numpy();g1=torch.autograd.grad(F1,q)[0].detach().cpu().numpy();g=parts['component_gradient_normalized_pose'];g['F_forward']=g0;g['F_reverse']=g1;combined=sum(obj.rw[k]*g[k]for k in obj.rw)+.2*g['F']+.02*g['E'];parts.update(gradient_reference='fresh left tangent exp(q*[.6mm,5deg]) H_endpoint; same units for all methods; no optimization',forward_reverse_cosine=float(np.dot(g0,g1)/max(np.linalg.norm(g0)*np.linalg.norm(g1),1e-20)),combined_Ring_SIFT_gradient=combined,body_to_Ring_SIFT_cosine=float(np.dot(g['body'],combined)/max(np.linalg.norm(g['body'])*np.linalg.norm(combined),1e-20))if body is not None else None,forward_reverse_sum_relative_error=float(np.linalg.norm(.5*(g0+g1)-g['F'])/max(np.linalg.norm(g['F']),1e-20)));results.append(dict(arm=arm,**parts));print('SHADOW_GRADIENT020',arm,flush=True)
  save('metrics/ENDPOINT_GRADIENT_RELATIONSHIPS.json',results)
+
+def sift_perview():
+ from evaluate020 import methods
+ vv={v['id']:v for v in load(R/'config/VIEWS.json')};out=[]
+ for meth in methods():
+  H=np.asarray(meth['T'])
+  for name,reverse in [('CROSS',False),('REVERSE',True),('CROSS_HOLDOUT',False),('REVERSE_HOLDOUT',True)]:
+   for x in load(R/'features'/(name+'_PNP.json')):
+    v=vv[x['target']];r=dict(method=meth['method'],view=x['target'],role=v['role'],direction='005_to004'if reverse else'004_to005',success=x['success'],candidate_descriptor_matches=x['matches'])
+    if x['success']:
+     C=np.asarray(v['T']);X=np.asarray(x['landmark_X']);X=X@H[:3,:3].T+H[:3,3]if reverse else X;C=C if reverse else H@C;P=(X-C[:3,3])@C[:3,:3];Q=P@np.asarray(v['K']).T;uv=Q[:,:2]/Q[:,2:];err=np.linalg.norm(uv-x['uv'],axis=1);r.update(N=len(X),error_px=stats(err),positive_axial_N=int((P[:,2]>0).sum()),landmark_ids=x['landmark_indices'],spatial_cells=x['image_cells'])
+    else:r.update(N=0,error_px=stats([]),reason='NO_GEOMETRICALLY_VALIDATED_PNP_CORRESPONDENCES; view retained, no fake observations')
+    out.append(r)
+ save('metrics/SIFT_PER_VIEW.json',out);table('metrics/SIFT_PER_VIEW.csv',out)
 
 def integrity():
  checks=[]
@@ -45,5 +63,5 @@ def reference004():
 def main():
  inputs();midpoint_control()
  while not(R/'runtime/EVALUATION_COMPLETE.json').exists():time.sleep(5)
- reference004();gradients();integrity();print('AUDIT020_COMPLETE',flush=True)
+ reference004();sift_perview();gradients();integrity();print('AUDIT020_COMPLETE',flush=True)
 if __name__=='__main__':main()

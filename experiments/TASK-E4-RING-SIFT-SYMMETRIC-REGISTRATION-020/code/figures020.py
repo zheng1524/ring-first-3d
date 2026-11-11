@@ -7,6 +7,10 @@ P19=REPO/'experiments/TASK-E4-RING-POLYP-REGISTRATION-019'
 VIEWS=load(R/'config/VIEWS.json');VV={v['id']:v for v in VIEWS}
 CUR=CADCurves();RING=dict(np.load(R/'inputs/G01/RING.npz'))
 COL={'inner':'#26de68','mid':'#36b4ff','outer':'#ffb323'}
+F4={a['view_id']:a for a in load(REPO/'experiments/TASK-E4-HERO-BODY-ADAPT-018/metrics/FRAME_BINDING_AUDIT.json')};F5={a['view']:a for a in load(P19/'metrics/VIDEO005_FRAME_BINDING.json')['rows']}
+SOURCE_COLORS={x['id']:x['color']for x in load(P19/'derived/HERO_SCENE_SOURCE_INDEX.json')['sources']}
+def actual_frame(v):
+ a=F4[v['id']]if v['video']=='004'else F5[v['id']];q=a.get('exact_content_matches',[])+a.get('JPEG_chain_matches',[])if v['video']=='004'else a['exact_raw_matches'];return q[0].get('raw_index_zero_based',q[0].get('raw_index'))if q else v.get('raw_frame',0)
 def P(X,C,K):
  q=(X-C[:3,3])@C[:3,:3]@K.T;return q[...,:2]/q[...,2:]
 def cad_curves(H,v):
@@ -79,7 +83,7 @@ def fig4():
 def scene_parts(H):
  body=np.load(R/'inputs/G01/BODY018.npz');parts=[(body['V'],body['F_solid'],'#8158a5')]
  for s in load(R/'config/HERO_EVALUATION_SOURCES.json'):
-  m=np.load(s['mesh']['path']);G=H if s['video']=='005'else np.eye(4);parts.append((m['V']@G[:3,:3].T+G[:3,3],m['F'],'#2678af'if s['video']=='004'else'#e59236'))
+  m=np.load(s['mesh']['path']);G=H if s['video']=='005'else np.eye(4);parts.append((m['V']@G[:3,:3].T+G[:3,3],m['F'],SOURCE_COLORS[s['id']]))
  return parts
 def render_parts(ax,parts,bounds,angle):
  V=[];F=[];col=[];off=0
@@ -92,7 +96,7 @@ def fig5():
  for j,ang in enumerate([(25,-65),(10,20),(75,-65)]):
   ax=fig.add_subplot(gs[1,j],projection='3d');b=np.load(R/'inputs/G01/BODY018.npz');ax.plot_trisurf(*b['V'].T,triangles=b['F_solid'],color='#8158a5',linewidth=0);ax.plot_trisurf(*RING['V'].T,triangles=RING['F'],color='black',linewidth=0);ax.scatter(*A.T,s=3,c='#2678af',alpha=.3);ax.scatter(*B.T,s=2,c='#e59236',alpha=.2)
   for video,c in [('004','#2678af'),('005','#e59236')]:
-   vv=sorted([v for v in VIEWS if v['video']==video],key=lambda a:a.get('raw_frame')or 0);C=np.array([(H@v['T']if video=='005'else np.asarray(v['T']))[:3,3]for v in vv]);ax.plot(*C.T,'o-',ms=2,c=c,label=video+' cameras')
+   vv=sorted([v for v in VIEWS if v['video']==video],key=actual_frame);C=np.array([(H@v['T']if video=='005'else np.asarray(v['T']))[:3,3]for v in vv]);ax.plot(*C.T,'o-',ms=2,c=c,label=video+' cameras')
   ax.set_xlabel('X mm');ax.set_ylabel('Y mm');ax.set_zlabel('Z mm');ax.view_init(*ang);ax.legend(fontsize=7);ax.set_title('R3 shared004 world + both independent landmark sets',fontsize=8)
  fig.suptitle('Fig5 | Diagnostic shared coordinate scene, NOT surface fusion\nBlack=ONE fixedCAD, purple=018body, blue=13 native004 TRUSTED sources, orange=8 native005 TRUSTED sources\nLower panels include complete landmark extents; all original meshes and face IDs are unchanged.');fig.tight_layout(rect=[0,0,1,.92]);finish(fig,'Fig5_Shared_World_NOT_FUSION.png')
 
@@ -112,9 +116,17 @@ def fig6():
 
 def export():
  H=np.asarray(load(R/'results/R3.json')['T']);save('derived/T004_from005_R3.json',dict(T004_from005=H,T005_from004=np.linalg.inv(H),R=H[:3,:3],t_mm=H[:3,3],scale=1.,convention='X004=H X005; c2w004=H c2w005; column OpenCV; mm',status='RESEARCH_CANDIDATE_AWAITING_REVIEW',no_Body_in_R3=True));save('derived/VIDEO005_CAMERAS_R3.json',[dict(id=v['id'],role=v['role'],K=v['K'],c2w_native=v['T'],c2w_in004=H@v['T'],original_qualification=v.get('qualification'))for v in VIEWS if v['video']=='005'])
- sc=trimesh.Scene();parts=scene_parts(H)+[(RING['V'],RING['F'],'#060606')];source=[]
+ sc=trimesh.Scene();parts=scene_parts(H)+[(RING['V'],RING['F'],'#060606')];source=[];names=['fixed018body']+[s['id']for s in load(R/'config/HERO_EVALUATION_SOURCES.json')]+['ONE_R10_CAD']
  for i,(V,F,c)in enumerate(parts):
-  u,remap=np.unique(F,return_inverse=True);m=trimesh.Trimesh(V[u],remap.reshape(-1,3),process=False);m.visual.face_colors=np.r_[np.array(matplotlib.colors.to_rgb(c))*255,255].astype(np.uint8);m.apply_scale(.001);sc.add_geometry(m,geom_name='independent_component_%02d'%i);source.append(dict(component=i,triangles=len(F),preview_vertices=len(u),original_triangles_unchanged=True))
+  u,remap=np.unique(F,return_inverse=True);m=trimesh.Trimesh(V[u],remap.reshape(-1,3),process=False);m.visual.face_colors=np.r_[np.array(matplotlib.colors.to_rgb(c))*255,255].astype(np.uint8);m.apply_scale(.001);sc.add_geometry(m,geom_name=names[i]);source.append(dict(component=i,id=names[i],color=c,triangles=len(F),preview_vertices=len(u),original_triangles_unchanged=True))
+ for video,col in [('004','#2678af'),('005','#e59236')]:
+  lm=np.load(R/'landmarks'/('CROSS_004.npz'if video=='004'else'INDEPENDENT_005.npz'))['X'];lm=lm@H[:3,:3].T+H[:3,3]if video=='005'else lm;pc=trimesh.points.PointCloud(lm*.001,colors=np.tile(np.r_[np.array(matplotlib.colors.to_rgb(col))*255,255].astype(np.uint8),(len(lm),1)));sc.add_geometry(pc,geom_name='independent_SIFT_landmarks_'+video)
+  vv=sorted([v for v in VIEWS if v['video']==video],key=actual_frame);C=np.array([(H@v['T']if video=='005'else np.asarray(v['T']))[:3,3]for v in vv])
+  for k,p in enumerate(C):
+   sphere=trimesh.creation.icosphere(subdivisions=1,radius=.13);sphere.apply_translation(p);sphere.visual.face_colors=np.r_[np.array(matplotlib.colors.to_rgb(col))*255,255].astype(np.uint8);sphere.apply_scale(.001);sc.add_geometry(sphere,geom_name='camera_'+vv[k]['id'])
+  for k,(a,b)in enumerate(zip(C[:-1],C[1:])):
+   if np.linalg.norm(a-b)<1e-9:continue
+   line=trimesh.creation.cylinder(radius=.035,segment=np.array([a,b]),sections=6);line.visual.face_colors=np.r_[np.array(matplotlib.colors.to_rgb(col))*255,255].astype(np.uint8);line.apply_scale(.001);sc.add_geometry(line,geom_name='trajectory_'+video+'_'+str(k))
  path=R/'derived/G01_R3_DIAGNOSTIC_NOT_FUSION.glb';sc.export(path);save('derived/SCENE_INDEX.json',dict(scene=asset(path),parts=source,unit='GLB meter only(.001); all computation mm; scale estimated=1',fused=False,preview_removed_only_unreferenced_vertex_entries=True))
 
 def main():

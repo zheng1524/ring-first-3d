@@ -4,7 +4,18 @@ from ring020 import RingRenderer,tensor,torch
 from objective020 import SymmetricFeatures
 from scipy.spatial.transform import Rotation
 import features019 as feat
+import open3d as o3d
 P19=REPO/'experiments/TASK-E4-RING-POLYP-REGISTRATION-019';P18=REPO/'experiments/TASK-E4-HERO-BODY-ADAPT-018'
+
+def visibility_query(X,T,K,target,ring):
+ # Reuse019 projection/ray convention, additionally reject an unreliable target
+ # depth already behind CAD. It cannot certify free space in front of itself.
+ p=(X-T[:3,3])@T[:3,:3];q=p@K.T
+ with np.errstate(divide='ignore',invalid='ignore'):uv=q[:,:2]/q[:,2:]
+ safe=np.where(np.isfinite(uv),uv,-1e9);ij=np.floor(safe+.5).astype(int);h,w=target.shape;inside=(p[:,2]>0)&(ij[:,0]>=0)&(ij[:,0]<w)&(ij[:,1]>=0)&(ij[:,1]<h);dep=np.full(len(X),np.nan);dep[inside]=target[ij[inside,1],ij[inside,0]];known=inside&np.isfinite(dep);ids=np.flatnonzero(known);cad=np.full(len(X),np.inf)
+ if len(ids):
+  ray=np.c_[uv[ids],np.ones(len(ids))]@np.linalg.inv(K).T;rs=np.c_[np.broadcast_to(T[:3,3],ray.shape),ray@T[:3,:3].T].astype(np.float32);cad[ids]=ring.cast_rays(o3d.core.Tensor(rs))['t_hit'].numpy()
+ occ=known&(p[:,2]>=cad-.05);bad_target=known&(dep>=cad-.05);known&=~occ&~bad_target;dz=p[:,2]-dep;return dict(known=known,cad_occluded=occ,target_Ring_order_unreliable=bad_target&~occ,supported=known&(abs(dz)<=.5),front=known&(dz<-.5),behind=known&(dz>.5),dz=dz)
 
 def methods():
  rows=[dict(method=k,T=load(R/'results'/(k+'.json'))['T'])for k in ['R0','R1','R2','R3','R3_MASK_ONLY','R3_INNER_OUTER','R4']]
@@ -56,7 +67,7 @@ def hero_eval():
    m=a['mesh'];cent=m['V'][m['F']].mean(1)@a['G'][:3,:3].T+a['G'][:3,3];fa=trimesh.triangles.area(m['V'][m['F']]);support=np.zeros(len(fa),bool);known=np.zeros(len(fa),bool);behind=np.zeros(len(fa),bool)
    for b in trans:
     if a['video']==b['video']:continue
-    o=old.sample_in_target(a['X'],b['C'],b['obs']['K'],b['grid'],cad);N=len(a['X']);per.append(dict(method=meth['method'],source=a['id'],target=b['id'],source_role=a['role'],target_role=b['role'],fixed_source_N=N,known_N=int(o['known'].sum()),supported_N=int(o['supported'].sum()),front_proxy_N=int(o['front'].sum()),behind_N=int(o['behind'].sum()),CAD_occluded_N=int(o['cad_occluded'].sum()),unknown_N=int((~o['known']&~o['cad_occluded']).sum()),known_axial_difference_mm=stats(o['dz'][o['known']]),front_not_physical_error_GT=True,behind_is_not_free_space_conflict=True));q=old.sample_in_target(cent,b['C'],b['obs']['K'],b['grid'],cad);support|=q['supported'];known|=q['known'];behind|=q['behind']
+    o=visibility_query(a['X'],b['C'],b['obs']['K'],b['grid'],cad);N=len(a['X']);per.append(dict(method=meth['method'],source=a['id'],target=b['id'],source_role=a['role'],target_role=b['role'],fixed_source_N=N,known_N=int(o['known'].sum()),supported_N=int(o['supported'].sum()),front_proxy_N=int(o['front'].sum()),behind_N=int(o['behind'].sum()),CAD_occluded_N=int(o['cad_occluded'].sum()),target_Ring_order_unreliable_N=int(o['target_Ring_order_unreliable'].sum()),unknown_N=int((~o['known']&~o['cad_occluded']).sum()),known_axial_difference_mm=stats(o['dz'][o['known']]),front_not_physical_error_GT=True,behind_is_not_free_space_conflict=True));q=visibility_query(cent,b['C'],b['obs']['K'],b['grid'],cad);support|=q['supported'];known|=q['known'];behind|=q['behind']
    areas.append(dict(method=meth['method'],source=a['id'],TRUSTED_area_mm2=float(fa.sum()),supported_centroid_area_proxy_mm2=float(fa[support].sum()),unobserved_centroid_area_proxy_mm2=float(fa[~known].sum()),deeper_centroid_area_proxy_mm2=float(fa[behind&~support].sum()),not_unique_union=True,not_certified_complementary_geometry=True))
   print('HERO020',meth['method'],flush=True)
  agg=[]
