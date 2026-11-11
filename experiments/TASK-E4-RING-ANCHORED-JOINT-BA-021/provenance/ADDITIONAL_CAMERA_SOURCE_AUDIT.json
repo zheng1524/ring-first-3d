@@ -13,5 +13,32 @@
       "sha256": "4fbb10c4b11a3623be7895f9fc65d38aa4d57d5db64796d63888ce17343fe76d"
     }
   ],
-  "scope": "read-only historical ring ellipse/mask refinement (not full 6-DoF solver), frozen014 static-background SIFT/PnP extension, and018 exact mm camera receipt; not rerun, not new camera certification"
+  "scope": "read-only historical ring ellipse/mask refinement (not full 6-DoF solver), frozen014 static-background SIFT/PnP extension, and018 exact mm camera receipt; not rerun, not new camera certification",
+  "actual_Ring_First_chain": [
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/scripts/run_geometry.py",
+      "sha256": "4caa5223bc91eb5d9496fd26ece7bffc1f0fc1c7af0a117a39f38dcde927c79a"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/scripts/batch_common.py",
+      "sha256": "89450f8ccca49631a5b8fda79f886dd0683fd34a2c9977574f64510279ae6471"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py",
+      "sha256": "673b57af12fcda5dad082eb7397574d46f0bdce2c097956c0682d8dac2cd8541"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/v6_common.py",
+      "sha256": "59404f5c2a35913c253f802f5bb4ff21461861958a881f86973de15710693fe1"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_pose_contact_v1/scripts/recover.py",
+      "sha256": "8e413020f1fee0ad077cffc9877cd253debef30baa698679aa867cb503cdff82"
+    },
+    {
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v4_synthetic_audit/scripts/adapter.py",
+      "sha256": "144dcbdc64520697b71621bd7fc476db5200b28eaf646333482be9aaf713af19"
+    }
+  ],
+  "actual_chain": "multigroup run_geometry extracts V6 local_ring_sfm initialize/triangulate_training/BA and ring_pose_contact decode/image_seeds/solve; actual tube Ring residual and sparse reference-camera BA; read only, current frozen cameras reused. Historical upstream may use depth/other modules; not described as an entirely image-only initialization ancestry."
 }

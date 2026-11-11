@@ -4,6 +4,12 @@ from visual_base import plt,finish,edge
 import matplotlib
 from scipy.spatial.transform import Rotation
 plt.rcParams.update({'font.size':8,'axes.titlesize':9})
+P19=REPO/'experiments/TASK-E4-RING-POLYP-REGISTRATION-019'
+FRAME4={a['view_id']:a for a in load(P18/'metrics/FRAME_BINDING_AUDIT.json')}
+FRAME5={a['view']:a for a in load(P19/'metrics/VIDEO005_FRAME_BINDING.json')['rows']}
+def temporal_frame(c):
+ cid=c.get('id',c.get('view_id'));v=c.get('meta',c);video=c.get('video',v.get('video','004'));a=FRAME5.get(cid,{})if video=='005'else FRAME4.get(cid,{});q=a.get('exact_raw_matches',[])if video=='005'else a.get('exact_content_matches',[])+a.get('JPEG_chain_matches',[]);return q[0].get('raw_index_zero_based',q[0].get('raw_index'))if q else v.get('raw_frame',0)
+
 
 def layer(V,F,color,name):
  F=np.asarray(F);fc=np.tile(matplotlib.colors.to_rgb(color),(len(F),1))if isinstance(color,str)or np.asarray(color).ndim==1 else np.asarray(color);return dict(V=np.asarray(V),F=F,colors=fc,name=name)
@@ -33,12 +39,20 @@ def full_context(ax,cams,src,rv,bounds):
  for c in cams:
   uv=np.array([[0,0],[639,0],[639,359],[0,359]]);p=np.c_[uv,np.ones(4)]@np.linalg.inv(c['K']).T;p=p@c['C'][:3,:3].T+c['C'][:3,3];V=np.r_[c['C'][:3,3][None],p];F=np.array([[0,1,2],[0,2,3],[0,3,4],[0,4,1]]);layers.append(layer(V,F,'#2474b5'if c['video']=='004'else'#dc841e',c['id']))
  for video in ['004','005']:
-  cc=sorted([v for v in cams if v['video']==video],key=lambda v:v['meta'].get('raw_frame',0))
+  cc=sorted([v for v in cams if v['video']==video],key=temporal_frame)
   for a,b in zip(cc,cc[1:]):
    x,y=a['C'][:3,3],b['C'][:3,3]
    if np.linalg.norm(x-y)>1e-8:
     m=trimesh.creation.cylinder(radius=.025,segment=np.array([x,y]),sections=6);layers.append(layer(m.vertices,m.faces,'#2474b5'if video=='004'else'#dc841e','trajectory'))
- ext=np.r_[bounds,np.array([c['C'][:3,3]for c in cams])];panel(ax,composite(layers),free_camera(ext,25,-65),ext,'All actual cameras/frusta/trajectories\nall HERO triangles and black CAD, full mm extent')
+ extra=[]
+ if any(c['video']=='005'for c in cams):
+  X=np.asarray(load(R/'results/B3.json')['X']);extra.extend(X)
+  for i,x in enumerate(X):
+   m=trimesh.creation.icosphere(subdivisions=1,radius=.10);m.apply_translation(x);layers.append(layer(m.vertices,m.faces,'lime','SIFT_glyph_'+str(i)))
+ ext=np.r_[bounds,np.array([c['C'][:3,3]for c in cams]),np.asarray(extra).reshape(-1,3)];panel(ax,composite(layers),free_camera(ext,25,-65),ext,'All actual cameras/frusta/trajectories\nblack CAD; green glyph centers=common SIFT (if005)')
+
+def base_layer(group,b):
+ p=load(P18/'inputs'/group/'BASE_SELECTION.json');plane=np.asarray(p['plane'],float);plane/=np.linalg.norm(plane[:3]);n=plane[:3];u=np.cross(n,[1.,0,0]);u/=np.linalg.norm(u);v=np.cross(n,u);c=b['V'].mean(0);c-=n*(c@n+plane[3]);r=np.linalg.norm(b['V']-b['V'].mean(0),axis=1).max()*.8;V=c+r*np.array([-u-v,u-v,u+v,-u+v]);return layer(V,np.array([[0,1,2],[0,2,3]]),[.83,.83,.78],'ESTIMATED_BASE_'+p.get('base_status','UNKNOWN')),p
 
 def body_layer(z,name):
  fc=np.tile([.48,.35,.77]if name=='B2'else[.5,.56,.63],(len(z['F_solid']),1));fc[z['inferred_base_faces']]=[.65,.65,.65];return layer(z['V'],z['F_solid'],fc,name)
@@ -59,20 +73,22 @@ def export_glb(group,src,bodies,ring,cams):
   used,inv=np.unique(a['F'],return_inverse=True);m=trimesh.Trimesh(a['V'][used],inv.reshape(-1,3),process=False);col=np.c_[np.clip(a['colors']*255,0,255).astype(np.uint8),np.full(len(a['F']),alpha,np.uint8)];m.visual.face_colors=col;sc.add_geometry(m,node_name=name,geom_name=name)
  add(layer(ring['V'],ring['F'],'black','Ring'),'Ring_CAD_FIXED')
  for n,z in bodies.items():add(body_layer(z,n),'BODY_'+n+'_INFERRED_CAP_GRAY',180)
+ if load(P18/'inputs'/group/'CHART.json')['cap']:
+  a,p=base_layer(group,bodies['B2']);add(a,'BACKGROUND_BASE_ESTIMATE_'+p.get('base_status','UNKNOWN')+'_NOT_GT',45)
  for a in src:
-  add(layer(a['V'],a['F'],a['color'],a['id']),'HERO_'+a['id']);index.append(dict(source_id=a['id'],video=a['video'],origin=a['source']['origin'],mesh=a['source']['mesh'],observation=a['source']['observation'],color_rgb=a['color'],original_face_count=len(a['F']),original_face_id_SHA=sha(a['source']['mesh']['path']),object='HERO_'+a['id']))
+  add(layer(a['V'],a['F'],a['color'],a['id']),'HERO_'+a['id']);index.append(dict(source_id=a['id'],video=a['video'],origin=a['source']['origin'],mesh=a['source']['mesh'],observation=a['source']['observation'],color_rgb=a['color'],original_face_count=len(a['F']),source_mesh_with_original_face_ids_sha256=sha(a['source']['mesh']['path']),original_face_id_array_sha256=hashlib.sha256(np.asarray(a['mesh']['original_face_id'],np.int64).tobytes()).hexdigest(),object='HERO_'+a['id']))
  for c in cams:
   # Actual calibrated image frustum at 1mm axial depth, fixed camera geometry.
   uv=np.array([[0,0],[639,0],[639,359],[0,359]]);p=np.c_[uv,np.ones(4)]@np.linalg.inv(c['K']).T;p=p@c['C'][:3,:3].T+c['C'][:3,3];V=np.r_[c['C'][:3,3][None],p];F=np.array([[0,1,2],[0,2,3],[0,3,4],[0,4,1]]);col='#2474b5'if c['video']=='004'else'#dc841e';add(layer(V,F,col,c['id']),'CAMERA_'+c['id'])
  for video in ['004','005']:
-  cc=sorted([v for v in cams if v['video']==video],key=lambda v:v['meta'].get('raw_frame',0))
+  cc=sorted([v for v in cams if v['video']==video],key=temporal_frame)
   for j,(a,b)in enumerate(zip(cc,cc[1:])):
    p,q=a['C'][:3,3],b['C'][:3,3]
    if np.linalg.norm(p-q)<1e-8:continue
    m=trimesh.creation.cylinder(radius=.025,segment=np.array([p,q]),sections=6);m.visual.face_colors=[36,116,181,255]if video=='004'else[220,132,30,255];sc.add_geometry(m,node_name='TRAJECTORY_'+video+'_'+str(j))
  if group=='G01':
   X=np.asarray(load(R/'results/B3.json')['X']);sc.add_geometry(trimesh.points.PointCloud(X,colors=np.tile([0,200,80,255],(len(X),1))),node_name='COMMON_SIFT_B3_NOT_HERO')
- sc.apply_transform(np.diag([.001,.001,.001,1.]));dest=R/'derived'/group;dest.mkdir(exist_ok=True);path=dest/(group+'_INDEPENDENT_LAYERS_NOT_FUSION.glb');sc.export(path);save('derived/'+group+'/SOURCE_LAYER_INDEX.json',dict(group=group,layers=index,bodies={k:asset(Path(next(g for g in load(R/'config/FOUR_GROUP_INPUTS.json')if g['group']==group)['bodies'][k]['path']))for k in bodies},cameras=[dict(id=c['id'],video=c['video'],C=c['C'],K=c['K'])for c in cams],GLB=asset(path),geometry_unit='mm; export-only exact .001 conversion to GLB meters',no_ICP_no_fusion_no_repair=True));return path
+ sc.apply_transform(np.diag([.001,.001,.001,1.]));dest=R/'derived'/group;dest.mkdir(exist_ok=True);path=dest/(group+'_INDEPENDENT_LAYERS_NOT_FUSION.glb');sc.export(path);save('derived/'+group+'/SOURCE_LAYER_INDEX.json',dict(group=group,layers=index,bodies={k:asset(Path(next(g for g in load(R/'config/FOUR_GROUP_INPUTS.json')if g['group']==group)['bodies'][k]['path']))for k in bodies},cameras=[dict(id=c['id'],video=c['video'],C=c['C'],K=c['K'],temporal_frame_index=temporal_frame(c))for c in cams],GLB=asset(path),geometry_unit='mm; export-only exact .001 conversion to GLB meters',no_ICP_no_fusion_no_repair=True));return path
 
 def group_figures(group):
  H=np.array(load(R/'results/B3.json')['T'])if group=='G01'else np.eye(4);conf,src=group_data(group,H);rv=dict(np.load(conf['ring']['path']));bodies={n:dict(np.load(a['path']))for n,a in conf['bodies'].items()};cols=colors(len(src));bounds=np.r_[rv['V'],*[a['V'][np.unique(a['F'])]for a in src],*[b['V']for b in bodies.values()]]
@@ -84,7 +100,9 @@ def group_figures(group):
  fig,axs=plt.subplots(6,4,figsize=(17,22))
  for i,(v,label)in enumerate(zip(views,names)):
   for j in range(4):panel(axs[i,j],scenes[j],v,bounds,group+' | '+label+'\n'+titles[j])
- fig.suptitle(group+' six fixed views, original metric coordinates, all source triangles; NO fusion / ICP / repair\nEvidence: green support; red front disagreement PROXY; blue deeper (may self-occlude); purple CAD occluded; gray unknown; orange mixed\nSource IDs/colors and all calibrated cameras in SOURCE_LAYER_INDEX.json and independent GLB nodes. Same extent in each view row.');fig.tight_layout(rect=[0,0,1,.95]);finish(fig,'groups/'+group+'/Six_View_HERO_Body_Evidence.png',115)
+ from matplotlib.patches import Patch
+ fig.legend(handles=[Patch(facecolor=a['color'],label=a['id'])for a in src],loc='lower center',ncol=3,fontsize=5.5)
+ fig.suptitle(group+' six fixed views, original metric coordinates, all source triangles; NO fusion / ICP / repair\nEvidence: green support; red front disagreement PROXY; blue deeper (may self-occlude); purple CAD occluded; gray unknown; orange mixed\nSource IDs/colors and all calibrated cameras in SOURCE_LAYER_INDEX.json and independent GLB nodes. Same extent in each view row.');fig.tight_layout(rect=[0,.06,1,.95]);finish(fig,'groups/'+group+'/Six_View_HERO_Body_Evidence.png',115)
  fig,axs=plt.subplots(6,2,figsize=(10,22))
  for i,(v,label)in enumerate(zip(views,names)):
   for j,n in enumerate(['B0','B2']):panel(axs[i,j],composite([body_layer(bodies[n],n),ring]),v,bounds,n+' body only | '+label+'\ninferred bottom cap gray, not observed tissue')
@@ -92,6 +110,7 @@ def group_figures(group):
  # Explicit mm error on actual HERO faces and actual body triangles.
  fig,axs=plt.subplots(2,3,figsize=(15,9));side=views[3];oblique=free_camera(bounds,25,-65)
  panel(axs[0,0],composite(error+[ring]),side,bounds,group+' actual HERO face-centroid → B2 distance\nviridis 0..2 mm, saturated above2; no surface moved')
+ fig.colorbar(plt.cm.ScalarMappable(norm=matplotlib.colors.Normalize(0,2),cmap='viridis'),ax=axs[0,0],shrink=.6,label='surface distance mm (clipped display)')
  panel(axs[0,1],scenes[3],side,bounds,'Actual source disagreement classes\nnot physical truth labels')
  q=np.load(R/'evaluation/groups'/group/'B2_QUALITY.npz');fc=plt.get_cmap('magma')(np.clip((q['edge_stretch']-1)/.5,0,1))[:,:3];panel(axs[0,2],composite([layer(bodies['B2']['V'],bodies['B2']['F_solid'],fc,'stretch'),ring]),oblique,bounds,'Actual B2 edge stretch relativeB0\n1..1.5 magma, no smoothed display')
  for j,n in enumerate(['B0','B2']):panel(axs[1,j],scenes[j+1],oblique,bounds,'Original HERO + '+n+' at identical view')
@@ -104,6 +123,9 @@ def group_figures(group):
  panel(axs[1,1],scenes[2],zoom,zz,'Same detail: all HERO + B2\nno topology changed')
  panel(axs[1,2],scenes[3],zoom,zz,'Same detail: visibility classes\nfront/deeper/unknown distinct')
  q=np.load(R/'evaluation/groups'/group/'B2_QUALITY.npz');fc=plt.get_cmap('coolwarm')(np.clip(q['area_ratio']/2,0,1))[:,:3];panel(axs[1,3],composite([layer(bodies['B2']['V'],bodies['B2']['F_solid'],fc,'area'),ring]),oblique,bounds,'B2/B0 actual per-face area ratio\ncoolwarm 0..2, gray cap identity retained in layer index')
+ if group=='G05':
+  b,p=base_layer(group,bodies['B2']);panel(axs[1,3],composite([body_layer(bodies['B2'],'B2'),b,ring]),oblique,bounds,'Frozen independent background base: '+p.get('base_status','UNKNOWN')+'\nlightgray reference plane; NOT Ring plane or true base GT')
+ if group=='G01':full_context(axs[1,3],cams,src,rv,bounds)
  if group=='G01':figname='Fig5_G01_Crossvideo_Actual_Geometry.png'
  else:figname={'G03':'Fig6_G03_Stalk_And_Source_Geometry.png','G05':'Fig7_G05_Body_Base_And_HERO.png','G06':'Fig8_G06_Local_Deformation_And_Ring.png'}[group]
  fig.suptitle(group+' original native HERO and frozen018 bodies; errors and defects preserved | NO fusion\nLargest source p95 residual chosen for diagnosis only after prediction freeze, never used for training/model selection. Side and detail views explicitly distinguished.');fig.tight_layout(rect=[0,0,1,.94]);finish(fig,figname,125)
@@ -112,7 +134,7 @@ def group_figures(group):
  for a in src:
   ev=np.load(R/'evaluation/groups'/group/(a['id']+'_SOURCE_EVIDENCE.npz'));order=np.argsort(ev['B2_surface_distance_mm'])[::-1][:10];cent=a['V'][a['F']].mean(1)
   for k in order:cases.append(dict(group=group,source=a['id'],original_face_id=int(ev['original_face_id'][k]),source_face_index=int(k),XYZ_mm=cent[k],B2_surface_distance_mm=float(ev['B2_surface_distance_mm'][k]),B0_surface_distance_mm=float(ev['B0_surface_distance_mm'][k]),visibility_class=VIS_NAMES[int(ev['face_class'][k])],source_RGB=a['meta'].get('RGB_source'),source_camera=a['C']))
- save('metrics/groups/'+group+'_FAILURE_LOCATIONS.json',cases);table('metrics/groups/'+group+'_FAILURE_LOCATIONS.csv',cases);save('derived/'+group+'/VISUAL_VIEW_CONFIG.json',dict(bounds_mm=[bounds.min(0),bounds.max(0)],names=names,views=[dict(C=C,K=K,image_size=size)for C,K,size in views],all_methods_same_view_and_bounds=True));path=export_glb(group,src,bodies,rv,cams);print('GROUP021_FIGURES_GLB_COMPLETE',group,str(path),flush=True)
+ save('metrics/groups/'+group+'_FAILURE_LOCATIONS.json',cases);table('metrics/groups/'+group+'_FAILURE_LOCATIONS.csv',cases);save('derived/'+group+'/VISUAL_VIEW_CONFIG.json',dict(bounds_mm=[bounds.min(0),bounds.max(0)],names=names,views=[dict(C=C,K=K,image_size=size)for C,K,size in views],all_methods_same_view_and_bounds=True));path=export_glb(group,src,bodies,rv,cams);save('runtime/'+group+'_FIGURES_COMPLETE.json',dict(epoch=time.time(),GLB=asset(path)));print('GROUP021_FIGURES_GLB_COMPLETE',group,str(path),flush=True)
 
 def sift_figures():
  tr=load(R/'observations/CROSS_COMMON_TRACKS.json');H0=np.array(load(R/'results/B0_RoMa.json')['T']);H=np.array(load(R/'results/B3.json')['T']);XA=np.array([t['X004_independent']for t in tr]);XB=np.array([t['X005_independent']for t in tr]);XB0=XB@H0[:3,:3].T+H0[:3,3];X=np.array(load(R/'results/B3.json')['X']);rv=np.load(R/'inputs/G01/RING.npz');fig=plt.figure(figsize=(15,10));ax=fig.add_subplot(2,2,1,projection='3d');ax.scatter(*XA.T,c='tab:blue',label='004 independently triangulated');ax.scatter(*XB0.T,c='tab:orange',label='005 independent mapped by fullRoMa')
@@ -129,6 +151,11 @@ def sift_figures():
  fig,axs=plt.subplots(2,3,figsize=(17,10));axs[0,0].remove();ax=fig.add_subplot(2,3,1,projection='3d');ax.scatter(*XA.T,c='tab:blue',s=10,label='004 independent');ax.scatter(*XB0.T,c='tab:orange',s=10,label='005 independent atRoMa');ax.scatter(*X.T,c='green',s=14,label='one optimized X per identity')
  for a,b,c in zip(XA,XB0,X):ax.plot(*np.array([a,c,b]).T,c='gray',lw=.5)
  ax.set(xlabel='X mm',ylabel='Y mm',zlabel='Z mm');ax.legend(fontsize=6)
+ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+ ax.add_collection3d(Poly3DCollection(rv['V'][rv['F']],facecolors='black',edgecolors='none'))
+ for vid,col in [('004','#2474b5'),('005','#dc841e')]:
+  cc=[v for v in load(R/'config/VIEWS.json')if v['video']==vid];cc=sorted(cc,key=temporal_frame);c=np.array([((H@np.asarray(v['T']))if vid=='005'else np.asarray(v['T']))[:3,3]for v in cc]);ax.plot(*c.T,'.-',c=col,ms=2,label=vid+' cameras')
+ ax.legend(fontsize=5)
  vv=load(R/'config/VIEWS.json')
  for j,side in enumerate([0,1],1):
   cid=max(collections.Counter(o['view']for t in tr for o in t['observations']if o['side']==side),key=lambda cid:sum(o['view']==cid for t in tr for o in t['observations']));v=next(v for v in vv if v['id']==cid);im=np.load(v['cache']);ax=axs[0,j];ax.imshow(im['RGB']);C=np.asarray(v['T']);C=H@C if side else C
@@ -143,16 +170,17 @@ def sift_figures():
 
 def comparison_figures():
  metrics=load(R/'metrics/REGISTRATION_COMPARISON.json');mi={m['method']:m for m in metrics};names=['B0_RoMa','B0_020_R2','B0_020_R3','B0_020_MASK','B1','B2','B3'];fig,axs=plt.subplots(2,3,figsize=(17,9));xx=np.arange(len(names))
- for ax,key,label in [(axs[0,0],'HOLDOUT_IoU','independent body HOLDOUT IoU'),(axs[0,1],'HOLDOUT_Inner_px_MAE','HOLDOUT Inner px'),(axs[0,2],'HOLDOUT_Outer_px_MAE','HOLDOUT Outer px'),(axs[1,0],'Ring_center_mm','Ring center offset mm'),(axs[1,1],'correction_from_RoMa_rotation_deg','rotation change from fullRoMa deg')]:ax.bar(xx,[mi[n][key]for n in names]);ax.set_xticks(xx,names,rotation=35,ha='right');ax.set_title(label)
+ for ax,key,label in [(axs[0,0],'HOLDOUT_IoU','independent body HOLDOUT IoU'),(axs[0,1],'HOLDOUT_Inner_px_MAE','HOLDOUT Inner px'),(axs[0,2],'HOLDOUT_Outer_px_MAE','HOLDOUT Outer px'),(axs[1,1],'correction_from_RoMa_rotation_deg','rotation change from fullRoMa deg')]:ax.bar(xx,[mi[n][key]for n in names]);ax.set_xticks(xx,names,rotation=35,ha='right');ax.set_title(label)
+ ss={a['method']:a for a in load(R/'metrics/SYMMETRIC_SIFT_EVALUATION.json')if a['role']=='HOLDOUT'};ax=axs[1,0];ax.bar(xx-.18,[ss[n]['forward']['error_px']['MAE']for n in names],.36,label='004 →005');ax.bar(xx+.18,[ss[n]['reverse']['error_px']['MAE']for n in names],.36,label='005 →004');ax.set_xticks(xx,names,rotation=35,ha='right');ax.set_title('Independent fixed-anchor SIFT HOLDOUT px');ax.legend(fontsize=6)
  ax=axs[1,2]
  for n in ['B1','B2','B3']:
   h=load(R/'optimization'/n/'HISTORY.json');ax.plot([a['iteration']for a in h],[a['loss']for a in h],label=n+' total');acc=[a for a in h if a['accepted']];ax.scatter([a['iteration']for a in acc],[a['loss']for a in acc],s=3)
  ax.set(xlabel='candidate iteration',ylabel='actual FIT objective');ax.legend(fontsize=6);fig.suptitle('Fig3 | Frozen historical B0 references and actual B1–B3 optimization\nB2 vsB1 releases shared X only; B3 adds I/O deadzone only. Different targets are not compared as identical objective values.');fig.tight_layout(rect=[0,0,1,.93]);finish(fig,'Fig3_B0_B3_Pose_And_Residuals.png')
- vv=[v for v in load(R/'config/VIEWS.json')if v['video']=='005'];fit=[v for v in vv if v['role']=='FIT'];selected=[fit[0],fit[len(fit)//2],fit[-1]]+[v for v in vv if v['role']=='HOLDOUT'];methods=['B0_RoMa','B0_020_R3','B0_020_MASK','B2','B3'];fig,axs=plt.subplots(len(selected),6,figsize=(22,3*len(selected)))
+ vv=[v for v in load(R/'config/VIEWS.json')if v['video']=='005'];fit=[v for v in vv if v['role']=='FIT'];selected=[fit[0],fit[len(fit)//2],fit[-1]]+[v for v in vv if v['role']=='HOLDOUT'];methods=['B0_RoMa','B0_020_R3','B0_020_MASK','B2','B3'];fig,axs=plt.subplots(len(selected),6,figsize=(22,3*len(selected)));per={(x['method'],x['view']):x for x in load(R/'metrics/ALL005_FRAME_METRICS.json')}
  for i,v in enumerate(selected):
   a=np.load(v['cache']);axs[i,0].imshow(a['RGB']);edge(axs[i,0],a['labels']==1,'lime');edge(axs[i,0],a['labels']==2,'cyan');axs[i,0].axis('off');axs[i,0].set_title(v['id']+' '+v['role']+'\noriginal RGB/Mask')
   for j,m in enumerate(methods,1):
-   d=np.load(R/'evaluation'/m/(v['id']+'.npz'));ax=axs[i,j];ax.imshow(a['RGB']);edge(ax,a['labels']==1,'lime');edge(ax,d['pred'],'#dc73d9');edge(ax,np.isfinite(d['Ring_z_mm']),'black');ax.set_title(m+'\nall target views retained');ax.axis('off')
+   d=np.load(R/'evaluation'/m/(v['id']+'.npz'));ax=axs[i,j];ax.imshow(a['RGB']);edge(ax,a['labels']==1,'lime');edge(ax,d['pred'],'#dc73d9');edge(ax,np.isfinite(d['Ring_z_mm']),'black');x=per[m,v['id']];ax.set_title(m+' | IoU %.3f / contour %.2fpx'%(x['IoU'],x['contour_px']['MAE']));ax.axis('off')
  fig.suptitle('Fig4 | Same actual RGB/camera/pixel coordinates, frozen018 body (pink) and actual CAD (black)\nAll three protected005 HOLDOUT views shown. Body is evaluation-only for all021 routes.');fig.tight_layout(rect=[0,0,1,.95]);finish(fig,'Fig4_Crossvideo_Actual_Reprojection.png',120)
  # G01 dedicated before020/after020/after021 same-view world geometry comparison.
  poses=[('before020/fullRoMa','B0_RoMa'),('after020/R3','B0_020_R3'),('after021/B3','B3')];datasets=[];B=[]
@@ -165,8 +193,9 @@ def comparison_figures():
 
 def main():
  wait_freeze()
- while not(R/'runtime/BA_INDEPENDENT_EVALUATION_COMPLETE.json').exists()or not(R/'runtime/FOUR_GROUP_QUANTITATIVE_COMPLETE.json').exists():time.sleep(5)
+ while not(R/'runtime/BA_INDEPENDENT_EVALUATION_COMPLETE.json').exists()or not(R/'runtime/FOUR_GROUP_QUANTITATIVE_COMPLETE.json').exists()or not(R/'runtime/SOURCE_GEOMETRY_COMPLETE.json').exists():time.sleep(5)
  sift_figures();comparison_figures()
- for g in GROUPS:group_figures(g)
+ for g in GROUPS:
+  if not(R/'runtime'/(g+'_FIGURES_COMPLETE.json')).exists():group_figures(g)
  save('runtime/ALL_FIGURES_COMPLETE.json',dict(epoch=time.time(),groups=GROUPS,core_figures_N=8));print('021_FIGURES_COMPLETE',flush=True)
 if __name__=='__main__':main()

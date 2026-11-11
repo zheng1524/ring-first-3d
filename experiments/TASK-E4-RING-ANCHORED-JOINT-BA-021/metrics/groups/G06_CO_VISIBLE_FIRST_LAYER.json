@@ -1,0 +1,33 @@
+{
+  "group": "G06",
+  "source_count": 10,
+  "ordered_source_target_pairs": 90,
+  "fixed_source_target_N": 789102,
+  "strict_comparable_N": 749150,
+  "co_visible_first_layer_candidate_N": 740445,
+  "co_visible_candidate_fraction_fixed": 0.9383387698928656,
+  "own_source_CAD_order_UNKNOWN_N": 0,
+  "strict_comparable_depth_mm": {
+    "N": 749150,
+    "MAE": 0.16448257796715782,
+    "median": 0.13663833849064488,
+    "p95": 0.41083457237459226,
+    "maximum": 0.8545333515460314
+  },
+  "co_visible_candidate_depth_mm": {
+    "N": 740445,
+    "MAE": 0.15962300271243438,
+    "median": 0.13461680460903125,
+    "p95": 0.3927142523695948,
+    "maximum": 0.8294857960205988
+  },
+  "compatible_conditioned_depth_mm": {
+    "N": 737463,
+    "MAE": 0.15806182901830146,
+    "median": 0.13391508886204662,
+    "p95": 0.38696157792323405,
+    "maximum": 0.4999962700075642
+  },
+  "definition": "Source TRUSTED sample before its own CAD, target native first visible depth valid and beforeCAD. Co-visible candidate = supported ±0.5mm OR in front of target; deeper source is excluded as possible normal self-occlusion. This is an uncalibrated visibility proxy, not GT.",
+  "no_depth_or_geometry_changed": true
+}

@@ -1,0 +1,70 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "parameter": "q",
+      "index": 0,
+      "AD": 0.10696146861950291,
+      "FD": 0.10696146874517032,
+      "relative_error": 1.1748848301195967e-09,
+      "passed": true
+    },
+    {
+      "parameter": "q",
+      "index": 4,
+      "AD": -0.23498918948247413,
+      "FD": -0.23498917938513664,
+      "relative_error": 4.2969370276761065e-08,
+      "passed": true
+    },
+    {
+      "parameter": "X",
+      "index": 0,
+      "AD": -4.8857458032131344e-05,
+      "FD": -4.8857454193473864e-05,
+      "relative_error": 7.856850591236641e-08,
+      "passed": true
+    },
+    {
+      "parameter": "X",
+      "index": 2,
+      "AD": 0.002363455850193212,
+      "FD": 0.002363455853249263,
+      "relative_error": 1.2930434337177524e-09,
+      "passed": true
+    },
+    {
+      "parameter": "whole_network_is_not_used",
+      "pose_grad": 0.2467208474388347,
+      "point_grad": 0.008676614202257644,
+      "passed": true
+    },
+    {
+      "parameter": "Ring_pure_yaw_invariance",
+      "ranges": {
+        "M": 8.102506399154663e-07,
+        "Ieps": 2.4424906541753444e-15,
+        "Oeps": 1.0269562977782698e-15
+      },
+      "passed": true
+    },
+    {
+      "parameter": "landmarks_not_fixed_in_B2",
+      "baseline": 0.25793174165393407,
+      "shifted": [
+        0.298750360758595,
+        0.2830048760898713,
+        0.2783576931022505
+      ],
+      "passed": true
+    }
+  ],
+  "observations": 553,
+  "landmarks": 18,
+  "physics": "real frozen cameras and CAD; no body/HERO/GT",
+  "source": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/code/gate021.py",
+    "bytes": 2406,
+    "sha256": "5a2c9c2aa4a4bfcdd9bcd8d955f5dcd304cdb3bd2d42452e2826e437688aabe6"
+  }
+}

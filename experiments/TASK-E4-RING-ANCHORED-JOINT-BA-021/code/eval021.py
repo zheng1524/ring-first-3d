@@ -9,18 +9,21 @@ METHODS=['B0_RoMa','B0_020_R2','B0_020_R3','B0_020_MASK','B1','B2','B3','SENS_B2
 def methods():return [dict(method=n,T=load(R/'results'/(n+'.json'))['T'])for n in METHODS]
 
 def independent_tracks():
- excluded=[set(),set()]
+ excluded=[set(),set()];ban={}
  for t in load(R/'observations/CROSS_COMMON_TRACKS.json'):
   excluded[0].add(t['source_landmark004']);excluded[1].add(t['source_landmark005'])
+  for o in t['observations']:ban.setdefault(o['view'],[]).append(o['uv'])
  rows=[]
  for role in ['FIT','HOLDOUT']:
   f=SymmetricFeatures('CROSS',held=role=='HOLDOUT')
   for direction,obs in enumerate(f.directions):
    for a in obs:
-    keep=np.array([k not in excluded[direction]for k in a['landmark']]);ix=np.flatnonzero(keep);a['X']=a['X'][ix];a['uv']=a['uv'][ix];a['landmark']=a['landmark'][ix]
+    keep=np.array([k not in excluded[direction]for k in a['landmark']]);uv=a['uv'].detach().cpu().numpy()
+    if a['view']in ban:keep&=(np.linalg.norm(uv[:,None]-np.asarray(ban[a['view']])[None],axis=-1).min(1)>1e-4)
+    ix=np.flatnonzero(keep);a['X']=a['X'][ix];a['uv']=a['uv'][ix];a['landmark']=a['landmark'][ix]
   for m in methods():
    with torch.no_grad():F,E,p=f.evaluate(tensor(m['T'],torch.float64),details=True)
-   rows.append(dict(method=m['method'],role=role,source_tracks_disjoint_from_BA=True,excluded_source_track_counts=[len(s)for s in excluded],F=float(F),E=float(E),**p))
+   valid=all(p[k]['N']>0 for k in ['forward','reverse']);rows.append(dict(method=m['method'],role=role,source_tracks_and_exact_target_feature_pixels_disjoint_from_BA=True,excluded_source_track_counts=[len(s)for s in excluded],F=float(F)if valid else None,symmetric_status='COMPUTED'if valid else'NOT_EVALUABLE_EMPTY_DIRECTION',E_full_2D_only_pool_diagnostic=float(E),E_not_claimed_track_disjoint=True,**p))
  save('metrics/UNUSED_SIFT_TRACK_EVALUATION.json',rows);table('metrics/UNUSED_SIFT_TRACK_EVALUATION.csv',rows)
 
 def negative():

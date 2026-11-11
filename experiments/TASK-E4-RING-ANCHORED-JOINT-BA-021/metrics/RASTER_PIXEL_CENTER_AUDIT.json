@@ -1,0 +1,26 @@
+{
+  "view": "G01_005_raw00057",
+  "cad_vertex_samples_N": 964,
+  "source": "Original actual CAD and fullRoMa; first FIT view only; no body/HERO/HOLDOUT/GT",
+  "OpenCV_native_pixel_center": "0-based integer center",
+  "resize_pixel_center_formula": "u_small=0.5*(u_native+0.5)-0.5",
+  "PyTorch3D_screen_to_raster_pixel_center": "transform_points_screen returns continuous screen coordinate with raster pixel centers at j+0.5; subtract0.5 for OpenCV-indexed raster array",
+  "inherited_Ksmall": "K first two rows*0.5 then principal point+0.25; includes renderer halfpixel compensation",
+  "actual_screen_minus_halfpixel_to_expected_error_px": {
+    "N": 964,
+    "MAE": 6.801371150890096e-06,
+    "median": 6.0014185056713595e-06,
+    "p95": 1.44420325645427e-05,
+    "maximum": 2.869043703500852e-05
+  },
+  "uncompensated_screen_to_OpenCV_error_px": {
+    "N": 964,
+    "MAE": 0.7071064720672773,
+    "median": 0.7071064539768032,
+    "p95": 0.7071149370979837,
+    "maximum": 0.7071265573413325
+  },
+  "maximum_component_error_px": 2.8681544506525825e-05,
+  "passed": true,
+  "no_objective_or_input_changed": true
+}

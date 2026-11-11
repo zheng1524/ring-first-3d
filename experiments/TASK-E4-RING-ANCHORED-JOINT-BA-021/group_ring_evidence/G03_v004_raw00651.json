@@ -1,0 +1,96 @@
+{
+  "original_DXY": {
+    "valid": true,
+    "version": "RING_VISIBLE_ARC_CENTERLINE_v2.0",
+    "coordinate_system": "native_image_px",
+    "radius_unit": "native_px_radius",
+    "diameter_unit": "native_px_diameter",
+    "wire_diameter_mm": 1.2,
+    "reference_inner_diameter_mm": 9.999999251835408,
+    "history_prediction_used": false,
+    "attempts": [
+      {
+        "branch": "visible_inner_arc_RANSAC",
+        "valid": true,
+        "center_gap_norm": 0.0020721062975464347,
+        "wire_major_mm": 1.3963306238115254,
+        "wire_minor_mm": 1.1503396500960033,
+        "outer_inner_major_ratio": 1.2848587965978573,
+        "angle_gap_deg": 0.42295074462890625,
+        "centerline_frontality": 0.424837244917704,
+        "mask_band_recall": 0.9148471615720524,
+        "mask_band_precision": 0.9638831377961813,
+        "inner_arc_coverage": 1.0,
+        "inner_normalized_residual": 0.03604221826593766,
+        "inner_sector_instability": 0.021109895829028558,
+        "reason": "ok"
+      }
+    ],
+    "reason": "ok",
+    "branch": "visible_inner_arc_RANSAC",
+    "inner": {
+      "cx": 230.00331115722656,
+      "cy": 91.84918975830078,
+      "major_radius": 58.154090881347656,
+      "minor_radius": 21.401222229003906,
+      "angle_deg": 167.02418518066406
+    },
+    "outer": {
+      "cx": 230.02151489257812,
+      "cy": 91.98564529418945,
+      "major_radius": 74.71979522705078,
+      "minor_radius": 35.048553466796875,
+      "angle_deg": 166.60123443603516
+    },
+    "centerline": {
+      "cx": 230.01241302490234,
+      "cy": 91.91741752624512,
+      "major_radius": 66.43694305419922,
+      "minor_radius": 28.22488784790039,
+      "angle_deg": -13.187290191650401
+    },
+    "diagnostics": {
+      "center_gap_norm": 0.0020721062975464347,
+      "wire_major_mm": 1.3963306238115254,
+      "wire_minor_mm": 1.1503396500960033,
+      "outer_inner_major_ratio": 1.2848587965978573,
+      "angle_gap_deg": 0.42295074462890625,
+      "centerline_frontality": 0.424837244917704,
+      "mask_band_recall": 0.9148471615720524,
+      "mask_band_precision": 0.9638831377961813,
+      "inner_arc_coverage": 1.0,
+      "inner_normalized_residual": 0.03604221826593766,
+      "inner_sector_instability": 0.021109895829028558,
+      "reason": "ok"
+    },
+    "transform_native_to_ringplane": [
+      [
+        0.9736295335364732,
+        -0.22813489743033535,
+        -202.97730778162304
+      ],
+      [
+        0.5369936373505287,
+        2.2917706608446644,
+        -334.1688430132722
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "reference_kind": "centerline",
+    "reference_diameter_mm": 11.199999251835408,
+    "reference_diameter_rectified_px": 132.87388610839844,
+    "mm_per_rectified_px": 0.0842904469784112
+  },
+  "diameter_mm": 9.999999251835408,
+  "no_2D_DXY_measurement_used": true,
+  "Mask_boundary_snap_limit_px": 2.5,
+  "source": {
+    "path": "/home/liu/new-polyp-dxy/src/dxy_mid/_engine/ring_component.py",
+    "bytes": 10731,
+    "sha256": "1564d689219c669934c2aec0cafbca7e8fb9b912d55e5c85c68b7cda891221d0"
+  }
+}
