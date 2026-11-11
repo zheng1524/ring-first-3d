@@ -1,0 +1,77 @@
+{
+  "task": "TASK-E4-RING-ANCHORED-JOINT-BA-021",
+  "seed": 20261111,
+  "GT": false,
+  "pose_direction": "X004=T004_from005 @ X005, OpenCV c2w, mm, left perturbation",
+  "pose_scale": [
+    0.6,
+    0.6,
+    0.6,
+    0.08726646259971647,
+    0.08726646259971647,
+    0.08726646259971647
+  ],
+  "lambda_reprojection": 0.2,
+  "lambda_Ring": 1.0,
+  "lambda_curve": 0.05,
+  "lambda_pose_prior": 0.01,
+  "lambda_point_prior": 0.001,
+  "pixel_sigma": 3.0,
+  "epsilon_px": {
+    "inner": 1.0,
+    "outer": 1.0
+  },
+  "iterations": 100,
+  "adam_pose_lr": 0.01,
+  "adam_point_lr_mm": 0.02,
+  "backtracks": 8,
+  "acceptance_tolerance": 1e-06,
+  "translation_bound_mm": 1.2,
+  "rotation_bound_deg": 10.0,
+  "point_whitened_bound": 6.0,
+  "point_displacement_bound_mm": 3.0,
+  "observations": "all18 named RGB tracks, no 3D consistency rejection; equal video/direction/track/category mass; no EPI loss",
+  "geometry_rule": "fixed signed-CAD sample threshold -0.02mm, 11-ray parity; independent audit, not BA loss",
+  "hero_support_mm": 0.5,
+  "hero_ring_margin_mm": 0.05,
+  "coverage_proxy_voxel_mm": 0.25,
+  "physical_accuracy": "NOT_EVALUABLE",
+  "main_routes": [
+    "B1",
+    "B2",
+    "B3"
+  ],
+  "sensitivity_routes": [
+    "SENS_B2_LightGlue",
+    "SENS_B2_020R2"
+  ],
+  "negative_routes": [
+    "NEG_B1",
+    "NEG_B2",
+    "NEG_B3"
+  ],
+  "no_body_no_HERO": true,
+  "independent_track_evaluation": "020 source landmark IDs excluding all18 BA IDs, in each direction; actual endpoint IDs excluded when available; separate protected-view and unused-track rows",
+  "original_020": [
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-SIFT-SYMMETRIC-REGISTRATION-020/results/R0.json",
+      "bytes": 546,
+      "sha256": "cffb4dc2d6849739229031e877aaf6ad1e89481864221000ee410e6a66220e75"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-SIFT-SYMMETRIC-REGISTRATION-020/results/R2.json",
+      "bytes": 76897,
+      "sha256": "015058840fd725c5f3c4842012eaaedf8c42ac93d6fa51fae071b69e455a994f"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-SIFT-SYMMETRIC-REGISTRATION-020/results/R3.json",
+      "bytes": 76848,
+      "sha256": "b4fb0773a8a3792d15b5e6aa773c36848e669a0522dfd91cabbe5ffe2ce6c553"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-SIFT-SYMMETRIC-REGISTRATION-020/results/R3_MASK_ONLY.json",
+      "bytes": 76805,
+      "sha256": "62455d9b64f48ac64bf83487d1f4bcae848234fe6e6adbfc17cc8580b28273d4"
+    }
+  ]
+}

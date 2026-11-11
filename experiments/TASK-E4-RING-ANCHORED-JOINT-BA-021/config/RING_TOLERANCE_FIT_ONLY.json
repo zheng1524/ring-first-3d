@@ -1,0 +1,25 @@
+{
+  "formula": "max(1 px, FIT q95(original-DXY-point to original Mask boundary distance)+0.5 pixel quantization allowance)",
+  "epsilon_px": {
+    "inner": 1.0,
+    "outer": 1.0
+  },
+  "observations": {
+    "inner": {
+      "N": 21414,
+      "MAE": 0.0035957784626879613,
+      "median": 0.0,
+      "p95": 0.0,
+      "maximum": 1.0
+    },
+    "outer": {
+      "N": 26789,
+      "MAE": 0.002463697786404868,
+      "median": 0.0,
+      "p95": 0.0,
+      "maximum": 1.0
+    }
+  },
+  "HOLDOUT": false,
+  "RoMa_residual_not_used": true
+}
