@@ -1,0 +1,22 @@
+{
+ "task":"TASK-E4-021-MATURE-GEOMETRIC-POSE-REFINEMENT","date":"2026-11-12","GT":false,
+ "groups":["G01","G03","G05","G06"],"methods":["P0","S0","A1","A2","A3"],"views":98,"FIT":81,"HOLDOUT":17,
+ "camera":"OpenCV c2w mm; same inherited camera-centred leftSE3 retraction, physical radius1.2mm/10deg relative P0; no scale",
+ "initial_prior":"all methods prior anchored to sameP0, NOT reset atConics seed; q unit .6mm/5deg",
+ "parameter_box":2.0,"translation_bound_mm":1.2,"rotation_bound_deg":10.0,
+ "outer_iterations":5,"inner_max_nfev":20,"backtracks":8,
+ "lambda_Ring":1.0,"lambda_SIFT":0.2,"lambda_prior":0.01,"sigma_px":3.0,
+ "robust":"same vector Huber3px per observation, averageI/O separately; same cached fixed RGB PnP-inlier IDs and held tracks",
+ "renderer_scale":2,"boundary_association_working_px":1.0,"depth_occlusion_margin_mm":0.002,
+ "visibility":"actual fullCAD front/back candidate edges associated to rendered inner/outer silhouette and adjacent visible primitive neighborhood; MISS alone UNKNOWN; rendering boundary evidence may certify silhouette independently of tangent-ray MISS; other finite frontdepth may certify OCCLUDED; no increase to old2um depth margin",
+ "local_correspondence":"freeze actual perspective-correct closest3D CAD point in inner solve; re-render/re-associate actual objective for every outer candidate; backtrack only accept physical and actual loss nonincrease",
+ "Conics":"official unmodified estimate_pose AST; normalize cone KtEK; keep true radius fromCAD; official -Z toOpenCV+Z center adaptation; normal multi-solutions; in-plane yaw gauge inherited from P0 or independentRGBPnP then SIFT constrains; Mid INIT ONLY",
+ "Conics_selection":"all physical candidates retained; select by FIT SIFT+sameP0 prior, neverHOLDOUT/HERO/body; if none within physical bounds A1/A3 failNaN, no oldP0 fallback",
+ "stage1":"known CAD synthetic circle inversion+thickMid audit+four historical ray switch regressions+fixed-material-point6DoF AD/FD at1e-3/1e-4/1e-5+actualTRF decrease; normal correspondence switching allowed",
+ "Jacobian_relative_limit":0.001,"Jacobian_absolute_limit":0.00001,
+ "HOLDOUT_policy":"no independent fitting; unchanged local cameras explicitly not counted improved; no new shared transform fit in this minimal local-refinement comparison",
+ "stageB_method":"A2 preregistered if implementation+four-group physical/independent diagnostics credible; all12 conditionalphoto attempts, not selected with held metrics",
+ "serious_independent_degradation":"heldSIFT paired mean increase>max(1px,25percent) in a group or native-depth fixed-coverage MAE increase>max(.5mm,25percent) AND coverage loss>10percent requires explanation/gate beforephotos",
+ "HERO":"frozen native depth; new pose re-unprojection is counterfactual POSE_CHANGED_DEPTH_NOT_REINFERRED only; no inference",
+ "no_body_optimization":true,"no_DXY_write":true,"no_loss_search":true
+}
