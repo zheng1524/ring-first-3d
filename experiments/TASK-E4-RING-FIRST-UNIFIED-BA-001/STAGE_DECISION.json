@@ -1,0 +1,91 @@
+{
+  "status": "PAUSED_FOR_SCIENTIFIC_REVIEW_AFTER_FOUR_GROUP_BA",
+  "main_four_groups_run": true,
+  "Ceres_joint_executed": true,
+  "B4_run": false,
+  "photos_run": 0,
+  "reasons": [
+    "FOUR_GROUP_INDEPENDENT_RGB_TRADEOFF_NOT_RESOLVED",
+    "L2_LOCAL_YAW_FROZEN_B4_NOT_VALIDATED"
+  ],
+  "hard_fail_reasons": [],
+  "preregistered_severe_RGB_gate_PASS": true,
+  "scientific_trust_established": false,
+  "B4_status": "NOT_RUN_INDEPENDENT_TRUST_NOT_ESTABLISHED",
+  "independent_HERO_used_for_this_gate": false,
+  "paired_RGB": [
+    {
+      "group": "G01",
+      "before": 1.399611023463403,
+      "after": 2.117170445756531,
+      "delta": 0.7175594222931281,
+      "preregistered_severe_delta_px": 1.0,
+      "severe": false,
+      "marginal_camera_rank": 296,
+      "dimension": 296,
+      "joint_FD_PASS": true
+    },
+    {
+      "group": "G03",
+      "before": 0.6045830469880021,
+      "after": 0.9593645036837671,
+      "delta": 0.354781456695765,
+      "preregistered_severe_delta_px": 1.0,
+      "severe": false,
+      "marginal_camera_rank": 25,
+      "dimension": 25,
+      "joint_FD_PASS": true
+    },
+    {
+      "group": "G05",
+      "before": 0.6520337734383064,
+      "after": 1.1292267168279801,
+      "delta": 0.4771929433896738,
+      "preregistered_severe_delta_px": 1.0,
+      "severe": false,
+      "marginal_camera_rank": 35,
+      "dimension": 35,
+      "joint_FD_PASS": true
+    },
+    {
+      "group": "G06",
+      "before": 0.7416688692742701,
+      "after": 0.9659654060409295,
+      "delta": 0.2242965367666594,
+      "preregistered_severe_delta_px": 1.0,
+      "severe": false,
+      "marginal_camera_rank": 30,
+      "dimension": 30,
+      "joint_FD_PASS": true
+    }
+  ],
+  "HOLDOUT_relative_epipolar": [
+    {
+      "group": "G01",
+      "N_views": 8,
+      "before_px": 0.5579160778145387,
+      "after_px": 0.920200302658911
+    },
+    {
+      "group": "G03",
+      "N_views": 3,
+      "before_px": 0.5173254596584712,
+      "after_px": 0.775679796227586
+    },
+    {
+      "group": "G05",
+      "N_views": 3,
+      "before_px": 0.39479686760465066,
+      "after_px": 0.4537898404526587
+    },
+    {
+      "group": "G06",
+      "N_views": 3,
+      "before_px": 0.4322264885245999,
+      "after_px": 0.5522169604227548
+    }
+  ],
+  "no_absolute_pose_GT": true,
+  "do_not_promote_any_camera_mainline": true,
+  "evaluation_correction": "005 held native-map XYZ follows candidate sharedH; initial frame-inconsistent evaluation preserved, not used as current severe-fail evidence"
+}

@@ -1,0 +1,87 @@
+{
+  "PASS": true,
+  "checks": [
+    {
+      "name": "originalequationsforward98",
+      "PASS": true
+    },
+    {
+      "name": "trueRingaxisymmetryyaw98",
+      "PASS": true
+    },
+    {
+      "name": "positiveTorusdepth98",
+      "PASS": true
+    },
+    {
+      "name": "inversehierarchymetric98",
+      "PASS": true
+    },
+    {
+      "name": "allJacobianBlocks",
+      "PASS": true
+    },
+    {
+      "name": "realLMincludingreassociateddescent4",
+      "PASS": true
+    },
+    {
+      "name": "exactoriginaltorusvisibilityall98",
+      "PASS": true
+    },
+    {
+      "name": "independentCADrenderquantization",
+      "PASS": true,
+      "detail": [
+        {
+          "group": "G01",
+          "CAD_vs_exact_mask_IoU": 0.9305599493831066,
+          "CAD_boundary_to_exact_px": {
+            "N": 700,
+            "MAE": 0.4938808035188148,
+            "median": 0.49833360584941827,
+            "p95": 0.9107964871859979,
+            "maximum": 1.0011080372386052
+          }
+        },
+        {
+          "group": "G03",
+          "CAD_vs_exact_mask_IoU": 0.9125444110412682,
+          "CAD_boundary_to_exact_px": {
+            "N": 504,
+            "MAE": 0.4763477380471456,
+            "median": 0.4727093134306142,
+            "p95": 0.8985627224362346,
+            "maximum": 0.9982434915621362
+          }
+        },
+        {
+          "group": "G05",
+          "CAD_vs_exact_mask_IoU": 0.9377459749552772,
+          "CAD_boundary_to_exact_px": {
+            "N": 794,
+            "MAE": 0.47385387579741844,
+            "median": 0.4578462093328304,
+            "p95": 0.8924179768758176,
+            "maximum": 0.9996320384235043
+          }
+        },
+        {
+          "group": "G06",
+          "CAD_vs_exact_mask_IoU": 0.9257976298997266,
+          "CAD_boundary_to_exact_px": {
+            "N": 642,
+            "MAE": 0.4710689769704702,
+            "median": 0.461803056295105,
+            "p95": 0.8920404868102455,
+            "maximum": 1.005947961247311
+          }
+        }
+      ]
+    }
+  ],
+  "backend": "actualCeres2.2LM",
+  "HERO_GT_body": false,
+  "scope": "98forwardviews;gradientandLM4FITonly",
+  "status": "STAGE_A_PASSED"
+}

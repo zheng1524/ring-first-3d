@@ -1,0 +1,30 @@
+anchor G05_key04_raw00542
+['G05_key04_raw00542', 'G05_v004_raw00117', 'G05_v004_raw00337', 'G05_v004_raw00796', 'G05_v004_raw00217', 'G05_v004_raw00457', 'G05_v004_raw00636', 'G05_v004_raw00377']
+*** Aborted at 1794676315 (unix time) try "date -d @1794676315" if you are using GNU date ***
+PC: @     0x7f8efcec9712 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0xb2711)
+*** SIGSEGV (@0x0) received by PID 20422 (TID 0x7f900dc77280) from PID 0; stack trace: ***
+    @     0x7f900dfd54df __pthread_once_slow
+    @     0x7f8efcf8a49d (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x17349c)
+    @     0x7f900dfd8420 (/usr/lib/x86_64-linux-gnu/libpthread-2.31.so+0x1441f)
+    @     0x7f8efcec9712 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0xb2711)
+    @     0x7f8efd021a3d (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x20aa3c)
+    @     0x7f8efd0209f7 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x2099f6)
+    @     0x7f8efd020f87 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x209f86)
+    @     0x7f8efd1f6cde (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x3dfcdd)
+    @     0x7f8efd053381 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x23c380)
+    @     0x7f8efcf08ce3 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0xf1ce2)
+    @     0x7f8efcebd31d (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0xa631c)
+    @     0x562c292b5758 cfunction_call
+    @     0x562c2928c46c _PyObject_MakeTpCall.localalias
+    @     0x562c292966ef _PyEval_EvalFrameDefault
+    @     0x562c2934f6bf PyEval_EvalCode
+    @     0x562c2938b23a run_eval_code_obj
+    @     0x562c29385ea5 run_mod
+    @     0x562c29382e80 pyrun_file
+    @     0x562c29382a96 _PyRun_SimpleFileObject.localalias
+    @     0x562c29382594 _PyRun_AnyFileObject.localalias
+    @     0x562c29276ae8 PyRun_AnyFileExFlags.localalias
+    @     0x562c291dd0e0 Py_RunMain.cold
+    @     0x562c293372f7 Py_BytesMain
+    @     0x7f900dc9c083 __libc_start_main
+    @     0x562c2933718e _start

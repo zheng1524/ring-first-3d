@@ -1,0 +1,16 @@
+{
+  "errors": [
+    {
+      "stage": "deliveryverify",
+      "error": "TypeError: bad operand type for abs(): list",
+      "fix": "np.asarray before abs"
+    },
+    {
+      "stage": "deliveryverify",
+      "error": "KeyError: hard_fail_reasons",
+      "fix": "load scientific STAGE_DECISION separately from STAGE_A_GATE"
+    }
+  ],
+  "predictions_changed": false,
+  "scientific_metrics_changed": false
+}

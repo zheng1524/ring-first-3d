@@ -1,0 +1,22 @@
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+warning: Loadable section ".note.gnu.property" outside of ELF segments
+warning: Loadable section ".note.gnu.property" outside of ELF segments
+warning: Loadable section ".note.gnu.property" outside of ELF segments
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffee6e69712 in ?? () from /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so
+#0  0x00007ffee6e69712 in ?? () from /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so
+#1  0x00007ffee6fc1a3d in ?? () from /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so
+#2  0x00007ffee6fc09f7 in ?? () from /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so
+#3  0x00007ffee6fc0f87 in ?? () from /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so
+#4  0x00007ffee7196cde in ?? () from /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so
+#5  0x00007ffee6ff3381 in ?? () from /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so
+#6  0x00007ffee6ea8ce3 in ?? () from /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so
+#7  0x00007ffee6e5d31d in ?? () from /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so
+#8  0x0000555555772758 in cfunction_call (func=0x7ffee77dd3a0, args=<optimized out>, kwargs=<optimized out>) at /usr/local/src/conda/python-3.12.13/Objects/methodobject.c:537
+#9  0x000055555574946c in _PyObject_MakeTpCall (tstate=0x555555be7790 <_PyRuntime+458992>, callable=0x7ffee77dd3a0, args=<optimized out>, nargs=<optimized out>, keywords=<optimized out>) at /usr/local/src/conda/python-3.12.13/Include/internal/pycore_ceval.h:144
+#10 0x00005555557536ef in _PyEval_EvalFrameDefault (tstate=<optimized out>, frame=<optimized out>, throwflag=<optimized out>) at Python/bytecodes.c:2715
+#11 0x000055555580c6bf in PyEval_EvalCode (co=0x7ffff735c220, globals=<optimized out>, locals=0x7ffff73a1bc0) at /usr/local/src/conda/python-3.12.13/Python/ceval.c:580
+#12 0x000055555584823a in run_eval_code_obj (tstate=0x555555be7790 <_PyRuntime+458992>, co=0x7ffff735c220, globals=0x7ffff73a1bc0, locals=0x7ffff73a1bc0) at /usr/local/src/conda/python-3.12.13/Python/pythonrun.c:1757
+#13 0x0000555555842ea5 in run_mod (mod=<optimized out>, filename=<optimized out>, globals=0x7ffff73a1bc0, locals=0x7ffff73a1bc0, flags=<optimized out>, arena=<optimized out>) at /usr/local/src/conda/python-3.12.13/Python/pythonrun.c:1778

@@ -1,0 +1,178 @@
+*** Aborted at 1794676266 (unix time) try "date -d @1794676266" if you are using GNU date ***
+PC: @     0x7fc91177e712 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0xb2711)
+*** SIGSEGV (@0x0) received by PID 20314 (TID 0x7fca2252f280) from PID 0; stack trace: ***
+    @     0x7fca2288d4df __pthread_once_slow
+    @     0x7fc91183f49d (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x17349c)
+    @     0x7fca22890420 (/usr/lib/x86_64-linux-gnu/libpthread-2.31.so+0x1441f)
+    @     0x7fc91177e712 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0xb2711)
+    @     0x7fc9118d6a3d (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x20aa3c)
+    @     0x7fc9118d59f7 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x2099f6)
+    @     0x7fc9118d5f87 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x209f86)
+    @     0x7fc911aabcde (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x3dfcdd)
+    @     0x7fc911908381 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0x23c380)
+    @     0x7fc9117bdce3 (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0xf1ce2)
+    @     0x7fc91177231d (/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/runtime/packages/pyceres.cpython-312-x86_64-linux-gnu.so+0xa631c)
+    @     0x555ac6906758 cfunction_call
+    @     0x555ac68dd46c _PyObject_MakeTpCall.localalias
+    @     0x555ac68e76ef _PyEval_EvalFrameDefault
+    @     0x555ac69a06bf PyEval_EvalCode
+    @     0x555ac69dc23a run_eval_code_obj
+    @     0x555ac69d6ea5 run_mod
+    @     0x555ac69d3e80 pyrun_file
+    @     0x555ac69d3a96 _PyRun_SimpleFileObject.localalias
+    @     0x555ac69d3594 _PyRun_AnyFileObject.localalias
+    @     0x555ac69d039e Py_RunMain.localalias
+    @     0x555ac69882f7 Py_BytesMain
+    @     0x7fca22554083 __libc_start_main
+    @     0x555ac698818e _start
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  6.018585e-04    0.00e+00    4.28e-03   0.00e+00   0.00e+00  1.00e+04        0    9.01e-04    9.37e-04
+   1  4.271652e-04    1.75e-04    6.01e-06   0.00e+00   1.00e+00  3.00e+04        1    5.45e-03    6.41e-03
+   2  4.271651e-04    1.25e-10    5.68e-09   1.11e-04   1.00e+00  9.00e+04        1    5.44e-03    1.19e-02
+G05/B1_LOCAL/G05_v004_raw00117/OUTER_0 Ceres Solver Report: Iterations: 3, Initial cost: 6.018585e-04, Final cost: 4.271651e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00117 0 True 0.0006018585239319922 0.00042716510480410666
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  4.271651e-04    0.00e+00    5.68e-09   0.00e+00   0.00e+00  1.00e+04        0    8.87e-04    9.06e-04
+G05/B1_LOCAL/G05_v004_raw00117/OUTER_1 Ceres Solver Report: Iterations: 1, Initial cost: 4.271651e-04, Final cost: 4.271651e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00117 1 True 0.00042716510480410666 0.00042716510480410666
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  4.271651e-04    0.00e+00    5.68e-09   0.00e+00   0.00e+00  1.00e+04        0    1.02e-03    1.04e-03
+G05/B1_LOCAL/G05_v004_raw00117/OUTER_2 Ceres Solver Report: Iterations: 1, Initial cost: 4.271651e-04, Final cost: 4.271651e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00117 2 True 0.00042716510480410666 0.00042716510480410666
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  4.271651e-04    0.00e+00    5.68e-09   0.00e+00   0.00e+00  1.00e+04        0    8.97e-04    9.18e-04
+G05/B1_LOCAL/G05_v004_raw00117/OUTER_3 Ceres Solver Report: Iterations: 1, Initial cost: 4.271651e-04, Final cost: 4.271651e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00117 3 True 0.00042716510480410666 0.00042716510480410666
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  1.223550e-03    0.00e+00    1.02e-02   0.00e+00   0.00e+00  1.00e+04        0    1.82e-03    1.84e-03
+   1  1.142388e-03    8.12e-05    1.99e-06   0.00e+00   1.00e+00  3.00e+04        1    7.29e-03    9.15e-03
+G05/B1_LOCAL/G05_v004_raw00337/OUTER_0 Ceres Solver Report: Iterations: 2, Initial cost: 1.223550e-03, Final cost: 1.142388e-03, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00337 0 True 0.0012235502890297297 0.0011423878835324786
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  1.142388e-03    0.00e+00    1.99e-06   0.00e+00   0.00e+00  1.00e+04        0    1.75e-03    1.78e-03
+G05/B1_LOCAL/G05_v004_raw00337/OUTER_1 Ceres Solver Report: Iterations: 1, Initial cost: 1.142388e-03, Final cost: 1.142388e-03, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00337 1 True 0.0011423878835324786 0.0011423878835324786
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  1.142388e-03    0.00e+00    1.99e-06   0.00e+00   0.00e+00  1.00e+04        0    1.76e-03    1.78e-03
+G05/B1_LOCAL/G05_v004_raw00337/OUTER_2 Ceres Solver Report: Iterations: 1, Initial cost: 1.142388e-03, Final cost: 1.142388e-03, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00337 2 True 0.0011423878835324786 0.0011423878835324786
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  1.142388e-03    0.00e+00    1.99e-06   0.00e+00   0.00e+00  1.00e+04        0    1.76e-03    1.78e-03
+G05/B1_LOCAL/G05_v004_raw00337/OUTER_3 Ceres Solver Report: Iterations: 1, Initial cost: 1.142388e-03, Final cost: 1.142388e-03, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00337 3 True 0.0011423878835324786 0.0011423878835324786
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  7.707309e-04    0.00e+00    1.23e-02   0.00e+00   0.00e+00  1.00e+04        0    1.07e-03    1.09e-03
+   1  6.071073e-04    1.64e-04    3.31e-06   0.00e+00   1.00e+00  3.00e+04        1    5.50e-03    6.62e-03
+   2  6.071072e-04    6.07e-11    1.09e-09   6.62e-05   1.00e+00  9.00e+04        1    5.63e-03    1.23e-02
+G05/B1_LOCAL/G05_v004_raw00796/OUTER_0 Ceres Solver Report: Iterations: 3, Initial cost: 7.707309e-04, Final cost: 6.071072e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00796 0 True 0.0007707308740176564 0.000607107202413809
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  6.071072e-04    0.00e+00    1.09e-09   0.00e+00   0.00e+00  1.00e+04        0    1.11e-03    1.13e-03
+G05/B1_LOCAL/G05_v004_raw00796/OUTER_1 Ceres Solver Report: Iterations: 1, Initial cost: 6.071072e-04, Final cost: 6.071072e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00796 1 True 0.000607107202413809 0.000607107202413809
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  6.071072e-04    0.00e+00    1.09e-09   0.00e+00   0.00e+00  1.00e+04        0    1.11e-03    1.13e-03
+G05/B1_LOCAL/G05_v004_raw00796/OUTER_2 Ceres Solver Report: Iterations: 1, Initial cost: 6.071072e-04, Final cost: 6.071072e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00796 2 True 0.000607107202413809 0.000607107202413809
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  6.071072e-04    0.00e+00    1.09e-09   0.00e+00   0.00e+00  1.00e+04        0    1.09e-03    1.11e-03
+G05/B1_LOCAL/G05_v004_raw00796/OUTER_3 Ceres Solver Report: Iterations: 1, Initial cost: 6.071072e-04, Final cost: 6.071072e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00796 3 True 0.000607107202413809 0.000607107202413809
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  9.431356e-04    0.00e+00    1.38e-02   0.00e+00   0.00e+00  1.00e+04        0    1.28e-03    1.30e-03
+   1  6.163945e-04    3.27e-04    3.45e-05   0.00e+00   1.00e+00  3.00e+04        1    5.96e-03    7.29e-03
+   2  6.163922e-04    2.29e-09    3.99e-08   2.77e-04   1.00e+00  9.00e+04        1    5.60e-03    1.29e-02
+G05/B1_LOCAL/G05_v004_raw00217/OUTER_0 Ceres Solver Report: Iterations: 3, Initial cost: 9.431356e-04, Final cost: 6.163922e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00217 0 True 0.0009431355620056804 0.0006163921717615069
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  6.163922e-04    0.00e+00    3.99e-08   0.00e+00   0.00e+00  1.00e+04        0    1.23e-03    1.25e-03
+G05/B1_LOCAL/G05_v004_raw00217/OUTER_1 Ceres Solver Report: Iterations: 1, Initial cost: 6.163922e-04, Final cost: 6.163922e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00217 1 True 0.0006163921717615069 0.0006163921717615069
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  6.163922e-04    0.00e+00    3.99e-08   0.00e+00   0.00e+00  1.00e+04        0    1.27e-03    1.29e-03
+G05/B1_LOCAL/G05_v004_raw00217/OUTER_2 Ceres Solver Report: Iterations: 1, Initial cost: 6.163922e-04, Final cost: 6.163922e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00217 2 True 0.0006163921717615069 0.0006163921717615069
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  6.163922e-04    0.00e+00    3.99e-08   0.00e+00   0.00e+00  1.00e+04        0    1.21e-03    1.23e-03
+G05/B1_LOCAL/G05_v004_raw00217/OUTER_3 Ceres Solver Report: Iterations: 1, Initial cost: 6.163922e-04, Final cost: 6.163922e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00217 3 True 0.0006163921717615069 0.0006163921717615069
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  8.571151e-04    0.00e+00    6.28e-03   0.00e+00   0.00e+00  1.00e+04        0    1.65e-03    1.67e-03
+   1  7.258011e-04    1.31e-04    1.81e-05   0.00e+00   1.00e+00  3.00e+04        1    6.96e-03    8.66e-03
+   2  7.258007e-04    4.01e-10    1.12e-08   1.03e-04   1.00e+00  9.00e+04        1    6.87e-03    1.55e-02
+G05/B1_LOCAL/G05_v004_raw00457/OUTER_0 Ceres Solver Report: Iterations: 3, Initial cost: 8.571151e-04, Final cost: 7.258007e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00457 0 True 0.0008571150771718443 0.0007258007343201803
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  7.258007e-04    0.00e+00    1.12e-08   0.00e+00   0.00e+00  1.00e+04        0    1.65e-03    1.67e-03
+G05/B1_LOCAL/G05_v004_raw00457/OUTER_1 Ceres Solver Report: Iterations: 1, Initial cost: 7.258007e-04, Final cost: 7.258007e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00457 1 True 0.0007258007343201803 0.0007258007343201803
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  7.258007e-04    0.00e+00    1.12e-08   0.00e+00   0.00e+00  1.00e+04        0    1.63e-03    1.65e-03
+G05/B1_LOCAL/G05_v004_raw00457/OUTER_2 Ceres Solver Report: Iterations: 1, Initial cost: 7.258007e-04, Final cost: 7.258007e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00457 2 True 0.0007258007343201803 0.0007258007343201803
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  7.258007e-04    0.00e+00    1.12e-08   0.00e+00   0.00e+00  1.00e+04        0    1.65e-03    1.68e-03
+G05/B1_LOCAL/G05_v004_raw00457/OUTER_3 Ceres Solver Report: Iterations: 1, Initial cost: 7.258007e-04, Final cost: 7.258007e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00457 3 True 0.0007258007343201803 0.0007258007343201803
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  6.206433e-04    0.00e+00    7.68e-03   0.00e+00   0.00e+00  1.00e+04        0    1.23e-03    1.26e-03
+   1  5.073413e-04    1.13e-04    2.93e-06   0.00e+00   1.00e+00  3.00e+04        1    5.77e-03    7.06e-03
+   2  5.073412e-04    9.33e-11    3.49e-09   6.33e-05   1.00e+00  9.00e+04        1    5.85e-03    1.29e-02
+G05/B1_LOCAL/G05_v004_raw00636/OUTER_0 Ceres Solver Report: Iterations: 3, Initial cost: 6.206433e-04, Final cost: 5.073412e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00636 0 True 0.0006206432557349661 0.000507341230846429
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  5.073412e-04    0.00e+00    3.49e-09   0.00e+00   0.00e+00  1.00e+04        0    1.29e-03    1.31e-03
+G05/B1_LOCAL/G05_v004_raw00636/OUTER_1 Ceres Solver Report: Iterations: 1, Initial cost: 5.073412e-04, Final cost: 5.073412e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00636 1 True 0.000507341230846429 0.000507341230846429
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  5.073412e-04    0.00e+00    3.49e-09   0.00e+00   0.00e+00  1.00e+04        0    1.23e-03    1.25e-03
+G05/B1_LOCAL/G05_v004_raw00636/OUTER_2 Ceres Solver Report: Iterations: 1, Initial cost: 5.073412e-04, Final cost: 5.073412e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00636 2 True 0.000507341230846429 0.000507341230846429
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  5.073412e-04    0.00e+00    3.49e-09   0.00e+00   0.00e+00  1.00e+04        0    1.22e-03    1.24e-03
+G05/B1_LOCAL/G05_v004_raw00636/OUTER_3 Ceres Solver Report: Iterations: 1, Initial cost: 5.073412e-04, Final cost: 5.073412e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00636 3 True 0.000507341230846429 0.000507341230846429
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  5.673534e-04    0.00e+00    3.68e-03   0.00e+00   0.00e+00  1.00e+04        0    1.50e-03    1.53e-03
+   1  5.106632e-04    5.67e-05    5.26e-06   0.00e+00   1.00e+00  3.00e+04        1    6.38e-03    7.94e-03
+   2  5.106631e-04    7.90e-11    4.48e-09   3.52e-05   1.00e+00  9.00e+04        1    6.45e-03    1.44e-02
+G05/B1_LOCAL/G05_v004_raw00377/OUTER_0 Ceres Solver Report: Iterations: 3, Initial cost: 5.673534e-04, Final cost: 5.106631e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00377 0 True 0.0005673533508662173 0.0005106630845244613
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  5.106631e-04    0.00e+00    4.48e-09   0.00e+00   0.00e+00  1.00e+04        0    1.51e-03    1.53e-03
+G05/B1_LOCAL/G05_v004_raw00377/OUTER_1 Ceres Solver Report: Iterations: 1, Initial cost: 5.106631e-04, Final cost: 5.106631e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00377 1 True 0.0005106630845244613 0.0005106630845244613
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  5.106631e-04    0.00e+00    4.48e-09   0.00e+00   0.00e+00  1.00e+04        0    1.48e-03    1.50e-03
+G05/B1_LOCAL/G05_v004_raw00377/OUTER_2 Ceres Solver Report: Iterations: 1, Initial cost: 5.106631e-04, Final cost: 5.106631e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00377 2 True 0.0005106630845244613 0.0005106630845244613
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  5.106631e-04    0.00e+00    4.48e-09   0.00e+00   0.00e+00  1.00e+04        0    1.48e-03    1.50e-03
+G05/B1_LOCAL/G05_v004_raw00377/OUTER_3 Ceres Solver Report: Iterations: 1, Initial cost: 5.106631e-04, Final cost: 5.106631e-04, Termination: CONVERGENCE
+JOINT_OUTER G05/B1_LOCAL/G05_v004_raw00377 3 True 0.0005106630845244613 0.0005106630845244613
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  3.102121e-02    0.00e+00    4.05e-02   0.00e+00   0.00e+00  1.00e+04        0    1.17e-02    1.19e-02
+   1  2.131609e-02    9.71e-03    3.78e-04   0.00e+00   9.99e-01  3.00e+04        1    7.82e-02    9.01e-02
+   2  2.131355e-02    2.54e-06    1.48e-05   1.43e-01   9.96e-01  9.00e+04        1    7.77e-02    1.68e-01
+   3  2.131355e-02    1.38e-09    1.80e-07   1.24e-03   9.98e-01  2.70e+05        1    7.80e-02    2.46e-01
+G05/B3/OUTER_0 Ceres Solver Report: Iterations: 4, Initial cost: 3.102121e-02, Final cost: 2.131355e-02, Termination: CONVERGENCE
+JOINT_OUTER G05/B3 0 True 0.03102121118786439 0.01998291069441772
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  1.998291e-02    0.00e+00    1.40e-02   0.00e+00   0.00e+00  1.00e+04        0    1.16e-02    1.18e-02
+   1  1.914727e-02    8.36e-04    9.48e-05   0.00e+00   9.99e-01  3.00e+04        1    7.75e-02    8.93e-02
+   2  1.914716e-02    1.02e-07    2.42e-06   2.47e-02   9.95e-01  9.00e+04        1    7.78e-02    1.67e-01
+G05/B3/OUTER_1 Ceres Solver Report: Iterations: 3, Initial cost: 1.998291e-02, Final cost: 1.914716e-02, Termination: CONVERGENCE
+JOINT_OUTER G05/B3 1 True 0.01998291069441772 0.018543859344719568
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  1.854386e-02    0.00e+00    1.13e-02   0.00e+00   0.00e+00  1.00e+04        0    1.18e-02    1.20e-02
+   1  1.808851e-02    4.55e-04    7.32e-05   0.00e+00   9.99e-01  3.00e+04        1    7.96e-02    9.16e-02
+   2  1.808845e-02    6.31e-08    2.14e-06   2.19e-02   9.93e-01  9.00e+04        1    7.96e-02    1.71e-01
+G05/B3/OUTER_2 Ceres Solver Report: Iterations: 3, Initial cost: 1.854386e-02, Final cost: 1.808845e-02, Termination: CONVERGENCE
+JOINT_OUTER G05/B3 2 True 0.018543859344719568 0.0177395045273719
+iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+   0  1.773950e-02    0.00e+00    9.49e-03   0.00e+00   0.00e+00  1.00e+04        0    1.16e-02    1.18e-02
+   1  1.746709e-02    2.72e-04    5.01e-05   0.00e+00   9.99e-01  3.00e+04        1    7.83e-02    9.02e-02
+   2  1.746706e-02    3.52e-08    1.71e-06   1.69e-02   9.93e-01  9.00e+04        1    7.76e-02    1.68e-01
+G05/B3/OUTER_3 Ceres Solver Report: Iterations: 3, Initial cost: 1.773950e-02, Final cost: 1.746706e-02, Termination: CONVERGENCE
+JOINT_OUTER G05/B3 3 True 0.0177395045273719 0.017251774848462475
+GROUP_MAIN_BA_FROZEN G05
