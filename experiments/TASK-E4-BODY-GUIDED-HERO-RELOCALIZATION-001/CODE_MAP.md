@@ -1,0 +1,26 @@
+# 实际源码位置
+
+- `after_run.py`:
+- `assemble_controls.py`: main @ L4
+- `common.py`: load @ L19, sha @ L20, asset @ L21, clean @ L22, save @ L29, table @ L31, stats @ L37, scene @ L40, cast @ L43, contour @ L48, getcase @ L51, guard_optimizer @ L52
+- `delivery_manifest.py`: main @ L5
+- `evaluate_controls.py`: main @ L3
+- `evaluate_real.py`: corrected @ L8, source @ L10, arm_source @ L12, relation @ L21, main @ L27
+- `features.py`: features @ L4, match_desc @ L8, fundamental @ L11, sampson @ L13, prepare @ L16
+- `final_check.py`: main @ L4
+- `finish_reports.py`: f @ L4, mdtable @ L5, main @ L7
+- `fit_body.py`: body_fit @ L7, main @ L30
+- `geometry.py`: reuse @ L6, project @ L11, rays @ L13, rayquery @ L15, transform @ L16, yaw @ L17, pose_delta @ L19, pose_difference @ L21, proper_rigid @ L23, ellipse_descriptor @ L26, ellipse_coords @ L36, ellipse_curve @ L37, ellipse_mesh @ L38, sample_spatial @ L41
+- `legacy_native.py`: raycast @ L7, project @ L10, corrected @ L13, face_normals @ L16, Source @ L18, source_weights @ L33, correspond @ L41, bias_proposal @ L49, weak_anchors @ L58, peer_conflicts @ L72, geometry_score @ L93
+- `prepare.py`: main @ L4
+- `prepare_controls.py`: triangulate_grid @ L7, face_normals_grid @ L12, main @ L18
+- `redraw_score_figure.py`:
+- `render_control_rgb.py`: material @ L6, mesh @ L11
+- `replay_a1.py`: main @ L5
+- `resection.py`: robust @ L6, RingConstraint @ L9, load_fit_matches @ L29, match_residual @ L38, region_candidates @ L45, face_normals_local @ L53, solve_fixed @ L56, independent_information @ L73, run_source @ L83
+- `run_controls.py`: main @ L3
+- `run_real.py`: main @ L3
+- `run_real_parallel.py`: worker @ L6, main @ L15
+- `test_contracts.py`: main @ L2
+- `validate_pose.py`: boundary_stats @ L4, ring_metrics @ L8, held_sift @ L20, validate @ L26
+- `visualize.py`: color @ L8, finish @ L9, edge @ L10, combine @ L12, panel @ L16, main @ L19
