@@ -1,0 +1,48 @@
+[
+  {
+    "group": "G06",
+    "target": "G06_004_growth_r01",
+    "native_target_pixel_N": 8377,
+    "paired_depth_difference_mm": {
+      "N": 8377,
+      "MAE": 0.5655481330076493,
+      "median": 0.578155517578125,
+      "p95": 0.9101715087890625,
+      "maximum": 1.0322456359863281
+    },
+    "same_frozen_target_camera": true,
+    "comparisons": [
+      {
+        "method": "NEW_GEOMETRIC3",
+        "depth_to_protected_HERO_mm": {
+          "N": 20295,
+          "MAE": 0.5309424360715743,
+          "median": 0.5222850784255044,
+          "p95": 0.9717920038148313,
+          "maximum": 1.189897247237198
+        },
+        "fixed_pair_pixel_N": 21480,
+        "known_N": 20295,
+        "same_layer_N": 9454,
+        "TRUSTED_area_mm2": 73.4207274131449,
+        "native_TRUSTED_N": 7160
+      },
+      {
+        "method": "OLD018_LITERAL3",
+        "depth_to_protected_HERO_mm": {
+          "N": 20401,
+          "MAE": 0.13805202971310063,
+          "median": 0.12073513491732513,
+          "p95": 0.3351812546439561,
+          "maximum": 0.6028560895091104
+        },
+        "fixed_pair_pixel_N": 21453,
+        "known_N": 20401,
+        "same_layer_N": 20372,
+        "TRUSTED_area_mm2": 73.96287744362425,
+        "native_TRUSTED_N": 7151
+      }
+    ],
+    "GT_accuracy": "NOT_EVALUABLE"
+  }
+]

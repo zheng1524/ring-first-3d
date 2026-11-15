@@ -1,0 +1,61 @@
+{
+  "task": "TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001",
+  "groups": [
+    "G01",
+    "G03",
+    "G05",
+    "G06"
+  ],
+  "raw_candidate_policy": "all014cachedrawframes + all98canonical identities + endpoint-inclusive8Hz temporal grid; rawtimelinecovers_everyframe",
+  "candidate_Hz": 8.0,
+  "Ring_R_mm": 5.6,
+  "Ring_r_mm": 0.6,
+  "camera_K": [
+    [
+      490.0,
+      0.0,
+      319.5
+    ],
+    [
+      0.0,
+      490.0,
+      179.5
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "RF": "originalrecover fiveDoF multiinit; canonicalfamilyyaw andnormalflip disambiguatedonlybyRGB",
+  "SIFT": "OpenCV6000 contrast.01 mutual.72 RANSAC3px LM; heldlandmarkIDmod5=0 neverfit",
+  "source_registration": "preserve per-video relativeRF_RGB poses, optimizeone sharedSE3; separate full6joint candidate ifdata supports",
+  "support_views": 3,
+  "support_scoring": "realFITRGBmatches/overlap + parallaxtriangulation + camera geometry; noHERO/GT selectedscores",
+  "target_counts": [
+    8,
+    12,
+    20,
+    28,
+    36
+  ],
+  "optional_max": 48,
+  "min_target_direction_deg": 1.5,
+  "independent_direction_deg": 5.0,
+  "saturation_marginal_fraction": 0.002,
+  "body_proxy_is_unknown_not_truth": true,
+  "HOLDOUT": "protected originalrawframe IDs andaliases excluded from allFIT target/support/selection geometry; visualizationonly",
+  "HERO_resolution": [
+    352,
+    640
+  ],
+  "HERO_refinement_steps": 1,
+  "mesh_max_depth_jump_mm": 0.75,
+  "new_depth_interpolation": 0,
+  "normalization": "mm toofficialm thenbacktommaxialZ; nativeKn halfpixel mapping",
+  "GT": false,
+  "body_update": false,
+  "HERO_fusion": false,
+  "photo_weak": "directionexplorationonly, notformalHERO ifintrinsic/poseevidenceinsufficient",
+  "static_scene": "samephysicalspecimen+cohortverified; actualrigidityconditionalonRGB/Ringtests,nottakenfromfilenamealone"
+}

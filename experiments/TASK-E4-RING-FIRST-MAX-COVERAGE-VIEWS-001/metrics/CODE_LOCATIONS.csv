@@ -1,0 +1,122 @@
+file,line,definition,sha256
+code/clean_native.py,7,"def reuse(path,names):extract(path,names,globals())",35676602827d8ae367d3f66927d0067e08caec291acec529c5e90ee0d380651a
+code/clean_native.py,10,def cfg():return load(P17/'config/PROTOCOL.json')['inherited_density'],35676602827d8ae367d3f66927d0067e08caec291acec529c5e90ee0d380651a
+code/clean_native.py,15,"def cast(s,uv,K,T):return cast_points(s,uv,T,K)",35676602827d8ae367d3f66927d0067e08caec291acec529c5e90ee0d380651a
+code/clean_native.py,17,def one(rec):,35676602827d8ae367d3f66927d0067e08caec291acec529c5e90ee0d380651a
+code/clean_native.py,33,def main():,35676602827d8ae367d3f66927d0067e08caec291acec529c5e90ee0d380651a
+code/native005_extension.py,7,"def pnp_bank(v,video):",9b13a3c1e044a765a1c109115ffce1537c3404b7eb99143cd3f2cc45f877740a
+code/native005_extension.py,20,def main():,9b13a3c1e044a765a1c109115ffce1537c3404b7eb99143cd3f2cc45f877740a
+code/held_map_audit.py,2,def main():,5ff8ef1d2ce78e0d66572aec15d103a4c047a1bd7d91f0508844397c2d825dab
+code/final_verify.py,4,def main():,d21bc368d8734baf87ba7ba2e9bf2fec71844b30bfa84b2f6ea437048c35095d
+code/evaluate_geometry.py,5,def new_sources(g):,c44651b99d05a6a424368504a9a96cfa862b9f67c542bf3268ee2c7a9ef3efaf
+code/evaluate_geometry.py,14,"def normal_error(a,b,r):",c44651b99d05a6a424368504a9a96cfa862b9f67c542bf3268ee2c7a9ef3efaf
+code/evaluate_geometry.py,17,def surfel_bins(sources):,c44651b99d05a6a424368504a9a96cfa862b9f67c542bf3268ee2c7a9ef3efaf
+code/evaluate_geometry.py,27,def geometry_summary():,c44651b99d05a6a424368504a9a96cfa862b9f67c542bf3268ee2c7a9ef3efaf
+code/ucommon.py,13,def load(p):return json.loads(Path(p).read_text()),f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/ucommon.py,14,def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest(),f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/ucommon.py,15,"def asset(p):p=Path(p);return dict(path=str(p),bytes=p.stat().st_size,sha256=sha(p))",f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/ucommon.py,16,def clean(v):,f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/ucommon.py,24,"def save(p,v):",f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/ucommon.py,26,"def table(p,rows):",f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/ucommon.py,32,def stats(a):,f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/ucommon.py,34,"def extract(path,names,ns):",f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/ucommon.py,39,"def projection(X,C,K):",f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/ucommon.py,41,"def freeze(path,files,**kw):save(path,dict(epoch=time.time(),files=[asset(p)for p in files],**kw))",f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/ucommon.py,42,def checkfreeze(path):,f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/ucommon.py,44,def fit_guard():,f4cb330816df5d609cfc886c43bbfe3f35275e5ed670bd3752afc4d745b0261b
+code/historical_camera_audit.py,5,def main():,5515edb9a328fce7a41e963aa4cd9b65253754f9f73ee608b3c70ef616ad67f9
+code/solver_audit.py,3,def main():,f5f1e67690dc5e02075326864fd8f744271360d53794eeadb32877a93c133ea1
+code/evaluate_cameras.py,4,"def epipolar(Ca,Cb,u,v):",a2c8bf37a4b9143ec0874d1f10f79da6a008ae4c252d9148661af5a9e0224376
+code/evaluate_cameras.py,6,def main():,a2c8bf37a4b9143ec0874d1f10f79da6a008ae4c252d9148661af5a9e0224376
+code/torus.py,7,"def tt(x):return torch.as_tensor(np.asarray(x),dtype=D)",904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,8,def skew(v):,904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,10,def exp_t(q):,904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,12,def exp(q):return exp_t(tt(q)).numpy(),904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,13,"def pose_t(q,RF,H0):return exp_t(q[6:])@tt(H0)@exp_t(q[:6])@tt(RF)",904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,14,def canonical_t(C):,904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,17,"def torus_uv_t(C,K,theta,branch,R=5.6,r=.6,canonical=True):",904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,21,"def curves(C,K,n=1024):",904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,26,"def nearest(obs,curve):",904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,31,"def correspondence(C,K,observations,n=1024):",904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,36,"def robust(r,J=None,weight=1.):",904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,41,class PoseCache:,904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/torus.py,49,"def project_dC(X,C,K,dC=None):",904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d
+code/verify.py,3,def main():,57de2a7e0650286df22b42d372a2c76ca7c0b03bb00d767620ebe78b920f85bd
+code/ceres_backend.py,4,class Cost(ce.CostFunction):,b50837e09d33cdac3b1c0e5e59e0c0b9475aa7eaff421fc1b8d06731241bd56d
+code/ceres_backend.py,10,class RingCost(Cost):,b50837e09d33cdac3b1c0e5e59e0c0b9475aa7eaff421fc1b8d06731241bd56d
+code/ceres_backend.py,27,class Reprojection(Cost):,b50837e09d33cdac3b1c0e5e59e0c0b9475aa7eaff421fc1b8d06731241bd56d
+code/ceres_backend.py,34,class Prior(Cost):,b50837e09d33cdac3b1c0e5e59e0c0b9475aa7eaff421fc1b8d06731241bd56d
+code/ceres_backend.py,37,class RelativePrior(Cost):,b50837e09d33cdac3b1c0e5e59e0c0b9475aa7eaff421fc1b8d06731241bd56d
+code/ceres_backend.py,41,"def solver(problem,label,iterations=20,schur=True):",b50837e09d33cdac3b1c0e5e59e0c0b9475aa7eaff421fc1b8d06731241bd56d
+code/infer.py,8,def loader():,c48926cb8ede2792a903436c6478f4fd44f00a8e261c9408521165db738c7049
+code/infer.py,11,"def meshfn():return extract(OLD/'experiments/ring_first_v1/scripts/common.py',['unproject','depth_mesh'],dict(np=np,cfg=lambda:dict(mesh_max_depth_jump_mm=.75)))['depth_mesh']",c48926cb8ede2792a903436c6478f4fd44f00a8e261c9408521165db738c7049
+code/infer.py,13,"def one(model,r,mf):",c48926cb8ede2792a903436c6478f4fd44f00a8e261c9408521165db738c7049
+code/infer.py,24,def main():,c48926cb8ede2792a903436c6478f4fd44f00a8e261c9408521165db738c7049
+code/archive.py,5,def main():,4de462f4bd0a26b4941b457f62c4023c6b1d550748bc0eb097c5517b2af5ecfb
+code/geometry_io.py,4,"def scene(V,F):",025dbf9648e345ff3f531123f28562bf1831a800cbcb685b43ccbd209e168029
+code/geometry_io.py,7,"def cast_points(s,uv,C,K):",025dbf9648e345ff3f531123f28562bf1831a800cbcb685b43ccbd209e168029
+code/geometry_io.py,10,"def frozen_sources(g,onlyfit=True):",025dbf9648e345ff3f531123f28562bf1831a800cbcb685b43ccbd209e168029
+code/geometry_io.py,17,"def multivis(a,b,ring):",025dbf9648e345ff3f531123f28562bf1831a800cbcb685b43ccbd209e168029
+code/plot_common.py,11,"def color(i):return matplotlib.colors.hsv_to_rgb([(i*.6180339887498949)%1,.65,.82])",4314ed4e580fd3df4368462e53c5eb42d761cdc4bc398a3cd854dee762ed1b2d
+code/plot_common.py,12,"def finish(fig,name):fig.savefig(N/'figures'/name,dpi=145,bbox_inches='tight');plt.close(fig)",4314ed4e580fd3df4368462e53c5eb42d761cdc4bc398a3cd854dee762ed1b2d
+code/plot_common.py,13,"def edges(ax,m,c):",4314ed4e580fd3df4368462e53c5eb42d761cdc4bc398a3cd854dee762ed1b2d
+code/plot_common.py,16,"def bound_parts(ss,ring):return np.r_[ring['V'],*[s['V'][np.unique(s['F'])]for s in ss if len(s['F'])]]",4314ed4e580fd3df4368462e53c5eb42d761cdc4bc398a3cd854dee762ed1b2d
+code/plot_common.py,17,def combine(parts):,4314ed4e580fd3df4368462e53c5eb42d761cdc4bc398a3cd854dee762ed1b2d
+code/plot_common.py,22,"def panel(ax,parts,ring,bounds,title,angle=(25,-65)):",4314ed4e580fd3df4368462e53c5eb42d761cdc4bc398a3cd854dee762ed1b2d
+code/plot_common.py,25,"def parts(ss):return [(s['V'],s['F'],color(i))for i,s in enumerate(ss)]",4314ed4e580fd3df4368462e53c5eb42d761cdc4bc398a3cd854dee762ed1b2d
+code/register.py,8,class Bundle:,a5f04bbb5ec9c6ba61a3cf2ebb89b96d8c9beb2ee7f361c137ce2581c834be58
+code/register.py,77,def select_for_BA(vs):,a5f04bbb5ec9c6ba61a3cf2ebb89b96d8c9beb2ee7f361c137ce2581c834be58
+code/register.py,88,"def qualification(v,C):",a5f04bbb5ec9c6ba61a3cf2ebb89b96d8c9beb2ee7f361c137ce2581c834be58
+code/register.py,108,def main(g):,a5f04bbb5ec9c6ba61a3cf2ebb89b96d8c9beb2ee7f361c137ce2581c834be58
+code/rgb.py,4,def features(v):,92e0e22edc204f65e39a0d8623c83b98425e5500212020372484706ea4c06dbd
+code/rgb.py,9,"def mutual(a,b):",92e0e22edc204f65e39a0d8623c83b98425e5500212020372484706ea4c06dbd
+code/rgb.py,12,def rgb_map(g):,92e0e22edc204f65e39a0d8623c83b98425e5500212020372484706ea4c06dbd
+code/rgb.py,15,def pnp(v):,92e0e22edc204f65e39a0d8623c83b98425e5500212020372484706ea4c06dbd
+code/rgb.py,22,"def errors(v,C,rr):",92e0e22edc204f65e39a0d8623c83b98425e5500212020372484706ea4c06dbd
+code/discover.py,6,def main():,7ac59d90244eacd70bdd03dd3d7903fb172182487d1142fdcb12dcf9c4ad5f81
+code/atlas.py,5,"def frustum(C,K):",209fe88ad54da30755932ba4874fa7c7d551ec05cf19cd58e8e66a801d0a8c81
+code/atlas.py,8,def main():,209fe88ad54da30755932ba4874fa7c7d551ec05cf19cd58e8e66a801d0a8c81
+code/deliver.py,6,"def md(name,text):p=N/name;p.parent.mkdir(exist_ok=True,parents=True);p.write_text(text.strip()+'\n')",69127854064f202d511dd21c603195dfeba25e99688e1e48526b73d12a2a151c
+code/deliver.py,7,"def num(x,n=3):return 'NaN'if x is None else f'{x:.{n}f}'",69127854064f202d511dd21c603195dfeba25e99688e1e48526b73d12a2a151c
+code/deliver.py,8,def audit_table():return '''| 审计项目 | 必须汇报 |,69127854064f202d511dd21c603195dfeba25e99688e1e48526b73d12a2a151c
+code/deliver.py,18,def main():,69127854064f202d511dd21c603195dfeba25e99688e1e48526b73d12a2a151c
+code/figures.py,6,def fig1():,f1da23ec1fbe9b9d465af1d29d8f33f5ad25652fa2c2f9f92f2ac8c9a0029c21
+code/figures.py,17,def fig2():,f1da23ec1fbe9b9d465af1d29d8f33f5ad25652fa2c2f9f92f2ac8c9a0029c21
+code/figures.py,28,def fig3():,f1da23ec1fbe9b9d465af1d29d8f33f5ad25652fa2c2f9f92f2ac8c9a0029c21
+code/figures.py,35,def fig4():,f1da23ec1fbe9b9d465af1d29d8f33f5ad25652fa2c2f9f92f2ac8c9a0029c21
+code/figures.py,47,def fig5():,f1da23ec1fbe9b9d465af1d29d8f33f5ad25652fa2c2f9f92f2ac8c9a0029c21
+code/figures.py,56,"def evidence_parts(s,g):",f1da23ec1fbe9b9d465af1d29d8f33f5ad25652fa2c2f9f92f2ac8c9a0029c21
+code/figures.py,62,def fig6():,f1da23ec1fbe9b9d465af1d29d8f33f5ad25652fa2c2f9f92f2ac8c9a0029c21
+code/figures.py,72,def fig7():,f1da23ec1fbe9b9d465af1d29d8f33f5ad25652fa2c2f9f92f2ac8c9a0029c21
+code/figures.py,87,def fig8():,f1da23ec1fbe9b9d465af1d29d8f33f5ad25652fa2c2f9f92f2ac8c9a0029c21
+code/figures.py,95,def sixview():,f1da23ec1fbe9b9d465af1d29d8f33f5ad25652fa2c2f9f92f2ac8c9a0029c21
+code/figures.py,101,def main():,f1da23ec1fbe9b9d465af1d29d8f33f5ad25652fa2c2f9f92f2ac8c9a0029c21
+code/source_history.py,5,def main():,0b46423f1ba1bb88e3d4d15a49577417a464014fa2c3839b978edab945d9632f
+code/coverage.py,5,def proxy(g):,156b183d0faa15847bca5fd83da151a7dcde1d7bd53bc349b161275cca51b920
+code/coverage.py,17,"def visible(X,C,K,lab,sc,ring,tol=.15):",156b183d0faa15847bca5fd83da151a7dcde1d7bd53bc349b161275cca51b920
+code/coverage.py,23,def direction_stats(vs):,156b183d0faa15847bca5fd83da151a7dcde1d7bd53bc349b161275cca51b920
+code/coverage.py,27,"def greedy(vs,vis,weight,source_filter=None):",156b183d0faa15847bca5fd83da151a7dcde1d7bd53bc349b161275cca51b920
+code/coverage.py,43,"def support_pairs(vs,target):",156b183d0faa15847bca5fd83da151a7dcde1d7bd53bc349b161275cca51b920
+code/coverage.py,60,def main(g):,156b183d0faa15847bca5fd83da151a7dcde1d7bd53bc349b161275cca51b920
+code/cameras.py,10,def edge(m):,ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f
+code/cameras.py,12,"def sample(a,n):",ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f
+code/cameras.py,16,def observe(v):,ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f
+code/cameras.py,33,"def rres(C,ob):return NS['torus_residual'](C,ob,K0=K0)",ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f
+code/cameras.py,34,"def score(C,ob,rr=None):",ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f
+code/cameras.py,40,"def rf(v,ob,rr):",ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f
+code/cameras.py,57,"def yaw_resolve(poses,rr,ob):",ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f
+code/cameras.py,67,"def physical(v,C,ob):",ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f
+code/cameras.py,72,def one(v):,ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f
+code/cameras.py,90,def main(g):,ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f
+code/final_pool.py,2,def main():,6bc510345a6e3c9dd0ca94d318a5d693ca600c4ad5f3ab30e73a1012bfaee8bb
+code/context.py,8,"def unit(v):return np.asarray(v)/max(np.linalg.norm(v),1e-15)",5d3e9c586c881c0d5e6e8bf4793fc01dbb4cc15935f65243d7b35b62865eff69
+code/context.py,9,"def angle(a,b):return np.degrees(np.arccos(np.clip(unit(a)@unit(b),-1,1)))",5d3e9c586c881c0d5e6e8bf4793fc01dbb4cc15935f65243d7b35b62865eff69
+code/context.py,10,"def snapshot_read(paths,name):freeze('provenance/'+name,[p for p in paths if Path(p).exists()],read_only=True,GT=False)",5d3e9c586c881c0d5e6e8bf4793fc01dbb4cc15935f65243d7b35b62865eff69
+code/context.py,11,def camera_file(g):,5d3e9c586c881c0d5e6e8bf4793fc01dbb4cc15935f65243d7b35b62865eff69
+code/context.py,14,def selroot(g):return N/'selection_verified'if(N/'config/VISIBILITY_FIX.json').exists()else N/'selection',5d3e9c586c881c0d5e6e8bf4793fc01dbb4cc15935f65243d7b35b62865eff69
+code/context.py,15,"def selpath(g,suffix):return selroot(g)/(g+suffix)",5d3e9c586c881c0d5e6e8bf4793fc01dbb4cc15935f65243d7b35b62865eff69
+code/context.py,16,def planfreeze(g):return 'provenance/'+g+'_HERO_PLAN'+('_VERIFIED'if selroot(g).name=='selection_verified'else'')+'_FROZEN.json',5d3e9c586c881c0d5e6e8bf4793fc01dbb4cc15935f65243d7b35b62865eff69
+code/pose_delta_figure.py,5,def main():,1401585f6cdfee48a32e20d152324bc3a42f2884fd8f9ce2de11424c61f08800
+code/post_freeze_audit.py,6,def main():,40e42209ec932d90737caf24049161bd50c545a3bbe7ac780a004e722ed21406
+code/segment.py,5,def main():,47c0f887df62ad57896b0e9f447cf3b66016b0167f6f250a6147a386bfcc8b0c
+code/lineage.py,5,def main():,19f436d80128d0b44caa8473b512b3fcf1d052e235ab7e1f3fcd012347f9f6ed

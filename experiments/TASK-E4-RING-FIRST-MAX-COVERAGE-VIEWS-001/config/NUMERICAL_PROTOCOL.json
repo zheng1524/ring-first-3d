@@ -1,0 +1,11 @@
+{
+ "frozen_before_camera_optimization": true,
+ "RF_original_multistart": {"retain":2,"max_nfev":35,"seed_depth_factors":[0.85,1,1.2],"inclinations_deg":[0,35,60],"azimuth_deg":[0,90,180,270],"source":"original recover.py image_seeds/decode/solve; V5 actual-mask residual; budgets reduced for 884 candidates, not mathematical model"},
+ "yaw_grid":72,"normal_branches":2,"RGB_map":"004 historical real-SIFT triangulation; 005 registration direct-to004 RGB initial candidate explicitly not independent005SfM",
+ "RGB_held":"landmark ID mod5=0 excluded before PnP/Ceres, assessed only after prediction freeze",
+ "Ceres":{"outer":2,"inner":12,"per_view_max_RGB":48,"per_curve_max":96,"Ring_weight":1,"RGB_weight":0.2,"pose_prior":0.01,"landmark_prior":0.001,"pose_physical_center_bound_mm":1.2,"pose_rotation_bound_deg":10,"point_bound_mm":3,"backtracks":8,"joint_view_budget":36,"full6_only_RGB_inliers_at_least":10},
+ "qualification":{"purpose":"conditional engineering camera eligibility, not calibrated pose truth","FIT_inliers_min":10,"FIT_cells_min":4,"held_landmarks_min":4,"held_median_px_max":8,"held_p95_px_max":20,"Ring_IoU_min":0.35,"typed_Ring_median_px_max":10,"require_positive_depth":true,"require_proper_rotation":true,"require_RGB_local_rank6":true,"photo_assumed_K_remains_conditional":true,"weak_numeric_candidates":"retain exploratory direction only; never silently turn into formal HERO"},
+ "coverage":{"surfel_voxel_mm":0.2,"normal_bin_deg":30,"independent_direction_deg":5,"camera_min_separation_deg":1.5,"saturation_relative_area":0.002,"target_budget_max":36,"proxy_visibility_depth_tolerance_mm":0.15,"HERO_proxy":"FIT native sources only; source-tagged area weighted voxel/normal dedup, not anatomical unique area","Body_proxy":"separate channel; unknown unobserved body never counted recovered"},
+ "support":{"number":3,"mutual_ratio":0.72,"min_RANSAC_inliers":12,"min_angle_deg":1,"max_angle_deg":60,"score":"inlier_count * occupied_grid_fraction * exp(-((parallax-10)/20)^2) * measured_overlap; no HERO score, protect HOLDOUT"},
+ "GT":false,"Body_in_camera_fitting":false,"HERO_in_camera_fitting":false
+}
