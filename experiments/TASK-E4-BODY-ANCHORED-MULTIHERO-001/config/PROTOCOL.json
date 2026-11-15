@@ -1,0 +1,53 @@
+{
+  "task": "TASK-E4-BODY-ANCHORED-MULTIHERO-001",
+  "groups": [
+    "G01",
+    "G03",
+    "G05",
+    "G06"
+  ],
+  "arms": [
+    "B0",
+    "B1",
+    "B2",
+    "B3"
+  ],
+  "seed": 20261115,
+  "rounds": 5,
+  "body_candidates_per_round": 4,
+  "body_accepted_per_round": 2,
+  "backtracks": 6,
+  "lr_mm": 0.02,
+  "overlap_mm": 1.0,
+  "normal_cos": 0.70710678,
+  "reprojection_px": 8.0,
+  "surface_sigma_mm": 0.5,
+  "weak_distance_mm": 3.0,
+  "weak_projection_px": 40.0,
+  "min_bias_matches": 64,
+  "max_bias_condition": 1000.0,
+  "bias_bounds_mm": [
+    2.0,
+    4.0,
+    4.0
+  ],
+  "cumulative_depth_limit_mm": 2.5,
+  "round_depth_limit_mm": 0.5,
+  "bias_prior_sigma_mm": [
+    1.0,
+    2.0,
+    2.0
+  ],
+  "bias_prior_weight": 0.01,
+  "correspondence_weight": 0.01,
+  "unexplained_weight": 0.002,
+  "hero_weight": 0.01,
+  "correspondence_samples": 1024,
+  "coverage_samples": 1024,
+  "component_filter": "NONE: audit tiny disconnected components; retain unique unsupported patches",
+  "coverage_net_drop_tolerance": 0,
+  "body_total_trust_D": 0.25,
+  "arithmetic": "millimetres; axial camera Z",
+  "GT_used": false,
+  "holdout_for_selection": false
+}

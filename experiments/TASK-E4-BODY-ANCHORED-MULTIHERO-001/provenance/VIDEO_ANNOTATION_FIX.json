@@ -1,0 +1,39 @@
+{
+  "epoch": 1794752648.0608873,
+  "before_sha256": "506b72b9e4e996a8d73f45253455a09eca2d63f33afd99b844062f0428dbeb29",
+  "after_sha256": "edaf502ce75c6ca309588c3105375b9e3e484d8462a7380709dc274a05588ef2",
+  "changes": [
+    {
+      "id": "MAX__G01_photo001",
+      "old": "hoto001",
+      "correct": "PHOTO"
+    },
+    {
+      "id": "MAX__G01_video005_v005_00000",
+      "old": "ideo005",
+      "correct": "005"
+    },
+    {
+      "id": "MAX__G01_video005_v005_00326",
+      "old": "ideo005",
+      "correct": "005"
+    },
+    {
+      "id": "MAX__G01_video005_v005_00860",
+      "old": "ideo005",
+      "correct": "005"
+    },
+    {
+      "id": "MAX__G05_photo002",
+      "old": "hoto002",
+      "correct": "PHOTO"
+    },
+    {
+      "id": "MAX__G06_004_growth_r01",
+      "old": "04",
+      "correct": "004"
+    }
+  ],
+  "predictions_unchanged": true,
+  "reason": "v004_raw and 004_growth IDs coexist. The [1:] annotation parser turned 004 into 04 and photo001 into hoto001. Only evaluation pair-type labels consume this field; training weights use camera direction and parent SHA."
+}

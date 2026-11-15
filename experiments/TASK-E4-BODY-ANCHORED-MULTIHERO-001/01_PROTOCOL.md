@@ -1,0 +1,17 @@
+# Frozen pilot protocol
+
+Four groups, identical B0/B1/B2/B3. Five outer rounds; per round at most four Body proposals / two accepted proposals, six half-step backtracks. Initial Body is exact 018 INITIAL (not B2 FINAL). Original 018 FIT/HOLDOUT silhouette views retained; all 75 native FIT HERO sources jointly supervise the shared Body. Native target Polyp/CAD qualification applied for every source. Sources and raw pixel/face IDs retained. No component deletion in this pilot; small components audited.
+
+Bias uses fixed correspondences, point-to-plane residuals /0.5 mm, TRF soft-L1 and regularization, bounded cumulative coefficients; at most 0.5 mm additional axial correction per outer round and 2.5 mm total. Require full geometric data-Jacobian rank and condition <=1000, >=64 matched samples. Insufficient sources remain native.
+
+Correspondence thresholds and weights in config/PROTOCOL.json frozen before synthetic and real runs. Normal agreement is signed. First-layer, projected foreground and CAD checks mandatory. Unexplained no-hit anchors may only select currently visible, foreground-connected triangles within 40 native pixels /3 mm, with consistent normals. Remaining unexplained observations keep fixed miss penalties and no invented geometry. No automatic topology change, ICP or camera change.
+
+Body loss retains 018 exact silhouette, contour and relative Edge/Laplacian/Normal prior; native first-layer depth uses corrected targets plus restricted point-to-plane / official PyTorch3D point-face gradients. ARAP is a reference, not implemented or claimed. Correlation and camera-direction source masses are frozen.
+
+Every inner update requires GeometryGuard and fixed-correspondence objective nonincrease. Every outer update additionally requires full-native fixed-denominator first-layer coverage not decrease, bounded cumulative changes, correspondence coverage not decrease, and reevaluated fixed-denominator geometry score not worsen. Full theta/q/Adam/guard state rollback on failure. HOLDOUT/GT never used for acceptance. Native retained area is invariant (only ray deformation).
+
+Fixed source stratified sample 1024 for nearest/anchor/bias; native first-layer objective and coverage use all original trusted observations. Full-native and sampled denominators separately reported. Distinct source subsets are not a fused anatomical surface. Measurements are model estimates, not GT validation.
+
+Pre-formal implementation clarification: a CONFLICT label requires >=2 camera directions separated by >=15 degrees, upstream parent Jaccard <=0.75, signed normal consistency, valid native foreground depths and CAD order, with candidate >1 mm in front of each peer surface. A deeper surface is occlusion/UNEXPLAINED, not a conflict. These remain uncalibrated geometric proxies. The full objective bias regularizer is multiplied by the same 0.01 HERO coefficient as its source term. Deterministic complete rollback is an early-stop fixed point, not five repeated attempts. Engineering pilot before these unit/implementation corrections is preserved and excluded from formal arm results.
+
+Strong-supervision contract repair: the inherited first-layer depth loss is gated by full-native MATCHED identity fixed for each subproblem. CONFLICT/UNEXPLAINED/UNKNOWN keep a fixed diagnostic penalty and no strong depth gradient. Eligible UNEXPLAINED no-hit anchors remain weak and restricted. The earlier ungated implementation is archived, not the final result. No weight/threshold/case change.

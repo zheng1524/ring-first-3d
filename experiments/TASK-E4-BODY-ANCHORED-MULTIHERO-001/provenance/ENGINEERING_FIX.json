@@ -1,0 +1,10 @@
+{
+  "epoch": 1794751510.935937,
+  "pilot": "experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/runtime/ENGINEERING_PILOT_BEFORE_UNIT_FIX",
+  "reasons": [
+    "Bias prior in full objective lacked the HERO term coefficient .01: unit/weight bookkeeping fix, not a new tuned weight",
+    "TRF residual normalization sqrt(N) requires the same scaling of soft-L1 f_scale to preserve intended 0.5 mm robust transition",
+    "Identical deterministic outer rollback cannot improve by repeating identical state; stop at rollback fixed point"
+  ],
+  "historical_assets_modified": false
+}

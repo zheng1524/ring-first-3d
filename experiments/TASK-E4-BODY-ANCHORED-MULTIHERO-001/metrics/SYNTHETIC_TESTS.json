@@ -1,0 +1,74 @@
+[
+  {
+    "test": "same_surface_offset_reduced",
+    "PASS": true,
+    "initial_MAE_mm": 0.35,
+    "final_MAE_mm": 0.0007940080322930113,
+    "theta": [
+      -0.3492492300406317,
+      -0.11782883605726155,
+      0.09741121379796479
+    ],
+    "rank": 3
+  },
+  {
+    "test": "zero_bias_unchanged",
+    "PASS": true,
+    "max_abs_theta": 0.0
+  },
+  {
+    "test": "native_rays_preserved",
+    "PASS": true,
+    "max_error": 5.551115123125783e-17
+  },
+  {
+    "test": "distinct_branches_first_layer_protected",
+    "PASS": true,
+    "first_Z": [
+      4.899999618530273,
+      5.899999618530273
+    ],
+    "branch_identity_not_NN": true
+  },
+  {
+    "test": "production_branch_correspondences",
+    "PASS": true,
+    "states": [
+      1,
+      0
+    ],
+    "expected": "occluded extra branch UNEXPLAINED / distinct visible branch MATCHED"
+  },
+  {
+    "test": "nohit_triangle_geometry_gradient",
+    "PASS": true,
+    "gradient": [
+      [
+        0.0,
+        0.0,
+        0.25
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ],
+      [
+        0.0,
+        0.0,
+        0.5
+      ]
+    ],
+    "FD": 1.0004118084907532,
+    "analytic": 1.0
+  },
+  {
+    "test": "source_order_invariant",
+    "PASS": true,
+    "canonical_sort": true
+  },
+  {
+    "test": "rollback_optimizer_and_parameters",
+    "PASS": true
+  }
+]
