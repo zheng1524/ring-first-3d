@@ -106,7 +106,7 @@
       "modules": [
         "T24"
       ],
-      "symptom": "Old soft-zbuf gradients 1e8\u20131e13 while finite difference was about 1e-4",
+      "symptom": "Old soft-zbuf gradients 1e8–1e13 while finite difference was about 1e-4",
       "cause": "Unstable derivative through discrete Ring/body visibility in historical renderer",
       "cause_status": "confirmed",
       "repair": "Reuse repaired 014 detached z visibility and original projection contracts",
@@ -221,6 +221,32 @@
         {
           "path": "experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/development_failures/development-004-contracts.json",
           "sha256": "c3363067256a0f2debb24783018c858f6c3f3953c09124a2276dee4ca54e3575"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-DUAL-YAML-001",
+      "category": "code_error",
+      "modules": [
+        "DV01"
+      ],
+      "symptom": "Initial TASK serialized repeated stage list using YAML aliases; original strict loader rejects aliases",
+      "cause": "Initializer reused same Python list for authorization and acceptance",
+      "cause_status": "confirmed",
+      "repair": "Copy the stage list before serialization; preserve initial bytes and re-freeze before any science",
+      "regression": [
+        "test_dualvideo_gate.DualvideoGateTests.test_user_clarified_004_world_004_005_local_conditions"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/initial_freeze/TASK.yaml",
+          "sha256": "50f53301c31668ef064286e7f042cf49e1401ab2b32c2c8e855b24637ca48a60"
         }
       ],
       "rule_status": "candidate",

@@ -2577,6 +2577,25 @@
       "source_url": "https://github.com/zheng1524/ring-first-3d/blob/5636aaebd61a3d53b69f528692c4c7095df46508/experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/code/reprojection.py",
       "observed_reuse_or_scope": "DIRECT_REUSE describes unchanged named implementation, not promotion to shared package; AST_REUSE is named AST extraction, ADAPTED_REUSE requires stated changes; see card limits",
       "review_date": "2026-11-16"
+    },
+    {
+      "id": "DV01",
+      "module": "G01 dual-video authenticity gate",
+      "path": "src/ring_first_3d/dualvideo/audit.py",
+      "symbols": [
+        "check_sources",
+        "projection_metrics",
+        "audit",
+        "dispatch"
+      ],
+      "engineering": "G0_GATE",
+      "scientific": "NOT_EVALUABLE_UNTIL_SCENE_CERTIFIED",
+      "reuse": "COMPOSE_EXISTING_T24",
+      "input": "Frozen independent 004/005 native camera-to-Ring, true RGB/mask, R10 CAD, original Blender",
+      "output": "Per-frame support/boundary metrics, full-triangle native scenes, fixed-pose certificate audit",
+      "call": "Policy Runner G0_scene_audit",
+      "limit": "No perturbation or GT-free Body/full-mesh registration before all scene gates pass",
+      "sha256": "0ebe775bcbf88cb303960b309c2131b9d25d112493150333383cabcc083c5ea3"
     }
   ]
 }

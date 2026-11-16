@@ -54,10 +54,10 @@ def validate(task,path):
 
 
 def verify(task):
-    info=verify_task(legacy_task(task))
     for name,rec in task["science"]["assets"].items():
         require(Path(rec["path"]).is_file(),"NOT_EVALUABLE","Missing genuine source: "+name)
         require(sha256(rec["path"])==rec["sha256"],"SOURCE_SHA",name)
+    info=verify_task(legacy_task(task))
     a=task["science"]["assets"]
     identity=next(x for x in json.loads(Path(a["identity_lock"]["path"]).read_text())if x["case"]=="G01")
     extraction=json.loads(Path(a["gt_extraction"]["path"]).read_text())

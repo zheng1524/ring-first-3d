@@ -37,8 +37,8 @@ def install_io_guard(attempt,science=None):
             if not resolve_at(args[1],args[2]).is_relative_to(attempt):raise PolicyError("WRITE_ISOLATION",str(args[1]))
         elif event == "subprocess.Popen":
             command=args[1]
-            if science and science.get("stage")=="G1_visualize" and isinstance(command,(list,tuple)) and Path(str(command[0])).name=="fc-list" and len(command)==2 and (command[1]=="--help"or str(command[1]).startswith("--format=")):return
-            if science and science.get("stage")=="research_regression" and isinstance(command,(list,tuple)) and str(command[0])==sys.executable:return
+            if science and science.get("stage")in {"G1_visualize","G0_scene_audit"} and isinstance(command,(list,tuple)) and Path(str(command[0])).name=="fc-list" and len(command)==2 and (command[1]=="--help"or str(command[1]).startswith("--format=")):return
+            if science and science.get("stage")in {"research_regression","dualvideo_regression"} and isinstance(command,(list,tuple)) and str(command[0])==sys.executable:return
             if science and science["role"]=="generator" and isinstance(command,(list,tuple)) and str(command[0])==science.get("blender_binary"):
                 if "--disable-autoexec" in command and "--factory-startup" in command:return
             if not isinstance(command,(list,tuple)) or Path(str(command[0])).name not in {"git","uname","lscpu"}:
@@ -56,6 +56,9 @@ def main():
     task=json.loads(a.freeze.read_text())["fingerprint"]["task"]
     attempt=a.attempt.resolve()
     science=None
+    if task.get("schema")==3:
+        from ring_first_3d.policy.dualvideo_contracts import permissions
+        science=permissions(task,a.stage,attempt.parents[1])
     if task.get("schema")==2:
         from ring_first_3d.policy.science_contracts import permissions
         science=permissions(task,a.stage,attempt.parents[1])
@@ -63,7 +66,10 @@ def main():
         science["blender_binary"]=task["science"]["assets"]["blender_binary"]["path"]
     install_io_guard(attempt,science)
     sys.path.insert(0,str(ROOT/"tools/research"))
-    if task.get("schema")==2 and a.stage not in ("preflight","contracts"):
+    if task.get("schema")==3 and a.stage not in ("preflight","contracts"):
+        from ring_first_3d.dualvideo.audit import dispatch
+        result=dispatch(a.stage,task,attempt)
+    elif task.get("schema")==2 and a.stage not in ("preflight","contracts"):
         from ring_first_3d.synthetic.handlers import dispatch
         result=dispatch(a.stage,task,attempt)
     elif a.stage=="preflight":

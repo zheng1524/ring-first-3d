@@ -1,0 +1,165 @@
+schema: 3
+task_id: TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001
+goal: G01 authentic dual-video scene gate, then GT-free frozen coarse Body/full local
+  mesh registration only after all gates pass
+modules:
+- T01
+- T03
+- T04
+- T10
+- T11
+- T12
+- T13
+- T24
+- T31
+- T34
+- DV01
+variables:
+  geometry_unit: mm
+  pixel_coordinates: native_image_px
+  camera_transform: opencv_c2w
+  depth_convention: axial_z
+  parameters: {}
+inputs:
+  fixture:
+    path: /home/liu/ring_first_3d_g01_dualvideo/tools/research/frozen_fixture.json
+    sha256: d64ebdbc3b81287c7d8f235e634b05d44269ee76b27206a37d2df976d293dacb
+  support:
+    path: /home/liu/ring_first_3d_g01_dualvideo/tools/research/support_fixture.json
+    sha256: cc26119e6e67a3d19ab124685316b4815be0f63f5ac71bc416704cf46430b28c
+  reference:
+    path: /home/liu/ring_first_3d_g01_dualvideo/tools/research/frozen_reference.json
+    sha256: 216cbab2cdafa85e224580199356c1a2dc1ba087389e9699790d1c6101890cdd
+  source_lock:
+    path: /home/liu/ring_first_3d_g01_dualvideo/src/ring_first_3d/source_lock.json
+    sha256: 3bee30d508fa9ca6bbc4bbc315b217a0a660b77c6498cfce7ccbba6d9ba5f2b0
+  dxy_root: /home/liu/new-polyp-dxy
+  evidence:
+    path: /home/liu/ring_first_3d_g01_dualvideo/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/figures/REAL_SMOKE_EVIDENCE.png
+    sha256: 59451578fe85612ffa5b2bd47f450705e3d45403fbeaf6f324f2a2a9c2088b23
+split:
+  manifest:
+    path: /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/CASE.json
+    sha256: 57799a430b9b954180575a96da3b2d228e0802eac4f6ecf660744c3d308e688e
+  FIT:
+  - FIT
+  HOLDOUT:
+  - UPDATE_HOLDOUT
+  GT:
+  - G01_original_blender_scene_audit_only_until_G0_pass
+  access: dualvideo_scene_gate_then_generator_predictor_evaluator
+authorization:
+  approved_by: user
+  reference: 'User clarified: S1/S2 world A/B on 004; S3 local A on 004; S4 local
+    B on 005'
+  stages:
+  - preflight
+  - contracts
+  - dualvideo_regression
+  - G0_scene_audit
+  - G1_initialize
+  - G2_mapping_predict
+  - G2_mapping_evaluate
+  - G3_register
+  - G4_evaluate
+  - artifacts
+acceptance:
+  required_stages:
+  - preflight
+  - contracts
+  - dualvideo_regression
+  - G0_scene_audit
+  - G1_initialize
+  - G2_mapping_predict
+  - G2_mapping_evaluate
+  - G3_register
+  - G4_evaluate
+  - artifacts
+  min_contract_tests: 11
+  require_visualization: true
+  require_failure_log: true
+budget:
+  max_seconds: 1800
+  stage_timeout_seconds: 300
+  max_attempts_per_stage: 2
+  max_output_bytes: 300000000
+stop:
+- gate_failure
+- input_drift
+- budget_exceeded
+output_root: /home/liu/ring_first_3d_g01_dualvideo/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/runs
+dualvideo:
+  assets:
+    source_manifest:
+      path: /home/liu/ring_first_3d_g01_dualvideo/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/inputs/G01_DUALVIDEO_SOURCES.json
+      sha256: 1ad55dd2823ce5f316e5594841e092cd89ba4fb955b4c00ac787a0d2ad12fd33
+    blend:
+      path: /home/liu/polyp_research/01p型/01p-12-/息肉.blend
+      sha256: fb448629ee17dce682632f886f714472e4df1d43825092fbf604415c6511de5a
+    gt_cache:
+      path: /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/evaluation_only/G01/ORIGINAL_BLENDER_GT_MM.npz
+      sha256: 315d9acefab13acb340d6d3469d794cda06af229cf4705f1a528fbee9c01e183
+    gt_extraction:
+      path: /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/evaluation_only/G01/GT_EXTRACTION.json
+      sha256: 907d8ceaae1b3d9f42ceb3654133b46ed4edc8b4b08645611f02385dc47f5b4c
+    blender_binary:
+      path: /home/liu/blender/blender-5.0.1-linux-x64/blender
+      sha256: 76ee560365e0ba37abf1f0285751c6388a1e68846d0f6a45aac629f707044533
+  condition_order:
+  - S0
+  - S1
+  - S2
+  - S3
+  - S4
+  conditions:
+    S0:
+      video: null
+      family: none
+      rotation_y_deg: 0.0
+      translation_x_mm: 0.0
+    S1:
+      video: '004'
+      family: video_world
+      rotation_y_deg: 2.0
+      translation_x_mm: 0.5
+    S2:
+      video: '004'
+      family: video_world
+      rotation_y_deg: 3.0
+      translation_x_mm: 0.3
+    S3:
+      video: '004'
+      family: camera_to_ring
+      rotation_y_deg: 2.0
+      translation_x_mm: 0.5
+    S4:
+      video: '005'
+      family: camera_to_ring
+      rotation_y_deg: 3.0
+      translation_x_mm: 0.3
+  frame_policy: Independent native Ring frames; no certified common frame assumed
+  world_injection: Left multiply cameras, Ring and full Mesh by same SE3; T_R_C invariant
+  local_injection: Shared Ring-local left SE3 on cameras and observation-derived Mesh;
+    Ring fixed; camera-to-Ring changes; never mix families
+  Ring_to_Body_policy: Require source-supported fixed transform; do not assume Blender
+    author world equals either native Ring frame
+  body_initialization: Official DXY E1/full Mask E2 plus nine parameters; GT prohibited;
+    freeze before registration
+  registration: One shared SE3 per video; unchanged full local triangle meshes; no
+    point-to-Body replacement
+  gates:
+    min_observed_ring_pixels: 20
+    observed_ring_CAD_support_within2px_min: 0.95
+    observed_to_full_CAD_boundary_p95_px_max: 3.0
+    require_GT_Ring_fixed_pose_certificate: true
+    require_camera_to_ring_native_binding: true
+    require_distinct_004_005_trajectories: true
+  evaluation:
+    parameters_selected_using_GT: false
+    read_GT_only_for_generation_and_postfreeze_evaluation: true
+    report_all_conditions: true
+    report_NaN_and_full_denominator: true
+    freeze_before_GT_evaluation: true
+  source_frame_count:
+    '004': 22
+    '005': 11
