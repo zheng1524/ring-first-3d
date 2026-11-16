@@ -1,0 +1,33 @@
+flowchart TD
+  INPUT["真实 RGB + SHA / 来源身份"]:::stable --> MASK["T02 冻结分割 labels 0/1/2"]:::stable
+  MASK --> DXY["T01 T03 正式独立 DXY API"]:::stable
+  DXY --> XY["T04 像素 center/basis"]:::stable
+  MASK --> VIEWS["T10 015 / T11 016 / T12 MAX<br/>各自目标，不自动合并"]:::candidate
+  VIEWS --> CAM["T14 T15 条件 Ring/RGB 相机"]:::candidate
+  CAD["T16 固定 Ring CAD / mm"]:::stable --> CAM
+  CAM --> HERO["T19 T20 官方原生 HERO Z"]:::stable
+  HERO --> RAW["XYZ / 原始 F uv FaceID"]:::stable
+  RAW --> CLEAN["T21 T22 T23 证据清理 / 原始保留"]:::candidate
+  CAM --> BODY["T05–T09 E1/E2 九参数初始化"]:::candidate
+  XY --> BODY
+  MASK --> BODY
+  BODY -. "完整科研门槛当前0/4" .-> GAP["未解决：Body→可信HERO对应"]:::unresolved
+  CLEAN -.-> GAP
+  GAP -. "后续独立任务" .-> ENGINE["T24 修复 PyTorch3D Renderer"]:::stable
+  ENGINE --> LOSS["T28–T31 多视角/轮廓/深度"]:::candidate
+  LOSS --> PROPOSAL["T25 T26 T32 T33 Adam/局部/Sobolev"]:::candidate
+  PROPOSAL --> GUARD["T34 Guard / 接受拒绝回滚"]:::candidate
+  CAM --> BA["T17 021跨视频BA / G01背景"]:::candidate
+  BA -. "跨视频绝对一致未认证" .-> GAP2["共同frame / 深度层冲突"]:::unresolved
+  RAW --> TSDF["T39 TSDF 暂停"]:::experimental
+  RAW --> NF["T40 NeuralFusion 暂停"]:::experimental
+  RAW --> SDF["T41 MonoSDF 充分训练未完成"]:::experimental
+  GUARD --> FREEZE["预测/配置/源码冻结"]:::stable
+  RAW --> FREEZE
+  FREEZE --> EVAL["T35 T36 T37 冻结后独立评价"]:::stable
+  GT["GT / 历史Body-U<br/>仅对照评价，不生成预测"] --> EVAL
+  EVAL --> VIS["T38 真实P0显示 / T43 A→B"]:::stable
+  classDef stable fill:#d9f0e0,stroke:#32734a
+  classDef candidate fill:#fff1c7,stroke:#9b7420
+  classDef experimental fill:#f4d9d7,stroke:#9d4841
+  classDef unresolved fill:#eadff3,stroke:#70528d,stroke-dasharray:5 5
