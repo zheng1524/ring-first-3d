@@ -1,0 +1,30 @@
+{
+  "result": {
+    "attempt_id": "0002-contracts-f26ca3d5",
+    "stage": "contracts",
+    "freeze_sha256": "4cc3d5c1497c07541a6d76634e886c3ffe360f3a256035da9819ce049ca0073e",
+    "timeout_seconds": 120,
+    "started_UTC": 1794826201.5212955,
+    "status": "FAIL",
+    "seconds": 0.20992864999971061,
+    "reason": "GATE_FAILED: contracts: FAIL",
+    "raw_files": {
+      "request.json": "3f077503259cc9635b5e5c0f7edc518878e1575c722e38d651ba2f8ebd9e9f15",
+      "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout.txt": "73cccd2809bdece98901dc76a73be2fc21ccca17d03cad4038158ce2645457f4",
+      "payload.json": "410ce96fff342557080503d673693c2bd34c7f1d0c72757adb98ffa9be718b5c"
+    }
+  },
+  "original_run": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/development-004",
+  "original_result_SHA256": "cf1e7804d7d3d3755a976ecdb6ed5acabc544e7bbd3d474702d07ac1587d6982",
+  "payload.json": {
+    "status": "FAIL",
+    "tests": 11,
+    "failures": 0,
+    "errors": 2,
+    "seconds": 0.07177200800015271,
+    "log": "test_explicit_duplicate_migration_rejects_conflicts (test_harness_contracts.BoundaryTests.test_explicit_duplicate_migration_rejects_conflicts) ... ok\ntest_fit_holdout_and_duplicate_rejection (test_harness_contracts.BoundaryTests.test_fit_holdout_and_duplicate_rejection) ... ok\ntest_historical_source_tampering (test_harness_contracts.BoundaryTests.test_historical_source_tampering) ... ERROR\ntest_missing_and_hash_mismatch (test_harness_contracts.BoundaryTests.test_missing_and_hash_mismatch) ... ERROR\ntest_strategy_identity_and_partitions (test_harness_contracts.BoundaryTests.test_strategy_identity_and_partitions) ... ok\ntest_axial_z_not_range (test_harness_contracts.CoordinateTests.test_axial_z_not_range) ... ok\ntest_c2w_and_roundtrip (test_harness_contracts.CoordinateTests.test_c2w_and_roundtrip) ... ok\ntest_dxy_rotated_basis (test_harness_contracts.CoordinateTests.test_dxy_rotated_basis) ... ok\ntest_half_pixel_intrinsics (test_harness_contracts.CoordinateTests.test_half_pixel_intrinsics) ... ok\ntest_mm_m (test_harness_contracts.CoordinateTests.test_mm_m) ... ok\ntest_ring_units (test_harness_contracts.CoordinateTests.test_ring_units) ... ok\n\n======================================================================\nERROR: test_historical_source_tampering (test_harness_contracts.BoundaryTests.test_historical_source_tampering)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/liu/ring_first_3d_policy_bootstrap/tests/test_harness_contracts.py\", line 76, in test_historical_source_tampering\n    with TemporaryDirectory() as d:\n         ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/tempfile.py\", line 950, in __exit__\n    self.cleanup()\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/tempfile.py\", line 954, in cleanup\n    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/tempfile.py\", line 934, in _rmtree\n    _shutil.rmtree(name, onexc=onexc)\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/shutil.py\", line 759, in rmtree\n    _rmtree_safe_fd(stack, onexc)\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/shutil.py\", line 698, in _rmtree_safe_fd\n    os.unlink(entry.name, dir_fd=topfd)\n  File \"/home/liu/ring_first_3d_policy_bootstrap/tools/research/_policy_worker.py\", line 22, in guard\n    if not p.is_relative_to(attempt):raise PolicyError(\"WRITE_ISOLATION\",str(p))\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nring_first_3d.policy.contracts.PolicyError: WRITE_ISOLATION: /home/liu/ring_first_3d_policy_bootstrap/p3d.py\n\n======================================================================\nERROR: test_missing_and_hash_mismatch (test_harness_contracts.BoundaryTests.test_missing_and_hash_mismatch)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/liu/ring_first_3d_policy_bootstrap/tests/test_harness_contracts.py\", line 60, in test_missing_and_hash_mismatch\n    with TemporaryDirectory() as d:\n         ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/tempfile.py\", line 950, in __exit__\n    self.cleanup()\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/tempfile.py\", line 954, in cleanup\n    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/tempfile.py\", line 934, in _rmtree\n    _shutil.rmtree(name, onexc=onexc)\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/shutil.py\", line 759, in rmtree\n    _rmtree_safe_fd(stack, onexc)\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/shutil.py\", line 698, in _rmtree_safe_fd\n    os.unlink(entry.name, dir_fd=topfd)\n  File \"/home/liu/ring_first_3d_policy_bootstrap/tools/research/_policy_worker.py\", line 22, in guard\n    if not p.is_relative_to(attempt):raise PolicyError(\"WRITE_ISOLATION\",str(p))\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nring_first_3d.policy.contracts.PolicyError: WRITE_ISOLATION: /home/liu/ring_first_3d_policy_bootstrap/asset\n\n----------------------------------------------------------------------\nRan 11 tests in 0.068s\n\nFAILED (errors=2)\n",
+    "GT_read": false
+  },
+  "stderr.txt": ""
+}

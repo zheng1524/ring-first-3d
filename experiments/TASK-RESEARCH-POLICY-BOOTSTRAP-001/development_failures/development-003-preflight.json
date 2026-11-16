@@ -1,0 +1,93 @@
+{
+  "result": {
+    "attempt_id": "0001-preflight-27d60de6",
+    "stage": "preflight",
+    "freeze_sha256": "ccecee6565988efc17091ea7c87efa7e0c472cff5bccbbcbd4920fc130c4f61e",
+    "timeout_seconds": 120,
+    "started_UTC": 1794826120.000274,
+    "status": "FAIL",
+    "seconds": 3.039171652999812,
+    "reason": "GATE_FAILED: preflight: NOT_READY",
+    "raw_files": {
+      "request.json": "2ae6611b428ecc12efb5ebb06ba919bb8abf97ff69676609940ecca7981a7d37",
+      "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout.txt": "9712b35ff8ed3d3bec0e3cefe862cf9a126298346731d151d9ab0227eb7776e0",
+      "payload.json": "2cfd9142430f890e8b0153f9c7bdc78291698baf1e3be30287a4bbdb608d57ac"
+    }
+  },
+  "original_run": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/development-003",
+  "original_result_SHA256": "08361213bbc948474639e9442a5c81b3cf6599bde78642ca954a9a23b41b4cc8",
+  "payload.json": {
+    "status": "NOT_READY",
+    "environment": {
+      "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+      "executable": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+      "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+      "module_version": "0.1.0",
+      "numpy": {
+        "version": "1.26.4",
+        "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/__init__.py"
+      },
+      "scipy": {
+        "version": "1.15.3",
+        "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/scipy/__init__.py"
+      },
+      "cv2": {
+        "version": "4.11.0",
+        "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/cv2/__init__.py"
+      },
+      "skimage": {
+        "version": "0.25.2",
+        "file": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/runtime/packages/skimage/__init__.py"
+      },
+      "torch": {
+        "version": "2.7.1+cu128",
+        "file": "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/__init__.py"
+      },
+      "pytorch3d": {
+        "version": "0.7.9",
+        "file": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/__init__.py"
+      }
+    },
+    "checks": [
+      {
+        "name": "dependencies",
+        "status": "FAIL",
+        "seconds": 1.8850520490000235,
+        "traceback": "Traceback (most recent call last):\n  File \"/home/liu/ring_first_3d_policy_bootstrap/src/ring_first_3d/evaluation/validation.py\", line 23, in timed_test\n    details = function()\n              ^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_policy_bootstrap/tools/research/preflight.py\", line 22, in dependencies\n    m = importlib.import_module(name);env[name] = dict(version=getattr(m, \"__version__\", \"not exported\"), file=m.__file__)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor/open3d/__init__.py\", line 163, in <module>\n    import open3d.ml\n  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor/open3d/ml/__init__.py\", line 16, in <module>\n    from . import datasets\n  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor/open3d/ml/datasets.py\", line 15, in <module>\n    from open3d._ml3d.datasets import *\n  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor/open3d/_ml3d/datasets/__init__.py\", line 3, in <module>\n    from .semantickitti import SemanticKITTI\n  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor/open3d/_ml3d/datasets/semantickitti.py\", line 6, in <module>\n    from sklearn.neighbors import KDTree\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/sklearn/__init__.py\", line 70, in <module>\n    from sklearn.base import clone  # noqa: E402\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/sklearn/base.py\", line 20, in <module>\n    from sklearn.utils._metadata_requests import _MetadataRequester, _routing_enabled\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/sklearn/utils/__init__.py\", line 9, in <module>\n    from sklearn.utils._chunking import gen_batches, gen_even_slices\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/sklearn/utils/_chunking.py\", line 11, in <module>\n    from sklearn.utils._param_validation import Interval, validate_params\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/sklearn/utils/_param_validation.py\", line 17, in <module>\n    from sklearn.utils.validation import _is_arraylike_not_scalar\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/sklearn/utils/validation.py\", line 24, in <module>\n    from sklearn.utils._array_api import (\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/sklearn/utils/_array_api.py\", line 21, in <module>\n    from sklearn.externals.array_api_compat import numpy as np_compat\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/sklearn/externals/array_api_compat/numpy/__init__.py\", line 9, in <module>\n    __all__ = clone_module(\"numpy\", globals())\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/sklearn/externals/array_api_compat/_internal.py\", line 67, in clone_module\n    if not n.startswith(\"_\") and hasattr(mod, n):\n                                 ^^^^^^^^^^^^^^^\n  File \"/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/__init__.py\", line 327, in __getattr__\n    import numpy.testing as testing\n  File \"/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/testing/__init__.py\", line 11, in <module>\n    from ._private.utils import *\n  File \"/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/testing/_private/utils.py\", line 1253, in <module>\n    _SUPPORTS_SVE = check_support_sve()\n                    ^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/testing/_private/utils.py\", line 1247, in check_support_sve\n    output = subprocess.run(cmd, capture_output=True, text=True)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/subprocess.py\", line 548, in run\n    with Popen(*popenargs, **kwargs) as process:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/subprocess.py\", line 1026, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"/home/liu/miniconda3/envs/vpo/lib/python3.12/subprocess.py\", line 1823, in _execute_child\n    sys.audit(\"subprocess.Popen\", executable, args, cwd, env)\n  File \"/home/liu/ring_first_3d_policy_bootstrap/tools/research/_policy_worker.py\", line 26, in guard\n    raise PolicyError(\"COMMAND_DENIED\",str(command))\nring_first_3d.policy.contracts.PolicyError: COMMAND_DENIED: ['lscpu']\n"
+      },
+      {
+        "name": "versions_and_sources",
+        "status": "PASS",
+        "seconds": 0.10188099199967837,
+        "details": {
+          "DXY_commit": "75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95",
+          "historical_sources": 11
+        }
+      },
+      {
+        "name": "identities_and_contracts",
+        "status": "PASS",
+        "seconds": 0.4696811950002484,
+        "details": {
+          "verified_assets": 233,
+          "native_wh": [
+            640,
+            360
+          ],
+          "metric_unit": "mm",
+          "camera": "OpenCV c2w; +Z axial depth",
+          "FIT": 101,
+          "HOLDOUT": 7,
+          "ring": {
+            "inner_mm": 9.999999251835408,
+            "outer_mm": 12.4000003767177,
+            "wire_mm": 1.200000048
+          },
+          "GT_read": false
+        }
+      }
+    ]
+  },
+  "stderr.txt": ""
+}

@@ -1,5 +1,7 @@
 # Research Execution Harness
 
+增量控制入口：[Task Contract 与 Policy Runner](RESEARCH_POLICY_BOOTSTRAP.md) 将现有检查组合为可恢复的授权阶段，检查来源/冻结边界与本地结果卡、manifest、可视化。原 API 和数学模型不变。
+
 任务：TASK-RESEARCH-HARNESS-STORAGE-001，2026-11-16。共享包版本 0.1.0；这是工程验证入口，科学路线与验收状态继续以[技术注册表](registry/TECHNICAL_ROUTE_MATRIX.md)为准。
 
 ## 新任务启动

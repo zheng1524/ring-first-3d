@@ -1,0 +1,75 @@
+# Fill authorization and goal, or use policy.py init for this machine.
+schema: 1
+task_id: TASK-YOUR-TASK-001
+goal: 'REPLACE: approved task objective'
+modules:
+- T01
+- T03
+- T04
+- T10
+- T11
+- T12
+- T13
+- T24
+- T31
+- T34
+variables:
+  geometry_unit: mm
+  pixel_coordinates: native_image_px
+  camera_transform: opencv_c2w
+  depth_convention: axial_z
+  parameters: {}
+inputs:
+  fixture:
+    path: ../tools/research/frozen_fixture.json
+    sha256: d64ebdbc3b81287c7d8f235e634b05d44269ee76b27206a37d2df976d293dacb
+  support:
+    path: ../tools/research/support_fixture.json
+    sha256: cc26119e6e67a3d19ab124685316b4815be0f63f5ac71bc416704cf46430b28c
+  reference:
+    path: ../tools/research/frozen_reference.json
+    sha256: 216cbab2cdafa85e224580199356c1a2dc1ba087389e9699790d1c6101890cdd
+  source_lock:
+    path: ../src/ring_first_3d/source_lock.json
+    sha256: 3bee30d508fa9ca6bbc4bbc315b217a0a660b77c6498cfce7ccbba6d9ba5f2b0
+  dxy_root: /home/liu/new-polyp-dxy
+  evidence:
+    path: ../experiments/TASK-RESEARCH-HARNESS-STORAGE-001/figures/REAL_SMOKE_EVIDENCE.png
+    sha256: 59451578fe85612ffa5b2bd47f450705e3d45403fbeaf6f324f2a2a9c2088b23
+split:
+  manifest:
+    path: /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/CASE.json
+    sha256: 57799a430b9b954180575a96da3b2d228e0802eac4f6ecf660744c3d308e688e
+  FIT:
+  - FIT
+  HOLDOUT:
+  - UPDATE_HOLDOUT
+  GT: []
+  access: verification_only_no_GT
+authorization:
+  approved_by: pending_user_review
+  reference: 'REPLACE: user authorization'
+  stages:
+  - preflight
+  - contracts
+  - smoke
+  - artifacts
+acceptance:
+  required_stages:
+  - preflight
+  - contracts
+  - smoke
+  - artifacts
+  min_contract_tests: 11
+  require_visualization: true
+  require_failure_log: true
+budget:
+  max_seconds: 300
+  stage_timeout_seconds: 120
+  max_attempts_per_stage: 3
+  max_output_bytes: 64000000
+stop:
+- gate_failure
+- input_drift
+- budget_exceeded
+output_root: ../experiments/TASK-YOUR-TASK-001/runs

@@ -1,0 +1,1041 @@
+{
+  "status": "PASS",
+  "test_type": "Actual public CLI, actual existing APIs/GPU, no handler mocks",
+  "cases": [
+    {
+      "command": "check",
+      "stage": null,
+      "expected_error": null,
+      "actual": {
+        "status": "PASS",
+        "freeze_sha256": "a15f443af506f3f4d50353cc1cfbcb44dfd8388c7af70a94a7faae82e68a0677",
+        "module_contracts": {
+          "T01": {
+            "sources": [],
+            "requires": [],
+            "units": "native_image_px"
+          },
+          "T03": {
+            "sources": [
+              "T03"
+            ],
+            "requires": [
+              "T01"
+            ],
+            "units": "native_image_px"
+          },
+          "T04": {
+            "sources": [
+              "T04"
+            ],
+            "requires": [
+              "T03"
+            ],
+            "units": "native_image_px"
+          },
+          "T10": {
+            "sources": [
+              "T10"
+            ],
+            "requires": [],
+            "units": "native_image_px"
+          },
+          "T11": {
+            "sources": [
+              "T11"
+            ],
+            "requires": [
+              "T10"
+            ],
+            "units": "mm"
+          },
+          "T12": {
+            "sources": [
+              "T12"
+            ],
+            "requires": [],
+            "units": "mm"
+          },
+          "T13": {
+            "sources": [
+              "T13",
+              "rgb"
+            ],
+            "requires": [
+              "T12"
+            ],
+            "units": "native_image_px"
+          },
+          "T24": {
+            "sources": [
+              "T24",
+              "common"
+            ],
+            "requires": [],
+            "units": "mm"
+          },
+          "T31": {
+            "sources": [
+              "T31",
+              "common"
+            ],
+            "requires": [
+              "T24"
+            ],
+            "units": "mm"
+          },
+          "T34": {
+            "sources": [
+              "T34",
+              "common"
+            ],
+            "requires": [
+              "T24"
+            ],
+            "units": "mm"
+          }
+        },
+        "verified_assets": 233
+      },
+      "seconds": 0.2579970760002652
+    },
+    {
+      "command": "run",
+      "stage": "all",
+      "expected_error": null,
+      "actual": {
+        "status": "AUTHORIZED_STAGES_COMPLETE",
+        "stages": [
+          {
+            "status": "PASS",
+            "stage": "preflight",
+            "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001",
+            "attempt_id": "0001-preflight-6f2639e6"
+          },
+          {
+            "status": "PASS",
+            "stage": "contracts",
+            "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001",
+            "attempt_id": "0002-contracts-d7ef3055"
+          },
+          {
+            "status": "PASS",
+            "stage": "smoke",
+            "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001",
+            "attempt_id": "0003-smoke-0cb927c6"
+          },
+          {
+            "status": "PASS",
+            "stage": "artifacts",
+            "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001",
+            "attempt_id": "0004-artifacts-0f1cc6bf"
+          }
+        ],
+        "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001",
+        "accepted": false
+      },
+      "seconds": 22.954554325000117
+    },
+    {
+      "command": "accept",
+      "stage": null,
+      "expected_error": null,
+      "actual": {
+        "status": "PASS",
+        "accepted": true,
+        "freeze_sha256": "a15f443af506f3f4d50353cc1cfbcb44dfd8388c7af70a94a7faae82e68a0677",
+        "task_id": "TASK-RESEARCH-POLICY-BOOTSTRAP-001",
+        "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001",
+        "artifacts": {
+          "status": "PASS",
+          "verified_paths": 6,
+          "visualization": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001/visualization/index.html"
+        },
+        "retained_attempts": 4,
+        "scientific_acceptance": "NOT_APPLICABLE"
+      },
+      "seconds": 0.30895740300002217
+    },
+    {
+      "command": "check",
+      "stage": null,
+      "expected_error": "COORDINATES",
+      "actual": {
+        "status": "REJECTED",
+        "code": "COORDINATES",
+        "reason": "COORDINATES: geometry_unit must be mm"
+      },
+      "seconds": 0.11519630800012237
+    },
+    {
+      "command": "check",
+      "stage": null,
+      "expected_error": "SOURCE_SHA",
+      "actual": {
+        "status": "REJECTED",
+        "code": "SOURCE_SHA",
+        "reason": "SOURCE_SHA: fixture"
+      },
+      "seconds": 0.11695065999992948
+    },
+    {
+      "command": "check",
+      "stage": null,
+      "expected_error": "GT_LEAK",
+      "actual": {
+        "status": "REJECTED",
+        "code": "GT_LEAK",
+        "reason": "GT_LEAK: This runner never accepts GT or scientific evaluation handlers"
+      },
+      "seconds": 0.11504324399993493
+    },
+    {
+      "command": "check",
+      "stage": null,
+      "expected_error": "DATA_ISOLATION",
+      "actual": {
+        "status": "REJECTED",
+        "code": "DATA_ISOLATION",
+        "reason": "DATA_ISOLATION: Use explicit, disjoint frozen camera roles"
+      },
+      "seconds": 0.11648790000026565
+    },
+    {
+      "command": "run",
+      "stage": "contracts",
+      "expected_error": "UNAUTHORIZED_STAGE",
+      "actual": {
+        "status": "REJECTED",
+        "code": "UNAUTHORIZED_STAGE",
+        "reason": "UNAUTHORIZED_STAGE: contracts"
+      },
+      "seconds": 0.36396177500000704
+    },
+    {
+      "command": "accept",
+      "stage": null,
+      "expected_error": "ARTIFACT_MISSING",
+      "actual": {
+        "status": "REJECTED",
+        "code": "ARTIFACT_MISSING",
+        "reason": "ARTIFACT_MISSING: Public path visualization/index.html"
+      },
+      "seconds": 0.2455375310000818
+    },
+    {
+      "command": "accept",
+      "stage": null,
+      "expected_error": null,
+      "actual": {
+        "status": "PASS",
+        "accepted": true,
+        "freeze_sha256": "a15f443af506f3f4d50353cc1cfbcb44dfd8388c7af70a94a7faae82e68a0677",
+        "task_id": "TASK-RESEARCH-POLICY-BOOTSTRAP-001",
+        "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001",
+        "artifacts": {
+          "status": "PASS",
+          "verified_paths": 6,
+          "visualization": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001/visualization/index.html"
+        },
+        "retained_attempts": 4,
+        "scientific_acceptance": "NOT_APPLICABLE"
+      },
+      "seconds": 0.25798682899994674
+    },
+    {
+      "command": "accept",
+      "stage": null,
+      "expected_error": "FREEZE_DRIFT",
+      "actual": {
+        "status": "REJECTED",
+        "code": "FREEZE_DRIFT",
+        "reason": "FREEZE_DRIFT: Cannot accept changed task"
+      },
+      "seconds": 0.24994826000011017
+    },
+    {
+      "command": "run",
+      "stage": "smoke",
+      "expected_error": "PREDECESSOR_FAILED",
+      "actual": {
+        "status": "REJECTED",
+        "code": "PREDECESSOR_FAILED",
+        "reason": "PREDECESSOR_FAILED: preflight"
+      },
+      "seconds": 0.3633407099996475
+    },
+    {
+      "command": "accept",
+      "stage": null,
+      "expected_error": "ACCEPTANCE_GATE",
+      "actual": {
+        "status": "REJECTED",
+        "code": "ACCEPTANCE_GATE",
+        "reason": "ACCEPTANCE_GATE: preflight"
+      },
+      "seconds": 0.2454964819999077
+    },
+    {
+      "command": "run",
+      "stage": "preflight",
+      "expected_error": "BUDGET_TIMEOUT",
+      "actual": {
+        "status": "REJECTED",
+        "code": "BUDGET_TIMEOUT",
+        "reason": "BUDGET_TIMEOUT: Stage exceeded 0.001 seconds"
+      },
+      "seconds": 0.3854849290000857
+    },
+    {
+      "command": "run",
+      "stage": "preflight",
+      "expected_error": null,
+      "actual": {
+        "status": "AUTHORIZED_STAGES_COMPLETE",
+        "stages": [
+          {
+            "status": "PASS",
+            "stage": "preflight",
+            "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001",
+            "attempt_id": "0001-preflight-e27e342d"
+          }
+        ],
+        "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001",
+        "accepted": false
+      },
+      "seconds": 4.3089219630001026
+    },
+    {
+      "command": "run",
+      "stage": "contracts",
+      "expected_error": null,
+      "actual": {
+        "status": "AUTHORIZED_STAGES_COMPLETE",
+        "stages": [
+          {
+            "status": "PASS",
+            "stage": "contracts",
+            "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001",
+            "attempt_id": "0002-contracts-58fe288f"
+          }
+        ],
+        "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001",
+        "accepted": false
+      },
+      "seconds": 0.6678977840001608
+    },
+    {
+      "command": "run",
+      "stage": "all",
+      "expected_error": null,
+      "actual": {
+        "status": "AUTHORIZED_STAGES_COMPLETE",
+        "stages": [
+          {
+            "status": "PASS",
+            "resumed": true,
+            "skipped_completed_stage": "preflight",
+            "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001"
+          },
+          {
+            "status": "PASS",
+            "resumed": true,
+            "skipped_completed_stage": "contracts",
+            "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001"
+          },
+          {
+            "status": "PASS",
+            "stage": "smoke",
+            "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001",
+            "attempt_id": "0004-smoke-37616134"
+          },
+          {
+            "status": "PASS",
+            "stage": "artifacts",
+            "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001",
+            "attempt_id": "0005-artifacts-f9ef7902"
+          }
+        ],
+        "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001",
+        "accepted": false
+      },
+      "seconds": 18.522621256000093
+    },
+    {
+      "command": "accept",
+      "stage": null,
+      "expected_error": null,
+      "actual": {
+        "status": "PASS",
+        "accepted": true,
+        "freeze_sha256": "a15f443af506f3f4d50353cc1cfbcb44dfd8388c7af70a94a7faae82e68a0677",
+        "task_id": "TASK-RESEARCH-POLICY-BOOTSTRAP-001",
+        "run_dir": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001",
+        "artifacts": {
+          "status": "PASS",
+          "verified_paths": 6,
+          "visualization": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001/visualization/index.html"
+        },
+        "retained_attempts": 5,
+        "scientific_acceptance": "NOT_APPLICABLE"
+      },
+      "seconds": 0.30929106599978695
+    }
+  ],
+  "normal_run": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001",
+  "resume_run": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001",
+  "real_stage_results": {
+    "preflight": {
+      "status": "PASS",
+      "environment": {
+        "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+        "executable": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+        "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+        "module_version": "0.1.0",
+        "numpy": {
+          "version": "1.26.4",
+          "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/__init__.py"
+        },
+        "scipy": {
+          "version": "1.15.3",
+          "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/scipy/__init__.py"
+        },
+        "cv2": {
+          "version": "4.11.0",
+          "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/cv2/__init__.py"
+        },
+        "skimage": {
+          "version": "0.25.2",
+          "file": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/runtime/packages/skimage/__init__.py"
+        },
+        "torch": {
+          "version": "2.7.1+cu128",
+          "file": "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/__init__.py"
+        },
+        "pytorch3d": {
+          "version": "0.7.9",
+          "file": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/__init__.py"
+        },
+        "open3d": {
+          "version": "0.19.0",
+          "file": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor/open3d/__init__.py"
+        },
+        "trimesh": {
+          "version": "5.1.1",
+          "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/trimesh/__init__.py"
+        },
+        "fcl": {
+          "version": "0.7.0.11",
+          "file": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/runtime/packages/fcl/__init__.py"
+        },
+        "cuda": "12.8",
+        "GPU": "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "pytorch3d_extension": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/_C.cpython-312-x86_64-linux-gnu.so"
+      },
+      "checks": [
+        {
+          "name": "dependencies",
+          "status": "PASS",
+          "seconds": 2.6266724260003684,
+          "details": {
+            "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+            "executable": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+            "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+            "module_version": "0.1.0",
+            "numpy": {
+              "version": "1.26.4",
+              "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/__init__.py"
+            },
+            "scipy": {
+              "version": "1.15.3",
+              "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/scipy/__init__.py"
+            },
+            "cv2": {
+              "version": "4.11.0",
+              "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/cv2/__init__.py"
+            },
+            "skimage": {
+              "version": "0.25.2",
+              "file": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/runtime/packages/skimage/__init__.py"
+            },
+            "torch": {
+              "version": "2.7.1+cu128",
+              "file": "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/__init__.py"
+            },
+            "pytorch3d": {
+              "version": "0.7.9",
+              "file": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/__init__.py"
+            },
+            "open3d": {
+              "version": "0.19.0",
+              "file": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor/open3d/__init__.py"
+            },
+            "trimesh": {
+              "version": "5.1.1",
+              "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/trimesh/__init__.py"
+            },
+            "fcl": {
+              "version": "0.7.0.11",
+              "file": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/runtime/packages/fcl/__init__.py"
+            },
+            "cuda": "12.8",
+            "GPU": "NVIDIA GeForce RTX 3060 Laptop GPU",
+            "pytorch3d_extension": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/_C.cpython-312-x86_64-linux-gnu.so"
+          }
+        },
+        {
+          "name": "versions_and_sources",
+          "status": "PASS",
+          "seconds": 0.08925153700010924,
+          "details": {
+            "DXY_commit": "75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95",
+            "historical_sources": 11
+          }
+        },
+        {
+          "name": "identities_and_contracts",
+          "status": "PASS",
+          "seconds": 0.4443879469999956,
+          "details": {
+            "verified_assets": 233,
+            "native_wh": [
+              640,
+              360
+            ],
+            "metric_unit": "mm",
+            "camera": "OpenCV c2w; +Z axial depth",
+            "FIT": 101,
+            "HOLDOUT": 7,
+            "ring": {
+              "inner_mm": 9.999999251835408,
+              "outer_mm": 12.4000003767177,
+              "wire_mm": 1.200000048
+            },
+            "GT_read": false
+          }
+        }
+      ]
+    },
+    "contracts": {
+      "status": "PASS",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 0.06028249099972527,
+      "log": "test_explicit_duplicate_migration_rejects_conflicts (test_harness_contracts.BoundaryTests.test_explicit_duplicate_migration_rejects_conflicts) ... ok\ntest_fit_holdout_and_duplicate_rejection (test_harness_contracts.BoundaryTests.test_fit_holdout_and_duplicate_rejection) ... ok\ntest_historical_source_tampering (test_harness_contracts.BoundaryTests.test_historical_source_tampering) ... ok\ntest_missing_and_hash_mismatch (test_harness_contracts.BoundaryTests.test_missing_and_hash_mismatch) ... ok\ntest_strategy_identity_and_partitions (test_harness_contracts.BoundaryTests.test_strategy_identity_and_partitions) ... ok\ntest_axial_z_not_range (test_harness_contracts.CoordinateTests.test_axial_z_not_range) ... ok\ntest_c2w_and_roundtrip (test_harness_contracts.CoordinateTests.test_c2w_and_roundtrip) ... ok\ntest_dxy_rotated_basis (test_harness_contracts.CoordinateTests.test_dxy_rotated_basis) ... ok\ntest_half_pixel_intrinsics (test_harness_contracts.CoordinateTests.test_half_pixel_intrinsics) ... ok\ntest_mm_m (test_harness_contracts.CoordinateTests.test_mm_m) ... ok\ntest_ring_units (test_harness_contracts.CoordinateTests.test_ring_units) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.056s\n\nOK\n",
+      "GT_read": false
+    },
+    "smoke": {
+      "status": "PASS",
+      "fixture_SHA256": "d64ebdbc3b81287c7d8f235e634b05d44269ee76b27206a37d2df976d293dacb",
+      "reference_SHA256": "216cbab2cdafa85e224580199356c1a2dc1ba087389e9699790d1c6101890cdd",
+      "tests": [
+        {
+          "name": "DXY_real_official",
+          "status": "PASS",
+          "seconds": 9.77072152699975,
+          "details": {
+            "tolerance_px": 1e-07,
+            "result": {
+              "available": true,
+              "quality": {
+                "version": "DXY-MID-1.0.0rc1",
+                "Geometry": "V9.1",
+                "ring_valid": true,
+                "ring_reason": "ok",
+                "normal_Gate_pass": false,
+                "Q_conflict_recovery": true,
+                "strict_stable": false,
+                "accepted": true,
+                "candidate_generated": true,
+                "stability_review_pass": false,
+                "geometry_state": "fit_unstable",
+                "quality_class": "Q_conflict_recovery",
+                "reason": "",
+                "stability_flags": "residual_conflict_Q_distance_recovery",
+                "P_count": 216,
+                "Q_count": 206,
+                "X_count": 235,
+                "body": "A",
+                "branch": "Q_distance_conflict_recovery",
+                "P_zero_occlusion_inference": false,
+                "coordinate_system": "native_image_px",
+                "GT_read": false,
+                "history_prediction_fallback": 0,
+                "processed_mask_sha256": "93572a62e3465ab931b1cc9bfdfa2a168a6432f71386685b35856bd3dd5396fc"
+              },
+              "source": {
+                "id": "harness-frozen-G01-004-ref08",
+                "RGB_content_SHA256": "07db1ac9644921498f38e6da66a9fa2c239dd4fe5b8bb16583ea9541c4d1e6f8",
+                "Mask_content_SHA256": "93572a62e3465ab931b1cc9bfdfa2a168a6432f71386685b35856bd3dd5396fc",
+                "DXY_commit": "75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95",
+                "version": "DXY-MID-1.0.0rc1",
+                "image_wh": [
+                  640,
+                  360
+                ],
+                "coordinates": "native_image_px",
+                "adapter": "T01/T03",
+                "history_prediction_fallback": 0,
+                "GT_read": false
+              },
+              "status": "NUMERIC_GEOMETRY_ONLY",
+              "shape": "circle",
+              "center_px": [
+                370.3316949381891,
+                201.9950848145673
+              ],
+              "basis_px": [
+                [
+                  68.81245848330812,
+                  0.0
+                ],
+                [
+                  0.0,
+                  68.81245848330812
+                ]
+              ],
+              "candidate_provenance": {
+                "version": "component-diagnostics-v3.1",
+                "method": "V7_phase2_B",
+                "input_hash": "92989bf3133e1316740297a86c52586f13029cda5c4199723b6b04485749a710",
+                "source_id": "harness-frozen-G01-004-ref08",
+                "image_sha256": "07db1ac9644921498f38e6da66a9fa2c239dd4fe5b8bb16583ea9541c4d1e6f8",
+                "mask_sha256": "93572a62e3465ab931b1cc9bfdfa2a168a6432f71386685b35856bd3dd5396fc",
+                "coordinate_system": "native_image_px",
+                "length_unit": "px_diameter",
+                "history_prediction_used": false,
+                "implementation_version": "V7-phase2-directional-PQ-1.2",
+                "Q_are_intervals": true,
+                "measurement_evidence": "observed_P_plus_occlusion_Q",
+                "candidate_origin": "B_minimal_RANSAC",
+                "selection_version": "V8.4.4-conflict-Q-nearest-current-candidate-1.0",
+                "selection_basis": "arc_normalized_mean_Euclidean_distance_to_original_Q_anchors_px",
+                "evidence_status": "occlusion_recovery_with_residual_conflict"
+              }
+            },
+            "semantics": "Numeric official candidate, Q conflict recovery; inferred contour is not an observed full outline"
+          }
+        },
+        {
+          "name": "view_selection_frozen",
+          "status": "PASS",
+          "seconds": 0.738948869000069,
+          "details": {
+            "results": {
+              "selection_015": {
+                "strategy": "quality_diversity",
+                "ids": [
+                  "G01_004_ref08",
+                  "G01_004_ref13",
+                  "G01_004_ref03",
+                  "G01_v004_raw01112",
+                  "G01_v004_raw00878",
+                  "G01_v004_raw01086",
+                  "G01_video004_004_05",
+                  "G01_v004_raw01138"
+                ],
+                "historical_cap": 8,
+                "truncation": "prefix only"
+              },
+              "selection_016": {
+                "strategy": "direction_quota",
+                "ids": [
+                  "G01_004_ref08",
+                  "G01_004_ref13",
+                  "G01_004_ref03",
+                  "G01_004_new_r00",
+                  "G01_v004_raw00412",
+                  "G01_v004_raw00852",
+                  "G01_video004_004_15",
+                  "G01_v004_raw00152"
+                ],
+                "historical_cap": 8,
+                "truncation": "prefix only",
+                "weights": {
+                  "G01_004_ref08": 0.16666666666666666,
+                  "G01_004_ref13": 0.1111111111111111,
+                  "G01_004_ref03": 0.1111111111111111,
+                  "G01_004_new_r00": 0.1111111111111111,
+                  "G01_v004_raw00412": 0.16666666666666666,
+                  "G01_v004_raw00852": 0.1111111111111111,
+                  "G01_video004_004_15": 0.1111111111111111,
+                  "G01_v004_raw00152": 0.1111111111111111
+                }
+              },
+              "max_coverage": {
+                "strategy": "max_coverage",
+                "ids": [
+                  "G01_v004_raw00341",
+                  "G01_v004_raw01264",
+                  "G01_v004_raw00049",
+                  "G01_v005_raw00185",
+                  "G01_v005_raw00562",
+                  "G01_v004_raw00813",
+                  "G01_video005_v005_00000",
+                  "G01_video005_v005_00860",
+                  "G01_video005_v005_00326",
+                  "G01_photo001",
+                  "G01_v004_raw00158",
+                  "G01_v004_raw01093",
+                  "G01_v005_raw00694",
+                  "G01_v004_raw00657",
+                  "G01_v005_raw00104",
+                  "G01_v004_raw00282",
+                  "G01_v005_raw00439",
+                  "G01_v004_raw00499"
+                ],
+                "ranked": [
+                  {
+                    "rank": 1,
+                    "id": "G01_v004_raw00341",
+                    "video": "004",
+                    "marginal_mm2": 628.6007238791443,
+                    "cumulative_mm2": 628.6007238791443,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 180.0
+                  },
+                  {
+                    "rank": 2,
+                    "id": "G01_v004_raw01264",
+                    "video": "004",
+                    "marginal_mm2": 23.988347172716907,
+                    "cumulative_mm2": 652.5890710518612,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 33.44368848005586
+                  },
+                  {
+                    "rank": 3,
+                    "id": "G01_v004_raw00049",
+                    "video": "004",
+                    "marginal_mm2": 4.933484603328546,
+                    "cumulative_mm2": 657.5225556551896,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 16.117289024348604
+                  },
+                  {
+                    "rank": 4,
+                    "id": "G01_v005_raw00185",
+                    "video": "005",
+                    "marginal_mm2": 0.18553429812964523,
+                    "cumulative_mm2": 657.7080899533194,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 31.525326331969715
+                  },
+                  {
+                    "rank": 5,
+                    "id": "G01_v005_raw00562",
+                    "video": "005",
+                    "marginal_mm2": 0.004034614447584532,
+                    "cumulative_mm2": 657.712124567767,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 22.11984606218446
+                  },
+                  {
+                    "rank": 6,
+                    "id": "G01_v004_raw00813",
+                    "video": "004",
+                    "marginal_mm2": 0.30600998261713935,
+                    "cumulative_mm2": 658.018134550384,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 16.975149711068784
+                  },
+                  {
+                    "rank": 7,
+                    "id": "G01_video005_v005_00000",
+                    "video": "005",
+                    "marginal_mm2": 0.0,
+                    "cumulative_mm2": 658.018134550384,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 14.009903161275348
+                  },
+                  {
+                    "rank": 8,
+                    "id": "G01_video005_v005_00860",
+                    "video": "005",
+                    "marginal_mm2": 0.12956354464472153,
+                    "cumulative_mm2": 658.1476980950288,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 13.467957516289054
+                  },
+                  {
+                    "rank": 9,
+                    "id": "G01_video005_v005_00326",
+                    "video": "005",
+                    "marginal_mm2": 0.0,
+                    "cumulative_mm2": 658.1476980950288,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 11.192315660206685
+                  },
+                  {
+                    "rank": 10,
+                    "id": "G01_photo001",
+                    "video": "PHOTO",
+                    "marginal_mm2": 0.0,
+                    "cumulative_mm2": 658.1476980950288,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 10.313476758600453
+                  },
+                  {
+                    "rank": 11,
+                    "id": "G01_v004_raw00158",
+                    "video": "004",
+                    "marginal_mm2": 0.37599175179305583,
+                    "cumulative_mm2": 658.5236898468218,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 8.962866132576856
+                  },
+                  {
+                    "rank": 12,
+                    "id": "G01_v004_raw01093",
+                    "video": "004",
+                    "marginal_mm2": 0.0,
+                    "cumulative_mm2": 658.5236898468218,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 8.684411839790517
+                  },
+                  {
+                    "rank": 13,
+                    "id": "G01_v005_raw00694",
+                    "video": "005",
+                    "marginal_mm2": 0.0,
+                    "cumulative_mm2": 658.5236898468218,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 7.771330017556278
+                  },
+                  {
+                    "rank": 14,
+                    "id": "G01_v004_raw00657",
+                    "video": "004",
+                    "marginal_mm2": 0.0,
+                    "cumulative_mm2": 658.5236898468218,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 7.382031707677485
+                  },
+                  {
+                    "rank": 15,
+                    "id": "G01_v005_raw00104",
+                    "video": "005",
+                    "marginal_mm2": 0.0,
+                    "cumulative_mm2": 658.5236898468218,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 7.051602890945057
+                  },
+                  {
+                    "rank": 16,
+                    "id": "G01_v004_raw00282",
+                    "video": "004",
+                    "marginal_mm2": 0.0,
+                    "cumulative_mm2": 658.5236898468218,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 6.716559821188011
+                  },
+                  {
+                    "rank": 17,
+                    "id": "G01_v005_raw00439",
+                    "video": "005",
+                    "marginal_mm2": 0.0,
+                    "cumulative_mm2": 658.5236898468218,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 5.734519476176156
+                  },
+                  {
+                    "rank": 18,
+                    "id": "G01_v004_raw00499",
+                    "video": "004",
+                    "marginal_mm2": 0.0,
+                    "cumulative_mm2": 658.5236898468218,
+                    "proxy_total_mm2": 658.5909917933978,
+                    "min_direction_to_selected_deg": 5.73145937449029
+                  }
+                ],
+                "historical_cap": 36,
+                "area_identity": "source-tagged proxy, not true anatomical surface area",
+                "legacy_duplicate_audit": [
+                  {
+                    "id": "G01_v005_raw00756",
+                    "retained_index": 212,
+                    "redundant_index": 213,
+                    "criterion": "all metadata equal and visibility array exactly equal"
+                  }
+                ]
+              },
+              "hero_support_subset": {
+                "strategy": "hero_support",
+                "ids": [
+                  "G01_v004_raw00326",
+                  "G01_v004_raw00360",
+                  "G01_v004_raw00204"
+                ],
+                "candidates": [
+                  {
+                    "id": "G01_v004_raw00326",
+                    "video": "004",
+                    "score": 40.72829245298025,
+                    "matches": 239,
+                    "geometric_inliers": 180,
+                    "epipolar_px": {
+                      "N": 180,
+                      "MAE": 1.0647348825903884,
+                      "median": 0.9583975191853455,
+                      "p95": 2.3922118690987726,
+                      "maximum": 2.996189452101587
+                    },
+                    "parallax_deg": {
+                      "N": 180,
+                      "MAE": 1.5148889433856427,
+                      "median": 1.5314198531015828,
+                      "p95": 1.881659725143976,
+                      "maximum": 2.006277014137726
+                    },
+                    "direction_deg": 2.0425996718954345,
+                    "grid_cells": 34,
+                    "RGB_overlap_proxy": 0.3821656050955414
+                  },
+                  {
+                    "id": "G01_v004_raw00360",
+                    "video": "004",
+                    "score": 25.15362582567903,
+                    "matches": 196,
+                    "geometric_inliers": 141,
+                    "epipolar_px": {
+                      "N": 141,
+                      "MAE": 1.3780393041311523,
+                      "median": 1.3825536221918429,
+                      "p95": 2.8368656575680684,
+                      "maximum": 2.9850886059032797
+                    },
+                    "parallax_deg": {
+                      "N": 141,
+                      "MAE": 1.850636300197349,
+                      "median": 1.6856955486437872,
+                      "p95": 2.9917777069284384,
+                      "maximum": 3.3156252494110574
+                    },
+                    "direction_deg": 2.870111447310919,
+                    "grid_cells": 34,
+                    "RGB_overlap_proxy": 0.29936305732484075
+                  },
+                  {
+                    "id": "G01_v004_raw00204",
+                    "video": "004",
+                    "score": 19.590154762457885,
+                    "matches": 124,
+                    "geometric_inliers": 118,
+                    "epipolar_px": {
+                      "N": 118,
+                      "MAE": 1.0050116723532054,
+                      "median": 0.8965835805396003,
+                      "p95": 2.123911103386511,
+                      "maximum": 2.6594560071081434
+                    },
+                    "parallax_deg": {
+                      "N": 118,
+                      "MAE": 5.2165006414491195,
+                      "median": 4.836918105490927,
+                      "p95": 8.10971165826703,
+                      "maximum": 8.748783377729783
+                    },
+                    "direction_deg": 8.387795948261687,
+                    "grid_cells": 34,
+                    "RGB_overlap_proxy": 0.2505307855626327
+                  }
+                ]
+              }
+            },
+            "ids_tolerance": "exact",
+            "weights_tolerance": 1e-12,
+            "proxy_area_tolerance_mm2": 1e-08,
+            "quality_tolerance": 1e-10,
+            "support_scope": "one real target and its three frozen supports; not whole-pool support qualification"
+          }
+        },
+        {
+          "name": "renderer_real_metric",
+          "status": "PASS",
+          "seconds": 4.197151759999997,
+          "details": {
+            "device": "NVIDIA GeForce RTX 3060 Laptop GPU",
+            "source": "fixed metric Body/Ring/c2w/K native pack",
+            "input_views": 108,
+            "rendered_views": 1,
+            "loss": 0.008583566173911095,
+            "alpha_sum": 3311.091796875,
+            "gradient_norm": 0.0018152830889448524,
+            "detached_visibility": true,
+            "projection_max_abs_px": 1.5765277964874258e-05,
+            "projection_tolerance_px": 0.001,
+            "loss_tolerance": 1e-07,
+            "alpha_sum_tolerance": 0.005,
+            "alpha_sha256": "90b1ab6bb01e6594e09f7fa71e99d4a60dca8d22e387263a2cac9b347fd82279"
+          }
+        },
+        {
+          "name": "contour_guard_compatibility",
+          "status": "PASS",
+          "seconds": 1.8762459080003282,
+          "details": {
+            "contour_loss": 0.3401842679791626,
+            "contour_info": {
+              "contour_samples": 103,
+              "forward_native_px": 3.173078634763086,
+              "reverse_native_px": 19.739472856779585
+            },
+            "guard_noop_reasons": [],
+            "guard_initial_self": {
+              "intersections": 0,
+              "coplanar_candidates": 0,
+              "engine": "Open3D nonadjacent triangle intersection",
+              "pairs": []
+            },
+            "guard_step_rejected": [
+              "STEP_TRUST"
+            ],
+            "scope": "Compatibility calls and finite gradients; no optimizer migration or scientific geometry acceptance"
+          }
+        }
+      ],
+      "GT_read": false,
+      "history_prediction_fallback": 0
+    },
+    "artifacts": {
+      "status": "PASS",
+      "verified_paths": 6,
+      "visualization": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001/visualization/index.html"
+    }
+  },
+  "actual_interruption": {
+    "worker": {
+      "pid": 9732,
+      "runner_pid": 9718,
+      "command": [
+        "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+        "/home/liu/ring_first_3d_policy_bootstrap/tools/research/_policy_worker.py",
+        "--stage",
+        "smoke",
+        "--freeze",
+        "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001/FREEZE.json",
+        "--attempt",
+        "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/resume-001/attempts/.pending-0003-smoke-f741686e"
+      ]
+    },
+    "parent_exit_code": -9,
+    "orphan_running": false,
+    "first_two_attempts_unchanged": true,
+    "retained_failures": [
+      {
+        "attempt": "0003-smoke-f741686e",
+        "stage": "smoke",
+        "status": "INTERRUPTED",
+        "category": "engineering_gate",
+        "reason": "Previous runner interrupted; partial payload never accepted; conservatively charge reserved timeout",
+        "evidence": "attempts/0003-smoke-f741686e/result.json"
+      }
+    ]
+  },
+  "run_manifest_sha256": "12ae917c40a79867315fcab6853db63c09f8cbd992eaee0fbd9ea775b639089f",
+  "visualization": "/home/liu/ring_first_3d_policy_bootstrap/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/runs/verified-001/visualization/index.html",
+  "scientific_algorithms_modified": false,
+  "new_body_reconstructions": 0,
+  "GT_read": false
+}

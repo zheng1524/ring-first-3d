@@ -1,5 +1,7 @@
 # Ring-First 3D 项目入口
 
+任务执行入口：[TASK.yaml / Policy Runner](RESEARCH_POLICY_BOOTSTRAP.md)。用简短提示词与 TASK.yaml 完成检查、授权阶段执行、恢复和产物验收；原科学状态与批准边界继续有效。
+
 工程入口更新（TASK-RESEARCH-HARNESS-STORAGE-001）：[Research Execution Harness](RESEARCH_EXECUTION_HARNESS.md) 已提供 DXY 像素几何、独立视角选择和公制 Renderer 的共享接口；真实测试及 11 项契约通过。T31/T34 仅兼容性测试。先查注册表，再 Preflight/Smoke，随后执行已授权的大实验；本轮不提升科研验收状态。范围见[晋升政策](registry/MODULE_PROMOTION_POLICY.md)。
 
 审计日期：2026-11-16。文档任务：TASK-PROJECT-TECHNOLOGY-REGISTRY-001。
