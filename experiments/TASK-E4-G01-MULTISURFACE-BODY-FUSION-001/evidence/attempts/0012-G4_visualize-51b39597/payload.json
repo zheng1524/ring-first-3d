@@ -1,0 +1,595 @@
+{
+  "status": "PASS",
+  "role": "evaluator",
+  "figures": {
+    "01_MAIN_MULTISURFACE_SECTIONS.png": "C3/E1/BODY_HIER: four fixed actual Mesh sections, all independent local surfaces",
+    "C0_MULTISURFACE_SECTIONS.png": "C0/E1/BODY_HIER: four fixed actual Mesh sections, all independent local surfaces",
+    "C1_MULTISURFACE_SECTIONS.png": "C1/E1/BODY_HIER: four fixed actual Mesh sections, all independent local surfaces",
+    "C2_MULTISURFACE_SECTIONS.png": "C2/E1/BODY_HIER: four fixed actual Mesh sections, all independent local surfaces",
+    "C4_MULTISURFACE_SECTIONS.png": "C4/E1/BODY_HIER: four fixed actual Mesh sections, all independent local surfaces",
+    "C5_MULTISURFACE_SECTIONS.png": "C5/E1/BODY_HIER: four fixed actual Mesh sections, all independent local surfaces",
+    "C3_E2_MULTISURFACE_SECTIONS.png": "C3/E2/BODY_HIER: four fixed actual Mesh sections, all independent local surfaces",
+    "ALL_METHOD_METRICS.png": "All main conditions, both Body initializers and four methods"
+  },
+  "scientific_summary": {
+    "E1/M0": {
+      "target_conditions": 6,
+      "numeric": 6,
+      "improved_body_MAE": 6
+    },
+    "E1/ICP": {
+      "target_conditions": 6,
+      "numeric": 6,
+      "improved_body_MAE": 6
+    },
+    "E1/BODY_VIDEO": {
+      "target_conditions": 6,
+      "numeric": 6,
+      "improved_body_MAE": 6
+    },
+    "E1/BODY_HIER": {
+      "target_conditions": 6,
+      "numeric": 6,
+      "improved_body_MAE": 6
+    },
+    "E2/M0": {
+      "target_conditions": 6,
+      "numeric": 6,
+      "improved_body_MAE": 4
+    },
+    "E2/ICP": {
+      "target_conditions": 6,
+      "numeric": 6,
+      "improved_body_MAE": 5
+    },
+    "E2/BODY_VIDEO": {
+      "target_conditions": 6,
+      "numeric": 6,
+      "improved_body_MAE": 5
+    },
+    "E2/BODY_HIER": {
+      "target_conditions": 6,
+      "numeric": 6,
+      "improved_body_MAE": 6
+    }
+  },
+  "scientific_failures": [
+    {
+      "key": "C0__E1__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.37623148303171006,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.2687554537216128,
+      "optimizer_success": true
+    },
+    {
+      "key": "C0__E1__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.37623148303171006,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.2687554537216128,
+      "optimizer_success": true
+    },
+    {
+      "key": "C0__E2__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.3613995424771111,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.38331341121533047,
+      "optimizer_success": true
+    },
+    {
+      "key": "C0__E2__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.3613995424771111,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.38331341121533047,
+      "optimizer_success": true
+    },
+    {
+      "key": "C1__E1__M0__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.2759991046351269,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.22286141400570444,
+      "optimizer_success": true
+    },
+    {
+      "key": "C1__E1__ICP__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.295754546021475,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.2095158060604517,
+      "optimizer_success": true
+    },
+    {
+      "key": "C1__E1__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.43012251992448264,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.29916021015465327,
+      "optimizer_success": true
+    },
+    {
+      "key": "C1__E1__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.3894536146999077,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.30035669397178005,
+      "optimizer_success": true
+    },
+    {
+      "key": "C1__E2__M0__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.2759991046351269,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.4004012476742239,
+      "optimizer_success": true
+    },
+    {
+      "key": "C1__E2__ICP__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.295754546021475,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.3912655002423702,
+      "optimizer_success": true
+    },
+    {
+      "key": "C1__E2__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.43698187824099266,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.38963120640239335,
+      "optimizer_success": true
+    },
+    {
+      "key": "C1__E2__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.3924428597759558,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.3823919280266489,
+      "optimizer_success": true
+    },
+    {
+      "key": "C2__E1__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.40951354704663223,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.2987055992679509,
+      "optimizer_success": true
+    },
+    {
+      "key": "C2__E1__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.40951354704663223,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.2987055992679509,
+      "optimizer_success": true
+    },
+    {
+      "key": "C2__E2__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.41153410976754645,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.38230010565971384,
+      "optimizer_success": true
+    },
+    {
+      "key": "C2__E2__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.41153410976754645,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.38230010565971384,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E1__M0__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.4603318470316307,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.2016185535398868,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E1__ICP__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.4451841752908665,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.24630363480394568,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E1__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.5571037750753134,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.26930851715529963,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E1__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.5144744305231618,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.30300310305488554,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E1__BODY_HIER__tol0",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.5558046701176544,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.27791064194250414,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E1__BODY_HIER__tol1",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.4511611676089171,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.31045674851212113,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E2__M0__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.4603318470316307,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.4203427948623838,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E2__ICP__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.4451841752908665,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.42402158149206487,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E2__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.567917782058418,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.3893758425427002,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E2__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.5266443563013143,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.3848993826924851,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E2__BODY_HIER__tol0",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.5414209517413576,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.3863478061705858,
+      "optimizer_success": true
+    },
+    {
+      "key": "C3__E2__BODY_HIER__tol1",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.4002070522227059,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.3861313862544669,
+      "optimizer_success": true
+    },
+    {
+      "key": "C4__E1__M0__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.6585396663900993,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.2941370767445344,
+      "optimizer_success": true
+    },
+    {
+      "key": "C4__E1__ICP__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.7880982695924346,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.2407061657396426,
+      "optimizer_success": true
+    },
+    {
+      "key": "C4__E1__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.8060578820155121,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.3210055004901325,
+      "optimizer_success": true
+    },
+    {
+      "key": "C4__E1__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.5828265038401343,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.30833511294398275,
+      "optimizer_success": true
+    },
+    {
+      "key": "C4__E2__M0__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.6585396663900993,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.4335436025289353,
+      "optimizer_success": true
+    },
+    {
+      "key": "C4__E2__ICP__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.7880982695924346,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.3785194112922771,
+      "optimizer_success": true
+    },
+    {
+      "key": "C4__E2__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.8127448983962594,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.4264804099563077,
+      "optimizer_success": true
+    },
+    {
+      "key": "C4__E2__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.5848900310263141,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.3902926023917609,
+      "optimizer_success": true
+    },
+    {
+      "key": "C5__E1__M0__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.24493139588306817,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.1639362914776181,
+      "optimizer_success": true
+    },
+    {
+      "key": "C5__E1__ICP__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.31471296994249914,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.20156027309084898,
+      "optimizer_success": true
+    },
+    {
+      "key": "C5__E1__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.4428774984101392,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.26102312746858886,
+      "optimizer_success": true
+    },
+    {
+      "key": "C5__E1__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.38991542811667945,
+      "Body_bidirectional_MAE_mm": 0.32329339542204266,
+      "fusion_bidirectional_MAE_mm": 0.30266377358915564,
+      "optimizer_success": true
+    },
+    {
+      "key": "C5__E2__M0__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.24493139588306817,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.3869497440064325,
+      "optimizer_success": true
+    },
+    {
+      "key": "C5__E2__ICP__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.31471296994249914,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.39721383750694783,
+      "optimizer_success": true
+    },
+    {
+      "key": "C5__E2__BODY_VIDEO__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.4558048265097897,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.38794142902926737,
+      "optimizer_success": true
+    },
+    {
+      "key": "C5__E2__BODY_HIER__tol0.5",
+      "category": "scientific_negative",
+      "reason": "Body fusion did not improve and/or material-location or optimizer criterion not met; preserve all curves",
+      "material_MAE_mm": 0.4056351811450466,
+      "Body_bidirectional_MAE_mm": 0.4090377776796527,
+      "fusion_bidirectional_MAE_mm": 0.3822454924063323,
+      "optimizer_success": true
+    }
+  ],
+  "exact_triangle_sections": true,
+  "first_main_figure": "figures/01_MAIN_MULTISURFACE_SECTIONS.png",
+  "GT_read_by_visualizer": true,
+  "files": {
+    "ALL_CONDITION_METRICS.csv": {
+      "sha256": "4e257d45f8ce0ac2b08d13f4706bcea55c19e1f5dd92a41a7884c4eebe431d48",
+      "bytes": 7013
+    },
+    "FAILURE_LEDGER.json": {
+      "sha256": "3b7a2bd84dd4ca1add40315fc8303e0aca9182c1a6f83816c08ba54d2de974f0",
+      "bytes": 18043
+    },
+    "FIGURES.json": {
+      "sha256": "bda3981b22a5eed5acc366707c50beb759b88073918b931d7989c2348d4e98be",
+      "bytes": 929
+    },
+    "GENERATION_AUDIT.json": {
+      "sha256": "714cccabfa7808bbebf3d8391c02987209103f5ecee0684be38b97e4f4220fbc",
+      "bytes": 8010
+    },
+    "MODEL_METRICS.json": {
+      "sha256": "e480c72010858edfa62c1387e8b6038ae71a176463a054fbf80a234f201b96ef",
+      "bytes": 668794
+    },
+    "NOISE_AUDIT.json": {
+      "sha256": "fd13df98d9ff8b2851b44bbab77181ae1da51cdc3c9582857f525096ffadcdfb",
+      "bytes": 319072
+    },
+    "REGISTRATION_METRICS.json": {
+      "sha256": "8b761107b47280ae4347ec6ab1e13a86547500d5f4a2743f4b847c075728336d",
+      "bytes": 7866861
+    },
+    "RESULT_CARD.md": {
+      "sha256": "e88d4ed58e1b2148e8e1600abfdb46d8155de0be1c0846c2bbb4306af8a34cfd",
+      "bytes": 1117
+    },
+    "SCIENTIFIC_SUMMARY.json": {
+      "sha256": "95b2dcaa93be0506f20a6aaa93a07e40acb6f241c6fb8bdc0756d9d6ac455ac4",
+      "bytes": 763
+    },
+    "SURFACE_OWNERSHIP_MAIN.csv": {
+      "sha256": "0ee102d5f0edce8880d7e6defc571c50b0bdb55899d952f945ef20869852d959",
+      "bytes": 1479697
+    },
+    "TECHNICAL_REPORT.md": {
+      "sha256": "3ac417c47d04f1e90f5dc41e48ceffb527ca4ebe7f6ee28c2014a45e0d11ba5a",
+      "bytes": 11191
+    },
+    "cases/C0_E1.js": {
+      "sha256": "d7270ce73c1bd3794e8ab78e564dba55f3f2e573328f18aa97e42249a9556d62",
+      "bytes": 2238334
+    },
+    "cases/C0_E2.js": {
+      "sha256": "40be1a2356c7884be52ab30ed4374293f4287b96c8414b7f1e01501f85b7b0a5",
+      "bytes": 2246826
+    },
+    "cases/C1_E1.js": {
+      "sha256": "55dd98acc136679f2a46e2abf7c045737f1a8313167d1482140bc34c6d1e8550",
+      "bytes": 2237831
+    },
+    "cases/C1_E2.js": {
+      "sha256": "5db594d9fa85ba31e79146c0b67c84c9f65d8dbe5a4bb1c726923f8c1bf55396",
+      "bytes": 2246831
+    },
+    "cases/C2_E1.js": {
+      "sha256": "f333548aa70ed018a23267168f23dbdbb936031ac5ef9a0252f7b8912ee63c1f",
+      "bytes": 2238006
+    },
+    "cases/C2_E2.js": {
+      "sha256": "9b7cc08f38e530c4eb844f7fcd5d57a918a09e29c15489016da72f2f2a6063ae",
+      "bytes": 2246339
+    },
+    "cases/C3_E1.js": {
+      "sha256": "b38f7662481a0df1141de4595d84c79ac653523d9fe431a1b423fe34c9849561",
+      "bytes": 3359258
+    },
+    "cases/C3_E2.js": {
+      "sha256": "2ffa72541e65fe45275d409b113c3ce40ed08c0e0d17a9fd8fa5041333545ae9",
+      "bytes": 3369832
+    },
+    "cases/C4_E1.js": {
+      "sha256": "b39ec1a628d0e2807fff02a6e59df4ebe5c286821b44ec195b9cc8934669b72d",
+      "bytes": 2235113
+    },
+    "cases/C4_E2.js": {
+      "sha256": "ab803a8ad39e6167ede47bd6c3c24655b0d769fdaef0f1830c4e81ed78390f91",
+      "bytes": 2241200
+    },
+    "cases/C5_E1.js": {
+      "sha256": "68d7424a540a41e1268f26fd39aeb439e2e8a50663adb45a71b3ab0c048a7c8d",
+      "bytes": 2238830
+    },
+    "cases/C5_E2.js": {
+      "sha256": "2a61baa56d1914f52857c290ed89adcf62c4e1f58defc6bb3e70beea5a771ef9",
+      "bytes": 2246972
+    },
+    "data.js": {
+      "sha256": "e52a84a3da421e8b36d42a5347e5df696b2cd51fb817369763fe2a115a8b6d7c",
+      "bytes": 5635000
+    },
+    "figures/01_MAIN_MULTISURFACE_SECTIONS.png": {
+      "sha256": "8e540c8d59d58fbbdaa5f949831f202b456c408b136e22136aa12c606ba0a41b",
+      "bytes": 440511
+    },
+    "figures/ALL_METHOD_METRICS.png": {
+      "sha256": "b2d8b8707ff72069063d6cdd3c42091c2f025ff4e2b85978fa4afd7285c4741c",
+      "bytes": 303119
+    },
+    "figures/C0_MULTISURFACE_SECTIONS.png": {
+      "sha256": "fb241b980cb142a7da582dbb78fcd5e06a3ed9d2d06ed82c9f9be8066be3c69d",
+      "bytes": 411658
+    },
+    "figures/C1_MULTISURFACE_SECTIONS.png": {
+      "sha256": "12c5c7c7e90a3a17c5663f2547f161a666070482b784d9339412393ffe211e85",
+      "bytes": 422574
+    },
+    "figures/C2_MULTISURFACE_SECTIONS.png": {
+      "sha256": "fb5f93a28c0d030e21bd7174403db9b4ab0cce6957b70a0af12226dc10f051e8",
+      "bytes": 411744
+    },
+    "figures/C3_E2_MULTISURFACE_SECTIONS.png": {
+      "sha256": "77e4c6e98defb102a3fcd9e917ea0f491d7e878875614403adba88a38701a4b0",
+      "bytes": 448466
+    },
+    "figures/C4_MULTISURFACE_SECTIONS.png": {
+      "sha256": "7df8124d04e3f561c9287f4bd9aa8941a19aafe38e19b9b6ee4b895e19d4c677",
+      "bytes": 462667
+    },
+    "figures/C5_MULTISURFACE_SECTIONS.png": {
+      "sha256": "75972f33b92ec80d3f57061708d3cb55f4a8422c83e3d7ac9440b5e5668725de",
+      "bytes": 436043
+    },
+    "index.html": {
+      "sha256": "e40558b522daa58f2cd43a4c4ffbe692960a230befc1f05af868a6fa3a5feb5b",
+      "bytes": 3257
+    },
+    "multisurface_3d.html": {
+      "sha256": "ff9c5d1d0ef78d3e52b1be5d5f728970663f863cadb220214d7de4f856f1d43c",
+      "bytes": 8403
+    }
+  }
+}

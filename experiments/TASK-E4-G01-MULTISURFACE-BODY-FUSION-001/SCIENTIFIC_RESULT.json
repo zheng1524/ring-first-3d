@@ -1,0 +1,806 @@
+{
+  "execution": "ALL_G0_G4_COMPLETED",
+  "scientific_conclusion": "Owned fusion improves Body-only average errors, but Body-mediated localization is not established: C0 bias and low-noise material degradation remain",
+  "main_key": "C3__E1__BODY_HIER__tol0.5",
+  "main_material": {
+    "key": "C3__E1__BODY_HIER__tol0.5",
+    "target_material_vertices": 68230,
+    "independent_numeric_vertices": 68230,
+    "failed_vertices": 0,
+    "material_MAE_mm": 0.5145794698077484,
+    "material_median_mm": 0.5245693448281544,
+    "material_P95_mm": 0.7570409934670961,
+    "material_max_mm": 0.956388945874214,
+    "material_correct_within0p2mm": 2077,
+    "material_correct_fraction": 0.030441154917191852,
+    "GT_alignment": false
+  },
+  "main_model": {
+    "arm": "E1",
+    "GT_to_model_mm": {
+      "target_N": 12000,
+      "numeric_N": 12000,
+      "failed_N": 0,
+      "N": 12000,
+      "MAE": 0.44447452144841815,
+      "median": 0.14879800152286343,
+      "p95": 3.0590389846609956,
+      "maximum": 4.3010323644112844
+    },
+    "model_to_GT_mm": {
+      "target_N": 12000,
+      "numeric_N": 12000,
+      "failed_N": 0,
+      "N": 12000,
+      "MAE": 0.16153168466135284,
+      "median": 0.12765001451193297,
+      "p95": 0.33923133800392824,
+      "maximum": 2.0234602358187943
+    },
+    "bidirectional_mm": {
+      "target_N": 24000,
+      "numeric_N": 24000,
+      "failed_N": 0,
+      "N": 24000,
+      "MAE": 0.30300310305488554,
+      "median": 0.13823304638310863,
+      "p95": 1.468234184703657,
+      "maximum": 4.3010323644112844
+    },
+    "GT_observed_region": {
+      "error_mm": {
+        "target_N": 6132,
+        "numeric_N": 6132,
+        "failed_N": 0,
+        "N": 6132,
+        "MAE": 0.40081113883018726,
+        "median": 0.18145408000057883,
+        "p95": 2.6470860195228227,
+        "maximum": 4.3010323644112844
+      },
+      "coverage": 0.5600130463144162
+    },
+    "GT_unobserved_region": {
+      "error_mm": {
+        "target_N": 5868,
+        "numeric_N": 5868,
+        "failed_N": 0,
+        "N": 5868,
+        "MAE": 0.4901023098286144,
+        "median": 0.10452094686497782,
+        "p95": 3.5870473190273198,
+        "maximum": 4.257301743913455
+      },
+      "coverage": 0.7206884798909339
+    },
+    "GT_unique_coverage": 0.6385833333333333,
+    "GT_unique_covered_N": 7663,
+    "fixed_GT_target_N": 12000,
+    "local_unoriented_normal_error_deg": {
+      "target_N": 12000,
+      "numeric_N": 12000,
+      "failed_N": 0,
+      "N": 12000,
+      "MAE": 11.46403141780786,
+      "median": 4.999825761841372,
+      "p95": 40.07435418403732,
+      "maximum": 89.68647070178982
+    },
+    "no_GT_rigid_alignment": true,
+    "vertices": 9122,
+    "faces": 18066,
+    "observed_faces": {
+      "sampled_area_fraction": 0.43033333333333335,
+      "model_to_GT_mm": {
+        "target_N": 5164,
+        "numeric_N": 5164,
+        "failed_N": 0,
+        "N": 5164,
+        "MAE": 0.18707058760892886,
+        "median": 0.19132266185252922,
+        "p95": 0.33900820483124056,
+        "maximum": 0.4963821636294382
+      }
+    },
+    "completion_faces": {
+      "sampled_area_fraction": 0.52,
+      "model_to_GT_mm": {
+        "target_N": 6240,
+        "numeric_N": 6240,
+        "failed_N": 0,
+        "N": 6240,
+        "MAE": 0.14344588530839306,
+        "median": 0.08743181227030015,
+        "p95": 0.3856864162066502,
+        "maximum": 2.0234602358187943
+      }
+    },
+    "transition_faces": {
+      "sampled_area_fraction": 0.049666666666666665,
+      "model_to_GT_mm": {
+        "target_N": 596,
+        "numeric_N": 596,
+        "failed_N": 0,
+        "N": 596,
+        "MAE": 0.12960633758280693,
+        "median": 0.1159857534188382,
+        "p95": 0.27175810468711126,
+        "maximum": 0.40507169687286215
+      }
+    },
+    "ownership_GT_visibility_confusion": {
+      "true_observed_pred_observed": 4528,
+      "true_observed_pred_completion": 1604,
+      "true_unobserved_pred_observed": 33,
+      "true_unobserved_pred_completion": 5835
+    },
+    "key": "C3__E1__BODY_HIER__tol0.5",
+    "condition": "C3",
+    "method": "BODY_HIER",
+    "kind": "MAIN",
+    "tolerance_mm": 0.5,
+    "status": "NUMERIC",
+    "ownership_summary": {
+      "key": "C3__E1__BODY_HIER__tol0.5",
+      "condition": "C3",
+      "arm": "E1",
+      "method": "BODY_HIER",
+      "kind": "MAIN",
+      "tolerance_mm": 0.5,
+      "status": "NUMERIC",
+      "vertices": 9122,
+      "faces": 18066,
+      "measured_owner_vertices": 4176,
+      "Body_completion_vertices": 4946,
+      "unobserved_completion_vertices": 4652,
+      "observed_untrusted_completion_vertices": 294,
+      "overlap_conflict_vertices": 29,
+      "max_radial_conflict_mm": 0.9731969833374023,
+      "seam_triangles_rejected": 174,
+      "measured_faces": 7916,
+      "completion_faces": 9508,
+      "transition_faces": 642,
+      "no_average_coordinates": true,
+      "no_duplicate_surface_cells": true,
+      "Body_parameters_unchanged": true,
+      "chart_polar_angles": 96,
+      "chart_azimuth_angles": 96,
+      "geometry_model": "Uniform-angle radial chart of unchanged frozen ellipsoid parameters with measured source triangle hits; non-star-shaped geometry/owner transitions may leave explicit holes",
+      "independent_source_count": 16,
+      "unfused_surface_paths": [
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_004_new_r00.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_004_ref08.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_004_ref13.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_v004_raw00152.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_v004_raw00282.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_v004_raw00499.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_v004_raw00852.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_video004_004_15.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_v005_raw00104.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_v005_raw00185.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_v005_raw00439.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_v005_raw00562.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_v005_raw00694.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_video005_v005_00000.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_video005_v005_00326.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__BODY_HIER__tol0.5/G01_video005_v005_00860.npz"
+      ],
+      "GT_read_by_predictor": false
+    },
+    "sections": [
+      {
+        "axis": 0,
+        "offset_mm": 0.0,
+        "GT_segments": 173,
+        "model_segments": 479,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.8413422912897478,
+          "median": 0.23848391225384263,
+          "p95": 3.8980507244778777,
+          "maximum": 4.216622783779781
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.2785849134688208,
+          "median": 0.17403017287792566,
+          "p95": 1.2536513531545488,
+          "maximum": 2.145684413420392
+        },
+        "GT_coverage_within0p2mm": 0.45,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      },
+      {
+        "axis": 1,
+        "offset_mm": 0.0,
+        "GT_segments": 198,
+        "model_segments": 526,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.8350055506366743,
+          "median": 0.2242632823143033,
+          "p95": 3.8879251102630468,
+          "maximum": 4.115737125363937
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.31314594436204124,
+          "median": 0.1950897206089989,
+          "p95": 1.2871358842061371,
+          "maximum": 2.2109259384779505
+        },
+        "GT_coverage_within0p2mm": 0.4425,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      },
+      {
+        "axis": 2,
+        "offset_mm": -2.0,
+        "GT_segments": 128,
+        "model_segments": 200,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.12509847381484246,
+          "median": 0.1421186867605833,
+          "p95": 0.244089943266654,
+          "maximum": 0.26733632708368305
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.1274581686581909,
+          "median": 0.14368981135259123,
+          "p95": 0.24705940336587429,
+          "maximum": 0.2675293851857523
+        },
+        "GT_coverage_within0p2mm": 0.7925,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      },
+      {
+        "axis": 2,
+        "offset_mm": -6.0,
+        "GT_segments": 128,
+        "model_segments": 200,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.05488044486767162,
+          "median": 0.05550382489209593,
+          "p95": 0.1125726545749362,
+          "maximum": 0.13701325466073944
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.05521044887873014,
+          "median": 0.055695119368186635,
+          "p95": 0.11286890513595245,
+          "maximum": 0.1386081519567466
+        },
+        "GT_coverage_within0p2mm": 1.0,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      }
+    ],
+    "improves_Body_bidirectional_MAE": true,
+    "comparison_baseline": "BODY_ONLY_MATCHED_CHART"
+  },
+  "matched_Body_only": {
+    "arm": "E1",
+    "GT_to_model_mm": {
+      "target_N": 12000,
+      "numeric_N": 12000,
+      "failed_N": 0,
+      "N": 12000,
+      "MAE": 0.46795505768275886,
+      "median": 0.15291223347662852,
+      "p95": 3.054158326560993,
+      "maximum": 4.298910538370184
+    },
+    "model_to_GT_mm": {
+      "target_N": 12000,
+      "numeric_N": 12000,
+      "failed_N": 0,
+      "N": 12000,
+      "MAE": 0.17863173316132638,
+      "median": 0.12872409644292954,
+      "p95": 0.4492247139659246,
+      "maximum": 2.1464281312781415
+    },
+    "bidirectional_mm": {
+      "target_N": 24000,
+      "numeric_N": 24000,
+      "failed_N": 0,
+      "N": 24000,
+      "MAE": 0.32329339542204266,
+      "median": 0.14037709316398844,
+      "p95": 1.4786708906764463,
+      "maximum": 4.298910538370184
+    },
+    "GT_observed_region": {
+      "error_mm": {
+        "target_N": 6132,
+        "numeric_N": 6132,
+        "failed_N": 0,
+        "N": 6132,
+        "MAE": 0.44632337632811114,
+        "median": 0.19172010892622837,
+        "p95": 2.6335673653411305,
+        "maximum": 4.298910538370184
+      },
+      "coverage": 0.5197325505544683
+    },
+    "GT_unobserved_region": {
+      "error_mm": {
+        "target_N": 5868,
+        "numeric_N": 5868,
+        "failed_N": 0,
+        "N": 5868,
+        "MAE": 0.49055994351552984,
+        "median": 0.10522803795307123,
+        "p95": 3.5870473190273198,
+        "maximum": 4.251615824885239
+      },
+      "coverage": 0.7205180640763463
+    },
+    "GT_unique_coverage": 0.6179166666666667,
+    "GT_unique_covered_N": 7415,
+    "fixed_GT_target_N": 12000,
+    "local_unoriented_normal_error_deg": {
+      "target_N": 12000,
+      "numeric_N": 12000,
+      "failed_N": 0,
+      "N": 12000,
+      "MAE": 5.6314981218958975,
+      "median": 3.218530617256434,
+      "p95": 15.743216494464674,
+      "maximum": 89.89894268656035
+    },
+    "no_GT_rigid_alignment": true,
+    "vertices": 9122,
+    "faces": 18240,
+    "sections": [
+      {
+        "axis": 0,
+        "offset_mm": 0.0,
+        "GT_segments": 173,
+        "model_segments": 486,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.9013374288529726,
+          "median": 0.3049772470354031,
+          "p95": 3.8980507244778777,
+          "maximum": 4.215957481701284
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.34793997833178614,
+          "median": 0.181236863117098,
+          "p95": 1.309661543185353,
+          "maximum": 2.221602760789614
+        },
+        "GT_coverage_within0p2mm": 0.4175,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      },
+      {
+        "axis": 1,
+        "offset_mm": 0.0,
+        "GT_segments": 198,
+        "model_segments": 526,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.8771513976927818,
+          "median": 0.2379649244802095,
+          "p95": 3.8879251102630468,
+          "maximum": 4.115737125363937
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.35093743721949106,
+          "median": 0.19341316548938225,
+          "p95": 1.3463072192516965,
+          "maximum": 2.2063566766442806
+        },
+        "GT_coverage_within0p2mm": 0.43,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      },
+      {
+        "axis": 2,
+        "offset_mm": -2.0,
+        "GT_segments": 128,
+        "model_segments": 200,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.12723913088931021,
+          "median": 0.13305872562889864,
+          "p95": 0.23159281626724107,
+          "maximum": 0.23690804523852985
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.12566137266220373,
+          "median": 0.12940754998534235,
+          "p95": 0.2315339556429281,
+          "maximum": 0.23770293138461684
+        },
+        "GT_coverage_within0p2mm": 0.6975,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      },
+      {
+        "axis": 2,
+        "offset_mm": -6.0,
+        "GT_segments": 128,
+        "model_segments": 200,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.06899280965522189,
+          "median": 0.06653706363089149,
+          "p95": 0.14578019578197443,
+          "maximum": 0.15961744832398694
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.06864977249059533,
+          "median": 0.0662469878802325,
+          "p95": 0.14424533492908845,
+          "maximum": 0.15846884107538292
+        },
+        "GT_coverage_within0p2mm": 1.0,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      }
+    ],
+    "model": "BODY_ONLY_MATCHED_CHART"
+  },
+  "uncorrected_fusion": {
+    "arm": "E1",
+    "GT_to_model_mm": {
+      "target_N": 12000,
+      "numeric_N": 12000,
+      "failed_N": 0,
+      "N": 12000,
+      "MAE": 0.26401678661657685,
+      "median": 0.10139983683392104,
+      "p95": 1.3465845767111162,
+      "maximum": 3.3308181614026857
+    },
+    "model_to_GT_mm": {
+      "target_N": 12000,
+      "numeric_N": 12000,
+      "failed_N": 0,
+      "N": 12000,
+      "MAE": 0.1392203204631967,
+      "median": 0.09409108378011125,
+      "p95": 0.3835956315521691,
+      "maximum": 2.023830451494851
+    },
+    "bidirectional_mm": {
+      "target_N": 24000,
+      "numeric_N": 24000,
+      "failed_N": 0,
+      "N": 24000,
+      "MAE": 0.2016185535398868,
+      "median": 0.0970684875525747,
+      "p95": 0.8724006289441463,
+      "maximum": 3.3308181614026857
+    },
+    "GT_observed_region": {
+      "error_mm": {
+        "target_N": 6132,
+        "numeric_N": 6132,
+        "failed_N": 0,
+        "N": 6132,
+        "MAE": 0.174850238991848,
+        "median": 0.09946591297660504,
+        "p95": 0.7024561765093204,
+        "maximum": 1.8359977450519824
+      },
+      "coverage": 0.7736464448793215
+    },
+    "GT_unobserved_region": {
+      "error_mm": {
+        "target_N": 5868,
+        "numeric_N": 5868,
+        "failed_N": 0,
+        "N": 5868,
+        "MAE": 0.3571949171610277,
+        "median": 0.10484774907444025,
+        "p95": 1.9583785604038029,
+        "maximum": 3.3308181614026857
+      },
+      "coverage": 0.7211997273346966
+    },
+    "GT_unique_coverage": 0.748,
+    "GT_unique_covered_N": 8976,
+    "fixed_GT_target_N": 12000,
+    "local_unoriented_normal_error_deg": {
+      "target_N": 12000,
+      "numeric_N": 12000,
+      "failed_N": 0,
+      "N": 12000,
+      "MAE": 15.538210085770606,
+      "median": 4.647432540787988,
+      "p95": 64.31535517598269,
+      "maximum": 89.89549591378605
+    },
+    "no_GT_rigid_alignment": true,
+    "vertices": 9122,
+    "faces": 18056,
+    "observed_faces": {
+      "sampled_area_fraction": 0.4093333333333333,
+      "model_to_GT_mm": {
+        "target_N": 4912,
+        "numeric_N": 4912,
+        "failed_N": 0,
+        "N": 4912,
+        "MAE": 0.13770278096419522,
+        "median": 0.10298089203472086,
+        "p95": 0.3879216078048661,
+        "maximum": 0.5874732561206759
+      }
+    },
+    "completion_faces": {
+      "sampled_area_fraction": 0.5053333333333333,
+      "model_to_GT_mm": {
+        "target_N": 6064,
+        "numeric_N": 6064,
+        "failed_N": 0,
+        "N": 6064,
+        "MAE": 0.13768285542388933,
+        "median": 0.0866625295933286,
+        "p95": 0.35164578541217895,
+        "maximum": 2.023830451494851
+      }
+    },
+    "transition_faces": {
+      "sampled_area_fraction": 0.08533333333333333,
+      "model_to_GT_mm": {
+        "target_N": 1024,
+        "numeric_N": 1024,
+        "failed_N": 0,
+        "N": 1024,
+        "MAE": 0.15560444352711775,
+        "median": 0.1294065009641826,
+        "p95": 0.39506580700131294,
+        "maximum": 0.5404365744276375
+      }
+    },
+    "ownership_GT_visibility_confusion": {
+      "true_observed_pred_observed": 4615,
+      "true_observed_pred_completion": 1517,
+      "true_unobserved_pred_observed": 521,
+      "true_unobserved_pred_completion": 5347
+    },
+    "key": "C3__E1__M0__tol0.5",
+    "condition": "C3",
+    "method": "M0",
+    "kind": "MAIN",
+    "tolerance_mm": 0.5,
+    "status": "NUMERIC",
+    "ownership_summary": {
+      "key": "C3__E1__M0__tol0.5",
+      "condition": "C3",
+      "arm": "E1",
+      "method": "M0",
+      "kind": "MAIN",
+      "tolerance_mm": 0.5,
+      "status": "NUMERIC",
+      "vertices": 9122,
+      "faces": 18056,
+      "measured_owner_vertices": 3990,
+      "Body_completion_vertices": 5132,
+      "unobserved_completion_vertices": 4729,
+      "observed_untrusted_completion_vertices": 403,
+      "overlap_conflict_vertices": 3795,
+      "max_radial_conflict_mm": 1.9244070053100586,
+      "seam_triangles_rejected": 184,
+      "measured_faces": 7530,
+      "completion_faces": 9860,
+      "transition_faces": 666,
+      "no_average_coordinates": true,
+      "no_duplicate_surface_cells": true,
+      "Body_parameters_unchanged": true,
+      "chart_polar_angles": 96,
+      "chart_azimuth_angles": 96,
+      "geometry_model": "Uniform-angle radial chart of unchanged frozen ellipsoid parameters with measured source triangle hits; non-star-shaped geometry/owner transitions may leave explicit holes",
+      "independent_source_count": 16,
+      "unfused_surface_paths": [
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_004_new_r00.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_004_ref08.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_004_ref13.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_v004_raw00152.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_v004_raw00282.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_v004_raw00499.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_v004_raw00852.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_video004_004_15.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_v005_raw00104.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_v005_raw00185.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_v005_raw00439.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_v005_raw00562.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_v005_raw00694.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_video005_v005_00000.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_video005_v005_00326.npz",
+        "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0009-G3_all_predict-867a37ff/C3__E1__M0__tol0.5/G01_video005_v005_00860.npz"
+      ],
+      "GT_read_by_predictor": false
+    },
+    "sections": [
+      {
+        "axis": 0,
+        "offset_mm": 0.0,
+        "GT_segments": 173,
+        "model_segments": 477,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.7712388670307511,
+          "median": 0.08074455212737892,
+          "p95": 3.8980507244778777,
+          "maximum": 4.216622783779781
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.19354547192160815,
+          "median": 0.059779935185523506,
+          "p95": 1.25001822072488,
+          "maximum": 2.1836556543347503
+        },
+        "GT_coverage_within0p2mm": 0.69,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      },
+      {
+        "axis": 1,
+        "offset_mm": 0.0,
+        "GT_segments": 198,
+        "model_segments": 526,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.8050779011680618,
+          "median": 0.17301774864346606,
+          "p95": 3.8879251102630468,
+          "maximum": 4.115737125363937
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.2724898313949705,
+          "median": 0.1509982988508706,
+          "p95": 1.3009940099642734,
+          "maximum": 2.238696388156005
+        },
+        "GT_coverage_within0p2mm": 0.56,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      },
+      {
+        "axis": 2,
+        "offset_mm": -2.0,
+        "GT_segments": 128,
+        "model_segments": 208,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.1161931678144186,
+          "median": 0.06682102257127037,
+          "p95": 0.3507704416019684,
+          "maximum": 0.4398139137626988
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.12560822591204548,
+          "median": 0.07293369553054423,
+          "p95": 0.3671911007273356,
+          "maximum": 0.5218461949208666
+        },
+        "GT_coverage_within0p2mm": 0.7775,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      },
+      {
+        "axis": 2,
+        "offset_mm": -6.0,
+        "GT_segments": 128,
+        "model_segments": 204,
+        "GT_to_model_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.10290120728686049,
+          "median": 0.07151915340541609,
+          "p95": 0.4244511717157451,
+          "maximum": 0.5360150308072154
+        },
+        "model_to_GT_mm": {
+          "target_N": 400,
+          "numeric_N": 400,
+          "failed_N": 0,
+          "N": 400,
+          "MAE": 0.10686316397700925,
+          "median": 0.07132474087257948,
+          "p95": 0.4151539994774561,
+          "maximum": 0.5500702741608829
+        },
+        "GT_coverage_within0p2mm": 0.895,
+        "status": "EVALUABLE",
+        "intersection": "All actual triangle/plane intersection segments; arclength samples are evaluation quadrature only, never display replacement"
+      }
+    ],
+    "improves_Body_bidirectional_MAE": true,
+    "comparison_baseline": "BODY_ONLY_MATCHED_CHART"
+  },
+  "tests": 104,
+  "stages": 13,
+  "independent_views": 16,
+  "total_material_vertices": 68230,
+  "total_independent_triangles": 127691,
+  "DXY_new_calls": 0,
+  "GT_optimal_alignment": false,
+  "implementation_commit": "1648935501781d6acb47a288253255134bdedb89"
+}
