@@ -1,0 +1,3068 @@
+{
+  "status": "PASS",
+  "role": "evaluator",
+  "rows": [
+    {
+      "condition": "S0",
+      "family": "video_world",
+      "method": "M0",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 0.0,
+        "translation_mm": 0.0
+      },
+      "relative_after": {
+        "rotation_deg": 0.0,
+        "translation_mm": 0.0
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490028572114e-07,
+            "median": 1.1439283626959252e-07,
+            "p95": 2.958113127788973e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490028572114e-07,
+            "median": 1.1439283626959252e-07,
+            "p95": 2.958113127788973e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 0.0,
+            "translation_mm": 0.0
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 1.252535836495553e-07,
+            "median": 1.1020188623762512e-07,
+            "p95": 2.7088763565203025e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 1.252535836495553e-07,
+            "median": 1.1020188623762512e-07,
+            "p95": 2.7088763565203025e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 0.0,
+            "translation_mm": 0.0
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 1.3076169307342803e-07,
+        "median": 1.116488852161109e-07,
+        "p95": 2.9439427629739764e-07,
+        "maximum": 3.344094265975033e-07
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "maximum": 0.0
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 23.804267196879618,
+            "median": 3.9380735876365605,
+            "p95": 82.08484860226089,
+            "maximum": 86.85888306620623
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 20.823192158811754,
+            "median": 3.3055017050694184,
+            "p95": 72.09912147687017,
+            "maximum": 76.37161921402517
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 20.052437202888356,
+            "median": 3.367796367074554,
+            "p95": 68.31155825041598,
+            "maximum": 72.48966496409736
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 20.098511407499444,
+            "median": 3.217881558450487,
+            "p95": 68.86979445441449,
+            "maximum": 72.99636084947588
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 25.082780929805903,
+            "median": 4.6415546365153375,
+            "p95": 85.62047178431874,
+            "maximum": 90.79012149961683
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 9.79493933092133,
+            "median": 2.389286378609537,
+            "p95": 41.845998066887525,
+            "maximum": 45.37951224613031
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 11.401030863069266,
+            "median": 2.608024719975707,
+            "p95": 50.151469030005345,
+            "maximum": 55.01630793941119
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 13.634671022499138,
+            "median": 3.19268044845949,
+            "p95": 60.087575835630965,
+            "maximum": 64.10715081020943
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": true,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    },
+    {
+      "condition": "S0",
+      "family": "video_world",
+      "method": "M1",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 0.0,
+        "translation_mm": 0.0
+      },
+      "relative_after": {
+        "rotation_deg": 1.5001321237314817,
+        "translation_mm": 0.00987365159053775
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490028572114e-07,
+            "median": 1.1439283626959252e-07,
+            "p95": 2.958113127788973e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490028572114e-07,
+            "median": 1.1439283626959252e-07,
+            "p95": 2.958113127788973e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 1.5001321237314817,
+            "translation_mm": 0.00987365159053775
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.0073707718135936386,
+            "median": 0.0069979937695869845,
+            "p95": 0.014358291857254788,
+            "maximum": 0.0417433284212799
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.0073707718135936386,
+            "median": 0.0069979937695869845,
+            "p95": 0.014358291857254788,
+            "maximum": 0.0417433284212799
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 0.10531288933927901,
+            "median": 0.1171285558247923,
+            "p95": 0.16041673540522075,
+            "maximum": 0.16529747575250137
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 1.5001321237314817,
+            "translation_mm": 0.00987365159053775
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 0.003587613600635989,
+        "median": 3.011940376750448e-07,
+        "p95": 0.012815642473420367,
+        "maximum": 0.0417433284212799
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 0.10315198462621429,
+        "median": 0.11130034018794445,
+        "p95": 0.16067965564048445,
+        "maximum": 0.16529747575250137
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 23.804267196879618,
+            "median": 3.9380735876365605,
+            "p95": 82.08484860226089,
+            "maximum": 86.85888306620623
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 20.823192158811754,
+            "median": 3.3055017050694184,
+            "p95": 72.09912147687017,
+            "maximum": 76.37161921402517
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 20.052437202888356,
+            "median": 3.367796367074554,
+            "p95": 68.31155825041598,
+            "maximum": 72.48966496409736
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 20.098511407499444,
+            "median": 3.217881558450487,
+            "p95": 68.86979445441449,
+            "maximum": 72.99636084947588
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 25.082780929805903,
+            "median": 4.6415546365153375,
+            "p95": 85.62047178431874,
+            "maximum": 90.79012149961683
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 9.828222082235653,
+            "median": 2.3947993099434344,
+            "p95": 42.00498666035605,
+            "maximum": 45.5916441907787
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 11.417850656536451,
+            "median": 2.5893445499865395,
+            "p95": 50.29779029078934,
+            "maximum": 55.08897305658351
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 13.639847430796204,
+            "median": 3.1990745754342775,
+            "p95": 60.185279700116595,
+            "maximum": 64.15906121968297
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": false,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            0.9996573878667822,
+            -0.026165057052329646,
+            0.0007047501760427098,
+            0.002180992332534989
+          ],
+          [
+            0.026165403767494374,
+            0.9996575084301574,
+            -0.00048732421781681653,
+            0.0062858212089994744
+          ],
+          [
+            -0.0006917579390864113,
+            0.0005055973275383518,
+            0.9999996329210807,
+            0.00729525324476434
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    },
+    {
+      "condition": "S0",
+      "family": "video_world",
+      "method": "M2",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 0.0,
+        "translation_mm": 0.0
+      },
+      "relative_after": {
+        "rotation_deg": 0.6482329774628924,
+        "translation_mm": 0.045463116589754146
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 0.32644138834969166,
+            "median": 0.33486681481566827,
+            "p95": 0.5628529134461855,
+            "maximum": 1.3788465422086502
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490025899712e-07,
+            "median": 1.1439283581898004e-07,
+            "p95": 2.9581131264439434e-07,
+            "maximum": 3.3440942541147793e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 7.616561102446391e-16,
+            "median": 6.280369834735101e-16,
+            "p95": 1.8343894894033213e-15,
+            "maximum": 2.7012892057857038e-15
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 0.6482329774628924,
+            "translation_mm": 0.045463116589754146
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.2928461565546801,
+            "median": 0.3014883338773562,
+            "p95": 0.5074905973022076,
+            "maximum": 1.2775722110080696
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.027641273940206112,
+            "median": 0.02872814294129579,
+            "p95": 0.047447552753597924,
+            "maximum": 0.07294950537024665
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 0.06063222260255544,
+            "median": 0.05841646514242162,
+            "p95": 0.08235898127361306,
+            "maximum": 0.10994547488665464
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 0.6482329774628924,
+            "translation_mm": 0.045463116589754146
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 0.013453787202084524,
+        "median": 3.011940385134168e-07,
+        "p95": 0.045210530543918444,
+        "maximum": 0.07294950537024665
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 0.05932796628091012,
+        "median": 0.05783864590244341,
+        "p95": 0.07994283756593863,
+        "maximum": 0.10994547488665476
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 24.907555148351477,
+            "median": 8.854326352921317,
+            "p95": 80.27040843839761,
+            "maximum": 85.01338157778078
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 21.738409107335706,
+            "median": 7.813772477799003,
+            "p95": 70.19490078016176,
+            "maximum": 74.27815700905212
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 21.279376125874478,
+            "median": 7.313957448542991,
+            "p95": 67.30716469647535,
+            "maximum": 71.25651226027995
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 21.334180605799034,
+            "median": 7.36466115779818,
+            "p95": 67.74843346971504,
+            "maximum": 71.70855995990176
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 26.367678726721714,
+            "median": 9.063717618400556,
+            "p95": 84.70315662922631,
+            "maximum": 89.52362749969346
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 10.158906581441741,
+            "median": 5.888718658552053,
+            "p95": 36.832688925979156,
+            "maximum": 39.34162837439368
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 11.992620769391499,
+            "median": 5.382824254113323,
+            "p95": 46.810705105418414,
+            "maximum": 53.02398414143949
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 14.507594751731038,
+            "median": 5.482443409351515,
+            "p95": 59.00188788709903,
+            "maximum": 63.35373302056676
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": false,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            0.9999624332117033,
+            -0.00850974107145436,
+            0.001648172389771633,
+            0.021867822785085173
+          ],
+          [
+            0.00829727336165492,
+            0.9947502856488826,
+            0.10199521781058397,
+            -0.009524510471858016
+          ],
+          [
+            -0.0025074728496185927,
+            -0.10197771084096414,
+            0.9947835237234004,
+            -0.4160139858593741
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            0.9999977229820116,
+            -0.0014511048340586571,
+            -0.0015647126101444862,
+            -0.0010540366988634274
+          ],
+          [
+            0.0015914748125561901,
+            0.9955900531275457,
+            0.09379719250282313,
+            -0.013577705798590908
+          ],
+          [
+            0.0014217027512011128,
+            -0.09379946912563648,
+            0.9955900955478796,
+            -0.3769620341092369
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    },
+    {
+      "condition": "S0",
+      "family": "video_world",
+      "method": "RING_ONLY",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 0.0,
+        "translation_mm": 0.0
+      },
+      "relative_after": {
+        "rotation_deg": 0.0,
+        "translation_mm": 0.0
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 2.154640124475343e-07,
+            "median": 1.8552917248503791e-07,
+            "p95": 5.080071353149166e-07,
+            "maximum": 6.85294741667199e-07
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490028572114e-07,
+            "median": 1.1439283626959252e-07,
+            "p95": 2.958113127788973e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 0.0,
+            "translation_mm": 0.0
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 2.0251688994510852e-07,
+            "median": 1.7127318819830727e-07,
+            "p95": 4.989243305259929e-07,
+            "maximum": 6.235728476399722e-07
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 1.252535836495553e-07,
+            "median": 1.1020188623762512e-07,
+            "p95": 2.7088763565203025e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 0.0,
+            "translation_mm": 0.0
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 1.3076169307342803e-07,
+        "median": 1.116488852161109e-07,
+        "p95": 2.9439427629739764e-07,
+        "maximum": 3.344094265975033e-07
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "maximum": 0.0
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 23.804267189834842,
+            "median": 3.9380733272664425,
+            "p95": 82.0848502334866,
+            "maximum": 86.85888310308472
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 20.82319217828897,
+            "median": 3.3055025966888296,
+            "p95": 72.09912010449014,
+            "maximum": 76.37161921045181
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 20.052437264882524,
+            "median": 3.3677939319472556,
+            "p95": 68.31155878127065,
+            "maximum": 72.48966464857295
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 20.09851144672945,
+            "median": 3.2178810601554577,
+            "p95": 68.86979632566496,
+            "maximum": 72.99636085033161
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 25.08278088017994,
+            "median": 4.641552415419763,
+            "p95": 85.62047061172437,
+            "maximum": 90.79012154387539
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 9.794937563008617,
+            "median": 2.389283118958722,
+            "p95": 41.845990470692854,
+            "maximum": 45.37950436361506
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 11.401029142696094,
+            "median": 2.608022097515166,
+            "p95": 50.15146105258046,
+            "maximum": 55.01630435054418
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 13.634669528879673,
+            "median": 3.1926792683819922,
+            "p95": 60.0875723514386,
+            "maximum": 64.10714765403237
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": true,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            3.2368054749226487e-07
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            3.940666994462421e-09
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            6.352747104407253e-20
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            3.2368054749226487e-07
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            3.940666994462421e-09
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            6.352747104407253e-20
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    },
+    {
+      "condition": "S0",
+      "family": "video_world",
+      "method": "M2_DIRECT",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 0.0,
+        "translation_mm": 0.0
+      },
+      "relative_after": {
+        "rotation_deg": 2.3015357463913904,
+        "translation_mm": 0.22950547030348775
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 0.3642752602471652,
+            "median": 0.37637000798180964,
+            "p95": 0.6280516797366748,
+            "maximum": 1.150388942129051
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490031390987e-07,
+            "median": 1.143928365426907e-07,
+            "p95": 2.9581131280321805e-07,
+            "maximum": 3.344094253594823e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 6.064610882620955e-16,
+            "median": 4.611102534756203e-16,
+            "p95": 1.3322676295501878e-15,
+            "maximum": 2.0350724194510405e-15
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 2.3015357463913904,
+            "translation_mm": 0.22950547030348775
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.3527692138476995,
+            "median": 0.37787201436314644,
+            "p95": 0.5920024662270199,
+            "maximum": 0.9308289468561198
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.04311228658043998,
+            "median": 0.03854607623267657,
+            "p95": 0.10685374329685499,
+            "maximum": 0.15620963942320273
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 0.2448885244522541,
+            "median": 0.26487934444454175,
+            "p95": 0.32771127373064707,
+            "maximum": 0.3296029049921612
+          },
+          "coverage_surface_within0p1mm": 0.9363636363636364,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 2.3015357463913904,
+            "translation_mm": 0.22950547030348775
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 0.020983926097773605,
+        "median": 3.0119403802651176e-07,
+        "p95": 0.07924833664660533,
+        "maximum": 0.15620963942320273
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 0.24608188736531855,
+        "median": 0.2663926340804745,
+        "p95": 0.3278378536926754,
+        "maximum": 0.32960290499216127
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 25.12438473484087,
+            "median": 7.445785777627998,
+            "p95": 81.7174918245517,
+            "maximum": 86.3730341643265
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 21.879198265403463,
+            "median": 6.583060614327721,
+            "p95": 71.53089608580949,
+            "maximum": 75.48099178567418
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 21.347550826859813,
+            "median": 6.300936885716087,
+            "p95": 68.28114627662832,
+            "maximum": 72.14068787381308
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 21.399047809637157,
+            "median": 6.297673064012501,
+            "p95": 68.57078542836189,
+            "maximum": 72.6187574715929
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 26.60938814986468,
+            "median": 7.686685079393575,
+            "p95": 86.02341983830412,
+            "maximum": 90.86358058343444
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 9.975134041172087,
+            "median": 5.445730895789757,
+            "p95": 37.0022684374412,
+            "maximum": 39.63041265363321
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 11.212575907792406,
+            "median": 4.239768006428557,
+            "p95": 44.45847567627785,
+            "maximum": 50.24476486954398
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 13.503419284264265,
+            "median": 4.11584440548904,
+            "p95": 56.458351957380565,
+            "maximum": 62.03543675325912
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": false,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            0.9997478959960896,
+            -0.001822991167550365,
+            0.022379033817283296,
+            0.1109591454693556
+          ],
+          [
+            -0.0005047522393967445,
+            0.9946219667275714,
+            0.10357069338454201,
+            0.2926048250353901
+          ],
+          [
+            -0.02244748708806623,
+            -0.10355587866548681,
+            0.9943702983885079,
+            -0.6271312596545696
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            0.9999996116868204,
+            -0.0008656266415805131,
+            0.00016527772341507472,
+            0.0014956440233518313
+          ],
+          [
+            0.000851875019759513,
+            0.9975283448828032,
+            0.07026005596586093,
+            0.0933210209946847
+          ],
+          [
+            -0.0002256881901672243,
+            -0.0702598878869913,
+            0.9975286949351122,
+            -0.5958827685314525
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    },
+    {
+      "condition": "S0",
+      "family": "video_world",
+      "method": "M2_RING",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 0.0,
+        "translation_mm": 0.0
+      },
+      "relative_after": {
+        "rotation_deg": 0.9334718842115646,
+        "translation_mm": 0.00377168122436405
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 0.008250318800417553,
+            "median": 0.007676121403485568,
+            "p95": 0.016618884259005567,
+            "maximum": 0.03893255979083767
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490026621668e-07,
+            "median": 1.1439283689205328e-07,
+            "p95": 2.9581131101668135e-07,
+            "maximum": 3.344094266349255e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 5.664553481085296e-16,
+            "median": 4.449557262054371e-16,
+            "p95": 1.3322676295501878e-15,
+            "maximum": 1.8444410139024814e-15
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 0.9334718842115646,
+            "translation_mm": 0.00377168122436405
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.008423214817459081,
+            "median": 0.008555857698432286,
+            "p95": 0.014835243162554688,
+            "maximum": 0.028927692377688517
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.003420114628232104,
+            "median": 0.002580764398676048,
+            "p95": 0.008526446569656544,
+            "maximum": 0.02587055218686386
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 0.0665768506391438,
+            "median": 0.07335590439387525,
+            "p95": 0.09988398758032258,
+            "maximum": 0.1020476604866838
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 0.9334718842115646,
+            "translation_mm": 0.00377168122436405
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 0.001664727359973285,
+        "median": 3.0119403737742554e-07,
+        "p95": 0.007470716294151975,
+        "maximum": 0.02587055218686386
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 0.06541460362432554,
+        "median": 0.06920123133814515,
+        "p95": 0.09999362301503324,
+        "maximum": 0.10204766048668384
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 23.789889692268414,
+            "median": 3.8004001210751657,
+            "p95": 82.04431714594963,
+            "maximum": 86.82058975646474
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 20.808213726350694,
+            "median": 3.134517449798983,
+            "p95": 72.04910995619798,
+            "maximum": 76.32699686258833
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 20.04937647248306,
+            "median": 3.3398268850401447,
+            "p95": 68.30069432741557,
+            "maximum": 72.47422880241454
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 20.094246693763374,
+            "median": 3.0568416230530824,
+            "p95": 68.85463915228709,
+            "maximum": 72.97479696765237
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 25.073486130457905,
+            "median": 4.466089481220145,
+            "p95": 85.59111066777847,
+            "maximum": 90.7668679991358
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 9.793720086831437,
+            "median": 2.3927547621499787,
+            "p95": 41.71636222408074,
+            "maximum": 45.22742775663871
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 11.41667265406746,
+            "median": 2.6316810137320283,
+            "p95": 50.05192355052749,
+            "maximum": 54.99393192067924
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 13.658121744621234,
+            "median": 3.2194526756757957,
+            "p95": 60.02273355868386,
+            "maximum": 64.10292705663132
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": false,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            0.999836431867022,
+            -0.018082675889224853,
+            -0.00035544916279929084,
+            0.0011259946416480688
+          ],
+          [
+            0.01808326615492982,
+            0.9998349804256377,
+            0.0017341863899188077,
+            -0.004440651501565177
+          ],
+          [
+            0.0003240317763093315,
+            -0.0017403304141042192,
+            0.9999984331255014,
+            -0.008073902482121694
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            0.9999983735830017,
+            -0.0017990849371492994,
+            0.00012698322904122446,
+            -0.0012620203463075859
+          ],
+          [
+            0.0017988462552557811,
+            0.9999966608812865,
+            0.0018553647693731808,
+            -0.003978994412513393
+          ],
+          [
+            -0.00013032076383864485,
+            -0.0018551333284703407,
+            0.9999982707469209,
+            -0.010956581168282829
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    },
+    {
+      "condition": "S1",
+      "family": "video_world",
+      "method": "M0",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 2.0,
+        "translation_mm": 0.5
+      },
+      "relative_after": {
+        "rotation_deg": 2.0,
+        "translation_mm": 0.5
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490028572114e-07,
+            "median": 1.1439283626959252e-07,
+            "p95": 2.958113127788973e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490028572114e-07,
+            "median": 1.1439283626959252e-07,
+            "p95": 2.958113127788973e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 2.0,
+            "translation_mm": 0.5
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.17470935405748894,
+            "median": 0.1668456690239593,
+            "p95": 0.34379113537938477,
+            "maximum": 0.36671175778410986
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.17470935405748894,
+            "median": 0.1668456690239593,
+            "p95": 0.34379113537938477,
+            "maximum": 0.36671175778410986
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 0.47758411625837716,
+            "median": 0.5072048351520531,
+            "p95": 0.5862375820704345,
+            "maximum": 0.5880073436637244
+          },
+          "coverage_surface_within0p1mm": 0.2790909090909091,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 2.0,
+            "translation_mm": 0.5
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 0.08503559610872664,
+        "median": 3.011940376750448e-07,
+        "p95": 0.32068577941748,
+        "maximum": 0.36671175778410986
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 0.47863659334543823,
+        "median": 0.5128819404639616,
+        "p95": 0.5862650962907568,
+        "maximum": 0.5880073436637244
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 23.804267196879618,
+            "median": 3.9380735876365605,
+            "p95": 82.08484860226089,
+            "maximum": 86.85888306620623
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 20.823192158811754,
+            "median": 3.3055017050694184,
+            "p95": 72.09912147687017,
+            "maximum": 76.37161921402517
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 20.052437202888356,
+            "median": 3.367796367074554,
+            "p95": 68.31155825041598,
+            "maximum": 72.48966496409736
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 20.098511407499444,
+            "median": 3.217881558450487,
+            "p95": 68.86979445441449,
+            "maximum": 72.99636084947588
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 25.082780929805903,
+            "median": 4.6415546365153375,
+            "p95": 85.62047178431874,
+            "maximum": 90.79012149961683
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 8.938634273332276,
+            "median": 4.581287998791256,
+            "p95": 34.75612889892945,
+            "maximum": 37.52660743327786
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 10.18017105165439,
+            "median": 4.151727927514958,
+            "p95": 41.98264297279933,
+            "maximum": 46.79775988124428
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 12.621980020587408,
+            "median": 4.421397515533962,
+            "p95": 54.352269740896375,
+            "maximum": 60.537279383236545
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": false,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    },
+    {
+      "condition": "S1",
+      "family": "video_world",
+      "method": "M1",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 2.0,
+        "translation_mm": 0.5
+      },
+      "relative_after": {
+        "rotation_deg": 1.5001323143876848,
+        "translation_mm": 0.009873652017834019
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490028572114e-07,
+            "median": 1.1439283626959252e-07,
+            "p95": 2.958113127788973e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490028572114e-07,
+            "median": 1.1439283626959252e-07,
+            "p95": 2.958113127788973e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 1.5001323143876848,
+            "translation_mm": 0.009873652017834019
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.007370772454155211,
+            "median": 0.006997989900702824,
+            "p95": 0.014358291535659137,
+            "maximum": 0.04174333454757047
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.007370772454155211,
+            "median": 0.006997989900702824,
+            "p95": 0.014358291535659137,
+            "maximum": 0.04174333454757047
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 0.10531290270416055,
+            "median": 0.11712857053824847,
+            "p95": 0.16041675521148532,
+            "maximum": 0.16529749526259357
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 1.5001323143876848,
+            "translation_mm": 0.009873652017834019
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 0.0035876139124137447,
+        "median": 3.011940376750448e-07,
+        "p95": 0.01281564241567468,
+        "maximum": 0.04174333454757047
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 0.10315199774467877,
+        "median": 0.11130035504813161,
+        "p95": 0.16067967510404102,
+        "maximum": 0.16529749526259357
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 23.804267196879618,
+            "median": 3.9380735876365605,
+            "p95": 82.08484860226089,
+            "maximum": 86.85888306620623
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 20.823192158811754,
+            "median": 3.3055017050694184,
+            "p95": 72.09912147687017,
+            "maximum": 76.37161921402517
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 20.052437202888356,
+            "median": 3.367796367074554,
+            "p95": 68.31155825041598,
+            "maximum": 72.48966496409736
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 20.098511407499444,
+            "median": 3.217881558450487,
+            "p95": 68.86979445441449,
+            "maximum": 72.99636084947588
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 25.082780929805903,
+            "median": 4.6415546365153375,
+            "p95": 85.62047178431874,
+            "maximum": 90.79012149961683
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 9.828222082823318,
+            "median": 2.394799312648519,
+            "p95": 42.00498665942244,
+            "maximum": 45.591644186064286
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 11.417850657948083,
+            "median": 2.589344553389191,
+            "p95": 50.297790299233185,
+            "maximum": 55.08897305679667
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 13.639847432637353,
+            "median": 3.1990745736917696,
+            "p95": 60.18527969860331,
+            "maximum": 64.15906122118867
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": false,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            0.9990730189391266,
+            -0.026165060380465663,
+            -0.034183218735889365,
+            -0.4973555163207902
+          ],
+          [
+            0.026132460472022327,
+            0.9996575083431228,
+            -0.0014001867367354909,
+            -0.0067804088145698325
+          ],
+          [
+            0.03420814723917772,
+            0.0005055971777267293,
+            0.9994146021716696,
+            -0.009808820223576353
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    },
+    {
+      "condition": "S1",
+      "family": "video_world",
+      "method": "M2",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 2.0,
+        "translation_mm": 0.5
+      },
+      "relative_after": {
+        "rotation_deg": 1.92582473037278,
+        "translation_mm": 0.12630722803652306
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 0.3254070607095751,
+            "median": 0.33466486421233455,
+            "p95": 0.5610785809497965,
+            "maximum": 1.3660004559584942
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490027723287e-07,
+            "median": 1.1439283625498124e-07,
+            "p95": 2.9581131278895777e-07,
+            "maximum": 3.3440942774610646e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 7.664418422606928e-16,
+            "median": 8.005932084973442e-16,
+            "p95": 1.831026719408895e-15,
+            "maximum": 2.808666774861361e-15
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 1.92582473037278,
+            "translation_mm": 0.12630722803652306
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.2939189350941206,
+            "median": 0.2960429594042567,
+            "p95": 0.5084120289402635,
+            "maximum": 1.3353056454067664
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.032265969617861774,
+            "median": 0.02826391763927607,
+            "p95": 0.07754787405129172,
+            "maximum": 0.19756698756312321
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 0.1716815125101066,
+            "median": 0.17347523725376263,
+            "p95": 0.23288656103974315,
+            "maximum": 0.34220105838632203
+          },
+          "coverage_surface_within0p1mm": 0.9890909090909091,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 1.92582473037278,
+            "translation_mm": 0.12630722803652306
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 0.015704745275279763,
+        "median": 3.011940368548738e-07,
+        "p95": 0.06073289800535455,
+        "maximum": 0.19756698756312321
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 0.17362313403979485,
+        "median": 0.1757723827676886,
+        "p95": 0.23343700896066596,
+        "maximum": 0.34220105838632237
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 24.90202017650182,
+            "median": 8.830574805201682,
+            "p95": 80.28347626013553,
+            "maximum": 85.0245215370816
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 21.734217114834788,
+            "median": 7.792879197237051,
+            "p95": 70.20240844845951,
+            "maximum": 74.28861046735803
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 21.274262185312747,
+            "median": 7.290268065390887,
+            "p95": 67.31595979079142,
+            "maximum": 71.26351936744457
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 21.329017632777923,
+            "median": 7.343561928826388,
+            "p95": 67.76137850144431,
+            "maximum": 71.71562486712376
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 26.36142527358825,
+            "median": 9.038025394621831,
+            "p95": 84.71224432432604,
+            "maximum": 89.53434394656264
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 10.118244498340145,
+            "median": 5.957904953410698,
+            "p95": 36.559234627406276,
+            "maximum": 39.04370469570161
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 11.950477693339378,
+            "median": 5.421167088752139,
+            "p95": 46.5770094074517,
+            "maximum": 52.64391935856969
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 14.483867432683407,
+            "median": 5.537132515717371,
+            "p95": 58.94768864112293,
+            "maximum": 63.24247610531002
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": false,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            0.9999609541888911,
+            -0.008128613093510772,
+            0.0034663737274604365,
+            0.029157477640354798
+          ],
+          [
+            0.007737837624113473,
+            0.9948761190981609,
+            0.10080492803967882,
+            -0.012089432170622857
+          ],
+          [
+            -0.0042680166992734095,
+            -0.10077416979245214,
+            0.9949001712413647,
+            -0.4152936145676865
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            0.9999672194627602,
+            -0.007913761151234011,
+            0.001712420613397638,
+            -0.34965771896828224
+          ],
+          [
+            0.007715276033878163,
+            0.9954462263300851,
+            0.09501202555947394,
+            -0.014813771912556468
+          ],
+          [
+            -0.002456525114269146,
+            -0.09499569921651338,
+            0.9954746519197406,
+            -0.37842201952597126
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    },
+    {
+      "condition": "S1",
+      "family": "video_world",
+      "method": "RING_ONLY",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 2.0,
+        "translation_mm": 0.5
+      },
+      "relative_after": {
+        "rotation_deg": 6.36207833827337e-15,
+        "translation_mm": 4.6349286605369634e-15
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 2.154640124475343e-07,
+            "median": 1.8552917248503791e-07,
+            "p95": 5.080071353149166e-07,
+            "maximum": 6.85294741667199e-07
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490028572114e-07,
+            "median": 1.1439283626959252e-07,
+            "p95": 2.958113127788973e-07,
+            "maximum": 3.344094265975033e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 6.36207833827337e-15,
+            "translation_mm": 4.6349286605369634e-15
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 2.025168882802574e-07,
+            "median": 1.7127318824967476e-07,
+            "p95": 4.989243261656679e-07,
+            "maximum": 6.235728480234799e-07
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 1.2525358372067462e-07,
+            "median": 1.1020188689198711e-07,
+            "p95": 2.7088763602876917e-07,
+            "maximum": 3.344094267716456e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 4.602064963030527e-15,
+            "median": 4.665909567421267e-15,
+            "p95": 5.347542221830668e-15,
+            "maximum": 5.8410815908364745e-15
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 6.36207833827337e-15,
+            "translation_mm": 4.6349286605369634e-15
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 1.3076169310804362e-07,
+        "median": 1.116488852161109e-07,
+        "p95": 2.94394276131766e-07,
+        "maximum": 3.344094267716456e-07
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 4.6006854107977485e-15,
+        "median": 4.668220486087868e-15,
+        "p95": 5.347542221830668e-15,
+        "maximum": 5.8410815908364745e-15
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 23.804267189834842,
+            "median": 3.9380733272664425,
+            "p95": 82.0848502334866,
+            "maximum": 86.85888310308472
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 20.82319217828897,
+            "median": 3.3055025966888296,
+            "p95": 72.09912010449014,
+            "maximum": 76.37161921045181
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 20.052437264882524,
+            "median": 3.3677939319472556,
+            "p95": 68.31155878127065,
+            "maximum": 72.48966464857295
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 20.09851144672945,
+            "median": 3.2178810601554577,
+            "p95": 68.86979632566496,
+            "maximum": 72.99636085033161
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 25.08278088017994,
+            "median": 4.641552415419763,
+            "p95": 85.62047061172437,
+            "maximum": 90.79012154387539
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 9.79493756300872,
+            "median": 2.38928311895871,
+            "p95": 41.8459904706933,
+            "maximum": 45.37950436361557
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 11.401029142695966,
+            "median": 2.6080220975155974,
+            "p95": 50.15146105258002,
+            "maximum": 55.016304350543834
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 13.634669528879746,
+            "median": 3.1926792683819034,
+            "p95": 60.08757235143877,
+            "maximum": 64.10714765403256
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": true,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            3.2368054749226487e-07
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            3.940666994462421e-09
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            6.352747104407253e-20
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            0.9993908270190958,
+            1.9379014979634215e-18,
+            -0.03489949670250097,
+            -0.499695089829005
+          ],
+          [
+            1.9379014979634215e-18,
+            1.0,
+            1.1102230246251564e-16,
+            3.940666993493469e-09
+          ],
+          [
+            0.03489949670250097,
+            -1.1102230246251564e-16,
+            0.9993908270190958,
+            -0.017449748351250162
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    },
+    {
+      "condition": "S1",
+      "family": "video_world",
+      "method": "M2_DIRECT",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 2.0,
+        "translation_mm": 0.5
+      },
+      "relative_after": {
+        "rotation_deg": 6.179961114237767,
+        "translation_mm": 0.3650772189197156
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 0.36025340615793755,
+            "median": 0.37313806775701486,
+            "p95": 0.6220532539954613,
+            "maximum": 1.1471180207151248
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490031428082e-07,
+            "median": 1.1439283636323891e-07,
+            "p95": 2.9581131278061026e-07,
+            "maximum": 3.3440942654550766e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 6.791709107618829e-16,
+            "median": 4.996003610813204e-16,
+            "p95": 1.7763568394002505e-15,
+            "maximum": 2.5989654674417885e-15
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 6.179961114237767,
+            "translation_mm": 0.3650772189197156
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.3530250837535116,
+            "median": 0.3723114876699901,
+            "p95": 0.6296531891903084,
+            "maximum": 1.5170451907823843
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.07049168116692639,
+            "median": 0.06144644485251224,
+            "p95": 0.15761723359735322,
+            "maximum": 0.5736601550482359
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 0.5262919699338803,
+            "median": 0.5672028219501435,
+            "p95": 0.6907672790807631,
+            "maximum": 0.9196765855884026
+          },
+          "coverage_surface_within0p1mm": 0.7727272727272727,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 6.179961114237767,
+            "translation_mm": 0.3650772189197156
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 0.034310180100045745,
+        "median": 3.0119403794144704e-07,
+        "p95": 0.12109328558984017,
+        "maximum": 0.5736601550482359
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 0.5390605589528695,
+        "median": 0.5718746226330778,
+        "p95": 0.691429994587311,
+        "maximum": 0.9196765855884023
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 25.105009685769016,
+            "median": 7.4350043811740445,
+            "p95": 81.6643012478945,
+            "maximum": 86.36246598070768
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 21.86436949718126,
+            "median": 6.641005536697341,
+            "p95": 71.44950009426869,
+            "maximum": 75.47640956296631
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 21.3223161825376,
+            "median": 6.325497186571678,
+            "p95": 68.27066030156476,
+            "maximum": 72.16142193900438
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 21.376928476703313,
+            "median": 6.336606675115943,
+            "p95": 68.67890483841148,
+            "maximum": 72.63900172342579
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 26.58854337104268,
+            "median": 7.736583218142438,
+            "p95": 85.94812708395919,
+            "maximum": 90.85748131220097
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 9.905579568921636,
+            "median": 5.3473677573085485,
+            "p95": 36.54935296040561,
+            "maximum": 39.06049282315931
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 11.17775089911745,
+            "median": 4.298588401129693,
+            "p95": 44.37247643793308,
+            "maximum": 49.779295955782764
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 13.507834969374182,
+            "median": 4.228472515556424,
+            "p95": 56.54767961528492,
+            "maximum": 61.94408254947069
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": false,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            0.999566348021458,
+            -0.002842962806183717,
+            0.029309272688485658,
+            0.11805624720580019
+          ],
+          [
+            -0.00013735071306762172,
+            0.99486760393977,
+            0.10118513609183162,
+            0.28213826435845973
+          ],
+          [
+            -0.02944651147125878,
+            -0.10114528260686963,
+            0.9944357871519656,
+            -0.6183103255679835
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            0.9947675104673626,
+            -0.05252123032291089,
+            0.08763059102809595,
+            -0.054771934528938734
+          ],
+          [
+            0.045340523986738525,
+            0.9955993911119793,
+            0.08201273865726016,
+            0.0923056192989983
+          ],
+          [
+            -0.09155237300678587,
+            -0.07761039094621167,
+            0.9927712678225546,
+            -0.5711950451203073
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    },
+    {
+      "condition": "S1",
+      "family": "video_world",
+      "method": "M2_RING",
+      "status": "NUMERIC",
+      "relative_before": {
+        "rotation_deg": 2.0,
+        "translation_mm": 0.5
+      },
+      "relative_after": {
+        "rotation_deg": 0.6012188783638855,
+        "translation_mm": 0.0049396328555470865
+      },
+      "per_video": [
+        {
+          "video": "004",
+          "vertices": 1160,
+          "faces": 2075,
+          "absolute_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 0.008255749821508057,
+            "median": 0.007708946633613496,
+            "p95": 0.016653115027695217,
+            "maximum": 0.0389379800030742
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1160,
+            "MAE": 1.3598490028684042e-07,
+            "median": 1.1439283587039508e-07,
+            "p95": 2.9581131280957556e-07,
+            "maximum": 3.344094271718049e-07
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1160,
+            "MAE": 6.503991520913598e-16,
+            "median": 4.965068306494546e-16,
+            "p95": 1.7800390604601743e-15,
+            "maximum": 2.8435583831733384e-15
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 0.6012188783638855,
+            "translation_mm": 0.0049396328555470865
+          }
+        },
+        {
+          "video": "005",
+          "vertices": 1100,
+          "faces": 1976,
+          "absolute_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.008571637077661814,
+            "median": 0.008670168504387614,
+            "p95": 0.015034468112894802,
+            "maximum": 0.025840020684289578
+          },
+          "gauge_fixed_GT_surface_mm": {
+            "N": 1100,
+            "MAE": 0.0023462050256396684,
+            "median": 0.0018553856036294433,
+            "p95": 0.00516654597497554,
+            "maximum": 0.02118294751223198
+          },
+          "gauge_fixed_material_point_mm": {
+            "N": 1100,
+            "MAE": 0.043316743241175105,
+            "median": 0.04697448385114082,
+            "p95": 0.06328640788297488,
+            "maximum": 0.06424912915966365
+          },
+          "coverage_surface_within0p1mm": 1.0,
+          "numeric_coverage": 1.0,
+          "true_relative_pose_error": {
+            "rotation_deg": 0.6012188783638855,
+            "translation_mm": 0.0049396328555470865
+          }
+        }
+      ],
+      "GT_surface_mm": {
+        "N": 2260,
+        "MAE": 0.001142027995879632,
+        "median": 3.0119403831175333e-07,
+        "p95": 0.004459295210993347,
+        "maximum": 0.02118294751223198
+      },
+      "common_visible_material_N": 1027,
+      "common_visible_consistency_mm": {
+        "N": 1027,
+        "MAE": 0.042374013826839016,
+        "median": 0.04495984300341649,
+        "p95": 0.06333867579164738,
+        "maximum": 0.06424912915966365
+      },
+      "HOLDOUT": [
+        {
+          "id": "G01_004_growth_r04",
+          "video": "004",
+          "body_contour_px": {
+            "N": 818,
+            "MAE": 23.78989736151953,
+            "median": 3.7998183401784793,
+            "p95": 82.04386203263296,
+            "maximum": 86.82060696975589
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r06",
+          "video": "004",
+          "body_contour_px": {
+            "N": 724,
+            "MAE": 20.808229239150243,
+            "median": 3.13494718415088,
+            "p95": 72.04869389811813,
+            "maximum": 76.32701256379823
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_004_growth_r10",
+          "video": "004",
+          "body_contour_px": {
+            "N": 694,
+            "MAE": 20.04939771807413,
+            "median": 3.3393074141601753,
+            "p95": 68.3008710761058,
+            "maximum": 72.47414216396494
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_video004_004_09",
+          "video": "004",
+          "body_contour_px": {
+            "N": 701,
+            "MAE": 20.09426315309622,
+            "median": 3.056828221914113,
+            "p95": 68.85524027384132,
+            "maximum": 72.9748122231157
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v004_raw00334",
+          "video": "004",
+          "body_contour_px": {
+            "N": 856,
+            "MAE": 25.073473980413297,
+            "median": 4.4671042270977495,
+            "p95": 85.59072865616862,
+            "maximum": 90.76687096949847
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_005_new_r04",
+          "video": "005",
+          "body_contour_px": {
+            "N": 666,
+            "MAE": 9.781609396504576,
+            "median": 2.3781954157257457,
+            "p95": 41.66719848647766,
+            "maximum": 45.16506618143363
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00509",
+          "video": "005",
+          "body_contour_px": {
+            "N": 642,
+            "MAE": 11.404320630002056,
+            "median": 2.6115989557264254,
+            "p95": 49.99894853954019,
+            "maximum": 54.967669035010914
+          },
+          "GT_used_to_select": false
+        },
+        {
+          "id": "G01_v005_raw00668",
+          "video": "005",
+          "body_contour_px": {
+            "N": 702,
+            "MAE": 13.647111547082567,
+            "median": 3.2190989646191186,
+            "p95": 59.99697397566302,
+            "maximum": 64.0801252848137
+          },
+          "GT_used_to_select": false
+        }
+      ],
+      "relative_pose_pass": false,
+      "optimizer_success": true,
+      "corrections": {
+        "004": [
+          [
+            0.9998357270025778,
+            -0.018121414347954216,
+            -0.00036517291341713916,
+            0.001193291074058357
+          ],
+          [
+            0.01812202088179285,
+            0.9998342818591562,
+            0.0017323909331558817,
+            -0.004437883407838513
+          ],
+          [
+            0.0003337190237284844,
+            -0.0017387240192669954,
+            0.9999984327339709,
+            -0.008064884797516061
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "005": [
+          [
+            0.9993929482572742,
+            -0.007709197156280625,
+            -0.03397503867310187,
+            -0.49461413722737685
+          ],
+          [
+            0.007767143763590157,
+            0.9999685966498817,
+            0.0015739097248359723,
+            -0.007842865137419575
+          ],
+          [
+            0.033961838162692194,
+            -0.001836843289942135,
+            0.999421442413229,
+            -0.028053501797159066
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "Body_frozen": true,
+      "GT_read_by_predictor": false
+    }
+  ],
+  "injection_checks": [
+    {
+      "condition": "S0",
+      "video": "004",
+      "actual_rotation_deg": 0.0,
+      "actual_translation_mm": 0.0,
+      "mesh_injection_max_error_mm": 0.0,
+      "actual_mesh_motion_max_mm": 0.0,
+      "camera_to_Ring_invariant": true,
+      "within_video_relative_poses_preserved": true
+    },
+    {
+      "condition": "S0",
+      "video": "005",
+      "actual_rotation_deg": 0.0,
+      "actual_translation_mm": 0.0,
+      "mesh_injection_max_error_mm": 0.0,
+      "actual_mesh_motion_max_mm": 0.0,
+      "camera_to_Ring_invariant": true,
+      "within_video_relative_poses_preserved": true
+    },
+    {
+      "condition": "S1",
+      "video": "004",
+      "actual_rotation_deg": 0.0,
+      "actual_translation_mm": 0.0,
+      "mesh_injection_max_error_mm": 0.0,
+      "actual_mesh_motion_max_mm": 0.0,
+      "camera_to_Ring_invariant": true,
+      "within_video_relative_poses_preserved": true
+    },
+    {
+      "condition": "S1",
+      "video": "005",
+      "actual_rotation_deg": 2.0,
+      "actual_translation_mm": 0.5,
+      "mesh_injection_max_error_mm": 0.0,
+      "actual_mesh_motion_max_mm": 0.5880073436637244,
+      "camera_to_Ring_invariant": true,
+      "within_video_relative_poses_preserved": true
+    }
+  ],
+  "GT_read_by_evaluator": true,
+  "smoke": true,
+  "files": {
+    "REGISTRATION_METRICS.json": {
+      "sha256": "cb6db7f85dba468d59993457d0156e1c3031343600f0a98fa5121cda23cdf2c0",
+      "bytes": 84691
+    }
+  }
+}

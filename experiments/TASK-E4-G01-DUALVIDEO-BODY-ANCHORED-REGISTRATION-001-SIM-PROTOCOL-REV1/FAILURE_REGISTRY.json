@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "policy": "Task-local candidate scientific facts only; no automatic promotion to permanent rules; previous authenticity failure evidence retained",
+  "failures": [
+    {
+      "id": "FM-SIM-POSE-001",
+      "category": "scientific_negative",
+      "modules": [
+        "DV03",
+        "DV04",
+        "DV05",
+        "DV06"
+      ],
+      "symptom": "M2 numeric on 5/5 primary conditions but 0/5 meet relative rotation<=0.5deg and translation<=0.2mm",
+      "cause": "Coarse-Body bias / candidate ambiguity and rotation observability are plausible, not causally isolated; small surface distance does not certify relative SE3",
+      "cause_status": "observed_only",
+      "repair": "Retain the frozen negative result for human review; no GT-based parameter retuning or automatic method substitution",
+      "regression": [
+        "test_sim_rev1: full rigid geometry, gauge and mediated-vs-direct query contracts"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/visualization/REGISTRATION_METRICS.json",
+          "sha256": "6aab4a5a85cc31aa5136d2f3b239d0b9f5dc7a32a87fd42f1bdd6d6b81cb4cb1"
+        },
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/visualization/RELATIVE_POSE_COMPONENTS.json",
+          "sha256": "223aed66bc12b980beb9186e46e8545d607819925b9effda763fe959933a692a"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-SIM-ROTATION-001",
+      "category": "scientific_negative",
+      "modules": [
+        "DV03",
+        "DV04",
+        "DV05",
+        "DV06"
+      ],
+      "symptom": "Robust ICP leaves ~1.5deg rotation despite very small GT surface error",
+      "cause": "Partial-surface geometry permits a low surface residual with residual rotation; no claim of a proven sole cause",
+      "cause_status": "observed_only",
+      "repair": "Retain the frozen negative result for human review; no GT-based parameter retuning or automatic method substitution",
+      "regression": [
+        "test_sim_rev1: full rigid geometry, gauge and mediated-vs-direct query contracts"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/visualization/REGISTRATION_METRICS.json",
+          "sha256": "6aab4a5a85cc31aa5136d2f3b239d0b9f5dc7a32a87fd42f1bdd6d6b81cb4cb1"
+        },
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/visualization/PAIRED_COMPARISONS.json",
+          "sha256": "f2cd7c234783348120e98210d211e62d98da6e1b48916234984a7de9aa6052c3"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-SIM-MAPPING-001",
+      "category": "scientific_negative",
+      "modules": [
+        "DV03",
+        "DV04",
+        "DV05",
+        "DV06"
+      ],
+      "symptom": "Mediated mapping has unmatched and Ring-contact-unknown points and nonzero GT candidate errors",
+      "cause": "Ellipse-to-ellipse warp is a candidate correspondence, not a physical correction; coarse model and unknown cuts remain limitations",
+      "cause_status": "observed_only",
+      "repair": "Retain the frozen negative result for human review; no GT-based parameter retuning or automatic method substitution",
+      "regression": [
+        "test_sim_rev1: full rigid geometry, gauge and mediated-vs-direct query contracts"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/visualization/G2_METRICS.json",
+          "sha256": "dc03f629007b11e70d65786aaa7e6069c85b98d53475832fad40504b68869865"
+        },
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/visualization/MAPPING_FAILURES.json",
+          "sha256": "aa97b6b4e2c0fa050ca903c9c75bf064697e76a5324a18778746e3dceb9f1cff"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "attempt_id": "0001-preflight-f70a3177",
+  "stage": "preflight",
+  "freeze_sha256": "60d5d4a602cd3c24dffebc9e163f9aa43f3e70be5e3ba80ff3a8a2616c2ec4ad",
+  "timeout_seconds": 1800,
+  "started_UTC": 1794838563.5497189,
+  "status": "PASS",
+  "seconds": 4.250443646998974,
+  "payload": {
+    "status": "PASS",
+    "environment": {
+      "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+      "executable": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+      "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+      "module_version": "0.1.0",
+      "numpy": {
+        "version": "1.26.4",
+        "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/__init__.py"
+      },
+      "scipy": {
+        "version": "1.15.3",
+        "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/scipy/__init__.py"
+      },
+      "cv2": {
+        "version": "4.11.0",
+        "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/cv2/__init__.py"
+      },
+      "skimage": {
+        "version": "0.25.2",
+        "file": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/runtime/packages/skimage/__init__.py"
+      },
+      "torch": {
+        "version": "2.7.1+cu128",
+        "file": "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/__init__.py"
+      },
+      "pytorch3d": {
+        "version": "0.7.9",
+        "file": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/__init__.py"
+      },
+      "open3d": {
+        "version": "0.19.0",
+        "file": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor/open3d/__init__.py"
+      },
+      "trimesh": {
+        "version": "5.1.1",
+        "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/trimesh/__init__.py"
+      },
+      "fcl": {
+        "version": "0.7.0.11",
+        "file": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/runtime/packages/fcl/__init__.py"
+      },
+      "cuda": "12.8",
+      "GPU": "NVIDIA GeForce RTX 3060 Laptop GPU",
+      "pytorch3d_extension": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/_C.cpython-312-x86_64-linux-gnu.so"
+    },
+    "checks": [
+      {
+        "name": "dependencies",
+        "status": "PASS",
+        "seconds": 2.6930903650008986,
+        "details": {
+          "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+          "executable": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+          "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+          "module_version": "0.1.0",
+          "numpy": {
+            "version": "1.26.4",
+            "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/__init__.py"
+          },
+          "scipy": {
+            "version": "1.15.3",
+            "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/scipy/__init__.py"
+          },
+          "cv2": {
+            "version": "4.11.0",
+            "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/cv2/__init__.py"
+          },
+          "skimage": {
+            "version": "0.25.2",
+            "file": "/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/runtime/packages/skimage/__init__.py"
+          },
+          "torch": {
+            "version": "2.7.1+cu128",
+            "file": "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/__init__.py"
+          },
+          "pytorch3d": {
+            "version": "0.7.9",
+            "file": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/__init__.py"
+          },
+          "open3d": {
+            "version": "0.19.0",
+            "file": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor/open3d/__init__.py"
+          },
+          "trimesh": {
+            "version": "5.1.1",
+            "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/trimesh/__init__.py"
+          },
+          "fcl": {
+            "version": "0.7.0.11",
+            "file": "/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/runtime/packages/fcl/__init__.py"
+          },
+          "cuda": "12.8",
+          "GPU": "NVIDIA GeForce RTX 3060 Laptop GPU",
+          "pytorch3d_extension": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/_C.cpython-312-x86_64-linux-gnu.so"
+        }
+      },
+      {
+        "name": "versions_and_sources",
+        "status": "PASS",
+        "seconds": 0.09586060800029372,
+        "details": {
+          "DXY_commit": "75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95",
+          "historical_sources": 11
+        }
+      },
+      {
+        "name": "identities_and_contracts",
+        "status": "PASS",
+        "seconds": 0.45472834199972567,
+        "details": {
+          "verified_assets": 233,
+          "native_wh": [
+            640,
+            360
+          ],
+          "metric_unit": "mm",
+          "camera": "OpenCV c2w; +Z axial depth",
+          "FIT": 101,
+          "HOLDOUT": 7,
+          "ring": {
+            "inner_mm": 9.999999251835408,
+            "outer_mm": 12.4000003767177,
+            "wire_mm": 1.200000048
+          },
+          "GT_read": false
+        }
+      }
+    ]
+  },
+  "raw_files": {
+    "request.json": "d1da73f33a9f4d4cf76ac3cc79f7b40e6ab75b95d3c87a95ec8a30e46e24ce9f",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.txt": "2ec0040990ec61a8e9f7ed154f3857a04f02bacca69df0ac70f39eeac6368544",
+    "worker.json": "322cb1d29aac006f6bb175624256a191c562c9b2cedfd8c86e68d9b6387a1339",
+    "payload.json": "315349e6aeb4321a814a65164df128d5bd52f34b6ef75238ca38cbf215725a96"
+  }
+}
