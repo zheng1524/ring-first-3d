@@ -1,5 +1,7 @@
 # Ring-First 3D · Human-in-the-loop research collaboration
 
+项目上下文与技术资产入口（2026-11-16）：[PROJECT_HOME](docs/PROJECT_HOME.md) · [技术路线表](docs/registry/TECHNICAL_ROUTE_MATRIX.md) · [具体代码与版本](docs/registry/REUSABLE_MODULES.md) · [主题实验索引](docs/registry/EXPERIMENT_INDEX.csv)。这是文档审计入口，科研结论与历史状态仍按各冻结报告解释。
+
 Status: **PHASE_D_RESEARCH_AUTHORIZED** · Collaboration standard: **v1.3** · No certified 3D algorithm baseline has been imported.
 
 Researcher authorization: [TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001](experiments/TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001/TASK.md). This task may use frozen legacy assets/source read-only, wrap them, and make necessary bounded copies. Full migration and a baseline tag are not prerequisites. Frozen upstream models, cameras, P0, Dxy and GT restrictions remain in force.
