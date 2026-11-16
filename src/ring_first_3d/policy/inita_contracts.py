@@ -26,7 +26,11 @@ def validate(task,path):
  return task
 
 def verify(task):
- c=task['inita'];source=json.loads(Path(c['assets']['sources']['path']).read_text());lock=json.loads(Path(c['assets']['code_lock']['path']).read_text())
+ c=task['inita']
+ # Reject untrusted source bindings before opening later evaluator-only assets.
+ for key in ['sources','code_lock']:
+  rec=c['assets'][key];p=Path(rec['path']);require(p.is_file()and sha256(p)==rec['sha256'],'SOURCE_SHA',str(p))
+ source=json.loads(Path(c['assets']['sources']['path']).read_text());lock=json.loads(Path(c['assets']['code_lock']['path']).read_text())
  for rec in list(c['assets'].values())+lock['files']+source['frozen_assets']:
   p=Path(rec['path']);require(p.is_file()and sha256(p)==rec['sha256'],'SOURCE_SHA',str(p))
  require(lock['commit']==LEGACY,'SOURCE_SHA','Legacy commit identity')
