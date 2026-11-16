@@ -99,6 +99,9 @@ def publish(root, task, state):
     if task.get("schema")==4:
         from ..sim.artifacts import enhance
         enhance(root,task,state,latest,pending)
+    if task.get("schema")==5:
+        from ..multisurface.artifacts import enhance
+        enhance(root,task,state,latest,pending)
     state = dict(state, snapshot=snapshot_id, task_id=task["task_id"], status=status)
     names = ["RESULT_CARD.md", "TECHNICAL_REPORT.md", "metrics.json", "failures.json", "visualization/index.html", "evidence.png"]
     state["artifacts"] = {name: dict(path=f"snapshots/{snapshot_id}/{name}", sha256=sha256(pending/name), bytes=(pending/name).stat().st_size) for name in names}
@@ -142,7 +145,7 @@ def check_artifacts(root, state):
                     require(p.is_relative_to(root) and p.is_file(),"ARTIFACT_MISSING",value)
     Links().feed(page)
     metrics = json.loads((root/"metrics.json").read_text())
-    if state.get("task_id")not in {"TASK-E4-SYNTHETIC-BODY-PIXEL-CORRESPONDENCE-001","TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001","TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1"}:
+    if state.get("task_id")not in {"TASK-E4-SYNTHETIC-BODY-PIXEL-CORRESPONDENCE-001","TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001","TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1","TASK-E4-G01-MULTISURFACE-BODY-FUSION-001"}:
         require(metrics["GT_read"] is False and metrics["history_prediction_fallback"] == 0 and metrics["new_scientific_predictions"] == 0, "GT_LEAK", "Unexpected scientific output")
     failures = json.loads((root/"failures.json").read_text())
     rows = [load_attempt(root, r) for r in state["attempts"]]
@@ -156,5 +159,8 @@ def check_artifacts(root, state):
         validate_artifacts(root,state)
     if state.get("task_id")=="TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1":
         from ..sim.artifacts import validate
+        validate(root,state)
+    if state.get("task_id")=="TASK-E4-G01-MULTISURFACE-BODY-FUSION-001":
+        from ..multisurface.artifacts import validate
         validate(root,state)
     return dict(status="PASS", verified_paths=len(required), visualization=str(root/"visualization/index.html"))

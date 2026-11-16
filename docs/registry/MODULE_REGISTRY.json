@@ -2680,6 +2680,56 @@
       "limit": "Human approved static shared virtual placement; no real deployment/HERO claim; Body fixed in registration; scientific negatives retained",
       "validation_report": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/TECHNICAL_REPORT.md",
       "validation_tests": 82
+    },
+    {
+      "id": "MF01",
+      "module": "Multisurface Body Fusion scene.py",
+      "path": "src/ring_first_3d/multisurface/scene.py",
+      "sha256": "da6ca2ed8a758015436dd1168e01245c51fba61928ae559818cb8621a6f21943",
+      "engineering": "IMPLEMENTED_PENDING_RUN",
+      "scientific": "G01_LIKE_SINGLE_SEED_CONTROL_ONLY",
+      "role": "generator/GT-free initializer reuse",
+      "limit": "No camera optimization, no GT face union as observation, no GT alignment/selection, no coordinate averaging; preserve original surfaces/conflicts"
+    },
+    {
+      "id": "MF02",
+      "module": "Multisurface Body Fusion registration.py",
+      "path": "src/ring_first_3d/multisurface/registration.py",
+      "sha256": "81ffe3368a637d0902293f7d711abeca912a91d681faeda532d0503882aaf1a3",
+      "engineering": "IMPLEMENTED_PENDING_RUN",
+      "scientific": "G01_LIKE_SINGLE_SEED_CONTROL_ONLY",
+      "role": "surface-only predictor",
+      "limit": "No camera optimization, no GT face union as observation, no GT alignment/selection, no coordinate averaging; preserve original surfaces/conflicts"
+    },
+    {
+      "id": "MF03",
+      "module": "Multisurface Body Fusion fusion.py",
+      "path": "src/ring_first_3d/multisurface/fusion.py",
+      "sha256": "607eef83f905122b3d0b746070e66a717a19e775984b7f8e420fcf31fe9b590b",
+      "engineering": "IMPLEMENTED_PENDING_RUN",
+      "scientific": "G01_LIKE_SINGLE_SEED_CONTROL_ONLY",
+      "role": "owned geometry predictor",
+      "limit": "No camera optimization, no GT face union as observation, no GT alignment/selection, no coordinate averaging; preserve original surfaces/conflicts"
+    },
+    {
+      "id": "MF04",
+      "module": "Multisurface Body Fusion evaluate.py",
+      "path": "src/ring_first_3d/multisurface/evaluate.py",
+      "sha256": "f52a6b6354b54ddaf4e561a013075a0c6209b17501d9abb2a7a07dec27e99e7a",
+      "engineering": "IMPLEMENTED_PENDING_RUN",
+      "scientific": "G01_LIKE_SINGLE_SEED_CONTROL_ONLY",
+      "role": "post-freeze evaluator",
+      "limit": "No camera optimization, no GT face union as observation, no GT alignment/selection, no coordinate averaging; preserve original surfaces/conflicts"
+    },
+    {
+      "id": "MF05",
+      "module": "Multisurface Body Fusion visualize.py",
+      "path": "src/ring_first_3d/multisurface/visualize.py",
+      "sha256": "45d56241c9bdc9a7e9c915da70960c7394199cd2767bedc602affca4182b2a47",
+      "engineering": "IMPLEMENTED_PENDING_RUN",
+      "scientific": "G01_LIKE_SINGLE_SEED_CONTROL_ONLY",
+      "role": "exact-mesh-section evaluator",
+      "limit": "No camera optimization, no GT face union as observation, no GT alignment/selection, no coordinate averaging; preserve original surfaces/conflicts"
     }
   ]
 }

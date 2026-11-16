@@ -86,6 +86,9 @@ def load_task(path):
         task = yaml.load(path.read_text(), Loader=StrictLoader)
     except (yaml.YAMLError, RecursionError) as e:
         raise PolicyError("YAML", str(e)) from e
+    if isinstance(task,dict) and task.get("schema")==5:
+        from .fusion_contracts import validate
+        return validate(task,path)
     if isinstance(task,dict) and task.get("schema")==4:
         from .sim_contracts import validate
         return validate(task,path)
@@ -159,6 +162,9 @@ def validate_v1(task,path):
 
 
 def verify_task(task):
+    if task.get("schema")==5:
+        from .fusion_contracts import verify
+        return verify(task)
     if task.get("schema")==4:
         from .sim_contracts import verify
         return verify(task)
@@ -227,6 +233,9 @@ def freeze_identity(task,module_contracts,verified_assets):
 
 
 def stages_for(task):
+    if task.get("schema")==5:
+        from .fusion_contracts import FUSION_STAGES
+        return FUSION_STAGES
     if task.get("schema")==4:
         from .sim_contracts import SIM_STAGES
         return SIM_STAGES
