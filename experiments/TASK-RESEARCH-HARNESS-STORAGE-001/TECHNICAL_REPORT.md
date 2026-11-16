@@ -84,4 +84,8 @@ df 受其他系统活动与工程新文件影响；净释放按逐文件分配�
 
 工程入口为 PROJECT_HOME→注册表→Harness；共享晋升范围按 MODULE_PROMOTION_POLICY。完整优化器、HERO 推理/清理、联合 BA、主体拟合和可视化发布仍需分别工程化及验证，科研路线与基线验收仍由人工批准。未来用固定 source ID/SHA 复用成熟核心，先契约/Smoke，Git 只提交必要代码、配置、指标、精选图与资产索引，避免重复实现和重复上传全量实验。
 
-main 轻量方案：基于 `02dee8092dce9f89d050bccca35aa51768988645` 新建 `release/research-harness-001`，只添加注册表/架构文档、共享包、必要测试入口与本任务精选报告；省略完整历史实验、数据/环境和破坏性清理脚本。遗漏的历史报告/源码引用改为固定 commit 链接，源核心由显式只读目录或固定 Git 对象提供。main 本身不覆盖、不直接推送；发布验证和完整 SHA 补充于 MAIN_READY_RELEASE.json。
+main 轻量发布已完成：基于 `02dee8092dce9f89d050bccca35aa51768988645` 新建 `release/research-harness-001`，发布提交 [e24fbd0069d31636424af188b863169633ca47ae](https://github.com/zheng1524/ring-first-3d/commit/e24fbd0069d31636424af188b863169633ca47ae) 的唯一父提交就是该 main 基线。只添加注册表/架构文档、共享包、必要测试入口与本任务精选报告；58 个新增/修改文件合计 1,042,726 B，省略完整历史实验、数据/环境和破坏性清理脚本。
+
+153 个遗漏历史引用改为固定工程快照 6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33 的链接并核验 Git 对象，115 个保留相对 Markdown 链接核验通过。未设置 RING_FIRST_SOURCE_ROOT，在没有历史实验文件的 main-ready 工作树从登记 Git 对象加载 SHA 锁定核心，Preflight、11 契约、三个真实 Smoke 及兼容性测试再次全部 PASS；这不是隔离断网环境安装测试，仍依赖已登记的本机真实资产/运行环境。
+
+远程已实测该发布分支存在；main 仍为 02dee8092dce9f89d050bccca35aa51768988645，注册表分支仍为 fa649fa1cf20b111bfdb8489e8af20ba90339bba，没有直接覆盖 main。发布清单和测试为 [MAIN_READY_MANIFEST](https://github.com/zheng1524/ring-first-3d/blob/e24fbd0069d31636424af188b863169633ca47ae/docs/registry/MAIN_READY_MANIFEST.json)、[MAIN_READY_VALIDATION](https://github.com/zheng1524/ring-first-3d/blob/e24fbd0069d31636424af188b863169633ca47ae/docs/registry/MAIN_READY_VALIDATION.json)，本任务回执见 [MAIN_READY_RELEASE.json](MAIN_READY_RELEASE.json)。合入 main 仍是独立后续发布操作，本轮未合并。
