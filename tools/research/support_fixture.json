@@ -1,0 +1,733 @@
+{
+  "views": [
+    {
+      "id": "G01_v004_raw00341",
+      "group": "G01",
+      "case": "G01",
+      "video": "004",
+      "sid": "G01_v004",
+      "capture_type": "VIDEO_FRAME",
+      "role": "FIT",
+      "raw_frame": 341,
+      "time_sec": 2.7507,
+      "RGB_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00341.png",
+      "Mask_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00341_labels.png",
+      "RGB_SHA256": "b43022591833f5bf249f9535dde0d6fb39dcc7779dbbab606b684944bb3e964e",
+      "Mask_SHA256": "e6e908004efb73508ab72e1915e21a095912e3274c469acab1413d608cc946f0",
+      "RGB_content_SHA256": "cec5cd66755f8d0b15a933b56da2c3f4fb48d6ac90a6209738d42974469df39a",
+      "raw_AREA_content_SHA256": "cec5cd66755f8d0b15a933b56da2c3f4fb48d6ac90a6209738d42974469df39a",
+      "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Ip_12.0mm_closed_R10_single_refY_004.mp4",
+      "source_video_SHA256": "9325ca98ae05923c917a6cb046c445f894bfd0fa63d030d209112e1184f380be",
+      "K": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cache": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00341_RGB_MASK.npz",
+      "input_origin": "NEW_RAW_ENDPOINT_OR8HZ_GRID",
+      "initial_pose": null,
+      "initial_pose_source": null,
+      "initial_canonical_id": null,
+      "aliases": [],
+      "frame_binding": "EXACT_SEQUENTIAL_AREA_PNG_CURRENT",
+      "sharpness": 38.46698924829931,
+      "glare_fraction": 0.026306423611111112,
+      "Mask_pending": false,
+      "polyp_pixels": 23265,
+      "ring_pixels": 7395,
+      "raw_status": "AVAILABLE_RAW_FRAME",
+      "static_identity_status": "samephysicalcapturefamily;rigidityrequiresRGBgeometrytest",
+      "segmentation_status": "FROZEN_INIT_NATIVE_MULTICLASS",
+      "segmentation_model_SHA256": "981aa596e8906edc4457219581c606d4a5a22bfc6f7e4924d3d9a4b9aff64464",
+      "C": [
+        [
+          0.9908120411264932,
+          -0.08505934790323788,
+          0.10514944837243932,
+          -7.863905956842201
+        ],
+        [
+          -0.1343549958685418,
+          -0.7081382380059303,
+          0.6931731175969106,
+          -23.563852650867524
+        ],
+        [
+          0.015499491730907087,
+          -0.7009316252018681,
+          -0.7130600413344946,
+          18.882578915633527
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+      "candidate_source": "originalRF5DoF_RGB_yaw",
+      "FIT_objective": 0.14230704582646814,
+      "Ring": {
+        "inner": {
+          "N": 0,
+          "MAE": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "outer": {
+          "N": 96,
+          "MAE": 0.5925559832318109,
+          "median": 0.5300714375315663,
+          "p95": 1.3868405024115353,
+          "maximum": 1.7070583629214002
+        },
+        "Ring_IoU": 0.8899239044870113,
+        "minimum_depth_mm": 26.68007822956362,
+        "camera_torus_clearance_mm": 26.358932590394076,
+        "proper_rotation": 1.0,
+        "coordinate_unit": "mm",
+        "physical_valid": true
+      },
+      "original_ring5_N": 2,
+      "RGB_matches_N": 27,
+      "RGB_inliers_N": 21,
+      "formal": true,
+      "HERO_target_eligible": true,
+      "seconds": 0.6574177742004395,
+      "qualification_reasons": [],
+      "RGB_evaluation": {
+        "FIT": {
+          "N": 21,
+          "MAE": 3.2985106786217515,
+          "median": 2.7196482841785765,
+          "p95": 6.469940594641594,
+          "maximum": 7.221387449222627
+        },
+        "FIT_positive_fraction": 1.0,
+        "FIT_cells": 12,
+        "FEATURE_HELD": {
+          "N": 5,
+          "MAE": 5.609925022110792,
+          "median": 5.298233702009382,
+          "p95": 8.342178768450452,
+          "maximum": 8.954200707246823
+        },
+        "FEATURE_HELD_positive_fraction": 1.0,
+        "FEATURE_HELD_cells": 5
+      },
+      "RGB_rank": 6,
+      "RGB_singular_values": [
+        98.61065446268503,
+        86.62895681735415,
+        42.15748227226976,
+        20.808024057516267,
+        12.099656715687258,
+        4.66155604567307
+      ],
+      "RGB_condition": 21.154020995675253,
+      "calibrated_camera_truth": false,
+      "independent_validation": "held descriptor trackIDs excludeupdates;map/canonical ancestry historical conditional"
+    },
+    {
+      "id": "G01_v004_raw00326",
+      "group": "G01",
+      "case": "G01",
+      "video": "004",
+      "sid": "G01_v004",
+      "capture_type": "VIDEO_FRAME",
+      "role": "FIT",
+      "raw_frame": 326,
+      "time_sec": 2.625544,
+      "RGB_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00326.png",
+      "Mask_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00326_labels.png",
+      "RGB_SHA256": "d345563437c943718e130a56c30dd57c592453742dd386e336aed5ddaefa29a3",
+      "Mask_SHA256": "4806123e57b32f81744c6e220fc4b2767ca24f2afe283115a83b58b6b503ddb0",
+      "RGB_content_SHA256": "a07834b07a864cc8929c0225ee90f50afc7b6d73fcf5d5af34e2f29f5d0ef49e",
+      "raw_AREA_content_SHA256": "a07834b07a864cc8929c0225ee90f50afc7b6d73fcf5d5af34e2f29f5d0ef49e",
+      "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Ip_12.0mm_closed_R10_single_refY_004.mp4",
+      "source_video_SHA256": "9325ca98ae05923c917a6cb046c445f894bfd0fa63d030d209112e1184f380be",
+      "K": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cache": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00326_RGB_MASK.npz",
+      "input_origin": "NEW_RAW_ENDPOINT_OR8HZ_GRID",
+      "initial_pose": null,
+      "initial_pose_source": null,
+      "initial_canonical_id": null,
+      "aliases": [],
+      "frame_binding": "EXACT_SEQUENTIAL_AREA_PNG_CURRENT",
+      "sharpness": 41.9569190461147,
+      "glare_fraction": 0.0270703125,
+      "Mask_pending": false,
+      "polyp_pixels": 23209,
+      "ring_pixels": 7334,
+      "raw_status": "AVAILABLE_RAW_FRAME",
+      "static_identity_status": "samephysicalcapturefamily;rigidityrequiresRGBgeometrytest",
+      "segmentation_status": "FROZEN_INIT_NATIVE_MULTICLASS",
+      "segmentation_model_SHA256": "981aa596e8906edc4457219581c606d4a5a22bfc6f7e4924d3d9a4b9aff64464",
+      "C": [
+        [
+          0.9922668288198825,
+          -0.06910441367653386,
+          0.10310732483270156,
+          -7.898677868355488
+        ],
+        [
+          -0.12226181242995413,
+          -0.6874682695150947,
+          0.7158487463363082,
+          -23.74325283636737
+        ],
+        [
+          0.021414706280415686,
+          -0.7229190538506669,
+          -0.6906007905690374,
+          17.649705915428594
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+      "candidate_source": "REAL_RGB_PNP_LM",
+      "FIT_objective": 0.1736459632073016,
+      "Ring": {
+        "inner": {
+          "N": 0,
+          "MAE": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "outer": {
+          "N": 96,
+          "MAE": 2.405202375419328,
+          "median": 2.4788446346953217,
+          "p95": 5.194122755314634,
+          "maximum": 5.6922150446237305
+        },
+        "Ring_IoU": 0.8429332042594385,
+        "minimum_depth_mm": 25.926884658968607,
+        "camera_torus_clearance_mm": 25.64404731142519,
+        "proper_rotation": 0.9999999999999996,
+        "coordinate_unit": "mm",
+        "physical_valid": true
+      },
+      "original_ring5_N": 2,
+      "RGB_matches_N": 26,
+      "RGB_inliers_N": 20,
+      "formal": true,
+      "HERO_target_eligible": true,
+      "seconds": 0.7188482284545898,
+      "qualification_reasons": [],
+      "RGB_evaluation": {
+        "FIT": {
+          "N": 20,
+          "MAE": 1.2099842185919125,
+          "median": 0.8854972328388062,
+          "p95": 2.4138069138676137,
+          "maximum": 5.57523448460978
+        },
+        "FIT_positive_fraction": 1.0,
+        "FIT_cells": 14,
+        "FEATURE_HELD": {
+          "N": 4,
+          "MAE": 2.044559808674286,
+          "median": 2.036941691459888,
+          "p95": 3.5073211961477027,
+          "maximum": 3.7659141161070138
+        },
+        "FEATURE_HELD_positive_fraction": 1.0,
+        "FEATURE_HELD_cells": 4
+      },
+      "RGB_rank": 6,
+      "RGB_singular_values": [
+        100.28570217970889,
+        96.40022058300303,
+        49.0677169044665,
+        19.61190570385645,
+        15.925806456034438,
+        6.888096863693354
+      ],
+      "RGB_condition": 14.559275829628262,
+      "calibrated_camera_truth": false,
+      "independent_validation": "held descriptor trackIDs excludeupdates;map/canonical ancestry historical conditional"
+    },
+    {
+      "id": "G01_v004_raw00360",
+      "group": "G01",
+      "case": "G01",
+      "video": "004",
+      "sid": "G01_v004",
+      "capture_type": "VIDEO_FRAME",
+      "role": "FIT",
+      "raw_frame": 360,
+      "time_sec": 2.903022,
+      "RGB_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/inputs/G01_v004_raw00360.png",
+      "Mask_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/observations/G01_v004_raw00360_labels.png",
+      "RGB_SHA256": "356660d2531995b03d95525e8a96adf913aec69070ca405e29e0790102f9062e",
+      "Mask_SHA256": "ea57cea3b1f9702b9e67e85cad8d6ed4bfcfdd12f16b8aca86e9c96dfcf0726e",
+      "RGB_content_SHA256": "23232f995f36b609180661da4717e5be84ca27e315740346fd0ad644ca7125e0",
+      "raw_AREA_content_SHA256": "23232f995f36b609180661da4717e5be84ca27e315740346fd0ad644ca7125e0",
+      "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Ip_12.0mm_closed_R10_single_refY_004.mp4",
+      "source_video_SHA256": "9325ca98ae05923c917a6cb046c445f894bfd0fa63d030d209112e1184f380be",
+      "K": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cache": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00360_RGB_MASK.npz",
+      "input_origin": "EXACT_014_RAW_RGB_MASK",
+      "initial_pose": [
+        [
+          0.9941120397912114,
+          -0.07023441895203403,
+          0.08251290042549078,
+          -6.232627171805554
+        ],
+        [
+          -0.1082101443070847,
+          -0.6831259899432306,
+          0.7222391892808927,
+          -24.13508504417081
+        ],
+        [
+          0.0056406569827189765,
+          -0.7269154065354176,
+          -0.6867038479069794,
+          18.832489327752633
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "initial_pose_source": "014RGB_PNP_CANDIDATE_NOT_CERTIFIED",
+      "initial_canonical_id": null,
+      "aliases": [],
+      "frame_binding": "EXACT_SEQUENTIAL_AREA_PNG_CURRENT_VERIFIED",
+      "sharpness": 47.235477379617585,
+      "glare_fraction": 0.015199652777777777,
+      "Mask_pending": false,
+      "polyp_pixels": 21538,
+      "ring_pixels": 7366,
+      "raw_status": "AVAILABLE_RAW_FRAME",
+      "static_identity_status": "samephysicalcapturefamily;rigidityrequiresRGBgeometrytest",
+      "C": [
+        [
+          0.9939749333805238,
+          -0.06806436651711695,
+          0.08591317606634097,
+          -6.427165613597809
+        ],
+        [
+          -0.10919922336293489,
+          -0.6825417288473837,
+          0.722642593540511,
+          -24.145174141636897
+        ],
+        [
+          0.009453117375468697,
+          -0.7276702758754464,
+          -0.6858619454228654,
+          18.682263841542007
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+      "candidate_source": "REAL_RGB_PNP_LM",
+      "FIT_objective": 0.09238314377028169,
+      "Ring": {
+        "inner": {
+          "N": 0,
+          "MAE": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "outer": {
+          "N": 96,
+          "MAE": 2.2389387183562395,
+          "median": 2.213310488317541,
+          "p95": 4.593249460378215,
+          "maximum": 5.11619875545656
+        },
+        "Ring_IoU": 0.8562229102167183,
+        "minimum_depth_mm": 26.714378493377865,
+        "camera_torus_clearance_mm": 26.322893431995354,
+        "proper_rotation": 0.9999999999999996,
+        "coordinate_unit": "mm",
+        "physical_valid": true
+      },
+      "original_ring5_N": 2,
+      "RGB_matches_N": 38,
+      "RGB_inliers_N": 25,
+      "formal": true,
+      "HERO_target_eligible": true,
+      "seconds": 0.6649751663208008,
+      "qualification_reasons": [],
+      "RGB_evaluation": {
+        "FIT": {
+          "N": 25,
+          "MAE": 0.8015893901307627,
+          "median": 0.6720604519316002,
+          "p95": 1.867072285436006,
+          "maximum": 2.0858692406900783
+        },
+        "FIT_positive_fraction": 1.0,
+        "FIT_cells": 17,
+        "FEATURE_HELD": {
+          "N": 8,
+          "MAE": 1.302956313047551,
+          "median": 1.2364316248431595,
+          "p95": 2.1921770896196646,
+          "maximum": 2.471575693899214
+        },
+        "FEATURE_HELD_positive_fraction": 1.0,
+        "FEATURE_HELD_cells": 8
+      },
+      "RGB_rank": 6,
+      "RGB_singular_values": [
+        105.18495969862698,
+        100.68175356131412,
+        68.91819986432084,
+        22.91190919774751,
+        19.39918733725967,
+        9.838914001635564
+      ],
+      "RGB_condition": 10.69070831202932,
+      "calibrated_camera_truth": false,
+      "independent_validation": "held descriptor trackIDs excludeupdates;map/canonical ancestry historical conditional"
+    },
+    {
+      "id": "G01_v004_raw00204",
+      "group": "G01",
+      "case": "G01",
+      "video": "004",
+      "sid": "G01_v004",
+      "capture_type": "VIDEO_FRAME",
+      "role": "FIT",
+      "raw_frame": 204,
+      "time_sec": 1.625833,
+      "RGB_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/inputs/G01_v004_raw00204.png",
+      "Mask_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/observations/G01_v004_raw00204_labels.png",
+      "RGB_SHA256": "ad314909026a6748a24fc9ebcff2185a62f6aabbbef0474c326d081abe4b8cc8",
+      "Mask_SHA256": "cc7a13c8412938c1667fccfb4e21036c1ab3828ecf9482074ed526c18e9fc389",
+      "RGB_content_SHA256": "9ed35f03adfc5fdc1140d22a0fcadf08ffcc8b01be7ac66df2b834a98c3c254b",
+      "raw_AREA_content_SHA256": "9ed35f03adfc5fdc1140d22a0fcadf08ffcc8b01be7ac66df2b834a98c3c254b",
+      "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Ip_12.0mm_closed_R10_single_refY_004.mp4",
+      "source_video_SHA256": "9325ca98ae05923c917a6cb046c445f894bfd0fa63d030d209112e1184f380be",
+      "K": [
+        [
+          490.0,
+          0.0,
+          319.5
+        ],
+        [
+          0.0,
+          490.0,
+          179.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cache": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00204_RGB_MASK.npz",
+      "input_origin": "EXACT_014_RAW_RGB_MASK",
+      "initial_pose": [
+        [
+          0.9826160730662356,
+          -0.09405540455532373,
+          0.16006009442026486,
+          -11.513677211666321
+        ],
+        [
+          -0.17946940184226612,
+          -0.7018497593977157,
+          0.6893458123726782,
+          -22.12888898894274
+        ],
+        [
+          0.047501439496807976,
+          -0.706088164542717,
+          -0.7065289216574422,
+          16.06725184457735
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "initial_pose_source": "014RGB_PNP_CANDIDATE_NOT_CERTIFIED",
+      "initial_canonical_id": null,
+      "aliases": [],
+      "frame_binding": "EXACT_SEQUENTIAL_AREA_PNG_CURRENT_VERIFIED",
+      "sharpness": 37.65370720710283,
+      "glare_fraction": 0.010360243055555555,
+      "Mask_pending": false,
+      "polyp_pixels": 25615,
+      "ring_pixels": 7545,
+      "raw_status": "AVAILABLE_RAW_FRAME",
+      "static_identity_status": "samephysicalcapturefamily;rigidityrequiresRGBgeometrytest",
+      "C": [
+        [
+          0.9801121108162444,
+          -0.10694968718205941,
+          0.16715865111619413,
+          -12.008226066582484
+        ],
+        [
+          -0.19228957895202473,
+          -0.7200017513066125,
+          0.6667999669630046,
+          -22.139114390059284
+        ],
+        [
+          0.04904047367000992,
+          -0.6856815897536337,
+          -0.7262477465818056,
+          17.647159237333764
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+      "candidate_source": "originalRF5DoF_RGB_yaw",
+      "FIT_objective": 0.17604429407818228,
+      "Ring": {
+        "inner": {
+          "N": 0,
+          "MAE": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "outer": {
+          "N": 96,
+          "MAE": 0.9945337487692884,
+          "median": 0.775510832952883,
+          "p95": 2.5729493102449803,
+          "maximum": 3.9507032770720785
+        },
+        "Ring_IoU": 0.8532449317863062,
+        "minimum_depth_mm": 25.685854219609787,
+        "camera_torus_clearance_mm": 25.763538806011617,
+        "proper_rotation": 0.9999999999999999,
+        "coordinate_unit": "mm",
+        "physical_valid": true
+      },
+      "original_ring5_N": 2,
+      "RGB_matches_N": 32,
+      "RGB_inliers_N": 26,
+      "formal": true,
+      "HERO_target_eligible": true,
+      "seconds": 0.7607953548431396,
+      "qualification_reasons": [],
+      "RGB_evaluation": {
+        "FIT": {
+          "N": 26,
+          "MAE": 3.2700106297402125,
+          "median": 2.9240357830469987,
+          "p95": 8.062030367225095,
+          "maximum": 9.700531045875472
+        },
+        "FIT_positive_fraction": 1.0,
+        "FIT_cells": 15,
+        "FEATURE_HELD": {
+          "N": 6,
+          "MAE": 4.353026248877895,
+          "median": 4.1539342938452055,
+          "p95": 6.0931066374529905,
+          "maximum": 6.4793926966771105
+        },
+        "FEATURE_HELD_positive_fraction": 1.0,
+        "FEATURE_HELD_cells": 5
+      },
+      "RGB_rank": 6,
+      "RGB_singular_values": [
+        109.36580848108979,
+        88.1252416313039,
+        46.03497782766612,
+        21.653124734063873,
+        18.849487519693703,
+        7.915760245947611
+      ],
+      "RGB_condition": 13.816210330154762,
+      "calibrated_camera_truth": false,
+      "independent_validation": "held descriptor trackIDs excludeupdates;map/canonical ancestry historical conditional"
+    }
+  ],
+  "expected_ids": [
+    "G01_v004_raw00326",
+    "G01_v004_raw00360",
+    "G01_v004_raw00204"
+  ],
+  "expected_pairs": [
+    {
+      "id": "G01_v004_raw00326",
+      "video": "004",
+      "score": 40.72829245298025,
+      "matches": 239,
+      "geometric_inliers": 180,
+      "epipolar_px": {
+        "N": 180,
+        "MAE": 1.0647348825903884,
+        "median": 0.9583975191853455,
+        "p95": 2.3922118690987726,
+        "maximum": 2.996189452101587
+      },
+      "parallax_deg": {
+        "N": 180,
+        "MAE": 1.5148889433856427,
+        "median": 1.5314198531015828,
+        "p95": 1.881659725143976,
+        "maximum": 2.006277014137726
+      },
+      "direction_deg": 2.0425996718954345,
+      "grid_cells": 34,
+      "RGB_overlap_proxy": 0.3821656050955414
+    },
+    {
+      "id": "G01_v004_raw00360",
+      "video": "004",
+      "score": 25.15362582567903,
+      "matches": 196,
+      "geometric_inliers": 141,
+      "epipolar_px": {
+        "N": 141,
+        "MAE": 1.3780393041311523,
+        "median": 1.3825536221918429,
+        "p95": 2.8368656575680684,
+        "maximum": 2.9850886059032797
+      },
+      "parallax_deg": {
+        "N": 141,
+        "MAE": 1.850636300197349,
+        "median": 1.6856955486437872,
+        "p95": 2.9917777069284384,
+        "maximum": 3.3156252494110574
+      },
+      "direction_deg": 2.870111447310919,
+      "grid_cells": 34,
+      "RGB_overlap_proxy": 0.29936305732484075
+    },
+    {
+      "id": "G01_v004_raw00204",
+      "video": "004",
+      "score": 19.590154762457885,
+      "matches": 124,
+      "geometric_inliers": 118,
+      "epipolar_px": {
+        "N": 118,
+        "MAE": 1.0050116723532054,
+        "median": 0.8965835805396003,
+        "p95": 2.123911103386511,
+        "maximum": 2.6594560071081434
+      },
+      "parallax_deg": {
+        "N": 118,
+        "MAE": 5.2165006414491195,
+        "median": 4.836918105490927,
+        "p95": 8.10971165826703,
+        "maximum": 8.748783377729783
+      },
+      "direction_deg": 8.387795948261687,
+      "grid_cells": 34,
+      "RGB_overlap_proxy": 0.2505307855626327
+    }
+  ],
+  "assets": {
+    "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/features/G01_v004_raw00341.npz": {
+      "sha256": "a7c74bb3575cba4b6f778abed9ad934afc57869f2a498f8029c8cade30cbb2c6",
+      "bytes": 68993
+    },
+    "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/features/G01_v004_raw00326.npz": {
+      "sha256": "9a6bdf82e5bebb479af915c68c98289d02683bc92ac7ab65d771a24b728776ba",
+      "bytes": 71520
+    },
+    "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/features/G01_v004_raw00360.npz": {
+      "sha256": "d425998c672cd70bbadbe69a0df9a274b0c782314fdedd36e62556246434a5b9",
+      "bytes": 72437
+    },
+    "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/features/G01_v004_raw00204.npz": {
+      "sha256": "a26a1b04b679853bd88ba60e23d308c26418f7aed4a674f823d065cb2d41bf7a",
+      "bytes": 76862
+    }
+  },
+  "K": [
+    [
+      490.0,
+      0.0,
+      319.5
+    ],
+    [
+      0.0,
+      490.0,
+      179.5
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "scope": "frozen real four-view subset, before adapter tests"
+}

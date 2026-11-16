@@ -1,0 +1,170 @@
+{
+  "attempts": [
+    {
+      "stage": "raw reference first attempt",
+      "status": "NOT_EVALUABLE",
+      "reason": "scikit-image missing from initial PYTHONPATH; reused registered E4 evolution packages, no installation"
+    },
+    {
+      "stage": "preflight first attempt",
+      "status": "NOT_READY",
+      "reason": "fcl missing from initial PYTHONPATH; reused registered PMGR-R1 packages, no installation"
+    },
+    {
+      "stage": "contracts first attempt",
+      "status": "FAIL",
+      "reason": "Test fixture outer radius incorrectly 7.4 rather than 6.2 mm for R10/1.2 mm wire; corrected test fixture, contract untouched"
+    },
+    {
+      "stage": "smoke first attempt",
+      "status": "FAIL",
+      "result": {
+        "status": "FAIL_OR_NOT_EVALUABLE",
+        "fixture_SHA256": "d64ebdbc3b81287c7d8f235e634b05d44269ee76b27206a37d2df976d293dacb",
+        "reference_SHA256": "216cbab2cdafa85e224580199356c1a2dc1ba087389e9699790d1c6101890cdd",
+        "tests": [
+          {
+            "name": "DXY_real_official",
+            "status": "PASS",
+            "seconds": 9.578913823999983,
+            "details": {
+              "tolerance_px": 1e-07,
+              "result": {
+                "available": true,
+                "quality": {
+                  "version": "DXY-MID-1.0.0rc1",
+                  "Geometry": "V9.1",
+                  "ring_valid": true,
+                  "ring_reason": "ok",
+                  "normal_Gate_pass": false,
+                  "Q_conflict_recovery": true,
+                  "strict_stable": false,
+                  "accepted": true,
+                  "candidate_generated": true,
+                  "stability_review_pass": false,
+                  "geometry_state": "fit_unstable",
+                  "quality_class": "Q_conflict_recovery",
+                  "reason": "",
+                  "stability_flags": "residual_conflict_Q_distance_recovery",
+                  "P_count": 216,
+                  "Q_count": 206,
+                  "X_count": 235,
+                  "body": "A",
+                  "branch": "Q_distance_conflict_recovery",
+                  "P_zero_occlusion_inference": false,
+                  "coordinate_system": "native_image_px",
+                  "GT_read": false,
+                  "history_prediction_fallback": 0,
+                  "processed_mask_sha256": "93572a62e3465ab931b1cc9bfdfa2a168a6432f71386685b35856bd3dd5396fc"
+                },
+                "source": {
+                  "id": "harness-frozen-G01-004-ref08",
+                  "RGB_content_SHA256": "07db1ac9644921498f38e6da66a9fa2c239dd4fe5b8bb16583ea9541c4d1e6f8",
+                  "Mask_content_SHA256": "93572a62e3465ab931b1cc9bfdfa2a168a6432f71386685b35856bd3dd5396fc",
+                  "DXY_commit": "75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95",
+                  "version": "DXY-MID-1.0.0rc1",
+                  "image_wh": [
+                    640,
+                    360
+                  ],
+                  "coordinates": "native_image_px",
+                  "adapter": "T01/T03",
+                  "history_prediction_fallback": 0,
+                  "GT_read": false
+                },
+                "status": "NUMERIC_GEOMETRY_ONLY",
+                "shape": "circle",
+                "center_px": [
+                  370.3316949381891,
+                  201.9950848145673
+                ],
+                "basis_px": [
+                  [
+                    68.81245848330812,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    68.81245848330812
+                  ]
+                ],
+                "candidate_provenance": {
+                  "version": "component-diagnostics-v3.1",
+                  "method": "V7_phase2_B",
+                  "input_hash": "92989bf3133e1316740297a86c52586f13029cda5c4199723b6b04485749a710",
+                  "source_id": "harness-frozen-G01-004-ref08",
+                  "image_sha256": "07db1ac9644921498f38e6da66a9fa2c239dd4fe5b8bb16583ea9541c4d1e6f8",
+                  "mask_sha256": "93572a62e3465ab931b1cc9bfdfa2a168a6432f71386685b35856bd3dd5396fc",
+                  "coordinate_system": "native_image_px",
+                  "length_unit": "px_diameter",
+                  "history_prediction_used": false,
+                  "implementation_version": "V7-phase2-directional-PQ-1.2",
+                  "Q_are_intervals": true,
+                  "measurement_evidence": "observed_P_plus_occlusion_Q",
+                  "candidate_origin": "B_minimal_RANSAC",
+                  "selection_version": "V8.4.4-conflict-Q-nearest-current-candidate-1.0",
+                  "selection_basis": "arc_normalized_mean_Euclidean_distance_to_original_Q_anchors_px",
+                  "evidence_status": "occlusion_recovery_with_residual_conflict"
+                }
+              },
+              "semantics": "Numeric official candidate, Q conflict recovery; inferred contour is not an observed full outline"
+            }
+          },
+          {
+            "name": "view_selection_frozen",
+            "status": "FAIL",
+            "seconds": 0.0771035520000396,
+            "traceback": "Traceback (most recent call last):\n  File \"/home/liu/ring_first_3d_harness/src/ring_first_3d/evaluation/validation.py\", line 23, in timed_test\n    details = function()\n              ^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_harness/tools/research/smoke.py\", line 58, in selection\n    cov=select_views(vs,\"max_coverage\",max_views=36,visibility=va[\"visible\"],weights=pr[\"weight_mm2\"])\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_harness/src/ring_first_3d/views/selection.py\", line 37, in select_views\n    ids = validate_split(views, holdout_ids)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_harness/src/ring_first_3d/contracts/identities.py\", line 24, in validate_split\n    raise ValueError(\"Duplicate view identity or FIT/HOLDOUT leakage\")\nValueError: Duplicate view identity or FIT/HOLDOUT leakage\n"
+          },
+          {
+            "name": "renderer_real_metric",
+            "status": "PASS",
+            "seconds": 3.702875588999973,
+            "details": {
+              "device": "NVIDIA GeForce RTX 3060 Laptop GPU",
+              "source": "fixed metric Body/Ring/c2w/K native pack",
+              "input_views": 108,
+              "rendered_views": 1,
+              "loss": 0.008583566173911095,
+              "alpha_sum": 3311.091796875,
+              "gradient_norm": 0.0018152830889448524,
+              "detached_visibility": true,
+              "projection_max_abs_px": 1.5765277964874258e-05,
+              "projection_tolerance_px": 0.001,
+              "loss_tolerance": 1e-07,
+              "alpha_sum_tolerance": 0.005,
+              "alpha_sha256": "90b1ab6bb01e6594e09f7fa71e99d4a60dca8d22e387263a2cac9b347fd82279"
+            }
+          },
+          {
+            "name": "contour_guard_compatibility",
+            "status": "PASS",
+            "seconds": 1.8092184220000718,
+            "details": {
+              "contour_loss": 0.3401842679791626,
+              "contour_info": {
+                "contour_samples": 103,
+                "forward_native_px": 3.173078634763086,
+                "reverse_native_px": 19.739472856779585
+              },
+              "guard_noop_reasons": [],
+              "guard_initial_self": {
+                "intersections": 0,
+                "coplanar_candidates": 0,
+                "engine": "Open3D nonadjacent triangle intersection",
+                "pairs": []
+              },
+              "guard_step_rejected": [
+                "STEP_TRUST"
+              ],
+              "scope": "Compatibility calls and finite gradients; no optimizer migration or scientific geometry acceptance"
+            }
+          }
+        ],
+        "GT_read": false,
+        "history_prediction_fallback": 0
+      },
+      "resolution": "Explicit exact-duplicate migration, checked full metadata and visibility equality; no conflicting identity accepted, final historical IDs/areas unchanged"
+    }
+  ]
+}
