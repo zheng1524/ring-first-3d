@@ -1,0 +1,148 @@
+{
+  "status": "PASS",
+  "source_baseline": "5636aaebd61a3d53b69f528692c4c7095df46508",
+  "sources": [
+    {
+      "id": "T03",
+      "path": "experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/code/generate_dxy.py",
+      "sha256": "6073bd0050afdd092fa5a68d510fab72dca2b61bee9cfa8c301b766df43302b1",
+      "commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "verified": true,
+      "ast_sha256": "25915d0ca50df299b0898acc89193287b8cd5ab76c14a0fdf37f93bdeced1149",
+      "selector": "API/provenance/formula reference; no module execution",
+      "mode": "ADAPTED_INTERFACE"
+    },
+    {
+      "id": "T04",
+      "path": "experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/prepare.py",
+      "sha256": "b5b11e4f9ac73dac8ec3dd2d8262da96c692073b2f6e91009c548e31cdc153a0",
+      "commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "verified": true,
+      "ast_sha256": "30c0c3f010a8e62fef68e4e931090971902acb5bd8cc28c17b14b2b60d493d1a",
+      "selector": "API/provenance/formula reference; no module execution",
+      "mode": "ADAPTED_INTERFACE"
+    },
+    {
+      "id": "T10",
+      "path": "experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/code/prepare.py",
+      "sha256": "88e74d19f788e765818e2c77135248f315bbe0d58bc859962badb6623c445d9d",
+      "commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "verified": true,
+      "ast_sha256": "a3f85b205541594697904e12c97e9bed66f83196f3fed2ee2e76977c5f7e9547",
+      "selector": "skeleton_proxy; main per-view line28[skip np.load]; loop block30-32",
+      "mode": "SHA_LOCKED_AST_REUSE"
+    },
+    {
+      "id": "T11",
+      "path": "experiments/TASK-E4-UPDATE-CAUSALITY-016/code/prepare016.py",
+      "sha256": "bda26184b8b3ec74216fa5c5c620755a6cae7e6c50f06272fa0a3c017918ecd9",
+      "commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "verified": true,
+      "ast_sha256": "ec67348dc5d659329bada2ffce92c5a4f2d7c9a39f41ebcaa84d4f844aeab4ba",
+      "selector": "weights; main loop block47-59",
+      "mode": "SHA_LOCKED_AST_REUSE"
+    },
+    {
+      "id": "T12",
+      "path": "experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/code/coverage.py",
+      "sha256": "156b183d0faa15847bca5fd83da151a7dcde1d7bd53bc349b161275cca51b920",
+      "commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "verified": true,
+      "ast_sha256": "2ed080d979e8b18399f17e438d41ead6de88c81cdb15408c1c3f812062289bdb",
+      "selector": "greedy",
+      "mode": "SHA_LOCKED_AST_REUSE"
+    },
+    {
+      "id": "T13",
+      "path": "experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/code/coverage.py",
+      "sha256": "156b183d0faa15847bca5fd83da151a7dcde1d7bd53bc349b161275cca51b920",
+      "commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "verified": true,
+      "ast_sha256": "2ed080d979e8b18399f17e438d41ead6de88c81cdb15408c1c3f812062289bdb",
+      "selector": "support_pairs; main block91-96",
+      "mode": "SHA_LOCKED_AST_REUSE"
+    },
+    {
+      "id": "T24",
+      "path": "experiments/TASK-E4-PYTORCH3D-014/code/p3d.py",
+      "sha256": "04c70090e5ee50a5345169f132ccd8a0b988c5b72c03a29745b76d04e45eef0f",
+      "commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "verified": true,
+      "ast_sha256": "1b64d94505d8a6f4ec802457c415706d16737bd96cc9e768d91e928e26efdee1",
+      "selector": "tensor/mesh/renderer/Case",
+      "mode": "SHA_LOCKED_AST_REUSE"
+    },
+    {
+      "id": "T31",
+      "path": "experiments/TASK-E4-PYTORCH3D-014/code/contour_objective.py",
+      "sha256": "f8966a0a304b056bc9d85338bab9a082809b1255a7e87fa5a4f9e167945629f1",
+      "commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "verified": true,
+      "ast_sha256": "26a306e21f35610422515121efdb985f6e78db8914a2bd873ff8a16accc5a992",
+      "selector": "ContourDistance",
+      "mode": "SHA_LOCKED_AST_REUSE"
+    },
+    {
+      "id": "T34",
+      "path": "experiments/TASK-E4-PYTORCH3D-014/code/safe_geometry.py",
+      "sha256": "5ff32cc404300406ec05f0b147f332691186ead64df88ff2ad4f69569fd715fc",
+      "commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "verified": true,
+      "ast_sha256": "ba02e7e00095911f1cf64b1a3750f8e102e9ea5543ba2278c4ff93c3b151035a",
+      "selector": "self_intersections/dense_face_distance/points/GeometryGuard",
+      "mode": "SHA_LOCKED_AST_REUSE"
+    },
+    {
+      "id": "common",
+      "path": "experiments/TASK-E4-PYTORCH3D-014/code/common.py",
+      "sha256": "d1e0ddda7430e97027cd9144b123284416c34fc3f87f9d7bb3644528a808ed7f",
+      "commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "verified": true,
+      "ast_sha256": "26aa48bcdcd10d1f4bc88023faf0c9db57bd8f64c4701a714810aa8a1255ecbd",
+      "selector": "scene/contour",
+      "mode": "SHA_LOCKED_AST_REUSE"
+    },
+    {
+      "id": "rgb",
+      "path": "experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/code/rgb.py",
+      "sha256": "92e0e22edc204f65e39a0d8623c83b98425e5500212020372484706ea4c06dbd",
+      "commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "verified": true,
+      "ast_sha256": "e7be2c226f2ae4f12bc923c30d11969e2c4baa14489181d8ecac8d3d6a28220e",
+      "selector": "mutual",
+      "mode": "SHA_LOCKED_AST_REUSE"
+    }
+  ],
+  "implementation_SHA256": {
+    "src/ring_first_3d/__init__.py": "74f163ae3f6301882d1f66309d26c3c8509d78cab058fa3a12ec6149c1077d21",
+    "src/ring_first_3d/_legacy.py": "375959e174b47b982194de6764d99afa41d1e7e3df4dd47349efce8ab901aff5",
+    "src/ring_first_3d/adapters/__init__.py": "3cfc412d7f08d7a4ad9f5843faf490f9f49f2ee89617fcc891136a8de7044572",
+    "src/ring_first_3d/adapters/dxy.py": "9298327692b4973c0cf651d868b2bfb61d6bf62748dd132eb1f67756e3b27f78",
+    "src/ring_first_3d/contracts/__init__.py": "8e31e91107080f89b433c91e01e6d95b8eb14df53a2b52da6e80cdd9e37581c9",
+    "src/ring_first_3d/contracts/coordinates.py": "03b45ba4811c00b01a4e5c014a888d003dca51fe0399e1b2f4d261195286171b",
+    "src/ring_first_3d/contracts/identities.py": "f4838d80c256c9214bcee515928999c0990c516b276947b3a67836915133ce8a",
+    "src/ring_first_3d/evaluation/__init__.py": "eb674fbcdc24d05fd7c997f953a5a678616e40e63ad339cfd7275e270b47dff7",
+    "src/ring_first_3d/evaluation/validation.py": "73f64f1b36ca092b085f766ba5dc1c058c8580a65589b0639b990bab131b1e83",
+    "src/ring_first_3d/rendering/__init__.py": "cbc9e11056e698d078db334127d22c689f69919d92ac320e047f33cdc345f280",
+    "src/ring_first_3d/rendering/pytorch3d_renderer.py": "62ffb5ab4a409e137331452ec7e46ab5d66f66d96f11f449e528bf58697dd001",
+    "src/ring_first_3d/views/__init__.py": "a0e86fcc991c78a11c82de9cb83dd72b24a7cd50faf580173d17c3126595e880",
+    "src/ring_first_3d/views/selection.py": "4c18fe13ece60f01743270f22b95f950b15dc253a3ec82cc56208f53b8c5492d",
+    "tools/research/_bootstrap.py": "68be44303188ee3cc3c092e2471076bba936bc30c34c7ab98a91485233e9c4a9",
+    "tools/research/archive_uncertain_cache.py": "1cf6d3d9ddf91668fabaead8e662c1747745ccf0f8dbb33d7a03bf0e83c81ac8",
+    "tools/research/audit_reuse.py": "3685ccdf202abc9f70509566a0402f772611d6d7f88c6007d5e6d7dcb5119bdf",
+    "tools/research/audit_storage.py": "ec7e6b9cff5622cd84a23e92741d006e4346cba5253cfaee3f000f72560e1ea0",
+    "tools/research/check_payload.py": "692659622f3e5fc24afc059e360c2b6fd076db7c998f6f7275ea95f41825120e",
+    "tools/research/freeze_reference.py": "d4a82ad3f151aa4fe0cff4f7317cb723b4483f556b0040110169d9a3206e800d",
+    "tools/research/preflight.py": "3ed669b84490fb3f08dc487ebb1b8dbd5e1ff2e791bb5f453c88e89d1088d5ca",
+    "tools/research/prepare_main_ready.py": "6af9426052bcff64726b4cbdfc004949534073a5f765470d47155c69c7af8adf",
+    "tools/research/prune_verified_cache.py": "d96d4690358638d9806d6b0bdab540493817efc35d8c6f464202da27992e9217",
+    "tools/research/render_evidence.py": "39b8cda18efdb8b96e46dc8ba003e3cca0f9a0070a6ecdaa08bb527977313e64",
+    "tools/research/smoke.py": "087d8b5699347bdd5ebad3bd342913a9e5fe7a6985417ddbde8a5e9ee5ab630f",
+    "tools/research/validate_contracts.py": "a8889c97d9f5f6072f87f72b723072a623ca9bc77f876f0022614f24f84434b8",
+    "tools/research/verify_cache_recovery.py": "355aad21069da02cfd0a37b7574ed45d12183ba7a18cd58666c44d7aea51f406",
+    "tests/test_harness_contracts.py": "6d4b12592a3a71670896de5b9fb463416556d7c66d33aa1802292d249386541b"
+  },
+  "policy": "No top-level historical imports or mains; source hash checked on each load",
+  "GT_read": false,
+  "history_prediction_fallback": 0
+}

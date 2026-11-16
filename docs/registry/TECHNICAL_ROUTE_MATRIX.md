@@ -1,5 +1,7 @@
 # 技术路线总表
 
+工程更新：T01/T03/T04、T10–T13、T24 已进入[有限范围 Harness 实测](../RESEARCH_EXECUTION_HARNESS.md)，T31/T34 仅兼容性测试。下表保留历史科研判断；工程调用 PASS 不提升科学验收。下一任务优先复用，遵守[模块晋升政策](MODULE_PROMOTION_POLICY.md)。
+
 本表按能力组织 43 项具体技术，源码证据、调用、完整 SHA256 与修改边界逐项见[可复用模块卡](REUSABLE_MODULES.md)，同 ID 可在[机器注册表](MODULE_REGISTRY.json)查找。科学结论依据各行证据；本次为证据汇编，没有授予新科学验收。
 
 工程状态与科研状态必须独立填写。工程：FROZEN=源码/接口冻结；VERIFIED=有实际工程验证；REUSABLE_CANDIDATE=具复用条件但推广不足；EXPERIMENTAL=实验实现；DEPRECATED=不建议当前继续；UNKNOWN=证据不足。

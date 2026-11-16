@@ -1,5 +1,7 @@
 # Ring-First 3D 项目入口
 
+工程入口更新（TASK-RESEARCH-HARNESS-STORAGE-001）：[Research Execution Harness](RESEARCH_EXECUTION_HARNESS.md) 已提供 DXY 像素几何、独立视角选择和公制 Renderer 的共享接口；真实测试及 11 项契约通过。T31/T34 仅兼容性测试。先查注册表，再 Preflight/Smoke，随后执行已授权的大实验；本轮不提升科研验收状态。范围见[晋升政策](registry/MODULE_PROMOTION_POLICY.md)。
+
 审计日期：2026-11-16。文档任务：TASK-PROJECT-TECHNOLOGY-REGISTRY-001。
 科研快照：`exp/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001@5636aaebd61a3d53b69f528692c4c7095df46508`。
 [基线与审计边界](registry/BASELINE_AUDIT.md) · [技术路线总表](registry/TECHNICAL_ROUTE_MATRIX.md) · [具体代码接口](registry/REUSABLE_MODULES.md)。
@@ -38,6 +40,6 @@ E4 路线图提出粗 Body→人工审阅→A2 背景位姿→人工审阅→B1 
 2. 在[路线表](registry/TECHNICAL_ROUTE_MATRIX.md)选技术 ID，再按[模块清单](registry/REUSABLE_MODULES.md)核对文件、函数、分支、commit、完整 SHA256 与实际调用。
 3. 使用独立任务目录，先冻结来源、参数、FIT/HOLDOUT、预测与源码哈希；GT 只在独立评价阶段读取。
 4. 核查失败证据与[资产规范](registry/ASSET_MANAGEMENT_POLICY.md)。缺输入保留 NaN/NOT_EVALUABLE；历史测量回退为 0；登记全体目标分母及共同成功组。
-5. 下一步先人工审阅四组 E1/E2 多初值、留出轮廓与 Ring 穿透证据。共享模块晋升、改变科研主线及新实验均需另行任务；本注册表没有搬迁代码或授予算法科学验收。
+5. 先完成[Harness 预检查与真实 Smoke](RESEARCH_EXECUTION_HARNESS.md)，再执行明确授权的科研任务。四组 E1/E2 多初值、留出轮廓与 Ring 穿透证据仍待人工审阅；本轮用户授权的有限接口工程化不改变科研主线或授予算法科学验收。
 
 可用[12 问入口](registry/ONBOARDING_CHECKLIST.md)检查理解。历史路线图/技术版本保留原文；当前范围与证据优先于旧版本“候选”称谓。
