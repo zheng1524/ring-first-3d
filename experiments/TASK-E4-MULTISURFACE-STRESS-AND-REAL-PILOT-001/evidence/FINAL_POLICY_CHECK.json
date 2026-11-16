@@ -1,0 +1,127 @@
+{
+  "status": "PASS",
+  "freeze_sha256": "842477008c0732bbd75a64d7b57ee8465fa9100bbd9b502de43a45e29d621cc3",
+  "module_contracts": {
+    "T01": {
+      "sources": [],
+      "requires": [],
+      "units": "native_image_px"
+    },
+    "T03": {
+      "sources": [
+        "T03"
+      ],
+      "requires": [
+        "T01"
+      ],
+      "units": "native_image_px"
+    },
+    "T04": {
+      "sources": [
+        "T04"
+      ],
+      "requires": [
+        "T03"
+      ],
+      "units": "native_image_px"
+    },
+    "T10": {
+      "sources": [
+        "T10"
+      ],
+      "requires": [],
+      "units": "native_image_px"
+    },
+    "T11": {
+      "sources": [
+        "T11"
+      ],
+      "requires": [
+        "T10"
+      ],
+      "units": "mm"
+    },
+    "T12": {
+      "sources": [
+        "T12"
+      ],
+      "requires": [],
+      "units": "mm"
+    },
+    "T13": {
+      "sources": [
+        "T13",
+        "rgb"
+      ],
+      "requires": [
+        "T12"
+      ],
+      "units": "native_image_px"
+    },
+    "T24": {
+      "sources": [
+        "T24",
+        "common"
+      ],
+      "requires": [],
+      "units": "mm"
+    },
+    "T31": {
+      "sources": [
+        "T31",
+        "common"
+      ],
+      "requires": [
+        "T24"
+      ],
+      "units": "mm"
+    },
+    "T34": {
+      "sources": [
+        "T34",
+        "common"
+      ],
+      "requires": [
+        "T24"
+      ],
+      "units": "mm"
+    },
+    "MF01": {
+      "path": "multisurface/scene.py",
+      "sha256": "da6ca2ed8a758015436dd1168e01245c51fba61928ae559818cb8621a6f21943"
+    },
+    "MF02": {
+      "path": "multisurface/registration.py",
+      "sha256": "81ffe3368a637d0902293f7d711abeca912a91d681faeda532d0503882aaf1a3"
+    },
+    "MF03": {
+      "path": "multisurface/fusion.py",
+      "sha256": "607eef83f905122b3d0b746070e66a717a19e775984b7f8e420fcf31fe9b590b"
+    },
+    "MF04": {
+      "path": "multisurface/evaluate.py",
+      "sha256": "f52a6b6354b54ddaf4e561a013075a0c6209b17501d9abb2a7a07dec27e99e7a"
+    },
+    "MF05": {
+      "path": "multisurface/visualize.py",
+      "sha256": "45d56241c9bdc9a7e9c915da70960c7394199cd2767bedc602affca4182b2a47"
+    },
+    "SR01": {
+      "path": "stress/handlers.py",
+      "sha256": "73bc43da85fecbea172cda60d85575599e28e8deae391981b88fca1de8e0a963"
+    },
+    "SR02": {
+      "path": "stress/real.py",
+      "sha256": "3582c37b33cb8312008bb03de1da2cfba5d40c72821f1c1b4f1e748d07be5f99"
+    },
+    "SR03": {
+      "path": "stress/evaluate.py",
+      "sha256": "93cdd9a53483ba8a05e6abd4da83287ebc1a39246901084a36abb63094862c13"
+    },
+    "SR04": {
+      "path": "stress/visualize.py",
+      "sha256": "114781ba13e2be90bf8a34b07ee1a7e01c8e4e38bebd61477ee8169c851df80d"
+    }
+  },
+  "verified_assets": 250
+}

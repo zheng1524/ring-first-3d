@@ -1,0 +1,1138 @@
+{
+  "group": "G01",
+  "absolute_accuracy": "NOT_EVALUABLE",
+  "scientific_negatives": [
+    {
+      "group": "G01",
+      "method": "M0",
+      "status": "NUMERIC",
+      "FIT_views": 4,
+      "HOLDOUT_views": 2,
+      "absolute_GT_accuracy": null,
+      "GT_status": "NOT_EVALUABLE_NO_INDEPENDENT_GT",
+      "no_GT_alignment": true,
+      "within_video": {
+        "target_N": 675,
+        "numeric_N": 675,
+        "failed_N": 0,
+        "N": 675,
+        "MAE": 0.826822161468489,
+        "median": 0.7225926974231955,
+        "p95": 1.717903985539574,
+        "maximum": 5.521479648769207
+      },
+      "cross_video": {
+        "target_N": 1226,
+        "numeric_N": 1226,
+        "failed_N": 0,
+        "N": 1226,
+        "MAE": 0.7339004922712914,
+        "median": 0.5350000576710003,
+        "p95": 1.7224314850744153,
+        "maximum": 13.616143293891543
+      },
+      "overlap_query_semantics": "Fixed baseline projected-mask support; nearest surfaces, not certified material matches",
+      "overlap_within0p2mm": {
+        "within_video": 0.14222222222222222,
+        "cross_video": 0.1835236541598695
+      },
+      "correspondence": {
+        "body": [
+          {
+            "i": 0,
+            "target_N": 96,
+            "accepted_N": 86,
+            "contact_unknown_N": 3
+          },
+          {
+            "i": 1,
+            "target_N": 96,
+            "accepted_N": 9,
+            "contact_unknown_N": 5
+          },
+          {
+            "i": 2,
+            "target_N": 96,
+            "accepted_N": 80,
+            "contact_unknown_N": 6
+          },
+          {
+            "i": 3,
+            "target_N": 96,
+            "accepted_N": 79,
+            "contact_unknown_N": 6
+          }
+        ],
+        "pairs": [
+          {
+            "i": 0,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 83
+          },
+          {
+            "i": 1,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 73
+          },
+          {
+            "i": 0,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 72
+          },
+          {
+            "i": 2,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 93
+          },
+          {
+            "i": 0,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 83
+          },
+          {
+            "i": 3,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 88
+          },
+          {
+            "i": 1,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 64
+          },
+          {
+            "i": 2,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 91
+          },
+          {
+            "i": 1,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 70
+          },
+          {
+            "i": 3,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 81
+          },
+          {
+            "i": 2,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 80
+          },
+          {
+            "i": 3,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 74
+          }
+        ],
+        "body_rate": 0.6614583333333334,
+        "pair_rate": 0.8263888888888888
+      },
+      "ownership": {
+        "vertices": 9122,
+        "faces": 17924,
+        "measured_owner_vertices": 2723,
+        "Body_completion_vertices": 6399,
+        "unobserved_completion_vertices": 2189,
+        "observed_untrusted_completion_vertices": 4210,
+        "overlap_conflict_vertices": 3744,
+        "max_radial_conflict_mm": 2.4663748741149902,
+        "seam_triangles_rejected": 316,
+        "measured_faces": 4613,
+        "completion_faces": 11992,
+        "transition_faces": 1319,
+        "no_average_coordinates": true,
+        "no_duplicate_surface_cells": true,
+        "Body_parameters_unchanged": true,
+        "chart_polar_angles": 96,
+        "chart_azimuth_angles": 96,
+        "geometry_model": "Uniform-angle radial chart of unchanged frozen ellipsoid parameters with measured source triangle hits; non-star-shaped geometry/owner transitions may leave explicit holes"
+      },
+      "seconds": 0.4117947240010835,
+      "fixed_source_vertices": 64180,
+      "geometry_anomalies": [
+        {
+          "id": "G01_v004_raw00341",
+          "vertices": 22733,
+          "faces": 43746,
+          "ring_penetration_N": 96,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 22733,
+            "numeric_N": 22733,
+            "failed_N": 0,
+            "N": 22733,
+            "MAE": 5.560618449892466e-14,
+            "median": 5.684341886080802e-14,
+            "p95": 1.0247593068766006e-13,
+            "maximum": 1.797546735911271e-13
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v004_raw01264",
+          "vertices": 13586,
+          "faces": 25309,
+          "ring_penetration_N": 13,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 13586,
+            "numeric_N": 13586,
+            "failed_N": 0,
+            "N": 13586,
+            "MAE": 4.1127321932309386e-14,
+            "median": 5.684341886080802e-14,
+            "p95": 8.038873388460929e-14,
+            "maximum": 1.2710574864626038e-13
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v005_raw00185",
+          "vertices": 15707,
+          "faces": 30376,
+          "ring_penetration_N": 0,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 15707,
+            "numeric_N": 15707,
+            "failed_N": 0,
+            "N": 15707,
+            "MAE": 7.977487032138089e-14,
+            "median": 8.038873388460929e-14,
+            "p95": 1.2710574864626038e-13,
+            "maximum": 1.9065862296939058e-13
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v005_raw00562",
+          "vertices": 12154,
+          "faces": 22588,
+          "ring_penetration_N": 48,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 12154,
+            "numeric_N": 12154,
+            "failed_N": 0,
+            "N": 12154,
+            "MAE": 8.988252034352447e-14,
+            "median": 8.526512829121202e-14,
+            "p95": 1.4210854715202004e-13,
+            "maximum": 1.9065862296939058e-13
+          },
+          "original_topology_preserved": true
+        }
+      ],
+      "HOLDOUT": [
+        {
+          "id": "G01_v004_raw00049",
+          "video": "004",
+          "image_grid_N": 14080,
+          "mask_target_N": 1343,
+          "predicted_visible_N": 1149,
+          "mask_recall": 0.8309754281459419,
+          "mask_IoU": 0.811046511627907,
+          "missed_mask_N": 227,
+          "false_positive_N": 33,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 1343,
+            "numeric_N": 1116,
+            "failed_N": 227,
+            "N": 1116,
+            "MAE": 1.74224733879062,
+            "median": 1.2370405197143555,
+            "p95": 6.422972679138184,
+            "maximum": 28.75133514404297
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 405
+        },
+        {
+          "id": "G01_video005_v005_00000",
+          "video": "005",
+          "image_grid_N": 14080,
+          "mask_target_N": 1357,
+          "predicted_visible_N": 1151,
+          "mask_recall": 0.8260869565217391,
+          "mask_IoU": 0.8082191780821918,
+          "missed_mask_N": 236,
+          "false_positive_N": 30,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 1357,
+            "numeric_N": 1121,
+            "failed_N": 236,
+            "N": 1121,
+            "MAE": 0.975112448836096,
+            "median": 0.3432483673095703,
+            "p95": 6.996042251586914,
+            "maximum": 8.624988555908203
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 631
+        }
+      ]
+    },
+    {
+      "group": "G01",
+      "method": "ICP",
+      "status": "NUMERIC",
+      "FIT_views": 4,
+      "HOLDOUT_views": 2,
+      "absolute_GT_accuracy": null,
+      "GT_status": "NOT_EVALUABLE_NO_INDEPENDENT_GT",
+      "no_GT_alignment": true,
+      "within_video": {
+        "target_N": 675,
+        "numeric_N": 675,
+        "failed_N": 0,
+        "N": 675,
+        "MAE": 0.34447545009888964,
+        "median": 0.19934644178155564,
+        "p95": 1.0419784713919158,
+        "maximum": 4.448847509345217
+      },
+      "cross_video": {
+        "target_N": 1226,
+        "numeric_N": 1226,
+        "failed_N": 0,
+        "N": 1226,
+        "MAE": 0.5296485627735373,
+        "median": 0.2821263296693062,
+        "p95": 1.5824897031589589,
+        "maximum": 11.897201845045508
+      },
+      "overlap_query_semantics": "Fixed baseline projected-mask support; nearest surfaces, not certified material matches",
+      "overlap_within0p2mm": {
+        "within_video": 0.5007407407407407,
+        "cross_video": 0.3817292006525285
+      },
+      "correspondence": {
+        "body": [
+          {
+            "i": 0,
+            "target_N": 96,
+            "accepted_N": 86,
+            "contact_unknown_N": 3
+          },
+          {
+            "i": 1,
+            "target_N": 96,
+            "accepted_N": 8,
+            "contact_unknown_N": 5
+          },
+          {
+            "i": 2,
+            "target_N": 96,
+            "accepted_N": 80,
+            "contact_unknown_N": 6
+          },
+          {
+            "i": 3,
+            "target_N": 96,
+            "accepted_N": 78,
+            "contact_unknown_N": 6
+          }
+        ],
+        "pairs": [
+          {
+            "i": 0,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 90
+          },
+          {
+            "i": 1,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 87
+          },
+          {
+            "i": 0,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 74
+          },
+          {
+            "i": 2,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 90
+          },
+          {
+            "i": 0,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 73
+          },
+          {
+            "i": 3,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 87
+          },
+          {
+            "i": 1,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 64
+          },
+          {
+            "i": 2,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 89
+          },
+          {
+            "i": 1,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 70
+          },
+          {
+            "i": 3,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 89
+          },
+          {
+            "i": 2,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 93
+          },
+          {
+            "i": 3,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 86
+          }
+        ],
+        "body_rate": 0.65625,
+        "pair_rate": 0.8611111111111112
+      },
+      "ownership": {
+        "vertices": 9122,
+        "faces": 17942,
+        "measured_owner_vertices": 3819,
+        "Body_completion_vertices": 5303,
+        "unobserved_completion_vertices": 3067,
+        "observed_untrusted_completion_vertices": 2236,
+        "overlap_conflict_vertices": 3626,
+        "max_radial_conflict_mm": 2.052018165588379,
+        "seam_triangles_rejected": 298,
+        "measured_faces": 7045,
+        "completion_faces": 10011,
+        "transition_faces": 886,
+        "no_average_coordinates": true,
+        "no_duplicate_surface_cells": true,
+        "Body_parameters_unchanged": true,
+        "chart_polar_angles": 96,
+        "chart_azimuth_angles": 96,
+        "geometry_model": "Uniform-angle radial chart of unchanged frozen ellipsoid parameters with measured source triangle hits; non-star-shaped geometry/owner transitions may leave explicit holes"
+      },
+      "seconds": 1.7387453199989977,
+      "fixed_source_vertices": 64180,
+      "geometry_anomalies": [
+        {
+          "id": "G01_v004_raw00341",
+          "vertices": 22733,
+          "faces": 43746,
+          "ring_penetration_N": 96,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 22733,
+            "numeric_N": 22733,
+            "failed_N": 0,
+            "N": 22733,
+            "MAE": 5.560618449892466e-14,
+            "median": 5.684341886080802e-14,
+            "p95": 1.0247593068766006e-13,
+            "maximum": 1.797546735911271e-13
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v004_raw01264",
+          "vertices": 13586,
+          "faces": 25309,
+          "ring_penetration_N": 112,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 13586,
+            "numeric_N": 13586,
+            "failed_N": 0,
+            "N": 13586,
+            "MAE": 14.288498119863569,
+            "median": 13.4763358010849,
+            "p95": 27.69712173602991,
+            "maximum": 65.9946458937496
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v005_raw00185",
+          "vertices": 15707,
+          "faces": 30376,
+          "ring_penetration_N": 192,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 15707,
+            "numeric_N": 15707,
+            "failed_N": 0,
+            "N": 15707,
+            "MAE": 14.113947159017473,
+            "median": 14.360320593408794,
+            "p95": 21.102293300625973,
+            "maximum": 31.07206819844321
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v005_raw00562",
+          "vertices": 12154,
+          "faces": 22588,
+          "ring_penetration_N": 143,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 12154,
+            "numeric_N": 12154,
+            "failed_N": 0,
+            "N": 12154,
+            "MAE": 17.929855203668495,
+            "median": 18.461622173849065,
+            "p95": 29.466226605400927,
+            "maximum": 41.8549687706626
+          },
+          "original_topology_preserved": true
+        }
+      ],
+      "HOLDOUT": [
+        {
+          "id": "G01_v004_raw00049",
+          "video": "004",
+          "image_grid_N": 14080,
+          "mask_target_N": 1343,
+          "predicted_visible_N": 1144,
+          "mask_recall": 0.8212956068503351,
+          "mask_IoU": 0.7969653179190751,
+          "missed_mask_N": 240,
+          "false_positive_N": 41,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 1343,
+            "numeric_N": 1103,
+            "failed_N": 240,
+            "N": 1103,
+            "MAE": 1.3182380932196638,
+            "median": 1.0710601806640625,
+            "p95": 2.8011940002441365,
+            "maximum": 10.663522720336914
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 405
+        },
+        {
+          "id": "G01_video005_v005_00000",
+          "video": "005",
+          "image_grid_N": 14080,
+          "mask_target_N": 1357,
+          "predicted_visible_N": 1159,
+          "mask_recall": 0.8187177597641857,
+          "mask_IoU": 0.7907473309608541,
+          "missed_mask_N": 246,
+          "false_positive_N": 48,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 1357,
+            "numeric_N": 1111,
+            "failed_N": 246,
+            "N": 1111,
+            "MAE": 0.7136265577012413,
+            "median": 0.3919334411621094,
+            "p95": 2.392655372619629,
+            "maximum": 8.223489761352539
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 631
+        }
+      ]
+    },
+    {
+      "group": "G01",
+      "method": "BODY_VIDEO",
+      "status": "NUMERIC",
+      "FIT_views": 4,
+      "HOLDOUT_views": 2,
+      "absolute_GT_accuracy": null,
+      "GT_status": "NOT_EVALUABLE_NO_INDEPENDENT_GT",
+      "no_GT_alignment": true,
+      "within_video": {
+        "target_N": 675,
+        "numeric_N": 675,
+        "failed_N": 0,
+        "N": 675,
+        "MAE": 0.8268221497568309,
+        "median": 0.722592490884689,
+        "p95": 1.7179038918775489,
+        "maximum": 5.521479433139816
+      },
+      "cross_video": {
+        "target_N": 1226,
+        "numeric_N": 1226,
+        "failed_N": 0,
+        "N": 1226,
+        "MAE": 0.6299772810840701,
+        "median": 0.4856702231207021,
+        "p95": 1.5801712539490422,
+        "maximum": 12.543949086083062
+      },
+      "overlap_query_semantics": "Fixed baseline projected-mask support; nearest surfaces, not certified material matches",
+      "overlap_within0p2mm": {
+        "within_video": 0.14222222222222222,
+        "cross_video": 0.2267536704730832
+      },
+      "correspondence": {
+        "body": [
+          {
+            "i": 0,
+            "target_N": 96,
+            "accepted_N": 86,
+            "contact_unknown_N": 3
+          },
+          {
+            "i": 1,
+            "target_N": 96,
+            "accepted_N": 24,
+            "contact_unknown_N": 5
+          },
+          {
+            "i": 2,
+            "target_N": 96,
+            "accepted_N": 80,
+            "contact_unknown_N": 6
+          },
+          {
+            "i": 3,
+            "target_N": 96,
+            "accepted_N": 80,
+            "contact_unknown_N": 6
+          }
+        ],
+        "pairs": [
+          {
+            "i": 0,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 83
+          },
+          {
+            "i": 1,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 73
+          },
+          {
+            "i": 0,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 75
+          },
+          {
+            "i": 2,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 84
+          },
+          {
+            "i": 0,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 79
+          },
+          {
+            "i": 3,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 88
+          },
+          {
+            "i": 1,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 73
+          },
+          {
+            "i": 2,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 88
+          },
+          {
+            "i": 1,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 77
+          },
+          {
+            "i": 3,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 76
+          },
+          {
+            "i": 2,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 80
+          },
+          {
+            "i": 3,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 74
+          }
+        ],
+        "body_rate": 0.703125,
+        "pair_rate": 0.8246527777777778
+      },
+      "ownership": {
+        "vertices": 9122,
+        "faces": 17634,
+        "measured_owner_vertices": 2982,
+        "Body_completion_vertices": 6140,
+        "unobserved_completion_vertices": 2188,
+        "observed_untrusted_completion_vertices": 3952,
+        "overlap_conflict_vertices": 3417,
+        "max_radial_conflict_mm": 2.8593525886535645,
+        "seam_triangles_rejected": 606,
+        "measured_faces": 5190,
+        "completion_faces": 11480,
+        "transition_faces": 964,
+        "no_average_coordinates": true,
+        "no_duplicate_surface_cells": true,
+        "Body_parameters_unchanged": true,
+        "chart_polar_angles": 96,
+        "chart_azimuth_angles": 96,
+        "geometry_model": "Uniform-angle radial chart of unchanged frozen ellipsoid parameters with measured source triangle hits; non-star-shaped geometry/owner transitions may leave explicit holes"
+      },
+      "seconds": 0.8751741419982864,
+      "fixed_source_vertices": 64180,
+      "geometry_anomalies": [
+        {
+          "id": "G01_v004_raw00341",
+          "vertices": 22733,
+          "faces": 43746,
+          "ring_penetration_N": 225,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 22733,
+            "numeric_N": 22733,
+            "failed_N": 0,
+            "N": 22733,
+            "MAE": 16.638710662844737,
+            "median": 17.773732939279757,
+            "p95": 23.504182860459615,
+            "maximum": 28.169291620856683
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v004_raw01264",
+          "vertices": 13586,
+          "faces": 25309,
+          "ring_penetration_N": 97,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 13586,
+            "numeric_N": 13586,
+            "failed_N": 0,
+            "N": 13586,
+            "MAE": 12.42026534175923,
+            "median": 12.90560781402558,
+            "p95": 19.685022722151228,
+            "maximum": 20.495742474387274
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v005_raw00185",
+          "vertices": 15707,
+          "faces": 30376,
+          "ring_penetration_N": 57,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 15707,
+            "numeric_N": 15707,
+            "failed_N": 0,
+            "N": 15707,
+            "MAE": 5.603468279084217,
+            "median": 5.401635451845275,
+            "p95": 10.106644719721272,
+            "maximum": 12.16015380321476
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v005_raw00562",
+          "vertices": 12154,
+          "faces": 22588,
+          "ring_penetration_N": 47,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 12154,
+            "numeric_N": 12154,
+            "failed_N": 0,
+            "N": 12154,
+            "MAE": 5.137929967558436,
+            "median": 5.234772268203469,
+            "p95": 8.60647230870072,
+            "maximum": 11.730428126760494
+          },
+          "original_topology_preserved": true
+        }
+      ],
+      "HOLDOUT": [
+        {
+          "id": "G01_v004_raw00049",
+          "video": "004",
+          "image_grid_N": 14080,
+          "mask_target_N": 1343,
+          "predicted_visible_N": 1200,
+          "mask_recall": 0.8436336559940432,
+          "mask_IoU": 0.8035460992907801,
+          "missed_mask_N": 210,
+          "false_positive_N": 67,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 1343,
+            "numeric_N": 1133,
+            "failed_N": 210,
+            "N": 1133,
+            "MAE": 1.6458965008593405,
+            "median": 1.3765106201171875,
+            "p95": 6.116519165039062,
+            "maximum": 11.065483093261719
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 405
+        },
+        {
+          "id": "G01_video005_v005_00000",
+          "video": "005",
+          "image_grid_N": 14080,
+          "mask_target_N": 1357,
+          "predicted_visible_N": 1209,
+          "mask_recall": 0.8548268238761975,
+          "mask_IoU": 0.8250355618776671,
+          "missed_mask_N": 197,
+          "false_positive_N": 49,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 1357,
+            "numeric_N": 1160,
+            "failed_N": 197,
+            "N": 1160,
+            "MAE": 1.1579479151758654,
+            "median": 0.5247621536254883,
+            "p95": 5.899127483367918,
+            "maximum": 8.533870697021484
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 631
+        }
+      ]
+    },
+    {
+      "group": "G01",
+      "method": "BODY_HIER",
+      "status": "NUMERIC",
+      "FIT_views": 4,
+      "HOLDOUT_views": 2,
+      "absolute_GT_accuracy": null,
+      "GT_status": "NOT_EVALUABLE_NO_INDEPENDENT_GT",
+      "no_GT_alignment": true,
+      "within_video": {
+        "target_N": 675,
+        "numeric_N": 675,
+        "failed_N": 0,
+        "N": 675,
+        "MAE": 0.5595545196189013,
+        "median": 0.46665753669936966,
+        "p95": 1.2215247003258303,
+        "maximum": 5.131743713776658
+      },
+      "cross_video": {
+        "target_N": 1226,
+        "numeric_N": 1226,
+        "failed_N": 0,
+        "N": 1226,
+        "MAE": 0.4801348627342707,
+        "median": 0.30816725734700023,
+        "p95": 1.3288876023241862,
+        "maximum": 12.564389521420933
+      },
+      "overlap_query_semantics": "Fixed baseline projected-mask support; nearest surfaces, not certified material matches",
+      "overlap_within0p2mm": {
+        "within_video": 0.10962962962962963,
+        "cross_video": 0.3262642740619902
+      },
+      "correspondence": {
+        "body": [
+          {
+            "i": 0,
+            "target_N": 96,
+            "accepted_N": 86,
+            "contact_unknown_N": 3
+          },
+          {
+            "i": 1,
+            "target_N": 96,
+            "accepted_N": 21,
+            "contact_unknown_N": 5
+          },
+          {
+            "i": 2,
+            "target_N": 96,
+            "accepted_N": 80,
+            "contact_unknown_N": 6
+          },
+          {
+            "i": 3,
+            "target_N": 96,
+            "accepted_N": 81,
+            "contact_unknown_N": 6
+          }
+        ],
+        "pairs": [
+          {
+            "i": 0,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 86
+          },
+          {
+            "i": 1,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 81
+          },
+          {
+            "i": 0,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 75
+          },
+          {
+            "i": 2,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 89
+          },
+          {
+            "i": 0,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 81
+          },
+          {
+            "i": 3,
+            "j": 0,
+            "target_N": 96,
+            "accepted_N": 89
+          },
+          {
+            "i": 1,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 74
+          },
+          {
+            "i": 2,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 89
+          },
+          {
+            "i": 1,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 79
+          },
+          {
+            "i": 3,
+            "j": 1,
+            "target_N": 96,
+            "accepted_N": 86
+          },
+          {
+            "i": 2,
+            "j": 3,
+            "target_N": 96,
+            "accepted_N": 91
+          },
+          {
+            "i": 3,
+            "j": 2,
+            "target_N": 96,
+            "accepted_N": 80
+          }
+        ],
+        "body_rate": 0.6979166666666666,
+        "pair_rate": 0.8680555555555556
+      },
+      "ownership": {
+        "vertices": 9122,
+        "faces": 17805,
+        "measured_owner_vertices": 2833,
+        "Body_completion_vertices": 6289,
+        "unobserved_completion_vertices": 2409,
+        "observed_untrusted_completion_vertices": 3880,
+        "overlap_conflict_vertices": 3407,
+        "max_radial_conflict_mm": 1.960059642791748,
+        "seam_triangles_rejected": 435,
+        "measured_faces": 4797,
+        "completion_faces": 11667,
+        "transition_faces": 1341,
+        "no_average_coordinates": true,
+        "no_duplicate_surface_cells": true,
+        "Body_parameters_unchanged": true,
+        "chart_polar_angles": 96,
+        "chart_azimuth_angles": 96,
+        "geometry_model": "Uniform-angle radial chart of unchanged frozen ellipsoid parameters with measured source triangle hits; non-star-shaped geometry/owner transitions may leave explicit holes"
+      },
+      "seconds": 0.9342256510026345,
+      "fixed_source_vertices": 64180,
+      "geometry_anomalies": [
+        {
+          "id": "G01_v004_raw00341",
+          "vertices": 22733,
+          "faces": 43746,
+          "ring_penetration_N": 363,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 22733,
+            "numeric_N": 22733,
+            "failed_N": 0,
+            "N": 22733,
+            "MAE": 18.86431029594626,
+            "median": 20.242312957995804,
+            "p95": 26.07364451688693,
+            "maximum": 26.60593407930507
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v004_raw01264",
+          "vertices": 13586,
+          "faces": 25309,
+          "ring_penetration_N": 58,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 13586,
+            "numeric_N": 13586,
+            "failed_N": 0,
+            "N": 13586,
+            "MAE": 9.13287097404903,
+            "median": 9.09839537748461,
+            "p95": 15.005683990195617,
+            "maximum": 23.056602277652658
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v005_raw00185",
+          "vertices": 15707,
+          "faces": 30376,
+          "ring_penetration_N": 222,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 15707,
+            "numeric_N": 15707,
+            "failed_N": 0,
+            "N": 15707,
+            "MAE": 10.104139569551448,
+            "median": 10.818605438403283,
+            "p95": 14.670621452461692,
+            "maximum": 16.303967192043434
+          },
+          "original_topology_preserved": true
+        },
+        {
+          "id": "G01_v005_raw00562",
+          "vertices": 12154,
+          "faces": 22588,
+          "ring_penetration_N": 141,
+          "behind_source_camera_N": 0,
+          "source_reprojection_displacement_px": {
+            "target_N": 12154,
+            "numeric_N": 12154,
+            "failed_N": 0,
+            "N": 12154,
+            "MAE": 5.097650049134109,
+            "median": 4.843271830763075,
+            "p95": 9.405246945468946,
+            "maximum": 13.633446477668423
+          },
+          "original_topology_preserved": true
+        }
+      ],
+      "HOLDOUT": [
+        {
+          "id": "G01_v004_raw00049",
+          "video": "004",
+          "image_grid_N": 14080,
+          "mask_target_N": 1343,
+          "predicted_visible_N": 1210,
+          "mask_recall": 0.8406552494415488,
+          "mask_IoU": 0.7928370786516854,
+          "missed_mask_N": 214,
+          "false_positive_N": 81,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 1343,
+            "numeric_N": 1129,
+            "failed_N": 214,
+            "N": 1129,
+            "MAE": 1.7188021082916125,
+            "median": 1.3717098236083984,
+            "p95": 5.823282241821273,
+            "maximum": 29.655155181884766
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 405
+        },
+        {
+          "id": "G01_video005_v005_00000",
+          "video": "005",
+          "image_grid_N": 14080,
+          "mask_target_N": 1357,
+          "predicted_visible_N": 1197,
+          "mask_recall": 0.8526160648489315,
+          "mask_IoU": 0.8282032927702219,
+          "missed_mask_N": 200,
+          "false_positive_N": 40,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 1357,
+            "numeric_N": 1157,
+            "failed_N": 200,
+            "N": 1157,
+            "MAE": 0.884676249973096,
+            "median": 0.6400871276855469,
+            "p95": 2.139963150024414,
+            "maximum": 8.372364044189453
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 631
+        }
+      ]
+    }
+  ]
+}

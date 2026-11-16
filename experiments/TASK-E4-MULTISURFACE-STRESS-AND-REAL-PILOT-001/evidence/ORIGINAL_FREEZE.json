@@ -1,0 +1,675 @@
+{
+  "status": "PASS",
+  "freeze_sha256": "842477008c0732bbd75a64d7b57ee8465fa9100bbd9b502de43a45e29d621cc3",
+  "fingerprint": {
+    "task": {
+      "schema": 6,
+      "task_id": "TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001",
+      "goal": "Frozen algorithm variance stress and source-bound minimal real HERO adapter pilot; no camera/DXY/HERO training changes",
+      "modules": [
+        "T01",
+        "T03",
+        "T04",
+        "T10",
+        "T11",
+        "T12",
+        "T13",
+        "T24",
+        "T31",
+        "T34",
+        "T05",
+        "T06",
+        "T07",
+        "T08",
+        "T09",
+        "MF01",
+        "MF02",
+        "MF03",
+        "MF04",
+        "MF05",
+        "SR01",
+        "SR02",
+        "SR03",
+        "SR04"
+      ],
+      "variables": {
+        "geometry_unit": "mm",
+        "pixel_coordinates": "native_image_px",
+        "camera_transform": "opencv_c2w",
+        "depth_convention": "axial_z",
+        "parameters": {}
+      },
+      "inputs": {
+        "fixture": {
+          "path": "/home/liu/ring_first_3d_multisurface_stress/tools/research/frozen_fixture.json",
+          "sha256": "d64ebdbc3b81287c7d8f235e634b05d44269ee76b27206a37d2df976d293dacb"
+        },
+        "support": {
+          "path": "/home/liu/ring_first_3d_multisurface_stress/tools/research/support_fixture.json",
+          "sha256": "cc26119e6e67a3d19ab124685316b4815be0f63f5ac71bc416704cf46430b28c"
+        },
+        "reference": {
+          "path": "/home/liu/ring_first_3d_multisurface_stress/tools/research/frozen_reference.json",
+          "sha256": "216cbab2cdafa85e224580199356c1a2dc1ba087389e9699790d1c6101890cdd"
+        },
+        "source_lock": {
+          "path": "/home/liu/ring_first_3d_multisurface_stress/src/ring_first_3d/source_lock.json",
+          "sha256": "3bee30d508fa9ca6bbc4bbc315b217a0a660b77c6498cfce7ccbba6d9ba5f2b0"
+        },
+        "dxy_root": "/home/liu/new-polyp-dxy",
+        "evidence": {
+          "path": "/home/liu/ring_first_3d_multisurface_stress/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/figures/REAL_SMOKE_EVIDENCE.png",
+          "sha256": "59451578fe85612ffa5b2bd47f450705e3d45403fbeaf6f324f2a2a9c2088b23"
+        }
+      },
+      "split": {
+        "manifest": {
+          "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/CASE.json",
+          "sha256": "57799a430b9b954180575a96da3b2d228e0802eac4f6ecf660744c3d308e688e"
+        },
+        "FIT": [
+          "FIT"
+        ],
+        "HOLDOUT": [
+          "UPDATE_HOLDOUT"
+        ],
+        "GT": [
+          "generator_and_postfreeze_evaluation_only"
+        ],
+        "access": "multisurface_generator_predictor_evaluator"
+      },
+      "authorization": {
+        "approved_by": "user",
+        "reference": "User-approved TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001; retained baseline algorithms, independently named CTF, no GT real accuracy claim",
+        "stages": [
+          "preflight",
+          "contracts",
+          "stress_regression",
+          "G0_real_audit",
+          "G0_views_noise",
+          "G1_body",
+          "G2_candidates",
+          "G3_smoke_predict",
+          "G3_smoke_evaluate",
+          "G3_all_predict",
+          "G4_fusion_predict",
+          "G4_evaluate",
+          "real_predict",
+          "real_evaluate",
+          "G4_visualize",
+          "artifacts"
+        ]
+      },
+      "acceptance": {
+        "required_stages": [
+          "preflight",
+          "contracts",
+          "stress_regression",
+          "G0_real_audit",
+          "G0_views_noise",
+          "G1_body",
+          "G2_candidates",
+          "G3_smoke_predict",
+          "G3_smoke_evaluate",
+          "G3_all_predict",
+          "G4_fusion_predict",
+          "G4_evaluate",
+          "real_predict",
+          "real_evaluate",
+          "G4_visualize",
+          "artifacts"
+        ],
+        "min_contract_tests": 11,
+        "require_visualization": true,
+        "require_failure_log": true
+      },
+      "budget": {
+        "max_seconds": 7200,
+        "stage_timeout_seconds": 1800,
+        "max_attempts_per_stage": 2,
+        "max_output_bytes": 1300000000
+      },
+      "stop": [
+        "gate_failure",
+        "input_drift",
+        "budget_exceeded"
+      ],
+      "output_root": "/home/liu/ring_first_3d_multisurface_stress/experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001/runs",
+      "fusion": {
+        "assets": {
+          "source_manifest": {
+            "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/inputs/VIEW_SOURCES.json",
+            "sha256": "b55b2b94e69fdac12621389c69edb22005bc4cdacdeb08a5576e828174e2c586"
+          },
+          "virtual_gt": {
+            "path": "/home/liu/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/runs/SIM_REV1_001/attempts/0004-G0_simulate-299c2b30/private/virtual_GT.npz",
+            "sha256": "1c857568eee39f39d2b18c15abe23e227827eb89215df067d1140ece5a6b0f4f"
+          },
+          "ring": {
+            "path": "/home/liu/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/runs/SIM_REV1_001/attempts/0004-G0_simulate-299c2b30/public/canonical_ring.npz",
+            "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af"
+          },
+          "E1_initializer": {
+            "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/inputs/E1_INITIALIZER.npz",
+            "sha256": "a15641f46d9e8f116ac94e85ba9aeb9c6fd8612b976d6b5c927a5567abc6a139"
+          },
+          "E2_initializer": {
+            "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/inputs/E2_INITIALIZER.npz",
+            "sha256": "985d222b78f4610aa5bbbbe21999ae75d9c6d617708c0f9bed413763bc5b9605"
+          },
+          "body_freeze": {
+            "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/inputs/BODY_FREEZE.json",
+            "sha256": "6ead917e974cae60ca09a7d68734b817edaa5dbe2ab0fb188781e7857b11c46c"
+          },
+          "image_fits": {
+            "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/inputs/IMAGE_FITS.json",
+            "sha256": "2eda698fe73e4c2ece2eb243173f446a984215c53a7b518fc73037ef805991c1"
+          },
+          "reuse_lock": {
+            "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/inputs/SIM_SOURCE_LOCK.json",
+            "sha256": "90b9ad4bd7871d3bf93cc40e7a67b706f1f76108e50c519befdc7110bdba0a5e"
+          },
+          "reuse_receipts": {
+            "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/inputs/REUSE_RECEIPTS.json",
+            "sha256": "9dea01af505889be09119fa9ca994cde1141447b54e736232f50e816f07a7684"
+          },
+          "parent_freeze": {
+            "path": "/home/liu/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/runs/SIM_REV1_001/FREEZE.json",
+            "sha256": "664f2a3e132ecde88ea3d3330b4ed8317a5f9387eadfb2254dcdadf9f34fcdec"
+          },
+          "parent_failure_registry": {
+            "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/FAILURE_REGISTRY.json",
+            "sha256": "d2929540d21d2bc6c0bb72924313e8318b05336551b257d0b058b24765c751f6"
+          }
+        },
+        "parent_run": "/home/liu/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/runs/SIM_REV1_001",
+        "label": "G01_LIKE_SIMULATION",
+        "proxy": "INDEPENDENT_DEPTH_GRID_SYNTHETIC_HERO_PROXY",
+        "condition_order": [
+          "C0",
+          "C4",
+          "C6",
+          "C7"
+        ],
+        "conditions": {
+          "C0": {
+            "bias": {
+              "004": "I",
+              "005": "I"
+            },
+            "sigma": {
+              "004": [
+                0.0,
+                0.0
+              ],
+              "005": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "C4": {
+            "bias": {
+              "004": "A",
+              "005": "B"
+            },
+            "sigma": {
+              "004": [
+                0.7,
+                0.2
+              ],
+              "005": [
+                0.7,
+                0.2
+              ]
+            }
+          },
+          "C6": {
+            "bias": {
+              "004": "A",
+              "005": "B"
+            },
+            "sigma": {
+              "004": [
+                1.2,
+                0.35
+              ],
+              "005": [
+                1.2,
+                0.35
+              ]
+            }
+          },
+          "C7": {
+            "bias": {
+              "004": "A",
+              "005": "B"
+            },
+            "sigma": {
+              "004": [
+                2.0,
+                0.6
+              ],
+              "005": [
+                2.0,
+                0.6
+              ]
+            }
+          }
+        },
+        "pose_model": "VideoBias @ TruePose @ FrameNoise",
+        "seed": 20261117,
+        "bias_parameters": {
+          "I": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            2.0,
+            0.5
+          ],
+          "B": [
+            3.0,
+            0.3
+          ]
+        },
+        "bias_axis": "positive_world_Y; translation_positive_world_X; pivot_Ring_origin",
+        "noise_model": "Gaussian local rotvec_xyz_deg and translation_xyz_mm, centered per video, common random numbers across sigma levels",
+        "body_arms": [
+          "E1",
+          "E2"
+        ],
+        "methods": [
+          "M0",
+          "ICP",
+          "BODY_VIDEO",
+          "BODY_HIER"
+        ],
+        "tolerance_mm": 0.5,
+        "tolerance_ablation_mm": [],
+        "camera_optimization": false,
+        "physical_Ring_fixed": true,
+        "body_frozen": true,
+        "GT_selects_predictor": false,
+        "GT_face_union_prohibited": true,
+        "mesh_builder": "native_axial_depth_grid_triangles",
+        "mesh_stride_px": 2,
+        "mesh_edge_limit_mm": 1.0,
+        "sections": [
+          {
+            "axis": 0,
+            "offset_mm": 0.0
+          },
+          {
+            "axis": 1,
+            "offset_mm": 0.0
+          },
+          {
+            "axis": 2,
+            "offset_mm": -2.0
+          },
+          {
+            "axis": 2,
+            "offset_mm": -6.0
+          }
+        ],
+        "registration_outer_iterations": 3,
+        "registration_nfev": 25,
+        "registration_samples_per_view": 96,
+        "overlap_samples_per_edge": 96,
+        "pair_max_distance_mm": 1.5,
+        "normal_agreement_min": 0.4,
+        "candidate_reject_distance_mm": 2.5,
+        "candidate_confidence_min": 0.15,
+        "weights": {
+          "overlap": 1.0,
+          "body_region": 0.15,
+          "frame_prior": 0.01,
+          "frame_mean": 0.2,
+          "video_prior": 0.001
+        },
+        "residual_sigma_bound": 3.0,
+        "video_rotation_bound_deg": 8.0,
+        "video_translation_bound_mm": 2.0,
+        "ICP_iterations": 30,
+        "ICP_outer_iterations": 2,
+        "ICP_distance_mm": 1.5,
+        "fusion_consensus_mm": 0.25,
+        "fusion_min_support": 2,
+        "fusion_max_seam_jump_mm": 0.8,
+        "fusion_min_incidence": 0.15,
+        "evaluation_GT_samples": 12000,
+        "evaluation_model_samples": 12000,
+        "overlap_evaluation_samples_per_pair": 160,
+        "coverage_threshold_mm": 0.2,
+        "material_success_threshold_mm": 0.2,
+        "main_figure_condition": "C7",
+        "main_figure_arm": "E1",
+        "main_figure_method": "BODY_HIER"
+      },
+      "stress": {
+        "baseline_commit": "b16a6f813ecf9214958cae3b88d624725a0fa484",
+        "parent_multisurface_run": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001",
+        "assets": {
+          "parent_task_json": {
+            "path": "/home/liu/ring_first_3d_multisurface_stress/experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001/inputs/PARENT_TASK.json",
+            "sha256": "fa641101c8d7ea2a18287859e3c222d6447da6446357d83c8547cff5c28c4406"
+          },
+          "algorithm_lock": {
+            "path": "/home/liu/ring_first_3d_multisurface_stress/experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001/inputs/ALGORITHM_LOCK.json",
+            "sha256": "1f16457081df69567b1c50429e053ff3ea82ef3dc1ba010f892ba5beeb06029b"
+          },
+          "real_manifest": {
+            "path": "/home/liu/ring_first_3d_multisurface_stress/experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001/inputs/REAL_SOURCES.json",
+            "sha256": "148420e5658e0f3a75b78801ef2237090c0fbfb92b25a4003787558b22f4bcf5"
+          },
+          "parent_run_freeze": {
+            "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/FREEZE.json",
+            "sha256": "0826951465efa97e6d9112e556af5361d256eef56507760518cb431b588ae277"
+          },
+          "parent_result": {
+            "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/SCIENTIFIC_RESULT.json",
+            "sha256": "d4b9e032e1be4f9ca2457df63fec9036e0e1ce3f522739ce70a4ce8fe72ba31d"
+          },
+          "parent_failure_registry": {
+            "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/FAILURE_REGISTRY.json",
+            "sha256": "f00e71598d34fc26e77fd47bf28e2405642a7f574cca88895047438b98dfc91a"
+          }
+        },
+        "ctf": {
+          "eligible_conditions": [
+            "C6",
+            "C7"
+          ],
+          "trigger_body_acceptance_below": 0.25,
+          "trigger_pair_acceptance_below": 0.5,
+          "levels": [
+            {
+              "candidate_reject_distance_mm": 5.0,
+              "pair_max_distance_mm": 3.0
+            },
+            {
+              "candidate_reject_distance_mm": 3.5,
+              "pair_max_distance_mm": 2.0
+            },
+            {
+              "candidate_reject_distance_mm": 2.5,
+              "pair_max_distance_mm": 1.5
+            }
+          ],
+          "outer_iterations_per_level": 1,
+          "prior": "Original optimizer prior restarted at each explicitly separate level; accumulated surface transform, never camera output"
+        },
+        "real_groups": [
+          "G01",
+          "G03",
+          "G05"
+        ],
+        "real_frame_prior_sigma_deg_mm": [
+          0.3,
+          0.1
+        ],
+        "real_max_FIT_per_video": 2,
+        "real_HOLDOUT_per_video": 1,
+        "real_initializer": "Fresh FIT-only E1 formal ellipse and E2 full-mask nine-parameter fits; E1 primary if all formal candidates exist, otherwise explicit E2",
+        "real_initial_base": [
+          0.0,
+          0.0,
+          -3.5,
+          0.0,
+          0.0,
+          0.0,
+          1.3862943611198906,
+          1.3862943611198906,
+          1.6094379124341003
+        ],
+        "real_initial_starts": 1,
+        "real_absolute_GT": "NOT_AVAILABLE",
+        "smoke_conditions": [
+          "C0",
+          "C6"
+        ]
+      }
+    },
+    "policy_version": "1.0.0",
+    "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+    "executable": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+    "versions": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "opencv-python": "UNAVAILABLE",
+      "torch": "2.7.1+cu128",
+      "PyYAML": "6.0.3",
+      "scikit-image": "0.25.2",
+      "trimesh": "5.1.1",
+      "open3d": "0.19.0",
+      "python-fcl": "0.7.0.11"
+    },
+    "implementation_sha256": {
+      "src/ring_first_3d/__init__.py": "74f163ae3f6301882d1f66309d26c3c8509d78cab058fa3a12ec6149c1077d21",
+      "src/ring_first_3d/_legacy.py": "375959e174b47b982194de6764d99afa41d1e7e3df4dd47349efce8ab901aff5",
+      "src/ring_first_3d/adapters/__init__.py": "3cfc412d7f08d7a4ad9f5843faf490f9f49f2ee89617fcc891136a8de7044572",
+      "src/ring_first_3d/adapters/dxy.py": "9298327692b4973c0cf651d868b2bfb61d6bf62748dd132eb1f67756e3b27f78",
+      "src/ring_first_3d/contracts/__init__.py": "8e31e91107080f89b433c91e01e6d95b8eb14df53a2b52da6e80cdd9e37581c9",
+      "src/ring_first_3d/contracts/coordinates.py": "03b45ba4811c00b01a4e5c014a888d003dca51fe0399e1b2f4d261195286171b",
+      "src/ring_first_3d/contracts/identities.py": "f4838d80c256c9214bcee515928999c0990c516b276947b3a67836915133ce8a",
+      "src/ring_first_3d/dualvideo/__init__.py": "2743dcc8cfb863b7c1edef07a5b9540044d44e92cb12d7a573899fe5b5220d12",
+      "src/ring_first_3d/dualvideo/artifacts.py": "5b6648b781a04483f5992671731651dfd076e10f4fc8fc6d154ef6011b9fe3c2",
+      "src/ring_first_3d/dualvideo/audit.py": "0ebe775bcbf88cb303960b309c2131b9d25d112493150333383cabcc083c5ea3",
+      "src/ring_first_3d/dualvideo/visualize.py": "10a4f12cdf06c40b2fbd115b26a44af1a1bb7fcfc9ee6445133a1117e720186b",
+      "src/ring_first_3d/evaluation/__init__.py": "eb674fbcdc24d05fd7c997f953a5a678616e40e63ad339cfd7275e270b47dff7",
+      "src/ring_first_3d/evaluation/validation.py": "73f64f1b36ca092b085f766ba5dc1c058c8580a65589b0639b990bab131b1e83",
+      "src/ring_first_3d/multisurface/__init__.py": "81f856d539139fa6f7ce669add2df95e6b208d0d6394513918f1d932df4b282d",
+      "src/ring_first_3d/multisurface/artifacts.py": "3108dc4ba091dd396db7d1a750ede838e569b243ecd6b5cde8b12ec8759517ac",
+      "src/ring_first_3d/multisurface/evaluate.py": "f52a6b6354b54ddaf4e561a013075a0c6209b17501d9abb2a7a07dec27e99e7a",
+      "src/ring_first_3d/multisurface/fusion.py": "607eef83f905122b3d0b746070e66a717a19e775984b7f8e420fcf31fe9b590b",
+      "src/ring_first_3d/multisurface/geometry.py": "5463b3bc4c963969218dcee4341d556efe1d301c268d4053a9a7d0046578bbb7",
+      "src/ring_first_3d/multisurface/handlers.py": "569d6483d1fe427bc3be1ad21a7e57fe58f470ef1482c973f23dc7ea40d3fe53",
+      "src/ring_first_3d/multisurface/registration.py": "81ffe3368a637d0902293f7d711abeca912a91d681faeda532d0503882aaf1a3",
+      "src/ring_first_3d/multisurface/scene.py": "da6ca2ed8a758015436dd1168e01245c51fba61928ae559818cb8621a6f21943",
+      "src/ring_first_3d/multisurface/visualize.py": "45d56241c9bdc9a7e9c915da70960c7394199cd2767bedc602affca4182b2a47",
+      "src/ring_first_3d/policy/__init__.py": "62b8bd575c7f0bfd29d098379ba8ea4d009bb2c677435fa2343d27fb9f3cf672",
+      "src/ring_first_3d/policy/artifacts.py": "55ee4215d223b54796a09b8c286cc8d1fc7f59c0b50bde502e4473f07b34f3f7",
+      "src/ring_first_3d/policy/contracts.py": "1625aefcd906fd17a7aa4f91adbc5f607d6308a391a8b0e9675b2da72248cf32",
+      "src/ring_first_3d/policy/dualvideo_contracts.py": "ce6fb35869c285cd7662c43777dfd2077c84b03d61f2daf14865402cb88ba35c",
+      "src/ring_first_3d/policy/fusion_contracts.py": "c22eb297113490cedd8217dd9fa0383511a5e4490705e5f0058a592a7274dc40",
+      "src/ring_first_3d/policy/memory.py": "e0857c6198d320e5a4961265ffc82178570a630d34c0567def7f3dc2e59d5fab",
+      "src/ring_first_3d/policy/runner.py": "400bcb2f26289255a020c18d404719fec51c46d9874cc61a50312a99bc16c618",
+      "src/ring_first_3d/policy/science_contracts.py": "1aa490223388e52e9ec9710b5c2e60ab59874af1f92658b0ae8b38e0919ae042",
+      "src/ring_first_3d/policy/sim_contracts.py": "e5df9062bc671ffb473876f1743da3f4b5bf8bd1b18d4c58fafec8d737b576f9",
+      "src/ring_first_3d/policy/stress_contracts.py": "fed2885827ebe4f77d6086b7b46491808f7ca63bd0da6ea98228aa157dc66202",
+      "src/ring_first_3d/rendering/__init__.py": "cbc9e11056e698d078db334127d22c689f69919d92ac320e047f33cdc345f280",
+      "src/ring_first_3d/rendering/pytorch3d_renderer.py": "62ffb5ab4a409e137331452ec7e46ab5d66f66d96f11f449e528bf58697dd001",
+      "src/ring_first_3d/sim/__init__.py": "cd295c295cbaf1ce7511e6a88c7e64b2cc879a4bac5be0255a08b3aecf0a68c6",
+      "src/ring_first_3d/sim/artifacts.py": "7b6cf86bdca69bf409352dd2f44caf0014ceeebd5965b217328eb29ecc3fbd25",
+      "src/ring_first_3d/sim/evaluate.py": "cd01ffb241bb5584270aa96b7960bc3ac3cb1c7bb9cc091c7da8b5ccf5b8d3dd",
+      "src/ring_first_3d/sim/geometry.py": "8bf9af204ac9faa71fa3b9b15e68b2284bad9f7cd842424e4aacbc88924d1381",
+      "src/ring_first_3d/sim/handlers.py": "bbafab4e6ae8e1fdeeaf188df6ace7d6fc393bd801ebf2f91518e6ea7d7c0784",
+      "src/ring_first_3d/sim/initialize.py": "a20014ac00cd74d1bd51c51b291936c37cd7d91a5d856d996dc1ce214e24b48d",
+      "src/ring_first_3d/sim/legacy.py": "9ebe62f352922a11defcd5fb73d843857037bd20654daad06d0ed901326cbca0",
+      "src/ring_first_3d/sim/mapping.py": "fd92d8a19f707071c6515404d38c54a898ffba34d649047c43eae0269ecd3186",
+      "src/ring_first_3d/sim/registration.py": "9f154e3525ae1b42d56e2d6eea92d0e2cd1b8a8b88f7ac74dd0e8be4519ea2b3",
+      "src/ring_first_3d/sim/scene.py": "45ae2c6d7a89f957c7472a34359599da6eaa1da4e82ff75fc117530488038944",
+      "src/ring_first_3d/sim/visualize.py": "f8b4df774f5c81d157b1789e01e4c8f138d71a09ce58f5e9a74bb7be1701fe87",
+      "src/ring_first_3d/stress/__init__.py": "42d1873ff74751e1ab189670ee1af81c48ba49e37d2da3cb8e43cf073a7d52ce",
+      "src/ring_first_3d/stress/artifacts.py": "43ef5744b1ed7eb4bdcd49b8cd35f069359decd63f7d5a73caaae2a0b7a81347",
+      "src/ring_first_3d/stress/evaluate.py": "93cdd9a53483ba8a05e6abd4da83287ebc1a39246901084a36abb63094862c13",
+      "src/ring_first_3d/stress/handlers.py": "73bc43da85fecbea172cda60d85575599e28e8deae391981b88fca1de8e0a963",
+      "src/ring_first_3d/stress/real.py": "3582c37b33cb8312008bb03de1da2cfba5d40c72821f1c1b4f1e748d07be5f99",
+      "src/ring_first_3d/stress/visualize.py": "114781ba13e2be90bf8a34b07ee1a7e01c8e4e38bebd61477ee8169c851df80d",
+      "src/ring_first_3d/synthetic/__init__.py": "ced57c241e38ec98e36e7b19a253f464b7002e55d6061138978803b5a2cee63a",
+      "src/ring_first_3d/synthetic/artifacts.py": "f987d99451000316886ef2023ff15df6006538060b342fff0d425c7acee774bc",
+      "src/ring_first_3d/synthetic/correspondence.py": "311475ce4c4370686db734aa8c2f7fb0243e22a2ccdf3629d10514b66f859d91",
+      "src/ring_first_3d/synthetic/evaluate.py": "462d341ebed168fc4169b48c7907c9c34a42c5c66c303c5ddcd449d88a20eabe",
+      "src/ring_first_3d/synthetic/handlers.py": "6f9f784bf8d1cc23cc0f156507834dbbff30690729b1915bbb9f3c2daa8ff425",
+      "src/ring_first_3d/synthetic/io.py": "fac7dbf72b79b60d2984a91e0ab2d8fa51f87730074c8e15960a1ac09d7becf8",
+      "src/ring_first_3d/synthetic/raster.py": "5286279d8ad7f18aadb63e5e10c8e4647467334fc53e89affc98ee06fbb9976b",
+      "src/ring_first_3d/synthetic/scene.py": "c5547327af76ae81a0dcd8638a841a8c1cce44986779f1b52bd9d48056dcc595",
+      "src/ring_first_3d/synthetic/visualize.py": "5cf2321990a3d03b806a86df979d0e431164d952ffbe1ddccedff724b53ffacb",
+      "src/ring_first_3d/views/__init__.py": "a0e86fcc991c78a11c82de9cb83dd72b24a7cd50faf580173d17c3126595e880",
+      "src/ring_first_3d/views/selection.py": "4c18fe13ece60f01743270f22b95f950b15dc253a3ec82cc56208f53b8c5492d",
+      "tools/research/_bootstrap.py": "68be44303188ee3cc3c092e2471076bba936bc30c34c7ab98a91485233e9c4a9",
+      "tools/research/_policy_worker.py": "1f524da12f962979941fed19763885e5e59fbc2d106e2f71c2aa7772e8ea373e",
+      "tools/research/audit_reuse.py": "3685ccdf202abc9f70509566a0402f772611d6d7f88c6007d5e6d7dcb5119bdf",
+      "tools/research/check_payload.py": "692659622f3e5fc24afc059e360c2b6fd076db7c998f6f7275ea95f41825120e",
+      "tools/research/export_g01_blender.py": "411bc1c958c397a1a3716ea7ea9f5575380ff7b5b6eb9735627b64231bbd870b",
+      "tools/research/init_dualvideo_task.py": "e373231f3bb6929cc172b77d8d13200bf0b470c944848a3fa2dea8f6276136d9",
+      "tools/research/init_multisurface_task.py": "f6bb8aec917c85f71e31471a93bd43ff7b995c856a204c5ec161b2853ecd88ef",
+      "tools/research/init_sim_rev1.py": "0a832b12fab6167eb82135eb55215221a1dcc7bd7e7753f6bf27ef6d9b3b41a9",
+      "tools/research/init_stress_task.py": "321b6607db561d501b3a27ddb59b613562cb930b5c6f3133c69ad8ad3c666fd4",
+      "tools/research/init_synthetic_task.py": "0a5bb84b7f3fc2b69dcaefee591a060ec7d529aafd852440d9cf119ad385a41a",
+      "tools/research/inspect_g01_scene.py": "3fd48688fdc9784c248af92e0fba809efd4c94f92df462ffc3906f98726540a4",
+      "tools/research/policy.py": "e4222801b2fff3e079f85b19576c7ae7b56a68cce4b7df568a6a8569893412ee",
+      "tools/research/preflight.py": "3ed669b84490fb3f08dc487ebb1b8dbd5e1ff2e791bb5f453c88e89d1088d5ca",
+      "tools/research/render_evidence.py": "39b8cda18efdb8b96e46dc8ba003e3cca0f9a0070a6ecdaa08bb527977313e64",
+      "tools/research/smoke.py": "087d8b5699347bdd5ebad3bd342913a9e5fe7a6985417ddbde8a5e9ee5ab630f",
+      "tools/research/test_policy_integration.py": "92f234e6026d3599a923818a86f05c613d9522a3fa21385cec1ec9bd20354914",
+      "tools/research/validate_contracts.py": "a8889c97d9f5f6072f87f72b723072a623ca9bc77f876f0022614f24f84434b8",
+      "tests/test_dualvideo_gate.py": "bb60ed1df29b1af7fa0331ae2a617dab3197c84ee6cda97a76cc0e7a8da5286f",
+      "tests/test_harness_contracts.py": "6d4b12592a3a71670896de5b9fb463416556d7c66d33aa1802292d249386541b",
+      "tests/test_multisurface.py": "cf9ddbb5dca910a32d1cccc60bbb748425e5a5add31e515df687597b47e1961d",
+      "tests/test_policy_bootstrap.py": "91af6e14d06790330037afea15be159571b45f208732ef40d655437c5389a71e",
+      "tests/test_sim_rev1.py": "ba31499f8cc5e3f8a5c9f7593a68f5cbcaafffa8b698c1fde1bbaeea330dcbdd",
+      "tests/test_stress.py": "9b2f0c025acfbc0f86ed8de728f3b68c00123af183030a89f76599212e6b7fef",
+      "tests/test_synthetic_correspondence.py": "36eb2fb8b32c8c07751a78138e22f1e547e23eaf457a1306973cfa521f28dee6",
+      "tools/research/run.sh": "cd27febb1fef64cd36d332bffe381cfa53d5913c9486e69a6f3c16e43d19caa8",
+      "docs/registry/FAILURE_REGISTRY.json": "d1896f7b8aa1394a22e35c5328c982e88bdeef643235f32b4e9c1fff1222199c"
+    },
+    "compiled_renderer_sha256": {
+      "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/_C.cpython-312-x86_64-linux-gnu.so": "d2bbd620ddbcb3b79b9dd12c777e2190837be96e12c1d9b4e184cf7e9af063a1"
+    },
+    "environment": {
+      "PATH": "/home/liu/.local/bin:/home/liu/.codex/tmp/arg0-linux/codex-arg0zEjdSB:/home/liu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/liu/.vscode/extensions/openai.chatgpt-26.1021.22027-linux-x64/bin/linux-x86_64",
+      "PYTHONPATH": "/home/liu/ring_first_3d_multisurface_stress/src:/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/packages:/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d:/home/liu/ring_first_3d_e4_sdf_evolution/experiments/E4-SDF-EVOLUTION-001/runtime/packages:/home/liu/ring_first_3d_e4_pmgr_r1/experiments/TASK-E4-PMGR-R1/runtime/packages:/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor",
+      "CUDA_VISIBLE_DEVICES": null,
+      "RING_FIRST_SOURCE_ROOT": null,
+      "OMP_NUM_THREADS": "2",
+      "OPENBLAS_NUM_THREADS": "2",
+      "LD_LIBRARY_PATH": null
+    },
+    "source_root": "/home/liu/ring_first_3d_multisurface_stress"
+  },
+  "module_contracts": {
+    "T01": {
+      "sources": [],
+      "requires": [],
+      "units": "native_image_px"
+    },
+    "T03": {
+      "sources": [
+        "T03"
+      ],
+      "requires": [
+        "T01"
+      ],
+      "units": "native_image_px"
+    },
+    "T04": {
+      "sources": [
+        "T04"
+      ],
+      "requires": [
+        "T03"
+      ],
+      "units": "native_image_px"
+    },
+    "T10": {
+      "sources": [
+        "T10"
+      ],
+      "requires": [],
+      "units": "native_image_px"
+    },
+    "T11": {
+      "sources": [
+        "T11"
+      ],
+      "requires": [
+        "T10"
+      ],
+      "units": "mm"
+    },
+    "T12": {
+      "sources": [
+        "T12"
+      ],
+      "requires": [],
+      "units": "mm"
+    },
+    "T13": {
+      "sources": [
+        "T13",
+        "rgb"
+      ],
+      "requires": [
+        "T12"
+      ],
+      "units": "native_image_px"
+    },
+    "T24": {
+      "sources": [
+        "T24",
+        "common"
+      ],
+      "requires": [],
+      "units": "mm"
+    },
+    "T31": {
+      "sources": [
+        "T31",
+        "common"
+      ],
+      "requires": [
+        "T24"
+      ],
+      "units": "mm"
+    },
+    "T34": {
+      "sources": [
+        "T34",
+        "common"
+      ],
+      "requires": [
+        "T24"
+      ],
+      "units": "mm"
+    },
+    "MF01": {
+      "path": "multisurface/scene.py",
+      "sha256": "da6ca2ed8a758015436dd1168e01245c51fba61928ae559818cb8621a6f21943"
+    },
+    "MF02": {
+      "path": "multisurface/registration.py",
+      "sha256": "81ffe3368a637d0902293f7d711abeca912a91d681faeda532d0503882aaf1a3"
+    },
+    "MF03": {
+      "path": "multisurface/fusion.py",
+      "sha256": "607eef83f905122b3d0b746070e66a717a19e775984b7f8e420fcf31fe9b590b"
+    },
+    "MF04": {
+      "path": "multisurface/evaluate.py",
+      "sha256": "f52a6b6354b54ddaf4e561a013075a0c6209b17501d9abb2a7a07dec27e99e7a"
+    },
+    "MF05": {
+      "path": "multisurface/visualize.py",
+      "sha256": "45d56241c9bdc9a7e9c915da70960c7394199cd2767bedc602affca4182b2a47"
+    },
+    "SR01": {
+      "path": "stress/handlers.py",
+      "sha256": "73bc43da85fecbea172cda60d85575599e28e8deae391981b88fca1de8e0a963"
+    },
+    "SR02": {
+      "path": "stress/real.py",
+      "sha256": "3582c37b33cb8312008bb03de1da2cfba5d40c72821f1c1b4f1e748d07be5f99"
+    },
+    "SR03": {
+      "path": "stress/evaluate.py",
+      "sha256": "93cdd9a53483ba8a05e6abd4da83287ebc1a39246901084a36abb63094862c13"
+    },
+    "SR04": {
+      "path": "stress/visualize.py",
+      "sha256": "114781ba13e2be90bf8a34b07ee1a7e01c8e4e38bebd61477ee8169c851df80d"
+    }
+  },
+  "verified_assets": 250
+}
