@@ -1,5 +1,7 @@
 # TASK.yaml 与科研执行入口
 
+后续增量：[G0–G1 受控合成对应政策](SYNTHETIC_G0_G1_POLICY.md) 使用独立 schema 2 显式注册科学角色；下文 schema 1 的原契约保持不变。
+
 这是既有 Harness 的增量控制入口。最短交接提示词：
 
 > 按 TASK.yaml 检查并执行已授权阶段，用同一 run-dir 恢复；失败停止。完成 accept，返回结果卡、可视化路径和提交 SHA，然后停止。

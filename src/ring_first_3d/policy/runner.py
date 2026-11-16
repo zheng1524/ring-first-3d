@@ -12,7 +12,7 @@ import sys
 import time
 import uuid
 from .artifacts import write_json, read_state, publish, heads, check_artifacts, load_attempt
-from .contracts import ROOT, STAGES, MODULES, PolicyError, require, verify_task, digest, write_allowed
+from .contracts import ROOT, STAGES, MODULES, PolicyError, require, verify_task, digest, write_allowed, stages_for
 from .memory import registry
 from ..contracts.identities import sha256
 
@@ -76,6 +76,8 @@ def execute(stage, task, pending, timeout, freeze_path):
         require(payload["tests"] >= task["acceptance"]["min_contract_tests"] and payload["failures"] == 0 and payload["errors"] == 0, "CONTRACT_COUNT", "Insufficient actual contract tests")
     if stage == "smoke":
         require(len(payload.get("tests", [])) == 4 and all(t["status"] == "PASS" for t in payload["tests"]), "GATE_FAILED", "Real full bundle must pass including compatibility")
+    if stage=="research_regression":
+        require(payload.get("baseline_tests")==35 and payload.get("tests",0)>35 and payload.get("failures")==0 and payload.get("errors")==0,"REGRESSION_GATE","Original 35 and new scientific tests required before G0")
     return payload
 
 
@@ -123,9 +125,10 @@ def _recover(root, task, state):
 
 
 def run_stage(task, root, stage):
+    stages=stages_for(task)
     root = write_allowed(root)
     require(root.parent == Path(task["output_root"]) and root.name not in ("", ".", ".."), "OUTPUT_SCOPE", "Run must be a direct child of output_root")
-    require(stage in STAGES, "STAGE", stage)
+    require(stage in stages, "STAGE", stage)
     registry()  # Also validates no unreviewed permanent rule was introduced.
     identity = verify_task(task)
     root.mkdir(parents=True, exist_ok=True)
@@ -156,8 +159,8 @@ def run_stage(task, root, stage):
         try:
             require(stage in task["authorization"]["stages"], "UNAUTHORIZED_STAGE", stage)
             if stage in ("preflight", "smoke"):
-                require(set(task["modules"]) == set(MODULES), "BUNDLE_SCOPE", "Declare all modules for existing indivisible Preflight/Smoke bundle")
-            for dependency in STAGES[:STAGES.index(stage)]:
+                require(set(MODULES)<=set(task["modules"]) if task.get("schema")==2 else set(task["modules"])==set(MODULES), "BUNDLE_SCOPE", "Declare all modules for existing indivisible Preflight/Smoke bundle")
+            for dependency in stages[:stages.index(stage)]:
                 require(dependency in previous and previous[dependency]["status"] == "PASS", "PREDECESSOR_FAILED", dependency)
             require(state["spent_seconds"] < budget["max_seconds"], "BUDGET_EXHAUSTED", "Total compute budget")
             require(sum(load_attempt(root,r)["stage"]==stage for r in state["attempts"]) < budget["max_attempts_per_stage"], "BUDGET_ATTEMPTS", stage)
@@ -178,6 +181,8 @@ def run_stage(task, root, stage):
             state=_finish(root,task,state,pending,result)
             return dict(status="PASS",stage=stage,run_dir=str(root),attempt_id=attempt_id)
         except (Exception, KeyboardInterrupt) as e:
+            if not pending.exists():
+                raise PolicyError("ARTIFACT_PUBLISH_FAILED","Committed attempt retained; current pointer unchanged: "+str(e))from e
             result=dict(request,status="FAIL",seconds=time.monotonic()-start,reason=str(e),
                         raw_files={p.name:sha256(p) for p in pending.iterdir()if p.is_file()})
             _finish(root,task,state,pending,result)
@@ -205,7 +210,7 @@ def _accept(task, root):
         artifacts=check_artifacts(root,state)
     return dict(status="PASS",accepted=True,freeze_sha256=state["freeze_sha256"],
                 task_id=task["task_id"],run_dir=str(root),artifacts=artifacts,
-                retained_attempts=len(state["attempts"]),scientific_acceptance="NOT_APPLICABLE")
+                retained_attempts=len(state["attempts"]),scientific_acceptance="AWAITING_HUMAN_REVIEW"if task.get("schema")==2 else"NOT_APPLICABLE")
 
 
 def accept(task,root):

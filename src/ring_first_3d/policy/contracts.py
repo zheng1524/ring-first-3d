@@ -86,6 +86,13 @@ def load_task(path):
         task = yaml.load(path.read_text(), Loader=StrictLoader)
     except (yaml.YAMLError, RecursionError) as e:
         raise PolicyError("YAML", str(e)) from e
+    if isinstance(task,dict) and task.get("schema")==2:
+        from .science_contracts import validate
+        return validate(task,path)
+    return validate_v1(task,path)
+
+
+def validate_v1(task,path):
     fields(task, "schema task_id goal modules variables inputs split authorization acceptance budget stop output_root", "TASK")
     require(task["schema"] == 1 and type(task["schema"]) is int, "SCHEMA", "Only schema 1 supported")
     require(text(task["task_id"]) and re.fullmatch(r"TASK-[A-Z0-9][A-Z0-9-]{2,100}", task["task_id"]), "SCHEMA", "Invalid task_id")
@@ -146,6 +153,9 @@ def load_task(path):
 
 
 def verify_task(task):
+    if task.get("schema")==2:
+        from .science_contracts import verify
+        return verify(task)
     inp = task["inputs"]
     for key in ("fixture", "support", "reference", "source_lock", "evidence"):
         rec = inp[key]
@@ -173,6 +183,10 @@ def verify_task(task):
         source(key)  # Existing hash-locked historical loader.
     if "T01" in ids:
         verify_dxy(inp["dxy_root"])
+    return freeze_identity(task,{mid: MODULES[mid] for mid in ids},len(f["assets"])+len(support["assets"]))
+
+
+def freeze_identity(task,module_contracts,verified_assets):
     files = {str(p.relative_to(ROOT)): sha256(p) for base in ["src/ring_first_3d", "tools/research", "tests"]
              for p in sorted((ROOT / base).rglob("*.py"))}
     files["tools/research/run.sh"] = sha256(ROOT / "tools/research/run.sh")
@@ -197,4 +211,11 @@ def verify_task(task):
                        compiled_renderer_sha256=binary_identity,environment=environment,
                        source_root=str(Path(os.environ.get("RING_FIRST_SOURCE_ROOT", ROOT)).resolve()))
     return dict(status="PASS", freeze_sha256=digest(fingerprint), fingerprint=fingerprint,
-                module_contracts={mid: MODULES[mid] for mid in ids}, verified_assets=len(f["assets"])+len(support["assets"]))
+                module_contracts=module_contracts, verified_assets=verified_assets)
+
+
+def stages_for(task):
+    if task.get("schema")==2:
+        from .science_contracts import SCIENCE_STAGES
+        return SCIENCE_STAGES
+    return STAGES

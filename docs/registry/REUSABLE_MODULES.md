@@ -1,5 +1,7 @@
 # 可复用代码清单
 
+G0–G1 增量：[S01–S05 受控 G01 合成对应模块](SYNTHETIC_CORRESPONDENCE_MODULES.md) 通过 schema 2 注册 generator/predictor/evaluator 角色；只执行 C0/C1/C3，对应结果不更新 Body，不改变下列历史模块科学状态。
+
 2026-11-16 工程补充：下列模块卡保留注册表任务的历史审计语境。新任务已建立[共享 Harness](../RESEARCH_EXECUTION_HARNESS.md)：T01/T03/T04、T10–T13、T24 为有限范围实测共享入口；T31/T34 为最小兼容接口。复用原 SHA 锁定核心；科研状态不变，范围见[晋升政策](MODULE_PROMOTION_POLICY.md)。
 
 审计固定快照 5636aaebd61a3d53b69f528692c4c7095df46508；DXY 独立仓库固定 75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95。完整源码文件 SHA256 在每卡列出，不是 commit SHA 或 AST SHA。模块条目共享文件时 SHA 相同属于正常现象。函数/类均通过 Python AST 静态核验；本任务没有导入历史 main 或运行算法。

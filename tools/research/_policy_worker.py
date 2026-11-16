@@ -7,7 +7,7 @@ from pathlib import Path
 import sys
 
 
-def install_io_guard(attempt):
+def install_io_guard(attempt,science=None):
     """Python I/O guard for trusted existing handlers, not an OS sandbox."""
     from ring_first_3d.policy.contracts import PolicyError
     def resolve_at(value,dir_fd=None):
@@ -20,8 +20,12 @@ def install_io_guard(attempt):
             p=Path(os.fsdecode(args[0])).resolve();mode=args[1]if isinstance(args[1],str)else"";flags=args[2]if isinstance(args[2],int)else 0
             writing=any(x in mode for x in "wax+") or bool(flags & (os.O_WRONLY|os.O_RDWR|os.O_CREAT|os.O_TRUNC))
             if writing and p != Path("/dev/null") and not p.is_relative_to(attempt):raise PolicyError("WRITE_ISOLATION",str(p))
-            if not writing and (p.suffix.lower()==".blend" or any(x.lower()in {"audit_only","evaluation_only","ground_truth","gt"}for x in p.parts) or "NATIVE_CAD_GT" in p.name):
-                raise PolicyError("GT_LEAK",str(p))
+            gt_like=p.suffix.lower()==".blend" or any(x.lower()in {"audit_only","evaluation_only","ground_truth","gt","private"}for x in p.parts) or "NATIVE_CAD_GT" in p.name
+            if science and p in science["gt_paths"]:gt_like=True
+            if science and science["role"]=="predictor" and any("_evaluate-" in part or "-G1_visualize-" in part for part in p.parts):gt_like=True
+            if not writing and gt_like:
+                allowed=science and science["allow_GT"] and (p in science["gt_paths"] or p.is_relative_to(science["run_root"]))
+                if not allowed:raise PolicyError("GT_LEAK",str(p))
         elif event in ("os.mkdir","os.remove","os.rmdir") and isinstance(args[0],(str,bytes)):
             fd=args[2]if event=="os.mkdir"else args[1]
             p=resolve_at(args[0],fd)
@@ -33,6 +37,10 @@ def install_io_guard(attempt):
             if not resolve_at(args[1],args[2]).is_relative_to(attempt):raise PolicyError("WRITE_ISOLATION",str(args[1]))
         elif event == "subprocess.Popen":
             command=args[1]
+            if science and science.get("stage")=="G1_visualize" and isinstance(command,(list,tuple)) and Path(str(command[0])).name=="fc-list" and len(command)==2 and (command[1]=="--help"or str(command[1]).startswith("--format=")):return
+            if science and science.get("stage")=="research_regression" and isinstance(command,(list,tuple)) and str(command[0])==sys.executable:return
+            if science and science["role"]=="generator" and isinstance(command,(list,tuple)) and str(command[0])==science.get("blender_binary"):
+                if "--disable-autoexec" in command and "--factory-startup" in command:return
             if not isinstance(command,(list,tuple)) or Path(str(command[0])).name not in {"git","uname","lscpu"}:
                 raise PolicyError("COMMAND_DENIED",str(command))
             if Path(str(command[0])).name=="git" and not (len(command)>=4 and command[1]=="-C" and command[3]in {"show","rev-parse"}):
@@ -47,9 +55,18 @@ def main():
     p=argparse.ArgumentParser();p.add_argument("--stage",required=True);p.add_argument("--freeze",type=Path,required=True);p.add_argument("--attempt",type=Path,required=True);a=p.parse_args()
     task=json.loads(a.freeze.read_text())["fingerprint"]["task"]
     attempt=a.attempt.resolve()
-    install_io_guard(attempt)
+    science=None
+    if task.get("schema")==2:
+        from ring_first_3d.policy.science_contracts import permissions
+        science=permissions(task,a.stage,attempt.parents[1])
+        science["stage"]=a.stage
+        science["blender_binary"]=task["science"]["assets"]["blender_binary"]["path"]
+    install_io_guard(attempt,science)
     sys.path.insert(0,str(ROOT/"tools/research"))
-    if a.stage=="preflight":
+    if task.get("schema")==2 and a.stage not in ("preflight","contracts"):
+        from ring_first_3d.synthetic.handlers import dispatch
+        result=dispatch(a.stage,task,attempt)
+    elif a.stage=="preflight":
         from preflight import run
         result=run(task["inputs"]["fixture"]["path"],task["inputs"]["dxy_root"])
     elif a.stage=="contracts":

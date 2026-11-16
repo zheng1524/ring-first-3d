@@ -1,5 +1,7 @@
 # 技术路线总表
 
+受控实验补充：[真实 G01 合成 Pixel-to-Face 对应 G0–G1](SYNTHETIC_CORRESPONDENCE_MODULES.md) 已登记 S01–S05 及有限阶段；这是条件相机/固定 GT 派生 Body 的校准诊断，科学状态待人工审阅，不是新的主体优化路线。
+
 工程更新：T01/T03/T04、T10–T13、T24 已进入[有限范围 Harness 实测](../RESEARCH_EXECUTION_HARNESS.md)，T31/T34 仅兼容性测试。下表保留历史科研判断；工程调用 PASS 不提升科学验收。下一任务优先复用，遵守[模块晋升政策](MODULE_PROMOTION_POLICY.md)。
 
 本表按能力组织 43 项具体技术，源码证据、调用、完整 SHA256 与修改边界逐项见[可复用模块卡](REUSABLE_MODULES.md)，同 ID 可在[机器注册表](MODULE_REGISTRY.json)查找。科学结论依据各行证据；本次为证据汇编，没有授予新科学验收。

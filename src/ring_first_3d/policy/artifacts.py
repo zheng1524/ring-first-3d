@@ -7,7 +7,7 @@ import shutil
 import uuid
 from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
-from .contracts import STAGES, canonical, digest, require
+from .contracts import STAGES, canonical, digest, require, stages_for
 from ..contracts.identities import sha256
 
 ALIASES = ("RUN_MANIFEST.json", "RESULT_CARD.md", "TECHNICAL_REPORT.md", "metrics.json", "failures.json", "visualization", "evidence.png")
@@ -50,6 +50,7 @@ def heads(root, state):
 
 
 def publish(root, task, state):
+    stages=stages_for(task)
     root = Path(root)
     snapshot_id = f"{len(state['attempts']):04d}-{uuid.uuid4().hex[:12]}"
     snapshots = root / "snapshots"
@@ -69,11 +70,11 @@ def publish(root, task, state):
                      evidence=f"attempts/{row['attempt_id']}/result.json") for row in rows if row["status"] != "PASS"]
     metrics = dict(engineering_only=True, new_scientific_predictions=0, GT_read=False,
                    history_prediction_fallback=0, durations_seconds={r["attempt_id"]: r["seconds"] for r in rows},
-                   stages={s: latest[s]["status"] if s in latest else "NOT_RUN" for s in STAGES},
+                   stages={s: latest[s]["status"] if s in latest else "NOT_RUN" for s in stages},
                    spent_seconds=state["spent_seconds"])
     write_json(pending / "metrics.json", metrics)
     write_json(pending / "failures.json", dict(schema=1, failures=failures, empty_means="No failed attempts recorded, not scientific success"))
-    table = "\n".join(f"| {s} | {metrics['stages'][s]} |" for s in STAGES)
+    table = "\n".join(f"| {s} | {metrics['stages'][s]} |" for s in stages)
     status = "GATES_PASSED" if all(v == "PASS" for v in metrics["stages"].values()) else "INCOMPLETE_OR_FAILED"
     if status=="GATES_PASSED" and state.get("accepted",False):status="ACCEPTED_ENGINEERING"
     card = f"# {task['task_id']}\n\n{task['goal']}\n\nStatus: {status}; scientific acceptance: NOT_APPLICABLE.\n\n| Stage | Result |\n| --- | --- |\n{table}\n\nFailures retained: {len(failures)}. Compute seconds: {state['spent_seconds']:.4f}.\n\n[Visualization](visualization/index.html) · [Metrics](metrics.json) · [Failure evidence](failures.json)\n\nNo new scientific predictions; GT not read; historical measurement fallback 0.\n"
@@ -89,6 +90,9 @@ def publish(root, task, state):
         bars.append(f'<text x="0" y="{i*30+17}">{html.escape(row["stage"])} {html.escape(row["status"])}</text><rect x="200" y="{i*30+2}" width="{width:.2f}" height="20" fill="{color}"/><text x="{205+width}" y="{i*30+17}">{row["seconds"]:.3f}s</text>')
     body = f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>{html.escape(task["task_id"])}</title><style>body{{font:16px system-ui;max-width:1100px;margin:32px auto;background:#f7f9fc;color:#172333}}img{{max-width:100%}}svg{{background:white}}a{{color:#215db0}}pre{{white-space:pre-wrap}}</style><h1>{html.escape(task["task_id"])}</h1><p>{html.escape(task["goal"])}</p><p>{status}. Engineering verification only; GT not read.</p><svg role="img" aria-label="Actual stage status and duration" viewBox="0 0 850 {max(40,len(rows)*30)}">{"".join(bars)}</svg><p><a href="../RESULT_CARD.md">Result card</a> · <a href="../metrics.json">Actual metrics</a> · <a href="../failures.json">Failure evidence</a> · <a href="../RUN_MANIFEST.json">Frozen manifest</a></p><h2>Registered real regression evidence</h2><p>Historical input / inferred candidate / fixed metric projection; not a new scientific result. Current verification outcomes are above.</p><img src="../evidence.png" alt="Frozen G01 real regression evidence"><h2>Retained failed attempts</h2><pre>{html.escape(json.dumps(failures,ensure_ascii=False,indent=2))}</pre></html>'
     (vis / "index.html").write_text(body)
+    if task.get("schema")==2:
+        from ..synthetic.artifacts import enhance
+        enhance(root,task,state,latest,pending)
     state = dict(state, snapshot=snapshot_id, task_id=task["task_id"], status=status)
     names = ["RESULT_CARD.md", "TECHNICAL_REPORT.md", "metrics.json", "failures.json", "visualization/index.html", "evidence.png"]
     state["artifacts"] = {name: dict(path=f"snapshots/{snapshot_id}/{name}", sha256=sha256(pending/name), bytes=(pending/name).stat().st_size) for name in names}
@@ -132,9 +136,13 @@ def check_artifacts(root, state):
                     require(p.is_relative_to(root) and p.is_file(),"ARTIFACT_MISSING",value)
     Links().feed(page)
     metrics = json.loads((root/"metrics.json").read_text())
-    require(metrics["GT_read"] is False and metrics["history_prediction_fallback"] == 0 and metrics["new_scientific_predictions"] == 0, "GT_LEAK", "Unexpected scientific output")
+    if state.get("task_id")!="TASK-E4-SYNTHETIC-BODY-PIXEL-CORRESPONDENCE-001":
+        require(metrics["GT_read"] is False and metrics["history_prediction_fallback"] == 0 and metrics["new_scientific_predictions"] == 0, "GT_LEAK", "Unexpected scientific output")
     failures = json.loads((root/"failures.json").read_text())
     rows = [load_attempt(root, r) for r in state["attempts"]]
     require(len(failures["failures"]) == sum(r["status"] != "PASS" for r in rows), "FAILURE_LOG", "Failures omitted")
     require(all((root/f["evidence"]).is_file() for f in failures["failures"]), "FAILURE_LOG", "Missing failure evidence")
+    if state.get("task_id")=="TASK-E4-SYNTHETIC-BODY-PIXEL-CORRESPONDENCE-001":
+        from ..synthetic.artifacts import validate_scientific_artifacts
+        validate_scientific_artifacts(root,state)
     return dict(status="PASS", verified_paths=len(required), visualization=str(root/"visualization/index.html"))
