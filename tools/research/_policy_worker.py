@@ -22,6 +22,8 @@ def install_io_guard(attempt,science=None):
             if writing and p != Path("/dev/null") and not p.is_relative_to(attempt):raise PolicyError("WRITE_ISOLATION",str(p))
             gt_like=p.suffix.lower()==".blend" or any(x.lower()in {"audit_only","evaluation_only","ground_truth","gt","private"}for x in p.parts) or "NATIVE_CAD_GT" in p.name
             if science and p in science["gt_paths"]:gt_like=True
+            if science and not writing and any(p.is_relative_to(x)for x in science.get('denied_read_prefixes',[])):
+                raise PolicyError('CLEAN_POSE_LEAK',str(p))
             if science and science["role"]=="predictor" and any("_evaluate-" in part or "-G1_visualize-" in part for part in p.parts):gt_like=True
             if not writing and gt_like:
                 allowed=science and science["allow_GT"] and (p in science["gt_paths"] or p.is_relative_to(science["run_root"]))
@@ -37,8 +39,8 @@ def install_io_guard(attempt,science=None):
             if not resolve_at(args[1],args[2]).is_relative_to(attempt):raise PolicyError("WRITE_ISOLATION",str(args[1]))
         elif event == "subprocess.Popen":
             command=args[1]
-            if science and science.get("stage")in {"G1_visualize","G0_scene_audit"} and isinstance(command,(list,tuple)) and Path(str(command[0])).name=="fc-list" and len(command)==2 and (command[1]=="--help"or str(command[1]).startswith("--format=")):return
-            if science and science.get("stage")in {"research_regression","dualvideo_regression"} and isinstance(command,(list,tuple)) and str(command[0])==sys.executable:return
+            if science and science.get("stage")in {"G1_visualize","G0_scene_audit","G4_visualize"} and isinstance(command,(list,tuple)) and Path(str(command[0])).name=="fc-list" and len(command)==2 and (command[1]=="--help"or str(command[1]).startswith("--format=")):return
+            if science and science.get("stage")in {"research_regression","dualvideo_regression","sim_regression"} and isinstance(command,(list,tuple)) and str(command[0])==sys.executable:return
             if science and science["role"]=="generator" and isinstance(command,(list,tuple)) and str(command[0])==science.get("blender_binary"):
                 if "--disable-autoexec" in command and "--factory-startup" in command:return
             if not isinstance(command,(list,tuple)) or Path(str(command[0])).name not in {"git","uname","lscpu"}:
@@ -56,6 +58,9 @@ def main():
     task=json.loads(a.freeze.read_text())["fingerprint"]["task"]
     attempt=a.attempt.resolve()
     science=None
+    if task.get("schema")==4:
+        from ring_first_3d.policy.sim_contracts import permissions
+        science=permissions(task,a.stage,attempt.parents[1])
     if task.get("schema")==3:
         from ring_first_3d.policy.dualvideo_contracts import permissions
         science=permissions(task,a.stage,attempt.parents[1])
@@ -66,7 +71,10 @@ def main():
         science["blender_binary"]=task["science"]["assets"]["blender_binary"]["path"]
     install_io_guard(attempt,science)
     sys.path.insert(0,str(ROOT/"tools/research"))
-    if task.get("schema")==3 and a.stage not in ("preflight","contracts"):
+    if task.get("schema")==4 and a.stage not in ("preflight","contracts"):
+        from ring_first_3d.sim.handlers import dispatch
+        result=dispatch(a.stage,task,attempt)
+    elif task.get("schema")==3 and a.stage not in ("preflight","contracts"):
         from ring_first_3d.dualvideo.audit import dispatch
         result=dispatch(a.stage,task,attempt)
     elif task.get("schema")==2 and a.stage not in ("preflight","contracts"):
