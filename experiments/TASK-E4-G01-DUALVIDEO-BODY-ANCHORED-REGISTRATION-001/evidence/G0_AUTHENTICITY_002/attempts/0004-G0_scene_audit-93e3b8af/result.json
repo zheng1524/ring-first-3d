@@ -1,0 +1,16 @@
+{
+  "attempt_id": "0004-G0_scene_audit-93e3b8af",
+  "stage": "G0_scene_audit",
+  "freeze_sha256": "a204690f691d1704403b2bab4d98b6851c18299c744a2e51ba8dc7a803afd94a",
+  "timeout_seconds": 300,
+  "started_UTC": 1794835978.432814,
+  "status": "FAIL",
+  "seconds": 0.3207692300002236,
+  "reason": "HANDLER_FAILED: Traceback (most recent call last):\n  File \"/home/liu/ring_first_3d_g01_dualvideo/tools/research/_policy_worker.py\", line 90, in <module>\n    if __name__==\"__main__\":main()\n                            ^^^^^^\n  File \"/home/liu/ring_first_3d_g01_dualvideo/tools/research/_policy_worker.py\", line 71, in main\n    result=dispatch(a.stage,task,attempt)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_g01_dualvideo/src/ring_first_3d/dualvideo/audit.py\", line 144, in dispatch\n    if stage=='G0_scene_audit':return audit(task,attempt)\n                                      ^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_g01_dualvideo/src/ring_first_3d/dualvideo/audit.py\", line 78, in audit\n    for row in manifest['rows']:check_sources(row)\n                                ^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_g01_dualvideo/src/ring_first_3d/dualvideo/audit.py\", line 46, in check_sources\n    with np.load(p)as a:native=np.array(a['T'])\n                                        ~^^^^^\n  File \"/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/lib/npyio.py\", line 263, in __getitem__\n    raise KeyError(f\"{key} is not a file in the archive\")\nKeyError: 'T is not a file in the archive'\n",
+  "raw_files": {
+    "request.json": "71b41a694d1cd26693c99b0074c929586082b46a39037b1b35d43b0db281b6c0",
+    "stderr.txt": "45f5930fc1fa687866e8f5b1b71ae4329662efa67772d3289653ab3b7e9f4e2b",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "worker.json": "d3f20b47f51ad2756bd04c9efb0bbffb66f96c9c58d7223f6e17b3255c681f2d"
+  }
+}

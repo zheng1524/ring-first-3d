@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_g01_dualvideo/tools/research/_policy_worker.py", line 90, in <module>
+    if __name__=="__main__":main()
+                            ^^^^^^
+  File "/home/liu/ring_first_3d_g01_dualvideo/tools/research/_policy_worker.py", line 71, in main
+    result=dispatch(a.stage,task,attempt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_g01_dualvideo/src/ring_first_3d/dualvideo/audit.py", line 144, in dispatch
+    if stage=='G0_scene_audit':return audit(task,attempt)
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_g01_dualvideo/src/ring_first_3d/dualvideo/audit.py", line 78, in audit
+    for row in manifest['rows']:check_sources(row)
+                                ^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_g01_dualvideo/src/ring_first_3d/dualvideo/audit.py", line 46, in check_sources
+    with np.load(p)as a:native=np.array(a['T'])
+                                        ~^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/lib/npyio.py", line 263, in __getitem__
+    raise KeyError(f"{key} is not a file in the archive")
+KeyError: 'T is not a file in the archive'
