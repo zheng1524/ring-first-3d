@@ -1,0 +1,93 @@
+{
+  "source": "MAX__G01_v004_raw00499",
+  "source_RGB": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00499.png",
+    "sha256": "bd5bb1b5b269269047c085991e5b3c7e7e79aea948e5925223cddfc19a587a2a",
+    "bytes": 246609
+  },
+  "source_Mask": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00499_labels.png",
+    "sha256": "64be52b9710831301432fab9b201f47e0379bb4ca148240c030d695ba3e5d6df",
+    "bytes": 1821
+  },
+  "cache": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00499_RGB_MASK.npz",
+    "sha256": "f8751ce7e4245b38a9d2ba5709258d7755b882265571e0bac81432c7a76beb40",
+    "bytes": 374426
+  },
+  "RGB_content_SHA": "7beb5ffafebd0f314c4d06f0b0c666edf47bae37ac24a14b978548fdd49799a5",
+  "Mask_content_SHA": "cedf144ce08357abd20cb790cd5c8ac67872c205e8c19b5f94fd85586283c28c",
+  "DXY_commit": "75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95",
+  "VERSION": "DXY-MID-1.0.0rc1",
+  "ring_id": "R10",
+  "inner_diameter_mm": 10.0,
+  "entrypoint": "dxy_mid.pipeline.measure_files",
+  "image_dimensions": [
+    640,
+    360
+  ],
+  "input_coordinates": "cache-native 640x360; K exact half-pixel transport; no JPEG intermediary",
+  "history_prediction_fallback": 0,
+  "GT_read": false,
+  "quality": {
+    "version": "DXY-MID-1.0.0rc1",
+    "Geometry": "V9.1",
+    "ring_valid": true,
+    "ring_reason": "ok",
+    "normal_Gate_pass": false,
+    "Q_conflict_recovery": true,
+    "strict_stable": false,
+    "accepted": true,
+    "candidate_generated": true,
+    "stability_review_pass": false,
+    "geometry_state": "fit_unstable",
+    "quality_class": "Q_conflict_recovery",
+    "reason": "",
+    "stability_flags": "cross_seed_pool_diameter_not_identifiable;residual_conflict_Q_distance_recovery",
+    "P_count": 242,
+    "Q_count": 223,
+    "X_count": 256,
+    "body": "A",
+    "branch": "Q_distance_conflict_recovery",
+    "P_zero_occlusion_inference": false,
+    "coordinate_system": "native_image_px",
+    "GT_read": false,
+    "history_prediction_fallback": 0,
+    "processed_mask_sha256": "cedf144ce08357abd20cb790cd5c8ac67872c205e8c19b5f94fd85586283c28c"
+  },
+  "available": true,
+  "shape": "circle",
+  "center_px": [
+    381.20933233175555,
+    197.58133533648888
+  ],
+  "basis_px": [
+    [
+      75.02785409295842,
+      0.0
+    ],
+    [
+      0.0,
+      75.02785409295842
+    ]
+  ],
+  "candidate_provenance": {
+    "version": "component-diagnostics-v3.1",
+    "method": "V7_phase2_B",
+    "input_hash": "65b4f978c5b976c6cce601f8e31809a8a664b2a9824c82e2852fe83f5fd26200",
+    "source_id": "abee04187727c958f5f10477",
+    "image_sha256": "bd5bb1b5b269269047c085991e5b3c7e7e79aea948e5925223cddfc19a587a2a",
+    "mask_sha256": "64be52b9710831301432fab9b201f47e0379bb4ca148240c030d695ba3e5d6df",
+    "coordinate_system": "native_image_px",
+    "length_unit": "px_diameter",
+    "history_prediction_used": false,
+    "implementation_version": "V7-phase2-directional-PQ-1.2",
+    "Q_are_intervals": true,
+    "measurement_evidence": "observed_P_plus_occlusion_Q",
+    "candidate_origin": "B_minimal_RANSAC",
+    "selection_version": "V8.4.4-conflict-Q-nearest-current-candidate-1.0",
+    "selection_basis": "arc_normalized_mean_Euclidean_distance_to_original_Q_anchors_px",
+    "evidence_status": "occlusion_recovery_with_residual_conflict"
+  },
+  "seconds": 10.437185751994548
+}

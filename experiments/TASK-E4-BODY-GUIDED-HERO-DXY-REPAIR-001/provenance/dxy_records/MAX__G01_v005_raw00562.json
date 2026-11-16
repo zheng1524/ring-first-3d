@@ -1,0 +1,95 @@
+{
+  "source": "MAX__G01_v005_raw00562",
+  "source_RGB": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/inputs/G01_v005_raw00562.png",
+    "sha256": "10944549fbc65d7a81ac94bdf1768d4c763ab903fd4eb95361758440df7a275c",
+    "bytes": 292597
+  },
+  "source_Mask": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/observations/G01_v005_raw00562_labels.png",
+    "sha256": "cf37d1c6a75aa793945d62ae9a7f17fa2d03d1ea65ed631b3789e8e09a551270",
+    "bytes": 2156
+  },
+  "cache": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00562_RGB_MASK.npz",
+    "sha256": "a7c882285a11a7e4eecc4bdb5bd79b84f9632536340cd9da792983e199b74668",
+    "bytes": 379072
+  },
+  "RGB_content_SHA": "20151e1f978ae2fd80965d7582de9fe9b2ff152b5dcde53146c446504c790d68",
+  "Mask_content_SHA": "a7e18699da7363e46d888fb737498b2ce1ec8fc808aa316f7700bff0e0300d64",
+  "DXY_commit": "75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95",
+  "VERSION": "DXY-MID-1.0.0rc1",
+  "ring_id": "R10",
+  "inner_diameter_mm": 10.0,
+  "entrypoint": "dxy_mid.pipeline.measure_files",
+  "image_dimensions": [
+    640,
+    360
+  ],
+  "input_coordinates": "cache-native 640x360; K exact half-pixel transport; no JPEG intermediary",
+  "history_prediction_fallback": 0,
+  "GT_read": false,
+  "quality": {
+    "version": "DXY-MID-1.0.0rc1",
+    "Geometry": "V9.1",
+    "ring_valid": true,
+    "ring_reason": "ok",
+    "normal_Gate_pass": true,
+    "Q_conflict_recovery": false,
+    "strict_stable": false,
+    "accepted": true,
+    "candidate_generated": true,
+    "stability_review_pass": false,
+    "geometry_state": "fit_unstable",
+    "quality_class": "normal_Gate_pass",
+    "reason": "",
+    "stability_flags": "AB_candidate_disagreement_above_20pct",
+    "P_count": 148,
+    "Q_count": 239,
+    "X_count": 208,
+    "body": "A",
+    "branch": "P_main_Q_complement",
+    "P_zero_occlusion_inference": false,
+    "coordinate_system": "native_image_px",
+    "GT_read": false,
+    "history_prediction_fallback": 0,
+    "processed_mask_sha256": "a7e18699da7363e46d888fb737498b2ce1ec8fc808aa316f7700bff0e0300d64"
+  },
+  "available": true,
+  "shape": "ellipse",
+  "center_px": [
+    227.53875732421875,
+    203.7184295654297
+  ],
+  "basis_px": [
+    [
+      40.929216935226236,
+      -62.42178106672386
+    ],
+    [
+      50.071714633361786,
+      51.02430858361053
+    ]
+  ],
+  "candidate_provenance": {
+    "version": "component-diagnostics-v3.1",
+    "method": "V7_phase2_B",
+    "input_hash": "2c76b953b4d7bc4c1bdeefac94ba43a255fac3afef2544443ee1f43911852243",
+    "source_id": "15b9a7b8d16a40465df432ca",
+    "image_sha256": "10944549fbc65d7a81ac94bdf1768d4c763ab903fd4eb95361758440df7a275c",
+    "mask_sha256": "cf37d1c6a75aa793945d62ae9a7f17fa2d03d1ea65ed631b3789e8e09a551270",
+    "coordinate_system": "native_image_px",
+    "length_unit": "px_diameter",
+    "history_prediction_used": false,
+    "implementation_version": "V7-phase2-directional-PQ-1.2",
+    "Q_are_intervals": true,
+    "measurement_evidence": "observed_P_plus_occlusion_Q",
+    "candidate_origin": "B_selected_Q_coherent_profile",
+    "Geometry_numerical_version": "V7-phase2-directional-PQ-1.2",
+    "Boundary_Gate_version": "V8.1-observed-boundary-evidence-gate-1.0",
+    "Geometry_scoring_version": "V8.4.4-conflict-Q-nearest-current-candidate-1.0",
+    "Gate_policy_version": "V8.4.4-conflict-Q-nearest-current-candidate-1.0",
+    "evidence_policy_mode": "anchor"
+  },
+  "seconds": 6.0343250570003875
+}

@@ -1,0 +1,93 @@
+{
+  "source": "OLD018__G03_key00_raw00100",
+  "source_RGB": {
+    "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/groups/G03/inputs/key00_raw00100.png",
+    "sha256": "49a47371530f5dc34ee052de5aef09fcb035bdfa8ac9f6197fcd51fed4fd6200",
+    "bytes": 318714
+  },
+  "source_Mask": {
+    "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/multigroup_ring_hero_visual_audit_v1/groups/G03/observations/key00_raw00100_labels.png",
+    "sha256": "d8b24358114392efe0d4329a94b2b108e4dcc58a87855fbc8662ce039bf7877e",
+    "bytes": 2271
+  },
+  "cache": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G03/G03_key00_raw00100.npz",
+    "sha256": "e5af8f29e32a0f401af23935aa1ece5b3c452ac4ccc861e2885aada7fa2d7d0a",
+    "bytes": 429935
+  },
+  "RGB_content_SHA": "98bf68ee57e4018498d9323f9a34b303596eb0df6f08864d82160a82d2bc8108",
+  "Mask_content_SHA": "c3ef92724b91a3b5813e9bea510a80a54713d06d4c04e06c8864b84e5237aa3e",
+  "DXY_commit": "75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95",
+  "VERSION": "DXY-MID-1.0.0rc1",
+  "ring_id": "R10",
+  "inner_diameter_mm": 10.0,
+  "entrypoint": "dxy_mid.pipeline.measure_files",
+  "image_dimensions": [
+    640,
+    360
+  ],
+  "input_coordinates": "cache-native 640x360; K exact half-pixel transport; no JPEG intermediary",
+  "history_prediction_fallback": 0,
+  "GT_read": false,
+  "quality": {
+    "version": "DXY-MID-1.0.0rc1",
+    "Geometry": "V9.1",
+    "ring_valid": true,
+    "ring_reason": "ok",
+    "normal_Gate_pass": false,
+    "Q_conflict_recovery": true,
+    "strict_stable": false,
+    "accepted": true,
+    "candidate_generated": true,
+    "stability_review_pass": false,
+    "geometry_state": "fit_unstable",
+    "quality_class": "Q_conflict_recovery",
+    "reason": "",
+    "stability_flags": "residual_conflict_Q_distance_recovery",
+    "P_count": 521,
+    "Q_count": 121,
+    "X_count": 230,
+    "body": "A",
+    "branch": "Q_distance_conflict_recovery",
+    "P_zero_occlusion_inference": false,
+    "coordinate_system": "native_image_px",
+    "GT_read": false,
+    "history_prediction_fallback": 0,
+    "processed_mask_sha256": "c3ef92724b91a3b5813e9bea510a80a54713d06d4c04e06c8864b84e5237aa3e"
+  },
+  "available": true,
+  "shape": "ellipse",
+  "center_px": [
+    380.53289675572563,
+    186.7308165721888
+  ],
+  "basis_px": [
+    [
+      -81.47439523967854,
+      -38.59160963895085
+    ],
+    [
+      36.71770753973117,
+      -85.63247183275239
+    ]
+  ],
+  "candidate_provenance": {
+    "version": "component-diagnostics-v3.1",
+    "method": "V7_phase2_B",
+    "input_hash": "81beace9b9949384572779c71003f4d5ce92f7bf2c5cc1d750247ed587d6e5df",
+    "source_id": "271c6edc6c1a6fbc9562cd70",
+    "image_sha256": "49a47371530f5dc34ee052de5aef09fcb035bdfa8ac9f6197fcd51fed4fd6200",
+    "mask_sha256": "d8b24358114392efe0d4329a94b2b108e4dcc58a87855fbc8662ce039bf7877e",
+    "coordinate_system": "native_image_px",
+    "length_unit": "px_diameter",
+    "history_prediction_used": false,
+    "implementation_version": "V7-phase2-directional-PQ-1.2",
+    "Q_are_intervals": true,
+    "measurement_evidence": "observed_P_plus_occlusion_Q",
+    "candidate_origin": "B_minimal_RANSAC_refined",
+    "selection_version": "V8.4.4-conflict-Q-nearest-current-candidate-1.0",
+    "selection_basis": "arc_normalized_mean_Euclidean_distance_to_original_Q_anchors_px",
+    "evidence_status": "occlusion_recovery_with_residual_conflict"
+  },
+  "seconds": 8.647868152998853
+}
