@@ -77,7 +77,7 @@ def execute(stage, task, pending, timeout, freeze_path):
         require(payload["tests"] >= task["acceptance"]["min_contract_tests"] and payload["failures"] == 0 and payload["errors"] == 0, "CONTRACT_COUNT", "Insufficient actual contract tests")
     if stage == "smoke":
         require(len(payload.get("tests", [])) == 4 and all(t["status"] == "PASS" for t in payload["tests"]), "GATE_FAILED", "Real full bundle must pass including compatibility")
-    if stage in {"research_regression","dualvideo_regression","sim_regression","fusion_regression","stress_regression"}:
+    if stage in {"research_regression","dualvideo_regression","sim_regression","fusion_regression","stress_regression","inita_regression"}:
         require(payload.get("baseline_tests")==35 and payload.get("tests",0)>35 and payload.get("failures")==0 and payload.get("errors")==0,"REGRESSION_GATE","Original 35 and new scientific tests required before G0")
     return payload
 
@@ -160,7 +160,7 @@ def run_stage(task, root, stage):
         try:
             require(stage in task["authorization"]["stages"], "UNAUTHORIZED_STAGE", stage)
             if stage in ("preflight", "smoke"):
-                require(set(MODULES)<=set(task["modules"]) if task.get("schema")in {2,3,4,5,6} else set(task["modules"])==set(MODULES), "BUNDLE_SCOPE", "Declare all modules for existing indivisible Preflight/Smoke bundle")
+                require(set(MODULES)<=set(task["modules"]) if task.get("schema")in {2,3,4,5,6,7} else set(task["modules"])==set(MODULES), "BUNDLE_SCOPE", "Declare all modules for existing indivisible Preflight/Smoke bundle")
             for dependency in stages[:stages.index(stage)]:
                 require(dependency in previous and previous[dependency]["status"] == "PASS", "PREDECESSOR_FAILED", dependency)
             require(state["spent_seconds"] < budget["max_seconds"], "BUDGET_EXHAUSTED", "Total compute budget")
@@ -211,7 +211,7 @@ def _accept(task, root):
         artifacts=check_artifacts(root,state)
     return dict(status="PASS",accepted=True,freeze_sha256=state["freeze_sha256"],
                 task_id=task["task_id"],run_dir=str(root),artifacts=artifacts,
-                retained_attempts=len(state["attempts"]),scientific_acceptance="AWAITING_HUMAN_REVIEW"if task.get("schema")in {2,3,4,5,6} else"NOT_APPLICABLE")
+                retained_attempts=len(state["attempts"]),scientific_acceptance="AWAITING_HUMAN_REVIEW"if task.get("schema")in {2,3,4,5,6,7} else"NOT_APPLICABLE")
 
 
 def accept(task,root):

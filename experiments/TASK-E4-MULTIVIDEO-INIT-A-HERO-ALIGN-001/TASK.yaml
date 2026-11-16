@@ -1,0 +1,168 @@
+schema: 7
+task_id: TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001
+goal: 'Exact 013→015 Init-A: 004-only versus shared 004+005 Mesh, independent scale1
+  GT shape evaluation and real full HERO localization'
+modules:
+- T01
+- T03
+- T04
+- T10
+- T11
+- T12
+- T13
+- T24
+- T31
+- T34
+- IA01
+- IA02
+- IA03
+- IA04
+- IA05
+variables:
+  geometry_unit: mm
+  pixel_coordinates: native_image_px
+  camera_transform: opencv_c2w
+  depth_convention: axial_z
+  parameters: {}
+inputs:
+  fixture:
+    path: /home/liu/ring_first_3d_multivideo_init_a/tools/research/frozen_fixture.json
+    sha256: d64ebdbc3b81287c7d8f235e634b05d44269ee76b27206a37d2df976d293dacb
+  support:
+    path: /home/liu/ring_first_3d_multivideo_init_a/tools/research/support_fixture.json
+    sha256: cc26119e6e67a3d19ab124685316b4815be0f63f5ac71bc416704cf46430b28c
+  reference:
+    path: /home/liu/ring_first_3d_multivideo_init_a/tools/research/frozen_reference.json
+    sha256: 216cbab2cdafa85e224580199356c1a2dc1ba087389e9699790d1c6101890cdd
+  source_lock:
+    path: /home/liu/ring_first_3d_multivideo_init_a/src/ring_first_3d/source_lock.json
+    sha256: 3bee30d508fa9ca6bbc4bbc315b217a0a660b77c6498cfce7ccbba6d9ba5f2b0
+  dxy_root: /home/liu/new-polyp-dxy
+  evidence:
+    path: /home/liu/ring_first_3d_multivideo_init_a/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/figures/REAL_SMOKE_EVIDENCE.png
+    sha256: 59451578fe85612ffa5b2bd47f450705e3d45403fbeaf6f324f2a2a9c2088b23
+split:
+  manifest:
+    path: /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/CASE.json
+    sha256: 57799a430b9b954180575a96da3b2d228e0802eac4f6ecf660744c3d308e688e
+  FIT:
+  - FIT
+  HOLDOUT:
+  - UPDATE_HOLDOUT
+  GT:
+  - independent_shape_evaluator_only
+  access: inita_train_hero_evaluation_isolation
+authorization:
+  approved_by: user
+  reference: Explicit user TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001
+  stages:
+  - preflight
+  - contracts
+  - inita_regression
+  - G0_sources
+  - G1_smoke_train
+  - G2_smoke_hero
+  - G3_smoke_evaluate
+  - G4_smoke_visualize
+  - G1_all_train
+  - G2_all_hero
+  - G3_all_evaluate
+  - G4_visualize
+  - artifacts
+acceptance:
+  required_stages:
+  - preflight
+  - contracts
+  - inita_regression
+  - G0_sources
+  - G1_smoke_train
+  - G2_smoke_hero
+  - G3_smoke_evaluate
+  - G4_smoke_visualize
+  - G1_all_train
+  - G2_all_hero
+  - G3_all_evaluate
+  - G4_visualize
+  - artifacts
+  min_contract_tests: 11
+  require_visualization: true
+  require_failure_log: true
+budget:
+  max_seconds: 14400
+  stage_timeout_seconds: 7200
+  max_attempts_per_stage: 2
+  max_output_bytes: 2000000000
+stop:
+- gate_failure
+- input_drift
+- budget_exceeded
+output_root: /home/liu/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/runs
+inita:
+  legacy_commit: 905e2a9b3615a5f429553837a05e5d53826cef03
+  parent_commit: b1f8fb433f37677b93ac52ac5719afd902c1fa11
+  initialization: EXACT_013_INPUT_MESH_V_F_SOLID_CAP
+  arms:
+  - A0
+  - A1
+  - A2
+  cases:
+  - G01
+  - G02
+  - G03
+  - G07
+  - G04
+  - G05
+  - G06
+  - G08
+  - G09
+  - G10
+  - G11
+  smoke_cases:
+  - G01
+  - G03
+  - G05
+  training_budget:
+    max_proposals: 80
+    max_accepted: 40
+    consecutive_rejection_stop: 30
+  GT_alignment_scope: EVALUATION_COPIES_ONLY_SCALE1
+  HERO_uses_GT_aligned_Body: false
+  train_uses_GT: false
+  camera_parameters: 004_FIXED; optionally_one_shared_005_SE3; no_per_frame
+  shared_trigger:
+    delta_FIT_IoU: 0.1
+    absolute_005_FIT_IoU: 0.5
+  shared_005_bounds_deg_mm:
+  - 180.0
+  - 3.0
+  shared_005_starts_deg:
+  - 0.0
+  - 90.0
+  - -90.0
+  - 180.0
+  shared_005_nfev: 40
+  mesh_projection_adapter: Apparent-contour ellipse of actual frozen Mesh; ray hits
+    actual faces, never ellipsoid replacement
+  occupancy_Sobol_power: 17
+  occupancy_seed: 20261108
+  shape_samples_per_direction: 8192
+  HERO_frame_prior_deg_mm:
+  - 0.3
+  - 0.1
+  HERO_Body_tolerance_mm: 0.5
+  assets:
+    sources:
+      path: /home/liu/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/inputs/SOURCES.json
+      sha256: 38472edcee503767ca4be41cf1a2f11d17cb1671423571a90858cec32f7338fd
+    code_lock:
+      path: /home/liu/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/inputs/CODE_LOCK.json
+      sha256: 71b29e26e9d1656957b3dfd811b6118718c62b6206823464b7584c8538ce18d9
+    Ip_source_review:
+      path: /home/liu/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/inputs/INIT_A_ALL_IP_SOURCE_REVIEW.png
+      sha256: 10437f00ca72f5ef5a3a4c3fdde8fb3550b590fd9655381f49cb7a8ac23baa93
+    GT_metadata:
+      path: /home/liu/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/evaluation_only/GT_META.json
+      sha256: 13e9f2c29189f9d64b6a558ec6fa47e41229ab7ebd8f8fd9963187e8f67ecc00
+    hero_policy_source:
+      path: /home/liu/ring_first_3d_multivideo_init_a/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/TASK.yaml
+      sha256: 2a852c873a3cb2510eaa2aac04900c59773a1cc2447470c2b20d0ab69b69ce1c
