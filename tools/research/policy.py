@@ -20,6 +20,7 @@ from ring_first_3d.policy.inita_contracts import INIT_STAGES
 from ring_first_3d.policy.contour_contracts import CONTOUR_STAGES
 from ring_first_3d.policy.structural_contracts import STRUCTURAL_STAGES
 from ring_first_3d.policy.structured_contracts import STRUCTURED_STAGES
+from ring_first_3d.policy.recovery_contracts import RECOVERY_STAGES
 
 
 def make_task(task_id, output):
@@ -53,7 +54,7 @@ def main(argv=None):
     for name in ["check","run","accept","status"]:
         p=sub.add_parser(name);p.add_argument("--task",type=Path,required=True)
         if name!="check":p.add_argument("--run-dir",type=Path,required=True)
-        if name=="run":p.add_argument("--stage",choices=sorted(set(STAGES)|set(SCIENCE_STAGES)|set(DUAL_STAGES)|set(SIM_STAGES)|set(FUSION_STAGES)|set(STRESS_STAGES)|set(INIT_STAGES)|set(CONTOUR_STAGES)|set(STRUCTURAL_STAGES)|set(STRUCTURED_STAGES)|{"all"}),required=True)
+        if name=="run":p.add_argument("--stage",choices=sorted(set(STAGES)|set(SCIENCE_STAGES)|set(DUAL_STAGES)|set(SIM_STAGES)|set(FUSION_STAGES)|set(STRESS_STAGES)|set(INIT_STAGES)|set(CONTOUR_STAGES)|set(STRUCTURAL_STAGES)|set(STRUCTURED_STAGES)|set(RECOVERY_STAGES)|{"all"}),required=True)
     a=parser.parse_args(argv)
     try:
         if a.command=="init":result=make_task(a.task_id,a.output)
