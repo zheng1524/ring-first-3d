@@ -1,3 +1,7 @@
+# 主线资产整理更新
+
+规范入口为mainline/README.md及MAINLINE_ASSET_MAP。ACTIVE_MAINLINE、REUSABLE_REFERENCE、HISTORICAL_EVIDENCE与DEPRECATED_EXPLORATION必须分别使用；工程PASS不能升格科学认证。旧表为原版本快照，最新调用与数据依赖以mainline清单为准。
+
 # 可复用代码清单
 
 G0–G1 增量：[S01–S05 受控 G01 合成对应模块](SYNTHETIC_CORRESPONDENCE_MODULES.md) 通过 schema 2 注册 generator/predictor/evaluator 角色；只执行 C0/C1/C3，对应结果不更新 Body，不改变下列历史模块科学状态。

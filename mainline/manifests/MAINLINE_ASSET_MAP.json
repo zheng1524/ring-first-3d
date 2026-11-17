@@ -1,0 +1,153 @@
+{
+  "task": "TASK-MAINLINE-ASSET-CONSOLIDATION-001",
+  "state": "ACTIVE_RESEARCH_MAINLINE",
+  "certified_scientific_baseline": false,
+  "project_root": "/home/liu/ring_first_3d_mainline",
+  "modules": [
+    {
+      "id": "RING_FIRST",
+      "classification": "ACTIVE_MAINLINE",
+      "entry": "mainline/scripts/python.sh -m ring_first_3d.mainline.cli ring-first",
+      "canonical_implementation": "src/ring_first_3d/mainline/replays.py::ring_first",
+      "test": "maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/REPRODUCIBILITY_TESTS/RING_FIRST.json",
+      "status": "PASS",
+      "source_execution_guard": "Forbids exec from every former experiment workspace",
+      "scientific_certification": false
+    },
+    {
+      "id": "HERO",
+      "classification": "REUSABLE_REFERENCE",
+      "entry": "mainline/scripts/python.sh -m ring_first_3d.mainline.cli hero",
+      "canonical_implementation": "src/ring_first_3d/mainline/replays.py::hero",
+      "test": "maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/REPRODUCIBILITY_TESTS/HERO.json",
+      "status": "PASS",
+      "source_execution_guard": "Forbids exec from every former experiment workspace",
+      "scientific_certification": false
+    },
+    {
+      "id": "BODY_INITIALIZATION",
+      "classification": "ACTIVE_MAINLINE",
+      "entry": "mainline/scripts/python.sh -m ring_first_3d.mainline.cli body-initialization",
+      "canonical_implementation": "src/ring_first_3d/mainline/replays.py::body_initialization",
+      "test": "maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/REPRODUCIBILITY_TESTS/BODY_INITIALIZATION.json",
+      "status": "PASS",
+      "source_execution_guard": "Forbids exec from every former experiment workspace",
+      "scientific_certification": false
+    },
+    {
+      "id": "BODY_UPDATE",
+      "classification": "ACTIVE_MAINLINE",
+      "entry": "mainline/scripts/python.sh -m ring_first_3d.mainline.cli body-update",
+      "canonical_implementation": "src/ring_first_3d/mainline/replays.py::body_update",
+      "test": "maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/REPRODUCIBILITY_TESTS/BODY_UPDATE.json",
+      "status": "PASS",
+      "source_execution_guard": "Forbids exec from every former experiment workspace",
+      "scientific_certification": false
+    },
+    {
+      "id": "STALK_GROWTH_G01",
+      "classification": "ACTIVE_MAINLINE",
+      "entry": "mainline/scripts/python.sh -m ring_first_3d.mainline.cli stalk-growth-g01",
+      "canonical_implementation": "src/ring_first_3d/mainline/replays.py::growth",
+      "test": "maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/REPRODUCIBILITY_TESTS/STALK_GROWTH_G01.json",
+      "status": "PASS",
+      "source_execution_guard": "Forbids exec from every former experiment workspace",
+      "scientific_certification": false
+    },
+    {
+      "id": "STALK_GROWTH_G03",
+      "classification": "ACTIVE_MAINLINE",
+      "entry": "mainline/scripts/python.sh -m ring_first_3d.mainline.cli stalk-growth-g03",
+      "canonical_implementation": "src/ring_first_3d/mainline/replays.py::growth",
+      "test": "maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/REPRODUCIBILITY_TESTS/STALK_GROWTH_G03.json",
+      "status": "PASS",
+      "source_execution_guard": "Forbids exec from every former experiment workspace",
+      "scientific_certification": false
+    },
+    {
+      "id": "A_TO_B",
+      "classification": "REUSABLE_REFERENCE",
+      "entry": "mainline/scripts/python.sh -m ring_first_3d.mainline.cli a-to-b",
+      "canonical_implementation": "src/ring_first_3d/mainline/replays.py::a_to_b",
+      "test": "maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/REPRODUCIBILITY_TESTS/A_TO_B.json",
+      "status": "PASS",
+      "source_execution_guard": "Forbids exec from every former experiment workspace",
+      "scientific_certification": false
+    },
+    {
+      "id": "DEPTH_SUPERVISED_PYTORCH",
+      "classification": "REUSABLE_REFERENCE",
+      "entry": "mainline/scripts/python.sh -m ring_first_3d.mainline.cli depth-supervised-pytorch",
+      "canonical_implementation": "src/ring_first_3d/mainline/replays.py::depth_supervised",
+      "test": "maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/REPRODUCIBILITY_TESTS/DEPTH_SUPERVISED_PYTORCH.json",
+      "status": "PASS",
+      "source_execution_guard": "Forbids exec from every former experiment workspace",
+      "scientific_certification": false
+    },
+    {
+      "id": "E1_E2_NINE_PARAMETER",
+      "classification": "REUSABLE_REFERENCE",
+      "implementation": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-A1-COARSE-BODY-001/code/models.py; TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/code/fitting.py; frozen_registry T04–T09",
+      "status": "MATH_AND_SOURCE_RETAINED; not substituted for EXACT013"
+    },
+    {
+      "id": "DXY_PIXEL_API",
+      "classification": "REUSABLE_REFERENCE",
+      "implementation": "src/ring_first_3d/adapters/dxy.py",
+      "source": "/home/liu/new-polyp-dxy",
+      "copied": false,
+      "readonly": true
+    },
+    {
+      "id": "P0_RENDERER",
+      "classification": "REUSABLE_REFERENCE",
+      "implementation": "src/ring_first_3d/mainline/frozen_registry/visualization/real_p0_renderer.py",
+      "status": "Exact source and its visualization interfaces retained; A-to-B has its own tested canonical entry"
+    },
+    {
+      "id": "T28_OLD_DEPTH_BLOCK",
+      "classification": "REUSABLE_REFERENCE",
+      "implementation": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-014/code/components.py",
+      "observation_model": "OLD_DEPTH; separate from native018"
+    },
+    {
+      "id": "T30_NATIVE_DEPTH_BLOCK",
+      "classification": "REUSABLE_REFERENCE",
+      "implementation": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-HERO-BODY-ADAPT-018/code/hero_objective018.py",
+      "observation_model": "Native pixel first-hit barycentric axial Z; explicit misses"
+    },
+    {
+      "id": "CROSS_VIDEO_BA",
+      "classification": "REUSABLE_REFERENCE",
+      "implementation": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/code",
+      "status": "Source/report evidence retained; not newly optimized"
+    },
+    {
+      "id": "TASK-E3-D0-OPEN3D-TSDF-BASELINE-001",
+      "classification": "DEPRECATED_EXPLORATION",
+      "implementation": "src/ring_first_3d/mainline/lineage/experiments/TASK-E3-D0-OPEN3D-TSDF-BASELINE-001/code/hero_tsdf_adapter.py",
+      "scientific_state": "ORIGINAL_NEGATIVE_EVIDENCE_RETAINED",
+      "rerun": false
+    },
+    {
+      "id": "TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001",
+      "classification": "DEPRECATED_EXPLORATION",
+      "implementation": "src/ring_first_3d/mainline/lineage/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/code/infer.py",
+      "scientific_state": "ORIGINAL_NEGATIVE_EVIDENCE_RETAINED",
+      "rerun": false
+    },
+    {
+      "id": "TASK-E3-SDF-MONOSDF-FULL-TRAINING-REVALIDATION-001",
+      "classification": "DEPRECATED_EXPLORATION",
+      "implementation": "src/ring_first_3d/mainline/lineage/experiments/TASK-E3-SDF-MONOSDF-FULL-TRAINING-REVALIDATION-001/code/official_adapter.py",
+      "scientific_state": "INCOMPLETE_TRAINING",
+      "rerun": false
+    }
+  ],
+  "primary_initialization": "EXACT_013_INPUT_MESH_V_F_SOLID_CAP",
+  "source_provenance": "mainline/manifests/SOURCE_PROVENANCE.json",
+  "external_inputs": "mainline/manifests/EXTERNAL_INPUTS.json",
+  "history": "mainline/references/HISTORICAL_RETENTION.json",
+  "results": "mainline/results",
+  "mainline_pipeline": "mainline/PIPELINE.md"
+}

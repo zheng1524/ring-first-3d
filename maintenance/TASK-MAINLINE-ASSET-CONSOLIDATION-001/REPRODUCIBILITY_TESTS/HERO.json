@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "inference": {
+    "inference_executed": true,
+    "reused_historical_depth": false,
+    "optimizer_steps": 0,
+    "native_shape": [
+      352,
+      640
+    ],
+    "depth_interpolation": 0,
+    "unit": "mm",
+    "depth_definition": "axialZ",
+    "native_pixels": 22733,
+    "raw_faces": 43746,
+    "seconds": 1.0571942329406738,
+    "peak_GPU_bytes": 1508467712
+  },
+  "comparison": {
+    "N_pixels": 225280,
+    "N_common_finite": 225280,
+    "depth_bitwise_equal": true,
+    "depth_MAE_mm": 0.0,
+    "depth_p95_mm": 0.0,
+    "depth_max_mm": 0.0,
+    "native_K_max_abs": 0.0,
+    "c2w_max_abs": 0.0,
+    "raw_faces_equal": true,
+    "raw_pixel_ids_equal": true,
+    "raw_vertex_max_mm": 0.0,
+    "validity": "historical-output reproducibility; not geometric truth",
+    "GT": "NOT_EVALUABLE",
+    "within_preregistered_tolerance": true
+  },
+  "model_receipt": {
+    "files_verified": 105,
+    "upstream_commit": "5bd49bba0992aa56060e1aa3bb40b2150b04726f",
+    "verification": "per-file SHA256, not parent-directory git rev-parse",
+    "dinov2_commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+    "dinov2_files_verified": 156,
+    "checkpoint_SHA256": "00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d",
+    "all_learned_parameters_loaded": 535,
+    "learned_parameter_elements": 201670426,
+    "regenerated_fixed_buffers": {
+      "mv_depth_loss.backproject.pix_coords_13N": [
+        1,
+        3,
+        235200
+      ],
+      "compute_normals.backproject.pix_coords_13N": [
+        1,
+        3,
+        235200
+      ],
+      "cost_volume.backprojector.pix_coords_13N": [
+        1,
+        3,
+        19200
+      ]
+    },
+    "actual_source_views": 3,
+    "fast_cost_volume": false,
+    "weights_updated": false
+  },
+  "module": "hero",
+  "seconds": 12.971869680000054,
+  "replay_freeze_sha256": "f69ce0a181bd72c702a0f5f8bb0123bc023b91e469a5d7da50d311676f83542a",
+  "old_experiment_code_execution_forbidden": true,
+  "canonical_executed_sources": [
+    ".runtime/extra_packages/imageio/__init__.py",
+    ".runtime/extra_packages/imageio/config/__init__.py",
+    ".runtime/extra_packages/imageio/config/extensions.py",
+    ".runtime/extra_packages/imageio/config/plugins.py",
+    ".runtime/extra_packages/imageio/core/__init__.py",
+    ".runtime/extra_packages/imageio/core/fetching.py",
+    ".runtime/extra_packages/imageio/core/findlib.py",
+    ".runtime/extra_packages/imageio/core/format.py",
+    ".runtime/extra_packages/imageio/core/imopen.py",
+    ".runtime/extra_packages/imageio/core/legacy_plugin_wrapper.py",
+    ".runtime/extra_packages/imageio/core/request.py",
+    ".runtime/extra_packages/imageio/core/util.py",
+    ".runtime/extra_packages/imageio/core/v3_plugin_api.py",
+    ".runtime/extra_packages/imageio/plugins/__init__.py",
+    ".runtime/extra_packages/imageio/plugins/ffmpeg.py",
+    ".runtime/extra_packages/imageio/typing.py",
+    ".runtime/extra_packages/imageio/v2.py",
+    ".runtime/extra_packages/imageio/v3.py",
+    ".runtime/extra_packages/lazy_loader/__init__.py",
+    ".runtime/extra_packages/skimage/__init__.py",
+    ".runtime/extra_packages/skimage/_shared/__init__.py",
+    ".runtime/extra_packages/skimage/_shared/tester.py",
+    ".runtime/fcl_packages/fcl/__init__.py",
+    ".runtime/fcl_packages/fcl/collision_data.py",
+    ".runtime/fcl_packages/fcl/version.py",
+    "config-3.py",
+    "config.py",
+    "src/ring_first_3d/mainline/native/__init__.py",
+    "src/ring_first_3d/mainline/native/_kernels.py",
+    "src/ring_first_3d/mainline/native/cli.py",
+    "src/ring_first_3d/mainline/native/geometry.py",
+    "src/ring_first_3d/mainline/native/hero.py",
+    "src/ring_first_3d/mainline/native/io.py",
+    "src/ring_first_3d/mainline/native/validation.py",
+    "src/ring_first_3d/mainline/replays.py"
+  ],
+  "no_new_training": true
+}

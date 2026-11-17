@@ -1,0 +1,22 @@
+{
+  "camera_max_abs": 1e-10,
+  "hero_depth_comparison": "BITWISE",
+  "initial_mesh_comparison": "BITWISE",
+  "mesh_vertices_max_mm": 1e-05,
+  "mesh_faces_comparison": "EXACT",
+  "projection_IoU_abs": 1e-12,
+  "boundary_MAE_abs_px": 1e-12,
+  "a_to_b_valid_and_RGBA": "BITWISE",
+  "a_to_b_depth": "BITWISE",
+  "loss_abs": 1e-07,
+  "gradient_relative_norm": 0.0001,
+  "provenance": {
+    "camera": "ring-first-hero-core/tests/test_real_example.py",
+    "hero": "same real-example frozen bitwise history comparison",
+    "mesh": "Growth Recovery exact restoration1e-5mm contract",
+    "projection": "ProjectionGate existing1e-12 non-regression numerical slack",
+    "loss": "historical train018 FULL_FIT_OBJECTIVE epsilon1e-7",
+    "gradient": "historical tape.py additivity_relative_error threshold1e-4"
+  },
+  "post_result_relaxation": false
+}

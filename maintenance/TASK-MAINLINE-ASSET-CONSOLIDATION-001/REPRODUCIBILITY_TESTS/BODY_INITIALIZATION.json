@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "G01",
+      "bitwise_equal": {
+        "V": true,
+        "F": true,
+        "F_solid": true,
+        "inferred_base_faces": true,
+        "boundary_vertex": true
+      },
+      "input": {
+        "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/INITIAL.npz",
+        "sha256": "3045a7546d1eaf2bfd8fcd05cfd0c83cadfcd92bd684ecc6efbd8c286fad8c9f"
+      },
+      "implementation": "same exact013 initializer; no E1/E2 substitution"
+    },
+    {
+      "case": "G03",
+      "bitwise_equal": {
+        "V": true,
+        "F": true,
+        "F_solid": true,
+        "inferred_base_faces": true,
+        "boundary_vertex": true
+      },
+      "input": {
+        "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G03/INITIAL.npz",
+        "sha256": "37e49e0043427bac000a5f25a623ff363e7ee261223c163dc9dfc51338e4bc34"
+      },
+      "implementation": "same exact013 initializer; no E1/E2 substitution"
+    }
+  ],
+  "module": "body-initialization",
+  "seconds": 3.313852512000267,
+  "replay_freeze_sha256": "f69ce0a181bd72c702a0f5f8bb0123bc023b91e469a5d7da50d311676f83542a",
+  "old_experiment_code_execution_forbidden": true,
+  "canonical_executed_sources": [
+    ".runtime/fcl_packages/fcl/__init__.py",
+    ".runtime/fcl_packages/fcl/collision_data.py",
+    ".runtime/fcl_packages/fcl/version.py",
+    "config-3.py",
+    "config.py",
+    "src/ring_first_3d/_legacy.py",
+    "src/ring_first_3d/adapters/__init__.py",
+    "src/ring_first_3d/adapters/dxy.py",
+    "src/ring_first_3d/contour_guided/__init__.py",
+    "src/ring_first_3d/contour_guided/correspondence.py",
+    "src/ring_first_3d/contracts/__init__.py",
+    "src/ring_first_3d/contracts/coordinates.py",
+    "src/ring_first_3d/contracts/identities.py",
+    "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/io_utils.py",
+    "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/body_update.py",
+    "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/common.py",
+    "src/ring_first_3d/mainline/replays.py",
+    "src/ring_first_3d/multisurface/__init__.py",
+    "src/ring_first_3d/multisurface/geometry.py",
+    "src/ring_first_3d/policy/__init__.py",
+    "src/ring_first_3d/policy/artifacts.py",
+    "src/ring_first_3d/policy/contracts.py",
+    "src/ring_first_3d/rendering/__init__.py",
+    "src/ring_first_3d/rendering/pytorch3d_renderer.py",
+    "src/ring_first_3d/sim/__init__.py",
+    "src/ring_first_3d/sim/geometry.py",
+    "src/ring_first_3d/synthetic/__init__.py",
+    "src/ring_first_3d/synthetic/io.py",
+    "src/ring_first_3d/synthetic/raster.py"
+  ],
+  "no_new_training": true
+}

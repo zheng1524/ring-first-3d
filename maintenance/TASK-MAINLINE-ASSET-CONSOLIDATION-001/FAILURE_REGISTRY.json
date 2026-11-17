@@ -1,0 +1,49 @@
+{
+  "task": "TASK-MAINLINE-ASSET-CONSOLIDATION-001",
+  "records": [
+    {
+      "id": "MC-DISK",
+      "category": "environment_error",
+      "symptom": "Initial ordinary-user disk space0",
+      "confirmed_cause": "Measured statvfs/df",
+      "repair": "Hash-verified payload dedup and regenerable-cache deletion",
+      "evidence": "PHASE1_DELETE_MANIFEST.json",
+      "permanent_rule": false
+    },
+    {
+      "id": "MC-CLOSURE",
+      "category": "engineering_error",
+      "symptom": "First247-test migration: missing Failure Memory evidence and actual SIM revision directory",
+      "repair": "Copy required exact files; keep all original assertions",
+      "evidence": "REGRESSION_INITIAL_FAILURE.txt",
+      "permanent_rule": false
+    },
+    {
+      "id": "MC-SHARED-ARM",
+      "category": "data_identity_error",
+      "symptom": "Historical shared ARM.json contains G03 views for a G01 replay",
+      "confirmed_cause": "Per-case G01_HERO_WEIGHTS/gradient artifacts contradict overwritten shared config",
+      "repair": "Use actual per-case frozen identities, not new selection",
+      "evidence": "REPLAY_PROTOCOL_REVISIONS/001/DEPTH_FAILURE.json",
+      "permanent_rule": false
+    },
+    {
+      "id": "MC-INITIAL-CONTAINER",
+      "category": "engineering_error",
+      "symptom": "Array-identical reserialized INITIAL ZIP differs from original013 file SHA",
+      "repair": "Copy original013 container byte-for-byte; retain cache separately",
+      "evidence": "REPLAY_PROTOCOL_REVISIONS/002/INITIALIZATION_FAILURE.json",
+      "permanent_rule": false
+    },
+    {
+      "id": "MC-SCIENCE",
+      "category": "scientific_negative",
+      "symptom": "G01 root exposure/fixed-frame GT worsening and G03 per-view protection remain",
+      "repair": "Retain original findings; no scientific repair in maintenance",
+      "evidence": "../../mainline/results/FAILURE_REGISTRY.json",
+      "permanent_rule": false
+    }
+  ],
+  "permanent_promotion": false,
+  "scientific_certification": false
+}

@@ -1,0 +1,84 @@
+{
+  "python": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+  "environment": {
+    "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+    "executable": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+    "module_version": "0.1.0",
+    "numpy": {
+      "version": "1.26.4",
+      "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/__init__.py"
+    },
+    "scipy": {
+      "version": "1.15.3",
+      "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/scipy/__init__.py"
+    },
+    "cv2": {
+      "version": "4.11.0",
+      "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/cv2/__init__.py"
+    },
+    "skimage": {
+      "version": "0.25.2",
+      "file": "/home/liu/ring_first_3d_mainline/.runtime/extra_packages/skimage/__init__.py"
+    },
+    "torch": {
+      "version": "2.7.1+cu128",
+      "file": "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/__init__.py"
+    },
+    "pytorch3d": {
+      "version": "0.7.9",
+      "file": "/home/liu/ring_first_3d_mainline/.runtime/p3d/pytorch3d/__init__.py"
+    },
+    "open3d": {
+      "version": "0.19.0",
+      "file": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor/open3d/__init__.py"
+    },
+    "trimesh": {
+      "version": "5.1.1",
+      "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/trimesh/__init__.py"
+    },
+    "fcl": {
+      "version": "0.7.0.11",
+      "file": "/home/liu/ring_first_3d_mainline/.runtime/fcl_packages/fcl/__init__.py"
+    },
+    "cuda": "12.8",
+    "GPU": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "pytorch3d_extension": "/home/liu/ring_first_3d_mainline/.runtime/p3d/pytorch3d/_C.cpython-312-x86_64-linux-gnu.so"
+  },
+  "compiled_runtime_manifest": "mainline/manifests/RUNTIME_FILES.json",
+  "runtime_LOCAL_ONLY": true,
+  "official_HERO": {
+    "repository": "https://github.com/nianticlabs/mvsanywhere",
+    "original_claimed_commit": "4483e25ede3eee1b6eaf96254d2544152f935c0d",
+    "original_claim_verified": false,
+    "official_API_result": "422 No commit found for SHA",
+    "actual_claim_origin": "local polyp_research parent Git repository; vendor directory was not a Git checkout",
+    "verified_upstream_commit": "5bd49bba0992aa56060e1aa3bb40b2150b04726f",
+    "matched_source_files": 105,
+    "source_difference_files": [],
+    "verification": "All 105 used Python/config files have identical Git blob IDs and SHA256 to pinned upstream; no algorithm or weight replacement",
+    "manifest": "provenance/upstream/SOURCE_COMPARISON.json"
+  },
+  "checkpoint": {
+    "official_url": "https://storage.googleapis.com/niantic-lon-static/research/mvsanywhere/mvsanywhere_hero.ckpt",
+    "SHA256": "00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d",
+    "bytes": 2420601860,
+    "verified": true,
+    "redistributed": false,
+    "learned_tensor_count": 535,
+    "learned_parameter_elements": 201670426
+  },
+  "DINO": {
+    "repository": "https://github.com/facebookresearch/dinov2",
+    "verified_upstream_commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+    "matched_source_files": 156,
+    "different": []
+  },
+  "external_inputs": "mainline/manifests/EXTERNAL_INPUTS.json",
+  "fixed_source_lock": "src/ring_first_3d/source_lock.json",
+  "replay_input_freeze_sha256": "f69ce0a181bd72c702a0f5f8bb0123bc023b91e469a5d7da50d311676f83542a",
+  "old_experiment_code_execution": false,
+  "raw_data_kept_in_original_locations": true,
+  "cross_machine_status": "NOT_CERTIFIED: controlled data paths, CUDA/Python ABI, compiled runtime and official weights must be provisioned and hash-bound",
+  "scope": "all inherited source API, canonical versioned code, small frozen inputs and explicit compiled runtime"
+}

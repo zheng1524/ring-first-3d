@@ -1,3 +1,7 @@
+# 主线资产整理更新
+
+规范入口为mainline/README.md及MAINLINE_ASSET_MAP。ACTIVE_MAINLINE、REUSABLE_REFERENCE、HISTORICAL_EVIDENCE与DEPRECATED_EXPLORATION必须分别使用；工程PASS不能升格科学认证。旧表为原版本快照，最新调用与数据依赖以mainline清单为准。
+
 # 技术路线总表
 
 受控实验补充：[真实 G01 合成 Pixel-to-Face 对应 G0–G1](SYNTHETIC_CORRESPONDENCE_MODULES.md) 已登记 S01–S05 及有限阶段；这是条件相机/固定 GT 派生 Body 的校准诊断，科学状态待人工审阅，不是新的主体优化路线。

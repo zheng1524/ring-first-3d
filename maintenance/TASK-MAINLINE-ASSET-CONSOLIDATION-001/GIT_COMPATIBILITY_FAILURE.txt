@@ -1,0 +1,17 @@
+error: 未知选项 `sparse'
+用法：git rm [<选项>] [--] <文件>...
+
+    -n, --dry-run         演习
+    -q, --quiet           不列出删除的文件
+    --cached              只从索引区删除
+    -f, --force           忽略文件更新状态检查
+    -r                    允许递归删除
+    --ignore-unmatch      即使没有匹配，也以零状态退出
+
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_mainline/maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/code/stage_aliases.py", line 18, in <module>
+    if a['retained_history_files']:subprocess.run(['git','rm','-r','--cached','--sparse','--',a['path']],cwd=R,check=True,stdout=subprocess.DEVNULL)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'rm', '-r', '--cached', '--sparse', '--', 'experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001']' returned non-zero exit status 129.

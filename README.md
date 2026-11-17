@@ -1,15 +1,21 @@
-# Research engineering entry
+# Ring-First 3D — 当前主线入口
 
-本发布分支基于 main，仅添加技术注册表、文档和最小共享 Harness。[从 PROJECT_HOME 开始](docs/PROJECT_HOME.md)，先运行 [Preflight / Smoke](docs/RESEARCH_EXECUTION_HARNESS.md)。历史科学状态未晋升；数据/环境/原算法源对象为明确外部依赖。下方保留原 main 的历史 bootstrap 说明。
+当前状态：**ACTIVE_RESEARCH_MAINLINE**。工程重放通过，尚非CERTIFIED_SCIENTIFIC_BASELINE。
 
-# Ring-First 3D · Human-in-the-loop research collaboration
+先读 [PROJECT_HOME](docs/PROJECT_HOME.md)、[mainline README](mainline/README.md)、[PIPELINE](mainline/PIPELINE.md) 和 [MAINLINE_ASSET_MAP](mainline/manifests/MAINLINE_ASSET_MAP.json)。规范代码在src/ring_first_3d；mainline提供配置、运行入口、依赖锁和精选结果。
 
-Status: **BOOTSTRAP_ONLY** · Collaboration standard: **v1.3** · No certified 3D algorithm baseline has been imported.
+活动路线：EXACT013 Init-A → Deformation Graph + Smooth ARAP → 嵌入式B-spline/RMF → Boolean Union → 多视角轮廓与Ring验收。
 
-This repository is for incremental Codex-produced reproducible source, configurations, diagnostics, curated visuals and one technical report per task. RA and PM collaborate through human-relayed prompts and reports; they are not required to write GitHub.
+- G01：外露1.726844mm；FIT/HOLDOUT0.932784/0.933253；自动门禁通过，但近端局部外露0.047185mm、固定INITIAL→GT框架MAE恶化。
+- G03：PER_VIEW_PROTECTION；005两个视角IoU下降0.023444/0.012446，正式柄长NaN。
+- 下一阶段：HERO原生深度约束、G03跨视频诊断、根部完整内藏及主体/柄部联合更新；需新TASK/源码锁和科研授权。
 
-Canonical technical path: Ring-First camera pose → MVSAnywhere HERO depth → open metric Polyp/Ring/local tissue scene → 3D-derived metrics.
+运行固定重放：
 
-Read `COLLAB_STANDARD_v1.3.md` and `AGENTS.md`. Old sources and large raw assets remain LOCAL_ONLY pending reviewed selective baseline import. Do not infer current code state from legacy `polyp-resarch` Git HEAD.
+```bash
+bash mainline/scripts/run_ring_first.sh --out /tmp/rf-replay
+bash mainline/scripts/run_hero.sh --out /tmp/hero-replay
+bash mainline/scripts/run_stalk_growth.sh G01 --out /tmp/stalk-replay
+```
 
-Approved visualization utility: [real P0 renderer v1.0.0](visualization/README.md), with its own dependencies and provenance. This selective mainline import contains raw point visualization only; experimental point cleanup and scientific algorithm baselines are not imported.
+入口：[本地主线可视化](mainline/visualization/index.html) · [工程整理报告](maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/TECHNICAL_REPORT.md) · [结果一致性](maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/RESULT_EQUIVALENCE_REPORT.md)。原始数据、权重、官方第三方代码和环境采用LOCAL_ONLY清单，不重复分发。DXY独立只读。

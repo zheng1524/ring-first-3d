@@ -1,0 +1,717 @@
+[
+  {
+    "command": [
+      "df",
+      "-h"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "\u6587\u4ef6\u7cfb\u7edf        \u5bb9\u91cf  \u5df2\u7528  \u53ef\u7528 \u5df2\u7528% \u6302\u8f7d\u70b9\nudev            7.4G     0  7.4G    0% /dev\ntmpfs           1.5G  2.5M  1.5G    1% /run\n/dev/nvme0n1p3  197G  187G     0  100% /\ntmpfs           7.5G   13M  7.4G    1% /dev/shm\ntmpfs           5.0M  4.0K  5.0M    1% /run/lock\ntmpfs           7.5G     0  7.5G    0% /sys/fs/cgroup\n/dev/loop0      128K  128K     0  100% /snap/bare/5\n/dev/loop2      402M  402M     0  100% /snap/mesa-2404/1839\n/dev/loop1      350M  350M     0  100% /snap/gnome-3-38-2004/143\n/dev/loop4       45M   45M     0  100% /snap/snapd/28254\n/dev/loop3       12M   12M     0  100% /snap/snap-store/1447\n/dev/loop5       64M   64M     0  100% /snap/core20/2922\n/dev/loop6       92M   92M     0  100% /snap/gtk-common-themes/1535\n/dev/loop7      616M  616M     0  100% /snap/gnome-46-2404/168\n/dev/loop10     617M  617M     0  100% /snap/gnome-46-2404/177\n/dev/loop9       67M   67M     0  100% /snap/core24/2124\n/dev/loop12      74M   74M     0  100% /snap/core22/2955\n/dev/loop8       33M   33M     0  100% /snap/snapd/28332\n/dev/loop13      12M   12M     0  100% /snap/snap-store/1468\n/dev/loop11     532M  532M     0  100% /snap/gnome-42-2204/263\n/dev/nvme0n1p1  511M   74M  438M   15% /boot/efi\ntmpfs           1.5G   20K  1.5G    1% /run/user/126\ntmpfs           1.5G  104K  1.5G    1% /run/user/1000\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "count-objects",
+      "-vH"
+    ],
+    "cwd": "/home/liu/ring_first_3d_growth_recovery",
+    "code": 0,
+    "stdout": "count: 4700\nsize: 440.57 MiB\nin-pack: 2606\npacks: 2\nsize-pack: 664.38 KiB\nprune-packable: 0\ngarbage: 3\nsize-garbage: 82.93 MiB\nalternate: /home/liu/polyp_research/ring-first-3d/.git/objects\n",
+    "stderr": "warning: garbage found: /home/liu/ring_first_3d_harness/.git/worktrees/ring_first_3d_growth_recovery/info\nwarning: garbage found: /home/liu/ring_first_3d_harness/.git/worktrees/ring_first_3d_growth_recovery/info/sparse-checkout\nwarning: garbage found: /home/liu/ring_first_3d_harness/.git/objects/pack/tmp_pack_abfG3U\n"
+  },
+  {
+    "command": [
+      "git",
+      "worktree",
+      "list",
+      "--porcelain"
+    ],
+    "cwd": "/home/liu/ring_first_3d_growth_recovery",
+    "code": 0,
+    "stdout": "worktree /home/liu/ring_first_3d_harness\nHEAD 4c580e721a5b189852ed0809b87b2ea99244176b\nbranch refs/heads/exp/TASK-RESEARCH-HARNESS-STORAGE-001\n\nworktree /home/liu/ring_first_3d_contour_guided_init_a\nHEAD 418c96f87ba06458be5bb082813cad6e20127a19\nbranch refs/heads/exp/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001\n\nworktree /home/liu/ring_first_3d_g01_dualvideo\nHEAD 009112d0ceca23e968ef7a97de33ea6989c24b15\nbranch refs/heads/exp/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001\n\nworktree /home/liu/ring_first_3d_g01_multisurface\nHEAD b16a6f813ecf9214958cae3b88d624725a0fa484\nbranch refs/heads/exp/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001\n\nworktree /home/liu/ring_first_3d_g01_sim_rev1\nHEAD 0a3fe96bb1d91e5719f8e21bcf232e0967dd233f\nbranch refs/heads/exp/TASK-E4-G01-DUALVIDEO-SIM-PROTOCOL-REV1\n\nworktree /home/liu/ring_first_3d_growth_recovery\nHEAD bac3fc89ef95db522b63cf6bb98e6914b9382864\nbranch refs/heads/exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001\n\nworktree /home/liu/ring_first_3d_harness_main_ready\nHEAD e24fbd0069d31636424af188b863169633ca47ae\nbranch refs/heads/release/research-harness-001\n\nworktree /home/liu/ring_first_3d_multisurface_stress\nHEAD b1f8fb433f37677b93ac52ac5719afd902c1fa11\nbranch refs/heads/exp/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001\n\nworktree /home/liu/ring_first_3d_multivideo_init_a\nHEAD 13a73f0422be5e5b0e221df4a41407b3b6d6d52c\nbranch refs/heads/exp/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001\n\nworktree /home/liu/ring_first_3d_policy_bootstrap\nHEAD fc63df356a577c61de75912b136f92d7f7b15e9d\nbranch refs/heads/exp/TASK-RESEARCH-POLICY-BOOTSTRAP-001\n\nworktree /home/liu/ring_first_3d_structural_update\nHEAD 7c471701f38f1577ba506bc8ed1e38774f99dabe\nbranch refs/heads/exp/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001\n\nworktree /home/liu/ring_first_3d_structured_body_002\nHEAD 238c2da1cd842c0eba710a4ec44db5f437bff8e4\nbranch refs/heads/exp/TASK-E4-STRUCTURED-BODY-UPDATE-002\n\nworktree /home/liu/ring_first_3d_synthetic_correspondence\nHEAD 083ad67ab4b6a8432fb631201b8abafe7df2ee13\nbranch refs/heads/exp/TASK-E4-SYNTHETIC-BODY-PIXEL-CORRESPONDENCE-001\n\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "branch",
+      "-a"
+    ],
+    "cwd": "/home/liu/ring_first_3d_growth_recovery",
+    "code": 0,
+    "stdout": "+ exp/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001\n+ exp/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001\n+ exp/TASK-E4-G01-DUALVIDEO-SIM-PROTOCOL-REV1\n* exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001\n+ exp/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001\n+ exp/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001\n+ exp/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001\n+ exp/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001\n+ exp/TASK-E4-STRUCTURED-BODY-UPDATE-002\n+ exp/TASK-E4-SYNTHETIC-BODY-PIXEL-CORRESPONDENCE-001\n  exp/TASK-PROJECT-TECHNOLOGY-REGISTRY-001\n+ exp/TASK-RESEARCH-HARNESS-STORAGE-001\n+ exp/TASK-RESEARCH-POLICY-BOOTSTRAP-001\n+ release/research-harness-001\n  remotes/origin/exp/TASK-PROJECT-TECHNOLOGY-REGISTRY-001\n  remotes/origin/main\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "821M\t/home/liu/ring_first_3d\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_ab_scene"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "149M\t/home/liu/ring_first_3d_ab_scene\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_abs_density"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "186M\t/home/liu/ring_first_3d_abs_density\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_boundary_growth"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "1.2G\t/home/liu/ring_first_3d_boundary_growth\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_camera_gate"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "70M\t/home/liu/ring_first_3d_camera_gate\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_contour_guided_init_a"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "3.4G\t/home/liu/ring_first_3d_contour_guided_init_a\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3_sdf_4090"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "872M\t/home/liu/ring_first_3d_e3_sdf_4090\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3_sdf_full"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "617M\t/home/liu/ring_first_3d_e3_sdf_full\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3_sdf_multi"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "921M\t/home/liu/ring_first_3d_e3_sdf_multi\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3a"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "38M\t/home/liu/ring_first_3d_e3a\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3b"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "28M\t/home/liu/ring_first_3d_e3b\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3c"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "91M\t/home/liu/ring_first_3d_e3c\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3d0"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "148M\t/home/liu/ring_first_3d_e3d0\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3n0"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "335M\t/home/liu/ring_first_3d_e3n0\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3n0_a2"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "85M\t/home/liu/ring_first_3d_e3n0_a2\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3n0_a3"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "300M\t/home/liu/ring_first_3d_e3n0_a3\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3n0_eight"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "705M\t/home/liu/ring_first_3d_e3n0_eight\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e3n0_gate_b"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "415M\t/home/liu/ring_first_3d_e3n0_gate_b\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e4_a1"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "524M\t/home/liu/ring_first_3d_e4_a1\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e4_e1e2"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "548M\t/home/liu/ring_first_3d_e4_e1e2\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e4_ffd"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "607M\t/home/liu/ring_first_3d_e4_ffd\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e4_pmgr"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "982M\t/home/liu/ring_first_3d_e4_pmgr\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e4_pmgr_r1"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "580M\t/home/liu/ring_first_3d_e4_pmgr_r1\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e4_sdf_evolution"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "729M\t/home/liu/ring_first_3d_e4_sdf_evolution\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_e4_sdf_localization"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "9.9G\t/home/liu/ring_first_3d_e4_sdf_localization\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_g01_dualvideo"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "38M\t/home/liu/ring_first_3d_g01_dualvideo\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_g01_multisurface"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "670M\t/home/liu/ring_first_3d_g01_multisurface\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_g01_sim_rev1"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "196M\t/home/liu/ring_first_3d_g01_sim_rev1\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_grazing"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "219M\t/home/liu/ring_first_3d_grazing\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_growth_recovery"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "141M\t/home/liu/ring_first_3d_growth_recovery\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_harness"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "647M\t/home/liu/ring_first_3d_harness\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_harness_main_ready"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "1.4M\t/home/liu/ring_first_3d_harness_main_ready\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_incremental"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "254M\t/home/liu/ring_first_3d_incremental\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_multisurface_stress"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "936M\t/home/liu/ring_first_3d_multisurface_stress\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_multivideo_init_a"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "851M\t/home/liu/ring_first_3d_multivideo_init_a\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_neural_e0"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "179M\t/home/liu/ring_first_3d_neural_e0\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_neural_e1"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "207M\t/home/liu/ring_first_3d_neural_e1\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_neural_e2"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "38M\t/home/liu/ring_first_3d_neural_e2\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_neural_e2_cpu"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "6.4M\t/home/liu/ring_first_3d_neural_e2_cpu\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_neural_e2p5"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "12M\t/home/liu/ring_first_3d_neural_e2p5\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_neural_e2p6"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "4.7M\t/home/liu/ring_first_3d_neural_e2p6\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_neural_e2p7"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "34M\t/home/liu/ring_first_3d_neural_e2p7\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_panel2_depth"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "111M\t/home/liu/ring_first_3d_panel2_depth\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_phase_d"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "187M\t/home/liu/ring_first_3d_phase_d\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_policy_bootstrap"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "6.2M\t/home/liu/ring_first_3d_policy_bootstrap\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_pose_depth"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "585M\t/home/liu/ring_first_3d_pose_depth\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_scene_vis"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "100M\t/home/liu/ring_first_3d_scene_vis\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_structural_update"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "5.2G\t/home/liu/ring_first_3d_structural_update\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_structured_body_002"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "446M\t/home/liu/ring_first_3d_structured_body_002\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_synthetic_correspondence"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "121M\t/home/liu/ring_first_3d_synthetic_correspondence\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_view_eval"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "89M\t/home/liu/ring_first_3d_view_eval\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring_first_3d_view_partition"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "273M\t/home/liu/ring_first_3d_view_partition\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/ring-first-hero-core"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "66M\t/home/liu/ring-first-hero-core\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/polyp_research/ring-first-3d"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "2.0G\t/home/liu/polyp_research/ring-first-3d\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/polyp_research/ring_anchor_3d"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "16G\t/home/liu/polyp_research/ring_anchor_3d\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/.cache/mozilla"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "84M\t/home/liu/.cache/mozilla\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/.cache/google-chrome-headless"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "76M\t/home/liu/.cache/google-chrome-headless\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/.cache/google-chrome"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "17M\t/home/liu/.cache/google-chrome\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/.cache/pip"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "1.2M\t/home/liu/.cache/pip\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "du",
+      "-sh",
+      "/home/liu/.cache/thumbnails"
+    ],
+    "cwd": "/home/liu",
+    "code": 0,
+    "stdout": "8.6M\t/home/liu/.cache/thumbnails\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "bash",
+      "-c",
+      "du -ah . | TMPDIR=/dev/shm sort -rh | head -200"
+    ],
+    "cwd": "/home/liu/ring_first_3d_e4_sdf_localization",
+    "code": 0,
+    "stdout": "9.9G\t./experiments\n9.9G\t.\n3.2G\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001\n2.0G\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/local_results\n1.2G\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001\n1.2G\t./experiments/TASK-E4-PYTORCH3D-014\n1012M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs\n936M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018\n867M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/local_results/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001_SCIENTIFIC_OUTPUTS.tar.gz\n865M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/local_results/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001_INITIAL_REVIEW_BUNDLE.tar.gz\n708M\t./experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017\n544M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/hero_fit\n518M\t./experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001\n474M\t./experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001\n420M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views\n405M\t./experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021\n373M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/hero_fit\n369M\t./experiments/TASK-E4-PYTORCH3D-014/arms\n366M\t./experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001/local_results\n360M\t./experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/local_results\n346M\t./experiments/TASK-E4-PYTORCH3D-014/inputs\n339M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013\n253M\t./experiments/TASK-E4-PYTORCH3D-014/new_views\n253M\t./experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/local_results\n244M\t./experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/runtime\n236M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/evaluation\n236M\t./experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/runtime/STRONG_SUPERVISION_GATE_FIX_R2\n233M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/evaluation/local_results\n223M\t./experiments/TASK-E4-RING-POLYP-REGISTRATION-019\n218M\t./experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/evaluation\n218M\t./experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/runtime/STRONG_SUPERVISION_GATE_FIX_R2/local_results\n204M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011\n189M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/holdout\n184M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/holdout/hero\n176M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BOUNDARY_RELATIVE_DEPTH_D2_001\n172M\t./experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/final_results\n170M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/local_results/interactive\n161M\t./experiments/TASK-E4-MULTIVIEW-INIT-STALK-015\n155M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/arms\n153M\t./experiments/TASK-E4-RING-SIFT-SYMMETRIC-REGISTRATION-020\n147M\t./experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001\n146M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/metrics\n145M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime\n141M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BOUNDARY_RELATIVE_DEPTH_D2_001/local_results\n135M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d\n131M\t./experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001\n121M\t./experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/face_decisions\n116M\t./experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/meshes\n113M\t./experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/arms\n109M\t./experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001/local_results/G05\n108M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/arms\n108M\t./experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001/local_results/G03\n107M\t./experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001/local_results/G01\n99M\t./experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/local_results\n96M\t./experiments/TASK-E4-PYTORCH3D-014/runtime\n95M\t./experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/evaluation/groups\n93M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_012\n88M\t./experiments/TASK-E4-SINGLE-VIDEO-013-FAST-001\n88M\t./experiments/TASK-E4-RING-POLYP-REGISTRATION-019/evaluation\n85M\t./experiments/TASK-E4-UPDATE-CAUSALITY-016\n80M\t./experiments/TASK-E4-RING-POLYP-REGISTRATION-019/evaluation/CROSS\n80M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/features\n79M\t./experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/local_results/derived_HERO\n78M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/evaluation/local_results/G01\n75M\t./experiments/TASK-E4-SINGLE-VIDEO-013-FAST-001/arms\n74M\t./experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/evaluation/HERO_common_ids\n74M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/evaluation/local_results/G05\n69M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009\n68M\t./experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001/inputs\n67M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/arms/FINAL_UNIFORM\n66M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G03_v004\n65M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004\n62M\t./experiments/TASK-E4-PYTORCH3D-014/runtime/features\n60M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/local_results/selected_inputs\n59M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_PYTORCH3D_010\n57M\t./experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/quick_solver_review\n56M\t./experiments/TASK-E4-SINGLE-VIDEO-013-FAST-001/arms/S8\n56M\t./experiments/TASK-E4-RING-SIFT-SYMMETRIC-REGISTRATION-020/evaluation\n54M\t./experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/local_results/interactive\n54M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005\n54M\t./experiments/TASK-E4-PYTORCH3D-014/arms/E1_global\n53M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/local_results/interactive/G01_SOURCE_LAYERS.glb\n53M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/evaluation/local_results/G03\n52M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/arms/FINAL_UNIFORM/metrics\n51M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G05_v004\n51M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001\n51M\t./experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/runtime/STRONG_SUPERVISION_GATE_FIX_R2/local_results/derived_HERO\n50M\t./experiments/TASK-E4-UPDATE-CAUSALITY-016/arms\n50M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G06_v004\n50M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/local_results/interactive/G03_SOURCE_LAYERS.glb\n50M\t./experiments/TASK-E4-PYTORCH3D-014/metrics\n50M\t./experiments/TASK-E4-PYTORCH3D-014/inputs/G01\n48M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/metrics\n46M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G03_v005\n46M\t./experiments/E4-SDF-LOCALIZATION-BLENDER-001\n44M\t./experiments/TASK-E4-RING-POLYP-REGISTRATION-019/hero_fit\n44M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G06_v005\n44M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/local_results/interactive/G05_SOURCE_LAYERS.glb\n43M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BOUNDARY_RELATIVE_DEPTH_D2_001/local_results/virtual_Is\n43M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BOUNDARY_RELATIVE_DEPTH_D2_001/local_results/virtual_Ip\n43M\t./experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/figures\n42M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G05_v005\n42M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/build\n41M\t./experiments/TASK-E4-RING-SIFT-SYMMETRIC-REGISTRATION-020/optimization\n41M\t./experiments/TASK-E4-PYTORCH3D-014/inputs/G03\n41M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/arms/B1_FULL_COH16\n41M\t./experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001/local_results/G06\n40M\t./experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/derived\n40M\t./experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001\n39M\t./experiments/TASK-E4-SINGLE-VIDEO-013-FAST-001/arms/S8/metrics\n39M\t./experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/evaluation/groups/G01\n39M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/local_results\n39M\t./experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/local_results/G05_key04_raw00542\n39M\t./experiments/TASK-E3-C-VISIBILITY-CONSENSUS-001\n37M\t./experiments/TASK-E4-PYTORCH3D-014/inputs/G07\n37M\t./experiments/TASK-E4-PYTORCH3D-014/arms/FINAL_014\n37M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/arms/B2_TRUSTED_COH16\n37M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/arms/B1_FULL_COH16/local_results\n37M\t./experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/local_results/derived_HERO/G05\n36M\t./experiments/TASK-E4-PYTORCH3D-014/arms/E1_global/local_results\n35M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/.git/objects/pack/pack-e0628d81c4a5e3af482a3bb87fa77e27db341dbd.pack\n35M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/.git/objects/pack\n35M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/.git/objects\n35M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/.git\n35M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/arms/B2_TRUSTED_COH16/local_results\n34M\t./experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/quick_solver_review/evaluation\n34M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs\n34M\t./experiments/TASK-E4-PROGRESSIVE-DOF-001\n33M\t./experiments/TASK-RING-FIRST-POSE-DEPTH-IDENTIFIABILITY-001\n33M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BOUNDARY_RELATIVE_DEPTH_D2_001/local_results/virtual_IIa\n33M\t./experiments/TASK-E4-PYTORCH3D-014/inputs/G10\n33M\t./experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/local_results/G03_key04_raw00554\n33M\t./experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001/local_results/G05/G05_ALL_LAYERS.glb\n33M\t./experiments/TASK-E4-2D3D-OBSERVABILITY-001\n33M\t./experiments/E4-SDF-LOCALIZATION-BLENDER-001/runs/SAME_KERNEL_BIDIRECTIONAL_001\n33M\t./experiments/E4-SDF-LOCALIZATION-BLENDER-001/runs\n32M\t./experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001\n32M\t./experiments/TASK-E4-PYTORCH3D-014/arms/E2_adaptive\n31M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/build/temp.linux-x86_64-cpython-312/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d/csrc\n31M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/build/temp.linux-x86_64-cpython-312/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/pytorch3d\n31M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/build/temp.linux-x86_64-cpython-312/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d\n31M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/build/temp.linux-x86_64-cpython-312/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime\n31M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/build/temp.linux-x86_64-cpython-312/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001\n31M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/build/temp.linux-x86_64-cpython-312/home/liu/ring_first_3d_e4_sdf_localization/experiments\n31M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/build/temp.linux-x86_64-cpython-312/home/liu/ring_first_3d_e4_sdf_localization\n31M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/build/temp.linux-x86_64-cpython-312/home/liu\n31M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/build/temp.linux-x86_64-cpython-312/home\n31M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/build/temp.linux-x86_64-cpython-312\n31M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/PROGRESSIVE_HERO_001/local_results/virtual\n31M\t./experiments/TASK-E4-PYTORCH3D-014/inputs/G11\n31M\t./experiments/TASK-E4-PYTORCH3D-014/inputs/G02\n31M\t./experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/local_results/G01_004_growth_r01\n31M\t./experiments/E4-SDF-LOCALIZATION-BLENDER-001/runs/SAME_KERNEL_BIDIRECTIONAL_001/cases\n30M\t./experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/local_results/G01_004_ref03\n29M\t./experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/figures\n29M\t./experiments/TASK-RING-FIRST-POSE-DEPTH-IDENTIFIABILITY-001/figures\n29M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/inputs\n29M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/initialization_011\n29M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_012/inputs\n29M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/inputs\n29M\t./experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/local_results/G01_004_new_r00\n29M\t./experiments/TASK-E4-HERO-BODY-ADAPT-018/evaluation/local_results/G06\n28M\t./experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/evaluation/groups/G05\n28M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_PYTORCH3D_010/inputs\n28M\t./experiments/TASK-E4-PYTORCH3D-014/runtime/cad_depth\n28M\t./experiments/TASK-E4-PYTORCH3D-014/inputs/G09\n28M\t./experiments/TASK-E4-PYTORCH3D-014/inputs/G05\n28M\t./experiments/TASK-E4-PYTORCH3D-014/inputs/G04\n28M\t./experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001/local_results/G03/G03_ALL_LAYERS.glb\n28M\t./experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001/local_results/G01/G01_ALL_LAYERS.glb\n27M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009/inputs\n27M\t./experiments/TASK-E4-PYTORCH3D-014/arms/C4_ALL\n26M\t./experiments/TASK-E4-RING-POLYP-REGISTRATION-019/inputs/G01\n26M\t./experiments/TASK-E4-RING-POLYP-REGISTRATION-019/inputs\n26M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/registration\n26M\t./experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/mature_geometric_pose_refinement\n26M\t./experiments/TASK-E4-PYTORCH3D-014/arms/E0_none\n26M\t./experiments/TASK-E4-PYTORCH3D-014/arms/D_D3_combo\n26M\t./experiments/TASK-E4-PYTORCH3D-014/arms/D_D2_bidir\n26M\t./experiments/TASK-E4-PYTORCH3D-014/arms/D_D1_split\n26M\t./experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/local_results/G01_004_growth_r04\n26M\t./experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/local_results/derived_HERO/G01\n26M\t./experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/local_results/G05_LAYERS.glb\n25M\t./experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/geometric_pose_optimization\n25M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runtime/pytorch3d/.github\n25M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/VISIBILITY_ORDER_REPAIR_001\n25M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/local_results\n25M\t./experiments/TASK-E4-PYTORCH3D-014/inputs/G06\n25M\t./experiments/TASK-E4-PYTORCH3D-014/arms/C3_32\n25M\t./experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/runtime/STRONG_SUPERVISION_GATE_FIX_R2/local_results/derived_HERO/G01\n25M\t./experiments/TASK-BOUNDARY-GUIDED-SURFACE-GROWTH-001/metrics\n24M\t./experiments/TASK-NEURAL-E2P7-BOUNDED-LEARNING-PILOT-001\n24M\t./experiments/TASK-E4-UPDATE-CAUSALITY-016/arms/S1_BALANCED\n24M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/review_models\n24M\t./experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_012/metrics\n24M\t./experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/arms/Init-A\n23M\t./experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/arms/Init-C\n23M\t./experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/arms/Init-B\n22M\t./experiments/TASK-E4-RING-FIRST-UNIFIED-BA-001/local_results/HERO_SOURCE_UNIONS\n22M\t./experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/config\n",
+    "stderr": ""
+  }
+]

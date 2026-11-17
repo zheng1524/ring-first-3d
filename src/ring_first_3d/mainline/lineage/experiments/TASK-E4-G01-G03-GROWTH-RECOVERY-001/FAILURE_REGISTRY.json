@@ -1,0 +1,83 @@
+{
+  "records": [
+    {
+      "id": "GR001-G03",
+      "case": "G03",
+      "type": "SCIENTIFIC_NEGATIVE",
+      "symptom": "NO_ACCEPTED_GROWTH",
+      "confirmed_cause": [
+        "PER_VIEW_PROTECTION"
+      ],
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/attempts/0006-G1_G03-24088a51/G03/DEFORM_SWEEP_RECOVERY/UPDATES.json",
+      "repair": "Retain actual attempts; do not relax frozen gates or use GT.",
+      "regression": "recovery_regression",
+      "permanent_rule": false,
+      "review": {
+        "status": "unreviewed"
+      },
+      "rule_status": "candidate"
+    }
+  ],
+  "permanent_promotion_reviewed": false,
+  "post_freeze_review_records": [
+    {
+      "id": "GR001-ROOT-G01",
+      "case": "G01",
+      "type": "SCIENTIFIC_LIMITATION",
+      "symptom": "PARTIAL_PROXIMAL_SECTION_EXPOSURE",
+      "confirmed_cause": "Centerline C0 is internal, but the full elliptical proximal section is not internal. Bounding the center alone does not certify full-section embedding.",
+      "max_proximal_vertex_SDF_mm": 0.047184571623802185,
+      "evidence": "visualization/figures/G01_PROXIMAL_CAP_AUDIT.png",
+      "prediction_changed": false,
+      "repair": "Retain actual geometry; do not tune embedding depth after GT. Review a full-section embedding constraint in a future protocol.",
+      "regression": "Post-freeze deterministic SDF / actual triangle-plane audit",
+      "permanent_rule": false,
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "GR001-ROOT-G03",
+      "case": "G03",
+      "type": "SCIENTIFIC_LIMITATION",
+      "symptom": "PARTIAL_PROXIMAL_SECTION_EXPOSURE",
+      "confirmed_cause": "Centerline C0 is internal, but the full elliptical proximal section is not internal. Bounding the center alone does not certify full-section embedding.",
+      "max_proximal_vertex_SDF_mm": 1.4500519037246704,
+      "evidence": "visualization/figures/G03_PROXIMAL_CAP_AUDIT.png",
+      "prediction_changed": false,
+      "repair": "Retain actual geometry; do not tune embedding depth after GT. Review a full-section embedding constraint in a future protocol.",
+      "regression": "Post-freeze deterministic SDF / actual triangle-plane audit",
+      "permanent_rule": false,
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "GR001-FIXED-GT-FRAME",
+      "case": "G01",
+      "type": "SCIENTIFIC_NEGATIVE",
+      "symptom": "Shape-aligned GT distance improves while fixed-INITIAL-frame distance worsens",
+      "confirmed_cause": "Measured on independently frozen output. Shape and deployment-frame diagnostics differ; no causal explanation asserted.",
+      "evidence": "metrics/BODY_METRICS.csv",
+      "permanent_rule": false,
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "GR001-EMPTY-BOOLEAN",
+      "case": "G01",
+      "type": "ENGINEERING_ERROR_FIXED",
+      "symptom": "AxisError after Blender returned empty EXACT union",
+      "confirmed_cause": "Empty vertex/face arrays were passed to axis-1 centroid operations without validation",
+      "repair": "Reject empty candidate, retain operands, use original backtracking, checkpoint accepted states",
+      "regression": "test_actual_empty_backend_regression",
+      "evidence": "evidence/ENGINEERING_REPAIR_001/ORIGINAL_FAILURE.json",
+      "permanent_rule": false,
+      "review": {
+        "status": "unreviewed"
+      }
+    }
+  ],
+  "frozen_runner_registry": "runs/LOCAL_002/visualization/FAILURE_REGISTRY.json"
+}

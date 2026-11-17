@@ -1,3 +1,7 @@
+# 主线资产整理更新
+
+规范入口为mainline/README.md及MAINLINE_ASSET_MAP。ACTIVE_MAINLINE、REUSABLE_REFERENCE、HISTORICAL_EVIDENCE与DEPRECATED_EXPLORATION必须分别使用；工程PASS不能升格科学认证。旧表为原版本快照，最新调用与数据依赖以mainline清单为准。
+
 # 技术资产与历史保护规范
 
 适用后续任务；本轮仅建规范，没有删除/移动/重命名历史文件，没有迁移 Git LFS。优先遵守用户范围与仓库治理。[本地资产入口](LOCAL_ARTIFACTS.json)是选择性实物核验，不能冒称全项目完整清单。
@@ -33,3 +37,5 @@ LOCAL_ARTIFACTS 条目至少含 original_path、bytes、sha256、hash_verificati
 3. 原始观测、唯一权重/预测、失败证据、旧算法或指标默认保留；再生成能力不等于获准删除。
 4. 得到明确的具体删除授权后才操作；执行前核验备份哈希，保留删除回执/可恢复路径，不用git clean、force push或历史重写实现“清理”。
 5. 注册表更新应与新任务交付同提交：只更新本任务验证过的事实；失败证据不得被后续成功覆盖。大型迁移/LFS另行审批，不混入文档任务。
+
+静态历史资产的硬链接去重保留内容和全部路径。禁止原地修改这些历史副本；新任务必须复制到独立输出并用原子替换保存。原始观测、权重和唯一失败证据默认KEEP。Git历史与远端分支不通过本轮清理删除。

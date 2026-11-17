@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "release_task": "TASK-RING-FIRST-HERO-COLLAB-RELEASE-001",
+  "date": "2026-11-17",
+  "legacy_repository": "zheng1524/ring-first-3d",
+  "scientific_snapshot": "5636aaebd61a3d53b69f528692c4c7095df46508",
+  "status": "VERIFIED_CONTENT_WITH_DOCUMENTED_PROVENANCE_CORRECTION",
+  "frozen_project_modules": {
+    "cameras.py": {
+      "source_commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "source_path": "experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/code/cameras.py",
+      "expected_SHA256": "ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f",
+      "actual_SHA256": "ba95a389fc6722841491c3f876906e0014262c8baa055637a648bc66378db95f",
+      "verified": true,
+      "archived_file": "provenance/frozen_sources/cameras.py",
+      "runtime_import": false
+    },
+    "torus.py": {
+      "source_commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "source_path": "experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/code/torus.py",
+      "expected_SHA256": "904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d",
+      "actual_SHA256": "904d9cae48c1cc9317454c2feb80a331908009e095683851c8e8e3c80625191d",
+      "verified": true,
+      "archived_file": "provenance/frozen_sources/torus.py",
+      "runtime_import": false
+    },
+    "infer.py": {
+      "source_commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+      "source_path": "experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/code/infer.py",
+      "expected_SHA256": "c48926cb8ede2792a903436c6478f4fd44f00a8e261c9408521165db738c7049",
+      "actual_SHA256": "c48926cb8ede2792a903436c6478f4fd44f00a8e261c9408521165db738c7049",
+      "verified": true,
+      "archived_file": "provenance/frozen_sources/infer.py",
+      "runtime_import": false
+    }
+  },
+  "official_mvsanywhere": {
+    "repository": "https://github.com/nianticlabs/mvsanywhere",
+    "original_claimed_commit": "4483e25ede3eee1b6eaf96254d2544152f935c0d",
+    "original_claim_verified": false,
+    "official_API_result": "422 No commit found for SHA",
+    "actual_claim_origin": "local polyp_research parent Git repository; vendor directory was not a Git checkout",
+    "verified_upstream_commit": "5bd49bba0992aa56060e1aa3bb40b2150b04726f",
+    "matched_source_files": 105,
+    "source_difference_files": [],
+    "verification": "All 105 used Python/config files have identical Git blob IDs and SHA256 to pinned upstream; no algorithm or weight replacement",
+    "manifest": "provenance/upstream/SOURCE_COMPARISON.json"
+  },
+  "dinov2": {
+    "repository": "https://github.com/facebookresearch/dinov2",
+    "verified_upstream_commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+    "matched_source_files": 156,
+    "different": []
+  },
+  "checkpoint": {
+    "official_url": "https://storage.googleapis.com/niantic-lon-static/research/mvsanywhere/mvsanywhere_hero.ckpt",
+    "SHA256": "00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d",
+    "bytes": 2420601860,
+    "verified": true,
+    "redistributed": false,
+    "learned_tensor_count": 535,
+    "learned_parameter_elements": 201670426
+  },
+  "coordinate_contract": {
+    "Ring": "R10",
+    "inner_diameter_mm": 10.0,
+    "torus_major_radius_mm": 5.6,
+    "torus_tube_radius_mm": 0.6,
+    "world": "shared Ring world; no cross-group registration",
+    "camera_axes": "OpenCV x-right y-down z-forward",
+    "extrinsics": "c2w; camera centres in mm",
+    "work_image_width_height": [
+      640,
+      360
+    ],
+    "native_depth_width_height": [
+      640,
+      352
+    ],
+    "pixel_centres": "integer index centres in project K; +0.5 corner-centre adapter for official model",
+    "depth": "native camera axial Z in mm; not ray length",
+    "HERO_pose_input_unit": "m; translations /1000 exactly once",
+    "native_depth_interpolation": 0,
+    "native_K": "diag(1,352/360,1) @ K with half-pixel translation (0,0.5*352/360-0.5)",
+    "raw_mesh_max_depth_jump_mm": 0.75,
+    "PLY_NPZ_unit": "mm",
+    "GLB_unit": "m",
+    "GLB_scale_from_mm": 0.001
+  },
+  "inference": {
+    "target_images": 1,
+    "source_images": 3,
+    "num_refinement_steps": 1,
+    "target_image_size": [
+      352,
+      640
+    ],
+    "autocast": "float16 CUDA",
+    "fast_cost_volume": false,
+    "optimizer_steps": 0,
+    "weights_updated": false
+  },
+  "cameras": {
+    "Ring_only": "five-dimensional pose family; yaw/normal branch may be unresolved",
+    "RGB": "real SIFT reference map, mutual ratio .72, EPNP RANSAC 1000 /3px/.999 then LM; landmark ID mod5 held",
+    "Ceres": "historical selected subset refinement; PyCeres2.6/Ceres2.2, not silently rerun or replaced in this release",
+    "Ceres_call_condition": "real RGB inliers >=10 and frozen selected subset; inherited priors/bounds",
+    "Ceres_source_sha256": "b50837e09d33cdac3b1c0e5e59e0c0b9475aa7eaff421fc1b8d06731241bd56d",
+    "camera_status": "conditional geometric eligibility, not calibrated pose truth",
+    "demo_scope": [
+      {
+        "id": "G01_v004_raw00341",
+        "frozen_qualification": "METRIC_POSE_VALIDATED_CONDITIONAL",
+        "original_candidate": "originalRF5DoF_RGB_yaw",
+        "selected_historical_Ceres_modes": [],
+        "final_vs_original_initial_max_abs": 0.0,
+        "camera_demo_recomputes_this_frame": true
+      },
+      {
+        "id": "G01_v004_raw00326",
+        "frozen_qualification": "METRIC_POSE_VALIDATED_CONDITIONAL",
+        "original_candidate": "REAL_RGB_PNP_LM",
+        "selected_historical_Ceres_modes": [
+          "SHARED_SE3",
+          "JOINT_FULL6"
+        ],
+        "final_vs_original_initial_max_abs": 0.14393199341606078,
+        "camera_demo_recomputes_this_frame": false
+      },
+      {
+        "id": "G01_v004_raw00360",
+        "frozen_qualification": "METRIC_POSE_VALIDATED_CONDITIONAL",
+        "original_candidate": "REAL_RGB_PNP_LM",
+        "selected_historical_Ceres_modes": [],
+        "final_vs_original_initial_max_abs": 0.0,
+        "camera_demo_recomputes_this_frame": false
+      },
+      {
+        "id": "G01_v004_raw00204",
+        "frozen_qualification": "METRIC_POSE_VALIDATED_CONDITIONAL",
+        "original_candidate": "originalRF5DoF_RGB_yaw",
+        "selected_historical_Ceres_modes": [],
+        "final_vs_original_initial_max_abs": 0.0,
+        "camera_demo_recomputes_this_frame": false
+      }
+    ]
+  },
+  "cleaning": {
+    "optional": true,
+    "original_algorithm": "017 classifier + frozen MAX/018 native gap rule",
+    "protocol": "src/ring_first_hero/cleaning_protocol.json",
+    "protocol_SHA256": "99c00fe52effa2589c21ad93c2f06a3b1c4d9c86c4c0c37b9bf5a2db33495b56",
+    "raw_retained": true,
+    "retained_vertex_coordinates_changed": false,
+    "unknown_is_not_error": true
+  },
+  "registry": {
+    "requested_path": "docs/registry/REUSABLE_MODULES.md",
+    "status": "MISSING_AT_SNAPSHOT_AND_CURRENT_SOURCE_WORKTREE",
+    "T14_T20": "Not invented; identified actual modules by function/source SHA and frozen receipts instead"
+  },
+  "demo": {
+    "id": "G01_v004_raw00341",
+    "input_data_in_Git": false,
+    "controlled_manifest": "examples/G01_demo/DATA_MANIFEST.json",
+    "actual_new_inference": true,
+    "comparison": {
+      "N_pixels": 225280,
+      "N_common_finite": 225280,
+      "depth_bitwise_equal": true,
+      "depth_MAE_mm": 0.0,
+      "depth_p95_mm": 0.0,
+      "depth_max_mm": 0.0,
+      "native_K_max_abs": 0.0,
+      "c2w_max_abs": 0.0,
+      "raw_faces_equal": true,
+      "raw_pixel_ids_equal": true,
+      "raw_vertex_max_mm": 0.0,
+      "validity": "historical-output reproducibility; not geometric truth",
+      "GT": "NOT_EVALUABLE",
+      "within_preregistered_tolerance": true,
+      "cleaning_state_equal": true,
+      "cleaning_reason_bits_equal": true
+    }
+  },
+  "runtime_sources": {
+    "src/ring_first_hero/__init__.py": "d7e5160e3b8252ba500cbc46ba4c45fc76c5bc921af994c10a6184c7a5648f4a",
+    "src/ring_first_hero/__main__.py": "e2d9c3d79b129a5212091bd6fe19a1f7a147cc429929f8777186a159d55db1da",
+    "src/ring_first_hero/_clean_kernels.py": "e81b6166a7236616ea03a277d597c966c49da2233fc46d72afa2c19ba405d08a",
+    "src/ring_first_hero/_kernels.py": "60cb2ff6638d0153a781fae2ad8964904b06fdd004fbca05ddb2e1ca1f5d059f",
+    "src/ring_first_hero/_mesh_renderer.py": "68367842db544217a56f2ddf1e1cfe36bd97cada1f0c3975b569f583b41911fe",
+    "src/ring_first_hero/camera.py": "0168b331808d01e561bc4f87790c5340558eff29c5805dcc36eda22a55e019a9",
+    "src/ring_first_hero/cleaning.py": "ac1cc77443ff5e22a03a75f32c7504adf3d036b530198e950f36595df95374e6",
+    "src/ring_first_hero/cleaning_protocol.json": "99c00fe52effa2589c21ad93c2f06a3b1c4d9c86c4c0c37b9bf5a2db33495b56",
+    "src/ring_first_hero/cli.py": "9fcc40a6be193dec3b20ad1bc8e160f4ac1290a89dc93abddb457f2d816dfcfc",
+    "src/ring_first_hero/geometry.py": "b6622afb24500f5a5e1388bc3953904eca8803f3e32fcf1034dcbdc689604665",
+    "src/ring_first_hero/hero.py": "9a83c565a5633c54b2034c0bb62b50a9c459e26d36fc1c48d7ef631417fb7eab",
+    "src/ring_first_hero/io.py": "51a6337fb25fcaded3d69a22332b668d44e95b3f1aba083df2914af8bf460615",
+    "src/ring_first_hero/rgb.py": "29bd1d25e2b04d0e30ef947706541ae910bf3c016a5fc1eaf40495df27d4b455",
+    "src/ring_first_hero/upstream_source_lock.json": "83a81ec6f4e5826a1e4f9ab7671a647e569744f8b800105d961442ce422be50e",
+    "src/ring_first_hero/validation.py": "d2528dcb3f6b0f14989fb3afb392be74b52d80bbcc56a97506872b7a09535558",
+    "src/ring_first_hero/visualization.py": "35b9ed6600c95117b5fc041d6da356cca4bf801b9cd67d11a455cda03710870f"
+  },
+  "environment_record": "validation/ENVIRONMENT_ACTUAL.json",
+  "source_changes": "Only module/IO boundaries, dependency loading, explicit units, CLI and provenance; original math/thresholds/weights retained"
+}
