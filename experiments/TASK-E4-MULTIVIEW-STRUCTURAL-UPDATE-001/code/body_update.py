@@ -146,7 +146,7 @@ def objective(V,body,rest,views,pairs,weights,cfg,gradient=False):
         value*=weights[v['id']];total=total+value
         if gradient:per[v['id']]=torch.autograd.grad(value,V,retain_graph=True)[0].detach().cpu().numpy()
     from pytorch3d.structures import Meshes
-    mesh=Meshes(verts=[rest],faces=[F]);edges=mesh.edges_packed();L=mesh.laplacian_packed().detach()
+    mesh=Meshes(verts=[rest],faces=[F]);edges=mesh.edges_packed();L=mesh.laplacian_packed().detach().to(dtype=V.dtype)
     delta=V-rest;lap=torch.sparse.mm(L,delta);edge0=(rest[edges[:,0]]-rest[edges[:,1]]).norm(dim=1)
     edge=(V[edges[:,0]]-V[edges[:,1]]).norm(dim=1)
     reg=cfg['lambda_lap']*(lap*lap).mean()+cfg['lambda_edge']*((edge-edge0)**2).mean()+cfg['lambda_prior']*(delta*delta).mean()

@@ -78,6 +78,10 @@ class StructuralTests(unittest.TestCase):
         task=yaml.safe_load((TD/'TASK.yaml').read_text());body,views,ring,base,chart=simulation_data(task)
         self.assertEqual(len(views),24);self.assertEqual(sum(v['role']=='FIT' for v in views),16)
         self.assertEqual(body['V'].shape,(642,3));self.assertTrue(all(set(v)<=set(('id','video','role','direction_block','K','C','labels','RGB')) for v in views))
+    def test_complete_objective_double_precision_laplacian_backward(self):
+        a=cube();a['V'][:,2]+=5.;V=torch.tensor(a['V'],dtype=torch.float64,requires_grad=True);C=np.eye(4);K=np.array([[100.,0,50],[0,100,50],[0,0,1.]])
+        faces=np.arange(12);bary=np.tile([.2,.3,.5],(12,1));P=np.einsum('ni,nij->nj',bary,a['V'][a['F'][faces]]);target=bu.project(P,K,C)[0]+np.array([1.,-.5]);pairs=dict(v=dict(accepted=np.ones(12,bool),face=faces,bary=bary,target_uv=target,direction=np.arange(12)%3));views=[dict(id='v',K=K,C=C)];cfg=dict(pixel_loss_scale=20.,lambda_lap=.03,lambda_edge=.02,lambda_prior=.002)
+        value,per,parts=bu.objective(V,a,V.detach(),views,pairs,dict(v=1.),cfg,True);value.backward();self.assertTrue(torch.isfinite(V.grad).all());self.assertGreater(float(V.grad.norm()),0);self.assertGreater(float(value),0);np.testing.assert_allclose(per['v'],V.grad.detach().numpy(),atol=1e-12)
     def test_stage_order_requires_scientific_gate(self):
         self.assertLess(STRUCTURAL_STAGES.index('G4_C0_gate'),STRUCTURAL_STAGES.index('G5_real_update'));self.assertEqual(stages_for(dict(schema=9)),STRUCTURAL_STAGES)
     def test_gate_all_endpoints_not_only_2D(self):
