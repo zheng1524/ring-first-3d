@@ -1,0 +1,123 @@
+{
+  "records": [
+    {
+      "case": "G01",
+      "status": "NUMERIC",
+      "reported_stalk_length_mm": 1.7268444626059491,
+      "diagnostic_lengths": {
+        "total_centerline_length_mm": 2.5309608532223056,
+        "embedded_length_mm": 0.8041163906163564,
+        "exposed_stalk_length_mm": 1.7268444626059491,
+        "embedding_depth_SDF_mm": 0.7494382262229919,
+        "exit_parameter": 0.23815272478388144,
+        "exit_point": [
+          -4.103250889940962,
+          -2.712918023616005,
+          -6.810211897237267
+        ],
+        "unique_exit": true,
+        "reentries": 0,
+        "centerline_endpoint": [
+          -5.148850061842695,
+          -3.2638920655923305,
+          -8.067861533089648
+        ]
+      },
+      "chosen_trial": "trials/0045_3_-1_start",
+      "chosen_stage": 3,
+      "trials": 83,
+      "reasons": {
+        "EMPTY_OR_MALFORMED_BOOLEAN_UNION": 15,
+        "DEGENERATE_TRIANGLES": 1,
+        "SWEEP_SELF_INTERSECTION": 10,
+        "UNEXPECTED_UNION_SELF_INTERSECTION": 10
+      },
+      "selected_failure_reasons": [],
+      "external_union_watertight": true,
+      "winding_consistent": true,
+      "actual_final_self_intersections": 0,
+      "Ring_nonworsening": true,
+      "Ring_delta": {
+        "body_max_mm": 0.0,
+        "ring_max_mm": 0.0,
+        "body_area_mm2": 0.0,
+        "ring_area_mm2": 0.0,
+        "body_energy_mm4": 0.0,
+        "ring_energy_mm4": 0.0
+      },
+      "original_body_operand_bitwise_equal_trials": 83,
+      "proximal_section_SDF_min_mm": -1.1487239599227905,
+      "proximal_section_SDF_max_mm": 0.047184571623802185,
+      "proximal_section_all_internal": false,
+      "prediction_sha256": "9cac1ffc320e868e28b29d1a014f6ebad28e07077a3fdd686200363d4824b1ce",
+      "execution_origin": {
+        "mode": "COMPUTED_G01_ENGINEERING_REPLAY"
+      },
+      "root_review_status": "PARTIAL_PROXIMAL_SECTION_EXPOSURE"
+    },
+    {
+      "case": "G03",
+      "status": "FAILED_NAN",
+      "reported_stalk_length_mm": null,
+      "diagnostic_lengths": {
+        "total_centerline_length_mm": 6.706532446019733,
+        "embedded_length_mm": 1.2776658350355061,
+        "exposed_stalk_length_mm": 5.428866610984227,
+        "embedding_depth_SDF_mm": 0.7699408531188965,
+        "exit_parameter": 0.13626539025024986,
+        "exit_point": [
+          6.516346253344061,
+          -3.1720996291566665,
+          -14.294171810356074
+        ],
+        "unique_exit": true,
+        "reentries": 0,
+        "centerline_endpoint": [
+          6.407694879522787,
+          -3.1453282953024115,
+          -19.721845065556415
+        ]
+      },
+      "chosen_trial": "trials/0123_3_7_restored",
+      "chosen_stage": 3,
+      "trials": 123,
+      "reasons": {
+        "PER_VIEW_PROTECTION": 123,
+        "RETAINED_SURFACE_COVERAGE_COLLAPSE": 41
+      },
+      "selected_failure_reasons": [
+        "PER_VIEW_PROTECTION"
+      ],
+      "external_union_watertight": true,
+      "winding_consistent": true,
+      "actual_final_self_intersections": 0,
+      "Ring_nonworsening": true,
+      "Ring_delta": {
+        "body_max_mm": 0.0,
+        "ring_max_mm": 0.0,
+        "body_area_mm2": 0.0,
+        "ring_area_mm2": 0.0,
+        "body_energy_mm4": 0.0,
+        "ring_energy_mm4": 0.0
+      },
+      "original_body_operand_bitwise_equal_trials": 123,
+      "proximal_section_SDF_min_mm": -2.7399754524230957,
+      "proximal_section_SDF_max_mm": 1.4500519037246704,
+      "proximal_section_all_internal": false,
+      "prediction_sha256": "ff6e495dcd4c9b30a6aea2f80d7d97b40405ca5ba1991d031e8f2c9cfc54761a",
+      "execution_origin": {
+        "mode": "RESUMED_VALID_SAME_TASK_STAGE",
+        "source_commit": "62c56097916e32da6dde3a3d9018912f76c69378",
+        "source_freeze": "e3a5a5b84020ca4aec74bc0d008ca55063046471a4d9207bcb7569cc71b4e826",
+        "source_attempt": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_001/attempts/0006-G1_G03-e7b8412b",
+        "manifest_sha256": "dc8d37828da60a38168de062703a1917197967b38fd5d056f851351e08820ef8",
+        "scientific_parameters_changed": false,
+        "optimizer_rerun": false
+      },
+      "root_review_status": "PARTIAL_PROXIMAL_SECTION_EXPOSURE"
+    }
+  ],
+  "GT_used_to_select": false,
+  "Body_retrained": false,
+  "additional_optimization": false
+}

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/review_code/root_figures.py", line 28, in <module>
+    original=clipped(before['V'],before['F_solid'],lo,hi)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/review_code/root_figures.py", line 19, in clipped
+    n=np.eye(3)[k];p=np.zeros(3);p[k]=lo[k];m=trimesh.intersections.slice_mesh_plane(m,n,p,cap=False)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/trimesh/intersections.py", line 709, in slice_mesh_plane
+    from .path import polygons
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/trimesh/path/polygons.py", line 2, in <module>
+    from shapely import ops
+ModuleNotFoundError: No module named 'shapely'
