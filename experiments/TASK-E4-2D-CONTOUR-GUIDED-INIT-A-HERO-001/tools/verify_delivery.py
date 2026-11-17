@@ -2,7 +2,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
-import json,hashlib,subprocess,re
+import json,hashlib,subprocess,re,html
 import numpy as np
 from ring_first_3d.policy.contracts import load_task,verify_task
 from ring_first_3d.policy.artifacts import read_state,check_artifacts,heads
@@ -60,7 +60,20 @@ for failure in json.loads((TD/'visualization/FAILURE_LEDGER.json').read_text())[
 import trimesh
 glbs=list((TD/'visualization/meshes').glob('*.glb'))
 for p in glbs:
- scene=trimesh.load(p,force='scene',process=False);assert scene.geometry and sum(len(m.faces)for m in scene.geometry.values())>0
+ scene=trimesh.load(p,force='scene',process=False);assert scene.geometry and sum(len(m.faces)for m in scene.geometry.values())>0;assert scene.metadata.get('export_scale_from_source')==.001 and scene.metadata.get('one_coordinate_unit_mm')==1000
+ if p.name.endswith('_FULL_HERO.glb'):
+  g,method=p.stem.removesuffix('_FULL_HERO').split('_',1);rec=next(r for r in hp if r['case']==g and r['method']==method);b=np.load(TD/'visualization/meshes'/(g+'_'+rec['body_arm']+'_WORLD.npz'));ring=np.load(real[g]['assets']['ring']['path']);expected_faces=len(b['F'])+len(ring['F'])
+  for v in real[g]['views']:
+   if v['role']=='FIT':expected_faces+=len(np.load(TD/'visualization/meshes'/g/method/(v['id']+'.npz'))['F'])
+  assert sum(len(m.faces)for m in scene.geometry.values())==expected_faces
+
+# Plain review index prioritizes the requested PNGs; every remaining artifact stays linked.
+vis=TD/'visualization';key=['figures/Fig1_2D_TO_3D.png','figures/Fig2_ALL_BODY_GT.png','figures/Fig4_BODY_HERO_RELATION.png']+[str(p.relative_to(vis))for p in sorted((vis/'figures').glob('*_Fig3_HERO_SECTIONS.png'))];page='<!doctype html><meta charset="utf-8"><title>Scientific PNG / GLB file index</title><h1>关键科学图片与完整Mesh</h1><p>PNG / NPZ: mm. GLB: metres (source export scale 0.001). This is a local file list, no web visualization app.</p><p><a href="../TECHNICAL_REPORT.md">技术报告</a> · <a href="../RESULT_CARD.md">RESULT_CARD</a> · <a href="../RUN_MANIFEST.json">RUN_MANIFEST</a></p><h2>关键PNG</h2><ul>'
+for n in key:assert(vis/n).is_file();page+='<li><a href="'+html.escape(n)+'">'+html.escape(n)+'</a></li>'
+page+='</ul><h2>全部指标、PNG、GLB与精确Mesh</h2><ul>'
+for p in sorted(p for p in vis.rglob('*')if p.is_file()and p.name!='index.html'):
+ n=str(p.relative_to(vis));page+='<li><a href="'+html.escape(n)+'">'+html.escape(n)+'</a></li>'
+(vis/'index.html').write_text(page+'</ul>\n')
 links=[]
 class Links(HTMLParser):
  def handle_starttag(self,tag,attrs):
@@ -74,4 +87,4 @@ for current,link in links:
 assert re.search(r'!\[[^\]]*\]\(([^)]+)\)',(TD/'TECHNICAL_REPORT.md').read_text()).group(1)=='visualization/figures/Fig1_2D_TO_3D.png'
 changed=subprocess.check_output(['git','diff','13a73f0422be5e5b0e221df4a41407b3b6d6d52c','--name-only','--','experiments'],text=True).splitlines();assert all(p.startswith(str(TD.relative_to(ROOT))+'/')for p in changed)
 receipt=dict(status='PASS',regression_tests=reg['tests'],original_regressions=35,stages=13,exact015_files=len(lock['files']),real_aligned_models=models,actual_updated_A3_groups=int(actualupdates),initially_inactive_correspondence_groups=inactive,independent_finite_difference_coordinates=grad['checked_coordinates'],real_HERO_rigid_Meshes=hero_meshes,GLB_parsed=len(glbs),actual_Body_face_bary_candidates_verified=verified_candidates,local_links=len(links),GT_aligned_HERO=False,old_experiments_modified=0,scientific_code_unchanged_after_first_GT=True,TASK_identical_across_preserved_runs=True,visualization_absolute=str(TD/'visualization'),index_absolute=str(TD/'visualization/index.html'))
-(TD/'evidence/FINAL_DELIVERY_VERIFICATION.json').write_text(json.dumps(receipt,indent=2)+'\n');m=json.loads((TD/'RUN_MANIFEST.json').read_text());files=sorted(p for p in TD.rglob('*')if p.is_file()and 'runs'not in p.relative_to(TD).parts and p!=TD/'RUN_MANIFEST.json');assert max(p.stat().st_size for p in files)<25000000;m.update(artifact_count=len(files),artifact_bytes=sum(p.stat().st_size for p in files),implementation_commit=json.loads((TD/'EXECUTION_VERSION.json').read_text())['implementation_commit']);m['artifacts']={str(p.relative_to(TD)):dict(sha256=sha(p),bytes=p.stat().st_size)for p in files};(TD/'RUN_MANIFEST.json').write_text(json.dumps(m,indent=2)+'\n');print(json.dumps(dict(**receipt,artifact_count=len(files),artifact_bytes=m['artifact_bytes']),indent=2))
+(TD/'evidence/FINAL_DELIVERY_VERIFICATION.json').write_text(json.dumps(receipt,indent=2)+'\n');m=json.loads((TD/'RUN_MANIFEST.json').read_text());files=sorted(p for p in TD.rglob('*')if p.is_file()and 'runs'not in p.relative_to(TD).parts and p!=TD/'RUN_MANIFEST.json');assert max(p.stat().st_size for p in files)<25000000;m['summary']=json.loads((TD/'SCIENTIFIC_RESULT.json').read_text());m.update(artifact_count=len(files),artifact_bytes=sum(p.stat().st_size for p in files),implementation_commit=json.loads((TD/'EXECUTION_VERSION.json').read_text())['implementation_commit']);m['artifacts']={str(p.relative_to(TD)):dict(sha256=sha(p),bytes=p.stat().st_size)for p in files};(TD/'RUN_MANIFEST.json').write_text(json.dumps(m,indent=2)+'\n');print(json.dumps(dict(**receipt,artifact_count=len(files),artifact_bytes=m['artifact_bytes']),indent=2))

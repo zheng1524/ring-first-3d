@@ -2,6 +2,7 @@
 from pathlib import Path
 import json,hashlib,shutil,csv,subprocess,html
 import numpy as np
+import trimesh
 from ring_first_3d.policy.contracts import load_task,verify_task
 from ring_first_3d.policy.artifacts import read_state,check_artifacts,heads
 from ring_first_3d.synthetic.io import fetch
@@ -119,7 +120,9 @@ for group in hpred['groups']:
 # Portable glTF uses metres; NPZ and all scientific axes remain in mm. No prediction is changed.
 GLB_units=[]
 for path in(VIS/'meshes').glob('*.glb'):
- scene=trimesh.load(path,force='scene',process=False);scene.apply_scale(.001);scene.metadata.update(unit='m',source_coordinate_unit='mm',export_scale_from_source=.001);path.write_bytes(scene.export(file_type='glb'));GLB_units.append(dict(path=str(path.relative_to(VIS)),coordinate_unit='m',source_coordinate_unit='mm',source_to_export_scale=.001,full_mesh_topology=True))
+ scene=trimesh.load(path,force='scene',process=False)
+ if scene.metadata.get('export_scale_from_source')!=.001:scene.apply_scale(.001)
+ scene.metadata.update(unit='m',one_coordinate_unit_mm=1000,source_coordinate_unit='mm',export_scale_from_source=.001);path.write_bytes(scene.export(file_type='glb'));GLB_units.append(dict(path=str(path.relative_to(VIS)),coordinate_unit='m',source_coordinate_unit='mm',source_to_export_scale=.001,full_mesh_topology=True))
 (VIS/'GLB_EXPORT_UNITS.json').write_text(json.dumps(GLB_units,indent=2)+'\n')
 # Put numerical conclusions before the long evidence tables, retain the first mechanism figure.
 p=TD/'TECHNICAL_REPORT.md';text=p.read_text();needle='## All-case comparisons';addition='## Frozen aggregate results\n\n```json\n'+json.dumps(summary,indent=2)+'\n```\n\nA2 Mesh bytes are unchanged. All arms are re-evaluated in this task using one common Sobol domain per case, so its newly reported occupancy estimate can differ slightly from the prior report; the original report metrics remain in evidence/ORIGINAL_A2_EVALUATION.json. Strict and conditional occupancy are never interchanged. Per-view gradient/actual shared displacement evidence reports descent-work attribution, not a uniquely identifiable causal decomposition of the shared vertex update. No per-view meshes or image transforms are optimized.\n\n';p.write_text(text.replace(needle,addition+needle,1))
