@@ -30,6 +30,22 @@ def audit(t,attempt):
 
 def predict(t,attempt,case):
     assert case in ['G01','G03']
+    resume=t['recovery'].get('resume_valid_stage')
+    if resume and case=='G03':
+        import shutil
+        m=read(resume['path'])
+        assert sha(resume['path'])==resume['sha256'] and m['case']==case
+        assert m['update']==t['recovery']['update']
+        assert m['configuration_sha256']==sha(t['recovery']['configuration']['path'])
+        for r in m['files']:
+            assert sha(r['path'])==r['sha256'], 'RESUME_ASSET_DRIFT'
+            target=attempt/r['relative'];target.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copyfile(r['path'],target)
+        frozen=read(attempt/'PREDICTIONS_FROZEN.json')
+        frozen['execution_origin']=dict(mode='RESUMED_VALID_SAME_TASK_STAGE',source_commit=m['source_commit'],source_freeze=m['source_freeze'],source_attempt=m['source_attempt'],manifest_sha256=resume['sha256'],scientific_parameters_changed=False,optimizer_rerun=False)
+        dump(attempt/'PREDICTIONS_FROZEN.json',frozen)
+        dump(attempt/'STAGE_RESUME.json',frozen['execution_origin'])
+        return outputs(attempt,dict(status='PASS',records=frozen['records'],GT_read=False,resumed_valid_stage=True))
     current,rejected,info,C,A,chosen,recovery=restore(case)
     initial,views,ring,base,chart,row=load_inputs(case,'FIT');configuration=read(t['recovery']['configuration']['path'])[case]
     folder=attempt/case;folder.mkdir()
@@ -45,7 +61,8 @@ def predict(t,attempt,case):
     except (ValueError,RuntimeError,np.linalg.LinAlgError)as e:
         from ring_first_3d.policy.contracts import PolicyError
         if isinstance(e,PolicyError):raise
-        dump(folder/'ENGINEERING_FAILURE.json',dict(error=type(e).__name__,reason=str(e)))
+        import traceback
+        dump(folder/'ENGINEERING_FAILURE.json',dict(error=type(e).__name__,reason=str(e),traceback=traceback.format_exc()))
         record=dict(case=case,arm='DEFORM_SWEEP_RECOVERY',status='FAILED_NAN',failure_reasons=[str(e)],scientific_growth_accepted=False)
     dump(attempt/'PREDICTIONS_FROZEN.json',dict(records=[record],GT_read=False,HERO_read=False,Body_fixed=True,camera_optimized=False,selection='FIT_ONLY_FULL_GATES_WITHIN_FROZEN_LOCAL_BUDGET'))
     return outputs(attempt,dict(status='PASS',records=[record],GT_read=False))

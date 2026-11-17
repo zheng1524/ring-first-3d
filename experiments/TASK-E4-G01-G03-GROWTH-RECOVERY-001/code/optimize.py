@@ -6,7 +6,7 @@ import torch
 from io_utils import dump
 from embedded_sweep import EmbeddedSweep
 from lengths import measure
-from union_mesh import union,provenance,lifted_vertices
+from union_mesh import union,provenance,lifted_vertices,InvalidUnionCandidate
 from geometry_gate import namespace,check,exterior_clearance
 from ring_gate import CurrentRingGate
 from projection import RecoveryProjection
@@ -16,16 +16,21 @@ def optimize(original,initial,views,ring,base,chart,configuration,support,cfg,ou
     projection=RecoveryProjection(views,ring,weights,cfg['projection']);projection.setup(original,initial,configuration,support)
     collision=CurrentRingGate(original,ring);ns=namespace();sweep=EmbeddedSweep(configuration,'cuda:0')
     optimizer=torch.optim.Adam([dict(params=[sweep.control_tail],lr=cfg['control_lr_mm']),dict(params=[sweep.radii],lr=cfg['radius_lr'])])
-    records=[];best=None;best_score=float('inf');last=None;counter=0;legal_geometry=False
+    records=[];best=None;best_score=float('inf');last=None;last_mesh=None;counter=0;legal_geometry=False
     np.savez_compressed(out/'ITERATION_024_BODY.npz',**original)
     dump(out/'LOCAL_CONFIGURATION.json',dict(embedding=configuration,optimizer=cfg,warm_start='REJECTED_CANDIDATE_WARM_START',Adam_state_restored=False,Body_fixed=True,weights=weights,ring_calibration=collision.calibration))
     dump(out/'RING_INITIAL.json',{k:v for k,v in collision.reference.items()if np.isscalar(v)})
     def trial(stage,iteration,tag):
-        nonlocal counter,last,best,best_score,legal_geometry
+        nonlocal counter,last,last_mesh,best,best_score,legal_geometry
         counter+=1;folder=out/'trials'/f'{counter:04d}_{stage}_{iteration}_{tag}';folder.mkdir(parents=True)
         V,info=sweep.generate();tube=V.detach().cpu().numpy();control=info['control'].detach().cpu().numpy()
         np.savez_compressed(folder/'SWEEP.npz',**{k:v.detach().cpu().numpy()for k,v in info.items()},V=tube,F=sweep.F)
-        merged=union(original,tube,sweep.F,folder/'boolean')
+        try:
+            merged=union(original,tube,sweep.F,folder/'boolean')
+        except InvalidUnionCandidate as e:
+            rec=dict(stage=stage,iteration=iteration,tag=tag,folder=str(folder.relative_to(out)),reasons=[str(e)],accepted_growth=False,projection=None,geometry=dict(evaluable=False),raw_operands_retained=True)
+            dump(folder/'GATES.json',rec);records.append(rec);last=rec
+            return None,rec
         np.savez_compressed(folder/'BODY.npz',**merged)
         rec=dict(stage=stage,iteration=iteration,tag=tag,folder=str(folder.relative_to(out)),reasons=[])
         try: length=measure(control,original)
@@ -56,9 +61,12 @@ def optimize(original,initial,views,ring,base,chart,configuration,support,cfg,ou
         rec.update(reasons=sorted(set(rec['reasons'])),length=length,geometry=geometry,projection=view_result,
             energies=dict(contour=float(contour.detach()),attachment=float(attachment.detach()),total=float(loss.detach()),**{k:float(v.detach())for k,v in priors.items()}),
             Boolean_derivative='Frozen face/bary local surrogate; full Boolean/render rebuilt for acceptance',max_Boolean_provenance_error_mm=p['max_active_mapping_error_mm'])
-        rec['accepted_growth']=not rec['reasons'];dump(folder/'GATES.json',rec);records.append(rec);last=rec
+        rec['accepted_growth']=not rec['reasons'];dump(folder/'GATES.json',rec);records.append(rec);last=rec;last_mesh=rec
         if rec['accepted_growth']and view_result['data_score_delta']<best_score:
             best=copy.deepcopy(rec);best_score=view_result['data_score_delta']
+            np.savez_compressed(out/'BEST_SO_FAR_BODY.npz',**merged)
+            np.savez_compressed(out/'BEST_SO_FAR_SWEEP.npz',**{k:v.detach().cpu().numpy()for k,v in info.items()},V=tube,F=sweep.F)
+            dump(out/'BEST_SO_FAR.json',best)
         return loss,rec
     previous_fraction=None
     for stage,fraction in enumerate(cfg['continuation_fractions'],1):
@@ -69,6 +77,9 @@ def optimize(original,initial,views,ring,base,chart,configuration,support,cfg,ou
         previous_fraction=fraction
         anchor=sweep.control_tail.detach().clone()
         loss,current=trial(stage,-1,'start')
+        if loss is None:
+            print('RECOVERY stage',stage,'invalid continuation start; stage retained as rejected',flush=True)
+            continue
         for iteration in range(cfg['iterations_per_stage']):
             parameters=[sweep.control_tail,sweep.radii];before=[p.detach().clone()for p in parameters];state=copy.deepcopy(optimizer.state_dict())
             optimizer.zero_grad();loss.backward()
@@ -85,7 +96,7 @@ def optimize(original,initial,views,ring,base,chart,configuration,support,cfg,ou
                 next_loss,new=trial(stage,iteration,'b'+str(backtrack));new['gradient_norms']=gradient_norms
                 # Provisional local optimizer may lack final multiview gain, but never waives geometry/ring/protection.
                 hard=[r for r in new['reasons']if not r.startswith(('NO_NEW_MULTIVIEW','SUPPORT_VIDEO_DATA','FRESH_2D_DATA'))]
-                improvement=new['projection']['data_score_delta']<=current['projection']['data_score_delta']+1e-9
+                improvement=next_loss is not None and new['projection']['data_score_delta']<=current['projection']['data_score_delta']+1e-9
                 if not hard and improvement:accepted=True;loss=next_loss;current=new;break
             if not accepted:
                 with torch.no_grad():
@@ -96,7 +107,8 @@ def optimize(original,initial,views,ring,base,chart,configuration,support,cfg,ou
                 loss,current=trial(stage,iteration,'restored')
             dump(out/'PROGRESS.json',dict(stage=stage,iteration=iteration,best=best,last=current,Body_fixed=True,GT_read=False))
             print('RECOVERY',out.name,'stage',stage,'iteration',iteration,'accepted_local',accepted,'final_growth',current['accepted_growth'],'reasons',current['reasons'],flush=True)
-    chosen=best if best is not None else last
+    chosen=best if best is not None else last_mesh
+    if chosen is None:raise RuntimeError('NO_EVALUABLE_UNION; raw attempts retained')
     mesh=dict(np.load(out/chosen['folder']/'BODY.npz'));sw=dict(np.load(out/chosen['folder']/'SWEEP.npz'))
     filename='FINAL.npz'if best is not None else'LAST_ATTEMPT.npz';np.savez_compressed(out/filename,**mesh)
     np.savez_compressed(out/'FINAL_SWEEP_PARAMETERS.npz',**sw)

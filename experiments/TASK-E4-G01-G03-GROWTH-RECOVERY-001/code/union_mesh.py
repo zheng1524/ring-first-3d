@@ -6,6 +6,16 @@ import torch
 from ring_first_3d.multisurface.geometry import scene,closest
 BLENDER='/home/liu/blender/blender-5.0.1-linux-x64/blender'
 
+class InvalidUnionCandidate(ValueError):
+    """A backend result cannot be evaluated; reject it, retaining raw operands."""
+
+def validate_boolean_result(a):
+    V,F=a['V'],a['F']
+    if V.ndim!=2 or V.shape[1:]!=(3,) or len(V)<4 or F.ndim!=2 or F.shape[1:]!=(3,) or len(F)<4:
+        raise InvalidUnionCandidate('EMPTY_OR_MALFORMED_BOOLEAN_UNION')
+    if not np.isfinite(V).all() or F.min()<0 or F.max()>=len(V):
+        raise InvalidUnionCandidate('NONFINITE_OR_INVALID_BOOLEAN_UNION')
+
 def union(original,tube,faces,folder):
     folder=Path(folder);folder.mkdir(parents=True,exist_ok=False)
     np.savez_compressed(folder/'BODY_OPERAND.npz',V=original['V'],F=original['F_solid'])
@@ -16,7 +26,7 @@ def union(original,tube,faces,folder):
     with (folder/'blender_stdout.txt').open('w')as log:
         subprocess.run(command,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=60,
             env=dict(os.environ,XDG_CONFIG_HOME=str(folder/'config'),TMPDIR=str(folder)))
-    a=dict(np.load(folder/'UNION.npz'));F=a['F'];V=a['V']
+    a=dict(np.load(folder/'UNION.npz'));validate_boolean_result(a);F=a['F'];V=a['V']
     Q,_,fi=closest(scene(original['V'],original['F_solid']),V[F].mean(1))
     inferred=(a['face_operand']==0)&original['inferred_base_faces'][fi]&(np.linalg.norm(Q-V[F].mean(1),axis=1)<1e-4)
     # No remove_faces/fill_holes/voxel remeshing. Exact Boolean result is checked as-is.

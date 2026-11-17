@@ -121,6 +121,22 @@ def write_reports(t,attempt,ev,info,failure):
         if r['status']=='FAILED_NAN':lines.append(f'|{r["case"]}|RECOVERY FAILED|NaN|NaN|NaN|NaN|NaN|NaN|NaN|');continue
         keys=['FIT_IoU','HOLDOUT_IoU','Chamfer_MAE_mm','Chamfer_P95_mm','GT_coverage_at0p5mm','Fscore_at0p5mm','fixed_INITIAL_GT_Chamfer_MAE_mm']
         lines.append('|'+r['case']+'|'+r['arm']+' ('+r['status']+')|'+'|'.join(f'{r[k]:.5f}'for k in keys)+'|')
+    lines+=['','## 11项核心问题逐项回答','']
+    for r in info:
+        c=r['case'];p=r['prediction'];z=r.get('chosen')or{};ll=r.get('length');g=z.get('geometry',{});passed=p['status']=='NUMERIC'
+        byarm={v['arm']:v for v in ev['summary']if v['case']==c};previous=byarm['ITERATION_024'];last=byarm.get('RECOVERY')if passed else byarm.get('FAILED_ATTEMPT_DIAGNOSTIC')
+        lines.append(f'### {c}')
+        lines.append('1/2. 真正生长：'+('是，以下完整冻结门禁通过；三维准确性另外评价。'if passed else'否；正式预测及正式柄长NaN，以下形状是失败尝试诊断。'))
+        lines.append('3. 修改：恢复原iteration24首选候选，固定STEP024 Body，固定预先确定的近端，三阶段仅优化原样条的其余控制点和双轴；用真实Boolean并集替代相交的内部双层表面。')
+        if ll:
+            lines.append('4–6. 中心线近端确在Body内部，唯一首次穿出；总弧长 %.6f、嵌入 %.6f、外露 %.6f mm；SDF嵌入深度 %.6f mm。%s'%(ll['total_centerline_length_mm'],ll['embedded_length_mm'],ll['exposed_stalk_length_mm'],ll['embedding_depth_SDF_mm'],''if passed else'这些长度仅属失败尝试，不能作为正式测量。'))
+        lines.append('7. 最终外部并集检查：'+json.dumps({k:g.get(k)for k in ['watertight','winding_consistent','nonmanifold_edges','duplicate_faces','self_intersections','sweep_self_intersections']},ensure_ascii=False))
+        if last and isinstance(last.get('FIT_IoU'),(int,float)):
+            lines.append('8. STEP024→本轮%s：FIT IoU %.6f→%.6f；HOLDOUT %.6f→%.6f。逐视角保护和双视频支持见PER_VIEW与UPDATES，均值改善不能覆盖局部退化。'%('有效结果'if passed else'无效诊断',previous['FIT_IoU'],last['FIT_IoU'],previous['HOLDOUT_IoU'],last['HOLDOUT_IoU']))
+            lines.append('10. 独立尺度固定SE(3) GT MAE %.6f→%.6f mm；固定INITIAL→GT框架MAE %.6f→%.6f mm。两项并列，未据GT选择参数。'%(previous['Chamfer_MAE_mm'],last['Chamfer_MAE_mm'],previous['fixed_INITIAL_GT_Chamfer_MAE_mm'],last['fixed_INITIAL_GT_Chamfer_MAE_mm']))
+        lines.append('9. Ring候选−当前双向变化：'+json.dumps(z.get('ring',{}).get('delta',{}),ensure_ascii=False))
+        lines.append('11. 接受/拒绝：'+json.dumps(p.get('failure_reasons',[]),ensure_ascii=False)+'；所有失败尝试、空Boolean原始操作数及回缩记录保留。')
+    lines+=['','## 工程修复与有效阶段恢复','','LOCAL_001完整保留。G01一次局部更新的Blender EXACT返回空Mesh，原适配器触发AxisError并提前结束，导致该运行的最终Artifact门禁拒绝。修复只将空/无效Boolean作为候选拒绝并执行原回缩，增加已接受状态检查点；没有修改科学参数、视角、容差、方向、GT选择或候选。修复版协议另存protocols/ENGINEERING_REPAIR_001。G01从同一实际候选重放工程失效阶段；G03不再次优化，其已完成的原123次门禁记录、失败Mesh和冻结预测由SHA绑定后在Runner内恢复。两者来源源码与运行身份分别记录，绝不声称同一个提交重新计算了原G03。']
     count=sum(r['prediction']['status']=='NUMERIC'for r in info)
     lines+=['','每方向固定12000面积样本并查询真实三角面；报告MAE/median/P95/max和覆盖，Chamfer为双向非平方距离。先冻结两组全部输出，后读GT；沿用best_rigid015尺度固定独立SE(3)评价副本，并额外使用历史INITIAL→GT固定矩阵诊断。两种评价均保留，不根据GT挑结果，不回写训练模型/相机。新的拓扑没有伪称共享材料Face身份；固定诊断指固定坐标框架和样本分母。','', '嵌入、穿出点、根部双轴及16站截面、新顶点/面数、净新增面积/体积、实际完整几何检查见GROWTH_METRICS.csv与每次GATES.json；双向Ring更新前后及差值见RING_COLLISION_METRICS.csv。失败候选的数值仅作为诊断，不能计入独立成功覆盖率。','', '## 固定审计表','','|审计项目|必须汇报|','|---|---|','|目标组数|2：G01、G03；单臂各一次局部恢复|',f'|本算法独立成功|{count}/2门禁通过输出；不等同于GT三维正确|',f'|本算法失败|{2-count}/2；正式预测/柄长NaN，最后尝试Mesh和定量诊断保留|','|历史测量值回退|0；指定历史实际候选是本轮授权起点，未读取其他路线补全|','|失败组及具体原因|Failure Registry及各组UPDATES/GATES；不自动晋升永久规则|','|最终统计样本|完整2组分母，成功组配对，失败不隐藏；表面MAE/median/P95/max见CSV，直径相对误差N/A|','|是否使用GT选择算法|否；源码、配置、输入、嵌入深度与容差预冻结；两组预测冻结后独立GT评价|','', '## 测试、资产与审阅入口','','回归包含既有35基线、上一轮212项集合及本轮嵌入、布尔融合、唯一穿出弧长、双向Ring和隔离测试。完整实测计数见recovery_regression/result.json；原始开发测试故障也保留，不通过删测试或关闭自交获得通过。旧工作树及全部历史失败只读，本轮不执行G05/HERO/DXY/相机更新。','', '所有原FIT逐视角原图/Mask/投影、正背左右完整Mesh、根部内部/外露和第一次穿出标记、真实三角面切面、截面尺寸、Ring差值和GT对齐副本均在离线visualization/index.html。失败状态写在每张相关图中。','', '工程存储就绪曾遇磁盘满，仅清理可再生成的HTTP/缩略图/浏览器缓存，没有删除科研文件或模型权重。新工作树稀疏检出初始化错误已在开跑前纠正；缓存、错误与修复日志均留存evidence。']
     (attempt/'TECHNICAL_REPORT.md').write_text('\n'.join(lines)+'\n');(attempt/'RESULT_CARD.md').write_text('# RESULT_CARD\n\n'+'\n\n'.join(lines[6:12])+f'\n\n独立成功{count}/2；失败正式预测NaN。完整指标与拒绝记录见TECHNICAL_REPORT.md。未执行HERO或其他组。\n')

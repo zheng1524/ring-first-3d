@@ -7,7 +7,7 @@ from io_utils import source_folder
 from recover import restore
 from embedded_sweep import EmbeddedSweep
 from lengths import measure
-from union_mesh import union,lifted_vertices,provenance
+from union_mesh import union,lifted_vertices,provenance,validate_boolean_result,InvalidUnionCandidate
 from ring_gate import CurrentRingGate,metrics_accept
 from geometry_gate import namespace
 
@@ -18,6 +18,19 @@ def config():
         initial_axis=[1,0,0],exit_reference=[0,0,1],proximal=[0,0,.3],attachment_region_radius_mm=.8,overlap_transition_mm=.2,direction=[0,0,1])
 
 class RecoveryTests(unittest.TestCase):
+    def test_empty_boolean_rejected_before_array_operations(self):
+        with self.assertRaisesRegex(InvalidUnionCandidate,'EMPTY_OR_MALFORMED_BOOLEAN_UNION'):
+            validate_boolean_result(dict(V=np.empty(0),F=np.empty(0,dtype=int)))
+    def test_actual_empty_backend_regression(self):
+        p=TD/'runs/LOCAL_001/attempts/0005-G1_G01-c5de4ef6/G01/DEFORM_SWEEP_RECOVERY/trials/0002_1_0_b0/boolean/UNION.npz'
+        with self.assertRaises(InvalidUnionCandidate):validate_boolean_result(dict(np.load(p)))
+    def test_invalid_boolean_index_rejected(self):
+        with self.assertRaisesRegex(InvalidUnionCandidate,'INVALID_BOOLEAN_UNION'):
+            validate_boolean_result(dict(V=np.zeros((4,3)),F=np.full((4,3),9)))
+    def test_resume_preserves_scientific_configuration(self):
+        m=json.loads((TD/'inputs/G03_VALID_STAGE_RESUME.json').read_text())
+        original=json.loads((TD/'runs/LOCAL_001/FREEZE.json').read_text())['fingerprint']['task']['recovery']
+        self.assertEqual(m['update'],original['update']);self.assertEqual(m['configuration_sha256'],original['configuration']['sha256'])
     def test_all_modules_parse(self):
         for p in (TD/'code').glob('*.py'):ast.parse(p.read_text(),filename=str(p))
     def test_exact_saved_G01(self):

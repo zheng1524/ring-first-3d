@@ -25,6 +25,12 @@ def validate(t,path):
     return t
 def verify(t):
     c=t['recovery'];code=json.loads(Path(c['code_lock']['path']).read_text())['files'];bound=json.loads(Path(c['input_manifest']['path']).read_text())['files']
+    if 'resume_valid_stage'in c:
+        r=c['resume_valid_stage'];require(sha256(r['path'])==r['sha256'],'SOURCE_SHA','Resume manifest')
+        m=json.loads(Path(r['path']).read_text())
+        require(m['case']=='G03' and m['stage']=='G1_G03' and m['source_commit']=='62c56097916e32da6dde3a3d9018912f76c69378','RESUME_IDENTITY','Only the completed same-task G03 stage')
+        require(m['update']==c['update'] and m['configuration_sha256']==c['configuration']['sha256'],'FROZEN_PROTOCOL','Resume must preserve all scientific parameters')
+        bound=bound+m['files']+[m['source_result']]
     for r in code+bound+[c['code_lock'],c['input_manifest'],c['configuration']]:
         require(Path(r['path']).is_file()and sha256(r['path'])==r['sha256'],'SOURCE_SHA',r['path'])
     info=verify_task(legacy(t));contracts=dict(info['module_contracts'])

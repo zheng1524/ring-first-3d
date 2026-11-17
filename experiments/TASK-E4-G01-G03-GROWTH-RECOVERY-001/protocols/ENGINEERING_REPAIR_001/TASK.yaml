@@ -1,0 +1,152 @@
+schema: 11
+task_id: TASK-E4-G01-G03-GROWTH-RECOVERY-001
+goal: Recover the actual G01/G03 iteration24 rejected sweeps with bounded embedding,
+  exact union, fresh 2D gates and current-only Ring non-worsening; fixed Body, no
+  HERO
+modules:
+- T01
+- T03
+- T04
+- T10
+- T11
+- T12
+- T13
+- T24
+- T31
+- T34
+- GR01
+- GR02
+- GR03
+- GR04
+- GR05
+- GR06
+- GR07
+- GR08
+- GR09
+- GR10
+- GR11
+- GR12
+- GR13
+variables:
+  geometry_unit: mm
+  pixel_coordinates: native_image_px
+  camera_transform: opencv_c2w
+  depth_convention: axial_z
+  parameters: {}
+inputs:
+  fixture:
+    path: /home/liu/ring_first_3d_structural_update/tools/research/frozen_fixture.json
+    sha256: d64ebdbc3b81287c7d8f235e634b05d44269ee76b27206a37d2df976d293dacb
+  support:
+    path: /home/liu/ring_first_3d_structural_update/tools/research/support_fixture.json
+    sha256: cc26119e6e67a3d19ab124685316b4815be0f63f5ac71bc416704cf46430b28c
+  reference:
+    path: /home/liu/ring_first_3d_structural_update/tools/research/frozen_reference.json
+    sha256: 216cbab2cdafa85e224580199356c1a2dc1ba087389e9699790d1c6101890cdd
+  source_lock:
+    path: /home/liu/ring_first_3d_growth_recovery/src/ring_first_3d/source_lock.json
+    sha256: 3bee30d508fa9ca6bbc4bbc315b217a0a660b77c6498cfce7ccbba6d9ba5f2b0
+  dxy_root: /home/liu/new-polyp-dxy
+  evidence:
+    path: /home/liu/ring_first_3d_structural_update/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/figures/REAL_SMOKE_EVIDENCE.png
+    sha256: 59451578fe85612ffa5b2bd47f450705e3d45403fbeaf6f324f2a2a9c2088b23
+split:
+  manifest:
+    path: /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/CASE.json
+    sha256: 57799a430b9b954180575a96da3b2d228e0802eac4f6ecf660744c3d308e688e
+  FIT:
+  - FIT
+  HOLDOUT:
+  - UPDATE_HOLDOUT
+  GT:
+  - independent_shape_evaluator_only
+  access: inita_train_hero_evaluation_isolation
+authorization:
+  approved_by: user
+  reference: Explicit user TASK-E4-G01-G03-GROWTH-RECOVERY-001; supplied TASK.md
+  stages:
+  - preflight
+  - contracts
+  - recovery_regression
+  - G0_recovery_audit
+  - G1_G01
+  - G1_G03
+  - G2_evaluate
+  - G4_visualize
+  - artifacts
+acceptance:
+  required_stages:
+  - preflight
+  - contracts
+  - recovery_regression
+  - G0_recovery_audit
+  - G1_G01
+  - G1_G03
+  - G2_evaluate
+  - G4_visualize
+  - artifacts
+  min_contract_tests: 11
+  require_visualization: true
+  require_failure_log: true
+budget:
+  max_seconds: 7200
+  stage_timeout_seconds: 2400
+  max_attempts_per_stage: 2
+  max_output_bytes: 140000000
+stop:
+- gate_failure
+- input_drift
+- budget_exceeded
+output_root: /home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs
+recovery:
+  baseline_commit: 238c2da1cd842c0eba710a4ec44db5f437bff8e4
+  baseline_root: /home/liu/ring_first_3d_structured_body_002
+  cases:
+  - G01
+  - G03
+  arm: DEFORM_SWEEP_RECOVERY
+  iteration: 24
+  max_candidates_per_case: 1
+  Body_fixed: true
+  camera_optimization: false
+  HERO_read: false
+  GT_selects_prediction: false
+  sources: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/inputs/SOURCES.json
+  blender_binary:
+    path: /home/liu/blender/blender-5.0.1-linux-x64/blender
+    sha256: 76ee560365e0ba37abf1f0285751c6388a1e68846d0f6a45aac629f707044533
+  code_lock:
+    path: /home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/protocols/ENGINEERING_REPAIR_001/CODE_LOCK.json
+    sha256: 5e9eb8599eb79c281b9dea5cdda5d13dc5f99a0ed81464cb5bd9958525c9d6d1
+  input_manifest:
+    path: /home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/inputs/INPUT_MANIFEST.json
+    sha256: 126a6321a7969be8b77535f66d4bea06263b99f6684910b6f76b497b6c756bff
+  configuration:
+    path: /home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/inputs/RECOVERY_CONFIGURATION.json
+    sha256: 82a39beaae977aeada8f49088d49362161538212d48e6cb5b5aab78f9194b53a
+  update:
+    continuation_fractions:
+    - 0.35
+    - 0.7
+    - 1.0
+    iterations_per_stage: 8
+    backtracks: 4
+    control_lr_mm: 0.02
+    radius_lr: 0.03
+    control_trust_mm: 0.35
+    radius_logit_trust: 1.0
+    lambda_clearance: 1.0
+    lambda_bend: 0.01
+    lambda_radius: 0.01
+    lambda_attachment: 0.01
+    lambda_embed: 1.0
+    min_exposed_mm: 0.1
+    max_exposed_mm: 6.0
+    projection:
+      max_distance_px: 40.0
+      mutual_radius_px: 0.0
+      normal_cos_min: 0.5
+      max_tangent_px: 8.0
+  resume_valid_stage:
+    path: /home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/inputs/G03_VALID_STAGE_RESUME.json
+    sha256: dc8d37828da60a38168de062703a1917197967b38fd5d056f851351e08820ef8
