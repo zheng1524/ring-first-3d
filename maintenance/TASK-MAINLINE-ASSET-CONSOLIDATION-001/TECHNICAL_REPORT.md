@@ -65,3 +65,5 @@ COPY_VERIFICATION逐文件记录原路径/任务/commit/原SHA/新路径/新SHA/
 可视化：/home/liu/ring_first_3d_mainline/mainline/visualization/index.html
 
 原始完整盘点按逐实验汇总见EXPERIMENT_STORAGE_SUMMARY.csv。目录别名仅整理维护分支当前树，原4110个Git文件仍在固定基线和原工作树；没有重写历史或移除远端分支。原工作树保留是因为仍有唯一资产及LOCAL_ONLY绑定，不冒险删除。跨机器、全新训练收敛或新的HERO→Body耦合均未认证。
+
+首次提交推送后，文件系统净空闲增加14,678,593,536字节（13.670506GiB）；与阶段1释放数值的差异包括新工作区、完整元数据、编译运行库及Git新增对象。此为明确时间点快照，见POST_PUSH_STORAGE.json。
