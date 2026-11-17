@@ -1,0 +1,1998 @@
+[
+  {
+    "case": "G06",
+    "morphology": "IIa",
+    "arm": "A0",
+    "status": "NUMERIC",
+    "IoU_3D": null,
+    "IoU_3D_status": "NOT_EVALUABLE_STRICT_INFERRED_OR_UNCERTAIN_BASE",
+    "conditional_occupancy_IoU": 0.870115422055347,
+    "Chamfer_MAE_mm": 0.2511447279770107,
+    "GT_alignment_scale": 1.0,
+    "Chamfer_P95_mm": 1.22101970911026,
+    "Chamfer_median_mm": 0.0866517461836338,
+    "Chamfer_max_mm": 1.4461694955825806,
+    "median_absolute_relative_surface_error_to_GT_diagonal": 0.004362352644821973,
+    "pred_to_GT_mm": {
+      "target_N": 8192,
+      "numeric_N": 8192,
+      "failed_N": 0,
+      "N": 8192,
+      "MAE": 0.06265673490553775,
+      "median": 0.039180267602205276,
+      "p95": 0.17048641815781593,
+      "maximum": 0.21557258069515228
+    },
+    "GT_to_pred_mm": {
+      "target_N": 8192,
+      "numeric_N": 8192,
+      "failed_N": 0,
+      "N": 8192,
+      "MAE": 0.4396327210484836,
+      "median": 0.22616680711507797,
+      "p95": 1.3271422863006592,
+      "maximum": 1.4461694955825806
+    },
+    "GT_coverage_0p5mm": 0.6456298828125,
+    "Fscore_0p5mm": 0.7846598916994288,
+    "GT_geometry": {
+      "watertight": true,
+      "winding_consistent": true,
+      "self_intersections": 0
+    },
+    "world_geometry": {
+      "volume_positive": true,
+      "watertight": true,
+      "winding_consistent": true,
+      "self_intersections": 0,
+      "ring_min_dense64_mm": -0.001085177413187921,
+      "ring_negative_dense_face_N": 20,
+      "ring_penetration_max_mm": 0.001085177413187921,
+      "area_ratio_min": 0.8864442940229943,
+      "normal_against_initial_nonpositive_N": 0,
+      "edge_ratio": {
+        "target_N": 1728,
+        "numeric_N": 1728,
+        "failed_N": 0,
+        "N": 1728,
+        "MAE": 1.007559772851385,
+        "median": 1.0000018524153158,
+        "p95": 1.0409265941869639,
+        "maximum": 1.5576030768208988
+      },
+      "displacement_from013_mm": {
+        "target_N": 578,
+        "numeric_N": 578,
+        "failed_N": 0,
+        "N": 578,
+        "MAE": 0.019252055096653106,
+        "median": 1.9829553667396818e-05,
+        "p95": 0.09904302487285113,
+        "maximum": 0.5565393991516562
+      },
+      "inferred_base": true,
+      "components": 1
+    },
+    "projection": [
+      {
+        "id": "G06_004_growth_r01",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9422386850329899,
+        "all_pixel_IoU": 0.8996463306808135,
+        "target_N": 8571,
+        "TP": 8140,
+        "FN": 431,
+        "FP": 68,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_growth_r03",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9564372284472902,
+        "all_pixel_IoU": 0.9164110429447853,
+        "target_N": 8640,
+        "TP": 8365,
+        "FN": 275,
+        "FP": 106,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00151",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9590851626249857,
+        "all_pixel_IoU": 0.921895713654441,
+        "target_N": 8689,
+        "TP": 8345,
+        "FN": 344,
+        "FP": 12,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00326",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9380613554181734,
+        "all_pixel_IoU": 0.9037986064284109,
+        "target_N": 8567,
+        "TP": 8042,
+        "FN": 525,
+        "FP": 6,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_new_r00",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9434052757793765,
+        "all_pixel_IoU": 0.8980709964615912,
+        "target_N": 8302,
+        "TP": 7868,
+        "FN": 434,
+        "FP": 38,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00874",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9599421845963246,
+        "all_pixel_IoU": 0.9409661314262583,
+        "target_N": 14480,
+        "TP": 13947,
+        "FN": 533,
+        "FP": 49,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00195",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9518981637940745,
+        "all_pixel_IoU": 0.9166847472336732,
+        "target_N": 8868,
+        "TP": 8450,
+        "FN": 418,
+        "FP": 9,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_ref04",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9538560826072927,
+        "all_pixel_IoU": 0.9163050216986981,
+        "target_N": 9282,
+        "TP": 8868,
+        "FN": 414,
+        "FP": 15,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00487",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.9356586522180833,
+        "all_pixel_IoU": 0.8882102386884192,
+        "target_N": 11717,
+        "TP": 11052,
+        "FN": 665,
+        "FP": 95,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00663",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.7777942374638915,
+        "all_pixel_IoU": 0.6491314829696483,
+        "target_N": 13413,
+        "TP": 10501,
+        "FN": 2912,
+        "FP": 88,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00682",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.6968688013601587,
+        "all_pixel_IoU": 0.5842489754706895,
+        "target_N": 13492,
+        "TP": 9837,
+        "FN": 3655,
+        "FP": 624,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00291",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.6692960644774072,
+        "all_pixel_IoU": 0.5295434502408249,
+        "target_N": 10852,
+        "TP": 7806,
+        "FN": 3046,
+        "FP": 811,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00311",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.9031258301602763,
+        "all_pixel_IoU": 0.8322317421460629,
+        "target_N": 10968,
+        "TP": 10199,
+        "FN": 769,
+        "FP": 325,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00604",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.8989866751775313,
+        "all_pixel_IoU": 0.825058582308143,
+        "target_N": 12530,
+        "TP": 11267,
+        "FN": 1263,
+        "FP": 3,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00506",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.873876103274767,
+        "all_pixel_IoU": 0.8003324016015714,
+        "target_N": 12038,
+        "TP": 10594,
+        "FN": 1444,
+        "FP": 85,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00643",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.8352601156069365,
+        "all_pixel_IoU": 0.7265149510452501,
+        "target_N": 13139,
+        "TP": 10982,
+        "FN": 2157,
+        "FP": 9,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_growth_r06",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9625419591089411,
+        "all_pixel_IoU": 0.9363960219682351,
+        "target_N": 13047,
+        "TP": 12617,
+        "FN": 430,
+        "FP": 61,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00282",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9611130931145202,
+        "all_pixel_IoU": 0.9138398914518318,
+        "target_N": 8332,
+        "TP": 8082,
+        "FN": 250,
+        "FP": 77,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00633",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9343050916084624,
+        "all_pixel_IoU": 0.8999609984399376,
+        "target_N": 9863,
+        "TP": 9230,
+        "FN": 633,
+        "FP": 16,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00565",
+        "video": "005",
+        "role": "HOLDOUT",
+        "IoU": 0.8953722334004024,
+        "all_pixel_IoU": 0.8237079816377906,
+        "target_N": 12387,
+        "TP": 11125,
+        "FN": 1262,
+        "FP": 38,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      }
+    ],
+    "world_prediction_sha256": "bdf43e013a2e154f0705e6ef6d271f1ef11f3d28ecd93715043def2a8162abc9",
+    "aligned_mesh_relative": "evaluation_only/G06/A0_ALIGNED.npz",
+    "alignment": [
+      [
+        0.6154169319446983,
+        0.7862810529296624,
+        0.05499186921353401,
+        0.7485810866504844
+      ],
+      [
+        -0.7881084751818284,
+        0.61491794525004,
+        0.027585357638552462,
+        0.3728622415697014
+      ],
+      [
+        -0.012125643172762782,
+        -0.060316054357792054,
+        0.9981056769522745,
+        6.518711505677002
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "alignment_best_score_mm": 0.251144723796509,
+    "alignment_global_optimum_certified": false,
+    "GT_used_for_training": false,
+    "GT_aligned_HERO": false,
+    "occupancy_N": 131072,
+    "occupancy_intersection_N": 25028,
+    "occupancy_union_N": 28764,
+    "conditional_occupancy_status": "CLOSED_ENTITY_WITH_INFERRED_BASE",
+    "conditional_occupancy_not_strict_IoU": true
+  },
+  {
+    "case": "G06",
+    "morphology": "IIa",
+    "arm": "A1",
+    "status": "NUMERIC",
+    "IoU_3D": null,
+    "IoU_3D_status": "NOT_EVALUABLE_STRICT_INFERRED_OR_UNCERTAIN_BASE",
+    "conditional_occupancy_IoU": 0.870115422055347,
+    "Chamfer_MAE_mm": 0.2511447281791743,
+    "GT_alignment_scale": 1.0,
+    "Chamfer_P95_mm": 1.22101970911026,
+    "Chamfer_median_mm": 0.0866517461836338,
+    "Chamfer_max_mm": 1.4461694955825806,
+    "median_absolute_relative_surface_error_to_GT_diagonal": 0.004362352644821973,
+    "pred_to_GT_mm": {
+      "target_N": 8192,
+      "numeric_N": 8192,
+      "failed_N": 0,
+      "N": 8192,
+      "MAE": 0.06265673508146813,
+      "median": 0.039180267602205276,
+      "p95": 0.17048641815781593,
+      "maximum": 0.21557258069515228
+    },
+    "GT_to_pred_mm": {
+      "target_N": 8192,
+      "numeric_N": 8192,
+      "failed_N": 0,
+      "N": 8192,
+      "MAE": 0.43963272127688047,
+      "median": 0.22616680711507797,
+      "p95": 1.3271422863006592,
+      "maximum": 1.4461694955825806
+    },
+    "GT_coverage_0p5mm": 0.6456298828125,
+    "Fscore_0p5mm": 0.7846598916994288,
+    "GT_geometry": {
+      "watertight": true,
+      "winding_consistent": true,
+      "self_intersections": 0
+    },
+    "world_geometry": {
+      "volume_positive": true,
+      "watertight": true,
+      "winding_consistent": true,
+      "self_intersections": 0,
+      "ring_min_dense64_mm": -0.001085177413187921,
+      "ring_negative_dense_face_N": 20,
+      "ring_penetration_max_mm": 0.001085177413187921,
+      "area_ratio_min": 0.8864442947724108,
+      "normal_against_initial_nonpositive_N": 0,
+      "edge_ratio": {
+        "target_N": 1728,
+        "numeric_N": 1728,
+        "failed_N": 0,
+        "N": 1728,
+        "MAE": 1.0075597728547487,
+        "median": 1.0000018524151422,
+        "p95": 1.0409265941088581,
+        "maximum": 1.5576030525963005
+      },
+      "displacement_from013_mm": {
+        "target_N": 578,
+        "numeric_N": 578,
+        "failed_N": 0,
+        "N": 578,
+        "MAE": 0.01925205508180916,
+        "median": 1.9829552811532075e-05,
+        "p95": 0.09904302397640496,
+        "maximum": 0.5565393771076397
+      },
+      "inferred_base": true,
+      "components": 1
+    },
+    "projection": [
+      {
+        "id": "G06_004_growth_r01",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9422386850329899,
+        "all_pixel_IoU": 0.8996463306808135,
+        "target_N": 8571,
+        "TP": 8140,
+        "FN": 431,
+        "FP": 68,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_growth_r03",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9564372284472902,
+        "all_pixel_IoU": 0.9164110429447853,
+        "target_N": 8640,
+        "TP": 8365,
+        "FN": 275,
+        "FP": 106,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00151",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9590851626249857,
+        "all_pixel_IoU": 0.921895713654441,
+        "target_N": 8689,
+        "TP": 8345,
+        "FN": 344,
+        "FP": 12,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00326",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9380613554181734,
+        "all_pixel_IoU": 0.9037986064284109,
+        "target_N": 8567,
+        "TP": 8042,
+        "FN": 525,
+        "FP": 6,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_new_r00",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9434052757793765,
+        "all_pixel_IoU": 0.8980709964615912,
+        "target_N": 8302,
+        "TP": 7868,
+        "FN": 434,
+        "FP": 38,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00874",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9599421845963246,
+        "all_pixel_IoU": 0.9409661314262583,
+        "target_N": 14480,
+        "TP": 13947,
+        "FN": 533,
+        "FP": 49,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00195",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9518981637940745,
+        "all_pixel_IoU": 0.9166847472336732,
+        "target_N": 8868,
+        "TP": 8450,
+        "FN": 418,
+        "FP": 9,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_ref04",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9538560826072927,
+        "all_pixel_IoU": 0.9163050216986981,
+        "target_N": 9282,
+        "TP": 8868,
+        "FN": 414,
+        "FP": 15,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00487",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.9356586522180833,
+        "all_pixel_IoU": 0.8882102386884192,
+        "target_N": 11717,
+        "TP": 11052,
+        "FN": 665,
+        "FP": 95,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00663",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.7777942374638915,
+        "all_pixel_IoU": 0.6491314829696483,
+        "target_N": 13413,
+        "TP": 10501,
+        "FN": 2912,
+        "FP": 88,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00682",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.6968688013601587,
+        "all_pixel_IoU": 0.5842489754706895,
+        "target_N": 13492,
+        "TP": 9837,
+        "FN": 3655,
+        "FP": 624,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00291",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.6692960644774072,
+        "all_pixel_IoU": 0.5295434502408249,
+        "target_N": 10852,
+        "TP": 7806,
+        "FN": 3046,
+        "FP": 811,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00311",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.9031258301602763,
+        "all_pixel_IoU": 0.8322317421460629,
+        "target_N": 10968,
+        "TP": 10199,
+        "FN": 769,
+        "FP": 325,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00604",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.8989866751775313,
+        "all_pixel_IoU": 0.825058582308143,
+        "target_N": 12530,
+        "TP": 11267,
+        "FN": 1263,
+        "FP": 3,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00506",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.873876103274767,
+        "all_pixel_IoU": 0.8003324016015714,
+        "target_N": 12038,
+        "TP": 10594,
+        "FN": 1444,
+        "FP": 85,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00643",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.8352601156069365,
+        "all_pixel_IoU": 0.7265149510452501,
+        "target_N": 13139,
+        "TP": 10982,
+        "FN": 2157,
+        "FP": 9,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_growth_r06",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9625419591089411,
+        "all_pixel_IoU": 0.9363960219682351,
+        "target_N": 13047,
+        "TP": 12617,
+        "FN": 430,
+        "FP": 61,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00282",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9611130931145202,
+        "all_pixel_IoU": 0.9138398914518318,
+        "target_N": 8332,
+        "TP": 8082,
+        "FN": 250,
+        "FP": 77,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00633",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9343050916084624,
+        "all_pixel_IoU": 0.8999609984399376,
+        "target_N": 9863,
+        "TP": 9230,
+        "FN": 633,
+        "FP": 16,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00565",
+        "video": "005",
+        "role": "HOLDOUT",
+        "IoU": 0.8953722334004024,
+        "all_pixel_IoU": 0.8237079816377906,
+        "target_N": 12387,
+        "TP": 11125,
+        "FN": 1262,
+        "FP": 38,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      }
+    ],
+    "world_prediction_sha256": "a77588e89cbd7fceed9ccd44276eaad912936a448918c3597029bfce0ebb08a7",
+    "aligned_mesh_relative": "evaluation_only/G06/A1_ALIGNED.npz",
+    "alignment": [
+      [
+        0.6154169319579934,
+        0.7862810529209635,
+        0.05499186918919655,
+        0.7485810866699953
+      ],
+      [
+        -0.7881084751717877,
+        0.6149179452624617,
+        0.0275853576486153,
+        0.37286224162456194
+      ],
+      [
+        -0.012125643150808085,
+        -0.06031605434461844,
+        0.9981056769533406,
+        6.5187115057727345
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "alignment_best_score_mm": 0.25114472410634825,
+    "alignment_global_optimum_certified": false,
+    "GT_used_for_training": false,
+    "GT_aligned_HERO": false,
+    "occupancy_N": 131072,
+    "occupancy_intersection_N": 25028,
+    "occupancy_union_N": 28764,
+    "conditional_occupancy_status": "CLOSED_ENTITY_WITH_INFERRED_BASE",
+    "conditional_occupancy_not_strict_IoU": true
+  },
+  {
+    "case": "G06",
+    "morphology": "IIa",
+    "arm": "A2",
+    "status": "NUMERIC",
+    "IoU_3D": null,
+    "IoU_3D_status": "NOT_EVALUABLE_STRICT_INFERRED_OR_UNCERTAIN_BASE",
+    "conditional_occupancy_IoU": 0.8634727222376073,
+    "Chamfer_MAE_mm": 0.25104303648947857,
+    "GT_alignment_scale": 1.0,
+    "Chamfer_P95_mm": 1.220672917366027,
+    "Chamfer_median_mm": 0.08950287476181984,
+    "Chamfer_max_mm": 1.467714548110962,
+    "median_absolute_relative_surface_error_to_GT_diagonal": 0.004505888451560585,
+    "pred_to_GT_mm": {
+      "target_N": 8192,
+      "numeric_N": 8192,
+      "failed_N": 0,
+      "N": 8192,
+      "MAE": 0.06327885325914807,
+      "median": 0.04212346859276295,
+      "p95": 0.16856693401932715,
+      "maximum": 0.21415099501609802
+    },
+    "GT_to_pred_mm": {
+      "target_N": 8192,
+      "numeric_N": 8192,
+      "failed_N": 0,
+      "N": 8192,
+      "MAE": 0.43880721971980907,
+      "median": 0.22442417591810226,
+      "p95": 1.3248025238513945,
+      "maximum": 1.467714548110962
+    },
+    "GT_coverage_0p5mm": 0.6474609375,
+    "Fscore_0p5mm": 0.7860106698280972,
+    "GT_geometry": {
+      "watertight": true,
+      "winding_consistent": true,
+      "self_intersections": 0
+    },
+    "world_geometry": {
+      "volume_positive": true,
+      "watertight": true,
+      "winding_consistent": true,
+      "self_intersections": 0,
+      "ring_min_dense64_mm": -0.0010882075875997543,
+      "ring_negative_dense_face_N": 20,
+      "ring_penetration_max_mm": 0.0010882075875997543,
+      "area_ratio_min": 0.596978006375873,
+      "normal_against_initial_nonpositive_N": 0,
+      "edge_ratio": {
+        "target_N": 1728,
+        "numeric_N": 1728,
+        "failed_N": 0,
+        "N": 1728,
+        "MAE": 1.0089863084724418,
+        "median": 1.0000001165306323,
+        "p95": 1.0593544438079048,
+        "maximum": 2.5245657990814383
+      },
+      "displacement_from013_mm": {
+        "target_N": 578,
+        "numeric_N": 578,
+        "failed_N": 0,
+        "N": 578,
+        "MAE": 0.02244704441931327,
+        "median": 0.0006700984806295152,
+        "p95": 0.11338871226964785,
+        "maximum": 0.4404884839140923
+      },
+      "inferred_base": true,
+      "components": 1
+    },
+    "projection": [
+      {
+        "id": "G06_004_growth_r01",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9428736295441431,
+        "all_pixel_IoU": 0.9003746969363016,
+        "target_N": 8571,
+        "TP": 8170,
+        "FN": 401,
+        "FP": 94,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_growth_r03",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9446582163875057,
+        "all_pixel_IoU": 0.9056092003905826,
+        "target_N": 8640,
+        "TP": 8347,
+        "FN": 293,
+        "FP": 196,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00151",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9464346639372228,
+        "all_pixel_IoU": 0.910304091008532,
+        "target_N": 8689,
+        "TP": 8322,
+        "FN": 367,
+        "FP": 104,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00326",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9435305098588262,
+        "all_pixel_IoU": 0.9090602517985612,
+        "target_N": 8567,
+        "TP": 8087,
+        "FN": 480,
+        "FP": 4,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_new_r00",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9431098362615036,
+        "all_pixel_IoU": 0.8979289940828402,
+        "target_N": 8302,
+        "TP": 7891,
+        "FN": 411,
+        "FP": 65,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00874",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9541472762113331,
+        "all_pixel_IoU": 0.9353908084535391,
+        "target_N": 14480,
+        "TP": 13942,
+        "FN": 538,
+        "FP": 132,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00195",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9465144903211369,
+        "all_pixel_IoU": 0.9117266652295754,
+        "target_N": 8868,
+        "TP": 8459,
+        "FN": 409,
+        "FP": 69,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_ref04",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9466937293024249,
+        "all_pixel_IoU": 0.9097628580227902,
+        "target_N": 9282,
+        "TP": 8862,
+        "FN": 420,
+        "FP": 79,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00487",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.943019219371772,
+        "all_pixel_IoU": 0.8951936987622569,
+        "target_N": 11717,
+        "TP": 11138,
+        "FN": 579,
+        "FP": 94,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00663",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.7915955156284802,
+        "all_pixel_IoU": 0.6620304253337472,
+        "target_N": 13413,
+        "TP": 10662,
+        "FN": 2751,
+        "FP": 56,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00682",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.6993860701432503,
+        "all_pixel_IoU": 0.5880503144654088,
+        "target_N": 13492,
+        "TP": 9911,
+        "FN": 3581,
+        "FP": 679,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00291",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.6778454412899906,
+        "all_pixel_IoU": 0.5367427329530019,
+        "target_N": 10852,
+        "TP": 7903,
+        "FN": 2949,
+        "FP": 807,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00311",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.9077970297029703,
+        "all_pixel_IoU": 0.8377386196769456,
+        "target_N": 10968,
+        "TP": 10269,
+        "FN": 699,
+        "FP": 344,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00604",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.9067837190742218,
+        "all_pixel_IoU": 0.8332355529480786,
+        "target_N": 12530,
+        "TP": 11362,
+        "FN": 1168,
+        "FP": 0,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00506",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.8869126406353408,
+        "all_pixel_IoU": 0.8134294385432473,
+        "target_N": 12038,
+        "TP": 10721,
+        "FN": 1317,
+        "FP": 50,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00643",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.8449128681226695,
+        "all_pixel_IoU": 0.7365662730529389,
+        "target_N": 13139,
+        "TP": 11103,
+        "FN": 2036,
+        "FP": 2,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_004_growth_r06",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9566107866191307,
+        "all_pixel_IoU": 0.930769798509115,
+        "target_N": 13047,
+        "TP": 12611,
+        "FN": 436,
+        "FP": 136,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00282",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9429041353383458,
+        "all_pixel_IoU": 0.8970604671957081,
+        "target_N": 8332,
+        "TP": 8026,
+        "FN": 306,
+        "FP": 180,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v004_raw00633",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9380432585405296,
+        "all_pixel_IoU": 0.9038761199844176,
+        "target_N": 9863,
+        "TP": 9281,
+        "FN": 582,
+        "FP": 31,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      },
+      {
+        "id": "G06_v005_raw00565",
+        "video": "005",
+        "role": "HOLDOUT",
+        "IoU": 0.9048807989690721,
+        "all_pixel_IoU": 0.8332715271082103,
+        "target_N": 12387,
+        "TP": 11235,
+        "FN": 1152,
+        "FP": 29,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": null
+      }
+    ],
+    "world_prediction_sha256": "e5832d06f52b5080bc973f86b8c07003a64a994bf55414a6166bb080a29f7342",
+    "aligned_mesh_relative": "evaluation_only/G06/A2_ALIGNED.npz",
+    "alignment": [
+      [
+        -0.9223218728536722,
+        0.38606287726512273,
+        0.01666786289475629,
+        0.22407769323613344
+      ],
+      [
+        -0.38634124558946287,
+        -0.9203850600206537,
+        -0.06026427836752799,
+        -0.8100901598747527
+      ],
+      [
+        -0.007924948712067871,
+        -0.062022545002187485,
+        0.9980432851832461,
+        6.514319012219544
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "alignment_best_score_mm": 0.2510430285500284,
+    "alignment_global_optimum_certified": false,
+    "GT_used_for_training": false,
+    "GT_aligned_HERO": false,
+    "occupancy_N": 131072,
+    "occupancy_intersection_N": 24944,
+    "occupancy_union_N": 28888,
+    "conditional_occupancy_status": "CLOSED_ENTITY_WITH_INFERRED_BASE",
+    "conditional_occupancy_not_strict_IoU": true
+  },
+  {
+    "case": "G06",
+    "morphology": "IIa",
+    "arm": "A2S",
+    "status": "NUMERIC",
+    "IoU_3D": null,
+    "IoU_3D_status": "NOT_EVALUABLE_STRICT_INFERRED_OR_UNCERTAIN_BASE",
+    "conditional_occupancy_IoU": 0.8672492717436537,
+    "Chamfer_MAE_mm": 0.2505202652454016,
+    "GT_alignment_scale": 1.0,
+    "Chamfer_P95_mm": 1.224399012327193,
+    "Chamfer_median_mm": 0.0836062915623188,
+    "Chamfer_max_mm": 1.4173506498336792,
+    "median_absolute_relative_surface_error_to_GT_diagonal": 0.004209033783897644,
+    "pred_to_GT_mm": {
+      "target_N": 8192,
+      "numeric_N": 8192,
+      "failed_N": 0,
+      "N": 8192,
+      "MAE": 0.0627557031181809,
+      "median": 0.0413900651037693,
+      "p95": 0.168554949760437,
+      "maximum": 0.25503432750701904
+    },
+    "GT_to_pred_mm": {
+      "target_N": 8192,
+      "numeric_N": 8192,
+      "failed_N": 0,
+      "N": 8192,
+      "MAE": 0.4382848273726223,
+      "median": 0.21893370151519775,
+      "p95": 1.3251427173614503,
+      "maximum": 1.4173506498336792
+    },
+    "GT_coverage_0p5mm": 0.6456298828125,
+    "Fscore_0p5mm": 0.7846598916994288,
+    "GT_geometry": {
+      "watertight": true,
+      "winding_consistent": true,
+      "self_intersections": 0
+    },
+    "world_geometry": {
+      "volume_positive": true,
+      "watertight": true,
+      "winding_consistent": true,
+      "self_intersections": 0,
+      "ring_min_dense64_mm": -0.0010884348303079605,
+      "ring_negative_dense_face_N": 20,
+      "ring_penetration_max_mm": 0.0010884348303079605,
+      "area_ratio_min": 0.542848010299411,
+      "normal_against_initial_nonpositive_N": 0,
+      "edge_ratio": {
+        "target_N": 1728,
+        "numeric_N": 1728,
+        "failed_N": 0,
+        "N": 1728,
+        "MAE": 1.0222560564708056,
+        "median": 1.0000000785780225,
+        "p95": 1.0621722876686015,
+        "maximum": 3.5583204070804992
+      },
+      "displacement_from013_mm": {
+        "target_N": 578,
+        "numeric_N": 578,
+        "failed_N": 0,
+        "N": 578,
+        "MAE": 0.023262293958964984,
+        "median": 2.868735466054553e-06,
+        "p95": 0.10906045500312274,
+        "maximum": 0.8311215952303146
+      },
+      "inferred_base": true,
+      "components": 1
+    },
+    "projection": [
+      {
+        "id": "G06_004_growth_r01",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9420457169244978,
+        "all_pixel_IoU": 0.8994708994708994,
+        "target_N": 8571,
+        "TP": 8160,
+        "FN": 411,
+        "FP": 91,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_004_growth_r03",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9559376067402937,
+        "all_pixel_IoU": 0.9161938018332606,
+        "target_N": 8640,
+        "TP": 8396,
+        "FN": 244,
+        "FP": 143,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v004_raw00151",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.957407831463247,
+        "all_pixel_IoU": 0.9203169711644288,
+        "target_N": 8689,
+        "TP": 8362,
+        "FN": 327,
+        "FP": 45,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v004_raw00326",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9397113594040968,
+        "all_pixel_IoU": 0.905461478075586,
+        "target_N": 8567,
+        "TP": 8074,
+        "FN": 493,
+        "FP": 25,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_004_new_r00",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9408460803059273,
+        "all_pixel_IoU": 0.8956769055745165,
+        "target_N": 8302,
+        "TP": 7873,
+        "FN": 429,
+        "FP": 66,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v004_raw00874",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9521664960764245,
+        "all_pixel_IoU": 0.9335028097404335,
+        "target_N": 14480,
+        "TP": 13954,
+        "FN": 526,
+        "FP": 175,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v004_raw00195",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9479878937338864,
+        "all_pixel_IoU": 0.913085726624919,
+        "target_N": 8868,
+        "TP": 8457,
+        "FN": 411,
+        "FP": 53,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_004_ref04",
+        "video": "004",
+        "role": "FIT",
+        "IoU": 0.9549009105516872,
+        "all_pixel_IoU": 0.9175501801338137,
+        "target_N": 9282,
+        "TP": 8914,
+        "FN": 368,
+        "FP": 53,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v005_raw00487",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.675880626223092,
+        "all_pixel_IoU": 0.5470203920015838,
+        "target_N": 11717,
+        "TP": 8289,
+        "FN": 3428,
+        "FP": 547,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v005_raw00663",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.7231069929057478,
+        "all_pixel_IoU": 0.5652764416275253,
+        "target_N": 13413,
+        "TP": 9989,
+        "FN": 3424,
+        "FP": 401,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v005_raw00682",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.5202995122621419,
+        "all_pixel_IoU": 0.4272096564950082,
+        "target_N": 13492,
+        "TP": 7574,
+        "FN": 5918,
+        "FP": 1065,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v005_raw00291",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.7040570664288899,
+        "all_pixel_IoU": 0.5775729646697388,
+        "target_N": 10852,
+        "TP": 7896,
+        "FN": 2956,
+        "FP": 363,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v005_raw00311",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.6883151450625499,
+        "all_pixel_IoU": 0.5611167365832489,
+        "target_N": 10968,
+        "TP": 7758,
+        "FN": 3210,
+        "FP": 303,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v005_raw00604",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.7044894715931664,
+        "all_pixel_IoU": 0.5607843137254902,
+        "target_N": 12530,
+        "TP": 8866,
+        "FN": 3664,
+        "FP": 55,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v005_raw00506",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.7109912899211945,
+        "all_pixel_IoU": 0.5726981157289857,
+        "target_N": 12038,
+        "TP": 8571,
+        "FN": 3467,
+        "FP": 17,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v005_raw00643",
+        "video": "005",
+        "role": "FIT",
+        "IoU": 0.7181132075471698,
+        "all_pixel_IoU": 0.5669427396770541,
+        "target_N": 13139,
+        "TP": 9515,
+        "FN": 3624,
+        "FP": 111,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_004_growth_r06",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9593600727879293,
+        "all_pixel_IoU": 0.93345628919218,
+        "target_N": 13047,
+        "TP": 12653,
+        "FN": 394,
+        "FP": 142,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v004_raw00282",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9511792452830189,
+        "all_pixel_IoU": 0.9046657694033199,
+        "target_N": 8332,
+        "TP": 8066,
+        "FN": 266,
+        "FP": 148,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v004_raw00633",
+        "video": "004",
+        "role": "HOLDOUT",
+        "IoU": 0.9325616507297433,
+        "all_pixel_IoU": 0.8986420950533462,
+        "target_N": 9863,
+        "TP": 9265,
+        "FN": 598,
+        "FP": 72,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": "G06_v005_raw00565",
+        "video": "005",
+        "role": "HOLDOUT",
+        "IoU": 0.7107411557547623,
+        "all_pixel_IoU": 0.5668688158314714,
+        "target_N": 12387,
+        "TP": 8880,
+        "FN": 3507,
+        "FP": 107,
+        "ring_front_conflict_N": 0,
+        "camera_correction_shared": [
+          [
+            0.1544839927616001,
+            0.932033020747726,
+            0.32779436269756507,
+            1.6087884218578161
+          ],
+          [
+            -0.4663202804810077,
+            -0.22371246751931023,
+            0.8558610447312904,
+            1.133001973323938
+          ],
+          [
+            0.8710224405792013,
+            -0.28507399059242594,
+            0.4000659044397077,
+            -2.9999999999999996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "world_prediction_sha256": "3d216ede890a8bc70e3e2accc4bb3d0f42103015ccc13a32d7edc0059cbb26dd",
+    "aligned_mesh_relative": "evaluation_only/G06/A2S_ALIGNED.npz",
+    "alignment": [
+      [
+        0.4487285841290698,
+        0.8921696171225073,
+        0.051730378589417404,
+        0.6780072997796488
+      ],
+      [
+        -0.8936424607366044,
+        0.44840172560616026,
+        0.018413170342207404,
+        0.23748900504426276
+      ],
+      [
+        -0.006768319891535987,
+        -0.05449097867446875,
+        0.998491323492071,
+        6.524804581465441
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "alignment_best_score_mm": 0.2505202626392091,
+    "alignment_global_optimum_certified": false,
+    "GT_used_for_training": false,
+    "GT_aligned_HERO": false,
+    "occupancy_N": 131072,
+    "occupancy_intersection_N": 25008,
+    "occupancy_union_N": 28836,
+    "conditional_occupancy_status": "CLOSED_ENTITY_WITH_INFERRED_BASE",
+    "conditional_occupancy_not_strict_IoU": true
+  }
+]

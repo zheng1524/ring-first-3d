@@ -1,0 +1,451 @@
+{
+  "case": "G06",
+  "status": "NUMERIC",
+  "methods": [
+    {
+      "method": "M0",
+      "status": "NUMERIC",
+      "FIT_views": 2,
+      "HOLDOUT_views": 1,
+      "absolute_GT_accuracy": null,
+      "within_video": {
+        "target_N": 361,
+        "numeric_N": 361,
+        "failed_N": 0,
+        "N": 361,
+        "MAE": 0.3250662726126834,
+        "median": 0.27844053838279453,
+        "p95": 0.7464334298177198,
+        "maximum": 0.8221925800126555
+      },
+      "cross_video": {
+        "target_N": 0,
+        "numeric_N": 0,
+        "failed_N": 0,
+        "N": 0,
+        "MAE": null,
+        "median": null,
+        "p95": null,
+        "maximum": null
+      },
+      "HOLDOUT": [
+        {
+          "id": "G06_v004_raw01037",
+          "video": "004",
+          "image_grid_N": 14080,
+          "mask_target_N": 984,
+          "predicted_visible_N": 1004,
+          "mask_recall": 0.948170731707317,
+          "mask_IoU": 0.8843601895734597,
+          "missed_mask_N": 51,
+          "false_positive_N": 71,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 984,
+            "numeric_N": 933,
+            "failed_N": 51,
+            "N": 933,
+            "MAE": 0.47671038187073994,
+            "median": 0.4393596649169922,
+            "p95": 0.9844032287597655,
+            "maximum": 1.325784683227539
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 575
+        }
+      ],
+      "correspondence": {
+        "body_rate": 0.9322916666666666,
+        "pair_rate": 0.9895833333333334,
+        "per_view": [
+          {
+            "i": 0,
+            "target_N": 96,
+            "accepted_N": 91,
+            "contact_unknown_N": 4
+          },
+          {
+            "i": 1,
+            "target_N": 96,
+            "accepted_N": 88,
+            "contact_unknown_N": 6
+          }
+        ]
+      },
+      "motions": [
+        {
+          "id": "G06_v004_raw00744",
+          "maximum_motion_mm": 0.0,
+          "mean_motion_mm": 0.0,
+          "edge_change_max_mm": 0.0
+        },
+        {
+          "id": "G06_v004_raw00046",
+          "maximum_motion_mm": 0.0,
+          "mean_motion_mm": 0.0,
+          "edge_change_max_mm": 0.0
+        }
+      ],
+      "Body_frozen": true,
+      "all_source_vertices": 19198,
+      "all_source_faces": 36848,
+      "overlap_semantics": "Fixed baseline projected-mask support, not certified material identity"
+    },
+    {
+      "method": "BODY_A0",
+      "status": "NUMERIC",
+      "FIT_views": 2,
+      "HOLDOUT_views": 1,
+      "absolute_GT_accuracy": null,
+      "within_video": {
+        "target_N": 361,
+        "numeric_N": 361,
+        "failed_N": 0,
+        "N": 361,
+        "MAE": 0.15055893074097224,
+        "median": 0.10982753644055374,
+        "p95": 0.40835850924478784,
+        "maximum": 0.46997327230112995
+      },
+      "cross_video": {
+        "target_N": 0,
+        "numeric_N": 0,
+        "failed_N": 0,
+        "N": 0,
+        "MAE": null,
+        "median": null,
+        "p95": null,
+        "maximum": null
+      },
+      "HOLDOUT": [
+        {
+          "id": "G06_v004_raw01037",
+          "video": "004",
+          "image_grid_N": 14080,
+          "mask_target_N": 984,
+          "predicted_visible_N": 822,
+          "mask_recall": 0.8038617886178862,
+          "mask_IoU": 0.7793103448275862,
+          "missed_mask_N": 193,
+          "false_positive_N": 31,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 984,
+            "numeric_N": 791,
+            "failed_N": 193,
+            "N": 791,
+            "MAE": 0.3937527069400445,
+            "median": 0.3520488739013672,
+            "p95": 0.8923931121826172,
+            "maximum": 1.1067428588867188
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 575
+        }
+      ],
+      "correspondence": {
+        "body_rate": 0.9375,
+        "pair_rate": 0.9895833333333334,
+        "per_view": [
+          {
+            "i": 0,
+            "target_N": 96,
+            "accepted_N": 91,
+            "contact_unknown_N": 4
+          },
+          {
+            "i": 1,
+            "target_N": 96,
+            "accepted_N": 89,
+            "contact_unknown_N": 6
+          }
+        ]
+      },
+      "motions": [
+        {
+          "id": "G06_v004_raw00744",
+          "maximum_motion_mm": 1.3182487067062674,
+          "mean_motion_mm": 1.068015437165183,
+          "edge_change_max_mm": 2.5951463200613034e-15
+        },
+        {
+          "id": "G06_v004_raw00046",
+          "maximum_motion_mm": 0.9100829855087031,
+          "mean_motion_mm": 0.7372350756845656,
+          "edge_change_max_mm": 2.095545958979983e-15
+        }
+      ],
+      "Body_frozen": true,
+      "all_source_vertices": 19198,
+      "all_source_faces": 36848,
+      "overlap_semantics": "Fixed baseline projected-mask support, not certified material identity"
+    },
+    {
+      "method": "BODY_A1",
+      "status": "NUMERIC",
+      "FIT_views": 2,
+      "HOLDOUT_views": 1,
+      "absolute_GT_accuracy": null,
+      "within_video": {
+        "target_N": 361,
+        "numeric_N": 361,
+        "failed_N": 0,
+        "N": 361,
+        "MAE": 0.15055893729511383,
+        "median": 0.10982758302767742,
+        "p95": 0.4083584711481177,
+        "maximum": 0.4699733014091183
+      },
+      "cross_video": {
+        "target_N": 0,
+        "numeric_N": 0,
+        "failed_N": 0,
+        "N": 0,
+        "MAE": null,
+        "median": null,
+        "p95": null,
+        "maximum": null
+      },
+      "HOLDOUT": [
+        {
+          "id": "G06_v004_raw01037",
+          "video": "004",
+          "image_grid_N": 14080,
+          "mask_target_N": 984,
+          "predicted_visible_N": 822,
+          "mask_recall": 0.8038617886178862,
+          "mask_IoU": 0.7793103448275862,
+          "missed_mask_N": 193,
+          "false_positive_N": 31,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 984,
+            "numeric_N": 791,
+            "failed_N": 193,
+            "N": 791,
+            "MAE": 0.39375217403985757,
+            "median": 0.35204505920410156,
+            "p95": 0.8923912048339844,
+            "maximum": 1.1067390441894531
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 575
+        }
+      ],
+      "correspondence": {
+        "body_rate": 0.9375,
+        "pair_rate": 0.9895833333333334,
+        "per_view": [
+          {
+            "i": 0,
+            "target_N": 96,
+            "accepted_N": 91,
+            "contact_unknown_N": 4
+          },
+          {
+            "i": 1,
+            "target_N": 96,
+            "accepted_N": 89,
+            "contact_unknown_N": 6
+          }
+        ]
+      },
+      "motions": [
+        {
+          "id": "G06_v004_raw00744",
+          "maximum_motion_mm": 1.3182467749097915,
+          "mean_motion_mm": 1.0680149054137802,
+          "edge_change_max_mm": 2.7200464103316335e-15
+        },
+        {
+          "id": "G06_v004_raw00046",
+          "maximum_motion_mm": 0.9100813483398134,
+          "mean_motion_mm": 0.7372344773898192,
+          "edge_change_max_mm": 2.0539125955565396e-15
+        }
+      ],
+      "Body_frozen": true,
+      "all_source_vertices": 19198,
+      "all_source_faces": 36848,
+      "overlap_semantics": "Fixed baseline projected-mask support, not certified material identity"
+    },
+    {
+      "method": "BODY_A2",
+      "status": "NUMERIC",
+      "FIT_views": 2,
+      "HOLDOUT_views": 1,
+      "absolute_GT_accuracy": null,
+      "within_video": {
+        "target_N": 361,
+        "numeric_N": 361,
+        "failed_N": 0,
+        "N": 361,
+        "MAE": 0.15110641957556034,
+        "median": 0.10862659436378873,
+        "p95": 0.4104313126878877,
+        "maximum": 0.4708815084978063
+      },
+      "cross_video": {
+        "target_N": 0,
+        "numeric_N": 0,
+        "failed_N": 0,
+        "N": 0,
+        "MAE": null,
+        "median": null,
+        "p95": null,
+        "maximum": null
+      },
+      "HOLDOUT": [
+        {
+          "id": "G06_v004_raw01037",
+          "video": "004",
+          "image_grid_N": 14080,
+          "mask_target_N": 984,
+          "predicted_visible_N": 865,
+          "mask_recall": 0.8434959349593496,
+          "mask_IoU": 0.8145240431795878,
+          "missed_mask_N": 154,
+          "false_positive_N": 35,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 984,
+            "numeric_N": 830,
+            "failed_N": 154,
+            "N": 830,
+            "MAE": 0.3600714947803911,
+            "median": 0.3261070251464844,
+            "p95": 0.8078367233276367,
+            "maximum": 1.0344734191894531
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 575
+        }
+      ],
+      "correspondence": {
+        "body_rate": 0.9375,
+        "pair_rate": 0.9895833333333334,
+        "per_view": [
+          {
+            "i": 0,
+            "target_N": 96,
+            "accepted_N": 91,
+            "contact_unknown_N": 4
+          },
+          {
+            "i": 1,
+            "target_N": 96,
+            "accepted_N": 89,
+            "contact_unknown_N": 6
+          }
+        ]
+      },
+      "motions": [
+        {
+          "id": "G06_v004_raw00744",
+          "maximum_motion_mm": 1.1749945418577306,
+          "mean_motion_mm": 0.9663409595520659,
+          "edge_change_max_mm": 2.0122792321330962e-15
+        },
+        {
+          "id": "G06_v004_raw00046",
+          "maximum_motion_mm": 0.7475773774635438,
+          "mean_motion_mm": 0.6025086125573736,
+          "edge_change_max_mm": 2.0261570199409107e-15
+        }
+      ],
+      "Body_frozen": true,
+      "all_source_vertices": 19198,
+      "all_source_faces": 36848,
+      "overlap_semantics": "Fixed baseline projected-mask support, not certified material identity"
+    },
+    {
+      "method": "ICP",
+      "status": "NUMERIC",
+      "FIT_views": 2,
+      "HOLDOUT_views": 1,
+      "absolute_GT_accuracy": null,
+      "within_video": {
+        "target_N": 361,
+        "numeric_N": 361,
+        "failed_N": 0,
+        "N": 361,
+        "MAE": 0.5713588004894696,
+        "median": 0.03155981018269929,
+        "p95": 2.8038962602162467,
+        "maximum": 3.744374615410445
+      },
+      "cross_video": {
+        "target_N": 0,
+        "numeric_N": 0,
+        "failed_N": 0,
+        "N": 0,
+        "MAE": null,
+        "median": null,
+        "p95": null,
+        "maximum": null
+      },
+      "HOLDOUT": [
+        {
+          "id": "G06_v004_raw01037",
+          "video": "004",
+          "image_grid_N": 14080,
+          "mask_target_N": 984,
+          "predicted_visible_N": 1120,
+          "mask_recall": 0.9573170731707317,
+          "mask_IoU": 0.810671256454389,
+          "missed_mask_N": 42,
+          "false_positive_N": 178,
+          "heldout_HERO_axial_difference_mm": {
+            "target_N": 984,
+            "numeric_N": 942,
+            "failed_N": 42,
+            "N": 942,
+            "MAE": 0.5026644020323541,
+            "median": 0.4927482604980469,
+            "p95": 1.0803356170654295,
+            "maximum": 1.5619926452636719
+          },
+          "axial_difference_is_not_GT": true,
+          "ring_contact_unknown_grid_N": 575
+        }
+      ],
+      "correspondence": {
+        "body_rate": 0.9322916666666666,
+        "pair_rate": 0.75,
+        "per_view": [
+          {
+            "i": 0,
+            "target_N": 96,
+            "accepted_N": 91,
+            "contact_unknown_N": 4
+          },
+          {
+            "i": 1,
+            "target_N": 96,
+            "accepted_N": 88,
+            "contact_unknown_N": 6
+          }
+        ]
+      },
+      "motions": [
+        {
+          "id": "G06_v004_raw00744",
+          "maximum_motion_mm": 0.0,
+          "mean_motion_mm": 0.0,
+          "edge_change_max_mm": 0.0
+        },
+        {
+          "id": "G06_v004_raw00046",
+          "maximum_motion_mm": 11.778615162074729,
+          "mean_motion_mm": 6.4178423926444275,
+          "edge_change_max_mm": 1.582067810090848e-15
+        }
+      ],
+      "Body_frozen": true,
+      "all_source_vertices": 19198,
+      "all_source_faces": 36848,
+      "overlap_semantics": "Fixed baseline projected-mask support, not certified material identity"
+    }
+  ],
+  "videos": [
+    "004"
+  ],
+  "partial_single_video": true,
+  "absolute_accuracy": "NOT_EVALUABLE_NO_INDEPENDENT_GT"
+}
