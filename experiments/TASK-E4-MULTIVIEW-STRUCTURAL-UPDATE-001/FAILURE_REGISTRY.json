@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "policy": "No automatic promotion or GT-driven tuning; scientific negatives are not code errors",
+  "inherited_registry": "experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/FAILURE_REGISTRY.json",
+  "failures": [
+    {
+      "id": "SU-DEV-001",
+      "category": "engineering_error",
+      "symptom": "Development-only Unicode edit script invoked system Python2; no mutation executed",
+      "cause": "System python is Python2, experiment runtime is explicit Python3",
+      "cause_status": "confirmed",
+      "repair": "Use existing declared Python3 environment; no dependencies installed",
+      "regression": [
+        "178 passing tests"
+      ],
+      "evidence": [
+        "WORK_STATUS.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    }
+  ]
+}

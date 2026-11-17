@@ -1,0 +1,1 @@
+Implementation frozen before any C0 shape evaluation. 178 pre-execution regression tests passed (157 existing, 21 new). Runner stages will provide authoritative execution status. C0 has two predeclared arms: DEFORM_ONLY / DEFORM_GROW, each exact013 initial Mesh, same36 outer iterations, same data/weights/cameras. No code/parameter selection using GT.
