@@ -71,7 +71,7 @@ def visualize(task,attempt):
         for j,(axis,offset)in enumerate([(0,-.5),(0,.5),(2,-.5),(2,.5)]):
             value=center[axis]+offset;keep=[x for x in range(3)if x!=axis]
             for arm,b,c in zip(arms,models,COLORS):
-                from ring_first_3d.multisurface.geometry import mesh_sections as section as cut
+                from ring_first_3d.multisurface.geometry import mesh_sections as cut
                 seg=cut(b['V'],b['F_solid'],axis,value)
                 if len(seg):axes[j].add_collection(LineCollection(seg[:,:,keep],colors=c,linewidths=.8,label=arm))
             axes[j].set_xlim(lo[keep[0]],hi[keep[0]]);axes[j].set_ylim(lo[keep[1]],hi[keep[1]]);axes[j].set_aspect('equal');axes[j].set_title(f'{"xyz"[axis]}={value:.2f}mm');axes[j].set_xlabel('mm');axes[j].set_ylabel('mm')

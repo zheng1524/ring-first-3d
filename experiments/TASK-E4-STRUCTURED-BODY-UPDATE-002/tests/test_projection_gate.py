@@ -15,3 +15,8 @@ class ProjectionTests(unittest.TestCase):
   from projection_gate import strict_mutual
   source=np.array([[0.,0.],[10.,0.]]);target=np.array([[0.,0.],[1.,0.]])
   ok=strict_mutual(source,target,np.array([0,0]),np.array([0,1]));self.assertEqual(ok.tolist(),[True,False])
+
+ def test_all_registered_modules_parse(self):
+  import ast
+  from pathlib import Path
+  for p in (Path(__file__).resolve().parents[1]/'code').glob('*.py'):ast.parse(p.read_text(),filename=str(p))
