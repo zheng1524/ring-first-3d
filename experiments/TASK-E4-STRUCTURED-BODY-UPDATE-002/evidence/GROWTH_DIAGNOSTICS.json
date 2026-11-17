@@ -1,0 +1,447 @@
+[
+  {
+    "case": "G01",
+    "arm": "DEFORM_ONLY",
+    "accepted": false,
+    "length_mm": 0.0,
+    "net_sweep_added_volume_mm3": 0.0,
+    "status": "No accepted sweep; no stalk length inferred",
+    "attempts": [],
+    "candidate_trials": []
+  },
+  {
+    "case": "G01",
+    "arm": "DEFORM_SWEEP",
+    "accepted": false,
+    "length_mm": 0.0,
+    "net_sweep_added_volume_mm3": 0.0,
+    "status": "No accepted sweep; no stalk length inferred",
+    "attempts": [
+      {
+        "iteration": 12,
+        "status": "SWEEP_GATES_REJECTED",
+        "support_rows": 459,
+        "eligible_patches": 25,
+        "candidate_support": [
+          {
+            "seed": 54,
+            "support_views": [
+              "G01_004_ref03",
+              "G01_004_ref08",
+              "G01_004_ref13",
+              "G01_005_raw00057",
+              "G01_v004_raw00878",
+              "G01_v004_raw01086",
+              "G01_v004_raw01112",
+              "G01_v004_raw01138",
+              "G01_v005_raw00139",
+              "G01_v005_raw00192",
+              "G01_v005_raw00262",
+              "G01_video004_004_05",
+              "G01_video005_v005_00401",
+              "G01_video005_v005_00611"
+            ],
+            "support_videos": [
+              "004",
+              "005"
+            ],
+            "singular_ratio": 0.26573663341118,
+            "inconsistency": 0.08701277693364298
+          },
+          {
+            "seed": 210,
+            "support_views": [
+              "G01_004_ref03",
+              "G01_004_ref08",
+              "G01_004_ref13",
+              "G01_005_raw00057",
+              "G01_v004_raw00878",
+              "G01_v004_raw01086",
+              "G01_v004_raw01112",
+              "G01_v004_raw01138",
+              "G01_v005_raw00139",
+              "G01_v005_raw00192",
+              "G01_v005_raw00262",
+              "G01_v005_raw00721",
+              "G01_video004_004_05",
+              "G01_video005_v005_00401",
+              "G01_video005_v005_00611"
+            ],
+            "support_videos": [
+              "004",
+              "005"
+            ],
+            "singular_ratio": 0.26493924965715643,
+            "inconsistency": 0.12180224984592111
+          }
+        ],
+        "seed_rejections": {
+          "INSUFFICIENT_MULTIVIEW_SUPPORT": 1
+        }
+      },
+      {
+        "iteration": 24,
+        "status": "SWEEP_GATES_REJECTED",
+        "support_rows": 459,
+        "eligible_patches": 25,
+        "candidate_support": [
+          {
+            "seed": 54,
+            "support_views": [
+              "G01_004_ref03",
+              "G01_004_ref08",
+              "G01_004_ref13",
+              "G01_005_raw00057",
+              "G01_v004_raw00878",
+              "G01_v004_raw01086",
+              "G01_v004_raw01112",
+              "G01_v004_raw01138",
+              "G01_v005_raw00139",
+              "G01_v005_raw00192",
+              "G01_v005_raw00262",
+              "G01_video004_004_05",
+              "G01_video005_v005_00401",
+              "G01_video005_v005_00611"
+            ],
+            "support_videos": [
+              "004",
+              "005"
+            ],
+            "singular_ratio": 0.2657366473720312,
+            "inconsistency": 0.08701275336378031
+          },
+          {
+            "seed": 210,
+            "support_views": [
+              "G01_004_ref03",
+              "G01_004_ref08",
+              "G01_004_ref13",
+              "G01_005_raw00057",
+              "G01_v004_raw00878",
+              "G01_v004_raw01086",
+              "G01_v004_raw01112",
+              "G01_v004_raw01138",
+              "G01_v005_raw00139",
+              "G01_v005_raw00192",
+              "G01_v005_raw00262",
+              "G01_v005_raw00721",
+              "G01_video004_004_05",
+              "G01_video005_v005_00401",
+              "G01_video005_v005_00611"
+            ],
+            "support_videos": [
+              "004",
+              "005"
+            ],
+            "singular_ratio": 0.26493926143115715,
+            "inconsistency": 0.12180224405470949
+          }
+        ],
+        "seed_rejections": {
+          "INSUFFICIENT_MULTIVIEW_SUPPORT": 1
+        }
+      }
+    ],
+    "candidate_trials": [
+      {
+        "iteration": 12,
+        "status": "SWEEP_GATES_REJECTED",
+        "reasons": [
+          "FRESH_FIT_OBJECTIVE",
+          "SELF_INTERSECTION"
+        ],
+        "first_candidate_geometry": {
+          "self_intersections": 30,
+          "watertight": true,
+          "winding": true,
+          "min_double_area_mm2": 0.012213330787442779,
+          "min_original_area_ratio": 0.8978388143195913,
+          "volume_mm3": 846.5104607401637,
+          "referenced_vertices": 876,
+          "all_vertices": 883,
+          "original_displacement_MAE_mm": 0.1189182809754385,
+          "original_displacement_max_mm": 0.40844798351347195
+        },
+        "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G01/DEFORM_SWEEP/STEP_012.json"
+      },
+      {
+        "iteration": 24,
+        "status": "SWEEP_GATES_REJECTED",
+        "reasons": [
+          "FRESH_FIT_OBJECTIVE",
+          "SELF_INTERSECTION"
+        ],
+        "first_candidate_geometry": {
+          "self_intersections": 30,
+          "watertight": true,
+          "winding": true,
+          "min_double_area_mm2": 0.011879165174457931,
+          "min_original_area_ratio": 0.9007178138447209,
+          "volume_mm3": 846.2989422485797,
+          "referenced_vertices": 876,
+          "all_vertices": 883,
+          "original_displacement_MAE_mm": 0.11999995358307217,
+          "original_displacement_max_mm": 0.40807617827788295
+        },
+        "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G01/DEFORM_SWEEP/STEP_024.json"
+      }
+    ]
+  },
+  {
+    "case": "G03",
+    "arm": "DEFORM_ONLY",
+    "accepted": false,
+    "length_mm": 0.0,
+    "net_sweep_added_volume_mm3": 0.0,
+    "status": "No accepted sweep; no stalk length inferred",
+    "attempts": [],
+    "candidate_trials": []
+  },
+  {
+    "case": "G03",
+    "arm": "DEFORM_SWEEP",
+    "accepted": false,
+    "length_mm": 0.0,
+    "net_sweep_added_volume_mm3": 0.0,
+    "status": "No accepted sweep; no stalk length inferred",
+    "attempts": [
+      {
+        "iteration": 12,
+        "status": "SWEEP_GATES_REJECTED",
+        "support_rows": 561,
+        "eligible_patches": 6,
+        "candidate_support": [
+          {
+            "seed": 544,
+            "support_views": [
+              "G03_key00_raw00100",
+              "G03_key02_raw00327",
+              "G03_key04_raw00554",
+              "G03_key07_raw00896",
+              "G03_v004_raw00426",
+              "G03_v004_raw00467",
+              "G03_v004_raw00487",
+              "G03_v004_raw00569",
+              "G03_v005_raw00070",
+              "G03_v005_raw00099"
+            ],
+            "support_videos": [
+              "004",
+              "005"
+            ],
+            "singular_ratio": 0.1984285349262473,
+            "inconsistency": 0.10467431454431649
+          },
+          {
+            "seed": 535,
+            "support_views": [
+              "G03_key00_raw00100",
+              "G03_key02_raw00327",
+              "G03_key04_raw00554",
+              "G03_key07_raw00896",
+              "G03_v004_raw00426",
+              "G03_v004_raw00467",
+              "G03_v004_raw00487",
+              "G03_v004_raw00569",
+              "G03_v005_raw00070",
+              "G03_v005_raw00099"
+            ],
+            "support_videos": [
+              "004",
+              "005"
+            ],
+            "singular_ratio": 0.2005825779927456,
+            "inconsistency": 0.1059708241178548
+          }
+        ],
+        "seed_rejections": {
+          "INSUFFICIENT_MULTIVIEW_SUPPORT": 67
+        }
+      },
+      {
+        "iteration": 24,
+        "status": "SWEEP_GATES_REJECTED",
+        "support_rows": 561,
+        "eligible_patches": 6,
+        "candidate_support": [
+          {
+            "seed": 544,
+            "support_views": [
+              "G03_key00_raw00100",
+              "G03_key02_raw00327",
+              "G03_key04_raw00554",
+              "G03_key07_raw00896",
+              "G03_v004_raw00426",
+              "G03_v004_raw00467",
+              "G03_v004_raw00487",
+              "G03_v004_raw00569",
+              "G03_v005_raw00070",
+              "G03_v005_raw00099"
+            ],
+            "support_videos": [
+              "004",
+              "005"
+            ],
+            "singular_ratio": 0.19842853492674034,
+            "inconsistency": 0.104674314571592
+          },
+          {
+            "seed": 535,
+            "support_views": [
+              "G03_key00_raw00100",
+              "G03_key02_raw00327",
+              "G03_key04_raw00554",
+              "G03_key07_raw00896",
+              "G03_v004_raw00426",
+              "G03_v004_raw00467",
+              "G03_v004_raw00487",
+              "G03_v004_raw00569",
+              "G03_v005_raw00070",
+              "G03_v005_raw00099"
+            ],
+            "support_videos": [
+              "004",
+              "005"
+            ],
+            "singular_ratio": 0.2005825779926217,
+            "inconsistency": 0.10597082414556093
+          }
+        ],
+        "seed_rejections": {
+          "INSUFFICIENT_MULTIVIEW_SUPPORT": 67
+        }
+      }
+    ],
+    "candidate_trials": [
+      {
+        "iteration": 12,
+        "status": "SWEEP_GATES_REJECTED",
+        "reasons": [
+          "CORRESPONDENCE_COVERAGE_COLLAPSE",
+          "FRESH_FIT_OBJECTIVE",
+          "SELF_INTERSECTION"
+        ],
+        "first_candidate_geometry": {
+          "self_intersections": 37,
+          "watertight": true,
+          "winding": true,
+          "min_double_area_mm2": 0.06677599664802526,
+          "min_original_area_ratio": 0.9212954251297951,
+          "volume_mm3": 3515.269609919191,
+          "referenced_vertices": 876,
+          "all_vertices": 883,
+          "original_displacement_MAE_mm": 0.06045787818201666,
+          "original_displacement_max_mm": 0.1561594446809942
+        },
+        "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G03/DEFORM_SWEEP/STEP_012.json"
+      },
+      {
+        "iteration": 24,
+        "status": "SWEEP_GATES_REJECTED",
+        "reasons": [
+          "CORRESPONDENCE_COVERAGE_COLLAPSE",
+          "FRESH_FIT_OBJECTIVE",
+          "SELF_INTERSECTION"
+        ],
+        "first_candidate_geometry": {
+          "self_intersections": 37,
+          "watertight": true,
+          "winding": true,
+          "min_double_area_mm2": 0.06675225930696346,
+          "min_original_area_ratio": 0.918666474935967,
+          "volume_mm3": 3515.818211992273,
+          "referenced_vertices": 876,
+          "all_vertices": 883,
+          "original_displacement_MAE_mm": 0.06045449864074891,
+          "original_displacement_max_mm": 0.15631089211736657
+        },
+        "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G03/DEFORM_SWEEP/STEP_024.json"
+      }
+    ]
+  },
+  {
+    "case": "G05",
+    "arm": "DEFORM_ONLY",
+    "accepted": false,
+    "length_mm": 0.0,
+    "net_sweep_added_volume_mm3": 0.0,
+    "status": "No accepted sweep; no stalk length inferred",
+    "attempts": [],
+    "candidate_trials": []
+  },
+  {
+    "case": "G05",
+    "arm": "DEFORM_SWEEP",
+    "accepted": false,
+    "length_mm": 0.0,
+    "net_sweep_added_volume_mm3": 0.0,
+    "status": "No accepted sweep; no stalk length inferred",
+    "attempts": [
+      {
+        "iteration": 12,
+        "status": "UNDERCONSTRAINED_GROWTH",
+        "support_rows": 114,
+        "eligible_patches": 0,
+        "candidate_support": [],
+        "seed_rejections": {
+          "INSUFFICIENT_MULTIVIEW_SUPPORT": 11,
+          "FROZEN_BASE_ATTACHMENT": 8
+        }
+      },
+      {
+        "iteration": 24,
+        "status": "UNDERCONSTRAINED_GROWTH",
+        "support_rows": 114,
+        "eligible_patches": 0,
+        "candidate_support": [],
+        "seed_rejections": {
+          "INSUFFICIENT_MULTIVIEW_SUPPORT": 11,
+          "FROZEN_BASE_ATTACHMENT": 8
+        }
+      }
+    ],
+    "candidate_trials": [
+      {
+        "iteration": 12,
+        "status": "UNDERCONSTRAINED_GROWTH",
+        "reasons": [
+          "FRESH_FIT_OBJECTIVE",
+          "RING_COLLISION_WORSENING"
+        ],
+        "first_candidate_geometry": {
+          "self_intersections": 0,
+          "watertight": true,
+          "winding": true,
+          "min_double_area_mm2": 0.0683787674401246,
+          "min_original_area_ratio": 0.9999564753932125,
+          "volume_mm3": 952.0138107326987,
+          "referenced_vertices": 578,
+          "all_vertices": 578,
+          "original_displacement_MAE_mm": 7.00031059726864e-05,
+          "original_displacement_max_mm": 0.00017149424630555268
+        },
+        "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G05/DEFORM_SWEEP/STEP_012.json"
+      },
+      {
+        "iteration": 24,
+        "status": "UNDERCONSTRAINED_GROWTH",
+        "reasons": [
+          "FRESH_FIT_OBJECTIVE"
+        ],
+        "first_candidate_geometry": {
+          "self_intersections": 0,
+          "watertight": true,
+          "winding": true,
+          "min_double_area_mm2": 0.06837867637227361,
+          "min_original_area_ratio": 0.9999874902426923,
+          "volume_mm3": 951.9951953427467,
+          "referenced_vertices": 578,
+          "all_vertices": 578,
+          "original_displacement_MAE_mm": 2.014893058659966e-05,
+          "original_displacement_max_mm": 4.948008119031119e-05
+        },
+        "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G05/DEFORM_SWEEP/STEP_024.json"
+      }
+    ]
+  }
+]

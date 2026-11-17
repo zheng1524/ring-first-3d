@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/review_code/report.py", line 37, in <module>
+    if __name__=='__main__':run()
+                            ^^^^^
+  File "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/review_code/report.py", line 7, in run
+    with (TD/'metrics/BODY_METRICS.csv').open()as f:rows=list(csv.DictReader(f))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/metrics/BODY_METRICS.csv'
