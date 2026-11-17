@@ -1,0 +1,443 @@
+[
+  {
+    "case": "G01",
+    "arm": "INITIAL",
+    "geometry": {
+      "self_intersections": 0,
+      "watertight": true,
+      "winding_consistent": true,
+      "minimum_double_area_mm2": 0.5772526843755487,
+      "Ring_min_signed_mm": 0.037554832192645105,
+      "Ring_surface_collision": false
+    },
+    "geometry_violations": [],
+    "diagnostic_same_INITIAL_alignment_shape": {
+      "Chamfer_mm": {
+        "target_N": 24000,
+        "numeric_N": 24000,
+        "failed_N": 0,
+        "N": 24000,
+        "MAE": 0.35099954063746175,
+        "median": 0.22510534764240225,
+        "p95": 1.151030420807817,
+        "maximum": 3.771840096799403
+      },
+      "pred_to_GT_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.24138454417396846,
+        "median": 0.21401023279104764,
+        "p95": 0.5041631549342234,
+        "maximum": 2.086648050886801
+      },
+      "GT_to_pred_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.46061453710095496,
+        "median": 0.2386084937071587,
+        "p95": 2.6097503460833855,
+        "maximum": 3.771840096799403
+      },
+      "Fscore_0p5mm": 0.9009761212624583,
+      "GT_coverage_0p5mm": 0.86025,
+      "fixed_samples_per_direction": 12000
+    },
+    "diagnostic_note": "Apply identical initial evaluation SE3 to all arms; no registration rerun, no selection or feedback"
+  },
+  {
+    "case": "G01",
+    "arm": "DEFORM_ONLY",
+    "geometry": {
+      "self_intersections": 0,
+      "watertight": true,
+      "winding_consistent": true,
+      "minimum_double_area_mm2": 0.13833606954324443,
+      "Ring_min_signed_mm": 0.03329706192143389,
+      "Ring_surface_collision": false
+    },
+    "geometry_violations": [],
+    "diagnostic_same_INITIAL_alignment_shape": {
+      "Chamfer_mm": {
+        "target_N": 24000,
+        "numeric_N": 24000,
+        "failed_N": 0,
+        "N": 24000,
+        "MAE": 0.41575793842036773,
+        "median": 0.27778935371328184,
+        "p95": 1.141332480213933,
+        "maximum": 3.757954033514221
+      },
+      "pred_to_GT_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.30700973777013846,
+        "median": 0.2524837146235249,
+        "p95": 0.7448293824044707,
+        "maximum": 2.096595953574542
+      },
+      "GT_to_pred_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.5245061390705971,
+        "median": 0.3039365708278923,
+        "p95": 2.6030789102142347,
+        "maximum": 3.757954033514221
+      },
+      "Fscore_0p5mm": 0.7525236360290735,
+      "GT_coverage_0p5mm": 0.7134166666666667,
+      "fixed_samples_per_direction": 12000
+    },
+    "diagnostic_note": "Apply identical initial evaluation SE3 to all arms; no registration rerun, no selection or feedback"
+  },
+  {
+    "case": "G01",
+    "arm": "DEFORM_GROW",
+    "geometry": {
+      "self_intersections": 0,
+      "watertight": true,
+      "winding_consistent": true,
+      "minimum_double_area_mm2": 0.012464395486252802,
+      "Ring_min_signed_mm": 0.03093232925022671,
+      "Ring_surface_collision": false
+    },
+    "geometry_violations": [],
+    "diagnostic_same_INITIAL_alignment_shape": {
+      "Chamfer_mm": {
+        "target_N": 24000,
+        "numeric_N": 24000,
+        "failed_N": 0,
+        "N": 24000,
+        "MAE": 0.4456272616636514,
+        "median": 0.3022487848639901,
+        "p95": 1.272542331320852,
+        "maximum": 3.7721445027528957
+      },
+      "pred_to_GT_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.34891973691109357,
+        "median": 0.28151279058908996,
+        "p95": 0.9438775077405432,
+        "maximum": 2.075178388237131
+      },
+      "GT_to_pred_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.5423347864162092,
+        "median": 0.3222616105978432,
+        "p95": 2.609197211602216,
+        "maximum": 3.7721445027528957
+      },
+      "Fscore_0p5mm": 0.7216217368754682,
+      "GT_coverage_0p5mm": 0.691,
+      "fixed_samples_per_direction": 12000
+    },
+    "diagnostic_note": "Apply identical initial evaluation SE3 to all arms; no registration rerun, no selection or feedback"
+  },
+  {
+    "case": "G03",
+    "arm": "INITIAL",
+    "geometry": {
+      "self_intersections": 0,
+      "watertight": true,
+      "winding_consistent": true,
+      "minimum_double_area_mm2": 1.5655412315300716,
+      "Ring_min_signed_mm": -0.0061543709598481655,
+      "Ring_surface_collision": true
+    },
+    "geometry_violations": [],
+    "diagnostic_same_INITIAL_alignment_shape": {
+      "Chamfer_mm": {
+        "target_N": 24000,
+        "numeric_N": 24000,
+        "failed_N": 0,
+        "N": 24000,
+        "MAE": 1.2481836827342665,
+        "median": 0.4572593248520196,
+        "p95": 8.514137847790725,
+        "maximum": 13.692727354120686
+      },
+      "pred_to_GT_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.43874322207016675,
+        "median": 0.415354334811881,
+        "p95": 0.759831054608644,
+        "maximum": 3.5106273921902043
+      },
+      "GT_to_pred_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 2.057624143398366,
+        "median": 0.5174429746039215,
+        "p95": 11.679858892478181,
+        "maximum": 13.692727354120686
+      },
+      "Fscore_0p5mm": 0.5433229504487518,
+      "GT_coverage_0p5mm": 0.48141666666666666,
+      "fixed_samples_per_direction": 12000
+    },
+    "diagnostic_note": "Apply identical initial evaluation SE3 to all arms; no registration rerun, no selection or feedback"
+  },
+  {
+    "case": "G03",
+    "arm": "DEFORM_ONLY",
+    "geometry": {
+      "self_intersections": 0,
+      "watertight": true,
+      "winding_consistent": true,
+      "minimum_double_area_mm2": 1.5655412219023468,
+      "Ring_min_signed_mm": -0.006164352875202894,
+      "Ring_surface_collision": true
+    },
+    "geometry_violations": [],
+    "diagnostic_same_INITIAL_alignment_shape": {
+      "Chamfer_mm": {
+        "target_N": 24000,
+        "numeric_N": 24000,
+        "failed_N": 0,
+        "N": 24000,
+        "MAE": 1.2481831145596176,
+        "median": 0.457260763098116,
+        "p95": 8.514134648965763,
+        "maximum": 13.692716965155403
+      },
+      "pred_to_GT_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.43874213757732344,
+        "median": 0.41535687223034345,
+        "p95": 0.7598309572458958,
+        "maximum": 3.5106278851406487
+      },
+      "GT_to_pred_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 2.057624091541912,
+        "median": 0.5174369905005558,
+        "p95": 11.679849346264815,
+        "maximum": 13.692716965155403
+      },
+      "Fscore_0p5mm": 0.5433229504487518,
+      "GT_coverage_0p5mm": 0.48141666666666666,
+      "fixed_samples_per_direction": 12000
+    },
+    "diagnostic_note": "Apply identical initial evaluation SE3 to all arms; no registration rerun, no selection or feedback"
+  },
+  {
+    "case": "G03",
+    "arm": "DEFORM_GROW",
+    "geometry": {
+      "self_intersections": 0,
+      "watertight": true,
+      "winding_consistent": true,
+      "minimum_double_area_mm2": 1.5655412219023468,
+      "Ring_min_signed_mm": -0.006164352875202894,
+      "Ring_surface_collision": true
+    },
+    "geometry_violations": [],
+    "diagnostic_same_INITIAL_alignment_shape": {
+      "Chamfer_mm": {
+        "target_N": 24000,
+        "numeric_N": 24000,
+        "failed_N": 0,
+        "N": 24000,
+        "MAE": 1.2481831145596176,
+        "median": 0.457260763098116,
+        "p95": 8.514134648965763,
+        "maximum": 13.692716965155403
+      },
+      "pred_to_GT_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.43874213757732344,
+        "median": 0.41535687223034345,
+        "p95": 0.7598309572458958,
+        "maximum": 3.5106278851406487
+      },
+      "GT_to_pred_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 2.057624091541912,
+        "median": 0.5174369905005558,
+        "p95": 11.679849346264815,
+        "maximum": 13.692716965155403
+      },
+      "Fscore_0p5mm": 0.5433229504487518,
+      "GT_coverage_0p5mm": 0.48141666666666666,
+      "fixed_samples_per_direction": 12000
+    },
+    "diagnostic_note": "Apply identical initial evaluation SE3 to all arms; no registration rerun, no selection or feedback"
+  },
+  {
+    "case": "G05",
+    "arm": "INITIAL",
+    "geometry": {
+      "self_intersections": 0,
+      "watertight": true,
+      "winding_consistent": true,
+      "minimum_double_area_mm2": 0.06837864841267093,
+      "Ring_min_signed_mm": -0.008364138193428516,
+      "Ring_surface_collision": true
+    },
+    "geometry_violations": [],
+    "diagnostic_same_INITIAL_alignment_shape": {
+      "Chamfer_mm": {
+        "target_N": 24000,
+        "numeric_N": 24000,
+        "failed_N": 0,
+        "N": 24000,
+        "MAE": 0.6661716028185061,
+        "median": 0.192589604197979,
+        "p95": 4.042937509331409,
+        "maximum": 6.7991080817966605
+      },
+      "pred_to_GT_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.16665282004155837,
+        "median": 0.1088781886337822,
+        "p95": 0.4426572527856412,
+        "maximum": 0.5417161643759377
+      },
+      "GT_to_pred_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 1.1656903855954537,
+        "median": 0.3639469785834596,
+        "p95": 5.256360417642387,
+        "maximum": 6.7991080817966605
+      },
+      "Fscore_0p5mm": 0.7539437012263099,
+      "GT_coverage_0p5mm": 0.6113333333333333,
+      "fixed_samples_per_direction": 12000
+    },
+    "diagnostic_note": "Apply identical initial evaluation SE3 to all arms; no registration rerun, no selection or feedback"
+  },
+  {
+    "case": "G05",
+    "arm": "DEFORM_ONLY",
+    "geometry": {
+      "self_intersections": 0,
+      "watertight": true,
+      "winding_consistent": true,
+      "minimum_double_area_mm2": 0.06837864841267101,
+      "Ring_min_signed_mm": -0.008372174575924873,
+      "Ring_surface_collision": true
+    },
+    "geometry_violations": [],
+    "diagnostic_same_INITIAL_alignment_shape": {
+      "Chamfer_mm": {
+        "target_N": 24000,
+        "numeric_N": 24000,
+        "failed_N": 0,
+        "N": 24000,
+        "MAE": 0.6661701224888503,
+        "median": 0.192589604197979,
+        "p95": 4.04294642327507,
+        "maximum": 6.7991080817966605
+      },
+      "pred_to_GT_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.16665033277817012,
+        "median": 0.10887929006414049,
+        "p95": 0.4426499288617226,
+        "maximum": 0.5417161643751505
+      },
+      "GT_to_pred_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 1.1656899121995306,
+        "median": 0.36394408994304084,
+        "p95": 5.256368401040685,
+        "maximum": 6.7991080817966605
+      },
+      "Fscore_0p5mm": 0.7539437012263099,
+      "GT_coverage_0p5mm": 0.6113333333333333,
+      "fixed_samples_per_direction": 12000
+    },
+    "diagnostic_note": "Apply identical initial evaluation SE3 to all arms; no registration rerun, no selection or feedback"
+  },
+  {
+    "case": "G05",
+    "arm": "DEFORM_GROW",
+    "geometry": {
+      "self_intersections": 0,
+      "watertight": true,
+      "winding_consistent": true,
+      "minimum_double_area_mm2": 0.06837864841267101,
+      "Ring_min_signed_mm": -0.008372174575924873,
+      "Ring_surface_collision": true
+    },
+    "geometry_violations": [],
+    "diagnostic_same_INITIAL_alignment_shape": {
+      "Chamfer_mm": {
+        "target_N": 24000,
+        "numeric_N": 24000,
+        "failed_N": 0,
+        "N": 24000,
+        "MAE": 0.6661701224888503,
+        "median": 0.192589604197979,
+        "p95": 4.04294642327507,
+        "maximum": 6.7991080817966605
+      },
+      "pred_to_GT_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 0.16665033277817012,
+        "median": 0.10887929006414049,
+        "p95": 0.4426499288617226,
+        "maximum": 0.5417161643751505
+      },
+      "GT_to_pred_mm": {
+        "target_N": 12000,
+        "numeric_N": 12000,
+        "failed_N": 0,
+        "N": 12000,
+        "MAE": 1.1656899121995306,
+        "median": 0.36394408994304084,
+        "p95": 5.256368401040685,
+        "maximum": 6.7991080817966605
+      },
+      "Fscore_0p5mm": 0.7539437012263099,
+      "GT_coverage_0p5mm": 0.6113333333333333,
+      "fixed_samples_per_direction": 12000
+    },
+    "diagnostic_note": "Apply identical initial evaluation SE3 to all arms; no registration rerun, no selection or feedback"
+  }
+]

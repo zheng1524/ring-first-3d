@@ -1,0 +1,16 @@
+{
+  "attempt_id": "0005-G1_C0_update-8cbf5f20",
+  "stage": "G1_C0_update",
+  "freeze_sha256": "a1fd199e6af8d3e677d12006fcfe8cf789a47c514d329c9af54ee9c3a604f587",
+  "timeout_seconds": 5400,
+  "started_UTC": 1794915348.7938032,
+  "status": "FAIL",
+  "seconds": 22.58301962099995,
+  "reason": "HANDLER_FAILED: Traceback (most recent call last):\n  File \"/home/liu/ring_first_3d_structural_update/tools/research/_policy_worker.py\", line 129, in <module>\n    if __name__==\"__main__\":main()\n                            ^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/tools/research/_policy_worker.py\", line 92, in main\n    result=dispatch(a.stage,task,attempt)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/src/ring_first_3d/policy/structural_contracts.py\", line 60, in dispatch\n    return handler(stage,t,attempt)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/experiment.py\", line 155, in dispatch\n    if stage=='G1_C0_update':return c0_train(task,attempt)\n                                    ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/experiment.py\", line 29, in c0_train\n    rows=train_one(task,attempt,'C0',True);save_json(attempt/'BODY_PREDICTIONS_FROZEN.json',dict(records=rows,GT_read=False))\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/experiment.py\", line 20, in train_one\n    body=update(initial,views,ring,base,chart,task['structural']['update'],out/arm,geometry_source,arm=='DEFORM_GROW')\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/body_update.py\", line 274, in update\n    value,per,parts=objective(q,body,rest,views,pairs,weights,cfg,True);opt.zero_grad();value.backward();grad=q.grad.detach().cpu().numpy().copy();old=q.detach().clone();oldnp=body['V'].copy();oldstate=copy.deepcopy(opt.state_dict());opt.step();proposal=q.detach()-old;move=float(proposal.norm(dim=1).max());proposal*=min(1.,chart['tau_mm']/max(move,1e-12));done=False;rejections=[]\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/body_update.py\", line 150, in objective\n    delta=V-rest;lap=torch.sparse.mm(L,delta);edge0=(rest[edges[:,0]]-rest[edges[:,1]]).norm(dim=1)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: expected scalar type Float but found Double\n",
+  "raw_files": {
+    "request.json": "38ec14a469cd84af02870acbb7d323ba87960623b000b8367ceeb2c3a2841c24",
+    "stderr.txt": "41f19a6081f9bd79984aaf6799f6e3baf6aae5e88e0b8a66f4111526ce5aceac",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "worker.json": "7d72d849445f209fb3e522c109a712f0b35c041f8da51a53c50e90b423ba03bc"
+  }
+}

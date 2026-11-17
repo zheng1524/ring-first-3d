@@ -1,0 +1,16 @@
+{
+  "attempt_id": "0004-G0_initialization-f8679cc2",
+  "stage": "G0_initialization",
+  "freeze_sha256": "7c5a8b94fdd53b8f3626b1e6105d52ceb2f80500ffdd6aae8093627c3475cc17",
+  "timeout_seconds": 5400,
+  "started_UTC": 1794915227.476949,
+  "status": "FAIL",
+  "seconds": 3.609400084000299,
+  "reason": "HANDLER_FAILED: Traceback (most recent call last):\n  File \"/home/liu/ring_first_3d_structural_update/tools/research/_policy_worker.py\", line 129, in <module>\n    if __name__==\"__main__\":main()\n                            ^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/tools/research/_policy_worker.py\", line 92, in main\n    result=dispatch(a.stage,task,attempt)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/src/ring_first_3d/policy/structural_contracts.py\", line 60, in dispatch\n    return handler(stage,t,attempt)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/experiment.py\", line 154, in dispatch\n    if stage=='G0_initialization':return outputs(attempt,audit(task,attempt))\n                                                         ^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/data_adapter.py\", line 60, in audit\n    sim=simulation_data(task);initial,views,ring,base,chart=sim\n        ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/data_adapter.py\", line 47, in simulation_data\n    require(np.allclose(np.asarray(r['Camera_to_Ring']),cache['T'],atol=1e-10),'CAMERA','True C0 Camera-to-Ring')\n                                                        ~~~~~^^^^^\n  File \"/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/lib/npyio.py\", line 263, in __getitem__\n    raise KeyError(f\"{key} is not a file in the archive\")\nKeyError: 'T is not a file in the archive'\n",
+  "raw_files": {
+    "request.json": "9c5e218a73b2acc45ae3d3a2e9fc1f4af93d47b0d66f68fbe199f052caf684fe",
+    "stderr.txt": "26d19ee19292afbf448327af8ced51e77425c09272f2a6ba853d900fafc5de49",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "worker.json": "9b26cd159d026432cef8e265ca9ea96a742fd3cad944a084fcd98b81b1f3d9e3"
+  }
+}

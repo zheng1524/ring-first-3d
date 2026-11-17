@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_structural_update/tools/research/_policy_worker.py", line 129, in <module>
+    if __name__=="__main__":main()
+                            ^^^^^^
+  File "/home/liu/ring_first_3d_structural_update/tools/research/_policy_worker.py", line 92, in main
+    result=dispatch(a.stage,task,attempt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_structural_update/src/ring_first_3d/policy/structural_contracts.py", line 60, in dispatch
+    return handler(stage,t,attempt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/experiment.py", line 154, in dispatch
+    if stage=='G0_initialization':return outputs(attempt,audit(task,attempt))
+                                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/data_adapter.py", line 60, in audit
+    sim=simulation_data(task);initial,views,ring,base,chart=sim
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/data_adapter.py", line 47, in simulation_data
+    require(np.allclose(np.asarray(r['Camera_to_Ring']),cache['T'],atol=1e-10),'CAMERA','True C0 Camera-to-Ring')
+                                                        ~~~~~^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/lib/npyio.py", line 263, in __getitem__
+    raise KeyError(f"{key} is not a file in the archive")
+KeyError: 'T is not a file in the archive'

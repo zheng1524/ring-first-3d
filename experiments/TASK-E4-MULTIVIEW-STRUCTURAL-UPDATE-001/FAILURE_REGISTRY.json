@@ -20,6 +20,185 @@
       "review": {
         "status": "unreviewed"
       }
+    },
+    {
+      "id": "SU-ENG-001",
+      "category": "engineering_error",
+      "symptom": "001 G0 rejects missing embedded T in RGB cache",
+      "cause": "Camera provenance is stored in source pose_origin rather than every cache",
+      "cause_status": "confirmed",
+      "repair": "Reuse existing check_sources typed adapter",
+      "regression": [
+        "186 passing contract/regression tests; see evidence/REGRESSION_RESULT.json"
+      ],
+      "evidence": [
+        "evidence/ENGINEERING_FAILURES/STRUCTURAL_001",
+        "inputs/PRE_SCIENCE_ADAPTER_FIX"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "SU-ENG-002",
+      "category": "engineering_error",
+      "symptom": "002 G1 backward float/double mismatch before accepted update",
+      "cause": "Mature sparse Laplacian was float32 while optimizer is metric float64",
+      "cause_status": "confirmed",
+      "repair": "Explicit dtype match and full-objective gradient regression",
+      "regression": [
+        "186 passing contract/regression tests; see evidence/REGRESSION_RESULT.json"
+      ],
+      "evidence": [
+        "evidence/ENGINEERING_FAILURES/STRUCTURAL_002",
+        "evidence/ACTUAL_GRADIENT_FINITE_DIFFERENCE.json"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "SU-ENG-003",
+      "category": "engineering_error",
+      "symptom": "003 capped Body proposals rejected by base constraints",
+      "cause": "Inherited rim tangent and inferred-center-following proposal was omitted",
+      "cause_status": "confirmed",
+      "repair": "Restore generic historical feasible proposal; preserve003 and source-proven noncap outputs, rerun G05 unchanged budget",
+      "regression": [
+        "186 passing contract/regression tests; see evidence/REGRESSION_RESULT.json"
+      ],
+      "evidence": [
+        "evidence/PRE_REAL_GT_CAP_DIAGNOSIS.json",
+        "inputs/BEFORE_CAP_PARAMETERIZATION_REPAIR",
+        "inputs/CAP_REPAIR_CACHE.json"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "SU-SCI-C0-TAIL",
+      "category": "scientific_negative",
+      "symptom": "C0 MAE improves but P95 exceeds initial; full long stalk absent",
+      "cause": "Local extrusion and silhouettes do not establish complete missing3D structure",
+      "cause_status": "observed_not_isolated",
+      "repair": null,
+      "regression": [],
+      "evidence": [
+        "visualization/C0_METRICS.json",
+        "visualization/figures/C0_ACTUAL_MESH_SECTIONS.png"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "SU-SCI-G01-SHAPE",
+      "category": "scientific_negative",
+      "symptom": "G01 silhouette improves slightly but independently aligned GT mean/Fscore deteriorate",
+      "cause": "Observed silhouette/shape conflict; accepted thin extrusions are not reliable recovery",
+      "cause_status": "observed_not_isolated",
+      "repair": null,
+      "regression": [],
+      "evidence": [
+        "visualization/REAL_BODY_METRICS.json",
+        "visualization/figures/G01_GT_ALIGNED_COMPARISON.png",
+        "REAL_UPDATE_SUMMARY.json"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "SU-SCI-G03-STALL",
+      "category": "scientific_negative",
+      "symptom": "G03 actual maximum original-vertex displacement about1e-5mm; no accepted growth",
+      "cause": "Ring/containment constraints reject substantive proposals; growth lacks balanced gain (G03) or eligible evidence (G05)",
+      "cause_status": "observed_not_isolated",
+      "repair": null,
+      "regression": [],
+      "evidence": [
+        "REAL_UPDATE_SUMMARY.json",
+        "visualization/figures/G03_DEFORMATION_GROWTH.png",
+        "visualization/figures/G03_GT_ALIGNED_COMPARISON.png"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "SU-SCI-G05-STALL",
+      "category": "scientific_negative",
+      "symptom": "G05 actual maximum original-vertex displacement about1e-5mm; no accepted growth",
+      "cause": "Ring/containment constraints reject substantive proposals; growth lacks balanced gain (G03) or eligible evidence (G05)",
+      "cause_status": "observed_not_isolated",
+      "repair": null,
+      "regression": [],
+      "evidence": [
+        "REAL_UPDATE_SUMMARY.json",
+        "visualization/figures/G05_DEFORMATION_GROWTH.png",
+        "visualization/figures/G05_GT_ALIGNED_COMPARISON.png"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "SU-SCI-HERO-INCREMENT",
+      "category": "scientific_negative",
+      "symptom": "Updated Body does not consistently improve HERO over original Body",
+      "cause": "G01 cross-video/HOLDOUT worsen; other Body changes negligible",
+      "cause_status": "observed_not_isolated",
+      "repair": null,
+      "regression": [],
+      "evidence": [
+        "REAL_HERO_METRICS.csv",
+        "visualization/figures/G01_HERO_SECTIONS.png"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "SU-EVAL-NO-REAL-GT",
+      "category": "evaluation_limitation",
+      "symptom": "Absolute real HERO 3D accuracy is NOT_EVALUABLE for3/3 cases",
+      "cause": "No independently deployed complete real surface GT; fixed mask-support nearest distance is not certified material correspondence",
+      "cause_status": "observed_not_isolated",
+      "repair": null,
+      "regression": [],
+      "evidence": [
+        "visualization/REAL_HERO_METRICS.json"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "SU-EVAL-RIGID-SENSITIVITY",
+      "category": "evaluation_limitation",
+      "symptom": "G05 best-rigid metric varies more than actual Body displacement",
+      "cause": "Different rigid numerical refinement paths; tiny shape changes cannot substantiate reconstruction improvement",
+      "cause_status": "observed_not_isolated",
+      "repair": null,
+      "regression": [],
+      "evidence": [
+        "evidence/POST_FREEZE_GEOMETRY_AND_FIXED_ALIGNMENT.json",
+        "visualization/REAL_BODY_METRICS.json"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
     }
   ]
 }
