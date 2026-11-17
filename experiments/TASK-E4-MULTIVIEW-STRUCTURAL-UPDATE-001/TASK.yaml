@@ -18,6 +18,7 @@ modules:
 - SU03
 - SU04
 - SU05
+- SU06
 variables:
   geometry_unit: mm
   pixel_coordinates: native_image_px
@@ -149,7 +150,10 @@ structural:
       sha256: 373020ef1a1c0c35b5362d782eba3164b20475d960b09d918d7d32ba3afebeef
     code_lock:
       path: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/inputs/CODE_LOCK.json
-      sha256: d8466062b651c2e810cdd33bc8db349c8a9c4c121b4cab356c3207f73f272358
+      sha256: 826ba47e48e7f12ba76bbbc10aae4fa94154f93249fecc25cd9773f362076c7c
+    repair_cache:
+      path: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/inputs/CAP_REPAIR_CACHE.json
+      sha256: cb30024506171b8e658b16bda083a5853d803abf65cff300237a3fa1e711f553
   simulation_public: /home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0004-G0_views_noise-3ab770b4/public
   update:
     iterations: 36
@@ -200,3 +204,10 @@ structural:
     - 0.3
     outer_iterations: 3
     max_nfev: 40
+  engineering_repair:
+    kind: RESTORE_INHERITED_CAP_PARAMETERIZATION
+    unaffected_real_cases:
+    - G01
+    - G03
+    C0_reexecute: false
+    parameters_changed: false

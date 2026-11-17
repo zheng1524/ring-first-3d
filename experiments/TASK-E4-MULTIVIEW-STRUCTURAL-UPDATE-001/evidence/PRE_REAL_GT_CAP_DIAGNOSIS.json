@@ -1,0 +1,50 @@
+{
+  "observed_UTC_epoch": 1794916239.7244875,
+  "real_GT_evaluation_started": false,
+  "C0_GT_used_for_this_diagnosis": false,
+  "records": [
+    {
+      "case": "G03",
+      "arm": "DEFORM_ONLY",
+      "completed_steps": 36,
+      "rejections": {
+        "RING_WORSENING": 157,
+        "RING_CONTAINMENT_WORSENING": 244,
+        "ZERO_GEOMETRIC_STEP": 44
+      }
+    },
+    {
+      "case": "G03",
+      "arm": "DEFORM_GROW",
+      "completed_steps": 36,
+      "rejections": {
+        "RING_WORSENING": 157,
+        "RING_CONTAINMENT_WORSENING": 244,
+        "ZERO_GEOMETRIC_STEP": 44
+      }
+    },
+    {
+      "case": "G05",
+      "arm": "DEFORM_ONLY",
+      "completed_steps": 36,
+      "rejections": {
+        "BASE_HALFSPACE_OR_BOUNDARY": 215,
+        "ZERO_GEOMETRIC_STEP": 68
+      }
+    },
+    {
+      "case": "G05",
+      "arm": "DEFORM_GROW",
+      "completed_steps": 36,
+      "rejections": {
+        "BASE_HALFSPACE_OR_BOUNDARY": 215,
+        "ZERO_GEOMETRIC_STEP": 68
+      }
+    }
+  ],
+  "confirmed_code_omission": "The new world-vertex Adam proposal omitted inherited FreeVertices cap-rim tangent projection and inferred-center following; G05 cap-plane checks therefore reject useful steps.",
+  "planned_repair": "Restore generic inherited cap feasible proposal, only when inferred_base_faces.any(); no group/type dispatch or change to any bound/loss/data.",
+  "C0_inferred_base": false,
+  "C0_reexecution_required": false,
+  "scientific_parameters_changed": false
+}

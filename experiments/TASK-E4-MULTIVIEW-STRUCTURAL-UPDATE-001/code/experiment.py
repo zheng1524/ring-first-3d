@@ -26,6 +26,8 @@ def train_one(task,attempt,case,simulation=False):
 
 
 def c0_train(task,attempt):
+    from repair_adoption import adoption
+    if adoption(task,attempt,'G1_C0_update'):return outputs(attempt,dict(status='PASS',condition='C0',adopted_same_task_noncap=True,GT_read_by_predictor=False))
     rows=train_one(task,attempt,'C0',True);save_json(attempt/'BODY_PREDICTIONS_FROZEN.json',dict(records=rows,GT_read=False))
     return outputs(attempt,dict(status='PASS',condition='C0',body_arms=len(rows),GT_read_by_predictor=False))
 
@@ -40,6 +42,9 @@ def shape_metrics(body,gt,seed=20261117,N=12000):
 
 
 def c0_evaluate(task,attempt):
+    from repair_adoption import adoption
+    if adoption(task,attempt,'G2_C0_evaluate'):
+        result=json.loads((attempt/'C0_METRICS.json').read_text());return outputs(attempt,dict(status='PASS',scientific_pass=result['scientific_pass'],checks=result['scientific_checks'],adopted_single_C0_evaluation=True))
     root=attempt.parents[1];freeze=fetch(root,'G1_C0_update','BODY_PREDICTIONS_FROZEN.json')
     save_json(attempt/'GT_FIRST_ACCESS.json',dict(predictions_frozen_sha256=sha256(freeze),stage='G2_C0_evaluate',prediction_changes_after_GT=False))
     initial,views,ring,base,chart=simulation_data(task);rz=ring_maps(views,ring)
@@ -82,6 +87,10 @@ def require_c0(root):
 def real_train(task,attempt):
     require_c0(attempt.parents[1]);rows=[]
     for case in task['structural']['real_cases']:
+        from repair_adoption import adoption
+        repair=task['structural'].get('engineering_repair')
+        if repair and case in repair['unaffected_real_cases']:
+            adoption(task,attempt,'G5_real_update',case);rows.extend(json.loads((attempt/case/'PREDICTIONS_FROZEN.json').read_text())['records']);continue
         try:rows.extend(train_one(task,attempt,case))
         except (ValueError,RuntimeError,np.linalg.LinAlgError) as e:
             from ring_first_3d.policy.contracts import PolicyError

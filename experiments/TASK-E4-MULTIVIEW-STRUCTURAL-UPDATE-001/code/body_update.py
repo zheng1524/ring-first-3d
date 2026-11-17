@@ -260,9 +260,23 @@ def growth_quality(candidate,old,ring,ns,base,chart):
     return why,dict(self_intersections=si,watertight=bool(m.is_watertight),winding_consistent=bool(m.is_winding_consistent),minimum_double_area_mm2=float(areas.min()),Ring_min_signed_mm=float(sd.min()),Ring_surface_collision=col)
 
 
+def cap_feasible_proposal(delta,body,plane,centers):
+    """Exact inherited FreeVertices cap-rim tangent and closing-center mechanism.
+    On non-cap inputs return the original tensor without any arithmetic.
+    """
+    if not body['inferred_base_faces'].any():return delta
+    n=torch.as_tensor(np.asarray(plane)[:3],device=delta.device,dtype=delta.dtype)
+    rim=torch.as_tensor(body['boundary_vertex'],device=delta.device,dtype=torch.bool)
+    tangent=delta-torch.where(rim[:,None],(delta@n)[:,None]*n,torch.zeros_like(delta))
+    if len(centers):
+        tangent=tangent.clone();tangent[torch.as_tensor(centers,device=delta.device)]=tangent[rim].mean(0)
+    return tangent
+
+
 def update(initial,views,ring,base,chart,cfg,out,geometry_source,growth=True):
     require(all(v['role']=='FIT' for v in views),'HOLDOUT_LEAK','Updater accepts FIT only')
     require(all(set(v)<=set(('id','video','role','direction_block','K','C','labels','RGB')) for v in views),'DEPTH_LEAK','Only RGB/Mask/frozen cameras')
+    cap_centers=np.setdiff1d(np.arange(len(initial['V'])),np.unique(initial['F']))
     out.mkdir(parents=True);body=copy.deepcopy(initial);weights=balanced_weights(views);rz=ring_maps(views,ring);ns=legacy_geometry(geometry_source)
     save_json(out/'INPUT_CONTRACT.json',dict(weights=weights,FIT_ids=[v['id'] for v in views],camera_optimization=False,HERO_depth_used=False,GT_read=False,same_shared_body=True,configuration=cfg))
     np.savez_compressed(out/'INITIAL.npz',**body);before=projection_metrics(body,views,rz);records=[];growth_log=[];accepted=0
@@ -271,7 +285,10 @@ def update(initial,views,ring,base,chart,cfg,out,geometry_source,growth=True):
     q,rest,opt,guard=reset()
     for it in range(cfg['iterations']):
         step=out/('STEP_%03d'%it);step.mkdir();body['V']=q.detach().cpu().numpy().copy();pairs,stats=assignments(body,views,rz,cfg,step)
-        value,per,parts=objective(q,body,rest,views,pairs,weights,cfg,True);opt.zero_grad();value.backward();grad=q.grad.detach().cpu().numpy().copy();old=q.detach().clone();oldnp=body['V'].copy();oldstate=copy.deepcopy(opt.state_dict());opt.step();proposal=q.detach()-old;move=float(proposal.norm(dim=1).max());proposal*=min(1.,chart['tau_mm']/max(move,1e-12));done=False;rejections=[]
+        value,per,parts=objective(q,body,rest,views,pairs,weights,cfg,True);opt.zero_grad();value.backward();grad=q.grad.detach().cpu().numpy().copy();old=q.detach().clone();oldnp=body['V'].copy();oldstate=copy.deepcopy(opt.state_dict());opt.step();proposal=q.detach()-old;
+        if body['inferred_base_faces'].any():
+            proposal=cap_feasible_proposal(proposal,body,base['selected_plane'],cap_centers)
+        move=float(proposal.norm(dim=1).max());proposal*=min(1.,chart['tau_mm']/max(move,1e-12));done=False;rejections=[]
         with torch.no_grad():q.copy_(old)
         for ls in range(cfg['line_search_steps']):
             candidate=old+proposal*(.5**ls);V=candidate.detach().cpu().numpy();why,geo,extra=guard.inspect(V,oldnp)
