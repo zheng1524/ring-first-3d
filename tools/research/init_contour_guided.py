@@ -11,7 +11,7 @@ def main():
  for p in sorted((old/'legacy015').glob('*.py')):
   q=td/'legacy015'/p.name;shutil.copyfile(p,q);prior=next(r for r in json.loads((old/'inputs/CODE_LOCK.json').read_text())['files']if Path(r['path']).name==p.name);code.append(dict(prior,path=str(q)))
  (inp/'CODE_LOCK.json').write_text(json.dumps(dict(commit=t['inita']['legacy_commit'],files=code),indent=2)+'\n');shutil.copyfile(old/'inputs/SOURCES.json',inp/'SOURCES.json');(td/'evaluation_only').mkdir();shutil.copyfile(old/'evaluation_only/GT_META.json',td/'evaluation_only/GT_META.json');shutil.copyfile(old/'inputs/INIT_A_ALL_IP_SOURCE_REVIEW.png',inp/'INIT_A_ALL_IP_SOURCE_REVIEW.png')
- 
+
  for key,r in t['inputs'].items():
   if isinstance(r,dict) and 'path'in r and str(r['path']).startswith(str(old.parents[1])):
    r['path']=str(ROOT/Path(r['path']).relative_to(old.parents[1]))
