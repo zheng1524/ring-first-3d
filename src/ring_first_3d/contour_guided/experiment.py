@@ -24,6 +24,12 @@ def audit(task,attempt):
   receipt.append(dict(case=g,A3_initial=r['resolved013_initial'],baseline=baseline,original_FIT=[v['meta']['id']for v in r['FIT']],original_HOLDOUT=[v['meta']['id']for v in r['HOLDOUT']],new_view_selection=False,cameras_changed=False))
  save_json(attempt/'CONTOUR_SOURCE_LOCK.json',receipt);return outputs(attempt,dict(status='PASS',cases=11,frozen_views=True,original_013=True,GT_read=False))
 
+def child_environment(out,environment):
+ env=dict(environment)
+ for key,sub in [('TMPDIR','tmp'),('XDG_CACHE_HOME','cache'),('MPLCONFIGDIR','mpl')]:
+  p=out/'runtime'/sub;p.mkdir(parents=True,exist_ok=True);env[key]=str(p)
+ return env
+
 def prepare(task,row,arm,out):
  inp=out/'inputs'/row['case'];inp.mkdir(parents=True);views=[]
  for key,r in row['static'].items():
@@ -48,9 +54,10 @@ def train(task,attempt,smoke=False):
    else:records.append(dict(case=g,arm=arm,status='NOT_EVALUABLE',world_mesh_relative=None,reason='Inherited A2 unavailable: no004; no substituted views'))
   for arm in ['A2D','A3']:
    if row['status']!='READY':records.append(dict(case=g,arm=arm,status='NOT_EVALUABLE',world_mesh_relative=None,reason=row['status']));continue
-   ar=prepare(task,row,arm,out/arm);env=dict(os.environ,E4_RUN_DIR=str(ar),CONTOUR_POLICY_FREEZE=str(root/'FREEZE.json'),CONTOUR_POLICY_RUN=str(root));start=time.monotonic()
+   ar=prepare(task,row,arm,out/arm);env=child_environment(ar,dict(os.environ,E4_RUN_DIR=str(ar),CONTOUR_POLICY_FREEZE=str(root/'FREEZE.json'),CONTOUR_POLICY_RUN=str(root)));start=time.monotonic()
    with(ar/'TRAIN_STDOUT.txt').open('w')as f:code=subprocess.call([sys.executable,str(ROOT/'tools/research/_contour_train.py'),g],env=env,stdout=f,stderr=subprocess.STDOUT)
    final=ar/'local_results'/g/'FINAL.npz'
+   if code and any(x in(ar/'TRAIN_STDOUT.txt').read_text()for x in ['WRITE_ISOLATION','GT_LEAK','CLEAN_POSE_LEAK','DEPTH_LEAK']):raise PolicyError('CHILD_POLICY_REJECTED',str(ar/'TRAIN_STDOUT.txt'))
    if code or not final.is_file():records.append(dict(case=g,arm=arm,status='FAILED_NAN',reason='Historical optimizer adapter returned '+str(code),world_mesh_relative=None,log=str((ar/'TRAIN_STDOUT.txt').relative_to(attempt))));continue
    target=out/(arm+'_WORLD.npz');shutil.copyfile(final,target);m=dict(np.load(target));initial=np.load(row['resolved013_initial']['path']);require(np.array_equal(m['F'],initial['F'])and np.array_equal(m['F_solid'],initial['F_solid']),'TOPOLOGY','Same actual triangles');info=json.loads((ar/'metrics'/(g+'_RUN.json')).read_text());score=projection_rows(m,row);initialscore=projection_rows(dict(initial),row);save_json(out/(arm+'_PROJECTION.json'),dict(before=initialscore,after=score));records.append(dict(case=g,arm=arm,status='NUMERIC',world_mesh_relative=str(target.relative_to(attempt)),world_sha256=sha256(target),training=info,projection=score,initial_projection=initialscore,depth_loss=False,GT_read=False,seconds=time.monotonic()-start));print('CONTOUR_BODY',g,arm,info['accepted'],info['maximum_displacement_mm'],flush=True)
   save_json(out/'CASE_PREDICTIONS_FROZEN.json',dict(records=records,FIT_only=True,GT_read=False));rows.extend(records)

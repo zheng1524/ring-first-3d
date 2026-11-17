@@ -50,6 +50,10 @@ class ContourContracts(unittest.TestCase):
   m=trimesh.creation.icosphere(subdivisions=2,radius=2.);V=np.asarray(m.vertices)+[0,0,20];F=np.asarray(m.faces);K=np.array([[100.,0,50],[0,100.,50],[0,0,1.]]);C=np.eye(4);y,x=np.mgrid[:100,:100];lab=np.where((x-50)**2+(y-50)**2<100,1,0);ring=dict(V=np.asarray(m.vertices)*.1+[0,0,40],F=F);body=dict(V=V,F=F);r=mesh_candidates(np.array([[50.,50.],[51.,50.]]),body,K,C,lab,ring);self.assertTrue(r['valid'].any());ok=r['valid'];np.testing.assert_allclose(r['bary'][ok].sum(1),1.,atol=1e-6);np.testing.assert_allclose(r['points'][ok],np.einsum('ni,nij->nj',r['bary'][ok],V[F[r['face'][ok]]]))
  def test_required_scientific_images_not_skippable(self):
   with self.assertRaises(PolicyError):validate(self.path.parent,dict(attempts=[dict(path='attempts/001-G4_visualize-xx/result.json')]))
+ def test_child_temp_cache_paths_inside_arm_write_boundary(self):
+  from ring_first_3d.contour_guided.experiment import child_environment
+  root=Path(self.tmp.name)/'arm';env=child_environment(root,dict(TMPDIR='/wrong',XDG_CACHE_HOME='/wrong',MPLCONFIGDIR='/wrong'))
+  for key in ['TMPDIR','XDG_CACHE_HOME','MPLCONFIGDIR']:self.assertTrue(Path(env[key]).is_relative_to(root));self.assertTrue(Path(env[key]).is_dir())
  def test_target_Ring_contact_unknown(self):
   lab=np.zeros((30,30),int);lab[10:20,10:20]=1;lab[20:25,8:22]=2;uv,n,known=target_boundary(lab);self.assertTrue((~known).any());self.assertTrue(known.any())
 if __name__=='__main__':unittest.main()
