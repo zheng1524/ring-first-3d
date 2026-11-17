@@ -26,7 +26,7 @@ lock=read(TD/'protocols/ENGINEERING_REPAIR_001/CODE_LOCK.json')['files'];assert 
 audit=read(TD/'evidence/POST_RUN_GEOMETRY_AUDIT.json')['records']
 with(TD/'metrics/ROOT_GEOMETRY_AUDIT.csv').open('w')as f:
     keys=['case','automatic_gate_status','scientific_root_review','target_embedding_depth_mm','actual_C0_SDF_depth_mm','embedded_arc_mm','exposed_arc_mm','formal_stalk_length_mm','root_section_max_SDF_mm']
-    w=csv.DictWriter(f,keys);w.writeheader()
+    w=csv.DictWriter(f,keys,lineterminator="\n");w.writeheader()
     for a in audit:
         config=read(TD/'review_assets'/a['case']/'LOCAL_CONFIGURATION.json')['embedding'];l=a['diagnostic_lengths']
         w.writerow(dict(case=a['case'],automatic_gate_status=a['status'],scientific_root_review=a['root_review_status'],target_embedding_depth_mm=config['embedding_depth_target_mm'],actual_C0_SDF_depth_mm=l['embedding_depth_SDF_mm'],embedded_arc_mm=l['embedded_length_mm'],exposed_arc_mm=l['exposed_stalk_length_mm'],formal_stalk_length_mm=a['reported_stalk_length_mm']if a['reported_stalk_length_mm']is not None else'NaN',root_section_max_SDF_mm=a['proximal_section_SDF_max_mm']))
