@@ -54,6 +54,12 @@ class ContourContracts(unittest.TestCase):
   from ring_first_3d.contour_guided.experiment import child_environment
   root=Path(self.tmp.name)/'arm';env=child_environment(root,dict(TMPDIR='/wrong',XDG_CACHE_HOME='/wrong',MPLCONFIGDIR='/wrong'))
   for key in ['TMPDIR','XDG_CACHE_HOME','MPLCONFIGDIR']:self.assertTrue(Path(env[key]).is_relative_to(root));self.assertTrue(Path(env[key]).is_dir())
+ def test_index_excludes_runtime_cache_and_control_files(self):
+  from ring_first_3d.contour_guided.visualize import artifact_files
+  root=Path(self.tmp.name);(root/'runtime/mpl').mkdir(parents=True);(root/'runtime/mpl/fontlist.json').write_text('{}');(root/'mesh.glb').write_bytes(b'glTF');(root/'request.json').write_text('{}');self.assertEqual([p.name for p in artifact_files(root)],['mesh.glb'])
+ def test_hero_csv_row_accepts_existing_method_key(self):
+  from ring_first_3d.contour_guided.visualize import method_row
+  self.assertEqual(method_row('G01','H4',dict(method='H4',status='NUMERIC')),dict(case='G01',method='H4',status='NUMERIC'))
  def test_target_Ring_contact_unknown(self):
   lab=np.zeros((30,30),int);lab[10:20,10:20]=1;lab[20:25,8:22]=2;uv,n,known=target_boundary(lab);self.assertTrue((~known).any());self.assertTrue(known.any())
 if __name__=='__main__':unittest.main()

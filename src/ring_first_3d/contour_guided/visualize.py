@@ -6,6 +6,11 @@ from ..synthetic.io import fetch,save_json,outputs
 from ..inita.train import sources
 from ..multisurface.geometry import scene,cast,mesh_sections,plane_coordinates
 
+def artifact_files(attempt):
+ return sorted(p for p in attempt.rglob('*')if p.is_file()and 'runtime'not in p.relative_to(attempt).parts and p.suffix in ['.png','.glb','.json','.csv','.npz']and not p.name.startswith(('request','result','payload')))
+
+def method_row(case,method,record):return dict(record,case=case,method=method)
+
 def run(task,attempt,smoke=False):
  import matplotlib
  matplotlib.use('Agg')
@@ -16,10 +21,10 @@ def run(task,attempt,smoke=False):
  root=attempt.parents[1];tr='G1_smoke_train'if smoke else'G1_all_train';hr='G2_smoke_hero'if smoke else'G2_all_hero';ev='G3_smoke_evaluate'if smoke else'G3_all_evaluate';body=json.loads(fetch(root,ev,'BODY_SHAPE_METRICS.json').read_text());hero=json.loads(fetch(root,ev,'HERO_METRICS.json').read_text());pred=json.loads(fetch(root,tr,'BODY_PREDICTIONS_FROZEN.json').read_text())['records'];hpred=json.loads(fetch(root,hr,'ALL_HERO_PREDICTIONS_FROZEN.json').read_text())['groups'];cases=list(dict.fromkeys(r['case']for r in pred));src={r['case']:r for r in sources(task)['cases']};real={r['group']:r for r in sources(task)['real_groups']};br={(r['case'],r['arm']):r for r in body['rows']};pr={(r['case'],r['arm']):r for r in pred};figdir=attempt/'figures';figdir.mkdir();models=attempt/'meshes';models.mkdir();world={};aligned={};GT={};evidence=[];update_rows=[]
  def bounds(meshes):
   V=np.concatenate([m['V']for m in meshes]);c=(V.max(0)+V.min(0))/2;r=max(.5,np.ptp(V,axis=0).max()*.55);return c,r
- def show(ax,m,c,r,gt=None,title='',heat=None):
+ def show(ax,m,c,r,gt=None,title='',heat=None,gt_reference=False):
   if gt is not None:ax.add_collection3d(Poly3DCollection(gt['V'][gt['F']],facecolors=(.5,.5,.5,.25),edgecolors='none'))
   if m is not None:
-   F=m['F'];color=(.52,.16,.72,.85)if heat is None else plt.cm.viridis(np.clip(heat[F].mean(1)/max(1e-10,float(heat.max())),0,1));ax.add_collection3d(Poly3DCollection(m['V'][F],facecolors=color,edgecolors='none'))
+   F=m['F'];color=((.5,.5,.5,.8)if gt_reference else(.52,.16,.72,.85))if heat is None else plt.cm.viridis(np.clip(heat[F].mean(1)/max(1e-10,float(heat.max())),0,1));ax.add_collection3d(Poly3DCollection(m['V'][F],facecolors=color,edgecolors='none'))
   else:ax.text(*c,'NOT_EVALUABLE',color='red')
   ax.set(xlim=(c[0]-r,c[0]+r),ylim=(c[1]-r,c[1]+r),zlim=(c[2]-r,c[2]+r),xlabel='X [mm]',ylabel='Y [mm]',zlabel='Z [mm]');ax.set_box_aspect((1,1,1));ax.view_init(15,-65);ax.set_title(title,fontsize=8);ax.tick_params(labelsize=5)
  def glb(path,items):
@@ -53,12 +58,18 @@ def run(task,attempt,smoke=False):
    for col in [0,1,2]:
     ax=fig.add_subplot(len(selected),4,row*4+col+1);ax.imshow(d['RGB']);ax.contour(lab==1,levels=[.5],colors=['lime'],linewidths=.7);ax.contour(lab==2,levels=[.5],colors=['black'],linewidths=.5)
     if col in [0,2]:ax.contour(masks[0 if col==0 else 1],levels=[.5],colors=['magenta'],linewidths=.8)
+    if col==1 and 'accepted'in p:
+     bad=np.flatnonzero(~p['accepted']);bad=bad[np.linspace(0,len(bad)-1,min(10,len(bad)),dtype=int)]if len(bad)else bad
+     if len(bad):ax.scatter(p['body_uv'][bad,0],p['body_uv'][bad,1],marker='x',c='red',s=12,linewidths=.8)
+     ax.text(.01,.02,'accepted %d / %d; red X rejected'%(int(ok.sum()),len(ok)),transform=ax.transAxes,color='yellow',fontsize=7)
     if col==1 and len(sel):
      for k in sel:
       a,b=p['body_uv'][k],p['target_uv'][k];ax.annotate('',xy=b,xytext=a,arrowprops=dict(arrowstyle='->',color='yellow',lw=.8));ax.text(a[0],a[1],str(p['edge'][k,0]),color='white',fontsize=5)
       e=p['edge'][k];t=float(p['edge_t'][k]);edge_delta=(1-t)*(V[e[0]]-V0[e[0]])+t*(V[e[1]]-V0[e[1]]);update_rows.append(dict(case=g,view=cid,body_vertex0=int(e[0]),body_vertex1=int(e[1]),body_face=int(p['face'][k]),edge_t=t,initial_normal_residual_px=float(p['normal_residual_px'][k]),actual_3D_edge_update_mm=edge_delta.tolist(),source='initial E pairs / final world vertices; vector is shared update, not per-view causal allocation'))
     ax.set_title(cid+'\n'+['Initial actual projection','Explicit pairs: accepted arrows; vertex ID','Final actual projection'][col],fontsize=8);ax.axis('off')
-   ax=fig.add_subplot(len(selected),4,row*4+4,projection='3d');show(ax,world[g,'A3'],c,r,title='Shared 3D displacement [mm]\nmax %.4f; no image transform'%delta.max(),heat=delta)
+   ax=fig.add_subplot(len(selected),4,row*4+4,projection='3d');show(ax,world[g,'A3'],c,r,title='Shared 3D displacement [mm]\nmax %.4f; no image transform'%delta.max(),heat=delta);sm=plt.cm.ScalarMappable(norm=plt.Normalize(0,max(1e-10,float(delta.max()))),cmap='viridis');fig.colorbar(sm,ax=ax,shrink=.55,pad=.03,label='vertex displacement [mm]')
+   for k in sel[:4]:
+    vertex=int(p['edge'][k,0]);ax.text(*V[vertex],str(vertex),fontsize=5,color='black')
   fig.suptitle(g+' | Figure1: 2D normal constraints → calibrated 3D vertex updates; green=observed, magenta=actual projection\nAll source cameras fixed; Ring-contact ambiguity rejected; full E/M trace and rejected pairs remain in NPZ.',fontsize=11);fig.savefig(figdir/(g+'_Fig1_2D_TO_3D.png'),dpi=100);plt.close(fig)
   save_json(attempt/(g+'_MECHANISM_SUMMARY.json'),dict(case=g,all_FIT_rebuilt_every_E_step=True,recorded_E_steps=len(steps),delta_MAE_mm=float(delta.mean()),delta_P95_mm=float(np.quantile(delta,.95)),delta_max_mm=float(delta.max()),initial_contour_gradient_nonzero_views=sum(v['contour_gradient_norm']>0 for v in records[0]['views']),initial_explicit_pairs=sum(v['accepted_N']for v in records[0]['views']),actual_shared_3D_update=True,depth_loss_used=False))
  # Principal Figure1 uses actual selected cases, kept as PNG instead of a web application.
@@ -76,7 +87,7 @@ def run(task,attempt,smoke=False):
   for col,a in enumerate(['A0','A2','A3','GT']):
    ax=fig.add_subplot(len(cases),4,row*4+col+1,projection='3d');m=GT[g]if a=='GT'else aligned.get((g,a));rec=br.get((g,a),{});title=g+' '+a
    if rec.get('status')=='NUMERIC':title+='\nstrict '+str(rec['IoU_3D'])+' / cond %.4f\nCD %.3f, p95 %.3f mm'%(rec['conditional_occupancy_IoU'],rec['Chamfer_MAE_mm'],rec['Chamfer_P95_mm'])
-   show(ax,m,c,r,gt=GT[g]if a!='GT'else None,title=title)
+   show(ax,m,c,r,gt=GT[g]if a!='GT'else None,title=title,gt_reference=a=='GT')
  fig.suptitle('Figure2 | A0 historical → A2 frozen → A3 explicit contour → Blender GT\nEvery prediction is a real scale1 best_rigid015 evaluation copy; original world coordinates retained for HERO.',fontsize=11);fig.savefig(figdir/'Fig2_ALL_BODY_GT.png',dpi=100);plt.close(fig)
  # Every full native triangle Mesh, true plane intersections; all methods use identical planes/ranges.
  for gg in hpred:
@@ -119,7 +130,7 @@ def run(task,attempt,smoke=False):
  for g in hero['groups']:
   by={r['method']:r for r in g.get('methods',[])}
   for method in task['contour']['HERO_methods']:
-   r=by.get(method,dict(status='NOT_EVALUABLE',reason=g.get('reason','Missing method')));hrows.append(dict(case=g['case'],method=method,**r))
+   r=by.get(method,dict(status='NOT_EVALUABLE',reason=g.get('reason','Missing method')));hrows.append(method_row(g['case'],method,r))
  save_json(attempt/'HERO_ALL11_METRICS.json',hrows)
  with(attempt/'HERO_ALL11_METRICS.csv').open('w',newline='')as f:
   w=csv.DictWriter(f,['case','method','status','within_MAE_mm','within_P95_mm','cross_MAE_mm','cross_P95_mm','body_rate','HOLDOUT_IoU','reason']);w.writeheader()
@@ -129,7 +140,7 @@ def run(task,attempt,smoke=False):
  for n in sorted(figdir.glob('*.png')):report+='!['+n.stem+'](visualization/figures/'+n.name+')\n\n'
  (attempt/'TECHNICAL_REPORT.md').write_text(report);(attempt/'RESULT_CARD.md').write_text('# '+task['task_id']+'\n\nExecution completed; scientific results require review. Explicit matched comparisons, failures and actual Meshes retained.\n\n[Report](TECHNICAL_REPORT.md) · [metrics](visualization/BODY_SHAPE_METRICS.csv)\n')
  # Plain manifest only, intentionally no dashboard/WebGL app.
- paths=sorted(p for p in attempt.rglob('*')if p.is_file()and p.suffix in ['.png','.glb','.json','.csv','.npz']and not p.name.startswith(('request','result','payload')))
+ paths=artifact_files(attempt)
  index='<!doctype html><meta charset="utf-8"><title>Offline artifact index</title><h1>PNG / GLB / exact Mesh files</h1><p>Images are the primary scientific deliverable. GLB: one coordinate unit = 1 mm; named full Mesh nodes may be toggled in a GLB viewer. No web visualization application.</p><svg width="1" height="1"></svg><img src="../evidence.png" width="1" alt="Historical harness evidence only"><ul>'
  for p in paths:
   rel=str(p.relative_to(attempt));index+='<li><a href="'+html.escape(rel)+'">'+html.escape(rel)+'</a></li>'
