@@ -1,0 +1,202 @@
+schema: 9
+task_id: TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001
+goal: One exact013 Init-A, FIT-only shared multiview deformation and evidence-gated
+  topology growth; C0 proof before real G01/G03/G05 and pixel-identity HERO relocation
+modules:
+- T01
+- T03
+- T04
+- T10
+- T11
+- T12
+- T13
+- T24
+- T31
+- T34
+- SU01
+- SU02
+- SU03
+- SU04
+- SU05
+variables:
+  geometry_unit: mm
+  pixel_coordinates: native_image_px
+  camera_transform: opencv_c2w
+  depth_convention: axial_z
+  parameters: {}
+inputs:
+  fixture:
+    path: /home/liu/ring_first_3d_structural_update/tools/research/frozen_fixture.json
+    sha256: d64ebdbc3b81287c7d8f235e634b05d44269ee76b27206a37d2df976d293dacb
+  support:
+    path: /home/liu/ring_first_3d_structural_update/tools/research/support_fixture.json
+    sha256: cc26119e6e67a3d19ab124685316b4815be0f63f5ac71bc416704cf46430b28c
+  reference:
+    path: /home/liu/ring_first_3d_structural_update/tools/research/frozen_reference.json
+    sha256: 216cbab2cdafa85e224580199356c1a2dc1ba087389e9699790d1c6101890cdd
+  source_lock:
+    path: /home/liu/ring_first_3d_structural_update/src/ring_first_3d/source_lock.json
+    sha256: 3bee30d508fa9ca6bbc4bbc315b217a0a660b77c6498cfce7ccbba6d9ba5f2b0
+  dxy_root: /home/liu/new-polyp-dxy
+  evidence:
+    path: /home/liu/ring_first_3d_structural_update/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/figures/REAL_SMOKE_EVIDENCE.png
+    sha256: 59451578fe85612ffa5b2bd47f450705e3d45403fbeaf6f324f2a2a9c2088b23
+split:
+  manifest:
+    path: /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/CASE.json
+    sha256: 57799a430b9b954180575a96da3b2d228e0802eac4f6ecf660744c3d308e688e
+  FIT:
+  - FIT
+  HOLDOUT:
+  - UPDATE_HOLDOUT
+  GT:
+  - independent_shape_evaluator_only
+  access: inita_train_hero_evaluation_isolation
+authorization:
+  approved_by: user
+  reference: User explicit TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001
+  stages:
+  - preflight
+  - contracts
+  - structural_regression
+  - G0_initialization
+  - G1_C0_update
+  - G2_C0_evaluate
+  - G3_C0_visualize
+  - G4_C0_gate
+  - G5_real_update
+  - G6_hero_relocate
+  - G7_real_evaluate
+  - G4_visualize
+  - artifacts
+acceptance:
+  required_stages:
+  - preflight
+  - contracts
+  - structural_regression
+  - G0_initialization
+  - G1_C0_update
+  - G2_C0_evaluate
+  - G3_C0_visualize
+  - G4_C0_gate
+  - G5_real_update
+  - G6_hero_relocate
+  - G7_real_evaluate
+  - G4_visualize
+  - artifacts
+  min_contract_tests: 11
+  require_visualization: true
+  require_failure_log: true
+budget:
+  max_seconds: 14400
+  stage_timeout_seconds: 5400
+  max_attempts_per_stage: 2
+  max_output_bytes: 4000000000
+stop:
+- gate_failure
+- input_drift
+- budget_exceeded
+output_root: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs
+structural:
+  baseline_commit: 418c96f87ba06458be5bb082813cad6e20127a19
+  initialization: EXACT_013_INPUT_MESH_V_F_SOLID_CAP
+  real_cases:
+  - G01
+  - G03
+  - G05
+  simulation_conditions:
+  - C0
+  Body_arms:
+  - DEFORM_ONLY
+  - DEFORM_GROW
+  camera_optimization: false
+  Body_uses_HERO: false
+  HERO_updates_Body: false
+  GT_selects_prediction: false
+  assets:
+    real_sources:
+      path: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/inputs/SOURCES.json
+      sha256: 38472edcee503767ca4be41cf1a2f11d17cb1671423571a90858cec32f7338fd
+    legacy_geometry:
+      path: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/legacy015/safe_geometry.py
+      sha256: 5ff32cc404300406ec05f0b147f332691186ead64df88ff2ad4f69569fd715fc
+    legacy_multiview:
+      path: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/legacy015/multiview.py
+      sha256: 940e48d06cf9fad73128f3ab4c2a54899e36bcdbaaf843db5cd6bdf919bde0a9
+    simulation_views:
+      path: /home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/inputs/VIEW_SOURCES.json
+      sha256: b55b2b94e69fdac12621389c69edb22005bc4cdacdeb08a5576e828174e2c586
+    ring:
+      path: /home/liu/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/runs/SIM_REV1_001/attempts/0004-G0_simulate-299c2b30/public/canonical_ring.npz
+      sha256: 30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af
+    virtual_gt:
+      path: /home/liu/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/runs/SIM_REV1_001/attempts/0004-G0_simulate-299c2b30/private/virtual_GT.npz
+      sha256: 1c857568eee39f39d2b18c15abe23e227827eb89215df067d1140ece5a6b0f4f
+    E1_initializer:
+      path: /home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/inputs/E1_INITIALIZER.npz
+      sha256: a15641f46d9e8f116ac94e85ba9aeb9c6fd8612b976d6b5c927a5567abc6a139
+    E2_initializer:
+      path: /home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/inputs/E2_INITIALIZER.npz
+      sha256: 985d222b78f4610aa5bbbbe21999ae75d9c6d617708c0f9bed413763bc5b9605
+    upstream_TASK:
+      path: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/TASK.yaml
+      sha256: bab6b616f87cbafdcd3531acbe5663ab5b2dbc591aa78294eb73aa6441ac3815
+    upstream_failure:
+      path: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/FAILURE_REGISTRY.json
+      sha256: 4e7ef5b69ee17c414237b4898ae24e8947288ae1f72d478e0291a6f629e101b2
+    input_manifest:
+      path: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/inputs/INPUT_MANIFEST.json
+      sha256: 373020ef1a1c0c35b5362d782eba3164b20475d960b09d918d7d32ba3afebeef
+    code_lock:
+      path: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/inputs/CODE_LOCK.json
+      sha256: 6c921cf6bfeba8c06491a95794a170aa519867c43704b170374e9dfc0949ee86
+  simulation_public: /home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/runs/MULTISURFACE_001/attempts/0004-G0_views_noise-3ab770b4/public
+  update:
+    iterations: 36
+    learning_rate_mm: 0.02
+    line_search_steps: 8
+    samples_per_direction: 384
+    negative_samples: 256
+    ring_unknown_px: 3
+    capture_px: 120.0
+    pixel_loss_scale: 20.0
+    lambda_lap: 0.03
+    lambda_edge: 0.02
+    lambda_prior: 0.002
+    growth_iterations:
+    - 12
+    - 24
+    growth_min_gap_px: 6.0
+    growth_min_views: 3
+    growth_min_videos: 2
+    growth_patch_rings: 2
+    growth_max_patch_faces: 80
+    growth_min_singular_ratio: 0.02
+    growth_max_inconsistency: 0.5
+    growth_min_mm: 0.1
+    growth_max_mm: 0.8
+    growth_candidates: 3
+    growth_min_FIT_IoU_gain: 0.0001
+  C0_gate:
+    require_GT_Chamfer_improvement: true
+    require_HOLDOUT_IoU_nonworsening: true
+    require_accepted_growth: true
+    require_growth_over_deform_GT_gain: true
+    require_no_geometry_worsening: true
+  hero:
+    capture_mm: 3.0
+    samples: 384
+    tolerance_mm: 0.5
+    video_offset_bound_mm: 2.0
+    frame_prior:
+    - 0.01
+    - 0.1
+    - 0.1
+    - 0.1
+    frame_bounds:
+    - 0.03
+    - 0.3
+    - 0.3
+    - 0.3
+    outer_iterations: 3
+    max_nfev: 40

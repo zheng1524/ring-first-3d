@@ -44,7 +44,8 @@ def simulation_data(task,only_role=None):
         if only_role and r['role']!=only_role:continue
         cid=r['view_id'];a=np.load(public/'observations'/(cid+'.npz'));cache=np.load(r['cache']['path'])
         require(np.array_equal(a['K'],np.asarray(r['K'])),'CAMERA','Frozen native intrinsics')
-        require(np.allclose(np.asarray(r['Camera_to_Ring']),cache['T'],atol=1e-10),'CAMERA','True C0 Camera-to-Ring')
+        from ring_first_3d.dualvideo.audit import check_sources
+        check_sources(r)  # Existing typed pose_origin NPZ/JSON adapter; RGB cache need not have T.
         # No depth/GT/latent material identity key enters Body updater.
         meta=next((v['meta'] for v in real_row(task,'G01')['FIT']+real_row(task,'G01')['HOLDOUT'] if v['meta']['id']==cid),{})
         # Old simulation view manifest lacks direction bins for added FITs. Reuse

@@ -72,6 +72,12 @@ class StructuralTests(unittest.TestCase):
             pairs[str(i)]=dict(accepted=np.ones(1,bool),missing_support=np.ones(1,bool),face=np.array([face]),bary=np.array([[1.,0.,0.]]),projected_uv=uv[None],target_uv=(uv+res)[None])
         cfg=dict(growth_patch_rings=1,growth_max_patch_faces=80,growth_min_views=3,growth_min_videos=2,growth_min_singular_ratio=.02,growth_max_inconsistency=.5,growth_min_mm=.1,growth_max_mm=.8,growth_candidates=3)
         candidates,audit=bu.growth_candidates(a,v,pairs,cfg);self.assertTrue(candidates);np.testing.assert_allclose(candidates[0]['delta'],shift,atol=1e-10);self.assertEqual(len(candidates[0]['support_views']),3)
+    def test_real_simulation_adapter_accepts_RGB_cache_without_T(self):
+        import yaml
+        from data_adapter import simulation_data
+        task=yaml.safe_load((TD/'TASK.yaml').read_text());body,views,ring,base,chart=simulation_data(task)
+        self.assertEqual(len(views),24);self.assertEqual(sum(v['role']=='FIT' for v in views),16)
+        self.assertEqual(body['V'].shape,(642,3));self.assertTrue(all(set(v)<=set(('id','video','role','direction_block','K','C','labels','RGB')) for v in views))
     def test_stage_order_requires_scientific_gate(self):
         self.assertLess(STRUCTURAL_STAGES.index('G4_C0_gate'),STRUCTURAL_STAGES.index('G5_real_update'));self.assertEqual(stages_for(dict(schema=9)),STRUCTURAL_STAGES)
     def test_gate_all_endpoints_not_only_2D(self):
