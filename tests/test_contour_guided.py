@@ -57,6 +57,20 @@ class ContourContracts(unittest.TestCase):
  def test_index_excludes_runtime_cache_and_control_files(self):
   from ring_first_3d.contour_guided.visualize import artifact_files
   root=Path(self.tmp.name);(root/'runtime/mpl').mkdir(parents=True);(root/'runtime/mpl/fontlist.json').write_text('{}');(root/'mesh.glb').write_bytes(b'glTF');(root/'request.json').write_text('{}');self.assertEqual([p.name for p in artifact_files(root)],['mesh.glb'])
+ def test_index_links_are_subset_of_actual_runner_published_payload(self):
+  from ring_first_3d.contour_guided.visualize import artifact_files
+  from ring_first_3d.synthetic.io import outputs
+  root=Path(self.tmp.name);(root/'runtime').mkdir();(root/'runtime/secret.json').write_text('{}')
+  for n in ['worker.json','request.json','payload.json','result.json','stdout.txt','stderr.txt','BODY_METRICS.json','BODY.npz','MODEL.glb']:(root/n).write_text('{}')
+  links={str(p.relative_to(root))for p in artifact_files(root)};self.assertEqual(links,{'BODY_METRICS.json','BODY.npz','MODEL.glb'});self.assertTrue(links<=set(outputs(root,{})['files']))
+ def test_PNG_task_plain_index_profile_does_not_need_hidden_legacy_figure(self):
+  from ring_first_3d.policy.artifacts import check_page_profile
+  check_page_profile(TASK_ID,'<h1>PNG files</h1><a href="figures/real.png">Figure</a>')
+  with self.assertRaises(PolicyError):check_page_profile(TASK_ID,'<script>f()</script><a href="x">x</a>')
+ def test_original_harness_profile_remains_required(self):
+  from ring_first_3d.policy.artifacts import check_page_profile
+  with self.assertRaises(PolicyError):check_page_profile('OLD','<a href="x">x</a>')
+  check_page_profile('OLD','<svg></svg><img src="../evidence.png">')
  def test_hero_csv_row_accepts_existing_method_key(self):
   from ring_first_3d.contour_guided.visualize import method_row
   self.assertEqual(method_row('G01','H4',dict(method='H4',status='NUMERIC')),dict(case='G01',method='H4',status='NUMERIC'))

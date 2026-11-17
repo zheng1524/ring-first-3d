@@ -7,7 +7,7 @@ from ..inita.train import sources
 from ..multisurface.geometry import scene,cast,mesh_sections,plane_coordinates
 
 def artifact_files(attempt):
- return sorted(p for p in attempt.rglob('*')if p.is_file()and 'runtime'not in p.relative_to(attempt).parts and p.suffix in ['.png','.glb','.json','.csv','.npz']and not p.name.startswith(('request','result','payload')))
+ return sorted(attempt/name for name in outputs(attempt,{})['files']if Path(name).suffix in ['.png','.glb','.json','.csv','.npz'])
 
 def method_row(case,method,record):return dict(record,case=case,method=method)
 
@@ -141,7 +141,7 @@ def run(task,attempt,smoke=False):
  (attempt/'TECHNICAL_REPORT.md').write_text(report);(attempt/'RESULT_CARD.md').write_text('# '+task['task_id']+'\n\nExecution completed; scientific results require review. Explicit matched comparisons, failures and actual Meshes retained.\n\n[Report](TECHNICAL_REPORT.md) · [metrics](visualization/BODY_SHAPE_METRICS.csv)\n')
  # Plain manifest only, intentionally no dashboard/WebGL app.
  paths=artifact_files(attempt)
- index='<!doctype html><meta charset="utf-8"><title>Offline artifact index</title><h1>PNG / GLB / exact Mesh files</h1><p>Images are the primary scientific deliverable. GLB: one coordinate unit = 1 mm; named full Mesh nodes may be toggled in a GLB viewer. No web visualization application.</p><svg width="1" height="1"></svg><img src="../evidence.png" width="1" alt="Historical harness evidence only"><ul>'
+ index='<!doctype html><meta charset="utf-8"><title>Offline artifact index</title><h1>PNG / GLB / exact Mesh files</h1><p>Images are the primary scientific deliverable. GLB: one coordinate unit = 1 mm; named full Mesh nodes may be toggled in a GLB viewer. No web visualization application.</p><ul>'
  for p in paths:
   rel=str(p.relative_to(attempt));index+='<li><a href="'+html.escape(rel)+'">'+html.escape(rel)+'</a></li>'
  (attempt/'index.html').write_text(index+'</ul>\n');return outputs(attempt,dict(status='PASS',scientific_failures=failures,body_pairs=len(pairs),hero_groups=len(hero['groups']),PNG_primary=True))

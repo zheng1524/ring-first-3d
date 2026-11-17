@@ -130,6 +130,13 @@ def publish(root, task, state):
     return state
 
 
+def check_page_profile(task_id,page):
+    if task_id=="TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001":
+        require("<script"not in page.lower() and '<a href='in page,"VISUALIZATION","PNG/GLB task uses a plain local file index; scientific PNGs verified by task artifacts")
+    else:
+        require("<svg" in page and '<img src="../evidence.png"' in page, "VISUALIZATION", "Status visualization and real evidence required")
+
+
 def check_artifacts(root, state):
     root = Path(root).resolve()
     require((root / "current").resolve() == root / "snapshots" / state["snapshot"], "ARTIFACT_PATH", "Current snapshot mismatch")
@@ -143,7 +150,7 @@ def check_artifacts(root, state):
         require((root / name).is_file() and (root / name).resolve() == p.resolve(), "ARTIFACT_MISSING", "Public path " + name)
     require((root/"evidence.png").read_bytes().startswith(b"\x89PNG\r\n\x1a\n"), "VISUALIZATION", "Real PNG evidence required")
     page = (root/"visualization/index.html").read_text()
-    require("<svg" in page and '<img src="../evidence.png"' in page, "VISUALIZATION", "Status visualization and real evidence required")
+    check_page_profile(state.get("task_id"),page)
     class Links(HTMLParser):
         def handle_starttag(self,tag,attrs):
             for key,value in attrs:

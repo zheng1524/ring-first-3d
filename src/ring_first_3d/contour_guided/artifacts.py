@@ -22,7 +22,7 @@ def validate(root,state):
  files=state.get('contour_files',{})
  for n,r in files.items():
   p=root/n;require(p.is_file()and sha256(p)==r['sha256']and p.stat().st_size==r['bytes'],'ARTIFACT_MISSING',n)
- if any('-G4_visualize-'in r['path']for r in state['attempts']):
+ if any('-G4_visualize-'in r['path']or '-G4_smoke_visualize-'in r['path']for r in state['attempts']):
   require({'visualization/figures/Fig1_2D_TO_3D.png','visualization/figures/Fig2_ALL_BODY_GT.png','visualization/figures/Fig4_BODY_HERO_RELATION.png','visualization/BODY_SHAPE_METRICS.csv','visualization/HERO_ALL11_METRICS.csv','visualization/BODY_UPDATE_LINKS.json','visualization/FAILURE_LEDGER.json','visualization/GT_RIGID_TRANSFORMS.json'}<=set(files),'ARTIFACT_MISSING','Real 2D→3D mechanism, GT copies and all11 HERO required')
   require(any(n.endswith('_H4_FULL_HERO.glb')for n in files),'ARTIFACT_MISSING','Actual registered HERO GLB')
   first=re.search(r'!\[[^\]]*\]\(([^)]+)\)',(root/'TECHNICAL_REPORT.md').read_text());require(first and first.group(1)=='visualization/figures/Fig1_2D_TO_3D.png','MAIN_FIGURE','2D correspondence → actual3D update')
