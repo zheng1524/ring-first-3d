@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "failures": [
+    {
+      "id": "CG-INHERITED-FM-INIT-A-G08-001",
+      "category": "incomplete_evaluation",
+      "modules": [
+        "IA01",
+        "IA02",
+        "IA03"
+      ],
+      "symptom": "G08 lacks004; A1/A2 cannot be evaluated as defined",
+      "cause": "Source availability or observed scientific limitation; gate ordering cause confirmed separately in ENGINEERING_FIXES",
+      "cause_status": "observed_only",
+      "repair": "Keep all targets, valid/invalid metrics and actual Mesh evidence; no GT tuning, prediction fallback or automatic permanent promotion",
+      "regression": [
+        "130 inherited and new source/initialization/scope/isolation tests"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/13a73f0422be5e5b0e221df4a41407b3b6d6d52c/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-INHERITED-FM-INIT-A-ENTITY-001",
+      "category": "scientific_negative",
+      "modules": [
+        "IA01",
+        "IA02",
+        "IA03"
+      ],
+      "symptom": "Strict solid IoU validity is not guaranteed; conditional occupancy is not a replacement for strict IoU",
+      "cause": "Source availability or observed scientific limitation; gate ordering cause confirmed separately in ENGINEERING_FIXES",
+      "cause_status": "observed_only",
+      "repair": "Keep all targets, valid/invalid metrics and actual Mesh evidence; no GT tuning, prediction fallback or automatic permanent promotion",
+      "regression": [
+        "130 inherited and new source/initialization/scope/isolation tests"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/13a73f0422be5e5b0e221df4a41407b3b6d6d52c/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-INHERITED-FM-INIT-A-HERO-SOURCES-001",
+      "category": "incomplete_evaluation",
+      "modules": [
+        "IA01",
+        "IA02",
+        "IA03"
+      ],
+      "symptom": "Not all physical groups have >=2 source-bound complete HERO Meshes; unavailable targets remain NaN",
+      "cause": "Source availability or observed scientific limitation; gate ordering cause confirmed separately in ENGINEERING_FIXES",
+      "cause_status": "observed_only",
+      "repair": "Keep all targets, valid/invalid metrics and actual Mesh evidence; no GT tuning, prediction fallback or automatic permanent promotion",
+      "regression": [
+        "130 inherited and new source/initialization/scope/isolation tests"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/13a73f0422be5e5b0e221df4a41407b3b6d6d52c/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-INHERITED-FM-INIT-A-GATE-001",
+      "category": "code_error",
+      "modules": [
+        "IA01",
+        "IA02",
+        "IA03"
+      ],
+      "symptom": "Guarded regression initially checked GT metadata before rejecting corrupted source binding",
+      "cause": "YAML key sorting changed asset-check order inside trusted worker guard",
+      "cause_status": "confirmed",
+      "repair": "Keep all targets, valid/invalid metrics and actual Mesh evidence; no GT tuning, prediction fallback or automatic permanent promotion",
+      "regression": [
+        "130 inherited and new source/initialization/scope/isolation tests"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/13a73f0422be5e5b0e221df4a41407b3b6d6d52c/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-INHERITED-FM-INIT-A-IP-MORPHOLOGY-001",
+      "category": "scientific_negative",
+      "modules": [
+        "IA01",
+        "IA03",
+        "IA04"
+      ],
+      "symptom": "Verified G02 wrong half-body persists; G03 no long stalk after multivideo",
+      "cause": "Observed constrained optimization stall and source-shape bias; unique causal allocation not established",
+      "cause_status": "observed_only",
+      "repair": "Retain full actual original/aligned Mesh, all arms and geometry rejection logs; no case-specific patch or GT checkpoint selection",
+      "regression": [
+        "130 tests: exact013 lineage, original optimizer budget, per-video permissions and evaluator-copy isolation"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/13a73f0422be5e5b0e221df4a41407b3b6d6d52c/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    }
+  ]
+}

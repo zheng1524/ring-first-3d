@@ -2858,6 +2858,51 @@
       "validation_tests": 130,
       "validation_report": "experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TECHNICAL_REPORT.md",
       "source_commit": "6ee15cff25f96bea02073428da6ce6cd2af91947"
+    },
+    {
+      "id": "CG01",
+      "module": "Explicit detached normal-contour E/M with calibrated vertex gradients",
+      "path": "src/ring_first_3d/contour_guided/correspondence.py",
+      "sha256": "373d1fd855ad66c5bb73617db02b136b0e565769c0afd0a4ec60fe3aa6cf2f37",
+      "engineering": "IMPLEMENTED_PENDING_RUN",
+      "scientific": "UNTESTED_REQUIRES_FROZEN_SCIENTIFIC_RUN",
+      "limit": "Same013/views/cameras/guards/optimizer/budget; GT copies only; no DXY/HERO training"
+    },
+    {
+      "id": "CG02",
+      "module": "Objective-only adapter to original optimizer, no depth",
+      "path": "src/ring_first_3d/contour_guided/objective.py",
+      "sha256": "b09d8240a0fab452e1eb73772f1453b10d8f1c893d89acf07dca072c76fbc410",
+      "engineering": "IMPLEMENTED_PENDING_RUN",
+      "scientific": "UNTESTED_REQUIRES_FROZEN_SCIENTIFIC_RUN",
+      "limit": "Same013/views/cameras/guards/optimizer/budget; GT copies only; no DXY/HERO training"
+    },
+    {
+      "id": "CG03",
+      "module": "Actual visible Mesh contour and Face/bary adapter to unchanged surface optimizer",
+      "path": "src/ring_first_3d/contour_guided/hero.py",
+      "sha256": "00106b2e03e3b37ec8484d05dee07ee9b84f8ab57fdbda2f353a6c0ae645a75b",
+      "engineering": "IMPLEMENTED_PENDING_RUN",
+      "scientific": "UNTESTED_REQUIRES_FROZEN_SCIENTIFIC_RUN",
+      "limit": "Same013/views/cameras/guards/optimizer/budget; GT copies only; no DXY/HERO training"
+    },
+    {
+      "id": "CG04",
+      "module": "Frozen-source all11/smoke policy composition and independent evaluation",
+      "path": "src/ring_first_3d/contour_guided/experiment.py",
+      "sha256": "2e93d4573b29f3a7f59285aa28e9d0f70b79ac1d28cb843fcd6bf2f816be43c7",
+      "engineering": "IMPLEMENTED_PENDING_RUN",
+      "scientific": "UNTESTED_REQUIRES_FROZEN_SCIENTIFIC_RUN",
+      "limit": "Same013/views/cameras/guards/optimizer/budget; GT copies only; no DXY/HERO training"
+    },
+    {
+      "id": "CG05",
+      "module": "Actual PNG mechanism, Mesh sections and GLB, plain index",
+      "path": "src/ring_first_3d/contour_guided/visualize.py",
+      "sha256": "b768d67c85e56652171eb740ce2050c5410a6336239842a75db59e8025208e7f",
+      "engineering": "IMPLEMENTED_PENDING_RUN",
+      "scientific": "UNTESTED_REQUIRES_FROZEN_SCIENTIFIC_RUN",
+      "limit": "Same013/views/cameras/guards/optimizer/budget; GT copies only; no DXY/HERO training"
     }
   ]
 }
