@@ -1,0 +1,18 @@
+[
+  {
+    "id": "AR001",
+    "type": "ENGINEERING_EXPORT_ERROR",
+    "found_by": "Independent second agent IR-009",
+    "cause": "SQLite double-quoted symlink was resolved as the existing symlink column, not a string literal",
+    "repair": "Parameter-bound kind query on existing immutable scan database; initial empty export retained",
+    "corrected_symlinks": 53263,
+    "source_rescan": false
+  },
+  {
+    "id": "AR002",
+    "type": "RUNTIME_INVOCATION",
+    "cause": "Existing shell launchers are 0644; direct subprocess invocation raises PermissionError",
+    "repair": "Invoke unchanged launcher with bash; actual import results in LAYERED_RUNTIME_PROBE.json; source permissions not modified",
+    "source_write": false
+  }
+]

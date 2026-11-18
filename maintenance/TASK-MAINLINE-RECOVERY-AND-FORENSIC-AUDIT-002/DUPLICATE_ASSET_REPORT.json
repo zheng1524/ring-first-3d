@@ -1,0 +1,13 @@
+{
+  "strict_AB_groups": 48341,
+  "logical_repeated_bytes": 22204358652,
+  "different_inode_identical_content_logical_bytes": 5648797648,
+  "version_or_run_groups": 1558,
+  "single_path_hash_assets": 179458,
+  "single_path_hash_logical_bytes": 41274370174,
+  "A": "Identical SHA256 and bytesize with same basename",
+  "B": "Identical SHA256 and bytesize across differing names",
+  "C": "Different bytes under same scoped relative path; kept as versions, semantic similarity unverified",
+  "D": "Different run/attempt/metric artifacts, all retained",
+  "limitations": "No deletion candidates are approved. Physical different-inode duplicate logical bytes is not filesystem savings: references, hardlinks, shared extents, metadata and recovery are separate. Identical bytes do not erase provenance. UNIQUE_* values are conservative extension/path protection heuristics, not proof of raw origin or global uniqueness. All UNKNOWN retained."
+}

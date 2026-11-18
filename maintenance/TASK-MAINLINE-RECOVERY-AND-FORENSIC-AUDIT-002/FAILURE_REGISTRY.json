@@ -1,0 +1,52 @@
+{
+  "records": [
+    {
+      "id": "FA002-SYMLINK-EXPORT",
+      "type": "ENGINEERING_ERROR",
+      "cause": "SQLite identifier/literal ambiguity",
+      "evidence": "AUDIT_REVISIONS.json",
+      "fix": "Bound parameter export, original error preserved",
+      "regression": "audit_validation.py:symlink row equivalence",
+      "permanent_rule": false
+    },
+    {
+      "id": "FA002-RUNTIME-EXEC",
+      "type": "ENGINEERING_INVOCATION_ERROR",
+      "cause": "Historical launcher0644",
+      "fix": "bash unchanged launcher",
+      "evidence": "LAYERED_RUNTIME_PROBE.json",
+      "permanent_rule": false
+    },
+    {
+      "id": "FA002-ALTERNATE",
+      "type": "RETIREMENT_BLOCKER",
+      "cause": "C object store borrows B",
+      "fix": "No retirement; future separately authorized object closure validation",
+      "evidence": "INDEPENDENT_REVIEW_PACKAGE/GIT_OBJECT_AUDIT.json",
+      "permanent_rule": false
+    },
+    {
+      "id": "FA002-G01-METRICS",
+      "type": "SCIENTIFIC_NEGATIVE_RETAINED",
+      "cause": "Different alignment frames and mixed metric changes",
+      "evidence": "METRIC_DEFINITION_AUDIT.md",
+      "fix": "Keep separate definitions, no recomputation",
+      "permanent_rule": false
+    },
+    {
+      "id": "FA002-TRUNCATED-INPUT",
+      "type": "TASK_ATTACHMENT_TRUNCATED",
+      "cause": "File ends at section11 opening",
+      "evidence": "TASK.md",
+      "fix": "Execute complete preceding scope and preserve missing tail disclosure",
+      "permanent_rule": false
+    },
+    {
+      "id": "FA002-PYTHON-AST",
+      "type": "ENGINEERING_TOOL_VERSION",
+      "cause": "System Python3.8 lacks ast.unparse during metadata enrichment; no algorithm executed",
+      "fix": "Use existing approved Python3.12 environment; metadata enrichment completed",
+      "permanent_rule": false
+    }
+  ]
+}

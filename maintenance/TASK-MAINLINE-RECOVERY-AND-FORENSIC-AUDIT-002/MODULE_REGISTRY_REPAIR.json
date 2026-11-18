@@ -1,0 +1,2731 @@
+{
+  "before": 69,
+  "after": 99,
+  "added": [
+    {
+      "id": "SU01",
+      "module": "One FIT-only metric updater for both domains. Discrete assignments are detached.\nNo camera variables, GT loader, depth observations, DXY or per-image Body.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/body_update.py",
+      "symbols": [
+        "initialize",
+        "balanced_weights",
+        "boundary",
+        "take",
+        "ring_maps",
+        "assignments",
+        "projection_metrics",
+        "legacy_geometry",
+        "make_guard",
+        "objective",
+        "projection_jacobian",
+        "growth_candidates",
+        "extrude_patch",
+        "growth_quality",
+        "cap_feasible_proposal",
+        "update"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Exact013 shared Body, balanced FIT contours and frozen geometry",
+      "output": "Historical free-vertex/extrusion baseline, snapshots and original rejections; not current structured updater",
+      "call": "initialize; balanced_weights; boundary; take; ring_maps; assignments; projection_metrics; legacy_geometry; make_guard; objective; projection_jacobian; growth_candidates; extrude_patch; growth_quality; cap_feasible_proposal; update",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+      "sha256": "ea4e97b8e335c664cc1a95a03dc9532133784a0e6008896676511fd4ab388752",
+      "bytes": 22261,
+      "source_task": "TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "source_commit": "7c471701f38f1577ba506bc8ed1e38774f99dabe",
+      "execution_commit": "6415993f4c6aa2370e80841d1803ed701b257bee",
+      "historical_branch": "exp/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "dependencies": [
+        "ast",
+        "copy",
+        "cv2",
+        "json",
+        "numpy",
+        "open3d",
+        "pathlib",
+        "pytorch3d.structures",
+        "ring_first_3d.contour_guided.correspondence",
+        "ring_first_3d.multisurface.geometry",
+        "ring_first_3d.policy.contracts",
+        "ring_first_3d.synthetic.io",
+        "ring_first_3d.synthetic.raster",
+        "scipy.ndimage",
+        "scipy.spatial",
+        "torch",
+        "trimesh",
+        "types"
+      ],
+      "symbol_definitions": {
+        "initialize": {
+          "line": 21,
+          "end_line": 28,
+          "args": "asset, ring, reference_ring"
+        },
+        "balanced_weights": {
+          "line": 31,
+          "end_line": 39,
+          "args": "views"
+        },
+        "boundary": {
+          "line": 42,
+          "end_line": 43,
+          "args": "mask"
+        },
+        "take": {
+          "line": 46,
+          "end_line": 47,
+          "args": "a, n"
+        },
+        "ring_maps": {
+          "line": 50,
+          "end_line": 51,
+          "args": "views, ring"
+        },
+        "assignments": {
+          "line": 54,
+          "end_line": 96,
+          "args": "body, views, ringz, cfg, folder=None"
+        },
+        "projection_metrics": {
+          "line": 99,
+          "end_line": 112,
+          "args": "body, views, ringz"
+        },
+        "legacy_geometry": {
+          "line": 115,
+          "end_line": 121,
+          "args": "path"
+        },
+        "make_guard": {
+          "line": 124,
+          "end_line": 129,
+          "args": "body, ring, base, chart, ns"
+        },
+        "objective": {
+          "line": 132,
+          "end_line": 153,
+          "args": "V, body, rest, views, pairs, weights, cfg, gradient=False"
+        },
+        "projection_jacobian": {
+          "line": 156,
+          "end_line": 160,
+          "args": "P, K, C"
+        },
+        "growth_candidates": {
+          "line": 163,
+          "end_line": 207,
+          "args": "body, views, pairs, cfg"
+        },
+        "extrude_patch": {
+          "line": 210,
+          "end_line": 235,
+          "args": "body, patch, delta"
+        },
+        "growth_quality": {
+          "line": 238,
+          "end_line": 260,
+          "args": "candidate, old, ring, ns, base, chart"
+        },
+        "cap_feasible_proposal": {
+          "line": 263,
+          "end_line": 273,
+          "args": "delta, body, plane, centers"
+        },
+        "update": {
+          "line": 276,
+          "end_line": 329,
+          "args": "initial, views, ring, base, chart, cfg, out, geometry_source, growth=True"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/body_update.py",
+        "exists": true,
+        "sha256": "ea4e97b8e335c664cc1a95a03dc9532133784a0e6008896676511fd4ab388752",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "ea4e97b8e335c664cc1a95a03dc9532133784a0e6008896676511fd4ab388752",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+          "exists": true,
+          "sha256": "6a830f658be3730aa713365c2118fd9d3e3bf15da1bb9fe4fff8c33cdcf4127f",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "e3b4580f241d0d9f03ee2417bdb7794bdaeb8e81bfe5c4db49d327f9010418a7",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SU02",
+      "module": "Only domain adapter: exact 013 Mesh, original poses/splits/weights. No shape fit.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/data_adapter.py",
+      "symbols": [
+        "load_json",
+        "sources",
+        "real_row",
+        "common_initial",
+        "real_data",
+        "simulation_data",
+        "audit"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Frozen real/virtual source manifests",
+      "output": "Same exact013 initializer, aligned input role contracts and initialization audit",
+      "call": "load_json; sources; real_row; common_initial; real_data; simulation_data; audit",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+      "sha256": "a367432d6cd5ca8ebeb235f5106b5e2b0e86283e02749f04570ce283157ebe87",
+      "bytes": 4711,
+      "source_task": "TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "source_commit": "7c471701f38f1577ba506bc8ed1e38774f99dabe",
+      "execution_commit": "6415993f4c6aa2370e80841d1803ed701b257bee",
+      "historical_branch": "exp/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "dependencies": [
+        "body_update",
+        "json",
+        "numpy",
+        "pathlib",
+        "ring_first_3d.contracts.identities",
+        "ring_first_3d.dualvideo.audit",
+        "ring_first_3d.policy.contracts",
+        "ring_first_3d.synthetic.io"
+      ],
+      "symbol_definitions": {
+        "load_json": {
+          "line": 11,
+          "end_line": 11,
+          "args": "rec"
+        },
+        "sources": {
+          "line": 14,
+          "end_line": 14,
+          "args": "task"
+        },
+        "real_row": {
+          "line": 17,
+          "end_line": 17,
+          "args": "task, case"
+        },
+        "common_initial": {
+          "line": 20,
+          "end_line": 24,
+          "args": "task, case, ring"
+        },
+        "real_data": {
+          "line": 27,
+          "end_line": 36,
+          "args": "task, case, only_role=None"
+        },
+        "simulation_data": {
+          "line": 39,
+          "end_line": 56,
+          "args": "task, only_role=None"
+        },
+        "audit": {
+          "line": 59,
+          "end_line": 79,
+          "args": "task, attempt"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/data_adapter.py",
+        "exists": true,
+        "sha256": "a367432d6cd5ca8ebeb235f5106b5e2b0e86283e02749f04570ce283157ebe87",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "a367432d6cd5ca8ebeb235f5106b5e2b0e86283e02749f04570ce283157ebe87",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+          "exists": true,
+          "sha256": "6a830f658be3730aa713365c2118fd9d3e3bf15da1bb9fe4fff8c33cdcf4127f",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "e3b4580f241d0d9f03ee2417bdb7794bdaeb8e81bfe5c4db49d327f9010418a7",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "SU01"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SU03",
+      "module": "Pixel-identity low-DOF axial corrections after immutable Body freeze.\nNo camera variables, per-vertex fits, Body replacement or global fusion.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/hero_relocation.py",
+      "symbols": [
+        "relocate"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Frozen Body, original HERO pixel/depth Mesh and frozen cameras",
+      "output": "Historical bounded ray-depth relocation and preserved source topology; no Body feedback",
+      "call": "relocate",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+      "sha256": "dc99dac9e11de74d8d98e5e18ffcbbcb7e62b2a817f91e8eb7dc1077e4d2d3ef",
+      "bytes": 4626,
+      "source_task": "TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "source_commit": "7c471701f38f1577ba506bc8ed1e38774f99dabe",
+      "execution_commit": "6415993f4c6aa2370e80841d1803ed701b257bee",
+      "historical_branch": "exp/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "dependencies": [
+        "numpy",
+        "ring_first_3d.contracts.coordinates",
+        "ring_first_3d.multisurface.geometry",
+        "ring_first_3d.policy.contracts",
+        "ring_first_3d.stress.real",
+        "ring_first_3d.synthetic.raster",
+        "scipy.optimize"
+      ],
+      "symbol_definitions": {
+        "relocate": {
+          "line": 13,
+          "end_line": 60,
+          "args": "data, body, ring, cfg"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/hero_relocation.py",
+        "exists": true,
+        "sha256": "dc99dac9e11de74d8d98e5e18ffcbbcb7e62b2a817f91e8eb7dc1077e4d2d3ef",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "dc99dac9e11de74d8d98e5e18ffcbbcb7e62b2a817f91e8eb7dc1077e4d2d3ef",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+          "exists": true,
+          "sha256": "6a830f658be3730aa713365c2118fd9d3e3bf15da1bb9fe4fff8c33cdcf4127f",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "e3b4580f241d0d9f03ee2417bdb7794bdaeb8e81bfe5c4db49d327f9010418a7",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SU04",
+      "module": "Registered handlers. Engineering execution and C0 scientific validity are distinct.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/experiment.py",
+      "symbols": [
+        "train_one",
+        "c0_train",
+        "shape_metrics",
+        "c0_evaluate",
+        "c0_gate",
+        "require_c0",
+        "real_train",
+        "hero_predict",
+        "real_evaluate",
+        "regression",
+        "dispatch"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Frozen task and authorized scientific phase",
+      "output": "Historical C0/real/relocation dispatch with role-separated independent GT evaluation",
+      "call": "train_one; c0_train; shape_metrics; c0_evaluate; c0_gate; require_c0; real_train; hero_predict; real_evaluate; regression; dispatch",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+      "sha256": "50bb98a185c41066cb14b772993763ae085f3d2149a430d228a555f6a330f456",
+      "bytes": 14218,
+      "source_task": "TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "source_commit": "7c471701f38f1577ba506bc8ed1e38774f99dabe",
+      "execution_commit": "6415993f4c6aa2370e80841d1803ed701b257bee",
+      "historical_branch": "exp/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "dependencies": [
+        "body_update",
+        "data_adapter",
+        "figures",
+        "hero_relocation",
+        "io",
+        "json",
+        "numpy",
+        "open3d",
+        "pathlib",
+        "repair_adoption",
+        "ring_first_3d.contracts.identities",
+        "ring_first_3d.inita.evaluate",
+        "ring_first_3d.multisurface.evaluate",
+        "ring_first_3d.multisurface.geometry",
+        "ring_first_3d.policy.contracts",
+        "ring_first_3d.stress.real",
+        "ring_first_3d.synthetic.io",
+        "shutil",
+        "sys",
+        "unittest"
+      ],
+      "symbol_definitions": {
+        "train_one": {
+          "line": 15,
+          "end_line": 25,
+          "args": "task, attempt, case, simulation=False"
+        },
+        "c0_train": {
+          "line": 28,
+          "end_line": 32,
+          "args": "task, attempt"
+        },
+        "shape_metrics": {
+          "line": 35,
+          "end_line": 41,
+          "args": "body, gt, seed=20261117, N=12000"
+        },
+        "c0_evaluate": {
+          "line": 44,
+          "end_line": 70,
+          "args": "task, attempt"
+        },
+        "c0_gate": {
+          "line": 73,
+          "end_line": 79,
+          "args": "task, attempt"
+        },
+        "require_c0": {
+          "line": 82,
+          "end_line": 84,
+          "args": "root"
+        },
+        "real_train": {
+          "line": 87,
+          "end_line": 99,
+          "args": "task, attempt"
+        },
+        "hero_predict": {
+          "line": 102,
+          "end_line": 120,
+          "args": "task, attempt"
+        },
+        "real_evaluate": {
+          "line": 123,
+          "end_line": 154,
+          "args": "task, attempt"
+        },
+        "regression": {
+          "line": 157,
+          "end_line": 158,
+          "args": "attempt"
+        },
+        "dispatch": {
+          "line": 161,
+          "end_line": 173,
+          "args": "stage, task, attempt"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/experiment.py",
+        "exists": true,
+        "sha256": "50bb98a185c41066cb14b772993763ae085f3d2149a430d228a555f6a330f456",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "50bb98a185c41066cb14b772993763ae085f3d2149a430d228a555f6a330f456",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+          "exists": true,
+          "sha256": "6a830f658be3730aa713365c2118fd9d3e3bf15da1bb9fe4fff8c33cdcf4127f",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "e3b4580f241d0d9f03ee2417bdb7794bdaeb8e81bfe5c4db49d327f9010418a7",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "SB11",
+        "SU01",
+        "SU02",
+        "SU03",
+        "SU05",
+        "SU06"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SU05",
+      "module": "Data-driven PNGs, exact triangle-plane cuts, full Mesh GLBs; plain local file list.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/figures.py",
+      "symbols": [
+        "draw_mesh",
+        "world_axes",
+        "export_scene",
+        "body_figures",
+        "real_gt_panels",
+        "hero_figures",
+        "visualize"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Frozen predictions/metrics and evaluation copies",
+      "output": "Actual Mesh/contour/section PNGs and explicit negative evidence",
+      "call": "draw_mesh; world_axes; export_scene; body_figures; real_gt_panels; hero_figures; visualize",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+      "sha256": "9fc6d7045a072777e790e362e7c51b3ce4b5a7f26c9a307a9962ca00fc666d73",
+      "bytes": 20646,
+      "source_task": "TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "source_commit": "7c471701f38f1577ba506bc8ed1e38774f99dabe",
+      "execution_commit": "6415993f4c6aa2370e80841d1803ed701b257bee",
+      "historical_branch": "exp/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "dependencies": [
+        "body_update",
+        "data_adapter",
+        "html",
+        "json",
+        "matplotlib",
+        "matplotlib.collections",
+        "matplotlib.pyplot",
+        "mpl_toolkits.mplot3d.art3d",
+        "numpy",
+        "pathlib",
+        "ring_first_3d.multisurface.geometry",
+        "ring_first_3d.synthetic.io",
+        "shutil",
+        "trimesh"
+      ],
+      "symbol_definitions": {
+        "draw_mesh": {
+          "line": 17,
+          "end_line": 18,
+          "args": "ax, m, color, alpha=0.6"
+        },
+        "world_axes": {
+          "line": 21,
+          "end_line": 22,
+          "args": "ax, lo, hi"
+        },
+        "export_scene": {
+          "line": 25,
+          "end_line": 31,
+          "args": "path, models"
+        },
+        "body_figures": {
+          "line": 34,
+          "end_line": 81,
+          "args": "case, views, ring, initial, deform, final, gt, training, fig, models"
+        },
+        "real_gt_panels": {
+          "line": 84,
+          "end_line": 91,
+          "args": "root, case, gt, fig, models"
+        },
+        "hero_figures": {
+          "line": 94,
+          "end_line": 115,
+          "args": "root, case, source, initial, final, ring, fig, models"
+        },
+        "visualize": {
+          "line": 118,
+          "end_line": 186,
+          "args": "task, attempt, real=False"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/figures.py",
+        "exists": true,
+        "sha256": "9fc6d7045a072777e790e362e7c51b3ce4b5a7f26c9a307a9962ca00fc666d73",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "9fc6d7045a072777e790e362e7c51b3ce4b5a7f26c9a307a9962ca00fc666d73",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+          "exists": true,
+          "sha256": "6a830f658be3730aa713365c2118fd9d3e3bf15da1bb9fe4fff8c33cdcf4127f",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "e3b4580f241d0d9f03ee2417bdb7794bdaeb8e81bfe5c4db49d327f9010418a7",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "SU01",
+        "SU02"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SU06",
+      "module": "Planned narrowly scoped resume for a cap-only implementation repair.\nAdopts only same-task frozen non-cap predictions; all identities are rechecked.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/repair_adoption.py",
+      "symbols": [
+        "adoption"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Original failed/repaired code/inputs and stage freezes",
+      "output": "Hash/AST-guarded valid-stage restoration evidence, no silent recomputation",
+      "call": "adoption",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+      "sha256": "5c38e338f53ee7c46969e89595474dcf0c4b3dd9a66b158650218b2dde359c1c",
+      "bytes": 1822,
+      "source_task": "TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "source_commit": "7c471701f38f1577ba506bc8ed1e38774f99dabe",
+      "execution_commit": "6415993f4c6aa2370e80841d1803ed701b257bee",
+      "historical_branch": "exp/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001",
+      "dependencies": [
+        "json",
+        "numpy",
+        "pathlib",
+        "ring_first_3d.contracts.identities",
+        "ring_first_3d.policy.contracts",
+        "ring_first_3d.synthetic.io",
+        "shutil"
+      ],
+      "symbol_definitions": {
+        "adoption": {
+          "line": 12,
+          "end_line": 28,
+          "args": "task, attempt, stage, case=None"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/code/repair_adoption.py",
+        "exists": true,
+        "sha256": "5c38e338f53ee7c46969e89595474dcf0c4b3dd9a66b158650218b2dde359c1c",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "5c38e338f53ee7c46969e89595474dcf0c4b3dd9a66b158650218b2dde359c1c",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/runs/STRUCTURAL_004/FREEZE.json",
+          "exists": true,
+          "sha256": "6a830f658be3730aa713365c2118fd9d3e3bf15da1bb9fe4fff8c33cdcf4127f",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structural_update/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "e3b4580f241d0d9f03ee2417bdb7794bdaeb8e81bfe5c4db49d327f9010418a7",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "C0_PARTIAL_VALIDATION_REAL_NEGATIVE",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SB01",
+      "module": "Reuses ExplicitContour bidirectionality; full fresh FIT render before acceptance.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/projection_gate.py",
+      "symbols": [
+        "strict_mutual",
+        "sdf",
+        "stats",
+        "ProjectionGate"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "MIXED_NO_ACCEPTED_SWEEP",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Mesh V/F, frozen FIT labels/K/c2w, Ring depth, balanced weights",
+      "output": "Fresh visible Face/bary, R+/R-, strict contour pairs, per-view metrics and protection decisions",
+      "call": "strict_mutual; sdf; stats; ProjectionGate",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+      "sha256": "3df496781754172f5833a6157a94384113fc09c5ba5980d00da83d3d07af68e3",
+      "bytes": 6181,
+      "source_task": "TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "source_commit": "238c2da1cd842c0eba710a4ec44db5f437bff8e4",
+      "execution_commit": "cadde3e9efc64e0925933d0a663150db9031caee",
+      "historical_branch": "exp/TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "dependencies": [
+        "numpy",
+        "ring_first_3d.contour_guided.correspondence",
+        "ring_first_3d.synthetic.raster",
+        "scipy.ndimage",
+        "scipy.spatial",
+        "torch",
+        "torch.nn.functional"
+      ],
+      "symbol_definitions": {
+        "strict_mutual": {
+          "line": 11,
+          "end_line": 14,
+          "args": "source, target, si, ti"
+        },
+        "sdf": {
+          "line": 15,
+          "end_line": 15,
+          "args": "mask"
+        },
+        "stats": {
+          "line": 16,
+          "end_line": 23,
+          "args": "pred, target, known"
+        },
+        "ProjectionGate": {
+          "line": 25,
+          "end_line": 72,
+          "args": null
+        },
+        "ProjectionGate.__init__": {
+          "line": 26,
+          "end_line": 29,
+          "args": "self, views, ring, weights, config=None"
+        },
+        "ProjectionGate.rebuild": {
+          "line": 30,
+          "end_line": 49,
+          "args": "self, body, keep_maps=False"
+        },
+        "ProjectionGate.loss": {
+          "line": 50,
+          "end_line": 63,
+          "args": "self, V, F, assignments"
+        },
+        "ProjectionGate.regional_score": {
+          "line": 64,
+          "end_line": 65,
+          "args": "self, assignments"
+        },
+        "ProjectionGate.protect": {
+          "line": 66,
+          "end_line": 72,
+          "args": "self, assignments"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/projection_gate.py",
+        "exists": true,
+        "sha256": "3df496781754172f5833a6157a94384113fc09c5ba5980d00da83d3d07af68e3",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "3df496781754172f5833a6157a94384113fc09c5ba5980d00da83d3d07af68e3",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+          "exists": true,
+          "sha256": "78c4b663d86abfc6acd781d9b1e5753a78ebac9e3650a2dc966e1736cbee73d2",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "5c98992f802b00625ea27f3086f82726248384871cdcd11fb1145a35ea76896c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "MIXED_NO_ACCEPTED_SWEEP",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SB02",
+      "module": "Deterministic intrinsic graph, SO(3) node transforms; no free vertex parameters.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/deformation_graph.py",
+      "symbols": [
+        "so3",
+        "DeformationGraph"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "MIXED_NO_ACCEPTED_SWEEP",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Reference V/F, deterministic geodesic nodes, SO(3) node rotation/translation",
+      "output": "Shared deformed vertices, graph weights/edges and graph regularization",
+      "call": "so3; DeformationGraph",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+      "sha256": "511e83ba522c025a5da5ef8b9aa939c70733f307a9f292d2d635890800748e41",
+      "bytes": 2595,
+      "source_task": "TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "source_commit": "238c2da1cd842c0eba710a4ec44db5f437bff8e4",
+      "execution_commit": "cadde3e9efc64e0925933d0a663150db9031caee",
+      "historical_branch": "exp/TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "dependencies": [
+        "numpy",
+        "scipy.sparse",
+        "scipy.sparse.csgraph",
+        "torch"
+      ],
+      "symbol_definitions": {
+        "so3": {
+          "line": 7,
+          "end_line": 10,
+          "args": "w"
+        },
+        "DeformationGraph": {
+          "line": 12,
+          "end_line": 39,
+          "args": null
+        },
+        "DeformationGraph.__init__": {
+          "line": 13,
+          "end_line": 32,
+          "args": "self, V, F, nodes=32, neighbors=4, device='cpu'"
+        },
+        "DeformationGraph.mesh": {
+          "line": 33,
+          "end_line": 35,
+          "args": "self, w, t"
+        },
+        "DeformationGraph.energy": {
+          "line": 36,
+          "end_line": 39,
+          "args": "self, w, t"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/deformation_graph.py",
+        "exists": true,
+        "sha256": "511e83ba522c025a5da5ef8b9aa939c70733f307a9f292d2d635890800748e41",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "511e83ba522c025a5da5ef8b9aa939c70733f307a9f292d2d635890800748e41",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+          "exists": true,
+          "sha256": "78c4b663d86abfc6acd781d9b1e5753a78ebac9e3650a2dc966e1736cbee73d2",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "5c98992f802b00625ea27f3086f82726248384871cdcd11fb1145a35ea76896c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "MIXED_NO_ACCEPTED_SWEEP",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SB03",
+      "module": "Oehri et al.2025 Eq(1)-(5): spokes/rims, mixed Voronoi mass, edge-only SVD.\nGraph-restricted autograd global step, NOT the original unrestricted linear solve.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/smooth_arap.py",
+      "symbols": [
+        "SmoothARAP"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "MIXED_NO_ACCEPTED_SWEEP",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Reference/current V/F, lambda=.7, detached SVD local rotations",
+      "output": "Spokes/rims ARAP, mass-weighted Laplacian smooth energy and mixed SARAP",
+      "call": "SmoothARAP",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+      "sha256": "4292cb429ad9febcd512e374898d1735b62064b73c5ec1988cb11b49429e2a8a",
+      "bytes": 2675,
+      "source_task": "TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "source_commit": "238c2da1cd842c0eba710a4ec44db5f437bff8e4",
+      "execution_commit": "cadde3e9efc64e0925933d0a663150db9031caee",
+      "historical_branch": "exp/TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "dependencies": [
+        "numpy",
+        "torch"
+      ],
+      "symbol_definitions": {
+        "SmoothARAP": {
+          "line": 7,
+          "end_line": 40,
+          "args": null
+        },
+        "SmoothARAP.__init__": {
+          "line": 8,
+          "end_line": 26,
+          "args": "self, V, F, lam=0.7, device='cpu'"
+        },
+        "SmoothARAP.rotations": {
+          "line": 28,
+          "end_line": 34,
+          "args": "self, V"
+        },
+        "SmoothARAP.energies": {
+          "line": 35,
+          "end_line": 40,
+          "args": "self, V, R"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/smooth_arap.py",
+        "exists": true,
+        "sha256": "4292cb429ad9febcd512e374898d1735b62064b73c5ec1988cb11b49429e2a8a",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "4292cb429ad9febcd512e374898d1735b62064b73c5ec1988cb11b49429e2a8a",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+          "exists": true,
+          "sha256": "78c4b663d86abfc6acd781d9b1e5753a78ebac9e3650a2dc966e1736cbee73d2",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "5c98992f802b00625ea27f3086f82726248384871cdcd11fb1145a35ea76896c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "MIXED_NO_ACCEPTED_SWEEP",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SB04",
+      "module": "Cubic B-spline elliptical sweep with shared actual attachment rim vertices.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/bspline_sweep.py",
+      "symbols": [
+        "basis",
+        "boundary_loop",
+        "BSplineSweep"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "MIXED_NO_ACCEPTED_SWEEP",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Attachment loop, B-spline controls, two softplus semi-axis profiles",
+      "output": "Continuous sampled Sweep surface and shared boundary topology",
+      "call": "basis; boundary_loop; BSplineSweep",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+      "sha256": "d31a10d1da28333b2ae7f571083fe99985469e7bccf7e87195af6eebb8354b16",
+      "bytes": 6671,
+      "source_task": "TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "source_commit": "238c2da1cd842c0eba710a4ec44db5f437bff8e4",
+      "execution_commit": "cadde3e9efc64e0925933d0a663150db9031caee",
+      "historical_branch": "exp/TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "dependencies": [
+        "numpy",
+        "rmf",
+        "scipy.interpolate",
+        "torch",
+        "torch.nn.functional"
+      ],
+      "symbol_definitions": {
+        "basis": {
+          "line": 8,
+          "end_line": 12,
+          "args": "samples=16, controls=5"
+        },
+        "boundary_loop": {
+          "line": 14,
+          "end_line": 21,
+          "args": "F, patch"
+        },
+        "BSplineSweep": {
+          "line": 23,
+          "end_line": 74,
+          "args": null
+        },
+        "BSplineSweep.__init__": {
+          "line": 24,
+          "end_line": 51,
+          "args": "self, body, patch, direction, length=1.0, samples=16, angles=16, controls=5, device='cpu'"
+        },
+        "BSplineSweep.generate": {
+          "line": 52,
+          "end_line": 61,
+          "args": "self, V"
+        },
+        "BSplineSweep.penalties": {
+          "line": 62,
+          "end_line": 71,
+          "args": "self, V, info"
+        },
+        "BSplineSweep.body": {
+          "line": 72,
+          "end_line": 74,
+          "args": "self, V, template"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/bspline_sweep.py",
+        "exists": true,
+        "sha256": "d31a10d1da28333b2ae7f571083fe99985469e7bccf7e87195af6eebb8354b16",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "d31a10d1da28333b2ae7f571083fe99985469e7bccf7e87195af6eebb8354b16",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+          "exists": true,
+          "sha256": "78c4b663d86abfc6acd781d9b1e5753a78ebac9e3650a2dc966e1736cbee73d2",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "5c98992f802b00625ea27f3086f82726248384871cdcd11fb1145a35ea76896c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "MIXED_NO_ACCEPTED_SWEEP",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "SB05"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SB05",
+      "module": "Wang et al.2008 Table I Double Reflection, differentiable PyTorch.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/rmf.py",
+      "symbols": [
+        "unit",
+        "double_reflection"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "MIXED_NO_ACCEPTED_SWEEP",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Sampled centerline positions and tangents",
+      "output": "Double-reflection orthonormal continuous moving frame",
+      "call": "unit; double_reflection",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+      "sha256": "fc22c687018c56dbcc89d4a9e644eeca3b5749466874d521c2395894117781b6",
+      "bytes": 1135,
+      "source_task": "TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "source_commit": "238c2da1cd842c0eba710a4ec44db5f437bff8e4",
+      "execution_commit": "cadde3e9efc64e0925933d0a663150db9031caee",
+      "historical_branch": "exp/TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "dependencies": [
+        "torch"
+      ],
+      "symbol_definitions": {
+        "unit": {
+          "line": 4,
+          "end_line": 4,
+          "args": "x"
+        },
+        "double_reflection": {
+          "line": 6,
+          "end_line": 23,
+          "args": "points, tangents=None, initial=None"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/rmf.py",
+        "exists": true,
+        "sha256": "fc22c687018c56dbcc89d4a9e644eeca3b5749466874d521c2395894117781b6",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "fc22c687018c56dbcc89d4a9e644eeca3b5749466874d521c2395894117781b6",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+          "exists": true,
+          "sha256": "78c4b663d86abfc6acd781d9b1e5753a78ebac9e3650a2dc966e1736cbee73d2",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "5c98992f802b00625ea27f3086f82726248384871cdcd11fb1145a35ea76896c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "MIXED_NO_ACCEPTED_SWEEP",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SB06",
+      "module": "Detached non-worsening collision predicate; fixed material and CAD probes.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/ring_collision_gate.py",
+      "symbols": [
+        "samples",
+        "signed",
+        "area",
+        "RingCollisionGate"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "MIXED_NO_ACCEPTED_SWEEP",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Current/candidate Body material probes and fixed CAD probes",
+      "output": "Bidirectional signed-depth/area/energy records and initial/current non-worsening decision",
+      "call": "samples; signed; area; RingCollisionGate",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+      "sha256": "4b5923baa0816c9900b8706bdcd291b1e4c6d9362af856575497fcf60341adf1",
+      "bytes": 4328,
+      "source_task": "TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "source_commit": "238c2da1cd842c0eba710a4ec44db5f437bff8e4",
+      "execution_commit": "cadde3e9efc64e0925933d0a663150db9031caee",
+      "historical_branch": "exp/TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "dependencies": [
+        "numpy",
+        "open3d",
+        "ring_first_3d.multisurface.geometry"
+      ],
+      "symbol_definitions": {
+        "samples": {
+          "line": 7,
+          "end_line": 7,
+          "args": "V, F"
+        },
+        "signed": {
+          "line": 8,
+          "end_line": 8,
+          "args": "s, P"
+        },
+        "area": {
+          "line": 9,
+          "end_line": 9,
+          "args": "V, F"
+        },
+        "RingCollisionGate": {
+          "line": 11,
+          "end_line": 47,
+          "args": null
+        },
+        "RingCollisionGate.__init__": {
+          "line": 12,
+          "end_line": 18,
+          "args": "self, initial, ring"
+        },
+        "RingCollisionGate.measure": {
+          "line": 19,
+          "end_line": 21,
+          "args": "self, body"
+        },
+        "RingCollisionGate.check": {
+          "line": 22,
+          "end_line": 47,
+          "args": "self, body, current, sweep=None"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/ring_collision_gate.py",
+        "exists": true,
+        "sha256": "4b5923baa0816c9900b8706bdcd291b1e4c6d9362af856575497fcf60341adf1",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "4b5923baa0816c9900b8706bdcd291b1e4c6d9362af856575497fcf60341adf1",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+          "exists": true,
+          "sha256": "78c4b663d86abfc6acd781d9b1e5753a78ebac9e3650a2dc966e1736cbee73d2",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "5c98992f802b00625ea27f3086f82726248384871cdcd11fb1145a35ea76896c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "MIXED_NO_ACCEPTED_SWEEP",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SB07",
+      "module": "One graph/sweep PyTorch optimizer; fresh projection/collision gates on every trial.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/optimizer.py",
+      "symbols": [
+        "save_pairs",
+        "train"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "MIXED_NO_ACCEPTED_SWEEP",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Frozen case views/weights/Ring and graph/sweep configuration",
+      "output": "Accepted shared Body snapshots, node transforms, loss trace and gate rejections",
+      "call": "save_pairs; train",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+      "sha256": "5e805c630a92622bbb186ce3c6a4fb9cde28044838eff0db3f2b5db3044bbef6",
+      "bytes": 12071,
+      "source_task": "TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "source_commit": "238c2da1cd842c0eba710a4ec44db5f437bff8e4",
+      "execution_commit": "cadde3e9efc64e0925933d0a663150db9031caee",
+      "historical_branch": "exp/TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "dependencies": [
+        "bspline_sweep",
+        "common",
+        "copy",
+        "deformation_graph",
+        "growth_evidence",
+        "numpy",
+        "pathlib",
+        "projection_gate",
+        "ring_collision_gate",
+        "ring_first_3d.mainline.paths",
+        "smooth_arap",
+        "torch"
+      ],
+      "symbol_definitions": {
+        "save_pairs": {
+          "line": 16,
+          "end_line": 21,
+          "args": "path, assignments, full=False"
+        },
+        "train": {
+          "line": 23,
+          "end_line": 134,
+          "args": "initial, views, ring, base, chart, cfg, out, arm"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/optimizer.py",
+        "exists": true,
+        "sha256": "a9f9901171781a5fdad21136e335421a69f03be3bba753dbc1e8ff6890e2989b",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "a9f9901171781a5fdad21136e335421a69f03be3bba753dbc1e8ff6890e2989b",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+          "exists": true,
+          "sha256": "78c4b663d86abfc6acd781d9b1e5753a78ebac9e3650a2dc966e1736cbee73d2",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "5c98992f802b00625ea27f3086f82726248384871cdcd11fb1145a35ea76896c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "MIXED_NO_ACCEPTED_SWEEP",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "SB01",
+        "SB02",
+        "SB03",
+        "SB04",
+        "SB06",
+        "SB09",
+        "SB10"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SB08",
+      "module": "Policy-only handlers: fixed real pilot, all prediction freezes precede GT.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/pipeline.py",
+      "symbols": [
+        "read",
+        "regression",
+        "audit",
+        "predict",
+        "shape_metrics",
+        "write_csv",
+        "evaluate",
+        "dispatch"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "MIXED_NO_ACCEPTED_SWEEP",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Frozen task/run identity and authorized phase",
+      "output": "Runner stage dispatch, regression/source audit/prediction freeze and independent evaluation records",
+      "call": "read; regression; audit; predict; shape_metrics; write_csv; evaluate; dispatch",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+      "sha256": "0354648e8b80d5e12aef4af3198b4371455e8fef5e50d490346797b186d893e8",
+      "bytes": 12504,
+      "source_task": "TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "source_commit": "238c2da1cd842c0eba710a4ec44db5f437bff8e4",
+      "execution_commit": "cadde3e9efc64e0925933d0a663150db9031caee",
+      "historical_branch": "exp/TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "dependencies": [
+        "common",
+        "csv",
+        "figures",
+        "io",
+        "json",
+        "numpy",
+        "optimizer",
+        "pathlib",
+        "projection_gate",
+        "ring_collision_gate",
+        "ring_first_3d.contracts.identities",
+        "ring_first_3d.inita.evaluate",
+        "ring_first_3d.mainline.paths",
+        "ring_first_3d.multisurface.evaluate",
+        "ring_first_3d.multisurface.geometry",
+        "ring_first_3d.policy.contracts",
+        "ring_first_3d.synthetic.io",
+        "ring_first_3d.synthetic.raster",
+        "scipy.ndimage",
+        "sys",
+        "torch",
+        "unittest"
+      ],
+      "symbol_definitions": {
+        "read": {
+          "line": 18,
+          "end_line": 18,
+          "args": "p"
+        },
+        "regression": {
+          "line": 19,
+          "end_line": 23,
+          "args": "attempt"
+        },
+        "audit": {
+          "line": 25,
+          "end_line": 36,
+          "args": "task, attempt"
+        },
+        "predict": {
+          "line": 38,
+          "end_line": 48,
+          "args": "task, attempt, case"
+        },
+        "shape_metrics": {
+          "line": 50,
+          "end_line": 53,
+          "args": "body, gt, N=12000"
+        },
+        "write_csv": {
+          "line": 55,
+          "end_line": 58,
+          "args": "path, rows"
+        },
+        "evaluate": {
+          "line": 60,
+          "end_line": 108,
+          "args": "task, attempt"
+        },
+        "dispatch": {
+          "line": 110,
+          "end_line": 118,
+          "args": "stage, task, attempt"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/pipeline.py",
+        "exists": true,
+        "sha256": "6072aaf372549e837689becc2e3ddcf4a33257d33e13dff85a3d0768637be8b6",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "6072aaf372549e837689becc2e3ddcf4a33257d33e13dff85a3d0768637be8b6",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+          "exists": true,
+          "sha256": "78c4b663d86abfc6acd781d9b1e5753a78ebac9e3650a2dc966e1736cbee73d2",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "5c98992f802b00625ea27f3086f82726248384871cdcd11fb1145a35ea76896c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "MIXED_NO_ACCEPTED_SWEEP",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "SB01",
+        "SB06",
+        "SB07",
+        "SB09",
+        "SB11",
+        "SU05"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SB09",
+      "module": "Read-only adapters to the exact previous initializer and historical geometry.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/common.py",
+      "symbols": [
+        "load_case",
+        "dump",
+        "geometry"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "MIXED_NO_ACCEPTED_SWEEP",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Frozen case identity and historical exact013 asset references",
+      "output": "Source-bound mm Mesh, masks, frozen FIT/HOLDOUT/camera/Ring data and independent geometry checks",
+      "call": "load_case; dump; geometry",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+      "sha256": "187ec695b67dffe78ecc1e97ef940dfa38ad02b4309f428249b02407d5514b55",
+      "bytes": 3423,
+      "source_task": "TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "source_commit": "238c2da1cd842c0eba710a4ec44db5f437bff8e4",
+      "execution_commit": "cadde3e9efc64e0925933d0a663150db9031caee",
+      "historical_branch": "exp/TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "dependencies": [
+        "importlib.util",
+        "json",
+        "numpy",
+        "pathlib",
+        "ring_first_3d.evaluation.validation",
+        "ring_first_3d.mainline.paths",
+        "trimesh"
+      ],
+      "symbol_definitions": {
+        "load_case": {
+          "line": 10,
+          "end_line": 17,
+          "args": "case, role=None"
+        },
+        "dump": {
+          "line": 19,
+          "end_line": 21,
+          "args": "p, x"
+        },
+        "geometry": {
+          "line": 22,
+          "end_line": 45,
+          "args": "candidate, current, initial, base, chart, ns"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/common.py",
+        "exists": true,
+        "sha256": "f2accaef521145768974e77d0cd08fc5c1644cf428110b1c3d7423b411104aaf",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "f2accaef521145768974e77d0cd08fc5c1644cf428110b1c3d7423b411104aaf",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+          "exists": true,
+          "sha256": "78c4b663d86abfc6acd781d9b1e5753a78ebac9e3650a2dc966e1736cbee73d2",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "5c98992f802b00625ea27f3086f82726248384871cdcd11fb1145a35ea76896c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "MIXED_NO_ACCEPTED_SWEEP",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SB10",
+      "module": "Adapt frozen Jacobian initialization with explicit rejection/identifiability ledger.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/growth_evidence.py",
+      "symbols": [
+        "candidates"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "MIXED_NO_ACCEPTED_SWEEP",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Multi-view R+ candidates, calibrated projection Jacobians",
+      "output": "Connected attachment proposal, two-video/3-view support, identifiability or UNDERCONSTRAINED_GROWTH",
+      "call": "candidates",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+      "sha256": "ce6e465a353774abbaaa74a8b089971eaef8c672ec75a765c22777a7fc980643",
+      "bytes": 3067,
+      "source_task": "TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "source_commit": "238c2da1cd842c0eba710a4ec44db5f437bff8e4",
+      "execution_commit": "cadde3e9efc64e0925933d0a663150db9031caee",
+      "historical_branch": "exp/TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "dependencies": [
+        "common",
+        "numpy"
+      ],
+      "symbol_definitions": {
+        "candidates": {
+          "line": 5,
+          "end_line": 38,
+          "args": "body, views, pairs, cfg"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/growth_evidence.py",
+        "exists": true,
+        "sha256": "ce6e465a353774abbaaa74a8b089971eaef8c672ec75a765c22777a7fc980643",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "ce6e465a353774abbaaa74a8b089971eaef8c672ec75a765c22777a7fc980643",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+          "exists": true,
+          "sha256": "78c4b663d86abfc6acd781d9b1e5753a78ebac9e3650a2dc966e1736cbee73d2",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "5c98992f802b00625ea27f3086f82726248384871cdcd11fb1145a35ea76896c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "MIXED_NO_ACCEPTED_SWEEP",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "SB09"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "SB11",
+      "module": "Measured full-triangle geometry and native-pixel evidence; offline review only.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/figures.py",
+      "symbols": [
+        "mesh",
+        "bounds",
+        "save",
+        "visualize",
+        "write_reports"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "MIXED_NO_ACCEPTED_SWEEP",
+      "reuse": "REUSABLE_REFERENCE",
+      "input": "Frozen predictions/metrics and evaluation copies",
+      "output": "Actual Mesh/contour/section PNGs and explicit negative evidence",
+      "call": "mesh; bounds; save; visualize; write_reports",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+      "sha256": "e89d258653ad3b3f617368338752f279e540a4533929c9f9011d952e0e262c86",
+      "bytes": 19342,
+      "source_task": "TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "source_commit": "238c2da1cd842c0eba710a4ec44db5f437bff8e4",
+      "execution_commit": "cadde3e9efc64e0925933d0a663150db9031caee",
+      "historical_branch": "exp/TASK-E4-STRUCTURED-BODY-UPDATE-002",
+      "dependencies": [
+        "common",
+        "html",
+        "json",
+        "matplotlib",
+        "matplotlib.collections",
+        "matplotlib.pyplot",
+        "mpl_toolkits.mplot3d.art3d",
+        "numpy",
+        "pathlib",
+        "pipeline",
+        "ring_first_3d.multisurface.geometry",
+        "ring_first_3d.policy.contracts",
+        "ring_first_3d.synthetic.io",
+        "shutil"
+      ],
+      "symbol_definitions": {
+        "mesh": {
+          "line": 17,
+          "end_line": 19,
+          "args": "ax, b, c, alpha=0.6, values=None"
+        },
+        "bounds": {
+          "line": 21,
+          "end_line": 23,
+          "args": "ax, lo, hi, elev=20, azim=-65"
+        },
+        "save": {
+          "line": 25,
+          "end_line": 25,
+          "args": "fig, path"
+        },
+        "visualize": {
+          "line": 26,
+          "end_line": 85,
+          "args": "task, attempt"
+        },
+        "write_reports": {
+          "line": 87,
+          "end_line": 111,
+          "args": "task, attempt, rows, changes, failure"
+        }
+      },
+      "current_mainline": false,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/figures.py",
+        "exists": true,
+        "sha256": "e89d258653ad3b3f617368338752f279e540a4533929c9f9011d952e0e262c86",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "e89d258653ad3b3f617368338752f279e540a4533929c9f9011d952e0e262c86",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/PILOT_002/FREEZE.json",
+          "exists": true,
+          "sha256": "78c4b663d86abfc6acd781d9b1e5753a78ebac9e3650a2dc966e1736cbee73d2",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "5c98992f802b00625ea27f3086f82726248384871cdcd11fb1145a35ea76896c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "MIXED_NO_ACCEPTED_SWEEP",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "GR10",
+        "SB08",
+        "SB09"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR01",
+      "module": "Invert saved spline samples, and reconstruct the actual rejected topology.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/recover.py",
+      "symbols": [
+        "restore"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Frozen iteration24 Body and saved rejected candidate, controls and root attachment",
+      "output": "Recovered embedded candidate and immutable fixed input identities",
+      "call": "restore",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "bfa782241653fc5f40479338ffd190544a0c3014856beb223d51da3f3d9e1cfa",
+      "bytes": 2840,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "bspline_sweep",
+        "io_utils",
+        "numpy",
+        "ring_collision_gate",
+        "ring_first_3d.multisurface.geometry",
+        "torch"
+      ],
+      "symbol_definitions": {
+        "restore": {
+          "line": 7,
+          "end_line": 33,
+          "args": "case"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/recover.py",
+        "exists": true,
+        "sha256": "bfa782241653fc5f40479338ffd190544a0c3014856beb223d51da3f3d9e1cfa",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "bfa782241653fc5f40479338ffd190544a0c3014856beb223d51da3f3d9e1cfa",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "GR13",
+        "SB04",
+        "SB06"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR02",
+      "module": "Arc length and first inside-to-outside exit of the frozen original Body.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/lengths.py",
+      "symbols": [
+        "spline",
+        "measure"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Frozen spline controls and original Body signed-distance scene",
+      "output": "Unique exit location, integrated total/embedded/exposed arc lengths",
+      "call": "spline; measure",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "14dc27b18fed7e75b6de70db5ea56e6c107ca710567f0180ca53567d77064a34",
+      "bytes": 1423,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "numpy",
+        "ring_collision_gate",
+        "ring_first_3d.multisurface.geometry",
+        "scipy.integrate",
+        "scipy.interpolate",
+        "scipy.optimize"
+      ],
+      "symbol_definitions": {
+        "spline": {
+          "line": 9,
+          "end_line": 10,
+          "args": "control"
+        },
+        "measure": {
+          "line": 12,
+          "end_line": 24,
+          "args": "control, original, samples=1025"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/lengths.py",
+        "exists": true,
+        "sha256": "14dc27b18fed7e75b6de70db5ea56e6c107ca710567f0180ca53567d77064a34",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "14dc27b18fed7e75b6de70db5ea56e6c107ca710567f0180ca53567d77064a34",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "SB06"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR03",
+      "module": "The same cubic five-control,16-station RMF sweep, with an internal proximal end.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/embedded_sweep.py",
+      "symbols": [
+        "prepare",
+        "EmbeddedSweep"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Frozen Body, historical controls/radii, bounded attachment parameters",
+      "output": "Embedded B-spline Sweep and optimizable continuous surface",
+      "call": "prepare; EmbeddedSweep",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "bfe96a063b100e8d66d955af2d26c49d3aec35b018c97296a4b32608df932992",
+      "bytes": 4699,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "bspline_sweep",
+        "lengths",
+        "numpy",
+        "open3d",
+        "ring_collision_gate",
+        "ring_first_3d.multisurface.geometry",
+        "rmf",
+        "torch",
+        "torch.nn.functional"
+      ],
+      "symbol_definitions": {
+        "prepare": {
+          "line": 12,
+          "end_line": 29,
+          "args": "original, C, A, info"
+        },
+        "EmbeddedSweep": {
+          "line": 31,
+          "end_line": 66,
+          "args": null
+        },
+        "EmbeddedSweep.__init__": {
+          "line": 32,
+          "end_line": 49,
+          "args": "self, configuration, device='cpu'"
+        },
+        "EmbeddedSweep.controls": {
+          "line": 50,
+          "end_line": 50,
+          "args": "self"
+        },
+        "EmbeddedSweep.generate": {
+          "line": 51,
+          "end_line": 56,
+          "args": "self"
+        },
+        "EmbeddedSweep.continuation": {
+          "line": 57,
+          "end_line": 60,
+          "args": "self, fraction"
+        },
+        "EmbeddedSweep.priors": {
+          "line": 61,
+          "end_line": 66,
+          "args": "self, info, clearance_value=None"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/embedded_sweep.py",
+        "exists": true,
+        "sha256": "bfe96a063b100e8d66d955af2d26c49d3aec35b018c97296a4b32608df932992",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "bfe96a063b100e8d66d955af2d26c49d3aec35b018c97296a4b32608df932992",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "GR02",
+        "SB04",
+        "SB05",
+        "SB06"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR04",
+      "module": "Pinned Blender EXACT Boolean only; no scene/GT loading or geometry repair.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/boolean_blender.py",
+      "symbols": [
+        "obj"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Body/Sweep operand OBJ and frozen Blender binary",
+      "output": "Exact Boolean union Mesh via isolated subprocess",
+      "call": "obj",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "94bef3570bca543ed7364d9b06dc611d86528a7d5b3b5c8b8b91b7aacb0e1ba6",
+      "bytes": 2417,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "bmesh",
+        "bpy",
+        "json",
+        "numpy",
+        "pathlib",
+        "sys"
+      ],
+      "symbol_definitions": {
+        "obj": {
+          "line": 9,
+          "end_line": 14,
+          "args": "name, path, material"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/boolean_blender.py",
+        "exists": true,
+        "sha256": "94bef3570bca543ed7364d9b06dc611d86528a7d5b3b5c8b8b91b7aacb0e1ba6",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "94bef3570bca543ed7364d9b06dc611d86528a7d5b3b5c8b8b91b7aacb0e1ba6",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR05",
+      "module": "Mature exact Boolean union with a frozen-provenance local autograd surrogate.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/union_mesh.py",
+      "symbols": [
+        "InvalidUnionCandidate",
+        "validate_boolean_result",
+        "union",
+        "provenance",
+        "lifted_vertices"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Body and Sweep operands and Blender binary identity",
+      "output": "Validated exterior union, face/material provenance or InvalidUnionCandidate",
+      "call": "InvalidUnionCandidate; validate_boolean_result; union; provenance; lifted_vertices",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "7a114788541cd8b8978930e70adbd65115d034baa5a091a59eb916b9498f3a0a",
+      "bytes": 3114,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "json",
+        "numpy",
+        "os",
+        "pathlib",
+        "ring_first_3d.multisurface.geometry",
+        "subprocess",
+        "torch",
+        "trimesh"
+      ],
+      "symbol_definitions": {
+        "InvalidUnionCandidate": {
+          "line": 9,
+          "end_line": 10,
+          "args": null
+        },
+        "validate_boolean_result": {
+          "line": 12,
+          "end_line": 17,
+          "args": "a"
+        },
+        "union": {
+          "line": 19,
+          "end_line": 34,
+          "args": "original, tube, faces, folder"
+        },
+        "provenance": {
+          "line": 36,
+          "end_line": 41,
+          "args": "merged, tube, faces"
+        },
+        "lifted_vertices": {
+          "line": 43,
+          "end_line": 48,
+          "args": "merged, tube_tensor, faces, p"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/union_mesh.py",
+        "exists": true,
+        "sha256": "7a114788541cd8b8978930e70adbd65115d034baa5a091a59eb916b9498f3a0a",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "7a114788541cd8b8978930e70adbd65115d034baa5a091a59eb916b9498f3a0a",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR06",
+      "module": "Expected internal overlap is allowed; final external union is checked in full.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/geometry_gate.py",
+      "symbols": [
+        "namespace",
+        "exterior_clearance",
+        "check"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Candidate/operand Mesh and frozen geometry criteria",
+      "output": "Watertightness, winding, intersections, root exterior-clearance records and accept/reject",
+      "call": "namespace; exterior_clearance; check",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "0fe8191d7ab2124633406e063db266a2fdc31b0585b132d063303ffc667bbf67",
+      "bytes": 4931,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "io_utils",
+        "lengths",
+        "numpy",
+        "ring_collision_gate",
+        "ring_first_3d.mainline.paths",
+        "ring_first_3d.multisurface.geometry",
+        "torch",
+        "trimesh"
+      ],
+      "symbol_definitions": {
+        "namespace": {
+          "line": 12,
+          "end_line": 12,
+          "args": ""
+        },
+        "exterior_clearance": {
+          "line": 14,
+          "end_line": 31,
+          "args": "tube, info, configuration, original, length"
+        },
+        "check": {
+          "line": 33,
+          "end_line": 65,
+          "args": "merged, tube, faces, original, initial, configuration, base, chart, ns"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/geometry_gate.py",
+        "exists": true,
+        "sha256": "e22e402f43591766480d782566e979f0a753c522da4f3142934d668666acbe42",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "e22e402f43591766480d782566e979f0a753c522da4f3142934d668666acbe42",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "GR02",
+        "GR13",
+        "SB06"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR07",
+      "module": "Current-state bidirectional collision non-worsening; initial is diagnostic only.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/ring_gate.py",
+      "symbols": [
+        "metrics_accept",
+        "CurrentRingGate"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Current/candidate exterior union and fixed Ring CAD",
+      "output": "Current-state-only bidirectional non-worsening collision decision and calibrated tolerance",
+      "call": "metrics_accept; CurrentRingGate",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "b4e338b7c80860ce123c38ac7477e2657f192927b313b19d59b5348391a0b9e4",
+      "bytes": 2867,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "numpy",
+        "ring_collision_gate",
+        "ring_first_3d.multisurface.geometry"
+      ],
+      "symbol_definitions": {
+        "metrics_accept": {
+          "line": 6,
+          "end_line": 12,
+          "args": "before, after, tolerance"
+        },
+        "CurrentRingGate": {
+          "line": 14,
+          "end_line": 35,
+          "args": null
+        },
+        "CurrentRingGate.__init__": {
+          "line": 15,
+          "end_line": 23,
+          "args": "self, current, ring"
+        },
+        "CurrentRingGate.measure": {
+          "line": 24,
+          "end_line": 29,
+          "args": "self, body"
+        },
+        "CurrentRingGate.check": {
+          "line": 30,
+          "end_line": 35,
+          "args": "self, candidate, current=None"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/ring_gate.py",
+        "exists": true,
+        "sha256": "b4e338b7c80860ce123c38ac7477e2657f192927b313b19d59b5348391a0b9e4",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "b4e338b7c80860ce123c38ac7477e2657f192927b313b19d59b5348391a0b9e4",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "SB06"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR08",
+      "module": "Growth-only acceptance around the unchanged 002 correspondence generator.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/projection.py",
+      "symbols": [
+        "RecoveryProjection"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Frozen Body/Mask/cameras, inherited candidate and fresh rendered proposal",
+      "output": "Fresh full-view metrics, support, protection failures and accepted correspondence",
+      "call": "RecoveryProjection",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "f147712ba3eac6775f18aaa65dcf76396d83cc23c8b7c1383e2b489036f2b130",
+      "bytes": 3459,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "numpy",
+        "projection_gate",
+        "ring_first_3d.multisurface.geometry"
+      ],
+      "symbol_definitions": {
+        "RecoveryProjection": {
+          "line": 6,
+          "end_line": 44,
+          "args": null
+        },
+        "RecoveryProjection.setup": {
+          "line": 7,
+          "end_line": 11,
+          "args": "self, original, initial, configuration, support"
+        },
+        "RecoveryProjection.assess": {
+          "line": 12,
+          "end_line": 44,
+          "args": "self, body, fresh"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/projection.py",
+        "exists": true,
+        "sha256": "f147712ba3eac6775f18aaa65dcf76396d83cc23c8b7c1383e2b489036f2b130",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "f147712ba3eac6775f18aaa65dcf76396d83cc23c8b7c1383e2b489036f2b130",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "SB01"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR09",
+      "module": "Only recovered spline parameters optimize; STEP024 Body and cameras are constants.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/optimize.py",
+      "symbols": [
+        "optimize"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "One inherited candidate, frozen Body, spline parameters, joint multiview loss",
+      "output": "Bounded local Sweep updates, backtracks and rejection/accepted-state checkpoints",
+      "call": "optimize",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "ebe1b119a0f990545a516c671719c3ed442277d482c868e43cd609d8af7220da",
+      "bytes": 10163,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "copy",
+        "embedded_sweep",
+        "geometry_gate",
+        "io_utils",
+        "lengths",
+        "numpy",
+        "pathlib",
+        "projection",
+        "ring_first_3d.multisurface.geometry",
+        "ring_gate",
+        "torch",
+        "union_mesh"
+      ],
+      "symbol_definitions": {
+        "optimize": {
+          "line": 14,
+          "end_line": 118,
+          "args": "original, initial, views, ring, base, chart, configuration, support, cfg, out"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/optimize.py",
+        "exists": true,
+        "sha256": "ebe1b119a0f990545a516c671719c3ed442277d482c868e43cd609d8af7220da",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "ebe1b119a0f990545a516c671719c3ed442277d482c868e43cd609d8af7220da",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "GR02",
+        "GR03",
+        "GR05",
+        "GR06",
+        "GR07",
+        "GR08",
+        "GR13"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR10",
+      "module": "Policy handlers: exact historical recovery → two fixed-Body pilots → GT only.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/pipeline.py",
+      "symbols": [
+        "regression",
+        "audit",
+        "predict",
+        "dispatch"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Frozen task/run identity and authorized phase",
+      "output": "Runner stage dispatch, regression/source audit/prediction freeze and independent evaluation records",
+      "call": "regression; audit; predict; dispatch",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "578f9e5c37c86b4127463c5520a4810b5bbba6bf51fe3573b432d3d844e48fed",
+      "bytes": 5475,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "embedded_sweep",
+        "evaluate",
+        "io",
+        "io_utils",
+        "json",
+        "numpy",
+        "optimize",
+        "pathlib",
+        "recover",
+        "ring_first_3d.policy.contracts",
+        "ring_first_3d.synthetic.io",
+        "shutil",
+        "sys",
+        "traceback",
+        "unittest",
+        "visualize"
+      ],
+      "symbol_definitions": {
+        "regression": {
+          "line": 11,
+          "end_line": 18,
+          "args": "attempt"
+        },
+        "audit": {
+          "line": 20,
+          "end_line": 29,
+          "args": "t, attempt"
+        },
+        "predict": {
+          "line": 31,
+          "end_line": 68,
+          "args": "t, attempt, case"
+        },
+        "dispatch": {
+          "line": 70,
+          "end_line": 80,
+          "args": "stage, t, attempt"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/pipeline.py",
+        "exists": true,
+        "sha256": "578f9e5c37c86b4127463c5520a4810b5bbba6bf51fe3573b432d3d844e48fed",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "578f9e5c37c86b4127463c5520a4810b5bbba6bf51fe3573b432d3d844e48fed",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "GR01",
+        "GR03",
+        "GR09",
+        "GR11",
+        "GR12",
+        "GR13"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR11",
+      "module": "Independent, fixed-scale GT fits and fixed INITIAL→GT diagnostic copies.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/evaluate.py",
+      "symbols": [
+        "write_csv",
+        "shape",
+        "evaluate"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "ALL predictions frozen and hash checked; only then Blender GT",
+      "output": "Independent per-model SE3 and fixed INITIAL→GT copies, surface/FIT/HOLDOUT metrics, failures",
+      "call": "write_csv; shape; evaluate",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "bffd1c3f326b576b580a3fd0d177726480df3c723601351e32960348770a1d01",
+      "bytes": 6566,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "csv",
+        "io_utils",
+        "numpy",
+        "pathlib",
+        "projection_gate",
+        "ring_first_3d.inita.evaluate",
+        "ring_first_3d.multisurface.evaluate",
+        "ring_first_3d.multisurface.geometry",
+        "ring_first_3d.synthetic.io",
+        "ring_first_3d.synthetic.raster",
+        "scipy.ndimage"
+      ],
+      "symbol_definitions": {
+        "write_csv": {
+          "line": 14,
+          "end_line": 17,
+          "args": "path, rows"
+        },
+        "shape": {
+          "line": 18,
+          "end_line": 23,
+          "args": "pred, gt"
+        },
+        "evaluate": {
+          "line": 25,
+          "end_line": 65,
+          "args": "t, attempt"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/evaluate.py",
+        "exists": true,
+        "sha256": "bffd1c3f326b576b580a3fd0d177726480df3c723601351e32960348770a1d01",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "bffd1c3f326b576b580a3fd0d177726480df3c723601351e32960348770a1d01",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "GR13",
+        "SB01"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR12",
+      "module": "Actual triangles, real masks, explicit embedded/exposed length and all failures.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/visualize.py",
+      "symbols": [
+        "mesh",
+        "bounds",
+        "save",
+        "visualize",
+        "write_reports"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Frozen predictions/metrics, Boolean operands and root/GT diagnostics",
+      "output": "Real surface/section/projection/root visualizations and failure reports",
+      "call": "mesh; bounds; save; visualize; write_reports",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "bba045792cb9483686ca76a4a1884cf888b972a09b0820aa12d1872f272081ad",
+      "bytes": 23165,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "csv",
+        "html",
+        "io_utils",
+        "json",
+        "lengths",
+        "matplotlib",
+        "matplotlib.collections",
+        "matplotlib.pyplot",
+        "mpl_toolkits.mplot3d.art3d",
+        "numpy",
+        "pathlib",
+        "projection_gate",
+        "ring_first_3d.multisurface.geometry",
+        "ring_first_3d.synthetic.io",
+        "ring_first_3d.synthetic.raster",
+        "ring_gate",
+        "scipy.ndimage",
+        "shutil"
+      ],
+      "symbol_definitions": {
+        "mesh": {
+          "line": 20,
+          "end_line": 21,
+          "args": "ax, b, color, alpha=0.6"
+        },
+        "bounds": {
+          "line": 22,
+          "end_line": 23,
+          "args": "ax, lo, hi, elev=20, azim=-65"
+        },
+        "save": {
+          "line": 24,
+          "end_line": 24,
+          "args": "fig, path"
+        },
+        "visualize": {
+          "line": 26,
+          "end_line": 110,
+          "args": "t, attempt"
+        },
+        "write_reports": {
+          "line": 112,
+          "end_line": 142,
+          "args": "t, attempt, ev, info, failure"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/visualize.py",
+        "exists": true,
+        "sha256": "bba045792cb9483686ca76a4a1884cf888b972a09b0820aa12d1872f272081ad",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "bba045792cb9483686ca76a4a1884cf888b972a09b0820aa12d1872f272081ad",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "GR02",
+        "GR07",
+        "GR13",
+        "SB01"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    },
+    {
+      "id": "GR13",
+      "module": "Only audited 002 inputs; no candidate search, GT or HERO access here.",
+      "path": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/io_utils.py",
+      "symbols": [
+        "read",
+        "sha",
+        "body",
+        "source_folder",
+        "load_inputs"
+      ],
+      "engineering": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "scientific": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "reuse": "CURRENT_MAINLINE",
+      "input": "Frozen source/input manifests and case identities",
+      "output": "SHA-bound original Body/Mask/camera/candidate loading without GT in training",
+      "call": "read; sha; body; source_folder; load_inputs",
+      "limit": "Module execution does not establish scientific success; inherited rejection and root exposure evidence retained.",
+      "evidence": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+      "sha256": "3a049dd326cd3d56d280c85201e2be728e668bb410bf19b66d3968fc2e293b89",
+      "bytes": 1527,
+      "source_task": "TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "source_commit": "bac3fc89ef95db522b63cf6bb98e6914b9382864",
+      "execution_commit": "SOURCE_COMMIT_UNVERIFIED",
+      "historical_branch": "exp/TASK-E4-G01-G03-GROWTH-RECOVERY-001",
+      "dependencies": [
+        "common",
+        "hashlib",
+        "json",
+        "numpy",
+        "pathlib",
+        "ring_first_3d.mainline.paths",
+        "sys"
+      ],
+      "symbol_definitions": {
+        "read": {
+          "line": 11,
+          "end_line": 11,
+          "args": "p"
+        },
+        "sha": {
+          "line": 12,
+          "end_line": 12,
+          "args": "p"
+        },
+        "body": {
+          "line": 13,
+          "end_line": 13,
+          "args": "p"
+        },
+        "source_folder": {
+          "line": 14,
+          "end_line": 16,
+          "args": "case"
+        },
+        "load_inputs": {
+          "line": 18,
+          "end_line": 27,
+          "args": "case, role=None"
+        }
+      },
+      "current_mainline": true,
+      "original_source": {
+        "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/io_utils.py",
+        "exists": true,
+        "sha256": "c50f19e60ce68dfdccef85a55db5d15e6d956c6bf7bc64d28ba9f9d779638efc",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "frozen_contract_sha256": "c50f19e60ce68dfdccef85a55db5d15e6d956c6bf7bc64d28ba9f9d779638efc",
+      "original_matches_execution_contract": true,
+      "execution_evidence": [
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/runs/LOCAL_002/FREEZE.json",
+          "exists": true,
+          "sha256": "6de267138814d1215733b3a892b9d522d625db4935e045de5032a0bf435b6ef7",
+          "hash_status": "HASH_RECOMPUTED"
+        },
+        {
+          "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/RUN_MANIFEST.json",
+          "exists": true,
+          "sha256": "fab4c0d1c545f5edd4897f054c8c7ec2a930756fb45c4129ab071a3c99676d8c",
+          "hash_status": "HASH_RECOMPUTED"
+        }
+      ],
+      "scientific_status": "G01_CONDITIONAL_G03_REJECTED_ROOT_DEFECTS_RETAINED",
+      "engineering_status": "EXECUTED_WITH_FROZEN_RUNNER_CONTRACT",
+      "dependency_modules": [
+        "SB09"
+      ],
+      "dependency_module_note": "Import stem candidates include historical versions; exact imported version is established by frozen run source_root/contracts, not this stem map."
+    }
+  ],
+  "existing_ids_unchanged": true,
+  "final_details_enriched": "Explicit functional IO and class method signatures added from actual AST; original scientific code unchanged."
+}

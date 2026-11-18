@@ -1,0 +1,14 @@
+task_id: TASK-MAINLINE-RECOVERY-AND-FORENSIC-AUDIT-002
+kind: READ_ONLY_FORENSIC_AUDIT_AND_EVIDENCE_INDEX_REPAIR
+baseline_commit: 73568493d127d0aead361314afcb32e11fe886f0
+branch: maintenance/TASK-MAINLINE-RECOVERY-AND-FORENSIC-AUDIT-002
+source_algorithm_changes: forbidden
+historical_result_changes: forbidden
+deletion_migration_training: forbidden
+allowed_writes: [new_audit_worktree, new_branch_and_commit_metadata]
+protected_read_only: [/home/liu/polyp_research, /home/liu/new-polyp-dxy, all_previous_worktrees]
+phases: [evidence_recovery, git_forensics, asset_inventory, runtime_audit, metric_audit, convergence_plan, independent_review]
+acceptance: [source_status_unchanged, original_report_hashes_preserved, full_inventory_consistent, independent_findings_retained]
+scientific_acceptance: NOT_APPLICABLE_NO_NEW_PREDICTION
+stop: after_delivery_and_incremental_push
+attachment_note: supplied text truncates at section_11_opening; preceding scope and prohibitions complete

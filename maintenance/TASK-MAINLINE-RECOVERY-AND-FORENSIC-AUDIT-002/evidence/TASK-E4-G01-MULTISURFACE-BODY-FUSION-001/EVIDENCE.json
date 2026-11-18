@@ -1,0 +1,1668 @@
+{
+  "schema_version": 1,
+  "task_id": "TASK-E4-G01-MULTISURFACE-BODY-FUSION-001",
+  "source_commit": "1648935501781d6acb47a288253255134bdedb89",
+  "execution_commit": "1648935501781d6acb47a288253255134bdedb89",
+  "execution_commit_status": "VERIFIED_REPORT_CLAIM_AND_SCIENTIFIC_CODE_BYTES",
+  "source_commit_semantics": "Per-file source snapshot, distinct from original execution; current HEAD never substituted.",
+  "source_files": [
+    {
+      "path": "/home/liu/ring_first_3d_forensic_audit_002/src/ring_first_3d/multisurface/scene.py",
+      "exists": true,
+      "sha256": "da6ca2ed8a758015436dd1168e01245c51fba61928ae559818cb8621a6f21943",
+      "hash_status": "HASH_RECOMPUTED",
+      "original": {
+        "path": "/home/liu/ring_first_3d_g01_multisurface/src/ring_first_3d/multisurface/scene.py",
+        "exists": true,
+        "sha256": "da6ca2ed8a758015436dd1168e01245c51fba61928ae559818cb8621a6f21943",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "source_commit": "1648935501781d6acb47a288253255134bdedb89",
+      "copy_status": "BASELINE_SHARED_API",
+      "commit_byte_match": true,
+      "execution_contract_sha256": "da6ca2ed8a758015436dd1168e01245c51fba61928ae559818cb8621a6f21943",
+      "matches_frozen_contract": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_forensic_audit_002/src/ring_first_3d/multisurface/registration.py",
+      "exists": true,
+      "sha256": "81ffe3368a637d0902293f7d711abeca912a91d681faeda532d0503882aaf1a3",
+      "hash_status": "HASH_RECOMPUTED",
+      "original": {
+        "path": "/home/liu/ring_first_3d_g01_multisurface/src/ring_first_3d/multisurface/registration.py",
+        "exists": true,
+        "sha256": "81ffe3368a637d0902293f7d711abeca912a91d681faeda532d0503882aaf1a3",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "source_commit": "1648935501781d6acb47a288253255134bdedb89",
+      "copy_status": "BASELINE_SHARED_API",
+      "commit_byte_match": true,
+      "execution_contract_sha256": "81ffe3368a637d0902293f7d711abeca912a91d681faeda532d0503882aaf1a3",
+      "matches_frozen_contract": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_forensic_audit_002/src/ring_first_3d/multisurface/fusion.py",
+      "exists": true,
+      "sha256": "607eef83f905122b3d0b746070e66a717a19e775984b7f8e420fcf31fe9b590b",
+      "hash_status": "HASH_RECOMPUTED",
+      "original": {
+        "path": "/home/liu/ring_first_3d_g01_multisurface/src/ring_first_3d/multisurface/fusion.py",
+        "exists": true,
+        "sha256": "607eef83f905122b3d0b746070e66a717a19e775984b7f8e420fcf31fe9b590b",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "source_commit": "1648935501781d6acb47a288253255134bdedb89",
+      "copy_status": "BASELINE_SHARED_API",
+      "commit_byte_match": true,
+      "execution_contract_sha256": "607eef83f905122b3d0b746070e66a717a19e775984b7f8e420fcf31fe9b590b",
+      "matches_frozen_contract": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_forensic_audit_002/src/ring_first_3d/multisurface/evaluate.py",
+      "exists": true,
+      "sha256": "f52a6b6354b54ddaf4e561a013075a0c6209b17501d9abb2a7a07dec27e99e7a",
+      "hash_status": "HASH_RECOMPUTED",
+      "original": {
+        "path": "/home/liu/ring_first_3d_g01_multisurface/src/ring_first_3d/multisurface/evaluate.py",
+        "exists": true,
+        "sha256": "f52a6b6354b54ddaf4e561a013075a0c6209b17501d9abb2a7a07dec27e99e7a",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "source_commit": "1648935501781d6acb47a288253255134bdedb89",
+      "copy_status": "BASELINE_SHARED_API",
+      "commit_byte_match": true,
+      "execution_contract_sha256": "f52a6b6354b54ddaf4e561a013075a0c6209b17501d9abb2a7a07dec27e99e7a",
+      "matches_frozen_contract": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_forensic_audit_002/src/ring_first_3d/multisurface/visualize.py",
+      "exists": true,
+      "sha256": "45d56241c9bdc9a7e9c915da70960c7394199cd2767bedc602affca4182b2a47",
+      "hash_status": "HASH_RECOMPUTED",
+      "original": {
+        "path": "/home/liu/ring_first_3d_g01_multisurface/src/ring_first_3d/multisurface/visualize.py",
+        "exists": true,
+        "sha256": "45d56241c9bdc9a7e9c915da70960c7394199cd2767bedc602affca4182b2a47",
+        "hash_status": "HASH_RECOMPUTED"
+      },
+      "source_commit": "1648935501781d6acb47a288253255134bdedb89",
+      "copy_status": "BASELINE_SHARED_API",
+      "commit_byte_match": true,
+      "execution_contract_sha256": "45d56241c9bdc9a7e9c915da70960c7394199cd2767bedc602affca4182b2a47",
+      "matches_frozen_contract": true
+    }
+  ],
+  "input_assets": [
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/TASK.yaml",
+      "exists": true,
+      "sha256": "2a852c873a3cb2510eaa2aac04900c59773a1cc2447470c2b20d0ab69b69ce1c",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/TASK_FREEZE.json",
+      "exists": true,
+      "sha256": "c06acfe7bff2e17796c7f12a271d849921db217e99ff267131cf08d026729b5f",
+      "hash_status": "HASH_RECOMPUTED"
+    }
+  ],
+  "output_assets": [
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/RUN_MANIFEST.json",
+      "exists": true,
+      "sha256": "4f22d6b5d408664436fa27c8c12aaa44c3f09d05dfdfe5b9285e9376d59953dd",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/RESULT_CARD.md",
+      "exists": true,
+      "sha256": "373d6f40ca1b56c0c6d31de691a3d4ce2830af7ea6e77d1f31f8bc8eecb0e9f2",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/FAILURE_REGISTRY.json",
+      "exists": true,
+      "sha256": "f00e71598d34fc26e77fd47bf28e2405642a7f574cca88895047438b98dfc91a",
+      "hash_status": "HASH_RECOMPUTED"
+    }
+  ],
+  "metrics": [
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/metrics.json",
+      "exists": true,
+      "sha256": "7d11f52e9bc206f933e93dd71e269fed5be71896e4b4b3ed21d45d3093718ca0",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/SCIENTIFIC_RESULT.json",
+      "exists": true,
+      "sha256": "d4b9e032e1be4f9ca2457df63fec9036e0e1ce3f522739ce70a4ce8fe72ba31d",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/AGGREGATE_MATERIAL_METRICS.csv",
+      "exists": true,
+      "sha256": "daaea65eff74b441de0ca89f6934abc316c453451981f073118c927db2d76418",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/ALL_CONDITION_METRICS.csv",
+      "exists": true,
+      "sha256": "4e257d45f8ce0ac2b08d13f4706bcea55c19e1f5dd92a41a7884c4eebe431d48",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/OVERLAP_FAMILY_METRICS.csv",
+      "exists": true,
+      "sha256": "7a5311883cff9f77316a7d4585ea6a0196c164158d1728c612e7ec5d208e38cb",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/AGGREGATE_MATERIAL_METRICS.json",
+      "exists": true,
+      "sha256": "d0823726ffd616a4ebab80a054ec0723541cff7531a9f80ece84f2637fde9834",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/MODEL_METRICS.json",
+      "exists": true,
+      "sha256": "e480c72010858edfa62c1387e8b6038ae71a176463a054fbf80a234f201b96ef",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/OVERLAP_FAMILY_METRICS.json",
+      "exists": true,
+      "sha256": "147bdbca2484fa1bc9d4b192d7b61c27ba1c3c9eb24e7a85b8f1a5ba2a957a87",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/REGISTRATION_METRICS.json",
+      "exists": true,
+      "sha256": "8b761107b47280ae4347ec6ab1e13a86547500d5f4a2743f4b847c075728336d",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/PAIRED_COMPARISONS.json",
+      "exists": true,
+      "sha256": "9f54dcf195e0b84ad47454d488f708ab81649e52fb834f36ddc812ffff994079",
+      "hash_status": "HASH_RECOMPUTED"
+    }
+  ],
+  "visualizations": [
+    {
+      "sha256": "8e540c8d59d58fbbdaa5f949831f202b456c408b136e22136aa12c606ba0a41b",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/01_MAIN_MULTISURFACE_SECTIONS.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "ff9c5d1d0ef78d3e52b1be5d5f728970663f863cadb220214d7de4f856f1d43c",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/multisurface_3d.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "8e540c8d59d58fbbdaa5f949831f202b456c408b136e22136aa12c606ba0a41b",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/01_MAIN_MULTISURFACE_SECTIONS.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "ff9c5d1d0ef78d3e52b1be5d5f728970663f863cadb220214d7de4f856f1d43c",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/multisurface_3d.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "8e540c8d59d58fbbdaa5f949831f202b456c408b136e22136aa12c606ba0a41b",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/01_MAIN_MULTISURFACE_SECTIONS.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "fb241b980cb142a7da582dbb78fcd5e06a3ed9d2d06ed82c9f9be8066be3c69d",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/C0_MULTISURFACE_SECTIONS.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "12c5c7c7e90a3a17c5663f2547f161a666070482b784d9339412393ffe211e85",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/C1_MULTISURFACE_SECTIONS.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "fb5f93a28c0d030e21bd7174403db9b4ab0cce6957b70a0af12226dc10f051e8",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/C2_MULTISURFACE_SECTIONS.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "7df8124d04e3f561c9287f4bd9aa8941a19aafe38e19b9b6ee4b895e19d4c677",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/C4_MULTISURFACE_SECTIONS.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "75972f33b92ec80d3f57061708d3cb55f4a8422c83e3d7ac9440b5e5668725de",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/C5_MULTISURFACE_SECTIONS.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "77e4c6e98defb102a3fcd9e917ea0f491d7e878875614403adba88a38701a4b0",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/C3_E2_MULTISURFACE_SECTIONS.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "b2d8b8707ff72069063d6cdd3c42091c2f025ff4e2b85978fa4afd7285c4741c",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/ALL_METHOD_METRICS.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d420d124ebb579379d1f27ce307753b6d9f7ad004e0eac5c06bed93fb207229",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/sections_all.html",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "bf591ee8af5c23891c7a30bbc6b0302f37160c71c2bd5b497b15e23c11eb325a",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/evidence/SECTIONS_BROWSER.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "8e540c8d59d58fbbdaa5f949831f202b456c408b136e22136aa12c606ba0a41b",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/01_MAIN_MULTISURFACE_SECTIONS.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "6d29c62b0e58061a4c13a4980ed5a333ea5fdcec29f12c472fc924680d59a028",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_000.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "b6c383f8fd7c30644bb79c440daa7144e278cf65e051e2ad4f0495ad9b7b58c9",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_000.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "b55fb8006554280cc9eee2ac867151c7fd15eb19f6b98fcba84429d6eece3171",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_008.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "d64b0bf273067738df151a5acb45d7b096648aacca104b3212ba37e795eef39b",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_008.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "a5d01a25f8acf1466ca355a0b2983344ed1406829f329ef2ffef9a5e54776f87",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_013.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "808694c3a8fe91143a4e6fa70c97b5a4c9fae802eb4b1468aef772600645e8a6",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_013.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "bae1db0eaefe8afe4f905006c1d68b7c48831a34241a8a7df7e119b7957625a4",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/inputs/G01_v004_raw00152.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "315ddec9efa3d99134c855b0b4d3b95fffe1f7ac3ae55c1691ba4507f8f735f6",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/observations/G01_v004_raw00152_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f906a7f4a8b7a570e7f82d07344126287488614818655044354fb0cbddaee967",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/inputs/G01_v004_raw00282.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f76dd671ed18a871e4b4d79ea165ef9eb8ac9a9b12954ab3a37740d9325fc7dd",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/observations/G01_v004_raw00282_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "bd5bb1b5b269269047c085991e5b3c7e7e79aea948e5925223cddfc19a587a2a",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00499.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "64be52b9710831301432fab9b201f47e0379bb4ca148240c030d695ba3e5d6df",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00499_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "3fd060701f25f6f8a29116348379da23383704bde4dba1aba6e74892b74a459b",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/inputs/G01_v004_raw00852.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "dc08d7afdc4115fecd1ddff14992972aaee8db6ed5d150747192ef684fb305e6",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/observations/G01_v004_raw00852_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4adeea7a666463f411fd69e9d8e9ace1828d8a537af64e47c7b9ae378ae6584c",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_015.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "937f772fec435640a7c4e4e8cfc3ef4ec896bc958af46eb67ddf872fdbf26273",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_015.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "5554b6d16a64af21ee953e29ab30c8533cf8297fe09ac69ae5c98c0227227ceb",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/inputs/G01_v005_raw00104.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f03a733a47b4c3bf9178e06b7d9685667664e0c4e244d5bb6e131c9f71d387d4",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/observations/G01_v005_raw00104_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "d16f62a45c35dfc0e345b54fc3de9b025a845220aaf5f61d8dcb4a6825ee564e",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00185.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "9ba14f58f1f5a1f5dd2aff68b6cd7b9211b05ec8717df307c367797b7b4f0bb2",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00185_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "2586a27e316f8b92aa17e9e1260581b3469db087525b72d539152e1097d1c637",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/inputs/G01_v005_raw00439.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "ffba09965e83894c7dd2517430d6121c5006c51003a208de0da4906bf49f2251",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/observations/G01_v005_raw00439_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "10944549fbc65d7a81ac94bdf1768d4c763ab903fd4eb95361758440df7a275c",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/inputs/G01_v005_raw00562.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "cf37d1c6a75aa793945d62ae9a7f17fa2d03d1ea65ed631b3789e8e09a551270",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/observations/G01_v005_raw00562_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "d0cd8ba30e630f77ea089483c1a4a8ba47259dd73d2dd35e437b1ff455ca0d36",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00694.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "5a01705361d227e8b10a1336b3f77f0638b8bf7762bd06836ffdf951d38b62c2",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00694_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "e6111574d7b19b45ee464962ab4266078ac92043dd09b65c000552d61f718b93",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/v005_00000.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "51f23954e074a7c9a26a7f5ecc93f38edc361f523b4b331692c31f881a645073",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00000.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f95954e8fcaa09177d4adc81d336f620bc8ff81a5e24de4b44b95166de34e938",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/inputs/v005_00326.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "0484adc1546991924f4206f9286d4854fa5a862958699d6732b8602685cd747a",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/observations/v005_00326_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "9ea95bd3d8ab9cdc7858616307904fd10a34784fb592cb5da79f2c8ca081c1de",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/v005_00860.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "a712c6b231673a48bf5950b80abfda330ec9ae0ea4542ec19bf17e4cc17f8c5a",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00860.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "c1bbcee47808afe2ec2f0a86741f7cad03fe4623d2a22681ecbbc5871d6b6861",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_004.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "b4d53e447b3c12623822fe0e5f28a3f68f8768091d163e33c8d2725e1035637b",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_004.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f325154c3bf1811be56043795815ece1336dd73a33fb16ee8ba22819e36b57fe",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_006.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "db88ff86a2a3fb5b12945a8d119dd061755866144791108f53a1ca9c39d6a459",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_006.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "debc2f24ffe9ab637cce2f365486daf2df237be6ae561f41ce7e0742184ed790",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_010.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "77b657d1feba915804577c3c6f1ca508ba45e0a14133fb548a5d08ef0fa3f2d0",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_010.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "bd7aedf52648ec1e13aa8b1b3cfc741f70aacf3a990ced030d5b8b18ae62fbb6",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_009.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "8cb93bfa2fb1483360eba696b46de9bec30a0f42c23f21ad1d0e5d1eef0d390b",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_009.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "721fe03a6ace12a40dd8075604d65493422741d7f241bd65e41a463bd3da7305",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/inputs/G01_v004_raw00334.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "2dbd86a358d54b2a26f409962ae7bb8092e360565e8c11f4366f3d6f9d514ed5",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/observations/G01_v004_raw00334_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "5a2893d4ddf79e08b34416974d35e00cfe0ca179136d7712865c464ceef77814",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/v005_00229.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "fbbe82e4556fd58c563089430f53dd97475b25c5c56709346fc1e2bfdb14bcc8",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00229.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "6b86e897121a6b1bf5dba3fdbd71bf2f9fef3c2c4d302a2099823a4539ee5942",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/inputs/G01_v005_raw00509.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "db9232afee1041f8aadb9bfb4034eb549f196e334b57db7e3dd45f23a23e345a",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/observations/G01_v005_raw00509_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f7f42371dbbf0b8a55b562c9ef3552ba6ead51024c9aa003cc14e2b68bd74669",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/inputs/G01_v005_raw00668.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "d3d749d11f34664071fcf4eee3d11ce87795f89bfcfb6c984e6fca34fdabcf4d",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/observations/G01_v005_raw00668_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    }
+  ],
+  "failure_evidence": [
+    {
+      "sha256": "d2855c8259f9c59bb47b6b8b98ec0effc3ad154238935a8ff9d479ef78d5044a",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/FAILURE_LEDGER.json",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f01f91260a863e1a5da677e60258c2ca32ed66620706413384490c9cbf0bac6f",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/FRAME_FAILURE_LEDGER.json",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "d2855c8259f9c59bb47b6b8b98ec0effc3ad154238935a8ff9d479ef78d5044a",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/FAILURE_LEDGER.json",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f01f91260a863e1a5da677e60258c2ca32ed66620706413384490c9cbf0bac6f",
+      "status": "MOVED_TARGET",
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/FRAME_FAILURE_LEDGER.json",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/FAILURE_REGISTRY.json",
+      "exists": true,
+      "sha256": "f00e71598d34fc26e77fd47bf28e2405642a7f574cca88895047438b98dfc91a",
+      "hash_status": "HASH_RECOMPUTED"
+    }
+  ],
+  "dependencies": [
+    {
+      "sha256": "dd9a395fb17b2d65153695cfffa23535e1d3119c446c0ef5e4d7c3183b23374e",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/G01_004_new_r00.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "6d29c62b0e58061a4c13a4980ed5a333ea5fdcec29f12c472fc924680d59a028",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_000.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "b6c383f8fd7c30644bb79c440daa7144e278cf65e051e2ad4f0495ad9b7b58c9",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_000.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "7bdc08d085017338163aa5b3a0c5e93afdd428537470e1e8dc5f7f4771e3f125",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/hero_fit/G01_004_new_r00/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "e7f5ba4bc23637b3b41b9792069c7e2d7162aed3b6ef285a9ed59c52ac16d0f0",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/G01_004_ref08.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "b55fb8006554280cc9eee2ac867151c7fd15eb19f6b98fcba84429d6eece3171",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_008.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "d64b0bf273067738df151a5acb45d7b096648aacca104b3212ba37e795eef39b",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_008.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "88bfdb31c838c6cf74b9c5b9465a4eeeffbac6e0c5a71cedd9d74a8696117312",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/hero_fit/G01_004_ref08/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "dd242633e72ca3ab3600fbaf242e66239efab1cc4701058a4a15b6711ccf1b89",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/G01_004_ref13.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "a5d01a25f8acf1466ca355a0b2983344ed1406829f329ef2ffef9a5e54776f87",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_013.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "808694c3a8fe91143a4e6fa70c97b5a4c9fae802eb4b1468aef772600645e8a6",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_013.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "35e0e338c570ab5e131241593e36d8cbd0a667cbaf169cd2216a9cdc942693fa",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/hero_fit/G01_004_ref13/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "e113bafb80f9a0f355dc102644d94a0c9cfa223e7ccfd05ec82b02b68e0c00e2",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/G01_v004_raw00152.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "bae1db0eaefe8afe4f905006c1d68b7c48831a34241a8a7df7e119b7957625a4",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/inputs/G01_v004_raw00152.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "315ddec9efa3d99134c855b0b4d3b95fffe1f7ac3ae55c1691ba4507f8f735f6",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/observations/G01_v004_raw00152_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "ed9a23f16c60c5c2e0bb2fe92bdec9899398f589dc7928237fd24f0efee14a7b",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/hero_fit/G01_v004_raw00152/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4d65f8237b827cc54f12e43d426ded936854df1ebee1f1556e1518723d802c41",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00282_RGB_MASK.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f906a7f4a8b7a570e7f82d07344126287488614818655044354fb0cbddaee967",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/inputs/G01_v004_raw00282.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f76dd671ed18a871e4b4d79ea165ef9eb8ac9a9b12954ab3a37740d9325fc7dd",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/observations/G01_v004_raw00282_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "27d78046b3f7cadfe791957e9080e8357e02a00d4da7f581e2068ce1ce879f38",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/hero_fit/G01_v004_raw00282/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f8751ce7e4245b38a9d2ba5709258d7755b882265571e0bac81432c7a76beb40",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00499_RGB_MASK.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "bd5bb1b5b269269047c085991e5b3c7e7e79aea948e5925223cddfc19a587a2a",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00499.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "64be52b9710831301432fab9b201f47e0379bb4ca148240c030d695ba3e5d6df",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v004/G01_v004_raw00499_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "0585061ca0f2726e23533ee29a1eaf72551afd37f240f56a8e28907b247ab303",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/hero_fit/G01_v004_raw00499/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "1f258430aadd150b0bba13a91088431821cfcf4a05e51001360f3ca48c7b2a69",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/G01_v004_raw00852.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "3fd060701f25f6f8a29116348379da23383704bde4dba1aba6e74892b74a459b",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/inputs/G01_v004_raw00852.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "dc08d7afdc4115fecd1ddff14992972aaee8db6ed5d150747192ef684fb305e6",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/observations/G01_v004_raw00852_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "b247a54e82773a3ab0d2019903c20c2fcfc8b800bd067402108966282c63f6a9",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/hero_fit/G01_v004_raw00852/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "66fd714214612d58aa613b978b228f09672912ed7d2ac758d24c3807933af4e8",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/G01_video004_004_15.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4adeea7a666463f411fd69e9d8e9ace1828d8a537af64e47c7b9ae378ae6584c",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_015.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "937f772fec435640a7c4e4e8cfc3ef4ec896bc958af46eb67ddf872fdbf26273",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_015.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "00a9e5857d844ce7704874cd9a1887c41b5d05de8ecbeede67ca53ac577387b2",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/hero_fit/G01_video004_004_15/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "c884ea458e5116d2c8e88da94eac32a147a505d043088f95da9a1a074c3342cd",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00104_RGB_MASK.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "5554b6d16a64af21ee953e29ab30c8533cf8297fe09ac69ae5c98c0227227ceb",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/inputs/G01_v005_raw00104.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f03a733a47b4c3bf9178e06b7d9685667664e0c4e244d5bb6e131c9f71d387d4",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/observations/G01_v005_raw00104_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "94ca3548f48b35d60c4b193bb500e52ce4e8202808527b4bc2de24b0ee411c55",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/hero_fit/G01_v005_raw00104/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "2219e424c152046e53d9c6a43fb9f0ba2f41b25de4d2377ac750aa9a6305ccec",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00185_RGB_MASK.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "d16f62a45c35dfc0e345b54fc3de9b025a845220aaf5f61d8dcb4a6825ee564e",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00185.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "9ba14f58f1f5a1f5dd2aff68b6cd7b9211b05ec8717df307c367797b7b4f0bb2",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00185_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "c25fccaa18db40c0312e389c5b08bd00ea89ba3a716e9421dcf064e3831fd920",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/hero_fit/G01_v005_raw00185/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "150040080b0597904d9a28473bd6c556e20bcd0c95666d9541333312290be6e1",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00439_RGB_MASK.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "2586a27e316f8b92aa17e9e1260581b3469db087525b72d539152e1097d1c637",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/inputs/G01_v005_raw00439.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "ffba09965e83894c7dd2517430d6121c5006c51003a208de0da4906bf49f2251",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/observations/G01_v005_raw00439_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "0fddac08e837999e8e224c7a0b2a4ecc70352bab3aceade80749de37cbcc461b",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/hero_fit/G01_v005_raw00439/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "a7c882285a11a7e4eecc4bdb5bd79b84f9632536340cd9da792983e199b74668",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00562_RGB_MASK.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "10944549fbc65d7a81ac94bdf1768d4c763ab903fd4eb95361758440df7a275c",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/inputs/G01_v005_raw00562.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "cf37d1c6a75aa793945d62ae9a7f17fa2d03d1ea65ed631b3789e8e09a551270",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/observations/G01_v005_raw00562_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "256e7b9adc43ee44af4407b9ed63d65ca62b4df4531ac59f26b82478052db251",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/hero_fit/G01_v005_raw00562/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "cec9341acd857b7bf9e81d2bfff8930eef72205cd95415842dc10aae85faf49a",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00694_RGB_MASK.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "d0cd8ba30e630f77ea089483c1a4a8ba47259dd73d2dd35e437b1ff455ca0d36",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00694.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "5a01705361d227e8b10a1336b3f77f0638b8bf7762bd06836ffdf951d38b62c2",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_v005_raw00694_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "0c941155a356285bbb4db5a277aaa30e04349b85b4a3c1659a88eb912e70dc4f",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/hero_fit/G01_v005_raw00694/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "75aa716c1568236babbec92b8843c03656b33f004690c932fde26dc546fe8b37",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_video005_v005_00000_RGB_MASK.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "e6111574d7b19b45ee464962ab4266078ac92043dd09b65c000552d61f718b93",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/v005_00000.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "51f23954e074a7c9a26a7f5ecc93f38edc361f523b4b331692c31f881a645073",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00000.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "1fb5bb9d4a785219082f29f429f5b779baa80b3f9a330819c586a19cf3d7b91c",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/hero_fit/G01_video005_v005_00000/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "aaeab13a033252a0e4041f78ac803f459472eeeac5bcd295e3dbc8729e7d5aa0",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_video005_v005_00326_RGB_MASK.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f95954e8fcaa09177d4adc81d336f620bc8ff81a5e24de4b44b95166de34e938",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/inputs/v005_00326.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "0484adc1546991924f4206f9286d4854fa5a862958699d6732b8602685cd747a",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/observations/v005_00326_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "cbb3b49976e9309abf48dffb446ff80e839cbf86e65b284763375b5340f05c7c",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/hero_fit/G01_video005_v005_00326/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "ced088bded0093db35efe9a2959d67f06f0ca4b501a7da23f50fb935fcb62a43",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/new_views/G01_v005/G01_video005_v005_00860_RGB_MASK.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "9ea95bd3d8ab9cdc7858616307904fd10a34784fb592cb5da79f2c8ca081c1de",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/v005_00860.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "a712c6b231673a48bf5950b80abfda330ec9ae0ea4542ec19bf17e4cc17f8c5a",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00860.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "4b000bbbbb2fd7b599850f533f7763be6b085ff36e73d9c3afbf11c866d740a1",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/hero_fit/G01_video005_v005_00860/OBS_TRUSTED.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "2164d9b8016f8249de71a9058206b034e12ae1554a5864574fcc762d1db42389",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-POLYP-REGISTRATION-019/inputs/G01/G01_004_growth_r04.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "c1bbcee47808afe2ec2f0a86741f7cad03fe4623d2a22681ecbbc5871d6b6861",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_004.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "b4d53e447b3c12623822fe0e5f28a3f68f8768091d163e33c8d2725e1035637b",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_004.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "0ef3ca1fec0b29a20f32e53d7f9d9af3df55f30eb6461a09e12453f1b09b55b3",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/G01_004_growth_r04.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "b393da5056213aced04d4d4be2a20c4d749be40e937636ac254d0d2291783862",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-POLYP-REGISTRATION-019/inputs/G01/G01_004_growth_r06.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f325154c3bf1811be56043795815ece1336dd73a33fb16ee8ba22819e36b57fe",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_006.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "db88ff86a2a3fb5b12945a8d119dd061755866144791108f53a1ca9c39d6a459",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_006.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "be450fe221d153e15e89ca2582ff733f493dd7b9f9f9c41db000c377e8131d94",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/G01_004_growth_r06.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "ab19c201ed6906468c8616a086ed4043a80da9531ca9f244f25286b54f12e047",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-POLYP-REGISTRATION-019/inputs/G01/G01_004_growth_r10.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "debc2f24ffe9ab637cce2f365486daf2df237be6ae561f41ce7e0742184ed790",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_010.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "77b657d1feba915804577c3c6f1ca508ba45e0a14133fb548a5d08ef0fa3f2d0",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_010.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "7b2c29832a67202ee74dc8057c331675a61bb5ae366a27a21df3973b670eddff",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/G01_004_growth_r10.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "feb3dd2000dffefaa6463356120f641baac5645dcb714283d1bae1f5c9b68196",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-POLYP-REGISTRATION-019/inputs/G01/G01_video004_004_09.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "bd7aedf52648ec1e13aa8b1b3cfc741f70aacf3a990ced030d5b8b18ae62fbb6",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_rgb_009.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "8cb93bfa2fb1483360eba696b46de9bec30a0f42c23f21ad1d0e5d1eef0d390b",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/inputs/real_labels_009.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "66192ff12de35ab32cb5131961a583b2b0ea8112af4efb0052f33510b4f9da32",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_view_eval/experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/metrics/camera_frame_inventory.json",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "9331fa9518b296e787f692fcabe5e90310456c4919c962bcc1013d64f5c5a2d9",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-POLYP-REGISTRATION-019/inputs/G01/G01_v004_raw00334.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "721fe03a6ace12a40dd8075604d65493422741d7f241bd65e41a463bd3da7305",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/inputs/G01_v004_raw00334.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "2dbd86a358d54b2a26f409962ae7bb8092e360565e8c11f4366f3d6f9d514ed5",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/observations/G01_v004_raw00334_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "12e0a399d84b8ca89d2bcc44990d3985b107467dc13837f7cf461f02f8c0e4e9",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v004/predictions/G01_v004_raw00334_CAMERA.json",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "ba4cb10dd847bf96a0fe18b32d5100699eb968665b9005e87abf15aaee33e082",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-POLYP-REGISTRATION-019/inputs/G01/G01_005_new_r04.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "5a2893d4ddf79e08b34416974d35e00cfe0ca179136d7712865c464ceef77814",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/inputs/v005_00229.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "fbbe82e4556fd58c563089430f53dd97475b25c5c56709346fc1e2bfdb14bcc8",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_reconstruction_v4/observations/v005_00229.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "5051cb9d68562cfa57d15bb754ff43ad186501a1e08c1b17a3788902e90cbefc",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_view_partition/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/local_results/derived_depth/G01_005_new_r04/pack_full.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "7642b68a07114a10f9738b8ac8aa3ae0fad25fdd061ea291bf59cbfc069a5bca",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-POLYP-REGISTRATION-019/inputs/G01/G01_v005_raw00509.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "6b86e897121a6b1bf5dba3fdbd71bf2f9fef3c2c4d302a2099823a4539ee5942",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/inputs/G01_v005_raw00509.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "db9232afee1041f8aadb9bfb4034eb549f196e334b57db7e3dd45f23a23e345a",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/observations/G01_v005_raw00509_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "b7fcac219cd4c5e31c941ffcf487345c10c4639053ef03973e7c338869581673",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/predictions/G01_v005_raw00509_CAMERA.json",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "8e3e03e5172276b6637702233e6f8fd041615d5b417992810c176217fe402fa0",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-RING-POLYP-REGISTRATION-019/inputs/G01/G01_v005_raw00668.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "f7f42371dbbf0b8a55b562c9ef3552ba6ead51024c9aa003cc14e2b68bd74669",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/inputs/G01_v005_raw00668.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "d3d749d11f34664071fcf4eee3d11ce87795f89bfcfb6c984e6fca34fdabcf4d",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/observations/G01_v005_raw00668_labels.png",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "3f6e984e26919b2dbffbfa0f0ce2e6e5991e2d739d9a4ede9977400b025c2855",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G01_v005/predictions/G01_v005_raw00668_CAMERA.json",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    {
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "status": "EXTERNAL_DEPENDENCY",
+      "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018/inputs/G01/RING.npz",
+      "hash_status": "HASH_RECOMPUTED"
+    }
+  ],
+  "scientific_status": "LOCALIZATION_UNPROVEN_C0_DRIFT",
+  "engineering_status": "HISTORICAL_EXECUTION_EVIDENCE_PRESENT",
+  "report": {
+    "canonical_copy": {
+      "path": "/home/liu/ring_first_3d_forensic_audit_002/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/TECHNICAL_REPORT.md",
+      "exists": true,
+      "sha256": "c03d48703005ac1b2285c08af711572889ea45d27d9bd7edfed6134ee3a44f10",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    "original": {
+      "path": "/home/liu/ring_first_3d_g01_multisurface/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/TECHNICAL_REPORT.md",
+      "exists": true,
+      "sha256": "c03d48703005ac1b2285c08af711572889ea45d27d9bd7edfed6134ee3a44f10",
+      "hash_status": "HASH_RECOMPUTED"
+    },
+    "publication_commit": "b16a6f813ecf9214958cae3b88d624725a0fa484"
+  },
+  "link_counts": {
+    "MOVED_TARGET": 91,
+    "VALID": 2,
+    "BROKEN_TARGET": 42,
+    "MISSING_ASSET": 1,
+    "EXTERNAL_DEPENDENCY": 120
+  },
+  "notes": []
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "command": [
+      "/home/liu/new-polyp-dxy/.venv/bin/python",
+      "-c",
+      "import sys,json,sysconfig,importlib,importlib.metadata as m\nd=dict(executable=sys.executable,version=sys.version,prefix=sys.prefix,base_prefix=sys.base_prefix,SOABI=sysconfig.get_config_var('SOABI'),EXT_SUFFIX=sysconfig.get_config_var('EXT_SUFFIX'),packages={})\nfor name in ['torch','torchvision','pytorch3d','open3d','python-fcl','numpy','scipy','nvdiffrast','trimesh','transformers']:\n try:d['packages'][name]=m.version(name)\n except m.PackageNotFoundError:d['packages'][name]='NOT_IN_DEFAULT_METADATA'\ntry:\n import torch\n d['torch']=dict(path=torch.__file__,version=torch.__version__,cuda=torch.version.cuda,cxx11_abi=torch._C._GLIBCXX_USE_CXX11_ABI,cuda_available=torch.cuda.is_available())\nexcept Exception as e:d['torch_import_error']=str(e)\nprint(json.dumps(d))\n"
+    ],
+    "returncode": 0,
+    "stdout": "{\"executable\": \"/home/liu/new-polyp-dxy/.venv/bin/python\", \"version\": \"3.10.19 (main, Oct 21 2025, 16:43:05) [GCC 11.2.0]\", \"prefix\": \"/home/liu/new-polyp-dxy/.venv\", \"base_prefix\": \"/home/liu/miniconda3/envs/\\u606f\\u8089\\u68c0\\u6d4b\", \"SOABI\": \"cpython-310-x86_64-linux-gnu\", \"EXT_SUFFIX\": \".cpython-310-x86_64-linux-gnu.so\", \"packages\": {\"torch\": \"NOT_IN_DEFAULT_METADATA\", \"torchvision\": \"NOT_IN_DEFAULT_METADATA\", \"pytorch3d\": \"NOT_IN_DEFAULT_METADATA\", \"open3d\": \"NOT_IN_DEFAULT_METADATA\", \"python-fcl\": \"NOT_IN_DEFAULT_METADATA\", \"numpy\": \"1.26.4\", \"scipy\": \"1.15.3\", \"nvdiffrast\": \"NOT_IN_DEFAULT_METADATA\", \"trimesh\": \"NOT_IN_DEFAULT_METADATA\", \"transformers\": \"NOT_IN_DEFAULT_METADATA\"}, \"torch_import_error\": \"No module named 'torch'\"}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/home/liu/polyp_research/.venv/bin/python",
+      "-c",
+      "import sys,json,sysconfig,importlib,importlib.metadata as m\nd=dict(executable=sys.executable,version=sys.version,prefix=sys.prefix,base_prefix=sys.base_prefix,SOABI=sysconfig.get_config_var('SOABI'),EXT_SUFFIX=sysconfig.get_config_var('EXT_SUFFIX'),packages={})\nfor name in ['torch','torchvision','pytorch3d','open3d','python-fcl','numpy','scipy','nvdiffrast','trimesh','transformers']:\n try:d['packages'][name]=m.version(name)\n except m.PackageNotFoundError:d['packages'][name]='NOT_IN_DEFAULT_METADATA'\ntry:\n import torch\n d['torch']=dict(path=torch.__file__,version=torch.__version__,cuda=torch.version.cuda,cxx11_abi=torch._C._GLIBCXX_USE_CXX11_ABI,cuda_available=torch.cuda.is_available())\nexcept Exception as e:d['torch_import_error']=str(e)\nprint(json.dumps(d))\n"
+    ],
+    "returncode": 0,
+    "stdout": "{\"executable\": \"/home/liu/polyp_research/.venv/bin/python\", \"version\": \"3.10.20 (main, Mar 11 2026, 17:46:40) [GCC 14.3.0]\", \"prefix\": \"/home/liu/polyp_research/.venv\", \"base_prefix\": \"/home/liu/miniconda3/envs/polypseg\", \"SOABI\": \"cpython-310-x86_64-linux-gnu\", \"EXT_SUFFIX\": \".cpython-310-x86_64-linux-gnu.so\", \"packages\": {\"torch\": \"NOT_IN_DEFAULT_METADATA\", \"torchvision\": \"NOT_IN_DEFAULT_METADATA\", \"pytorch3d\": \"NOT_IN_DEFAULT_METADATA\", \"open3d\": \"NOT_IN_DEFAULT_METADATA\", \"python-fcl\": \"NOT_IN_DEFAULT_METADATA\", \"numpy\": \"1.26.4\", \"scipy\": \"NOT_IN_DEFAULT_METADATA\", \"nvdiffrast\": \"NOT_IN_DEFAULT_METADATA\", \"trimesh\": \"NOT_IN_DEFAULT_METADATA\", \"transformers\": \"NOT_IN_DEFAULT_METADATA\"}, \"torch_import_error\": \"No module named 'torch'\"}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+      "-c",
+      "import sys,json,sysconfig,importlib,importlib.metadata as m\nd=dict(executable=sys.executable,version=sys.version,prefix=sys.prefix,base_prefix=sys.base_prefix,SOABI=sysconfig.get_config_var('SOABI'),EXT_SUFFIX=sysconfig.get_config_var('EXT_SUFFIX'),packages={})\nfor name in ['torch','torchvision','pytorch3d','open3d','python-fcl','numpy','scipy','nvdiffrast','trimesh','transformers']:\n try:d['packages'][name]=m.version(name)\n except m.PackageNotFoundError:d['packages'][name]='NOT_IN_DEFAULT_METADATA'\ntry:\n import torch\n d['torch']=dict(path=torch.__file__,version=torch.__version__,cuda=torch.version.cuda,cxx11_abi=torch._C._GLIBCXX_USE_CXX11_ABI,cuda_available=torch.cuda.is_available())\nexcept Exception as e:d['torch_import_error']=str(e)\nprint(json.dumps(d))\n"
+    ],
+    "returncode": 0,
+    "stdout": "{\"executable\": \"/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python\", \"version\": \"3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]\", \"prefix\": \"/home/liu/polyp_research/ring_anchor_3d/.venv\", \"base_prefix\": \"/home/liu/miniconda3/envs/vpo\", \"SOABI\": \"cpython-312-x86_64-linux-gnu\", \"EXT_SUFFIX\": \".cpython-312-x86_64-linux-gnu.so\", \"packages\": {\"torch\": \"2.7.1+cu128\", \"torchvision\": \"0.22.1+cu128\", \"pytorch3d\": \"NOT_IN_DEFAULT_METADATA\", \"open3d\": \"NOT_IN_DEFAULT_METADATA\", \"python-fcl\": \"NOT_IN_DEFAULT_METADATA\", \"numpy\": \"1.26.4\", \"scipy\": \"1.15.3\", \"nvdiffrast\": \"NOT_IN_DEFAULT_METADATA\", \"trimesh\": \"5.1.1\", \"transformers\": \"4.57.6\"}, \"torch\": {\"path\": \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/__init__.py\", \"version\": \"2.7.1+cu128\", \"cuda\": \"12.8\", \"cxx11_abi\": true, \"cuda_available\": true}}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/home/liu/ring-first-hero-core/.venv/bin/python",
+      "-c",
+      "import sys,json,sysconfig,importlib,importlib.metadata as m\nd=dict(executable=sys.executable,version=sys.version,prefix=sys.prefix,base_prefix=sys.base_prefix,SOABI=sysconfig.get_config_var('SOABI'),EXT_SUFFIX=sysconfig.get_config_var('EXT_SUFFIX'),packages={})\nfor name in ['torch','torchvision','pytorch3d','open3d','python-fcl','numpy','scipy','nvdiffrast','trimesh','transformers']:\n try:d['packages'][name]=m.version(name)\n except m.PackageNotFoundError:d['packages'][name]='NOT_IN_DEFAULT_METADATA'\ntry:\n import torch\n d['torch']=dict(path=torch.__file__,version=torch.__version__,cuda=torch.version.cuda,cxx11_abi=torch._C._GLIBCXX_USE_CXX11_ABI,cuda_available=torch.cuda.is_available())\nexcept Exception as e:d['torch_import_error']=str(e)\nprint(json.dumps(d))\n"
+    ],
+    "returncode": 0,
+    "stdout": "{\"executable\": \"/home/liu/ring-first-hero-core/.venv/bin/python\", \"version\": \"3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]\", \"prefix\": \"/home/liu/ring-first-hero-core/.venv\", \"base_prefix\": \"/home/liu/miniconda3/envs/vpo\", \"SOABI\": \"cpython-312-x86_64-linux-gnu\", \"EXT_SUFFIX\": \".cpython-312-x86_64-linux-gnu.so\", \"packages\": {\"torch\": \"2.7.1+cu128\", \"torchvision\": \"0.22.1+cu128\", \"pytorch3d\": \"NOT_IN_DEFAULT_METADATA\", \"open3d\": \"0.19.0\", \"python-fcl\": \"NOT_IN_DEFAULT_METADATA\", \"numpy\": \"1.26.4\", \"scipy\": \"1.15.3\", \"nvdiffrast\": \"NOT_IN_DEFAULT_METADATA\", \"trimesh\": \"5.1.1\", \"transformers\": \"4.57.6\"}, \"torch\": {\"path\": \"/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/torch/__init__.py\", \"version\": \"2.7.1+cu128\", \"cuda\": \"12.8\", \"cxx11_abi\": true, \"cuda_available\": true}}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/home/liu/ring_first_3d_mainline/mainline/scripts/python.sh",
+      "-c",
+      "import json,importlib; d={};\nfor n in ['torch','pytorch3d','open3d','fcl','nvdiffrast','ring_first_3d']:\n try:\n  m=importlib.import_module(n);d[n]={'file':getattr(m,'__file__',None),'version':getattr(m,'__version__','not_declared')}\n except Exception as e:d[n]={'error':str(e)}\nprint(json.dumps(d))"
+    ],
+    "error": "[Errno 13] Permission denied: '/home/liu/ring_first_3d_mainline/mainline/scripts/python.sh'"
+  }
+]

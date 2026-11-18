@@ -1,0 +1,116 @@
+{
+  "status": "ENGINEERING_VALIDATION_PASS",
+  "checks": [
+    {
+      "check": "complete_asset_export_row_count",
+      "status": "PASS",
+      "detail": "full CSV/db/summary counts match"
+    },
+    {
+      "check": "symlink_export_regression_IR009",
+      "status": "PASS",
+      "detail": "53263 actual symlinks exported; initial empty artifact retained"
+    },
+    {
+      "check": "old_empty_export_and_fix_preserved",
+      "status": "PASS",
+      "detail": "first erroneous export and repair evidence retained"
+    },
+    {
+      "check": "unique_inode_accounting",
+      "status": "PASS",
+      "detail": "allocated bytes counted once per dev/inode across all scan roots"
+    },
+    {
+      "check": "hash_inheritance_not_old_audit",
+      "status": "PASS",
+      "detail": "all inherited hashes bind a current-scan recomputed row"
+    },
+    {
+      "check": "historical_reports_unmodified",
+      "status": "PASS",
+      "detail": "39 canonical historical reports/cards retain original SHA256"
+    },
+    {
+      "check": "evidence_contract_and_real_file_hashes",
+      "status": "PASS",
+      "detail": {
+        "tasks": 19,
+        "hashed_records_verified": 6127
+      }
+    },
+    {
+      "check": "module_ids_recovered_without_collision",
+      "status": "PASS",
+      "detail": "69 original +30 existing Runner IDs, no new arbitrary IDs"
+    },
+    {
+      "check": "module_paths_SHA_and_execution_evidence",
+      "status": "PASS",
+      "detail": "30 recovered modules point to real code and frozen stage evidence"
+    },
+    {
+      "check": "five_task_index_repair",
+      "status": "PASS",
+      "detail": "five specified experiments registered once, reports exist, source unknown retained explicitly"
+    },
+    {
+      "check": "link_status_counts_and_repaired_target_hashes",
+      "status": "PASS",
+      "detail": {
+        "total": 7491,
+        "counts": {
+          "VALID": 78,
+          "MOVED_TARGET": 479,
+          "EXTERNAL_DEPENDENCY": 4508,
+          "BROKEN_TARGET": 2379,
+          "MISSING_ASSET": 44,
+          "UNRESOLVED": 3
+        },
+        "reports_scanned": 39,
+        "tasks": 18,
+        "original_report_bytes_all_preserved": true,
+        "semantics": "Existing targets need not be portable; external dependencies are explicit. Missing/template links remain failures, not fabricated repairs."
+      }
+    },
+    {
+      "check": "metric_sources_and_nonpooled_frames",
+      "status": "PASS",
+      "detail": "12 actual source/evidence hashes; both MAE frames and Fscore/coverage directions verified from stored CSV without recomputation"
+    },
+    {
+      "check": "archive_identity_and_member_accounting",
+      "status": "PASS",
+      "detail": "full original ZIP SHA and15571 member metadata/6388 JPG checked, no extraction"
+    },
+    {
+      "check": "no_scientific_or_historical_tracked_mutation",
+      "status": "PASS",
+      "detail": "only audit outputs and registry/navigation documents differ; scientific source untouched"
+    },
+    {
+      "check": "offline_audit_navigation_exists_and_links_resolve",
+      "status": "PASS",
+      "detail": {
+        "exists": true,
+        "absolute_path": "/home/liu/ring_first_3d_forensic_audit_002/maintenance/TASK-MAINLINE-RECOVERY-AND-FORENSIC-AUDIT-002/visualization/index.html",
+        "local_links_checked": 55
+      }
+    },
+    {
+      "check": "asset_worktree_ownership_including_nested_B",
+      "status": "PASS",
+      "detail": "every inventoried path has explicit scan root and longest actual Git-root ownership"
+    },
+    {
+      "check": "independent_review_artifacts_exist",
+      "status": "PASS",
+      "detail": "independent source/Git/findings evidence present; primary does not self-approve retirement"
+    }
+  ],
+  "total": 17,
+  "passed": 17,
+  "scientific_recalculation": false,
+  "scientific_acceptance": "NOT_APPLICABLE",
+  "retirement_execution_authorized": false
+}

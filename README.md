@@ -19,3 +19,7 @@ bash mainline/scripts/run_stalk_growth.sh G01 --out /tmp/stalk-replay
 ```
 
 入口：[本地主线可视化](mainline/visualization/index.html) · [工程整理报告](maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/TECHNICAL_REPORT.md) · [结果一致性](maintenance/TASK-MAINLINE-ASSET-CONSOLIDATION-001/RESULT_EQUIVALENCE_REPORT.md)。原始数据、权重、官方第三方代码和环境采用LOCAL_ONLY清单，不重复分发。DXY独立只读。
+
+## 只读恢复与法证审计002
+
+[审计报告](maintenance/TASK-MAINLINE-RECOVERY-AND-FORENSIC-AUDIT-002/TECHNICAL_REPORT.md) · [独立复核](maintenance/TASK-MAINLINE-RECOVERY-AND-FORENSIC-AUDIT-002/INDEPENDENT_REVIEW_PACKAGE/FINAL_INDEPENDENT_REVIEW.md) · [审计导航](maintenance/TASK-MAINLINE-RECOVERY-AND-FORENSIC-AUDIT-002/visualization/index.html)。没有删除或退役授权；当前主线Git对象依赖旧B仓库。
