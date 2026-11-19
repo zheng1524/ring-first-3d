@@ -1,0 +1,22 @@
+revision: RF_ONLY_V1
+authorization: user_explicitly_allows_original_RGB_yaw_and_rejects_PnP_substitution
+change: select_only_from_original_RF5DoF_RGB_yaw_candidates_before_any_scientific_admission
+solver: unchanged_native_recover_and_all_frozen_RF_CONFIG_parameters
+score: unchanged_FIT_objective
+inputs: same_105_frozen_views_no_reselection
+numeric_reuse: original_full_candidate_outputs_locked_by_SHA256
+PnP_candidate: retained_as_diagnostic_never_admissible
+historical_pose_candidate: never_admissible
+calibration:
+  reference_roles: archived_FIT_only
+  video: same_video_only
+  current_HOLDOUT_overlap: reject_by_RGB_array_SHA
+  missing_reference_SHA: reject
+  G01_005: reject_unverified_inherited_cross_video_gauge
+budget:
+  HERO_max_targets: 32
+  HERO_stage_seconds: 3600
+  output_bytes: 2147483648
+HERO_supports: frozen_FIT_order_cyclic_offsets_2_4_6_for_each_target
+Body: no_dropped_FIT_views_and_identical_growth_and_geometry_rules_in_B1_B2
+no_GT_geometry_access: true

@@ -1,0 +1,59 @@
+task_id: TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001
+protocol: STANDARD_PER_VIDEO_NO_CAMERA_SUBSTITUTION_V1
+goal: Audit and execute Ring-First then official HERO then a fair depth ablation.
+groups: [G01, G02, G03, G05, G06]
+input_selection: frozen_contour_guided_SOURCES_FIT_HOLDOUT
+coordinate_contract:
+  units: mm
+  extrinsics: OpenCV_c2w
+  pixels: integer_index_centres
+  depth: axial_Z
+authorization:
+  source: user_task_and_2026_11_19_RGB_yaw_clarification
+  RGB_yaw: original_frozen_method_allowed
+  final_camera_sources: [originalRF5DoF_RGB_yaw]
+  historical_pose_seed: false
+  PnP_replacement: false
+  cross_video_body_training: false
+  push: false
+frozen:
+  initial: EXACT_013_INPUT_MESH_V_F_SOLID_CAP
+  selection: unchanged_per_video_FIT_and_HOLDOUT
+  camera_solver: native_camera_RF_CONFIG_unmodified
+  reference_maps: original_same_video_only_ancestry_must_be_audited
+  current_FIT_only_map_restriction: false
+  calibration_rule: historical_FIT_calibration_is_allowed_if_identity_and_no_current_HOLDOUT_leak_are_proven
+  camera_boundary_diagnostic_limit_px: 3.0
+  Body_HERO_or_GT_for_camera: false
+  original_HERO_or_PnP_camera_fallback: false
+  body_outer_iterations: 36
+  depth_sigma_mm: 0.5
+  depth_huber_delta: 1.0
+  depth_lambda: 0.01
+  ring_gate: CurrentRingGate_non_worsening_without_loss_gradient
+  growth: same_B_spline_Boolean_and_projection_rules_for_B1_B2
+  model_selection: FIT_only_no_GT
+arms:
+  B0: unmodified_exact013_initial
+  B1: existing_contour_and_prior_and_geometry
+  B2: B1_plus_existing_HeroDepth018_only
+gates:
+  regression: original_247_plus_task_specific_tests
+  camera: original_winner_source_and_SE3_and_Ring_reprojection_and_map_identity
+  HERO: admitted_same_video_camera_for_target_and_all_supports
+  body: all_original_FIT_views_and_legal_HERO_in_shared_video_gauge
+  GT: predictions_frozen_before_shape_evaluation
+  fail_closed: no_silent_candidate_reselection_or_fallback
+budget:
+  camera_seconds: 7200
+  per_camera_seconds: 120
+  max_output_bytes: 2147483648
+stop:
+  - freeze_or_input_SHA_mismatch
+  - affected_video_has_unresolvable_camera_gauge_or_source_failure
+  - affected_stage_has_no_admissible_inputs
+  - budget_exhausted
+artifacts:
+  format: static_PNG_and_native_Mesh_only
+  HTML: false
+  required: [INPUT_MANIFEST.csv, PIPELINE_COMPLETENESS.csv, FINAL_REPORT.md, FAILURE_REGISTRY.json]
