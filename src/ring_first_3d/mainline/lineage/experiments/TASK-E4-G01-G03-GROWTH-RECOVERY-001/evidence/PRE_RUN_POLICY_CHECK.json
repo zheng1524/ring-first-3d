@@ -1,0 +1,143 @@
+{
+  "status": "PASS",
+  "freeze_sha256": "cb7fde46a33cbf82bdf304984299808a2de6870e639c8e5bb4cde8b0866764ef",
+  "module_contracts": {
+    "T01": {
+      "sources": [],
+      "requires": [],
+      "units": "native_image_px"
+    },
+    "T03": {
+      "sources": [
+        "T03"
+      ],
+      "requires": [
+        "T01"
+      ],
+      "units": "native_image_px"
+    },
+    "T04": {
+      "sources": [
+        "T04"
+      ],
+      "requires": [
+        "T03"
+      ],
+      "units": "native_image_px"
+    },
+    "T10": {
+      "sources": [
+        "T10"
+      ],
+      "requires": [],
+      "units": "native_image_px"
+    },
+    "T11": {
+      "sources": [
+        "T11"
+      ],
+      "requires": [
+        "T10"
+      ],
+      "units": "mm"
+    },
+    "T12": {
+      "sources": [
+        "T12"
+      ],
+      "requires": [],
+      "units": "mm"
+    },
+    "T13": {
+      "sources": [
+        "T13",
+        "rgb"
+      ],
+      "requires": [
+        "T12"
+      ],
+      "units": "native_image_px"
+    },
+    "T24": {
+      "sources": [
+        "T24",
+        "common"
+      ],
+      "requires": [],
+      "units": "mm"
+    },
+    "T31": {
+      "sources": [
+        "T31",
+        "common"
+      ],
+      "requires": [
+        "T24"
+      ],
+      "units": "mm"
+    },
+    "T34": {
+      "sources": [
+        "T34",
+        "common"
+      ],
+      "requires": [
+        "T24"
+      ],
+      "units": "mm"
+    },
+    "GR01": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/recover.py",
+      "sha256": "bfa782241653fc5f40479338ffd190544a0c3014856beb223d51da3f3d9e1cfa"
+    },
+    "GR02": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/lengths.py",
+      "sha256": "14dc27b18fed7e75b6de70db5ea56e6c107ca710567f0180ca53567d77064a34"
+    },
+    "GR03": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/embedded_sweep.py",
+      "sha256": "bfe96a063b100e8d66d955af2d26c49d3aec35b018c97296a4b32608df932992"
+    },
+    "GR04": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/boolean_blender.py",
+      "sha256": "94bef3570bca543ed7364d9b06dc611d86528a7d5b3b5c8b8b91b7aacb0e1ba6"
+    },
+    "GR05": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/union_mesh.py",
+      "sha256": "360422ab42c0d2ebd4b436889e6c7dcf1c6f2ad38d876da445a994df9ec1443a"
+    },
+    "GR06": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/geometry_gate.py",
+      "sha256": "e22e402f43591766480d782566e979f0a753c522da4f3142934d668666acbe42"
+    },
+    "GR07": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/ring_gate.py",
+      "sha256": "b4e338b7c80860ce123c38ac7477e2657f192927b313b19d59b5348391a0b9e4"
+    },
+    "GR08": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/projection.py",
+      "sha256": "f147712ba3eac6775f18aaa65dcf76396d83cc23c8b7c1383e2b489036f2b130"
+    },
+    "GR09": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/optimize.py",
+      "sha256": "0b15488c884a9cb4c55de0c4318c2c9eb00768dc03b6e6d5f239edd2bf621a32"
+    },
+    "GR10": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/pipeline.py",
+      "sha256": "fc29fae47f56184de02bf63d94d5b031403265297d469533c9f0494422840bd3"
+    },
+    "GR11": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/evaluate.py",
+      "sha256": "bffd1c3f326b576b580a3fd0d177726480df3c723601351e32960348770a1d01"
+    },
+    "GR12": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/visualize.py",
+      "sha256": "91e4b7aa430bef07b44c8a9b712111b77d70601eab2117864641a81564ecca1f"
+    },
+    "GR13": {
+      "path": "/home/liu/ring_first_3d_growth_recovery/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/io_utils.py",
+      "sha256": "c50f19e60ce68dfdccef85a55db5d15e6d956c6bf7bc64d28ba9f9d779638efc"
+    }
+  },
+  "verified_assets": 379
+}

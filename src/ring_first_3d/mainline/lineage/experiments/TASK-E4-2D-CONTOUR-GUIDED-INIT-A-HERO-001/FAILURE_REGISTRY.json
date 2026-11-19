@@ -1,0 +1,250 @@
+{
+  "schema": 1,
+  "failures": [
+    {
+      "id": "CG-INHERITED-FM-INIT-A-G08-001",
+      "category": "incomplete_evaluation",
+      "modules": [
+        "IA01",
+        "IA02",
+        "IA03"
+      ],
+      "symptom": "G08 lacks004; A1/A2 cannot be evaluated as defined",
+      "cause": "Source availability or observed scientific limitation; gate ordering cause confirmed separately in ENGINEERING_FIXES",
+      "cause_status": "observed_only",
+      "repair": "Keep all targets, valid/invalid metrics and actual Mesh evidence; no GT tuning, prediction fallback or automatic permanent promotion",
+      "regression": [
+        "130 inherited and new source/initialization/scope/isolation tests"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/13a73f0422be5e5b0e221df4a41407b3b6d6d52c/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-INHERITED-FM-INIT-A-ENTITY-001",
+      "category": "scientific_negative",
+      "modules": [
+        "IA01",
+        "IA02",
+        "IA03"
+      ],
+      "symptom": "Strict solid IoU validity is not guaranteed; conditional occupancy is not a replacement for strict IoU",
+      "cause": "Source availability or observed scientific limitation; gate ordering cause confirmed separately in ENGINEERING_FIXES",
+      "cause_status": "observed_only",
+      "repair": "Keep all targets, valid/invalid metrics and actual Mesh evidence; no GT tuning, prediction fallback or automatic permanent promotion",
+      "regression": [
+        "130 inherited and new source/initialization/scope/isolation tests"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/13a73f0422be5e5b0e221df4a41407b3b6d6d52c/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-INHERITED-FM-INIT-A-HERO-SOURCES-001",
+      "category": "incomplete_evaluation",
+      "modules": [
+        "IA01",
+        "IA02",
+        "IA03"
+      ],
+      "symptom": "Not all physical groups have >=2 source-bound complete HERO Meshes; unavailable targets remain NaN",
+      "cause": "Source availability or observed scientific limitation; gate ordering cause confirmed separately in ENGINEERING_FIXES",
+      "cause_status": "observed_only",
+      "repair": "Keep all targets, valid/invalid metrics and actual Mesh evidence; no GT tuning, prediction fallback or automatic permanent promotion",
+      "regression": [
+        "130 inherited and new source/initialization/scope/isolation tests"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/13a73f0422be5e5b0e221df4a41407b3b6d6d52c/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-INHERITED-FM-INIT-A-GATE-001",
+      "category": "code_error",
+      "modules": [
+        "IA01",
+        "IA02",
+        "IA03"
+      ],
+      "symptom": "Guarded regression initially checked GT metadata before rejecting corrupted source binding",
+      "cause": "YAML key sorting changed asset-check order inside trusted worker guard",
+      "cause_status": "confirmed",
+      "repair": "Keep all targets, valid/invalid metrics and actual Mesh evidence; no GT tuning, prediction fallback or automatic permanent promotion",
+      "regression": [
+        "130 inherited and new source/initialization/scope/isolation tests"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/13a73f0422be5e5b0e221df4a41407b3b6d6d52c/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-INHERITED-FM-INIT-A-IP-MORPHOLOGY-001",
+      "category": "scientific_negative",
+      "modules": [
+        "IA01",
+        "IA03",
+        "IA04"
+      ],
+      "symptom": "Verified G02 wrong half-body persists; G03 no long stalk after multivideo",
+      "cause": "Observed constrained optimization stall and source-shape bias; unique causal allocation not established",
+      "cause_status": "observed_only",
+      "repair": "Retain full actual original/aligned Mesh, all arms and geometry rejection logs; no case-specific patch or GT checkpoint selection",
+      "regression": [
+        "130 tests: exact013 lineage, original optimizer budget, per-video permissions and evaluator-copy isolation"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/13a73f0422be5e5b0e221df4a41407b3b6d6d52c/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-OUTCOME-001",
+      "category": "scientific_negative",
+      "modules": [
+        "CG01",
+        "CG02",
+        "CG03"
+      ],
+      "symptom": "Mixed per-case shape / native HERO results and unavailable groups retained",
+      "cause": "Observed frozen matched comparisons; causal morphology/pose explanation unproven",
+      "cause_status": "observed_only",
+      "repair": "Preserve valid and invalid rows, diagnose on actual PNG/GLB; do not auto-select another checkpoint or GT-tune",
+      "regression": [
+        "test_contour_guided",
+        "FINAL_DELIVERY_VERIFICATION"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/visualization/FAILURE_LEDGER.json",
+          "sha256": "9351b20e213da512de9c6a0e0d9ba062452a9c1baf598d8595a392f41b538766"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-ENV-001",
+      "category": "code_error",
+      "modules": [
+        "CG04",
+        "CG05"
+      ],
+      "symptom": "Child trainer temporary cache rejected before new scientific update",
+      "cause": "Parent-stage TMPDIR was outside stricter per-arm write boundary",
+      "cause_status": "confirmed",
+      "repair": "Set TMPDIR, XDG_CACHE_HOME and MPLCONFIGDIR inside each arm; retain strict guard; new run identity",
+      "regression": [
+        "test_child_temp_cache_paths_inside_arm_write_boundary"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/evidence/FAILED_RUNS/CONTOUR_001/attempts/0005-G1_smoke_train-c6a8f8bb/G01/A2D/TRAIN_STDOUT.txt",
+          "sha256": "fc023ee168ddefb8c55439c64ea75a888c5964589e31d3de07bb13cb4d99f2db"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-EXPORT-002",
+      "category": "code_error",
+      "modules": [
+        "CG04",
+        "CG05"
+      ],
+      "symptom": "Smoke scientific outputs existed but G4 CSV export failed",
+      "cause": "method keyword supplied twice while merging a method metric row",
+      "cause_status": "confirmed",
+      "repair": "Merge the existing mapping once, preserving every valid/invalid method",
+      "regression": [
+        "test_hero_csv_row_accepts_existing_method_key"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/evidence/FAILED_RUNS/CONTOUR_002/attempts/0008-G4_smoke_visualize-a0e3b943/stderr.txt",
+          "sha256": "d1ed54195c0cfdda6a4f5ca0d0b0e7f1a37934d1e27523e3b2d28bcc2671a4e8"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-INDEX-003",
+      "category": "code_error",
+      "modules": [
+        "CG04",
+        "CG05"
+      ],
+      "symptom": "Artifact status rejected worker.json referenced by static index",
+      "cause": "Index duplicated file filtering and listed a Runner control file not exported in outputs payload",
+      "cause_status": "confirmed",
+      "repair": "Use authoritative outputs API; explicit PNG-only task artifact profile; retain original harness profile",
+      "regression": [
+        "test_index_links_are_subset_of_actual_runner_published_payload",
+        "test_PNG_task_plain_index_profile_does_not_need_hidden_legacy_figure",
+        "test_original_harness_profile_remains_required"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/evidence/CONTOUR_003_STATUS_REJECTION.json",
+          "sha256": "a0a399fdb3df0a11504c4bcddb1b157b6a559b87038234284dad0bc5c2ccbc8a"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "CG-IP-MORPH-004",
+      "category": "scientific_negative",
+      "modules": [
+        "CG01",
+        "CG02"
+      ],
+      "symptom": "G02 remains half body; G03 still lacks stalk although its evaluated head is genuinely GT-aligned",
+      "cause": "Observed retained whole-Mesh morphology; no unique optimizer/topology/visibility cause established",
+      "cause_status": "observed_only",
+      "repair": "Preserve failure; no case-specific morphology or GT-selected checkpoint",
+      "regression": [
+        "test_no_new_initial_body",
+        "FINAL_DELIVERY_VERIFICATION"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/visualization/figures/Fig2_G02_G03_IP_DETAIL.png",
+          "sha256": "3141cf81e17a14fa8e009632d66523804779444e7d01822612a241e014d40238"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    }
+  ]
+}

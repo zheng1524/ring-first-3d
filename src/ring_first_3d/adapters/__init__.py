@@ -1,0 +1,1 @@
+"""External frozen algorithm adapters."""

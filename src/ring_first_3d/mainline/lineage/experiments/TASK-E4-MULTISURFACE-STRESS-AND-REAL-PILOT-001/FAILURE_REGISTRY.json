@@ -1,0 +1,128 @@
+{
+  "schema": 1,
+  "failures": [
+    {
+      "id": "FM-STRESS-C0-001",
+      "category": "scientific_negative",
+      "modules": [
+        "SR01",
+        "SR02",
+        "SR03"
+      ],
+      "symptom": "Error-free C0 may drift under Body correspondence; retain independent material errors",
+      "cause": "Observed evidence only; individual model bias and measurement contributions are not causally isolated",
+      "cause_status": "observed_only",
+      "repair": "Preserve metrics, original geometry and all failures for human review; do not tune using GT or promote automatic permanent rules",
+      "regression": [
+        "117 original and added scope/source/coordinate/isolation tests"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001/visualization/STRESS_METRICS.json",
+          "sha256": "775b9989a923f6828cb6ad60a51662dd2ae122089e73df4a694f64b1e152bc64"
+        },
+        {
+          "path": "experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001/visualization/figures/C0_SECTIONS.png",
+          "sha256": "72d51d5021816112bf1e72bfef5ac167e1063d43c660bd97eebf6ea6d3611590"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-STRESS-DISPERSION-001",
+      "category": "scientific_negative",
+      "modules": [
+        "SR01",
+        "SR02",
+        "SR03"
+      ],
+      "symptom": "Lower surface dispersion is not independent material or reconstruction accuracy",
+      "cause": "Observed evidence only; individual model bias and measurement contributions are not causally isolated",
+      "cause_status": "observed_only",
+      "repair": "Preserve metrics, original geometry and all failures for human review; do not tune using GT or promote automatic permanent rules",
+      "regression": [
+        "117 original and added scope/source/coordinate/isolation tests"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001/visualization/STRESS_METRICS.json",
+          "sha256": "775b9989a923f6828cb6ad60a51662dd2ae122089e73df4a694f64b1e152bc64"
+        },
+        {
+          "path": "experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001/visualization/CANDIDATE_FAILURE_DIAGNOSTICS.json",
+          "sha256": "ad5a301a3073302b40557ca18a338ed550f7861affd6db121d2ad00e144c2cf4"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-STRESS-REAL-PILOT-001",
+      "category": "scientific_negative",
+      "modules": [
+        "SR01",
+        "SR02",
+        "SR03"
+      ],
+      "symptom": "Real HERO pilot lacks independent GT; source/holdout/overlap evidence only",
+      "cause": "Observed evidence only; individual model bias and measurement contributions are not causally isolated",
+      "cause_status": "observed_only",
+      "repair": "Preserve metrics, original geometry and all failures for human review; do not tune using GT or promote automatic permanent rules",
+      "regression": [
+        "117 original and added scope/source/coordinate/isolation tests"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001/visualization/REAL_AUDIT.json",
+          "sha256": "63e6508a5b915ea7843e6fa43b380cd1bea4a91a8e91df925ca5f31120173533"
+        },
+        {
+          "path": "experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001/visualization/REAL_METRICS.json",
+          "sha256": "e20f8c245833403023300820d6ab54b5db1f49f36c4a984d3e2e1b7a064c6df2"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-STRESS-GT-SURFACE-001",
+      "category": "scientific_negative",
+      "modules": [
+        "SR03"
+      ],
+      "symptom": "Four frozen conditions reduce pooled surface dispersion >20% but increase independent GT whole-surface MAE",
+      "cause": "Spatial coherence does not imply unbiased shape/placement; causal model contribution not isolated",
+      "cause_status": "observed_only",
+      "repair": "Retain all four counterexamples, whole GT targets, original Mesh and fixed cuts; no GT tuning or prediction replacement",
+      "regression": [
+        "test_stress retains original matching thresholds and GT-free predictor stages"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001/visualization/DISPERSION_GT_SURFACE_CONTRADICTIONS.json",
+          "sha256": "638f0a7233e13f971025cca3b2ded15f5f559faf81d477134cd6198750d2102d"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    }
+  ],
+  "permanent_rule_promotion": false
+}

@@ -1,0 +1,327 @@
+schema: 8
+task_id: TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001
+goal: Explicit bidirectional normal-contour E/M on frozen 013 shared Init-A, then
+  real Mesh-boundary HERO controls; all cameras fixed
+modules:
+- T01
+- T03
+- T04
+- T10
+- T11
+- T12
+- T13
+- T24
+- T31
+- T34
+- CG01
+- CG02
+- CG03
+- CG04
+- CG05
+variables:
+  geometry_unit: mm
+  pixel_coordinates: native_image_px
+  camera_transform: opencv_c2w
+  depth_convention: axial_z
+  parameters: {}
+inputs:
+  fixture:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_contour_guided_init_a/tools/research/frozen_fixture.json
+    sha256: 7ef30dd4e3a10aa2d236c50dc24849ea90349cb0400b9ce44244a2c01a1c9e6a
+  support:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_contour_guided_init_a/tools/research/support_fixture.json
+    sha256: 6068580d851cbad5225fb75737f5fb6d6d30153de448e460a18a4e1c6cfa5319
+  reference:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_contour_guided_init_a/tools/research/frozen_reference.json
+    sha256: 489408ca09f04051a6c84bd6c8af25a6d1eeb71036141b679155400243988ed2
+  source_lock:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_contour_guided_init_a/src/ring_first_3d/source_lock.json
+    sha256: 3bee30d508fa9ca6bbc4bbc315b217a0a660b77c6498cfce7ccbba6d9ba5f2b0
+  dxy_root: /home/liu/new-polyp-dxy
+  evidence:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_contour_guided_init_a/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/figures/REAL_SMOKE_EVIDENCE.png
+    sha256: 59451578fe85612ffa5b2bd47f450705e3d45403fbeaf6f324f2a2a9c2088b23
+split:
+  manifest:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/CASE.json
+    sha256: 8d451bab15284a5fd9dacb2cc3d3ee1bab46a26b30f2a65bcc2eb259c1304443
+  FIT:
+  - FIT
+  HOLDOUT:
+  - UPDATE_HOLDOUT
+  GT:
+  - independent_shape_evaluator_only
+  access: inita_train_hero_evaluation_isolation
+authorization:
+  approved_by: user
+  reference: Explicit user TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001
+  stages:
+  - preflight
+  - contracts
+  - contour_regression
+  - G0_sources
+  - G1_smoke_train
+  - G2_smoke_hero
+  - G3_smoke_evaluate
+  - G4_smoke_visualize
+  - G1_all_train
+  - G2_all_hero
+  - G3_all_evaluate
+  - G4_visualize
+  - artifacts
+acceptance:
+  required_stages:
+  - preflight
+  - contracts
+  - contour_regression
+  - G0_sources
+  - G1_smoke_train
+  - G2_smoke_hero
+  - G3_smoke_evaluate
+  - G4_smoke_visualize
+  - G1_all_train
+  - G2_all_hero
+  - G3_all_evaluate
+  - G4_visualize
+  - artifacts
+  min_contract_tests: 11
+  require_visualization: true
+  require_failure_log: true
+budget:
+  max_seconds: 14400
+  stage_timeout_seconds: 7200
+  max_attempts_per_stage: 2
+  max_output_bytes: 4000000000
+stop:
+- gate_failure
+- input_drift
+- budget_exceeded
+output_root: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_contour_guided_init_a/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/runs
+inita:
+  legacy_commit: 905e2a9b3615a5f429553837a05e5d53826cef03
+  parent_commit: b1f8fb433f37677b93ac52ac5719afd902c1fa11
+  initialization: EXACT_013_INPUT_MESH_V_F_SOLID_CAP
+  arms:
+  - A0
+  - A2
+  - A2D
+  - A3
+  cases:
+  - G01
+  - G02
+  - G03
+  - G07
+  - G04
+  - G05
+  - G06
+  - G08
+  - G09
+  - G10
+  - G11
+  smoke_cases:
+  - G01
+  - G05
+  - G11
+  training_budget:
+    max_proposals: 80
+    max_accepted: 40
+    consecutive_rejection_stop: 30
+  GT_alignment_scope: EVALUATION_COPIES_ONLY_SCALE1
+  HERO_uses_GT_aligned_Body: false
+  train_uses_GT: false
+  camera_parameters: ALL_FIXED
+  shared_trigger:
+    delta_FIT_IoU: 0.1
+    absolute_005_FIT_IoU: 0.5
+  shared_005_bounds_deg_mm:
+  - 180.0
+  - 3.0
+  shared_005_starts_deg:
+  - 0.0
+  - 90.0
+  - -90.0
+  - 180.0
+  shared_005_nfev: 40
+  mesh_projection_adapter: Apparent-contour ellipse of actual frozen Mesh; ray hits
+    actual faces, never ellipsoid replacement
+  occupancy_Sobol_power: 17
+  occupancy_seed: 20261108
+  shape_samples_per_direction: 8192
+  HERO_frame_prior_deg_mm:
+  - 0.3
+  - 0.1
+  HERO_Body_tolerance_mm: 0.5
+  assets:
+    sources:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_contour_guided_init_a/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/inputs/SOURCES.json
+      sha256: 4fc550e6fa18a0202e631ff4ff2e96834d583a05185bdd2426212f98d2ee3925
+    code_lock:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_contour_guided_init_a/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/inputs/CODE_LOCK.json
+      sha256: d4e4dd653972054d7e69dbb6d03497b5c0cabef74190ec381b20be905f0bde8a
+    Ip_source_review:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_contour_guided_init_a/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/inputs/INIT_A_ALL_IP_SOURCE_REVIEW.png
+      sha256: 10437f00ca72f5ef5a3a4c3fdde8fb3550b590fd9655381f49cb7a8ac23baa93
+    GT_metadata:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_contour_guided_init_a/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/evaluation_only/GT_META.json
+      sha256: 13e9f2c29189f9d64b6a558ec6fa47e41229ab7ebd8f8fd9963187e8f67ecc00
+    hero_policy_source:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/TASK.yaml
+      sha256: 17508d151c2505f01be063dd3b47ff723a72e7430efb2486cc218843f03b2db5
+contour:
+  parent_commit: 13a73f0422be5e5b0e221df4a41407b3b6d6d52c
+  Body_arms:
+  - A0
+  - A2
+  - A2D
+  - A3
+  HERO_methods:
+  - M0
+  - H1
+  - H2
+  - H3
+  - H4
+  - ICP
+  smoke_cases:
+  - G01
+  - G05
+  - G11
+  camera_parameters: ALL_FIXED
+  A3_depth_loss: false
+  HERO_updates_Body: false
+  pairing:
+    max_distance_px: 40.0
+    mutual_radius_px: 4.0
+    max_tangent_px: 8.0
+    normal_cos_min: 0.7071067811865476
+  baseline_assets:
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TASK.yaml
+    sha256: 66918227388581ad43bb6d8ff1d895ba6d03b78274a514df8e9cf3fb2e346f41
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/TASK_FREEZE.json
+    sha256: 917360613f0ff24741e47c1f7f051c8163ddfabf787c047d7db99131d3c6df8a
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G01/A0_WORLD.npz
+    sha256: 9ec80bcbb6670061c887939d6f629fc6f06bd4dbdaa20ca81da90e16db33810f
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G01/A2_WORLD.npz
+    sha256: 7595565c9f1354fe36abeb76d3db49252c87a60497f866cf0de407951a67ecb4
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G02/A0_WORLD.npz
+    sha256: 39bbb1f1bfe7cd6fcfa9d1506b59f0b8e3a4cc4af3e71291cb24b98ec14c3b13
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G02/A2_WORLD.npz
+    sha256: 644e1c2e3249b8e794f76e842c9d56c72027cdceae020f9a9f33963cd34bea0e
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G03/A0_WORLD.npz
+    sha256: cf67749d0331ff4c2266c78a3b5fb3e5608aa7cc8674ecb6d66bb45957101288
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G03/A2_WORLD.npz
+    sha256: 456035b85a0563b4a7f086be4e8012e42fe35352b1f871cecb13e56b3a8f4086
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G07/A0_WORLD.npz
+    sha256: b6eb986a3d4e85f9e2f81c83420093baddafcbb50cf0977ceded092de7e6d9ca
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G07/A2_WORLD.npz
+    sha256: 0aec1a7d8b503eb10024d989f8951ecfd4a1906a9dff7bd9d5e1804c343bd515
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G04/A0_WORLD.npz
+    sha256: 390db590c459277c14c6621816c004fc426a82ce989d3f9d16e7a16ef8bbaf54
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G04/A2_WORLD.npz
+    sha256: a51a66e2a9f87023520cd44f5f3484b3aaf359a61f2b314ce567ef6478435f3a
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G05/A0_WORLD.npz
+    sha256: 1a851eb04759c81bd4697d3cb413515aea5a57bf8d82c808ec9be1014143465e
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G05/A2_WORLD.npz
+    sha256: fb2c1862edf7181a8453a677a344f6380c8d8bc606c7a22fd914349fd52f37f5
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G06/A0_WORLD.npz
+    sha256: de1efe2617b55cb20003cbf536405a5505b44d39ed66fe3f92033d9c419c4166
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G06/A2_WORLD.npz
+    sha256: aafe0cd65e8169ed93e0bc4e04d41405fbcee453ac4d090d73af431a8bff11f2
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G08/A0_WORLD.npz
+    sha256: 1b8fe18cfac89aedcd68ef9dba73a1b2fdc0f7eb5d5b7ef00884ca5c37d67502
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G09/A0_WORLD.npz
+    sha256: be1723d7b334330f6702b2396d34ed5991e71f2582a0c5a6ab1123793fb41e0a
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G09/A2_WORLD.npz
+    sha256: 224e31025c132aee16f0bb3b735d924c635972cecfdb5bd609515110a631fedc
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G10/A0_WORLD.npz
+    sha256: fe1ac06ac070a93529f18c1868a0e12a3d898f26d1d60f60701c4101e8039d46
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G10/A2_WORLD.npz
+    sha256: 24fd3680db99d6171e8e0232c32209f287bee4a19d7f9bc2b89adacab1d294b0
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G11/A0_WORLD.npz
+    sha256: e9247d2991b041a68e75750e8840d08b243c4a1aa7e991ecfe15a6c3d75cab26
+  - path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G11/A2_WORLD.npz
+    sha256: ef58fcc1e1576db4f657aa5c76848c905dded4788bc8ad3a065835cd4cb474b5
+  baseline_meshes:
+    G01:
+      A0:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G01/A0_WORLD.npz
+        sha256: 9ec80bcbb6670061c887939d6f629fc6f06bd4dbdaa20ca81da90e16db33810f
+      A2:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G01/A2_WORLD.npz
+        sha256: 7595565c9f1354fe36abeb76d3db49252c87a60497f866cf0de407951a67ecb4
+    G02:
+      A0:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G02/A0_WORLD.npz
+        sha256: 39bbb1f1bfe7cd6fcfa9d1506b59f0b8e3a4cc4af3e71291cb24b98ec14c3b13
+      A2:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G02/A2_WORLD.npz
+        sha256: 644e1c2e3249b8e794f76e842c9d56c72027cdceae020f9a9f33963cd34bea0e
+    G03:
+      A0:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G03/A0_WORLD.npz
+        sha256: cf67749d0331ff4c2266c78a3b5fb3e5608aa7cc8674ecb6d66bb45957101288
+      A2:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G03/A2_WORLD.npz
+        sha256: 456035b85a0563b4a7f086be4e8012e42fe35352b1f871cecb13e56b3a8f4086
+    G07:
+      A0:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G07/A0_WORLD.npz
+        sha256: b6eb986a3d4e85f9e2f81c83420093baddafcbb50cf0977ceded092de7e6d9ca
+      A2:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G07/A2_WORLD.npz
+        sha256: 0aec1a7d8b503eb10024d989f8951ecfd4a1906a9dff7bd9d5e1804c343bd515
+    G04:
+      A0:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G04/A0_WORLD.npz
+        sha256: 390db590c459277c14c6621816c004fc426a82ce989d3f9d16e7a16ef8bbaf54
+      A2:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G04/A2_WORLD.npz
+        sha256: a51a66e2a9f87023520cd44f5f3484b3aaf359a61f2b314ce567ef6478435f3a
+    G05:
+      A0:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G05/A0_WORLD.npz
+        sha256: 1a851eb04759c81bd4697d3cb413515aea5a57bf8d82c808ec9be1014143465e
+      A2:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G05/A2_WORLD.npz
+        sha256: fb2c1862edf7181a8453a677a344f6380c8d8bc606c7a22fd914349fd52f37f5
+    G06:
+      A0:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G06/A0_WORLD.npz
+        sha256: de1efe2617b55cb20003cbf536405a5505b44d39ed66fe3f92033d9c419c4166
+      A2:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G06/A2_WORLD.npz
+        sha256: aafe0cd65e8169ed93e0bc4e04d41405fbcee453ac4d090d73af431a8bff11f2
+    G08:
+      A0:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G08/A0_WORLD.npz
+        sha256: 1b8fe18cfac89aedcd68ef9dba73a1b2fdc0f7eb5d5b7ef00884ca5c37d67502
+    G09:
+      A0:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G09/A0_WORLD.npz
+        sha256: be1723d7b334330f6702b2396d34ed5991e71f2582a0c5a6ab1123793fb41e0a
+      A2:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G09/A2_WORLD.npz
+        sha256: 224e31025c132aee16f0bb3b735d924c635972cecfdb5bd609515110a631fedc
+    G10:
+      A0:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G10/A0_WORLD.npz
+        sha256: fe1ac06ac070a93529f18c1868a0e12a3d898f26d1d60f60701c4101e8039d46
+      A2:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G10/A2_WORLD.npz
+        sha256: 24fd3680db99d6171e8e0232c32209f287bee4a19d7f9bc2b89adacab1d294b0
+    G11:
+      A0:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G11/A0_WORLD.npz
+        sha256: e9247d2991b041a68e75750e8840d08b243c4a1aa7e991ecfe15a6c3d75cab26
+      A2:
+        path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_multivideo_init_a/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/review_meshes/G11/A2_WORLD.npz
+        sha256: ef58fcc1e1576db4f657aa5c76848c905dded4788bc8ad3a065835cd4cb474b5
+  tracking: edge IDs + interpolation + direction; accepted-pair target displacement
+    retained
+  E_M: all FIT detached assignments at gradient start; candidates evaluate fixed assignment;
+    rebuild after every accepted change before next proposal; final explicit rebuild
+  new_loss_coefficient: 0.01
+  loss_control: 'A2D: same2D-only loss using original ContourDistance; same renderer/FG/FP/prior'
+  HERO_mapping: visible actual Mesh contour; mutual normal boundary pairs; local inverse-distance
+    boundary transfer; visible actual ray Face/bary; no ellipse
+  GT_identity: immutable source identities only before predictor freeze; GT geometry
+    evaluator only

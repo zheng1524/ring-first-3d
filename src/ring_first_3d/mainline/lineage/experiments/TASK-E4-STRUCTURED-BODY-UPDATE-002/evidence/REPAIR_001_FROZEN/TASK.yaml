@@ -1,0 +1,157 @@
+schema: 10
+task_id: TASK-E4-STRUCTURED-BODY-UPDATE-002
+goal: Real G01/G03/G05 matched graph Smooth-ARAP and evidence-gated B-spline RMF sweep
+  update; no HERO, no C0
+modules:
+- T01
+- T03
+- T04
+- T10
+- T11
+- T12
+- T13
+- T24
+- T31
+- T34
+- SB01
+- SB02
+- SB03
+- SB04
+- SB05
+- SB06
+- SB07
+- SB08
+- SB09
+- SB10
+- SB11
+variables:
+  geometry_unit: mm
+  pixel_coordinates: native_image_px
+  camera_transform: opencv_c2w
+  depth_convention: axial_z
+  parameters: {}
+inputs:
+  fixture:
+    path: /home/liu/ring_first_3d_structural_update/tools/research/frozen_fixture.json
+    sha256: d64ebdbc3b81287c7d8f235e634b05d44269ee76b27206a37d2df976d293dacb
+  support:
+    path: /home/liu/ring_first_3d_structural_update/tools/research/support_fixture.json
+    sha256: cc26119e6e67a3d19ab124685316b4815be0f63f5ac71bc416704cf46430b28c
+  reference:
+    path: /home/liu/ring_first_3d_structural_update/tools/research/frozen_reference.json
+    sha256: 216cbab2cdafa85e224580199356c1a2dc1ba087389e9699790d1c6101890cdd
+  source_lock:
+    path: /home/liu/ring_first_3d_structured_body_002/src/ring_first_3d/source_lock.json
+    sha256: 3bee30d508fa9ca6bbc4bbc315b217a0a660b77c6498cfce7ccbba6d9ba5f2b0
+  dxy_root: /home/liu/new-polyp-dxy
+  evidence:
+    path: /home/liu/ring_first_3d_structural_update/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/figures/REAL_SMOKE_EVIDENCE.png
+    sha256: 59451578fe85612ffa5b2bd47f450705e3d45403fbeaf6f324f2a2a9c2088b23
+split:
+  manifest:
+    path: /home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/CASE.json
+    sha256: 57799a430b9b954180575a96da3b2d228e0802eac4f6ecf660744c3d308e688e
+  FIT:
+  - FIT
+  HOLDOUT:
+  - UPDATE_HOLDOUT
+  GT:
+  - independent_shape_evaluator_only
+  access: inita_train_hero_evaluation_isolation
+authorization:
+  approved_by: user
+  reference: Explicit user TASK-E4-STRUCTURED-BODY-UPDATE-002
+  stages:
+  - preflight
+  - contracts
+  - structured_regression
+  - G0_source_audit
+  - G1_G01
+  - G1_G03
+  - G1_G05
+  - G2_evaluate
+  - G4_visualize
+  - artifacts
+acceptance:
+  required_stages:
+  - preflight
+  - contracts
+  - structured_regression
+  - G0_source_audit
+  - G1_G01
+  - G1_G03
+  - G1_G05
+  - G2_evaluate
+  - G4_visualize
+  - artifacts
+  min_contract_tests: 11
+  require_visualization: true
+  require_failure_log: true
+budget:
+  max_seconds: 14400
+  stage_timeout_seconds: 5400
+  max_attempts_per_stage: 2
+  max_output_bytes: 450000000
+stop:
+- gate_failure
+- input_drift
+- budget_exceeded
+output_root: /home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs
+structured:
+  baseline_commit: 7c471701f38f1577ba506bc8ed1e38774f99dabe
+  initialization: EXACT_013_INPUT_MESH_V_F_SOLID_CAP
+  cases:
+  - G01
+  - G03
+  - G05
+  arms:
+  - DEFORM_ONLY
+  - DEFORM_SWEEP
+  camera_optimization: false
+  HERO_read: false
+  GT_selects_prediction: false
+  sources: /home/liu/ring_first_3d_structural_update/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/inputs/SOURCES.json
+  code_lock:
+    path: /home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/inputs/CODE_LOCK.json
+    sha256: 2a8346cfde7c43d130085777fef70928b3c7af5b254fd852a6f84ac6bbee6539
+  input_manifest:
+    path: /home/liu/ring_first_3d_structured_body_002/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/inputs/INPUT_MANIFEST.json
+    sha256: 24328e460ab9b185b5f1c484149c8e31898f58587fb1da1853a8808a7be785cc
+  protection:
+    initial_IoU_min: 0.8
+    max_IoU_drop: 0.01
+    max_boundary_increase_px: 1.0
+  update:
+    iterations: 36
+    inner_steps: 3
+    line_search_steps: 8
+    graph_nodes: 32
+    sarap_lambda: 0.7
+    projection:
+      max_distance_px: 40.0
+      mutual_radius_px: 0.0
+      normal_cos_min: 0.5
+      max_tangent_px: 8.0
+    rotation_lr_rad: 0.002
+    translation_lr_mm: 0.01
+    sweep_lr_mm: 0.01
+    lambda_graph: 0.03
+    lambda_sarap: 0.01
+    lambda_prior: 0.002
+    lambda_centerline: 0.01
+    lambda_radius: 0.01
+    lambda_attachment: 0.01
+    growth_iterations:
+    - 12
+    - 24
+    growth_min_view_IoU: 0.5
+    max_sweep_length_mm: 6.0
+    max_sweep_radius_mm: 3.0
+    min_growth_region_gain: 0.0001
+    growth:
+      growth_patch_rings: 2
+      growth_max_patch_faces: 80
+      growth_min_singular_ratio: 0.02
+      growth_max_inconsistency: 0.5
+      growth_min_mm: 0.1
+      growth_candidates: 2

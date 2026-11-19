@@ -1,0 +1,33 @@
+{
+  "records": [
+    {
+      "id": "GR001-ENG-01",
+      "symptom": "Existing closest() API returns point/normal/primitive_id, not point/face/bary",
+      "confirmed_cause": "Incorrect new adapter unpacking caught by fixture tests",
+      "repair": "Reuse correct primitive IDs; compute barycentric weights on actual closest triangle using trimesh",
+      "regression": "DEVELOPMENT_TESTS_PASS.txt",
+      "evidence": "DEVELOPMENT_TEST_FAILURE_001.txt",
+      "type": "ENGINEERING_ERROR",
+      "permanent_rule": false,
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "id": "GR001-ENG-02",
+      "symptom": "Raw exact Boolean symmetric fixture produced coincident numerical seam vertices and collinear triangulation ears",
+      "confirmed_cause": "Fixture raw minimum vertex gap1.22e-17mm and minimum triangle area9.77e-21mm2; full self-intersection check correctly rejected it",
+      "repair": "Numerical alias stitching at fixed1e-8mm and mature BEAUTY triangulation, without intersection-based face deletion or hole fill",
+      "regression": "test_expected_overlap_union_connected",
+      "evidence": "DEVELOPMENT_TEST_FAILURE_002.txt",
+      "type": "ENGINEERING_ERROR",
+      "permanent_rule": false,
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed"
+      }
+    }
+  ],
+  "permanent_promotion_reviewed": false
+}

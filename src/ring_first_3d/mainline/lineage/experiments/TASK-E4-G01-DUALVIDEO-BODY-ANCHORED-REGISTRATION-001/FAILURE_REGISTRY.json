@@ -1,0 +1,144 @@
+{
+  "schema": 1,
+  "policy": "Task-local candidate evidence only; imported with existing memory.registry(path), no global rule promotion",
+  "failures": [
+    {
+      "id": "FM-DUAL-SCENE-001",
+      "category": "incomplete_evaluation",
+      "modules": [
+        "DV01"
+      ],
+      "symptom": "G01 real Body-to-Ring deployment transform cannot be certified",
+      "cause": "Original Blender contains one body mesh and no Ring/camera; frozen sources supply no deployment transform",
+      "cause_status": "confirmed",
+      "repair": "Obtain source-bound real deployment transform and independent 004/005 trajectory receipt; do not Oracle-fit it",
+      "regression": [
+        "test_dualvideo_gate.DualvideoGateTests.test_shape_identity_and_shared_ring_bytes_cannot_certify_pose"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/visualization/BLENDER_SCENE_INVENTORY.json",
+          "sha256": "a8ee4dd5d13df9c76a6ec1b54121ff9e3f17932f74a5ecab83f5f80a636a4d9f"
+        },
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/visualization/BODY_RING_POSE_CERTIFICATE_AUDIT.json",
+          "sha256": "bba8084198f0719e7aa95e831ea564735138dc6f520098da331c5c9a7c632ba0"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-DUAL-PROJECTION-001",
+      "category": "data_identity_error",
+      "modules": [
+        "DV01"
+      ],
+      "symptom": "29/33 native Ring projections fail predeclared tolerance",
+      "cause": "Observed mismatch; pose versus occlusion/segmentation causes not independently isolated",
+      "cause_status": "observed_only",
+      "repair": "Review true source/camera conventions and visible boundaries; no automatic retuning on GT",
+      "regression": [
+        "test_dualvideo_gate.DualvideoGateTests.test_projection_matched_and_unmatched_regions"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/visualization/G0_SCENE_METRICS.json",
+          "sha256": "36a5f59946ca2d7bb6e465a6b89d689f0261732562fa73521f1492bd6a60043f"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-DUAL-ENGINEERING-001",
+      "category": "code_error",
+      "modules": [
+        "DV01"
+      ],
+      "symptom": "Restricted regression rejected wrong public SHA as GT_LEAK",
+      "cause": "Public source manifest checked after restricted GT assets",
+      "cause_status": "confirmed",
+      "repair": "Validate public manifest SHA before GT assets; retain strict role guard",
+      "regression": [
+        "test_dualvideo_gate.DualvideoGateTests.test_asset_SHA_mismatch_denied"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/evidence/G0_AUTHENTICITY_001/attempts/0003-dualvideo_regression-6d6e59f9/regression_log.txt",
+          "sha256": "21f38835e8571c50e9e2936b248989f9aa20ba1570377fa0c999661476cfde0d"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-DUAL-ENGINEERING-002",
+      "category": "code_error",
+      "modules": [
+        "DV01"
+      ],
+      "symptom": "Native pose adapter raised missing T key",
+      "cause": "Frozen MAST3R pack uses explicit pose key rather than T",
+      "cause_status": "confirmed",
+      "repair": "Adapt fixed format keys; compare to frozen native matrix; never substitute corrected pool pose",
+      "regression": [
+        "test_dualvideo_gate.DualvideoGateTests.test_bound_original_native_camera_not_corrected_cache"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/evidence/G0_AUTHENTICITY_002/attempts/0004-G0_scene_audit-93e3b8af/stderr.txt",
+          "sha256": "45f5930fc1fa687866e8f5b1b71ae4329662efa67772d3289653ab3b7e9f4e2b"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-DUAL-ENGINEERING-003",
+      "category": "code_error",
+      "modules": [
+        "DV01"
+      ],
+      "symptom": "Fresh export differs by 2.327114057e-7mm with matching faces",
+      "cause": "New adapter used mathutils float32 world transform instead of historical NumPy float64 homogeneous transform",
+      "cause_status": "confirmed",
+      "repair": "Use exact historical double precision operations; keep 1e-10mm tolerance",
+      "regression": [
+        "existing G0 exact fresh export/cache equality assertion"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/evidence/G0_AUTHENTICITY_003/attempts/0004-G0_scene_audit-96208f5a/stderr.txt",
+          "sha256": "d52c4aea8c8f61464f7f056b9faa6241843caf3bd2a1765a6d4e6288c4c9b76d"
+        },
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/visualization/BLENDER_SCENE_INVENTORY.json",
+          "sha256": "a8ee4dd5d13df9c76a6ec1b54121ff9e3f17932f74a5ecab83f5f80a636a4d9f"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    }
+  ]
+}

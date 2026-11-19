@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "policy": "Task-local candidate facts only, no automatic rule promotion",
+  "failures": [
+    {
+      "id": "FM-MULTISURFACE-C0-001",
+      "category": "scientific_negative",
+      "modules": [
+        "MF02",
+        "MF03",
+        "MF04"
+      ],
+      "symptom": "Body-mediated localization introduces nonzero material displacement on error-free C0",
+      "cause": "Coarse Body/mapping bias is observed; exact causal contribution is not isolated",
+      "cause_status": "observed_only",
+      "repair": "Retain all fixed-denominator measurements and actual Mesh cuts for review. No GT-driven refit, method fallback or permanent rule promotion.",
+      "regression": [
+        "test_multisurface: tolerance, fixed denominators, ownership and exact triangle sections"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/REGISTRATION_METRICS.json",
+          "sha256": "8b761107b47280ae4347ec6ab1e13a86547500d5f4a2743f4b847c075728336d"
+        },
+        {
+          "path": "experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/AGGREGATE_MATERIAL_METRICS.json",
+          "sha256": "d0823726ffd616a4ebab80a054ec0723541cff7531a9f80ece84f2637fde9834"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-MULTISURFACE-OWNERSHIP-001",
+      "category": "scientific_negative",
+      "modules": [
+        "MF02",
+        "MF03",
+        "MF04"
+      ],
+      "symptom": "Fusion reduces Body-only mean error yet leaves observed/unobserved stem and section gaps",
+      "cause": "Consensus rejection, visibility and star-chart restrictions may discard or fail to represent parts; no GT-based patching",
+      "cause_status": "observed_only",
+      "repair": "Retain all fixed-denominator measurements and actual Mesh cuts for review. No GT-driven refit, method fallback or permanent rule promotion.",
+      "regression": [
+        "test_multisurface: tolerance, fixed denominators, ownership and exact triangle sections"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/MODEL_METRICS.json",
+          "sha256": "e480c72010858edfa62c1387e8b6038ae71a176463a054fbf80a234f201b96ef"
+        },
+        {
+          "path": "experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/SURFACE_OWNERSHIP_MAIN.csv",
+          "sha256": "0ee102d5f0edce8880d7e6defc571c50b0bdb55899d952f945ef20869852d959"
+        },
+        {
+          "path": "experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/figures/01_MAIN_MULTISURFACE_SECTIONS.png",
+          "sha256": "8e540c8d59d58fbbdaa5f949831f202b456c408b136e22136aa12c606ba0a41b"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-MULTISURFACE-VARIANCE-001",
+      "category": "scientific_negative",
+      "modules": [
+        "MF02",
+        "MF03",
+        "MF04"
+      ],
+      "symptom": "Frame residual improves high-variance localization over video-only but not consistently over uncorrected low-noise input",
+      "cause": "Variance priors help some conditions while a biased Body correspondence remains; not a general accuracy certificate",
+      "cause_status": "observed_only",
+      "repair": "Retain all fixed-denominator measurements and actual Mesh cuts for review. No GT-driven refit, method fallback or permanent rule promotion.",
+      "regression": [
+        "test_multisurface: tolerance, fixed denominators, ownership and exact triangle sections"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/PAIRED_COMPARISONS.json",
+          "sha256": "9f54dcf195e0b84ad47454d488f708ab81649e52fb834f36ddc812ffff994079"
+        },
+        {
+          "path": "experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001/visualization/FRAME_FAILURE_LEDGER.json",
+          "sha256": "f01f91260a863e1a5da677e60258c2ca32ed66620706413384490c9cbf0bac6f"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    }
+  ]
+}

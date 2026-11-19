@@ -1,0 +1,3 @@
+# Completed
+
+CONTOUR_004 completed all13 stages and Runner acceptance.154 tests including original35 passed. All11 target groups retained. Exact013 initial Mesh/topology, existing view selection/split/cameras/CAD/guards/training budget unchanged. A2 immutable; A2D/A3 frozen before independent GT. No scientific tuning after GT. CONTOUR_001 write isolation failure and CONTOUR_002 visualization export failure fully retained. PNGs and exact Meshes/GLBs are the scientific artifacts; HTML is a plain offline file index. No more experiments; final verification, commit/push and remote SHA check complete delivery.

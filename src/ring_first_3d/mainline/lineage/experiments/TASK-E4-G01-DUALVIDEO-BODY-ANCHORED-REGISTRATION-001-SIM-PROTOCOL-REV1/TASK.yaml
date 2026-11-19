@@ -1,0 +1,259 @@
+schema: 4
+task_id: TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1
+goal: 'SIM_PROTOCOL_REV1: execute G01-like simulation, independent nine-parameter
+  Body, mediated mapping and genuine full-surface shared-SE3 registration'
+modules:
+- T01
+- T03
+- T04
+- T10
+- T11
+- T12
+- T13
+- T24
+- T31
+- T34
+- T05
+- T06
+- T07
+- T08
+- T09
+- DV02
+- DV03
+- DV04
+- DV05
+- DV06
+- DV07
+variables:
+  geometry_unit: mm
+  pixel_coordinates: native_image_px
+  camera_transform: opencv_c2w
+  depth_convention: axial_z
+  parameters: {}
+inputs:
+  fixture:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_g01_sim_rev1/tools/research/frozen_fixture.json
+    sha256: 7ef30dd4e3a10aa2d236c50dc24849ea90349cb0400b9ce44244a2c01a1c9e6a
+  support:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_g01_sim_rev1/tools/research/support_fixture.json
+    sha256: 6068580d851cbad5225fb75737f5fb6d6d30153de448e460a18a4e1c6cfa5319
+  reference:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_g01_sim_rev1/tools/research/frozen_reference.json
+    sha256: 489408ca09f04051a6c84bd6c8af25a6d1eeb71036141b679155400243988ed2
+  source_lock:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_g01_sim_rev1/src/ring_first_3d/source_lock.json
+    sha256: 3bee30d508fa9ca6bbc4bbc315b217a0a660b77c6498cfce7ccbba6d9ba5f2b0
+  dxy_root: /home/liu/new-polyp-dxy
+  evidence:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_g01_sim_rev1/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/figures/REAL_SMOKE_EVIDENCE.png
+    sha256: 59451578fe85612ffa5b2bd47f450705e3d45403fbeaf6f324f2a2a9c2088b23
+split:
+  manifest:
+    path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/CASE.json
+    sha256: 8d451bab15284a5fd9dacb2cc3d3ee1bab46a26b30f2a65bcc2eb259c1304443
+  FIT:
+  - FIT
+  HOLDOUT:
+  - UPDATE_HOLDOUT
+  GT:
+  - G01_generator_and_postfreeze_evaluator_only
+  access: simulation_generator_predictor_evaluator
+authorization:
+  approved_by: user
+  reference: 'User explicitly approved SIM_PROTOCOL_REV1: realism is quality only;
+    complete G1-G4 with strict internal contracts'
+  stages:
+  - preflight
+  - contracts
+  - sim_regression
+  - G0_simulate
+  - G1_initialize
+  - G1_evaluate
+  - G2_mapping
+  - G2_evaluate
+  - G3_smoke_predict
+  - G3_smoke_evaluate
+  - G3_matrix_predict
+  - G4_evaluate
+  - G4_visualize
+  - artifacts
+acceptance:
+  required_stages:
+  - preflight
+  - contracts
+  - sim_regression
+  - G0_simulate
+  - G1_initialize
+  - G1_evaluate
+  - G2_mapping
+  - G2_evaluate
+  - G3_smoke_predict
+  - G3_smoke_evaluate
+  - G3_matrix_predict
+  - G4_evaluate
+  - G4_visualize
+  - artifacts
+  min_contract_tests: 11
+  require_visualization: true
+  require_failure_log: true
+budget:
+  max_seconds: 7200
+  stage_timeout_seconds: 1800
+  max_attempts_per_stage: 2
+  max_output_bytes: 800000000
+stop:
+- gate_failure
+- input_drift
+- budget_exceeded
+output_root: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/runs
+sim:
+  label: G01_LIKE_SIMULATION
+  proxy: SYNTHETIC_HERO_PROXY
+  assets:
+    source_manifest:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/inputs/G01_DUALVIDEO_SOURCES.json
+      sha256: 026263803c82303bcd4c2cce72bcbcb30d2c17c17d07b2bb1ad781b28a8425b2
+    blend:
+      path: /home/liu/polyp_research/01p型/01p-12-/息肉.blend
+      sha256: fb448629ee17dce682632f886f714472e4df1d43825092fbf604415c6511de5a
+    gt_cache:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/evaluation_only/G01/ORIGINAL_BLENDER_GT_MM.npz
+      sha256: 315d9acefab13acb340d6d3469d794cda06af229cf4705f1a528fbee9c01e183
+    gt_extraction:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/evaluation_only/G01/GT_EXTRACTION.json
+      sha256: 907d8ceaae1b3d9f42ceb3654133b46ed4edc8b4b08645611f02385dc47f5b4c
+    blender_binary:
+      path: /home/liu/blender/blender-5.0.1-linux-x64/blender
+      sha256: 76ee560365e0ba37abf1f0285751c6388a1e68846d0f6a45aac629f707044533
+    reuse_lock:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1/inputs/SIM_SOURCE_LOCK.json
+      sha256: 90b9ad4bd7871d3bf93cc40e7a67b706f1f76108e50c519befdc7110bdba0a5e
+    previous_report:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/TECHNICAL_REPORT.md
+      sha256: e3caff65eee26823f4a632e95e1680f093ee2fe4c5620b1295253ff781fc0662
+    previous_failure_registry:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/FAILURE_REGISTRY.json
+      sha256: 0eb4b4ce403a113da78f5a75113ae5ace50668cf8bdb780a570af9f3241de0a6
+    previous_task_freeze:
+      path: /home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_g01_sim_rev1/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/TASK_FREEZE.json
+      sha256: f4adc5f00530b01eb1fd01b8aa484767d116e442cfc136fc93c4f6b64b0ec3df
+  condition_order:
+  - S0
+  - S1
+  - S2
+  - S3
+  - S4
+  - L1
+  conditions:
+    S0:
+      '004': I
+      '005': I
+    S1:
+      '004': I
+      '005': A
+    S2:
+      '004': I
+      '005': B
+    S3:
+      '004': A
+      '005': B
+    S4:
+      '004': A
+      '005': A
+    L1:
+      '004': I
+      '005': A
+  error_transforms:
+    I:
+    - 0.0
+    - 0.0
+    A:
+    - 2.0
+    - 0.5
+    B:
+    - 3.0
+    - 0.3
+  error_axis:
+  - 0.0
+  - 1.0
+  - 0.0
+  translation_axis:
+  - 1.0
+  - 0.0
+  - 0.0
+  rotation_center_mm:
+  - 0.0
+  - 0.0
+  - 0.0
+  action: left_world_SE3
+  seed: 20261116
+  family_by_condition:
+    S0: video_world
+    S1: video_world
+    S2: video_world
+    S3: video_world
+    S4: video_world
+    L1: camera_local
+  placement_candidates_mm:
+  - - 0.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - -2.0
+  - - 0.0
+    - 0.0
+    - -4.0
+  - - 0.0
+    - 1.0
+    - -2.0
+  placement_selection: Lowest mean FIT-only synthetic-vs-real visible mask symmetric
+    contour error; shared translation only, original geometry unchanged
+  realism_is_blocking: false
+  internal_geometry_is_blocking: true
+  body_frozen_during_registration: true
+  GT_selects_predictor: false
+  methods:
+  - M0
+  - M1
+  - M2
+  - RING_ONLY
+  - M2_DIRECT
+  - M2_RING
+  initialization_order:
+  - E1
+  - E2
+  - E1_PROXY
+  initialization_views_per_video: 4
+  initialization_starts: 3
+  model_base:
+  - 0.0
+  - 0.0
+  - -2.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.6094379124341003
+  - 1.6094379124341003
+  - 1.0986122886681098
+  mapping_radial_shrink: 0.97
+  mapping_samples_per_frame: 96
+  registration_surface_samples: 400
+  weights:
+    geometry: 1.0
+    mediated_anchors: 0.2
+    contour: 0.02
+    ring: 10.0
+  registration_outer_iterations: 3
+  registration_max_nfev: 60
+  registration_bounds_rotation_deg: 8.0
+  registration_bounds_translation_mm: 2.0
+  ICP_threshold_mm: 1.5
+  ICP_iterations: 60
+  image_wh:
+  - 640
+  - 360
+  surface_evaluation_threshold_mm: 0.1
+  relative_success_rotation_deg: 0.5
+  relative_success_translation_mm: 0.2
+  scientific_negative_does_not_stop: true

@@ -1,0 +1,1 @@
+来源、原始参数和代码版本见SOURCE_PROVENANCE及REPLAY_INPUT_FREEZE。重放容差见REPLAY_TOLERANCES；不得看到结果后放宽。当前参数不按病例调节。原协议只读保存于lineage相应任务目录。
