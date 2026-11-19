@@ -1,0 +1,14 @@
+{
+  "status": "FAIL",
+  "execution": "MATURE_G01_NATIVE_REFERENCE_BUILD_REV1",
+  "reasons": [
+    "MATURE_NATIVE_REFERENCE_BUILD_FAILED"
+  ],
+  "error": "Traceback (most recent call last):\n  File \"/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/bootstrap_references.py\", line 69, in build_one\n    ns['main']();tr=dict(np.load(root/'observations/tracks005.npz'));pack=dict(np.load(root/'observations/pairs005.npz'));edges=ns['pair_data'](tr,pack);results=[];poses={}\n    ^^^^^^^^^^^^\n  File \"/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/frozen_calibration/track005.py\", line 4, in main\n    verify('ring_inputs');freeze('tracking_protocol',[Path(__file__),R/'scripts/v6_common.py',R/'config.json']);L=ledger();sift=cv2.SIFT_create(nfeatures=cfg()['SIFT_features'],contrastThreshold=.01);xy=[];desc=[];cat=[];offset=[0]\n                                                      ^^^^\nNameError: name 'Path' is not defined\n",
+  "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G02/005/reference_build/REV1",
+  "protocol": {
+    "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/PROTOCOL_REF_BUILD_REV1.yaml",
+    "sha256": "559347c99622096f34ac109fcb71a6083ab75502ef88fa9ff2de12831661b977",
+    "bytes": 1156
+  }
+}

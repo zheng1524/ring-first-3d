@@ -1,0 +1,37 @@
+{
+  "initial_lanes": [
+    {
+      "worker": 0,
+      "initial_group": "G01",
+      "initial_video": "005"
+    },
+    {
+      "worker": 1,
+      "initial_group": "G02",
+      "initial_video": "004"
+    }
+  ],
+  "items": [
+    {
+      "group": "G03",
+      "video": "005",
+      "state": "COMPLETE",
+      "worker": 0
+    },
+    {
+      "group": "G06",
+      "video": "005",
+      "state": "COMPLETE",
+      "worker": 1
+    },
+    {
+      "group": "G02",
+      "video": "005",
+      "state": "COMPLETE",
+      "worker": 0
+    }
+  ],
+  "sealed": true,
+  "max_parallel_Body_processes": 2,
+  "reason": "Use idle original lanes without interrupting existing training; same per-arm budget and algorithms"
+}

@@ -1,0 +1,20 @@
+--- /home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/body_stage.py
++++ body_stage_instance_adapter.py
+@@ -14,7 +14,7 @@
+ from body_hooks import historical_depth,mesh
+ 
+ def setup(group):
+-    source=next(c for c in p.cases() if c['case']==group);video='004';folder=OUT/group/video/'body';folder.mkdir(parents=True,exist_ok=True)
++    source=next(c for c in p.cases() if c['case']==group);video=VIDEO;folder=OUT/group/video/'body';folder.mkdir(parents=True,exist_ok=True)
+     fit=[v for v in p.read(T/'audit/SELECTED_VIEWS.json') if v['meta']['case']==group and v['meta']['video']==video and v['meta']['role']=='FIT']
+     assert len(fit)==8
+     ring=dict(np.load(source['static']['RING.npz']['path']));initial=INITIALIZE(source['initial']['path'],ring,ring);views=[];depthroot=folder/'DEPTH_INPUT';depthroot.mkdir(exist_ok=True)
+@@ -61,7 +61,7 @@
+     adapted=adapted.replace("energies={k:float(v.detach())for k,v in parts.items()}","energies={k:float(v.detach())for k,v in parts.items()},HERO_depth=float(depth_loss(V,body).detach())")
+     (diag/'optimizer_adapter.py').write_text(adapted)
+     (diag/'ADAPTER.diff').write_text(''.join(difflib.unified_diff(original.splitlines(True),adapted.splitlines(True),fromfile='frozen002/optimizer.py',tofile='task_adapter/optimizer.py')))
+-    save_json(diag/'RUN_FREEZE.json',dict(arm=arm,group=group,video='004',original_optimizer_sha256=sha256(SD/'optimizer.py'),adapter_sha256=sha256(diag/'optimizer_adapter.py'),adapter_diff_sha256=sha256(diag/'ADAPTER.diff'),configuration=cfg,initial=source['initial'],normalization=source['static']['NORMALIZATION.json'],views=[dict(id=v['id'],C=v['C'],K=v['K']) for v in views],depth_enabled=arm=='B2',depth_lambda=.01,depth_sigma_mm=.5,GT_used=False,growth_scope='Unchanged 002 evidence requires >=2 videos; per-video fitting therefore cannot invent eligible growth. Boolean never activated without eligible growth; history preserved.'))
++    save_json(diag/'RUN_FREEZE.json',dict(arm=arm,group=group,video=VIDEO,original_optimizer_sha256=sha256(SD/'optimizer.py'),adapter_sha256=sha256(diag/'optimizer_adapter.py'),adapter_diff_sha256=sha256(diag/'ADAPTER.diff'),configuration=cfg,initial=source['initial'],normalization=source['static']['NORMALIZATION.json'],views=[dict(id=v['id'],C=v['C'],K=v['K']) for v in views],depth_enabled=arm=='B2',depth_lambda=.01,depth_sigma_mm=.5,GT_used=False,growth_scope='Unchanged 002 evidence requires >=2 videos; per-video fitting therefore cannot invent eligible growth. Boolean never activated without eligible growth; history preserved.'))
+     ns=dict(__name__='task_optimizer_adapter',__file__=str(diag/'optimizer_adapter.py'),depth_loss=depth_loss,DEPTH_ENABLED=arm=='B2');exec(compile(adapted,str(diag/'optimizer_adapter.py'),'exec'),ns)
+     try:
+         final=ns['train'](initial,views,ring,base,chart,cfg,target,'DEFORM_SWEEP')

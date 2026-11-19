@@ -1,0 +1,1025 @@
+{
+  "failures": [
+    {
+      "id": "G03_v004_raw00589_CAMERA",
+      "group": "G03",
+      "video": "004",
+      "stage": "Ring-First",
+      "kind": "SOURCE_OR_CAMERA_GATE",
+      "code_bug": false,
+      "reasons": [
+        "RING_REPROJECTION_ABOVE_FROZEN_3PX"
+      ],
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G03/004/camera/G03_v004_raw00589/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G05_v005_raw00251_CAMERA",
+      "group": "G05",
+      "video": "005",
+      "stage": "Ring-First",
+      "kind": "SOURCE_OR_CAMERA_GATE",
+      "code_bug": false,
+      "reasons": [
+        "NO_RESOLVED_RING_FIRST_RGB_YAW"
+      ],
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G05/005/camera/G05_v005_raw00251/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G05_v005_raw00404_CAMERA",
+      "group": "G05",
+      "video": "005",
+      "stage": "Ring-First",
+      "kind": "SOURCE_OR_CAMERA_GATE",
+      "code_bug": false,
+      "reasons": [
+        "RING_REPROJECTION_ABOVE_FROZEN_3PX"
+      ],
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G05/005/camera/G05_v005_raw00404/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G05_v005_raw00285_CAMERA",
+      "group": "G05",
+      "video": "005",
+      "stage": "Ring-First",
+      "kind": "SOURCE_OR_CAMERA_GATE",
+      "code_bug": false,
+      "reasons": [
+        "NO_RESOLVED_RING_FIRST_RGB_YAW"
+      ],
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G05/005/camera/G05_v005_raw00285/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G05_v005_raw00218_CAMERA",
+      "group": "G05",
+      "video": "005",
+      "stage": "Ring-First",
+      "kind": "SOURCE_OR_CAMERA_GATE",
+      "code_bug": false,
+      "reasons": [
+        "NO_RESOLVED_RING_FIRST_RGB_YAW"
+      ],
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G05/005/camera/G05_v005_raw00218/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "VIDEO_ROUTING_ADAPTER_ASSERTION",
+      "kind": "ENGINEERING_BUG_REPAIRED",
+      "code_bug": true,
+      "science_executed_before_fix": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/ROUTING_FIX.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "REFERENCE_TRACKER_PATH_NAMESPACE",
+      "kind": "ENGINEERING_BUG_REPAIRED",
+      "code_bug": true,
+      "scientific_parameters_changed": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_BOOTSTRAP_PATH_FIX.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "MISSING_PREBUILT_BANK_WRONGLY_TREATED_AS_TERMINAL",
+      "kind": "WORKFLOW_INCOMPLETENESS_CORRECTED",
+      "code_bug": true,
+      "scientific_negative": false,
+      "confirmed_cause": "Initial implementation omitted the existing mature native reference-preparation chain",
+      "repair": "User-reviewed REF_BUILD_REV1 reuses the mature G01 upstream",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/PROTOCOL_REF_BUILD_REV1.yaml",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "DEFERRED_REPORT_EVIDENCE_PATHS",
+      "kind": "ENGINEERING_REPORT_ORDERING_BUG_REPAIRED",
+      "code_bug": true,
+      "scientific_negative": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REPORT_EVIDENCE_PATH_REPAIR.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G05_005_bank_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "NO_INDEPENDENT_SAME_VIDEO_ARCHIVED_RING_POSED_FIT_REFERENCE",
+        "Current 005 RGB exists but 014 extension poses used 004 fallback landmarks; not an independent native calibration"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G05/005/bank/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G05_005_camera_G05_v005_raw00353_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G05/005/camera/G05_v005_raw00353/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G05_005_camera_G05_v005_raw00082_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G05/005/camera/G05_v005_raw00082/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G05_005_camera_G05_v005_raw00285_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G05/005/camera/G05_v005_raw00285/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G05_005_camera_G05_v005_raw00218_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G05/005/camera/G05_v005_raw00218/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G05_005_camera_G05_v005_raw00437_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G05/005/camera/G05_v005_raw00437/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G05_005_camera_G05_v005_raw00150_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G05/005/camera/G05_v005_raw00150/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G05_005_camera_G05_v005_raw00251_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G05/005/camera/G05_v005_raw00251/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G05_005_camera_G05_v005_raw00167_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G05/005/camera/G05_v005_raw00167/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G05_005_camera_G05_v005_raw00404_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G05/005/camera/G05_v005_raw00404/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G06_005_bank_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "NO_INDEPENDENT_SAME_VIDEO_ARCHIVED_RING_POSED_FIT_REFERENCE",
+        "Current 005 RGB exists but 014 extension poses used 004 fallback landmarks; not an independent native calibration"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G06/005/bank/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G06_005_camera_G06_v005_raw00682_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G06/005/camera/G06_v005_raw00682/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G06_005_camera_G06_v005_raw00565_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G06/005/camera/G06_v005_raw00565/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G06_005_camera_G06_v005_raw00663_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G06/005/camera/G06_v005_raw00663/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G06_005_camera_G06_v005_raw00311_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G06/005/camera/G06_v005_raw00311/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G06_005_camera_G06_v005_raw00643_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G06/005/camera/G06_v005_raw00643/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G06_005_camera_G06_v005_raw00291_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G06/005/camera/G06_v005_raw00291/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G06_005_camera_G06_v005_raw00506_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G06/005/camera/G06_v005_raw00506/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G06_005_camera_G06_v005_raw00604_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G06/005/camera/G06_v005_raw00604/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G06_005_camera_G06_v005_raw00487_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G06/005/camera/G06_v005_raw00487/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G02_005_bank_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "NO_INDEPENDENT_SAME_VIDEO_ARCHIVED_RING_POSED_FIT_REFERENCE",
+        "Current 005 RGB exists but 014 extension poses used 004 fallback landmarks; not an independent native calibration"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G02/005/bank/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G02_005_camera_G02_v005_raw00104_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G02/005/camera/G02_v005_raw00104/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G02_005_camera_G02_v005_raw00575_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G02/005/camera/G02_v005_raw00575/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G02_005_camera_G02_v005_raw00511_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G02/005/camera/G02_v005_raw00511/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G02_005_camera_G02_v005_raw00211_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G02/005/camera/G02_v005_raw00211/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G02_005_camera_G02_v005_raw00875_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G02/005/camera/G02_v005_raw00875/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G02_005_camera_G02_v005_raw00661_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G02/005/camera/G02_v005_raw00661/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G02_005_camera_G02_v005_raw00318_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G02/005/camera/G02_v005_raw00318/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G02_005_camera_G02_v005_raw00275_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G02/005/camera/G02_v005_raw00275/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G02_005_camera_G02_v005_raw00703_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G02/005/camera/G02_v005_raw00703/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G02_005_camera_G02_v005_raw00618_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G02/005/camera/G02_v005_raw00618/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G03_005_bank_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "NO_INDEPENDENT_SAME_VIDEO_ARCHIVED_RING_POSED_FIT_REFERENCE",
+        "Current 005 RGB exists but 014 extension poses used 004 fallback landmarks; not an independent native calibration"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G03/005/bank/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G03_005_camera_G03_v005_raw00099_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G03/005/camera/G03_v005_raw00099/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G03_005_camera_G03_v005_raw00416_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G03/005/camera/G03_v005_raw00416/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G03_005_camera_G03_v005_raw00373_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G03/005/camera/G03_v005_raw00373/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G03_005_camera_G03_v005_raw00186_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G03/005/camera/G03_v005_raw00186/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G03_005_camera_G03_v005_raw00070_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G03/005/camera/G03_v005_raw00070/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G03_005_camera_G03_v005_raw00589_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G03/005/camera/G03_v005_raw00589/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G03_005_camera_G03_v005_raw00402_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G03/005/camera/G03_v005_raw00402/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G03_005_camera_G03_v005_raw00546_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G03/005/camera/G03_v005_raw00546/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G03_005_camera_G03_v005_raw00561_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G03/005/camera/G03_v005_raw00561/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "BEFORE_REF_BUILD_REV1_G03_005_camera_G03_v005_raw00474_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "NOT_RUN",
+      "reasons": [
+        "REFERENCE_BANK_FAIL"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/BEFORE_REF_BUILD_REV1/G03/005/camera/G03_v005_raw00474/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "REF_BUILD_REV1_RESULTS_G05_005_bank_ADMISSION_PREBUILT_RESCAN_DURING_PATH_REPAIR.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "NO_INDEPENDENT_SAME_VIDEO_ARCHIVED_RING_POSED_FIT_REFERENCE",
+        "Current 005 RGB exists but 014 extension poses used 004 fallback landmarks; not an independent native calibration"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/REF_BUILD_REV1_RESULTS/G05/005/bank/ADMISSION_PREBUILT_RESCAN_DURING_PATH_REPAIR.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "REF_BUILD_REV1_RESULTS_G05_005_bank_ADMISSION_PRE_PATH_FIX.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "MATURE_NATIVE_REFERENCE_BUILD_FAILED"
+      ],
+      "code_bug": true,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/REF_BUILD_REV1_RESULTS/G05/005/bank/ADMISSION_PRE_PATH_FIX.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "REF_BUILD_REV1_RESULTS_G05_005_camera_G05_v005_raw00218_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "NO_RESOLVED_RING_FIRST_RGB_YAW"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/REF_BUILD_REV1_RESULTS/G05/005/camera/G05_v005_raw00218/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "REF_BUILD_REV1_RESULTS_G05_005_camera_G05_v005_raw00404_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "RING_REPROJECTION_ABOVE_FROZEN_3PX"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/REF_BUILD_REV1_RESULTS/G05/005/camera/G05_v005_raw00404/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "REF_BUILD_REV1_RESULTS_G02_005_bank_ADMISSION_PREBUILT_RESCAN_DURING_PATH_REPAIR.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "NO_INDEPENDENT_SAME_VIDEO_ARCHIVED_RING_POSED_FIT_REFERENCE",
+        "Current 005 RGB exists but 014 extension poses used 004 fallback landmarks; not an independent native calibration"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/REF_BUILD_REV1_RESULTS/G02/005/bank/ADMISSION_PREBUILT_RESCAN_DURING_PATH_REPAIR.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "REF_BUILD_REV1_RESULTS_G02_005_bank_ADMISSION_PRE_PATH_FIX.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "MATURE_NATIVE_REFERENCE_BUILD_FAILED"
+      ],
+      "code_bug": true,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/REF_BUILD_REV1_RESULTS/G02/005/bank/ADMISSION_PRE_PATH_FIX.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "REF_BUILD_REV1_RESULTS_G02_005_camera_G02_v005_raw00104_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "NO_RESOLVED_RING_FIRST_RGB_YAW"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/REF_BUILD_REV1_RESULTS/G02/005/camera/G02_v005_raw00104/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "REF_BUILD_REV1_RESULTS_G02_005_camera_G02_v005_raw00211_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "NO_RESOLVED_RING_FIRST_RGB_YAW"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/REF_BUILD_REV1_RESULTS/G02/005/camera/G02_v005_raw00211/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "REF_BUILD_REV1_RESULTS_G02_005_camera_G02_v005_raw00275_ADMISSION.json",
+      "kind": "SUPERSEDED_STAGE_EVIDENCE",
+      "current": false,
+      "status": "FAIL",
+      "reasons": [
+        "NO_RESOLVED_RING_FIRST_RGB_YAW"
+      ],
+      "code_bug": false,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/REF_BUILD_REV1_RESULTS/G02/005/camera/G02_v005_raw00275/ADMISSION.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G06_005_bank_ADMISSION_PREBUILT_RESCAN_DURING_PATH_REPAIR.json",
+      "kind": "SUPERSEDED_ENGINEERING_OR_SOURCE_STATUS",
+      "current": false,
+      "status": "FAIL",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G06/005/bank/ADMISSION_PREBUILT_RESCAN_DURING_PATH_REPAIR.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G06_005_bank_ADMISSION_PRE_PATH_FIX.json",
+      "kind": "SUPERSEDED_ENGINEERING_OR_SOURCE_STATUS",
+      "current": false,
+      "status": "FAIL",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G06/005/bank/ADMISSION_PRE_PATH_FIX.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G03_005_bank_ADMISSION_PREBUILT_RESCAN_DURING_PATH_REPAIR.json",
+      "kind": "SUPERSEDED_ENGINEERING_OR_SOURCE_STATUS",
+      "current": false,
+      "status": "FAIL",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G03/005/bank/ADMISSION_PREBUILT_RESCAN_DURING_PATH_REPAIR.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G03_005_bank_ADMISSION_PRE_PATH_FIX.json",
+      "kind": "SUPERSEDED_ENGINEERING_OR_SOURCE_STATUS",
+      "current": false,
+      "status": "FAIL",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G03/005/bank/ADMISSION_PRE_PATH_FIX.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G01_005_B1_CANDIDATE_REJECTIONS",
+      "kind": "GEOMETRY_OR_PROJECTION_CANDIDATE_REJECTIONS",
+      "code_bug": false,
+      "rejected_updates": 16,
+      "fixed_updates": 36,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G01/005/body/B1/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G01_005_B1_NO_SWEEP",
+      "kind": "UNDERCONSTRAINED_GROWTH",
+      "code_bug": false,
+      "reason": "Same frozen >=2-video evidence gate; single-video fitting cannot create eligible new Sweep",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G01/005/body/B1/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G01_005_B2_CANDIDATE_REJECTIONS",
+      "kind": "GEOMETRY_OR_PROJECTION_CANDIDATE_REJECTIONS",
+      "code_bug": false,
+      "rejected_updates": 16,
+      "fixed_updates": 36,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G01/005/body/B2/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G01_005_B2_NO_SWEEP",
+      "kind": "UNDERCONSTRAINED_GROWTH",
+      "code_bug": false,
+      "reason": "Same frozen >=2-video evidence gate; single-video fitting cannot create eligible new Sweep",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G01/005/body/B2/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G02_004_DEPTH_BETTER_GT_WORSE",
+      "group": "G02",
+      "video": "004",
+      "kind": "SCIENTIFIC_NEGATIVE",
+      "code_bug": false,
+      "confirmed_cause": "Observed paired metrics only; physical causal mechanism not proven",
+      "metrics": {
+        "group": "G02",
+        "video": "004",
+        "execution": "NEW",
+        "delta_GT_MAE_B2_minus_B1_mm": 0.0005165450557925166,
+        "delta_GT_P95_B2_minus_B1_mm": 0.016360849142073697,
+        "delta_FIT_IoU_B2_minus_B1": 0.011407074194534572,
+        "delta_HOLDOUT_IoU_all_frozen_B2_minus_B1": 0.012285748233388127,
+        "B1_depth_fixed_N": 37009,
+        "B1_depth_coverage": 0.9821394795860466,
+        "B1_depth_active_MAE_mm": 0.3732297975525062,
+        "B2_depth_fixed_N": 37009,
+        "B2_depth_coverage": 0.9824907454943392,
+        "B2_depth_active_MAE_mm": 0.3383271336390418
+      },
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/metrics/PAIRED_B2_VS_B1.csv",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G02_004_B1_CANDIDATE_REJECTIONS",
+      "kind": "GEOMETRY_OR_PROJECTION_CANDIDATE_REJECTIONS",
+      "code_bug": false,
+      "rejected_updates": 23,
+      "fixed_updates": 36,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G02/004/body/B1/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G02_004_B1_NO_SWEEP",
+      "kind": "UNDERCONSTRAINED_GROWTH",
+      "code_bug": false,
+      "reason": "Same frozen >=2-video evidence gate; single-video fitting cannot create eligible new Sweep",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G02/004/body/B1/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G02_004_B2_CANDIDATE_REJECTIONS",
+      "kind": "GEOMETRY_OR_PROJECTION_CANDIDATE_REJECTIONS",
+      "code_bug": false,
+      "rejected_updates": 23,
+      "fixed_updates": 36,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G02/004/body/B2/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G02_004_B2_NO_SWEEP",
+      "kind": "UNDERCONSTRAINED_GROWTH",
+      "code_bug": false,
+      "reason": "Same frozen >=2-video evidence gate; single-video fitting cannot create eligible new Sweep",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G02/004/body/B2/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G02_005_B1_CANDIDATE_REJECTIONS",
+      "kind": "GEOMETRY_OR_PROJECTION_CANDIDATE_REJECTIONS",
+      "code_bug": false,
+      "rejected_updates": 27,
+      "fixed_updates": 36,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G02/005/body/B1/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G02_005_B1_NO_SWEEP",
+      "kind": "UNDERCONSTRAINED_GROWTH",
+      "code_bug": false,
+      "reason": "Same frozen >=2-video evidence gate; single-video fitting cannot create eligible new Sweep",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G02/005/body/B1/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G02_005_B2_CANDIDATE_REJECTIONS",
+      "kind": "GEOMETRY_OR_PROJECTION_CANDIDATE_REJECTIONS",
+      "code_bug": false,
+      "rejected_updates": 22,
+      "fixed_updates": 36,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G02/005/body/B2/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G02_005_B2_NO_SWEEP",
+      "kind": "UNDERCONSTRAINED_GROWTH",
+      "code_bug": false,
+      "reason": "Same frozen >=2-video evidence gate; single-video fitting cannot create eligible new Sweep",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G02/005/body/B2/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G03_004_DEPTH_BETTER_GT_WORSE",
+      "group": "G03",
+      "video": "004",
+      "kind": "SCIENTIFIC_NEGATIVE",
+      "code_bug": false,
+      "confirmed_cause": "Observed paired metrics only; physical causal mechanism not proven",
+      "metrics": {
+        "group": "G03",
+        "video": "004",
+        "execution": "FROZEN_REFERENCE",
+        "delta_GT_MAE_B2_minus_B1_mm": 0.007114643851870994,
+        "delta_GT_P95_B2_minus_B1_mm": -0.15629100799561968,
+        "delta_FIT_IoU_B2_minus_B1": -0.00368052293691834,
+        "delta_HOLDOUT_IoU_all_frozen_B2_minus_B1": null,
+        "B1_depth_fixed_N": 202695,
+        "B1_depth_coverage": 0.8565628160536767,
+        "B1_depth_active_MAE_mm": 1.1763572588303608,
+        "B2_depth_fixed_N": 202695,
+        "B2_depth_coverage": 0.8539135153802511,
+        "B2_depth_active_MAE_mm": 1.171087217902298
+      },
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/metrics/PAIRED_B2_VS_B1.csv",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G03_005_B1_CANDIDATE_REJECTIONS",
+      "kind": "GEOMETRY_OR_PROJECTION_CANDIDATE_REJECTIONS",
+      "code_bug": false,
+      "rejected_updates": 25,
+      "fixed_updates": 36,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G03/005/body/B1/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G03_005_B1_NO_SWEEP",
+      "kind": "UNDERCONSTRAINED_GROWTH",
+      "code_bug": false,
+      "reason": "Same frozen >=2-video evidence gate; single-video fitting cannot create eligible new Sweep",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G03/005/body/B1/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G03_005_B2_CANDIDATE_REJECTIONS",
+      "kind": "GEOMETRY_OR_PROJECTION_CANDIDATE_REJECTIONS",
+      "code_bug": false,
+      "rejected_updates": 24,
+      "fixed_updates": 36,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G03/005/body/B2/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G03_005_B2_NO_SWEEP",
+      "kind": "UNDERCONSTRAINED_GROWTH",
+      "code_bug": false,
+      "reason": "Same frozen >=2-video evidence gate; single-video fitting cannot create eligible new Sweep",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G03/005/body/B2/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G05_004_DEPTH_BETTER_GT_WORSE",
+      "group": "G05",
+      "video": "004",
+      "kind": "SCIENTIFIC_NEGATIVE",
+      "code_bug": false,
+      "confirmed_cause": "Observed paired metrics only; physical causal mechanism not proven",
+      "metrics": {
+        "group": "G05",
+        "video": "004",
+        "execution": "FROZEN_REFERENCE",
+        "delta_GT_MAE_B2_minus_B1_mm": 1.520841274027518e-07,
+        "delta_GT_P95_B2_minus_B1_mm": 1.037120819002979e-06,
+        "delta_FIT_IoU_B2_minus_B1": 0.0,
+        "delta_HOLDOUT_IoU_all_frozen_B2_minus_B1": 0.0,
+        "B1_depth_fixed_N": 223753,
+        "B1_depth_coverage": 0.9614932537217378,
+        "B1_depth_active_MAE_mm": 0.28817066241113354,
+        "B2_depth_fixed_N": 223753,
+        "B2_depth_coverage": 0.9614932537217378,
+        "B2_depth_active_MAE_mm": 0.2881699485954961
+      },
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/metrics/PAIRED_B2_VS_B1.csv",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G06_004_DEPTH_BETTER_GT_WORSE",
+      "group": "G06",
+      "video": "004",
+      "kind": "SCIENTIFIC_NEGATIVE",
+      "code_bug": false,
+      "confirmed_cause": "Observed paired metrics only; physical causal mechanism not proven",
+      "metrics": {
+        "group": "G06",
+        "video": "004",
+        "execution": "FROZEN_REFERENCE",
+        "delta_GT_MAE_B2_minus_B1_mm": 1.2489932862402853e-06,
+        "delta_GT_P95_B2_minus_B1_mm": 1.416206359872163e-05,
+        "delta_FIT_IoU_B2_minus_B1": 0.0,
+        "delta_HOLDOUT_IoU_all_frozen_B2_minus_B1": 0.0,
+        "B1_depth_fixed_N": 73647,
+        "B1_depth_coverage": 0.9203090417803849,
+        "B1_depth_active_MAE_mm": 0.3221085067564289,
+        "B2_depth_fixed_N": 73647,
+        "B2_depth_coverage": 0.9203090417803849,
+        "B2_depth_active_MAE_mm": 0.32209637943937475
+      },
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/metrics/PAIRED_B2_VS_B1.csv",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G06_005_B1_CANDIDATE_REJECTIONS",
+      "kind": "GEOMETRY_OR_PROJECTION_CANDIDATE_REJECTIONS",
+      "code_bug": false,
+      "rejected_updates": 27,
+      "fixed_updates": 36,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G06/005/body/B1/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G06_005_B1_NO_SWEEP",
+      "kind": "UNDERCONSTRAINED_GROWTH",
+      "code_bug": false,
+      "reason": "Same frozen >=2-video evidence gate; single-video fitting cannot create eligible new Sweep",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G06/005/body/B1/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G06_005_B2_CANDIDATE_REJECTIONS",
+      "kind": "GEOMETRY_OR_PROJECTION_CANDIDATE_REJECTIONS",
+      "code_bug": false,
+      "rejected_updates": 23,
+      "fixed_updates": 36,
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G06/005/body/B2/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    },
+    {
+      "id": "G06_005_B2_NO_SWEEP",
+      "kind": "UNDERCONSTRAINED_GROWTH",
+      "code_bug": false,
+      "reason": "Same frozen >=2-video evidence gate; single-video fitting cannot create eligible new Sweep",
+      "evidence": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/runs/RF_ONLY_V1/G06/005/body/B2/UPDATES.json",
+      "permanent_rule_promotion": "NOT_REVIEWED"
+    }
+  ],
+  "scientific_failures_preserved": true,
+  "permanent_rules_changed": false
+}

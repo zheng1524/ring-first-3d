@@ -1,0 +1,32 @@
+test_HERO_same_native_inference_function (test_contracts.Contracts.test_HERO_same_native_inference_function) ... ok
+test_HOLDOUT_pixel_identity_excluded (test_contracts.Contracts.test_HOLDOUT_pixel_identity_excluded) ... ok
+test_HOLDOUT_rejected_before_read (test_contracts.Contracts.test_HOLDOUT_rejected_before_read) ... ok
+test_PnP_rejected (test_contracts.Contracts.test_PnP_rejected) ... ok
+test_RF_config_is_unchanged (test_contracts.Contracts.test_RF_config_is_unchanged) ... ok
+test_bad_bank_rejected (test_contracts.Contracts.test_bad_bank_rejected) ... ok
+test_body_adapter_video_is_configuration (test_contracts.Contracts.test_body_adapter_video_is_configuration) ... FAIL
+test_evaluator_routes_same_instance (test_contracts.Contracts.test_evaluator_routes_same_instance) ... ok
+test_inherited_reference_not_retrained (test_contracts.Contracts.test_inherited_reference_not_retrained) ... ok
+test_other_video_rejected (test_contracts.Contracts.test_other_video_rejected) ... ok
+test_restore_explicit_rigid (test_contracts.Contracts.test_restore_explicit_rigid) ... ok
+test_restore_identity (test_contracts.Contracts.test_restore_identity) ... ok
+test_restore_rejects_scale (test_contracts.Contracts.test_restore_rejects_scale) ... ok
+test_selection_denominators (test_contracts.Contracts.test_selection_denominators) ... ok
+test_unchanged_three_pixel_gate (test_contracts.Contracts.test_unchanged_three_pixel_gate) ... ok
+
+======================================================================
+FAIL: test_body_adapter_video_is_configuration (test_contracts.Contracts.test_body_adapter_video_is_configuration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/tests/test_contracts.py", line 40, in test_body_adapter_video_is_configuration
+    ns=adapters.load('body_stage','G02','005');self.assertIn('VIDEO',ns['setup'].__code__.co_names);self.assertEqual(ns['VIDEO'],'005');self.assertEqual(ns['T'],p.TASK)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/adapters.py", line 14, in load
+    assert original.count("video='004'")==1
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+----------------------------------------------------------------------
+Ran 15 tests in 2.279s
+
+FAILED (failures=1)

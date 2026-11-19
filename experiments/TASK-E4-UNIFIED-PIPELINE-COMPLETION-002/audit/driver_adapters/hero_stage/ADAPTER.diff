@@ -1,0 +1,26 @@
+--- /home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/hero_stage.py
++++ hero_stage_instance_adapter.py
+@@ -25,8 +25,8 @@
+                 admission=[OUT/group/video/'camera'/q['meta']['id']/'ADMISSION.json' for q in selected]
+                 if not all(a.exists() and p.read(a)['status']=='PASS' for a in admission):continue
+                 targets.append(dict(group=group,video=video,selected=selected,admissions=admission))
+-    save_json(OUT/'HERO_TARGETS_FROZEN.json',dict(protocol=str(T/'PROTOCOL_RF_ONLY.yaml'),protocol_sha256=sha256(T/'PROTOCOL_RF_ONLY.yaml'),targets=[dict(group=r['group'],video=r['video'],ids=[v['meta']['id'] for v in r['selected']],camera_admissions=[dict(path=str(a),sha256=sha256(a)) for a in r['admissions']]) for r in targets],GT_read=False))
+-    assert len(targets)<=32
++    save_json(OUT/'HERO_TARGETS_FROZEN.json',dict(protocol=str(T/'TASK.yaml'),protocol_sha256=sha256(T/'TASK.yaml'),targets=[dict(group=r['group'],video=r['video'],ids=[v['meta']['id'] for v in r['selected']],camera_admissions=[dict(path=str(a),sha256=sha256(a)) for a in r['admissions']]) for r in targets],GT_read=False))
++    assert len(targets)<=48
+     if not targets:return
+     model,receipt=load_official(rt['mvs_root'],rt['checkpoint'],rt['dino_root'],p.read(R/'src/ring_first_3d/mainline/native/upstream_source_lock.json'))
+     save_json(OUT/'HERO_MODEL_RECEIPT.json',receipt)
+@@ -51,6 +51,12 @@
+             for k,a in capture.last.items():
+                 if ('conf' in k.lower()) and hasattr(a,'detach'):
+                     np.savez_compressed(pending/('MODEL_'+k+'.npz'),values=a.float().detach().cpu().numpy())
++            aux={k:a.detach().float().cpu().numpy() for k,a in capture.last.items() if hasattr(a,'detach')}
++            np.savez_compressed(pending/'OFFICIAL_AUXILIARY.npz',**aux)
++            modelvalid=np.isfinite(aux['depth_masked'])&(aux['depth_masked']>0)
++            np.savez_compressed(pending/'MODEL_DEPTH_VALIDITY.npz',valid=modelvalid)
++            native_labels=np.load(pending/'NATIVE_RGB_LABELS.npz')['labels']
++            assert not ((native_labels==1)&~modelvalid).any(),'MODEL_INVALID_POLYP_DEPTH'
+             save_json(pending/'MODEL_OUTPUT_KEYS.json',keys)
+             native=dict(np.load(pending/'RAW_NATIVE_MESH.npz'));np.savez_compressed(pending/'Raw_XYZ.npz',XYZ_mm=native['V'],uv=native['uv'],native_pixel_id=native['native_pixel_id'])
+             save_json(pending/'SOURCE.json',dict(target=m['id'],group=group,video=video,frames=[v['meta']['id'] for v in target['selected']],input_caches=[v['cache'] for v in target['selected']],camera_results=[dict(path=str(OUT/group/video/'camera'/v['meta']['id']/'CAMERA_RESULT.json'),sha256=sha256(OUT/group/video/'camera'/v['meta']['id']/'CAMERA_RESULT.json')) for v in target['selected']],model_receipt=str(OUT/'HERO_MODEL_RECEIPT.json'),depth_convention='axial_Z_mm',GT_used=False,confidence_available=any('conf' in k.lower() for k in keys),historical_depth_fallback=False))

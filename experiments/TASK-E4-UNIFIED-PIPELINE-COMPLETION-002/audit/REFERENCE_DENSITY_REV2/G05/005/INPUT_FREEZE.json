@@ -1,0 +1,2532 @@
+{
+  "catalog": {
+    "path": "/home/liu/polyp_research/ring-first-3d/experiments/TASK-E4-PYTORCH3D-014/config/ALL_VIEWS.json",
+    "sha256": "33c92a3e067e9313eaa31dbbbfbf520964bd69ad82072fc4d9a6b545f6747c69",
+    "bytes": 3170973
+  },
+  "protocol": {
+    "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/PROTOCOL_REF_DENSITY_REV2.yaml",
+    "sha256": "7826396ff78497a3623ae32852aeb7441da43a038b30d95575c64c6596b70b2d",
+    "bytes": 901
+  },
+  "Body_views_unchanged": [
+    "G05_v005_raw00082",
+    "G05_v005_raw00353",
+    "G05_v005_raw00251",
+    "G05_v005_raw00404",
+    "G05_v005_raw00167",
+    "G05_v005_raw00437",
+    "G05_v005_raw00285",
+    "G05_v005_raw00150"
+  ],
+  "calibration_views": [
+    {
+      "meta": {
+        "id": "G05_v005_raw00082",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 82,
+        "key": 0,
+        "time_sec": 0.711067,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00082.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00082.png",
+        "RGB_SHA256": "a2d3dcc87589f7f9aadfc6c8e3c4b92a7459f02136010d9136ea7e3a778d4a84",
+        "RGB_content_sha": "3783cdc1bd4d8c3220400eeaa5bb3055c0d64815a36857074cca3eabded296c3",
+        "Mask_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00082_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00082_labels.png",
+        "Mask_SHA256": "ea7f5cb3bc6466b60b3eb9698017ffe25a9de939fa9eceae7aa9c6a093a228e1",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 0,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 23586,
+        "Ring_pixels": 6683,
+        "RGB_sha": "a2d3dcc87589f7f9aadfc6c8e3c4b92a7459f02136010d9136ea7e3a778d4a84",
+        "Mask_sha": "ea7f5cb3bc6466b60b3eb9698017ffe25a9de939fa9eceae7aa9c6a093a228e1",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T": [
+          [
+            0.5756416820941651,
+            0.6296099242077672,
+            -0.5217547289434853,
+            19.325223566996897
+          ],
+          [
+            0.8098658763474363,
+            -0.5271067749575733,
+            0.257440692435802,
+            -15.99229258425995
+          ],
+          [
+            -0.11293323763976301,
+            -0.5707449440274666,
+            -0.8133242236053743,
+            29.23891586762278
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "HERO_sources": [],
+        "aliases": [
+          "G05_v005_raw00082"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00082_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "T_original": [
+          [
+            0.5756416820941651,
+            0.6296099242077672,
+            -0.5217547289434853,
+            19.325223566996897
+          ],
+          [
+            0.8098658763474363,
+            -0.5271067749575733,
+            0.257440692435802,
+            -15.99229258425995
+          ],
+          [
+            -0.11293323763976301,
+            -0.5707449440274666,
+            -0.8133242236053743,
+            29.23891586762278
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "Delta_T": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "direction": [
+          0.4837377130802448,
+          -0.42486018884637483,
+          0.7651742578506658
+        ],
+        "distance_mm": 39.595845945259676,
+        "sharpness": 40.00775185901029,
+        "glare_fraction": 0.0029861111111111113,
+        "direction_block": 1
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00082.npz",
+        "sha256": "89f36b8e797fbc4c35acaa27266a1fdf956202966309731184cbacd9c2dd1d05"
+      },
+      "sides": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00082_SIDES.npz",
+        "sha256": "6ef664a2a8a498f910834f09659a9584dc45ac31084df9d149aee69df06acb00"
+      },
+      "selection": "005_ANGULAR_FARTHEST_POINT_NO_GT"
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00353",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 353,
+        "key": 16,
+        "time_sec": 3.014356,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00353.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00353.png",
+        "RGB_SHA256": "1dabe6448f11baa46f3dcc304d682bf8c73e2e1f3d01e737749d05d2c90a0429",
+        "RGB_content_sha": "6871675927589b3a7158167286e78bc663aadaad79e7aeeb836c0af203936ec2",
+        "Mask_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00353_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00353_labels.png",
+        "Mask_SHA256": "7a5bdcae7329d92a9c29705d541469c98ff3d0465bd991b44bd11e97e85cdc54",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 16,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 31267,
+        "Ring_pixels": 9058,
+        "RGB_sha": "1dabe6448f11baa46f3dcc304d682bf8c73e2e1f3d01e737749d05d2c90a0429",
+        "Mask_sha": "7a5bdcae7329d92a9c29705d541469c98ff3d0465bd991b44bd11e97e85cdc54",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T": [
+          [
+            0.633386244943548,
+            0.6169005288982238,
+            -0.46717834085218907,
+            23.071191013715236
+          ],
+          [
+            0.7416657284691365,
+            -0.6562050757391701,
+            0.13902102642584435,
+            -2.293034091947786
+          ],
+          [
+            -0.22080265381253322,
+            -0.43454417038920456,
+            -0.8731652489936258,
+            24.156887456154834
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "HERO_sources": [],
+        "aliases": [
+          "G05_v005_raw00353"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "ONE_PASS_SAME_VIDEO_BG_TRIANGULATION_PNP",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "T_original": [
+          [
+            0.633386244943548,
+            0.6169005288982238,
+            -0.46717834085218907,
+            23.071191013715236
+          ],
+          [
+            0.7416657284691365,
+            -0.6562050757391701,
+            0.13902102642584435,
+            -2.293034091947786
+          ],
+          [
+            -0.22080265381253322,
+            -0.43454417038920456,
+            -0.8731652489936258,
+            24.156887456154834
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "Delta_T": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "direction": [
+          0.6694879948189243,
+          -0.09131477099033151,
+          0.7371888749786715
+        ],
+        "distance_mm": 34.205200972946,
+        "sharpness": 64.56802472142348,
+        "glare_fraction": 0.006905381944444444,
+        "direction_block": 2
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00353.npz",
+        "sha256": "8cec23ef11a7eb6e28af21dcb9c97d52b94463da5f92c3e8114b9e7b91f238bc"
+      },
+      "sides": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00353_SIDES.npz",
+        "sha256": "a39a4dc4f36ac0720da5f01fca6fc12e0dff940f0a8c0918b1fcef22c6feb9d2"
+      },
+      "selection": "005_ANGULAR_FARTHEST_POINT_NO_GT"
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00251",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 251,
+        "key": 10,
+        "time_sec": 2.153067,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00251.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00251.png",
+        "RGB_SHA256": "3b432ea7075394546ee0fce5cd92a165b5751dacab4f8777aed60cdeeaaef038",
+        "RGB_content_sha": "aec5985ee81fd52f968958573fa9398e003efa3f772625d3f12fd9e0f3b36b46",
+        "Mask_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00251_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00251_labels.png",
+        "Mask_SHA256": "15941bd77726ad327295eb27fffc4f877302f0f8e0f5c5d12e820119d02b5398",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 10,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 27184,
+        "Ring_pixels": 7911,
+        "RGB_sha": "3b432ea7075394546ee0fce5cd92a165b5751dacab4f8777aed60cdeeaaef038",
+        "Mask_sha": "15941bd77726ad327295eb27fffc4f877302f0f8e0f5c5d12e820119d02b5398",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T": [
+          [
+            0.5668595124200415,
+            0.6248066726753472,
+            -0.5369235652858555,
+            21.45536208129114
+          ],
+          [
+            0.7919881896664476,
+            -0.5927223824506231,
+            0.146406573523597,
+            -8.732533143436324
+          ],
+          [
+            -0.2267708107490377,
+            -0.5082290813426745,
+            -0.8308298263000705,
+            26.219827314757975
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "HERO_sources": [],
+        "aliases": [
+          "G05_v005_raw00251"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00251_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "T_original": [
+          [
+            0.5668595124200415,
+            0.6248066726753472,
+            -0.5369235652858555,
+            21.45536208129114
+          ],
+          [
+            0.7919881896664476,
+            -0.5927223824506231,
+            0.146406573523597,
+            -8.732533143436324
+          ],
+          [
+            -0.2267708107490377,
+            -0.5082290813426745,
+            -0.8308298263000705,
+            26.219827314757975
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "Delta_T": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "direction": [
+          0.5929240326061194,
+          -0.2664000415771062,
+          0.7599158567932462
+        ],
+        "distance_mm": 35.89691311006606,
+        "sharpness": 45.714164948564694,
+        "glare_fraction": 0.003932291666666666,
+        "direction_block": 2
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00251.npz",
+        "sha256": "39a245cfe9848f9211f752b2050ee01790b9b24e11e70de6f5e94dfbe5136c81"
+      },
+      "sides": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00251_SIDES.npz",
+        "sha256": "b597490af8e3eaf93e70566742e0243509c6418b81ae94931012cfd85a7ace59"
+      },
+      "selection": "005_ANGULAR_FARTHEST_POINT_NO_GT"
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00404",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 404,
+        "key": 19,
+        "time_sec": 3.449667,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00404.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00404.png",
+        "RGB_SHA256": "8243b04aded318a026c87f9d3c746b84dd210049730cde95617ad0087887aa59",
+        "RGB_content_sha": "f0db89c9cc2e3eae08c192df61a48423357f429f81ca7cce1eab0cd75a4e6e1b",
+        "Mask_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00404_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00404_labels.png",
+        "Mask_SHA256": "8a73585981c605cafb30585b43b74e003b0bfc4f85f3d57af681a61ea821a602",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 19,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 33625,
+        "Ring_pixels": 9964,
+        "RGB_sha": "8243b04aded318a026c87f9d3c746b84dd210049730cde95617ad0087887aa59",
+        "Mask_sha": "8a73585981c605cafb30585b43b74e003b0bfc4f85f3d57af681a61ea821a602",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T": [
+          [
+            0.6374341415536373,
+            0.5678856208936799,
+            -0.5207529517573342,
+            24.207905606826465
+          ],
+          [
+            0.7486270774978342,
+            -0.6163803700491248,
+            0.2441981536686048,
+            -5.274441782453005
+          ],
+          [
+            -0.18230527699117374,
+            -0.5455100008251941,
+            -0.8180364447754562,
+            21.39206577850458
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "HERO_sources": [],
+        "aliases": [
+          "G05_v005_raw00404"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "ONE_PASS_SAME_VIDEO_BG_TRIANGULATION_PNP",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "T_original": [
+          [
+            0.6374341415536373,
+            0.5678856208936799,
+            -0.5207529517573342,
+            24.207905606826465
+          ],
+          [
+            0.7486270774978342,
+            -0.6163803700491248,
+            0.2441981536686048,
+            -5.274441782453005
+          ],
+          [
+            -0.18230527699117374,
+            -0.5455100008251941,
+            -0.8180364447754562,
+            21.39206577850458
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "Delta_T": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "direction": [
+          0.7185307580483784,
+          -0.1824927490062238,
+          0.6711258796221272
+        ],
+        "distance_mm": 33.45254985347306,
+        "sharpness": 65.84041181352403,
+        "glare_fraction": 0.0062586805555555555,
+        "direction_block": 2
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00404.npz",
+        "sha256": "70eefcc513eb4ac6df64586288e900e821f2bdb2276cc0b2738437f1d076fc85"
+      },
+      "sides": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00404_SIDES.npz",
+        "sha256": "7706884eabcfb47dadbf84cf534264c08e449232e0b990c491eaffd2f26492a5"
+      },
+      "selection": "005_ANGULAR_FARTHEST_POINT_NO_GT"
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00167",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 167,
+        "key": 5,
+        "time_sec": 1.433711,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00167.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00167.png",
+        "RGB_SHA256": "adbdada97548b61f3c7509e986e638baae9a5693d110c2aa558ef499a2e48430",
+        "RGB_content_sha": "b4eaa750f1476553b7de4abb5465d98819c512635d95b837d71dbef968f1a580",
+        "Mask_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00167_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00167_labels.png",
+        "Mask_SHA256": "0e0657e28ef77308c20e0261d14a2d66504125d23fef27c69cdfbe67b747527a",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 5,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 25107,
+        "Ring_pixels": 7220,
+        "RGB_sha": "adbdada97548b61f3c7509e986e638baae9a5693d110c2aa558ef499a2e48430",
+        "Mask_sha": "0e0657e28ef77308c20e0261d14a2d66504125d23fef27c69cdfbe67b747527a",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T": [
+          [
+            0.5684303188707005,
+            0.6216388388733773,
+            -0.5389361062247673,
+            20.354024401111293
+          ],
+          [
+            0.8015955622296138,
+            -0.5659862523875503,
+            0.1926242890242186,
+            -11.611979221224567
+          ],
+          [
+            -0.18528768767066964,
+            -0.5415022771073597,
+            -0.8200266804715568,
+            27.307418947511028
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "HERO_sources": [],
+        "aliases": [
+          "G05_v005_raw00167"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00167_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "T_original": [
+          [
+            0.5684303188707005,
+            0.6216388388733773,
+            -0.5389361062247673,
+            20.354024401111293
+          ],
+          [
+            0.8015955622296138,
+            -0.5659862523875503,
+            0.1926242890242186,
+            -11.611979221224567
+          ],
+          [
+            -0.18528768767066964,
+            -0.5415022771073597,
+            -0.8200266804715568,
+            27.307418947511028
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "Delta_T": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "direction": [
+          0.5459197803011413,
+          -0.3365510529804226,
+          0.7672711269256276
+        ],
+        "distance_mm": 36.97027572076381,
+        "sharpness": 55.750262462455844,
+        "glare_fraction": 0.0026866319444444446,
+        "direction_block": 1
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00167.npz",
+        "sha256": "980ccd786c758acef6aeed560b80dde8d0f0266a15826b93e14fb130e907dc8b"
+      },
+      "sides": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00167_SIDES.npz",
+        "sha256": "5d490298d22ef60140988c4f793b016d4c5f921aaac00bad7e50ed31eedf9d25"
+      },
+      "selection": "005_ANGULAR_FARTHEST_POINT_NO_GT"
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00437",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 437,
+        "key": 21,
+        "time_sec": 3.732933,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00437.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00437.png",
+        "RGB_SHA256": "194bf2f78b8187ce7020e4017eb7c9d3e1208492a9953c899c8390c8b8ba8113",
+        "RGB_content_sha": "68e52ebfcd145e72c7472aa8a9dc6241f90ea15e9bf05f2b831248c2c6704236",
+        "Mask_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00437_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00437_labels.png",
+        "Mask_SHA256": "81cd437658475563e749dd036e9b81422946880db015f1bdf5c652cc450cdad9",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 21,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 35964,
+        "Ring_pixels": 10670,
+        "RGB_sha": "194bf2f78b8187ce7020e4017eb7c9d3e1208492a9953c899c8390c8b8ba8113",
+        "Mask_sha": "81cd437658475563e749dd036e9b81422946880db015f1bdf5c652cc450cdad9",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T": [
+          [
+            0.6719355386392161,
+            0.6158853347733378,
+            -0.41132455108437116,
+            21.034007802949482
+          ],
+          [
+            0.7251204700444639,
+            -0.6600819858015766,
+            0.19619397529675256,
+            -3.958758032493766
+          ],
+          [
+            -0.15067493433256132,
+            -0.4300895562919199,
+            -0.8901236081199608,
+            23.74920275885667
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "HERO_sources": [],
+        "aliases": [
+          "G05_v005_raw00437"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00437_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "T_original": [
+          [
+            0.6719355386392161,
+            0.6158853347733378,
+            -0.41132455108437116,
+            21.034007802949482
+          ],
+          [
+            0.7251204700444639,
+            -0.6600819858015766,
+            0.19619397529675256,
+            -3.958758032493766
+          ],
+          [
+            -0.15067493433256132,
+            -0.4300895562919199,
+            -0.8901236081199608,
+            23.74920275885667
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "Delta_T": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "direction": [
+          0.6367151232872741,
+          -0.14616134425648697,
+          0.7571200124302674
+        ],
+        "distance_mm": 32.76628344129543,
+        "sharpness": 65.21362747569144,
+        "glare_fraction": 0.003472222222222222,
+        "direction_block": 2
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00437.npz",
+        "sha256": "6e6c34c998cf6b08a7b211f9bce12ba9bc6f80f7bf6abaedf27fde65c0058381"
+      },
+      "sides": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00437_SIDES.npz",
+        "sha256": "a1aa73e418c8f00ad1f80d2a74fcf48883747ce8572ffcf56a6a5de7a30db54a"
+      },
+      "selection": "005_ANGULAR_FARTHEST_POINT_NO_GT"
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00285",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 285,
+        "key": 12,
+        "time_sec": 2.443733,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00285.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00285.png",
+        "RGB_SHA256": "a05e02666928380aceeae53af58b2461d2dbb7f748d6f5dcc20b8faa60c4a932",
+        "RGB_content_sha": "b0a8f5ba6faf25a326e9e1106302e3388b8fdd0ec68ffbc2287c53f3de87b8b7",
+        "Mask_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00285_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00285_labels.png",
+        "Mask_SHA256": "3a953d1e6442f01ee2a9048d7c14b930655556bfb4831147db6c09fdab0783d4",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 12,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 28185,
+        "Ring_pixels": 8188,
+        "RGB_sha": "a05e02666928380aceeae53af58b2461d2dbb7f748d6f5dcc20b8faa60c4a932",
+        "Mask_sha": "3a953d1e6442f01ee2a9048d7c14b930655556bfb4831147db6c09fdab0783d4",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T": [
+          [
+            0.5856941972496388,
+            0.6347029709282346,
+            -0.5040976552246337,
+            22.181530239905804
+          ],
+          [
+            0.781004812666712,
+            -0.6082703899533961,
+            0.1415578160942636,
+            -6.667148628595951
+          ],
+          [
+            -0.21678051088493883,
+            -0.4766122862461856,
+            -0.8519665126632906,
+            25.540990329880426
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "HERO_sources": [],
+        "aliases": [
+          "G05_v005_raw00285"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00285_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "T_original": [
+          [
+            0.5856941972496388,
+            0.6347029709282346,
+            -0.5040976552246337,
+            22.181530239905804
+          ],
+          [
+            0.781004812666712,
+            -0.6082703899533961,
+            0.1415578160942636,
+            -6.667148628595951
+          ],
+          [
+            -0.21678051088493883,
+            -0.4766122862461856,
+            -0.8519665126632906,
+            25.540990329880426
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "Delta_T": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "direction": [
+          0.6229902526959978,
+          -0.2122143358394717,
+          0.75289323327414
+        ],
+        "distance_mm": 35.330104351868464,
+        "sharpness": 45.73591744723849,
+        "glare_fraction": 0.006614583333333333,
+        "direction_block": 2
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00285.npz",
+        "sha256": "c61af8be78a8a9f5f294c912797f21051cb5bcd90409ff87acc2f572e87050ed"
+      },
+      "sides": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00285_SIDES.npz",
+        "sha256": "57e538a8ea9b2471bdfc637741b25c754f143a527073e7cd57dca187dc5f258d"
+      },
+      "selection": "005_ANGULAR_FARTHEST_POINT_NO_GT"
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00150",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 150,
+        "key": 4,
+        "time_sec": 1.289789,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00150.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00150.png",
+        "RGB_SHA256": "e5d0aa40a5832994c5c02d7ebed1048d63c7008a4733b9be9ea9d354ccb2d7b6",
+        "RGB_content_sha": "6017f356ca03e8e5f092840b5dac2242ee6f52142c6fda7db516eca532cc68a3",
+        "Mask_path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00150_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00150_labels.png",
+        "Mask_SHA256": "ba2c0ca8e2239e997dc3f03533da3226e1e5155e71ebae75207edd16863a2cb3",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 4,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 24908,
+        "Ring_pixels": 7037,
+        "RGB_sha": "e5d0aa40a5832994c5c02d7ebed1048d63c7008a4733b9be9ea9d354ccb2d7b6",
+        "Mask_sha": "ba2c0ca8e2239e997dc3f03533da3226e1e5155e71ebae75207edd16863a2cb3",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T": [
+          [
+            0.5730137924359693,
+            0.6242807530747468,
+            -0.5309696177923696,
+            19.988421234254925
+          ],
+          [
+            0.8080773066143284,
+            -0.5383864899804697,
+            0.23906286608639682,
+            -13.769650045976658
+          ],
+          [
+            -0.1366245227368823,
+            -0.5660508181664758,
+            -0.8129699939358048,
+            27.825285858166612
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "HERO_sources": [],
+        "aliases": [
+          "G05_v005_raw00150"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00150_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "T_original": [
+          [
+            0.5730137924359693,
+            0.6242807530747468,
+            -0.5309696177923696,
+            19.988421234254925
+          ],
+          [
+            0.8080773066143284,
+            -0.5383864899804697,
+            0.23906286608639682,
+            -13.769650045976658
+          ],
+          [
+            -0.1366245227368823,
+            -0.5660508181664758,
+            -0.8129699939358048,
+            27.825285858166612
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "Delta_T": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "direction": [
+          0.5221975883312576,
+          -0.3847220308395031,
+          0.7611167044072459
+        ],
+        "distance_mm": 37.94962304522274,
+        "sharpness": 61.186905297380605,
+        "glare_fraction": 0.0029383680555555556,
+        "direction_block": 1
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00150.npz",
+        "sha256": "e3a4c025bf3019c9fe49e5a9104065c400357361b8b87f749bb08c812d2c44b7"
+      },
+      "sides": {
+        "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G05/G05_v005_raw00150_SIDES.npz",
+        "sha256": "2bd503d9c9bbd03978ebb2d97080a9304a688cdddf0ee5a14249e19c8b074a4f"
+      },
+      "selection": "005_ANGULAR_FARTHEST_POINT_NO_GT"
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00099",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 99,
+        "key": 1,
+        "time_sec": 0.854,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00099.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00099.png",
+        "RGB_SHA256": "e8c118bea528f13309a686c9b0c7309a827aed51678e1075e4a72609269b11aa",
+        "RGB_content_sha": "2549aa1069ed8fe779497bf615031b01a4c1fa4062b601d5df21f3f963f2d4aa",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00099_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00099_labels.png",
+        "Mask_SHA256": "8b070eefa3a76bda2822f14eac6d54e368fa244c58960c4cca789f35905280ea",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 1,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 23835,
+        "Ring_pixels": 6792,
+        "RGB_sha": "e8c118bea528f13309a686c9b0c7309a827aed51678e1075e4a72609269b11aa",
+        "Mask_sha": "8b070eefa3a76bda2822f14eac6d54e368fa244c58960c4cca789f35905280ea",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00099"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00099_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.5061766497678568,
+          -0.42173026823773346,
+          0.7522823805473035
+        ],
+        "distance_mm": 39.04494627910466,
+        "sharpness": 55.88541092664931,
+        "glare_fraction": 0.0029383680555555556,
+        "direction_block": 1,
+        "Mask_content_sha": "40d669faaa07ff583fd16cb9901923d81ac6160199aa1319c48695abc5bf5b03"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00099.npz",
+        "sha256": "b37874122aa2f14d05b5624bd21bfd529e54500c751744121674b530d15deafb",
+        "bytes": 332187
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00116",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 116,
+        "key": 2,
+        "time_sec": 0.998533,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00116.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00116.png",
+        "RGB_SHA256": "c610dff7f11286d770ca394ce4ece49ff394150b6aa49dc1e1c4c9dcd267ebea",
+        "RGB_content_sha": "c950b64104ebb949e16923dff966ef7a55e1008b7c9d359c3f0c1b85550ccc3f",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00116_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00116_labels.png",
+        "Mask_SHA256": "536b98a909917fd456b96873c9105188d2da832f98dadf6263918809770496ac",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 2,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 24134,
+        "Ring_pixels": 6921,
+        "RGB_sha": "c610dff7f11286d770ca394ce4ece49ff394150b6aa49dc1e1c4c9dcd267ebea",
+        "Mask_sha": "536b98a909917fd456b96873c9105188d2da832f98dadf6263918809770496ac",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00116"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00116_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.503321992058584,
+          -0.3973475895842303,
+          0.7673212269719775
+        ],
+        "distance_mm": 39.04848787517663,
+        "sharpness": 57.43995920800104,
+        "glare_fraction": 0.0028255208333333335,
+        "direction_block": 1,
+        "Mask_content_sha": "09ae7d0f303511fa26262d2bf9339c19042cf0c81de52db5cee4774f2a0e4aee"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00116.npz",
+        "sha256": "ef4f4c58717a31188240209705169cd6aa5d8efd3f89b97e267f3d68629a0993",
+        "bytes": 338372
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00133",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 133,
+        "key": 3,
+        "time_sec": 1.140711,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00133.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00133.png",
+        "RGB_SHA256": "6db6ac5718df0eaaaba9922032685d998a8b7bffdd96069ea43b0469becb47c4",
+        "RGB_content_sha": "d4bbdc396ee6c787cef1b4cf2db83b2793ef3d8e04e8855db21eae8486864459",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00133_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00133_labels.png",
+        "Mask_SHA256": "72a022bf8131439b76e5ad1bf715d6f3127143e8e763d47256fb78cc1203d609",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 3,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 24458,
+        "Ring_pixels": 6984,
+        "RGB_sha": "6db6ac5718df0eaaaba9922032685d998a8b7bffdd96069ea43b0469becb47c4",
+        "Mask_sha": "72a022bf8131439b76e5ad1bf715d6f3127143e8e763d47256fb78cc1203d609",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00133"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00133_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.5251949951213095,
+          -0.38332360876861454,
+          0.759758664353447
+        ],
+        "distance_mm": 38.32978296942153,
+        "sharpness": 48.34625453918833,
+        "glare_fraction": 0.003120659722222222,
+        "direction_block": 1,
+        "Mask_content_sha": "40fa31618c44236507b10c46dfb4f02b3ead0ada3f22b84d977262a53d80d523"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00133.npz",
+        "sha256": "99665160b4c34632d833593a51599d018c67941404727c7050cbeff1988e3ce5",
+        "bytes": 317239
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00184",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 184,
+        "key": 6,
+        "time_sec": 1.575122,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00184.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00184.png",
+        "RGB_SHA256": "0e53304a52a76f2231aa8e73087e0d369050fbd593dc981a6c2d14cb6fd84416",
+        "RGB_content_sha": "2f28a61d7af69078eeb004ea87171b08b5caab40ff8b0aeebb464cd25e02bb63",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00184_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00184_labels.png",
+        "Mask_SHA256": "b42a4854d7c79ffbbd8b756221697e4766a615cfbf43a8f4e0457e0351d628c0",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 6,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 25978,
+        "Ring_pixels": 7460,
+        "RGB_sha": "0e53304a52a76f2231aa8e73087e0d369050fbd593dc981a6c2d14cb6fd84416",
+        "Mask_sha": "b42a4854d7c79ffbbd8b756221697e4766a615cfbf43a8f4e0457e0351d628c0",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00184"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00184_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.543336809230026,
+          -0.37091567111538754,
+          0.7531312479619711
+        ],
+        "distance_mm": 37.543569553592846,
+        "sharpness": 54.56175596695889,
+        "glare_fraction": 0.0026692708333333334,
+        "direction_block": 1,
+        "Mask_content_sha": "1ad75f5dc7c9517faa5be02af428f2d7035b93484cb666429e5baf57b6dd485e"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00184.npz",
+        "sha256": "35beb7843371c520f8745157fe473172980b898bee5b2303bbdf91fe5015e080",
+        "bytes": 306680
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00201",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 201,
+        "key": 7,
+        "time_sec": 1.721978,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00201.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00201.png",
+        "RGB_SHA256": "fe08d27b92c32f730627f2d229b753ef70c674aa003e0393c894822110be7966",
+        "RGB_content_sha": "95a2c872c815bd9a18365983a391630e21eaf4437f5145110c081e058315eebb",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00201_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00201_labels.png",
+        "Mask_SHA256": "eb88836c2b6c33d53498eb2abb2a7beb4b7de6f06d9f82abc13c60d725ef19c8",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 7,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 26379,
+        "Ring_pixels": 7644,
+        "RGB_sha": "fe08d27b92c32f730627f2d229b753ef70c674aa003e0393c894822110be7966",
+        "Mask_sha": "eb88836c2b6c33d53498eb2abb2a7beb4b7de6f06d9f82abc13c60d725ef19c8",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00201"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00201_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.5409305354136269,
+          -0.31085021545539215,
+          0.7815153865462043
+        ],
+        "distance_mm": 37.19723444316733,
+        "sharpness": 59.763155058665326,
+        "glare_fraction": 0.002894965277777778,
+        "direction_block": 1,
+        "Mask_content_sha": "46bffffc6d001ab0b0124d52f594c3cd91adf57bb6813620a9e6a74b60028433"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00201.npz",
+        "sha256": "0d9652122515a571974a11a7d21202ce882bbbaf993e1a178fb2b644c285d876",
+        "bytes": 341495
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00235",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 235,
+        "key": 9,
+        "time_sec": 2.018011,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00235.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00235.png",
+        "RGB_SHA256": "2bb19642050baa3310e4c2d433823531839e1024f044aad0c9e081a753eeed75",
+        "RGB_content_sha": "1e6e09ca2a69e4ac3ed2eafefe6a507637951c127a7fd2489af917d33bd30603",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00235_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00235_labels.png",
+        "Mask_SHA256": "2887fad1ab37ca8614537611dc87cf662b843adfffc0bcada84db475976989c3",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 9,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 27047,
+        "Ring_pixels": 7796,
+        "RGB_sha": "2bb19642050baa3310e4c2d433823531839e1024f044aad0c9e081a753eeed75",
+        "Mask_sha": "2887fad1ab37ca8614537611dc87cf662b843adfffc0bcada84db475976989c3",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00235"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00235_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.5759139792465792,
+          -0.2744334275903672,
+          0.7700710242109967
+        ],
+        "distance_mm": 35.87271081680174,
+        "sharpness": 57.05751256825012,
+        "glare_fraction": 0.0033940972222222224,
+        "direction_block": 2,
+        "Mask_content_sha": "518ae43483abc22bf4d4f264c83facd50e5935b3065554df522b852f1a8ae89b"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00235.npz",
+        "sha256": "2f0c08dfb27f37ac34479a7da50f48c92c357029ba04c854b0dcdca59bf95ae3",
+        "bytes": 310501
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00268",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 268,
+        "key": 11,
+        "time_sec": 2.293322,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00268.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00268.png",
+        "RGB_SHA256": "13aa6c048857ea562434002199940d7438ffc4999f226384735ad7273cdd02e3",
+        "RGB_content_sha": "fb945e302009f4b289dc3ea0664ff5f5658fb85c30bec727954d62156effcff9",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00268_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00268_labels.png",
+        "Mask_SHA256": "3394e03708f2e9ec59ee1ff1692c08eff0dc36b8213d6d0aaf641319909ee6e2",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 11,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 27290,
+        "Ring_pixels": 8023,
+        "RGB_sha": "13aa6c048857ea562434002199940d7438ffc4999f226384735ad7273cdd02e3",
+        "Mask_sha": "3394e03708f2e9ec59ee1ff1692c08eff0dc36b8213d6d0aaf641319909ee6e2",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00268"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00268_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.6091213605431385,
+          -0.27226055179630104,
+          0.7448794265286492
+        ],
+        "distance_mm": 35.78650541607779,
+        "sharpness": 53.48748903535442,
+        "glare_fraction": 0.0033984375,
+        "direction_block": 2,
+        "Mask_content_sha": "75d6e763a6e87bcc6e06c5ecaf7c0b5fd9ce39ccfe777d9f9cc377853fa4a9fb"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00268.npz",
+        "sha256": "eccff4351e1b1d988e174487d061bf1e677efdfa39e08ad3648534fbf94128a8",
+        "bytes": 318070
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00302",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 302,
+        "key": 13,
+        "time_sec": 2.593767,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00302.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00302.png",
+        "RGB_SHA256": "ee9a6fef7f64113141ac5519a4bf63170a520d4db7bfe434c0236d6038b46d82",
+        "RGB_content_sha": "7f1f72da9a4d7aa6180f2c2873db9620ad5ebffde17bce53f4963bf2d6cf558d",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00302_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00302_labels.png",
+        "Mask_SHA256": "b6a37b7cdb22a6c5c330f254ba948413da912458ba83ba0c5e1ea82654e59b9d",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 13,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 29158,
+        "Ring_pixels": 8399,
+        "RGB_sha": "ee9a6fef7f64113141ac5519a4bf63170a520d4db7bfe434c0236d6038b46d82",
+        "Mask_sha": "b6a37b7cdb22a6c5c330f254ba948413da912458ba83ba0c5e1ea82654e59b9d",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00302"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00302_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.6850903441198751,
+          -0.20498232888800658,
+          0.6990232222446977
+        ],
+        "distance_mm": 35.20674270216473,
+        "sharpness": 57.033006941712955,
+        "glare_fraction": 0.005807291666666666,
+        "direction_block": 2,
+        "Mask_content_sha": "d3ad89ae38b590544d1e87359c9a98af322fa843f169fce81dd25342e27cfb89"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00302.npz",
+        "sha256": "994c102b518c1c65aac5ea8bdcf13b7ee9b35f0f423ef34da62f22f51017a1f0",
+        "bytes": 297496
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00319",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 319,
+        "key": 14,
+        "time_sec": 2.733511,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00319.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00319.png",
+        "RGB_SHA256": "41e2701f232cb71b97205d03538bd4cf2ad46f81149f8dabf742ce88cfa0061a",
+        "RGB_content_sha": "6c12c6a377e4f0a53d4164595d07298d6ca4096b8dc9b0c8a94cf36024cfdeeb",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00319_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00319_labels.png",
+        "Mask_SHA256": "37dd93156dd8e12c7f63781566dc060f72d00ead6fbafa96787021e17d188c65",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 14,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 29875,
+        "Ring_pixels": 8756,
+        "RGB_sha": "41e2701f232cb71b97205d03538bd4cf2ad46f81149f8dabf742ce88cfa0061a",
+        "Mask_sha": "37dd93156dd8e12c7f63781566dc060f72d00ead6fbafa96787021e17d188c65",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00319"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00319_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.6589333340717052,
+          -0.13199512077141617,
+          0.7405296410959429
+        ],
+        "distance_mm": 34.88127489186406,
+        "sharpness": 57.00841563568114,
+        "glare_fraction": 0.0049479166666666664,
+        "direction_block": 2,
+        "Mask_content_sha": "063ce0fc163d0b2cecfbca0a258e5e4e741721aa9d05dda2fb9c8cfe1ffef77b"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00319.npz",
+        "sha256": "b6ac43036052a75f1ae7453f4a59a84842e4494ef5761e1af614c9c6b7a1e918",
+        "bytes": 301619
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00336",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 336,
+        "key": 15,
+        "time_sec": 2.8686,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00336.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00336.png",
+        "RGB_SHA256": "91ca08a5d32ea21d339bcf3a55668541f0dbc5a45cbb5052321d4978a90bc191",
+        "RGB_content_sha": "f26fd358bf2e2ebc132493a86cc169a1cfc1793eb636f33934dfec02cd2dbd16",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00336_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00336_labels.png",
+        "Mask_SHA256": "e76fc9ffb3d024e4c7e516263da0b7323fb62a950230c16a016d8db973a1968d",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 15,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 30466,
+        "Ring_pixels": 8848,
+        "RGB_sha": "91ca08a5d32ea21d339bcf3a55668541f0dbc5a45cbb5052321d4978a90bc191",
+        "Mask_sha": "e76fc9ffb3d024e4c7e516263da0b7323fb62a950230c16a016d8db973a1968d",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00336"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00336_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.7023719360430247,
+          -0.17501767351069128,
+          0.6899583157105058
+        ],
+        "distance_mm": 34.62209424588112,
+        "sharpness": 67.31996472047403,
+        "glare_fraction": 0.006788194444444445,
+        "direction_block": 2,
+        "Mask_content_sha": "eba65104144bcb34e15aa949daf57aa28175f647de0443de61cc6546ca73274a"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00336.npz",
+        "sha256": "688251f38f19ba37d7690f04a3756928fac753fd62c1b20c536bb205123ddc04",
+        "bytes": 333257
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00370",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 370,
+        "key": 17,
+        "time_sec": 3.161844,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00370.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00370.png",
+        "RGB_SHA256": "3b6cbfc6ce8d976db12da59d557c5ab75ccce6b58fe2059fd467bc931fddce55",
+        "RGB_content_sha": "1b676d9db37fd1e031ee29d8aa762ea840f27eacaadd36f799ad1b18e98bac40",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00370_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00370_labels.png",
+        "Mask_SHA256": "6f5bdad88948deefc11097497d82a7425386f136d812546e45f21dfa458b4b82",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 17,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 31686,
+        "Ring_pixels": 9217,
+        "RGB_sha": "3b6cbfc6ce8d976db12da59d557c5ab75ccce6b58fe2059fd467bc931fddce55",
+        "Mask_sha": "6f5bdad88948deefc11097497d82a7425386f136d812546e45f21dfa458b4b82",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00370"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00370_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.654586964676577,
+          -0.12612353064879225,
+          0.7453916827361228
+        ],
+        "distance_mm": 34.6803467782911,
+        "sharpness": 65.66710964579642,
+        "glare_fraction": 0.006375868055555556,
+        "direction_block": 2,
+        "Mask_content_sha": "5f6595c6b845bc4cee5adb2c09ba824a829ed60041758eaeb1e089e407015d48"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00370.npz",
+        "sha256": "eb011ef33486772388738025407e830b2c6b1ecd5e3549072646551a710d232b",
+        "bytes": 337523
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00387",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 387,
+        "key": 18,
+        "time_sec": 3.295867,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00387.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00387.png",
+        "RGB_SHA256": "605f6fe778e2c209b96a938f121c6e00df253834a280fc99ce1690c020ea9f71",
+        "RGB_content_sha": "b372e17d6348d202d6ba3c8e931864175ed4a0c808c74e87a8787cc44f54d678",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00387_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00387_labels.png",
+        "Mask_SHA256": "c74362beeb968b1d9f51cdae2a1da61e971f4f90b6e20b4ce54a49b25f55b288",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 18,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 32503,
+        "Ring_pixels": 9552,
+        "RGB_sha": "605f6fe778e2c209b96a938f121c6e00df253834a280fc99ce1690c020ea9f71",
+        "Mask_sha": "c74362beeb968b1d9f51cdae2a1da61e971f4f90b6e20b4ce54a49b25f55b288",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00387"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00387_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.6512436738954298,
+          -0.11550312879656377,
+          0.7500271358086903
+        ],
+        "distance_mm": 33.65399749231557,
+        "sharpness": 68.30149972805448,
+        "glare_fraction": 0.005008680555555555,
+        "direction_block": 2,
+        "Mask_content_sha": "c0cf61724105f4566c61520aed474d7403c128882a0aa79e4b3b6f5f40d1a84a"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00387.npz",
+        "sha256": "9c55607ea407a1e5bfe18ff95437c6ad75aa76e3aaed693b826d42ce082a14b0",
+        "bytes": 329596
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00454",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 454,
+        "key": 22,
+        "time_sec": 3.870767,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00454.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00454.png",
+        "RGB_SHA256": "a29140a4b876c8974c4c8d632b86c733457ac9beef89985ae2dad4aab0621dc1",
+        "RGB_content_sha": "fd15168f3bddc4648bed746de4044935cda8c38394bf1f9962ee6dad84bfff73",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00454_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00454_labels.png",
+        "Mask_SHA256": "8b25d8ff1da72a4ffd4bbf2523c217dcdef9bac5628a15760c3f60079b274859",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 22,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 37851,
+        "Ring_pixels": 11264,
+        "RGB_sha": "a29140a4b876c8974c4c8d632b86c733457ac9beef89985ae2dad4aab0621dc1",
+        "Mask_sha": "8b25d8ff1da72a4ffd4bbf2523c217dcdef9bac5628a15760c3f60079b274859",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00454"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00454_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.663178374053045,
+          -0.14937866552900445,
+          0.7334033395568453
+        ],
+        "distance_mm": 31.169427286605746,
+        "sharpness": 73.9403165364395,
+        "glare_fraction": 0.004114583333333333,
+        "direction_block": 2,
+        "Mask_content_sha": "5f290db5af68bf56d8ab74de7920df91efd462999c00897931434b757094c293"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00454.npz",
+        "sha256": "11d42cbf1f7af6a2c0c6a26b75fe165bc91dbaf3a3583099ce1227cd59a7848c",
+        "bytes": 354272
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00471",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 471,
+        "key": 23,
+        "time_sec": 4.024111,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00471.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00471.png",
+        "RGB_SHA256": "2202fd7b36635227dedd92ccbdd65b6748c8c29cd8fbdc92d5a95ce26f82879d",
+        "RGB_content_sha": "45693481aea95c9b7677973a2843a26748365e3ae6af43128539ec5251eca6b8",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00471_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00471_labels.png",
+        "Mask_SHA256": "fd93ee282fba4beeb12a2ac7b7e5184dd25afb55aefbd82f0f82d2772e623794",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 23,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 39939,
+        "Ring_pixels": 11734,
+        "RGB_sha": "2202fd7b36635227dedd92ccbdd65b6748c8c29cd8fbdc92d5a95ce26f82879d",
+        "Mask_sha": "fd93ee282fba4beeb12a2ac7b7e5184dd25afb55aefbd82f0f82d2772e623794",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00471"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/predictions/G05_v005_raw00471_CAMERA.json",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.7026346455230714,
+          -0.16095236464416396,
+          0.6931081381906578
+        ],
+        "distance_mm": 30.953942676492446,
+        "sharpness": 74.78978178982207,
+        "glare_fraction": 0.004752604166666666,
+        "direction_block": 2,
+        "Mask_content_sha": "bce779b7d8e9832a1cf2c6171ef863ac31b8f2c3c87cae682976c1584bb09799"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00471.npz",
+        "sha256": "de6916c9d214bcc274600f22ac3b9068b38f4842e609f08da35ff57783a66b1b",
+        "bytes": 345934
+      }
+    },
+    {
+      "meta": {
+        "id": "G05_v005_raw00420",
+        "case": "G05",
+        "sid": "G05_v005",
+        "video": "005",
+        "raw_frame": 420,
+        "key": 20,
+        "time_sec": 3.588678,
+        "source_video": "/home/liu/polyp_research/smart_endoscope_20260805/raw/GP_Is_18.0mm_closed_R10_single_refY_005.mp4",
+        "source_video_SHA256": "80c5695300c68d5495431841af737a6a0f169c02d1410aa5fe8fcbdb8d3939ae",
+        "RGB_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00420.png",
+        "RGB_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/inputs/G05_v005_raw00420.png",
+        "RGB_SHA256": "a228474ee17e2ebb4c8d844df0b7a3f5192b04905aa74f59b69bc049dfae1eca",
+        "RGB_content_sha": "601afd3a23b55efbcdc7ff7dddeaa234701f4db426188be4221b95decaa61ec3",
+        "Mask_path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00420_labels.png",
+        "Mask_source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/new_views/G05_v005/observations/G05_v005_raw00420_labels.png",
+        "Mask_SHA256": "af98c0d033724fbee001dbb66a16affb1bf9631f4067ed727a3936ccc6865d2f",
+        "source_id": "G05_v005",
+        "camera_status": "PENDING_REAL_RGB_GEOMETRY",
+        "frame_binding": "EXACT_SEQUENTIAL_ZERO_BASED_AREA_NO_JPEG",
+        "native_resolution": [
+          1280,
+          720
+        ],
+        "working_resolution": [
+          640,
+          360
+        ],
+        "role": "FIT",
+        "temporal_slot": 20,
+        "exact_existing_aliases": [],
+        "segmentation_success": true,
+        "Polyp_pixels": 33778,
+        "Ring_pixels": 9971,
+        "RGB_sha": "a228474ee17e2ebb4c8d844df0b7a3f5192b04905aa74f59b69bc049dfae1eca",
+        "Mask_sha": "af98c0d033724fbee001dbb66a16affb1bf9631f4067ed727a3936ccc6865d2f",
+        "K": [
+          [
+            490.0,
+            0.0,
+            319.5
+          ],
+          [
+            0.0,
+            490.0,
+            179.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "available_camera": true,
+        "original013": false,
+        "aliases": [
+          "G05_v005_raw00420"
+        ],
+        "qualification": "CONDITIONAL_RESEARCH_CAMERA_NOT_GT",
+        "pose_source": "ONE_PASS_SAME_VIDEO_BG_TRIANGULATION_PNP",
+        "admission": "INPUT_INTEGRITY_ONLY",
+        "is_photo": false,
+        "direction": [
+          0.7084117712357086,
+          -0.1546560961697403,
+          0.6886466832071597
+        ],
+        "distance_mm": 32.89510300124755,
+        "sharpness": 67.9026948942773,
+        "glare_fraction": 0.006384548611111111,
+        "direction_block": 2,
+        "Mask_content_sha": "4fe35021c64a05629421a8cf056616ca5ef25429a0256e5d8d99069ac2056ee8"
+      },
+      "cache": {
+        "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/audit/REFERENCE_DENSITY_REV2/G05/005/inputs/G05_v005_raw00420.npz",
+        "sha256": "86f3c6b53be02f37f5cfa7837ecd8df963eff24df0a3b05d1fefef872bfd9207",
+        "bytes": 344345
+      }
+    }
+  ],
+  "rejections": [],
+  "old_camera_HERO_GT_used": false,
+  "source": {
+    "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/complete_reference_inputs.py",
+    "sha256": "420df183d9c0d1cfe6ab9d9aba9cac4a1ed942f038b92520ec8d186669287277",
+    "bytes": 4604
+  },
+  "native_builder": {
+    "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/bootstrap_references.py",
+    "sha256": "eee452e78d9ed8aeeaaef447d55eb3d5e6839131bc36b355c47897cf5130f29e",
+    "bytes": 9640
+  }
+}

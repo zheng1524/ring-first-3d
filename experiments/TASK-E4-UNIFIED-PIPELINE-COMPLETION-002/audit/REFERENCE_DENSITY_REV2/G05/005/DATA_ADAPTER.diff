@@ -1,0 +1,29 @@
+--- native_reference_REV1
++++ same_builder_expanded_inputs_REV2
+@@ -51,10 +51,10 @@
+     if previous.exists() and p.read(previous)['status']=='PASS':return
+     history=p.TASK/'runs/BEFORE_REF_BUILD_REV1'/g/video
+     if base.exists() and not history.exists():history.parent.mkdir(parents=True,exist_ok=True);base.rename(history)
+-    root=base/'reference_build/REV1';root.mkdir(parents=True,exist_ok=True)
++    root=base/'reference_build/REV2';root.mkdir(parents=True,exist_ok=True)
+     if (base/'bank/ADMISSION.json').exists():return
+-    fit=[v for v in p.instance_views(g,video) if v['meta']['role']=='FIT'];assert len(fit)==8
+-    save_json(root/'INPUT_FREEZE.json',dict(inputs=[v['cache'] for v in fit],IDs=[v['meta']['id'] for v in fit],roles=['FIT']*8,old_camera_used=False,GT_used=False,HERO_used=False,protocol=p.asset(p.TASK/'PROTOCOL_REF_BUILD_REV1.yaml'),RF_CONFIG=RF_CONFIG,source_lock=p.asset(p.TASK/'audit/MATURE_CALIBRATION_SOURCE_LOCK.json')))
++    fit=[v for v in p.instance_views(g,video) if v['meta']['role']=='FIT'];assert len(fit)>=8
++    save_json(root/'INPUT_FREEZE.json',dict(inputs=[v['cache'] for v in fit],IDs=[v['meta']['id'] for v in fit],roles=['FIT']*len(fit),old_camera_used=False,GT_used=False,HERO_used=False,protocol=p.asset(p.TASK/'PROTOCOL_REF_DENSITY_REV2.yaml'),RF_CONFIG=RF_CONFIG,source_lock=p.asset(p.TASK/'audit/MATURE_CALIBRATION_SOURCE_LOCK.json')))
+     try:
+         for folder in ['observations','predictions','metrics','scripts']:(root/folder).mkdir(exist_ok=True)
+         shutil.copyfile(F/'v6_common.py',root/'scripts/v6_common.py');shutil.copyfile(F/'config.json',root/'config.json')
+@@ -90,10 +90,10 @@
+         save_json(root/'metrics/CALIBRATION_RING_DIAGNOSTIC.json',dict(primary_initialization=primary,selection='original lowest successful initialization version; no GT/HOLDOUT feedback',views=diagnostic,qualification='Conditional reference calibration, not final camera/Pose GT'))
+         builder=builder_namespace(root/'map_builder',rows);data=builder['landmarks']([v['id'] for v in rows],'MAP');N=len(data['X']);assert N>=6,'INSUFFICIENT_FIT_TRIANGULATED_LANDMARKS'
+         bank=root/'map_builder/landmarks/MAP.npz';obs=root/'map_builder/landmarks/MAP_OBSERVATIONS.json';assert all(o['view'] in {v['id'] for v in rows} for r in p.read(obs) for o in r['observations'])
+-        save_json(base/'bank/ADMISSION.json',dict(status='PASS',execution='MATURE_G01_NATIVE_REFERENCE_BUILD_REV1',method='UNCHANGED_RING_RGB_LOCAL_SFM_THEN_FEATURES019',bank=str(bank),sha256=sha256(bank),points=N,observations=p.asset(obs),reference_RGB=[dict(id=v['id'],RGB_source=v['RGB_source'],sha256=v['RGB_SHA256'],pixel_sha256=p.arraysha(p.check_input(next(q for q in fit if q['meta']['id']==v['id']))['RGB']),role='FIT',video=video) for v in rows],primary=primary,calibration_evidence=str(root/'metrics/LOCAL_CALIBRATION_RUNS.json'),protocol=p.asset(p.TASK/'PROTOCOL_REF_BUILD_REV1.yaml'),reasons=[],conditional_calibration_not_camera_GT=True,GT_or_HERO_or_old_camera_read=False))
++        save_json(base/'bank/ADMISSION.json',dict(status='PASS',execution='MATURE_G01_NATIVE_REFERENCE_BUILD_REV1',method='UNCHANGED_RING_RGB_LOCAL_SFM_THEN_FEATURES019',bank=str(bank),sha256=sha256(bank),points=N,observations=p.asset(obs),reference_RGB=[dict(id=v['id'],RGB_source=v['RGB_source'],sha256=v['RGB_SHA256'],pixel_sha256=p.arraysha(p.check_input(next(q for q in fit if q['meta']['id']==v['id']))['RGB']),role='FIT',video=video) for v in rows],primary=primary,calibration_evidence=str(root/'metrics/LOCAL_CALIBRATION_RUNS.json'),protocol=p.asset(p.TASK/'PROTOCOL_REF_DENSITY_REV2.yaml'),reasons=[],conditional_calibration_not_camera_GT=True,GT_or_HERO_or_old_camera_read=False))
+         print('BOOTSTRAP_BANK_PASS',g,video,N,flush=True)
+     except Exception:
+-        err=traceback.format_exc();save_json(base/'bank/ADMISSION.json',dict(status='FAIL',execution='MATURE_G01_NATIVE_REFERENCE_BUILD_REV1',reasons=['MATURE_NATIVE_REFERENCE_BUILD_FAILED'],error=err,evidence=str(root),protocol=p.asset(p.TASK/'PROTOCOL_REF_BUILD_REV1.yaml')));print('BOOTSTRAP_BANK_FAIL',g,video,err,flush=True)
++        err=traceback.format_exc();save_json(base/'bank/ADMISSION.json',dict(status='FAIL',execution='MATURE_G01_NATIVE_REFERENCE_BUILD_REV1',reasons=['MATURE_NATIVE_REFERENCE_BUILD_FAILED'],error=err,evidence=str(root),protocol=p.asset(p.TASK/'PROTOCOL_REF_DENSITY_REV2.yaml')));print('BOOTSTRAP_BANK_FAIL',g,video,err,flush=True)
+ 
+ def main():
+     for g in p.GROUPS:

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/run.py", line 91, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/run.py", line 89, in main
+    execute(s,a.group,a.video,a.arm)
+  File "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/run.py", line 55, in execute
+    return solve(g,video)
+           ^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/cameras.py", line 13, in solve
+    p.verify();assert p.read(p.TASK/'logs/TESTS.json')['status']=='PASS';cv2.setNumThreads(1)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

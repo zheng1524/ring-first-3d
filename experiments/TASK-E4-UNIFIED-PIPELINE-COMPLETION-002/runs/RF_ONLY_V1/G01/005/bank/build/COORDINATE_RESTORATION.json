@@ -1,0 +1,80 @@
+{
+  "recipe": {
+    "method": "RESTORE_ARCHIVED_NATIVE_MAP",
+    "map": {
+      "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/audit/reference_banks/G01_005.npz",
+      "sha256": "bc6df8f2d00b77810d0ac412a3c70105e8ec41cbb78f2479f2cc5adb653c4967",
+      "bytes": 216345
+    },
+    "observations": {
+      "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/audit/reference_banks/G01_005_OBSERVATIONS.json",
+      "sha256": "4b8b75aa7f170dcea24de1e0c6287e25f3650b22afea9f0b763ac1c381c3f5ba",
+      "bytes": 1791401
+    },
+    "stored_H": {
+      "path": "/home/liu/polyp_research/ring-first-3d/experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/results/B3.json",
+      "sha256": "2775cf191e261d073018cef523aebf694a2cf24144846d71e8e178a007fbcf22",
+      "bytes": 4898
+    },
+    "H_direction": "native005_to_archived004; apply its inverse to map XYZ only",
+    "no_new_transform_estimated": true
+  },
+  "H": [
+    [
+      0.03329368461687381,
+      0.9984531490177925,
+      -0.044529089156257466,
+      -0.09551545345182252
+    ],
+    [
+      -0.9994408612257349,
+      0.03312309800149082,
+      -0.004563473583298269,
+      -0.03612662130473783
+    ],
+    [
+      -0.003081473185663929,
+      0.04465612606616724,
+      0.998997665126285,
+      -0.034730327177326076
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "H_inverse": [
+    [
+      0.03329368461687381,
+      -0.9994408612257343,
+      -0.0030814731856638263,
+      -0.03303338069864673
+    ],
+    [
+      0.9984531490177925,
+      0.03312309800149078,
+      0.04465612606616724,
+      0.09811525276552406
+    ],
+    [
+      -0.04452908915625744,
+      -0.004563473583298366,
+      0.9989976651262846,
+      0.030277436734686136
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "native_reconstruction_max_abs_mm": 2.842170943040401e-14,
+  "input_landmarks": 980,
+  "kept_landmarks": 980,
+  "removed_unbound_or_HOLDOUT": 0,
+  "cross_video_coupling_removed": true,
+  "no_new_registration": true
+}
