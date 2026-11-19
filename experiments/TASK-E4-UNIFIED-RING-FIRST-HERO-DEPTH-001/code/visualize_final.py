@@ -1,16 +1,18 @@
 """Static figures from actual admitted camera/depth/body/evaluation artifacts."""
 from pathlib import Path
-import csv,json
+import csv,json,os
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.collections import PolyCollection
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 from scipy.spatial import cKDTree
 import pipeline as p
 from ring_first_3d.mainline.native.camera import torus_contours,observe
 T=p.TASK;OUT=T/'runs/RF_ONLY_V1';VIS=T/'visualization';VIS.mkdir(exist_ok=True)
 plt.rcParams.update({'font.size':8,'savefig.dpi':125})
+SUMMARY_ONLY=os.environ.get('RF_FIGURES_SUMMARY_ONLY')=='1'
 
 def full_mesh(ax,V,F,color,alpha=.8,values=None):
     coll=Poly3DCollection(V[F],edgecolor='none',alpha=alpha,rasterized=True)
@@ -35,7 +37,7 @@ def main():
             z=OUT/group/'004/body'/arm/'FINAL.npz'
             if z.exists():bodies[arm]=dict(np.load(z))
         # Per-view Ring evidence includes rejected cameras, never hides a gap.
-        for v in ss:
+        for v in ([] if SUMMARY_ONLY else ss):
             m=v['meta'];a=p.check_input(v);cam=OUT/group/m['video']/'camera'/m['id'];ad=p.read(cam/'ADMISSION.json');fig,axes=plt.subplots(1,3,figsize=(14,4))
             axes[0].imshow(a['RGB']);axes[0].contour(a['labels']==2,levels=[.5],colors='cyan',linewidths=.8);axes[0].set_title('Actual RGB + observed Ring Mask')
             axes[1].imshow(a['RGB'],alpha=.6);axes[2].imshow(a['RGB'],alpha=.3)
@@ -49,7 +51,7 @@ def main():
                 axes[1].text(.5,.5,'NO RESOLVED RF CAMERA',ha='center',transform=axes[1].transAxes,color='red');axes[2].text(.5,.5,'Yaw unresolved; no PnP replacement',ha='center',transform=axes[2].transAxes)
             for ax in axes:ax.set_xlim(0,640);ax.set_ylim(360,0);ax.set_xlabel('u [px]');ax.set_ylabel('v [px]')
             fig.suptitle(f"{m['id']} | {m['role']} | RF_ONLY_V1 | {ad['status']} | input {v['cache']['sha256'][:12]}")
-            sub=folder/m['video'];sub.mkdir(exist_ok=True);fig.tight_layout();fig.savefig(sub/(m['id']+'_RingFirst.png'));plt.close(fig)
+            sub=folder/m['video'];sub.mkdir(exist_ok=True);fig.tight_layout(rect=(0,0,1,.88));fig.savefig(sub/(m['id']+'_RingFirst.png'));plt.close(fig)
         # Each video has its own displayed Ring frame, never a shared-world claim.
         fig=plt.figure(figsize=(12,5))
         for j,video in enumerate(['004','005']):
@@ -61,7 +63,7 @@ def main():
             if points:axes3(ax,limits(np.r_[ring['V'],points]))
             else:axes3(ax,[(-10,10),(-10,10),(-10,10)])
             ax.set_title(f'{group}/{video}: own Ring coordinate frame\n{passed} admitted; orange = diagnostic only')
-        fig.suptitle('Separate video frames — no certified cross-video transform assumed');fig.tight_layout();fig.savefig(folder/'Figure1_CameraPoses.png');plt.close(fig)
+        fig.suptitle('Separate video frames — no certified cross-video transform assumed');fig.tight_layout(rect=(0,0,1,.88));fig.savefig(folder/'Figure1_CameraPoses.png');plt.close(fig)
         # Deterministic representative frame, not selected by result quality.
         rep=[v for v in ss if v['meta']['video']=='004' and v['meta']['role']=='FIT'][4];cid=rep['meta']['id'];a=p.check_input(rep);hero=OUT/group/'004/hero'/cid
         __import__('shutil').copy2(folder/'004'/(cid+'_RingFirst.png'),folder/'Figure1_RingFirst.png')
@@ -71,7 +73,15 @@ def main():
             ax=fig.add_subplot(142);im=ax.imshow(depth,vmin=0,vmax=100,cmap='turbo');fig.colorbar(im,ax=ax,label='Axial Z [mm]');ax.set_title('Fresh official HERO raw depth\nScale 0–100mm; out-of-scale pixels '+str(int((depth>100).sum())))
             ax=fig.add_subplot(143);ax.imshow(valid,cmap='gray',vmin=0,vmax=1);ax.set_title('Finite positive raw validity\nNot a statement of depth accuracy')
             ax=fig.add_subplot(144,projection='3d');full_mesh(ax,native['V'],native['F'],'#e67e22');axes3(ax,limits(native['V']));ax.set_title(f"Full raw open Mesh\n{len(native['V'])} V / {len(native['F'])} F")
-            fig.suptitle(f'{group}/004 target {cid}; supports fixed offsets 2,4,6; no historical depth');fig.tight_layout();fig.savefig(folder/'Figure2_HERO.png');plt.close(fig)
+            fig.suptitle(f'{group}/004 target {cid}; supports fixed offsets 2,4,6; no historical depth');fig.tight_layout(rect=(0,0,1,.88));fig.savefig(folder/'Figure2_HERO.png');plt.close(fig)
+            aux=OUT/group/'004/hero_auxiliary'/cid
+            if (aux/'OFFICIAL_AUXILIARY.npz').exists():
+                aa=dict(np.load(aux/'OFFICIAL_AUXILIARY.npz'));modelvalid=np.load(aux/'MODEL_DEPTH_VALIDITY.npz')['valid'];fig=plt.figure(figsize=(16,4))
+                ax=fig.add_subplot(141);im=ax.imshow(np.squeeze(aa['sky_mask']),cmap='coolwarm');fig.colorbar(im,ax=ax);ax.set_title('Official raw sky output\nLogit, not calibrated confidence')
+                ax=fig.add_subplot(142);ax.imshow(modelvalid,cmap='gray');ax.set_title('Official masked-depth validity\nAudit only; frozen training unchanged')
+                ax=fig.add_subplot(143);im=ax.imshow(np.squeeze(aa['cost_volume']),cmap='viridis');fig.colorbar(im,ax=ax);ax.set_title('Official cost-volume output\nNot calibrated confidence')
+                ax=fig.add_subplot(144,projection='3d');ax.scatter(*native['V'].T,s=.1,c='#e67e22',rasterized=True);axes3(ax,limits(native['V']));ax.set_title('All native Polyp Raw XYZ\nAxial-Z backprojection, mm')
+                fig.suptitle(f'{cid}: auxiliary capture by identical-input repeated inference; see bitwise receipt');fig.tight_layout(rect=(0,0,1,.88));fig.savefig(folder/'Figure2_HERO_Auxiliary.png');plt.close(fig)
         else:
             fig,ax=plt.subplots(figsize=(10,3));ax.axis('off');ax.text(.5,.6,group+' HERO NOT_RUN',ha='center',fontsize=18);ax.text(.5,.3,'No admitted same-video Ring-First input; no depth substitute',ha='center');fig.savefig(folder/'Figure2_HERO_NOT_RUN.png');plt.close(fig)
         lim=limits(np.concatenate([b['V'] for b in bodies.values()]));fig=plt.figure(figsize=(15,5))
@@ -80,9 +90,19 @@ def main():
                 ax=fig.add_subplot(1,3,j+1,projection='3d');b=bodies[arm];full_mesh(ax,b['V'],b['F_solid'],'#8855aa');full_mesh(ax,ring['V'],ring['F'],'black',.5);axes3(ax,lim);ax.set_title(arm+' actual world Mesh\nFixed Ring / no GT alignment')
             else:
                 ax=fig.add_subplot(1,3,j+1);ax.axis('off');ax.text(.5,.5,arm+' NOT_RUN',ha='center',fontsize=18)
-        fig.suptitle(group+': common view and mm bounds; original world predictions');fig.tight_layout();fig.savefig(folder/'Figure3_Body.png');plt.close(fig)
+        fig.suptitle(group+': common view and mm bounds; original world predictions');fig.tight_layout(rect=(0,0,1,.88));fig.savefig(folder/'Figure3_Body.png');plt.close(fig)
+        # Fixed orthogonal views expose flatness, base, and absent/new stalks.
+        morphlim=limits(np.concatenate([b['V'] for b in bodies.values()]));fig=plt.figure(figsize=(14,12))
+        for j,(dims,viewname) in enumerate([((1,2),'Side X'),((0,2),'Side Y'),((0,1),'Top Z')]):
+            for k,arm in enumerate(['B0','B1','B2']):
+                ax=fig.add_subplot(3,3,j*3+k+1)
+                if arm in bodies:
+                    b=bodies[arm];tri=b['V'][b['F_solid']][:,:,list(dims)];ax.add_collection(PolyCollection(tri,facecolors='#8855aa',edgecolors=(.35,.25,.45,.15),linewidths=.12))
+                else:ax.text(.5,.5,'NOT_RUN',color='red',transform=ax.transAxes)
+                ax.set_xlim(morphlim[dims[0]]);ax.set_ylim(morphlim[dims[1]]);ax.set_xlabel('xyz'[dims[0]]+' [mm]');ax.set_ylabel('xyz'[dims[1]]+' [mm]');ax.set_aspect('equal');ax.grid(alpha=.15);ax.set_title(arm+' '+viewname)
+        fig.suptitle(group+': actual complete geometry; identical orthogonal mm bounds\nNo eligible new Sweep in this single-video protocol; no inferred stalk presented');fig.tight_layout(rect=(0,0,1,.88));fig.savefig(folder/'Figure6_LocalMorphology.png');plt.close(fig)
         # All frozen 004 view projections, including failed HOLDOUT cameras.
-        for v in [v for v in ss if v['meta']['video']=='004']:
+        for v in ([] if SUMMARY_ONLY else [v for v in ss if v['meta']['video']=='004']):
             m=v['meta'];a=p.check_input(v);fig,axes=plt.subplots(1,3,figsize=(14,4))
             for ax,arm in zip(axes,['B0','B1','B2']):
                 ax.imshow(a['RGB']);ax.contour(a['labels']==1,levels=[.5],colors=['lime'],linewidths=.7);pr=evaluation/'projections'/arm/(m['id']+'.npz')
@@ -91,7 +111,7 @@ def main():
                     item=next(r for r in metrics if r['group']==group and r['arm']==arm and r['id']==m['id']);ax.set_title(arm+' IoU '+str(round(float(item['IoU']),4)))
                 else:ax.set_title(arm+' NOT_EVALUABLE — camera or prediction missing',color='red')
                 ax.set_xlim(0,640);ax.set_ylim(360,0);ax.axis('off')
-            fig.suptitle(m['id']+' '+m['role']+' | green: observed Polyp; magenta: actual Body projection\nRing-contact unknown band excluded identically; no image deformation');fig.tight_layout();fig.savefig(folder/'004'/(m['id']+'_BodyProjection.png'));plt.close(fig)
+            fig.suptitle(m['id']+' '+m['role']+' | green: observed Polyp; magenta: actual Body projection\nRing-contact unknown band excluded identically; no image deformation');fig.tight_layout(rect=(0,0,1,.88));fig.savefig(folder/'004'/(m['id']+'_BodyProjection.png'));plt.close(fig)
         # Actual rigid-aligned evaluation copies, same GT and mm view for all arms.
         gt=dict(np.load(c['GT']['path']));aligned={}
         for arm in bodies:
@@ -102,17 +122,17 @@ def main():
             ax=fig.add_subplot(1,3,j+1,projection='3d');full_mesh(ax,gt['V'],gt['F'],'gray',.22)
             if arm in aligned:full_mesh(ax,aligned[arm]['V'],aligned[arm]['F_solid'],'#8844bb',.75)
             axes3(ax,lim);ax.set_title(arm+' + independent GT\n'+('Scale-fixed genuine SE(3)' if arm in aligned else 'NOT_RUN'))
-        fig.suptitle(group+': independent shape evaluation copies; transformations never enter training/HERO');fig.tight_layout();fig.savefig(folder/'Figure5_GT_Aligned.png');plt.close(fig)
+        fig.suptitle(group+': independent shape evaluation copies; transformations never enter training/HERO');fig.tight_layout(rect=(0,0,1,.88));fig.savefig(folder/'Figure5_GT_Aligned.png');plt.close(fig)
         if all(a in bodies for a in ['B1','B2']):
             fig=plt.figure(figsize=(12,5))
             for j,arm in enumerate(['B1','B2']):
                 b=bodies[arm];values=np.linalg.norm(b['V']-initial['V'],axis=1);ax=fig.add_subplot(1,2,j+1,projection='3d');im=full_mesh(ax,b['V'],b['F_solid'],None,values=values);axes3(ax,limits(initial['V']));ax.set_title(f'{arm} vertex displacement\nMAE {values.mean():.5f} mm / P95 {np.percentile(values,95):.5f} mm');fig.colorbar(im,ax=ax,label='Actual displacement [mm]',shrink=.6)
-            fig.suptitle(group+': shared displacement colour scale 0–1mm; no camera update');fig.tight_layout();fig.savefig(folder/'Figure6_Displacement.png');plt.close(fig)
+            fig.suptitle(group+': shared displacement colour scale 0–1mm; no camera update');fig.tight_layout(rect=(0,0,1,.88));fig.savefig(folder/'Figure6_Displacement.png');plt.close(fig)
             fig,axes=plt.subplots(1,3,figsize=(15,4))
             for arm,col in [('B1','royalblue'),('B2','firebrick')]:
                 updates=p.read(OUT/group/'004/body'/arm/'UPDATES.json');rr=updates['iterations'];axes[0].plot([r['iteration'] for r in rr],[sum(v['IoU'] for v in r['views'])/8 for r in rr],color=col,label=arm);axes[1].plot([r['iteration'] for r in rr],[r['energies']['contour'] for r in rr],color=col,label=arm);axes[2].plot([r['iteration'] for r in rr],[r['HERO_depth'] for r in rr],color=col,label=arm)
             for ax,title in zip(axes,['FIT IoU (8 fixed views)','Actual contour objective','Weighted HERO depth term']):ax.set_title(title);ax.set_xlabel('Fixed outer iteration');ax.legend();ax.grid(alpha=.2)
-            fig.suptitle(group+': all 36 accepted/rejected iteration records retained; no checkpoint selection');fig.tight_layout();fig.savefig(folder/'Figure6_Training.png');plt.close(fig)
+            fig.suptitle(group+': all 36 accepted/rejected iteration records retained; no checkpoint selection');fig.tight_layout(rect=(0,0,1,.88));fig.savefig(folder/'Figure6_Training.png');plt.close(fig)
         index.append(f"- {group}: [Ring-First 每帧](./{group}/004/)、[HERO](./{group}/{'Figure2_HERO.png' if hero.exists() else 'Figure2_HERO_NOT_RUN.png'})、[主体](./{group}/Figure3_Body.png)、[独立 GT 对齐](./{group}/Figure5_GT_Aligned.png)。")
     (VIS/'README.md').write_text('# 静态科学图\n\n全部使用实际输入或冻结 Mesh；未执行项明确标记，无 HTML。每帧 ID、角色、状态在 PNG 标题中。\n\n'+'\n'.join(index)+'\n\n绿色为真实 Polyp 轮廓，紫色为实际 Mesh 投影；GT 仅用于独立评价副本。\n')
     print('STATIC_FINAL_FIGURES',len(list(VIS.rglob('*.png'))),flush=True)

@@ -12,3 +12,36 @@
 /experiments/important_history/
 **/__pycache__/
 *.pyc
+# Existing local aliases and preserved historical runs are not new source.
+/configs
+/scripts
+/results
+/visualization
+/mainline/docs
+/mainline/references/
+/mainline/configs/body_initialization/assets/
+/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001
+/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001
+/experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001-SIM-PROTOCOL-REV1
+/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001
+/experiments/TASK-E4-G01-MULTISURFACE-BODY-FUSION-001
+/experiments/TASK-E4-MULTISURFACE-STRESS-AND-REAL-PILOT-001
+/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001
+/experiments/TASK-E4-MULTIVIEW-STRUCTURAL-UPDATE-001
+/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002
+/experiments/TASK-E4-SYNTHETIC-BODY-PIXEL-CORRESPONDENCE-001
+/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/
+/experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/
+/src/ring_first_3d/mainline/lineage/experiments/*/runs/
+/src/ring_first_3d/mainline/lineage/experiments/*/evidence/
+# Binary research artifacts stay local; selected delivery evidence is explicit.
+*.npz
+*.npy
+*.ply
+*.glb
+*.png
+**/HERO_runtime/
+/mainline/README.md
+/mainline/PIPELINE.md
+/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/.gitignore
+/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/DELIVERY_COMMIT.json

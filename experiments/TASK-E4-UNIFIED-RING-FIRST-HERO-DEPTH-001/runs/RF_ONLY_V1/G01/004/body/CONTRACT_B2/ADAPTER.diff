@@ -1,0 +1,43 @@
+--- frozen002/optimizer.py
++++ task_adapter/optimizer.py
+@@ -8,7 +8,7 @@
+ from smooth_arap import SmoothARAP
+ from bspline_sweep import BSplineSweep
+ from projection_gate import ProjectionGate
+-from ring_collision_gate import RingCollisionGate
++from body_hooks import RingGateAdapter as RingCollisionGate
+ from common import legacy,dump,geometry
+ from growth_evidence import candidates as growth_candidates
+ 
+@@ -45,12 +45,12 @@
+         return torch.optim.Adam(groups)
+     opt=make_optimizer(sweep);V,current,_,_=generated();initial_pairs=gate.rebuild(current,True);gate.initial=copy.deepcopy(initial_pairs);current_pairs=initial_pairs
+     np.savez_compressed(out/'INITIAL.npz',**initial);save_pairs(out/'INITIAL_PAIRS',initial_pairs,True)
+-    dump(out/'INPUT_CONTRACT.json',dict(weights=weights,FIT=[v['id']for v in views],initialization='EXACT_013_INPUT_MESH_V_F_SOLID_CAP',camera_optimized=False,HERO_read=False,GT_read=False,ring_calibration=rg.calibration,graph_nodes=graph.node_ids,graph_edges=graph.edges_np,vertex_nodes=graph.vertex_nodes_np,vertex_weights=graph.weights_np,cap_nodes=None if cap_nodes is None else cap_nodes.detach().cpu().numpy()))
++    dump(out/'INPUT_CONTRACT.json',dict(weights=weights,FIT=[v['id']for v in views],initialization='EXACT_013_INPUT_MESH_V_F_SOLID_CAP',camera_optimized=False,HERO_read=DEPTH_ENABLED,GT_read=False,ring_calibration=rg.calibration,graph_nodes=graph.node_ids,graph_edges=graph.edges_np,vertex_nodes=graph.vertex_nodes_np,vertex_weights=graph.weights_np,cap_nodes=None if cap_nodes is None else cap_nodes.detach().cpu().numpy()))
+     rows=[];growth=[]
+     def loss(sw,R,pairs):
+         V,body,info,oldV=generated(sw);contour,_=gate.loss(V,body['F'],pairs);ea,es,ss=arap.energies(oldV,R);w,t=transforms();eg=graph.energy(w,t);prior=translation.square().mean()+rotation.square().mean();bend=rad=attach=V.sum()*0
+         if sw is not None:bend,rad,attach=sw.penalties(V,info)
+-        total=contour+cfg['lambda_graph']*eg+cfg['lambda_sarap']*ss/arap.mass.sum()+cfg['lambda_prior']*prior+cfg['lambda_centerline']*bend+cfg['lambda_radius']*rad+cfg['lambda_attachment']*attach
++        total=contour+cfg['lambda_graph']*eg+cfg['lambda_sarap']*ss/arap.mass.sum()+cfg['lambda_prior']*prior+cfg['lambda_centerline']*bend+cfg['lambda_radius']*rad+cfg['lambda_attachment']*attach+depth_loss(V,body)
+         return total,dict(contour=contour,ARAP=ea,smooth=es,SARAP=ss,graph=eg,prior=prior,centerline=bend,radius=rad,attachment=attach),V,body,info
+     for iteration in range(36):
+         attempt_sweep=sweep;growth_record=None;previous_optimizer=opt
+@@ -120,7 +120,7 @@
+             if growth_record and growth_record['status']=='CANDIDATE':growth_record['status']='SWEEP_GATES_REJECTED'
+         if growth_record:growth.append(growth_record)
+         current_pairs=gate.rebuild(current,iteration in [0,12,24,35]);V,body,info,bV=generated(sweep);_,parts,_,_,_=loss(sweep,arap.rotations(bV),current_pairs)
+-        w,t=transforms();rec=dict(iteration=iteration,accepted=accepted,growth=bool(sweep),gradient_norms=gradients,energies={k:float(v.detach())for k,v in parts.items()},views=[a['stats']for a in current_pairs.values()],rejections=rejected,graph_rotation_rad=w.detach().cpu().numpy(),graph_translation_mm=t.detach().cpu().numpy(),ring=ring_summary if accepted else rg.measure(current))
++        w,t=transforms();rec=dict(iteration=iteration,accepted=accepted,growth=bool(sweep),gradient_norms=gradients,energies={k:float(v.detach())for k,v in parts.items()},HERO_depth=float(depth_loss(V,body).detach()),views=[a['stats']for a in current_pairs.values()],rejections=rejected,graph_rotation_rad=w.detach().cpu().numpy(),graph_translation_mm=t.detach().cpu().numpy(),ring=ring_summary if accepted else rg.measure(current))
+         # Full arrays stored once at meaningful stages; compact summaries every step.
+         rec['ring']={k:v for k,v in rec['ring'].items()if not isinstance(v,np.ndarray)}
+         rows.append(rec);dump(out/f'STEP_{iteration:03d}.json',rec)
+@@ -129,6 +129,6 @@
+             if info:np.savez_compressed(p/'SWEEP.npz',**{k:v.detach().cpu().numpy()for k,v in info.items()},root_loop=sweep.loop,removed_faces=sweep.patch)
+         print('STRUCTURED',arm,iteration,'accepted',accepted,'nodes',32,'V',len(current['V']),flush=True)
+     np.savez_compressed(out/'FINAL.npz',**current);save_pairs(out/'FINAL_PAIRS',current_pairs,True)
+-    dump(out/'UPDATES.json',dict(iterations=rows,growth=growth,GT_read=False,HERO_read=False,free_vertex_parameters=False,configuration=cfg))
++    dump(out/'UPDATES.json',dict(iterations=rows,growth=growth,GT_read=False,HERO_read=DEPTH_ENABLED,free_vertex_parameters=False,configuration=cfg))
+     dump(out/'PREDICTION_FROZEN.json',dict(arm=arm,mesh='FINAL.npz',GT_read=False,checkpoint='FINAL_FIXED_36_NO_GT_SELECTION'))
+     np.savez_compressed(out/'RING_INITIAL.npz',**rg.measure(initial));np.savez_compressed(out/'RING_FINAL.npz',**rg.measure(current));return current

@@ -1,0 +1,50 @@
+{
+  "code": [
+    {
+      "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/body_hooks.py",
+      "sha256": "9666108e9934822e4ffe486fcba16b9b21785a67b10ddffc11ea55e1861428d4"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/body_stage.py",
+      "sha256": "1a5f427d9a3803a251c118bc6cdcc95a14e864dc19f1b9a0df0bae43622a91eb"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/hero_stage.py",
+      "sha256": "663482158ae8138fda41911ade73e4824e290da8feabb23e20b1f73a56d78896"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/pipeline.py",
+      "sha256": "78c6536eabf647a37e52afd38bbc29def1d71306c9561307c14e2b7ffa607a8b"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/rf_only.py",
+      "sha256": "cc3a5cf607ac47110b012f6edf23130595b4b031c7c93c3b115aa57c44c403a9"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/run_tests.py",
+      "sha256": "7ce00380cc6a3ca9ced6490c80751226e1f4acb4bdb802e9f2a56e777a04a434"
+    },
+    {
+      "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/summarize.py",
+      "sha256": "ae73d5cf3f2f0a16827bcd3584800312ca673a56988e38e59fbe2786f38ebafb"
+    }
+  ],
+  "groups": [
+    "G01",
+    "G03",
+    "G05",
+    "G06"
+  ],
+  "video": "004",
+  "arms": [
+    "B1",
+    "B2"
+  ],
+  "outer_iterations": 36,
+  "original_cfg_path": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/TASK.yaml",
+  "original_cfg_sha256": "6d00725ec57b213a29fe176b9ebba9c212934eabd692795829ce5250838ecf38",
+  "only_loss_difference": "lambda_depth=0 or 0.01; same graph/sweep/gates/prior; current non-worsening Ring gate both arms",
+  "maximum_arm_seconds": 5400,
+  "GT_read": false,
+  "gradient_contract": "conditional stable first-hit derivative; full-mask and switching-pixel FD failures retained, training uses full fixed observations"
+}

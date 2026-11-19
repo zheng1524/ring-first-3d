@@ -1,0 +1,40 @@
+{
+  "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+  "executable": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+  "numpy": "1.26.4",
+  "torch": "2.7.1+cu128",
+  "cuda": "12.8",
+  "cuda_available": true,
+  "GPU": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "HERO_source_verification": {
+    "files_verified": 105,
+    "upstream_commit": "5bd49bba0992aa56060e1aa3bb40b2150b04726f",
+    "verification": "per-file SHA256, not parent-directory git rev-parse"
+  },
+  "HERO_weights": {
+    "path": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/weights/mvsanywhere_hero_full.ckpt",
+    "sha256": "00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d",
+    "loaded_for_inference": false
+  },
+  "runtime_config": {
+    "mvs_root": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_benchmark_v1/vendor/mvsanywhere_minimal",
+    "dino_root": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_benchmark_v1/vendor/dinov2",
+    "checkpoint": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/weights/mvsanywhere_hero_full.ckpt",
+    "readonly_dependency_paths": [
+      "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_benchmark_v1/vendor/dependencies",
+      "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/vendor/dependencies",
+      "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_benchmark_v1/vendor/dinov2",
+      "/home/liu/ring_first_3d_workspace/.runtime/extra_packages",
+      "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor"
+    ],
+    "controlled_example": "/home/liu/ring-first-hero-core/.local_data/G01_demo",
+    "historical_hero_output": "/home/liu/ring-first-hero-core/outputs/hero",
+    "depth_reference_root": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018",
+    "depth_arm": "B2_TRUSTED_COH16",
+    "a_to_b_reference_root": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_view_eval/experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001",
+    "a_to_b_cases": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_incremental/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/provenance/CASES.json",
+    "python": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+    "blender": "/home/liu/blender/blender-5.0.1-linux-x64/blender"
+  },
+  "GT_geometry_read": false
+}

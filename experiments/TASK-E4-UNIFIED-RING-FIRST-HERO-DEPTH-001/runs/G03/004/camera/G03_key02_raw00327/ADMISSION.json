@@ -1,0 +1,34 @@
+{
+  "status": "FAIL",
+  "reasons": [
+    "FORBIDDEN_PNP_OR_UNRESOLVED_YAW",
+    "RGB_MAP_ANCESTRY_NOT_ADMITTED"
+  ],
+  "diagnostic_only": true,
+  "input_cache": {
+    "path": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G03/G03_key02_raw00327.npz",
+    "sha256": "e8267a322d146fbb7cec9ae877e1154eb4f42f852dcdb25251cf42a8422515a9"
+  },
+  "map": {
+    "group": "G03",
+    "video": "004",
+    "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/audit/reference_banks/G03_004.npz",
+    "sha256": "80296c497acc4227f648cc8026723df36fedd7e582795f4faa1470d221996727",
+    "status": "FAIL",
+    "reason": "CALIBRATION_FIT_ANCESTRY_AND_GAUGE_UNCERTIFIED",
+    "points": 424,
+    "strict_current_fit_tracks": 0,
+    "held_tracks": 0,
+    "unbound_observation_views": [
+      "G03_v004_raw00161",
+      "G03_v004_raw00406",
+      "G03_v004_raw00651",
+      "G03_v004_raw00834"
+    ],
+    "original_prepare": "021 prepare.py: non-G01 maps built from historical FIT; G01 map inherited calibration; current physical aliases incomplete",
+    "cross_video_bank_forbidden": true
+  },
+  "source_lock": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/audit/SOURCE_LOCK.json",
+  "result": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/runs/G03/004/camera/G03_key02_raw00327/CAMERA_RESULT.json",
+  "seconds": 0.7735506409999289
+}
