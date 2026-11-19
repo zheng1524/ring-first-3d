@@ -1,0 +1,38 @@
+task_id: TASK-E4-UNIFIED-PIPELINE-COMPLETION-002
+baseline_commit: 2fe2c3cbda40bd4d0f8a15a3d71dad3f494a1c7f
+groups: [G01, G02, G03, G05, G06]
+videos: ['004', '005']
+reference: G01/004 RF_ONLY_V1
+scope: complete_missing_per_video_instances_without_retraining_frozen_references
+frozen:
+  selection: previous_105_views_80_FIT_25_HOLDOUT
+  camera: exact_native_RF_CONFIG_and_RF_ONLY_source_selection
+  Ring_boundary_MAE_limit_px: 3.0
+  RGB_yaw: original_method
+  final_camera_PnP_or_historical_fallback: false
+  calibration: same_video_archived_FIT_RGB_and_recorded_native_Ring_poses_only
+  calibration_HOLDOUT_RGB_overlap: forbidden
+  map_builder: unchanged_features019_landmarks
+  map_coordinate_restore: invert_only_explicitly_recorded_archive_transform_no_new_registration
+  initialization: EXACT_013_INPUT_MESH_V_F_SOLID_CAP
+  body_optimizer: previous_body_stage_graph_sweep_adapter_unchanged
+  body_outer_iterations: 36
+  depth_lambda: 0.01
+  depth_sigma_mm: 0.5
+  depth_huber_delta: 1.0
+  growth_and_Ring_and_projection_gates: unchanged
+  HERO_supports: same_video_FIT_cyclic_offsets_2_4_6
+  GT: only_after_all_new_predictions_frozen_evaluation_copies_only
+budget:
+  camera_per_view_seconds: 120
+  HERO_unique_new_targets_max: 48
+  HERO_stage_seconds: 3600
+  body_per_arm_seconds: 5400
+  body_parallel_workers: 2
+  output_bytes_max: 2147483648
+stages: [audit, banks, cameras, hero, body, evaluate, report, check]
+failure_policy: stop_affected_instance_downstream_continue_other_instances
+status_values: [PASS, PARTIAL, FAIL, NOT_RUN]
+artifacts: [PNG, NPZ, PLY, JSON, CSV, Markdown]
+HTML: false
+forbidden: [cross_video_BA, new_camera_solver, optimizer_redesign, DXY_changes, old_asset_changes, raw_data_deletion]
