@@ -1,6 +1,6 @@
 {
- "note": "All artifacts are reproducible from frozen 005/001/003 outputs; prepare stage blocked (restricted weights).",
- "count": 30,
+ "note": "Raw-video v2 pipeline: 301 prepared views, 31 camera solves (8/16/22/32). Prepared caches and solve outputs are LOCAL_ONLY.",
+ "count": 46,
  "files": [
   {
    "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/CAMERA_ERROR_DIAGNOSIS.md",
@@ -19,8 +19,8 @@
   },
   {
    "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/FINAL_REPORT.md",
-   "sha256": "ff9543deb7e099386ea2e02b07b0ad68dd6e0843078dbc9ff703116f84eef488",
-   "bytes": 4925
+   "sha256": "020157252e19f47d1d696c9474eab4bdc90e586eb10743f043d4992d646eb507",
+   "bytes": 5845
   },
   {
    "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/FRAME_SELECTION_PROVENANCE.md",
@@ -28,9 +28,19 @@
    "bytes": 1839
   },
   {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/RAW_V2_DENSITY_REPORT.md",
+   "sha256": "d2830cfed4db86b4c324cc2727a84e5d3b97019fcb2e852d1c7bc55afd498273",
+   "bytes": 2215
+  },
+  {
    "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/RAW_VIDEO_PROVENANCE.md",
-   "sha256": "051eb812be651db1a65121b8150b2aea24ecc177e646d3da8ee3a39b1342f438",
-   "bytes": 2027
+   "sha256": "aacf504589fe727e77d651982ed849c4656bfe1db83ceb7798683f55b6023c64",
+   "bytes": 4825
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/RUN_MANIFEST.json",
+   "sha256": "ebdee5ac6e7cb267177629200c8079910dddd1061b5ec7f5589e11ed01cf6c42",
+   "bytes": 6589
   },
   {
    "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/UNIFIED_PIPELINE_SPEC.md",
@@ -43,9 +53,29 @@
    "bytes": 4084
   },
   {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/code/run_all_camera.py",
+   "sha256": "d537d7c6e72faade97e94229b4193fd4358146079d17b1cdbed816948855bfa7",
+   "bytes": 543
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/code/run_camera.py",
+   "sha256": "ed77c2893121cef024658c4a628582dc770270e08e2e715d1ba92a4d5b9a33ba",
+   "bytes": 6010
+  },
+  {
    "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/code/unified_prebody.py",
    "sha256": "aa9a3e37b920c23a182e34933f57cb854927c8ee883a9892cb9f18a67c071452",
    "bytes": 12219
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/code/video_preparation/prepare.py",
+   "sha256": "a86e8889167e1eacd1d976d86c8a6e5a98b0a8695fa121d05d7a336d2fe926cf",
+   "bytes": 3625
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/code/video_preparation/prepare_all.py",
+   "sha256": "58365c61235e4eab8aafd4c77bd3ce1fd4e1a79a3dbfa54af4727cd0f673fdca",
+   "bytes": 2314
   },
   {
    "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/configs/unified_config.json",
@@ -58,14 +88,64 @@
    "bytes": 1064
   },
   {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/CAMERA_DENSITY_G03_005.csv",
+   "sha256": "c803196cb395f994fba8b5c865197ca8acaafa14e8571690914b2db9c8798901",
+   "bytes": 2609
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/CAMERA_DENSITY_G05_004.csv",
+   "sha256": "3567cddd538f3c858745b5a6790aba37c678cb5308a423105655ff412b3a2453",
+   "bytes": 2488
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/CAMERA_DENSITY_G05_005.csv",
+   "sha256": "cf93393810b62839e09ccff25098be90d5026d3e9fea85796def611af245e863",
+   "bytes": 2546
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/CAMERA_DENSITY_G06_004.csv",
+   "sha256": "625d3bb0be4282e19edfc2d69e1424663d27a188ddf1523b4c735efa9c062d4e",
+   "bytes": 2462
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/CAMERA_DENSITY_G06_005.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "bytes": 1
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/CAMERA_DENSITY_RAW.csv",
+   "sha256": "f90ecac2ffc20da1aa3ae76867b389b5c20c349c1b2b4c25b94997aba58c466d",
+   "bytes": 57647
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/CAMERA_DENSITY_SUMMARY.csv",
+   "sha256": "fc031f5f0e5fcffa70e8104ede84555de3552a58b567833043713977c57a99be",
+   "bytes": 1113
+  },
+  {
    "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/CAMERA_QUALITY_MATRIX.csv",
    "sha256": "ed81a51456635d70fccc726800fbbd564d1074709c18f9acea18a4c7a32bfe4c",
    "bytes": 17030
   },
   {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/MASK_REGENERATION_CHECK.csv",
+   "sha256": "0bbd761228c520bc66e540095a8425c144579d7d4e1ef38539b1c637006bd14c",
+   "bytes": 216
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/PREPARED_VIEWS.csv",
+   "sha256": "39d97455cbc45a042b36eada96d92a09565f979a2deecac512c66f18ac4f0ec3",
+   "bytes": 49694
+  },
+  {
    "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/PREPARE_STAGE_STATUS.csv",
    "sha256": "0bd6984a22af220cd8df767d929d7e907d8402325574045b88c38f82e1a5151b",
    "bytes": 2115
+  },
+  {
+   "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/metrics/VIDEO_FRAME_MAP.csv",
+   "sha256": "96c629ee832f4bb85079c1ff9ac5c1837a055dbfb963b6c665d097e8c7ed8071",
+   "bytes": 1272
   },
   {
    "path": "experiments/TASK-E4-PREBODY-UNIFIED-CAMERA-READINESS-004/reports/G01_004/BODY_READINESS_CARD.md",
