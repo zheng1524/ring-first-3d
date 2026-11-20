@@ -2,6 +2,17 @@
 
 **STATUS: `PARTIAL_EXECUTION` / `AWAITING_RA_REVIEW`**
 
+> ## 更新（2026-11-20）：前端阻塞已解除
+>
+> 用户提供原始数据与权重后，已复核通过：
+> - **十段视频全部可用**，均为体模序列 `GP_*_R10_single_refY_00{4,5}.mp4`；`raw_frame` 就是视频帧号；解码 RGB 与冻结缓存 **逐像素一致（diff=0.00）**。映射见 `metrics/VIDEO_FRAME_MAP.csv`。
+> - **INIT 官方权重可用**：`models/preserved_best_multiclass_overlapaware_20260405`（3 类 UNet3Plus）。重分割与冻结 Mask 一致率 **99.55%**、Ring IoU **0.93**（`metrics/MASK_REGENERATION_CHECK.csv`）。
+> - `code/video_preparation/prepare.py` 已可执行 `视频 → 帧 → INIT Mask → cache`。
+>
+> 因此下文"BLOCKED / 不可得"的表述**已作废**，但保留原文以记录当时的判断与偏差声明。
+> 仍保留的偏差：重分割 Mask 与冻结 Mask 有 0.45% 边界差异，新旧产物**必须并列报告、不得混用**。
+
+
 ## 0. 先说清楚做了什么、没做什么
 
 | 步骤 | 状态 |
