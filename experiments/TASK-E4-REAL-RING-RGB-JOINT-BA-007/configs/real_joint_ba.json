@@ -1,0 +1,14 @@
+{
+ "views": 16,
+ "instances": ["G05/005", "G03/005"],
+ "tau_px": 1.0,
+ "sigma_px": 1.0,
+ "arms": {
+   "A0": {"ring": "frozen_boundary"},
+   "A1": {"ring": "dxy_contour", "lambda_R": 1.0},
+   "A2": {"ring": "dxy_contour", "lambda_R": 1.0, "normalised": true}
+ },
+ "lambda_R_sweep": [0.5, 1.0, 2.0],
+ "gates": {"ring_mae_px": 3.0, "held_mae_px": 3.0, "held_p95_px": 6.0},
+ "_note": "Single config for both instances. No per-video values."
+}
