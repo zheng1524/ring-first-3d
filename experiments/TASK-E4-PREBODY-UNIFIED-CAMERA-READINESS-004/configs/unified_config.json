@@ -1,0 +1,34 @@
+{
+ "_note": "Single config for every instance. No per-group values. Video paths/ring size are input metadata, not algorithm switches.",
+ "ring_cad": {
+  "R_mm": 5.6,
+  "r_mm": 0.6,
+  "source": "frozen 005 / DXY R10"
+ },
+ "gates": {
+  "ring_mae_px": 3.0,
+  "held_mae_px": 3.0,
+  "held_p95_px": 6.0,
+  "held_min_n": 8,
+  "positive": 0.95
+ },
+ "network": {
+  "min_covisible_tracks": 10
+ },
+ "classify": {
+  "min_held_tracks": 8,
+  "min_visible_tracks": 40,
+  "rgb_held_bad_px": 10.0,
+  "min_covisible_views": 2,
+  "axis_misalign_deg": 15.0,
+  "radial_dev_mm": 20.0
+ },
+ "readiness": {
+  "core_held_px": 3.0,
+  "core_held_p95_px": 6.0,
+  "support_held_px": 10.0,
+  "ready_min_core": 5,
+  "ready_min_coverage_deg": 60.0,
+  "caution_min_core_plus_support": 3
+ }
+}
