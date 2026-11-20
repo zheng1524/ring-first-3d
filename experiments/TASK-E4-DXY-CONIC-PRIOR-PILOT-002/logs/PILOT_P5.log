@@ -1,0 +1,11 @@
+OK P5 G01/004 pass=7 valid=0
+FAIL P5 G03/004
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-DXY-CONIC-PRIOR-PILOT-002/code/pilot_runner.py", line 146, in main
+    r = run_instance(g, v, a.tag, enabled); rows += r
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-DXY-CONIC-PRIOR-PILOT-002/code/pilot_runner.py", line 96, in run_instance
+    raise RuntimeError('NO_BA_VERSION')
+RuntimeError: NO_BA_VERSION
+
+rows 8 -> PILOT_P5_VIEW_METRICS.csv
