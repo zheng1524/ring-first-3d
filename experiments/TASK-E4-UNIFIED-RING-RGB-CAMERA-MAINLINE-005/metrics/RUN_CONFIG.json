@@ -1,0 +1,147 @@
+{
+ "task": "TASK-E4-UNIFIED-RING-RGB-CAMERA-MAINLINE-005",
+ "rule": "All 10 instances share this file, the frozen config below, the Ring gate 3.0 px and the version score weights.",
+ "frozen_config_sha256": "d2f61b29b454a7f7e48b5d5f1254cd806ff9348335f220fb1e5f11ddedc61ddc",
+ "frozen_config": {
+  "seed": 20261020,
+  "K": [
+   [
+    490.0,
+    0.0,
+    319.5
+   ],
+   [
+    0.0,
+    490.0,
+    179.5
+   ],
+   [
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "reference_original_sample": 8,
+  "reference_raw": 459,
+  "max_new_frames": 6,
+  "selection_min_raw_separation": 18,
+  "SIFT_features": 6000,
+  "SIFT_ratio": 0.72,
+  "F_RANSAC_px": 1.5,
+  "pair_offsets": [
+   1,
+   2,
+   4
+  ],
+  "holdout_track_modulo": 5,
+  "ring_R_mm": 5.6,
+  "ring_r_mm": 0.6,
+  "ring_seed_starts": 4,
+  "ring_max_nfev": 100,
+  "pose_initializations": 2,
+  "yaw_grid": 72,
+  "global_alpha_nfev": 80,
+  "BA_max_nfev": 60,
+  "BA_max_train_tracks": 500,
+  "BA_huber_px": 1.0,
+  "ring_loss_weight": 1.0,
+  "temporal_rotation_prior_deg": 30.0,
+  "temporal_translation_prior_mm": 10.0,
+  "min_triangulation_angle_deg": 0.5,
+  "feature_train_reprojection_filter_px": 6.0,
+  "validation_min_test": 8,
+  "validation_MAE_px": 3.0,
+  "validation_p95_px": 6.0,
+  "validation_positive": 0.95,
+  "validation_center_spread_mm": 2.0,
+  "MVS_sources": 3,
+  "MVS_references": 2,
+  "MVS_target": [
+   352,
+   640
+  ],
+  "MVS_preview_is_not_validated": true,
+  "mesh_jump_mm": 0.75,
+  "no_GT_prediction": true
+ },
+ "ring_solver": {
+  "source": "ring_first_3d.mainline.native.camera.recover(rgb_geometry=None)",
+  "RF_CONFIG": "see native/camera.py:16"
+ },
+ "tracking": {
+  "source": "frozen track005.py",
+  "held": "track_index % 5 == 0"
+ },
+ "sfm": {
+  "source": "frozen local_ring_sfm.py",
+  "versions": 2
+ },
+ "ba": {
+  "source": "frozen local_ring_sfm.BA",
+  "max_nfev": 60
+ },
+ "version_score": {
+  "weights": {
+   "ring_MAE_mean_px": 1.0,
+   "feat_train_reproj_MAE_px": 0.1,
+   "ba_training_objective": 0.02,
+   "convergence_flag": 0.5
+  },
+  "formula": "1.0*ring + 0.1*feat + 0.02*obj + 0.5*(not success)",
+  "selection": "argmin score; held tracks never used",
+  "tie_break": "if |score_best - score_second| <= 5% of |score_best| -> AMBIGUOUS_VERSION, keep the lower index and record it",
+  "spec_vs_architecture_note": "architecture text mentioned positive-depth; in code the positivity term is already inside BA (10*max(0,0.1-pc_z)) so its training objective is used as the training-side proxy. Documented rather than silently changed."
+ },
+ "gate": {
+  "ring_MAE_px": 3.0,
+  "source": "existing formal gate"
+ },
+ "evaluation": {
+  "held_MAE_px": 3.0,
+  "held_p95_px": 6.0,
+  "held_min_N": 8,
+  "positive": 0.95,
+  "usage": "evaluation only, never selection"
+ },
+ "forbidden": [
+  "Body",
+  "GT",
+  "HERO",
+  "DXY",
+  "per-group branching",
+  "overwriting frozen cameras"
+ ],
+ "environment": {
+  "python": "3.12.13",
+  "executable": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python",
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31"
+ },
+ "source_files": [
+  {
+   "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/frozen_calibration/track005.py",
+   "sha256": "c912da0713a329a3c954fc7b1dfbdcf43459493432ccbc782d7742cd26e514ac"
+  },
+  {
+   "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/frozen_calibration/local_ring_sfm.py",
+   "sha256": "673b57af12fcda5dad082eb7397574d46f0bdce2c097956c0682d8dac2cd8541"
+  },
+  {
+   "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/frozen_calibration/v6_common.py",
+   "sha256": "59404f5c2a35913c253f802f5bb4ff21461861958a881f86973de15710693fe1"
+  },
+  {
+   "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/frozen_calibration/background_registration.py",
+   "sha256": "e1d504287ae0ce1a3201857e2474b2145fce4ae5c344e75a7844578fdb7fe379"
+  },
+  {
+   "path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/frozen_calibration/config.json",
+   "sha256": "d2f61b29b454a7f7e48b5d5f1254cd806ff9348335f220fb1e5f11ddedc61ddc"
+  }
+ ],
+ "code": [
+  {
+   "path": "code/unified_camera.py",
+   "sha256": "d6165abe0e61d36ffe1f1cc99cf007d5508cad70eb7d4cd562dab56ff5a8eaa8"
+  }
+ ]
+}
