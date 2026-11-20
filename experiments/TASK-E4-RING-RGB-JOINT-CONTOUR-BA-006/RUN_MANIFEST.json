@@ -1,0 +1,881 @@
+{
+ "note": "P0/P1/P2 done; P3 camera arms not run. DXY observations re-exported for new masks (160/160 valid).",
+ "count": 175,
+ "files": [
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/BODY_READINESS_RECOMMENDATION.md",
+   "sha256": "d1d5080db7f8d31861adb1b3c9630183731238d985cba445ebe4b69a27c2f591",
+   "bytes": 1106
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/DXY_OBSERVATION_CONTRACT.md",
+   "sha256": "8739428598cc50b244429d9b8f607eb0a459c42937381fa6fe952d185bb0077a",
+   "bytes": 720
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/EXPERIMENT_PROTOCOL.md",
+   "sha256": "863a2f0daba7eb4ec2c5780e1346f66e041b170c93ae787bc382b0452265a33f",
+   "bytes": 1317
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/FINAL_REPORT.md",
+   "sha256": "f099baeae71c239ab1e2ec11f846ba22ec1d7217422a5adb3e6ee318e262e9a8",
+   "bytes": 4076
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/JOINT_LOSS_DESIGN.md",
+   "sha256": "ae3d19154917404b51080c778c3acb30f4647696ac8c294b8529dab4db7d6b77",
+   "bytes": 4075
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/VISUALIZATION_GUIDE.md",
+   "sha256": "935d5611badb5127c514bdd904e1e475fef3ad72d0d16e7e660c68f733a6481b",
+   "bytes": 1158
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/cad_contour_correspondence.py",
+   "sha256": "d43ab0106922b9e4b40fb3f62b445515e12d7c6fcfdff96f5fab2a85c7c29d83",
+   "bytes": 1307
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/dxy_export_newmasks.py",
+   "sha256": "4a57c3b70d3edf1c4db885b9792c0a634b8033f764b8e41639e55dc45cfb1b8d",
+   "bytes": 1434
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/joint_loss.py",
+   "sha256": "c6c6f14c5e0d44bc3c04f7bbebc085e7f604a0575e9b74cdfe1a3193b1ea9f35",
+   "bytes": 1640
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/ring_contour_observation.py",
+   "sha256": "f1b07d70902b4ac1713676585d2946f6b7ab4f7e0f14857be291c71b1c0611b4",
+   "bytes": 1780
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/synthetic_validation.py",
+   "sha256": "8263edc41825ade2f207f133a4b904bb20d1d18dbc466f11bddf16efb95af111",
+   "bytes": 5637
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_004_ref03.json",
+   "sha256": "591b47aca0113a87e1f13a8fbd8405ec77e395917b03c7c4a34947b3093ae784",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_005_new_r04.json",
+   "sha256": "4ce1bd9453efdc8cc31b4ebf99bbe9d208bf077ce5880f88b15e9c2e50958b32",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_005_raw00057.json",
+   "sha256": "54a85b721afed8443a48f8c9e6effeffe5bb7fead7c705065d18808ad8928d85",
+   "bytes": 1357
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00126.json",
+   "sha256": "426ee3655b984acc1efbdb8dc3c622d3c5af40dc4ad7ff14317c34c630c2c654",
+   "bytes": 1372
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00152.json",
+   "sha256": "dba369dd51662ced3dbf343a6832e1ecdb474a3dc9d8693e390c36df9c984d98",
+   "bytes": 1373
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00178.json",
+   "sha256": "6f20bd9e9134de4883fa21b25d1cbc5e00768a0afd7c7d0666944f9d7b2e6df2",
+   "bytes": 1415
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00204.json",
+   "sha256": "50f8fa92f3dafdd770a29505d6c9395fe80b2ec894bbe430543f878afdaacc7a",
+   "bytes": 1405
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00256.json",
+   "sha256": "05a7814d185a5e6af28419b8956918b2c39b292c4c01c5f08cbd154fa0f7ae1c",
+   "bytes": 1379
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00282.json",
+   "sha256": "adb48957cc829ea19d2a2589240e2431dbdddd2bbf0c70f08e6072b21bcbeb23",
+   "bytes": 1371
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00308.json",
+   "sha256": "66e6a66433c2d4ae0be4625578bc3c040a009dbc8f65c237f56be88b91ed15a6",
+   "bytes": 1380
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00334.json",
+   "sha256": "3a630ceccc03f09abd0db9a3550b4c559d589ef2273c1c122d934457c61c812f",
+   "bytes": 1411
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00360.json",
+   "sha256": "984ab233faf5fe8ef0c6c3ba6411fc3762e62c6663531dab06ecbb321cc24ad7",
+   "bytes": 1408
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00386.json",
+   "sha256": "c0d7944c124d62e82f82b4378d73648e191a941e62c378e2d83ebdaa1762948e",
+   "bytes": 1417
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00412.json",
+   "sha256": "a6d7c7cd5904d524654a17a59c053dfa560e3f8c36c49584c3b88b23857e3e4a",
+   "bytes": 1353
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00438.json",
+   "sha256": "185c614489f3913603012f3388e7f3e2b1f95ad2351df5122f2b00f5ec26937e",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00463.json",
+   "sha256": "b42912d5f739b706835abd320a45adcf4930c55015c1642bfddfe0a389b28a86",
+   "bytes": 1364
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00489.json",
+   "sha256": "c594946ac07805bcb366cf42523a6691aa9b76fa2d46377121160159411c638f",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v004_raw00515.json",
+   "sha256": "e08c88fa39da3686c3dd347cae89e2ae15513fe710a8bff7434b8ca18d270050",
+   "bytes": 1364
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00086.json",
+   "sha256": "a3760d2edf0cfee435b464810fb93ffb31bc9adb84b051d717691b4544150582",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00104.json",
+   "sha256": "b5caf04c68af829fd8750c37dc4e8582562ac1b48de59e443c134374f12b631c",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00121.json",
+   "sha256": "ed5bab2ca208ce80366e22fd34ca45ec337cd92010620007c8d1198ef7fb04e7",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00139.json",
+   "sha256": "b5482908253b908d0572d63d8ab6c87e6fca4c98167eedb15fb87146bf68850b",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00157.json",
+   "sha256": "30b45f6028f03f43b011fab3d0fb4af912c2425d2dda34e4b8e4b161074915e4",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00174.json",
+   "sha256": "95e4da3c9a49a205ceb1700d33948dafbfb4ba1ba7725e83aae2126e338f5d29",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00192.json",
+   "sha256": "e469f2e3d8dd0560ac4dccf3f39fcdc0a68d15dc2adf5fecdf141892d18e26eb",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00209.json",
+   "sha256": "ac32e347671e7a170eceae4c13ef4bc55fda94bdf679cf8e576bd751fb5ca599",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00245.json",
+   "sha256": "9464059a9970f86e9ba7d205ea0f475cfd2967e5e4ff7cf45641f85ceba6dd3b",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00262.json",
+   "sha256": "a3dd7806a00cd4be2e27d2a94780b33e4dd2a2a677a7657b13551a9e6bedb207",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00280.json",
+   "sha256": "2f062e4e018c5dd2042cf411b58b952173afe6adf74c09768277cc6af57f2065",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00298.json",
+   "sha256": "6e24b29229ac5b09028d65280fb458dcd9f960caef9f1517ccf551d7b6efd6a2",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00315.json",
+   "sha256": "8461a7e6ce9589f732cb5e25913094e5d63fbf112ef42b8edeb09ecea9453e15",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G01_v005_raw00333.json",
+   "sha256": "3bad92b412f5f3c3afd9583d63f2ea66106c3d0e68b83f10c4354775830808a9",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_key00_raw00102.json",
+   "sha256": "3e3bca67caa64ae17c72684078c66fac246b0178615925797c2fba777fb46e74",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_key01_raw00219.json",
+   "sha256": "0fcb52275d3d1ae6f282ffbbedbf2c8d946d4e1ddbb7c3c3dd09e965d67889b3",
+   "bytes": 1361
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_key02_raw00336.json",
+   "sha256": "9dbeeb6d319ccb71a3faf37022aef0e8310837e7b25c581cdd7191e8bd14d97f",
+   "bytes": 1361
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00123.json",
+   "sha256": "0f833558d369c3c4cbd357bf32bb0b494e4b88c1987980a21237beaf01c18d63",
+   "bytes": 1372
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00144.json",
+   "sha256": "ab7dcd5835687b69ca97da1cd33931d1fde8d6f2743402249e31ec1184f5a51e",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00165.json",
+   "sha256": "ecc13e66209372d8b0894f4682c9b6b76b9a80ad453e5b8cc3902f30f27b1e87",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00186.json",
+   "sha256": "73d53b2db082166719b3f9b98a83a67c917513f0ffd22241ecf17d3051502649",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00207.json",
+   "sha256": "7b10b2b4535d30190a910e6a365d404659d1fbcae84ac3145704276246743273",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00228.json",
+   "sha256": "63d06cf4551b93645ef7e84dbae9eea50843a62e17140e47cf7f2a75e3503bf3",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00249.json",
+   "sha256": "23d884dd248437d7e0d04dd093b101a775658e6b9ae50fec655f03dfa7d2cda7",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00270.json",
+   "sha256": "838877998e4847e4a63c639f45bf549a7fff079121e79f9ace375467ca114b29",
+   "bytes": 1361
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00291.json",
+   "sha256": "40a45963aab8f108396f9489a41bbcefb146655a0b17703e27960f04a2b905ef",
+   "bytes": 1371
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00312.json",
+   "sha256": "a7dbdc7e7536512a899d943d6afda91ec669899e35ab1dec01f9acaa7bd29ca2",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00333.json",
+   "sha256": "d4e8cc8ab8cf167a88514e8ae81552e0826f8cc3a65df49226cd9a52b00910f8",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00354.json",
+   "sha256": "57edf0aedeaa8eab955cda20b9752301ff30ec6e9d9e845062777f7613aaf36b",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v004_raw00375.json",
+   "sha256": "d488be5b95a1d34d68dcd16635200cd9fb640289edd239ad571f92241fbf4fbb",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00104.json",
+   "sha256": "af60fd55e5840e836ddff0f8565419f3ebec974619c0a131953a05692fa0b0ea",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00126.json",
+   "sha256": "c1822fc0e741ada41e657337a662591728c8542cd169a4f60a6f8bcdf7478875",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00147.json",
+   "sha256": "f21d22db3f03f305a27bb620bb6f617abfbcd6c146d84265c6291bec885c8f72",
+   "bytes": 1369
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00168.json",
+   "sha256": "9bce44faf864b062ef6dbb86e80342e3cc839c6a639f80eca27020ac870f89e6",
+   "bytes": 1361
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00190.json",
+   "sha256": "d655920e87646265d15e5766a72aa830d5b46f02b8ccaa0334b304513efcda71",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00211.json",
+   "sha256": "930ce178f5c981913dddf0e07d6021beccb2037be4ff03a0ae02c8780f2ac145",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00233.json",
+   "sha256": "2f3330e572dc77b3188c5b097d3f81dabc204442773c50219cdadbcf8e19f2e9",
+   "bytes": 1370
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00254.json",
+   "sha256": "ab69d9a0e045c8237480a47520f61d905f4344510a3242396907fe796ba5b376",
+   "bytes": 1356
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00275.json",
+   "sha256": "013667d935ce127c4053a8a03a98fd262fd15f87efae535030cba4f85993868c",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00297.json",
+   "sha256": "802c21ec8bc189ffa66aa6ba70e1f4e13b835520c77827d342775454542908cf",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00318.json",
+   "sha256": "950911a2de55be7cdbbe406a7708f0dc24ef9e0b2ce022c1a58c70471fc1a893",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00340.json",
+   "sha256": "029a4edcf4b80658b4525b6eb30cbce59b0af0381921e54841d810b890532798",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00361.json",
+   "sha256": "9528b23ac2e94ba1d6ac3e41c83b8e1e8b85704ef9c432da1c7fd9802fef10a3",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00382.json",
+   "sha256": "3fe89fb1c7777f33c16e0330ac80c85c75ba34d46262de1c291ce0c80a17b2a9",
+   "bytes": 1364
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00404.json",
+   "sha256": "2bb77f28846d86ce9d1cd94af24a748845610ae995b32bca8747c7bba65992ef",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G02_v005_raw00425.json",
+   "sha256": "1f2714fb207940beaa8a9e1f9ae930b4ec34062c0a9f6bf2c0991c1773efaa2a",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_key00_raw00100.json",
+   "sha256": "0e0398c90e125ce024b703ee72800a44dc2b2bd0833b5bdc6bd87ea81d30c7de",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_key01_raw00213.json",
+   "sha256": "5a8dbf065139bbef169d8af75781738363e04cede63e482518976541d20a34d5",
+   "bytes": 1373
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_key02_raw00327.json",
+   "sha256": "0774a48e4e345836bcc983c6963658d7249c7a8d715725b6096bf643277459ea",
+   "bytes": 1372
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00120.json",
+   "sha256": "546efc8845f907c0a1d42d89b8287c2258d445e363e4ec22b641fb8173fd44b9",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00140.json",
+   "sha256": "c2f00fb744ada17c6166b438a494a5c8e37a66a7dba1b017a01f032d48fc4041",
+   "bytes": 1370
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00161.json",
+   "sha256": "1cd2004a41ed7940bec643aa3fcfa6c38d48d2222cf36b1b8b53856b52062ec7",
+   "bytes": 1369
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00181.json",
+   "sha256": "c6aa79abf899a105a475e8db5fe36ac06d6db44fc61ac10b2c4d67e41b81e50c",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00202.json",
+   "sha256": "1f56fb9ec270a79a313c272b115fab2eb74b7f90a334f3187b4737bff3b297e0",
+   "bytes": 1364
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00222.json",
+   "sha256": "b8c6fef5f8a303c8e1fd8bd5b8f184f6d24c41fe3fe131c902583ad5dbf7b1d2",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00242.json",
+   "sha256": "f6d6ebce077b2169576305f2634fa84d02110a57b302b873768a653913ec3fff",
+   "bytes": 1371
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00263.json",
+   "sha256": "4b2f18bc2afde424dde92f1f4b2944aac2a8fc89f0f516360c350fa11701bb94",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00283.json",
+   "sha256": "607ed40902c2ad3a4c480a768c0be9646e1f358394bb4d1278436b6411715b66",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00304.json",
+   "sha256": "8916330ce9184862550cbc3ceb5ef38e3e162beb36bf7d5e3eb5f7bf5d0be26b",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00344.json",
+   "sha256": "d42f4721edf456da8e15081794a033e76314553b2694ad4fdd3f9a9f3f138ccb",
+   "bytes": 1369
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00365.json",
+   "sha256": "521eee61972cce0fda4ef950ee01c118ff7df9f67a1b3ec5b56f5875054aea09",
+   "bytes": 1370
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v004_raw00385.json",
+   "sha256": "5a80e4bcb3ecbf9bd679acc6d0bccadf78d790756ef9f76d57c16077a1060498",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00070.json",
+   "sha256": "d2afd4d1342c48b8f4ae969df752ebb507816f2045240f90aaf7a917779ea04c",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00085.json",
+   "sha256": "f495698630f183988dd8e4b9fa47773b00d84fd0c36ec819840a1d59e2c8be55",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00099.json",
+   "sha256": "2f6f584c296a72cb8553c864a982504797620e0826cf489e9a7ba1f3957ff352",
+   "bytes": 1364
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00114.json",
+   "sha256": "d0a0346dd29803a69f9a09a1ed492b4c685201159172e4cb83d61d3be4e3d43a",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00128.json",
+   "sha256": "f61ebeaabc7c9a08b18bd3668ed78497ba3d20193be056322e23fd15e1ce3f22",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00142.json",
+   "sha256": "0cc37341515b5789999028802fed08dca81ddd7ca868d126d03c1f12f3ef0ed0",
+   "bytes": 1364
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00157.json",
+   "sha256": "60215e9fc5ee8660db2f44af082f51b1292ac0cdf2c5b74ce20ae96edb30fb97",
+   "bytes": 1364
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00171.json",
+   "sha256": "430f0a5a2af486ecad73f467a8dd981dae08dda4b0a437aa7df04bb09e6fb4c2",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00186.json",
+   "sha256": "06769feec614b3850618d309fff11ed951a32d22a96f8f3e58a1ad449d2c05a3",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00200.json",
+   "sha256": "a7d14ed4a2acc8455bae1f79f9dbb91314ef798ce480689019d5cdd18f1989e3",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00215.json",
+   "sha256": "20120353c02e0fee24b6430b6b43b033f94a31ce0f412812b6e39dc83cd4d4ca",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00229.json",
+   "sha256": "66b2c6964924ba167a9df5565eff391fab55024683de5bece093d8052a2c45b3",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00243.json",
+   "sha256": "709d293c7599ed982cbc6eb4e57af76b49328dce029818c7e379b85987cd6837",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00258.json",
+   "sha256": "9c2cd822a684c051941366f2954340f6a677d002bbc9e525f4cf85b63748b58d",
+   "bytes": 1360
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00272.json",
+   "sha256": "113ee6646e7ea63d5087e2416de28f27dfc81712151c690c67cb62d5cd51f015",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G03_v005_raw00287.json",
+   "sha256": "d529b35649064b50bfd55815388d9cc1967a596b30546b40d1de9766f84ad0e8",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_key00_raw00097.json",
+   "sha256": "1fc48119fd0bd82c310a2e62ebefe87b7ab17af214930c1cf98c9b1a2800e12c",
+   "bytes": 1369
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_key01_raw00209.json",
+   "sha256": "0603b6c77538fba6022eb5682afe14602bba3e7e35daaa71cfc308dabc73768a",
+   "bytes": 1369
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_key02_raw00320.json",
+   "sha256": "518b215dc1db284f677af6f772cf5782ec607b6b39f0f4003f72614777a48964",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00117.json",
+   "sha256": "b9c4c2911586d8d5d052199b73ebd9c45b6003c25a165bcc9e601561c19431cc",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00137.json",
+   "sha256": "12fa05077993d4ae53aee6e31018fc75aaec54881bd33216b6a46ad80af6261a",
+   "bytes": 1348
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00157.json",
+   "sha256": "e319e80326d92d0698ce12879c8104efc0613525eb9b6f4ee73c84a19cb3bebc",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00177.json",
+   "sha256": "a7c73174ffa12a664e1a724fa7aec5646fa0771cfb99f60c418dc825371a7257",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00197.json",
+   "sha256": "1855096b85b7aec25b3f0ec0b20ce5050175d77e021979efe8fb03ac18b5658c",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00217.json",
+   "sha256": "4ffe5caf514382c04855584fb530662cedc63d1a4049033862fab8ddd66d434d",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00237.json",
+   "sha256": "1fa84997df21f7a8b8b93a8c5d70264c33b19e408b5860d193f8f68c7ca86f30",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00257.json",
+   "sha256": "8e4cb2c4558dced68ffd746957ffcd313f31e31774f7a5494c9f4fa54950e72d",
+   "bytes": 1370
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00277.json",
+   "sha256": "10f5973fcd3306b923f0ed7110478bcae75481f8324e80fe285dc475993eb64c",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00297.json",
+   "sha256": "f58213d0b8634cf8f502a4ef6a1c8c5caac25608b82c480ac164947cdf97c71c",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00317.json",
+   "sha256": "41137cbb82439504c3122364ef4c6c33d2eb5398558255fa7d52806f7cd09f6f",
+   "bytes": 1358
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00337.json",
+   "sha256": "c0a99e9943f8b784a254adc0571c76f30cfb0929320ee206af5d54d74ed28b4d",
+   "bytes": 1371
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v004_raw00357.json",
+   "sha256": "0875f6e95ce766d025e03b123268e653f335e05ca62dc6b8b8e9cb42dad911a9",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00082.json",
+   "sha256": "8f99273a17486d26192365f2518bdf95b6d0437bdafce2d0bfe9a6feefbd94f4",
+   "bytes": 1372
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00099.json",
+   "sha256": "ea86a76eed1c140ba2621028e11bed655950adbbaa1249ede3a75946f6a587b6",
+   "bytes": 1359
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00116.json",
+   "sha256": "0703bc9d2f2152dbe031c4c85f87e63bc5088508660e829d53f0691b5411c1b1",
+   "bytes": 1369
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00133.json",
+   "sha256": "f439cecf55a6155fc4b77d287fc9eb49e092af3a49be883a9ce8698b953fae1d",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00150.json",
+   "sha256": "806d695e22dab29c9c7a1f7ffb129b83141bc54e8dbe96d276944a1137f52abb",
+   "bytes": 1364
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00167.json",
+   "sha256": "1cce25d4a0425de05b808570590451e892fc0232ae06ba39d2b503892edc0b01",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00184.json",
+   "sha256": "8d5733d94194fe5542b975e7ab7b4b4b263efb5db8dba3e9693795a48033e7a1",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00201.json",
+   "sha256": "d76afebe8af5b88d001983542d3bf3ff000920c2a2697395e660beb78487322b",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00218.json",
+   "sha256": "1309fbc3057ccc63d135794249a7069ef1cb243f7018ce7206b4c9aa3f23a038",
+   "bytes": 1370
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00235.json",
+   "sha256": "3eb3f871d796e79a17117ac7fa5c73988ee067b0b35fb2431316a9a9fd6cb578",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00251.json",
+   "sha256": "9a9e1741294214babb06c471e7c6ddd266c89552cdc4e3ba9329d7f99a8f438c",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00268.json",
+   "sha256": "ef05a58c9453e8f9051e9c50c0587aaa2239d8fdaa4db4b82ba13af690ee2617",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00285.json",
+   "sha256": "f402f57173b99e2e674beb42b0641aeb81038260112c4f07fdd3ec9a915403c7",
+   "bytes": 1360
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00302.json",
+   "sha256": "9f2ebf71c12f619fd33e6d59936b3f62d35982d29d611db7eedce2cc4bf2f813",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00319.json",
+   "sha256": "5656d7246c4d8f5eabb3e633a70d9d6baaef9d11c236dbfd8eafa9b6c3b4c569",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G05_v005_raw00336.json",
+   "sha256": "2b44504ae30ee0ad85beaf88cc2eecf04bdaf16933cc7964cc19972f14054391",
+   "bytes": 1360
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_004_growth_r01.json",
+   "sha256": "ce94a692b8cb047ef3a4b61abbc1c639d3c211eb94c72cabea399535897bf4d9",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_004_new_r00.json",
+   "sha256": "ec19b0d95741ba9ba100d613ee6f610a4c5162c88572f894a1621497eef77ae4",
+   "bytes": 1359
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00129.json",
+   "sha256": "8807a9dd25342e87cda1c11eaaf32c995f593b6e0042ee5caa9c69161ad07047",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00151.json",
+   "sha256": "83e3f445b90615de9878bcff48602fdd1b6ed36ed5cbd191d1e983248487e7ca",
+   "bytes": 1363
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00173.json",
+   "sha256": "41a294aaffb84da068830337cf1e1b9a22f6e20f85d80cb09d8972e7b0a5e2be",
+   "bytes": 1360
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00195.json",
+   "sha256": "bc12d58072be2a43beb492b03b2ef58d6194d110e37393b319e71382ab4913f3",
+   "bytes": 1362
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00217.json",
+   "sha256": "9df29eff199ac79c84b17cb77b4268fb2483421ae3c5fa9c4213398ed97b215c",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00238.json",
+   "sha256": "d6dd2baeca06012435dc79e85e4af098a61a34dfa7480c32ca488958c22c2f18",
+   "bytes": 1369
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00260.json",
+   "sha256": "81fd300f38cb9868e82cfd1107915ebaebf2e954b40b77a86a42797dd2065430",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00282.json",
+   "sha256": "f5fc3d99689d4c01709127ea579412d02707b2d3a7e4222db5de8bd11b52b90c",
+   "bytes": 1369
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00304.json",
+   "sha256": "c2868f32b118add6de1059263d8b414acfad7a93c8a0ab348d53e1e9c701a971",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00326.json",
+   "sha256": "b650b82fbd306892904e8b9c1edbe6c8e4443ebe082f0eca833cd1a94ba5de78",
+   "bytes": 1371
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00348.json",
+   "sha256": "fdf50d5922404a3dcd563e4c7ab2abaeee36a5a0825acc69ef8d26fbcd02ab94",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00370.json",
+   "sha256": "df4e0362e99aa47cfa11eebb9905162a2fe1dd9b25377bb6130f74a0708a6ca4",
+   "bytes": 1364
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00392.json",
+   "sha256": "4977caaeeb39dff1c10ffd92c0146ecf78474d2fdcb4d54b5a703440280f5aeb",
+   "bytes": 1360
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v004_raw00414.json",
+   "sha256": "c6a71d73def17fc1c4a420e53fc7b07c52d6836dd7cfdd4a4646ba63ebcca8cf",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00291.json",
+   "sha256": "7a508bee76d266cb3e396b6eaafde03987a72a0e1204c26d5926a129d3440b9b",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00311.json",
+   "sha256": "a6a86d7cd7d458c22d9e15f149ee0cd55ecbbf0fc57a719d7bebd88b74c7ee9b",
+   "bytes": 1372
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00330.json",
+   "sha256": "8f33e3bcc7883ea9c7ce0bbd1210300819d7cd8aab0736243b870a80fa55213b",
+   "bytes": 1364
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00350.json",
+   "sha256": "1bfe4eaaf01add82baa23208e642629f52e63dd4e24a6ce6ffa7809f5f3abc11",
+   "bytes": 1369
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00369.json",
+   "sha256": "2e1b2e0ce617e13659ec49b49995cc322f891ddf0d3deb57766bc7989e171d47",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00389.json",
+   "sha256": "58c8090e5a3486a5358205baa295613395c2c2e00aad90cb876308aba88f613c",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00409.json",
+   "sha256": "5ad12f43a2a6fd21b5dd47058b32355763fd5cea75d387b3615954780e4dcd95",
+   "bytes": 1365
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00428.json",
+   "sha256": "58af00692a0505975f375d8fda81d5cc2b53870ec609cbc0a6c818bac2d6c283",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00448.json",
+   "sha256": "4e2e8c1b0e0090ac3accc2354b548563d9c7e577909c7ea860769224a2bf8046",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00467.json",
+   "sha256": "95fd05d6d96011dd6955afbdc0dbcaac08c2fcb50ce5edd0e12d08f53bd4a130",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00487.json",
+   "sha256": "9c19988feaf86d6290bcf2c987a16e3f20628fd438e705369a02a45770c23748",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00506.json",
+   "sha256": "857b30878df5dea702dc04b6f28568ea56034faf7419b2b4e901cf544c8333ec",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00526.json",
+   "sha256": "406f08dd3003043c284c477a8801c0d35b44eb601efee5399eb41bab49516eaa",
+   "bytes": 1366
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00545.json",
+   "sha256": "48932f959b28bea90ec45e8d34812dd4e997a10cc2b94bb95ed371129b940918",
+   "bytes": 1367
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00565.json",
+   "sha256": "ca5bf6ce533f3eff0c78e94c00c0c3675434616b5b2ce4f8f2d9977174223484",
+   "bytes": 1364
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/DXY_OBSERVATIONS/G06_v005_raw00585.json",
+   "sha256": "223c7ddf1b9edcf4e720111e72cb7a5c3d0177137caf3a51a79785b6b6f18d78",
+   "bytes": 1368
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/SYNTHETIC_SWEEP.csv",
+   "sha256": "62927c64e614c91b12852a4f0f3fda7e9de0dd0b06ed461a741bfe42b9425ccd",
+   "bytes": 1107
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/tests/test_joint_loss.py",
+   "sha256": "1bb281f82c74e8a1d35a4d3d83e5aa0955d7a8d8931e751139f76bd6209ed307",
+   "bytes": 1573
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/visualization/A_method_comparison/figA_synthetic.png",
+   "sha256": "9e7946c01bbc1e635ebd3cabb85dd8a0c8bd11f9b74a4de13c3570cd27880553",
+   "bytes": 106798
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/visualization/C_loss_tradeoff/figC_tradeoff.png",
+   "sha256": "87c1817aaf4d2829fcf54db7180053df09317ac24153913c67e83c6cbbfe4c62",
+   "bytes": 36282
+  }
+ ]
+}
