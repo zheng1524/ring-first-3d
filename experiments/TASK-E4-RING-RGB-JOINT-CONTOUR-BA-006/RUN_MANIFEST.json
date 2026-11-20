@@ -1,6 +1,6 @@
 {
- "note": "P0/P1/P2 done; P3 camera arms not run. DXY observations re-exported for new masks (160/160 valid).",
- "count": 175,
+ "note": "FIX round: synthetic validation repaired (c2w convention), no clipping, per-sample ring residual, arc correspondence; real BA not run.",
+ "count": 184,
  "files": [
   {
    "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/BODY_READINESS_RECOMMENDATION.md",
@@ -23,9 +23,19 @@
    "bytes": 4076
   },
   {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/FINAL_REPORT_FIX.md",
+   "sha256": "40e8ced2f6308adacd3f90c63929c7cd1b54f40b79fdc322b515af156ad280b2",
+   "bytes": 4848
+  },
+  {
    "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/JOINT_LOSS_DESIGN.md",
    "sha256": "ae3d19154917404b51080c778c3acb30f4647696ac8c294b8529dab4db7d6b77",
    "bytes": 4075
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/RUN_MANIFEST.json",
+   "sha256": "6e3974b24eb7550845c7a42dd10d1cb1fb61486d5e5dfe4c6f3370e9869743af",
+   "bytes": 38194
   },
   {
    "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/VISUALIZATION_GUIDE.md",
@@ -34,8 +44,8 @@
   },
   {
    "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/cad_contour_correspondence.py",
-   "sha256": "d43ab0106922b9e4b40fb3f62b445515e12d7c6fcfdff96f5fab2a85c7c29d83",
-   "bytes": 1307
+   "sha256": "2b3be483c62b2573b4b5b256ca5ca4b054a1f9589d0cd6eec86b61a48b72324e",
+   "bytes": 1622
   },
   {
    "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/dxy_export_newmasks.py",
@@ -43,14 +53,29 @@
    "bytes": 1434
   },
   {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/figs_v2.py",
+   "sha256": "818e843687043429fc834c31edbc0949b57106299d56e8d264ea5290008ff82c",
+   "bytes": 3592
+  },
+  {
    "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/joint_loss.py",
-   "sha256": "c6c6f14c5e0d44bc3c04f7bbebc085e7f604a0575e9b74cdfe1a3193b1ea9f35",
-   "bytes": 1640
+   "sha256": "1ed7669726fc56b577207a3d153e6b369867ab6a711d93dda6b1aad747b001e9",
+   "bytes": 2630
   },
   {
    "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/ring_contour_observation.py",
    "sha256": "f1b07d70902b4ac1713676585d2946f6b7ab4f7e0f14857be291c71b1c0611b4",
    "bytes": 1780
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/run_tests_v2.py",
+   "sha256": "d14a44083d7f0cd6d92ef9953b01de014a9a769ee29e809bae83ed16f0594638",
+   "bytes": 5636
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/synth_v2.py",
+   "sha256": "3d2f752f15c83de60ffc4d3339f5ed3c7db72d10c0d81cc0e7483a7e60bca3ad",
+   "bytes": 5025
   },
   {
    "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/code/synthetic_validation.py",
@@ -863,9 +888,14 @@
    "bytes": 1107
   },
   {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/metrics/SYNTHETIC_V2.csv",
+   "sha256": "1313626cdc9ade465ddaf54800c60478dc02cd2729a91d121eadabbb0ac9dfe0",
+   "bytes": 2163
+  },
+  {
    "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/tests/test_joint_loss.py",
-   "sha256": "1bb281f82c74e8a1d35a4d3d83e5aa0955d7a8d8931e751139f76bd6209ed307",
-   "bytes": 1573
+   "sha256": "99cc4d38053b6e199b66638ad2b5586ab80e524aa1cba88a17cefcf06c1d12e9",
+   "bytes": 1895
   },
   {
    "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/visualization/A_method_comparison/figA_synthetic.png",
@@ -873,9 +903,24 @@
    "bytes": 106798
   },
   {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/visualization/A_method_comparison/fig_reprojection.png",
+   "sha256": "7fd3534dbd15db4f87b4dbf1963b5a84ce55d95cd01505f15e3d2b003034cbcb",
+   "bytes": 74722
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/visualization/B_ring_only_vs_joint/fig_synth_metrics.png",
+   "sha256": "71f3607d04311000b9be9bd424fb8521b66a7373b859fc6a1bb5f93cd5a4d2f3",
+   "bytes": 74240
+  },
+  {
    "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/visualization/C_loss_tradeoff/figC_tradeoff.png",
    "sha256": "87c1817aaf4d2829fcf54db7180053df09317ac24153913c67e83c6cbbfe4c62",
    "bytes": 36282
+  },
+  {
+   "path": "experiments/TASK-E4-RING-RGB-JOINT-CONTOUR-BA-006/visualization/E_camera_network/fig_synthetic_layout.png",
+   "sha256": "baddf5168baa4c7f50d6ba51363ff704509cc219549a4bdc614bc33f8e42af50",
+   "bytes": 133389
   }
  ]
 }

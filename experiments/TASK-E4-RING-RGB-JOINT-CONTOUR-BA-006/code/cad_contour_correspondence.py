@@ -39,3 +39,10 @@ def dist_to_polyline(pts, poly):
     if key not in _TREE: _TREE[key] = cKDTree(d)
     dist, _ = _TREE[key].query(np.asarray(pts, float), k=1)
     return dist
+
+
+def vis_for_cad(cad_pts, dxy_pts, dxy_vis):
+    """Visibility of each CAD sample = its nearest DXY sample's visibility (true correspondence)."""
+    from scipy.spatial import cKDTree
+    d, idx = cKDTree(np.asarray(dxy_pts, float)).query(np.asarray(cad_pts, float), k=1)
+    return np.asarray(dxy_vis, bool)[idx]

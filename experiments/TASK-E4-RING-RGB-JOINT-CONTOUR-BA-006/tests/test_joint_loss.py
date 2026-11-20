@@ -32,6 +32,14 @@ class TestJointLoss(unittest.TestCase):
         b = float(np.sum(JL.ring_block(M,K,ob,m=512)))
         self.assertLess(abs(a-b), 1e-9)
 
+    def test_ring_vector_density_invariance(self):
+        from synth_v2 import make_pose, ring_obs
+        M = make_pose(45., 15.)
+        ob = ring_obs(M)
+        a = float(np.sum(JL.ring_vector(M, K, ob, m=128)**2))
+        b = float(np.sum(JL.ring_vector(M, K, ob, m=512)**2))
+        self.assertLess(abs(a-b), 1e-9)
+
     def test_compose_length_fixed(self):
         M = pose(); ob = synth_obs(M)
         r = JL.compose(M,K,ob,np.zeros(10))
