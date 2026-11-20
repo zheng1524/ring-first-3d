@@ -1,0 +1,25 @@
+route_id: ring-cad-inner-outer
+version: 1
+status: candidate
+git_commit_at_creation: null   # filled by reproduce.sh at run time
+code:
+  - path: experiments/TASK-E4-RING-RGB-JOINT-BA-011/code/joint_ring_observation.py
+  - path: experiments/TASK-E4-RING-RGB-JOINT-BA-011/code/contour_geometry.py
+  - path: experiments/TASK-E4-RING-RGB-JOINT-BA-011/code/reproduce_fixture.py
+inputs:
+  dxy_observations: experiments/TASK-E4-RING-RGB-JOINT-BA-011/metrics/DXY_OBSERVATIONS
+  masks_and_rgb: experiments/TASK-E4-UNIFIED-RING-CONTOUR-REFINEMENT-005/runs/prepared/G03_005
+  cameras_b0: experiments/TASK-E4-REAL-JOINT-BA-008/runs/G03_005/B0/cameras.npz
+  ring_cad_mm: {R: 5.6, r: 0.6}
+  intrinsics: [[490,0,319.5],[0,490,179.5],[0,0,1]]
+environment:
+  python: /home/liu/polyp_research/ring_anchor_3d/.venv/bin/python
+  numpy: ">=1.24"
+  opencv: ">=4.8"
+seed: 0
+entrypoint: runs/ring-cad-inner-outer-v1/reproduce.sh
+expected: runs/ring-cad-inner-outer-v1/fixture/expected.json
+tolerance_px: 0.25
+known_limitations:
+  - 3 fixture views only; not a multi-view BA acceptance
+  - outer DXY vs CAD silhouette ~1.3 px systematic offset (010)

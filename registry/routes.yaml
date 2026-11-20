@@ -1,0 +1,42 @@
+routes:
+  - route_id: ring-cad-inner-outer
+    component: dxy_ring_observation
+    version: 1
+    status: candidate
+    owner: camera-research-agent
+    source:
+      branch: exp/TASK-E4-RING-RGB-JOINT-BA-011
+      commit: null
+    dependencies: [ring_cad_projection, init_segmentation, dxy_ring_observation]
+    manifest: runs/ring-cad-inner-outer-v1/manifest.yaml
+    reproduction:
+      status: pending
+      independent_report: PENDING_INDEPENDENT_REPRODUCTION
+    evidence:
+      reports: [docs/reports/repro-ring-cad-inner-outer-v1.md]
+      metrics: [runs/ring-cad-inner-outer-v1/EXPECTED.json]
+      visualizations: []
+    known_limitations:
+      - fixture covers 3 views only (geometry check, not multi-view BA)
+      - outer DXY ellipse vs CAD silhouette shows ~1.3 px systematic offset (010)
+
+  - route_id: cam-ring-rgb-joint
+    component: camera_ring_rgb
+    version: 1
+    status: exploring
+    owner: camera-research-agent
+    source:
+      branch: exp/TASK-E4-RING-RGB-JOINT-BA-011
+      commit: null
+    dependencies: [ring_cad_projection, dxy_ring_observation, camera_ring_first, rgb_feature_tracks, camera_evaluation]
+    manifest: null
+    reproduction:
+      status: not_started
+      independent_report: null
+    evidence:
+      reports: []
+      metrics: []
+      visualizations: []
+    known_limitations:
+      - joint BA on 16 real views not yet completed
+      - 009 inner-only collapse root-caused in 010 (single CAD cannot fit both curves)
