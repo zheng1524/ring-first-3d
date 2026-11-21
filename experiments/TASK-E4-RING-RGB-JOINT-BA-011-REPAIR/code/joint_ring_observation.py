@@ -44,6 +44,35 @@ def trusted_support(rec, key, labels, tol=1.5, n=720):
 
 
 CAD_INVALID_PENALTY = 50.0
+MARGIN_SAFE = 0.30      # mm, start pushing before the invalid regime
+MARGIN_SCALE = 0.10     # mm
+BARRIER_W = 3.0
+
+
+def cad_margin(pose, R=5.6, r=0.6):
+    """min_theta l(theta) - r  (project-task geometry; >0 means a valid silhouette exists)."""
+    C = np.asarray(pose)[:3, 3]
+    d = float(np.hypot(C[0], C[1]))
+    minl = np.sqrt(max(0.0, R - d)**2 + C[2]**2)
+    return float(minl - r)
+
+
+def barrier_block(pose):
+    """Continuous, directional penalty that keeps the camera out of the invalid regime."""
+    m = cad_margin(pose)
+    v = max(0.0, MARGIN_SAFE - m) / MARGIN_SCALE
+    return np.array([np.sqrt(BARRIER_W) * v, np.sqrt(BARRIER_W) * v * 0.5])
+
+
+def dist_pts_to_poly(pts, poly):
+    """Vectorised point-to-closed-polyline distance (no KD-tree, no cache)."""
+    a = np.asarray(poly, float); b = np.roll(a, -1, axis=0)
+    d = b - a; L2 = np.maximum((d*d).sum(1), 1e-12)
+    P = np.asarray(pts, float)
+    ap = P[:, None, :] - a[None, :, :]
+    t = np.clip((ap*d[None]).sum(2)/L2[None], 0.0, 1.0)
+    proj = a[None] + t[..., None]*d[None]
+    return np.linalg.norm(P[:, None, :]-proj, axis=2).min(1)
 
 
 def blocks(pose, K, obs, which='both', tau=TAU, sigma=SIGMA, m=256):
@@ -52,7 +81,7 @@ def blocks(pose, K, obs, which='both', tau=TAU, sigma=SIGMA, m=256):
         cs = torus_contours(np.asarray(pose), np.asarray(K))
     except Exception:
         n = m if which != 'both' else 2*m
-        return np.full(n, CAD_INVALID_PENALTY), [f'{which}:CAD_INVALID']
+        return np.full(n + 2, CAD_INVALID_PENALTY), [f'{which}:CAD_INVALID']  # keep +2 barrier rows
     ci, co = CG.split_by_area(cs)
     spec = ([('inner', ci)] if which == 'inner' else [('outer', co)] if which == 'outer'
             else [('inner', ci), ('outer', co)])
@@ -62,11 +91,11 @@ def blocks(pose, K, obs, which='both', tau=TAU, sigma=SIGMA, m=256):
         if curve is None or poly is None:
             parts.append(np.zeros(m)); status.append(name+':NO_DATA'); continue
         pts = CG.resample_closed(curve, m)
-        d = CG.dist_to_polyline(pts, poly)
+        d = dist_pts_to_poly(pts, poly)
         w = np.zeros(m)
         if vis is not None and np.asarray(vis).any():
             from scipy.spatial import cKDTree
-            _, idx = cKDTree(np.asarray(poly, float)).query(pts, k=1)
+            dd, idx = cKDTree(np.asarray(poly, float)).query(pts, k=1)
             w = np.asarray(vis, bool)[idx].astype(float)
         if w.sum() < 4:
             parts.append(np.zeros(m)); status.append(name+':UNOBSERVED'); continue
@@ -74,7 +103,7 @@ def blocks(pose, K, obs, which='both', tau=TAU, sigma=SIGMA, m=256):
         ds = L_curve/m
         r = np.sqrt(w*ds/L_curve) * np.maximum(0.0, d-tau)/sigma     # ds/L_ref with L_ref=L_curve
         parts.append(r); status.append(f'{name}:ok(vis={int(w.sum())}/{m})')
-    return np.concatenate(parts), status
+    return np.concatenate(parts + [barrier_block(pose)]), status + ['barrier']
 
 
 def signed_residual(curve, poly, vis, n=720):

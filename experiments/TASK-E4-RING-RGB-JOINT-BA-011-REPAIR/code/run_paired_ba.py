@@ -146,13 +146,18 @@ def main():
         else:
             ns['ring_residual'] = base
         try:
+            import time; t0 = time.time()
             cur, P, ba = ns['BA'](ini, X, tids, support, tr, ref)
+            print(f'BA {arm} seconds={time.time()-t0:.1f}', flush=True)
         except Exception as e:
             print(f'BA {arm} FAILED: {e}', flush=True)
             out[arm] = dict(cams=None, P=None, ba=dict(success=False, nfev=0, obj=None))
             continue
         out[arm] = dict(cams=cur, P=P, ba=dict(success=ba.get('success'), nfev=ba.get('nfev'),
                                                obj=ba.get('training_soft_l1_objective')))
+        (root/arm/'ba_info.json').write_text(json.dumps(dict(arm=arm, version=a.version, ref=ref,
+            ref_raw_frame=rf[ref], success=ba.get('success'), nfev=ba.get('nfev'),
+            objective=ba.get('training_soft_l1_objective'), fair=fair), indent=1))
         np.savez_compressed(root/arm/'cameras.npz', c2w=cur, K=U5.K_CFG,
                             ids=[x['meta']['id'] for x in ordered], points=P, point_track_ids=tids,
                             reference=ref, initialization_version=a.version)
