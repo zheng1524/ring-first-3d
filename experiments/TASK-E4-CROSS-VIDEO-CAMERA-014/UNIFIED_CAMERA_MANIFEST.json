@@ -1,0 +1,21 @@
+{
+ "status": "BLOCKED",
+ "camera_005": {
+  "file": "camera_mainline/G03/video005/accepted_cameras.npz",
+  "sha256": "15c9808c7e3b0f58992dbaaedfb1f286ffe842cdbdf49d7b38146ca166f373d9",
+  "n": 16,
+  "admission": "16/16 ACCEPT"
+ },
+ "camera_004": {
+  "source": "TASK-E4-UNIFIED-RING-RGB-CAMERA-MAINLINE-005/runs/G03/004/camera",
+  "n": 8,
+  "admission": "5 QUARANTINE / 3 INSUFFICIENT_EVIDENCE",
+  "held_median_px": 70.04
+ },
+ "cross_video": {
+  "pairs": 688,
+  "pairs_ge20": 1,
+  "max_inliers": 20
+ },
+ "note": "Metric frame is shared by Ring CAD anchoring, but 004 cameras fail admission and cross-video RGB is too weak for registration."
+}
