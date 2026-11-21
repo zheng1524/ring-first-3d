@@ -1,0 +1,831 @@
+{
+  "main_base": "02dee8092dce9f89d050bccca35aa51768988645",
+  "source_snapshot": "6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33",
+  "whole_history_merged": false,
+  "files": {
+    ".gitattributes": "ae7e71399531a42c4029b35ba3e22e02a35024c05e11db265c672fdd59799a8c",
+    ".gitignore": "f717a75d7d98fd2c1a57e15d6ad46bdaedb5e1193ff7aae918c6e9b3bf501499",
+    "README.md": "e828430aa2c364c0b75976cf5cd0d15e3d017153d596c70ed138e770dc774c34",
+    "docs/PROJECT_HOME.md": "bd7b8c36b297961cf83b62681852fa5f49702f9ccbdbbc41c363614bcf139e5b",
+    "docs/RESEARCH_EXECUTION_HARNESS.md": "ffbd462bc048631f0fe3216581279799166a51160eab0d44e5b1e75a7422e5b2",
+    "docs/architecture/COORDINATE_AND_DATA_CONTRACTS.md": "3a7418d593dcd29f7b8891d9161bb843f0c6d199fe76ab73b7bb178bb8abf1d5",
+    "docs/architecture/DATA_FLOW.md": "24ffe9ec7f2cf12bef7c692ad6118ca6f178e78524f496d6ae25710964537bf9",
+    "docs/architecture/SYSTEM_OVERVIEW.md": "a489ea455d6cf959b1d81ca80b5e458b3b442334b8d18ee7f96e99dbc18f904a",
+    "docs/registry/ASSET_MANAGEMENT_POLICY.md": "854ae9103e4fdef1f609ef22e29805ede3c340ab003fc31dddc4d07c9c9bf9ee",
+    "docs/registry/BASELINE_AUDIT.md": "d13fd9d53d885f87f8b9477f121626df74e6689d3bc0eea5a061bd60dccf5e16",
+    "docs/registry/DECISION_LOG.md": "147c8202260a1cb9381afe88481036a9283be709cce4474c61def35f5a224d12",
+    "docs/registry/DEPENDENCY_GRAPH.mmd": "1f51dbef1ca57370d2e3cf71d190c0a2b03339247d6b0cdd649562ef6c558d14",
+    "docs/registry/EVIDENCE_MANIFEST.json": "92a5089657f22f64e1766384f165d5d923a92c5e53e788c666af7902e7505ffe",
+    "docs/registry/EXPERIMENT_INDEX.csv": "3d438ddb9137bdf7fc1cb47d75f395d7620fe1876bd5ae7b537d9da391736662",
+    "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md": "702362b1d6c9205a9b0d702b81bf1155482f411f8c21b3240784ab6e3179f8e7",
+    "docs/registry/LOCAL_ARTIFACTS.json": "12c0ff142bd4129815d82cd23181464bb2b1e8792216267d54fade858d0ac3a5",
+    "docs/registry/MODULE_PROMOTION_POLICY.md": "88691009fc28c2bdb4476b687739dc4d1f5a4c5441fc1d1bf661d37375cc0122",
+    "docs/registry/MODULE_REGISTRY.json": "5a5a6bb357e35b4644bfb6a43e1b803b53bbb647127207c2f9e117a9e3901390",
+    "docs/registry/ONBOARDING_CHECKLIST.md": "deae0d4633af3ad7c6d90ffa239c8a27b1e44e404fe0093d019d000cda06964c",
+    "docs/registry/OPEN_INTERFACES.md": "7cb48a837e0d2831ddfc1c705dcf441b7a0159e281fef566aa7f3341f300c4ab",
+    "docs/registry/REMOTE_REFS.json": "33141e8676f49181bc69a1cd83d3d1b5c163b3e8f20e91e23446a173a8ef522a",
+    "docs/registry/REPORT_CATALOG.json": "c05bb08adf91237554b7a048dadd383c59c240265f7f86c9da4b59ddd379c33a",
+    "docs/registry/REUSABLE_MODULES.md": "51e690a5dcb3b37287ab1d44eb68ca69827545ecfe28763aefb70aabab47523b",
+    "docs/registry/TECHNICAL_ROUTE_MATRIX.md": "2262062ae44ca0291ea17b587e9bc2a5a6cbbf1d2939798e13f10a792f78e452",
+    "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/REPRODUCE.md": "999f9b7a25fbef4edd9a1ee15ae6fb2f99c5290b27c66a1595e4ca81ca826931",
+    "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/SMOKE_AFTER.json": "040042b2212bbbd83aa2b898dd18ea71a0c80f054b9846f578e32354cda44d96",
+    "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md": "524ff9e7a1a0b1ad07d52bef8a76b9198cd053a43a43b9a3eb1f2140e63da454",
+    "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TEST_RESULTS.json": "cac0afc5ddbdc3135da3fa54c5a7b1878093cd5565e8571cb69d0a02ce7b0026",
+    "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/figures/REAL_SMOKE_EVIDENCE.png": "59451578fe85612ffa5b2bd47f450705e3d45403fbeaf6f324f2a2a9c2088b23",
+    "pyproject.toml": "127f76d3571c4ffb0b8b8754160dc5fa60d2f50d1e156f72a0c32ce18a7d9154",
+    "src/ring_first_3d/__init__.py": "74f163ae3f6301882d1f66309d26c3c8509d78cab058fa3a12ec6149c1077d21",
+    "src/ring_first_3d/_legacy.py": "375959e174b47b982194de6764d99afa41d1e7e3df4dd47349efce8ab901aff5",
+    "src/ring_first_3d/adapters/__init__.py": "3cfc412d7f08d7a4ad9f5843faf490f9f49f2ee89617fcc891136a8de7044572",
+    "src/ring_first_3d/adapters/dxy.py": "9298327692b4973c0cf651d868b2bfb61d6bf62748dd132eb1f67756e3b27f78",
+    "src/ring_first_3d/contracts/__init__.py": "8e31e91107080f89b433c91e01e6d95b8eb14df53a2b52da6e80cdd9e37581c9",
+    "src/ring_first_3d/contracts/coordinates.py": "03b45ba4811c00b01a4e5c014a888d003dca51fe0399e1b2f4d261195286171b",
+    "src/ring_first_3d/contracts/identities.py": "f4838d80c256c9214bcee515928999c0990c516b276947b3a67836915133ce8a",
+    "src/ring_first_3d/evaluation/__init__.py": "eb674fbcdc24d05fd7c997f953a5a678616e40e63ad339cfd7275e270b47dff7",
+    "src/ring_first_3d/evaluation/validation.py": "73f64f1b36ca092b085f766ba5dc1c058c8580a65589b0639b990bab131b1e83",
+    "src/ring_first_3d/rendering/__init__.py": "cbc9e11056e698d078db334127d22c689f69919d92ac320e047f33cdc345f280",
+    "src/ring_first_3d/rendering/pytorch3d_renderer.py": "62ffb5ab4a409e137331452ec7e46ab5d66f66d96f11f449e528bf58697dd001",
+    "src/ring_first_3d/source_lock.json": "3bee30d508fa9ca6bbc4bbc315b217a0a660b77c6498cfce7ccbba6d9ba5f2b0",
+    "src/ring_first_3d/views/__init__.py": "a0e86fcc991c78a11c82de9cb83dd72b24a7cd50faf580173d17c3126595e880",
+    "src/ring_first_3d/views/selection.py": "4c18fe13ece60f01743270f22b95f950b15dc253a3ec82cc56208f53b8c5492d",
+    "tests/test_harness_contracts.py": "6d4b12592a3a71670896de5b9fb463416556d7c66d33aa1802292d249386541b",
+    "tools/research/_bootstrap.py": "68be44303188ee3cc3c092e2471076bba936bc30c34c7ab98a91485233e9c4a9",
+    "tools/research/audit_reuse.py": "3685ccdf202abc9f70509566a0402f772611d6d7f88c6007d5e6d7dcb5119bdf",
+    "tools/research/check_payload.py": "692659622f3e5fc24afc059e360c2b6fd076db7c998f6f7275ea95f41825120e",
+    "tools/research/frozen_fixture.json": "d64ebdbc3b81287c7d8f235e634b05d44269ee76b27206a37d2df976d293dacb",
+    "tools/research/frozen_reference.json": "216cbab2cdafa85e224580199356c1a2dc1ba087389e9699790d1c6101890cdd",
+    "tools/research/preflight.py": "3ed669b84490fb3f08dc487ebb1b8dbd5e1ff2e791bb5f453c88e89d1088d5ca",
+    "tools/research/render_evidence.py": "39b8cda18efdb8b96e46dc8ba003e3cca0f9a0070a6ecdaa08bb527977313e64",
+    "tools/research/run.sh": "cd27febb1fef64cd36d332bffe381cfa53d5913c9486e69a6f3c16e43d19caa8",
+    "tools/research/smoke.py": "087d8b5699347bdd5ebad3bd342913a9e5fe7a6985417ddbde8a5e9ee5ab630f",
+    "tools/research/support_fixture.json": "cc26119e6e67a3d19ab124685316b4815be0f63f5ac71bc416704cf46430b28c",
+    "tools/research/validate_contracts.py": "a8889c97d9f5f6072f87f72b723072a623ca9bc77f876f0022614f24f84434b8"
+  },
+  "historical_link_rewrites": [
+    {
+      "document": "docs/PROJECT_HOME.md",
+      "original": "../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../AGENTS.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/AGENTS.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../PHASE_E4_RESEARCH_ROADMAP.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/docs/PHASE_E4_RESEARCH_ROADMAP.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NEXT_STAGE_ELIGIBILITY.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NEXT_STAGE_ELIGIBILITY.json"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-ANCHORED-MULTIHERO-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../COLLAB_STANDARD_v1.3.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/COLLAB_STANDARD_v1.3.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-E4-UPDATE-CAUSALITY-016/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-UPDATE-CAUSALITY-016/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../PHASE_E4_RESEARCH_ROADMAP.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/docs/PHASE_E4_RESEARCH_ROADMAP.md"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/JACOBIAN_IDENTIFIABILITY.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/JACOBIAN_IDENTIFIABILITY.json"
+    },
+    {
+      "document": "docs/registry/DECISION_LOG.md",
+      "original": "../../experiments/TASK-PROJECT-TECHNOLOGY-REGISTRY-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-PROJECT-TECHNOLOGY-REGISTRY-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E3-D0-OPEN3D-TSDF-BASELINE-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-D0-OPEN3D-TSDF-BASELINE-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E3-SDF-RTX4090-M1-10X-MULTIPOLYP-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-SDF-RTX4090-M1-10X-MULTIPOLYP-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-PHASED-INCREMENTAL-FUSION-MULTIGROUP-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-RELOCALIZATION-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_PYTORCH3D_010/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_PYTORCH3D_010/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-CAMERA-GATE-G01-004-PILOT-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-CAMERA-GATE-G01-004-PILOT-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/FAILURE_LEDGER.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/FAILURE_LEDGER.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G01_004_ALL_VIEW_OVERLAYS.png",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G01_004_ALL_VIEW_OVERLAYS.png"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G01_004_SIX_DIRECTION_BODIES.png",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G01_004_SIX_DIRECTION_BODIES.png"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G03_004_ALL_VIEW_OVERLAYS.png",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G03_004_ALL_VIEW_OVERLAYS.png"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G03_004_SIX_DIRECTION_BODIES.png",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G03_004_SIX_DIRECTION_BODIES.png"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G05_004_ALL_VIEW_OVERLAYS.png",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G05_004_ALL_VIEW_OVERLAYS.png"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G05_004_SIX_DIRECTION_BODIES.png",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G05_004_SIX_DIRECTION_BODIES.png"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G06_004_ALL_VIEW_OVERLAYS.png",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G06_004_ALL_VIEW_OVERLAYS.png"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G06_004_SIX_DIRECTION_BODIES.png",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/figures/G06_004_SIX_DIRECTION_BODIES.png"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-PMGR-PROGRESSIVE-GEOMETRY-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PMGR-PROGRESSIVE-GEOMETRY-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-E4-PMGR-FFD-002/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PMGR-FFD-002/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-VIEW-PARTITION-MAST3R-FUSION-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/FAILURE_AND_DEPRECATED_ROUTES.md",
+      "original": "../../AGENTS.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/AGENTS.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/provenance/SEGMENTATION_IMPLEMENTATION.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/provenance/SEGMENTATION_IMPLEMENTATION.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/DXY_QUALITY_AUDIT.csv",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/DXY_QUALITY_AUDIT.csv"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NUMERICAL_CONTRACTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NUMERICAL_CONTRACTS.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/CODE_REUSE_MAP.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/CODE_REUSE_MAP.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NUMERICAL_CONTRACTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NUMERICAL_CONTRACTS.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/PROTOCOL_CORRECTION_v0.2.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/PROTOCOL_CORRECTION_v0.2.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NEXT_STAGE_ELIGIBILITY.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NEXT_STAGE_ELIGIBILITY.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/config/VIEW_SELECTION.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/config/VIEW_SELECTION.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-UPDATE-CAUSALITY-016/metrics/VIEW_SAMPLING_AUDIT.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-UPDATE-CAUSALITY-016/metrics/VIEW_SAMPLING_AUDIT.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/selection_verified/G03_SELECTION.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/selection_verified/G03_SELECTION.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/selection_verified/G06_SUPPORTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/selection_verified/G06_SUPPORTS.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/CAMERA_QUALITY_AND_UNCERTAINTY.csv",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/CAMERA_QUALITY_AND_UNCERTAINTY.csv"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/ACTUAL_CERES_SCOPE.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/ACTUAL_CERES_SCOPE.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/CONTRACT_AND_GEOMETRY_TESTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/CONTRACT_AND_GEOMETRY_TESTS.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/provenance/021_REPLAY/OBSERVATION_IDENTITIES_VERIFIED.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/provenance/021_REPLAY/OBSERVATION_IDENTITIES_VERIFIED.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-HERO-BODY-ADAPT-018/provenance/HERO_MODEL.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-BODY-ADAPT-018/provenance/HERO_MODEL.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/HERO_INFERENCE_RESULTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/HERO_INFERENCE_RESULTS.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/FAILURE_LEDGER.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/FAILURE_LEDGER.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/HERO_CLEANING_RESULTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/HERO_CLEANING_RESULTS.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/REPRODUCE.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/REPRODUCE.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/metrics/NINE_CASE_RESULTS.csv",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/metrics/NINE_CASE_RESULTS.csv"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-UPDATE-CAUSALITY-016/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-UPDATE-CAUSALITY-016/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-UPDATE-CAUSALITY-016/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-UPDATE-CAUSALITY-016/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-014/FAILURE_LEDGER.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-014/FAILURE_LEDGER.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/JACOBIAN_IDENTIFIABILITY.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/JACOBIAN_IDENTIFIABILITY.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/VALIDATION.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/VALIDATION.json"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../visualization/README.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/visualization/README.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E3-D0-OPEN3D-TSDF-BASELINE-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-D0-OPEN3D-TSDF-BASELINE-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E3-SDF-RTX4090-M1-10X-MULTIPOLYP-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-SDF-RTX4090-M1-10X-MULTIPOLYP-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/METHOD_AND_INPUT_AUDIT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/METHOD_AND_INPUT_AUDIT.md"
+    },
+    {
+      "document": "docs/registry/REUSABLE_MODULES.md",
+      "original": "../../experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/provenance/SEGMENTATION_IMPLEMENTATION.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/provenance/SEGMENTATION_IMPLEMENTATION.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/DXY_QUALITY_AUDIT.csv",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/DXY_QUALITY_AUDIT.csv"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NUMERICAL_CONTRACTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NUMERICAL_CONTRACTS.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/CODE_REUSE_MAP.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/CODE_REUSE_MAP.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NUMERICAL_CONTRACTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NUMERICAL_CONTRACTS.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/PROTOCOL_CORRECTION_v0.2.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/PROTOCOL_CORRECTION_v0.2.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NEXT_STAGE_ELIGIBILITY.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NEXT_STAGE_ELIGIBILITY.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/config/VIEW_SELECTION.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/config/VIEW_SELECTION.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-UPDATE-CAUSALITY-016/metrics/VIEW_SAMPLING_AUDIT.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-UPDATE-CAUSALITY-016/metrics/VIEW_SAMPLING_AUDIT.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/selection_verified/G03_SELECTION.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/selection_verified/G03_SELECTION.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/selection_verified/G06_SUPPORTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/selection_verified/G06_SUPPORTS.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/CAMERA_QUALITY_AND_UNCERTAINTY.csv",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/CAMERA_QUALITY_AND_UNCERTAINTY.csv"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/ACTUAL_CERES_SCOPE.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/ACTUAL_CERES_SCOPE.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/CONTRACT_AND_GEOMETRY_TESTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/CONTRACT_AND_GEOMETRY_TESTS.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-ANCHORED-JOINT-BA-021/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/provenance/021_REPLAY/OBSERVATION_IDENTITIES_VERIFIED.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/provenance/021_REPLAY/OBSERVATION_IDENTITIES_VERIFIED.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-HERO-BODY-ADAPT-018/provenance/HERO_MODEL.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-BODY-ADAPT-018/provenance/HERO_MODEL.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/HERO_INFERENCE_RESULTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/HERO_INFERENCE_RESULTS.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/FAILURE_LEDGER.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/FAILURE_LEDGER.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/HERO_CLEANING_RESULTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/HERO_CLEANING_RESULTS.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/REPRODUCE.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/REPRODUCE.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/metrics/NINE_CASE_RESULTS.csv",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/metrics/NINE_CASE_RESULTS.csv"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-UPDATE-CAUSALITY-016/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-UPDATE-CAUSALITY-016/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-UPDATE-CAUSALITY-016/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-UPDATE-CAUSALITY-016/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-014/FAILURE_LEDGER.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-014/FAILURE_LEDGER.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/JACOBIAN_IDENTIFIABILITY.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/JACOBIAN_IDENTIFIABILITY.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/VALIDATION.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/VALIDATION.json"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../visualization/README.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/visualization/README.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E3-D0-OPEN3D-TSDF-BASELINE-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-D0-OPEN3D-TSDF-BASELINE-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E3-SDF-RTX4090-M1-10X-MULTIPOLYP-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-SDF-RTX4090-M1-10X-MULTIPOLYP-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/METHOD_AND_INPUT_AUDIT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/METHOD_AND_INPUT_AUDIT.md"
+    },
+    {
+      "document": "docs/registry/TECHNICAL_ROUTE_MATRIX.md",
+      "original": "../../experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/architecture/COORDINATE_AND_DATA_CONTRACTS.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NUMERICAL_CONTRACTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/metrics/NUMERICAL_CONTRACTS.json"
+    },
+    {
+      "document": "docs/architecture/COORDINATE_AND_DATA_CONTRACTS.md",
+      "original": "../../experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/CONTRACT_AND_GEOMETRY_TESTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/metrics/CONTRACT_AND_GEOMETRY_TESTS.json"
+    },
+    {
+      "document": "docs/architecture/COORDINATE_AND_DATA_CONTRACTS.md",
+      "original": "../../experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/architecture/COORDINATE_AND_DATA_CONTRACTS.md",
+      "original": "../../experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/architecture/DATA_FLOW.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/config/BODY_FIT_VIEWS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/config/BODY_FIT_VIEWS.json"
+    },
+    {
+      "document": "docs/architecture/DATA_FLOW.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/config/SOURCE_BINDING.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/config/SOURCE_BINDING.json"
+    },
+    {
+      "document": "docs/architecture/SYSTEM_OVERVIEW.md",
+      "original": "../../experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/architecture/SYSTEM_OVERVIEW.md",
+      "original": "../../experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-HERO-BODY-ADAPT-018/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/architecture/SYSTEM_OVERVIEW.md",
+      "original": "../../experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-014/TECHNICAL_REPORT.md"
+    },
+    {
+      "document": "docs/architecture/SYSTEM_OVERVIEW.md",
+      "original": "../PHASE_E4_RESEARCH_ROADMAP.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/docs/PHASE_E4_RESEARCH_ROADMAP.md"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "REUSE_AFTER.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/REUSE_AFTER.json"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "../../maintenance/storage/PHASE0_FREEZE.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/maintenance/storage/PHASE0_FREEZE.json"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "../../maintenance/storage/PHASE2_FREEZE.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/maintenance/storage/PHASE2_FREEZE.json"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "PREFLIGHT_AFTER.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/PREFLIGHT_AFTER.json"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "SMOKE_BEFORE.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/SMOKE_BEFORE.json"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "CONTRACTS_AFTER.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/CONTRACTS_AFTER.json"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "TEST_ATTEMPTS.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TEST_ATTEMPTS.json"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "../../maintenance/storage/PROJECT_WORKTREE_AUDIT.csv",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/maintenance/storage/PROJECT_WORKTREE_AUDIT.csv"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "../../maintenance/storage/STORAGE_BEFORE_AFTER.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/maintenance/storage/STORAGE_BEFORE_AFTER.md"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "../../maintenance/storage/DELETION_LOG.csv",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/maintenance/storage/DELETION_LOG.csv"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "../../maintenance/storage/CACHE_BACKUP_MANIFEST.json",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/maintenance/storage/CACHE_BACKUP_MANIFEST.json"
+    },
+    {
+      "document": "experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TECHNICAL_REPORT.md",
+      "original": "../../maintenance/storage/REMAINING_CANDIDATES.md",
+      "pinned": "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/maintenance/storage/REMAINING_CANDIDATES.md"
+    }
+  ],
+  "exclusions": "No historical experiment tree, raw data, weights, environment, full caches or destructive storage scripts"
+}

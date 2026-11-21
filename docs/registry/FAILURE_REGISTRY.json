@@ -1,0 +1,260 @@
+{
+  "schema": 1,
+  "policy": "Imported facts and candidate advice only; no automatic promotion or algorithm choice. Scientific negative results are not code defects.",
+  "failures": [
+    {
+      "id": "FM-ENV-001",
+      "category": "environment_error",
+      "modules": [
+        "T01",
+        "T03"
+      ],
+      "symptom": "Official DXY import: No module named skimage",
+      "cause": "Existing scikit-image package directory absent from PYTHONPATH",
+      "cause_status": "confirmed",
+      "repair": "Use registered E4 evolution packages; retain exact dependency versions; do not alter protected environments",
+      "regression": [
+        "existing preflight.dependencies",
+        "existing smoke.DXY_real_official"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/4c580e721a5b189852ed0809b87b2ea99244176b/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TEST_ATTEMPTS.json"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-ENV-002",
+      "category": "environment_error",
+      "modules": [
+        "T34"
+      ],
+      "symptom": "GeometryGuard preflight: No module named fcl",
+      "cause": "Registered PMGR-R1 FCL path missing from initial PYTHONPATH",
+      "cause_status": "confirmed",
+      "repair": "Use registered PMGR-R1 packages and verify actual FCL import",
+      "regression": [
+        "existing preflight.dependencies",
+        "existing smoke.contour_guard_compatibility"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/4c580e721a5b189852ed0809b87b2ea99244176b/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TEST_ATTEMPTS.json"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-CODE-001",
+      "category": "code_error",
+      "modules": [
+        "T24"
+      ],
+      "symptom": "Ring unit test failed for a declared R10 / 1.2 mm wire",
+      "cause": "Test fixture outer radius was 7.4 rather than 6.2 mm; CAD contract itself was correct",
+      "cause_status": "confirmed",
+      "repair": "Correct the test input, preserve actual Ring CAD and mathematical contract",
+      "regression": [
+        "test_harness_contracts.CoordinateTests.test_ring_units",
+        "test_policy_bootstrap.ContractTests.test_wrong_units"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/4c580e721a5b189852ed0809b87b2ea99244176b/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TEST_ATTEMPTS.json"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-ID-001",
+      "category": "data_identity_error",
+      "modules": [
+        "T12",
+        "T13"
+      ],
+      "symptom": "MAX G01 pool: 227 rows but 226 unique IDs",
+      "cause": "G01_v005_raw00756 duplicated with identical metadata and visibility",
+      "cause_status": "confirmed",
+      "repair": "Explicit exact-duplicate migration with audit; reject conflicting duplicates; preserve the original list",
+      "regression": [
+        "test_harness_contracts.BoundaryTests.test_explicit_duplicate_migration_rejects_conflicts",
+        "existing smoke.view_selection_frozen"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/4c580e721a5b189852ed0809b87b2ea99244176b/experiments/TASK-RESEARCH-HARNESS-STORAGE-001/TEST_ATTEMPTS.json"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-CODE-002",
+      "category": "code_error",
+      "modules": [
+        "T24"
+      ],
+      "symptom": "Old soft-zbuf gradients 1e8–1e13 while finite difference was about 1e-4",
+      "cause": "Unstable derivative through discrete Ring/body visibility in historical renderer",
+      "cause_status": "confirmed",
+      "repair": "Reuse repaired 014 detached z visibility and original projection contracts",
+      "regression": [
+        "existing smoke.renderer_real_metric: detached visibility and finite nonzero vertex gradients"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-SCI-001",
+      "category": "scientific_negative",
+      "modules": [
+        "T24"
+      ],
+      "symptom": "E1/E2 body initialization: each 4/4 numeric outputs but 0/4 complete scientific acceptance",
+      "cause": "Observed multistart/held-out/Ring violations; no single confirmed engineering cause or universal repair",
+      "cause_status": "observed_only",
+      "repair": "Preserve failures and NaN semantics; a new authorized study is needed, not an automatic policy switch",
+      "regression": [
+        "evidence_review_only: full scientific acceptance must not be inferred from engineering PASS"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E4-BODY-GUIDED-HERO-DXY-REPAIR-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-SCI-002",
+      "category": "scientific_negative",
+      "modules": [],
+      "symptom": "TSDF layer consistency worsened; NeuralFusion increased multiple layers on the reported samples",
+      "cause": "Reported numerical/scientific negative outcomes; no verified universal fix established here",
+      "cause_status": "observed_only",
+      "repair": "Retain historical evidence; do not auto-restart, auto-select another algorithm, or classify as an implementation bug",
+      "regression": [
+        "evidence_review_only: no new TSDF/NeuralFusion run in this engineering task"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-D0-OPEN3D-TSDF-BASELINE-001/TECHNICAL_REPORT.md",
+        "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-N0-NEURALFUSION-EIGHT-VIEW-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-INCOMPLETE-001",
+      "category": "incomplete_evaluation",
+      "modules": [],
+      "symptom": "MonoSDF G01 4000 steps; other groups NOT_RUN; planned 200k steps not completed",
+      "cause": "Insufficient executed training/evaluation, not evidence of fully trained route failure",
+      "cause_status": "confirmed",
+      "repair": "Report actual steps and NOT_RUN; preserve checkpoint and require separate approval before training",
+      "regression": [
+        "evidence_review_only: never label this fully trained scientific failure"
+      ],
+      "evidence": [
+        "https://github.com/zheng1524/ring-first-3d/blob/6d5d5684ce85bb2aa1f044e3ce8c45a578e07e33/experiments/TASK-E3-SDF-RTX4090-M1-10X-MULTIPOLYP-001/TECHNICAL_REPORT.md"
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-POLICY-001",
+      "category": "code_error",
+      "modules": [
+        "T01",
+        "T24",
+        "T34"
+      ],
+      "symptom": "Initial trusted worker guard rejected /dev/null, lscpu metadata query and dir_fd-based temporary cleanup",
+      "cause": "Guard treated a null device as a normal output, omitted a NumPy CPU metadata command, and resolved dir_fd-relative paths against cwd",
+      "cause_status": "confirmed",
+      "repair": "Allow only /dev/null and explicit read-only metadata commands; resolve dir_fd against /proc/self/fd; retain GT and outside-write denials",
+      "regression": [
+        "test_policy_bootstrap.ContractTests.test_worker_IO_guard_and_dirfd_cleanup",
+        "existing preflight and 11 contracts through actual worker"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/development_failures/development-001-preflight.json",
+          "sha256": "55ecd4aa33a4c03b8611e018dfbcdd793cbb168322c41c70937b77bfe6f6af1f"
+        },
+        {
+          "path": "experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/development_failures/development-002-preflight.json",
+          "sha256": "e7bfc95f9c0797459913378ed679632ba86e91a5120f0318a591c62e64254404"
+        },
+        {
+          "path": "experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/development_failures/development-003-preflight.json",
+          "sha256": "1ba46b9f76f6943b3fd1b7f3d8f5fe48fd013f23ee5e49fa78ecc95b36d23511"
+        },
+        {
+          "path": "experiments/TASK-RESEARCH-POLICY-BOOTSTRAP-001/development_failures/development-004-contracts.json",
+          "sha256": "c3363067256a0f2debb24783018c858f6c3f3953c09124a2276dee4ca54e3575"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    },
+    {
+      "id": "FM-DUAL-YAML-001",
+      "category": "code_error",
+      "modules": [
+        "DV01"
+      ],
+      "symptom": "Initial TASK serialized repeated stage list using YAML aliases; original strict loader rejects aliases",
+      "cause": "Initializer reused same Python list for authorization and acceptance",
+      "cause_status": "confirmed",
+      "repair": "Copy the stage list before serialization; preserve initial bytes and re-freeze before any science",
+      "regression": [
+        "test_dualvideo_gate.DualvideoGateTests.test_user_clarified_004_world_004_005_local_conditions"
+      ],
+      "evidence": [
+        {
+          "path": "experiments/TASK-E4-G01-DUALVIDEO-BODY-ANCHORED-REGISTRATION-001/initial_freeze/TASK.yaml",
+          "sha256": "50f53301c31668ef064286e7f042cf49e1401ab2b32c2c8e855b24637ca48a60"
+        }
+      ],
+      "rule_status": "candidate",
+      "review": {
+        "status": "unreviewed",
+        "reviewer": null,
+        "evidence": null
+      }
+    }
+  ]
+}

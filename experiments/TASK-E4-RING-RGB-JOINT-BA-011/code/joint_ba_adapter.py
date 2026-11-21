@@ -78,7 +78,9 @@ def run(g, v, arm):
             cb, _ = JO.blocks(C, Kv, ob, which='both', m=M)
             nq = len(ob['q_train'])
             out = np.r_[cb, np.asarray(base(C, ob, part, Kv), float)[nq:]]
-            n_r = len(out); c = max(1, counts[str(ob['_cid'][0]) if hasattr(ob['_cid'],'__len__') else ob['_cid'])
+            key = ob['_cid']
+            cid = str(key[0]) if hasattr(key, '__len__') else str(key)
+            n_r = len(out); c = max(1, counts[cid])
             return out * np.sqrt(n_r/c)          # cancels frozen sqrt(counts/rglen)
         ns['ring_residual'] = rr
     vers = {}
@@ -93,7 +95,14 @@ def run(g, v, arm):
     ok = {k: x for k, x in vers.items() if x['ok']}
     if not ok:
         raise RuntimeError('NO_BA ' + json.dumps({k: x.get('error', '')[-200:] for k, x in vers.items()}))
-    best = min(ok, key=lambda k: ok[k]['score']['score'])
+    forced = None
+    if len(sys.argv) > 4 and sys.argv[4].isdigit():
+        forced = int(sys.argv[4])
+    if forced is not None and forced in ok:
+        best = forced
+        print(f'FORCED version {best} (comparable-version experiment)', flush=True)
+    else:
+        best = min(ok, key=lambda k: ok[k]['score']['score'])
     cur = ok[best]['c2w']
     from ring_first_3d.mainline.native.camera import torus_contours
     from scipy.spatial import cKDTree

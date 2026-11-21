@@ -1,0 +1,12 @@
+flowchart TD
+ HOME[README / PROJECT_HOME] --> MAP[MAINLINE_ASSET_MAP]
+ MAP --> SRC[src/ring_first_3d/mainline]
+ SRC --> REG[frozen_registry 原SHA源码]
+ SRC --> VERS[lineage 版本隔离算法]
+ SRC --> NATIVE[Ring-First / HERO native]
+ SRC --> RT[LOCAL_ONLY runtime manifest]
+ NATIVE --> OFF[官方MVS / DINO / checkpoint SHA]
+ VERS --> DATA[EXTERNAL_INPUTS 冻结原始资产]
+ SRC --> GATE[SHA / 旧源码执行拒绝 / 247回归]
+ GATE --> REPLAY[8个固定重放]
+ REPLAY --> NEG[原科学结论与负证据保持]
