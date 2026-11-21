@@ -1,0 +1,10 @@
+asset,category,action,reason
+camera_mainline/,ACTIVE,KEEP,正式 W0 入口与相机资产
+tools/run_w0_camera.py,ACTIVE,KEEP,唯一相机入口
+src/ring_first_3d/,ACTIVE,KEEP,Ring-First / CAD 内核
+smart_endoscope_20260805 (1)/,ACTIVE,KEEP,原始视频（唯一来源）
+assets/retained_sources/,ACTIVE,KEEP,逐帧 RGB/Mask 源
+experiments/TASK-E4-*/,ARCHIVE,KEEP,历史实验证据（报告/相机/CSV）
+experiments/*/runs/,REGENERABLE,PENDING_REVIEW,可由入口重跑，但为历史证据，保留
+**/__pycache__/,REGENERABLE,DELETE,Python 字节码，可自动重建
+experiments/*/code/ 副本（gate/held/SO3 多份）,DELETION_CANDIDATE,PENDING_REVIEW,已被 camera_mainline/code 取代，但历史脚本仍 import

@@ -1,0 +1,26 @@
+version: 1
+frozen_at_commit: 013-PATCH (see PATCH_REPORT.md)
+note: >
+  Initial engineering thresholds, frozen before any cross-video evaluation.
+  Shared by every group / video / reference photo. Never relaxed per-case;
+  never tuned with GT or Body/HERO.
+statuses: [ACCEPT, QUARANTINE, REJECT, INSUFFICIENT_EVIDENCE]
+hard_fail:
+  nonfinite_or_nonrigid_pose: true
+  cad_projection_invalid: true
+  positive_depth_min: 0.90
+ring:
+  raw_mae_max_px: 2.0
+rgb:
+  triangulation_min_baseline_mm: 2.0     # degenerate pairs are excluded from the metric
+  held_median_max_px: 4.0
+  held_p95_max_px: 8.0
+  positive_depth_min: 0.95
+  min_tracks: 20
+  big_error_px: 10.0
+  big_error_fraction_max: 0.10
+neighbour:
+  max_center_jump_mm: 5.0
+  max_rotation_jump_deg: 10.0
+evidence:
+  min_tracks_insufficient: 20

@@ -1,0 +1,12 @@
+pipeline: ring-first-b0-w0
+stages: [prepare, ring, tracks, b0, w0, evaluate, admit, export]
+fixed:
+  init_version: 0
+  ref_rule: raw_frame_closest_to_459_else_middle
+  ba_max_nfev_b0: 60
+  ba_max_nfev_w0: 30
+  cad_mm: {R: 5.6, r: 0.6}
+  gate: camera_mainline/CAMERA_ADMISSION_POLICY.yaml
+notes: >
+  B0 = frozen BA from Ring-First init. W0 = re-triangulate training points from B0
+  cameras and continue the same BA. No new loss, no per-group branching.
