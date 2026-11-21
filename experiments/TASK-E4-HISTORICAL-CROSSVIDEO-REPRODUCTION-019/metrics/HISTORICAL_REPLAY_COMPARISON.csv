@@ -1,0 +1,10 @@
+metric,source,historical,reproduced,status,note
+cross_video_3D_within_0.75mm,020 TECHNICAL_REPORT (5/18),5/18,2/18,MISMATCH,020 landmarks/CROSS_004.npz is a dangling symlink; 019 copy substituted
+cross_video_3D_median_mm,020 (direction H_004<-005),not reported,3.01,NEW_EVIDENCE,applying H to X004 gives 45.42mm; H^-1 gives 3.01mm -> H direction confirmed
+R3_vs_R0_3D_median_mm,replay,n/a,3.01 vs 2.92,CONSISTENT,"R3 only ~0.1mm better than R0 in 3D consistency, matching the ""marginal"" historical reading"
+holdout_polyp_iou_R0,020 report,0.893435,NOT_RUN,NOT_REPRODUCED,requires HERO/Body evaluation pipeline from 020; not executed this round
+holdout_polyp_iou_R3,020 report,0.901429,NOT_RUN,NOT_REPRODUCED,same
+holdout_ring_inner_mae_R0,020 report,1.238243,NOT_RUN,NOT_REPRODUCED,same
+holdout_ring_inner_mae_R3,020 report,1.004331,NOT_RUN,NOT_REPRODUCED,same
+hero_support_0p5mm_R0,020 report,0.345008,NOT_RUN,NOT_REPRODUCED,same
+hero_support_0p5mm_R3,020 report,0.340757,NOT_RUN,NOT_REPRODUCED,same

@@ -1,0 +1,7 @@
+module,path,sha256_prefix,executed,decision
+features019.py,019/code/features019.py,50cd25fd8df87364,no (read+audit),REUSE_AS_IS
+ring020.RingRenderer,020/code/ring020.py,,no (read+audit),REUSE_AS_IS (needs torch+pytorch3d)
+objective020.SymmetricFeatures,020/code/objective020.py,,no (read+audit),REUSE_PATTERN (adapter mirrors the formula)
+"optimize020 (Adam, LOCAL_SE3_BOUND)",020/code/optimize020.py,,no (read+audit),REUSE_PARAMETERS_ONLY
+G03 W0 cameras,camera_mainline/G03/video00*/,,yes,USE_AS_INPUT
+018-REPAIR yaw solver,018-REPAIR/code/yaw_solver.py,,yes,REUSE_AS_IS

@@ -1,0 +1,20 @@
+{
+ "environment": "python3.12 + numpy + scipy + pandas (no torch, no pytorch3d, no raw video)",
+ "command": "unzip to /tmp/audit019; PYTHONPATH=adapters:code python code/reproduce_offline.py; python -m unittest discover -s tests",
+ "exit_code": 0,
+ "missing_dependencies": [],
+ "matched_metrics": {
+   "yaw_theta_deg": 47.667014624543754,
+   "sampson_median_px": 7.517959031167187,
+   "inlier3": 0.2095435684647303,
+   "H_det": 1.0,
+   "H_orthogonality_max": 1.02e-17,
+   "unit_tests": "7/7"
+ },
+ "mismatched_metrics": {},
+ "unreproducible_metrics": [
+   "HERO support / holdout IoU / Ring inner-outer MAE (need 020 HERO+Body pipeline)",
+   "historical 5/18 within 0.75mm (replay gives 2/18; 020 CROSS_004.npz is a dangling symlink)"
+ ],
+ "status": "COMPLETE_WITH_DOCUMENTED_GAPS"
+}
