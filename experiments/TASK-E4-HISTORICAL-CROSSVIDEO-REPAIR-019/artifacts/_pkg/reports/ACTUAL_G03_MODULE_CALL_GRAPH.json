@@ -1,0 +1,14 @@
+{
+ "executed": false,
+ "reason": "stop condition: historical 020 core (gate/objective/optimize) BLOCKED by missing pytorch3d; G03 migration must not proceed",
+ "previous_round_note": "019 used only the 018-REPAIR yaw solver for G03; that is NOT an 020 migration and is not claimed as one here",
+ "planned_chain": [
+  "w0_to_legacy020.py",
+  "features019.py",
+  "features020.py",
+  "ring020.py",
+  "objective020.py",
+  "optimize020.py"
+ ],
+ "blocked_at": "ring020.py (p3d import)"
+}

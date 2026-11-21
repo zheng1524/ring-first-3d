@@ -1,0 +1,6 @@
+    v=vv[o['view']];assert v['video']==video and v['role']=='FIT';a=np.load(R/'features'/(o['view']+'.npz'));assert np.allclose(a['xy'][o['feature_id']],o['uv'],atol=1e-6);C=np.asarray(v['T']);p=(x-C[:3,3])@C[:3,:3];assert p[2]>0;q=p@np.asarray(v['K']).T;q=q[:2]/q[2];err.append(np.linalg.norm(q-o['uv']));n+=1
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/liu/ring_first_3d_workspace/experiments/TASK-E4-HISTORICAL-CROSSVIDEO-REPAIR-019/historical/replay_G01/experiments/TASK-E4-RING-SIFT-SYMMETRIC-REGISTRATION-020/features/G01_004_ref08.npz'
