@@ -1,0 +1,126 @@
+[
+ {
+  "logical_role": "w0_entry",
+  "source_path": "/home/liu/ring_first_3d_workspace/tools/run_w0_camera.py",
+  "source_commit": "HEAD",
+  "sha256": "c7891477620e6d735aeb02c0247f7689ce0db0de5b29b16951ca4e8961419be0",
+  "destination": null,
+  "reuse_mode": "AS_IS",
+  "used_by": [
+   "G01",
+   "G03",
+   "G05"
+  ],
+  "verified": true
+ },
+ {
+  "logical_role": "admission_policy",
+  "source_path": "/home/liu/ring_first_3d_workspace/camera_mainline/CAMERA_ADMISSION_POLICY.yaml",
+  "source_commit": "HEAD",
+  "sha256": "69b164058cc2569f992c2cc380b8f27d39c92fdebcb05b6a19eb0dcf6c2732e1",
+  "destination": "camera_mainline/code/CAMERA_ADMISSION_POLICY.yaml",
+  "reuse_mode": "AS_IS",
+  "used_by": [
+   "G01",
+   "G03",
+   "G05"
+  ],
+  "verified": true
+ },
+ {
+  "logical_role": "shared_se3",
+  "source_path": "/home/liu/ring_first_3d_workspace/camera_mainline/code/shared_se3.py",
+  "source_commit": "HEAD",
+  "sha256": "e115bb3ad08cef210c4f1debb4960246912f870fd0f5abad2fee4cad8b830a68",
+  "destination": "camera_mainline/code/shared_se3.py",
+  "reuse_mode": "MINIMAL_COMPATIBILITY_PATCH",
+  "used_by": [
+   "G01",
+   "G03",
+   "G05"
+  ],
+  "verified": true
+ },
+ {
+  "logical_role": "yaw_1dof",
+  "source_path": "/home/liu/ring_first_3d_workspace/camera_mainline/code/yaw_1dof.py",
+  "source_commit": "HEAD",
+  "sha256": "8091ba7e32d63281c16acd99311aaee2f93ab67b7bb2df4d0c45865e8d250710",
+  "destination": "camera_mainline/code/yaw_1dof.py",
+  "reuse_mode": "AS_IS",
+  "used_by": [
+   "G01",
+   "G03",
+   "G05"
+  ],
+  "verified": true
+ },
+ {
+  "logical_role": "geometry_1dof",
+  "source_path": "/home/liu/ring_first_3d_workspace/camera_mainline/code/geometry_1dof.py",
+  "source_commit": "HEAD",
+  "sha256": "309ed292850ca99530b64370666f3dd1123aed3628f25158eace0fd2ae5353f9",
+  "destination": "camera_mainline/code/geometry_1dof.py",
+  "reuse_mode": "AS_IS",
+  "used_by": [
+   "G01",
+   "G03",
+   "G05"
+  ],
+  "verified": true
+ },
+ {
+  "logical_role": "cross_video_matches",
+  "source_path": "/home/liu/ring_first_3d_workspace/camera_mainline/code/cross_video_matches.py",
+  "source_commit": "HEAD",
+  "sha256": "d0f71d1487e21767a0f9bb10135ae48d49d23a6426565e3179613eb9e81859e4",
+  "destination": "camera_mainline/code/cross_video_matches.py",
+  "reuse_mode": "MINIMAL_COMPATIBILITY_PATCH",
+  "used_by": [
+   "G01",
+   "G03",
+   "G05"
+  ],
+  "verified": true
+ },
+ {
+  "logical_role": "hist_features019",
+  "source_path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-RING-POLYP-REGISTRATION-019/code/features019.py",
+  "source_commit": "5636aae",
+  "sha256": null,
+  "destination": null,
+  "reuse_mode": "NOT_USED (read+audited; path proven)",
+  "used_by": "-",
+  "verified": false
+ },
+ {
+  "logical_role": "hist_ring020",
+  "source_path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-RING-SIFT-SYMMETRIC-REGISTRATION-020/code/ring020.py",
+  "source_commit": "5636aae",
+  "sha256": null,
+  "destination": null,
+  "reuse_mode": "BLOCKED_MISSING_ASSET (legacy per-view caches)",
+  "used_by": "-",
+  "verified": false
+ },
+ {
+  "logical_role": "hist_objective020",
+  "source_path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-RING-SIFT-SYMMETRIC-REGISTRATION-020/code/objective020.py",
+  "source_commit": "5636aae",
+  "sha256": null,
+  "destination": null,
+  "reuse_mode": "ADAPTER_ONLY",
+  "used_by": "G03",
+  "verified": false
+ },
+ {
+  "logical_role": "hist_optimize020",
+  "source_path": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-RING-SIFT-SYMMETRIC-REGISTRATION-020/code/optimize020.py",
+  "source_commit": "5636aae",
+  "sha256": null,
+  "destination": null,
+  "reuse_mode": "ADAPTER_ONLY",
+  "used_by": "G03",
+  "verified": false
+ }
+]

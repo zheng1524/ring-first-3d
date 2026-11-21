@@ -1,0 +1,6 @@
+change_id,file,level,reason,math_change,test,groups,before,after,status
+C1,camera_mainline/code/shared_se3.py,L2_ISOLATED,exp_se3 used norm over the 6-vector instead of the rotation part,rotation angle corrected,test_pose_valid_so3,G03,det=0.999979,det=1.0,APPLIED
+C2,camera_mainline/code/cross_video_matches.py,L1_ALLOWED,paths were hardcoded to G03,none,test_no_group_branch_in_entry,"G01,G03,G05",G03 only,group/video parameters,APPLIED
+C3,camera_mainline/code/shared_se3.py,L2_ISOLATED,RingRenderer needs deleted legacy per-view caches,"ring term = CAD curve distance vs real boundary points (same quantity, different renderer)",ring part reported separately,G03,RingRenderer mesh raster,torus_contours pixel curves,REVIEW_REQUIRED
+C4,camera_mainline/code/shared_se3.py,L2_ISOLATED,historical weights kept,none,objective parts logged,G03,-,"w_R=1.0,w_E=0.02,w_P=0.01",APPLIED
+C5,code/run_cross_video.py,DOCUMENTED,no cross-video 3D identity exists yet,L_F term absent (not faked),SIFT/identity CSV,G03,-,L_F=0 by absence,DOCUMENTED

@@ -1,0 +1,14 @@
+{
+  "algo": "w0-crossvideo-v1",
+  "w0_entry": "tools/run_w0_camera.py",
+  "b0_nfev": 60, "w0_nfev": 30,
+  "gate": "camera_mainline/CAMERA_ADMISSION_POLICY.yaml",
+  "k": [[490,0,319.5],[0,490,179.5],[0,0,1]],
+  "ring_cad_mm": {"R": 5.6, "r": 0.6},
+  "sift": {"nfeatures": 6000, "contrast_threshold": 0.01, "ratio": 0.75, "min_bg_matches": 10},
+  "se3": {"iters": 80, "lr": 0.01, "betas": [0.9, 0.999], "backtracks": 8,
+          "max_translation_mm": 1.2, "max_rotation_deg": 10.0,
+          "weights": {"ring": 1.0, "epi": 0.02, "prior": 0.01}, "scale": [0.6,0.6,0.6,0.0872665,0.0872665,0.0872665]},
+  "holdout": "video-b views sorted, even indices train, odd holdout",
+  "note": "group/video only select data; no algorithm branch allowed"
+}

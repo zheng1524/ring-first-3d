@@ -1,0 +1,14 @@
+{
+ "environment": "python3.12 + numpy + scipy + opencv (opencv not needed for offline)",
+ "command": "python code/reproduce_offline.py (from the task dir, fixtures bundled)",
+ "exit_code": 0,
+ "matched_metrics": {"n_pairs": 38, "n_matches": 482, "before_median_px": 5.3233,
+   "after_median_px": 4.2481, "before_inlier3": 0.3154, "after_inlier3": 0.3900,
+   "unit_tests": "8/8", "gradient_descent": true},
+ "mismatched_metrics": {},
+ "unreproducible_metrics": [
+   "G01/G05 cross-video (no ACCEPT camera in the frozen gate; W0 outputs kept in camera_mainline)",
+   "L_F bidirectional 3D reprojection (no cross-video 3D identity exists)"
+ ],
+ "status": "PASS"
+}
