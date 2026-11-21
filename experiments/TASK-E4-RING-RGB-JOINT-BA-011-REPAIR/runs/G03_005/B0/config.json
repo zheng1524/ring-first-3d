@@ -1,0 +1,62 @@
+{
+  "seed": 20261020,
+  "K": [
+    [
+      490.0,
+      0.0,
+      319.5
+    ],
+    [
+      0.0,
+      490.0,
+      179.5
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "reference_original_sample": 8,
+  "reference_raw": 459,
+  "max_new_frames": 6,
+  "selection_min_raw_separation": 18,
+  "SIFT_features": 6000,
+  "SIFT_ratio": 0.72,
+  "F_RANSAC_px": 1.5,
+  "pair_offsets": [
+    1,
+    2,
+    4
+  ],
+  "holdout_track_modulo": 5,
+  "ring_R_mm": 5.6,
+  "ring_r_mm": 0.6,
+  "ring_seed_starts": 4,
+  "ring_max_nfev": 100,
+  "pose_initializations": 2,
+  "yaw_grid": 72,
+  "global_alpha_nfev": 80,
+  "BA_max_nfev": 60,
+  "BA_max_train_tracks": 500,
+  "BA_huber_px": 1.0,
+  "ring_loss_weight": 1.0,
+  "temporal_rotation_prior_deg": 30.0,
+  "temporal_translation_prior_mm": 10.0,
+  "min_triangulation_angle_deg": 0.5,
+  "feature_train_reprojection_filter_px": 6.0,
+  "validation_min_test": 8,
+  "validation_MAE_px": 3.0,
+  "validation_p95_px": 6.0,
+  "validation_positive": 0.95,
+  "validation_center_spread_mm": 2.0,
+  "MVS_sources": 3,
+  "MVS_references": 2,
+  "MVS_target": [
+    352,
+    640
+  ],
+  "MVS_preview_is_not_validated": true,
+  "mesh_jump_mm": 0.75,
+  "no_GT_prediction": true
+}
