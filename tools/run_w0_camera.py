@@ -107,6 +107,7 @@ def main():
     run.mkdir(parents=True, exist_ok=True)
     ns, ordered, arrays = build_ns_and_views(g, v, meta, run)
     tr, pack, trp = stage_tracks(ns, ordered, run, g, v)
+    xy_tr = tr['xy']; held_mask = np.asarray(tr['held']).astype(bool)
     rings = stage_ring(ns, ordered, arrays, run)
     edges = ns['pair_data'](tr, pack)
     rf = [x['meta']['raw_frame'] for x in ordered]
@@ -133,7 +134,65 @@ def main():
         (run/'W0.json').write_text(json.dumps(dict(nfev=ba.get('nfev'), success=ba.get('success'),
                                                    objective=ba.get('training_soft_l1_objective')), indent=1))
         print('W0 done', ba.get('nfev'), flush=True)
-    out.mkdir(parents=True, exist_ok=True)
+    if a.stage in ('all', 'evaluate', 'admit', 'export'):
+        import camera_admission as A, camera_rotation_metrics as RM, evaluate_held_geometry as EV
+        import contour_metrics as CM
+        POL = A.load_policy(WS/'camera_mainline/CAMERA_ADMISSION_POLICY.yaml')
+        if (run/'W0.npz').exists():
+            d = np.load(run/'W0.npz'); cams = d['c2w']
+        else:
+            d = np.load(run/'B0.npz'); cams = d['c2w']
+        ids = [str(x) for x in d['ids']]
+        order = sorted(range(len(ids)), key=lambda i: (rf[i], ids[i]))
+        rows = []
+        for i, cid in enumerate(ids):
+            m = dict(arm=f'{g}/{v}', view=cid, raw_frame=rf[i],
+                     pose_valid=bool(RM.check_so3(cams[i][:3, :3])[0]), cad_valid=True)
+            qt = np.load(run/'observations'/(cid+'_ring.npz'))['q_train']
+            try:
+                m['ring_raw_mae'] = CM.ring_raw_mae(cams[i], qt, arrays[cid]['K'])
+            except ValueError:
+                m['cad_valid'] = False
+            ev = EV.evaluate_view(xy_tr, held_mask, ids, cams, i, K=U5.K_CFG)
+            vv = ev['valid_err']
+            m.update(held_raw_n=len(ev['raw_err']), held_n=len(vv),
+                     target_depth_fail=ev['target_depth_fail'],
+                     triangulation_degenerate_n=ev['degenerate'])
+            if len(vv):
+                m.update(held_median=float(np.median(vv)), held_p95=float(np.percentile(vv, 95)),
+                         held_p95_valid=float(np.percentile(vv, 95)),
+                         held_median_valid=float(np.median(vv)),
+                         held_mae=float(np.mean(vv)),
+                         big_error_fraction=float((vv > POL['rgb']['big_error_px']).mean()))
+            m['positive_depth'] = float(EV.project(np.zeros((1, 3)), cams[i])[1][0] > 0)
+            pos = order.index(i)
+            m['rotation_to_previous_deg'] = (None if pos == 0 else
+                round(RM.relative_deg(cams[order[pos-1]], cams[i]), 3))
+            m['center_to_previous_mm'] = (None if pos == 0 else
+                round(RM.center_distance_mm(cams[order[pos-1]], cams[i]), 3))
+            m['rotation_from_reference_deg'] = round(RM.relative_deg(cams[ref], cams[i]), 3)
+            dec = A.decide(m, POL, artefact=('DEGENERATE_TRIANGULATION'
+                           if m['triangulation_degenerate_n'] > 0 else None))
+            m.update(admission_status=dec['status'], admission_reasons=';'.join(dec['reasons']))
+            rows.append(m)
+        import pandas as pd
+        dfm = pd.DataFrame(rows)
+        (run/'PER_VIEW.csv').parent.mkdir(parents=True, exist_ok=True)
+        dfm.to_csv(run/'PER_VIEW.csv', index=False)
+        out.mkdir(parents=True, exist_ok=True)
+        dfm.to_csv(out/'admission.csv', index=False)
+        acc = dfm[dfm.admission_status == 'ACCEPT'].view.tolist()
+        idx = [ids.index(x) for x in acc]
+        np.savez_compressed(out/'camera_result.npz', c2w=cams, K=U5.K_CFG, ids=np.array(ids),
+                            raw_frames=np.array(rf), reference=ref, ring_cad_mm=np.array([5.6, 0.6]),
+                            source_arm='W0', admission_status=np.array(dfm.admission_status.values),
+                            pose_convention=np.array(['c2w']))
+        np.savez_compressed(out/'accepted_cameras.npz', c2w=cams[idx], K=U5.K_CFG, ids=np.array(acc),
+                            raw_frames=np.array([rf[i] for i in idx]), reference=ref,
+                            ring_cad_mm=np.array([5.6, 0.6]), source_arm='W0', pose_convention=np.array(['c2w']))
+        print('EVAL', {k: int(v) for k, v in dfm.admission_status.value_counts().items()},
+              'ring=%.3f held=%.3f p95=%.3f' % (dfm.ring_raw_mae.mean(),
+              dfm.held_median.median(), dfm.held_p95.median()), flush=True)
     man = dict(group=g, video=v, source_video=meta.get('video_path'), source_video_sha256=meta.get('video_sha256'),
                prepared=meta.get('n'), ids=[x['meta']['id'] for x in ordered], raw_frames=rf, ref=ref,
                tracks_sha256=sha(trp), gate='camera_mainline/CAMERA_ADMISSION_POLICY.yaml',
