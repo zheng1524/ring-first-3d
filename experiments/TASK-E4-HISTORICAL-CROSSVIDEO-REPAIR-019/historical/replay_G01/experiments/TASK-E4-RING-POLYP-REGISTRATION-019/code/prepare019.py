@@ -1,0 +1,35 @@
+from common import *
+import shutil
+P18=REPO/'experiments/TASK-E4-HERO-BODY-ADAPT-018';P14=REPO/'experiments/TASK-E4-PYTORCH3D-014';P3=REPO/'experiments/TASK-E3-B-LOCAL-HERO-FIELDS-001';PD=REPO/'experiments/TASK-PHASED-MAIN-SURFACE-CROSSVIDEO-001'
+def main():
+ (R/'inputs/G01').mkdir(parents=True,exist_ok=True);views=[];assets=[];old=load(P14/'config/ALL_VIEWS.json');native={v['id']:v for p in ['EXISTING_VIEWS.json','DERIVED_VIEWS.json']for v in load(P14/'config'/p)if v['case']=='G01'};bindings={r['view_id']:r for r in load(P18/'metrics/FRAME_BINDING_AUDIT.json')};frameplan=load(P18/'config/VIEW_PLAN.json')
+ for r in frameplan:
+  if r['group']!='G01':continue
+  a=np.load(r['cache']);v=dict(r['meta']);v.update(id=r['view_id'],video='004',role=r['role'],K=a['K'],T=a['T'],frame_binding=bindings[r['view_id']]['status'],RGB_source=v['RGB_source'],Mask_source=v['Mask_source'],old_pose_source=r['cache']);views.append(v)
+ for v0 in old:
+  if v0['case']!='G01'or v0['video']!='005':continue
+  v=dict(v0);n=native[v['id']];T=np.asarray(n['T']);assert np.allclose(T,v['T_original'],atol=1e-8);v.update(T=T,K=n['K'],role='HOLDOUT'if v['role']!='FIT'or v['id']=='G01_v005_raw00668'else'FIT',old_pose_source=n['pose_source'],pose_recovered_from='uncorrected014 EXISTING/DERIVED with exact T_original equality; not corrected ALL T',original014_corrected_T=v0['T']);views.append(v)
+ assert len({v['id']for v in views})==len(views)
+ for v in views:
+  im=np.array(Image.open(v['RGB_source']).convert('RGB'));lab=np.array(Image.open(v['Mask_source']));assert lab.shape==im.shape[:2]==(360,640);T=np.asarray(v['T']);assert abs(np.linalg.det(T[:3,:3])-1)<1e-6;dest=R/'inputs/G01'/(v['id']+'.npz');np.savez_compressed(dest,RGB=im,labels=lab,K=v['K'],T=T);v.update(cache=str(dest),RGB_SHA256=sha(v['RGB_source']),Mask_SHA256=sha(v['Mask_source']));assets.extend([asset(v['RGB_source']),asset(v['Mask_source'])])
+ for name,src in [('BODY018.npz',P18/'arms/B2_TRUSTED_COH16/local_results/G01/FINAL.npz'),('RING.npz',P18/'inputs/G01/RING.npz'),('NORMALIZATION.json',P18/'inputs/G01/NORMALIZATION.json')]:shutil.copyfile(src,R/'inputs/G01'/name);assets.append(asset(src))
+ for group in ['G01_005']:
+  (R/'inputs'/group).mkdir(parents=True,exist_ok=True);shutil.copyfile(R/'inputs/G01/RING.npz',R/'inputs'/group/'RING.npz')
+ # Each canonical frame uses exactly its original native camera, never the old cross-video correction.
+ save('config/VIEWS.json',views);fit4=[v['id']for v in views if v['video']=='004'and v['role']=='FIT'];fit4=sorted(fit4,key=lambda x:next((r.get('raw_frame',0)or 0 for r in load(P18/'metrics/FRAME_BINDING_AUDIT.json')if r['view_id']==x),0));save('config/NEGATIVE_SPLIT.json',dict(reference_fit=fit4[:4],target_fit=fit4[4:],target_holdout=[v['id']for v in views if v['video']=='004'and v['role']=='HOLDOUT'],known_transform=np.eye(4),initialization_ancestry='018 used both halves; this is a coordinate-drift negative control, not independent shape accuracy'))
+ proto=dict(seed=20261111,scope='one G01 pair004<-005 and same-video004 time/direction split',angles_deg=list(range(0,360,5)),normal_parities=[1,-1],renderer_size=[180,320],bin_size=0,SIFT=dict(nfeatures=6000,contrastThreshold=.01,ratio=.72,exclude_Ring_dilate_px=2,gray_min=12,gray_max=245,F_RANSAC_px=1.5,known_camera_Sampson_px=4.,track_min_views=3,triangulation_reprojection_px=2.,min_parallax_deg=.5,PnP_RANSAC_px=3.,min_PnP_inliers=6),loss=dict(lambda_polyp=1.,lambda_feature=.05,lambda_ring=1.,lambda_prior=.01,feature_sigma_px=3.,ring_sigma_px=3.,source_frame_weight='equal direction-sector mass using frozen native005 directions',HERO_not_in_main_loss=True),refinement=dict(topK=3,separation_deg=20,iterations=80,lr=.01,max_translation_mm=1.2,max_rotation_deg=10.,prior_translation_mm=.6,prior_rotation_deg=5.,accept='total FIT objective nonincrease, Ring loss cannot rise >0.001 absolute versus yaw candidate, all cameras in front of fixed CAD scene; rollback Adam on rejection',backtracks=8),ring_bias=dict(native_edge_margin_px=1.5,min_local_texture_std=3.,min_local_gradient=2.,min_pixels=64,min_sectors=3,max_sector_bias_spread_mm=.5,max_sector_MAD_mm=.25,sector_fit_holdout='alternating azimuth sectors, disjoint',adopt_in_registration=False),HOLDOUT='never used in features/landmarks/search/refinement/selection; frozen018/014 ancestry may include evaluation views',GT=False,scale=1.,A1='Ring-reduced full yaw grid, silhouette-only. Ring itself does NOT identify yaw.',A2='geometry direction proxies provide multiple candidates; representative by FIT silhouette only, never equated with true full-body centroid',A3='SIFT feature-only yaw grid/PnP proposals; 2D-only explicitly labelled if 3D insufficient',A4='joint silhouette+feature on full grid plus geometric/SIFT proposals; shape guides candidate pool, not a silently added loss',A5='officialP3D six-DoF left refinement of top3 A4 FIT candidates; select FIT only')
+ save('config/PROTOCOL.json',proto)
+ sources=load(P3/'HERO_NATIVE_INPUT_MANIFEST.json')['sources'];hplan=[]
+ for s in sources:
+  if s['scene']!='G01_005':continue
+  cid=s['source_id'];v=next(x for x in views if x['id']==cid);assert np.allclose(s['c2w'],v['T'],atol=1e-7);folder=R/'hero_fit'/cid;folder.mkdir(parents=True,exist_ok=True)
+  p={k:s['assets'][n]['path']for k,n in [('native','native_depth'),('mesh','raw_Mesh'),('points','raw_XYZ'),('pack','archived_direct_depth_pack')]}
+  for key,name in [('native','HERO_native.npz'),('mesh','Raw_open_mesh.ply'),('points','Raw_source_points.npz'),('pack','pack_full.npz')]:
+   dest=folder/name
+   if not dest.exists():dest.symlink_to(p[key])
+   p[key]=str(dest)
+  save(str(folder.relative_to(R)/'SOURCE.json'),dict(success=True,reused=False,existing_frozen_HERO=True,new_inference=False,parent_RGB=s['HERO_upstream_RGB'],**p));hplan.append(dict(group='G01_005',view_id=cid,role='FIT',cache=v['cache'],meta=v,origin_role=v['role']))
+ save('config/VIEW_PLAN.json',hplan);save('config/HERO_SOURCE_METADATA_005.json',[s for s in sources if s['scene']=='G01_005'])
+ # No old transformed/fused geometry is a training input. Historical transforms are controls only.
+ historical=load(PD/'metrics/D1_candidates.json');save('config/HISTORICAL_CANDIDATES.json',[dict(tag=x['tag'],T=x['H_005_to_004'],source=str(PD/'metrics/D1_candidates.json'),status=x.get('solver_status'))for x in historical]);assets.extend([asset(P14/'config/ALL_VIEWS.json'),asset(P14/'config/EXISTING_VIEWS.json'),asset(P14/'config/DERIVED_VIEWS.json'),asset(P3/'HERO_NATIVE_INPUT_MANIFEST.json')]);save('provenance/INPUT_FROZEN.json',dict(epoch=time.time(),assets=assets,view_config=asset(R/'config/VIEWS.json'),protocol=asset(R/'config/PROTOCOL.json'),new_scale=False,body_fixed=True,GT=False));table('INPUT_MANIFEST.csv',[{k:v.get(k)for k in ['id','video','role','RGB_source','Mask_source','RGB_SHA256','Mask_SHA256','qualification','old_pose_source','frame_binding']}for v in views]);print('019_INPUT_FROZEN',len(views),[(vid,sum(v['video']==vid and v['role']=='FIT'for v in views),sum(v['video']==vid and v['role']=='HOLDOUT'for v in views))for vid in ['004','005']],flush=True)
+if __name__=='__main__':main()

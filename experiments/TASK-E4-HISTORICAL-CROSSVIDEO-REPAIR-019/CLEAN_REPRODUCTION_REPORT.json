@@ -1,0 +1,16 @@
+{
+ "environment": "python3.12 + numpy + scipy (no torch, no pytorch3d, no legacy paths)",
+ "command": "unzip to /tmp/audit019r; PYTHONPATH=code python code/reproduce_offline.py; python -m unittest discover -s tests",
+ "exit_code": 0,
+ "matched_metrics": {"named_pairs": 18, "within_075mm": 5, "median_mm": 1.6266921004296755,
+   "center_mm": 2.160167553193399, "tilt_deg": 4.852245376490619,
+   "historical_output_within_075mm": 5, "R0_within_075mm": 2, "R3_within_075mm": 2, "unit_tests": "5/5 (1 skipped)"},
+ "mismatched_metrics": {},
+ "unreproducible_metrics": [
+   "historical Ring/RGB gradient gates (pytorch3d absent)",
+   "historical objective components (pytorch3d absent + per-view SIFT npz missing)",
+   "historical SE(3) optimization (same blockers)",
+   "HERO / holdout IoU / Ring MAE (020 HERO+Body pipeline not runnable here)"
+ ],
+ "status": "COMPLETE_WITH_DOCUMENTED_BLOCKS"
+}

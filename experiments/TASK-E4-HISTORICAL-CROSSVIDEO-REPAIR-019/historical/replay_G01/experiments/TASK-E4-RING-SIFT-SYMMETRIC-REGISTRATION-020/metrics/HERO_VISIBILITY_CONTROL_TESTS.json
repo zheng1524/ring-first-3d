@@ -1,0 +1,61 @@
+{
+  "cases": [
+    {
+      "case": "TARGET_BEHIND_CAD_IS_UNKNOWN",
+      "passed": true,
+      "source_offset_from_CAD_mm": -0.3,
+      "target_offset_from_CAD_mm": 0.3,
+      "status": {
+        "known": false,
+        "target_Ring_order_unreliable": true,
+        "cad_occluded": false,
+        "front": false,
+        "behind": false
+      }
+    },
+    {
+      "case": "RELIABLE_FRONT_PROXY",
+      "passed": true,
+      "source_offset_from_CAD_mm": -1.0,
+      "target_offset_from_CAD_mm": -0.2,
+      "status": {
+        "known": true,
+        "target_Ring_order_unreliable": false,
+        "cad_occluded": false,
+        "front": true,
+        "behind": false
+      }
+    },
+    {
+      "case": "DEEPER_LAYER_NOT_FRONT_CONFLICT",
+      "passed": true,
+      "source_offset_from_CAD_mm": -0.2,
+      "target_offset_from_CAD_mm": -1.0,
+      "status": {
+        "known": true,
+        "target_Ring_order_unreliable": false,
+        "cad_occluded": false,
+        "front": false,
+        "behind": true
+      }
+    },
+    {
+      "case": "CANDIDATE_BEHIND_CAD_IS_OCCLUDED",
+      "passed": true,
+      "source_offset_from_CAD_mm": 0.2,
+      "target_offset_from_CAD_mm": -0.5,
+      "status": {
+        "known": false,
+        "target_Ring_order_unreliable": false,
+        "cad_occluded": true,
+        "front": false,
+        "behind": false
+      }
+    }
+  ],
+  "all_passed": true,
+  "controlled_known_CAD_ray": true,
+  "actual_HERO_used": false,
+  "Polyp_GT_used": false,
+  "thresholds_unchanged": true
+}

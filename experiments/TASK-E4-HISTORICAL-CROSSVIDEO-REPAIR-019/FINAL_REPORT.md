@@ -1,0 +1,32 @@
+# TASK-E4-HISTORICAL-CROSSVIDEO-019-REPAIR — FINAL_REPORT
+
+```
+HISTORICAL_SOURCE_RECOVERED:      PASS
+HISTORICAL_LANDMARKS_VERIFIED:    PASS (153; per-observation BLOCKED)
+HISTORICAL_3D_RANSAC_REPRODUCED:  PASS (5/18 exact)
+HISTORICAL_RING_GRADIENT_VALID:   BLOCKED
+HISTORICAL_RGB_GRADIENT_VALID:    BLOCKED
+HISTORICAL_OBJECTIVE_REPRODUCED:  BLOCKED
+HISTORICAL_SE3_OPTIMIZATION_EXECUTED: BLOCKED
+G03_ACTUAL_020_MODULES_EXECUTED:  BLOCKED
+CODE_AUDIT_PACKAGE_COMPLETE:      COMPLETE
+```
+
+## 一句话
+
+历史提交确实存在并已取回；020 的软链接已按原样恢复；**历史 5/18 被 `named_candidate020.py` 原样复现**；
+但历史 Ring 梯度 / 目标 / SE(3) 优化因**全机无 pytorch3d** 被硬阻断，按停止条件不进入 G03。
+
+## 关键数字
+
+- 3D RANSAC：**5/18 < 0.75 mm**，中位 1.627 mm，中心 2.160 mm，倾角 4.852°（与历史输出逐位一致）
+- 冻结 R0：2/18，2.916 mm；冻结 R3：2/18，3.012 mm
+- 004 地标：**153**，SHA `1839a9fc8f948b79…`（软链接解析后与 019 原件同一文件）
+
+## 交付
+
+`HISTORICAL_INPUT_MANIFEST.json`、`HISTORICAL_RANSAC_VS_R0_R3.csv`、`ACTUAL_020_EXECUTION_TRACE.json`、
+`ACTUAL_G03_MODULE_CALL_GRAPH.json`、`EXECUTION_ERROR_LEDGER.csv`、`HISTORICAL_REPAIR_REPORT.md`、
+`code/{historical_ransac,reproduce_offline}.py`、`tests/test_repair.py`(5/5)、
+`historical/replay_G01/`（5636aae 的 019/020 源码 + 恢复的软链接 + 实际运行输出）、
+`artifacts/HISTORICAL_019_020_REPAIR_CODE_AUDIT.zip`。

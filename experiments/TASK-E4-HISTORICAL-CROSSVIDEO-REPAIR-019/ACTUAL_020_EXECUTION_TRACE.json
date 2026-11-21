@@ -1,0 +1,70 @@
+{
+ "commit": "5636aae",
+ "python": "3.12",
+ "torch": "2.7.1+cu128",
+ "pytorch3d": "ABSENT",
+ "steps": [
+  {
+   "step": 1,
+   "script": "setup_inputs020.py",
+   "status": "BLOCKED",
+   "reason": "requires legacy REPO /home/liu/ring_first_3d_e4_sdf_localization (deleted)",
+   "evidence": "common.py REPO constant"
+  },
+  {
+   "step": 2,
+   "script": "validate_landmarks020.py",
+   "status": "FAIL",
+   "reason": "features/G01_004_ref08.npz missing (per-view SIFT npz not committed)",
+   "evidence": "FileNotFoundError in logs/validate020.log"
+  },
+  {
+   "step": 3,
+   "script": "named_candidate020.py",
+   "status": "PASS",
+   "reason": "executed with historical source; output 18 5 2.1602 4.8522 False",
+   "evidence": "metrics/NAMED_LANDMARK_RIGID_PROPOSAL.json"
+  },
+  {
+   "step": 4,
+   "script": "gate020.py",
+   "status": "BLOCKED",
+   "reason": "ModuleNotFoundError: pytorch3d",
+   "evidence": "logs/gate020.log"
+  },
+  {
+   "step": 5,
+   "script": "feature_gate020.py",
+   "status": "BLOCKED",
+   "reason": "imports p3d -> pytorch3d missing; also feature npz missing",
+   "evidence": "same"
+  },
+  {
+   "step": 6,
+   "script": "objective020.py",
+   "status": "BLOCKED",
+   "reason": "imports RingRenderer -> p3d",
+   "evidence": "logs/optimize020.log"
+  },
+  {
+   "step": 7,
+   "script": "optimize020.py",
+   "status": "BLOCKED",
+   "reason": "imports objective020 -> p3d",
+   "evidence": "logs/optimize020.log"
+  },
+  {
+   "step": 8,
+   "script": "evaluate020.py",
+   "status": "NOT_RUN",
+   "reason": "stop condition: historical objective not reproduced",
+   "evidence": "-"
+  }
+ ],
+ "summary": {
+  "PASS": 1,
+  "FAIL": 1,
+  "BLOCKED": 5,
+  "NOT_RUN": 1
+ }
+}
