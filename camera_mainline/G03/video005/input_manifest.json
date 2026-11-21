@@ -1,5 +1,13 @@
 {
  "arm": "W0",
+ "policy_sha256": "e5a4b7aa7f6c78e7c358f81480364ca7382e5fa997de51499d7241bac018b7e2",
+ "gate_sha256": "37da188e14b5c335836b70dadb5dedd56ec936c048f1a2864b91b87d2adc6057",
+ "rotation_sha256": "dd560ba01406ad68f11f7804620d2273ec38904f608428adbbcbe4eb65d7976e",
+ "held_eval_sha256": "308b66a908c8063a95d4251aff18111bee8884a375da7a2c285216577601bfd8",
+ "camera_asset_sha256": "15c9808c7e3b0f58992dbaaedfb1f286ffe842cdbdf49d7b38146ca166f373d9",
+ "source_camera_file": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-RING-RGB-JOINT-BA-012/runs/G03_005/W0/cameras.npz",
+ "source_camera_sha256": "32ad6fd1c1757c2174f9741fd9e1de5f79036141c986eaeb6f100234f930c523",
+ "tracks_sha256": "8e9a93a62a8e35f68f167eb824f096ace80817ca20cb1b27e65a4357958d4e94",
  "view_ids": [
   "G03_v005_raw00070",
   "G03_v005_raw00085",
@@ -18,8 +26,11 @@
   "G03_v005_raw00272",
   "G03_v005_raw00287"
  ],
- "source": "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-RING-RGB-JOINT-BA-012/runs/G03_005/W0/cameras.npz",
  "n_accepted": 16,
- "policy": "policy/CAMERA_ADMISSION_POLICY.yaml",
- "note": "Accepted cameras for G03/005; Ring CAD frame; K as in frozen 005 config"
+ "ring_cad_mm": [
+  5.6,
+  0.6
+ ],
+ "pose_convention": "c2w",
+ "note": "Run identity recorded here; do not embed this file's own SHA (circular)."
 }
