@@ -5,66 +5,79 @@
  "pytorch3d": "ABSENT",
  "steps": [
   {
+   "step": 0,
+   "script": "import pytorch3d",
+   "status": "PASS",
+   "reason": "PYTHONPATH=runtime/p3d; _C.cpython-312 .so present; CUDA available",
+   "evidence": "logs/p3d_import.log"
+  },
+  {
    "step": 1,
    "script": "setup_inputs020.py",
    "status": "BLOCKED",
-   "reason": "requires legacy REPO /home/liu/ring_first_3d_e4_sdf_localization (deleted)",
-   "evidence": "common.py REPO constant"
+   "reason": "inputs/G01 was a dangling symlink; rebuilt from assets/retained_sources (10 files)",
+   "evidence": "historical/replay_G01/.../inputs/G01"
   },
   {
    "step": 2,
-   "script": "validate_landmarks020.py",
-   "status": "FAIL",
-   "reason": "features/G01_004_ref08.npz missing (per-view SIFT npz not committed)",
-   "evidence": "FileNotFoundError in logs/validate020.log"
+   "script": "gate020.py",
+   "status": "BLOCKED",
+   "reason": "advances past p3d/RING.npz, then needs 005 view caches (G01_005_raw00057.npz) that only existed in the deleted legacy workspace",
+   "evidence": "logs/gate020.log"
   },
   {
    "step": 3,
-   "script": "named_candidate020.py",
-   "status": "PASS",
-   "reason": "executed with historical source; output 18 5 2.1602 4.8522 False",
-   "evidence": "metrics/NAMED_LANDMARK_RIGID_PROPOSAL.json"
+   "script": "validate_landmarks020.py",
+   "status": "BLOCKED",
+   "reason": "per-view SIFT npz missing; path proven by regenerating G01_004_ref08 (619 features) with the unmodified features019.features()",
+   "evidence": "logs/gen_features_demo.log"
   },
   {
    "step": 4,
-   "script": "gate020.py",
-   "status": "BLOCKED",
-   "reason": "ModuleNotFoundError: pytorch3d",
-   "evidence": "logs/gate020.log"
+   "script": "named_candidate020.py",
+   "status": "PASS",
+   "reason": "18 pairs, 5 within 0.75mm, center 2.1602, tilt 4.8522",
+   "evidence": "metrics/NAMED_LANDMARK_RIGID_PROPOSAL.json"
   },
   {
    "step": 5,
    "script": "feature_gate020.py",
    "status": "BLOCKED",
-   "reason": "imports p3d -> pytorch3d missing; also feature npz missing",
-   "evidence": "same"
+   "reason": "needs the same 005 caches + regenerated features",
+   "evidence": "-"
   },
   {
    "step": 6,
    "script": "objective020.py",
    "status": "BLOCKED",
-   "reason": "imports RingRenderer -> p3d",
-   "evidence": "logs/optimize020.log"
+   "reason": "RingRenderer loads every view cache; 005 missing",
+   "evidence": "logs/gate020.log"
   },
   {
    "step": 7,
    "script": "optimize020.py",
    "status": "BLOCKED",
-   "reason": "imports objective020 -> p3d",
-   "evidence": "logs/optimize020.log"
+   "reason": "depends on objective020",
+   "evidence": "-"
   },
   {
    "step": 8,
    "script": "evaluate020.py",
    "status": "NOT_RUN",
-   "reason": "stop condition: historical objective not reproduced",
+   "reason": "stop condition",
    "evidence": "-"
   }
  ],
  "summary": {
-  "PASS": 1,
-  "FAIL": 1,
+  "PASS": 2,
   "BLOCKED": 5,
   "NOT_RUN": 1
+ },
+ "environment": {
+  "python": "3.12",
+  "torch": "2.7.1+cu128",
+  "pytorch3d": "0.7.9 (source tree + compiled _C in runtime/p3d)",
+  "pytorch3d_path": "/home/liu/ring_first_3d_workspace/runtime/p3d",
+  "cuda": true
  }
 }
