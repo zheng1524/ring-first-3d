@@ -1,0 +1,11 @@
+experiment,finding,classification
+S0,exact recovery (err=0) for 0/30/-120/179 with legal SO(3) rigs,SOLVER_OK
+S1-S4,err<0.16 deg with 0.5-1.5px noise and up to 50% outliers,SOLVER_OK
+S5 baseline sweep,yaw stays identifiable down to b/Z=0.007 because the ring-centre rotation itself creates a chord baseline; the intended degeneracy is NOT produced by scaling the baseline,MATCHING_ERROR_DESIGN_FLAW
+S6 clustered,err=0 (clustering alone is not a degeneracy here),SOLVER_OK
+S7 wrong normal branch,"err 112-166 deg, status DEGENERATE -> detects the wrong branch",SOLVER_OK
+S8 different K (2x),err=0 with per-side K -> K chain correct,SOLVER_OK
+same-video control,err 0.055 deg at 0/30/-120/179 on real 005 tracks,SOLVER_OK
+shuffle negative control,"theta=14.8, DEGENERATE, inlier 3%, median 69px",SOLVER_OK
+B: 004 ACCEPT vs 005,"per-pair yaw median 47.24 deg, MAD 1.29 deg, 81.6% within +-5 deg; match-level median 7.5px",MATCHING_ERROR+YAW_MODEL_PARTIAL
+A: 004 QUARANTINE vs 005,"per-pair median 33.4 deg but MAD 6.8 deg, only 40% within +-5 deg",CAMERA_POSE_ERROR+YAW_MODEL_INSUFFICIENT
