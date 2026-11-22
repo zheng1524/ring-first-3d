@@ -1,0 +1,25 @@
+{
+  "group": "G03",
+  "matched_pairs": 96,
+  "matched_points": 3749,
+  "official_sampson_median": 4.593439877263915,
+  "official_sampson_p95": 156.1018205861452,
+  "frac_gt50": 0.16617764737263271,
+  "focus_note": "Top-5 extreme rows are individual SIFT matches, not image-pair metrics.",
+  "test_commit": "021 bfd9c622bb2660b4a2e4c2ffdbadbb72b19971fd",
+  "sha256_inputs": {
+    "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-W0-CROSSVIDEO-021-CORRECTIVE/runs/G03/MATCHES.npz": "05e05327f86b98ecf5754ab4fa273a0e05e5d9868c2b4773f6424682f4bc407a",
+    "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-W0-CROSSVIDEO-021-CORRECTIVE/runs/G03/RESULTS.json": "f0dffc578550af8140ccd6e6473379c974641054d8166606b62b4b1f87b2adfd",
+    "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-W0-CROSSVIDEO-021-CORRECTIVE/runs/G03/SPLIT.json": "42a07a4418d8982b259b64716826cda5a1622c9e258536849df30ccd8dc49e53",
+    "/home/liu/ring_first_3d_workspace/camera_mainline/G03/video004/camera_result.npz": "56fbdaee0e718e86e06c4754dc90996393fad75d8994184262ac309c1883c02d",
+    "/home/liu/ring_first_3d_workspace/camera_mainline/G03/video005/camera_result.npz": "ba8b1f83376e17eb4c2c855617a7c2d053928a2ad6a31e8138adc0ded1662a63",
+    "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-CONTOUR-REFINEMENT-005/runs/prepared/G03_004/PREPARED.json": "a4e4f0bcc663ca9ce6dadf514b2c5effc3c7ae3ee8f77bcb3b5500ec008a3587",
+    "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-CONTOUR-REFINEMENT-005/runs/prepared/G03_005/PREPARED.json": "8688f4c01399d9bab8aef34d3a80a1fd1334b2b4504842c2a5f51be87519952b"
+  },
+  "warnings": [
+    "RGB-MAGSAC consistency is diagnostic only; not independent of SIFT matching.",
+    "F_img may be degenerate under planar scene or small baseline.",
+    "Sampson is not Euclidean match displacement across the two images.",
+    "Sampson only tests epipolar consistency, not true 3D point identity or depth."
+  ]
+}

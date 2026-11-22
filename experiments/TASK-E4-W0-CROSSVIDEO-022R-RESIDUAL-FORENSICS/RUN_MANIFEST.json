@@ -1,0 +1,44 @@
+{
+ "branch": "audit/TASK-E4-W0-CROSSVIDEO-022R-RESIDUAL-FORENSICS",
+ "base_commit": "af90667787f268a93769b8916f16e452e7ce25ba",
+ "measured_commit": "021 bfd9c622bb2660b4a2e4c2ffdbadbb72b19971fd",
+ "python": "3.12.13",
+ "numpy": "1.26.4",
+ "opencv": "4.11.0",
+ "matplotlib": "3.10.8",
+ "commands": [
+  "python tools/inspect_epipolar_residuals.py --root ... --group G03 --out .../runs/G03",
+  "python tools/forensic_extra.py"
+ ],
+ "inputs": {
+  "experiments/TASK-E4-W0-CROSSVIDEO-021-CORRECTIVE/runs/G03/MATCHES.npz": "05e05327f86b98ecf5754ab4fa273a0e05e5d9868c2b4773f6424682f4bc407a",
+  "experiments/TASK-E4-W0-CROSSVIDEO-021-CORRECTIVE/runs/G03/RESULTS.json": "f0dffc578550af8140ccd6e6473379c974641054d8166606b62b4b1f87b2adfd",
+  "experiments/TASK-E4-W0-CROSSVIDEO-021-CORRECTIVE/runs/G03/SPLIT.json": "42a07a4418d8982b259b64716826cda5a1622c9e258536849df30ccd8dc49e53",
+  "camera_mainline/G03/video004/camera_result.npz": "56fbdaee0e718e86e06c4754dc90996393fad75d8994184262ac309c1883c02d",
+  "camera_mainline/G03/video005/camera_result.npz": "ba8b1f83376e17eb4c2c855617a7c2d053928a2ad6a31e8138adc0ded1662a63",
+  "experiments/TASK-E4-UNIFIED-RING-CONTOUR-REFINEMENT-005/runs/prepared/G03_004/PREPARED.json": "a4e4f0bcc663ca9ce6dadf514b2c5effc3c7ae3ee8f77bcb3b5500ec008a3587",
+  "experiments/TASK-E4-UNIFIED-RING-CONTOUR-REFINEMENT-005/runs/prepared/G03_005/PREPARED.json": "8688f4c01399d9bab8aef34d3a80a1fd1334b2b4504842c2a5f51be87519952b"
+ },
+ "outputs": {
+  "runs/G03/01_pair_error_heatmap.png": "b5f1627a1d8e8b59a91c76a903a471a427803f48d812a16d024c6d12928565a4",
+  "runs/G03/02_residual_distribution.png": "a79b4ed2279666882c48d565e9e3d905357c04e6b42a769ed59c986e3e0f3883",
+  "runs/G03/03_epipolar_examples.png": "c8101e697097003e6226c86b5941199de4e3b4fea9c7ede4f76f638749be7cb6",
+  "runs/G03/04_error_spatial_overlay_005.png": "320e06b0a25150a5890e9b29e7b9f5853516c4a467db45ad90c20437f766ddbd",
+  "runs/G03/05_Fpose_vs_Fimg_epipolar.png": "1a68c0182e258a39f39ec085a207dbc2e553c7a0e9c27a7f339b87b62c52cc13",
+  "runs/G03/F_pose_vs_F_img.csv": "0be3b2048729b5806b33b4cb41f2a08f95c2d1f9aa99f44a3f97f858809f685f",
+  "runs/G03/S3_summary.json": "9cad895ab7866b9079904c892d17f1b358ef3967955ce65e13eb9dca4d46f64a",
+  "runs/G03/SUMMARY.json": "e74a3778d5f5c06973b58cd9096d0a7231468f815c28026f11676b72f91be715",
+  "runs/G03/W0_quality_crosscheck.csv": "87cced5304eeb22cf66a5ec417a93c4b63ecdde2eeb3fba1d7d36a45d2262e30",
+  "runs/G03/frame_residuals.csv": "124ee596c15b7dfe7f0cb9e35ef7a02b388290bf9f74328a6a23dd614c65ecde",
+  "runs/G03/frame_residuals_normalised_005.csv": "db0a55bf13c4b086f78c3bab482769ebeef6003b11e046c472937246844e0cbc",
+  "runs/G03/mutual_consistency.csv": "b19852dac738ce37a1ec22b3f3e1908814dc87ffaca2f3ebf4fa7a3ae0a7e1da",
+  "runs/G03/pair_montages/G03_key02_raw00327__G03_v005_raw00070.png": "84742294de429d80ae3c92b3efbc9cbafefa82c17904093d0608eb5d6537680b",
+  "runs/G03/pair_montages/G03_key02_raw00327__G03_v005_raw00215.png": "68790e4696485acc05c3e7cd54181b24978f85a42c698f888a3f464fc4f58efd",
+  "runs/G03/pair_montages/G03_v004_raw00202__G03_v005_raw00186.png": "f15c6f5213f11d9f37159745ef1218e73fbc97c4b38dd174a181e5f111891941",
+  "runs/G03/pair_montages/G03_v004_raw00242__G03_v005_raw00243.png": "583089e23ae1b3522010df7492bea4226086f0d65848952ebf84ee3dac2a75ef",
+  "runs/G03/pair_montages/G03_v004_raw00242__G03_v005_raw00258.png": "3cfb9892294adf73be44e9e6e5e99392b879489c8dceee20f159c711c4562cc7",
+  "runs/G03/pair_montages/G03_v004_raw00263__G03_v005_raw00099.png": "8ab89aed0f261be60c7d22d5df3e824fa3c567cff3487d08cba675fb28ed13d7",
+  "runs/G03/pair_residuals.csv": "6aa1f9065c1d99490490445f24af8a3814f54d6645efc3992ed5d05c459c1c81",
+  "runs/G03/point_residuals.csv": "7ab51ec795fb27f3c1b9d0cb341900785e8e9c50fe2b11187915963822da581e"
+ }
+}
