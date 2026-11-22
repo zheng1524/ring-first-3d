@@ -1,0 +1,70 @@
+{
+ "group": "G03",
+ "candidates": 12,
+ "ransac": {
+  "best_seed": 2,
+  "n_inliers": 4,
+  "ring_mae_w0": 1.0430860011896337,
+  "ring_mae_004_H": 6.84133607517212,
+  "ring_mae_005_Hinv": 5.772837457924454,
+  "hypothesis_status": "RING_CONFLICT"
+ },
+ "seed_spread": {
+  "mm": [
+   0.0,
+   15.802805212714166,
+   3.414403524924572,
+   3.414403524924572,
+   3.414403524924572
+  ],
+  "deg": [
+   0.0,
+   31.113887166973797,
+   8.298251646855226,
+   8.298251646855226,
+   8.298251646855226
+  ]
+ },
+ "holdout": {
+  "rows": 132,
+  "categories": [
+   {
+    "side": "004->005",
+    "category": "MATCHED_HIGH_ERROR",
+    "n": 20
+   },
+   {
+    "side": "004->005",
+    "category": "MATCHED_VALID",
+    "n": 12
+   },
+   {
+    "side": "004->005",
+    "category": "NO_DESCRIPTOR_MATCH",
+    "n": 64
+   },
+   {
+    "side": "005->004",
+    "category": "MATCHED_HIGH_ERROR",
+    "n": 4
+   },
+   {
+    "side": "005->004",
+    "category": "MATCHED_VALID",
+    "n": 16
+   },
+   {
+    "side": "005->004",
+    "category": "NO_DESCRIPTOR_MATCH",
+    "n": 16
+   }
+  ],
+  "matched_valid": 28,
+  "median_px": 6.08333873005688,
+  "p90_px": 7.632762522268146
+ },
+ "final_status": {
+  "RIGID_CONSENSUS_CONFLICT": 8,
+  "RIGID_CONSENSUS_SUPPORTED": 4
+ }
+}

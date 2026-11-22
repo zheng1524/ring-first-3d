@@ -1,0 +1,18 @@
+{
+  "algo": "w0-crossvideo-025",
+  "w0_entry": "tools/run_w0_camera.py",
+  "historical": {"commit": "5636aaebd61a3d53b69f528692c4c7095df46508",
+                 "chain": ["features019.landmarks(fit4,'CROSS_004')",
+                           "features019.cross(fit4,fit5,lm004,'CROSS')",
+                           "features019.landmarks(fit5,'INDEPENDENT_005')",
+                           "features020.make('CROSS',fit5,fit4,'REVERSE','INDEPENDENT_005')"]},
+  "split": {"rule": "sorted ACCEPT views, even=FIT, odd=HOLDOUT", "frozen_before": "feature extraction"},
+  "sift": {"nfeatures": 6000, "contrast_threshold": 0.01, "ratio": 0.72, "mutual": true},
+  "landmark": {"min_views": 3, "max_reproj_px": 2.0, "min_parallax_deg": 0.5},
+  "identity020": {"min_distinct_views_per_side": 2, "one_to_one": true, "ranking": "vote count"},
+  "consistency": {"method": "open3d ransac correspondence", "with_scaling": false,
+                  "threshold_mm": 1.0, "min_inliers": 3, "seeds": [0,1,2,3,4]},
+  "ring": {"max_mae_ratio_vs_w0": 2.0, "note": "ring conflict is a HYPOTHESIS status, not an identity verdict"},
+  "holdout": {"matching": "batch descriptor ratio 0.72 + mutual", "valid_px": 10.0,
+              "categories": ["MATCHED_VALID","MATCHED_HIGH_ERROR","NO_DESCRIPTOR_MATCH","NO_VISIBLE_PROJECTION","NEGATIVE_DEPTH","NOT_EVALUABLE"]}
+}
