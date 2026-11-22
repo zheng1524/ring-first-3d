@@ -1,0 +1,6 @@
+item,change,reason,math_semantics_changed,test
+p3_joint_restored,added 026-CORRECTIVE/core/p3_joint.py,baseline commit referenced a file that was never committed (027 P0.1),no,"entry --stage full-corrective resolves; G03 prints final flags; G01 BLOCKED"
+fixed_track_adapter,core/fixed_track_tri.py,couples historical 019 per-track code to a FIXED track list for experiment A,no,"FIXED_TRACK_EQUIVALENCE max_diff4=0.0 max_diff5=0.0 vs historical landmarks"
+ring_residual_interface,ba_core.ring_distances,RingRenderer.losses returns a scalar mean; BA needs per-point residuals,no (mean-normalised 1/sqrt(N)),residual at truth = 0.646 dominated by real Ring error; RGB-only at truth = 0.0
+ba_variables,ba_core.Problem,new adapter layer only (H, camera deltas, landmarks); solver is scipy TRF,no,controlled S1-S4,S6,S10 <=0.03 deg
+gauge_anchor,anchor = last 005 FIT camera,removes 005 frame gauge; 004 placement carried by H,no,rank diagnostics S8/S9 show 42/48 (yaw or single-side unobservable)

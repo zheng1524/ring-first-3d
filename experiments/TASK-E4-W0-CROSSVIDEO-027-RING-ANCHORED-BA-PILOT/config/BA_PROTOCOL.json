@@ -1,0 +1,10 @@
+{
+  "algo": "w0-crossvideo-027-ba-pilot",
+  "solver": "scipy.optimize.least_squares (trf, huber, f_scale=3, x_scale='jac', numerical jacobian)",
+  "variables": {"H": 6, "camera_delta": "6 per non-anchor FIT camera", "landmarks": "3 per shared identity"},
+  "gauge": {"anchor": "last 005 FIT camera fixed", "ring_frame": "005 world", "H_carries": "004 video placement"},
+  "weights": {"ring_lambda": 10.0, "sig_rot_deg": 0.5, "sig_trans_mm": 0.25, "sig_geo_mm": 50.0},
+  "ring": {"implementation": "H020_REUSED (ring020_026.py)", "residual": "per-point distance to historical CAD visible edges, /3, mean-normalised by 1/sqrt(N)", "edges": "frozen at the initial pose during optimisation; recomputed for evaluation"},
+  "configs": {"A": "W0 per-video baseline", "B1": "H + landmarks, cameras fixed", "C": "H + landmarks + 004 FIT cameras released"},
+  "controlled": {"scenarios": 10, "truth": "real Ring CAD + real W0 geometry", "init": "identity except S1 (truth)"}
+}
