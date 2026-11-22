@@ -1,0 +1,13 @@
+{
+  "algo": "w0-crossvideo-027-corrective-r2",
+  "scene": {"seed": 0, "n_landmarks": 12, "cameras": 6, "H_rot_deg": [0.7, -0.4, 12.0], "H_mm": [0.4, -0.3, 0.2]},
+  "feature_identity": "feature_id == landmark_id (never re-derived from track order)",
+  "ring": {"observations": "GT camera projections of fixed CAD (inner/outer/mid)", "blocks_in_ba": ["I", "C", "O"],
+           "mask_in_ba": false, "edges": "from INITIAL cameras only", "subsample": {"inner_outer": 2, "mid": 4}},
+  "solver": {"library": "scipy.optimize.least_squares", "method": "trf", "loss": "linear",
+             "max_nfev": 40, "ftol": 1e-12, "xtol": 1e-12, "gtol": 1e-12},
+  "levels": {"L0": "PASS", "L1": "PASS", "L2_3deg": "PARTIAL", "L2_12deg": "FAIL",
+             "L3": "NOT_EXECUTED", "L4": "NOT_EXECUTED", "L5": "NOT_EXECUTED"},
+  "status": "CONTROLLED_BA_PARTIAL",
+  "ready_for_real_g03_ba": false
+}
