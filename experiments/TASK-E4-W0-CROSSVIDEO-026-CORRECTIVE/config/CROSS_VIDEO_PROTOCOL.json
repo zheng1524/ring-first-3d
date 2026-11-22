@@ -1,0 +1,17 @@
+{
+  "algo": "w0-crossvideo-026-corrective",
+  "ring": {"implementation": "H020_REUSED", "module": "replay/ring020_026.py",
+           "patch": ["input/G01/RING.npz -> RING_CAD", "input/G01/NORMALIZATION.json -> RING_NORM"],
+           "centerline_source": "dxy_mid._engine.ring_component.recover(labels, RGB, 10.) — same call as 019/ring019.py",
+           "configs": {"MIO": {"M": 0.25, "I": 0.35, "O": 0.35},
+                       "MICO": {"M": 0.25, "I": 0.35, "C": 0.05, "O": 0.35}},
+           "primary": "MIO"},
+  "se3": {"H_definition": "H_005<-004", "camera_convention": "c2w",
+          "increment_rule": "H_input = T_pert @ inv(T0); renderer computes canonical(H_input @ T0)",
+          "tests": ["T1_identity", "T2_translation", "T3_general_rotation", "T4_mixed", "T5_bidirectional", "T6_fit_holdout_direction"]},
+  "perturbation": {"seed": 7, "world_axes": ["ring_z", "x_tilt", "y_tilt"], "local_axes": ["yaw", "pitch", "roll"],
+                   "rot_deg": [1.0, 5.0, 15.0, 45.0], "trans_mm": [0.1, 0.25, 0.5]},
+  "track_identity": {"key": "sorted tuple of (view, feature_id) from <label>_OBSERVATIONS.json",
+                     "experiment_A": "common keys only", "experiment_B": "full historical quality gate"},
+  "joint": {"enabled": false, "status": "NO_VALIDATED_CANDIDATE_FOUND"}
+}
