@@ -1,0 +1,21 @@
+{
+ "definition": "|x2^T F x1| / sqrt((Fx1)_1^2+(Fx1)_2^2+(F^T x2)_1^2+(F^T x2)_2^2)",
+ "legacy_definition": "|x2^T F x1| / (|(Fx1)_12| + |(F^T x2)_12|)  <- NOT standard",
+ "same_matches": {
+  "fit_n": 2003,
+  "holdout_n": 1746
+ },
+ "yaw_seed": {
+  "fit_standard": 9.668840075029582,
+  "fit_legacy": 6.843626449428171,
+  "holdout_standard": 7.475513134700069,
+  "holdout_legacy": 5.290311511786979
+ },
+ "se3_final": {
+  "fit_standard": 4.6369589054734615,
+  "fit_legacy": 3.2817684254093558,
+  "holdout_standard": 4.538321968539436,
+  "holdout_legacy": 3.2115162617211883
+ },
+ "warning": "standard and legacy numbers are different mathematical quantities; 4.248px of task 020 is INVALID and not comparable"
+}

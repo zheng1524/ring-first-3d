@@ -1,0 +1,32 @@
+{
+ "tests": 13,
+ "passed": 13,
+ "groups": [
+  "six_dof_independence",
+  "scipy_expm_atol_1e-12",
+  "pytorch3d_cross_check",
+  "se3_inverse",
+  "se3_composition",
+  "camera_projection_depth",
+  "zero_update_identity",
+  "sampson_zero_at_truth",
+  "sampson_standard_vs_point_to_line",
+  "shared_se3_uses_standard_sampson"
+ ],
+ "key_evidence": {
+  "translation_only_t": [
+   0.06,
+   0,
+   0
+  ],
+  "rotation_only_t": [
+   0,
+   0,
+   0
+  ],
+  "scipy_max_abs_diff": "<1e-12",
+  "pytorch3d_order": "(v,omega) then transpose",
+  "pytorch3d_max_abs_diff": "~1e-17 (float64 probe)"
+ },
+ "note": "baseline exp_se3 used only q[:3] for both v and omega; fixed by camera_mainline/code/se3.py"
+}

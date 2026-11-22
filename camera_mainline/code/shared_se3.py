@@ -16,21 +16,12 @@ LR, B1, B2, EPS = 0.01, 0.9, 0.999, 1e-8
 MAX_T_MM, MAX_R_DEG = 1.2, 10.0
 
 
-def exp_se3(w):
-    w = np.asarray(w, float)[:3]
-    th = np.linalg.norm(w)
-    W = np.array([[0, -w[2], w[1]], [w[2], 0, -w[0]], [-w[1], w[0], 0]])
-    if th < 1e-12:
-        R = np.eye(3) + W
-    else:
-        R = np.eye(3) + np.sin(th) / th * W + (1 - np.cos(th)) / th**2 * (W @ W)
-    T = np.eye(4); T[:3, :3] = R
-    return T
+from se3 import exp_se3 as _exp_se3, hat as _hat
 
 
 def pose_from_q(q, seed):
-    d = exp_se3(np.asarray(q, float) * SCALE)
-    d[:3, 3] = np.asarray(q, float)[:3] * SCALE[:3]
+    """H(q) = exp(hat(q * scale)) @ H_seed, with q = (v_mm * ?, omega) and scale as below."""
+    d = _exp_se3(np.asarray(q, float) * SCALE)
     return d @ seed
 
 
@@ -47,7 +38,9 @@ def sampson_px(u4, u5, H, C4, C5, K):
     F = F / n
     a = np.c_[u4, np.ones(len(u4))]; b = np.c_[u5, np.ones(len(u5))]
     Fa = (F @ a.T).T; Ftb = (F.T @ b.T).T
-    return np.abs(np.einsum('ij,ij->i', b, Fa)) / (np.hypot(Fa[:, 0], Fa[:, 1]) + np.hypot(Ftb[:, 0], Ftb[:, 1]) + 1e-12)
+    num = np.abs(np.einsum('ij,ij->i', b, Fa))
+    den = np.sqrt(Fa[:, 0]**2 + Fa[:, 1]**2 + Ftb[:, 0]**2 + Ftb[:, 1]**2) + 1e-12
+    return num / den
 
 
 def huber(x, eps=1.0):
@@ -88,35 +81,58 @@ def objective(q, seed, ring, pairs, K):
     return W_RING * L_R + W_EPI * L_E + W_PRIOR * L_P, dict(ring=L_R, epi=L_E, prior=L_P, n_matches=len(d))
 
 
+def cumulative_delta(H, seed):
+    """Total correction relative to the SEED: DeltaH = H @ seed^-1 (not the last step)."""
+    return H @ np.linalg.inv(seed)
+
+
+def delta_size(dH):
+    t = float(np.linalg.norm(dH[:3, 3]))
+    ang = float(np.degrees(np.arccos(np.clip((np.trace(dH[:3, :3]) - 1) / 2, -1, 1))))
+    return t, ang
+
+
 def optimize(seed, ring, pairs, K, iters=80, verbose=False):
+    """Adam + backtracking + CUMULATIVE SE(3) bound + full state rollback on rejection."""
     q = np.zeros(6); m = np.zeros(6); v = np.zeros(6)
-    best, _ = objective(q, seed, ring, pairs, K)
-    hist, accepted = [], 0
+    best, parts = objective(q, seed, ring, pairs, K)
+    hist, accepted, rejected = [], 0, 0
     for it in range(1, iters + 1):
         g = np.zeros(6)
         for k in range(6):
-            h = 1e-4 if k < 3 else 1e-4
-            qp = q.copy(); qp[k] += h; qm = q.copy(); qm[k] -= h
+            qp = q.copy(); qp[k] += 1e-4
+            qm = q.copy(); qm[k] -= 1e-4
             g[k] = (objective(qp, seed, ring, pairs, K)[0] -
-                    objective(qm, seed, ring, pairs, K)[0]) / (2 * h)
-        m = B1 * m + (1 - B1) * g; v = B2 * v + (1 - B2) * g * g
+                    objective(qm, seed, ring, pairs, K)[0]) / 2e-4
+        if not np.isfinite(g).all():
+            rejected += 1
+            hist.append(dict(it=it, loss=best, accepted=False, reason='NONFINITE_GRADIENT'))
+            continue
+        old_m, old_v, old_q = m.copy(), v.copy(), q.copy()
+        m = B1 * m + (1 - B1) * g
+        v = B2 * v + (1 - B2) * g * g
         mh = m / (1 - B1 ** it); vh = v / (1 - B2 ** it)
         step = LR * mh / (np.sqrt(vh) + EPS)
-        alpha, ok = 1.0, False
-        for _ in range(8):                      # backtracking
+        alpha, ok, reason = 1.0, False, 'BACKTRACK_EXHAUSTED'
+        for _ in range(8):
             cand = q - alpha * step
-            dq = pose_from_q(cand, seed) @ np.linalg.inv(pose_from_q(q, seed))
-            trans = float(np.linalg.norm(dq[:3, 3]))
-            rot = float(np.degrees(np.arccos(np.clip((np.trace(dq[:3, :3]) - 1) / 2, -1, 1))))
-            if trans > MAX_T_MM or rot > MAX_R_DEG:
-                alpha *= 0.5; continue
+            dH = cumulative_delta(pose_from_q(cand, seed), seed)
+            t, ang = delta_size(dH)
+            if t > MAX_T_MM or ang > MAX_R_DEG:
+                alpha *= 0.5; reason = 'CUMULATIVE_BOUND'; continue
             Lc, _ = objective(cand, seed, ring, pairs, K)
+            if not np.isfinite(Lc):
+                alpha *= 0.5; reason = 'NONFINITE_LOSS'; continue
             if Lc < best:
-                q, best, ok = cand, Lc, True; accepted += 1
-                hist.append(dict(it=it, loss=best, alpha=alpha)); break
-            alpha *= 0.5
+                q, best, ok = cand, Lc, True
+                accepted += 1
+                hist.append(dict(it=it, loss=best, accepted=True, alpha=alpha, t_mm=t, r_deg=ang))
+                break
+            alpha *= 0.5; reason = 'NO_DECREASE'
         if not ok:
-            hist.append(dict(it=it, loss=best, alpha=0.0))
+            q = old_q; m, v = old_m, old_v        # full rollback: pose + Adam moments
+            rejected += 1
+            hist.append(dict(it=it, loss=best, accepted=False, reason=reason))
         if verbose and it % 10 == 0:
-            print('SE3', it, round(best, 6), accepted, flush=True)
+            print('SE3', it, round(best, 6), accepted, rejected, flush=True)
     return q, best, hist, accepted

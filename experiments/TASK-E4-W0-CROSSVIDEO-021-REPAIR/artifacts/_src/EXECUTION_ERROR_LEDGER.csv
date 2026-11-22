@@ -1,0 +1,10 @@
+issue,severity,area,evidence,fix,status
+E1,critical,SE3,q[:3] reused for v and omega; det(R)=1 test still passed,se3.py exact exp,FIXED
+E2,critical,Sampson,denominator sum of norms instead of sqrt of squares,standard formula,FIXED
+E3,high,Optimizer,bound applied to per-step delta; Adam kept momentum on reject,cumulative bound + rollback,FIXED
+E4,high,Data,adm.get default ACCEPT; adapter hardcoded G03,fail-closed adapter,FIXED
+E5,medium,SIFT,"protocol said 6000/.01, code used 4000",config aligned,FIXED
+E6,medium,Yaw,all modes labeled DEGENERATE,split statuses,FIXED
+E7,medium,State,single RUN_STATE overwritten by last group,audit/<G>/RUN_STATE.json atomic,FIXED
+E8,high,Ring,torus_contours ring term not compared with 020 RingRenderer,none,NOT_VERIFIED
+E9,high,Reuse,019/020 modules not executed end-to-end (legacy caches gone),ported math only,PARTIAL

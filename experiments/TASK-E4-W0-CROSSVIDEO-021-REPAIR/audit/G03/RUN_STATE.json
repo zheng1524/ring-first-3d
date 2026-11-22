@@ -1,0 +1,60 @@
+{
+ "group": "G03",
+ "stages": {
+  "LOAD_W0": {
+   "status": "PASS",
+   "at": "2026-11-22T14:37:56",
+   "code_sha256": "4745b7e93c0df81cc7d0e5bcc1e010ef2872f07a8f57f6f64826377a55c880aa",
+   "n_a": 16,
+   "acc_a": 6,
+   "n_b": 16,
+   "acc_b": 16,
+   "admission_sha": "a5f99868e9d28f0428f209dde94906cf5ac1cd37b98494a352f0163cde4c5225"
+  },
+  "SIFT": {
+   "status": "PASS",
+   "at": "2026-11-22T14:38:02",
+   "code_sha256": "4745b7e93c0df81cc7d0e5bcc1e010ef2872f07a8f57f6f64826377a55c880aa",
+   "n_pairs": 96,
+   "n_matches": 3749,
+   "sift": "nfeatures=6000, contrastThreshold=0.01, ratio=0.75, background-mask"
+  },
+  "SPLIT": {
+   "status": "PASS",
+   "at": "2026-11-22T14:38:02",
+   "code_sha256": "4745b7e93c0df81cc7d0e5bcc1e010ef2872f07a8f57f6f64826377a55c880aa",
+   "fit_views": 8,
+   "holdout_views": 8,
+   "fit_pairs": 48,
+   "holdout_pairs": 48
+  },
+  "INIT": {
+   "status": "AMBIGUOUS_MULTIMODAL",
+   "at": "2026-11-22T14:38:57",
+   "code_sha256": "4745b7e93c0df81cc7d0e5bcc1e010ef2872f07a8f57f6f64826377a55c880aa",
+   "theta": 45.44560264544761,
+   "solver_status": "AMBIGUOUS_MULTIMODAL",
+   "median_px": 9.668840075029582,
+   "inlier3": 0.26260609086370446
+  },
+  "OPTIMIZE": {
+   "status": "PASS",
+   "at": "2026-11-22T14:39:05",
+   "code_sha256": "4745b7e93c0df81cc7d0e5bcc1e010ef2872f07a8f57f6f64826377a55c880aa",
+   "accepted": 80,
+   "loss_initial": 0.2993678982786188,
+   "loss_final": 0.23607070839786803,
+   "cumulative_mm": 0.1628925007886267,
+   "cumulative_deg": 3.546099162459719
+  },
+  "EVALUATE": {
+   "status": "PASS",
+   "at": "2026-11-22T14:39:05",
+   "code_sha256": "4745b7e93c0df81cc7d0e5bcc1e010ef2872f07a8f57f6f64826377a55c880aa",
+   "fit_median": 4.6369589054734615,
+   "holdout_median": 4.538321968539436
+  }
+ },
+ "code_sha256": "4745b7e93c0df81cc7d0e5bcc1e010ef2872f07a8f57f6f64826377a55c880aa",
+ "config_sha256": null
+}

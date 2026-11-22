@@ -1,0 +1,8 @@
+change_id,file,level,reason,before,after,test,status
+C1,camera_mainline/code/se3.py,L2,exp_se3 used q[:3] for both v and omega,3 effective DoF,exact 6-DoF exp map,test_se3_math.py(13),APPLIED
+C2,camera_mainline/code/shared_se3.py,L2,non-standard Sampson denominator,|Fx1|+|F^T x2|,sqrt(sum of 4 squares),test_standard_formula_matches_point_to_line,APPLIED
+C3,camera_mainline/code/shared_se3.py,L2,"bound checked per-iteration step, not cumulative",H_cand @ H_cur^-1,H_cand @ H_seed^-1,test_cumulative_bound,APPLIED
+C4,camera_mainline/code/shared_se3.py,L2,Adam moments kept after rejection,no rollback,full state rollback,test_rejected_step_rolls_back_state,APPLIED
+C5,camera_mainline/code/cross_video_matches.py,L1,SIFT config differed from protocol,nfeatures=4000,"nfeatures=6000, contrastThreshold=0.01",SIFT_MATCHES.csv 2003 fit matches,APPLIED
+C6,camera_mainline/code/w0_adapter.py,L1,admission defaulted to ACCEPT on missing id,"adm.get(i,'ACCEPT')",fail-closed: UNKNOWN excluded,test_data_contract.py(4),APPLIED
+C7,camera_mainline/code/yaw_1dof.py,L2,all failure modes collapsed into DEGENERATE,DEGENERATE,UNIQUE_MINIMUM/AMBIGUOUS_MULTIMODAL/FLAT_OBJECTIVE/LOW_MATCH_SUPPORT,G03 INIT AMBIGUOUS_MULTIMODAL,APPLIED

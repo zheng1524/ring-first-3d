@@ -82,15 +82,21 @@ def solve(pairs, coarse=2.0, fine=0.1, clip=5.0):
     ok = np.isfinite(fcurve)
     away = np.array([l for a, l in zip(ff[ok], fcurve[ok]) if abs(wrap180(a - theta)) > 30.0])
     rise = float(np.median(away)) if len(away) else 0.0
+    spread = float(np.nanmax(fcurve) - np.nanmin(fcurve)) if ok.any() else 0.0
     m['rise_away'] = rise
-    if m['inlier3'] < 0.25 or m['saturation'] > 0.75:
-        m['status'] = 'DEGENERATE'
+    m['loss_spread'] = spread
+    if m['n'] == 0:
+        m['status'] = 'LOW_MATCH_SUPPORT'
+    elif m['inlier3'] < 0.25 or m['median_px'] is None:
+        m['status'] = 'LOW_MATCH_SUPPORT'
+    elif spread < 0.05:
+        m['status'] = 'FLAT_OBJECTIVE'
     elif far and far[0]['loss'] < RATIO * max(clusters[0]['loss'], 1e-9) + 0.05:
-        m['status'] = 'AMBIGUOUS'
+        m['status'] = 'AMBIGUOUS_MULTIMODAL'
     elif rise < max(4.0 * (clusters[0]['loss'] if clusters else 1e9), 0.20):
-        m['status'] = 'DEGENERATE'
+        m['status'] = 'FLAT_OBJECTIVE'
     else:
-        m['status'] = 'IDENTIFIABLE'
+        m['status'] = 'UNIQUE_MINIMUM'
     m['curve'] = list(zip(grid.tolist(), curve.tolist()))
     m['fine_curve'] = list(zip(ff.tolist(), fcurve.tolist()))
     return m

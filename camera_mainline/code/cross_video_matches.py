@@ -16,7 +16,7 @@ def extract(a_id, b_id, ratio=0.75, min_matches=10, group='G03', video_a='004', 
     v4 = _load_views(group, video_a)[a_id]
     v5 = _load_views(group, video_b)[b_id]
     ia, ib = np.load(v4['cache']), np.load(v5['cache'])
-    sift = cv2.SIFT_create(4000)
+    sift = cv2.SIFT_create(nfeatures=6000, contrastThreshold=0.01)
     ka, da = sift.detectAndCompute(cv2.cvtColor(ia['RGB'], cv2.COLOR_RGB2GRAY), None)
     kb, db = sift.detectAndCompute(cv2.cvtColor(ib['RGB'], cv2.COLOR_RGB2GRAY), None)
     if da is None or db is None:

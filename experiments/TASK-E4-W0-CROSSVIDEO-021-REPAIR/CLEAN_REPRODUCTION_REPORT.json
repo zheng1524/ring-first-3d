@@ -1,0 +1,18 @@
+{
+ "environment": "python3.12 + numpy + scipy (+ pytorch3d optional for the cross-check)",
+ "commands": [
+  "python -m unittest discover -s tests   -> 23/23",
+  "python code/reproduce_offline.py       -> fit 4.63696 / holdout 4.53832 (match:true)"
+ ],
+ "exit_code": 0,
+ "matched_metrics": {"se3_math_tests": "13/13", "optimizer_tests": "6/6", "data_contract_tests": "4/4",
+   "fit_median_px": 4.6369589054734615, "holdout_median_px": 4.538321968539436,
+   "fit_n": 2003, "holdout_n": 1746, "cumulative_mm": 0.1629, "cumulative_deg": 3.5461},
+ "mismatched_metrics": {},
+ "unreproducible_metrics": [
+   "Ring objective equivalence vs 020 RingRenderer (legacy per-view caches missing)",
+   "019 multi-view track / triangulation / cross-video 3D identity (not executed)",
+   "G01/G05 cross-video (BLOCKED_BY_W0_ADMISSION)"
+ ],
+ "status": "PASS"
+}
