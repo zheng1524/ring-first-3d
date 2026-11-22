@@ -1,0 +1,191 @@
+{
+ "A2": {
+  "case": "A2_pure_translation",
+  "truth": {
+   "mm": [
+    0.8,
+    -0.3,
+    0.2
+   ],
+   "deg": 0.0
+  },
+  "est": {
+   "mm": [
+    0.7961985498665441,
+    -0.2986619599653161,
+    0.19640942773993716
+   ],
+   "deg": 0.015611976312127258
+  },
+  "err": {
+   "mm": 0.005382083508870996,
+   "deg": 0.015611976312127258
+  },
+  "assertions": {
+   "mm_lt_0p05": true,
+   "deg_lt_0p1": true
+  },
+  "accepted_steps": 400,
+  "loss": 0.009987942841186025
+ },
+ "A3": {
+  "case": "A3_mixed_6dof",
+  "truth": {
+   "mm": [
+    0.5,
+    0.2,
+    -0.1
+   ],
+   "deg": 6.0
+  },
+  "est": {
+   "mm": [
+    0.4880849497284321,
+    0.225051660031931,
+    -0.10042203639693781
+   ],
+   "deg": 5.999896259127924
+  },
+  "err": {
+   "mm": 0.0009996698404517563,
+   "deg": 0.014101397171095103
+  },
+  "assertions": {
+   "mm_lt_0p10": true,
+   "deg_lt_0p5": true
+  },
+  "accepted_steps": 400,
+  "loss": 0.009848751198796218
+ },
+ "A6": {
+  "case": "A6_ring_yaw_ambiguity",
+  "ring_only_curve": [
+   [
+    -60,
+    0.4715232788984002
+   ],
+   [
+    -30,
+    0.4715232788983945
+   ],
+   [
+    -15,
+    0.47152327889839507
+   ],
+   [
+    0,
+    0.0
+   ],
+   [
+    15,
+    0.4715232788983968
+   ],
+   [
+    30,
+    0.47152327889838863
+   ],
+   [
+    60,
+    0.47152327889840334
+   ]
+  ],
+  "ring_spread_px": 0.47152327889840334,
+  "background3d_curve": [
+   [
+    -60,
+    126.34665497899657
+   ],
+   [
+    -30,
+    80.67820308712713
+   ],
+   [
+    -15,
+    55.07699827170692
+   ],
+   [
+    0,
+    28.07952928916835
+   ],
+   [
+    15,
+    1.967830427611691
+   ],
+   [
+    30,
+    28.59512497486907
+   ],
+   [
+    60,
+    84.70244031351903
+   ]
+  ],
+  "background3d_spread_px": 124.37882455138488,
+  "assertions": {
+   "ring_spread_lt_1px": true,
+   "background3d_discriminative": true
+  },
+  "note": "Ring spread 0.47 px over +-60 deg is a discretisation artefact, not information; the 3D background term varies by >10 px and is the only source of yaw information"
+ },
+ "A7": {
+  "case": "A7_identity_consistency",
+  "curve": [
+   {
+    "wrong_fraction": 0.0,
+    "status": "SUPPORTED",
+    "inliers": 30,
+    "fitness": 1.0,
+    "err_mm": 4.387576250290934e-15,
+    "err_deg": 0.0
+   },
+   {
+    "wrong_fraction": 0.2,
+    "status": "SUPPORTED",
+    "inliers": 24,
+    "fitness": 0.8,
+    "err_mm": 4.041272810440265e-16,
+    "err_deg": 0.0
+   },
+   {
+    "wrong_fraction": 0.5,
+    "status": "SUPPORTED",
+    "inliers": 15,
+    "fitness": 0.5,
+    "err_mm": 1.1133411481696098e-15,
+    "err_deg": 0.0
+   },
+   {
+    "wrong_fraction": 0.8,
+    "status": "SUPPORTED",
+    "inliers": 7,
+    "fitness": 0.233,
+    "err_mm": 0.42422623846623997,
+    "err_deg": 2.466745325187138
+   },
+   {
+    "wrong_fraction": 1.0,
+    "status": "INSUFFICIENT",
+    "inliers": 2,
+    "fitness": 0.067,
+    "err_mm": NaN,
+    "err_deg": NaN
+   }
+  ],
+  "degenerate_collinear": {
+   "status": "DEGENERATE",
+   "degeneracy": {
+    "degenerate": true,
+    "ratio": 0.0,
+    "singular": [
+     9.258200997725513,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "insufficient": {
+   "status": "INSUFFICIENT",
+   "n": 3
+  }
+ }
+}

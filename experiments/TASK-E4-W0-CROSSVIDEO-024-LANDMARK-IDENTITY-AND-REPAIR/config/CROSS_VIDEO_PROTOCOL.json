@@ -1,0 +1,18 @@
+{
+  "algo": "w0-crossvideo-024",
+  "entry": "run_cross_video_registration.py",
+  "w0_entry": "tools/run_w0_camera.py",
+  "split": {"rule": "sorted ACCEPT views, even=FIT, odd=HOLDOUT", "frozen_before": "feature extraction"},
+  "sift": {"nfeatures": 6000, "contrast_threshold": 0.01, "ratio": 0.72, "mutual": true},
+  "landmark": {"min_views": 3, "max_reproj_px": 2.0, "min_parallax_deg": 0.5, "max_norm_mm": 300,
+               "soft_l1_f_scale": 1.5},
+  "identity": {"matcher": "features019.match_desc (ratio 0.72 + mutual)"},
+  "consistency": {"method": "open3d registration_ransac_based_on_correspondence",
+                  "estimation": "TransformationEstimationPointToPoint(with_scaling=False)",
+                  "threshold_mm": 1.0, "threshold_sensitivity_mm": [0.5, 1.0, 2.0],
+                  "min_inliers": 4, "seed": 0},
+  "ring_check": {"max_mae_px": 2.0, "reference": "W0 ring MAE per view"},
+  "objective": {"ring": 1.0, "sift3d": 0.2, "epi": 0.02, "prior": 0.01,
+                "cumulative_bounds": {"mm": 1.2, "deg": 10.0}},
+  "note": "threshold 1.0 mm fixed before looking at G03 (landmark reproj<2px at ~40 mm depth ~= 0.16 mm/px; 1 mm ~= 6 px)"
+}

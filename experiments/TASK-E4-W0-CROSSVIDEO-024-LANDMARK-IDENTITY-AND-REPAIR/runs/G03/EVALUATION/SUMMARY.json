@@ -1,0 +1,80 @@
+{
+ "group": "G03",
+ "status": "EXECUTED",
+ "split": {
+  "fit4": 3,
+  "ho4": 3,
+  "fit5": 8,
+  "ho5": 8
+ },
+ "landmarks": {
+  "n4": 317,
+  "n5": 806
+ },
+ "identities": {
+  "candidates": 15
+ },
+ "consistency": {
+  "status": "SUPPORTED",
+  "n_inliers": 4,
+  "fitness": 0.2667,
+  "threshold_mm": 1.0,
+  "so3": {
+   "orth": 8.881784197001252e-16,
+   "det": 1.0000000000000007,
+   "valid": true
+  },
+  "degeneracy": {
+   "degenerate": false,
+   "ratio": 0.5331459151288859,
+   "singular": [
+    71.54273180168701,
+    38.1427152172314,
+    11.9024780929653
+   ]
+  },
+  "sensitivity": [
+   {
+    "threshold_mm": 0.5,
+    "status": "INSUFFICIENT",
+    "n_inliers": 3,
+    "fitness": 0.2
+   },
+   {
+    "threshold_mm": 1.0,
+    "status": "SUPPORTED",
+    "n_inliers": 4,
+    "fitness": 0.267
+   },
+   {
+    "threshold_mm": 2.0,
+    "status": "INSUFFICIENT",
+    "n_inliers": 3,
+    "fitness": 0.2
+   }
+  ]
+ },
+ "holdout": {
+  "n": 0,
+  "median": null,
+  "p90": null,
+  "p95": null
+ },
+ "ring": [
+  {
+   "view": "G03_key02_raw00327",
+   "ring_mae_w0": 0.825,
+   "ring_mae_ransacH": 8.126
+  },
+  {
+   "view": "G03_v004_raw00242",
+   "ring_mae_w0": 1.384,
+   "ring_mae_ransacH": 7.647
+  },
+  {
+   "view": "G03_v004_raw00283",
+   "ring_mae_w0": 0.92,
+   "ring_mae_ransacH": 7.338
+  }
+ ]
+}
