@@ -1,0 +1,14 @@
+{
+  "algo": "w0-crossvideo-027-corrective-r3",
+  "scene": {"seed": 0, "n_landmarks": 12, "H_rot_deg": [0.7, -0.4, "sweep"], "H_mm": [0.4, -0.3, 0.2]},
+  "init": {"landmarks": "005-only triangulation (historical 019 code)", "H": "identity", "cameras": "W0"},
+  "h_only": {"n_params": 6, "landmarks_frozen": true, "cameras_frozen": true},
+  "progressive": {"stage1": "h_only", "stage2": "joint(H + released cameras + landmarks)"},
+  "solver": {"library": "scipy.optimize.least_squares", "method": "trf", "loss": "linear",
+             "max_nfev": {"h_only": 200, "joint": 60}, "ftol": 1e-10, "xtol": 1e-10, "gtol": 1e-10},
+  "ring": {"blocks_in_ba": ["I", "C", "O"], "subsample": 8, "edges": "from initial cameras"},
+  "acceptance": {"H_rot_deg": 0.2, "H_trans_mm": 0.2, "cam_rot_deg": 0.1, "cam_trans_mm": 0.2, "lm_mm": 0.2},
+  "status": "CONTROLLED_BA_PARTIAL",
+  "gates": {"A": "PASS", "B": "PASS", "C": "PASS", "D": "PASS", "E": "NOT_EXECUTED"},
+  "ready_for_real_g03_ba": false
+}
