@@ -1,0 +1,11 @@
+issue,severity,evidence,status
+E1 SE3 3-DoF,critical,det(R)=1 test passed while only 3 params active,FIXED
+E2 Sampson non-standard,critical,same H gives 3.28 vs 4.64 px,FIXED
+E3 per-step bound,high,code inspection,FIXED
+E4 Adam no rollback,high,code inspection,FIXED
+E5 admission default ACCEPT,high,code inspection,FIXED
+E6 SIFT 4000 vs 6000,medium,protocol vs code,FIXED
+E7 yaw status collapse,medium,all modes DEGENERATE,FIXED
+E8 Ring renderer not equivalent,high,no numerical comparison vs 020,NOT_VERIFIED
+E9 019/020 modules not executed,high,legacy caches missing,BLOCKED
+E10 positive_depth semantic mismatch,medium,ring origin vs real tracks (values equal here),REPORTED

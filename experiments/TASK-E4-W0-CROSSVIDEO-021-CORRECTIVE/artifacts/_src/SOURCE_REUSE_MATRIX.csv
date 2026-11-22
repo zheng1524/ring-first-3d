@@ -1,0 +1,13 @@
+module,origin,reuse_mode,used_by,verified
+core/se3.py,new (021-R4),NEW_IMPLEMENTATION,G01/G03/G05,YES
+core/shared_se3.py,020 math ported,ADAPTER_ONLY,G03,YES
+core/yaw_1dof.py,018-REPAIR solver,AS_IS,G03,YES
+core/geometry_1dof.py,018-REPAIR geometry,AS_IS,G03,YES
+core/cross_video_matches.py,W0-native SIFT,MINIMAL_COMPATIBILITY_PATCH,G03,YES
+core/w0_adapter.py,new,ADAPTER_ONLY,G01/G03/G05,YES
+core/torch_objective.py,new (gradient check),NEW_IMPLEMENTATION,tests,YES
+019/features019.py,historical,NOT_EXECUTED,-,BLOCKED
+020/features020.py,historical,NOT_EXECUTED,-,BLOCKED
+020/ring020.py,historical,NOT_EXECUTED (RingRenderer),-,BLOCKED
+020/objective020.py,historical,ADAPTER_ONLY (math),G03,PARTIAL
+020/optimize020.py,historical,ADAPTER_ONLY (schedule),G03,YES

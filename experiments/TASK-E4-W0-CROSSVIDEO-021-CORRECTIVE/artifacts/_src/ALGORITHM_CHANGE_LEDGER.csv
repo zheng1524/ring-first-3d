@@ -1,0 +1,9 @@
+change_id,file,level,reason,before,after,test,status
+C1,core/se3.py,L2,exp_se3 truncated to 3 DoF,3 effective DoF,exact 6-DoF exp map,test_se3_corrective(6),APPLIED
+C2,core/shared_se3.py,L2,non-standard Sampson denominator,|Fx1|+|Ftx2|,sqrt(sum of 4 squares),test_standard_formula_matches_point_to_line,APPLIED
+C3,core/shared_se3.py,L2,bound on per-step delta,Hcand@Hcur^-1,Hcand@Hseed^-1,test_cumulative_*,APPLIED
+C4,core/shared_se3.py,L2,Adam moments kept on reject,no rollback,full rollback,test_adam_rejection_restores_state,APPLIED
+C5,core/w0_adapter.py,L1,default ACCEPT on missing id,adm.get(...,"ACCEPT"),fail-closed UNKNOWN excluded,test_w0_provenance,APPLIED
+C6,core/cross_video_matches.py,L1,SIFT config mismatch,4000,6000/0.01,SIFT 2003 matches,APPLIED
+C7,core/yaw_1dof.py,L2,all failures DEGENERATE,one status,4 statuses,G03 INIT status,APPLIED
+C8,core/shared_se3.py,L2,Ring renderer replaced,torus_contours ring term,unchanged (documented),A6 symmetry only,NOT_VERIFIED

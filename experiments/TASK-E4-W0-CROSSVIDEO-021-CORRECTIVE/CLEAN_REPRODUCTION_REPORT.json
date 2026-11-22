@@ -1,0 +1,16 @@
+{
+ "environment": "python3.12 + numpy + scipy + torch (+ optional pytorch3d)",
+ "commands": [
+  "python -m unittest discover -s tests  -> 19/19 PASS",
+  "python core/controlled.py             -> metrics/GEOMETRY_CORRECTNESS.csv",
+  "python core/reproduce_offline.py      -> fit 4.63696 / holdout 4.53832 (match:true)"
+ ],
+ "exit_code": 0,
+ "pass": ["SE3 six-DoF (Jacobian rank 6, scipy, pytorch3d)", "standard Sampson", "cumulative bound",
+          "Adam rollback", "gradient autograd vs FD", "controlled A1/A2/A4/A6/A7",
+          "G03 offline reproduction"],
+ "fail": ["A3 mixed 6-DoF rotation not recovered (Ring+EPI insufficient; recorded, not asserted)"],
+ "skipped": [],
+ "blocked": ["historical 019/020 modules (legacy caches)", "L_F (no 3D identity)", "G01/G05 cross-video (W0 admission)"],
+ "status": "PASS_WITH_DOCUMENTED_FAILURES"
+}
