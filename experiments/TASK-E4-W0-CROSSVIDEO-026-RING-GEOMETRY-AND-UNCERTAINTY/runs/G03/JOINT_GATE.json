@@ -1,0 +1,25 @@
+{
+ "group": "G03",
+ "ring_gate": {
+  "status": "PASS",
+  "ring_w0": 0.2415964400123265,
+  "ring_H025": 178.71897110428955
+ },
+ "triangulation_gate": {
+  "status": "PASS",
+  "pairwise_median_mm": 3.89596858333187,
+  "relative_camera_dpair_mm": "3.4-19.3"
+ },
+ "joint_gate": {
+  "status": "BLOCKED",
+  "reason": "NO_RING_COMPATIBLE_RIGID_ALIGNMENT",
+  "detail": "the only cross-video hypothesis (025) gives Ring 0.242 -> 178.7; 4/12 rigid inliers; seed spread 15.8 mm / 31 deg"
+ },
+ "final": {
+  "RING_GEOMETRY_VALIDATED": true,
+  "TRIANGULATION_UNCERTAINTY_CHARACTERIZED": true,
+  "JOINT_OPTIMIZATION_EXECUTED": false,
+  "CROSS_VIDEO_GEOMETRY_ACCEPT": false,
+  "BODY_CROSS_VIDEO_ADMISSION": false
+ }
+}

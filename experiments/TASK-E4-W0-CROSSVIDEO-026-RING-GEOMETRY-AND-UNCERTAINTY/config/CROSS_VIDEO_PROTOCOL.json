@@ -1,0 +1,15 @@
+{
+  "algo": "w0-crossvideo-026",
+  "w0_entry": "tools/run_w0_camera.py",
+  "ring": {"implementation": "H020_REUSED", "module": "replay_020/code/ring020_026.py",
+           "weights": {"M": 0.25, "I": 0.35, "C": 0.05, "O": 0.35},
+           "cad": "assets/retained_sources/.../HERO-BODY-ADAPT-018/inputs/G03/RING.npz",
+           "normalization": "assets/retained_sources/.../FREE_VERTEX_013/inputs/G03/NORMALIZATION.json",
+           "ablation": ["R0_torus_contours", "R1_mask_plus_IO", "R2_mask_plus_IO_plus_centerline"]},
+  "split": {"source": "025 runs/G03/SPLIT.json", "sha256": "b67e29e7bf5c39082a4b..."},
+  "perturbation": {"seed": 7, "rot_deg": [0.25, 0.5, 1.0], "trans_mm": [0.1, 0.25, 0.5],
+                   "modes": ["common", "single", "independent"]},
+  "joint": {"enabled": false, "reason": "gate C: no Ring-compatible rigid alignment",
+            "weights": {"ring": 1.0, "sift3d": 0.2, "epi": 0.02, "prior": 0.01}},
+  "holdout": {"valid_px": 10.0}
+}
