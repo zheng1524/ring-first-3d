@@ -1,0 +1,75 @@
+{
+ "stage_chain_present": {
+  "sift": true,
+  "ratio": 0.75,
+  "background_mask": true,
+  "mutual_check": false,
+  "rgb_ransac": false,
+  "multiview_track": false,
+  "triangulated_landmark": false
+ },
+ "n_pairs": 96,
+ "n_matches": 3749,
+ "fit_pairs": 48,
+ "holdout_pairs": 48,
+ "fit_004_views": [
+  "G03_key02_raw00327",
+  "G03_v004_raw00202",
+  "G03_v004_raw00242",
+  "G03_v004_raw00263",
+  "G03_v004_raw00283",
+  "G03_v004_raw00304"
+ ],
+ "holdout_004_views": [
+  "G03_key02_raw00327",
+  "G03_v004_raw00202",
+  "G03_v004_raw00242",
+  "G03_v004_raw00263",
+  "G03_v004_raw00283",
+  "G03_v004_raw00304"
+ ],
+ "views_004_used_in_both_fit_and_holdout": [
+  "G03_key02_raw00327",
+  "G03_v004_raw00202",
+  "G03_v004_raw00242",
+  "G03_v004_raw00263",
+  "G03_v004_raw00283",
+  "G03_v004_raw00304"
+ ],
+ "leakage_verdict": "LEAKAGE: 6 of 6 004 views contribute to BOTH the FIT-estimated H and the HOLDOUT evaluation; only 005 views are split, 004 is never held out.",
+ "p95_px": 156.10182058614524,
+ "median_px": 4.593439877263853,
+ "big_residual_frac_gt50": 0.16617764737263271,
+ "top5_residuals": [
+  {
+   "v004": "G03_v004_raw00242",
+   "v005": "G03_v005_raw00114",
+   "split": "HOLDOUT",
+   "err": 340.84464657645316
+  },
+  {
+   "v004": "G03_v004_raw00263",
+   "v005": "G03_v005_raw00114",
+   "split": "HOLDOUT",
+   "err": 339.20895378773236
+  },
+  {
+   "v004": "G03_v004_raw00304",
+   "v005": "G03_v005_raw00114",
+   "split": "HOLDOUT",
+   "err": 337.5424149600726
+  },
+  {
+   "v004": "G03_v004_raw00242",
+   "v005": "G03_v005_raw00099",
+   "split": "FIT",
+   "err": 335.7844485348043
+  },
+  {
+   "v004": "G03_v004_raw00283",
+   "v005": "G03_v005_raw00114",
+   "split": "HOLDOUT",
+   "err": 333.451970288484
+  }
+ ]
+}

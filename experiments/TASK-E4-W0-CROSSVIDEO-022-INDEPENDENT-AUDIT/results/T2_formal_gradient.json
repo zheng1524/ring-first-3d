@@ -1,0 +1,16 @@
+{
+ "fd_gradient": [
+  -4.117579500137399e-06,
+  -0.0005687826208163742,
+  0.00013512222646562728,
+  6.15662810136935e-05,
+  5.614254440347688e-05,
+  -0.00012030092862567901
+ ],
+ "grad_norm": 0.0006026635429216419,
+ "L_at_q0": 6.307551465099147e-06,
+ "L_after_descent_step": 6.307515144867186e-06,
+ "descent": true,
+ "validated_by_autograd": false,
+ "note": "the shipped torch_objective.py is a DIFFERENT function (no Ring term, no 0.02 EPI weight); no autograd validates this formal objective. The optimizer itself uses the same FD stencil, so a \"gradient check\" that compares FD with FD is circular."
+}

@@ -1,0 +1,13 @@
+{
+ "A2": {
+  "loss_at_identity": 0.0,
+  "loss_after_optimisation": 0.0,
+  "estimated_correction_vs_Htrue_mm": 0.3082207001484488,
+  "verdict": "INVALID_TEST: observations are generated at the identity pose, so the optimum is q=0; the reported 0.008 mm is ||H_true|| residual, not recovery. There is no signal for H_true in the data."
+ },
+ "A6": {
+  "loss_identity": 0.0,
+  "loss_after_rotating_camera_and_observations": 0.0,
+  "verdict": "INVALID_TEST: rotating the camera AND regenerating its observations makes invariance true by construction (equivariance check), it does not test yaw identifiability. A valid test must keep the observations fixed and vary only the model."
+ }
+}

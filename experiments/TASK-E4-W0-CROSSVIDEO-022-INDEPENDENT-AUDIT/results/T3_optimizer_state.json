@@ -1,0 +1,11 @@
+{
+ "optimize_signature": "(seed, ring, pairs, K, iters=80, verbose=False)",
+ "has_checkpoint_parameter": false,
+ "accepted_steps": 0,
+ "rollback_assertion_triggered": true,
+ "rejection_reasons": [
+  "NO_DECREASE"
+ ],
+ "note": "test_adam_rejection_restores_state only asserts when accepted_steps==0; here that is True. q/m/v are local to optimize() and are never exposed or checkpointed, so resume==uninterrupted cannot be tested at all (test_resume_equals_uninterrupted runs the same call twice instead).",
+ "resume_test_is_real": false
+}

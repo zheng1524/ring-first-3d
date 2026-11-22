@@ -1,0 +1,11 @@
+{
+ "per_view_k_max_deviation_from_hardcoded": 0.0,
+ "hardcoded_k_is_used_for_optimisation": true,
+ "source_sha_field_is_a_path": true,
+ "source_sha_example": "/home/liu/ring_first_3d_workspace/camera_mainline/G03/video005/camera_result.npz",
+ "per_view_k_g03_004_max_dev": 0.0,
+ "n_raw_bug": "extract() returns len(ka) and len(kb): a logical-and int, not a product",
+ "n_raw_type": "int",
+ "views_with_missing_cache": 0,
+ "note": "run_corrective.py defines K = np.array(...) at module level and passes it to Y1.solve/shared_se3.optimize/S3.sampson_px, ignoring the per-view K returned by the adapter."
+}

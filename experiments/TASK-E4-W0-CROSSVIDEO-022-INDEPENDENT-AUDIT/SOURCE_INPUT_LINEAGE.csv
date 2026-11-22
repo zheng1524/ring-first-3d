@@ -1,0 +1,12 @@
+component,file,actual_role,evidence,direction_or_convention,sha_or_path
+W0 cameras,camera_mainline/G03/video004/camera_result.npz,read,loaded by w0_adapter.load_views,c2w column-vector,/home/liu/ring_first_3d_workspace/camera_mainline/G03/video004/camera_result.npz
+W0 admission,camera_mainline/G03/video004/admission.csv,read,gate status per view (ACCEPT only),-,same dir
+PREPARED cache,experiments/TASK-E4-UNIFIED-RING-CONTOUR-REFINEMENT-005/runs/prepared/G03_004/PREPARED.json,read,view->cache mapping and raw_frame,-,JSON
+SIFT,core/cross_video_matches.py,executed,cv2.SIFT_create(6000,0.01)+ratio 0.75+labels==0 background only,left/right pixel coords,blob 8df7c78ce50f94b58c2a2107c299cf9e682d9d23
+FIT/HOLDOUT split,core/run_corrective.py,executed,sorted video-b views even=fit odd=holdout,leak: 004 never split,runs/G03/SPLIT.json
+yaw init,core/yaw_1dof.py,executed,grid 2deg + local refine + cluster status,H = Rz(theta) applied to 004 cameras,blob pending
+SE3,core/se3.py,executed,exp(hat(q*scale)) @ seed with q=(v,omega),left-multiplied world correction,blob 6103e467afaadba35de35404b5b1c1333d7dca5c
+Ring term,core/shared_se3.ring_term,executed,torus_contours(C) vs q_train ring points,dist/3 Huber,not RingRenderer
+EPI term,core/shared_se3.sampson_px,executed,F=K^-T [t]x R K^-1 with HARDCODED K,pixel Sampson,see T4
+L_F (SIFT 3D),-,NOT IMPLEMENTED,"run_corrective.py stores the string 'BLOCKED: no cross-video 3D landmark identity'",-,-
+historical features019/20,020/code/*,NOT EXECUTED,no import in core/,n/a,provenance/pinned_sources

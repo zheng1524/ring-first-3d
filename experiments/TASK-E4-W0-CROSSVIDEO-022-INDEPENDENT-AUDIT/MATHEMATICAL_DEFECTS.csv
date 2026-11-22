@@ -1,0 +1,10 @@
+id,severity,file,function,line,defect,evidence,status
+M1,P0,core/torch_objective.py,epi_prior_loss,whole file,"different function from the formal objective: no Ring term, EPI weight 1.0 (formal 0.02)",T1: 0.00211 vs 0.16752 on the same data,CONFIRMED
+M2,P0,core/shared_se3.py,optimize,90-140,"no checkpoint API: q/m/v/step are never returned or saved; resume test cannot exist",T3: signature (seed,ring,pairs,K,iters,verbose),CONFIRMED
+M3,P0,tests/test_optimizer_corrective.py,test_adam_rejection_restores_state,~30,"assertion only runs when accepted_steps==0; can be vacuous",T3 shows branch depends on data,CONFIRMED
+M4,P0,core/run_corrective.py,main,13/93,"module-level K = hardcoded intrinsics passed to yaw/SE3/Sampson instead of per-view K from adapter","T4: deviation 0.0 on this data, but wrong by construction",CONFIRMED
+M5,P0,core/w0_adapter.py,load_views,55,"source_sha is str(path), not sha256",T4: value is a path,CONFIRMED
+M6,P1,core/cross_video_matches.py,extract,33,"n_raw = len(ka) and len(kb) -> int (logical and), not a product",T4: type int,CONFIRMED
+M7,P0,core/shared_se3.py,ring_term,57,"Ring term uses torus_contours instead of 020 RingRenderer; no equivalence proof",A6 only shows equivariance; no comparison,OPEN
+M8,P1,core/run_corrective.py,main,~60,"FIT/HOLDOUT split only on 005 views; all 6 004 views used on both sides",T6: 6/6 004 views in both,CONFIRMED
+M9,P1,core/run_corrective.py,rec,"code_sha/config_sha","code_sha differs across groups; config_sha is null","G03 54455c57 vs G01/G05 070710d5; config written 2.5h after runs",CONFIRMED
