@@ -1,0 +1,16 @@
+{
+  "algo": "w0-crossvideo-027-corrective",
+  "solver": {"library": "scipy.optimize.least_squares", "method": "trf", "loss": "linear",
+             "ftol": 1e-10, "xtol": 1e-10, "gtol": 1e-10, "max_nfev": 80, "x_scale": "jac"},
+  "weights": {"ring_lambda": 1.0, "note": "ENERGY weight: r=sqrt(2*lam*rho/N) so 0.5*sum r^2 = lam*E"},
+  "cameras": {"mode": "explicit", "frozen_videos": ["005"], "anchor_video": "004",
+              "release": "004 FIT cameras except the anchor",
+              "asserts": ["anchor in cameras", "released ∩ frozen = ∅", "anchor not in parameter index"]},
+  "ring": {"implementation": "ring020_026.RingRenderer", "blocks_in_ba": ["I", "C", "O"],
+           "mask_in_ba": false, "edges": "frozen at init in BA; recomputed for evaluation",
+           "increment": "C_actual @ inv(T0)"},
+  "controlled": {"init": "triangulation from initial cameras only", "gt_file": "runs/G03/CONTROLLED/GROUND_TRUTH.json",
+                 "scenarios": 9},
+  "gates": {"G1_variables": "PASS", "G2_ring": "PARTIAL", "G3_controlled": "FAIL",
+            "G4_real_BA": "BLOCKED", "G5_eval": "PARTIAL"}
+}
