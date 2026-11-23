@@ -1,0 +1,145 @@
+schema_version: 1
+generated_at: "2026-11-24"
+source_commit: 0be83ff6810c18e43d4762975347d0cb5138dbb7
+base_commit: 26c724ff15a428d028bb2f32685b543a52ab48b2
+human_approval: "M1-FINAL-CONSOLIDATION-39 direct execution task (2026-11-24)"
+config:
+  camera_policy_sha256: 69b164058cc2569f992c2cc380b8f27d39c92fdebcb05b6a19eb0dcf6c2732e1
+  frozen_config_sha256: d2f61b29b454a7f7e48b5d5f1254cd806ff9348335f220fb1e5f11ddedc61ddc
+  K: [[490.0, 0.0, 319.5], [0.0, 490.0, 179.5], [0.0, 0.0, 1.0]]
+  ring_r10: [5.6, 0.6]
+  ring_r5: [3.1, 0.6]
+
+modules:
+  - module_id: M1-01-INPUT
+    route: rf-m1-input-39@1
+    status: frozen
+    entrypoint: tools/prepare_m1_inputs.py
+    sha256: e9d9a41ad3577520f3c49dc91f72530cc8ff5a591b7c3a50e79f26cdb391b4d9
+    upstream:
+      - experiments/TASK-E4-UNIFIED-RING-CONTOUR-REFINEMENT-005/code/prepare.py
+    upstream_sha256:
+      - 79fdf1ee1d2a3db64347cc87b8d45f94b041512542657a7df4daaebc49dbffb4
+    contract: frozen39/inputs.csv + raw video -> prepared/{group}_{video}/PREPARED.json + INPUT_COVERAGE.csv
+    evidence:
+      - 39 groups / 79 videos / 790 frames / 120 photos
+      - 22 R10 groups / 17 R5 groups
+      - runs/m1_final_39/INPUT_COVERAGE.csv
+    tests:
+      - tests/test_m1_39_inputs.py
+      - tests/test_m1_prepared_contract.py
+
+  - module_id: M1-02-INIT-SEGMENTATION
+    route: rf-init-segmentation@1
+    status: frozen
+    entrypoint: experiments/TASK-E4-UNIFIED-RING-CONTOUR-REFINEMENT-005/code/prepare.py::prepare_view
+    sha256: 79fdf1ee1d2a3db64347cc87b8d45f94b041512542657a7df4daaebc49dbffb4
+    contract: raw RGB + frozen INIT -> 640x360 3-class labels
+    weights_sha256: 981aa596e8906edc4457219581c606d4a5a22bfc6f7e4924d3d9a4b9aff64464
+    evidence:
+      - 790/790 prepared labels in {0,1,2}
+    tests:
+      - tests/test_m1_prepared_contract.py
+
+  - module_id: M1-03-RING-CAD
+    route: rf-native-ring-cad@2
+    status: frozen
+    entrypoint: src/ring_first_3d/mainline/native/camera.py::torus_contours
+    sha256: 26055b957040ca8419ba6e278e091288ecd99299dbba0c295fbba578fb9c9e51
+    interface:
+      - experiments/TASK-E4-UNIFIED-RING-RGB-CAMERA-MAINLINE-005/code/unified_camera.py
+      - camera_mainline/code/contour_metrics.py
+    interface_sha256:
+      - ba69aca8cd404e28f0cc4c81babfa5d9abdfef2971a3ae3dd43a08b881783d20
+      - 989ca724528b5d7f3e40eb61d6f3d4c6c08b9703231f344b66b3669aa8606559
+    contract: c2w + K + ring_mm -> R/r-consistent I/O curves and residual
+    evidence:
+      - R10 default bitwise equals kernel R=5.6/r=0.6
+      - R5 G07 CAD 2.5-3.7 mm -> centerline 3.1 / wire 0.6
+    tests:
+      - tests/test_ring_cad_r10_r5.py
+
+  - module_id: M1-04-TRACK005
+    route: rf-frozen-tracks005@1
+    status: frozen
+    entrypoint: experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/frozen_calibration/track005.py::main
+    sha256: c912da0713a329a3c954fc7b1dfbdcf43459493432ccbc782d7742cd26e514ac
+    contract: prepared views -> tracks005/pairs005 (held split)
+    evidence:
+      - called unchanged through unified_camera.build_namespace on 79 videos
+      - generated tracks for groups without frozen 011 tracks
+    tests:
+      - runs/m1_final_39 W0 per-video RUN_MANIFEST tracks hash
+
+  - module_id: M1-05-LOCAL-RING-SFM
+    route: rf-frozen-ba-local-ring-sfm@1
+    status: frozen
+    entrypoint: experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/frozen_calibration/local_ring_sfm.py::BA
+    sha256: 673b57af12fcda5dad082eb7397574d46f0bdce2c097956c0682d8dac2cd8541
+    contract: Ring init + tracks -> B0/W0 c2w
+    evidence:
+      - G03/005 16-view regression 16/16 ACCEPT, 0.828765/0.980167/3.209369
+      - 64 numerically valid W0 result files
+    tests:
+      - runs/m1_final_39 G03 legacy smoke
+      - tests/test_w0_manifest_closure.py
+
+  - module_id: M1-06-W0
+    route: rf-w0-camera@2
+    status: frozen
+    coverage_status: NOT_MET
+    entrypoint: tools/run_w0_camera.py
+    sha256: 17d09a4940ed531b342ebd436c407e7de6c4f59cfb17ad7f3361f4c894236336
+    contract: prepared + tracks + Ring -> B0/W0 + admission + quality + RUN_MANIFEST + STATUS
+    evidence:
+      - 79/79 videos attempted
+      - 64/79 W0 generated and numerically valid
+      - 0 implementation errors / 0 unexpected exceptions
+      - 15 legitimate data-quality blocks (11 disconnected Ring graph, 4 insufficient Ring observation)
+    tests:
+      - tests/test_w0_manifest_closure.py
+      - tests/test_m1_runner_status.py
+      - runs/m1_final_39/VALIDATION_39.json
+
+  - module_id: M1-07-ADMISSION
+    route: rf-camera-admission@1
+    status: frozen
+    entrypoint: camera_mainline/code/camera_admission.py::decide
+    sha256: 479726a5c96921fde40e1a15dc3383c9d4fb349a1a998ee7b186080b2a341073
+    policy_sha256: 69b164058cc2569f992c2cc380b8f27d39c92fdebcb05b6a19eb0dcf6c2732e1
+    contract: per-view metrics -> ACCEPT / QUARANTINE / INSUFFICIENT_EVIDENCE / REJECT
+    evidence:
+      - 57 ACCEPT / 210 QUARANTINE / 373 INSUFFICIENT_EVIDENCE / 0 REJECT
+    tests:
+      - runs/m1_final_39 W0 admission.csv
+
+  - module_id: M1-08-RUNNER
+    route: rf-m1-39-runner@1
+    status: frozen
+    entrypoint: tools/validate_m1_all_groups.py
+    sha256: feb2a712cb9e0e91c37f2d7ecff049e5f56d090bd7badbebf35f8e0d4abd8e36
+    contract: 39-group/79-video orchestration + status + W0 numerical checks + 79/39 tables
+    evidence:
+      - W0_79_VIDEO_RESULTS.csv 79 rows
+      - W0_39_GROUP_SUMMARY.csv 39 rows
+      - VALIDATION_39.json
+    tests:
+      - tests/test_m1_runner_status.py
+
+coverage:
+  expected_groups: 39
+  discovered_groups: 39
+  expected_videos: 79
+  discovered_videos: 79
+  expected_frames: 790
+  prepared_frames: 790
+  w0_generated: 64
+  w0_numerically_valid: 64
+  w0_quality_accepted: 22
+  w0_quality_limited: 42
+  w0_not_computable: 15
+  implementation_errors: 0
+  engineering_39_pass: true
+  w0_79_coverage_pass: false
+  m1_freeze_ready_engineering: true
+  w0_full_coverage_status: NOT_MET

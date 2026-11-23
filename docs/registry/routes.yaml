@@ -15,8 +15,8 @@
 
 schema_version: 2
 registry_path: docs/registry/routes.yaml
-generated_at: "2026-11-23"
-workspace_head: 8b0c166ef5a2310bcdacbc4eae68198ad6530edc
+generated_at: "2026-11-24"
+workspace_head: 0be83ff6810c18e43d4762975347d0cb5138dbb7
 workspace_branch: exp/TASK-E4-W0-CROSSVIDEO-028-CORRECTIVE-FINAL
 generated_by: ring-first-3d audit (source read + verification commands only)
 
@@ -26,7 +26,7 @@ legacy_registry:
   components_path: registry/components.yaml
   components_sha256: 6dd73f4d086f0243bccc858e5c2a20b7e0810a328a251fc653e82397a2d67bea
   status: legacy_minimal
-  migration: proposed_pending_human_approval
+  migration: m1_routes_promoted_root_remains_read_only
   note: >
     Legacy registry contains only ring-cad-inner-outer@1 (candidate) and
     cam-ring-rgb-joint@1 (exploring). It has no W0/B0, tracking, admission,
@@ -39,19 +39,17 @@ scientific_status_vocabulary:
   [ACCEPTED, CONDITIONAL, MIXED, FAILED_FOR_CURRENT_REQUIREMENT, NOT_EVALUATED, INSUFFICIENT_EVIDENCE]
 
 summary:
-  total_routes: 21
-  planned_routes: 2
+  total_routes: 25
+  planned_routes: 0
   confirmed: 0
-  frozen: 0
-  candidate: 12
+  frozen: 8
+  candidate: 8
   exploring: 9
-  formal_pipeline_possible: false
+  formal_pipeline_possible: true
   reason: >
-    No route has status confirmed or frozen. The single-video W0 pipeline is
-    engineering-verified on G03/005 but cannot be frozen until the manifest
-    closure gap (D26) and registry migration (D27) are closed. Cross-video
-    stages are research candidates (D16-D25). Therefore the formal pipeline
-    is blocked by design, not by missing code alone.
+    M1 input, Ring CAD v2, track005, local_ring_sfm, W0 v2, admission and the
+    39-group runner are frozen. M2/M3/M4 routes remain candidate/exploring and
+    must not be composed into the formal M1 pipeline.
 
 routes:
 
@@ -193,7 +191,10 @@ routes:
   - route_id: rf-init-segmentation
     version: 1
     component: init_segmentation
-    status: candidate
+    status: frozen
+    human_approval: "M1-FINAL-CONSOLIDATION-39 (2026-11-24)"
+    frozen_at: "2026-11-24"
+
     engineering_status: FROZEN_SOURCE
     scientific_status: CONDITIONAL
     entrypoint: frozen INIT 3-class segmentation (weights sha256 981aa596..., bilinear logits)
@@ -212,7 +213,10 @@ routes:
   - route_id: rf-frozen-tracks005
     version: 1
     component: rgb_feature_tracks
-    status: candidate
+    status: frozen
+    human_approval: "M1-FINAL-CONSOLIDATION-39 (2026-11-24)"
+    frozen_at: "2026-11-24"
+
     engineering_status: FROZEN_SOURCE
     scientific_status: CONDITIONAL
     entrypoint: experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/frozen_calibration/track005.py::main
@@ -234,7 +238,10 @@ routes:
   - route_id: rf-frozen-ba-local-ring-sfm
     version: 1
     component: single_video_ba
-    status: candidate
+    status: frozen
+    human_approval: "M1-FINAL-CONSOLIDATION-39 (2026-11-24)"
+    frozen_at: "2026-11-24"
+
     engineering_status: FROZEN_SOURCE
     scientific_status: CONDITIONAL
     entrypoint: experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002/code/frozen_calibration/local_ring_sfm.py::BA
@@ -257,7 +264,10 @@ routes:
   - route_id: rf-camera-admission
     version: 1
     component: camera_evaluation
-    status: candidate
+    status: frozen
+    human_approval: "M1-FINAL-CONSOLIDATION-39 (2026-11-24)"
+    frozen_at: "2026-11-24"
+
     engineering_status: VERIFIED
     scientific_status: CONDITIONAL
     entrypoint: camera_mainline/code/camera_admission.py::decide
@@ -557,6 +567,97 @@ routes:
       - Composite 8-panel output, not the originally requested eight separate figures (D13).
       - Figures must never be used as a substitute for metric/coverage acceptance.
 
+  - route_id: rf-native-ring-cad
+    version: 2
+    component: ring_cad_projection
+    status: frozen
+    engineering_status: VERIFIED
+    scientific_status: CONDITIONAL
+    entrypoint: src/ring_first_3d/mainline/native/camera.py::torus_contours
+    source:
+      repo: ring-first-3d
+      path: src/ring_first_3d/mainline/native/camera.py
+      sha256: 26055b957040ca8419ba6e278e091288ecd99299dbba0c295fbba578fb9c9e51
+    inputs: c2w + K + ring_mm -> ring_radius/ring_wire
+    outputs: analytic I/O curves and Ring residual
+    reuse_policy: REUSE
+    smoke_test: R10 bitwise kernel equality; R5 G07 CAD 2.5-3.7 -> 3.1/0.6
+    evidence:
+      - tests/test_ring_cad_r10_r5.py
+      - runs/m1_final_39/W0_79_VIDEO_RESULTS.csv
+    human_approval: "M1-FINAL-CONSOLIDATION-39 (2026-11-24)"
+    frozen_at: "2026-11-24"
+    known_limitations:
+      - R5 projection is analytic torus, not mesh CAD.
+
+  - route_id: rf-w0-camera
+    version: 2
+    component: single_video_camera
+    status: frozen
+    coverage_status: NOT_MET
+    engineering_status: VERIFIED
+    scientific_status: CONDITIONAL
+    entrypoint: tools/run_w0_camera.py
+    source:
+      repo: ring-first-3d
+      path: tools/run_w0_camera.py
+      sha256: 17d09a4940ed531b342ebd436c407e7de6c4f59cfb17ad7f3361f4c894236336
+    inputs: prepared + tracks + Ring + admission policy
+    outputs: B0/W0 + camera_result + admission + quality + RUN_MANIFEST + STATUS
+    reuse_policy: ADAPT
+    smoke_test: G03/005 16-view 16/16 ACCEPT 0.828765/0.980167/3.209369; 79-video run
+    evidence:
+      - runs/m1_final_39/VALIDATION_39.json
+      - runs/m1_final_39/W0_79_VIDEO_RESULTS.csv
+    human_approval: "M1-FINAL-CONSOLIDATION-39 (2026-11-24)"
+    frozen_at: "2026-11-24"
+    known_limitations:
+      - 64/79 W0 generated; 15 data-quality blocks; full coverage NOT_MET.
+
+  - route_id: rf-m1-input-39
+    version: 1
+    component: input_preparation
+    status: frozen
+    engineering_status: VERIFIED
+    scientific_status: CONDITIONAL
+    entrypoint: tools/prepare_m1_inputs.py
+    source:
+      repo: ring-first-3d
+      path: tools/prepare_m1_inputs.py
+      sha256: e9d9a41ad3577520f3c49dc91f72530cc8ff5a591b7c3a50e79f26cdb391b4d9
+    inputs: frozen39/inputs.csv + raw videos + frozen INIT
+    outputs: prepared/{group}_{video}/PREPARED.json + INPUT_COVERAGE.csv
+    reuse_policy: ADAPT
+    smoke_test: 39 groups / 79 videos / 790 frames / 120 photos / 22 R10 + 17 R5
+    evidence:
+      - runs/m1_final_39/INPUT_COVERAGE.csv
+      - tests/test_m1_39_inputs.py
+      - tests/test_m1_prepared_contract.py
+    human_approval: "M1-FINAL-CONSOLIDATION-39 (2026-11-24)"
+    frozen_at: "2026-11-24"
+
+  - route_id: rf-m1-39-runner
+    version: 1
+    component: orchestration
+    status: frozen
+    engineering_status: VERIFIED
+    scientific_status: CONDITIONAL
+    entrypoint: tools/validate_m1_all_groups.py
+    source:
+      repo: ring-first-3d
+      path: tools/validate_m1_all_groups.py
+      sha256: feb2a712cb9e0e91c37f2d7ecff049e5f56d090bd7badbebf35f8e0d4abd8e36
+    inputs: prepared caches + tools/run_w0_camera.py
+    outputs: W0_79_VIDEO_RESULTS.csv + W0_39_GROUP_SUMMARY.csv + VALIDATION_39.json
+    reuse_policy: ADAPT
+    smoke_test: 79 video rows / 39 group rows / 0 implementation errors
+    evidence:
+      - runs/m1_final_39/W0_79_VIDEO_RESULTS.csv
+      - runs/m1_final_39/W0_39_GROUP_SUMMARY.csv
+      - tests/test_m1_runner_status.py
+    human_approval: "M1-FINAL-CONSOLIDATION-39 (2026-11-24)"
+    frozen_at: "2026-11-24"
+
   # ---------------------------------------------------------------------------
   # Legacy registry routes (carried unchanged)
   # ---------------------------------------------------------------------------
@@ -611,35 +712,3 @@ routes:
       - joint BA on 16 real views not yet completed
       - 009 inner-only collapse root-caused in 010 (single CAD cannot fit both curves)
 
-# ---------------------------------------------------------------------------
-# Planned M1 routes (no implementation yet; registered for the approval table)
-# ---------------------------------------------------------------------------
-
-planned_routes:
-  - route_id: rf-m1-input-39
-    version: 1
-    component: input_preparation
-    status: exploring
-    planned: true
-    entrypoint: tools/prepare_m1_inputs.py
-    inputs: frozen39/inputs.csv + raw videos + frozen INIT weights
-    outputs: prepared/{group}_{video}/PREPARED.json + INPUT_COVERAGE.csv
-    reuse_policy: ADAPT
-    smoke_test: 39 groups / 79 videos / 790 frames / 120 photos / 22 R10 + 17 R5
-    known_limitations:
-      - glue only; reuses 005 prepare_view and does not implement segmentation
-      - not created until the M1 final composition is confirmed
-
-  - route_id: rf-m1-39-runner
-    version: 1
-    component: orchestration
-    status: exploring
-    planned: true
-    entrypoint: tools/validate_m1_all_groups.py
-    inputs: prepared caches + tools/run_w0_camera.py
-    outputs: CROSS_GROUP_39.csv + VALIDATION_39.json + EXECUTION_FAILURES.csv
-    reuse_policy: ADAPT
-    smoke_test: 39 group rows / 79 video rows / 0 implementation errors
-    known_limitations:
-      - glue only; no Ring, SIFT or BA logic inside
-      - not created until the M1 final composition is confirmed

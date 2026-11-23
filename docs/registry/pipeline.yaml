@@ -1,0 +1,57 @@
+schema_version: 1
+pipeline: ring-first-m1
+generated_at: "2026-11-24"
+source_commit: 0be83ff6810c18e43d4762975347d0cb5138dbb7
+formal: true
+note: >
+  Formal M1 engineering pipeline. All stages reference frozen modules.
+  Full 79/79 W0 coverage is NOT_MET; 15 videos stop at documented upstream
+  Ring-observation/connectivity quality states. This is a coverage limitation,
+  not an implementation-error fallback.
+
+stages:
+  - id: input
+    module: M1-01-INPUT
+    status: frozen
+  - id: init_segmentation
+    module: M1-02-INIT-SEGMENTATION
+    status: frozen
+  - id: ring_observation
+    module: M1-03-RING-CAD
+    status: frozen
+  - id: rgb_tracking
+    module: M1-04-TRACK005
+    status: frozen
+  - id: b0_w0_ba
+    module: M1-05-LOCAL-RING-SFM
+    status: frozen
+  - id: w0_entry
+    module: M1-06-W0
+    status: frozen
+    coverage_status: NOT_MET
+  - id: admission
+    module: M1-07-ADMISSION
+    status: frozen
+  - id: validation
+    module: M1-08-RUNNER
+    status: frozen
+
+coverage:
+  groups: 39
+  videos: 79
+  prepared_frames: 790
+  w0_generated: 64
+  w0_numerically_valid: 64
+  w0_quality_accepted: 22
+  w0_quality_limited: 42
+  w0_not_computable: 15
+  implementation_errors: 0
+  engineering_39_pass: true
+  w0_79_coverage_pass: false
+  m1_freeze_ready_engineering: true
+  w0_full_coverage_status: NOT_MET
+
+next_stage:
+  id: M2-cross-video-registration
+  status: planned
+  plan: docs/audit/M2_DEVELOPMENT_HANDOFF.md

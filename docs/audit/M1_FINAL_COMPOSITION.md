@@ -1,7 +1,8 @@
 # M1_FINAL_COMPOSITION — Input + Ring + Single-Video Camera + Quality
 
-**Status:** `PENDING_HUMAN_CONFIRMATION`
-**Base commit:** `98873442e01eb2f7b1b4b1d44a16e3709e856d61`
+**Status:** `EXECUTED — M1 engineering pass; W0 full coverage 64/79 NOT_MET`
+**Base commit:** `26c724ff15a428d028bb2f32685b543a52ab48b2`
+**Implementation commit:** `0be83ff6810c18e43d4762975347d0cb5138dbb7`
 **Scope:** M1-01 … M1-07 only. No M2/M3/M4 work.
 **Production code changed in this step:** none. This document is the approval gate.
 
@@ -61,13 +62,13 @@ Route IDs refer to `docs/registry/routes.yaml` at commit `98873442`. `planned` v
 
 | 阶段 | 现有 route_id@version | 入口 | 输入输出 | REUSE/ADAPT/GAP | smoke test |
 |---|---|---|---|---|---|
-| **M1-01 Input identity / 39-group registry** | `rf-input-prepared@1` + planned `rf-m1-input-39@1` | new thin `tools/prepare_m1_inputs.py`; reuses `prepare.py::prepare_view` (005) | `frozen39/inputs.csv` + raw videos → `prepared/{group}_{video}/PREPARED.json` + `INPUT_COVERAGE.csv` | **ADAPT** (orchestration/contract only; INIT math reused) | 39 groups/79 videos/790 frames/120 photos; 22 R10 + 17 R5; prepared 39/39 |
+| **M1-01 Input identity / 39-group registry** | `rf-input-prepared@1` + frozen `rf-m1-input-39@1` | new thin `tools/prepare_m1_inputs.py`; reuses `prepare.py::prepare_view` (005) | `frozen39/inputs.csv` + raw videos → `prepared/{group}_{video}/PREPARED.json` + `INPUT_COVERAGE.csv` | **ADAPT** (orchestration/contract only; INIT math reused) | 39 groups/79 videos/790 frames/120 photos; 22 R10 + 17 R5; prepared 39/39 |
 | **M1-02 INIT segmentation + Ring observation** | `rf-init-segmentation@1` + `rf-dxy-ring-observation@1` | `prepare.py::segment/prepare_view`; `dxy_mid._engine.ring_component.recover` | raw frame → 3-class labels (0/1/2) → I/O/C evidence | **REUSE** | one R10 and one R5 frame: labels⊆{0,1,2}; non-empty inner/outer/centerline |
-| **M1-03 Ring CAD geometry** | `rf-native-ring-cad@1` → planned `@2` | `native/camera.py::torus_contours/residual/recover`; `_kernels.torus_contours(R,r)` | c2w + K + ring R/r → I/O curves / residual | **ADAPT** (optional R/r parameters, defaults 5.6/0.6; math unchanged) | R10 5.6/0.6 matches legacy; R5 3.1/0.6 matches G07 CAD; no second projector |
+| **M1-03 Ring CAD geometry** | `rf-native-ring-cad@1` → frozen `@2` | `native/camera.py::torus_contours/residual/recover`; `_kernels.torus_contours(R,r)` | c2w + K + ring R/r → I/O curves / residual | **ADAPT** (optional R/r parameters, defaults 5.6/0.6; math unchanged) | R10 5.6/0.6 matches legacy; R5 3.1/0.6 matches G07 CAD; no second projector |
 | **M1-04 Single-video RGB tracking** | `rf-frozen-tracks005@1` | `track005.py::main` via `unified_camera.build_namespace` | prepared views → `tracks005.npz` / `pairs005.npz` | **REUSE** | one new group: tracks non-empty, held split present, no NaN |
-| **M1-05 Ring+RGB single-video camera / BA** | `rf-w0-camera@1` → planned `@2` + `rf-frozen-ba-local-ring-sfm@1` | `tools/run_w0_camera.py --stage all` | prepared + tracks + ring evidence → B0/W0 c2w + admission | **REUSE core BA + ADAPT boundary** (`--prepared-root`, `--workdir`, ring R/r, manifest) | G03 legacy regression 0.828765/0.980167/3.209369; one R5 group W0 outputs complete |
+| **M1-05 Ring+RGB single-video camera / BA** | `rf-w0-camera@1` → frozen `@2` + `rf-frozen-ba-local-ring-sfm@1` | `tools/run_w0_camera.py --stage all` | prepared + tracks + ring evidence → B0/W0 c2w + admission | **REUSE core BA + ADAPT boundary** (`--prepared-root`, `--workdir`, ring R/r, manifest) | G03 legacy regression 0.828765/0.980167/3.209369; one R5 group W0 outputs complete |
 | **M1-06 Camera quality / admission** | `rf-camera-admission@1` + `evaluate_held_geometry` + `contour_metrics` | `camera_admission.py::decide`; `contour_metrics.ring_raw_mae` | per-view metrics → ACCEPT/QUARANTINE/REJECT/INSUFFICIENT_EVIDENCE | **REUSE + ADAPT** (pass ring R/r to the existing metric; no threshold change) | G03/005 16/16 ACCEPT; R5 group statuses finite; all four statuses preserved |
-| **M1-07 Output / status / manifest / 39 runner** | `rf-provenance@1` + planned `rf-m1-39-runner@1` | new thin `tools/validate_m1_all_groups.py` | per-video outputs → `SUMMARY.json`, `RUN_MANIFEST.json`, `CROSS_GROUP_39.csv`, `VALIDATION_39.json`, `EXECUTION_FAILURES.csv` | **ADAPT** (orchestration/status only) | 39 group rows; 79 video rows; 0 missing outputs; 0 unexpected exceptions |
+| **M1-07 Output / status / manifest / 39 runner** | `rf-provenance@1` + frozen `rf-m1-39-runner@1` | new thin `tools/validate_m1_all_groups.py` | per-video outputs → `SUMMARY.json`, `RUN_MANIFEST.json`, `CROSS_GROUP_39.csv`, `VALIDATION_39.json`, `EXECUTION_FAILURES.csv` | **ADAPT** (orchestration/status only) | 39 group rows; 79 video rows; 0 missing outputs; 0 unexpected exceptions |
 | **M1-08 Reference photos (metadata only)** | no route (M1 does not use photos) | input registry | 120 photo IDs → coverage record | **REUSE metadata only** | 120/120 recorded; `reference_photos_used=false` |
 
 ### 2.1 Decisions
@@ -179,3 +180,21 @@ Before any production-code change, confirm:
 - [ ] **A6.** Approve Round 3 clean rerun + M1 freeze + `M2_DEVELOPMENT_PLAN.md` handoff.
 
 **Until A1-A6 are confirmed, no production code is modified and no 39-group execution is claimed.**
+
+
+---
+
+## 7. Execution result (added 2026-11-24)
+
+The composition was implemented and executed:
+
+- source commit: `0be83ff6810c18e43d4762975347d0cb5138dbb7`
+- groups: 39/39; videos: 79/79; prepared frames: 790/790
+- implementation errors: 0; unexpected exceptions: 0; missing required outputs: 0
+- W0 generated and numerically valid: 64/79
+- 15 not computable: 11 `Ring pose graph disconnected`, 4 `INSUFFICIENT_RING_OBSERVATION`
+- engineering: `ENGINEERING_39_PASS=true`
+- full W0 coverage: `W0_79_COVERAGE_PASS=false`
+- freeze: M1 engineering/interface modules frozen; full 79/79 coverage NOT_MET
+
+See `M1_IMPLEMENTATION_REPORT.md`, `M1_39_GROUP_VALIDATION.md`, `M1_FREEZE_CANDIDATES.md`.

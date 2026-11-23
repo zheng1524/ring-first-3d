@@ -1,0 +1,55 @@
+{
+ "base_commit": "26c724ff15a428d028bb2f32685b543a52ab48b2",
+ "source_commit": "0be83ff6810c18e43d4762975347d0cb5138dbb7",
+ "files": {
+  "src/ring_first_3d/mainline/native/camera.py": "26055b957040ca8419ba6e278e091288ecd99299dbba0c295fbba578fb9c9e51",
+  "experiments/TASK-E4-UNIFIED-RING-RGB-CAMERA-MAINLINE-005/code/unified_camera.py": "ba69aca8cd404e28f0cc4c81babfa5d9abdfef2971a3ae3dd43a08b881783d20",
+  "camera_mainline/code/contour_metrics.py": "989ca724528b5d7f3e40eb61d6f3d4c6c08b9703231f344b66b3669aa8606559",
+  "tools/run_w0_camera.py": "17d09a4940ed531b342ebd436c407e7de6c4f59cfb17ad7f3361f4c894236336",
+  "tools/prepare_m1_inputs.py": "e9d9a41ad3577520f3c49dc91f72530cc8ff5a591b7c3a50e79f26cdb391b4d9",
+  "tools/validate_m1_all_groups.py": "feb2a712cb9e0e91c37f2d7ecff049e5f56d090bd7badbebf35f8e0d4abd8e36",
+  "tests/test_m1_39_inputs.py": "5122d514f6e92c952c7e0240a92fee1cc4e7665746a32cfc97e0c66e7f611dd3",
+  "tests/test_ring_cad_r10_r5.py": "ac396e98c1923f9316dd08ac14c9223f4bb3b625481e9960182cfd56fdde62c5",
+  "tests/test_m1_runner_status.py": "c2639d743996315df4edb7d722697951beb1988a5cf3ef08059d31a8a3625f0e",
+  "tests/test_m1_prepared_contract.py": "69ad81f9edd71977f0603bdcf9eba6877efdcbec8f0eb4e16c8e5f9fe7836353",
+  "tests/test_w0_manifest_closure.py": "5a27a51756d1bfa84da2c098a68ca6eee0a89aec3b16a76ae3504d3349361e03"
+ },
+ "config": {
+  "camera_policy": "69b164058cc2569f992c2cc380b8f27d39c92fdebcb05b6a19eb0dcf6c2732e1",
+  "frozen_config": "d2f61b29b454a7f7e48b5d5f1254cd806ff9348335f220fb1e5f11ddedc61ddc",
+  "K": [
+   [
+    490.0,
+    0.0,
+    319.5
+   ],
+   [
+    0.0,
+    490.0,
+    179.5
+   ],
+   [
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "ring_r10": [
+   5.6,
+   0.6
+  ],
+  "ring_r5": [
+   3.1,
+   0.6
+  ]
+ },
+ "environment": {
+  "python": "3.12.13",
+  "numpy": "2.4.6",
+  "scipy": "1.15.3",
+  "cv2": "4.11.0",
+  "torch": "2.7.1+cu128",
+  "pandas": "3.0.5"
+ },
+ "commit_stat": "0be83ff6 M1: 39-group prepared input, R5/R10 Ring interface, hardened W0 and 39-group validator\n camera_mainline/code/contour_metrics.py            |   5 +-\n .../code/unified_camera.py                         |   9 +-\n src/ring_first_3d/mainline/native/camera.py        |  31 +-\n tests/test_m1_39_inputs.py                         |  51 +++\n tests/test_m1_prepared_contract.py                 |  43 +++\n tests/test_m1_runner_status.py                     | 101 ++++++\n tests/test_ring_cad_r10_r5.py                      |  43 +++\n tests/test_w0_manifest_closure.py                  |  40 +++\n tools/prepare_m1_inputs.py                         | 151 ++++++++\n tools/run_w0_camera.py                             | 344 ++++++++++++++-----\n tools/validate_m1_all_groups.py                    | 378 +++++++++++++++++++++\n 11 files changed, 1082 insertions(+), 114 deletions(-)\n"
+}
