@@ -1,0 +1,12 @@
+{
+  "algo": "w0-crossvideo-028-corrective",
+  "max_views_default": 6,
+  "min_sift": 120,
+  "lam_ring": 1.0,
+  "lam_epi": 1.0,
+  "identity": {"matcher": "features019.matches (ratio .72 + mutual + MAGSAC)", "min_view_pairs_multiview": 2, "one_to_one": true},
+  "h_init": {"yaw_step_deg": 30, "ring_vector": "I/C/O exact energy mapping", "old": "H = I then H-only", "new": "Ring+epipolar best candidate"},
+  "ba": {"budget_M2": 60, "budget_M3b": 60, "rgb_mode": "huber", "released_cameras": []},
+  "holdout": {"seed": 2028, "identity_fraction_fit": 0.7},
+  "ring": {"radius_mm": "from group asset RING.npz + NORMALIZATION.json", "evaluate_both_videos": true}
+}
