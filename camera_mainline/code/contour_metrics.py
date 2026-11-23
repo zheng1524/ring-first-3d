@@ -17,9 +17,10 @@ def split_by_area(curves):
     return curves[int(np.argmin(ar))], curves[int(np.argmax(ar))]
 
 
-def ring_raw_mae(pose, q_train, K):
+def ring_raw_mae(pose, q_train, K, ring_radius=5.6, ring_wire=.6):
     """min over the two CAD curves, per observation point (the frozen definition)."""
     from ring_first_3d.mainline.native.camera import torus_contours
-    cs = torus_contours(np.asarray(pose), np.asarray(K))
+    cs = torus_contours(np.asarray(pose), np.asarray(K),
+                        ring_radius=ring_radius, ring_wire=ring_wire)
     return float(np.minimum(dist_pts_to_polyline(q_train, np.asarray(cs[0], float)),
                             dist_pts_to_polyline(q_train, np.asarray(cs[1], float))).mean())

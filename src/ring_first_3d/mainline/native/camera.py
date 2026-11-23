@@ -19,12 +19,15 @@ def bind(fn, ns):
     ns.setdefault('__builtins__',vars(builtins))
     return types.FunctionType(fn.__code__, ns, fn.__name__, fn.__defaults__)
 
-def torus_contours(C, K, n=256):
+def torus_contours(C, K, n=256, ring_radius=5.6, ring_wire=.6):
     fn=bind(_kernels.torus_contours,{"np":np})
-    return fn(np.asarray(C)[:3,3],np.asarray(C)[:3,:3],np.asarray(K),R=5.6,r=.6,n=n)
+    return fn(np.asarray(C)[:3,3],np.asarray(C)[:3,:3],np.asarray(K),
+              R=float(ring_radius),r=float(ring_wire),n=n)
 
-def residual(C, ob, K):
-    ns=dict(np=np,cv2=cv2,cKDTree=cKDTree,K=K,contour_project=lambda C,n=256,K0=K:torus_contours(C,K0,n),__builtins__=vars(builtins))
+def residual(C, ob, K, ring_radius=5.6, ring_wire=.6):
+    ns=dict(np=np,cv2=cv2,cKDTree=cKDTree,K=K,rad=float(ring_radius),tube=float(ring_wire),
+            contour_project=lambda C,n=256,K0=K:torus_contours(C,K0,n,ring_radius,ring_wire),
+            __builtins__=vars(builtins))
     # Kernel defaults were originally bound to the work-camera K.
     fn=types.FunctionType(_kernels.torus_residual.__code__,ns,"torus_residual",("train",np.asarray(K)))
     return fn(np.asarray(C),ob,K0=np.asarray(K))
@@ -48,8 +51,8 @@ def observe(labels):
         y,x=np.nonzero(m);ob[key+'_train']=sample(np.c_[x,y],192)
     return ob
 
-def score(C, ob, K, rgb_geometry=None):
-    r=residual(C,ob,K)/3.;n=abs(r)
+def score(C, ob, K, rgb_geometry=None, ring_radius=5.6, ring_wire=.6):
+    r=residual(C,ob,K,ring_radius,ring_wire)/3.;n=abs(r)
     val=float(np.mean(np.where(n<=1,.5*n*n,n-.5))) if len(r) else 1e6
     rr=rgb_geometry
     if rr and rr['fit_pnp_inliers']:
@@ -58,15 +61,15 @@ def score(C, ob, K, rgb_geometry=None):
         val+=.2*float(np.mean(np.where(e<=1,.5*e*e,e-.5)))+float(np.maximum(.1-z,0).mean())*100
     return val
 
-def recover(labels, K, rgb_geometry=None, initial_pose=None):
+def recover(labels, K, rgb_geometry=None, initial_pose=None, ring_radius=5.6, ring_wire=.6):
     """Run the frozen RF5DoF + yaw path. A numeric solution is not pose GT."""
     K=np.asarray(K,float);ob=observe(labels)
     if len(ob['q_train'])<20:raise ValueError('INSUFFICIENT_RING_OBSERVATION')
-    ns=dict(np=np,Rotation=Rotation,least_squares=least_squares,K=K,rad=5.6,tube=.6,cfg=dict(RF_CONFIG))
+    ns=dict(np=np,Rotation=Rotation,least_squares=least_squares,K=K,rad=float(ring_radius),tube=float(ring_wire),cfg=dict(RF_CONFIG))
     for name in ['decode','image_seeds','solve']:ns[name]=bind(getattr(_kernels,name),ns)
     def rfun(a,ref,obs):
         c,Q=ns['decode'](a,ref);C=np.eye(4);C[:3,:3]=Q.T;C[:3,3]=-Q.T@c
-        return residual(C,ob,K)
+        return residual(C,ob,K,ring_radius,ring_wire)
     ns['residual']=rfun;seeds=ns['image_seeds'](ob)
     rr=rgb_geometry or dict(C=None,fit_pnp_inliers=[])
     for C in [rr['C'],initial_pose]:
@@ -89,13 +92,13 @@ def recover(labels, K, rgb_geometry=None, initial_pose=None):
                 def pose(a):
                     H=np.eye(4);H[:3,:3]=Rotation.from_euler('z',a).as_matrix();return H@base
                 grid=np.linspace(-np.pi,np.pi,72,endpoint=False)
-                a=min(grid,key=lambda t:score(pose(t),ob,K,rr))
-                fit=minimize_scalar(lambda t:score(pose(t),ob,K,rr),bounds=(a-np.pi/36,a+np.pi/36),method='bounded',options={'maxiter':20})
-                candidates.append(dict(C=pose(fit.x),FIT_objective=score(pose(fit.x),ob,K,rr),source='originalRF5DoF_RGB_yaw',normal_branch=i,normal_flip=f,yaw_rad=fit.x))
+                a=min(grid,key=lambda t:score(pose(t),ob,K,rr,ring_radius,ring_wire))
+                fit=minimize_scalar(lambda t:score(pose(t),ob,K,rr,ring_radius,ring_wire),bounds=(a-np.pi/36,a+np.pi/36),method='bounded',options={'maxiter':20})
+                candidates.append(dict(C=pose(fit.x),FIT_objective=score(pose(fit.x),ob,K,rr,ring_radius,ring_wire),source='originalRF5DoF_RGB_yaw',normal_branch=i,normal_flip=f,yaw_rad=fit.x))
     else:
-        candidates=[dict(C=C,FIT_objective=score(C,ob,K),source='RING_ONLY_YAW_UNRESOLVED')for C in poses]
+        candidates=[dict(C=C,FIT_objective=score(C,ob,K,None,ring_radius,ring_wire),source='RING_ONLY_YAW_UNRESOLVED')for C in poses]
     for tag,C in [('REAL_RGB_PNP_LM',rr['C']),('HISTORICAL_FROZEN',initial_pose)]:
-        if C is not None:candidates.append(dict(C=np.array(C),FIT_objective=score(np.array(C),ob,K,rr),source=tag))
+        if C is not None:candidates.append(dict(C=np.array(C),FIT_objective=score(np.array(C),ob,K,rr,ring_radius,ring_wire),source=tag))
     chosen=min(candidates,key=lambda c:c['FIT_objective'])
     return dict(c2w_mm=chosen['C'],candidate_source=chosen['source'],FIT_objective=chosen['FIT_objective'],
                 status='NUMERIC_RGB_REGISTERED_CONDITIONAL' if rr['fit_pnp_inliers'] else 'RING_ONLY_YAW_UNRESOLVED',

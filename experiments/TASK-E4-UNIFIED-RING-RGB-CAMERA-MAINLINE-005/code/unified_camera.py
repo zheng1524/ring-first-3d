@@ -64,7 +64,7 @@ def _extract(file, names, ns):
     exec(compile(ast.Module(body=nodes, type_ignores=[]), str(file), 'exec'), ns)
 
 
-def build_namespace(root, fit, arrays):
+def build_namespace(root, fit, arrays, ring_radius=5.6, ring_wire=.6):
     root = Path(root); (root / 'observations').mkdir(parents=True, exist_ok=True)
     (root / 'scripts').mkdir(exist_ok=True)
     import shutil
@@ -93,7 +93,7 @@ def build_namespace(root, fit, arrays):
               labels=lambda a: arrays[a['id']]['labels'],
               save=lambda p, x: save_json(root / p, x),
               load=lambda p: json.loads((root / p).read_text()),
-              obs=obs, ring_residual=lambda C, ob, part='train', K0=K: residual(C, ob, K0))
+              obs=obs, ring_residual=lambda C, ob, part='train', K0=K: residual(C, ob, K0, ring_radius, ring_wire))
 
     def freeze(name, files):
         save_json(root / 'metrics' / ('freeze_' + name + '.json'),
@@ -116,7 +116,7 @@ def build_namespace(root, fit, arrays):
 
 
 # ---------------------------------------------------------------- ring observation
-def ring_candidates(arrays, ordered, root):
+def ring_candidates(arrays, ordered, root, ring_radius=5.6, ring_wire=.6):
     rings = []
     for v in ordered:
         cid = v['meta']['id']; a = arrays[cid]
@@ -128,7 +128,8 @@ def ring_candidates(arrays, ordered, root):
         if rawpath.exists():
             raw = json.loads(rawpath.read_text())
         else:
-            raw = recover(a['labels'], a['K'], rgb_geometry=None, initial_pose=None)
+            raw = recover(a['labels'], a['K'], rgb_geometry=None, initial_pose=None,
+                          ring_radius=ring_radius, ring_wire=ring_wire)
             save_json(rawpath, raw)
         cands = []
         for alt in raw['ring_alternatives']:
