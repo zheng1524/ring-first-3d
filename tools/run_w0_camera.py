@@ -52,7 +52,7 @@ def write_status(out, status, stage, reason, g, v, error_type=None):
         group=g, video=v), indent=1))
 
 
-def build_ns_and_views(g, v, meta, root, ring_radius, ring_wire):
+def build_ns_and_views(g, v, meta, root, ring_radius, ring_wire, pair_offsets=None):
     import unified_camera as U5
     views = meta['views']
     arrays, fit = {}, []
@@ -62,7 +62,7 @@ def build_ns_and_views(g, v, meta, root, ring_radius, ring_wire):
         fit.append(dict(meta=dict(case=g, video=v, id=q['view'], raw_frame=q['raw_frame'], role='FIT',
                                   RGB_source=q['cache'], Mask_source=q['cache'], K=d['K'].tolist()),
                         cache=dict(path=q['cache'])))
-    ns, ordered = U5.build_namespace(root, fit, arrays, ring_radius, ring_wire)
+    ns, ordered = U5.build_namespace(root, fit, arrays, ring_radius, ring_wire, pair_offsets=pair_offsets)
     return ns, ordered, arrays
 
 
@@ -164,6 +164,7 @@ def main():
     ap.add_argument('--prepared-root', default=str(T006 / 'runs' / 'prepared'))
     ap.add_argument('--workdir', default=None)
     ap.add_argument('--ring-mm', type=float, default=None)
+    ap.add_argument('--pair-offsets', default='')
     ap.add_argument('--dry-run', action='store_true')
     args = ap.parse_args()
     g, v = args.group, args.video.zfill(3)
@@ -174,6 +175,7 @@ def main():
     ring_mm = float(args.ring_mm if args.ring_mm is not None else meta.get('ring_mm', 10.0))
     ring_radius = ring_mm / 2.0 + 0.6
     ring_wire = 0.6
+    pair_offsets = [int(x) for x in str(args.pair_offsets).split(',') if x.strip()] or None
     if args.dry_run:
         print(json.dumps(dict(group=g, video=v, n_views=len(meta['views']),
                               video_path=meta.get('video_path'), ring_mm=ring_mm,
@@ -190,7 +192,7 @@ def main():
         return 2
 
     try:
-        ns, ordered, arrays = build_ns_and_views(g, v, meta, run, ring_radius, ring_wire)
+        ns, ordered, arrays = build_ns_and_views(g, v, meta, run, ring_radius, ring_wire, pair_offsets)
         tr, pack, tracks_source = stage_tracks(ns, ordered, run, g, v)
         xy_tr = tr['xy']
         held_mask = np.asarray(tr['held']).astype(bool)

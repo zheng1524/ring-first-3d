@@ -64,7 +64,7 @@ def _extract(file, names, ns):
     exec(compile(ast.Module(body=nodes, type_ignores=[]), str(file), 'exec'), ns)
 
 
-def build_namespace(root, fit, arrays, ring_radius=5.6, ring_wire=.6):
+def build_namespace(root, fit, arrays, ring_radius=5.6, ring_wire=.6, pair_offsets=None):
     root = Path(root); (root / 'observations').mkdir(parents=True, exist_ok=True)
     (root / 'scripts').mkdir(exist_ok=True)
     import shutil
@@ -88,7 +88,8 @@ def build_namespace(root, fit, arrays, ring_radius=5.6, ring_wire=.6):
 
     ns = dict(Path=Path, np=np, cv2=cv2, Rotation=Rotation, least_squares=least_squares,
               minimize_scalar=minimize_scalar, lil_matrix=lil_matrix, cKDTree=cKDTree,
-              K=K, R=root, project=project, stats=stats, cfg=lambda: CFG,
+              K=K, R=root, project=project, stats=stats,
+              cfg=lambda: (dict(CFG, pair_offsets=list(pair_offsets)) if pair_offsets else CFG),
               ledger=lambda: ledger, image=lambda a: arrays[a['id']]['RGB'],
               labels=lambda a: arrays[a['id']]['labels'],
               save=lambda p, x: save_json(root / p, x),
