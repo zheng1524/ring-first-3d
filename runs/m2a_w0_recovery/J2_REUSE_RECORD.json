@@ -1,0 +1,26 @@
+{
+ "stage": "M2A",
+ "j2_used": false,
+ "j2_applicability": "J2_NOT_APPLICABLE",
+ "reasons": [
+  "J2 historical result slightly worse than B0 (inner/outer/raw/held)",
+  "corrected J2 is R10-only: R_CAD=5.6, r_CAD=0.6 hardcoded",
+  "B1/C1/C3/C2/C2B recovered 14/15 failed videos without J2",
+  "J2 does not provide a Ring-First initialization path for q_train=0 frames",
+  "no J2 optimization was run; no threshold or weight was tuned"
+ ],
+ "source": {
+  "path": "experiments/TASK-E4-RING-RGB-J2-CORRECTION-012/code/j2_obs_correct.py",
+  "sha256": "19b5bf2e174e49a0fff92812094c8385579c8eeaa6dbaa080e9ca62dff43d553"
+ },
+ "r10": [
+  5.6,
+  0.6
+ ],
+ "r5": [
+  3.1,
+  0.6
+ ],
+ "j2_result": "NOT_RUN",
+ "historical_reference": "experiments/TASK-E4-RING-RGB-J2-CORRECTION-012/FINAL_REPORT.md"
+}

@@ -1,0 +1,82 @@
+{
+ "base_commit": "45e19c440c9c72efd5f5acf73851bf9909fb45ee",
+ "source_commit": "c6f60917aa8532e198afaefca83cca137470af48",
+ "branch": "exp/TASK-M2A-W0-OBSERVABILITY-GRAPH-RECOVERY-001",
+ "files": {
+  "experiments/TASK-E4-UNIFIED-RING-RGB-CAMERA-MAINLINE-005/code/unified_camera.py": "e0376b0bff8540fd5af87113faa3a1af1cb6ebfa15bd5131b57f0fc0f7d8b1a4",
+  "tools/run_w0_camera.py": "72dab8ef310b5589ea4c075be38e54d5cc06422380ea36b4f40606396de74e2c",
+  "tools/m2a_diagnostics.py": "bb017699ed8f17dc1e1f03ff831f9ffa1cb71d7f61dd3eb6e31bb8d4e2d38c29",
+  "tools/m2a_recover.py": "20d992d17d937fc5f7f3b22729f82f7c9746fd55765bbd55c6f8818de2bfed58",
+  "tools/m2a_c3.py": "4d96eacaea9bb903a65b4ec6b3218b843b5c9e404e76ffa4b3809313db0691c3",
+  "tools/m2a_c3_b1.py": "ab0f0446adc99cfa2e4e9ed46ebcc789f2f7f9f493594a72f59abc36ccc6acb0",
+  "tools/m2a_c2.py": "c1f47ae21d4aea2b2cfe4104ebbd2d38d605a65b1d7d32e5f89fe2726f220528",
+  "tools/m2a_ring_bridge.py": "7a645aed308cb7b54abf6efaab83f8d4e84f552fea9f44faf3d23ea46745a02e",
+  "tools/m2a_merge.py": "370bcb3af264b8f0a658cc4a33edab5f8b9ae382cc5c329ca3187363e33efe15",
+  "tools/m2a_depth.py": "dc8223144d37020a3052bca8000f34755f3ddea302a265e5e1a2a9a86b857823",
+  "tools/m2a_visualize.py": "5d55c6eeb26dd9d5fa5c45bc1ed57520787f6717ef2fb44dc4ae4997c9ee0c7b",
+  "tests/test_m2a_artifacts.py": "fea5de149e18bd74453d1eecdd391ff3cd4b3b425d0437a90a33dafd37a8bc85"
+ },
+ "config": {
+  "camera_policy": "69b164058cc2569f992c2cc380b8f27d39c92fdebcb05b6a19eb0dcf6c2732e1",
+  "frozen_config": "d2f61b29b454a7f7e48b5d5f1254cd806ff9348335f220fb1e5f11ddedc61ddc"
+ },
+ "environment": {
+  "python": "3.12.13",
+  "numpy": "2.4.6",
+  "scipy": "1.15.3",
+  "cv2": "4.11.0",
+  "torch": "2.7.1+cu128",
+  "pandas": "3.0.5",
+  "matplotlib": "3.10.8",
+  "PIL": "12.3.0"
+ },
+ "j2": {
+  "stage": "M2A",
+  "j2_used": false,
+  "j2_applicability": "J2_NOT_APPLICABLE",
+  "reasons": [
+   "J2 historical result slightly worse than B0 (inner/outer/raw/held)",
+   "corrected J2 is R10-only: R_CAD=5.6, r_CAD=0.6 hardcoded",
+   "B1/C1/C3/C2/C2B recovered 14/15 failed videos without J2",
+   "J2 does not provide a Ring-First initialization path for q_train=0 frames",
+   "no J2 optimization was run; no threshold or weight was tuned"
+  ],
+  "source": {
+   "path": "experiments/TASK-E4-RING-RGB-J2-CORRECTION-012/code/j2_obs_correct.py",
+   "sha256": "19b5bf2e174e49a0fff92812094c8385579c8eeaa6dbaa080e9ca62dff43d553"
+  },
+  "r10": [
+   5.6,
+   0.6
+  ],
+  "r5": [
+   3.1,
+   0.6
+  ],
+  "j2_result": "NOT_RUN",
+  "historical_reference": "experiments/TASK-E4-RING-RGB-J2-CORRECTION-012/FINAL_REPORT.md"
+ },
+ "w0_counts": {
+  "expected_groups": 39,
+  "discovered_groups": 39,
+  "expected_videos": 79,
+  "discovered_videos": 79,
+  "expected_frames": 790,
+  "prepared_frames": 790,
+  "baseline_w0_generated": 64,
+  "new_w0_generated": 78,
+  "full_recovery": 3,
+  "partial_recovery": 11,
+  "total_full": 67,
+  "not_computable": 1,
+  "implementation_errors": 0,
+  "unexpected_exceptions": 0,
+  "cross_group_contamination": 0,
+  "undeclared_dependencies": "DECLARED: native.camera, unified_camera, track005, local_ring_sfm, features019, dxy_mid; NOT_AUDITED outside M2A scope",
+  "w0_79_coverage_pass": false,
+  "engineering_39_pass": true,
+  "cross_group_contamination_checked": true,
+  "positive_depth_diagnostic": "POSITIVE_DEPTH_DIAGNOSTICS.csv; actual W0 points and cameras"
+ },
+ "commit_stat": "c6f60917 M2A: W0 observability and RGB pose-graph recovery with geometric visual audit\n .../code/unified_camera.py                         |   5 +-\n tests/test_m2a_artifacts.py                        |  57 +++++\n tools/m2a_c2.py                                    |  91 ++++++++\n tools/m2a_c3.py                                    |  85 ++++++++\n tools/m2a_c3_b1.py                                 |  39 ++++\n tools/m2a_depth.py                                 |  43 ++++\n tools/m2a_diagnostics.py                           | 229 ++++++++++++++++++++\n tools/m2a_merge.py                                 | 172 +++++++++++++++\n tools/m2a_recover.py                               | 114 ++++++++++\n tools/m2a_ring_bridge.py                           |  53 +++++\n tools/m2a_visualize.py                             | 237 +++++++++++++++++++++\n tools/run_w0_camera.py                             |   8 +-\n 12 files changed, 1128 insertions(+), 5 deletions(-)\n"
+}
