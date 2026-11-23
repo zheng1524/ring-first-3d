@@ -1,10 +1,10 @@
 # Ring-First 3D — Route Inventory (proposed consolidated registry)
 #
 # STATUS OF THIS FILE
-#   This file is the audit-time inventory requested for docs/registry/routes.yaml.
-#   The pre-existing minimal registry at registry/routes.yaml is NOT overwritten and
-#   remains the only machine-consumed registry until a human approves the migration.
-#   tools/registry_check.py still reads registry/*.yaml; it does not read this file.
+#   This file is the authoritative route inventory for the M1 consolidation.
+#   registry/routes.yaml is legacy and read-only; it is not deleted or overwritten.
+#   tools/registry_check.py still reads registry/*.yaml until the Round 2 migration;
+#   this is a planned validator migration, not a second maintained registry.
 #
 # EVIDENCE RULE
 #   Every status below is backed by source inspection at the recorded workspace HEAD,
@@ -40,6 +40,7 @@ scientific_status_vocabulary:
 
 summary:
   total_routes: 21
+  planned_routes: 2
   confirmed: 0
   frozen: 0
   candidate: 12
@@ -609,3 +610,36 @@ routes:
     known_limitations:
       - joint BA on 16 real views not yet completed
       - 009 inner-only collapse root-caused in 010 (single CAD cannot fit both curves)
+
+# ---------------------------------------------------------------------------
+# Planned M1 routes (no implementation yet; registered for the approval table)
+# ---------------------------------------------------------------------------
+
+planned_routes:
+  - route_id: rf-m1-input-39
+    version: 1
+    component: input_preparation
+    status: exploring
+    planned: true
+    entrypoint: tools/prepare_m1_inputs.py
+    inputs: frozen39/inputs.csv + raw videos + frozen INIT weights
+    outputs: prepared/{group}_{video}/PREPARED.json + INPUT_COVERAGE.csv
+    reuse_policy: ADAPT
+    smoke_test: 39 groups / 79 videos / 790 frames / 120 photos / 22 R10 + 17 R5
+    known_limitations:
+      - glue only; reuses 005 prepare_view and does not implement segmentation
+      - not created until the M1 final composition is confirmed
+
+  - route_id: rf-m1-39-runner
+    version: 1
+    component: orchestration
+    status: exploring
+    planned: true
+    entrypoint: tools/validate_m1_all_groups.py
+    inputs: prepared caches + tools/run_w0_camera.py
+    outputs: CROSS_GROUP_39.csv + VALIDATION_39.json + EXECUTION_FAILURES.csv
+    reuse_policy: ADAPT
+    smoke_test: 39 group rows / 79 video rows / 0 implementation errors
+    known_limitations:
+      - glue only; no Ring, SIFT or BA logic inside
+      - not created until the M1 final composition is confirmed

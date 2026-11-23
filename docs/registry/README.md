@@ -1,6 +1,11 @@
+> **M1 consolidation note (2026-11-23):** the authoritative route inventory is
+> `docs/registry/routes.yaml`. `registry/routes.yaml` is legacy and read-only;
+> `tools/registry_check.py` still reads it until the Round 2 validator migration.
+> There must not be two independently maintained route registries.
+
 # Registry (auto-generated view)
 
-**本文件由 registry 生成，请勿手工维护。** 权威数据在 `registry/components.yaml` 与 `registry/routes.yaml`。
+**本文件为 registry 的 legacy 快照。** M1 后的权威 Route Registry 是 `docs/registry/routes.yaml`；`registry/components.yaml` 与 `registry/routes.yaml` 保留为历史只读输入，等待 Round 2 validator 迁移。
 
 | route_id | component | version | status | manifest | reproduction |
 |---|---|---|---|---|---|
