@@ -1,0 +1,14 @@
+{
+  "algo": "w0-crossvideo-027-corrective-r4",
+  "scene": {"seed": 0, "n_landmarks": 12, "H_rot_deg": [0.7, -0.4, 12.0], "H_mm": [0.4, -0.3, 0.2], "frozen": true},
+  "observations": {"rgb": "noise-free, generated once", "ring": "I/O/C from same GT cameras, subsample 8/16"},
+  "baseline_structure": "005-only triangulation (historical 019), 0.0 mm vs GT",
+  "perturbation": {"cameras": {"ids": ["G03_v004_raw00242", "G03_v004_raw00263"], "rot_deg": [0.25, 0.5], "trans_mm": [0.25], "seed": 0},
+                   "landmarks": {"mm": [1.0, 3.0], "kind": "random", "seed": 0},
+                   "retriangulate": ["E1 005-only", "E2 both"]},
+  "modes": {"M0": "none", "M1": "landmarks only", "M2": "H only", "M3": "H then landmarks", "M4": "NOT_EXECUTED"},
+  "budgets": {"M2": 200, "M1": 60, "M3": "30+30"},
+  "loss": {"rgb_mode": ["huber", "squared"], "ring": "I+C+O energy-mapped", "dir2d": "implemented, not used"},
+  "status": "CONTROLLED_BA_PARTIAL",
+  "gates": {"A": "PASS", "B": "PASS", "C": "PASS", "D": "PARTIAL", "E": "PARTIAL"}
+}
