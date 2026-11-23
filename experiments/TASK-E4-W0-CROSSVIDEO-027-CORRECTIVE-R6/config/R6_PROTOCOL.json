@@ -1,0 +1,12 @@
+{
+  "algo": "w0-crossvideo-027-corrective-r6",
+  "scene": {"seed": 0, "n_landmarks": 12, "H_rot_deg": [0.7, -0.4, 12.0], "H_mm": [0.4, -0.3, 0.2], "views": "3x004 + 3x005"},
+  "h_candidates": {"yaw_step": 15, "ring_weights": {"I": 0.35, "C": 0.05, "O": 0.35}, "lam_ring": 1.0, "lam_epi": 1.0, "max_nfev": 40},
+  "epipolar": {"per_identity": true, "reference_cameras": "passed-in (never C_gt)", "units": "px (Sampson)"},
+  "pipelines": {"old": ["005-only triangulation", "H-only from I", "M3b joint"], "new": ["H2", "joint triangulation", "M3b joint"]},
+  "budgets": {"H-only": 50, "M3b": 25, "M1": 80, "M4": 25},
+  "holdout": {"fit": 8, "holdout": 4, "seed": 2026},
+  "perturbation": {"camera": {"rot_deg": [0.25, 0.5], "trans_mm": [0.25]}, "anchor": "G03_v004_raw00202"},
+  "status": {"ENGINEERING_CORRECTNESS": "PASS", "H_INITIALIZATION_VALIDITY": "PARTIAL", "END_TO_END_COMPARISON": "PASS",
+             "HOLDOUT_VALIDATION": "PARTIAL", "CAMERA_PERTURBATION_ROBUSTNESS": "PARTIAL", "REAL_G03_READINESS": "FAIL"}
+}
