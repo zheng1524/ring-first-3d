@@ -1,0 +1,85 @@
+{
+ "branch": "exp/TASK-E4-W0-CROSSVIDEO-028-REAL-UNIFIED",
+ "base": {
+  "r6": "98a8ca530b5cf6a9c2b67b84170ba36561822cb0"
+ },
+ "unified_pipeline": "PARTIAL",
+ "new_method": "INSUFFICIENT_EVIDENCE",
+ "groups": {
+  "G01": {
+   "ref": "004",
+   "identities": 0,
+   "ring_MIO": 1.0144,
+   "w0": "camera_mainline (0 ACCEPT)"
+  },
+  "G03": {
+   "ref": "005",
+   "identities": 26,
+   "ring_MIO": 0.1618,
+   "w0": "camera_mainline (6+16 ACCEPT)"
+  },
+  "G06": {
+   "ref": "004",
+   "identities": 8,
+   "ring_MIO": 0.1171,
+   "w0": "recomputed via tools/run_w0_camera.py (004: 8 ACCEPT)"
+  }
+ },
+ "not_executed": [
+  "H initialization (old/new)",
+  "joint triangulation",
+  "M3b BA",
+  "FIT/HOLDOUT RGB",
+  "8 figures"
+ ],
+ "tests": "tests/test_u028_contracts.py 3/3 PASS",
+ "outputs": {
+  "ACTUAL_CALL_GRAPH.md": "a4269dd7db08bbf9b76023e9ba83019c50ff152d4657a40b588c0917e1be44b9",
+  "EXECUTION_DEFECT_REGISTER.md": "1d0fefb6b2f2c7844e2840434668cad707238b99d6ed1889f344a2ad259876f4",
+  "FIGURE_STATUS.md": "9e7f8fd4f47ca7b7c33ae3fd5899087a7e2de3bb88f5b192d579d621e7f2a94a",
+  "FREEZE_TABLE_DECOUPLING_AUDIT.md": "2ceea82a5af03952b2efb0bc7034d1a212fb50ab22df0e93ac5dca99be817fa3",
+  "GROUP_ASSET_MATRIX.csv": "b07734a437e618e52e225e276348b79bcb49bcb51a47a9413ebbce6ff8c9a454",
+  "HISTORICAL_CODE_REUSE_AUDIT.md": "9386f022314be2dc086edbdb61c1552cea1b497221e63aa0e5fa177bd4b9eee5",
+  "TECHNICAL_REPORT.md": "d383a785412419f2b190ab789464d7c6b2112a20c9c08f2d27db865c9092a404",
+  "UNIFIED_PIPELINE_ARCHITECTURE.md": "5762f9cc69bb30a00dd7a846b7bef5cdfb7b7901ba957691e88bbdb6131fc0d1",
+  "core/u028.py": "0031cdf0c047b132587cc6e3967309d1d2f109242d1389dd8f3fa864759c2a97",
+  "runs/G01/ASSETS.csv": "0b9c6a123a8aef5abb6e8bd2fc0d513e80ae0d258cfeb3415e9f8955dfe8dda2",
+  "runs/G01/IDENTITIES.csv": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+  "runs/G01/RING_SCORES.csv": "ac7dc61fb05c9aa726cff79db7954829fe9587513ce2b49961b633e10b6ed5da",
+  "runs/G01/SPLIT.json": "954da7f2aa8982e11782f052c2a01a1ffedc6cea7ed5dc2de7afe3fa429e54a4",
+  "runs/G01/SUMMARY.json": "d4711a3c118c2c266deab807b2af7c5e9746885bbd1948c0dc6b881b6950c156",
+  "runs/G01/replay/config/VIEWS.json": "7b0cebfc0c1cff978fab776c8506835d0565640e60dadce02744c51e8b1d4131",
+  "runs/G03/ASSETS.csv": "46d518093581c7879b7bf5f07a205ac3b3333fa279b2703eaca88edf10d51ed8",
+  "runs/G03/IDENTITIES.csv": "829cadac6ef60f50453a99ded55c1323d20b662c09acfd3ef7e40b734b308d17",
+  "runs/G03/RING_SCORES.csv": "eee7ef026dfdb6da2cf142ecefffe238007c01f1182a04a28d72eeb0f4b279a6",
+  "runs/G03/SPLIT.json": "bd8338a252053d9364b8a0b2ec04be9156888872f76205021e72fbba91498349",
+  "runs/G03/SUMMARY.json": "8095883dabca35300e0b0e7cd9dd8daa75019be01957975e2c1bafdb64e32b1f",
+  "runs/G03/replay/config/VIEWS.json": "1f50f138ffee33be810b17c9e6cea9b0743d97a5680dee5769b142ec1b36bfec",
+  "runs/G03/replay/landmarks/G03_004_029FIT_OBSERVATIONS.json": "984bdeba440380345603dcb8a5d790da94567366b3d37048ef8b0bd779a11331",
+  "runs/G03/replay/landmarks/G03_005_029FIT_OBSERVATIONS.json": "1c7576122d348717c352374238870dc3a2a41690a7a2fa0ab49ac5317b32601d",
+  "runs/G03/replay/metrics/G03_004_029FIT_TRIANGULATION.json": "b0750e7261b6addf8a4888c81d000f27ba244a94a10a7cda2e026d1c2abe79b0",
+  "runs/G03/replay/metrics/G03_005_029FIT_TRIANGULATION.json": "6f5cecbd4d71489db3a8f35a2d6ad80c5ba8a49a328b8566bcb889ed2bae3b37",
+  "runs/G06/ASSETS.csv": "2d7640bf014f36f5e616e037615ff79cd5a38bb4bae0136e412f66f381774b1f",
+  "runs/G06/IDENTITIES.csv": "29a44cab2eabfec7602be956f096f1fa03abff110a27df2252b236debbb89ae6",
+  "runs/G06/RING_SCORES.csv": "edac3485398e7697113e6ddd4cadac17f4595882a5ef4f588674b8c902dbd117",
+  "runs/G06/SPLIT.json": "cc7f5c71abd6e163ffb07f57fb5ee30fd89cf7bfdae9b654dde509ea4143d33b",
+  "runs/G06/SUMMARY.json": "7903b42ea0e593f218781c7e223775d1f665b1f149f04bd8df4a7c8f3dd93555",
+  "runs/G06/replay/config/VIEWS.json": "c69c7e113ce6230f97be18631011e116ab36bf57e00f6afa7f6e064517f70f98",
+  "runs/G06/video004/B0.npz": "09ee33074d0574a43e91361d2ce4c8d3143f3bfabfd9ad24a2213749fc25661d",
+  "runs/G06/video004/W0.npz": "05838b54cddc8bbf0ea889831f528703dcbf84b8d16558c809fde08aa117fefb",
+  "runs/G06/video004/accepted_cameras.npz": "ff1cde0d3f8850624bf147b877aa739646ac6a4bec538a088095b07334248f80",
+  "runs/G06/video004/admission.csv": "dc8d242f85e673ea6ecd8c8e1b89bb48a4bea1124750af6f4c029b03d5c1c8c4",
+  "runs/G06/video004/camera_result.npz": "fbd0cadfb32f88f840d028a50a1c234109a2b121bcb7d1dceebba8d4ee355f1d",
+  "runs/G06/video004/manifest.json": "0fc240ac7e609328b6d6939975ed4ee7f02309b82723f3fc125a65bff3c6c902",
+  "runs/G06/video005/B0.npz": "ecfd674dcfa763fd96d9181801e95d1562bbc85b0b954e20ea141fdddc4b65d8",
+  "runs/G06/video005/W0.npz": "fce36edd917f04a8c8c838b817e9a21b57a3314a2521cde923f9ea7cca3cb6dd",
+  "runs/G06/video005/accepted_cameras.npz": "805ae3698e39b779ba975e71f481aa4f5ad11185a8e3cf4007cc9e6769c9d7e6",
+  "runs/G06/video005/admission.csv": "ea1e216375677d153968115626ada2116f1591a58802f457f0f9ddc5521ab855",
+  "runs/G06/video005/camera_result.npz": "b2e099cc00cc2f86a7dcf134f52b365988fc8eb40ba55b25afd3749d2156b53a",
+  "runs/G06/video005/manifest.json": "4f31b2b3a7c5c9948de324cb28dc505da8eb6b3a1bd09e02aec50065e6ce9841",
+  "runs/GROUP_ASSET_MATRIX.csv": "b07734a437e618e52e225e276348b79bcb49bcb51a47a9413ebbce6ff8c9a454",
+  "runs/w0_G06_004.log": "a15670443c95a268627b544894a2cd7698be6101b6a8cc251736191fd987137e",
+  "runs/w0_G06_005.log": "ffeea4ed600bfbdacbf42d8b33516d3606d8679415660e0de901bc652f650033",
+  "tests/test_u028_contracts.py": "74897ec0afa70453af6fceeb6273649201d3f68db313ec38d330bbb6ad46ffe2"
+ }
+}
