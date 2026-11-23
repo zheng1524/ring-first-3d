@@ -39,13 +39,29 @@ def edge(mask):
 def sample(a,n):
     return a[np.linspace(0,len(a)-1,min(n,len(a)),dtype=int)] if len(a) else a
 
-def observe(labels):
+def observe(labels, ring_mode='all'):
+    """Ring observations.
+
+    ring_mode='all' uses every true Ring Mask boundary point, including the
+    Ring-Polyp contact. ring_mode='legacy' reproduces the old M2-A behavior
+    that removed points near the polyp; it is kept only for A0 controls.
+    Contact/background labels are diagnostics, never an exclusion rule.
+    """
     if labels.shape!=(360,640):raise ValueError("Frozen Ring-First work size is 640x360")
     if not np.isin(labels,[0,1,2]).all():raise ValueError("Labels must be 0 Background, 1 Polyp, 2 Ring")
     rm=labels==2;pm=labels==1;bd=edge(rm)
     near=cv2.dilate(pm.astype(np.uint8),np.ones((5,5),np.uint8))>0
-    ix=np.clip(np.floor(bd+.5).astype(int),[0,0],[639,359]);unknown=near[ix[:,1],ix[:,0]]
-    ob=dict(mask=rm,q_train=sample(bd[~unknown],128),unknown_boundary=bd[unknown])
+    ix=np.clip(np.floor(bd+.5).astype(int),[0,0],[639,359]);contact=near[ix[:,1],ix[:,0]]
+    q_all=bd
+    q_legacy=bd[~contact]
+    q_train=sample(q_all if ring_mode=='all' else q_legacy,128)
+    ob=dict(mask=rm,q_train=q_train,unknown_boundary=bd[contact],ring_mode=ring_mode,
+            ring_boundary_all=bd,ring_boundary_contact_polyp=bd[contact],
+            ring_boundary_contact_background=bd[~contact],
+            ring_boundary_sampled=q_train,q_train_original=len(q_legacy),
+            q_train_corrected=len(q_all),ring_boundary_all_count=len(q_all),
+            ring_boundary_contact_polyp_count=int(contact.sum()),
+            ring_boundary_contact_background_count=int((~contact).sum()))
     roi=cv2.dilate(rm.astype(np.uint8),np.ones((17,17),np.uint8))>0
     for key,m in [('p',rm),('b',(labels==0)&roi)]:
         y,x=np.nonzero(m);ob[key+'_train']=sample(np.c_[x,y],192)
@@ -61,9 +77,9 @@ def score(C, ob, K, rgb_geometry=None, ring_radius=5.6, ring_wire=.6):
         val+=.2*float(np.mean(np.where(e<=1,.5*e*e,e-.5)))+float(np.maximum(.1-z,0).mean())*100
     return val
 
-def recover(labels, K, rgb_geometry=None, initial_pose=None, ring_radius=5.6, ring_wire=.6):
+def recover(labels, K, rgb_geometry=None, initial_pose=None, ring_radius=5.6, ring_wire=.6, ring_mode='all'):
     """Run the frozen RF5DoF + yaw path. A numeric solution is not pose GT."""
-    K=np.asarray(K,float);ob=observe(labels)
+    K=np.asarray(K,float);ob=observe(labels,ring_mode)
     if len(ob['q_train'])<20:raise ValueError('INSUFFICIENT_RING_OBSERVATION')
     ns=dict(np=np,Rotation=Rotation,least_squares=least_squares,K=K,rad=float(ring_radius),tube=float(ring_wire),cfg=dict(RF_CONFIG))
     for name in ['decode','image_seeds','solve']:ns[name]=bind(getattr(_kernels,name),ns)

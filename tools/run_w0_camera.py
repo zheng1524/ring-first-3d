@@ -84,15 +84,16 @@ def stage_tracks(ns, ordered, root, g, v):
             src)
 
 
-def stage_ring(ns, ordered, arrays, root, ring_radius, ring_wire):
+def stage_ring(ns, ordered, arrays, root, ring_radius, ring_wire, ring_mode='all'):
     import unified_camera as U5
     rings = []
     for a in ordered:
         cid = a['meta']['id']
-        ob = U5.observe(arrays[cid]['labels'])
+        ob = U5.observe(arrays[cid]['labels'], ring_mode)
         np.savez_compressed(root / 'observations' / (cid + '_ring.npz'), **ob)
         raw = U5.recover(arrays[cid]['labels'], arrays[cid]['K'], rgb_geometry=None,
-                         initial_pose=None, ring_radius=ring_radius, ring_wire=ring_wire)
+                         initial_pose=None, ring_radius=ring_radius, ring_wire=ring_wire,
+                         ring_mode=ring_mode)
         cands = []
         for alt in raw['ring_alternatives']:
             Q = np.asarray(alt['Q'], float)
@@ -165,6 +166,8 @@ def main():
     ap.add_argument('--workdir', default=None)
     ap.add_argument('--ring-mm', type=float, default=None)
     ap.add_argument('--pair-offsets', default='')
+    ap.add_argument('--ring-mode', choices=['all', 'legacy'], default='all')
+    ap.add_argument('--init-poses', default=None)
     ap.add_argument('--dry-run', action='store_true')
     args = ap.parse_args()
     g, v = args.group, args.video.zfill(3)
@@ -196,11 +199,20 @@ def main():
         tr, pack, tracks_source = stage_tracks(ns, ordered, run, g, v)
         xy_tr = tr['xy']
         held_mask = np.asarray(tr['held']).astype(bool)
-        rings = stage_ring(ns, ordered, arrays, run, ring_radius, ring_wire)
+        rings = stage_ring(ns, ordered, arrays, run, ring_radius, ring_wire, args.ring_mode)
         edges = ns['pair_data'](tr, pack)
         rf = [x['meta']['raw_frame'] for x in ordered]
         ref = pick_ref(rf)
-        ini, _ = ns['initialize'](rings, tr, edges, ref, 0)
+        if args.init_poses:
+            z = np.load(args.init_poses)
+            im = {str(i): np.asarray(c, float) for i, c in zip(z['ids'], z['c2w'])}
+            missing = [x['meta']['id'] for x in ordered if x['meta']['id'] not in im]
+            if missing:
+                raise RuntimeError(f'INIT_POSES_MISSING {missing}')
+            ini = [im[x['meta']['id']] for x in ordered]
+        else:
+            ini, _ = ns['initialize'](rings, tr, edges, ref, 0)
+        ini = np.asarray(ini, float)
         if any(x is None for x in ini):
             write_status(out, 'INSUFFICIENT_EVIDENCE', 'ring_first', 'RING_FIRST_INCOMPLETE', g, v,
                          'RING_FIRST_INCOMPLETE')
@@ -350,7 +362,7 @@ def main():
                   held_eval=sha(WS / 'camera_mainline/code/evaluate_held_geometry.py'),
                   contour=sha(WS / 'camera_mainline/code/contour_metrics.py'),
                   unified=sha(T005 / 'code/unified_camera.py')),
-        stages=args.stage,
+        stages=args.stage, ring_mode=args.ring_mode, init_poses=args.init_poses,
         status=(quality and ('COMPLETED_VALID' if quality['n_accept'] > 0 else 'COMPLETED_LIMITED'))
                or None)
     for name in ('B0.npz', 'W0.npz', 'camera_result.npz', 'accepted_cameras.npz',

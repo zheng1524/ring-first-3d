@@ -117,11 +117,11 @@ def build_namespace(root, fit, arrays, ring_radius=5.6, ring_wire=.6, pair_offse
 
 
 # ---------------------------------------------------------------- ring observation
-def ring_candidates(arrays, ordered, root, ring_radius=5.6, ring_wire=.6):
+def ring_candidates(arrays, ordered, root, ring_radius=5.6, ring_wire=.6, ring_mode='all'):
     rings = []
     for v in ordered:
         cid = v['meta']['id']; a = arrays[cid]
-        ob = observe(a['labels'])
+        ob = observe(a['labels'], ring_mode)
         if len(ob['q_train']) < 20:
             raise ValueError(f'INSUFFICIENT_RING_OBSERVATION {cid}')
         np.savez_compressed(root / 'observations' / (cid + '_ring.npz'), **ob)
@@ -130,7 +130,7 @@ def ring_candidates(arrays, ordered, root, ring_radius=5.6, ring_wire=.6):
             raw = json.loads(rawpath.read_text())
         else:
             raw = recover(a['labels'], a['K'], rgb_geometry=None, initial_pose=None,
-                          ring_radius=ring_radius, ring_wire=ring_wire)
+                          ring_radius=ring_radius, ring_wire=ring_wire, ring_mode=ring_mode)
             save_json(rawpath, raw)
         cands = []
         for alt in raw['ring_alternatives']:

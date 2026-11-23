@@ -52,6 +52,7 @@ def main():
     for _, b in BASE.iterrows():
         g, v = str(b.group_id), f'{int(b.video_id):03d}'
         base_ok = bool(b.w0_generated)
+        q = {}
         candidates = [r for r in rec if r['group_id'] == g and f'{int(r["video_id"]):03d}' == v
                       and r.get('execution_status') in ('COMPLETED_VALID', 'COMPLETED_LIMITED')]
         chosen = None
