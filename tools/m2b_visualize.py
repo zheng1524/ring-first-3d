@@ -36,7 +36,7 @@ def load_packet(r):
 
 def draw_view(r,meta,view_id,c2w,adm,size=(320,180)):
     q=next(x for x in meta['views'] if x['view']==view_id); a=np.load(q['cache']); rgb=a['RGB'].copy(); labels=a['labels']; K=np.asarray(a['K'],float)
-    ob=observe(labels,'all'); R=float(meta.get('ring_mm',10.0))/2; wire=.6
+    ob=observe(labels,'all'); R=float(meta.get('ring_mm',10.0))/2 + .6; wire=.6
     ov=np.zeros_like(rgb); ov[labels==2]=(150,150,150); rgb=cv2.addWeighted(rgb,.72,ov,.28,0)
     for pts,color in [(ob['q_train'],(0,230,80)),(ob['ring_boundary_contact_polyp'],(230,0,220))]:
         for x,y in np.rint(pts).astype(int): cv2.circle(rgb,(int(x),int(y)),1,color,-1)
@@ -79,7 +79,7 @@ def torus(R=5.6,r=.6):
 
 def camera3d(r,path=None):
     w,cr,adm=load_packet(r); C=np.asarray(cr['c2w'],float); ids=[str(x) for x in cr['ids']]; ad=dict(zip(adm.view.astype(str),adm.admission_status.astype(str)))
-    _,meta=prep_of(str(r.group_id),f'{int(r.video_id):03d}'); X,Y,Z=torus(float(meta.get('ring_mm',10.0))/2,.6); lim=max(12,float(np.abs(C[:,:3,3]).max())*1.15)
+    _,meta=prep_of(str(r.group_id),f'{int(r.video_id):03d}'); X,Y,Z=torus(float(meta.get('ring_mm',10.0))/2 + .6,.6); lim=max(12,float(np.abs(C[:,:3,3]).max())*1.15)
     fig,axes=plt.subplots(2,2,figsize=(8,7),subplot_kw={'projection':'3d'})
     for ax,(e,a,nm) in zip(axes.ravel(),[(22,-62,'Perspective'),(90,-90,'Top'),(0,-90,'Side'),(0,0,'Front')]):
         ax.plot_surface(X,Y,Z,color='#9e9e9e',alpha=.33,linewidth=0)

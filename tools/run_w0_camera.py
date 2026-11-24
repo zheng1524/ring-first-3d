@@ -19,6 +19,7 @@ T005 = WS / 'experiments/TASK-E4-UNIFIED-RING-RGB-CAMERA-MAINLINE-005'
 T006 = WS / 'experiments/TASK-E4-UNIFIED-RING-CONTOUR-REFINEMENT-005'
 T011 = WS / 'experiments/TASK-E4-RING-RGB-JOINT-BA-011-REPAIR'
 T002 = WS / 'experiments/TASK-E4-UNIFIED-PIPELINE-COMPLETION-002'
+sys.path.insert(0, str(WS / 'src'))
 sys.path.insert(0, str(WS / 'camera_mainline/code'))
 sys.path.insert(0, str(T005 / 'code'))
 
@@ -52,15 +53,21 @@ def write_status(out, status, stage, reason, g, v, error_type=None):
         group=g, video=v), indent=1))
 
 
-def build_ns_and_views(g, v, meta, root, ring_radius, ring_wire, pair_offsets=None):
+def build_ns_and_views(g, v, meta, root, ring_radius, ring_wire, pair_offsets=None, clean_labels_root=None):
     import unified_camera as U5
     views = meta['views']
     arrays, fit = {}, []
     for q in views:
         d = np.load(q['cache'])
-        arrays[q['view']] = dict(RGB=d['RGB'], labels=d['labels'], K=d['K'])
+        lab = d['labels']; mask_src = q['cache']
+        if clean_labels_root:
+            cp = Path(clean_labels_root) / f'{g}_{v}' / (q['view'] + '.npz')
+            if not cp.exists():
+                raise SystemExit(f'MISSING_CLEAN_LABELS {cp}')
+            lab = np.load(cp)['labels']; mask_src = str(cp)
+        arrays[q['view']] = dict(RGB=d['RGB'], labels=lab, K=d['K'])
         fit.append(dict(meta=dict(case=g, video=v, id=q['view'], raw_frame=q['raw_frame'], role='FIT',
-                                  RGB_source=q['cache'], Mask_source=q['cache'], K=d['K'].tolist()),
+                                  RGB_source=q['cache'], Mask_source=mask_src, K=d['K'].tolist()),
                         cache=dict(path=q['cache'])))
     ns, ordered = U5.build_namespace(root, fit, arrays, ring_radius, ring_wire, pair_offsets=pair_offsets)
     return ns, ordered, arrays
@@ -168,6 +175,7 @@ def main():
     ap.add_argument('--pair-offsets', default='')
     ap.add_argument('--ring-mode', choices=['all', 'legacy'], default='all')
     ap.add_argument('--init-poses', default=None)
+    ap.add_argument('--clean-labels-root', default=None)
     ap.add_argument('--dry-run', action='store_true')
     args = ap.parse_args()
     g, v = args.group, args.video.zfill(3)
@@ -176,8 +184,9 @@ def main():
            else WS / 'experiments/TASK-E4-W0-MAINLINE-CONSOLIDATION-015' / 'runs' / f'{g}_{v}')
     meta = load_prepared(g, v, args.prepared_root)
     ring_mm = float(args.ring_mm if args.ring_mm is not None else meta.get('ring_mm', 10.0))
-    ring_radius = ring_mm / 2.0 + 0.6
-    ring_wire = 0.6
+    from ring_first_3d.mainline.native.ring_cad import params as ring_cad_params
+    _rc = ring_cad_params(ring_mm); ring_radius = _rc['centerline_radius_mm']; ring_wire = _rc['wire_radius_mm']
+    meta['clean_labels_root'] = args.clean_labels_root
     pair_offsets = [int(x) for x in str(args.pair_offsets).split(',') if x.strip()] or None
     if args.dry_run:
         print(json.dumps(dict(group=g, video=v, n_views=len(meta['views']),
@@ -195,7 +204,7 @@ def main():
         return 2
 
     try:
-        ns, ordered, arrays = build_ns_and_views(g, v, meta, run, ring_radius, ring_wire, pair_offsets)
+        ns, ordered, arrays = build_ns_and_views(g, v, meta, run, ring_radius, ring_wire, pair_offsets, args.clean_labels_root)
         tr, pack, tracks_source = stage_tracks(ns, ordered, run, g, v)
         xy_tr = tr['xy']
         held_mask = np.asarray(tr['held']).astype(bool)
@@ -296,7 +305,14 @@ def main():
                          held_median_valid=float(np.median(vv)),
                          held_mae=float(np.mean(vv)),
                          big_error_fraction=float((vv > POL['rgb']['big_error_px']).mean()))
-            m['positive_depth'] = float(EV.project(np.zeros((1, 3)), cams[i])[1][0] > 0)
+            dcam = (np.asarray(X, float) - cams[i][:3, 3]) @ cams[i][:3, :3]
+            m['positive_depth'] = float((dcam[:, 2] > 0).mean()) if len(dcam) else 0.0
+            m['positive_depth_sample_count'] = int(len(dcam))
+            m['world_origin_positive_depth'] = float(EV.project(np.zeros((1, 3)), cams[i])[1][0] > 0)
+            if len(tids):
+                tr_mask = ~held_mask[np.asarray(tids, int)]
+                if tr_mask.any(): m['positive_depth_training_fraction'] = float((dcam[tr_mask, 2] > 0).mean())
+                if (~tr_mask).any(): m['positive_depth_held_fraction'] = float((dcam[~tr_mask, 2] > 0).mean())
             pos = order.index(i)
             m['rotation_to_previous_deg'] = (None if pos == 0 else
                 round(RM.relative_deg(cams[order[pos - 1]], cams[i]), 3))
@@ -307,6 +323,26 @@ def main():
                            if m['triangulation_degenerate_n'] > 0 else None))
             m.update(admission_status=dec['status'], admission_reasons=';'.join(dec['reasons']))
             rows.append(m)
+        # Actual held-track triangulation (training X above excludes held tracks).
+        held_pts = []
+        for t in np.flatnonzero(held_mask):
+            frames = np.flatnonzero(np.isfinite(xy_tr[t, :, 0]))
+            if len(frames) < 2: continue
+            try:
+                P = ns['triangle']([cams[j] for j in frames], [xy_tr[t, j] for j in frames])
+            except Exception:
+                continue
+            if np.isfinite(P).all(): held_pts.append(np.asarray(P, float))
+        if held_pts:
+            HP = np.asarray(held_pts, float)
+            for m in rows:
+                held_depth = (HP - np.asarray(cams[ids.index(m['view'])])[:3, 3]) @ np.asarray(cams[ids.index(m['view'])])[:3, :3]
+                m['positive_depth_held_fraction'] = float((held_depth[:, 2] > 0).mean())
+            src = (HP - cams[0][:3, 3]) @ cams[0][:3, :3]
+            tgt = (HP - cams[-1][:3, 3]) @ cams[-1][:3, :3]
+            for m in rows:
+                m['positive_depth_source_fraction'] = float((src[:, 2] > 0).mean())
+                m['positive_depth_target_fraction'] = float((tgt[:, 2] > 0).mean())
         dfm = pd.DataFrame(rows)
         (run / 'PER_VIEW.csv').parent.mkdir(parents=True, exist_ok=True)
         dfm.to_csv(run / 'PER_VIEW.csv', index=False)
