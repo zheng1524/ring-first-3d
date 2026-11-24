@@ -1,0 +1,9 @@
+method_id,source_path,function,original_input_contract,current_input_contract,reuse_or_adapt,necessary_changes,execution_entrypoint,regression_test
+T10_quality,src/ring_first_3d/views/selection.py,quality_features/select_views,arrays RGB/labels/T/K + center,current view dict FIT,ADAPT,direction computed from c2w center; FIT role added,tools/m2e_selection.py,TARGET_SELECTION_RESULTS 622
+T11_direction,src/ring_first_3d/views/selection.py,select_views strategy=direction_quota,direction_block,current view dict,ADAPT,direction_block from current c2w; anchor current max quality,tools/m2e_selection.py,T11_DIRECTION_QUOTA
+T13_support,src/ring_first_3d/mainline/lineage/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/code/coverage.py,support_pairs via _legacy,historical RGB features/K/C,current SIFT 6000 ORB replaced,ADAPT,SIFT 6000 contrast .01; current c2w; unique cache root,tools/m2e_selection.py,217 READY / 316
+HERO,src/ring_first_3d/mainline/native/hero.py,infer,ordered 4 frames,same frames c2w/K/clean labels,REUSE,none,tools/m2e_hero_batch.py,217/217 PASS
+Cleaning,src/ring_first_3d/mainline/native/cleaning.py,classify_native,Raw + ring CAD,R5/R10 unified CAD,REUSE,current CAD npz generated from ring_cad contract,tools/m2e_hero_batch.py,217 cleaning
+A_to_B,lineage/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/code/reprojection.py,render/evaluate/make_figure,"P,F,C,K,A pose,B pose,ring",current tuple mesh,REUSE,CAD scene injected; tuple identity,tools/m2e_a2b_batch.py,311 pairs
+6view,src/ring_first_3d/mainline/native/_mesh_renderer.py,actual_mesh_image,"V,F,RV,RF,V0,views",current Raw/Cleaned,REUSE,none,tools/m2e_six_views.py,8 groups
+FRAME_REGISTRY,current W0+prepared+clean,m2e_selection,current inputs,766 poses,NEW_ADAPTER,"single registry, no directory override",tools/m2e_selection.py,766 rows
