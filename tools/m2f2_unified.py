@@ -58,7 +58,7 @@ def groups_from_arg(value):
     return [(x, ALIASES[x]) for x in names]
 
 
-def run_w0(groups, out):
+def run_w0(groups, out, run_id):
     rows = []
     for alias, group in groups:
         for video in ("004", "005"):
@@ -85,6 +85,8 @@ def run_w0(groups, out):
                              status="PASS" if result.returncode == 0 else "FAIL",
                              reason="" if result.returncode == 0 else f"EXIT_{result.returncode}",
                              command=command, log=str(log)))
+    for row in rows:
+        row.update(run_id=run_id, code_version=CODE_VERSION)
     write_json(out / "w0/W0_RUN_COMMANDS.json", rows)
     failed = [row for row in rows if row["status"] != "PASS"]
     if failed:
@@ -140,7 +142,8 @@ def audit_registry(groups, out, run_id):
     write_csv(out / "w0/W0_IDENTITY_FAILURES.csv", failures,
               ["group_id", "video_id", "status", "reason", "packet"])
     write_json(out / "w0/W0_IDENTITY_SUMMARY.json",
-               dict(run_id=run_id, verified_videos=len(packets), expected_videos=79,
+               dict(run_id=run_id, code_version=CODE_VERSION,
+                    verified_videos=len(packets), expected_videos=79,
                     registry_rows=len(rows), expected_rows=766, failures=failures,
                     registry_sha256=sha256_file(out / "w0/FRAME_REGISTRY.csv")))
     return packets
@@ -345,17 +348,22 @@ def select(groups, out, run_id):
                                                run_id=run_id, code_version=CODE_VERSION))
             print("SELECT", alias, video, "S0/S1/S2",
                   [sum(v[x] for v in views) for x in ("s0", "s1", "s2")], flush=True)
+    for row in admission_rows + target_rows + tuple_rows + anchor_rows:
+        row.setdefault("run_id", run_id)
+        row.setdefault("code_version", CODE_VERSION)
     write_csv(out / "admission/CAMERA_ADMISSION.csv", admission_rows,
               ["alias", "group_id", "video_id", "view_id", "raw_frame", "legacy_status",
                "trajectory_class", "graph_support_count", "s0_eligible", "s1_eligible",
-               "s2_eligible", "model_center_source", "model_center_mm"])
+                   "s2_eligible", "model_center_source", "model_center_mm",
+                   "run_id", "code_version"])
     write_csv(out / "selection/ANCHOR_MAPPING.csv", anchor_rows,
               ["alias", "group_id", "video_id", "arm", "historical_id",
                "historical_raw_frame", "selected_id", "selected_raw_frame",
-               "delta_raw_frame", "exact", "status"])
+               "delta_raw_frame", "exact", "status", "run_id", "code_version"])
     write_csv(out / "selection/TARGET_SELECTION.csv", target_rows,
               ["alias", "group_id", "video_id", "arm", "method", "status",
-               "target_id", "rank", "anchor_exact", "model_center_source", "direction_block", "reason"])
+               "target_id", "rank", "anchor_exact", "model_center_source", "direction_block",
+               "reason", "run_id", "code_version"])
     tuple_columns = ["alias", "group_id", "video_id", "arm", "method", "target_id",
                      "support_ids", "tuple_id", "ready", "reason", "input_identity_verified",
                      "candidate_evidence", "anchor_exact", "w0_sha256", "pairs_sha256",
@@ -851,7 +859,7 @@ def main():
         if frozen["run_id"] != run_id or frozen["code_version"] != CODE_VERSION:
             raise ValueError("RUN_ID_OR_CODE_CHANGED_AFTER_SELECTION")
     if args.stage in ("w0", "all"):
-        run_w0(groups, out)
+        run_w0(groups, out, run_id)
     if args.stage in ("select", "all"):
         select(groups, out, run_id)
     if args.stage in ("hero", "all"):
