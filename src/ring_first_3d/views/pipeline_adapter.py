@@ -18,27 +18,49 @@ def _finite_ge(value, limit):
 
 
 def admission_tiers(row, graph_support_count, trajectory_class):
-    """M2C strict S0/S1 thresholds; S2 adds the recorded graph support rule."""
-    if (not bool(row["pose_valid"]) or not bool(row["cad_valid"]) or
-            row["admission_status"] in ("REJECT", "REJECTED") or
-            trajectory_class not in ("T0_CONTINUOUS", "T1_SAMPLING_GAP")):
+    """Independent S0/S1/S2 semantics.
+
+    S0 = complete frozen YAML; S1 = frame/local-graph evidence, not merely
+    relaxed S0; S2 = frame-valid local candidate, with the real multi-view
+    combination gate applied later by validate_t13.
+    """
+    pose_ok = bool(row["pose_valid"]) and bool(row["cad_valid"])
+    not_reject = row["admission_status"] not in ("REJECT", "REJECTED")
+    not_branch = trajectory_class not in ("T2_ISOLATED_BRANCH", "T3_CONSECUTIVE_BRANCH")
+    if not (pose_ok and not_reject):
         return False, False, False
-    common = (_finite_le(row["ring_raw_mae"], 3.) and
-              _finite_ge(row["held_n"], 6) and
-              _finite_le(row["held_median"], 6.) and
-              _finite_le(row["held_p95"], 20.) and
-              _finite_le(row["big_error_fraction"], .25) and
-              _finite_ge(row["positive_depth"], .95))
-    s1 = bool(common)
-    s0 = bool(common and _finite_le(row["ring_raw_mae"], 2.) and
+    # Frozen YAML S0: ring 2 px, held 20/4/8, positive 0.95,
+    # big-error 0.10, neighbour 10 deg/5 mm.  The 2 mm triangulation
+    # baseline is checked when the W0 admission row carries it.
+    baseline_ok = True
+    if "triangulation_min_baseline_mm" in row:
+        try:
+            baseline_ok = float(row["triangulation_min_baseline_mm"]) >= 2.0
+        except (TypeError, ValueError):
+            baseline_ok = False
+    s0 = bool(not_branch and baseline_ok and
+              _finite_le(row["ring_raw_mae"], 2.) and
               _finite_ge(row["held_n"], 20) and
               _finite_le(row["held_median"], 4.) and
               _finite_le(row["held_p95"], 8.) and
-              _finite_le(row["big_error_fraction"], .1) and
-              _finite_ge(row["positive_depth"], .99) and
+              _finite_le(row["big_error_fraction"], .10) and
+              _finite_ge(row["positive_depth"], .95) and
               _finite_le(row.get("rotation_to_previous_deg", 0), 10.) and
               _finite_le(row.get("center_to_previous_mm", 0), 5.))
-    return s0, s1, bool(s1 and graph_support_count >= 2)
+    # S1 uses frame/trajectory evidence; a held count alone is not enough.
+    s1 = bool(not_branch and graph_support_count >= 1 and
+              _finite_le(row["ring_raw_mae"], 4.) and
+              (_finite_ge(row["held_n"], 4) or graph_support_count >= 2) and
+              _finite_le(row["held_median"], 8.) and
+              _finite_le(row["held_p95"], 30.) and
+              _finite_le(row["big_error_fraction"], .25) and
+              _finite_ge(row["positive_depth"], .90))
+    # S2 is local: do not require S1 global thresholds.  It only admits a
+    # frame-valid, non-branch local candidate; validate_t13 then requires a
+    # real four-camera geometry.
+    s2 = bool(not_branch and graph_support_count >= 1 and
+              _finite_ge(row["positive_depth"], .90))
+    return s0, s1, s2
 
 
 def direction_blocks(poses, center_mm):
@@ -87,6 +109,9 @@ def validate_t13(target, supports, candidates):
                 _finite_le(c.get("epipolar_px", {}).get("median"), 3.) and
                 _finite_ge(c.get("parallax_deg", {}).get("median"), 0.)):
             return False, "T13_GEOMETRY_EVIDENCE"
+        # T13 already enforces direction 1-60 deg, >=12 geometric inliers,
+        # epipolar <=3 px and a measured parallax.  The frozen 2 mm value is a
+        # triangulation baseline, not a camera-centre distance gate.
         if np.linalg.norm(C[:3, 3] - t[:3, 3]) <= 1e-9:
             return False, "ZERO_TARGET_BASELINE"
         directions.append(C[:3, 3])
@@ -94,6 +119,8 @@ def validate_t13(target, supports, candidates):
         for j in range(i + 1, 3):
             if _angle(directions[i], directions[j]) < 1.:
                 return False, "T13_SUPPORT_DIRECTION_DUPLICATE"
+            if float(np.linalg.norm(directions[i] - directions[j])) <= 1e-9:
+                return False, "ZERO_SUPPORT_BASELINE"
     return True, "PASS"
 
 

@@ -17,12 +17,12 @@ def metrics(**changes):
 def test_s2_never_admits_rejected_or_branch_camera():
     assert admission_tiers(metrics(admission_status="REJECT"), 3, "T0_CONTINUOUS") == (False, False, False)
     assert admission_tiers(metrics(), 3, "T2_ISOLATED_BRANCH") == (False, False, False)
-    assert admission_tiers(metrics(), 1, "T0_CONTINUOUS") == (True, True, False)
+    assert admission_tiers(metrics(), 1, "T0_CONTINUOUS") == (True, True, True)  # S2 independent local tier
 
 
 def test_s0_s1_use_recorded_thresholds():
     assert admission_tiers(metrics(ring_raw_mae=2.5), 2, "T1_SAMPLING_GAP") == (False, True, True)
-    assert admission_tiers(metrics(held_p95=21), 2, "T0_CONTINUOUS") == (False, False, False)
+    assert admission_tiers(metrics(held_p95=31), 2, "T0_CONTINUOUS") == (False, False, True)  # S2 local-only
 
 
 def test_complete_link_direction_blocks_use_model_center():

@@ -53,15 +53,27 @@ def _hash_array(array):
 
 def groups_from_arg(value):
     names = [x.strip() for x in value.split(",") if x.strip()]
-    if not names or any(x not in ALIASES for x in names):
-        raise ValueError("Only explicit G01,G03,G06 aliases are accepted before 39-group validation")
-    return [(x, ALIASES[x]) for x in names]
+    if not names:
+        raise ValueError("At least one group is required")
+    out = []
+    for name in names:
+        group = ALIASES.get(name, name)
+        prepared = WS / "runs/m1_final_39/prepared"
+        if not any(prepared.glob(f"{group}_*/PREPARED.json")):
+            raise ValueError("No current PREPARED manifest for group: " + group)
+        out.append((name, group))
+    return out
 
 
 def run_w0(groups, out, run_id):
     rows = []
     for alias, group in groups:
-        for video in ("004", "005"):
+        videos = sorted({p.parent.name.rsplit("_", 1)[1] for p in (WS / "runs/m1_final_39/prepared").glob(f"{group}_*/PREPARED.json")})
+        if not videos:
+            rows.append(dict(alias=alias, group_id=group, video_id="", status="FAIL",
+                             reason="MISSING_PREPARED", run_id=run_id, code_version=CODE_VERSION))
+            continue
+        for video in videos:
             prepared = WS / "runs/m1_final_39/prepared" / f"{group}_{video}" / "PREPARED.json"
             if not prepared.exists():
                 rows.append(dict(alias=alias, group_id=group, video_id=video,
@@ -166,12 +178,23 @@ def graph_support_counts(packet):
 
 
 def model_center(packet):
+    # Prefer the real historical INITIAL mesh centre for G01/G03/G06 when
+    # available; otherwise use an explicit W0-scene proxy for generic groups.
+    alias = {"GP_Ip_12.0mm_closed_R10_single_refY": "G01",
+             "GP_Ip_20.0mm_closed_R10_single_refY": "G03",
+             "GP_IIa_14.0mm_closed_R10_single_refY": "G06"}.get(packet["group"])
+    candidates = []
+    if alias:
+        candidates += list(HISTORICAL.glob(f"TASK-E4-PYTORCH3D-014/inputs/{alias}/INITIAL.npz"))
+        candidates += list(HISTORICAL.glob(f"TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/{alias}/INITIAL.npz"))
+    if candidates:
+        with np.load(candidates[0]) as z:
+            V = np.asarray(z["V"], float)
+        return V.mean(axis=0), f"HISTORICAL_INITIAL:{candidates[0]}"
     points = np.asarray(packet["points"], float)
     if len(points) < 3:
         raise ValueError("INSUFFICIENT_W0_POINTS_FOR_MODEL_CENTER")
-    # The historic INITIAL mesh is absent from the sparse new W0 view set.
-    # This centre is an explicit input adapter, never represented as the old mesh.
-    return points.mean(axis=0)
+    return points.mean(axis=0), "W0_SCENE_PROXY"
 
 
 def historical_anchor_mapping(alias, video, pool, selection, inventory):
@@ -203,7 +226,7 @@ def historical_anchor_mapping(alias, video, pool, selection, inventory):
 def build_views(packet, trajectory_class, graph_counts):
     group, video = packet["group"], packet["video"]
     admission = pd.read_csv(Path(packet["w0_path"]).parent / "admission.csv").set_index("view")
-    center = model_center(packet)
+    center, center_source = model_center(packet)
     poses = list(packet["cameras"].values())
     blocks = direction_blocks(poses, center)
     views, features = [], {}
@@ -234,7 +257,7 @@ def build_views(packet, trajectory_class, graph_counts):
                                  else np.zeros((0, 128), np.float32),
                                  xy=np.asarray([x.pt for x in keypoints], np.float32),
                                  N=len(keypoints))
-    return views, features, center
+    return views, features, center, center_source
 
 
 def select(groups, out, run_id):
@@ -261,7 +284,7 @@ def select(groups, out, run_id):
                     trajectory_class in ("T0_CONTINUOUS", "T1_SAMPLING_GAP")):
                 trajectory_class = "T4_UNRESOLVED"
             graph = graph_support_counts(packet)
-            views, features, center = build_views(packet, trajectory_class, graph)
+            views, features, center, center_source = build_views(packet, trajectory_class, graph)
             by_id = {v["id"]: v for v in views}
             for view in views:
                 admission_rows.append(dict(alias=alias, group_id=group, video_id=video,
@@ -271,7 +294,7 @@ def select(groups, out, run_id):
                                            graph_support_count=view["graph_support_count"],
                                            s0_eligible=view["s0"], s1_eligible=view["s1"],
                                            s2_eligible=view["s2"],
-                                           model_center_source="W0_SCENE_POINTS_MEAN",
+                                           model_center_source=center_source,
                                            model_center_mm=json.dumps(center.tolist())))
             for arm in ("S0", "S1", "S2"):
                 pool = [v for v in views if v[arm.lower()]]
@@ -280,11 +303,22 @@ def select(groups, out, run_id):
                                             arm=arm, method="T10/T11", status="NO_ADMITTED_POOL",
                                             target_id="", rank=None))
                     continue
-                mapping = historical_anchor_mapping(alias, video, pool, historical, inventory)
-                for row in mapping:
-                    anchor_rows.append(dict(alias=alias, group_id=group, video_id=video,
-                                            arm=arm, **row))
-                anchors = [row["selected_id"] for row in mapping]
+                # Current-data anchor: the directionally central real view.
+                # No frozen historical frame names or fixed view list.
+                def angular_centrality(v):
+                    import numpy as _np
+                    d = _np.asarray(v["direction"], float)
+                    ds = _np.asarray([x["direction"] for x in pool], float)
+                    return float(_np.median(_np.degrees(_np.arccos(_np.clip(ds @ d, -1, 1)))))
+                anchor_view = min(pool, key=angular_centrality)
+                anchors = [anchor_view["id"]]
+                anchor_rows.append(dict(alias=alias, group_id=group, video_id=video, arm=arm,
+                                        historical_id="", historical_raw_frame=None,
+                                        selected_id=anchor_view["id"],
+                                        selected_raw_frame=anchor_view["raw_frame"],
+                                        delta_raw_frame=None, exact=False,
+                                        status="CURRENT_DATA_ANGULAR_ANCHOR",
+                                        run_id=run_id, code_version=CODE_VERSION))
                 try:
                     selected = select_target_sets(pool, anchors, anchors)
                 except Exception as exc:
@@ -298,7 +332,7 @@ def select(groups, out, run_id):
                         target_rows.append(dict(alias=alias, group_id=group, video_id=video,
                                                 arm=arm, method=method, status="SELECTED",
                                                 target_id=target_id, rank=rank,
-                                                anchor_exact=all(x["exact"] for x in mapping),
+                                                anchor_exact=False,
                                                 model_center_source="W0_SCENE_POINTS_MEAN",
                                                 direction_block=by_id[target_id]["direction_block"]))
                         target = by_id[target_id]
@@ -341,7 +375,7 @@ def select(groups, out, run_id):
                                                tuple_id=key, ready=bool(okay), reason=reason,
                                                input_identity_verified=True,
                                                candidate_evidence=candidate_receipt,
-                                               anchor_exact=all(x["exact"] for x in mapping),
+                                               anchor_exact=False,
                                                w0_sha256=packet["manifest"]["artifacts"]["W0.npz"]["sha256"],
                                                pairs_sha256=packet["pairs_sha256"],
                                                selection_input_sha256=selection_input_hash,
@@ -380,7 +414,7 @@ def select(groups, out, run_id):
                     tuple_rows=len(tuple_rows), ready_rows=sum(x["ready"] for x in tuple_rows),
                     unique_ready_tuples=len(unique), rejected_rows=sum(not x["ready"] for x in tuple_rows),
                     historical_anchor_exact=bool(anchor_rows and all(x["exact"] for x in anchor_rows)),
-                    model_center_source="W0_SCENE_POINTS_MEAN_NOT_HISTORICAL_INITIAL"))
+                    model_center_source="HISTORICAL_OR_PROXY"))
     return unique
 
 
