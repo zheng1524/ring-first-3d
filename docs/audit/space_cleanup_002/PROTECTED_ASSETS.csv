@@ -1,0 +1,19 @@
+asset_id,absolute_path,priority,asset_type,logical_size_bytes,allocated_size_bytes,reason,backup_status
+P0_RAW_ZIP,/home/liu/polyp_research/smart_endoscope_20260805.zip,P0,project raw dataset ZIP; primary copy,3973455872,3973431261,original data; do not delete,NO_ALTERNATE_VERIFIED
+P0_RAW_TREE,/home/liu/polyp_research/smart_endoscope_20260805,P0,original raw video/annotation tree,3640496128,3611604503,source for frozen39 inputs,ZIP_EXISTS_BUT_TREE_AUDITED
+P0_PROTECTED_RAW,/home/liu/ring_first_3d_workspace/assets/protected_raw_data,P0,protected raw data/hash closure,3700346880,3679063459,required by formal mainline evidence,REMOTE_NOT_VERIFIED_HERE
+P0_WORKSPACE_RAW_COPY,/home/liu/ring_first_3d_workspace/smart_endoscope_20260805 (1),P0,raw/annotation working copy; duplicate status unverified,4025823232,3990639369,protect until content/dedup audit,NO_HASHED_DEDUP
+P0_DXY,/home/liu/new-polyp-dxy,P0,frozen DXY implementation 75d58ca5,950886400,907990649,required boundary/ring semantics; read-only,GITHUB_REMOTE_EXISTS_NOT_VERIFIED
+P1_CURRENT_WORKSPACE,/home/liu/ring_first_3d_workspace,P1,current mainline source + assets + runs,12611059712,12423902873,current W0/HERO/body work,BRANCH_PUSHED_PARTIAL
+P1_VENV,/home/liu/polyp_research/ring_anchor_3d/.venv,P1,current Python 3.12 runtime,2118012928,2062804332,W0/HERO execution,NOT_ARCHIVED
+P1_HERO_WEIGHT,/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/weights/mvsanywhere_hero_full.ckpt,P1,official MVSAnywhere HERO checkpoint,2420609024,2420601860,HERO-S required,HASH_KNOWN_00878B
+P1_DINO_WEIGHT,/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v13_multisource/weights/dinov2_vitl14_complete.pth,P1,DINOv2 weights for HERO,1217597440,1217586395,HERO-S required,NOT_ARCHIVED_HERE
+P1_MVS_VENDOR,/home/liu/polyp_research/ring_anchor_3d/experiments/surface_benchmark_v1/vendor,P1,official MVSAnywhere code closure,55407244,65294336,HERO-S required; hashes locked,UPSTREAM_COMMIT_KNOWN
+P1_HERO_CODE,/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001,P1,HERO/body stage code and evidence,527834899,534323200,downstream M2-C/M3,GIT_COMMITTED_PARTIAL
+P1_CURRENT_GIT,/home/liu/ring_first_3d_workspace/.git,P1,current repository objects/refs,953430016,943133291,protect Git history,REMOTE_BRANCHES_EXIST
+P2_M1,/home/liu/ring_first_3d_workspace/runs/m1_final_39,P2,M1 W0 tables and actual cameras,299397120,288809016,M2/M3 baseline,COMMITTED_AND_ZIP
+P2_M2A,/home/liu/ring_first_3d_workspace/runs/m2a_w0_recovery,P2,M2-A recovery evidence,54784000,50576156,history/compare,COMMITTED
+P2_M2B,/home/liu/ring_first_3d_workspace/runs/m2b_ring_global_branch,P2,M2-B branch/visual evidence,167829504,155050953,later comparison,COMMITTED
+P2_M2C,/home/liu/ring_first_3d_workspace/runs/m2c_trajectory_admission,P2,M2-C A1 W0 and admission tables,59211776,47463225,current continuation,COMMITTED
+P2_LOCAL_REVIEW,/home/liu/ring_first_3d_workspace/runs/m2b_ring_global_branch/local_visual_review,P2,offline per-camera review,54673408,52737481,human inspection,LOCAL_ONLY
+P2_RETAINED,/home/liu/ring_first_3d_workspace/assets/retained_sources,P2,retained historical source/evidence,1112977408,1102518028,needed by HERO/body lineage,COMMITTED_PARTIAL
