@@ -712,3 +712,199 @@ routes:
       - joint BA on 16 real views not yet completed
       - 009 inner-only collapse root-caused in 010 (single CAD cannot fit both curves)
 
+
+# ---------------------------------------------------------------------------
+# M2F5 route composition review — PROPOSED ONLY, NOT PROMOTED
+# ---------------------------------------------------------------------------
+# Nothing in this section is confirmed/frozen. It is recorded so the human can
+# approve, reject, or request separate validation before any integration code.
+m2f5_review:
+  reviewed_at: "2026-11-24"
+  workspace_head: "907076543a24fa78a45b57c9eab3452457d8eb42"
+  reviewed_by: "Serena symbolic inventory + source hashes + M2F3 run evidence"
+  formal_composition_allowed: false
+  blocker: "dense current-data frame sampling and current-data anchor generation are GAPs; T10/T11/T13/HERO/cleaning/A-to-B/6-view are unregistered candidate routes"
+
+m2f5_pending_routes:
+  - route_id: rf-m2f5-input-fresh
+    version: 1
+    component: input_preparation
+    status: candidate
+    classification: ADAPT
+    source_path: tools/prepare_m1_inputs.py
+    source_sha256: e9d9a41ad3577520f3c49dc91f72530cc8ff5a591b7c3a50e79f26cdb391b4d9
+    entrypoint: tools/prepare_m1_inputs.py::prepare_one
+    input_contract: raw video + INIT + frozen39 frame rows
+    output_contract: fresh PREPARED.json + per-view RGB/labels/K caches
+    evidence: "M2F2/M2F3 fresh prepared roots; 790/790 identities"
+    smoke_test: "prepare one fresh video and assert labels subset {0,1,2}, K 3x3"
+    human_approval: PENDING
+    formal_usable: false
+
+  - route_id: rf-m2f5-dense-sampling
+    version: 0
+    component: real_frame_densification
+    status: exploring
+    classification: GAP
+    source_path: null
+    entrypoint: null
+    input_contract: raw video + current camera/coverage gaps
+    output_contract: new real frames + PREPARED identities
+    evidence: "M2F3 G06/004 added four frames only via an untracked inline shell/Python operation; no committed reusable implementation"
+    smoke_test: required before use
+    human_approval: PENDING
+    formal_usable: false
+    gap_reason: "No confirmed reusable G06-004 recovery source; current G06 recovery used RAW_LABEL_NOT_DXY_CLEAN sidecars and an ad-hoc prepared root."
+
+  - route_id: rf-m2f5-local-admission
+    version: 1
+    component: camera_admission
+    status: candidate
+    classification: ADAPT
+    source_path: src/ring_first_3d/views/pipeline_adapter.py
+    source_sha256: 8b1b5b6d02444e13a34f89e6e73a6607be5fb84e442a16897f5a2467406aef6d
+    entrypoint: src/ring_first_3d/views/pipeline_adapter.py::admission_tiers/validate_t13
+    input_contract: per-view W0 metrics + graph support + trajectory class
+    output_contract: one tolerant local candidate pool + tuple geometry receipt
+    evidence: "M2F3 26 tests; G01 16, G03 20, G06 26 HERO"
+    smoke_test: tests/test_m2f3_convergence.py
+    human_approval: PENDING
+    formal_usable: false
+    known_limitations: "S0/S1/S2 semantics were changed by M2F3; no independent human approval of this candidate tier."
+
+  - route_id: rf-m2f5-current-anchor
+    version: 0
+    component: target_anchor
+    status: exploring
+    classification: GAP
+    source_path: tools/m2f2_unified.py
+    source_sha256: 885d7c9d8ad1d680c2292d4f70186c49a8f370665689037bed3cbe16ca6a1be3
+    entrypoint: tools/m2f2_unified.py::model_center
+    input_contract: current frame point cloud / model center
+    output_contract: anchor/direction geometry
+    evidence: "M2F2 model_center uses historical INITIAL where available and W0 points mean otherwise; M2F3 changed anchor to current angular center"
+    smoke_test: required
+    human_approval: PENDING
+    formal_usable: false
+    gap_reason: "Target requires current-run data-only geometric center; no confirmed shared implementation exists. Historical INITIAL dependence is not allowed by M2F5."
+
+  - route_id: rf-m2f5-t10
+    version: 1
+    component: target_selection
+    status: candidate
+    classification: ADAPT
+    source_path: src/ring_first_3d/views/selection.py
+    source_sha256: 4c18fe13ece60f01743270f22b95f950b15dc253a3ec82cc56208f53b8c5492d
+    entrypoint: src/ring_first_3d/views/selection.py::select_views(strategy='quality_diversity')
+    input_contract: admitted FIT views with direction/quality
+    output_contract: T10 target list, no truncation
+    evidence: "M2F3 target tables; T10 used for all formal arms"
+    smoke_test: tests/test_m2f3_convergence.py + historical source SHA lock
+    human_approval: PENDING
+    formal_usable: false
+
+  - route_id: rf-m2f5-t11
+    version: 1
+    component: target_selection_control
+    status: candidate
+    classification: ADAPT
+    source_path: src/ring_first_3d/views/selection.py
+    source_sha256: 4c18fe13ece60f01743270f22b95f950b15dc253a3ec82cc56208f53b8c5492d
+    entrypoint: src/ring_first_3d/views/selection.py::select_views(strategy='direction_quota')
+    input_contract: same admitted pool
+    output_contract: T11 control targets
+    evidence: "M2F3 T11 executed; target task says cancel T11 as formal parallel route"
+    smoke_test: tests/test_m2f3_convergence.py
+    human_approval: PENDING
+    formal_usable: false
+    formal_main: false
+
+  - route_id: rf-m2f5-t13
+    version: 1
+    component: support_selection
+    status: candidate
+    classification: ADAPT
+    source_path: src/ring_first_3d/mainline/lineage/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/code/coverage.py
+    source_sha256: 156b183d0faa15847bca5fd83da151a7dcde1d7bd53bc349b161275cca51b920
+    interface_path: src/ring_first_3d/mainline/lineage/experiments/TASK-E4-RING-FIRST-MAX-COVERAGE-VIEWS-001/code/coverage.py::support_pairs
+    entrypoint: src/ring_first_3d/views/selection.py::select_views(strategy='hero_support')
+    input_contract: admitted pool + SIFT features + K
+    output_contract: three supports + T13 candidate scores
+    evidence: "M2F3 62 HERO; T13 executed on admitted pools"
+    smoke_test: historical source SHA + M2F3 tuple validation
+    human_approval: PENDING
+    formal_usable: false
+
+  - route_id: rf-m2f5-hero-native
+    version: 1
+    component: hero_depth
+    status: candidate
+    classification: ADAPT
+    source_path: src/ring_first_3d/mainline/native/hero.py
+    source_sha256: 9a83c565a5633c54b2034c0bb62b50a9c459e26d36fc1c48d7ef631417fb7eab
+    entrypoint: src/ring_first_3d/mainline/native/hero.py::infer
+    input_contract: target + exactly 3 supports, c2w mm, K, clean masks
+    output_contract: native depth 352x640, metric axial Z, raw mesh
+    evidence: "M2D 4/4 historical bitwise; M2F3 62 new HERO"
+    smoke_test: historical 4/4 + M2D regression
+    human_approval: PENDING
+    formal_usable: false
+
+  - route_id: rf-m2f5-cleaning
+    version: 1
+    component: surface_cleaning
+    status: candidate
+    classification: ADAPT
+    source_path: src/ring_first_3d/mainline/native/cleaning.py
+    source_sha256: ac1cc77443ff5e22a03a75f32c7504adf3d036b530198e950f36595df95374e6
+    entrypoint: src/ring_first_3d/mainline/native/cleaning.py::classify_native
+    input_contract: raw native mesh + R5/R10 CAD
+    output_contract: trusted/conservative/uncertain/rejected/unknown + face evidence
+    evidence: "M2D/M2F/M2F3 cleaning runs"
+    smoke_test: protocol SHA 99c00fe5 + raw preservation
+    human_approval: PENDING
+    formal_usable: false
+
+  - route_id: rf-m2f5-a-to-b
+    version: 1
+    component: standard_reprojection
+    status: candidate
+    classification: ADAPT
+    source_path: src/ring_first_3d/mainline/lineage/experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/code/reprojection.py
+    source_sha256: 0171f5a56d08ccce6c57cac8e04839c3ca9df5c3a4be9f1053a6920181d022d1
+    entrypoint: reprojection.py::render/evaluate/make_figure
+    input_contract: source mesh + target B K/pose + Ring CAD
+    output_contract: five-panel figures + target coverage/RGB metrics
+    evidence: "M2D historical bitwise; M2F B-camera corrections; M2F3 186 pairs"
+    smoke_test: M2D historical sample + B-vs-A behavior
+    human_approval: PENDING
+    formal_usable: false
+
+  - route_id: rf-m2f5-six-view
+    version: 1
+    component: six_view_visualization
+    status: candidate
+    classification: ADAPT
+    source_path: src/ring_first_3d/mainline/native/_mesh_renderer.py
+    source_sha256: 68367842db544217a56f2ddf1e1cfe36bd97cada1f0c3975b569f583b41911fe
+    entrypoint: _mesh_renderer.py::actual_mesh_image
+    input_contract: mesh + Ring CAD + fixed metric bounds + real/world directions
+    output_contract: actual-triangle six-view image
+    evidence: "M2F3 G01/G03/G06 six-view images"
+    smoke_test: true World X/Y/Z and black Ring
+    human_approval: PENDING
+    formal_usable: false
+
+  - route_id: rf-m2f5-composition
+    version: 0
+    component: unified_pipeline
+    status: candidate
+    classification: BLOCKED
+    source_path: null
+    entrypoint: null
+    composes: []
+    evidence: "No composition may be registered until the two GAPs and route promotions are approved"
+    smoke_test: not available
+    human_approval: PENDING
+    formal_usable: false
+    blocker: "GAP: dense sampling; GAP: current-data anchor; candidate T10/T13/HERO/cleaning/A-to-B/6-view unconfirmed"
