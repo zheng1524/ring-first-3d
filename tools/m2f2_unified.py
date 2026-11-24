@@ -86,6 +86,9 @@ def run_w0(groups, out):
                              reason="" if result.returncode == 0 else f"EXIT_{result.returncode}",
                              command=command, log=str(log)))
     write_json(out / "w0/W0_RUN_COMMANDS.json", rows)
+    failed = [row for row in rows if row["status"] != "PASS"]
+    if failed:
+        raise RuntimeError("W0_FAILED: " + json.dumps(failed, sort_keys=True))
     return rows
 
 
@@ -491,7 +494,8 @@ def evaluate(groups, out, run_id):
     for row in hero.itertuples():
         if row.status != "PASS":
             failures.append(dict(group_id=row.group_id, video_id=row.video_id,
-                                 tuple_id=row.tuple_id, stage="HERO", reason=row.reason))
+                                 tuple_id=row.tuple_id, stage="HERO", reason=row.reason,
+                                 run_id=run_id, code_version=CODE_VERSION))
             continue
         group, video = str(row.group_id), f"{int(row.video_id):03d}"
         packet = verify_w0_packet(out / "w0_full_pairs" / group / video, WS)
@@ -523,11 +527,12 @@ def evaluate(groups, out, run_id):
                                source_mesh_sha256=sha256_file(directory / "RAW_NATIVE_MESH.npz"),
                                unique_pair_id=hashlib.sha256(str(key).encode()).hexdigest()[:16],
                                target_B_camera_used=True, mask_protocol="CLEAN_B",
-                               run_id=run_id, status="PASS")
+                               run_id=run_id, code_version=CODE_VERSION, status="PASS")
                 a2b_rows.append(metrics)
             except Exception as exc:
                 failures.append(dict(group_id=group, video_id=video, tuple_id=row.tuple_id,
-                                     stage="A_TO_B", reason=repr(exc), support_B_id=support["id"]))
+                                     stage="A_TO_B", reason=repr(exc), support_B_id=support["id"],
+                                     run_id=run_id, code_version=CODE_VERSION))
         try:
             native = np.load(directory / "HERO_native.npz")
             labels = np.load(directory / "NATIVE_RGB_LABELS.npz")["labels"]
@@ -555,24 +560,28 @@ def evaluate(groups, out, run_id):
                                  cad_depth_median_mm=float(np.median(ring_depth[valid])) if len(diff) else np.nan,
                                  hero_depth_median_mm=float(np.median(depth[valid])) if len(diff) else np.nan,
                                  cad_sha256=scenes[kind][1], run_id=run_id,
+                                 code_version=CODE_VERSION,
                                  status="PASS" if len(diff) else "NOT_EVALUABLE_NO_SHARED_RING_PIXELS"))
         except Exception as exc:
             failures.append(dict(group_id=group, video_id=video, tuple_id=row.tuple_id,
-                                 stage="CAD_HERO", reason=repr(exc)))
+                                 stage="CAD_HERO", reason=repr(exc),
+                                 run_id=run_id, code_version=CODE_VERSION))
         print("EVAL", group, video, row.tuple_id, flush=True)
     a2b_columns = ["group_id", "video_id", "alias", "tuple_id", "target_id", "support_B_id",
                    "target_Polyp_pixels", "prediction_valid_pixels", "common_pixels",
                    "target_coverage", "RGB_MAE_0_255", "predicted_outside_target_pixels",
                    "B_camera_sha256", "B_K_sha256", "B_clean_mask_sha256", "source_mesh_sha256",
-                   "unique_pair_id", "target_B_camera_used", "mask_protocol", "run_id", "status"]
+                   "unique_pair_id", "target_B_camera_used", "mask_protocol", "run_id",
+                   "code_version", "status"]
     write_csv(out / "evaluation/A_TO_B_METRICS.csv", a2b_rows, a2b_columns)
     write_csv(out / "evaluation/CAD_HERO_GEOMETRY.csv", cad_rows,
               ["group_id", "video_id", "alias", "tuple_id", "target_id", "ring_pixels",
                "valid_ring_pixels", "ring_coverage", "cad_hero_signed_median_mm",
                "cad_hero_mae_mm", "cad_hero_p95_abs_mm", "cad_depth_median_mm",
-               "hero_depth_median_mm", "cad_sha256", "run_id", "status"])
+               "hero_depth_median_mm", "cad_sha256", "run_id", "code_version", "status"])
     write_csv(out / "evaluation/FAILURES.csv", failures,
-              ["group_id", "video_id", "tuple_id", "stage", "reason", "support_B_id"])
+              ["group_id", "video_id", "tuple_id", "stage", "reason", "support_B_id",
+               "run_id", "code_version"])
     return a2b_rows, cad_rows, failures
 
 
@@ -684,7 +693,7 @@ def render_six_views(groups, out):
     return images
 
 
-def diagnose_archived_g01(out):
+def diagnose_archived_g01(out, run_id):
     """Read-only attribution checks for the previous G01 depth outliers."""
     from ring_first_3d.mainline.native.geometry import resize_index_intrinsics
     old = WS / "runs/m2f1_w0_admission_restoration"
@@ -723,15 +732,17 @@ def diagnose_archived_g01(out):
                          all_four_s1_eligible=bool(eligibility.get((video, target), False) and
                                                    all(eligibility.get((video, cid), False)
                                                        for cid in supports)),
-                         status="ARCHIVED_DIAGNOSTIC_NOT_NEW_ACCEPTED_HERO"))
+                         status="ARCHIVED_DIAGNOSTIC_NOT_NEW_ACCEPTED_HERO",
+                         run_id=run_id, code_version=CODE_VERSION))
     write_csv(out / "evaluation/G01_ARCHIVED_DEPTH_DIAGNOSIS.csv", rows,
               ["group_id", "video_id", "arm", "target_id", "support_ids",
                "signed_median_mm", "target_pose_max_abs_diff_mm",
                "support_pose_max_abs_diff_mm", "K_native_max_abs_diff",
                "depth_unit", "depth_definition", "support_s1_eligible",
-               "all_four_s1_eligible", "status"])
+               "all_four_s1_eligible", "status", "run_id", "code_version"])
     write_json(out / "evaluation/G01_DEPTH_CONCLUSION.json",
-               dict(archived_rows=len(rows), outlier_rows=sum(r["signed_median_mm"] < -10 for r in rows),
+               dict(run_id=run_id, code_version=CODE_VERSION, archived_rows=len(rows),
+                    outlier_rows=sum(r["signed_median_mm"] < -10 for r in rows),
                     target_support_pose_binding_exact=all(r["target_pose_max_abs_diff_mm"] == 0 and
                                                           r["support_pose_max_abs_diff_mm"] == 0 for r in rows),
                     native_K_binding_exact=all(r["K_native_max_abs_diff"] == 0 for r in rows),
@@ -739,6 +750,42 @@ def diagnose_archived_g01(out):
                     conclusion="Archived G01 outliers are target-dependent. Camera/K binding and units check; "
                                "the admitted T13 pool yields no new G01 tuple, so camera-versus-support "
                                "causality remains NOT_EVALUABLE. HERO depth is unchanged."))
+
+
+def measure_multisurface_consistency(out, run_id):
+    """World-space same-video surface disagreement; diagnostic, not GT accuracy."""
+    from itertools import combinations
+    from scipy.spatial import cKDTree
+
+    hero = pd.read_csv(out / "hero/HERO_EXECUTION_RESULTS.csv")
+    hero = hero[hero.status == "PASS"]
+    rows = []
+    for (group, video), subset in hero.groupby(["group_id", "video_id"]):
+        samples = {}
+        for row in subset.itertuples():
+            with np.load(Path(row.output_dir) / "RAW_NATIVE_MESH.npz") as mesh:
+                vertices = np.asarray(mesh["V"], float)
+            if len(vertices) == 0:
+                continue
+            index = np.linspace(0, len(vertices) - 1, min(5000, len(vertices)), dtype=int)
+            samples[row.tuple_id] = vertices[index]
+        for (key_a, A), (key_b, B) in combinations(samples.items(), 2):
+            da = cKDTree(B).query(A)[0]
+            db = cKDTree(A).query(B)[0]
+            distances = np.r_[da, db]
+            rows.append(dict(group_id=group, video_id=f"{int(video):03d}",
+                             tuple_A=key_a, tuple_B=key_b,
+                             sample_points_A=len(A), sample_points_B=len(B),
+                             centroid_distance_mm=float(np.linalg.norm(A.mean(axis=0) - B.mean(axis=0))),
+                             symmetric_nn_median_mm=float(np.median(distances)),
+                             symmetric_nn_p95_mm=float(np.quantile(distances, .95)),
+                             interpretation="SAME_VIDEO_WORLD_SPACE_DIAGNOSTIC_NOT_GT",
+                             run_id=run_id, code_version=CODE_VERSION))
+    write_csv(out / "evaluation/MULTISURFACE_CONSISTENCY.csv", rows,
+              ["group_id", "video_id", "tuple_A", "tuple_B", "sample_points_A",
+               "sample_points_B", "centroid_distance_mm", "symmetric_nn_median_mm",
+               "symmetric_nn_p95_mm", "interpretation", "run_id", "code_version"])
+    return rows
 
 
 def summarize(groups, out, run_id):
@@ -768,15 +815,15 @@ def summarize(groups, out, run_id):
                          cad_hero_mae_median_mm=float(C.cad_hero_mae_mm.median()) if len(C) else np.nan,
                          status="CONDITIONAL_HERO_EXECUTED" if len(H) else
                          "NOT_EVALUABLE_NO_VALID_T13_TUPLE",
-                         run_id=run_id))
+                         run_id=run_id, code_version=CODE_VERSION))
     write_csv(out / "evaluation/GROUP_STATUS.csv", rows,
               ["alias", "group_id", "videos", "w0_verified", "s0_cameras", "s1_cameras",
                "s2_cameras", "T10_targets", "T11_targets", "unique_ready_tuples",
                "hero_pass", "a_to_b_pairs", "a_to_b_coverage_median",
                "a_to_b_rgb_mae_median", "cad_hero_signed_median_mm",
-               "cad_hero_mae_median_mm", "status", "run_id"])
+               "cad_hero_mae_median_mm", "status", "run_id", "code_version"])
     write_json(out / "VALIDATION_39.json",
-               dict(run_id=run_id, three_groups_accepted=False,
+               dict(run_id=run_id, code_version=CODE_VERSION, three_groups_accepted=False,
                     historical_anchor_exact=False, all_39_attempted=False,
                     reason="G01/G06 have no legal T13 tuple under the recorded strict S0/S1/S2 policy; "
                            "historical exact anchors are absent from sparse W0 PREPARED input."))
@@ -812,7 +859,8 @@ def main():
     if args.stage in ("evaluate", "all"):
         evaluate(groups, out, run_id)
         render_six_views(groups, out)
-        diagnose_archived_g01(out)
+        measure_multisurface_consistency(out, run_id)
+        diagnose_archived_g01(out, run_id)
         summarize(groups, out, run_id)
 
 
