@@ -193,7 +193,7 @@ def test_recovery_reasons_use_existing_ring_camera_and_t13_evidence():
     assert classify(error_type="INSUFFICIENT_RING_OBSERVATION") == "RING_OBSERVATION_INSUFFICIENT"
     assert classify(error_type="NO_BA_VERSION") == "INITIALIZATION_INSUFFICIENT"
     assert classify(quality={"n_accept": 3}, rows=[{"ready": True}, {"ready": False}]) == "SUPPORT_INSUFFICIENT"
-    assert classify(quality={"n_accept": 0}, rows=[{"ready": True}]) == "NO_ACCEPT_CAMERAS"
+    assert classify(quality={"n_accept": 0}, rows=[{"ready": True}]) is None
     assert classify(quality={"n_accept": 3}, rows=[{"ready": True}]) is None
 
 

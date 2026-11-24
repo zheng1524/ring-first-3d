@@ -189,8 +189,8 @@ def recovery_reason_from_evidence(error_type=None, quality=None, rows=None):
         return 'INITIALIZATION_INSUFFICIENT'
     if rows is not None and (not rows or any(not row['ready'] for row in rows)):
         return 'SUPPORT_INSUFFICIENT'
-    if quality is not None and quality['n_accept'] == 0:
-        return 'NO_ACCEPT_CAMERAS'
+    # S2 already specifies when QUARANTINE cameras may form geometric tuples.
+    # n_accept alone is a diagnostic, not a new observation admission gate.
     return None
 
 
