@@ -1,0 +1,35 @@
+..F.                                                                     [100%]
+=================================== FAILURES ===================================
+____________________________ test_admission_honesty ____________________________
+
+    def test_admission_honesty():
+     v=pd.read_csv(O/'selection/HERO_TUPLE_VALIDATION.csv');assert len(v)==217;assert int(v.ready.sum())==110;assert int((~v.ready).sum())==107
+>    assert json.loads((O/'VALIDATION_39.json').read_text())['CAMERA_ADMISSION_ACTUALLY_ENFORCED'] is False
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_m2f_contracts.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../miniconda3/envs/vpo/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/liu/ring_first_3d_workspace/runs/m2f_metric_depth_diagnosis/VALIDATION_39.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/liu/ring_first_3d_workspace/runs/m2f_metric_depth_diagnosis/VALIDATION_39.json'
+
+../miniconda3/envs/vpo/lib/python3.12/pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_m2f_contracts.py::test_admission_honesty - FileNotFoundErro...
+1 failed, 3 passed in 0.33s

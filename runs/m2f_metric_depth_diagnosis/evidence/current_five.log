@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/m2f_current_five.py", line 7, in <module>
+    O=WS/'runs/m2f_metric_depth_diagnosis';a2=pd.read_csv(O/'evaluation/M2F_A_TO_B.csv');row=a2.iloc[0];g,v,target,support=row.group_id,f'{int(row.video_id):03d}',row.target_id,row.support_id
+                                                                                                                                                                                 ^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/pandas/core/generic.py", line 6194, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Series' object has no attribute 'support_id'

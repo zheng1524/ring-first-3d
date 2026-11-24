@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/m2f_current_five.py", line 22, in <module>
+    cad=dict(np.load(O/'cad'/(('R5.npz') if 'R5' in g else 'R10.npz')));rs=o3d.t.geometry.RaycastingScene(nthreads=2);rs.add_triangles(o3d.core.Tensor(cad['V'].astype(np.float32)),o3d.core.Tensor(cad['F'].astype(np.uint32)));rp.cad_scene=lambda kind:rs;rp.ring=lambda c: type('R',(),{'vertices':cad['V'],'faces':cad['F']})()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/liu/ring_first_3d_workspace/runs/m2f_metric_depth_diagnosis/cad/R10.npz'
