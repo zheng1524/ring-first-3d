@@ -1,106 +1,42 @@
-# M2F5 — Route Composition Review (STOP GATE)
+# M2F5 — Unified Route Composition (executed)
 
-**Status: WAITING FOR HUMAN APPROVAL. No integration code and no 13-group run.**
+**Status: EXECUTED 13-group pipeline.** Human approval `M2F5` accepted the specified existing modules and allowed the two former GAPs to be adapted within the approved scope.
 
-Workspace: `/home/liu/ring_first_3d_workspace`  
-Reviewed source head: `907076543a24fa78a45b57c9eab3452457d8eb42`  
-Serena project: `ring_first_3d_workspace` (session `7572728a`)  
-Registry: `docs/registry/routes.yaml` (existing registry verified; M2F5 proposals appended under `m2f5_pending_routes`, **not promoted**).
+## Composition
 
-## 1. Composition table
+| Stage | Route | Entrypoint | I/O | Decision | Evidence |
+|---|---|---|---|---|---|
+| Raw input / sampling | `rf-m2f5-input-fresh@1` + `rf-m2f5-dense-sampling@1` | `tools/m2f5_unified.py::prepare_one/sample_frames` | raw video → 12 uniform + 4 largest-gap real frames → fresh PREPARED | ADAPT (new glue) | `RUN_TRACE/*`, `prepared/*/PREPARED.json` |
+| INIT + DXY 2D clean | `rf-m1-input-39@1`, `rf-m2f5-mask-clean-2d@1` | `prepare_view` + `m2c_prepare_clean.py`/DXY `ring_holes.run` | raw RGB/INIT → RGB/labels/K + clean sidecar | REUSE/ADAPT | 432 clean frames, `MASK_CLEAN_*.csv` |
+| Ring CAD | `rf-native-ring-cad@2` | `native/camera.py::torus_contours` | R5 3.1/0.6; R10 5.6/0.6 | REUSE | all 13 groups |
+| Track + BA + W0 | `rf-frozen-tracks005@1`, `rf-frozen-ba-local-ring-sfm@1`, `rf-w0-camera-current-tracks@3` | `tools/run_w0_camera.py` (patched: always current-run track005) | fresh PREPARED/clean → W0 | REUSE/ADAPT | 26 W0 outputs; all `tracks_source=generated_by_pipeline_current_frames`; no frozen_011 copy |
+| One local admission pool | `rf-m2f5-local-admission@1` | `pipeline_adapter.admission_tiers` | W0 metrics/graph → one tolerant local pool | ADAPT | 208 target rows / 174 ready |
+| Data anchor | `rf-m2f5-current-anchor@1` | `m2f5_unified.build_views` | W0 scene points mean + angular centrality | ADAPT (no historical INITIAL) | 27 current-run traces |
+| T10 target | `rf-m2f5-t10@1` | `selection.select_views(quality_diversity)` | local pool → all selected targets, no top-4 truncation | REUSE of approved algorithm | 208 target rows |
+| T11 | **removed from formal route** | — | control only | removed | no T11 output |
+| T13 support | `rf-m2f5-t13@1` | `coverage.support_pairs` via `select_views(hero_support)`; `validate_t13` | target+pool → 3 supports + geometry gate | REUSE/ADAPT | 174 ready, 522 A2B |
+| HERO | `rf-m2f5-hero-native@1` | `native/hero.py::infer` | 3 supports → native depth/Raw Mesh | REUSE | 174/174 PASS |
+| Standard A→B | `rf-m2f5-a-to-b@1` | `reprojection.render/evaluate` | source Raw Mesh + **B** K/pose | REUSE | 522 pairs |
+| Six-view | `rf-m2f5-six-view@1` | `_mesh_renderer.actual_mesh_image` | Raw Mesh + Ring CAD | REUSE | 174 target sheets + 25 same-video multisurface |
 
-| Stage | Existing route@version | Entrypoint / source | Inputs → outputs | Classification | Registry status | Smoke test |
-|---|---|---|---|---|---|---|
-| Raw video + INIT + raw mask | `rf-m1-input-39@1`; `rf-init-segmentation@1` | `tools/prepare_m1_inputs.py::prepare_one`; frozen INIT | raw video + frame rows → **fresh** PREPARED/RGB/labels/K | REUSE (code only; fresh output) | frozen | prepare one fresh video; labels ⊂ {0,1,2}, K 3×3 |
-| Uniform real-frame densification | **none** | **no committed reusable entrypoint** | raw video + coverage gaps → new real frames + PREPARED identities | **GAP** | GAP | must be implemented and approved before use |
-| Ring CAD | `rf-native-ring-cad@2` | `native/camera.py::torus_contours` | c2w/K/R5|R10 → inner/outer curves | REUSE | frozen | R5=3.1/0.6; R10=5.6/0.6 |
-| Tracks + local Ring BA + W0 | `rf-frozen-tracks005@1`; `rf-frozen-ba-local-ring-sfm@1`; `rf-w0-camera@2` | `tools/run_w0_camera.py` | PREPARED/tracks/Ring → B0/W0/camera_result/admission | REUSE | frozen, coverage **NOT_MET** | G03/005 regression; W0 manifest |
-| Camera admission / local pool | unregistered candidate | `src/ring_first_3d/views/pipeline_adapter.py::admission_tiers` | W0 metrics + graph + trajectory → local pool | ADAPT | candidate, **not approved** | `tests/test_m2f3_convergence.py` |
-| Current-data anchor / geometric center | unregistered; M2F2 function uses historical INITIAL fallback | `tools/m2f2_unified.py::model_center` | frame geometry → anchor | **GAP** | exploring | requires a current-data-only proof |
-| T10 target selection | unregistered | `views/selection.py::select_views(strategy='quality_diversity')` | admitted pool → targets | ADAPT | candidate | no fixed frame/anchor; full 8 |
-| T11 direction quota | unregistered | `views/selection.py::select_views(strategy='direction_quota')` | same pool → control targets | ADAPT; **not formal** | candidate | T11 control only |
-| T13 support selection | unregistered | `coverage.py::support_pairs` via `select_views(strategy='hero_support')` | target + pool + SIFT/K → 3 supports + scores | ADAPT | candidate | historical T13 + geometry gate |
-| Official HERO | unregistered | `native/hero.py::infer` | target+3 supports → native depth/mesh | ADAPT | candidate; 4/4 bitwise historical | M2D historical regression |
-| Raw metric mesh | unregistered | `native/geometry.py`/HERO native mesh | depth → metric axial-Z mesh | ADAPT | candidate | native K/units |
-| Historical cleaning | unregistered | `native/cleaning.py::classify_native` | raw mesh + CAD → conservative labels | ADAPT | candidate | protocol SHA + raw preserved |
-| Standard A→B | unregistered | `reprojection.py::render/evaluate/make_figure` | source mesh + B K/pose + Ring → five-panel/metrics | ADAPT | candidate | use **B** camera; M2D sample |
-| Six-view | unregistered | `native/_mesh_renderer.py::actual_mesh_image` | mesh + CAD + fixed bounds → six-view | ADAPT | candidate | true target/support + X/Y/Z |
+## Execution result
 
-**Formal composability:** blocked. The two required GAPs are dense real-frame sampling and current-data anchor generation. In addition, T10/T11/T13/HERO/cleaning/A-to-B/six-view are not registered/confirmed; they cannot be silently promoted.
+| Item | Actual |
+|---|---:|
+| Groups | **13/13** |
+| Raw videos prepared | 27 |
+| W0 selected videos | 26 |
+| W0 hard failures | 1 (`GP_Is_10.5.../005`) |
+| Unique HERO | **174/174 PASS** |
+| A→B pairs | **522** |
+| CAD-HERO rows | 174 |
+| Mask-clean frames | 432 |
+| Same-video multisurface pairs | 544 |
 
-## 2. Actual behavior of the four successful videos (M2F3, same code)
+No historical PREPARED, frozen frame list, historical W0, historical Anchor/INITIAL, or historical HERO/Mesh was used. `run_w0_camera.stage_tracks` no longer copies `frozen_011`; all traces show current-run track generation. S0/S1/S2 formal parallel products and T11 formal route are removed; one tolerant local pool is used.
 
-| Video | W0 source | S0/S1/S2 camera count | HERO | Why it succeeds |
-|---|---|---:|---:|---|
-| G01-005 | original W0/005 | 0/0/10 | 7 | S2 local pool; no S0/S1; T10/T13; no special code |
-| G03-004 | original W0/004 | 0/8/10 | 12 | S1/S2; stable W0 |
-| G03-005 | original W0/005 | 6/10/10 | 8 | S0 strict path and S1/S2 |
-| G06-004 | 14-view recovery W0 | 8/12/14 | 21 | **non-reusable ad-hoc 4-frame recovery**; not a confirmed route |
+## Remaining real limitations
 
-Needs improvement: G01-004 (0/5/10, 9 HERO; one −17.28 mm CAD-HERO outlier) and G06-005 (0/3/10, 5 HERO). These are observed, not used to alter the method.
-
-## 3. Proposed single main line (requires approval)
-
-```text
-raw video + INIT + raw mask
-→ uniform real-frame sampling/densification        [GAP]
-→ fresh prepare/preprocess                           [frozen code, fresh output]
-→ Ring-First + RGB + BA / W0                         [frozen]
-→ ONE tolerant local candidate pool                  [candidate]
-→ current-run geometric anchor                       [GAP]
-→ T10 target selection                               [candidate]
-→ T13 support selection + real four-camera check      [candidate]
-→ official HERO                                      [candidate/unregistered]
-→ native metric mesh                                 [candidate]
-→ historical conservative cleaning                  [candidate]
-→ six-view + standard B-camera A→B                   [candidate]
-```
-
-Not allowed in the main line: historical PREPARED, historical W0/poses, historical anchors/INITIAL, historical HERO/mesh, fixed 79 list, S0/S1/S2 parallel *formal* arms, T11 formal route, group-specific sampling.
-
-## 4. Audits/branches to cancel
-
-- S0/S1/S2 as three parallel formal reconstruction products; keep S0 only as a diagnostic baseline, not a formal output.
-- T11 as a formal parallel target route; retain only as a control.
-- Historical `VIEW_SELECTION_016` anchors and historical INITIAL-dependent center.
-- Historical W0/PREPARED/HERO results as inputs (read-only comparison only).
-- Any quality gate not required by the algorithm (complex trajectory-quality audit, duplicate acceptance metrics).
-- Keep basic correctness: identity, K/c2w/units, finite SE(3), real inputs, required T13 geometry.
-
-## 5. Proposed changes (NOT YET WRITTEN)
-
-- **GAP-1**: add a single reusable real-frame densification entrypoint based on `prepare_view` + `run_w0_camera`; it must create fresh identities and distinguish `RAW_LABEL_NOT_DXY_CLEAN` from formal DXY clean. No algorithm substitution.
-- **GAP-2**: add a current-run data-only geometric center/anchor implementation; no historical INITIAL dependency.
-- **ADAPT**: one glue entrypoint around `prepare_m1_inputs`/`run_w0_camera`/`selection.select_views`/`hero.infer`/`cleaning.classify_native`/`reprojection`/`_mesh_renderer`.
-- **REGISTER**: only after human approval and smoke tests; candidate routes promoted individually with evidence.
-- No core HERO/geometry/cleaning/reprojection rewrite and no group-specific code.
-
-## 6. Proposed 10 generalization groups
-
-These are outside the M2F3 3 groups and exist in the 39-group manifest:
-
-```text
-GP_IIa_5.2mm_closed_R10_single_refY
-GP_IIa_9.5mm_closed_R5_single_refY
-GP_IIa_22.0mm_closed_R5_single_refY
-GP_Ip_4.0mm_closed_R5_single_refY
-GP_Ip_6.2mm_closed_R10_single_refY
-GP_Ip_8.8mm_closed_R5_single_refY
-GP_Ip_12.0mm_closed_R5_single_refY
-GP_Is_10.5mm_closed_R10_single_refY
-GP_Is_14.0mm_closed_R5_single_refY
-GP_Is_18.0mm_closed_R5_single_refY
-```
-
-They cover Ip/Is/IIa, R5/R10 and multiple sizes. This list is frozen before any reconstruction; no post-result substitution.
-
-## 7. Stop condition
-
-No integration source, no new route promotion, no 13-group run was performed. Human decision required on:
-
-1. approving the two GAPs and their implementation/validation;
-2. promoting or rejecting each candidate route;
-3. approving the one-pool main line (and retiring S0/S1/S2 parallel products and T11 formal route);
-4. confirming the 10-group list.
-
-Until then, this task is **BLOCKED AT ROUTE COMPOSITION**.
+- `GP_Is_10.5mm_closed_R10_single_refY/005` has no W0 result; the group still has 8 HERO from video 004.
+- CAD-HERO medians are not uniformly near zero; several groups show large offsets (e.g. `GP_Ip_12.0mm...` −13.4 mm, `GP_IIa_22.0mm...` −14.0 mm). This is reported, not hidden.
+- Raw metric meshes are used directly; no 3D cleaning/fusion is applied.

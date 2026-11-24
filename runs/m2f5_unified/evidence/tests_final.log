@@ -1,0 +1,15 @@
+....F                                                                    [100%]
+=================================== FAILURES ===================================
+____________________________ test_mask_clean_actual ____________________________
+
+    def test_mask_clean_actual():
+     rows=pd.concat([pd.read_csv(p) for p in pathlib.Path('runs/m2f5_unified/w0').glob('MASK_CLEAN_*.csv')])
+>    assert len(rows)==432;assert rows.clean_sha.str.len().eq(64).all()
+     ^^^^^^^^^^^^^^^^^^^^^
+E    assert 864 == 432
+E     +  where 864 = len(                               group_id  ...                               rule\n0   GP_IIa_5.2mm_closed_R10_single_ref..._background_v1\n15  GP_IIa_22.0mm_closed_R5_single_refY  ...  ring_enclosed_small_background_v1\n\n[864 rows x 10 columns])
+
+tests/test_m2f5_pipeline.py:30: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_m2f5_pipeline.py::test_mask_clean_actual - assert 864 == 432
+1 failed, 4 passed in 2.96s

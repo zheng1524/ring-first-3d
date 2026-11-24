@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_workspace/tools/m2f5_trace.py", line 14, in <module>
+    jl(g,v,dict(run_id='M2F5-UNIFIED-001',stage='w0',route_id='rf-w0-camera@2',input=[str(p),str(clean)],output=str(w),output_sha256=sha(w/'camera_result.npz'),status='PASS',tracks_source=(w/'tracks_source.txt').read_text().strip()))
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/liu/ring_first_3d_workspace/runs/m2f5_unified/w0/GP_IIa_14.0mm_closed_R10_single_refY_004/tracks_source.txt'

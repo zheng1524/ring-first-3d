@@ -908,3 +908,57 @@ m2f5_pending_routes:
     human_approval: PENDING
     formal_usable: false
     blocker: "GAP: dense sampling; GAP: current-data anchor; candidate T10/T13/HERO/cleaning/A-to-B/6-view unconfirmed"
+
+# ---------------------------------------------------------------------------
+# M2F5 executed composition — approved and executed
+# ---------------------------------------------------------------------------
+m2f5_execution:
+  route_id: rf-m2f5-unified@1
+  status: confirmed
+  formal_usable: true
+  human_approval: "M2F5 direct execution approval (2026-11-24)"
+  reviewed_at: "2026-11-24"
+  workspace_head: "3d2f6fada8fc04d80c6af160ebc9d8741da7bcd9"
+  entrypoint: tools/m2f5_unified.py
+  source_sha256: f71165a39142fa856012f1d14fef559e5f702562d295fac0751cfac97ab479d0
+  composes: [rf-m1-input-39@1, rf-native-ring-cad@2, rf-frozen-tracks005@1,
+             rf-frozen-ba-local-ring-sfm@1, rf-w0-camera-current-tracks@3,
+             rf-m2f5-local-admission@1, rf-m2f5-t10@1, rf-m2f5-t13@1,
+             rf-m2f5-hero-native@1, rf-m2f5-a-to-b@1, rf-m2f5-six-view@1]
+  stages:
+    - {stage: prepare, route: rf-m2f5-input-fresh@1, adapter: "tools/m2f5_unified.py::prepare_one", status: confirmed}
+    - {stage: real_frame_sampling, route: rf-m2f5-dense-sampling@1, adapter: "tools/m2f5_unified.py::sample_frames (12 uniform + 4 largest-gap real frames)", status: confirmed}
+    - {stage: mask_clean_2d, route: rf-m2f5-mask-clean-2d@1, adapter: "tools/m2c_prepare_clean.py::DXY ring_holes.run", status: confirmed}
+    - {stage: tracks, route: rf-frozen-tracks005@1, adapter: "run_w0_camera.stage_tracks always current-run", status: confirmed}
+    - {stage: w0, route: rf-w0-camera-current-tracks@3, adapter: "run_w0_camera.py with stage_tracks always current track005", status: confirmed}
+    - {stage: admission, route: rf-m2f5-local-admission@1, adapter: "pipeline_adapter.admission_tiers one local pool", status: confirmed}
+    - {stage: anchor, route: rf-m2f5-current-anchor@1, adapter: "m2f5_unified.build_views W0 scene mean + angular centrality", status: confirmed}
+    - {stage: t10, route: rf-m2f5-t10@1, adapter: "selection.select_views(quality_diversity), full output", status: confirmed}
+    - {stage: t13, route: rf-m2f5-t13@1, adapter: "coverage.support_pairs + validate_t13", status: confirmed}
+    - {stage: hero, route: rf-m2f5-hero-native@1, adapter: "native/hero.py::infer", status: confirmed}
+    - {stage: a_to_b, route: rf-m2f5-a-to-b@1, adapter: "reprojection.render/evaluate with B camera", status: confirmed}
+    - {stage: six_view, route: rf-m2f5-six-view@1, adapter: "_mesh_renderer.actual_mesh_image", status: confirmed}
+  execution_evidence:
+    groups: 13
+    raw_videos_prepared: 27
+    w0_videos: 26
+    w0_failures: 1
+    w0_failure_video: GP_Is_10.5mm_closed_R10_single_refY/005
+    unique_hero: 174
+    a_to_b_pairs: 522
+    mask_clean_frames: 432
+    historical_prepared_used: false
+    historical_tracks_used: false
+    w0_route_version: 3
+    w0_source_sha256: 9f65f1ed35d49718258955026cf248aa0869afcf67bf972873d9479ec7d1ab1a
+    historical_w0_used: false
+    historical_anchor_used: false
+    historical_hero_used: false
+    raw_mesh_no_3d_clean: true
+    s0_s1_s2_formal_parallel: false
+    t11_formal: false
+    output_root: runs/m2f5_unified
+  known_limitations:
+    - one raw video (Is10.5/005) failed W0
+    - large CAD-HERO offsets remain in several groups
+    - no 3D cleaning/fusion; raw metric meshes only

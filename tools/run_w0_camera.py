@@ -74,17 +74,14 @@ def build_ns_and_views(g, v, meta, root, ring_radius, ring_wire, pair_offsets=No
 
 
 def stage_tracks(ns, ordered, root, g, v):
-    """Reuse frozen 011 tracks when byte-identical; otherwise run frozen track005 once."""
-    shared = T011 / 'runs' / f'{g}_{v}' / 'B0' / 'observations'
-    tr = shared / 'tracks005.npz'
+    """Always run the frozen track005 implementation on this run's frames.
+
+    Historical frozen_011 tracks are never copied into a formal run.  The
+    track005 namespace and pair range are entirely current-run inputs.
+    """
     (root / 'observations').mkdir(parents=True, exist_ok=True)
-    if tr.exists():
-        for f in ('tracks005.npz', 'pairs005.npz'):
-            (root / 'observations' / f).write_bytes((shared / f).read_bytes())
-        src = 'frozen_011'
-    else:
-        ns['main']()
-        src = 'generated_by_pipeline'
+    ns['main']()
+    src = 'generated_by_pipeline_current_frames'
     (root / 'tracks_source.txt').write_text(src)
     return (dict(np.load(root / 'observations/tracks005.npz')),
             dict(np.load(root / 'observations/pairs005.npz')),
