@@ -32,11 +32,11 @@ Never edit official HERO, metric unprojection, Ring CAD, K or DXY source. No Bod
 
 ## E1 — Current-data reference and historical branch scoring
 
-- [ ] Write failing tests for a connected synthetic Ring/SIFT graph: a high-connectivity, Ring-supported frame wins over one nearest raw frame 459; disconnected candidates fail explicitly; only training evidence enters the reference score.
-- [ ] Add one reference-choice adapter to `run_w0_camera.py` after `pair_data`. Consume current `q_train`/Ring candidate evidence and edge inlier counts; store the per-reference evidence and chosen index. Keep `--reference-policy legacy459` for replay; the M2F6 route uses the current-data policy.
-- [ ] Run the existing `local_ring_sfm.initialize(..., version=0/1)` and frozen BA for both candidates where available. Call existing `unified_camera.version_score` on each training-side solution, select the lower score and write one official B0/W0. Preserve both trial receipts as diagnostics only.
-- [ ] Smoke G03/005 and one failed-reference video (G01/005 or G06/004) with identical prepared inputs and a new output root. Compare reference, branch, connectivity, Ring error and CAD-HERO only after recomputation; do not tune by GT.
-- [ ] Run E1 tests and existing W0 tests, then commit and push E1 changes and small score tables.
+- [x] Write failing tests for a connected synthetic Ring/SIFT graph: a high-connectivity, Ring-supported frame wins over one nearest raw frame 459; disconnected candidates fail explicitly; only training evidence enters the reference score.
+- [x] Add one reference-choice adapter to `run_w0_camera.py` after `pair_data`. Consume current `q_train`/Ring candidate evidence and edge inlier counts; store the per-reference evidence and chosen index. Keep `--reference-policy legacy459` for replay; the M2F6 route uses the current-data policy.
+- [x] Run the existing `local_ring_sfm.initialize(..., version=0/1)` and frozen BA for both candidates where available. Call existing `unified_camera.version_score` on each training-side solution, select the lower score and write one official B0/W0. Preserve both trial receipts as diagnostics only.
+- [x] Smoke G03/005 and G01/005 with identical prepared inputs and a new output root. Compare reference, branch, connectivity and Ring/held errors; CAD-HERO is reserved for newly recomputed HERO.
+- [x] Run E1 tests and existing W0 tests, then commit and push E1 changes and small score tables.
 
 ## E2 — Current-data 2D candidate and observation selection
 

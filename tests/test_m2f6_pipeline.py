@@ -1,10 +1,13 @@
 """M2F6 behavior at the observation and rendering boundaries."""
 from pathlib import Path
+import json
 
 import numpy as np
 import pandas as pd
 
 from tools import m2f5_hero_eval
+from tools import run_w0_camera
+import pytest
 
 
 def _triangle(x):
@@ -47,3 +50,56 @@ def test_existing_mesh_render_uses_each_groups_cad_and_six_metric_views(tmp_path
         assert result["surface_count"] == 2
         assert Path(result["image"]).is_file()
     assert r5["cad_sha256"] != r10["cad_sha256"]
+
+
+def test_reference_uses_current_ring_and_train_graph_not_frame_459():
+    rings = [dict(candidates=[dict(loss=x)]) for x in (.5, .1, .3, .4)]
+    edges = [dict(i=i, j=j, rows=np.zeros((count, 5))) for i, j, count in
+             ((0, 1, 30), (0, 2, 25), (0, 3, 20), (1, 2, 12))]
+    ref, evidence = run_w0_camera.select_reference(
+        [100, 459, 700, 900], rings, edges, [40, 40, 40, 40])
+    assert ref == 0
+    assert evidence["selected_raw_frame"] == 100
+    assert evidence["scores"][0]["graph_degree"] == 3
+    assert evidence["scores"][1]["graph_degree"] == 2
+
+
+def test_reference_fails_when_train_graph_is_disconnected():
+    rings = [dict(candidates=[dict(loss=.2)]) for _ in range(3)]
+    edges = [dict(i=0, j=1, rows=np.zeros((20, 5)))]
+    with pytest.raises(RuntimeError, match="REFERENCE_GRAPH_DISCONNECTED"):
+        run_w0_camera.select_reference([100, 459, 700], rings, edges, [30, 30, 30])
+
+
+def test_reference_prioritizes_ring_fit_with_equally_connected_rgb_graph():
+    rings = [dict(candidates=[dict(loss=x)]) for x in (.4, .1, .2)]
+    edges = [dict(i=i, j=j, rows=np.zeros((count, 5))) for i, j, count in
+             ((0, 1, 100), (0, 2, 100), (1, 2, 20))]
+    ref, _ = run_w0_camera.select_reference([100, 459, 700], rings, edges, [40] * 3)
+    assert ref == 1
+
+
+def test_historical_initialization_versions_use_training_score_and_one_selection():
+    calls = []
+    def initialize(rings, tracks, edges, ref, version):
+        calls.append(("initialize", version))
+        return np.full((2, 4, 4), version, float), {"branches": np.array([version, 0])}
+    def triangulate(poses, tracks):
+        calls.append(("triangulate", int(poses[0, 0, 0])))
+        return np.zeros((1, 3)), np.array([0]), [np.array([0, 1])]
+    def ba(poses, points, tids, support, tracks, ref):
+        version = int(poses[0, 0, 0]); calls.append(("BA", version))
+        return poses, points, {"success": True, "nfev": 2}
+    def score(ns, poses, tracks, ref, ba):
+        version = int(poses[0, 0, 0]); calls.append(("version_score", version))
+        return {"score": float(1 - version)}
+    ns = dict(initialize=initialize, triangulate_training=triangulate, BA=ba)
+    chosen, receipts = run_w0_camera.run_initialization_versions(
+        ns, [], {}, [], 0, score)
+    assert chosen["version"] == 1
+    assert receipts["selected_version"] == 1
+    assert json.dumps(receipts)
+    assert [x for x in calls if x[0] == "initialize"] == [
+        ("initialize", 0), ("initialize", 1)]
+    assert [x for x in calls if x[0] == "version_score"] == [
+        ("version_score", 0), ("version_score", 1)]

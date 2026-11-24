@@ -116,6 +116,89 @@ def pick_ref(raw_frames):
     return int(np.argmin([abs(f - 459) for f in raw_frames]))
 
 
+def select_reference(raw_frames, rings, edges, ring_counts):
+    """Choose the fixed BA reference from current Ring and training RGB evidence.
+
+    The reference camera is held fixed by the historical BA, so prefer a view
+    with many connected RGB neighbours and a well observed Ring.  All inputs
+    are available before camera recovery; no 3-D pose or Body cue is used.
+    """
+    n = len(raw_frames)
+    if len(rings) != n or len(ring_counts) != n or not n:
+        raise ValueError('REFERENCE_INPUT_LENGTH_MISMATCH')
+    neighbours = [set() for _ in range(n)]
+    strength = [0] * n
+    for edge in edges:
+        i, j = int(edge['i']), int(edge['j'])
+        count = len(edge['rows'])
+        if i == j or not (0 <= i < n and 0 <= j < n) or count < 12:
+            continue
+        neighbours[i].add(j); neighbours[j].add(i)
+        strength[i] += count; strength[j] += count
+    reached = {0}
+    frontier = [0]
+    while frontier:
+        i = frontier.pop()
+        for j in neighbours[i] - reached:
+            reached.add(j); frontier.append(j)
+    if len(reached) != n:
+        raise RuntimeError(f'REFERENCE_GRAPH_DISCONNECTED reachable={len(reached)}/{n}')
+    scores = []
+    for i, (ring, count) in enumerate(zip(rings, ring_counts)):
+        losses = [float(c['loss']) for c in ring['candidates']
+                  if 'loss' in c and np.isfinite(float(c['loss']))]
+        loss = min(losses) if losses else None
+        scores.append(dict(index=i, raw_frame=int(raw_frames[i]),
+                           graph_degree=len(neighbours[i]), graph_inliers=int(strength[i]),
+                           ring_train_points=int(count), ring_candidate_loss=loss,
+                           valid=bool(loss is not None and count > 0)))
+    eligible = [row for row in scores if row['valid']]
+    if not eligible:
+        raise RuntimeError('REFERENCE_NO_VALID_RING_OBSERVATION')
+    chosen = max(eligible, key=lambda row: (row['graph_degree'], -row['ring_candidate_loss'],
+                                            row['ring_train_points'], row['graph_inliers'],
+                                            -row['index']))
+    return chosen['index'], dict(policy='current_ring_rgb_training_graph',
+                                 selected_index=chosen['index'],
+                                 selected_raw_frame=chosen['raw_frame'], scores=scores)
+
+
+def run_initialization_versions(ns, rings, tr, edges, ref, version_score):
+    """Run the two frozen initializers and select via historical train score."""
+    def plain(value):
+        if isinstance(value, np.ndarray):
+            return value.tolist()
+        if isinstance(value, np.generic):
+            return value.item()
+        if isinstance(value, dict):
+            return {key: plain(item) for key, item in value.items()}
+        if isinstance(value, (tuple, list)):
+            return [plain(item) for item in value]
+        return value
+    attempts, successful = {}, {}
+    for version in (0, 1):
+        try:
+            ini, info = ns['initialize'](rings, tr, edges, ref, version)
+            if any(p is None for p in ini):
+                raise RuntimeError('RING_FIRST_INCOMPLETE')
+            X, tids, support = ns['triangulate_training'](np.asarray(ini, float), tr)
+            cur, points, ba = ns['BA'](np.asarray(ini, float), X, tids, support, tr, ref)
+            score = version_score(ns, cur, tr, ref, ba)
+            if not np.isfinite(score['score']):
+                raise RuntimeError('NONFINITE_VERSION_SCORE')
+            attempts[str(version)] = dict(ok=True, score=plain(score), initialization=plain(info))
+            successful[version] = dict(version=version, c2w=cur, points=points,
+                                       point_track_ids=tids, BA=ba, score=score)
+        except Exception as exc:
+            attempts[str(version)] = dict(ok=False, error_type=type(exc).__name__,
+                                          reason=str(exc), traceback=traceback.format_exc())
+    if not successful:
+        raise RuntimeError('NO_BA_VERSION ' + json.dumps(attempts))
+    best = min(successful, key=lambda version: (successful[version]['score']['score'], version))
+    return successful[best], dict(policy='historical_training_version_score',
+                                  selected_version=best, attempts=attempts)
+
+
 def _finite_metric(x):
     try:
         return float(x) if x is not None and np.isfinite(float(x)) else None
@@ -172,6 +255,9 @@ def main():
     ap.add_argument('--pair-offsets', default='')
     ap.add_argument('--ring-mode', choices=['all', 'legacy'], default='all')
     ap.add_argument('--init-poses', default=None)
+    ap.add_argument('--reference-policy', choices=['legacy459', 'current'], default='legacy459')
+    ap.add_argument('--initialization-policy', choices=['legacy_single', 'trained_versions'],
+                    default='legacy_single')
     ap.add_argument('--clean-labels-root', default=None)
     ap.add_argument('--dry-run', action='store_true')
     args = ap.parse_args()
@@ -208,7 +294,16 @@ def main():
         rings = stage_ring(ns, ordered, arrays, run, ring_radius, ring_wire, args.ring_mode)
         edges = ns['pair_data'](tr, pack)
         rf = [x['meta']['raw_frame'] for x in ordered]
-        ref = pick_ref(rf)
+        if args.reference_policy == 'current':
+            ring_counts = [len(np.load(run / 'observations' / (x['meta']['id'] + '_ring.npz'))['q_train'])
+                           for x in ordered]
+            ref, reference_receipt = select_reference(rf, rings, edges, ring_counts)
+        else:
+            ref = pick_ref(rf)
+            reference_receipt = dict(policy='legacy459', selected_index=ref,
+                                     selected_raw_frame=int(rf[ref]))
+        (run / 'REFERENCE_SELECTION.json').write_text(json.dumps(reference_receipt, indent=1))
+        print('REFERENCE', ref, rf[ref], args.reference_policy, flush=True)
         if args.init_poses:
             z = np.load(args.init_poses)
             im = {str(i): np.asarray(c, float) for i, c in zip(z['ids'], z['c2w'])}
@@ -216,14 +311,17 @@ def main():
             if missing:
                 raise RuntimeError(f'INIT_POSES_MISSING {missing}')
             ini = [im[x['meta']['id']] for x in ordered]
-        else:
+        elif args.initialization_policy == 'legacy_single':
             ini, _ = ns['initialize'](rings, tr, edges, ref, 0)
-        ini = np.asarray(ini, float)
-        if any(x is None for x in ini):
-            write_status(out, 'INSUFFICIENT_EVIDENCE', 'ring_first', 'RING_FIRST_INCOMPLETE', g, v,
-                         'RING_FIRST_INCOMPLETE')
-            return 2
-        X, tids, support = ns['triangulate_training'](ini, tr)
+        else:
+            ini = None
+        if ini is not None:
+            if any(x is None for x in ini):
+                write_status(out, 'INSUFFICIENT_EVIDENCE', 'ring_first', 'RING_FIRST_INCOMPLETE', g, v,
+                             'RING_FIRST_INCOMPLETE')
+                return 2
+            ini = np.asarray(ini, float)
+            X, tids, support = ns['triangulate_training'](ini, tr)
     except ValueError as e:
         if 'INSUFFICIENT_RING_OBSERVATION' in str(e):
             write_status(out, 'INSUFFICIENT_EVIDENCE', 'ring', str(e), g, v,
@@ -240,13 +338,31 @@ def main():
             write_status(out, 'BLOCKED_QUALITY_GATE', 'ring_first', msg, g, v,
                          'RING_POSE_GRAPH_DISCONNECTED')
             return 2
+        if msg.startswith('REFERENCE_GRAPH_DISCONNECTED'):
+            write_status(out, 'INSUFFICIENT_EVIDENCE', 'reference', msg, g, v,
+                         'REFERENCE_GRAPH_DISCONNECTED')
+            return 2
         raise
 
     n_b0 = n_w0 = 0
     if args.stage in ('all', 'b0'):
-        cur, P, ba = ns['BA'](ini, X, tids, support, tr, ref)
+        if args.initialization_policy == 'trained_versions' and not args.init_poses:
+            try:
+                selected, version_receipt = run_initialization_versions(
+                    ns, rings, tr, edges, ref, U5.version_score)
+            except RuntimeError as exc:
+                write_status(out, 'INSUFFICIENT_EVIDENCE', 'initialization', str(exc), g, v,
+                             'NO_BA_VERSION')
+                return 2
+            cur, P, tids, ba = (selected['c2w'], selected['points'],
+                                selected['point_track_ids'], selected['BA'])
+            init_version = selected['version']
+            (run / 'VERSION_SCORES.json').write_text(json.dumps(version_receipt, indent=1))
+        else:
+            cur, P, ba = ns['BA'](ini, X, tids, support, tr, ref)
+            init_version = 0
         np.savez_compressed(run / 'B0.npz', c2w=cur, points=P, point_track_ids=tids, K=U5.K_CFG,
-                            ids=[x['meta']['id'] for x in ordered], reference=ref, init_version=0,
+                            ids=[x['meta']['id'] for x in ordered], reference=ref, init_version=init_version,
                             ring_cad_mm=np.array([ring_radius, ring_wire]))
         n_b0 = len(cur)
         (run / 'B0.json').write_text(json.dumps(dict(nfev=ba.get('nfev'), success=ba.get('success'),
@@ -258,7 +374,8 @@ def main():
         ns['cfg'] = lambda: dict(U5.CFG, BA_max_nfev=30)
         cur, P, ba = ns['BA'](b0['c2w'], X2, tids2, sup2, tr, ref)
         np.savez_compressed(run / 'W0.npz', c2w=cur, points=P, point_track_ids=tids2, K=U5.K_CFG,
-                            ids=[x['meta']['id'] for x in ordered], reference=ref, init_version=0,
+                            ids=[x['meta']['id'] for x in ordered], reference=ref,
+                            init_version=int(b0['init_version']),
                             warm_start='B0', ring_cad_mm=np.array([ring_radius, ring_wire]))
         n_w0 = len(cur)
         (run / 'W0.json').write_text(json.dumps(dict(nfev=ba.get('nfev'), success=ba.get('success'),
@@ -383,7 +500,8 @@ def main():
     for p in sorted((run / 'observations').glob('*')):
         if p.is_file():
             (out / 'observations' / p.name).write_bytes(p.read_bytes())
-    for f in ('B0.npz', 'W0.npz', 'B0.json', 'W0.json'):
+    for f in ('B0.npz', 'W0.npz', 'B0.json', 'W0.json',
+              'REFERENCE_SELECTION.json', 'VERSION_SCORES.json'):
         if (run / f).exists():
             (out / f).write_bytes((run / f).read_bytes())
 
@@ -407,6 +525,9 @@ def main():
                   contour=sha(WS / 'camera_mainline/code/contour_metrics.py'),
                   unified=sha(T005 / 'code/unified_camera.py')),
         stages=args.stage, ring_mode=args.ring_mode, init_poses=args.init_poses,
+        reference_policy=args.reference_policy,
+        initialization_policy=args.initialization_policy,
+        reference_selection=reference_receipt,
         status=(quality and ('COMPLETED_VALID' if quality['n_accept'] > 0 else 'COMPLETED_LIMITED'))
                or None)
     for name in ('B0.npz', 'W0.npz', 'camera_result.npz', 'accepted_cameras.npz',
