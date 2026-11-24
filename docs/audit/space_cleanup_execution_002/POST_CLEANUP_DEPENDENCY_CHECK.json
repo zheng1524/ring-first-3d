@@ -1,0 +1,99 @@
+{
+ "torch": {
+  "ok": true,
+  "version": "2.7.1+cu128",
+  "cuda": true
+ },
+ "open3d": {
+  "ok": true,
+  "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/open3d/__init__.py",
+  "version": "0.19.0"
+ },
+ "pytorch3d": {
+  "ok": false,
+  "direct_venv_import": false,
+  "error": "ModuleNotFoundError from .venv",
+  "vendored_path": "/home/liu/ring_first_3d_workspace/runtime/p3d/pytorch3d",
+  "vendored_import_ok": true,
+  "vendored_version": "0.7.9",
+  "note": "current body code adds runtime/p3d to sys.path; direct venv import was already false before cleanup and is not a cleanup regression"
+ },
+ "cv2": {
+  "ok": true,
+  "version": "4.11.0"
+ },
+ "ring_cad": {
+  "ok": true,
+  "contours": 2,
+  "r5": {
+   "inner_diameter_mm": 5.0,
+   "centerline_radius_mm": 3.1,
+   "wire_radius_mm": 0.6
+  },
+  "r10": {
+   "inner_diameter_mm": 10.0,
+   "centerline_radius_mm": 5.6,
+   "wire_radius_mm": 0.6
+  }
+ },
+ "dxy_ring_holes": {
+  "ok": true,
+  "file": "/home/liu/new-polyp-dxy/src/dxy_mid/_engine/ring_holes.py"
+ },
+ "dxy_git": "75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95",
+ "init_weight": {
+  "path": "/home/liu/polyp_research/experiments/dxy_remeasurement_20260917/02_segmentation/model/model.safetensors",
+  "exists": true,
+  "sha256": "981aa596e8906edc4457219581c606d4a5a22bfc6f7e4924d3d9a4b9aff64464",
+  "expected_sha256": "981aa596e8906edc4457219581c606d4a5a22bfc6f7e4924d3d9a4b9aff64464"
+ },
+ "hero": {
+  "checkpoint": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/weights/mvsanywhere_hero_full.ckpt",
+  "exists": true,
+  "sha256": "00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d",
+  "expected": "00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d",
+  "dino_exists": true,
+  "dino_sha256": "d5383ea8f4877b2472eb973e0fd72d557c7da5d3611bd527ceeb1d7162cbf428",
+  "mvs_root": true
+ },
+ "prepared": {
+  "prepared_json": 79,
+  "views": 790
+ },
+ "m2c_a1": {
+  "rows": 79,
+  "w0_existing": 79
+ },
+ "modules": {
+  "experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/hero_stage.py": true,
+  "experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/body_stage.py": true,
+  "experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/code/body_hooks.py": true,
+  "src/ring_first_3d/mainline/native/hero.py": true,
+  "src/ring_first_3d/mainline/native/camera.py": true,
+  "camera_mainline/code/contour_metrics.py": true
+ },
+ "git": {
+  "head": "5967ee5369abd38bcc07539c3ba6ca09cbe9f27a",
+  "branch": "audit/TASK-CLEANUP-SPACE-AUDIT-002",
+  "status_count": 175
+ },
+ "df": "/dev/nvme0n1p3 211430510592 182436446208 18179473408   91% /",
+ "open3d_hardlink": {
+  "current": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/open3d/cuda/pybind.cpython-312-x86_64-linux-gnu.so",
+  "vendor": "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v3/vendor/open3d/cuda/pybind.cpython-312-x86_64-linux-gnu.so",
+  "same_inode": true,
+  "current_size": 802242736,
+  "vendor_size": 802242736
+ },
+ "overall": {
+  "critical_imports_ok": true,
+  "pytorch3d_vendored_ok": true,
+  "data_ok": true,
+  "hero_assets_ok": true,
+  "cleanup_regression_detected": false,
+  "notes": [
+   "direct pytorch3d venv import false; vendored runtime/p3d works",
+   "current Git has pre-existing dirty files; cleanup did not modify tracked source"
+  ]
+ }
+}

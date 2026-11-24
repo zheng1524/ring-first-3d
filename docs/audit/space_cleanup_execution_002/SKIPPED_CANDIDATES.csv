@@ -1,0 +1,11 @@
+candidate_id,absolute_path,skip_reason,evidence
+CAND_001,/home/liu/miniconda3/envs/息肉检测,NOT_AUTHORIZED_THIS_ROUND,legacy conda env; explicit no-delete list
+CAND_002,/home/liu/.local/lib,NOT_AUTHORIZED_THIS_ROUND,legacy Python 3.8 libs; explicit no-delete list
+CAND_003,/home/liu/ring_first_3d_workspace/smart_endoscope_20260805 (1),PROHIBITED_BY_TASK,current prepare_m1_inputs raw video dependency; explicit no-delete
+CAND_004,/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v9_ring_guided_recovery/weights/MASt3R_official.pth,NOT_AUTHORIZED_THIS_ROUND,explicit no-delete list
+CAND_006,/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v13_multisource,PROHIBITED_BY_TASK,contains DINOv2 weights; explicit no-delete
+CAND_007,/tmp/dsh-workspace-changes-GGsTeP,CURRENT_DSH_SNAPSHOT,created in current session; not an ended task; undo dependency unresolved
+CAND_008,/tmp/dsh-workspace-changes-m3e6pM,CURRENT_DSH_SNAPSHOT,created in current session; not an ended task; undo dependency unresolved
+CAND_017,/home/liu/research_storage_cleanup,UNIQUE_EVIDENCE_NO_BACKUP,contains unique .ply.gz archives; no verified backup
+CAND_020,/home/liu/.cache/mozilla,ACTIVE_FIREFOX,lsof shows Firefox open files in cache; conflict not excluded
+CAND_021,/home/liu/ring_first_3d_e4_a1,CURRENT_ABSOLUTE_REFERENCE,frozen_registry code references /home/liu/ring_first_3d_e4_a1/...
