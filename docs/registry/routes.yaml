@@ -962,3 +962,34 @@ m2f5_execution:
     - one raw video (Is10.5/005) failed W0
     - large CAD-HERO offsets remain in several groups
     - no 3D cleaning/fusion; raw metric meshes only
+
+# M2F6 composition is an approved implementation, independent of the older
+# pending candidate catalogue above.  Formal usability follows experiment
+# verification, not the approval to implement it.
+m2f6_composition:
+  route_id: rf-m2f6-unified-observation@1
+  version: 1
+  status: executing
+  formal_usable: false
+  human_approval: "M2F6 Composition Approval (2026-11-25)"
+  entrypoint: "tools/m2f5_unified.py --m2f6 --stage all; tools/m2f5_hero_eval.py --m2f6; tools/m2f5_summary.py"
+  output_root: runs/m2f6_unified/formal_001
+  prior_pending_records: "Historical candidate catalogue only; not formal M2F6 route decisions"
+  composes: [rf-native-ring-cad@2, rf-frozen-tracks005@1,
+             rf-frozen-ba-local-ring-sfm@1, rf-m2f5-local-admission@1,
+             rf-m2f5-t10@1, rf-m2f5-t13@1,
+             rf-m2f5-hero-native@1, rf-m2f5-a-to-b@1, rf-m2f5-six-view@1]
+  stages:
+    - {stage: initial_2d_observation, route: rf-m2f6-2d-observation@1, entrypoint: "tools/m2f5_unified.py::prepare_one_m2f6", contract: "raw video -> candidate manifest + selected clean RGB/Mask/K", status: approved_glue, smoke_test: tests/test_m2f6_pipeline.py}
+    - {stage: real_observation_supplement, route: rf-m2f6-real-observation@1, entrypoint: "tools/m2f5_unified.py::run_m2f6_recovery", contract: "current graph/Ring evidence -> bounded real frames -> full W0 and T10/T13 rerun", status: approved_glue, smoke_test: tests/test_m2f6_pipeline.py}
+    - {stage: reference_and_initialization, route: rf-w0-camera-current-tracks@3, entrypoint: "tools/run_w0_camera.py::pick_ref/stage_ring_first", contract: "current Ring+RGB graph -> one W0 using historical version 0/1 and version_score", status: approved_glue, smoke_test: tests/test_m2f6_pipeline.py}
+    - {stage: unique_camera_pool, route: rf-m2f5-local-admission@1, entrypoint: "views/pipeline_adapter.py::admission_tiers", contract: "current W0 metrics -> one local candidate pool", status: confirmed_reuse, smoke_test: tests/test_m2f6_pipeline.py}
+    - {stage: geometric_center, route: rf-m2f6-ring-center@1, entrypoint: "tools/m2f5_unified.py::build_views", contract: "current W0 and Ring CAD origin -> common center", status: approved_glue, smoke_test: tests/test_m2f6_pipeline.py}
+    - {stage: anchor, route: rf-m2f5-current-anchor@1, entrypoint: "tools/m2f5_unified.py::select", contract: "current RGB/clean Mask/camera + Ring center -> anchor", status: confirmed_reuse, smoke_test: tests/test_m2f6_pipeline.py}
+    - {stage: t10, route: rf-m2f5-t10@1, entrypoint: "views/selection.py::select_views", contract: "one candidate pool + center + quality -> target list", status: confirmed_reuse, smoke_test: tests/test_m2f6_pipeline.py}
+    - {stage: t13, route: rf-m2f5-t13@1, entrypoint: "views/coverage.py::support_pairs", contract: "current targets/cameras/RGB/clean Mask -> supports", status: confirmed_reuse, smoke_test: tests/test_m2f6_pipeline.py}
+    - {stage: hero_input, route: rf-m2f6-tuple-identity@1, entrypoint: "tools/m2f5_hero_eval.py::verified_m2f6_frames/infer_with_receipt", contract: "verified final W0 + current four frame arrays -> runtime tuple receipt", status: approved_glue, smoke_test: tests/test_m2f6_pipeline.py}
+    - {stage: hero, route: rf-m2f5-hero-native@1, entrypoint: "native/hero.py::infer", contract: "verified current tuple -> native depth and raw mesh", status: confirmed_reuse, smoke_test: tests/test_m2f6_pipeline.py}
+    - {stage: a_to_b, route: rf-m2f5-a-to-b@1, entrypoint: "reprojection.py::render/evaluate", contract: "raw mesh + current clean A/B + B camera -> metrics", status: confirmed_reuse, smoke_test: tests/test_m2f6_pipeline.py}
+    - {stage: cad_and_multisurface, route: rf-m2f5-geometry-summary@1, entrypoint: "tools/m2f5_summary.py", contract: "raw native outputs + correct CAD -> per target and pair metrics", status: confirmed_reuse, smoke_test: "formal metric CSV identity check"}
+    - {stage: six_view, route: rf-m2f5-six-view@1, entrypoint: "tools/m2f5_hero_eval.py::render_existing_video", contract: "all real target surfaces + per-group CAD -> 3 camera + XYZ metric panels", status: confirmed_reuse, smoke_test: tests/test_m2f6_pipeline.py}

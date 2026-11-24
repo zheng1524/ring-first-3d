@@ -1,6 +1,7 @@
 """M2F6 behavior at the observation and rendering boundaries."""
 from pathlib import Path
 import json
+import hashlib
 
 import numpy as np
 import pandas as pd
@@ -270,3 +271,41 @@ def test_tuple_receipt_exists_before_actual_hero_call(tmp_path, monkeypatch):
     assert result["seconds"] == .1
     assert receipt["input_identity_verified"] is True
     assert len((tmp_path / "RUN_TRACE/sample_R10_004.jsonl").read_text().splitlines()) == 1
+
+
+def test_hero_current_clean_mask_identity_rejects_tampering(tmp_path, monkeypatch):
+    monkeypatch.setattr(m2f5_hero_eval, "O", tmp_path)
+    group, video = "sample_R10", "004"
+    candidates = []
+    views, cameras = {}, {}
+    K = np.eye(3)
+    for i in range(4):
+        vid = f"real_{i}"
+        rgb = np.full((2, 2, 3), i + 1, np.uint8)
+        clean = np.full((2, 2), 1, np.uint8)
+        cache = tmp_path / f"{vid}.npz"
+        np.savez_compressed(cache, RGB=rgb, K=K, labels=np.zeros((2, 2), np.uint8))
+        cp = tmp_path / "clean_labels" / f"{group}_{video}" / f"{vid}.npz"
+        cp.parent.mkdir(parents=True, exist_ok=True)
+        np.savez_compressed(cp, labels=clean)
+        candidates.append(dict(view=vid, RGB_sha256=m2f5_hero_eval.array_sha(rgb),
+                               clean_mask_sha256=m2f5_hero_eval.array_sha(clean),
+                               K_sha256=m2f5_hero_eval.array_sha(K),
+                               clean_labels_sha256=hashlib.sha256(cp.read_bytes()).hexdigest()))
+        views[vid] = dict(cache=str(cache))
+        cameras[vid] = np.eye(4)
+    manifest = tmp_path / "CANDIDATE_MANIFEST.json"
+    manifest.write_text(json.dumps(dict(candidates=candidates)))
+    prepared = tmp_path / "PREPARED.json"
+    prepared.write_text(json.dumps(dict(candidate_manifest=str(manifest),
+                                        candidate_manifest_sha256=hashlib.sha256(manifest.read_bytes()).hexdigest())))
+    packet = dict(group=group, video=video, views=views, cameras=cameras, K=K,
+                  manifest=dict(prepared=dict(path=str(prepared))))
+    actual = m2f5_hero_eval.verified_m2f6_frames(packet, "real_0",
+                                                  ["real_1", "real_2", "real_3"], tmp_path)
+    assert len(actual) == 4
+    bad = tmp_path / "clean_labels" / f"{group}_{video}" / "real_2.npz"
+    np.savez_compressed(bad, labels=np.full((2, 2), 2, np.uint8))
+    with pytest.raises(ValueError, match="CLEAN_LABEL_FILE_HASH"):
+        m2f5_hero_eval.verified_m2f6_frames(packet, "real_0",
+                                             ["real_1", "real_2", "real_3"], tmp_path)
