@@ -24,11 +24,11 @@ Never edit official HERO, metric unprojection, Ring CAD, K or DXY source. No Bod
 
 ## E0 — Render the retained M2F5 baseline correctly
 
-- [ ] Add a failing renderer test with R5 and R10 fixture CAD meshes; assert the selected CAD is loaded per group, six labels are target/support/support/X/Y/Z, and a 5 mm bar is drawn from `actual_mesh_image` pixels/mm.
-- [ ] Run `PYTHONPATH=src /home/liu/polyp_research/ring_anchor_3d/.venv/bin/python -m pytest tests/test_m2f6_pipeline.py -q`; record the expected failure.
-- [ ] Extract the existing M2F5 render loop into a callable that accepts `input_root`, `output_root`, group and video, preserving every raw mesh and coloring each target. Move CAD loading into the group loop; expose render-only CLI without invoking HERO.
-- [ ] Re-render the existing ten M2F5 mesh sets into `runs/m2f6_unified/baseline_visualization/`. Record source mesh hashes, Ring kind and GT pose unknown. Compare these figures to retained M2F5 originals before any new W0 run.
-- [ ] Re-run the renderer test and commit the E0 glue, test and selected baseline images; push the branch.
+- [x] Add a failing renderer test with R5 and R10 fixture CAD meshes; assert the selected CAD is loaded per group, six labels are target/support/support/X/Y/Z, and a 5 mm bar is drawn from `actual_mesh_image` pixels/mm.
+- [x] Run `PYTHONPATH=src /home/liu/polyp_research/ring_anchor_3d/.venv/bin/python -m pytest tests/test_m2f6_pipeline.py -q`; record the expected failure.
+- [x] Extract the existing M2F5 render loop into a callable that accepts `input_root`, `output_root`, group and video, preserving every raw mesh and coloring each target. Move CAD loading into the group loop; invoke the callable without HERO for the baseline render.
+- [x] Re-render the existing ten M2F5 mesh sets into `runs/m2f6_unified/baseline/visualization/multisurface/`. Record source mesh hashes, Ring kind and GT pose unknown. Compare these figures to retained M2F5 originals before any new W0 run.
+- [x] Re-run the renderer test and commit the E0 glue, test and selected baseline images; push the branch.
 
 ## E1 — Current-data reference and historical branch scoring
 

@@ -28,6 +28,57 @@ def scene(kind):
  d=dict(np.load(O/'cad'/f'{kind}.npz'));s=o3d.t.geometry.RaycastingScene(nthreads=2);s.add_triangles(o3d.core.Tensor(d['V'].astype(np.float32)),o3d.core.Tensor(d['F'].astype(np.uint32)));return s
 rp.cad_scene=scene
 
+def render_existing_video(input_root, output_root, group, video):
+ """Render every retained raw target surface in its measured world position."""
+ source=pathlib.Path(input_root);dest=pathlib.Path(output_root);video=str(video).zfill(3)
+ table=pd.read_csv(source/'hero/HERO_EXECUTION_RESULTS.csv')
+ rows=table[(table.group_id==group)&(table.video_id.astype(str).str.zfill(3)==video)&
+            (table.status.isin(['PASS','REUSED']))].to_dict('records')
+ if not rows:raise ValueError(f'NO_HERO_SURFACES {group}/{video}')
+ kind='R5' if '_R5' in group else 'R10';cad_path=source/'cad'/f'{kind}.npz'
+ with np.load(cad_path) as z:cad_v,cad_f=z['V'],z['F']
+ with np.load(source/'w0'/f'{group}_{video}'/'W0.npz') as z:
+  cameras={str(i):c for i,c in zip(z['ids'],z['c2w'])}
+ vertices,faces,colours,mesh_receipts=[],[],[],[];offset=0
+ palette=plt.get_cmap('tab20',max(20,len(rows)))
+ for index,row in enumerate(rows):
+  mesh_path=pathlib.Path(row['output_dir'])/'RAW_NATIVE_MESH.npz'
+  with np.load(mesh_path) as z:V,F=np.asarray(z['V'],float),np.asarray(z['F'],int)
+  if not len(V) or not len(F):raise ValueError(f'EMPTY_RAW_MESH {mesh_path}')
+  vertices.append(V);faces.append(F+offset);colours.append(np.tile(palette(index)[:3],(len(F),1)))
+  offset+=len(V)
+  mesh_receipts.append(dict(target_id=str(row['target_id']),path=str(mesh_path),
+                            sha256=hashlib.sha256(mesh_path.read_bytes()).hexdigest()))
+ V=np.concatenate(vertices);F=np.concatenate(faces);face_colours=np.concatenate(colours)
+ centre=(V.min(axis=0)+V.max(axis=0))/2
+ first=rows[0];ids=[str(first['target_id'])]+str(first['support_ids']).split(';')[:2]
+ if len(ids)!=3 or any(cid not in cameras for cid in ids):raise ValueError('MISSING_REAL_CAMERA')
+ panels=[]
+ for cid in ids:
+  direction=cameras[cid][:3,3]-centre;length=np.linalg.norm(direction)
+  if length<=0:raise ValueError('ZERO_CAMERA_VIEW_DIRECTION')
+  direction/=length
+  panels.append((cid,float(np.degrees(np.arcsin(direction[2]))),
+                 float(np.degrees(np.arctan2(direction[1],direction[0])))))
+ panels.extend([('World X',0.,0.),('World Y',0.,90.),('World Z',89.9999,0.)])
+ fig,axes=plt.subplots(1,6,figsize=(18,3.5));scales=[]
+ for axis,(label,elevation,azimuth) in zip(axes,panels):
+  image,pixels_per_mm=actual_mesh_image(V,F,cad_v,cad_f,V,elevation,azimuth,
+                                         '#d98989',face_colors=face_colours)
+  axis.imshow(image);axis.set_title(label,fontsize=7);axis.axis('off')
+  axis.plot([15,15+5*pixels_per_mm],[378,378],color='black',lw=2)
+  axis.text(15,373,'~5 mm at view centre',fontsize=6)
+  scales.append(float(pixels_per_mm))
+ fig.suptitle(f'{group}/{video}: {len(rows)} raw target surfaces + {kind} Ring CAD; GT deployment pose unknown')
+ fig.tight_layout();path=dest/'visualization/multisurface'/f'{group}_{video}.png'
+ path.parent.mkdir(parents=True,exist_ok=True);fig.savefig(path,dpi=110);plt.close(fig)
+ result=dict(group_id=group,video_id=video,cad_kind=kind,cad_sha256=hashlib.sha256(cad_path.read_bytes()).hexdigest(),
+             view_labels=[x[0] for x in panels],scale_bar_mm=5.,pixels_per_mm=scales,
+             surface_count=len(rows),source_meshes=mesh_receipts,image=str(path),
+             GT_deployment_pose='UNKNOWN',all_surfaces_retained=True)
+ write_json(path.with_suffix('.json'),result)
+ return result
+
 def main():
  # selection tables
  sels=sorted((O/'selection').glob('*.csv'));rows=[]
@@ -57,35 +108,12 @@ def main():
    b=np.load(packet['views'][B]['cache']);BK=np.asarray(b['K'],float);Bpose=packet['cameras'][B];pred=rp.render(V,F,Cv,BK,Bpose,np.eye(4),'R5' if '_R5_' in g else 'R10');met,mae,common=rp.evaluate(pred,np.asarray(b['RGB']),load_clean(g,v,B));met.update(group_id=g,video_id=v,target_id=target,support_id=B,target_B_camera_used=True,source_mesh=str(out/'RAW_NATIVE_MESH.npz'),status='GATED_NEW_HERO');a2b.append(met)
   print('HERO',n,'/',len(uni),g,v,'pairs',len(a2b),flush=True)
  pd.DataFrame(hero).to_csv(O/'hero/HERO_EXECUTION_RESULTS.csv',index=False);pd.DataFrame(a2b).to_csv(O/'evaluation/A_TO_B_METRICS.csv',index=False)
- # six view per actual hero; fixed group bounds; all surfaces
- cad=np.load(O/'cad'/('R5.npz' if '_R5_' in g else 'R10.npz'))
+ # M2F6 uses the same renderer for retained baselines and current real outputs.
  for g in sorted(set(x['group_id'] for x in hero if x['status']!='FAIL')):
   for v in sorted(set(x['video_id'] for x in hero if x['group_id']==g and x['status']!='FAIL')):
-   hs=[x for x in hero if x['group_id']==g and x['video_id']==v and x['status']!='FAIL'];V0=[]
-   for x in hs:
-    try:V0.append(np.load(pathlib.Path(x['output_dir'])/'RAW_NATIVE_MESH.npz')['V'])
-    except:pass
-   if not V0:continue
-   Vall=np.concatenate(V0,0);packet=verify_w0_packet(O/'w0'/f'{g}_{v}',WS)
-   for x in hs:
-    try:
-     raw=np.load(pathlib.Path(x['output_dir'])/'RAW_NATIVE_MESH.npz');V=raw['V'];F=raw['F'];target=x['target_id'];sups=x['support_ids'].split(';');center=V.mean(0);views=[]
-     C=packet['cameras'][target];d=C[:3,3]-center;d/=np.linalg.norm(d);views.append(('target',np.degrees(np.arcsin(d[2])),np.degrees(np.arctan2(d[1],d[0]))))
-     for k,B in enumerate(sups[:2]):
-      C=packet['cameras'][B];d=C[:3,3]-center;d/=np.linalg.norm(d);views.append((f'support{k+1}',np.degrees(np.arcsin(d[2])),np.degrees(np.arctan2(d[1],d[0]))))
-     views += [('X',0,0),('Y',0,90),('Z',89.9999,0)]
-     fig,ax=plt.subplots(1,6,figsize=(15,3))
-     for k,(name,e,a) in enumerate(views):im,_=actual_mesh_image(V,F,cad['V'],cad['F'],Vall,e,a,'#d98989');ax[k].imshow(im);ax[k].set_title(name,fontsize=8);ax[k].axis('off')
-     fig.suptitle(f'{g}/{v}/{target} | raw metric mesh | black Ring CAD');fig.tight_layout();p=O/'visualization/six_views'/f'{g}_{v}_{x["tuple_sha"]}.png';p.parent.mkdir(parents=True,exist_ok=True);fig.savefig(p,dpi=90);plt.close(fig);trace(g,v,'six_view','rf-m2f5-six-view','_mesh_renderer.py::actual_mesh_image',[x['output_dir']],[str(p)],'PASS')
-    except Exception as e:print('SIXFAIL',g,v,x['target_id'],e,flush=True)
-   # multisurface contact
-   if len(hs)>1:
-    Vs=[];Fs=[];cols=[];pal=[(.86,.36,.36),(.25,.55,.82),(.28,.72,.45),(.86,.67,.15),(.55,.35,.75),(.15,.75,.75),(.8,.4,.7),(.5,.5,.2)]
-    for k,x in enumerate(hs):
-     d=np.load(pathlib.Path(x['output_dir'])/'RAW_NATIVE_MESH.npz');off=sum(len(q) for q in Vs);Vs.append(d['V']);Fs.append(d['F']+off);cols.append(np.tile(pal[k%len(pal)],(len(d['F']),1)))
-    Vc=np.concatenate(Vs);Fc=np.concatenate(Fs);fc=np.concatenate(cols);fig,ax=plt.subplots(1,3,figsize=(12,4))
-    for k,(name,e,a) in enumerate([('real',20,-60),('X',0,0),('Z',89.9999,0)]):
-     im,_=actual_mesh_image(Vc,Fc,cad['V'],cad['F'],Vall,e,a,'#d98989',face_colors=fc);ax[k].imshow(im);ax[k].set_title(name);ax[k].axis('off')
-    fig.suptitle(f'{g}/{v} | {len(hs)} HERO surfaces');fig.tight_layout();p=O/'visualization/multisurface'/f'{g}_{v}.png';p.parent.mkdir(parents=True,exist_ok=True);fig.savefig(p,dpi=90);plt.close(fig)
+   result=render_existing_video(O,O,g,v)
+   trace(g,v,'six_view','rf-m2f5-six-view','_mesh_renderer.py::actual_mesh_image',
+         [x['path'] for x in result['source_meshes']],[result['image']],'PASS',
+         {'cad_kind':result['cad_kind'],'surface_count':result['surface_count'],'scale_bar_mm':5.})
  print('DONE hero',len(hero),'a2b',len(a2b))
 if __name__=='__main__':main()
