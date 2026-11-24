@@ -1,0 +1,11 @@
+{
+ "branch": "exp/TASK-M2D-HISTORICAL-MVS-REPRODUCTION-AND-VISUAL-CORRECTION-001",
+ "completed": ["R1 4/4 bitwise HERO reproduction", "input hash validation", "pixel roundtrip", "standard A-to-B replay", "historical five-panel", "R1 cleaning"],
+ "not_completed": ["R2 camera-only", "R3 support-only", "independent view identity", "six-view renderer gallery", "39-group adaptation", "Body"],
+ "resume_commands": {
+  "r1": "python tools/m2d_historical_repro.py",
+  "pixel": "python tools/m2d_pixel_roundtrip.py",
+  "a_to_b_replay": "PYTHONPATH=src python -c 'from pathlib import Path; from ring_first_3d.mainline.replays import a_to_b; print(a_to_b(Path(\"runs/m2d_mvs_reproduction/standard_a_to_b\")))'",
+  "five_panel": "PYTHONPATH=src python tools/m2d_standard_five_panel.py"
+ }
+}

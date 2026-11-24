@@ -1,0 +1,9 @@
+component,source,reuse,version
+HERO inference,src/ring_first_3d/mainline/native/hero.py::infer,DIRECT,historical R1 exact; 4/4 bitwise
+historical HERO output,experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/runs/RF_ONLY_V1/G0*/004/hero/*,DIRECT_REFERENCE,R0
+geometry pixel/index,"src/ring_first_3d/mainline/native/geometry.py::resize_index_intrinsics,native_rgb_labels,unproject,project",DIRECT,frozen
+cleaning,src/ring_first_3d/mainline/native/cleaning.py::classify_native,DIRECT,protocol sha 99c00fe5...
+standard A-to-B,"lineage/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/code/reprojection.py::render,evaluate,make_figure",DIRECT,bitwise historical prediction; five panel
+A-to-B entry,src/ring_first_3d/mainline/replays.py::a_to_b,DIRECT,standard replay PASS
+3D mesh renderer,frozen_registry/visualization/real_p0_renderer.py,PARTIAL,five panel; six-view not generated
+point audit renderer,frozen_registry/visualization/pointcloud_audit_renderer.py,DIRECT_IN_FIVE_PANEL,5d side view
