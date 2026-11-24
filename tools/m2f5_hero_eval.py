@@ -23,15 +23,16 @@ def final_packet_path(root,g,v):
  if not result.exists():raise ValueError(f'OBSERVATION_NOT_READY {g}/{v}: missing recovery result')
  status=json.loads(result.read_text())
  if status.get('status')!='OBSERVATION_READY':
-  # The existing S2 pool can admit geometrically valid QUARANTINE cameras.
-  # An unsuccessful attempt to improve n_accept must not become a new gate.
-  if not (status.get('status')=='RECOVERY_BUDGET_EXHAUSTED' and
-          status.get('failure_reason')=='NO_ACCEPT_CAMERAS'):
+  # Exhausted recovery is recorded at video level.  Existing S2/T13 still
+  # admits individual ready targets; unsuccessful targets remain evaluable
+  # only as NOT_EVALUABLE rows, never as invented HERO surfaces.
+  if not (status.get('status') in ('RECOVERY_BUDGET_EXHAUSTED','NO_REAL_SUPPLEMENT') and
+          status.get('failure_reason') in ('NO_ACCEPT_CAMERAS','SUPPORT_INSUFFICIENT')):
    raise ValueError(f'OBSERVATION_NOT_READY {g}/{v}: {status.get("status")}')
   selection=final_selection_path(root,g,v)
   rows=pd.read_csv(selection)
-  if rows.empty or not rows['ready'].all():
-   raise ValueError(f'OBSERVATION_NOT_READY {g}/{v}: S2_SELECTION_INCOMPLETE')
+  if rows.empty or not rows['ready'].any():
+   raise ValueError(f'OBSERVATION_NOT_READY {g}/{v}: NO_S2_READY_TARGET')
  packet=pathlib.Path(status['final_w0_path']).resolve()
  if not packet.is_relative_to(pathlib.Path(root).resolve()) or not (packet/'W0.npz').is_file():
   raise ValueError(f'FINAL_W0_IDENTITY_ERROR {packet}')

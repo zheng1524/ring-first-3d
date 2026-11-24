@@ -272,8 +272,25 @@ def test_exhausted_accept_count_uses_existing_s2_selection_without_rewriting_fai
     assert json.loads(result.read_text())["status"] == "RECOVERY_BUDGET_EXHAUSTED"
     pd.DataFrame([dict(target_id="real_1", ready=False,
                        support_ids="")]).to_csv(table, index=False)
-    with pytest.raises(ValueError, match="S2_SELECTION_INCOMPLETE"):
+    with pytest.raises(ValueError, match="NO_S2_READY_TARGET"):
         m2f5_hero_eval.final_packet_path(tmp_path, group, video)
+
+
+def test_exhausted_support_recovery_keeps_ready_target_and_failed_denominator(tmp_path):
+    group, video = "sample_R10", "005"
+    selected = tmp_path / "recovery/round2/w0" / f"{group}_{video}"
+    selected.mkdir(parents=True)
+    (selected / "W0.npz").write_bytes(b"current W0")
+    table = tmp_path / "recovery/round2/selection" / f"{group}_{video}.csv"
+    table.parent.mkdir(parents=True)
+    pd.DataFrame([dict(target_id="real_1", ready=True, support_ids="a;b;c"),
+                  dict(target_id="real_2", ready=False, support_ids="")]).to_csv(table, index=False)
+    result = tmp_path / "recovery" / f"{group}_{video}_RESULT.json"
+    result.write_text(json.dumps(dict(status="RECOVERY_BUDGET_EXHAUSTED",
+                                      failure_reason="SUPPORT_INSUFFICIENT",
+                                      final_w0_path=str(selected), final_selection_path=str(table))))
+    assert m2f5_hero_eval.final_packet_path(tmp_path, group, video) == selected
+    assert pd.read_csv(m2f5_hero_eval.final_selection_path(tmp_path, group, video)).ready.tolist() == [True, False]
 
 
 def test_tuple_receipt_exists_before_actual_hero_call(tmp_path, monkeypatch):
