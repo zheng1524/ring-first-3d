@@ -1,0 +1,10 @@
+version: m2f1-strict-002
+frozen:
+  camera: Ring-First + RGB + BA, W0 A1; no A2 repair completed
+  targets: historical T10 quality_diversity; T11 direction_quota independent actual route
+  supports: historical T13 SIFT6000/contrast0.01, mutual, epipolar 3px
+  hero: native/hero.py official checkpoint, 3 supports, 352x640 axial Z
+  geometry: native/geometry.py
+  cleaning: native/cleaning.py protocol 99c00fe5
+  a_to_b: reprojection.py render/evaluate, target B K/pose
+forbidden: new scoring, depth correction, body, cross-video fusion, GT
