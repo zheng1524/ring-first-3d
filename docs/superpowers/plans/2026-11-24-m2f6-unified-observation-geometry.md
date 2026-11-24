@@ -55,10 +55,10 @@ Never edit official HERO, metric unprojection, Ring CAD, K or DXY source. No Bod
 
 ## E4 — Centre, Anchor and current T10/T13 inputs
 
-- [ ] On the E3 outputs, calculate both W0 scene-point mean and known Ring/world origin direction blocks for all ten videos; log angular changes, selected anchors and T13 tuple changes without evaluating GT or changing thresholds.
-- [ ] Choose one shared centre definition based on current camera/Ring geometry and the successful controls, then pass it to `direction_blocks` and the existing T10 quality adapter. Keep `selection.select_views` and `validate_t13` unchanged.
-- [ ] Write a test proving T13 receives the same current RGB, clean Mask, K and c2w as the tuple receipt. Recheck that historical REJECT labels do not indirectly veto the approved single local pool.
-- [ ] Run E4 tests, commit and push the input adapter and centre diagnostic table.
+- [x] On the available E3 outputs and three M2F5 controls, compare W0 scene-point mean with the Ring/world origin; log direction changes, anchors and T13 tuples without GT or threshold changes. Repeat the diagnostic for all ten formal videos in FINAL.
+- [x] Choose one shared Ring CAD centre definition from the camera/Ring geometry and stable controls; pass it to `direction_blocks` and the existing T10 quality adapter. Keep `selection.select_views` and `validate_t13` unchanged.
+- [x] Test that selection views use current RGB, clean Mask, K and c2w; record the current W0 admission status and unique `rf-m2f5-local-admission@1` pool. Tuple receipt equality is completed in FINAL before HERO.
+- [x] Run E4 tests, commit and push the input adapter and centre diagnostic table.
 
 ## FINAL — Ten-video formal replay, evaluation and registration
 

@@ -8,6 +8,7 @@ import pandas as pd
 from tools import m2f5_hero_eval
 from tools import run_w0_camera
 from tools import m2f6_observations
+from tools import m2f5_unified
 import pytest
 
 
@@ -189,3 +190,45 @@ def test_recovery_reasons_use_existing_ring_camera_and_t13_evidence():
     assert classify(quality={"n_accept": 3}, rows=[{"ready": True}, {"ready": False}]) == "SUPPORT_INSUFFICIENT"
     assert classify(quality={"n_accept": 0}, rows=[{"ready": True}]) == "NO_ACCEPT_CAMERAS"
     assert classify(quality={"n_accept": 3}, rows=[{"ready": True}]) is None
+
+
+def test_ring_center_is_fixed_world_cad_origin_and_scene_proxy_is_diagnostic():
+    packet = {"points": np.array([[10., 0., 0.], [12., 2., 0.]])}
+    assert np.array_equal(m2f5_unified.resolve_center(packet, "ring"), [0., 0., 0.])
+    assert np.array_equal(m2f5_unified.resolve_center(packet, "scene"), [11., 1., 0.])
+    with pytest.raises(ValueError, match="UNKNOWN_CENTER_MODE"):
+        m2f5_unified.resolve_center(packet, "body")
+
+
+def test_selection_views_use_current_clean_mask_rgb_k_and_w0_camera(tmp_path, monkeypatch):
+    monkeypatch.setattr(m2f5_unified, "O", tmp_path)
+    ids = ["current_a", "current_b"]
+    packet = {"group": "sample_R10", "video": "004", "w0_path": str(tmp_path / "w0/W0.npz"),
+              "points": np.array([[8., 1., 2.], [9., 1., 3.]]), "views": {}, "cameras": {}}
+    (tmp_path / "w0").mkdir()
+    K = np.array([[490., 0., 319.5], [0., 490., 179.5], [0., 0., 1.]])
+    rows = []
+    for i, name in enumerate(ids):
+        rgb = np.zeros((360, 640, 3), np.uint8); rgb[:, :, 0] = i + 20
+        raw = np.zeros((360, 640), np.uint8)
+        clean = raw.copy(); clean[130:210, 260:370] = 1; clean[220:245, 280:350] = 2
+        cache = tmp_path / f"{name}.npz"; np.savez_compressed(cache, RGB=rgb, labels=raw, K=K)
+        cp = tmp_path / "clean_labels/sample_R10_004"; cp.mkdir(parents=True, exist_ok=True)
+        np.savez_compressed(cp / f"{name}.npz", labels=clean)
+        C = np.eye(4); C[:3, 3] = [10 + i, 2 + i, 20]
+        packet["cameras"][name] = C
+        packet["views"][name] = {"cache": str(cache), "raw_frame": 100 + i}
+        rows.append(dict(view=name, pose_valid=True, cad_valid=True,
+                         admission_status="QUARANTINE" if i == 0 else "REJECT",
+                         positive_depth=.99, ring_raw_mae=1., held_n=30,
+                         held_median=1., held_p95=2., big_error_fraction=0.))
+    pd.DataFrame(rows).to_csv(tmp_path / "w0/admission.csv", index=False)
+    monkeypatch.setattr(m2f5_unified, "graph_counts", lambda packet: {x: 2 for x in ids})
+    views, center = m2f5_unified.build_views(packet, "ring")
+    assert np.array_equal(center, [0., 0., 0.])
+    assert np.array_equal(views[0]["labels"], clean)
+    assert np.array_equal(views[0]["RGB"], np.load(packet["views"][ids[0]]["cache"])["RGB"])
+    assert np.array_equal(views[0]["K"], K)
+    assert np.array_equal(views[0]["C"], packet["cameras"][ids[0]])
+    assert views[0]["s2"] is True
+    assert views[1]["s2"] is False

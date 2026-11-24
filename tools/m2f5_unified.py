@@ -171,8 +171,14 @@ def graph_counts(packet):
   if len(d[f'pair{k}'])>=12:c[ids[int(i)]].add(ids[int(j)]);c[ids[int(j)]].add(ids[int(i)])
  return {x:len(y) for x,y in c.items()}
 
-def build_views(packet):
- adm=pd.read_csv(Path(packet['w0_path']).parent/'admission.csv').set_index('view');center=np.asarray(packet['points'],float).mean(axis=0);poses=list(packet['cameras'].values());blocks=direction_blocks(poses,center);graph=graph_counts(packet);views=[]
+def resolve_center(packet,mode):
+ if mode=='ring':return np.zeros(3,float)
+ if mode=='scene':return np.asarray(packet['points'],float).mean(axis=0)
+ raise ValueError('UNKNOWN_CENTER_MODE '+str(mode))
+
+
+def build_views(packet,center_mode='scene'):
+ adm=pd.read_csv(Path(packet['w0_path']).parent/'admission.csv').set_index('view');center=resolve_center(packet,center_mode);poses=list(packet['cameras'].values());blocks=direction_blocks(poses,center);graph=graph_counts(packet);views=[]
  for i,(vid,e) in enumerate(packet['views'].items()):
   with np.load(e['cache']) as z:RGB=z['RGB'];Kv=z['K'];raw=z['labels']
   cp=O/'clean_labels'/f"{packet['group']}_{packet['video']}"/f'{vid}.npz';labels=np.load(cp)['labels']
@@ -180,25 +186,59 @@ def build_views(packet):
   views.append(dict(id=vid,view=vid,video=packet['video'],role='FIT',C=C,K=Kv,RGB=RGB,labels=labels,raw_frame=int(e['raw_frame']),direction_block=blocks[i],s2=s2,graph_support_count=graph[vid],legacy_status=row['admission_status'],**q))
  return views,center
 
-def select(g,vid,packet,attempt=0):
- views,center=build_views(packet);pool=[v for v in views if v['s2']]
- if len(pool)<4:return [],center,len(pool)
+def select(g,vid,packet,attempt=0,center_mode='scene',with_receipt=False):
+ views,center=build_views(packet,center_mode);pool=[v for v in views if v['s2']]
+ array_sha=lambda x:hashlib.sha256(np.ascontiguousarray(x).tobytes()).hexdigest()
+ scene=resolve_center(packet,'scene');ring=resolve_center(packet,'ring')
+ cams=np.asarray([v['C'][:3,3] for v in views]);av=cams-scene;bv=cams-ring
+ av=av/np.linalg.norm(av,axis=1)[:,None];bv=bv/np.linalg.norm(bv,axis=1)[:,None]
+ center_angles=np.degrees(np.arccos(np.clip(np.sum(av*bv,axis=1),-1.,1.)))
+ receipt=dict(
+  CENTER=dict(definition=center_mode,center_mm=center.tolist(),ring_cad_center_mm=ring.tolist(),
+              scene_proxy_mm=scene.tolist(),scene_to_ring_mm=float(np.linalg.norm(scene-ring)),
+              camera_direction_difference_median_deg=float(np.median(center_angles)),
+              camera_direction_difference_max_deg=float(np.max(center_angles))),
+  POOL=dict(source='CURRENT_W0_ALL_CAMERAS',local_admission_route='rf-m2f5-local-admission@1',
+            input_count=len(views),s2_count=len(pool),
+            current_admission_status_counts={name:sum(v['legacy_status']==name for v in views)
+                                             for name in set(v['legacy_status'] for v in views)},
+            members=[dict(id=v['id'],raw_frame=v['raw_frame'],s2=v['s2'],
+                          current_w0_status=v['legacy_status'],direction_block=v['direction_block'],
+                          graph_support_count=v['graph_support_count'],
+                          RGB_sha256=array_sha(v['RGB']),Mask_sha256=array_sha(v['labels']),
+                          K_sha256=array_sha(v['K']),c2w_sha256=array_sha(v['C'])) for v in views]))
+ if len(pool)<4:
+  receipt.update(ANCHOR=dict(status='INSUFFICIENT_LOCAL_POOL'),
+                 T10=dict(status='NOT_RUN'),T13=dict(status='NOT_RUN'))
+  return ([],center,len(pool),receipt) if with_receipt else ([],center,len(pool))
  def central(v):
   d=np.asarray(v['direction']);return float(np.median(np.degrees(np.arccos(np.clip(np.asarray([x['direction'] for x in pool])@d,-1,1)))))
  anchor=min(pool,key=central);res=select_views(pool,strategy='quality_diversity',max_views=min(8,len(pool)),baseline_ids=[anchor['id']]);rows=[]
+ receipt['ANCHOR']=dict(id=anchor['id'],center_mode=center_mode,direction=anchor['direction'],
+                        sharpness=anchor['sharpness'],
+                        mask_complete_proxy=anchor['mask_complete_proxy'],
+                        thin_structure_visibility_proxy=anchor['thin_structure_visibility_proxy'],
+                        Ring_free_fraction=anchor['Ring_free_fraction'],
+                        angular_centrality_median_deg=central(anchor))
+ receipt['T10']=dict(strategy='quality_diversity',baseline_id=anchor['id'],
+                     selected_ids=res['ids'],input_pool_ids=[v['id'] for v in pool])
  feats={};sift=cv2.SIFT_create(nfeatures=6000,contrastThreshold=.01)
  for v in pool:
   kp,d=sift.detectAndCompute(cv2.cvtColor(v['RGB'],cv2.COLOR_RGB2GRAY),None);feats[v['id']]=dict(des=d if d is not None else np.zeros((0,128),np.float32),xy=np.asarray([x.pt for x in kp],np.float32),N=len(kp))
  for rank,tid in enumerate(res['ids'],1):
   target=next(v for v in pool if v['id']==tid)
-  try:r=select_views(pool,strategy='hero_support',max_views=3,target=target,features=lambda v:feats[v['id']],K=target['K'],cache_root=O/'cache'/f'round{attempt}'/f'{g}_{vid}/{tid}')
+  try:r=select_views(pool,strategy='hero_support',max_views=3,target=target,features=lambda v:feats[v['id']],K=target['K'],cache_root=O/'cache'/f'round{attempt}'/center_mode/f'{g}_{vid}/{tid}')
   except Exception as e:r={'ids':[],'candidates':[]}
   sids=r.get('ids',[]);sups=[v for v in pool if v['id'] in sids];ok=len(sids)==3 and target['id'] not in sids
   if ok:ok,reason=validate_t13(target,sups,r.get('candidates',[]))
   else:reason='TUPLE_MEMBERSHIP'
   if ok:ok=all(x['s2'] for x in sups)
   rows.append(dict(group_id=g,video_id=vid,arm='LOCAL',method='T10',target_id=tid,support_ids=';'.join(sids),n_support=len(sids),ready=bool(ok),reason=reason,anchor_id=anchor['id'],candidate_scores=json.dumps(r.get('candidates',[]))))
- return rows,center,len(pool)
+ receipt['T13']=dict(strategy='hero_support',target_support=[dict(target_id=row['target_id'],
+                       support_ids=row['support_ids'].split(';') if row['support_ids'] else [],
+                       ready=row['ready'],reason=row['reason'],
+                       candidates=json.loads(row['candidate_scores'])) for row in rows])
+ return (rows,center,len(pool),receipt) if with_receipt else (rows,center,len(pool))
 
 def tuple_frames(packet,target,supports):
  out=[]
@@ -233,7 +273,7 @@ def run_m2f6_recovery(g,vid,initial_root,croot):
                error_type=code,packet_path=str(out))
   try:
    packet=verify_w0_packet(out,WS)
-   rows,center,pool=select(g,vid,packet,number)
+   rows,center,pool,selection_receipt=select(g,vid,packet,number,'ring',True)
   except Exception as exc:
    trace(g,vid,'select','rf-m2f5-t10+t13','selection.py::select_views',
          [str(out)],[str(base/'selection'/f'{g}_{vid}.csv')],'FAIL',
@@ -241,11 +281,15 @@ def run_m2f6_recovery(g,vid,initial_root,croot):
    return dict(status='SELECTION_FAILED',recovery_reason=None,error_type=type(exc).__name__)
   selection_path=base/'selection'/f'{g}_{vid}.csv';selection_path.parent.mkdir(parents=True,exist_ok=True)
   pd.DataFrame(rows).to_csv(selection_path,index=False)
+  receipt_root=base/'selection_receipts'/f'{g}_{vid}';receipt_paths=[]
+  for label,value in selection_receipt.items():
+   path=receipt_root/f'{label}.json';write_json(path,value);receipt_paths.append(str(path))
   ready=sum(x['ready'] for x in rows)
   trace(g,vid,'select','rf-m2f5-t10+t13','selection.py::select_views',
-        [str(out)],[str(selection_path)],'PASS' if ready else 'INSUFFICIENT_SUPPORT',
+        [str(out)],[str(selection_path)]+receipt_paths,'PASS' if ready else 'INSUFFICIENT_SUPPORT',
         {'attempt':number,'pool':pool,'targets':len(rows),'ready':ready,
-         'selection_sha256':h(selection_path)})
+         'selection_sha256':h(selection_path),'center_mode':'ring',
+         'receipt_sha256':{Path(p).name:h(p) for p in receipt_paths}})
   visual=O/'visualization'/f'{g}_{vid}'/f'round{number}'
   images=render_observation_evidence(prepared/'PREPARED.json',croot,out/'W0.npz',visual)
   trace(g,vid,'observation_visual','rf-m2f6-2d-observation',
