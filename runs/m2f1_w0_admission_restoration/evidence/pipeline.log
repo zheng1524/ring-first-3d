@@ -1,0 +1,16 @@
+################################################################################
+#################### Using ViewAgnosticFeatureVolumeManager ####################
+ Using all metadata.  
+ Number of channels:          [46, 32, 32, 2]  
+################################################################################
+
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_workspace/tools/m2f1_pipeline.py", line 39, in <module>
+    views,feats=build_views(g,v)
+                ^^^^^^^^^^^^^^^^
+  File "/home/liu/ring_first_3d_workspace/tools/m2f1_pipeline.py", line 30, in build_views
+    q=quality_features(dict(RGB=a['RGB'],labels=lab,T=C,K=a['K']),C[:3,3]);q['direction']=C[:3,3]/np.linalg.norm(C[:3,3]);c=cmap.get((g,v,cid));out.append(dict(id=cid,view=cid,video=v,role='FIT',C=C,K=a['K'],RGB=a['RGB'],labels=lab,raw_frame=int(c.raw_frame) if c else None,pose_status=('BRANCH_UNRESOLVED' if c is not None and c.trajectory_class in ('T2_ISOLATED_BRANCH','T3_CONSECUTIVE_BRANCH') else 'CONDITIONAL' if c is not None and c.s1_eligible else 'STRICT' if c is not None and c.s0_eligible else 'REJECTED'),s0=bool(c is not None and c.s0_eligible),s1=bool(c is not None and c.s1_eligible),traj=c.trajectory_class if c else 'UNKNOWN',**q))
+                                                                                                                                                                                                                                                                      ^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/site-packages/pandas/core/generic.py", line 1501, in __bool__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
