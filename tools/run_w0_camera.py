@@ -283,6 +283,7 @@ def main():
             d = np.load(run / 'B0.npz')
             cams = d['c2w']
         ids = [str(x) for x in d['ids']]
+        Pw = np.asarray(d['points'], float); Pt = np.asarray(d['point_track_ids'], int)
         order = sorted(range(len(ids)), key=lambda i: (rf[i], ids[i]))
         rows = []
         for i, cid in enumerate(ids):
@@ -305,14 +306,16 @@ def main():
                          held_median_valid=float(np.median(vv)),
                          held_mae=float(np.mean(vv)),
                          big_error_fraction=float((vv > POL['rgb']['big_error_px']).mean()))
-            dcam = (np.asarray(X, float) - cams[i][:3, 3]) @ cams[i][:3, :3]
-            m['positive_depth'] = float((dcam[:, 2] > 0).mean()) if len(dcam) else 0.0
-            m['positive_depth_sample_count'] = int(len(dcam))
+            # Final W0 points, not initialization X. Only points actually
+            # observed in this camera enter the per-camera denominator.
+            dcam = (np.asarray(Pw, float) - cams[i][:3, 3]) @ cams[i][:3, :3]
+            obs = np.isfinite(xy_tr[np.asarray(Pt, int), i, 0])
+            dz = dcam[obs, 2]
+            m['positive_depth'] = float((dz > 0).mean()) if len(dz) else 0.0
+            m['positive_depth_sample_count'] = int(len(dz))
+            m['positive_depth_negative_count'] = int((dz <= 0).sum())
+            m['positive_depth_training_fraction'] = m['positive_depth']
             m['world_origin_positive_depth'] = float(EV.project(np.zeros((1, 3)), cams[i])[1][0] > 0)
-            if len(tids):
-                tr_mask = ~held_mask[np.asarray(tids, int)]
-                if tr_mask.any(): m['positive_depth_training_fraction'] = float((dcam[tr_mask, 2] > 0).mean())
-                if (~tr_mask).any(): m['positive_depth_held_fraction'] = float((dcam[~tr_mask, 2] > 0).mean())
             pos = order.index(i)
             m['rotation_to_previous_deg'] = (None if pos == 0 else
                 round(RM.relative_deg(cams[order[pos - 1]], cams[i]), 3))
@@ -323,8 +326,9 @@ def main():
                            if m['triangulation_degenerate_n'] > 0 else None))
             m.update(admission_status=dec['status'], admission_reasons=';'.join(dec['reasons']))
             rows.append(m)
-        # Actual held-track triangulation (training X above excludes held tracks).
-        held_pts = []
+        # Held-track triangulation: source/target are the actual first/last
+        # observed views of each held track; never copied across cameras.
+        held_by_track = []
         for t in np.flatnonzero(held_mask):
             frames = np.flatnonzero(np.isfinite(xy_tr[t, :, 0]))
             if len(frames) < 2: continue
@@ -332,17 +336,21 @@ def main():
                 P = ns['triangle']([cams[j] for j in frames], [xy_tr[t, j] for j in frames])
             except Exception:
                 continue
-            if np.isfinite(P).all(): held_pts.append(np.asarray(P, float))
-        if held_pts:
-            HP = np.asarray(held_pts, float)
-            for m in rows:
-                held_depth = (HP - np.asarray(cams[ids.index(m['view'])])[:3, 3]) @ np.asarray(cams[ids.index(m['view'])])[:3, :3]
-                m['positive_depth_held_fraction'] = float((held_depth[:, 2] > 0).mean())
-            src = (HP - cams[0][:3, 3]) @ cams[0][:3, :3]
-            tgt = (HP - cams[-1][:3, 3]) @ cams[-1][:3, :3]
-            for m in rows:
-                m['positive_depth_source_fraction'] = float((src[:, 2] > 0).mean())
-                m['positive_depth_target_fraction'] = float((tgt[:, 2] > 0).mean())
+            if np.isfinite(P).all(): held_by_track.append((int(t), np.asarray(P, float), frames))
+        src_vals=[]; tgt_vals=[]
+        for m in rows:
+            i=ids.index(m['view']); vals=[]
+            for t,P,frames in held_by_track:
+                if np.isfinite(xy_tr[t,i,0]):
+                    z=(P-cams[i][:3,3])@cams[i][:3,:3]
+                    vals.append(float(z[2]))
+            m['positive_depth_held_fraction']=float(np.mean(np.asarray(vals)>0)) if vals else None
+            m['positive_depth_held_sample_count']=len(vals)
+        for t,P,frames in held_by_track:
+            for vals,i in ((src_vals,int(frames[0])),(tgt_vals,int(frames[-1]))):
+                z=(P-cams[i][:3,3])@cams[i][:3,:3]; vals.append(float(z[2]))
+        held_source=float(np.mean(np.asarray(src_vals)>0)) if src_vals else None
+        held_target=float(np.mean(np.asarray(tgt_vals)>0)) if tgt_vals else None
         dfm = pd.DataFrame(rows)
         (run / 'PER_VIEW.csv').parent.mkdir(parents=True, exist_ok=True)
         dfm.to_csv(run / 'PER_VIEW.csv', index=False)
@@ -360,6 +368,9 @@ def main():
                             pose_convention=np.array(['c2w']))
         quality = quality_summary(g, v, ring_mm, ring_radius, ring_wire, U5.K_CFG,
                                   ids, rf, ref, dfm, len(ordered), n_b0, n_w0)
+        quality['positive_depth_held_fraction']=held_source
+        quality['positive_depth_source_fraction']=held_source
+        quality['positive_depth_target_fraction']=held_target
         (out / 'quality_summary.json').write_text(json.dumps(quality, indent=1))
         status = 'COMPLETED_VALID' if quality['n_accept'] > 0 else 'COMPLETED_LIMITED'
         write_status(out, status, 'admission',

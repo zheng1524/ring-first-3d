@@ -1,0 +1,23 @@
+{
+ "branch": "exp/TASK-M2C-CORRECTIVE-COMPLETION-001",
+ "head": "14a790a4fbd54f59cfc50869e597a3ff13f6a6ed",
+ "completed": [
+  "CAD contract patch",
+  "final-point positive depth",
+  "endpoint T2/T3 detection",
+  "S1/S2 support scores",
+  "one real HERO smoke"
+ ],
+ "blocked": [
+  "A2 branch repair on T2 videos",
+  "full S0/S1/S2 HERO across 39 groups",
+  "Body initialization/update",
+  "full 79 corrected visual gallery"
+ ],
+ "next_commands": {
+  "a2": "reuse tools/m2b_global_branch.py after CAD patch and select T2 candidates",
+  "hero": "tools/m2c_hero_smoke.py (model/dir verified)",
+  "body": "historical body_stage.py uses fixed G01/G03/G05/G06 8-FIT protocol; adaptation to current W0 not completed"
+ },
+ "storage_policy": "docs/audit/space_cleanup_execution_002/STORAGE_POLICY_M2C.md"
+}

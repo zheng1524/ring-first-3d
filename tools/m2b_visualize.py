@@ -41,7 +41,7 @@ def draw_view(r,meta,view_id,c2w,adm,size=(320,180)):
     for pts,color in [(ob['q_train'],(0,230,80)),(ob['ring_boundary_contact_polyp'],(230,0,220))]:
         for x,y in np.rint(pts).astype(int): cv2.circle(rgb,(int(x),int(y)),1,color,-1)
     try:
-        cs=torus_contours(c2w,K,R,wire)
+        cs=torus_contours(c2w,K,ring_radius=R,ring_wire=wire)
         # identify by area, never assume order
         cs=sorted([np.asarray(c,float) for c in cs],key=lambda c:abs(cv2.contourArea(c.astype(np.float32))))
         for idx,c in enumerate(cs):

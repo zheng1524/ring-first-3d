@@ -25,7 +25,8 @@ def select(g,v,prep_root=None,ring_radius=None):
     for x in ['observations','predictions','metrics']: (work/x).mkdir(parents=True,exist_ok=True)
     # prepared metadata
     meta=json.loads((Path(prep_root or WS/'runs/m1_final_39/prepared')/f'{g}_{v}'/'PREPARED.json').read_text())
-    R=ring_radius or float(meta.get('ring_mm',10.0))/2; r=.6
+    from ring_first_3d.mainline.native.ring_cad import params as cad_params
+    R=ring_radius or cad_params(float(meta.get('ring_mm',10.0)))['centerline_radius_mm']; r=.6
     # build namespace/views and tracks
     import argparse
     ns,ordered,arrays=build_ns_and_views(g,v,meta,work,R,r)
