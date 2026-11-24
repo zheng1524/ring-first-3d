@@ -129,6 +129,94 @@ def select_observations(candidates, edge_counts):
     return selected, receipt
 
 
+def choose_real_supplements(candidates, current_views, components, match_counts,
+                            reason, budget=4):
+    """M2A C2/B1R bridge choice over current real-frame candidates."""
+    current = set(current_views)
+    eligible = [row for row in candidates
+                if row['view'] not in current and row['ring_train_points'] >= 20]
+    component_hits = {}
+    for row in eligible:
+        component_hits[row['view']] = {k for k, part in enumerate(components)
+                                       if any(match_counts.get((row['view'], view), 0) >= 12
+                                              for view in part)}
+    selected, covered = [], set()
+    if reason == 'RGB_GRAPH_DISCONNECTED':
+        # C2's component-covering choice: only a frame joining distinct pieces
+        # is useful once those pieces have already been connected.
+        while len(selected) < budget:
+            options = [(len(component_hits[row['view']] - covered),
+                        len(component_hits[row['view']]), row['quality'], row)
+                       for row in eligible if row not in selected
+                       and len(component_hits[row['view']]) >= 2]
+            if not options:
+                break
+            gain, _, _, best = max(options, key=lambda x: (x[0], x[1], x[2], -x[3]['frame']))
+            if gain == 0:
+                break
+            selected.append(best); covered |= component_hits[best['view']]
+    else:
+        # B1R's Ring-visible, RGB-connected real observations.  Quality and
+        # image appearance rank candidates; they are never a post-HERO gate.
+        while len(selected) < budget:
+            options = [row for row in eligible if row not in selected
+                       and component_hits[row['view']]]
+            if not options:
+                break
+            def rank(row):
+                diversity = (min(np.linalg.norm(np.asarray(row['proxy']) - x['proxy'])
+                                 for x in selected) if selected else 0.0)
+                return (len(component_hits[row['view']]), diversity,
+                        row['quality'], row['ring_train_points'], -row['frame'])
+            selected.append(max(options, key=rank))
+    receipt = dict(reason=reason, budget=int(budget), eligible_count=len(eligible),
+                   selected=[row['view'] for row in selected],
+                   RGB_component_hits={row['view']: sorted(component_hits[row['view']])
+                                       for row in eligible},
+                   rule='M2A_C2_COMPONENT_COVER_OR_B1R_RING_RGB_VISIBLE')
+    return selected, receipt
+
+
+def recovery_reason_from_evidence(error_type=None, quality=None, rows=None):
+    """Use existing W0 and T13 evidence to request more real observations."""
+    if error_type in ('REFERENCE_GRAPH_DISCONNECTED', 'RING_POSE_GRAPH_DISCONNECTED'):
+        return 'RGB_GRAPH_DISCONNECTED'
+    if error_type == 'INSUFFICIENT_RING_OBSERVATION':
+        return 'RING_OBSERVATION_INSUFFICIENT'
+    if error_type in ('NO_BA_VERSION', 'INSUFFICIENT_SCENE_POINTS'):
+        return 'INITIALIZATION_INSUFFICIENT'
+    if rows is not None and (not rows or any(not row['ready'] for row in rows)):
+        return 'SUPPORT_INSUFFICIENT'
+    if quality is not None and quality['n_accept'] == 0:
+        return 'NO_ACCEPT_CAMERAS'
+    return None
+
+
+def bounded_recovery(initial_prepared, run_attempt, add_real_frames, max_rounds=2):
+    """Run the same W0+selection callback after every bounded real addition."""
+    prepared, attempts = initial_prepared, []
+    for attempt in range(max_rounds + 1):
+        outcome = run_attempt(prepared, attempt)
+        attempts.append(dict(attempt=attempt, status=outcome['status'],
+                             recovery_reason=outcome.get('recovery_reason')))
+        reason = outcome.get('recovery_reason')
+        if reason is None:
+            return dict(status=outcome['status'], final_attempt=attempt,
+                        attempts=attempts, final_prepared=prepared)
+        if attempt == max_rounds:
+            return dict(status='RECOVERY_BUDGET_EXHAUSTED', final_attempt=attempt,
+                        attempts=attempts, final_prepared=prepared,
+                        failure_reason=reason)
+        new_prepared, receipt = add_real_frames(prepared, reason, attempt + 1)
+        attempts[-1]['supplement'] = receipt
+        if not receipt.get('added'):
+            return dict(status='NO_REAL_SUPPLEMENT', final_attempt=attempt,
+                        attempts=attempts, final_prepared=prepared,
+                        failure_reason=reason)
+        prepared = new_prepared
+    raise AssertionError('unreachable recovery budget')
+
+
 def render_observation_evidence(prepared_path, clean_labels_root, w0_path, output_dir):
     """Show actual selected RGB/clean Mask frames and the W0 camera path."""
     from PIL import Image, ImageDraw

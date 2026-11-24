@@ -48,10 +48,10 @@ Never edit official HERO, metric unprojection, Ring CAD, K or DXY source. No Bod
 
 ## E3 — Bounded real-frame recovery and complete re-execution
 
-- [ ] Write failing tests for RGB graph disconnection, insufficient Ring `q_train`, and T13 with fewer than three supports; each must request real candidate frames and then rerun tracks, Ring, B0/W0 and selection. A two-round, four-frame-per-round budget must end in an explicit failure.
-- [ ] Reuse the M2A C2/B1R components: select bridge candidates by RGB inliers to disconnected components or Ring visibility to Ring-poor frames. All added frames use the same `prepare_view` and DXY-clean path as initial observations.
-- [ ] Within `m2f5_unified.py`, rebuild the current PREPARED manifest after supplementation and call the same W0 and T10/T13 functions again. Preserve the earlier attempt as evidence; do not lower geometric requirements or reuse prior W0 poses.
-- [ ] Smoke G06/004 and a stable G03 video, then run tests and commit/push the bounded recovery implementation.
+- [x] Write failing tests for RGB graph disconnection, insufficient Ring `q_train`, and T13 with fewer than three supports; each requests real candidate frames and reruns W0 and selection. A two-round, four-frame-per-round budget ends in an explicit failure.
+- [x] Reuse the M2A C2/B1R components: select bridge candidates by RGB inliers to disconnected components or Ring visibility to Ring-poor frames. Initial and extra frames use the same `prepare_view` and DXY-clean adapter.
+- [x] Within `m2f5_unified.py`, rebuild the current PREPARED manifest after supplementation and call the same frozen tracks, Ring-First, B0/W0 and T10/T13 again. Preserve each attempt, with no threshold change or prior W0 reuse.
+- [x] Smoke G06/004 and stable G03/005, run tests, then commit/push the bounded recovery implementation.
 
 ## E4 — Centre, Anchor and current T10/T13 inputs
 

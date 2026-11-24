@@ -16,7 +16,10 @@ from ring_first_3d.mainline.native.hero import load_official, infer
 from ring_first_3d.mainline.native.geometry import native_rgb_labels
 from ring_first_3d.mainline.native._mesh_renderer import actual_mesh_image
 from ring_first_3d.mainline.native.camera import observe
-from tools.m2f6_observations import quality_2d, appearance_2d, candidate_frames, select_observations
+from tools.m2f6_observations import (quality_2d, appearance_2d, candidate_frames,
+                                    select_observations, choose_real_supplements,
+                                    bounded_recovery, render_observation_evidence,
+                                    recovery_reason_from_evidence)
 import reprojection as rp
 import open3d as o3d
 
@@ -53,6 +56,37 @@ def sample_frames(path):
  return sorted(set(base+extra))
 
 
+def prepare_real_candidate(g,vid,path,idx,root,cleaner):
+ """The same raw-video INIT and DXY path for initial and recovery frames."""
+ cache=root/f'{g}_{vid}-raw{idx:05d}.npz';r=prepare_view(path,idx,cache)
+ with np.load(cache) as a:RGB=a['RGB'];raw=a['labels'];Kv=a['K']
+ if raw.shape!=(360,640):raise ValueError('MASK_SHAPE')
+ clean,fill,info=cleaner.run(raw)
+ if not np.array_equal(clean==1,raw==1):raise ValueError('DXY_CHANGED_POLYP_MASK')
+ cp=O/'clean_labels'/f'{g}_{vid}'/(cache.stem+'.npz');cp.parent.mkdir(parents=True,exist_ok=True)
+ np.savez_compressed(cp,labels=clean)
+ mc=O/'observation_matches'/f'{g}_{vid}'/'clean_cache'/(cache.stem+'.npz');mc.parent.mkdir(parents=True,exist_ok=True)
+ np.savez_compressed(mc,RGB=RGB,labels=clean,K=Kv)
+ q=quality_2d(dict(RGB=RGB,labels=clean));proxy=appearance_2d(clean)
+ count=len(observe(clean,'all')['q_train'])
+ quality=float(np.log1p(q['sharpness'])+q['mask_complete_proxy']+
+               q['thin_structure_visibility_proxy']+q['Ring_free_fraction'])
+ array_hash=lambda value:hashlib.sha256(np.ascontiguousarray(value).tobytes()).hexdigest()
+ rec=dict(view=cache.stem,frame=int(idx),raw_frame=int(idx),cache=str(cache),clean_labels=str(cp),
+          RGB_sha256=array_hash(RGB),raw_mask_sha256=array_hash(raw),clean_mask_sha256=array_hash(clean),
+          K_sha256=array_hash(Kv),cache_sha256=h(cache),clean_labels_sha256=h(cp),
+          ring_train_points=count,quality=quality,quality_features=q,proxy=proxy,
+          dxy_rule=info.get('rule',{}).get('version',''),filled=int(fill.sum()),
+          label_counts=r.get('label_counts'))
+ match_view=dict(id=cache.stem,cache=str(mc),raw_frame=int(idx),K=Kv.tolist(),
+                 RGB_SHA256=rec['RGB_sha256'])
+ cleanrow=dict(group_id=g,video_id=vid,view_id=cache.stem,raw_frame=int(idx),
+               raw_ring=int((raw==2).sum()),clean_ring=int((clean==2).sum()),
+               changed=int((clean!=raw).sum()),filled=int(fill.sum()),
+               clean_sha=h(cp),rule=rec['dxy_rule'])
+ return rec,match_view,cleanrow
+
+
 def prepare_one_m2f6(g,path):
  vid=path.stem.split('_')[-1]; root=O/'prepared'/f'{g}_{vid}'; root.mkdir(parents=True,exist_ok=True)
  cap=cv2.VideoCapture(str(path)); n=int(cap.get(cv2.CAP_PROP_FRAME_COUNT)); cap.release()
@@ -65,33 +99,8 @@ def prepare_one_m2f6(g,path):
  F19.R=O/'observation_matches'/f'{g}_{vid}';F19.R.mkdir(parents=True,exist_ok=True)
  candidates=[]; match_views=[]; cleanrows=[]
  for idx in frames:
-  cache=root/f'{g}_{vid}-raw{idx:05d}.npz'; r=prepare_view(path,idx,cache)
-  with np.load(cache) as a: RGB=a['RGB'];raw=a['labels'];Kv=a['K']
-  if raw.shape!=(360,640):raise ValueError('MASK_SHAPE')
-  clean,fill,info=mod.run(raw)
-  if not np.array_equal(clean==1,raw==1):raise ValueError('DXY_CHANGED_POLYP_MASK')
-  cp=O/'clean_labels'/f'{g}_{vid}'/(cache.stem+'.npz');cp.parent.mkdir(parents=True,exist_ok=True)
-  np.savez_compressed(cp,labels=clean)
-  mc=O/'observation_matches'/f'{g}_{vid}'/'clean_cache'/(cache.stem+'.npz');mc.parent.mkdir(parents=True,exist_ok=True)
-  np.savez_compressed(mc,RGB=RGB,labels=clean,K=Kv)
-  q=quality_2d(dict(RGB=RGB,labels=clean));proxy=appearance_2d(clean)
-  count=len(observe(clean,'all')['q_train'])
-  quality=float(np.log1p(q['sharpness'])+q['mask_complete_proxy']+
-                q['thin_structure_visibility_proxy']+q['Ring_free_fraction'])
-  array_hash=lambda value:hashlib.sha256(np.ascontiguousarray(value).tobytes()).hexdigest()
-  rec=dict(view=cache.stem,frame=int(idx),raw_frame=int(idx),cache=str(cache),clean_labels=str(cp),
-           RGB_sha256=array_hash(RGB),raw_mask_sha256=array_hash(raw),clean_mask_sha256=array_hash(clean),
-           K_sha256=array_hash(Kv),cache_sha256=h(cache),clean_labels_sha256=h(cp),
-           ring_train_points=count,quality=quality,quality_features=q,proxy=proxy,
-           dxy_rule=info.get('rule',{}).get('version',''),filled=int(fill.sum()),
-           label_counts=r.get('label_counts'))
-  candidates.append(rec)
-  match_views.append(dict(id=cache.stem,cache=str(mc),raw_frame=int(idx),K=Kv.tolist(),
-                          RGB_SHA256=rec['RGB_sha256']))
-  cleanrows.append(dict(group_id=g,video_id=vid,view_id=cache.stem,raw_frame=int(idx),
-                        raw_ring=int((raw==2).sum()),clean_ring=int((clean==2).sum()),
-                        changed=int((clean!=raw).sum()),filled=int(fill.sum()),
-                        clean_sha=h(cp),rule=rec['dxy_rule']))
+  rec,mv,cr=prepare_real_candidate(g,vid,path,idx,root,mod)
+  candidates.append(rec);match_views.append(mv);cleanrows.append(cr)
  edges={};edge_rows=[]
  for i in range(len(match_views)):
   for j in range(i+1,min(len(match_views),i+4)):
@@ -144,12 +153,16 @@ def prepare_one(g,path):
  pd.DataFrame(cleanrows).to_csv(O/'w0'/f'MASK_CLEAN_{g}_{vid}.csv',index=False);trace(g,vid,'mask_clean','rf-dxy-ring-clean','tools/m2c_prepare_clean.py::dxy_ring_holes.run',[q['cache'] for q in views],[str(croot)],'PASS',{'frames':len(cleanrows),'changed':int(sum(x['changed']>0 for x in cleanrows))})
  return root,croot,meta
 
-def run_w0(g,vid,root,croot):
- out=O/'w0'/f'{g}_{vid}';log=O/'logs'/f'w0_{g}_{vid}.log';log.parent.mkdir(parents=True,exist_ok=True);meta=json.loads((root/'PREPARED.json').read_text());n=len(meta['views']);off=','.join(map(str,range(1,n)))
- cmd=[PY,str(WS/'tools/run_w0_camera.py'),'--group',g,'--video',vid,'--stage','all','--output',str(out),'--workdir',str(O/'work'/f'{g}_{vid}'),'--prepared-root',str(O/'prepared'),'--clean-labels-root',str(O/'clean_labels'),'--ring-mode','all','--pair-offsets',off]
+def attempt_root(attempt):
+ return O if attempt==0 else O/'recovery'/f'round{attempt}'
+
+
+def run_w0(g,vid,root,croot,attempt=0):
+ base=attempt_root(attempt);out=base/'w0'/f'{g}_{vid}';log=base/'logs'/f'w0_{g}_{vid}.log';log.parent.mkdir(parents=True,exist_ok=True);meta=json.loads((root/'PREPARED.json').read_text());n=len(meta['views']);off=','.join(map(str,range(1,n)))
+ cmd=[PY,str(WS/'tools/run_w0_camera.py'),'--group',g,'--video',vid,'--stage','all','--output',str(out),'--workdir',str(base/'work'/f'{g}_{vid}'),'--prepared-root',str(root.parent),'--clean-labels-root',str(O/'clean_labels'),'--ring-mode','all','--pair-offsets',off]
  if M2F6:cmd+=['--reference-policy','current','--initialization-policy','trained_versions']
  with log.open('w') as f:r=subprocess.run(cmd,cwd=WS,stdout=f,stderr=subprocess.STDOUT)
- trace(g,vid,'w0','rf-w0-camera@2','tools/run_w0_camera.py',[str(root/'PREPARED.json'),str(croot)],[str(out)],'PASS' if r.returncode==0 else 'FAIL',{'returncode':r.returncode,'frames':n})
+ trace(g,vid,'w0','rf-w0-camera@2','tools/run_w0_camera.py',[str(root/'PREPARED.json'),str(croot)],[str(out)],'PASS' if r.returncode==0 else 'FAIL',{'returncode':r.returncode,'frames':n,'attempt':attempt,'log':str(log),'prepared_sha256':h(root/'PREPARED.json')})
  return out if r.returncode==0 else None
 
 def graph_counts(packet):
@@ -167,7 +180,7 @@ def build_views(packet):
   views.append(dict(id=vid,view=vid,video=packet['video'],role='FIT',C=C,K=Kv,RGB=RGB,labels=labels,raw_frame=int(e['raw_frame']),direction_block=blocks[i],s2=s2,graph_support_count=graph[vid],legacy_status=row['admission_status'],**q))
  return views,center
 
-def select(g,vid,packet):
+def select(g,vid,packet,attempt=0):
  views,center=build_views(packet);pool=[v for v in views if v['s2']]
  if len(pool)<4:return [],center,len(pool)
  def central(v):
@@ -178,7 +191,7 @@ def select(g,vid,packet):
   kp,d=sift.detectAndCompute(cv2.cvtColor(v['RGB'],cv2.COLOR_RGB2GRAY),None);feats[v['id']]=dict(des=d if d is not None else np.zeros((0,128),np.float32),xy=np.asarray([x.pt for x in kp],np.float32),N=len(kp))
  for rank,tid in enumerate(res['ids'],1):
   target=next(v for v in pool if v['id']==tid)
-  try:r=select_views(pool,strategy='hero_support',max_views=3,target=target,features=lambda v:feats[v['id']],K=target['K'],cache_root=O/'cache'/f'{g}_{vid}/{tid}')
+  try:r=select_views(pool,strategy='hero_support',max_views=3,target=target,features=lambda v:feats[v['id']],K=target['K'],cache_root=O/'cache'/f'round{attempt}'/f'{g}_{vid}/{tid}')
   except Exception as e:r={'ids':[],'candidates':[]}
   sids=r.get('ids',[]);sups=[v for v in pool if v['id'] in sids];ok=len(sids)==3 and target['id'] not in sids
   if ok:ok,reason=validate_t13(target,sups,r.get('candidates',[]))
@@ -197,6 +210,146 @@ def run_hero(g,vid,packet,row,model):
  out=O/'hero'/f'{g}_{vid}'/row['target_id'];out.mkdir(parents=True,exist_ok=True);rec=infer(model,tuple_frames(packet,row['target_id'],row['support_ids'].split(';')),out)
  return dict(group_id=g,video_id=vid,target_id=row['target_id'],support_ids=row['support_ids'],status='PASS',output_dir=str(out),seconds=rec.get('seconds'),raw_faces=rec.get('raw_faces'),tuple_sha=hashlib.sha256((g+'|'+vid+'|'+row['target_id']+'|'+row['support_ids']).encode()).hexdigest()[:16])
 
+
+def run_m2f6_recovery(g,vid,initial_root,croot):
+ """One bounded real-frame loop; every attempt calls the same W0 and T10/T13."""
+ from tools.m2a_c3 import pair_graph
+ import shutil
+ candidate_path=O/'prepared'/f'{g}_{vid}'/'CANDIDATE_MANIFEST.json'
+ candidates=json.loads(candidate_path.read_text())['candidates']
+ replay=WS/'experiments/TASK-E4-W0-CROSSVIDEO-027-CORRECTIVE-R6/replay'
+ if str(replay) not in sys.path:sys.path.insert(0,str(replay))
+ import features019 as F19
+ F19.R=O/'observation_matches'/f'{g}_{vid}'
+
+ def attempt(prepared,number):
+  base=attempt_root(number);out=base/'w0'/f'{g}_{vid}'
+  packet_path=run_w0(g,vid,prepared,croot,number)
+  if packet_path is None:
+   status=json.loads((out/'STATUS.json').read_text()) if (out/'STATUS.json').exists() else {}
+   code=status.get('error_type') or status.get('reason') or 'W0_RUN_FAILED'
+   reason=recovery_reason_from_evidence(error_type=code)
+   return dict(status=status.get('status','W0_RUN_FAILED'),recovery_reason=reason,
+               error_type=code,packet_path=str(out))
+  try:
+   packet=verify_w0_packet(out,WS)
+   rows,center,pool=select(g,vid,packet,number)
+  except Exception as exc:
+   trace(g,vid,'select','rf-m2f5-t10+t13','selection.py::select_views',
+         [str(out)],[str(base/'selection'/f'{g}_{vid}.csv')],'FAIL',
+         {'attempt':number,'error_type':type(exc).__name__,'reason':str(exc)})
+   return dict(status='SELECTION_FAILED',recovery_reason=None,error_type=type(exc).__name__)
+  selection_path=base/'selection'/f'{g}_{vid}.csv';selection_path.parent.mkdir(parents=True,exist_ok=True)
+  pd.DataFrame(rows).to_csv(selection_path,index=False)
+  ready=sum(x['ready'] for x in rows)
+  trace(g,vid,'select','rf-m2f5-t10+t13','selection.py::select_views',
+        [str(out)],[str(selection_path)],'PASS' if ready else 'INSUFFICIENT_SUPPORT',
+        {'attempt':number,'pool':pool,'targets':len(rows),'ready':ready,
+         'selection_sha256':h(selection_path)})
+  visual=O/'visualization'/f'{g}_{vid}'/f'round{number}'
+  images=render_observation_evidence(prepared/'PREPARED.json',croot,out/'W0.npz',visual)
+  trace(g,vid,'observation_visual','rf-m2f6-2d-observation',
+        'm2f6_observations.py::render_observation_evidence',
+        [str(prepared/'PREPARED.json'),str(out/'W0.npz')],list(images.values()),'PASS',
+        {'attempt':number,'image_sha256':{k:h(v) for k,v in images.items()}})
+  quality=json.loads((out/'quality_summary.json').read_text())
+  reason=recovery_reason_from_evidence(quality=quality,rows=rows)
+  return dict(status='OBSERVATION_READY' if reason is None else 'RECOVERY_NEEDED',
+              recovery_reason=reason,packet_path=str(out),selection_path=str(selection_path),
+              n_accept=quality['n_accept'],ready=ready)
+
+ def add(prepared,reason,number):
+  current=json.loads((prepared/'PREPARED.json').read_text());existing={x['view'] for x in current['views']}
+  prior=number-1;work=attempt_root(prior)/'work'/f'{g}_{vid}'
+  if (work/'observations/tracks005.npz').exists():
+   tr,edges,comps=pair_graph(work)
+   components=[[str(tr['ids'][i]) for i in comp] for comp in comps]
+  else:components=[sorted(existing)]
+  if not components:components=[sorted(existing)]
+  # C2 uses one representative from each disconnected component.  For a
+  # connected but poor W0, query four time-spread observations.
+  if len(components)==1 and len(components[0])>4:
+   part=components[0];reps=[part[i] for i in np.linspace(0,len(part)-1,4,dtype=int)]
+  else:reps=[part[len(part)//2] for part in components if part]
+  match_counts={}
+  def measure(rows):
+   for row in rows:
+    if row['view'] in existing or row['ring_train_points']<20:continue
+    av=dict(id=row['view'],cache=str(F19.R/'clean_cache'/(row['view']+'.npz')),
+            RGB_SHA256=row['RGB_sha256'])
+    for rep in reps:
+     brow=next((x for x in candidates if x['view']==rep),None)
+     if brow is None:continue
+     bv=dict(id=rep,cache=str(F19.R/'clean_cache'/(rep+'.npz')),
+             RGB_SHA256=brow['RGB_sha256'])
+     m=F19.matches(av,bv);match_counts[(row['view'],rep)]=int(np.asarray(m['RGB_RANSAC']).sum())
+  measure(candidates)
+  added,receipt=choose_real_supplements(candidates,list(existing),components,
+                                        match_counts,reason,budget=4)
+  fresh=[]
+  if not added:
+   # C2/B1R also searched real frames outside their initial prepared set.
+   # Use at most twelve mid-gap frames and the exact same INIT + DXY adapter.
+   import importlib.util
+   sp=importlib.util.spec_from_file_location('dxy_ring_holes',
+       '/home/liu/new-polyp-dxy/src/dxy_mid/_engine/ring_holes.py')
+   cleaner=importlib.util.module_from_spec(sp);sp.loader.exec_module(cleaner)
+   known=sorted({int(row['frame']) for row in candidates})
+   gaps=sorted(((b-a,(a+b)//2) for a,b in zip(known,known[1:])),reverse=True)
+   extra=[mid for gap,mid in gaps if gap>=12 and mid not in known][:12]
+   raw_path=Path(current['video_path'])
+   freshroot=attempt_root(number)/'raw_candidates'/f'{g}_{vid}';freshroot.mkdir(parents=True,exist_ok=True)
+   for frame in extra:
+    rec,_,_=prepare_real_candidate(g,vid,raw_path,frame,freshroot,cleaner)
+    fresh.append(rec);candidates.append(rec)
+   measure(fresh)
+   added,receipt=choose_real_supplements(candidates,list(existing),components,
+                                         match_counts,reason,budget=4)
+  receipt.update(round=number,added=[x['view'] for x in added],
+                 parent_prepared_sha256=h(prepared/'PREPARED.json'),
+                 fresh_real_candidates=fresh)
+  nextroot=attempt_root(number)/'prepared'/f'{g}_{vid}';nextroot.mkdir(parents=True,exist_ok=True)
+  write_json(nextroot/'SUPPLEMENT_RECEIPT.json',receipt)
+  if not added:
+   trace(g,vid,'supplement','rf-m2f6-real-observation',
+         'm2f6_observations.py::choose_real_supplements',
+         [str(prepared/'PREPARED.json'),str(candidate_path)],
+         [str(nextroot/'SUPPLEMENT_RECEIPT.json')],'FAIL',
+         {'attempt':number,'reason':reason,'added':0})
+   return prepared,receipt
+  views=current['views']+[dict(view=x['view'],raw_frame=x['raw_frame'],cache=x['cache'],
+                               rgb_sha256=x['RGB_sha256'],label_counts=x['label_counts']) for x in added]
+  nextmeta=dict(current,views=sorted(views,key=lambda x:(x['raw_frame'],x['view'])),
+                source='M2F6_REAL_RAW_FRAMES_RECOVERY',recovery_round=number,
+                parent_prepared_sha256=receipt['parent_prepared_sha256'],
+                supplement_receipt=str(nextroot/'SUPPLEMENT_RECEIPT.json'))
+  write_json(nextroot/'PREPARED.json',nextmeta)
+  trace(g,vid,'supplement','rf-m2f6-real-observation',
+        'm2f6_observations.py::choose_real_supplements',
+        [str(prepared/'PREPARED.json'),str(candidate_path)],
+        [str(nextroot/'PREPARED.json'),str(nextroot/'SUPPLEMENT_RECEIPT.json')],'PASS',
+        {'attempt':number,'reason':reason,'added':receipt['added'],
+         'prepared_sha256':h(nextroot/'PREPARED.json')})
+  return nextroot,receipt
+
+ result=bounded_recovery(initial_root,attempt,add,max_rounds=2)
+ final_attempt=result['final_attempt'];final_selection=attempt_root(final_attempt)/'selection'/f'{g}_{vid}.csv'
+ final_w0=attempt_root(final_attempt)/'w0'/f'{g}_{vid}'
+ result.update(final_w0_path=str(final_w0),final_selection_path=str(final_selection),
+               final_prepared_path=str(result['final_prepared']/'PREPARED.json'),
+               final_prepared_sha256=h(result['final_prepared']/'PREPARED.json'))
+ status_path=O/'recovery'/f'{g}_{vid}_RESULT.json';write_json(status_path,result)
+ if result['status']=='OBSERVATION_READY' and final_selection.exists():
+  dest=O/'selection'/f'{g}_{vid}.csv';dest.parent.mkdir(parents=True,exist_ok=True)
+  if final_selection.resolve()!=dest.resolve():shutil.copy2(final_selection,dest)
+  trace(g,vid,'final_selection','rf-m2f6-real-observation','tools/m2f5_unified.py::run_m2f6_recovery',
+        [str(final_selection)],[str(dest),str(status_path)],'PASS',
+        {'attempt':final_attempt,'selection_sha256':h(dest)})
+ else:
+  trace(g,vid,'final_selection','rf-m2f6-real-observation','tools/m2f5_unified.py::run_m2f6_recovery',
+        [str(status_path)],[],'FAIL',{'attempt':final_attempt,'reason':result.get('failure_reason',result['status'])})
+ return result
+
 def main():
  global O,M2F6
  ap=argparse.ArgumentParser();ap.add_argument('--stage',choices=['prepare','w0','all'],default='all');ap.add_argument('--groups',default=','.join(GROUPS));ap.add_argument('--videos',default='');ap.add_argument('--limit',type=int,default=0);ap.add_argument('--m2f6',action='store_true');ap.add_argument('--output-root',default=None);a=ap.parse_args();groups=[x for x in a.groups.split(',') if x]
@@ -210,7 +363,12 @@ def main():
    if wanted and vid not in wanted:continue
    if a.stage in ('prepare','all'): root,croot,meta=(prepare_one_m2f6(g,path) if M2F6 else prepare_one(g,path))
    if a.stage in ('w0','all'):
-    root=O/'prepared'/f'{g}_{vid}';croot=O/'clean_labels'/f'{g}_{vid}';out=run_w0(g,vid,root,croot)
+    root=O/'prepared'/f'{g}_{vid}';croot=O/'clean_labels'/f'{g}_{vid}'
+    if M2F6:
+     result=run_m2f6_recovery(g,vid,root,croot)
+     print('RECOVERY',g,vid,result['status'],'final_attempt',result['final_attempt'],flush=True)
+     continue
+    out=run_w0(g,vid,root,croot)
     if out is None: print('W0FAIL',g,vid,flush=True);continue
     try:
      packet=verify_w0_packet(out,WS);rows,center,pool=select(g,vid,packet)

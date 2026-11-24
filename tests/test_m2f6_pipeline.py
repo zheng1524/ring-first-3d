@@ -149,3 +149,43 @@ def test_2d_selection_keeps_temporal_gaps_bounded_by_candidate_spacing():
     selected, _ = m2f6_observations.select_observations(candidates, edges)
     gaps = np.diff([row["frame"] for row in selected])
     assert len(gaps) and max(gaps) <= 40
+
+
+def test_real_supplement_bridges_rgb_components_and_excludes_ring_poor_frames():
+    candidates = [dict(view="bridge", frame=25, quality=4., proxy=[0., 0.], ring_train_points=50),
+                  dict(view="ring_poor", frame=35, quality=10., proxy=[1., 0.], ring_train_points=8),
+                  dict(view="one_side", frame=45, quality=5., proxy=[2., 0.], ring_train_points=50)]
+    hits = {("bridge", "left"): 25, ("bridge", "right"): 22,
+            ("ring_poor", "left"): 40, ("ring_poor", "right"): 40,
+            ("one_side", "left"): 30, ("one_side", "right"): 0}
+    added, receipt = m2f6_observations.choose_real_supplements(
+        candidates, ["left", "right"], [["left"], ["right"]], hits,
+        reason="RGB_GRAPH_DISCONNECTED", budget=4)
+    assert [row["view"] for row in added] == ["bridge"]
+    assert receipt["budget"] == 4
+    assert receipt["reason"] == "RGB_GRAPH_DISCONNECTED"
+
+
+def test_bounded_recovery_reruns_full_attempt_and_preserves_failure():
+    calls = []
+    def run(prepared, attempt):
+        calls.append(("run_w0_and_select", attempt, tuple(prepared)))
+        return {"recovery_reason": "NO_ACCEPT_CAMERAS", "status": "FAIL"}
+    def add(prepared, reason, attempt):
+        calls.append(("add_real_frame", attempt, reason))
+        return prepared + [f"real_{attempt}"], {"added": [f"real_{attempt}"]}
+    outcome = m2f6_observations.bounded_recovery(["raw0"], run, add, max_rounds=2)
+    assert outcome["status"] == "RECOVERY_BUDGET_EXHAUSTED"
+    assert [x[1] for x in calls if x[0] == "run_w0_and_select"] == [0, 1, 2]
+    assert [x[1] for x in calls if x[0] == "add_real_frame"] == [1, 2]
+    assert calls[-1][2] == ("raw0", "real_1", "real_2")
+
+
+def test_recovery_reasons_use_existing_ring_camera_and_t13_evidence():
+    classify = m2f6_observations.recovery_reason_from_evidence
+    assert classify(error_type="REFERENCE_GRAPH_DISCONNECTED") == "RGB_GRAPH_DISCONNECTED"
+    assert classify(error_type="INSUFFICIENT_RING_OBSERVATION") == "RING_OBSERVATION_INSUFFICIENT"
+    assert classify(error_type="NO_BA_VERSION") == "INITIALIZATION_INSUFFICIENT"
+    assert classify(quality={"n_accept": 3}, rows=[{"ready": True}, {"ready": False}]) == "SUPPORT_INSUFFICIENT"
+    assert classify(quality={"n_accept": 0}, rows=[{"ready": True}]) == "NO_ACCEPT_CAMERAS"
+    assert classify(quality={"n_accept": 3}, rows=[{"ready": True}]) is None
