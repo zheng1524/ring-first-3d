@@ -7,6 +7,7 @@ import pandas as pd
 
 from tools import m2f5_hero_eval
 from tools import run_w0_camera
+from tools import m2f6_observations
 import pytest
 
 
@@ -103,3 +104,48 @@ def test_historical_initialization_versions_use_training_score_and_one_selection
         ("initialize", 0), ("initialize", 1)]
     assert [x for x in calls if x[0] == "version_score"] == [
         ("version_score", 0), ("version_score", 1)]
+
+
+def test_2d_quality_uses_locked_pixel_terms_without_any_pose():
+    rgb = np.zeros((80, 100, 3), np.uint8)
+    rgb[20:60, 20:80] = 150
+    labels = np.zeros((80, 100), np.uint8)
+    labels[24:55, 30:70] = 1
+    labels[55:65, 30:70] = 2
+    result = m2f6_observations.quality_2d({"RGB": rgb, "labels": labels})
+    assert set(result) == {"sharpness", "mask_complete_proxy",
+                           "thin_structure_visibility_proxy", "Ring_free_fraction"}
+    assert result["sharpness"] > 0
+
+
+def test_2d_sampling_has_variable_size_and_connected_selected_graph():
+    assert len(m2f6_observations.candidate_frames(1200)) > len(
+        m2f6_observations.candidate_frames(400)) > 16
+    candidates = [dict(frame=i * 20, quality=1.0 if i % 3 else 2.0,
+                       proxy=[float(i // 3), 0.0, 0.0], ring_train_points=30)
+                  for i in range(12)]
+    edges = {(i, i + 1): 40 for i in range(11)}
+    selected, receipt = m2f6_observations.select_observations(candidates, edges)
+    assert 4 <= len(selected) < len(candidates)
+    assert receipt["component_size"] == 12
+    assert all("c2w" not in item and "direction" not in item for item in receipt["selected"])
+    selected_indices = {item["index"] for item in receipt["selected"]}
+    reachable = {next(iter(selected_indices))}
+    while True:
+        nxt = reachable | {j for (i, j), count in edges.items()
+                           if count >= 12 and i in reachable and j in selected_indices}
+        nxt |= {i for (i, j), count in edges.items()
+                if count >= 12 and j in reachable and i in selected_indices}
+        if nxt == reachable:
+            break
+        reachable = nxt
+    assert reachable == selected_indices
+
+
+def test_2d_selection_keeps_temporal_gaps_bounded_by_candidate_spacing():
+    candidates = [dict(frame=i * 20, quality=2.0 if i % 3 == 0 else 1.0,
+                       proxy=[0.0, 0.0], ring_train_points=30) for i in range(12)]
+    edges = {(i, j): 40 for i in range(12) for j in range(i + 1, min(12, i + 4))}
+    selected, _ = m2f6_observations.select_observations(candidates, edges)
+    gaps = np.diff([row["frame"] for row in selected])
+    assert len(gaps) and max(gaps) <= 40

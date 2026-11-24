@@ -40,11 +40,11 @@ Never edit official HERO, metric unprojection, Ring CAD, K or DXY source. No Bod
 
 ## E2 — Current-data 2D candidate and observation selection
 
-- [ ] Write failing tests that candidate selection never reads c2w/3D direction, does not read frozen frame lists, chooses variable observation counts, favors nonduplicate 2D Ring appearances and preserves an inlier-connected frame graph.
-- [ ] Use `prepare_view` and DXY `ring_holes.run` for a bounded, temporally distributed raw-video candidate pool. Reuse T10's existing pixel-quality features for sharpness/contour/Ring visibility while discarding its pose-dependent direction field. Use Ring ellipse appearance only as a **2D** diversity proxy.
-- [ ] Reuse M2A `features019.matches`/match graph evidence for connection, with train-side SIFT inliers; select one connected observation set by image quality, 2D diversity and overlap. The formal frame count follows the observed graph, not a fixed 16.
-- [ ] Keep candidate and selected PREPARED manifests separate. Hash every raw frame, RGB, raw/clean Mask and K. Re-run E2 tests; compare one successful and one failed video against E1 with all downstream settings held fixed.
-- [ ] Commit and push E2 code, tests and small observation tables.
+- [x] Write failing tests that candidate selection never reads c2w/3D direction, does not read frozen frame lists, chooses variable observation counts, favors nonduplicate 2D Ring appearances and preserves an inlier-connected frame graph.
+- [x] Use `prepare_view` and DXY `ring_holes.run` for a bounded, temporally distributed raw-video candidate pool. Reuse T10's locked pixel expressions for sharpness/contour/Ring visibility before its direction statement. Use Ring ellipse appearance only as a **2D** diversity proxy.
+- [x] Reuse M2A `features019.matches`/match graph evidence for connection, with train-side SIFT inliers; select one connected observation set by image quality, 2D diversity and overlap. The formal frame count follows the observed graph, not a fixed 16.
+- [x] Keep candidate and selected PREPARED manifests separate. Hash every candidate cache, RGB, raw/clean Mask and K. Re-run E2 tests; compare G03/005 and G01/005 against E1 with all downstream settings held fixed.
+- [x] Commit and push E2 code, tests and small observation tables.
 
 ## E3 — Bounded real-frame recovery and complete re-execution
 
