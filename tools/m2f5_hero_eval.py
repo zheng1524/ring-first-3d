@@ -23,11 +23,25 @@ def final_packet_path(root,g,v):
  if not result.exists():raise ValueError(f'OBSERVATION_NOT_READY {g}/{v}: missing recovery result')
  status=json.loads(result.read_text())
  if status.get('status')!='OBSERVATION_READY':
-  raise ValueError(f'OBSERVATION_NOT_READY {g}/{v}: {status.get("status")}')
+  # The existing S2 pool can admit geometrically valid QUARANTINE cameras.
+  # An unsuccessful attempt to improve n_accept must not become a new gate.
+  if not (status.get('status')=='RECOVERY_BUDGET_EXHAUSTED' and
+          status.get('failure_reason')=='NO_ACCEPT_CAMERAS'):
+   raise ValueError(f'OBSERVATION_NOT_READY {g}/{v}: {status.get("status")}')
+  selection=final_selection_path(root,g,v)
+  rows=pd.read_csv(selection)
+  if rows.empty or not rows['ready'].all():
+   raise ValueError(f'OBSERVATION_NOT_READY {g}/{v}: S2_SELECTION_INCOMPLETE')
  packet=pathlib.Path(status['final_w0_path']).resolve()
  if not packet.is_relative_to(pathlib.Path(root).resolve()) or not (packet/'W0.npz').is_file():
   raise ValueError(f'FINAL_W0_IDENTITY_ERROR {packet}')
  return packet
+def final_selection_path(root,g,v):
+ result=json.loads((pathlib.Path(root)/'recovery'/f'{g}_{v}_RESULT.json').read_text())
+ selection=pathlib.Path(result['final_selection_path']).resolve()
+ if not selection.is_relative_to(pathlib.Path(root).resolve()) or not selection.is_file():
+  raise ValueError(f'FINAL_SELECTION_IDENTITY_ERROR {selection}')
+ return selection
 def infer_with_receipt(model,actual_frames,out,run_id,code_version,g,v,identity_verified=True):
  """Record the exact four arrays before the real frozen HERO call."""
  out=pathlib.Path(out);out.mkdir(parents=True,exist_ok=True)
@@ -192,12 +206,17 @@ def main_m2f6(args):
  for g in groups:
   for v in videos:
    try:
-    packet_dir=final_packet_path(O,g,v);selection=O/'selection'/f'{g}_{v}.csv'
-    if not selection.is_file():raise ValueError('MISSING_FINAL_SELECTION')
+    packet_dir=final_packet_path(O,g,v);selection=final_selection_path(O,g,v)
     packet=verify_w0_packet(packet_dir,WS)
     rows=pd.read_csv(selection)
     if not rows['ready'].any():raise ValueError('NO_READY_TARGETS')
-    ready.append((g,v,packet,rows))
+    recovery=json.loads((O/'recovery'/f'{g}_{v}_RESULT.json').read_text())
+    trace(g,v,'hero_preflight','rf-m2f6-tuple-identity','m2f5_hero_eval.py::final_packet_path',
+      [str(packet_dir),str(selection)],[str(O/'hero/HERO_EXECUTION_RESULTS.csv')],
+      'VERIFIED',{'recovery_status':recovery['status'],
+                  'recovery_reason':recovery.get('failure_reason',''),
+                  'selection_sha256':hashlib.sha256(selection.read_bytes()).hexdigest()})
+    ready.append((g,v,packet,rows,recovery))
    except Exception as exc:
     reason=str(exc);hero.append(dict(group_id=g,video_id=v,target_id='',support_ids='',
       status='NOT_EVALUABLE',reason=reason,run_id=run_id,code_commit=code))
@@ -212,7 +231,7 @@ def main_m2f6(args):
  model,model_receipt=load_official(cfg['mvs_root'],cfg['checkpoint'],cfg['dino_root'],
    json.loads((WS/'src/ring_first_3d/mainline/native/upstream_source_lock.json').read_text()))
  write_json(O/'hero/MODEL_RECEIPT.json',model_receipt)
- for g,v,packet,rows in ready:
+ for g,v,packet,rows,recovery in ready:
   trace(g,v,'hero_model','rf-m2f5-hero-native','native/hero.py::load_official',
         [cfg['checkpoint']],[str(O/'hero/MODEL_RECEIPT.json')],'PASS',
         {'model_receipt_sha256':hashlib.sha256((O/'hero/MODEL_RECEIPT.json').read_bytes()).hexdigest()})
@@ -231,7 +250,8 @@ def main_m2f6(args):
       status='PASS',output_dir=str(out),seconds=result.get('seconds'),
       raw_faces=result.get('raw_faces'),tuple_sha=receipt['tuple_sha256'],
       W0_sha256=hashlib.sha256(pathlib.Path(packet['w0_path']).read_bytes()).hexdigest(),
-      source_video_sha256=packet['source_video_sha256'],run_id=run_id,code_commit=code))
+      source_video_sha256=packet['source_video_sha256'],
+      observation_status=recovery['status'],run_id=run_id,code_commit=code))
     trace(g,v,'hero','rf-m2f5-hero-native','native/hero.py::infer',
       [str(out/'TUPLE_INPUT_RECEIPT.json'),packet['w0_path']],[str(out/'HERO_native.npz'),str(out/'RAW_NATIVE_MESH.npz')],
       'PASS',{'target':target,'supports':supports,'tuple_sha256':receipt['tuple_sha256']})
