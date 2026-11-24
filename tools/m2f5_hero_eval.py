@@ -2,9 +2,9 @@
 """M2F5: HERO, Raw metric mesh, B-camera A-to-B and six-view for fresh 13-group selections."""
 import sys,json,pathlib,hashlib,time
 import numpy as np,pandas as pd
-WS=pathlib.Path('/home/liu/ring_first_3d_workspace');O=WS/'runs/m2f5_unified'
+WS=pathlib.Path('/home/liu/ring_first_3d_workspace');O=WS/'runs/m2f5_unified';M2F6=False
 sys.path[:0]=[str(WS/'src'),str(WS/'src/ring_first_3d/mainline/frozen_registry'),str(WS/'src/ring_first_3d/mainline/lineage/experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/code')]
-from ring_first_3d.mainline.input_identity import verify_w0_packet
+from ring_first_3d.mainline.input_identity import verify_w0_packet,tuple_receipt
 from ring_first_3d.mainline.native.hero import load_official,infer
 from ring_first_3d.mainline.native.geometry import native_rgb_labels
 from ring_first_3d.mainline.native._mesh_renderer import actual_mesh_image
@@ -13,10 +13,31 @@ from matplotlib import pyplot as plt
 from matplotlib import colors
 
 def write_json(p,x):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(x,indent=1,default=str)+'\n')
+def array_sha(value):return hashlib.sha256(np.ascontiguousarray(value).tobytes()).hexdigest()
 def trace(g,v,stage,route,entry,inputs,outputs,status,extra=None):
- p=O/'RUN_TRACE'/f'{g}_{v}.jsonl';p.parent.mkdir(parents=True,exist_ok=True);rec=dict(run_id='M2F5-UNIFIED-001',group_id=g,video_id=v,stage=stage,route_id=route,route_version='1',entrypoint=entry,inputs=inputs,outputs=outputs,status=status,code_commit=__import__('subprocess').check_output(['git','rev-parse','HEAD'],cwd=WS,text=True).strip(),config_hash=hashlib.sha256((WS/'mainline/configs/SITE.local.json').read_bytes()).hexdigest());
+ p=O/'RUN_TRACE'/f'{g}_{v}.jsonl';p.parent.mkdir(parents=True,exist_ok=True);rec=dict(run_id='M2F6-UNIFIED-OBSERVATION-001' if M2F6 else 'M2F5-UNIFIED-001',group_id=g,video_id=v,stage=stage,route_id=route,route_version='1',entrypoint=entry,inputs=inputs,outputs=outputs,status=status,code_commit=__import__('subprocess').check_output(['git','rev-parse','HEAD'],cwd=WS,text=True).strip(),config_hash=hashlib.sha256((WS/'mainline/configs/SITE.local.json').read_bytes()).hexdigest());
  if extra:rec.update(extra)
  with p.open('a') as f:f.write(json.dumps(rec,sort_keys=True)+'\n')
+def final_packet_path(root,g,v):
+ result=pathlib.Path(root)/'recovery'/f'{g}_{v}_RESULT.json'
+ if not result.exists():raise ValueError(f'OBSERVATION_NOT_READY {g}/{v}: missing recovery result')
+ status=json.loads(result.read_text())
+ if status.get('status')!='OBSERVATION_READY':
+  raise ValueError(f'OBSERVATION_NOT_READY {g}/{v}: {status.get("status")}')
+ packet=pathlib.Path(status['final_w0_path']).resolve()
+ if not packet.is_relative_to(pathlib.Path(root).resolve()) or not (packet/'W0.npz').is_file():
+  raise ValueError(f'FINAL_W0_IDENTITY_ERROR {packet}')
+ return packet
+def infer_with_receipt(model,actual_frames,out,run_id,code_version,g,v,identity_verified=True):
+ """Record the exact four arrays before the real frozen HERO call."""
+ out=pathlib.Path(out);out.mkdir(parents=True,exist_ok=True)
+ receipt=tuple_receipt(identity_verified,actual_frames,run_id,code_version)
+ receipt_path=out/'TUPLE_INPUT_RECEIPT.json';write_json(receipt_path,receipt)
+ trace(g,v,'hero_input','rf-m2f6-tuple-identity','input_identity.py::tuple_receipt',
+       [x['id'] for x in actual_frames],[str(receipt_path)],'VERIFIED',
+       {'tuple_sha256':receipt['tuple_sha256'],'receipt_sha256':hashlib.sha256(receipt_path.read_bytes()).hexdigest()})
+ result=infer(model,actual_frames,out)
+ return result,receipt
 def load_clean(g,v,vid):
  return np.load(O/'clean_labels'/f'{g}_{v}'/(vid+'.npz'))['labels']
 def frames(packet,target,supports):
@@ -37,7 +58,9 @@ def render_existing_video(input_root, output_root, group, video):
  if not rows:raise ValueError(f'NO_HERO_SURFACES {group}/{video}')
  kind='R5' if '_R5' in group else 'R10';cad_path=source/'cad'/f'{kind}.npz'
  with np.load(cad_path) as z:cad_v,cad_f=z['V'],z['F']
- with np.load(source/'w0'/f'{group}_{video}'/'W0.npz') as z:
+ recovery=source/'recovery'/f'{group}_{video}_RESULT.json'
+ w0_root=final_packet_path(source,group,video) if recovery.exists() else source/'w0'/f'{group}_{video}'
+ with np.load(w0_root/'W0.npz') as z:
   cameras={str(i):c for i,c in zip(z['ids'],z['c2w'])}
  vertices,faces,colours,mesh_receipts=[],[],[],[];offset=0
  palette=plt.get_cmap('tab20',max(20,len(rows)))
@@ -73,6 +96,7 @@ def render_existing_video(input_root, output_root, group, video):
  fig.tight_layout();path=dest/'visualization/multisurface'/f'{group}_{video}.png'
  path.parent.mkdir(parents=True,exist_ok=True);fig.savefig(path,dpi=110);plt.close(fig)
  result=dict(group_id=group,video_id=video,cad_kind=kind,cad_sha256=hashlib.sha256(cad_path.read_bytes()).hexdigest(),
+             W0_sha256=hashlib.sha256((w0_root/'W0.npz').read_bytes()).hexdigest(),
              view_labels=[x[0] for x in panels],scale_bar_mm=5.,pixels_per_mm=scales,
              surface_count=len(rows),source_meshes=mesh_receipts,image=str(path),
              GT_deployment_pose='UNKNOWN',all_surfaces_retained=True)

@@ -232,3 +232,41 @@ def test_selection_views_use_current_clean_mask_rgb_k_and_w0_camera(tmp_path, mo
     assert np.array_equal(views[0]["C"], packet["cameras"][ids[0]])
     assert views[0]["s2"] is True
     assert views[1]["s2"] is False
+
+
+def test_hero_resolves_recovery_selected_w0_and_refuses_failed_route(tmp_path):
+    group, video = "sample_R10", "004"
+    selected = tmp_path / "recovery/round1/w0" / f"{group}_{video}"
+    selected.mkdir(parents=True)
+    (selected / "W0.npz").write_bytes(b"selected")
+    receipt = tmp_path / "recovery" / f"{group}_{video}_RESULT.json"
+    receipt.write_text(json.dumps({"status": "OBSERVATION_READY",
+                                   "final_w0_path": str(selected)}))
+    assert m2f5_hero_eval.final_packet_path(tmp_path, group, video) == selected
+    receipt.write_text(json.dumps({"status": "RECOVERY_BUDGET_EXHAUSTED",
+                                   "final_w0_path": str(selected)}))
+    with pytest.raises(ValueError, match="OBSERVATION_NOT_READY"):
+        m2f5_hero_eval.final_packet_path(tmp_path, group, video)
+
+
+def test_tuple_receipt_exists_before_actual_hero_call(tmp_path, monkeypatch):
+    monkeypatch.setattr(m2f5_hero_eval, "O", tmp_path)
+    frames = []
+    for i in range(4):
+        C = np.eye(4); C[0, 3] = i + 1
+        frames.append(dict(id=f"real_{i}", RGB=np.full((2, 2, 3), i, np.uint8),
+                           labels=np.full((2, 2), i % 3, np.uint8), K=np.eye(3),
+                           c2w_mm=C))
+    out = tmp_path / "hero" / "tuple"
+    def fake_infer(model, actual_frames, actual_out):
+        assert actual_frames is frames
+        assert (actual_out / "TUPLE_INPUT_RECEIPT.json").is_file()
+        saved = json.loads((actual_out / "TUPLE_INPUT_RECEIPT.json").read_text())
+        assert saved["frames"][0]["Mask_sha256"] == m2f5_hero_eval.array_sha(frames[0]["labels"])
+        return {"seconds": 0.1}
+    monkeypatch.setattr(m2f5_hero_eval, "infer", fake_infer)
+    result, receipt = m2f5_hero_eval.infer_with_receipt(
+        object(), frames, out, "test-run", "test-code", "sample_R10", "004")
+    assert result["seconds"] == .1
+    assert receipt["input_identity_verified"] is True
+    assert len((tmp_path / "RUN_TRACE/sample_R10_004.jsonl").read_text().splitlines()) == 1

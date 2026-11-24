@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """M2F5 unified: raw video -> fresh sampling -> INIT/DXY clean -> W0 -> T10/T13 -> HERO -> Raw Mesh -> A-to-B."""
-import argparse, hashlib, json, subprocess, sys, time
+import argparse, hashlib, json, subprocess, sys, time, traceback
 from pathlib import Path
 import cv2, numpy as np, pandas as pd
 
@@ -402,30 +402,48 @@ def main():
  elif M2F6:O=WS/'runs/m2f6_unified/final'
  wanted={x.zfill(3) for x in a.videos.split(',') if x}
  for g in groups:
-  for path in video_paths(g):
+  paths=[path for path in video_paths(g) if not wanted or path.stem.split('_')[-1] in wanted]
+  if M2F6:
+   found={path.stem.split('_')[-1] for path in paths}
+   for vid in sorted(wanted-found):
+    fail=dict(status='MISSING_RAW_VIDEO',group=g,video=vid,reason='NO_MATCHING_SOURCE_VIDEO')
+    p=O/'recovery'/f'{g}_{vid}_RESULT.json';write_json(p,fail)
+    trace(g,vid,'source_video','rf-m2f6-real-observation','tools/m2f5_unified.py::video_paths',
+          [str(RAW)],[str(p)],'FAIL',{'reason':fail['reason']})
+  for path in paths:
    vid=path.stem.split('_')[-1]
-   if wanted and vid not in wanted:continue
-   if a.stage in ('prepare','all'): root,croot,meta=(prepare_one_m2f6(g,path) if M2F6 else prepare_one(g,path))
-   if a.stage in ('w0','all'):
-    root=O/'prepared'/f'{g}_{vid}';croot=O/'clean_labels'/f'{g}_{vid}'
-    if M2F6:
-     result=run_m2f6_recovery(g,vid,root,croot)
-     print('RECOVERY',g,vid,result['status'],'final_attempt',result['final_attempt'],flush=True)
-     continue
-    out=run_w0(g,vid,root,croot)
-    if out is None: print('W0FAIL',g,vid,flush=True);continue
-    try:
-     packet=verify_w0_packet(out,WS);rows,center,pool=select(g,vid,packet)
-     (O/'selection').mkdir(parents=True,exist_ok=True)
-     selection_path=O/'selection'/f'{g}_{vid}.csv'
-     pd.DataFrame(rows).to_csv(selection_path,index=False)
-     trace(g,vid,'select','rf-m2f5-t10+t13','selection.py::select_views',
-           [str(packet['w0_path'])],[str(selection_path)],'PASS',
-           {'pool':pool,'targets':len(rows),'ready':sum(x['ready'] for x in rows),
-            'selection_sha256':h(selection_path)})
-     print('SELECT',g,vid,'pool',pool,'ready',sum(x['ready'] for x in rows),flush=True)
-    except Exception as e:
-     print('SELECTFAIL',g,vid,repr(e),flush=True);continue
+   active_stage='prepare'
+   try:
+    if a.stage in ('prepare','all'): root,croot,meta=(prepare_one_m2f6(g,path) if M2F6 else prepare_one(g,path))
+    if a.stage in ('w0','all'):
+     active_stage='w0_and_select'
+     root=O/'prepared'/f'{g}_{vid}';croot=O/'clean_labels'/f'{g}_{vid}'
+     if M2F6:
+      result=run_m2f6_recovery(g,vid,root,croot)
+      print('RECOVERY',g,vid,result['status'],'final_attempt',result['final_attempt'],flush=True)
+      continue
+     out=run_w0(g,vid,root,croot)
+     if out is None: print('W0FAIL',g,vid,flush=True);continue
+     try:
+      packet=verify_w0_packet(out,WS);rows,center,pool=select(g,vid,packet)
+      (O/'selection').mkdir(parents=True,exist_ok=True)
+      selection_path=O/'selection'/f'{g}_{vid}.csv'
+      pd.DataFrame(rows).to_csv(selection_path,index=False)
+      trace(g,vid,'select','rf-m2f5-t10+t13','selection.py::select_views',
+            [str(packet['w0_path'])],[str(selection_path)],'PASS',
+            {'pool':pool,'targets':len(rows),'ready':sum(x['ready'] for x in rows),
+             'selection_sha256':h(selection_path)})
+      print('SELECT',g,vid,'pool',pool,'ready',sum(x['ready'] for x in rows),flush=True)
+     except Exception as e:
+      print('SELECTFAIL',g,vid,repr(e),flush=True);continue
+   except Exception as exc:
+    if not M2F6:raise
+    fail=dict(status='PIPELINE_EXCEPTION',group=g,video=vid,stage=active_stage,
+              error_type=type(exc).__name__,reason=str(exc),traceback=traceback.format_exc())
+    p=O/'recovery'/f'{g}_{vid}_RESULT.json';write_json(p,fail)
+    trace(g,vid,active_stage,'rf-m2f6-unified','tools/m2f5_unified.py::main',
+          [str(path)],[str(p)],'FAIL',{'error_type':fail['error_type'],'reason':fail['reason']})
+    print('PIPELINE_EXCEPTION',g,vid,fail['stage'],fail['reason'],flush=True)
    if a.limit and len(list((O/'selection').glob('*.csv')))>=a.limit: break
  print('DONE')
 if __name__=='__main__':main()
