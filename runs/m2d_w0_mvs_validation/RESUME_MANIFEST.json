@@ -1,0 +1,21 @@
+{
+ "branch": "exp/TASK-M2D-W0-REPAIR-AND-MVS-VALIDATION-001",
+ "head": "e08eafc28858ef5a41288b35b476802fc4ebc5f6",
+ "completed": [
+  "112 unique HERO tuples",
+  "28 group MVS sheets",
+  "8 representative A2B/3D",
+  "A2B/B2A/independent metrics"
+ ],
+ "blocked": [
+  "A2 camera repair",
+  "11 groups with no ready tuple",
+  "full 336-pair A2B gallery",
+  "body not in M2D"
+ ],
+ "resume_commands": {
+  "hero_batch": "python tools/m2d_hero_batch.py",
+  "reverse": "python tools/m2d_reverse_metrics.py",
+  "visual": "python tools/m2d_visualize_analysis.py"
+ }
+}
