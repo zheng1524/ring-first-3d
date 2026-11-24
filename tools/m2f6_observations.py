@@ -99,16 +99,18 @@ def select_observations(candidates, edge_counts):
             sum(adjacency[i].get(j, 0) for j in chosen), -i))
         chosen.add(best)
         covered |= {j for j in component if covers(best, j)}
-    # Coverage by neighbouring observations can leave a large interval between
-    # the selected observations themselves.  Reinsert real graph bridges.
+    # Coverage can leave adjacent selected observations without a direct RGB
+    # match.  Restore those actual missing links from the same real graph.
+    # A fixed temporal threshold once converted 49-frame gaps to extra frames
+    # despite a strong direct match (G03/004: 14 graph views -> 38 views).
     while True:
         ordered = sorted(chosen, key=lambda i: rows[i]['frame'])
-        gaps = [(rows[b]['frame'] - rows[a]['frame'], a, b)
-                for a, b in zip(ordered, ordered[1:])]
-        long = [item for item in gaps if item[0] > 2 * step]
-        if not long:
+        unlinked = [(rows[b]['frame'] - rows[a]['frame'], a, b)
+                    for a, b in zip(ordered, ordered[1:])
+                    if b not in adjacency[a]]
+        if not unlinked:
             break
-        _, a, b = max(long)
+        _, a, b = max(unlinked)
         between = [i for i in component - chosen
                    if rows[a]['frame'] < rows[i]['frame'] < rows[b]['frame']
                    and a in adjacency[i] and b in adjacency[i]]

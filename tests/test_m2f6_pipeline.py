@@ -144,13 +144,17 @@ def test_2d_sampling_has_variable_size_and_connected_selected_graph():
     assert reachable == selected_indices
 
 
-def test_2d_selection_keeps_temporal_gaps_bounded_by_candidate_spacing():
-    candidates = [dict(frame=i * 20, quality=2.0 if i % 3 == 0 else 1.0,
-                       proxy=[0.0, 0.0], ring_train_points=30) for i in range(12)]
-    edges = {(i, j): 40 for i in range(12) for j in range(i + 1, min(12, i + 4))}
-    selected, _ = m2f6_observations.select_observations(candidates, edges)
-    gaps = np.diff([row["frame"] for row in selected])
-    assert len(gaps) and max(gaps) <= 40
+def test_2d_selection_retains_real_overlap_without_temporal_overfilling():
+    # Alternating 24/25-frame candidate intervals make two steps 49 frames.
+    # The old 2*median(24) threshold incorrectly inserted redundant frames.
+    candidates = [dict(frame=int(round(i * 24.5)), quality=2.0 if i % 3 == 0 else 1.0,
+                       proxy=[0.0, 0.0], ring_train_points=30) for i in range(40)]
+    edges = {(i, j): 40 for i in range(40) for j in range(i + 1, min(40, i + 4))}
+    selected, receipt = m2f6_observations.select_observations(candidates, edges)
+    assert 12 <= len(selected) <= 17
+    ids = [row["index"] for row in receipt["selected"]]
+    assert all((a, b) in edges for a, b in zip(ids, ids[1:]))
+    assert max(np.diff([row["frame"] for row in selected])) > 49
 
 
 def test_real_supplement_bridges_rgb_components_and_excludes_ring_poor_frames():
