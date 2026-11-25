@@ -81,6 +81,8 @@ def per_source(r,rows,data,cad,bounds,path,R,pairs,render_ns):
 
 def render_run(out,bounds=None):
  out=Path(out);s=read(out/'SUMMARY.json');case=s['case'];variant=s['variant'];rows=[r for r in read(out/'RESULTS.json')if r['status']=='RENDERABLE'];data=geometry(rows);cad=dict(np.load(W/'runs/m2f5_unified/cad'/('R5.npz'if '_R5_'in case else'R10.npz')))
+ assert (out/'COMPLETE.json').exists()and len(rows)==s['renderable'],'Evaluation is incomplete; do not render a partial result list'
+ assert len(read(out/'RESULTS.json'))==s['legal_combinations'],'Every legal tuple must be represented'
  bounds=np.concatenate([cad['V']]+[a[0]for a in data.values()])if bounds is None else bounds
  prefix=variant+'__'+case;title=short(case)+' / '+LABEL[variant];images=[];details=[]
  for rule in [False,True]:
