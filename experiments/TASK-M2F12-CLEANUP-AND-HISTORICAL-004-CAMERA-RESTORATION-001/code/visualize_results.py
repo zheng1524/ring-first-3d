@@ -20,16 +20,16 @@ for j,r in enumerate(registry):
  ax=fig.add_subplot(2,5,j+1,projection='3d');R=B/'H004_RAW_BASELINE'/r['case'];p=R/'landmarks/INDEPENDENT_VIDEO.npz';th=np.linspace(0,2*np.pi,120);rad=r['ring_inner_mm']/2+.6
  ax.plot(rad*np.cos(th),rad*np.sin(th),np.zeros_like(th),color='black',linewidth=1)
  if p.exists():
-  X=np.load(p)['X'];a=json.loads((R/'landmarks/BUILD_AUDIT.json').read_text());qc=[x for x in a['tracks']if x['qualified']];colors=['#df8a24'if x['category']=='polyp'else'#7c4da5'if x['category']=='mixed'else'#999999'for x in qc];ax.scatter(*X.T,c=colors,s=2,alpha=.6)
-  cs=json.loads((R/'registration/CAMERAS.json').read_text());C=np.array([v['C']for v in cs if v['C']is not None]);ax.plot(*C[:,:3,3].T,color='#1976a3',linewidth=1);ax.scatter(*C[:,:3,3].T,c='#1976a3',s=5)
-  shown=((X[:,0]>=-25)&(X[:,0]<=25)&(X[:,1]>=-25)&(X[:,1]<=25)&(X[:,2]>=-10)&(X[:,2]<=60)).sum();title=f"{labels[j]} | shown {shown}/{len(X)} landmarks"
+  X=np.load(p)['X'];a=json.loads((R/'landmarks/BUILD_AUDIT.json').read_text());qc=[x for x in a['tracks']if x['qualified']];colors=np.array(['#df8a24'if x['category']=='polyp'else'#7c4da5'if x['category']=='mixed'else'#999999'for x in qc]);inside=lambda P: np.all((P>=np.array([-25,-25,-10]))&(P<=np.array([25,25,60])),axis=1);visible=inside(X);ax.scatter(*X[visible].T,c=colors[visible],s=2,alpha=.6)
+  cs=json.loads((R/'registration/CAMERAS.json').read_text());C=np.array([v['C']for v in cs if v['C']is not None]);centers=C[:,:3,3];camera_visible=inside(centers);display=centers.copy();display[~camera_visible]=np.nan;ax.plot(*display.T,color='#1976a3',linewidth=1);ax.scatter(*centers[camera_visible].T,c='#1976a3',s=5)
+  shown=((X[:,0]>=-25)&(X[:,0]<=25)&(X[:,1]>=-25)&(X[:,1]<=25)&(X[:,2]>=-10)&(X[:,2]<=60)).sum();title=f"{labels[j]} | shown {shown}/{len(X)} landmarks\n{int(camera_visible.sum())}/{len(centers)} camera centers in viewport"
  else:title=labels[j]+' | NO MAP'
  ax.set_title(title,fontsize=8);ax.set(xlim=(-25,25),ylim=(-25,25),zlim=(-10,60),xlabel='X [mm]',ylabel='Y [mm]',zlabel='Z [mm]');ax.tick_params(labelsize=6);ax.view_init(20,-60)
 fig.suptitle('H004 actual landmarks and recovered camera centers; fixed viewport clips out-of-range points (counts stated)\nBlack: physical Ring centerline; gray/background, orange/polyp, purple/mixed; arbitrary per-video yaw, no pose GT',fontsize=11);fig.tight_layout();fig.savefig(F/'LANDMARKS_AND_TRAJECTORIES.png',dpi=120);plt.close(fig)
 links=[('COMPARISON_OVERVIEW.png','Native coverage, fixed ten-video denominator'),('LANDMARKS_AND_TRAJECTORIES.png','Actual landmarks/cameras, axes in mm')]
 for p in sorted((B/'HERO_LIMITED').glob('*/*/HERO_A_TO_B.png')):
  name=p.parent.parent.name+'__'+p.parent.name+'.png';shutil.copyfile(p,F/name);links.append((name,p.parent.name+' / '+p.parent.parent.name))
-html='<!doctype html><meta charset="utf-8"><title>M2F12 figures</title><h1>M2F12 evidence</h1><p>Real imagery and computed geometry. Ring dimensions and depth are in millimeters. No independent pose/shape GT. Native schedules differ; A→B B views are HERO supports.</p>'
+html='<!doctype html><meta charset="utf-8"><title>M2F12 figures</title><h1>M2F12 evidence</h1><p>Real imagery and computed geometry. Ring dimensions and depth are in millimeters. Independent pose/registered-shape GT evaluation NOT_EVALUABLE. Native schedules differ; A→B B views are HERO supports.</p>'
 html+=''.join('<p><a href="'+p+'">'+title+'</a></p><img style="max-width:1100px;width:100%" src="'+p+'">'for p,title in links);(F/'index.html').write_text(html)
 (T/'VISUALIZATION_INDEX.md').write_text('# Visualization index\n\nFixed 5 groups / 10 videos. Real images, physical mm units, independent pose/registered-shape GT evaluation NOT_EVALUABLE.\n\n'+''.join('- ['+title+'](figures/'+p+')\n'for p,title in links)+'\n[HTML gallery](figures/index.html)\n')
 print('FIGURES',len(links))
