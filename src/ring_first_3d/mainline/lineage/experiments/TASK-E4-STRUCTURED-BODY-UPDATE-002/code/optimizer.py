@@ -21,6 +21,9 @@ def save_pairs(path,assignments,full=False):
         np.savez_compressed(path/(cid+'.npz'),**content)
 
 def train(initial,views,ring,base,chart,cfg,out,arm):
+    iterations=cfg.get('iterations',36)
+    if type(iterations) is not int or not 1<=iterations<=36:
+        raise ValueError('iterations must be an integer in [1,36]; historical default 36')
     assert all(v['role']=='FIT'for v in views);assert all(set(v)<={'id','video','role','direction_block','K','C','labels','RGB'}for v in views)
     out=Path(out);out.mkdir(parents=True);device='cuda:0';weights=legacy.balanced_weights(views)
     graph=DeformationGraph(initial['V'],initial['F_solid'],32,4,device);arap=SmoothARAP(initial['V'],initial['F_solid'],.7,device)
@@ -52,7 +55,7 @@ def train(initial,views,ring,base,chart,cfg,out,arm):
         if sw is not None:bend,rad,attach=sw.penalties(V,info)
         total=contour+cfg['lambda_graph']*eg+cfg['lambda_sarap']*ss/arap.mass.sum()+cfg['lambda_prior']*prior+cfg['lambda_centerline']*bend+cfg['lambda_radius']*rad+cfg['lambda_attachment']*attach
         return total,dict(contour=contour,ARAP=ea,smooth=es,SARAP=ss,graph=eg,prior=prior,centerline=bend,radius=rad,attachment=attach),V,body,info
-    for iteration in range(36):
+    for iteration in range(iterations):
         attempt_sweep=sweep;growth_record=None;previous_optimizer=opt
         if arm=='DEFORM_SWEEP'and sweep is None and iteration in cfg['growth_iterations']:
             pp={}
@@ -119,16 +122,16 @@ def train(initial,views,ring,base,chart,cfg,out,arm):
             for group in opt.param_groups:group['lr']*=.5
             if growth_record and growth_record['status']=='CANDIDATE':growth_record['status']='SWEEP_GATES_REJECTED'
         if growth_record:growth.append(growth_record)
-        current_pairs=gate.rebuild(current,iteration in [0,12,24,35]);V,body,info,bV=generated(sweep);_,parts,_,_,_=loss(sweep,arap.rotations(bV),current_pairs)
+        current_pairs=gate.rebuild(current,iteration in [0,12,24,iterations-1]);V,body,info,bV=generated(sweep);_,parts,_,_,_=loss(sweep,arap.rotations(bV),current_pairs)
         w,t=transforms();rec=dict(iteration=iteration,accepted=accepted,growth=bool(sweep),gradient_norms=gradients,energies={k:float(v.detach())for k,v in parts.items()},views=[a['stats']for a in current_pairs.values()],rejections=rejected,graph_rotation_rad=w.detach().cpu().numpy(),graph_translation_mm=t.detach().cpu().numpy(),ring=ring_summary if accepted else rg.measure(current))
         # Full arrays stored once at meaningful stages; compact summaries every step.
         rec['ring']={k:v for k,v in rec['ring'].items()if not isinstance(v,np.ndarray)}
         rows.append(rec);dump(out/f'STEP_{iteration:03d}.json',rec)
-        if iteration in [0,12,24,35]:
+        if iteration in [0,12,24,iterations-1]:
             p=out/f'STEP_{iteration:03d}';p.mkdir();np.savez_compressed(p/'BODY.npz',**current);save_pairs(p/'PAIRS',current_pairs,True);np.savez_compressed(p/'GRAPH.npz',nodes=graph.g.detach().cpu().numpy(),rotation=w.detach().cpu().numpy(),translation=t.detach().cpu().numpy(),edges=graph.edges_np)
             if info:np.savez_compressed(p/'SWEEP.npz',**{k:v.detach().cpu().numpy()for k,v in info.items()},root_loop=sweep.loop,removed_faces=sweep.patch)
         print('STRUCTURED',arm,iteration,'accepted',accepted,'nodes',32,'V',len(current['V']),flush=True)
     np.savez_compressed(out/'FINAL.npz',**current);save_pairs(out/'FINAL_PAIRS',current_pairs,True)
     dump(out/'UPDATES.json',dict(iterations=rows,growth=growth,GT_read=False,HERO_read=False,free_vertex_parameters=False,configuration=cfg))
-    dump(out/'PREDICTION_FROZEN.json',dict(arm=arm,mesh='FINAL.npz',GT_read=False,checkpoint='FINAL_FIXED_36_NO_GT_SELECTION'))
+    dump(out/'PREDICTION_FROZEN.json',dict(arm=arm,mesh='FINAL.npz',GT_read=False,checkpoint=f'FINAL_FIXED_{iterations}_NO_GT_SELECTION'))
     np.savez_compressed(out/'RING_INITIAL.npz',**rg.measure(initial));np.savez_compressed(out/'RING_FINAL.npz',**rg.measure(current));return current

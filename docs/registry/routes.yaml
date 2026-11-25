@@ -1078,3 +1078,29 @@ m2f8_v6_generalized:
     - strict V6 validation leaves 5/10 videos with zero validated cameras
     - reference/heldout current frames are mapped to V6 protocol IDs only for unchanged scripts; actual raw identity is in REFERENCE_RECEIPT.json
     - no shared-input B/C/D; common input intentionally not frozen
+
+# Independent downstream recovery; does not select or change an upstream route.
+downstream_core_recovery_pilot_001:
+  task_id: TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001
+  version: 1
+  status: candidate
+  engineering_status: VERIFIED_HISTORICAL
+  scientific_status: INSUFFICIENT_EVIDENCE
+  formal_pipeline: false
+  base_commit: 000f5f2998ad2a29ca454e8380b587b26ba9f21c
+  composes:
+    - EXACT013_INITIAL_equals_011_FINAL_G01
+    - SB01@238c2da1
+    - SB02@238c2da1
+    - SB03@238c2da1
+    - SB07@238c2da1
+  adaptation: existing iterations field honored; final-step full visibility saved
+  entrypoint: experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/code/pilot.py
+  core_assets: experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/CORE_ASSETS.csv
+  retain_dependencies: experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/evidence/RETAIN_DEPENDENCIES.json
+  evidence: experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/TECHNICAL_REPORT.md
+  limits:
+    - original initialization generation chain incomplete
+    - one group, historical conditional cameras, three outer iterations
+    - video rigid registration validated only as known-SE3 control
+    - no current GT shape accuracy or real crossvideo success claim

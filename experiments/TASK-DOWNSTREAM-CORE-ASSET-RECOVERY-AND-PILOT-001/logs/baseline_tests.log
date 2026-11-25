@@ -1,0 +1,101 @@
+test_deformation_graph (unittest.loader._FailedTest.test_deformation_graph) ... ERROR
+test_projection_gate (unittest.loader._FailedTest.test_projection_gate) ... ERROR
+test_ring_collision (unittest.loader._FailedTest.test_ring_collision) ... ERROR
+test_rmf (unittest.loader._FailedTest.test_rmf) ... ERROR
+test_smooth_arap (unittest.loader._FailedTest.test_smooth_arap) ... ERROR
+test_sweep (unittest.loader._FailedTest.test_sweep) ... ERROR
+
+======================================================================
+ERROR: test_deformation_graph (unittest.loader._FailedTest.test_deformation_graph)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_deformation_graph
+Traceback (most recent call last):
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/tests/test_deformation_graph.py", line 2, in <module>
+    from deformation_graph import DeformationGraph,so3
+ModuleNotFoundError: No module named 'deformation_graph'
+
+
+======================================================================
+ERROR: test_projection_gate (unittest.loader._FailedTest.test_projection_gate)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_projection_gate
+Traceback (most recent call last):
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/tests/test_projection_gate.py", line 2, in <module>
+    from projection_gate import ProjectionGate,DEFAULT
+ModuleNotFoundError: No module named 'projection_gate'
+
+
+======================================================================
+ERROR: test_ring_collision (unittest.loader._FailedTest.test_ring_collision)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_ring_collision
+Traceback (most recent call last):
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/tests/test_ring_collision.py", line 2, in <module>
+    from ring_collision_gate import RingCollisionGate
+ModuleNotFoundError: No module named 'ring_collision_gate'
+
+
+======================================================================
+ERROR: test_rmf (unittest.loader._FailedTest.test_rmf)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_rmf
+Traceback (most recent call last):
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/tests/test_rmf.py", line 2, in <module>
+    from rmf import double_reflection
+ModuleNotFoundError: No module named 'rmf'
+
+
+======================================================================
+ERROR: test_smooth_arap (unittest.loader._FailedTest.test_smooth_arap)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_smooth_arap
+Traceback (most recent call last):
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/tests/test_smooth_arap.py", line 2, in <module>
+    from smooth_arap import SmoothARAP
+ModuleNotFoundError: No module named 'smooth_arap'
+
+
+======================================================================
+ERROR: test_sweep (unittest.loader._FailedTest.test_sweep)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_sweep
+Traceback (most recent call last):
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/tests/test_sweep.py", line 2, in <module>
+    from bspline_sweep import BSplineSweep,basis,boundary_loop
+ModuleNotFoundError: No module named 'bspline_sweep'
+
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+FAILED (errors=6)

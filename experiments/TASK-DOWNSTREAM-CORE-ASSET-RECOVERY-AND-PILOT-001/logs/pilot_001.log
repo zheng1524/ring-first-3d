@@ -1,0 +1,16 @@
+STRUCTURED DEFORM_ONLY 0 accepted True nodes 32 V 642
+STRUCTURED DEFORM_ONLY 1 accepted True nodes 32 V 642
+STRUCTURED DEFORM_ONLY 2 accepted True nodes 32 V 642
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/code/pilot.py", line 68, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/code/pilot.py", line 60, in main
+    train(initial,[v for v in views if v['role']=='FIT'],ring,base,chart,cfg,out,'DEFORM_ONLY')
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/optimizer.py", line 134, in train
+    np.savez_compressed(out/'FINAL.npz',**current);save_pairs(out/'FINAL_PAIRS',current_pairs,True)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/optimizer.py", line 20, in save_pairs
+    if full:content.update(visible_face=a['visible_face'],visible_bary=a['visible_bary'])
+                                        ~^^^^^^^^^^^^^^^^
+KeyError: 'visible_face'

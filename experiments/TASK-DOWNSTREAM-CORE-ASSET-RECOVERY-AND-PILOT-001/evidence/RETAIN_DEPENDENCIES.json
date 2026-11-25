@@ -1,0 +1,778 @@
+{
+  "task": "TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001",
+  "protection_scope": "Local durable task copies + versioned original code; not external-media backup",
+  "files": [
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/INITIAL.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/INITIAL.npz",
+      "sha256": "3045a7546d1eaf2bfd8fcd05cfd0c83cadfcd92bd684ecc6efbd8c286fad8c9f",
+      "bytes": 27248,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/RING.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/RING.npz",
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "bytes": 277665,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/NORMALIZATION.json",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/NORMALIZATION.json",
+      "sha256": "73425b485ab347d1ce1527f9a965960bbb11d5448c0ecc9628b0fbc9439ec445",
+      "bytes": 194,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/BASE_SELECTION.json",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/BASE_SELECTION.json",
+      "sha256": "ee5d24150ec580184d69d97572c04533246c829758c1421e54de6453fbe5475d",
+      "bytes": 3190,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/CHART.json",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/CHART.json",
+      "sha256": "e899f00a748fb7232a789492fde3fe40b8a5cae6dd678931f0419fa8c10a1806",
+      "bytes": 3855,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/G01_004_ref08.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_004_ref08.npz",
+      "sha256": "e7f5ba4bc23637b3b41b9792069c7e2d7162aed3b6ef285a9ed59c52ac16d0f0",
+      "bytes": 422884,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/G01_004_ref13.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_004_ref13.npz",
+      "sha256": "dd242633e72ca3ab3600fbaf242e66239efab1cc4701058a4a15b6711ccf1b89",
+      "bytes": 411777,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/G01_004_ref03.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_004_ref03.npz",
+      "sha256": "11dc1e59128cc6503a7c5f52a478a67ddee54199976b9d9a02f50c939dbb7d6d",
+      "bytes": 427527,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_v004_raw01112.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_v004_raw01112.npz",
+      "sha256": "6d1bab20714de113ee1f04cfc02c3a1d47d2e9faebd31937768f55537918ef62",
+      "bytes": 385813,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_v004_raw00878.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_v004_raw00878.npz",
+      "sha256": "010e45a10edac08e07cb491f30e234be90157207a912433a32848bc109c16c57",
+      "bytes": 367157,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_v004_raw01086.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_v004_raw01086.npz",
+      "sha256": "2fbfcb6f761e145266e8458ada50a865101ecb0acc9c73038e02ad6e8aa46100",
+      "bytes": 396123,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_video004_004_05.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_video004_004_05.npz",
+      "sha256": "eb3e66205299071a20f4a17539462b338d72fb7533ab5d5570d8b80d27c2a32c",
+      "bytes": 376017,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_v004_raw01138.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_v004_raw01138.npz",
+      "sha256": "1ca6fc5d97ebf0646a9d7f12e14d908f04fbac904ad138565346e16092de696e",
+      "bytes": 401998,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_005_raw00057.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_005_raw00057.npz",
+      "sha256": "072af5dbc209d66e15e6ee57a08eba35d93a1ce7ace185164ce7c11d1c2d62c9",
+      "bytes": 342368,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_video005_v005_00860.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_video005_v005_00860.npz",
+      "sha256": "4ae17b52a53311818565cc0b509393329b3b9d234c59c8c2ebda2877dbbd0c98",
+      "bytes": 389649,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_video005_v005_00401.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_video005_v005_00401.npz",
+      "sha256": "06e6b4ad11ac0dde4819ad800d13cbe919b98a25dfe44d47031fd9ec7be3b45a",
+      "bytes": 359069,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_video005_v005_00611.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_video005_v005_00611.npz",
+      "sha256": "241ee204a1fe7a4c4cd0689c4e1d8e70271a9c525ec7dcd57cd334b79132dbd0",
+      "bytes": 377226,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_v005_raw00192.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_v005_raw00192.npz",
+      "sha256": "8447806d79ac315073121adc5a9c5de2b877029fc02c43317eb38d00f0e242ac",
+      "bytes": 360556,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_v005_raw00262.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_v005_raw00262.npz",
+      "sha256": "eeea1de8dbc30a073437e2f397e1c6594cb1995ea80f4868eba76d06eb5d1350",
+      "bytes": 381773,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_v005_raw00721.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_v005_raw00721.npz",
+      "sha256": "888526995c8ea7158225d4f475fa138b33186f28bce24b373d454997a9192797",
+      "bytes": 377169,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_v005_raw00139.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_v005_raw00139.npz",
+      "sha256": "5f0e4fae2a2e1e149ab0cb747288f66d06d449bdc226fb08d8acd114ff05858e",
+      "bytes": 365888,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/G01_004_growth_r04.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_004_growth_r04.npz",
+      "sha256": "0ef3ca1fec0b29a20f32e53d7f9d9af3df55f30eb6461a09e12453f1b09b55b3",
+      "bytes": 425244,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/G01_004_growth_r06.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_004_growth_r06.npz",
+      "sha256": "be450fe221d153e15e89ca2582ff733f493dd7b9f9f9c41db000c377e8131d94",
+      "bytes": 413593,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/inputs/G01/G01_004_growth_r10.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_004_growth_r10.npz",
+      "sha256": "7b2c29832a67202ee74dc8057c331675a61bb5ae366a27a21df3973b670eddff",
+      "bytes": 417948,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_video004_004_09.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_video004_004_09.npz",
+      "sha256": "feb3dd2000dffefaa6463356120f641baac5645dcb714283d1bae1f5c9b68196",
+      "bytes": 428215,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_v004_raw00334.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_v004_raw00334.npz",
+      "sha256": "9331fa9518b296e787f692fcabe5e90310456c4919c962bcc1013d64f5c5a2d9",
+      "bytes": 350201,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_005_new_r04.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_005_new_r04.npz",
+      "sha256": "05cf226fdf4eaf278dbc66e76fadf0228f134d0d2f3e4b18480416a0d37c87fc",
+      "bytes": 374616,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-PYTORCH3D-014/inputs/G01/G01_v005_raw00509.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/G01/G01_v005_raw00509.npz",
+      "sha256": "41d1459ae077daf89ae6c4f788edfe23607f519929ac47d42cd029e6a54e37d0",
+      "bytes": 390653,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/.local_data/G01_demo/DATA_MANIFEST.json",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/DATA_MANIFEST.json",
+      "sha256": "8de8960d114e71001e793fdd9ab583b07e6b6f6584ccf98960cd0c311eb7faa4",
+      "bytes": 7569,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/.local_data/G01_demo/REFERENCE_RGB_MAP.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/REFERENCE_RGB_MAP.npz",
+      "sha256": "5c7e6084aa6d91a8c44c2096af76ce6993359cdd9b3bd0a03063f70b313e4b7b",
+      "bytes": 26382,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/.local_data/G01_demo/RING_CAD.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/RING_CAD.npz",
+      "sha256": "30bd84488045adada6155fe00df2154ecde3a8e4531f02494fada77637c3b4af",
+      "bytes": 277665,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/.local_data/G01_demo/frames/G01_v004_raw00341/RGB.png",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/frames/G01_v004_raw00341/RGB.png",
+      "sha256": "b43022591833f5bf249f9535dde0d6fb39dcc7779dbbab606b684944bb3e964e",
+      "bytes": 230935,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/.local_data/G01_demo/frames/G01_v004_raw00341/labels.png",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/frames/G01_v004_raw00341/labels.png",
+      "sha256": "e6e908004efb73508ab72e1915e21a095912e3274c469acab1413d608cc946f0",
+      "bytes": 2043,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/.local_data/G01_demo/frames/G01_v004_raw00326/RGB.png",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/frames/G01_v004_raw00326/RGB.png",
+      "sha256": "d345563437c943718e130a56c30dd57c592453742dd386e336aed5ddaefa29a3",
+      "bytes": 240278,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/.local_data/G01_demo/frames/G01_v004_raw00326/labels.png",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/frames/G01_v004_raw00326/labels.png",
+      "sha256": "4806123e57b32f81744c6e220fc4b2767ca24f2afe283115a83b58b6b503ddb0",
+      "bytes": 2015,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/.local_data/G01_demo/frames/G01_v004_raw00360/RGB.png",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/frames/G01_v004_raw00360/RGB.png",
+      "sha256": "356660d2531995b03d95525e8a96adf913aec69070ca405e29e0790102f9062e",
+      "bytes": 263541,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/.local_data/G01_demo/frames/G01_v004_raw00360/labels.png",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/frames/G01_v004_raw00360/labels.png",
+      "sha256": "ea57cea3b1f9702b9e67e85cad8d6ed4bfcfdd12f16b8aca86e9c96dfcf0726e",
+      "bytes": 2292,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/.local_data/G01_demo/frames/G01_v004_raw00204/RGB.png",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/frames/G01_v004_raw00204/RGB.png",
+      "sha256": "ad314909026a6748a24fc9ebcff2185a62f6aabbbef0474c326d081abe4b8cc8",
+      "bytes": 263714,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/.local_data/G01_demo/frames/G01_v004_raw00204/labels.png",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/frames/G01_v004_raw00204/labels.png",
+      "sha256": "cc7a13c8412938c1667fccfb4e21036c1ab3828ecf9482074ed526c18e9fc389",
+      "bytes": 2360,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/outputs/hero/HERO_native.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/HERO_native.npz",
+      "sha256": "89533aff2e10624ea470ef157e1856d62e89ec30908747759ef360718ee45f32",
+      "bytes": 382450,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/outputs/hero/RAW_NATIVE_MESH.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/RAW_NATIVE_MESH.npz",
+      "sha256": "52742e976e9296bdd76a4e4b22b33e2c217a4c088cd881a9033bb3b13b61e02a",
+      "bytes": 848157,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/outputs/hero/INFERENCE.json",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/INFERENCE.json",
+      "sha256": "4e43972323a1f3da242948bd24ed495fda007a6c5ddb7b23969df9896bf66c77",
+      "bytes": 324,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/outputs/hero/HISTORICAL_COMPARISON.json",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/HISTORICAL_COMPARISON.json",
+      "sha256": "f4e4f29bb9164fa3b7b5bfddc778e53578f287da47d865a930d7ca9f01aa7334",
+      "bytes": 498,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring-first-hero-core/outputs/hero/MODEL_RECEIPT.json",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/snapshot004/MODEL_RECEIPT.json",
+      "sha256": "3ab7f40022bc3e83571b51fdeb5e2e2c3c25e68f7479a9a159aff53c9e64a5ab",
+      "bytes": 822,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G01/DEFORM_SWEEP/INITIAL.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G01/INITIAL.npz",
+      "sha256": "a5c94ebbcbca771e815da0f0c5769c38242cca36d3a70d874fb0b43041fb9245",
+      "bytes": 26239,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G01/DEFORM_SWEEP/STEP_024/GRAPH.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G01/STEP_024/GRAPH.npz",
+      "sha256": "3990ad2034e287f01ba2c637caa26ddbff78b1391b1f144fb3d1e48ac859539f",
+      "bytes": 3393,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G01/DEFORM_SWEEP/STEP_024/BODY.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G01/STEP_024/BODY.npz",
+      "sha256": "b414e5cb467a8d2cbbf0aad999197f75108d02432163f90dd7bc0abf01037154",
+      "bytes": 26262,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/mainline/results/G01/FINAL_SWEEP_PARAMETERS.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G01/growth/FINAL_SWEEP_PARAMETERS.npz",
+      "sha256": "411f2ee3d730012115a1b40c89b6aaf414becdc1b5cc8db43026774931cec09d",
+      "bytes": 10745,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/mainline/results/G01/CHOSEN_GATES.json",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G01/growth/CHOSEN_GATES.json",
+      "sha256": "9ea51218a3a052dd80bdbd372880d71387bc0cc336053d0057280e831a436b8c",
+      "bytes": 31534,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/mainline/results/G01/LOCAL_CONFIGURATION.json",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G01/growth/LOCAL_CONFIGURATION.json",
+      "sha256": "48f10a7b1c1a1dbbdc926454b313a051d1b8c24b7497bd3a0c8f463ecc923f76",
+      "bytes": 3966,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/mainline/results/G01/FINAL.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G01/growth/FINAL.npz",
+      "sha256": "9cac1ffc320e868e28b29d1a014f6ebad28e07077a3fdd686200363d4824b1ce",
+      "bytes": 28620,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G03/DEFORM_SWEEP/INITIAL.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G03/INITIAL.npz",
+      "sha256": "9e0d294384a8bf23c3777cb587f1ea99b8320a9422c0c32042c28c148bdf33df",
+      "bytes": 26199,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G03/DEFORM_SWEEP/STEP_024/GRAPH.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G03/STEP_024/GRAPH.npz",
+      "sha256": "4e32db3a195d28434ab789a2b9939ef121c2f6aa4bdef5b7c4ecb8685ecf132f",
+      "bytes": 3367,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/runs/G03/DEFORM_SWEEP/STEP_024/BODY.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G03/STEP_024/BODY.npz",
+      "sha256": "a3df03f7921bc89f0352f1990252cdcabc192ec56db70284bf8e57668d749f68",
+      "bytes": 26203,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/mainline/results/G03/FINAL_SWEEP_PARAMETERS.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G03/growth/FINAL_SWEEP_PARAMETERS.npz",
+      "sha256": "a176b6bca89b28dd7e38a00fa4e6aa3875045eeabf4c88508eb0c405665a9818",
+      "bytes": 10673,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/mainline/results/G03/CHOSEN_GATES.json",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G03/growth/CHOSEN_GATES.json",
+      "sha256": "8d6fdbf16b1aa8fb2f335ee478c244c1b3dde6e9ef3dc0dcc151c7e243c127ea",
+      "bytes": 33690,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/mainline/results/G03/LOCAL_CONFIGURATION.json",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G03/growth/LOCAL_CONFIGURATION.json",
+      "sha256": "63109cbf87e0ec3143ef65fac0cd21141bcf4cb1a76065b11f7db33cc4367902",
+      "bytes": 3907,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/mainline/results/G03/FAILED_ATTEMPT.npz",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/fixtures/history/G03/growth/FAILED_ATTEMPT.npz",
+      "sha256": "ff6e495dcd4c9b30a6aea2f80d7d97b40405ca5ba1991d031e8f2c9cfc54761a",
+      "bytes": 28743,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009/code/lock_and_prepare.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009/code/lock_and_prepare.py",
+      "sha256": "bbf126ff2505665de63e8ee9e3cf019842de181d9e409751495b980465ee46f6",
+      "bytes": 9428,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009/code/fit_body.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009/code/fit_body.py",
+      "sha256": "6abc15bd66f4301b9a832452412507adab1c6a05be0f0ffc7124c0a792b8d8f7",
+      "bytes": 12236,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009/code/parametric.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/legacy015/parametric.py",
+      "sha256": "442702f5541317c061a7382a3410a1c81d2f796ecc899d14be9929453a87548a",
+      "bytes": 2815,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/prepare_caps.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/prepare_caps.py",
+      "sha256": "ed3ff2123f00f92d66e0df35ab0be31adfede2bb1a33297a5f77e58b2607fd4c",
+      "bytes": 7179,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/metrics/C_INHERITANCE.csv",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/metrics/C_INHERITANCE.csv",
+      "sha256": "3c8e9c5c0981508b50e14abb3dac4153e3b96bbd6d4a3ebf86eae0397f11c607",
+      "bytes": 1760,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/code/arm_setup.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/code/arm_setup.py",
+      "sha256": "5a9830f1c78a69c068021a050a8bae5f15b1fafc03de7b5de69b68dbc53fab73",
+      "bytes": 1751,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/fitting.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/fitting.py",
+      "sha256": "a58b80f81853b4e6995a93dd8135a78b0623acd68c1ec00defa68a3f2081cf33",
+      "bytes": 6825,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/losses.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/losses.py",
+      "sha256": "780e7148670bc41c044d9ba2fc7e72324eca571643a3dbe2e1ef4aaf6cb7d4d7",
+      "bytes": 4179,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/run.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/run.py",
+      "sha256": "c8b9f9304ca545da547ff2a807f210d379d720a607cb2b667159a767a5be25af",
+      "bytes": 1959,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/prepare.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/prepare.py",
+      "sha256": "b5b11e4f9ac73dac8ec3dd2d8262da96c692073b2f6e91009c548e31cdc153a0",
+      "bytes": 7329,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PMGR-R1/code/run.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PMGR-R1/code/run.py",
+      "sha256": "2bb6109d43342bccc3d26f12c886ab56fe8f14c4b4d8e4e7a04f9c647bc1e9b7",
+      "bytes": 18079,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PMGR-R1/code/inputs.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PMGR-R1/code/inputs.py",
+      "sha256": "482e3984bcbfcf195502ccd522ce2a5f3ab9009344f4a5bceaedb3448f18509a",
+      "bytes": 4638,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BOUNDARY_RELATIVE_DEPTH_D2_001/code/prepare.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BOUNDARY_RELATIVE_DEPTH_D2_001/code/prepare.py",
+      "sha256": "a2335b5d8b2a5c7c0d1351fb270f033c4620b67005851add8bb77a18c8f4d911",
+      "bytes": 7228,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/code/prepare.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/code/prepare.py",
+      "sha256": "7b9962864407597cc7b30a1957c80592c428cf991b17104419460724b78821a7",
+      "bytes": 5335,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_012/code/prepare_replay.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_012/code/prepare_replay.py",
+      "sha256": "d43508adbdf18fc3bc6a485add4e5dab048ccedd830909e8bc5da696cd48f5a0",
+      "bytes": 1718,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/train.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/train.py",
+      "sha256": "770568b2187214f6ed3f2c77b63b5b73c585efdde0ebc32f79561865b19f140a",
+      "bytes": 7165,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/chart.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/chart.py",
+      "sha256": "8fa9a5d4b28d6d5bca2e4c39d247462d62826a5db78dc55dede0529e601ca566",
+      "bytes": 3081,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/stable.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/stable.py",
+      "sha256": "66c98a837f6942bece2f392b4bee7adf4040bb37d964ecbb2762cb190df9fd62",
+      "bytes": 3003,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/code/train_normalized.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/code/train_normalized.py",
+      "sha256": "0079f89c5dd7b57c6decbd5c63658040b2f7eeab4801b34a29a346dcc5500134",
+      "bytes": 6782,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/code/initialize.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/frozen_registry/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/code/initialize.py",
+      "sha256": "8ea152362590be59675dde2fc6b6b8ddd89654050e82332ac8d82fbc832ca0ae",
+      "bytes": 6886,
+      "disposition": "KEEP_VERSIONED_TASK_FIXTURE_OR_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/projection_gate.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/projection_gate.py",
+      "sha256": "3df496781754172f5833a6157a94384113fc09c5ba5980d00da83d3d07af68e3",
+      "bytes": 6181,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/deformation_graph.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/deformation_graph.py",
+      "sha256": "511e83ba522c025a5da5ef8b9aa939c70733f307a9f292d2d635890800748e41",
+      "bytes": 2595,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/smooth_arap.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/smooth_arap.py",
+      "sha256": "4292cb429ad9febcd512e374898d1735b62064b73c5ec1988cb11b49429e2a8a",
+      "bytes": 2675,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/optimizer.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/optimizer.py",
+      "sha256": "90d4efa4ffc4956282c808fd5a1010c169d09300c9f36de906e5601dc1e661d4",
+      "bytes": 12302,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/frozen_registry/experiments/TASK-E4-PYTORCH3D-014/code/p3d.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/frozen_registry/experiments/TASK-E4-PYTORCH3D-014/code/p3d.py",
+      "sha256": "04c70090e5ee50a5345169f132ccd8a0b988c5b72c03a29745b76d04e45eef0f",
+      "bytes": 5177,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-HERO-BODY-ADAPT-018/code/hero_objective018.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-HERO-BODY-ADAPT-018/code/hero_objective018.py",
+      "sha256": "99ca53393be1961db801c5e11e651ee74ef7c00c930cc3c09f3d3afa50001b33",
+      "bytes": 8386,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/inita/train.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/inita/train.py",
+      "sha256": "0b8fcfbc50a7861560003a2d4490445fa22e074935f851e673b3590bc84f03fc",
+      "bytes": 9587,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "/home/liu/ring_first_3d_workspace/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/embedded_sweep.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-G01-G03-GROWTH-RECOVERY-001/code/embedded_sweep.py",
+      "sha256": "bfe96a063b100e8d66d955af2d26c49d3aec35b018c97296a4b32608df932992",
+      "bytes": 4699,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009/code/lock_and_prepare.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009/code/lock_and_prepare.py",
+      "sha256": "bbf126ff2505665de63e8ee9e3cf019842de181d9e409751495b980465ee46f6",
+      "bytes": 9428,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009/code/fit_body.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009/code/fit_body.py",
+      "sha256": "6abc15bd66f4301b9a832452412507adab1c6a05be0f0ffc7124c0a792b8d8f7",
+      "bytes": 12236,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BODY_BASE_INIT_009/code/parametric.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-2D-CONTOUR-GUIDED-INIT-A-HERO-001/legacy015/parametric.py",
+      "sha256": "442702f5541317c061a7382a3410a1c81d2f796ecc899d14be9929453a87548a",
+      "bytes": 2815,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/prepare_caps.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/prepare_caps.py",
+      "sha256": "ed3ff2123f00f92d66e0df35ab0be31adfede2bb1a33297a5f77e58b2607fd4c",
+      "bytes": 7179,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/metrics/C_INHERITANCE.csv",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/metrics/C_INHERITANCE.csv",
+      "sha256": "3c8e9c5c0981508b50e14abb3dac4153e3b96bbd6d4a3ebf86eae0397f11c607",
+      "bytes": 1760,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/code/arm_setup.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/code/arm_setup.py",
+      "sha256": "5a9830f1c78a69c068021a050a8bae5f15b1fafc03de7b5de69b68dbc53fab73",
+      "bytes": 1751,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/fitting.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/fitting.py",
+      "sha256": "a58b80f81853b4e6995a93dd8135a78b0623acd68c1ec00defa68a3f2081cf33",
+      "bytes": 6825,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/losses.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/losses.py",
+      "sha256": "780e7148670bc41c044d9ba2fc7e72324eca571643a3dbe2e1ef4aaf6cb7d4d7",
+      "bytes": 4179,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/run.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/run.py",
+      "sha256": "c8b9f9304ca545da547ff2a807f210d379d720a607cb2b667159a767a5be25af",
+      "bytes": 1959,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/prepare.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-A1-ELLIPSE-VS-FULLMASK-001/code/prepare.py",
+      "sha256": "b5b11e4f9ac73dac8ec3dd2d8262da96c692073b2f6e91009c548e31cdc153a0",
+      "bytes": 7329,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PMGR-R1/code/run.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PMGR-R1/code/run.py",
+      "sha256": "2bb6109d43342bccc3d26f12c886ab56fe8f14c4b4d8e4e7a04f9c647bc1e9b7",
+      "bytes": 18079,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PMGR-R1/code/inputs.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PMGR-R1/code/inputs.py",
+      "sha256": "482e3984bcbfcf195502ccd522ce2a5f3ab9009344f4a5bceaedb3448f18509a",
+      "bytes": 4638,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BOUNDARY_RELATIVE_DEPTH_D2_001/code/prepare.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/BOUNDARY_RELATIVE_DEPTH_D2_001/code/prepare.py",
+      "sha256": "a2335b5d8b2a5c7c0d1351fb270f033c4620b67005851add8bb77a18c8f4d911",
+      "bytes": 7228,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/code/prepare.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/code/prepare.py",
+      "sha256": "7b9962864407597cc7b30a1957c80592c428cf991b17104419460724b78821a7",
+      "bytes": 5335,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_012/code/prepare_replay.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_012/code/prepare_replay.py",
+      "sha256": "d43508adbdf18fc3bc6a485add4e5dab048ccedd830909e8bc5da696cd48f5a0",
+      "bytes": 1718,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/train.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/train.py",
+      "sha256": "770568b2187214f6ed3f2c77b63b5b73c585efdde0ebc32f79561865b19f140a",
+      "bytes": 7165,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/chart.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/chart.py",
+      "sha256": "8fa9a5d4b28d6d5bca2e4c39d247462d62826a5db78dc55dede0529e601ca566",
+      "bytes": 3081,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/stable.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/CAP_REPAIR_STABLE_011/code/stable.py",
+      "sha256": "66c98a837f6942bece2f392b4bee7adf4040bb37d964ecbb2762cb190df9fd62",
+      "bytes": 3003,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/code/train_normalized.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-PYTORCH3D-RING-AWARE-001/runs/FREE_VERTEX_013/code/train_normalized.py",
+      "sha256": "0079f89c5dd7b57c6decbd5c63658040b2f7eeab4801b34a29a346dcc5500134",
+      "bytes": 6782,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/code/initialize.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/frozen_registry/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/code/initialize.py",
+      "sha256": "8ea152362590be59675dde2fc6b6b8ddd89654050e82332ac8d82fbc832ca0ae",
+      "bytes": 6886,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "src/ring_first_3d/mainline/frozen_registry/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/code/prepare.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/frozen_registry/experiments/TASK-E4-MULTIVIEW-INIT-STALK-015/code/prepare.py",
+      "sha256": "88e74d19f788e765818e2c77135248f315bbe0d58bc859962badb6623c445d9d",
+      "bytes": 5899,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "src/ring_first_3d/mainline/lineage/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/legacy015/train_mesh.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-MULTIVIDEO-INIT-A-HERO-ALIGN-001/legacy015/train_mesh.py",
+      "sha256": "28f16f0c7944524df80482757432e02a41acc7e0e867219f67f3d28d573b4f3e",
+      "bytes": 7335,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    },
+    {
+      "source": "src/ring_first_3d/sim/geometry.py",
+      "retained": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/sim/geometry.py",
+      "sha256": "8bf9af204ac9faa71fa3b9b15e68b2284bad9f7cd842424e4aacbc88924d1381",
+      "bytes": 3500,
+      "disposition": "KEEP_REGISTERED_SOURCE"
+    }
+  ],
+  "external_keep_roots": [
+    "/home/liu/ring_first_3d_workspace/assets/retained_sources/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-BODY-ADAPT-018",
+    "/home/liu/ring_first_3d_workspace/.runtime",
+    "/home/liu/polyp_research/ring_anchor_3d/.venv",
+    "/home/liu/blender/blender-5.0.1-linux-x64",
+    "/home/liu/ring-first-hero-core/.local_data/G01_demo",
+    "/home/liu/ring_first_3d_workspace/experiments/TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/audit/reference_banks"
+  ],
+  "deletion_authorized": false
+}

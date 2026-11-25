@@ -1,0 +1,66 @@
+test_invalid_budget_rejected_before_data_or_output_access (test_recovery.BudgetBoundaryTests.test_invalid_budget_rejected_before_data_or_output_access) ... 
+  test_invalid_budget_rejected_before_data_or_output_access (test_recovery.BudgetBoundaryTests.test_invalid_budget_rejected_before_data_or_output_access) (n=0) ... ERROR
+  test_invalid_budget_rejected_before_data_or_output_access (test_recovery.BudgetBoundaryTests.test_invalid_budget_rejected_before_data_or_output_access) (n=-1) ... ERROR
+  test_invalid_budget_rejected_before_data_or_output_access (test_recovery.BudgetBoundaryTests.test_invalid_budget_rejected_before_data_or_output_access) (n=37) ... ERROR
+  test_invalid_budget_rejected_before_data_or_output_access (test_recovery.BudgetBoundaryTests.test_invalid_budget_rejected_before_data_or_output_access) (n=1.5) ... ERROR
+  test_invalid_budget_rejected_before_data_or_output_access (test_recovery.BudgetBoundaryTests.test_invalid_budget_rejected_before_data_or_output_access) (n=True) ... ERROR
+
+======================================================================
+ERROR: test_invalid_budget_rejected_before_data_or_output_access (test_recovery.BudgetBoundaryTests.test_invalid_budget_rejected_before_data_or_output_access) (n=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/code/test_recovery.py", line 10, in test_invalid_budget_rejected_before_data_or_output_access
+    train(None, None, None, None, None, {'iterations':n}, '/should-not-be-written', 'DEFORM_ONLY')
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/optimizer.py", line 24, in train
+    assert all(v['role']=='FIT'for v in views);assert all(set(v)<={'id','video','role','direction_block','K','C','labels','RGB'}for v in views)
+                                        ^^^^^
+TypeError: 'NoneType' object is not iterable
+
+======================================================================
+ERROR: test_invalid_budget_rejected_before_data_or_output_access (test_recovery.BudgetBoundaryTests.test_invalid_budget_rejected_before_data_or_output_access) (n=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/code/test_recovery.py", line 10, in test_invalid_budget_rejected_before_data_or_output_access
+    train(None, None, None, None, None, {'iterations':n}, '/should-not-be-written', 'DEFORM_ONLY')
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/optimizer.py", line 24, in train
+    assert all(v['role']=='FIT'for v in views);assert all(set(v)<={'id','video','role','direction_block','K','C','labels','RGB'}for v in views)
+                                        ^^^^^
+TypeError: 'NoneType' object is not iterable
+
+======================================================================
+ERROR: test_invalid_budget_rejected_before_data_or_output_access (test_recovery.BudgetBoundaryTests.test_invalid_budget_rejected_before_data_or_output_access) (n=37)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/code/test_recovery.py", line 10, in test_invalid_budget_rejected_before_data_or_output_access
+    train(None, None, None, None, None, {'iterations':n}, '/should-not-be-written', 'DEFORM_ONLY')
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/optimizer.py", line 24, in train
+    assert all(v['role']=='FIT'for v in views);assert all(set(v)<={'id','video','role','direction_block','K','C','labels','RGB'}for v in views)
+                                        ^^^^^
+TypeError: 'NoneType' object is not iterable
+
+======================================================================
+ERROR: test_invalid_budget_rejected_before_data_or_output_access (test_recovery.BudgetBoundaryTests.test_invalid_budget_rejected_before_data_or_output_access) (n=1.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/code/test_recovery.py", line 10, in test_invalid_budget_rejected_before_data_or_output_access
+    train(None, None, None, None, None, {'iterations':n}, '/should-not-be-written', 'DEFORM_ONLY')
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/optimizer.py", line 24, in train
+    assert all(v['role']=='FIT'for v in views);assert all(set(v)<={'id','video','role','direction_block','K','C','labels','RGB'}for v in views)
+                                        ^^^^^
+TypeError: 'NoneType' object is not iterable
+
+======================================================================
+ERROR: test_invalid_budget_rejected_before_data_or_output_access (test_recovery.BudgetBoundaryTests.test_invalid_budget_rejected_before_data_or_output_access) (n=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001/code/test_recovery.py", line 10, in test_invalid_budget_rejected_before_data_or_output_access
+    train(None, None, None, None, None, {'iterations':n}, '/should-not-be-written', 'DEFORM_ONLY')
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-DOWNSTREAM-001/src/ring_first_3d/mainline/lineage/experiments/TASK-E4-STRUCTURED-BODY-UPDATE-002/code/optimizer.py", line 24, in train
+    assert all(v['role']=='FIT'for v in views);assert all(set(v)<={'id','video','role','direction_block','K','C','labels','RGB'}for v in views)
+                                        ^^^^^
+TypeError: 'NoneType' object is not iterable
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=5)

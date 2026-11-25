@@ -1,0 +1,38 @@
+{
+  "iterations": 3,
+  "inner_steps": 3,
+  "line_search_steps": 8,
+  "graph_nodes": 32,
+  "sarap_lambda": 0.7,
+  "projection": {
+    "max_distance_px": 40.0,
+    "mutual_radius_px": 0.0,
+    "normal_cos_min": 0.5,
+    "max_tangent_px": 8.0
+  },
+  "rotation_lr_rad": 0.002,
+  "translation_lr_mm": 0.01,
+  "sweep_lr_mm": 0.01,
+  "lambda_graph": 0.03,
+  "lambda_sarap": 0.01,
+  "lambda_prior": 0.002,
+  "lambda_centerline": 0.01,
+  "lambda_radius": 0.01,
+  "lambda_attachment": 0.01,
+  "growth_iterations": [
+    12,
+    24
+  ],
+  "growth_min_view_IoU": 0.5,
+  "max_sweep_length_mm": 6.0,
+  "max_sweep_radius_mm": 3.0,
+  "min_growth_region_gain": 0.0001,
+  "growth": {
+    "growth_patch_rings": 2,
+    "growth_max_patch_faces": 80,
+    "growth_min_singular_ratio": 0.02,
+    "growth_max_inconsistency": 0.5,
+    "growth_min_mm": 0.1,
+    "growth_candidates": 2
+  }
+}
