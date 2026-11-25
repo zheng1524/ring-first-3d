@@ -1,42 +1,80 @@
-# M2F5 — Unified Route Composition (executed)
+# M2F7 — HIST-V6 / CURRENT-M2F6 Route Composition (STOP GATE)
 
-**Status: EXECUTED 13-group pipeline.** Human approval `M2F5` accepted the specified existing modules and allowed the two former GAPs to be adapted within the approved scope.
+**Status: ROUTE INVENTORY ONLY. No execution code and no HERO/camera run.**
+**Branch:** `exp/TASK-M2F7-HIST-G01-CAUSAL-001`  
+**Base:** `exp/TASK-M2F6-UNIFIED-OBSERVATION-GEOMETRY-001` @ `1a06461a91790ac1a115444434e176b6dabffb7c`  
+**Serena:** project activated; source symbols and call paths inspected.
 
-## Composition
+## 1. Composition table
 
-| Stage | Route | Entrypoint | I/O | Decision | Evidence |
-|---|---|---|---|---|---|
-| Raw input / sampling | `rf-m2f5-input-fresh@1` + `rf-m2f5-dense-sampling@1` | `tools/m2f5_unified.py::prepare_one/sample_frames` | raw video → 12 uniform + 4 largest-gap real frames → fresh PREPARED | ADAPT (new glue) | `RUN_TRACE/*`, `prepared/*/PREPARED.json` |
-| INIT + DXY 2D clean | `rf-m1-input-39@1`, `rf-m2f5-mask-clean-2d@1` | `prepare_view` + `m2c_prepare_clean.py`/DXY `ring_holes.run` | raw RGB/INIT → RGB/labels/K + clean sidecar | REUSE/ADAPT | 432 clean frames, `MASK_CLEAN_*.csv` |
-| Ring CAD | `rf-native-ring-cad@2` | `native/camera.py::torus_contours` | R5 3.1/0.6; R10 5.6/0.6 | REUSE | all 13 groups |
-| Track + BA + W0 | `rf-frozen-tracks005@1`, `rf-frozen-ba-local-ring-sfm@1`, `rf-w0-camera-current-tracks@3` | `tools/run_w0_camera.py` (patched: always current-run track005) | fresh PREPARED/clean → W0 | REUSE/ADAPT | 26 W0 outputs; all `tracks_source=generated_by_pipeline_current_frames`; no frozen_011 copy |
-| One local admission pool | `rf-m2f5-local-admission@1` | `pipeline_adapter.admission_tiers` | W0 metrics/graph → one tolerant local pool | ADAPT | 208 target rows / 174 ready |
-| Data anchor | `rf-m2f5-current-anchor@1` | `m2f5_unified.build_views` | W0 scene points mean + angular centrality | ADAPT (no historical INITIAL) | 27 current-run traces |
-| T10 target | `rf-m2f5-t10@1` | `selection.select_views(quality_diversity)` | local pool → all selected targets, no top-4 truncation | REUSE of approved algorithm | 208 target rows |
-| T11 | **removed from formal route** | — | control only | removed | no T11 output |
-| T13 support | `rf-m2f5-t13@1` | `coverage.support_pairs` via `select_views(hero_support)`; `validate_t13` | target+pool → 3 supports + geometry gate | REUSE/ADAPT | 174 ready, 522 A2B |
-| HERO | `rf-m2f5-hero-native@1` | `native/hero.py::infer` | 3 supports → native depth/Raw Mesh | REUSE | 174/174 PASS |
-| Standard A→B | `rf-m2f5-a-to-b@1` | `reprojection.render/evaluate` | source Raw Mesh + **B** K/pose | REUSE | 522 pairs |
-| Six-view | `rf-m2f5-six-view@1` | `_mesh_renderer.actual_mesh_image` | Raw Mesh + Ring CAD | REUSE | 174 target sheets + 25 same-video multisurface |
+| Stage | route_id@version | Historical V6 entrypoint | Current M2F6 entrypoint | Inputs → outputs | REUSE/ADAPT/GAP | Smoke test |
+|---|---|---|---|---|---|---|
+| G01-005 raw video | raw identity, no route | `ring_first_v6.../scripts/setup_audit.py` | `tools/m2f5_unified.py --m2f6` (`video_paths`) | 861-frame MP4 → frame identities | REUSE raw | SHA-256 `1d56e789...c86d` |
+| Historical keyframes (22) | `v6-view-selection` (unregistered) | `setup_audit.py` + `metrics/view_selection.json` + `inputs/original16.json` | M2F6 `candidate_frames` / `select_observations` | original16 + 6 appearance/novelty frames → 22 fixed raw indices | ADAPT for identity; RGB/Mask must be **re-decoded raw** | 22 ledger indices; no V4 pixels |
+| INIT + DXY 2D clean | `v6-init-dxy` (unregistered) | `prepare_ring.py` new-frame branch; DXY `INITSegmentation` + `ring_holes` | `prepare_one_m2f6` + DXY `ring_holes.run` | raw RGB → labels/clean masks | **GAP for V6 original16**: V6 copies V5 Ring observations; new6 branch is REUSE | compare re-decoded RGB/Mask SHA |
+| Ring observations / candidates | `v5-ring-diverse` (unregistered) | `prepare_ring.py`; V5 `ring_observations.py`, `ring_candidates_diverse.py`, V4 `adapter.py` | `prepare_one_m2f6` DXY adapter + current Ring candidates | clean labels → Ring candidates | **GAP** for exact V6 original16; V5 intermediates are historical; new6 branch REUSE | source hashes frozen; no raw-only original16 path |
+| `branch_seed_policy.diverse_four` | `v5-diverse-four` (frozen source, unregistered) | V5 `branch_seed_policy.py::diverse_four` | current frozen seed policy (same source family) | seeds → four branch seeds | REUSE | source hash `6ed402...2700`; 4-quadrant test |
+| `track005` | `rf-frozen-tracks005@1` (frozen) | `v6/scripts/track005.py` | `tools/run_w0_camera.py` current track005 | 22 frames RGB/Mask → tracks005/pairs005 | ADAPT path re-decode; core REUSE | compare tracks under re-decoded input |
+| `local_ring_sfm.initialize` | `rf-frozen-ba-local-ring-sfm@1` (frozen source, V6 parameters) | `v6/scripts/local_ring_sfm.py::initialize` | current W0 initialization (`run_w0_camera.py` / local_ring_sfm) | Ring candidates + pairs → initial c2w | REUSE | source hash `673b57...`; version 0/1 |
+| `local_ring_sfm.BA` | `rf-frozen-ba-local-ring-sfm@1` (frozen source, V6 parameters) | `local_ring_sfm.py::BA` | current W0 BA | initial c2w + tracks → BA cameras | REUSE | `config.json` hash `d2f61b...`; 22 cameras |
+| `validate_select` | `v6-validate-select` (unregistered) | `validate_select.py` | M2F6 admission/kept current route | BA cameras + held tracks → VALIDATED/MODEL_PREDICTED | REUSE source; **not registered** | recompute 15/22 as diagnostic, no hardcode |
+| `select_supported_views` | `v6-supported-views` (unregistered) | `select_supported_views.py` | M2F6 T10/T13 | validated cameras + held tracks → supports | REUSE source; **not registered** | supports subset of VALIDATED; no MVS error |
+| Official MVSAnywhere HERO | `surface_fusion_v1/run_mvs_adapter3` (frozen asset source, unregistered) | `run_mvs005.py` / `run_mvs005_supported.py` → `run_mvs_adapter3.py` | `native/hero.py::infer` | 4 real frames + cameras → native depth | REUSE V6 adapter for HIST; current native HERO for CURRENT; **diagnostic only** | checkpoint hash; native shape 352×640 |
+| Raw metric mesh | `v6-depth-mesh` (unregistered) | `v6_common.depth_mesh` / `package_surfaces.py` | native metric mesh | depth+K+c2w → mm mesh | REUSE | no ICP/scale correction |
+| Current M2F6 full route | `rf-m2f6-unified-observation@1` | — | `tools/m2f5_unified.py --m2f6`; `m2f5_hero_eval.py --m2f6` | raw → observations → W0 → T10/T13 → HERO | REUSE, **status `executed_scientific_incomplete`, `formal_usable:false`** | M2F6 G01-005 existing trace |
+| CONTROL A | HIST-V6 cameras + HIST targets/supports | — | — | complete historical baseline | **GAP**: HIST raw-only route blocked | blocked |
+| CONTROL B | M2F6 cameras + HIST targets/supports | — | — | same images, swap camera source | **NOT_COMPARABLE** | empty common selected frame set |
+| CONTROL C | HIST cameras + M2F6 targets/supports | — | — | same cameras, swap view choice | **NOT_COMPARABLE** | empty common selected frame set |
+| CONTROL D | M2F6 cameras + M2F6 targets/supports | — | — | current complete baseline | REUSE (independent only) | M2F6 G01 trace |
 
-## Execution result
+## 2. What is actually shared
 
-| Item | Actual |
-|---|---:|
-| Groups | **13/13** |
-| Raw videos prepared | 27 |
-| W0 selected videos | 26 |
-| W0 hard failures | 1 (`GP_Is_10.5.../005`) |
-| Unique HERO | **174/174 PASS** |
-| A→B pairs | **522** |
-| CAD-HERO rows | 174 |
-| Mask-clean frames | 432 |
-| Same-video multisurface pairs | 544 |
+- **Raw identity:** both start from the same G01-005 MP4, SHA `1d56e7890cf46364d0138007e559d5d77bb2919510b73a5b62e68ce964a9c86d`.
+- **Frame identity:** V6 22 = original16 `[0,57,115,172,229,287,344,401,459,516,573,631,688,745,803,860]` + extra6 `[326,427,611,655,785,834]`.
+- **M2F6 selected:** `[41,62,125,188,230,251,314,377,398,440,503,566,629,692,755,818]`.
+- **Intersection:** **empty**. Consequently no common Target/Support tuple exists; B and C are `NOT_COMPARABLE`, regardless of camera quality.
 
-No historical PREPARED, frozen frame list, historical W0, historical Anchor/INITIAL, or historical HERO/Mesh was used. `run_w0_camera.stage_tracks` no longer copies `frozen_011`; all traces show current-run track generation. S0/S1/S2 formal parallel products and T11 formal route are removed; one tolerant local pool is used.
+## 3. Historical V6 source truth
 
-## Remaining real limitations
+All V6 `freeze_*.json` source and input hashes re-verified in place: `inputs` 28/28, `ring_protocol` 7/7, `tracking_protocol` 3/3, `local_solver_protocol` 5/5, `validation_protocol` 3/3, `supported_view_selection_protocol` 2/2, `MVS_protocol` 5/5, `local_cameras` 5/5, `ring_inputs` 47/47. No source was modified.
 
-- `GP_Is_10.5mm_closed_R10_single_refY/005` has no W0 result; the group still has 8 HERO from video 004.
-- CAD-HERO medians are not uniformly near zero; several groups show large offsets (e.g. `GP_Ip_12.0mm...` −13.4 mm, `GP_IIa_22.0mm...` −14.0 mm). This is reported, not hidden.
-- Raw metric meshes are used directly; no 3D cleaning/fusion is applied.
+V6 keyframe selection is a **pre-fixed protocol**: `setup_audit.py` selects six extra frames by appearance novelty/clarity before camera or MVS, and `metrics/view_selection.json` records `uses_GT_or_reconstruction_error: false`. The original16 identity is inherited from V4; this is acceptable only as a historical frame-identity protocol. Pixels and masks still must be **re-decoded from raw** and hash-checked.
+
+## 4. Hard GAPs
+
+### GAP-1 — No raw-only V6 original16 Ring preparation
+
+`prepare_ring.py` (SHA `4225f0...f271`) does:
+
+```python
+new = not a['original16']
+if new:
+    ... INIT + DXY + Ring fit ...
+else:
+    shutil.copyfile(V5/'observations'/f'{id}.npz', ...)
+    rec = prior[id]       # V5 ring_candidates_diverse.json
+```
+
+Thus the “exact V6” original16 branch consumes historical V5 Ring observations and candidates, not raw-only recomputation. This directly violates the M2F7 RAW-only constraint. There is no registered raw-only V6 entrypoint; the historical source is read-only.
+
+### GAP-2 — V6 route is not registered
+
+No V6 route exists in `docs/registry/routes.yaml`. The V6 source hashes are frozen, but status cannot be promoted to `confirmed/frozen` without human approval. Consequently HIST-V6 is not a legal formal composition yet.
+
+### GAP-3 — No common Target/Support identity
+
+V6 targets/supports are drawn from `{0,57,115,172,229,287,344,401,459,516,573,631,688,745,803,860}` and extra6; M2F6 selected 16 frames are entirely different. Therefore A/B/C cannot share four raw frame identities. Running B/C would require changing M2F6 sampling or fabricating overlaps, both forbidden.
+
+## 5. Stop-gate decision requested
+
+Before any code:
+
+1. Approve or reject a **raw-only V6 original16 Ring recomputation adapter**:
+   - prefer recomputing V5 Ring observations/candidates from raw with the existing V5 source (`ring_observations.py`, `ring_candidates_diverse.py`, V4 `adapter.py`) and re-decoding the original16 raw frames;
+   - alternative: explicitly approve V6’s new-frame Ring branch on all 22 frames, which is **not exact V6**;
+   - do not use V5 historical Ring observations/candidates.
+2. Approve the thin **HIST-V6 run adapter** that imports the frozen V6 source in place (no source copying) and redirects its run root to a new run directory.
+3. Confirm the diagnostic status of the unregistered V6 routes and the already `executed_scientific_incomplete` M2F6 route.
+4. Confirm B/C are `NOT_COMPARABLE`; A/D may be compared only as independent baselines after V6 is raw-reproducible.
+
+No route has been registered or promoted. No V6/M2F6 execution was started.
