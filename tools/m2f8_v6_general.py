@@ -6,6 +6,7 @@ import cv2,numpy as np,pandas as pd
 WS=Path('/home/liu/ring_first_3d_workspace');BASE=WS/'runs/m2f8_v6_general';INP=BASE/'current_inputs';RUN_ID=''
 WORKTREE=Path(__file__).resolve().parents[1]
 if str(WORKTREE) not in sys.path:sys.path.insert(0,str(WORKTREE))
+if str(WORKTREE/'src') not in sys.path:sys.path.insert(0,str(WORKTREE/'src'))
 V6=Path('/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction');V6S=V6/'scripts'
 V5=Path('/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v5_geometry_crossvideo');V5S=V5/'scripts'
 DXY=Path('/home/liu/new-polyp-dxy');GROUPS=['GP_Ip_12.0mm_closed_R10_single_refY','GP_Ip_20.0mm_closed_R10_single_refY','GP_IIa_14.0mm_closed_R10_single_refY','GP_Ip_8.8mm_closed_R5_single_refY','GP_Is_14.0mm_closed_R5_single_refY']
