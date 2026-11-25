@@ -1078,3 +1078,16 @@ m2f8_v6_generalized:
     - strict V6 validation leaves 5/10 videos with zero validated cameras
     - reference/heldout current frames are mapped to V6 protocol IDs only for unchanged scripts; actual raw identity is in REFERENCE_RECEIPT.json
     - no shared-input B/C/D; common input intentionally not frozen
+
+v6_raw_to_hero_001:
+  route_id: rf-v6-raw-to-hero@1
+  status: candidate
+  approval: "TASK-V6-RAW-TO-HERO-MAINLINE-001 explicitly approved by researcher; bounded pilot and all 5 groups / 10 videos"
+  entrypoint: tools/v6_raw_to_hero.py
+  composes: [rf-m2f7-hist-v6@1, rf-m2f9-v6-generalized@1, rf-m2f10-v6-multiview@1]
+  plan: experiments/TASK-V6-RAW-TO-HERO-MAINLINE-001/IMPLEMENTATION_PLAN.md
+  protocol: experiments/TASK-V6-RAW-TO-HERO-MAINLINE-001/config/PROTOCOL.json
+  run_root: /home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001
+  scientific_status: pending_actual_pilot_and_nonregression
+  historical_outputs_as_inputs: false
+  depth_error_gate: false
