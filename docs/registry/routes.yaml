@@ -969,11 +969,26 @@ m2f5_execution:
 m2f6_composition:
   route_id: rf-m2f6-unified-observation@1
   version: 1
-  status: executing
+  status: executed_scientific_incomplete
   formal_usable: false
   human_approval: "M2F6 Composition Approval (2026-11-25)"
   entrypoint: "tools/m2f5_unified.py --m2f6 --stage all; tools/m2f5_hero_eval.py --m2f6; tools/m2f5_summary.py"
-  output_root: runs/m2f6_unified/formal_001
+  output_root: runs/m2f6_unified/formal_002
+  source_sha256:
+    tools/m2f5_unified.py: f53ef60d270ac2adf228059071b09017731be847c6f9ee0ac4b4a5a7d53196c4
+    tools/m2f6_observations.py: 836a2bac376f732e3fd6e62ab46701fcb426f5b3b50c230d4f38ee8ef3ab4d20
+    tools/run_w0_camera.py: 2d81031c777298ecb1bddaeb8abe1ec315b72a6252c6b81daaf63ae3bbf7717e
+    tools/m2f5_hero_eval.py: d4911743e4642008fff182b1fac62909a2399ac792ca6d4256cf3e78e6555761
+    tools/m2f5_summary.py: dcb3176ef4349b4b26136f7e38faa4cf0cf7ca88857840639f75b01dcb3295e9
+  execution_evidence:
+    raw_videos: 10
+    selection_targets: 80
+    ready_hero: 78
+    not_evaluable_targets: 2
+    a_to_b_pairs: 234
+    six_view_comparisons: 10
+    runtime_tuple_receipts: 78
+    science_verdict: "partial; G01/005 outlier, G06 geometry not recovered, Is14/005 split surfaces"
   prior_pending_records: "Historical candidate catalogue only; not formal M2F6 route decisions"
   composes: [rf-native-ring-cad@2, rf-frozen-tracks005@1,
              rf-frozen-ba-local-ring-sfm@1, rf-m2f5-local-admission@1,
