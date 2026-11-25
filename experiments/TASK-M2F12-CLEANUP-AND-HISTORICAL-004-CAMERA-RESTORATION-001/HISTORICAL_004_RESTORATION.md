@@ -56,3 +56,5 @@ IIa14/004的RAW 758与760帧无损像素不同，但JPEG95编码完全相同，�
 补充源码锁R2涵盖176文件，包括早期torus_contours、ring_pose_contact求解器及DXY源码。R1的120文件锁保留；早期pilot只有阶段源码快照，补充锁不能倒称为运行前已锁齐。全部既有科学内核仍只读未改。
 
 R3进一步处理RAW真实重复帧：Ip20/005中同像素出现在578/580/582/584/586/588，原seek呈现时间戳4946.766667ms唯一对应582；Ip8.8/004的655/657同像素，时间戳5657.622222ms唯一对应655。统一使用无损BGR SHA＋解码PTS＋JPEG校验，保留相同像素的全部帧索引。所有先前成功视频用R3重新核验，实际帧号不变。该步骤只修复输入身份，不生成新相机算法或按组放宽阈值。
+
+001参考库核验：`TASK-E4-UNIFIED-RING-FIRST-HERO-DEPTH-001/audit/reference_banks`的G01_004点坐标与描述子均与原019 CROSS_004逐元素一致；其余库只记录身份与OBSERVATIONS血统，未用于本轮RAW。001 pipeline.audit本身将canonical/FIT血统未认证标FAIL；RF_ONLY_V1是从已有候选选择originalRF5DoF来源，不是最早公制相机生成器。详见DIAGNOSTIC_001_BANK_BINDING.json。
