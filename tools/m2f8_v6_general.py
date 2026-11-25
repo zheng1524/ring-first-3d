@@ -148,7 +148,7 @@ def summarize_native_metrics(targets):
   for name,part in targets.groupby(keys,dropna=False,sort=True):
    identity=name if isinstance(name,tuple) else (name,)
    raw=part[part.raw_sha256.notna()];pack=raw[raw.execution_status=='PACKAGED_MESH'];validated=raw[raw.camera_status=='VALIDATED']
-   def median(frame,col):return float(frame[col].median()) if len(frame) and frame[col].notna().any() else float('nan')
+   def median(frame,col):return float(frame[col].median()) if col in frame and len(frame) and frame[col].notna().any() else float('nan')
    row=dict(zip(keys,identity));row.update(target_count=len(part),raw_count=len(raw),
        validated_raw_count=len(validated),packaged_count=len(pack),
        unfiltered_ratio_median=median(raw,'ring_ratio_median'),
@@ -156,7 +156,10 @@ def summarize_native_metrics(targets):
        validated_ratio_median=median(validated,'ring_ratio_median'),
        validated_mae_median_mm=median(validated,'ring_mae_mm'),
        packaged_ratio_median=median(pack,'ring_ratio_median'),
-       packaged_mae_median_mm=median(pack,'ring_mae_mm'))
+       packaged_mae_median_mm=median(pack,'ring_mae_mm'),
+       unfiltered_ratio_mae_median=median(raw,'ring_ratio_mae'),
+       validated_ratio_mae_median=median(validated,'ring_ratio_mae'),
+       packaged_ratio_mae_median=median(pack,'ring_ratio_mae'))
    if 'independent_target_id' in part:
     row.update(independent_target_count=part.independent_target_id.nunique(),
                independent_raw_target_count=raw.independent_target_id.nunique(),
@@ -181,6 +184,81 @@ def native_video_roots(source_root):
   if not root.is_relative_to(source_root.resolve()):raise ValueError('AUDIT_RUN_OUTSIDE_SOURCE '+str(root))
   roots.append(root)
  return roots
+
+def audit_execution_receipts(source_root,destination):
+ """Export the actual RAW→camera→Support funnel and V6 rejection evidence."""
+ counts=[];cameras=[];supports=[];inputs={}
+ for root in native_video_roots(source_root):
+  group,video=root.name.rsplit('_',1)
+  prepared=root.parents[1]/'current_inputs/prepared'/root.name/'PREPARED.json'
+  if not prepared.is_file():continue
+  meta=json.loads(prepared.read_text());candidate_path=Path(meta['candidate_manifest'])
+  candidates=json.loads(candidate_path.read_text());inputs[str(prepared)]=h(prepared);inputs[str(candidate_path)]=h(candidate_path)
+  ledger_path=root/'inputs/ledger005.json';ledger=json.loads(ledger_path.read_text());inputs[str(ledger_path)]=h(ledger_path)
+  validation_path=root/'metrics/local_validation.json'
+  validation=json.loads(validation_path.read_text()) if validation_path.is_file() else None
+  per=next(x['per_frame'] for x in validation['versions'] if x['version']==validation['primary']) if validation else []
+  if validation:inputs[str(validation_path)]=h(validation_path)
+  for i,entry in enumerate(ledger):
+   frame=per[i] if i<len(per) else None
+   cameras.append(dict(group_id=group,video_id=video,attempt=int(root.parents[1].name.removeprefix('attempt')),
+                       index=i,id=entry['id'],raw_frame=entry['raw_frame'],
+                       RGB_sha256=entry['RGB_SHA256'],Mask_sha256=entry['Mask_SHA256'],
+                       K_sha256=entry['K_SHA256'],
+                       validation_status=frame['status'] if frame else 'NOT_EVALUABLE',
+                       rejection_reasons=';'.join(v6_validation_reasons(frame)) if frame else 'NO_VALIDATION',
+                       held_observations=frame['held_observations'] if frame else None,
+                       held_reprojection_MAE_px=frame['held_reprojection']['MAE'] if frame else None,
+                       held_reprojection_p95_px=frame['held_reprojection']['p95'] if frame else None,
+                       ring_held_MAE_px=frame['ring_held_self_contour_px']['MAE'] if frame else None,
+                       ring_held_p95_px=frame['ring_held_self_contour_px']['p95'] if frame else None,
+                       held_positive_fraction=frame['held_positive_fraction'] if frame else None,
+                       version_center_spread_mm=frame['initialization_center_spread_mm'] if frame else None))
+  schedule_path=root/'inputs/SUPPORT_SCHEDULE.json'
+  schedule=json.loads(schedule_path.read_text()) if schedule_path.is_file() else {}
+  cases_path=root/'inputs/MVS_supported_cases.json'
+  cases=json.loads(cases_path.read_text()) if cases_path.is_file() else []
+  run_path=root/'metrics/MVS005_supported_runs.json'
+  runs={x['tag']:x for x in json.loads(run_path.read_text())} if run_path.is_file() else {}
+  if schedule_path.is_file():inputs[str(schedule_path)]=h(schedule_path)
+  if cases_path.is_file():inputs[str(cases_path)]=h(cases_path)
+  represented=set()
+  for case in cases:
+   target=case['reference_id'];represented.add(target);result=runs.get(case['tag'],{})
+   supports.append(dict(group_id=group,video_id=video,target_id=target,
+                        target_raw_frame=ledger[case['reference']]['raw_frame'],tag=case['tag'],
+                        support_attempt=case.get('support_attempt',1),support_ids=';'.join(case['source_ids']),
+                        support_count=len(case['sources']),tuple_status='V6_LEGAL' if len(case['sources'])==3 else 'NOT_EVALUABLE',
+                        inference_status='PASS' if result.get('success') else result.get('failure','NOT_RUN'),
+                        native_sha256=h(root/'raw'/f"{case['tag']}.npz") if (root/'raw'/f"{case['tag']}.npz").is_file() else None))
+  for item in schedule.get('supported_candidates',[]):
+   target=item.get('reference_id')
+   if target and target not in represented:
+    supports.append(dict(group_id=group,video_id=video,target_id=target,
+                         target_raw_frame=item.get('raw_frame'),tag=None,support_attempt=None,
+                         support_ids=None,support_count=item.get('validated_support_candidates',0),
+                         tuple_status='NO_LEGAL_SUPPORT',inference_status=item.get('reason'),native_sha256=None))
+  raw_count=len(list((root/'raw').glob('*.npz')));accepted_path=root/'metrics/ACCEPTED_TARGETS.json'
+  accepted=json.loads(accepted_path.read_text())['count'] if accepted_path.is_file() else 0
+  supplement_path=root/'inputs/SUPPLEMENT_RECEIPT.json'
+  supplement=json.loads(supplement_path.read_text()) if supplement_path.is_file() else None
+  counts.append(dict(group_id=group,video_id=video,attempt=int(root.parents[1].name.removeprefix('attempt')),
+                     raw_total_frames=candidates['frame_count'],candidate_frames=len(candidates['candidates']),
+                     selected_frames=len(meta['views']),ba_cameras=len(per),
+                     VALIDATED=sum(x['status']=='VALIDATED' for x in per),
+                     MODEL_PREDICTED=sum(x['status']=='MODEL_PREDICTED' for x in per),
+                     independent_targets=len(schedule.get('target_order',[])),
+                     legal_supported_targets=len({x['reference_id'] for x in cases}),
+                     legal_support_tuples=len(cases),native_hero_success=raw_count,
+                     accepted_independent_surfaces=accepted,recovery_triggered=supplement is not None,
+                     supplemented_raw_frames=';'.join(map(str,supplement['added_raw_frames'])) if supplement else '',
+                     run_path=str(root)))
+ pd.DataFrame(counts).to_csv(Path(destination)/'PIPELINE_COUNTS.csv',index=False)
+ pd.DataFrame(cameras).to_csv(Path(destination)/'CAMERA_STATUS.csv',index=False)
+ pd.DataFrame(supports).to_csv(Path(destination)/'TARGET_SUPPORT.csv',index=False)
+ write(Path(destination)/'EXECUTION_INPUT_RECEIPT.json',dict(source_root=str(source_root),run_id=RUN_ID,
+       validation_source_sha256=h(V6S/'validate_select.py'),input_sha256=inputs))
+ return counts,cameras,supports
 
 def audit_native_runs(source_root,destination):
  """Read every existing native V6 depth, including unvalidated and unmeshed cases."""
@@ -244,6 +322,8 @@ def audit_native_runs(source_root,destination):
  targets.to_csv(destination/'TARGET_METRICS.csv',index=False);videos.to_csv(destination/'VIDEO_METRICS.csv',index=False);groups.to_csv(destination/'GROUP_METRICS.csv',index=False)
  write(destination/'AUDIT_INPUT_RECEIPT.json',dict(run_id=RUN_ID,source_root=str(source_root),cad_sha256=cad_hashes,
       input_sha256=inputs,code_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=Path(__file__).resolve().parents[1],text=True).strip()))
+ if list(source_root.glob('VIDEO_RESULT_*.json')):
+  audit_execution_receipts(source_root,destination)
  trace(destination,'native_audit','PASS',[destination/'AUDIT_INPUT_RECEIPT.json'],
        [destination/'TARGET_METRICS.csv',destination/'VIDEO_METRICS.csv',destination/'GROUP_METRICS.csv'],
        {'cases':len(targets),'raw':int(targets.raw_sha256.notna().sum())})
@@ -440,6 +520,22 @@ def accepted_independent_targets(root):
    accepted.add(case['reference_id'])
  return accepted
 
+def v6_validation_reasons(frame):
+ """Explain the frozen V6 predicate; never use this diagnostic to admit cameras."""
+ reasons=[]
+ if frame['held_observations']<8:reasons.append('HELD_OBSERVATIONS_LT8')
+ def exceeds(value,limit):return value is None or not np.isfinite(float(value)) or float(value)>limit
+ held=frame['held_reprojection'];ring=frame['ring_held_self_contour_px']
+ if exceeds(held.get('MAE'),3):reasons.append('HELD_REPROJECTION_MAE_GT3')
+ if exceeds(held.get('p95'),6):reasons.append('HELD_REPROJECTION_P95_GT6')
+ positive=frame['held_positive_fraction']
+ if positive is None or not np.isfinite(float(positive)) or float(positive)<.95:
+  reasons.append('HELD_POSITIVE_LT095')
+ if exceeds(ring.get('MAE'),3):reasons.append('RING_HELD_MAE_GT3')
+ if exceeds(ring.get('p95'),6):reasons.append('RING_HELD_P95_GT6')
+ if exceeds(frame['initialization_center_spread_mm'],2):reasons.append('VERSION_CENTER_SPREAD_GT2')
+ return reasons
+
 def select_current_real_supplements(prepared,run,reason,matcher=None):
  """Reuse M2F6's C2/B1R real-frame choice on this attempt's clean RGB graph."""
  from tools.m2f6_observations import choose_real_supplements
@@ -505,6 +601,92 @@ def native_depth_metrics(depth_mm,K_native,c2w_mm,labels,scene):
              polyp_pixels=int(len(points)),polyp_centroid_mm=points.mean(0).tolist() if len(points) else None,
              polyp_bbox_min_mm=points.min(0).tolist() if len(points) else None,
              polyp_bbox_max_mm=points.max(0).tolist() if len(points) else None)
+
+def verified_support_inputs(ledger,poses,index):
+ """Load current clean B observation only after A-to-B prediction is fixed."""
+ row=ledger[index]
+ if h(row['RGB_path'])!=row['RGB_SHA256'] or h(row['Mask_path'])!=row['Mask_SHA256']:
+  raise ValueError('A2B_SUPPORT_INPUT_HASH '+row['id'])
+ rgb=cv2.imread(row['RGB_path'],cv2.IMREAD_COLOR);labels=cv2.imread(row['Mask_path'],0)
+ if rgb is None or labels is None:raise ValueError('A2B_SUPPORT_IMAGE_MISSING '+row['id'])
+ return dict(id=row['id'],RGB=rgb[:,:,::-1].copy(),labels=labels,
+             K=np.asarray(row['K'],float),c2w_mm=np.asarray(poses[index],float),
+             RGB_sha256=row['RGB_SHA256'],Mask_sha256=row['Mask_SHA256'])
+
+def audit_a_to_b(source_root,destination):
+ """Apply the existing A→B render/evaluate functions to every accepted V6 target."""
+ import open3d as o3d,trimesh
+ source_root=Path(source_root).resolve();destination=Path(destination)
+ destination.mkdir(parents=True,exist_ok=False)
+ trace(destination,'a_to_b','STARTED',[],[],{'source_root':str(source_root),
+       'metric_source':'reprojection.py::render/evaluate','selection':'all_accepted_supported_targets'})
+ lineage=WORKTREE/'src/ring_first_3d/mainline/lineage/experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/code'
+ registry=WORKTREE/'src/ring_first_3d/mainline/frozen_registry'
+ sys.path[:0]=[str(x) for x in (lineage,registry,WORKTREE/'src') if str(x) not in sys.path]
+ import reprojection as rp
+ scenes={};cad_hashes={}
+ for kind in ('R5','R10'):
+  path=WS/'runs/m2f5_unified/cad'/f'{kind}.npz';cad_hashes[kind]=h(path)
+  with np.load(path) as z:v=np.asarray(z['V'],np.float32);f=np.asarray(z['F'],np.uint32)
+  scene=o3d.t.geometry.RaycastingScene(nthreads=2)
+  scene.add_triangles(o3d.core.Tensor(v),o3d.core.Tensor(f));scenes[kind]=scene
+ rp.cad_scene=lambda kind:scenes[kind]
+ rows=[];video_rows=[];inputs={}
+ for root in native_video_roots(source_root):
+  group,video=root.name.rsplit('_',1);kind='R5' if '_R5_' in group else 'R10'
+  accepted=accepted_independent_targets(root)
+  cases=json.loads((root/'inputs/MVS_supported_cases.json').read_text())
+  runs={x['tag']:x for x in json.loads((root/'metrics/MVS005_supported_runs.json').read_text())}
+  ledger_path=root/'inputs/ledger005.json';ledger=json.loads(ledger_path.read_text());inputs[str(ledger_path)]=h(ledger_path)
+  primary=json.loads((root/'predictions/local005_primary.json').read_text())['primary_version']
+  cam_path=root/f'predictions/local005_camera_{primary}.npz';inputs[str(cam_path)]=h(cam_path)
+  with np.load(cam_path) as z:poses=np.asarray(z['c2w'])
+  for case in cases:
+   tag=case['tag'];mesh_path=root/'meshes'/f'{tag}_Polyp.ply'
+   if case['reference_id'] not in accepted or not runs.get(tag,{}).get('success') or not mesh_path.is_file():continue
+   inputs[str(mesh_path)]=h(mesh_path)
+   mesh=trimesh.load(mesh_path,process=False)
+   color=np.asarray(mesh.visual.vertex_colors)[:,:3]/255.
+   for index in case['sources']:
+    b=ledger[index];row=dict(group_id=group,video_id=video,tag=tag,
+                             target_id=case['reference_id'],support_id=b['id'],
+                             source_mesh_sha256=inputs[str(mesh_path)],status='PASS')
+    try:
+     pred=rp.render(mesh.vertices,mesh.faces,color,np.asarray(b['K'],float),poses[index],np.eye(4),kind)
+     support=verified_support_inputs(ledger,poses,index)
+     metrics,_,_=rp.evaluate(pred,support['RGB'],support['labels'])
+     row.update(metrics,B_RGB_sha256=support['RGB_sha256'],B_Mask_sha256=support['Mask_sha256'],
+                B_RGB_used_in_prediction=False,B_Mask_used_in_prediction=False,
+                B_depth_used_in_prediction=False)
+    except Exception as error:
+     row.update(status='EXECUTION_ERROR',reason=repr(error),traceback=traceback.format_exc())
+    rows.append(row)
+   trace(destination,'a_to_b_video','PASS',[ledger_path,cam_path,mesh_path],[],
+         {'group_id':group,'video_id':video,'tag':tag,'support_pairs':len(case['sources'])})
+  part=[x for x in rows if x['group_id']==group and x['video_id']==video]
+  passed=[x for x in part if x['status']=='PASS']
+  med=lambda key:float(np.median([x[key] for x in passed if x.get(key) is not None])) if any(x.get(key) is not None for x in passed) else float('nan')
+  video_rows.append(dict(group_id=group,video_id=video,accepted_independent_targets=len(accepted),
+                         pair_count=len(part),pass_count=len(passed),target_coverage_median=med('target_coverage'),
+                         RGB_MAE_0_255_median=med('RGB_MAE_0_255')))
+ pairs=pd.DataFrame(rows);videos=pd.DataFrame(video_rows)
+ targets=(pairs[pairs.status=='PASS'].groupby(['group_id','video_id','target_id'],sort=True)
+          .agg(pair_count=('support_id','count'),target_coverage_median=('target_coverage','median'),
+               RGB_MAE_0_255_median=('RGB_MAE_0_255','median')).reset_index()) if len(pairs) else pd.DataFrame()
+ groups=(videos.groupby('group_id',sort=True).agg(video_count=('video_id','nunique'),
+         accepted_independent_targets=('accepted_independent_targets','sum'),pair_count=('pair_count','sum'),
+         pass_count=('pass_count','sum'),target_coverage_video_median=('target_coverage_median','median'),
+         RGB_MAE_video_median=('RGB_MAE_0_255_median','median')).reset_index())
+ pairs.to_csv(destination/'A_TO_B_PAIRS.csv',index=False)
+ targets.to_csv(destination/'A_TO_B_TARGETS.csv',index=False)
+ videos.to_csv(destination/'A_TO_B_VIDEOS.csv',index=False)
+ groups.to_csv(destination/'A_TO_B_GROUPS.csv',index=False)
+ write(destination/'A_TO_B_INPUT_RECEIPT.json',dict(source_root=str(source_root),cad_sha256=cad_hashes,
+       source_sha256=h(lineage/'reprojection.py'),input_sha256=inputs,run_id=RUN_ID))
+ trace(destination,'a_to_b','PASS',[destination/'A_TO_B_INPUT_RECEIPT.json'],
+       [destination/'A_TO_B_PAIRS.csv',destination/'A_TO_B_VIDEOS.csv',destination/'A_TO_B_GROUPS.csv'],
+       {'pairs':len(pairs),'passed':sum(x['status']=='PASS' for x in rows),'videos':len(videos)})
+ return pairs,videos,groups
 
 def invoke_adapted_v6(module,source,reference_index,heldout_index,expected,top_level=False):
  tree,receipt=adapt_reference_lookups(source,reference_index,heldout_index,expected)
@@ -861,7 +1043,7 @@ def execute_video_from_raw(source,top,base_run_id,code,cfg_sha,stage='all'):
 
 def main():
  global BASE,INP,RUN_ID
- ap=argparse.ArgumentParser();ap.add_argument('--run-id',required=True);ap.add_argument('--groups',default=','.join(GROUPS));ap.add_argument('--videos',default='004,005');ap.add_argument('--limit',type=int,default=0);ap.add_argument('--stage',choices=('prepare','all'),default='all');ap.add_argument('--verify-resume',action='store_true');ap.add_argument('--audit-source');ap.add_argument('--compare-run');ap.add_argument('--compare-tag');a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('--run-id',required=True);ap.add_argument('--groups',default=','.join(GROUPS));ap.add_argument('--videos',default='004,005');ap.add_argument('--limit',type=int,default=0);ap.add_argument('--stage',choices=('prepare','all'),default='all');ap.add_argument('--verify-resume',action='store_true');ap.add_argument('--audit-source');ap.add_argument('--audit-a2b-source');ap.add_argument('--compare-run');ap.add_argument('--compare-tag');a=ap.parse_args()
  import re
  if not re.fullmatch(r'[A-Za-z0-9_-]+',a.run_id):raise SystemExit('INVALID_RUN_ID')
  RUN_ID=a.run_id;BASE=WS/'runs/m2f10_v6_multiview'/RUN_ID;INP=BASE/'current_inputs'
@@ -884,6 +1066,10 @@ def main():
  if a.audit_source:
   targets,videos,groups=audit_native_runs(a.audit_source,BASE/'analysis')
   print('AUDIT_DONE',len(targets),int(targets.raw_sha256.notna().sum()),len(videos),len(groups),flush=True)
+  return
+ if a.audit_a2b_source:
+  pairs,videos,groups=audit_a_to_b(a.audit_a2b_source,BASE/'a2b_analysis')
+  print('A2B_DONE',len(pairs),len(videos),len(groups),flush=True)
   return
  top=BASE;raw_root=WS/'smart_endoscope_20260805 (1)'/'raw';groups=[x for x in a.groups.split(',') if x];wanted={x.zfill(3) for x in a.videos.split(',') if x};attempted=0
  for g in groups:

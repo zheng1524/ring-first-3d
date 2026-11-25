@@ -218,22 +218,23 @@ def test_audit_distinguishes_case_count_from_independent_reference_count():
     rows = pd.DataFrame([
         dict(group_id='G', video_id='004', tag='preview0', independent_target_id='v0',
              raw_sha256='a', execution_status='RAW_HERO', camera_status='MODEL_PREDICTED',
-             ring_ratio_median=1., ring_mae_mm=1.),
+             ring_ratio_median=1., ring_ratio_mae=.01, ring_mae_mm=1.),
         dict(group_id='G', video_id='004', tag='supported0', independent_target_id='v0',
              raw_sha256='b', execution_status='PACKAGED_MESH', camera_status='MODEL_PREDICTED',
-             ring_ratio_median=1., ring_mae_mm=1.),
+             ring_ratio_median=1., ring_ratio_mae=.02, ring_mae_mm=1.),
         dict(group_id='G', video_id='004', tag='supported0_alt2', independent_target_id='v0',
              raw_sha256=None, execution_status='NOT_EVALUABLE', camera_status='MODEL_PREDICTED',
-             ring_ratio_median=np.nan, ring_mae_mm=np.nan),
+             ring_ratio_median=np.nan, ring_ratio_mae=np.nan, ring_mae_mm=np.nan),
         dict(group_id='G', video_id='004', tag='supported1', independent_target_id='v1',
              raw_sha256='c', execution_status='PACKAGED_MESH', camera_status='VALIDATED',
-             ring_ratio_median=1.02, ring_mae_mm=.5),
+             ring_ratio_median=1.02, ring_ratio_mae=.03, ring_mae_mm=.5),
     ])
     videos, groups = route.summarize_native_metrics(rows)
     assert videos.iloc[0]['target_count'] == 4
     assert videos.iloc[0]['independent_target_count'] == 2
     assert videos.iloc[0]['independent_raw_target_count'] == 2
     assert videos.iloc[0]['independent_packaged_count'] == 2
+    assert videos.iloc[0]['unfiltered_ratio_mae_median'] == pytest.approx(.02)
     assert groups.iloc[0]['independent_packaged_count'] == 2
 
 
@@ -242,3 +243,36 @@ def test_zero_legal_support_cases_create_truthful_empty_runner_receipt(tmp_path)
     route.ensure_supported_run_manifest(root, [])
     assert json.loads((root / 'metrics/MVS005_supported_runs.json').read_text()) == []
     assert not (root / 'raw').exists()
+
+
+def test_a_to_b_uses_current_clean_mask_and_rejects_changed_support_file(tmp_path):
+    import cv2
+    rgb = np.full((2, 3, 3), 90, np.uint8)
+    clean = np.array([[0, 1, 2], [0, 1, 2]], np.uint8)
+    rgb_path = tmp_path / 'rgb.png'
+    mask_path = tmp_path / 'clean_mask.png'
+    cv2.imwrite(str(rgb_path), rgb)
+    cv2.imwrite(str(mask_path), clean)
+    ledger = [dict(id='v0', RGB_path=str(rgb_path), Mask_path=str(mask_path),
+                   RGB_SHA256=route.h(rgb_path), Mask_SHA256=route.h(mask_path),
+                   K=np.eye(3).tolist())]
+    poses = np.eye(4)[None]
+    got = route.verified_support_inputs(ledger, poses, 0)
+    assert np.array_equal(got['labels'], clean)
+    assert np.array_equal(got['RGB'], rgb[:, :, ::-1])
+    cv2.imwrite(str(mask_path), np.zeros_like(clean))
+    with pytest.raises(ValueError, match='A2B_SUPPORT_INPUT_HASH'):
+        route.verified_support_inputs(ledger, poses, 0)
+
+
+def test_camera_rejection_reasons_report_original_v6_clauses_only():
+    frame = dict(status='MODEL_PREDICTED', held_observations=7,
+                 held_reprojection={'MAE': 2., 'p95': 5.}, held_positive_fraction=.99,
+                 ring_held_self_contour_px={'MAE': 4., 'p95': 4.},
+                 initialization_center_spread_mm=2.5)
+    assert route.v6_validation_reasons(frame) == [
+        'HELD_OBSERVATIONS_LT8', 'RING_HELD_MAE_GT3', 'VERSION_CENTER_SPREAD_GT2']
+    frame.update(status='VALIDATED', held_observations=10,
+                 ring_held_self_contour_px={'MAE': 1., 'p95': 2.},
+                 initialization_center_spread_mm=.5)
+    assert route.v6_validation_reasons(frame) == []
