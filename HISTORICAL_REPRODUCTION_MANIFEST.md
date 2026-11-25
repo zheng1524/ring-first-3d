@@ -1,4 +1,4 @@
-# M2F7 Historical G01-005 Reproduction Manifest (pre-execution)
+# M2F7 Historical G01-005 Reproduction Manifest (executed diagnostic)
 
 ## Source identity
 
@@ -67,3 +67,15 @@ V6 records 15/22 VALIDATED and 7/22 MODEL_PREDICTED for version 0, and 0/22 for 
 ## Comparability statement
 
 V6 22 raw frames and M2F6 selected 16 raw frames have **zero intersection**. Therefore A/B/C/D paired exchange cannot be performed with the original M2F6 view selection. B and C are `NOT_COMPARABLE`. Any future exchange would require a new approved experiment, not a silent re-sampling of M2F6.
+
+## Executed raw reproduction (2026-11-25)
+
+- Run root: `runs/m2f7_hist_g01/hist_v6/`
+- 22/22 re-decoded RGB and Mask hashes match the historical V6 ledger; **no historical PNG/Mask was used**.
+- V5 source recomputed Ring observations and candidates from the 22 raw frames into a run-local V5 runtime; V6 `prepare_ring` then consumed those raw-recomputed original16 files. No historical V5 observation/candidate file was loaded as a solver input.
+- V6 `track005`, `local_ring_sfm` version 0/1, `validate_select`, `select_supported_views`, four official MVSAnywhere runs and `package_surfaces` completed.
+- Actual result: **8/22 VALIDATED for version 0**, **0/22 for version 1** (historical reference: 15/22 and 0/22).
+- Diagnostic comparison: the 22 RGB/Mask hashes and Ring candidate c2r values match the historical V6 records exactly; track005 finite values/NaN patterns match; version 0/1 initial cameras match within 3e-8/2.5e-8. The BA output and validation center spread still differ, so this is a **partial algorithmic reproduction**, not an exact 15/22 reproduction.
+- Four official HERO cases completed: `005_ref00459`, `005_ref00000`, `005_supported_ref00459`, `005_supported_ref00688`. The supported cases differ from the historical supported set because the newly recomputed camera validation selected a different reference.
+- M2F6 independently rerun at `runs/m2f7_hist_g01/current_m2f6/`: 8 HERO, 21 A→B; no V6 camera/view input.
+- B/C: `NOT_COMPARABLE`; V6 22-frame and M2F6 selected 16-frame intersection is empty.

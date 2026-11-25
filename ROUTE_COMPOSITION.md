@@ -1,6 +1,6 @@
 # M2F7 — HIST-V6 / CURRENT-M2F6 Route Composition (STOP GATE)
 
-**Status: ROUTE INVENTORY ONLY. No execution code and no HERO/camera run.**
+**Status: EXECUTED diagnostic reproduction. HIST-V6 is a partial reproduction; CURRENT-M2F6 independently rerun; B/C NOT_COMPARABLE.**
 **Branch:** `exp/TASK-M2F7-HIST-G01-CAUSAL-001`  
 **Base:** `exp/TASK-M2F6-UNIFIED-OBSERVATION-GEOMETRY-001` @ `1a06461a91790ac1a115444434e176b6dabffb7c`  
 **Serena:** project activated; source symbols and call paths inspected.
@@ -42,7 +42,7 @@ V6 keyframe selection is a **pre-fixed protocol**: `setup_audit.py` selects six 
 
 ## 4. Hard GAPs
 
-### GAP-1 — No raw-only V6 original16 Ring preparation
+### GAP-1 (resolved by approval) — raw-only V6 original16 Ring preparation
 
 `prepare_ring.py` (SHA `4225f0...f271`) does:
 
@@ -57,7 +57,7 @@ else:
 
 Thus the “exact V6” original16 branch consumes historical V5 Ring observations and candidates, not raw-only recomputation. This directly violates the M2F7 RAW-only constraint. There is no registered raw-only V6 entrypoint; the historical source is read-only.
 
-### GAP-2 — V6 route is not registered
+### GAP-2 (registered diagnostic candidate) — V6 route
 
 No V6 route exists in `docs/registry/routes.yaml`. The V6 source hashes are frozen, but status cannot be promoted to `confirmed/frozen` without human approval. Consequently HIST-V6 is not a legal formal composition yet.
 
@@ -77,4 +77,17 @@ Before any code:
 3. Confirm the diagnostic status of the unregistered V6 routes and the already `executed_scientific_incomplete` M2F6 route.
 4. Confirm B/C are `NOT_COMPARABLE`; A/D may be compared only as independent baselines after V6 is raw-reproducible.
 
-No route has been registered or promoted. No V6/M2F6 execution was started.
+The approved raw V5 Ring preparation was executed: 22/22 RGB/Mask hashes match V6; V5 candidates and V6 tracks/initial cameras match; version-0 validation is 8/22, not historical 15/22. V6 is registered as candidate/diagnostic only; no formal promotion. B/C remain NOT_COMPARABLE.
+
+## 5. Actual execution result (2026-11-25)
+
+| Experiment | Cameras / validation | HERO | Outcome |
+|---|---|---:|---|
+| HIST-V6 | 22; version0 **8/22 VALIDATED**, version1 **0/22** | 4 | `PARTIAL_REPRODUCTION`; historical reference 15/22 not reproduced |
+| CURRENT-M2F6 | independent fresh run; 16 prepared, 8 HERO | 8 | `INDEPENDENT_RERUN`; 21 A→B, coverage median 0.918 |
+| CONTROL B | M2F6 cameras + V6 views | — | `NOT_COMPARABLE` (empty frame intersection) |
+| CONTROL C | V6 cameras + M2F6 views | — | `NOT_COMPARABLE` (empty frame intersection) |
+
+Reproduction checks: 22/22 raw RGB/Mask hashes match; V5 raw Ring candidates exact; V6 track005 finite values and NaN patterns exact; initial cameras exact within ~3e-8; BA/validation drift remains. No historical intermediate was used.
+
+No historical module is promoted to the formal production route by this experiment. The registered HIST-V6 record is candidate/diagnostic only.

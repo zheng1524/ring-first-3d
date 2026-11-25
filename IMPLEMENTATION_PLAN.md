@@ -1,6 +1,6 @@
 # M2F7 HIST-V6 / CURRENT-M2F6 Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: use `executing-plans` only after the human approves the route composition and resolves GAP-1. This plan is **not authorized to execute** at the current stop gate.
+> **For agentic workers:** This plan was executed after M2F7 approval. HIST-V6 is a partial reproduction; B/C were not run.
 
 **Goal:** Faithfully reproduce HIST-V6 for G01-005 from raw video, independently reproduce CURRENT-M2F6, and perform only identity-valid camera/view exchanges.
 
@@ -100,6 +100,6 @@
 - [ ] **Step 2:** Report commit SHA, run roots, config/source hashes, exact failures and visual paths.
 - [ ] **Step 3:** If any new core algorithm or unregistered route is required, stop and request human decision.
 
-## Current stop
+## Execution status
 
-No task above is executed. The composition is blocked by GAP-1 (V6 original16 raw-only Ring preparation) and by the empty V6/M2F6 Target/Support intersection. Awaiting human approval.
+HIST-V6 and CURRENT-M2F6 were executed after human approval. V6 reproduced 8/22 version-0 validated (not historical 15/22); B/C remain NOT_COMPARABLE. See FINAL_REPORT.md. No further control run is authorized.

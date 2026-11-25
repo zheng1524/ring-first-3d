@@ -1008,3 +1008,45 @@ m2f6_composition:
     - {stage: a_to_b, route: rf-m2f5-a-to-b@1, entrypoint: "reprojection.py::render/evaluate", contract: "raw mesh + current clean A/B + B camera -> metrics", status: confirmed_reuse, smoke_test: tests/test_m2f6_pipeline.py}
     - {stage: cad_and_multisurface, route: rf-m2f5-geometry-summary@1, entrypoint: "tools/m2f5_summary.py", contract: "raw native outputs + correct CAD -> per target and pair metrics", status: confirmed_reuse, smoke_test: "formal metric CSV identity check"}
     - {stage: six_view, route: rf-m2f5-six-view@1, entrypoint: "tools/m2f5_hero_eval.py::render_existing_video", contract: "all real target surfaces + per-group CAD -> 3 camera + XYZ metric panels", status: confirmed_reuse, smoke_test: tests/test_m2f6_pipeline.py}
+
+# ---------------------------------------------------------------------------
+# M2F7 HIST-V6 diagnostic reproduction (approved; diagnostic only)
+# ---------------------------------------------------------------------------
+m2f7_hist_v6:
+  route_id: rf-m2f7-hist-v6@1
+  version: 1
+  status: candidate
+  diagnostic_only: true
+  formal_usable: false
+  human_approval: "M2F7 direct approval (2026-11-25): V5 raw Ring merge, thin run adapter, B/C not comparable, diagnostic registration"
+  entrypoint: tools/m2f7_hist_v6.py
+  source_sha256: eedc38431a1b8004f8324f7bab78fddcda43b3c4ecbd9834858a3341b22856ba
+  run_root: runs/m2f7_hist_g01/hist_v6
+  composes:
+    - v5-ring-observations-raw@1
+    - v5-ring-candidates-raw@1
+    - v6-raw-input@1
+    - v6-prepare-ring@1
+    - rf-frozen-tracks005@1
+    - rf-frozen-ba-local-ring-sfm@1
+    - v6-validate-select@1
+    - v6-supported-views@1
+    - surface_fusion_v1/run_mvs_adapter3
+    - v6-depth-mesh@1
+  input_provenance:
+    raw_video_sha256: 1d56e7890cf46364d0138007e559d5d77bb2919510b73a5b62e68ce964a9c86d
+    frame_count: 22
+    rgb_mask_redecoded: true
+    rgb_mask_hashes_match_v6_ledger: 22
+    original16_ring_source: V5 raw recomputation, no historical observations
+  execution_evidence:
+    cameras: 22
+    validated_v0: 8
+    validated_v1: 0
+    historical_reference_v0: 15
+    hero_runs: 4
+    mismatch: "BA/validation center spread differs from historical 15/22; inputs, Ring candidates, tracks, initial cams are exact/within 3e-8"
+  known_limitations:
+    - historical 15/22 not reproduced (8/22)
+    - B/C NOT_COMPARABLE due empty frame intersection
+    - diagnostic only; not a formal production route
