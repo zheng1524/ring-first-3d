@@ -1,14 +1,17 @@
-# M2F8 Metric Depth Attribution — NOT EXECUTED
+# M2F9 Metric Depth Attribution
 
-**Status:** `DEFERRED_BY_HUMAN_INSTRUCTION`
+**Status:** `PARTIAL_PIPELINE_EVIDENCE_ONLY`
 
-The human instructed not to freeze the shared RAW input in this phase. Therefore A/B/C/D and HERO-adapter equivalence were not run, and no camera/support/adapter attribution is claimed.
+M2F9 completed the corrected 10-video V6-GENERALIZED run and adapter equivalence on the G01-005 shared tuple. It did **not** run the A/B/C/D camera/support causal exchange; those remain M2F8-level gaps.
 
-Prerequisites before execution:
+Confirmed by actual execution:
 
-1. freeze one common Target + three Supports and its RGB/Mask/K identity;
-2. run the V6 and native HERO adapters on identical four-frame inputs;
-3. recover V6 and M2F6 cameras independently from that common input;
-4. fill A/B/C/D only when each four-camera tuple is legal.
+- adapter equivalence on the tested G01 tuple: 225,280 pixels, depth max difference 0.0 mm, exact fraction 1.0;
+- 26 native HERO outputs across 10 videos under unfiltered native-depth audit;
+- only 2 targets from VALIDATED cameras and 8 packaged meshes total.
 
-No result is inferred from the independent V6-GENERALIZED and M2F6 baselines.
+Not established:
+
+- camera vs Support causal contribution;
+- body accuracy beyond Ring-region depth;
+- general superiority of V6 over M2F6.
