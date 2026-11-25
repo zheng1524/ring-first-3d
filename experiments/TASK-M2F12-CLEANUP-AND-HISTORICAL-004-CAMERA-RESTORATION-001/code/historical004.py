@@ -25,17 +25,10 @@ def prep(R,c,cfg):
  exec(compile(ast.fix_missing_locations(t),str(DECODE),'exec'),ns)
  c.freeze=original_freeze
  # Verify exact JPEG payload identity against sequential raw decode; preserve old requested IDs.
- rows=json.loads((R/'inputs/manifest.json').read_text());wanted={r['frame_index']+d for r in rows for d in range(-4,5)};actual={};cap=cv2.VideoCapture(cfg['video']);limit=max(wanted)
- targets={sha(R/f'inputs/images/{i:03d}.jpg'):i for i in range(16)}
- for frame in range(limit+1):
-  ok,bgr=cap.read()
-  if not ok:break
-  if frame not in wanted:continue
-  ok,enc=cv2.imencode('.jpg',bgr,[cv2.IMWRITE_JPEG_QUALITY,95]);digest=__import__('hashlib').sha256(enc.tobytes()).hexdigest()
-  if digest in targets:actual.setdefault(targets[digest],[]).append(frame)
- cap.release()
- if len(actual)!=16 or any(len(v)!=1 for v in actual.values()):raise ValueError('RAW_FRAME_IDENTITY_NOT_UNIQUE:'+str(actual))
- for i,row in enumerate(rows):row['requested_seek_frame']=row['frame_index'];row['frame_index']=actual[i][0];row['identity']='EXACT_SEQUENTIAL_RAW_JPEG95_SHA256'
+ from frame_identity import bind_frames
+ rows=json.loads((R/'inputs/manifest.json').read_text());identities=bind_frames(cfg['video'],[r['frame_index']for r in rows],[sha(R/f'inputs/images/{i:03d}.jpg')for i in range(16)])
+ for row,identity in zip(rows,identities):row.update(identity)
+ c.save('preparation/LOSSLESS_FRAME_IDENTITY.json',identities)
  c.save('inputs/manifest.json',rows);cfg['raw_frames']=[r['frame_index']for r in rows];c.save('config.json',cfg)
  # The V3 tracker reads a provenance record under preparation/reuse.json.
  provenance=json.loads((R/'preparation/segmentation_provenance.json').read_text());c.save('preparation/reuse.json',dict(segmentation_provenance=provenance,raw_recomputed=True))

@@ -8,7 +8,8 @@ rows=json.loads((HERE.parent/'evidence/INPUT_REGISTRY.json').read_text())
 BASE=W/'runs/m2f12_historical004/H004_RAW_BASELINE'
 first=BASE/'GP_Ip_12.0mm_closed_R10_single_refY_004'
 assert json.loads((first/'STAGE_recover.json').read_text())['status']=='COMPLETED'
-commands=[]
+receipt=BASE.parent/'BATCH_COMMANDS.json'
+commands=json.loads(receipt.read_text())if receipt.exists()else[]
 for row in rows:
  case=row['case'];R=BASE/case
  if R==first:continue
