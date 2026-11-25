@@ -1,6 +1,6 @@
 # M2F8 — V6 Generalization & Metric Depth Attribution (Phase 1 / STOP)
 
-**Status: STOPPED AT COMPOSE-ROUTE GATE. No new V6-GENERALIZED execution, no HERO, no B/C/D run.**
+**Status: PARTIAL EXECUTION COMPLETE. V6-GENERALIZED ran 10/10 videos; B/C/D were deferred because the common input was not frozen.**
 **Branch:** `exp/TASK-M2F8-V6-GENERALIZATION-001`  
 **Base:** `exp/TASK-M2F7-HIST-G01-CAUSAL-001` @ `5c061e0b0d511f07215cf0c4b128fc3385be5906`  
 **Serena:** project activated; source and call paths inspected.
@@ -12,7 +12,7 @@
 | Raw video + common sampling | M2F6 `rf-m2f6-2d-observation@1` (approved glue) | V6 fixed 22 ledger (M2F7 adapter) | `tools/m2f5_unified.py --m2f6::prepare_one_m2f6` | raw → candidate RGB/Mask/K | **ADAPT**: remove G01/22-frame/path constants; use one common input set | same raw frames; RGB/Mask hashes |
 | INIT + DXY clean | M2F6 `rf-m2f6-2d-observation@1` | V6 `prepare_ring.py` new-frame branch | `m2f5_unified.py::prepare_one_m2f6` | raw RGB → labels/clean | REUSE DXY; ADAPT path | 22/22 hash check on G01; group-agnostic |
 | Ring observations / candidates R10 | V5 `ring_observations.py`, `ring_candidates_diverse.py`; V6 `prepare_ring.py` | V6 `prepare_ring.py` | M2F6 current Ring/CAD | clean labels → candidates | **ADAPT** for arbitrary frames | candidate count/held stats |
-| Ring candidates R5 | **none in V6** | V6/V5 hardcoded `R=5.6` | M2F6 `rf-native-ring-cad@2` (R5) | R5 labels → candidates | **GAP** | cannot compose without changing V6 Ring core |
+| Ring candidates R5 | V6 formula parameterized by approved adapter | V6/V5 `R=5.6` → `R=3.1` via one adapter | M2F6 R5 CAD | R5 labels → candidates | **ADAPT (executed)** | R5 CAD 3.1/0.6; no threshold change |
 | `branch_seed_policy.diverse_four` | V5 `branch_seed_policy.py` (frozen source) | V5 source | current frozen seed policy | seeds → 4 branches | REUSE | four-quadrant test |
 | `track005` | `rf-frozen-tracks005@1` | V6 `track005.py` | `run_w0_camera.py` current tracks | current frames → tracks/pairs | REUSE core; ADAPT path | finite/NaN identity |
 | `local_ring_sfm.initialize/BA` | `rf-frozen-ba-local-ring-sfm@1` | V6 `local_ring_sfm.py` | M2F6 W0 BA | Ring+tracks → c2w | REUSE core; ADAPT reference selection | version 0/1 receipts |
@@ -70,9 +70,9 @@ M2F6 already has a correct R5 route (`rf-native-ring-cad@2`), but inserting it i
 
 No substitution of R5 frames with R10 CAD is allowed.
 
-## 6. Stop condition
+## 6. Execution status
 
-No `V6_GENERALIZATION_REPORT.md`, no 10-video comparison, and no shared-input HERO are produced in this phase. A human decision on the R5 V6 Ring adapter is required before implementation. No route is registered or promoted.
+R5 was approved and parameterized once (3.1/0.6); V6-GENERALIZED ran 10/10 videos. Five videos have validated cameras, 13 HERO surfaces remain, and seven videos correctly fail support with unchanged thresholds. R10/R5 results are in `V6_GENERALIZATION_REPORT.md`. B/C/D remain unexecuted because the common RAW input was not frozen. No route is promoted to formal; the generalized route is candidate/diagnostic only.
 
 ## 7. Executed generalized result (phase 2)
 
