@@ -198,3 +198,47 @@ def test_real_supplement_selection_uses_current_candidate_graph_and_four_frame_b
     assert set(frames) <= {60, 80, 100, 120, 140}
     assert receipt['added_raw_frames'] == frames
     assert calls and all(a not in {rows[0]['view'], rows[1]['view']} for a, _ in calls)
+
+
+def test_final_audit_uses_only_the_complete_recovery_attempt(tmp_path):
+    top = tmp_path / 'formal'
+    old = top / 'attempt0/v6/G_004'
+    new = top / 'attempt1/v6/G_004'
+    old.mkdir(parents=True)
+    new.mkdir(parents=True)
+    (top / 'VIDEO_RESULT_G_004.json').write_text(json.dumps({
+        'final_attempt': 1, 'attempts': [
+            {'attempt': 0, 'run_path': str(old), 'accepted': 1},
+            {'attempt': 1, 'run_path': str(new), 'accepted': 3}]}))
+    assert route.native_video_roots(top) == [new]
+
+
+def test_audit_distinguishes_case_count_from_independent_reference_count():
+    import pandas as pd
+    rows = pd.DataFrame([
+        dict(group_id='G', video_id='004', tag='preview0', independent_target_id='v0',
+             raw_sha256='a', execution_status='RAW_HERO', camera_status='MODEL_PREDICTED',
+             ring_ratio_median=1., ring_mae_mm=1.),
+        dict(group_id='G', video_id='004', tag='supported0', independent_target_id='v0',
+             raw_sha256='b', execution_status='PACKAGED_MESH', camera_status='MODEL_PREDICTED',
+             ring_ratio_median=1., ring_mae_mm=1.),
+        dict(group_id='G', video_id='004', tag='supported0_alt2', independent_target_id='v0',
+             raw_sha256=None, execution_status='NOT_EVALUABLE', camera_status='MODEL_PREDICTED',
+             ring_ratio_median=np.nan, ring_mae_mm=np.nan),
+        dict(group_id='G', video_id='004', tag='supported1', independent_target_id='v1',
+             raw_sha256='c', execution_status='PACKAGED_MESH', camera_status='VALIDATED',
+             ring_ratio_median=1.02, ring_mae_mm=.5),
+    ])
+    videos, groups = route.summarize_native_metrics(rows)
+    assert videos.iloc[0]['target_count'] == 4
+    assert videos.iloc[0]['independent_target_count'] == 2
+    assert videos.iloc[0]['independent_raw_target_count'] == 2
+    assert videos.iloc[0]['independent_packaged_count'] == 2
+    assert groups.iloc[0]['independent_packaged_count'] == 2
+
+
+def test_zero_legal_support_cases_create_truthful_empty_runner_receipt(tmp_path):
+    root = tmp_path / 'video'
+    route.ensure_supported_run_manifest(root, [])
+    assert json.loads((root / 'metrics/MVS005_supported_runs.json').read_text()) == []
+    assert not (root / 'raw').exists()

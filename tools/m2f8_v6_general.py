@@ -157,10 +157,30 @@ def summarize_native_metrics(targets):
        validated_mae_median_mm=median(validated,'ring_mae_mm'),
        packaged_ratio_median=median(pack,'ring_ratio_median'),
        packaged_mae_median_mm=median(pack,'ring_mae_mm'))
+   if 'independent_target_id' in part:
+    row.update(independent_target_count=part.independent_target_id.nunique(),
+               independent_raw_target_count=raw.independent_target_id.nunique(),
+               independent_packaged_count=pack.independent_target_id.nunique())
    if keys==['group_id']:row['video_count']=part.video_id.nunique()
    result.append(row)
   return pd.DataFrame(result)
  return aggregate(['group_id','video_id']),aggregate(['group_id'])
+
+def native_video_roots(source_root):
+ """Audit one final BA/HERO version per video, never a mixture of attempts."""
+ source_root=Path(source_root)
+ result_files=sorted(source_root.glob('VIDEO_RESULT_*.json'))
+ if not result_files:return sorted(p for p in source_root.glob('*_*') if p.is_dir())
+ roots=[]
+ for result_file in result_files:
+  result=json.loads(result_file.read_text());final=result.get('final_attempt')
+  if final is None:continue
+  matches=[x for x in result['attempts'] if x['attempt']==final]
+  if len(matches)!=1:raise ValueError('AUDIT_FINAL_ATTEMPT_CONTRACT '+str(result_file))
+  root=Path(matches[0]['run_path']).resolve()
+  if not root.is_relative_to(source_root.resolve()):raise ValueError('AUDIT_RUN_OUTSIDE_SOURCE '+str(root))
+  roots.append(root)
+ return roots
 
 def audit_native_runs(source_root,destination):
  """Read every existing native V6 depth, including unvalidated and unmeshed cases."""
@@ -173,7 +193,7 @@ def audit_native_runs(source_root,destination):
   with np.load(cad) as a:vertices=np.asarray(a['V'],np.float32);faces=np.asarray(a['F'],np.uint32)
   scene=o3d.t.geometry.RaycastingScene(nthreads=2);scene.add_triangles(o3d.core.Tensor(vertices),o3d.core.Tensor(faces));scenes[kind]=scene
  rows=[];inputs={}
- for root in sorted(source_root.glob('*_*')):
+ for root in native_video_roots(source_root):
   ledger_path=root/'inputs/ledger005.json'
   if not ledger_path.is_file():continue
   inputs[str(ledger_path)]=h(ledger_path);ledger=json.loads(ledger_path.read_text())
@@ -189,8 +209,17 @@ def audit_native_runs(source_root,destination):
       inputs[str(case_path)]=h(case_path)
       for case in json.loads(case_path.read_text()):camera_status[case['tag']]=per[case['reference']]['status']
   statuses=classify_outputs(root,camera_status)
+  cases_by_tag={}
+  for case_name in ('MVS_cases.json','MVS_supported_cases.json'):
+   case_path=root/'inputs'/case_name
+   if case_path.is_file():
+    for case in json.loads(case_path.read_text()):
+     cases_by_tag[case['tag']]=(case,'supported' if case_name.startswith('MVS_supported') else 'preview')
   for tag,item in statuses.items():
+   case,kind_case=cases_by_tag[tag]
    row=dict(group_id=group,video_id=video,ring=kind,tag=tag,
+            independent_target_id=case['reference_id'],case_kind=kind_case,
+            support_attempt=case.get('support_attempt',1),source_count=len(case['sources']),
             execution_status=item['status'],camera_status=item['camera_status'],reason=item['reason'],
             raw_sha256=None,raw_frame=None,ring_ratio_median=float('nan'),ring_mae_mm=float('nan'))
    native=root/'raw'/f'{tag}.npz'
@@ -631,6 +660,10 @@ def hero_input_receipts(run,rows,cases_path,only_tag=None):
   trace(run,'hero_input','VERIFIED',[cases_path,run/f'predictions/local005_camera_{primary}.npz']+[a['RGB_path'] for a in [rows[i] for i in [c['reference']]+c['sources']]]+[a['Mask_path'] for a in [rows[i] for i in [c['reference']]+c['sources']]],
         [path],{'target':tag,'tuple_sha256':receipt['tuple_sha256']})
 
+def ensure_supported_run_manifest(run,cases):
+ """Frozen V6 freezes this file even when its supported case loop is empty."""
+ if not cases:write(Path(run)/'metrics/MVS005_supported_runs.json',[])
+
 def run_v6(run,rows,mods,ring_records,state):
  for mod in (mods['track'],mods['lba']):
   mod.R=run;mod.V5=run/'v5raw';mod.REPO=Path('/home/liu/polyp_research')
@@ -702,6 +735,7 @@ def run_v6(run,rows,mods,ring_records,state):
   if name=='hero_raw':hero_input_receipts(run,rows,case_path)
   try:
    if name=='hero_supported':
+    ensure_supported_run_manifest(run,cases)
     tree,receipt=adapt_supported_hero_schedule(V6S/'run_mvs005_supported.py')
     write(run/'inputs/SUPPORTED_HERO_ADAPTER.json',receipt)
     main_node=next(x for x in tree.body if isinstance(x,ast.FunctionDef) and x.name=='main')
