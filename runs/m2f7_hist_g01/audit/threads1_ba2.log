@@ -1,0 +1,35 @@
+LOCAL_INIT 0 connected 22 alpha cost 1.7395515474259586
+POINTS_INIT 0 500
+Traceback (most recent call last):
+  File "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py", line 96, in main
+    po,ini=initialize(ring,tr,edges,ref,v);np.savez_compressed(R/f'predictions/local005_initial_{v}.npz',c2w=po,K=K);print('LOCAL_INIT',v,'connected',len(po),'alpha cost',ini['alpha_training_loss'],flush=True);X,ids,support=triangulate_training(po,tr);print('POINTS_INIT',v,len(X),flush=True);cur,P,ba=BA(po,X,ids,support,tr,ref);np.savez_compressed(R/f'predictions/local005_camera_{v}.npz',c2w=cur,K=K,points=P,point_track_ids=ids,reference=ref,ids=tr['ids'],units='mm',status='MODEL_PREDICTED');rec.update(success=True,initialization=ini,BA=ba);print('LOCAL_BA',v,ba['training_soft_l1_objective'],'points',len(P),'nfev',ba['nfev'],flush=True)
+                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py", line 64, in BA
+    n=len(poses);others=[i for i in range(n) if i!=ref];lookup={i:j for j,i in enumerate(others)};nc=6*len(others);x0=np.r_[np.concatenate([vec(poses[i]) for i in others]),X.ravel()];ob=[obs(a['id']) for a in ledger()];pi=[];fi=[];uv=[]
+                                                                                                                                                                                           ^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/v6_common.py", line 26, in obs
+    def obs(id):return dict(np.load(R/f'observations/{id}_ring.npz'))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/liu/ring_first_3d_workspace/runs/m2f7_hist_g01/audit/threads1/observations/v005_00000_ring.npz'
+
+LOCAL_INIT 1 connected 22 alpha cost 4.534769431476952
+POINTS_INIT 1 351
+Traceback (most recent call last):
+  File "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py", line 96, in main
+    po,ini=initialize(ring,tr,edges,ref,v);np.savez_compressed(R/f'predictions/local005_initial_{v}.npz',c2w=po,K=K);print('LOCAL_INIT',v,'connected',len(po),'alpha cost',ini['alpha_training_loss'],flush=True);X,ids,support=triangulate_training(po,tr);print('POINTS_INIT',v,len(X),flush=True);cur,P,ba=BA(po,X,ids,support,tr,ref);np.savez_compressed(R/f'predictions/local005_camera_{v}.npz',c2w=cur,K=K,points=P,point_track_ids=ids,reference=ref,ids=tr['ids'],units='mm',status='MODEL_PREDICTED');rec.update(success=True,initialization=ini,BA=ba);print('LOCAL_BA',v,ba['training_soft_l1_objective'],'points',len(P),'nfev',ba['nfev'],flush=True)
+                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py", line 64, in BA
+    n=len(poses);others=[i for i in range(n) if i!=ref];lookup={i:j for j,i in enumerate(others)};nc=6*len(others);x0=np.r_[np.concatenate([vec(poses[i]) for i in others]),X.ravel()];ob=[obs(a['id']) for a in ledger()];pi=[];fi=[];uv=[]
+                                                                                                                                                                                           ^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/v6_common.py", line 26, in obs
+    def obs(id):return dict(np.load(R/f'observations/{id}_ring.npz'))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/liu/ring_first_3d_workspace/runs/m2f7_hist_g01/audit/threads1/observations/v005_00000_ring.npz'
+
+LOCAL005_FINISHED

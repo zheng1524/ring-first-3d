@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/home/liu/ring_first_3d_workspace/tools/m2f7_audit_stage.py", line 51, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/liu/ring_first_3d_workspace/tools/m2f7_audit_stage.py", line 36, in main
+    np.savez_compressed(out/f'tri_v{v}.npz',X=X,tids=tids,support=np.array([np.asarray(s) for s in support],dtype=object),allow_pickle=True)
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 753, in savez_compressed
+    _savez(file, args, kwds, True, allow_pickle=allow_pickle)
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 779, in _savez
+    zipf = zipfile_factory(file, mode="w", compression=compression)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 112, in zipfile_factory
+    return zipfile.ZipFile(file, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/zipfile/__init__.py", line 1352, in __init__
+    self.fp = io.open(file, filemode)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'runs/m2f7_hist_g01/audit/hist/tri_v0.npz'

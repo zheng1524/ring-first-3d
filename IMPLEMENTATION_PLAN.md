@@ -102,4 +102,4 @@
 
 ## Execution status
 
-HIST-V6 and CURRENT-M2F6 were executed after human approval. V6 reproduced 8/22 version-0 validated (not historical 15/22); B/C remain NOT_COMPARABLE. See FINAL_REPORT.md. No further control run is authorized.
+HIST-V6 and CURRENT-M2F6 were executed after human approval. V6 reproduced 8/22 version-0 validated (not historical 15/22); B/C remain NOT_COMPARABLE. BA stage audit and V6 HERO geometry are complete; long-run contract is RUN_RESUME_CONTRACT.md. See FINAL_REPORT.md. No further control run is authorized.

@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<stdin>", line 10, in <module>
+  File "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py", line 92, in main
+    verify('tracks');freeze('local_solver_protocol',[Path(__file__),R/'scripts/v6_common.py',R/'config.json',V5/'scripts/background_registration.py',V5/'scripts/branch_seed_policy.py']);tr=np.load(R/'observations/tracks005.npz');pack=np.load(R/'observations/pairs005.npz');ring=load('predictions/ring_candidates005.json');edges=pair_data(tr,pack);ref=next(i for i,a in enumerate(ledger()) if a['raw_frame']==459);out=[]
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/v6_common.py", line 20, in freeze
+    def freeze(n,ps):save('metrics/freeze_'+n+'.json',dict(utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),files={str(Path(p).resolve()):sha(p) for p in sorted(set(map(Path,ps)))},GT_selection=False,historical_measurement_fallback=0))
+                                                                                                                                                      ^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/experiments/surface_fusion_v1/scripts/common.py", line 8, in sha
+    with Path(p).open('rb') as f:
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/liu/ring_first_3d_workspace/runs/m2f7_hist_g01/audit/hist_v6/v5raw/scripts/background_registration.py'

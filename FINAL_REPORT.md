@@ -57,3 +57,13 @@ A（V6）与 D（M2F6）是两个独立基线，不是同帧配对实验。历�
 - `RUN_TRACE/`
 - `VISUALIZATION_INDEX.html`
 - `FINAL_REPORT.md`
+
+## V6 HERO metric-depth audit (read directly from this run)
+
+The four new RAW V6 surfaces were retained and evaluated with the correct R10 CAD. Ring-pixel HERO/CAD depth ratios are **0.9996–1.0139** (ratio MAE 0.0267–0.0301); residual MAE is **0.909–1.064 mm**, p95 **2.43–4.88 mm**. Historical area 132.559/112.769/112.638 mm² compares with current 132.484/112.569/115.724 mm²; the fourth supported surface has no historical area comparison. Six views and surface-distance tables are in `runs/m2f7_hist_g01/visualization/v6_six_views/`, `V6_HERO_GEOMETRY.csv`, and `V6_SURFACE_DISTANCES.csv`.
+
+This shows the V6 HERO predictions have approximately correct metric Ring depth even though camera validation does not reproduce 15/22. It does not prove polyp-body accuracy.
+
+## BA first-difference audit
+
+The upstream data/tracks/Ring observations match historical; initial cameras differ only by `3.1e-8` (`v0`) and `2.4e-8` (`v1`); BA initial residual differs by `3.1e-8`; the first material divergence is BA output (`0.0118 mm` c2w v0; `3.272 mm` c2w v1), with historical nfev 60 vs formal-run 45 for v0. Historical thread settings (`OPENBLAS/OMP=1`) change v0 to nfev 60, but validation remains 8/22; version1 changes to nfev 12. Full arrays/receipts are in `V6_BA_AUDIT.md` and `V6_STAGE_DIFFERENCES.csv`.

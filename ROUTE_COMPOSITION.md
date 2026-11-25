@@ -91,3 +91,14 @@ The approved raw V5 Ring preparation was executed: 22/22 RGB/Mask hashes match V
 Reproduction checks: 22/22 raw RGB/Mask hashes match; V5 raw Ring candidates exact; V6 track005 finite values and NaN patterns exact; initial cameras exact within ~3e-8; BA/validation drift remains. No historical intermediate was used.
 
 No historical module is promoted to the formal production route by this experiment. The registered HIST-V6 record is candidate/diagnostic only.
+
+## 6. V6 HERO metric-depth audit (new raw predictions only)
+
+| Target | Condition | Ring depth ratio median | Ratio MAE | Residual MAE | Historical area | Current area |
+|---|---:|---:|---:|---:|---:|---:|
+| 005_ref00000 | unfiltered | 0.9996 | 0.0301 | 0.909 mm | 132.559 | 132.484 |
+| 005_ref00459 | unfiltered | 1.0074 | 0.0267 | 1.020 mm | 112.769 | 112.569 |
+| 005_supported_ref00459 | supported | 1.0132 | 0.0280 | 1.064 mm | 112.638 | 115.724 |
+| 005_supported_ref00688 | supported | 1.0139 | 0.0285 | 0.999 mm | NA | 130.394 |
+
+All four raw V6 surfaces were retained. Surface pair nearest-neighbor medians are 0.145–0.684 mm (p95 0.485–1.794 mm); six-view images are in `runs/m2f7_hist_g01/visualization/v6_six_views/`.
