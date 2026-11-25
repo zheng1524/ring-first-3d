@@ -73,3 +73,9 @@ No substitution of R5 frames with R10 CAD is allowed.
 ## 6. Stop condition
 
 No `V6_GENERALIZATION_REPORT.md`, no 10-video comparison, and no shared-input HERO are produced in this phase. A human decision on the R5 V6 Ring adapter is required before implementation. No route is registered or promoted.
+
+## 7. Executed generalized result (phase 2)
+
+V6-GENERALIZED ran 10/10 videos with the single R5/R10 parameterized adapter. Five videos have at least one VALIDATED camera; 13 HERO surfaces were produced; seven videos correctly failed at support because zero cameras passed the unchanged validation. No threshold was lowered. Per-video results: `runs/m2f8_v6_general/V6_10_VIDEO_COMPARISON.csv`; geometry: `V6_HERO_GEOMETRY.csv`; six views: `visualization/v6_six_views/`.
+
+Direction B is not executed because the common RAW input was not frozen by instruction. The B deliverables are explicit `NOT_EXECUTED` tables, not fabricated comparisons.

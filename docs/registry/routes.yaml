@@ -1050,3 +1050,31 @@ m2f7_hist_v6:
     - historical 15/22 not reproduced (8/22)
     - B/C NOT_COMPARABLE due empty frame intersection
     - diagnostic only; not a formal production route
+
+# ---------------------------------------------------------------------------
+# M2F8 V6-GENERALIZED diagnostic (R10/R5 parameterized; not formal)
+# ---------------------------------------------------------------------------
+m2f8_v6_generalized:
+  route_id: rf-m2f8-v6-generalized@1
+  version: 1
+  status: candidate
+  diagnostic_only: true
+  formal_usable: false
+  approval: "M2F8 direct approval: single R5 parameterization of V6 Ring formula"
+  entrypoint: tools/m2f8_v6_general.py
+  source_sha256: 72d0ef6a8d09edc662d2bf4e10639cf346de787728b4ca2b521bbfaddabcee54
+  input_root: runs/m2f8_v6_general/current_inputs
+  run_root: runs/m2f8_v6_general/v6
+  r5_parameterization: "R=3.1, r=0.6 through the existing V5/V6 contour/residual functions; no second formula"
+  execution_evidence:
+    videos: 10
+    videos_with_validated_camera: 5
+    hero_surfaces: 13
+    v0_validated_total: 16
+    v1_validated_total: 0
+    zero_validated_videos: 5
+    report: V6_GENERALIZATION_REPORT.md
+  known_limitations:
+    - strict V6 validation leaves 5/10 videos with zero validated cameras
+    - reference/heldout current frames are mapped to V6 protocol IDs only for unchanged scripts; actual raw identity is in REFERENCE_RECEIPT.json
+    - no shared-input B/C/D; common input intentionally not frozen

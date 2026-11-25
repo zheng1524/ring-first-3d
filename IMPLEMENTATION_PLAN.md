@@ -79,4 +79,4 @@
 
 ## Current status
 
-Tasks 0–4 are pending. Only phase-1 route composition has been produced; no V6-GENERALIZED execution or HERO was started.
+Phase 2 (V6-GENERALIZED 10 videos) was executed after R5 approval. Five videos have validated cameras, 13 surfaces were produced, seven videos correctly failed support. Direction B is deferred because the common RAW input was not frozen. See V6_GENERALIZATION_REPORT.md.

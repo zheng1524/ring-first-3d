@@ -1,0 +1,4 @@
+{
+ "error": "AssertionError()",
+ "traceback": "Traceback (most recent call last):\n  File \"/home/liu/ring_first_3d_workspace/tools/m2f8_v6_general.py\", line 106, in run_v6\n    if (run/'inputs/MVS_cases.json').exists():run_mvs005.main()\n                                              ^^^^^^^^^^^^^^^^^\n  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/run_mvs005.py\", line 12, in main\n    tag=c['tag'];dest=R/f'raw/{tag}.npz';assert not dest.exists();start=time.monotonic();rec=dict(tag=tag,reference=c['reference_id'],sources=c['source_ids'],success=False,geometry_status=c['scope'],depth_is_new005_prediction=True,GT_used=False)\n                                                ^^^^^^^^^^^^^^^^^\nAssertionError\n"
+}
