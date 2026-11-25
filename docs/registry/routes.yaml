@@ -1078,3 +1078,62 @@ m2f8_v6_generalized:
     - strict V6 validation leaves 5/10 videos with zero validated cameras
     - reference/heldout current frames are mapped to V6 protocol IDs only for unchanged scripts; actual raw identity is in REFERENCE_RECEIPT.json
     - no shared-input B/C/D; common input intentionally not frozen
+
+# ---------------------------------------------------------------------------
+# M2F9 RAW V6 correction and M2F10 multiview experiment
+# ---------------------------------------------------------------------------
+m2f9_v6_generalized:
+  route_id: rf-m2f9-v6-generalized@1
+  version: 1
+  status: candidate
+  formal_usable: false
+  predecessor: rf-m2f8-v6-generalized@1
+  source_commit: b791c9affa74e848f04792cb600f8b95040bba3a
+  entrypoint: tools/m2f8_v6_general.py
+  entrypoint_sha256: b4bc2c61cdd7ba25e21a9b510f14ecc6405b650549da6ac817cc5679d095f185
+  report: M2F9_FINAL_REPORT.md
+  report_sha256: dfe2ebb5cffa6161b4cb1254e546afb807885ec3da6447deeee71ff4c8de868e
+  execution_evidence:
+    videos: 10
+    native_hero: 26
+    packaged_meshes_including_preview: 8
+    videos_with_packaged_meshes: 2
+  known_limitations:
+    - Historical two-target scheduling and fixed two-case packaging limit multiview output.
+    - Preview packaging is not equivalent to a legal supported Target acceptance.
+
+m2f10_v6_multiview:
+  route_id: rf-m2f10-v6-multiview@1
+  version: 1
+  status: candidate
+  formal_usable: false
+  predecessor: rf-m2f9-v6-generalized@1
+  source_branch: exp/TASK-M2F10-V6-MULTIVIEW-HERO-EXPANSION-001
+  entrypoint: tools/m2f8_v6_general.py
+  entrypoint_sha256: 6ad695b0ffd66699a41306d4d38c1853a5d65b6a372d758a54ce284e7a586412
+  preparation_entrypoint: tools/m2f5_unified.py::prepare_one_m2f6
+  preparation_sha256: fdcb39c02c6cc90a19b9700818d49e9c6be1f75c2c48f33d5a9b495ee24d3b09
+  observation_recovery: tools/m2f6_observations.py::choose_real_supplements+bounded_recovery
+  frozen_source:
+    select_supported_views_sha256: f8439f53565baff7f1afcedc652109b47333fe80d364d1bab88e5a7515640128
+    run_mvs005_supported_sha256: 353dc7f3ed2baf7383f45f141d51ad074e14fdc723efc4cc4b3a7b59d02ab46f
+    package_surfaces_sha256: 5c8d01c0fb3cb9d1169dfdb489636357e2ad744bfe09ca0d0cec12647ab05f15
+  composition:
+    - current RAW preparation and clean Mask identity
+    - frozen Ring initialization, tracks, local BA and validation
+    - all real target cameras in diverse direction order
+    - frozen Support ranking with VALIDATED cameras, RGB overlap >= 15 and exactly three sources
+    - at most three legal Support tuples per target; one successful official HERO inference per target
+    - one optional RAW-based supplement of at most four real frames and complete rerun
+    - frozen per-case geometry packaging without the old two-case comparison tail
+  acceptance_boundary: original V6 supported-view conditions plus successful native prediction and individual frozen mesh packaging
+  audit_boundary: preview/native predictions retained separately; no posthoc selection by Ring ratio or A-to-B metric
+  experiment_run: runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02
+  scientific_status: NOT_EVALUATED
+  smoke_test: >
+    pytest tests/test_m2f10_v6_general.py and RAW smoke runs for Ip12/005 and
+    Is14/005; verify final attempt state hashes and all original Support clauses.
+  known_limitations:
+    - Original V6 validator can leave no legal three-Support tuple after one real recovery.
+    - Native Ring depth agreement alone does not establish multiview surface agreement.
+    - Independent video Ring gauges do not authorize a 3D cross-video overlay.
