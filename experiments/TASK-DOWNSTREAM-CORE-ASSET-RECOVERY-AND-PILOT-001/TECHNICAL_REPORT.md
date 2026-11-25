@@ -80,7 +80,7 @@
 
 执行仍依赖本机只读 `/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python`（实际Python3.12.13）、共享 `.runtime`、Open3D vendor；torch2.7.1+cu128，RTX3060 Laptop。018回归另外依赖保留目录中的原arm输入及native观察；柄部完整Boolean需Blender5.0.1。当前有可重复调用命令和小主体fixture，但不是全平台无外部依赖安装包，也不是可直接接任意新数据的初始化系统。
 
-所有命令在本独立工作树根目录执行；运行目录必须新建，拒绝覆盖。日志/失败/大对应数组保留本地；Git只上传精选参数、mesh、小表和PNG。
+所有命令在本独立工作树根目录执行；新优化及018回归运行目录必须新建，拒绝覆盖。评价/清单命令会重写本任务对应摘要，复核固定交付时应使用独立检出副本。日志/失败/大对应数组保留本地；Git只上传精选参数、mesh、小表和PNG。
 
 ```bash
 T=experiments/TASK-DOWNSTREAM-CORE-ASSET-RECOVERY-AND-PILOT-001
@@ -102,3 +102,7 @@ bash "$T/run_python.sh" "$T/code/build_inventory.py"
 最优先是补齐 **009 G01生成输入与011原初体C**：按已记录SHA找回参数/基底/原深度，恢复009→011生成与011优化，逐阶段比较C_011和FINAL011，再决定是否值得把新观测送入原初始化方法。当前不能回答“从明确原始观测生成初体再更新”已全链成功，只能回答更新器从明确历史起点确实可运行。
 
 跨视频独立推进的最小验证是：在一组004/005中冻结真实可核验的共同地标对应，确认各自相机和HERO Target/Support身份；用单个每视频SE3验证多帧投影一致性，保留错配/无解。不需要等待或干预前半段最终格式；由适配器逐源适配。只有这一步成立，才值得再试共同主体拟合和HERO局部对应；本轮不据G01短程成功自动扩全组或长柄生长。
+
+## 发布回执
+
+代码与证据提交 `6e6b7a3c5a1993e4976e0aa24ca0747ef73ef5c4` 已push到本任务独立分支，并实测 `git ls-remote` 返回相同SHA；见 [PUBLICATION_RECEIPT.json](evidence/PUBLICATION_RECEIPT.json)。随后仅追加本发布回执及报告说明；最终分支tip在人工交付消息中给出。未合并或更改前半段分支。
