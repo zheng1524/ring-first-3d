@@ -37,9 +37,9 @@ def package():
  receipt=dict(archive=str(archive),bytes=archive.stat().st_size,sha256=sha(archive),verified_members=len(members),local_artifacts=len(index),local_total_bytes=sum(x['bytes']for x in index),raw_and_weights_not_uploaded=True)
  source_archive=T/'archive/HISTORICAL_SOURCE_SNAPSHOT.tar.gz';source_files=[Path(p)for p in read(T/'evidence/RESTORATION_SOURCE_LOCK_R3.json')['files']if'/new-polyp-dxy/'not in p and'/freeze/model/'not in p]
  with tarfile.open(source_archive,'w:gz')as tar:
-  for p in source_files:tar.add(p,arcname=str(p).removeprefix('/home/liu/'),recursive=False)
+  for p in source_files:tar.add(p,arcname=str(p.relative_to('/home/liu')),recursive=False)
  with tarfile.open(source_archive,'r:gz')as tar:
-  for p in source_files:assert hashlib.sha256(tar.extractfile(str(p).removeprefix('/home/liu/')).read()).hexdigest()==sha(p)
- receipt['source_snapshot']=dict(path=str(source_archive),bytes=source_archive.stat().st_size,sha256=sha(source_archive),verified_files=len(source_files),DXY_and_model='external read-only dependencies; per-file hashes in R2 lock, model SHA in preparation provenance')
+  for p in source_files:assert hashlib.sha256(tar.extractfile(str(p.relative_to('/home/liu'))).read()).hexdigest()==sha(p)
+ receipt['source_snapshot']=dict(path=str(source_archive),bytes=source_archive.stat().st_size,sha256=sha(source_archive),verified_files=len(source_files),DXY_and_model='external read-only dependencies; per-file hashes in R3 lock, model SHA in preparation provenance')
  (T/'evidence/RESTORATION_ARCHIVE_RECEIPT.json').write_text(json.dumps(receipt,indent=2));print(receipt)
 if __name__=='__main__':{'freeze':freeze_baseline,'package':package}[sys.argv[1]]()

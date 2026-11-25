@@ -18,7 +18,7 @@ def save(p,d):
 def table(p,rows):
  fields=list(dict.fromkeys(k for r in rows for k in r));p=Path(p);p.parent.mkdir(parents=True,exist_ok=True)
  with p.open('w')as f:
-  w=csv.DictWriter(f,fields);w.writeheader();w.writerows(rows)
+  w=csv.DictWriter(f,fields,lineterminator="\n");w.writeheader();w.writerows(rows)
 def median(xs):
  xs=[x for x in xs if x is not None and np.isfinite(x)];return float(np.median(xs))if xs else None
 def steps(poses):
@@ -50,13 +50,14 @@ def main():
      p=R/f'STAGE_{st}.json'
      if p.exists():
       s=read(p);rec[st+'_seconds']=s['seconds'];rec[st+'_status']=s['status']
-      if s['status']=='FAILED':rec['failure']=s['error']
+      if s['status']=='FAILED':rec['failure']=s['error'];rec['status']='FAILED_'+st.upper()
     if(R/'metrics/SEED_EVALUATION.json').exists():
      se=read(R/'metrics/SEED_EVALUATION.json');g,h=se['geometry'],se['heldout'];ac=read(R/'config.json')['acceptance']
      rec.update(seed_numeric=len(g['registered']),seed_points=g['candidate_points'],seed_positive_fraction=g['positive_fraction'],seed_held_track_count=h['target_heldout_tracks'],seed_held_testable=h['testable_tracks'],seed_independent_RGB_n=h['error_px']['n'],seed_independent_RGB_MAE_px=h['error_px']['MAE'],seed_independent_RGB_p95_px=h['error_px']['p95'],seed_held_positive_fraction=h['positive_track_fraction'],seed_max_rotation_step_deg=g['largest_rotation_step_deg'],seed_basic_pass=bool(len(g['registered'])>=ac['min_registered']and g['reference8']and h['testable_tracks']>=ac['min_test_tracks']and h['error_px']['MAE']is not None and h['error_px']['MAE']<=ac['max_holdout_MAE_px']and g['positive_fraction']>=ac['min_positive_fraction']and g['largest_rotation_step_deg']<=ac['max_rotation_step_deg']),full_9_initialization_reliability='NOT_RUN')
     if(R/'registration/CAMERAS.json').exists():
      cams=read(R/'registration/CAMERAS.json');sm=read(R/'metrics/RECOVERY_SUMMARY.json');su=read(R/'selection/SUPPORTS.json');legal={x['target']for x in su if x['support_N']==3};supportids={y['id']for x in su for y in x['selected']};rec.update(status='COMPLETED',numeric_cameras=sm['numeric'],own_qualified_cameras=sm['qualified'],legal_target_count=sm['legal_targets'],legal_support_links=sm['legal_support_links'],landmarks=sm['landmarks'],own_gate='original MAX qualification on native RF/PnP; conditional map-held')
      rec['RGB_registered_numeric']=sum(v.get('numeric_status')=='NUMERIC_RGB_REGISTERED_CONDITIONAL'for v in cams);rec['ring_only_yaw_unresolved']=sum(v.get('numeric_status')=='RING_ONLY_YAW_UNRESOLVED'for v in cams)
+     rec['legal_support_tuples']=len(legal);rec['unique_target_support_links']=len({(x['target'],s['id'])for x in su if x['support_N']==3 for s in x['selected']})
      rec['candidate_sources']=json.dumps(dict(collections.Counter(v.get('candidate_source','FAILED')for v in cams)));rec['qualification_failures']=json.dumps(dict(collections.Counter(reason for v in cams for reason in v.get('qualification_reasons',[]))))
      seedP=np.load(R/'predictions/C_F980_0.npz')['c2w'];delta=[dict(rotation=float(np.degrees(Rotation.from_matrix(seedP[v['index'],:3,:3].T@np.array(v['C'])[:3,:3]).magnitude())),center=float(np.linalg.norm(seedP[v['index'],:3,3]-np.array(v['C'])[:3,3])))for v in cams if v['C']is not None and np.isfinite(seedP[v['index']]).all()];rec['native_vs_seed_rotation_median_deg']=median([d['rotation']for d in delta]);rec['native_vs_seed_center_median_mm']=median([d['center']for d in delta])
      rec['native_mapheld_MAE_median_px']=median([v.get('RGB_evaluation',{}).get('FEATURE_HELD',{}).get('MAE')for v in cams]);rec['native_mapheld_p95_median_px']=median([v.get('RGB_evaluation',{}).get('FEATURE_HELD',{}).get('p95')for v in cams]);rec['native_mapheld_positive_median']=median([v.get('RGB_evaluation',{}).get('FEATURE_HELD_positive_fraction')for v in cams]);rec['native_mapheld_independent']=False
@@ -69,6 +70,7 @@ def main():
     states=registry['V6_states'];V=Path(states[-1]['path']).parent;val=read(V/'metrics/local_validation.json');v=next(v for v in val['versions']if v['version']==val['primary']);cam=np.load(V/f"predictions/local005_camera_{val['primary']}.npz");L=read(V/'inputs/ledger005.json');cs=[c for c in read(V/'inputs/MVS_supported_cases.json')if len(c['sources'])==3];legal={x['reference']for x in cs};supportids={i for x in cs for i in x['sources']};rec.update(status='COMPLETED_READONLY',requested_cameras=len(L),numeric_cameras=int(np.isfinite(cam['c2w']).all((1,2)).sum()),own_qualified_cameras=sum(x['status']=='VALIDATED'for x in v['per_frame']),legal_target_count=len(legal),legal_support_links=sum(len(x['sources'])for x in cs),landmarks=len(cam['points']),own_gate='V6 final attempt VALIDATED; supported Target need not be VALIDATED',V6_code_commit=states[-1]['code_commit'],V6_attempts=len(states))
     for i,(a,q)in enumerate(zip(L,v['per_frame'])):
      krows.append(dict(id=a['id'],raw_frame=a['raw_frame'],C=cam['c2w'][i],K=a['K'],labels=cv2.imread(a['Mask_path'],0),RGB=cv2.cvtColor(cv2.imread(a['RGB_path']),cv2.COLOR_BGR2RGB),own_qualified=q['status']=='VALIDATED',target_eligible=i in legal,support_eligible=i in supportids,native_mapheld=q.get('held_reprojection'),native_positive=q.get('held_positive_fraction')))
+    rec['legal_support_tuples']=len(cs);rec['unique_target_support_links']=len({(c['reference'],s)for c in cs for s in c['sources']})
     rec['own_held_diagnostic_MAE_median_px']=median([x['held_reprojection']['MAE']for x in v['per_frame']]);rec['own_held_diagnostic_p95_median_px']=median([x['held_reprojection']['p95']for x in v['per_frame']]);rec['own_held_observations']=sum(x['held_reprojection']['n']for x in v['per_frame']);rec['own_positive_median']=median([x.get('held_positive_fraction')for x in v['per_frame']]);rec['own_held_status']='V6 claims leave-one-view-out held tracks; not common certified test'
     for k,value in old[(registry['group'],registry['video_id'])].items():
      if k not in ['group_id','video_id']:rec['M2F10_full_'+k]=value
@@ -89,7 +91,7 @@ def main():
     for k in ['target_coverage','RGB_MAE_0_255','RGB_p95_0_255']:rec['limited_HERO_A_to_B_'+k]=hero['a_to_b'][k]
    rows.append(rec);detail[case+'/'+route]=dict(camera_steps=jumps,frames=local)
  table(T/'evidence/COMPARISON_LONG.csv',rows);wide=[]
- keys=['status','numeric_cameras','own_qualified_cameras','qualified_targets','qualified_supports','legal_target_count','landmarks','common_ring_support_2px_median','common_ring_boundary_MAE_px_median','max_rotation_step_deg','limited_HERO_status','limited_HERO_ring_MAE_mm','limited_HERO_ring_ratio_median','limited_HERO_ring_coverage','limited_HERO_A_to_B_target_coverage','limited_HERO_A_to_B_RGB_MAE_0_255']
+ keys=['status','failure','numeric_cameras','own_qualified_cameras','qualified_targets','qualified_supports','legal_target_count','legal_support_tuples','unique_target_support_links','landmarks','common_ring_support_2px_median','common_ring_boundary_MAE_px_median','max_rotation_step_deg','limited_HERO_status','limited_HERO_ring_MAE_mm','limited_HERO_ring_ratio_median','limited_HERO_ring_coverage','limited_HERO_A_to_B_target_coverage','limited_HERO_A_to_B_RGB_MAE_0_255']
  for registry in read(T/'evidence/INPUT_REGISTRY.json'):
   d=dict(group=registry['group'],video=registry['video_id'],raw_sha256=registry['raw_sha256'])
   for route in ['H004_RAW_BASELINE','V6']:

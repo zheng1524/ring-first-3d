@@ -1,0 +1,4539 @@
+{
+  "protocol": {
+    "epoch": 1795631092.7034702,
+    "per_video_per_route_budget": 1,
+    "maximum_inferences": 20,
+    "physical_groups": 5,
+    "videos": 10,
+    "H004_selection": "ascending verified RAW frame, first original-qualified target with original 3 supports",
+    "V6_selection": "M2F10 final attempt; ascending RAW frame, first original MVS_supported_cases 3-support tuple; no depth/mesh acceptance consulted",
+    "V6_target_gate": "Report target status separately; supported tuples need not have VALIDATED target",
+    "A_to_B": "first frozen support; dependent HERO support, not independent holdout",
+    "independent_pose_GT": false,
+    "no_depth_based_reselection": true,
+    "optional_variant_budget": "same one/video if justified; no variant yet",
+    "paired_causal_claim": false
+  },
+  "protocol_sha256": "3679e6cf9036ee389fbf6546a3b9e8626b90958d5799d30baafdbf7cf136c805",
+  "baseline_freeze_sha256": "c32b9f07e2e671d4622d3591accb3bd8a701583bd2ce606662b286a0c4ccfd5c",
+  "epoch": 1795633022.9078069,
+  "plans": [
+    {
+      "case": "GP_IIa_14.0mm_closed_R10_single_refY_004",
+      "route": "H004_RAW_BASELINE",
+      "status": "READY",
+      "plan": {
+        "group": "GP_IIa_14.0mm_closed_R10_single_refY",
+        "id": "view_010",
+        "view_id": "view_010",
+        "variant": "GEOMETRIC3",
+        "target": {
+          "id": "view_010",
+          "index": 10,
+          "raw_frame": 696,
+          "video": "004",
+          "group": "GP_IIa_14.0mm_closed_R10_single_refY",
+          "role": "FIT",
+          "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_IIa_14.0mm_closed_R10_single_refY_004/inputs/view_010.npz",
+          "T": [
+            [
+              0.9971016122944033,
+              -0.004720792214137211,
+              -0.07593476727278944,
+              1.7940395039210708
+            ],
+            [
+              0.06275280321628969,
+              -0.5132874191019289,
+              0.85591945361709,
+              -28.345221752036668
+            ],
+            [
+              -0.043016978606119825,
+              -0.8582037867036897,
+              -0.511503470212128,
+              18.369932716919184
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "K": [
+            [
+              490.0,
+              0.0,
+              319.5
+            ],
+            [
+              0.0,
+              490.0,
+              179.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "RGB_SHA256": "66201ef09badec47a666721d6b127e535a6ce474a8e32d929f53a6f4d4412b25",
+          "capture_type": "VIDEO",
+          "C": [
+            [
+              0.9967297456495808,
+              -0.00605452406782817,
+              -0.08058012705148734,
+              1.941152460461743
+            ],
+            [
+              0.06623314523590287,
+              -0.5100523793546502,
+              0.8575894943309532,
+              -28.345706106041582
+            ],
+            [
+              -0.04629238176505448,
+              -0.8601220338143724,
+              -0.5079833681702053,
+              18.14902552068897
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "formal": true,
+          "HERO_target_eligible": true,
+          "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+          "qualification_reasons": [],
+          "RGB_evaluation": {
+            "FIT": {
+              "N": 15,
+              "MAE": 0.7564686587261598,
+              "median": 0.7466214207890864,
+              "p95": 1.3020542685833054,
+              "maximum": 1.4921277699046813
+            },
+            "FIT_positive_fraction": 1.0,
+            "FIT_cells": 9,
+            "FEATURE_HELD": {
+              "N": 5,
+              "MAE": 1.2842148489833458,
+              "median": 1.4050925749570349,
+              "p95": 1.6048051126305924,
+              "maximum": 1.6370708651908166
+            },
+            "FEATURE_HELD_positive_fraction": 1.0,
+            "FEATURE_HELD_cells": 5
+          },
+          "Ring": {
+            "inner": {
+              "N": 0,
+              "MAE": null,
+              "median": null,
+              "p95": null,
+              "maximum": null
+            },
+            "outer": {
+              "N": 96,
+              "MAE": 4.394105338075444,
+              "median": 3.874420895272527,
+              "p95": 10.27700561898977,
+              "maximum": 10.961993676868028
+            },
+            "Ring_IoU": 0.6961223951463994,
+            "minimum_depth_mm": 28.76557247346142,
+            "camera_torus_clearance_mm": 28.550965572094995,
+            "proper_rotation": 1.0,
+            "coordinate_unit": "mm",
+            "physical_valid": true
+          },
+          "RGB_rank": 6,
+          "RGB_singular_values": [
+            86.82507139422526,
+            72.35297913005977,
+            41.13133232050473,
+            13.113482482360626,
+            8.383004485601576,
+            3.319018528409872
+          ],
+          "RGB_condition": 26.159863420775416,
+          "calibrated_camera_truth": false,
+          "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+          "candidate_source": "REAL_RGB_PNP_LM",
+          "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+          "seconds": 0.8194534778594971
+        },
+        "support_views": [
+          {
+            "id": "view_012",
+            "index": 12,
+            "raw_frame": 822,
+            "video": "004",
+            "group": "GP_IIa_14.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_IIa_14.0mm_closed_R10_single_refY_004/inputs/view_012.npz",
+            "T": [
+              [
+                0.9860306411832995,
+                -0.02825381076019995,
+                -0.16415022639393184,
+                0.7693995594225793
+              ],
+              [
+                0.12464643033190356,
+                -0.5285378140295349,
+                0.8397089058396332,
+                -26.379315812807672
+              ],
+              [
+                -0.1104845783499495,
+                -0.8484394505905577,
+                -0.5176327430026295,
+                19.127071918988953
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "8d642a343d49ffd760b577a371d56f458180afab8ece9a7cb73e4487c7652484",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9861724879300018,
+                -0.024051675286501817,
+                -0.1639674997243756,
+                0.7485730552372003
+              ],
+              [
+                0.12659711383472944,
+                -0.5291525303176338,
+                0.8390296600401932,
+                -26.21725370446371
+              ],
+              [
+                -0.10694388630804003,
+                -0.8481857795167038,
+                -0.5187907946436354,
+                19.151580642186218
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 19,
+                "MAE": 0.9125124193605076,
+                "median": 0.8738222943280841,
+                "p95": 1.9580755215597327,
+                "maximum": 3.031484296676425
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 10,
+              "FEATURE_HELD": {
+                "N": 4,
+                "MAE": 0.3556361060238953,
+                "median": 0.38445066518578735,
+                "p95": 0.5786635002323046,
+                "maximum": 0.5999999299442803
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 4
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 5.06624517420608,
+                "median": 4.955554494708792,
+                "p95": 12.301173651491316,
+                "maximum": 13.30034449263499
+              },
+              "Ring_IoU": 0.6920526014865638,
+              "minimum_depth_mm": 27.129129861807474,
+              "camera_torus_clearance_mm": 27.5477331997803,
+              "proper_rotation": 1.0,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              107.28542279240503,
+              86.80809426280969,
+              38.361711506785696,
+              12.710210858197286,
+              8.146073559195248,
+              3.4186017753710427
+            ],
+            "RGB_condition": 31.38283714860607,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 0.7417984008789062
+          },
+          {
+            "id": "view_014",
+            "index": 14,
+            "raw_frame": 946,
+            "video": "004",
+            "group": "GP_IIa_14.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_IIa_14.0mm_closed_R10_single_refY_004/inputs/view_014.npz",
+            "T": [
+              [
+                0.9650856704225775,
+                -0.07352269094685382,
+                -0.25140418186843616,
+                0.6254032837724023
+              ],
+              [
+                0.16704581519786457,
+                -0.5665291125501745,
+                0.8069327482869888,
+                -24.08358266207796
+              ],
+              [
+                -0.20175565511252744,
+                -0.8207552488708469,
+                -0.5344674705546351,
+                19.225152844228976
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "0cf2870087a69d2e6a9d68dfcad84f7b6d5c85e629a2eb26ece9b8188d74ce4b",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.964081792327891,
+                -0.07525868387880723,
+                -0.25472029405344054,
+                0.8909317400835292
+              ],
+              [
+                0.16727399057398862,
+                -0.5728983897195332,
+                0.8023757518358957,
+                -24.164608571730813
+              ],
+              [
+                -0.20631458935154007,
+                -0.8161639330168883,
+                -0.5397320860048157,
+                19.574592574695167
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 14,
+                "MAE": 0.6470388408724261,
+                "median": 0.6296077343900555,
+                "p95": 1.090586346307587,
+                "maximum": 1.2874351956956744
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 8,
+              "FEATURE_HELD": {
+                "N": 4,
+                "MAE": 0.9076548031764498,
+                "median": 1.0063636525905877,
+                "p95": 1.086832686101511,
+                "maximum": 1.0895960846757102
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 3
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 5.049282658444933,
+                "median": 3.7093927291369706,
+                "p95": 12.023206231370883,
+                "maximum": 12.94207978030174
+              },
+              "Ring_IoU": 0.6702938988095238,
+              "minimum_depth_mm": 25.295023426635673,
+              "camera_torus_clearance_mm": 26.389243021102388,
+              "proper_rotation": 1.0000000000000002,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              93.96948597218109,
+              71.96054053817653,
+              32.64137724169482,
+              9.41520197778499,
+              6.355843022705298,
+              2.6475250352216713
+            ],
+            "RGB_condition": 35.49333234702094,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 0.7957074642181396
+          },
+          {
+            "id": "view_011",
+            "index": 11,
+            "raw_frame": 760,
+            "video": "004",
+            "group": "GP_IIa_14.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_IIa_14.0mm_closed_R10_single_refY_004/inputs/view_011.npz",
+            "T": [
+              [
+                0.9926491778981176,
+                -0.00644781839797842,
+                -0.12085543122300195,
+                1.5720007170346095
+              ],
+              [
+                0.0998791556843464,
+                -0.5203058243626966,
+                0.8481190974114643,
+                -26.94194133789826
+              ],
+              [
+                -0.06835030269115971,
+                -0.8539556632356047,
+                -0.515837146151637,
+                19.196977399394935
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "422683a33d19b5018739e716ff68e5341f2fad29db8ecf3efc7b208124803586",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.992375831837077,
+                -0.00484660080740438,
+                -0.1231532331945964,
+                1.758839838467175
+              ],
+              [
+                0.10256395279805448,
+                -0.5216146558550558,
+                0.8469939706890777,
+                -27.10926478570117
+              ],
+              [
+                -0.06834357301244515,
+                -0.8531674286198606,
+                -0.5171406914661302,
+                19.330369685993286
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 17,
+                "MAE": 0.7103384495688552,
+                "median": 0.5166384046726782,
+                "p95": 1.790406597614582,
+                "maximum": 1.8520608236892562
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 8,
+              "FEATURE_HELD": {
+                "N": 6,
+                "MAE": 0.9261505977916952,
+                "median": 0.8721960393615151,
+                "p95": 1.5879338405695909,
+                "maximum": 1.691546355193097
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 5
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 5.380304909112678,
+                "median": 5.309064550394531,
+                "p95": 14.770915513728509,
+                "maximum": 16.507044819221985
+              },
+              "Ring_IoU": 0.6644572286143071,
+              "minimum_depth_mm": 28.256642410786842,
+              "camera_torus_clearance_mm": 28.36147130359808,
+              "proper_rotation": 0.9999999999999996,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              95.64552018281144,
+              80.91840889211112,
+              34.12400969756091,
+              11.638799185120188,
+              8.975942846822448,
+              3.178038967147269
+            ],
+            "RGB_condition": 30.095766971877808,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 0.7759087085723877
+          }
+        ],
+        "rank": 1,
+        "reused": false
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_IIa_14.0mm_closed_R10_single_refY_004/selection/HERO_PLAN.json",
+      "source_plan_sha256": "9498345b40e6a73c359f0fdc6ad829bbc977b7e2bd66c9b0f15005963b3831d0",
+      "ring_inner_mm": 10.0
+    },
+    {
+      "case": "GP_IIa_14.0mm_closed_R10_single_refY_004",
+      "route": "V6_LIMITED_DIAGNOSTIC",
+      "status": "READY",
+      "plan": {
+        "tag": "005_supported_ref00020",
+        "reference": 0,
+        "reference_id": "GP_IIa_14.0mm_closed_R10_single_refY_004-raw00020",
+        "sources": [
+          9,
+          8,
+          12
+        ],
+        "source_ids": [
+          "GP_IIa_14.0mm_closed_R10_single_refY_004-raw00600",
+          "GP_IIa_14.0mm_closed_R10_single_refY_004-raw00547",
+          "GP_IIa_14.0mm_closed_R10_single_refY_004-raw00785"
+        ],
+        "independent_image_heldout": 17,
+        "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+        "selection_uses_GT": false,
+        "selection_uses_MVS_error": false,
+        "source_diagnostics": [
+          {
+            "i": 9,
+            "overlap": 31,
+            "angle": 23.81700089935405
+          },
+          {
+            "i": 8,
+            "overlap": 33,
+            "angle": 21.627082357958297
+          },
+          {
+            "i": 12,
+            "overlap": 27,
+            "angle": 21.350693224364147
+          },
+          {
+            "i": 11,
+            "overlap": 24,
+            "angle": 23.114686576852968
+          },
+          {
+            "i": 15,
+            "overlap": 21,
+            "angle": 23.332547422670554
+          },
+          {
+            "i": 14,
+            "overlap": 21,
+            "angle": 21.225080455027047
+          }
+        ],
+        "original_previews_preserved": true,
+        "independent_target_id": "GP_IIa_14.0mm_closed_R10_single_refY_004-raw00020",
+        "support_attempt": 1
+      },
+      "v6_root": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_IIa_14.0mm_closed_R10_single_refY_004",
+      "RUN_STATE": {
+        "path": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_IIa_14.0mm_closed_R10_single_refY_004/RUN_STATE.json",
+        "sha256": "4aeda08f1e1d3e5360f4623bd10c6a1114447b51f74348eef77138014a96ab89",
+        "run_id": "M2F10-FORMAL-20261125-02-a1-GP_IIa_14.0mm_closed_R10_single_refY_004",
+        "code_commit": "a38d4c822daf9a9b3cd88e1cd0edebdc70b9bfad"
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_IIa_14.0mm_closed_R10_single_refY_004/inputs/MVS_supported_cases.json",
+      "source_plan_sha256": "ccf17e264c3598113972947909475969f8efc705dfee35efde7cfb92826fb01e",
+      "ring_inner_mm": 10.0,
+      "target_own_validated": false,
+      "support_own_validated": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "case": "GP_IIa_14.0mm_closed_R10_single_refY_005",
+      "route": "H004_RAW_BASELINE",
+      "status": "NO_LEGAL_TARGET",
+      "plan": null,
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_IIa_14.0mm_closed_R10_single_refY_005/selection/HERO_PLAN.json",
+      "source_plan_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "ring_inner_mm": 10.0
+    },
+    {
+      "case": "GP_IIa_14.0mm_closed_R10_single_refY_005",
+      "route": "V6_LIMITED_DIAGNOSTIC",
+      "status": "NO_LEGAL_SUPPORT_TUPLE",
+      "plan": null,
+      "v6_root": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_IIa_14.0mm_closed_R10_single_refY_005",
+      "RUN_STATE": {
+        "path": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_IIa_14.0mm_closed_R10_single_refY_005/RUN_STATE.json",
+        "sha256": "5b11699c715dee8968230be8630e0f8bf78876558e19135c171106c83d984747",
+        "run_id": "M2F10-FORMAL-20261125-02-a1-GP_IIa_14.0mm_closed_R10_single_refY_005",
+        "code_commit": "a38d4c822daf9a9b3cd88e1cd0edebdc70b9bfad"
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_IIa_14.0mm_closed_R10_single_refY_005/inputs/MVS_supported_cases.json",
+      "source_plan_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "ring_inner_mm": 10.0,
+      "target_own_validated": null,
+      "support_own_validated": []
+    },
+    {
+      "case": "GP_Ip_12.0mm_closed_R10_single_refY_004",
+      "route": "H004_RAW_BASELINE",
+      "status": "READY",
+      "plan": {
+        "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+        "id": "view_001",
+        "view_id": "view_001",
+        "variant": "GEOMETRIC3",
+        "target": {
+          "id": "view_001",
+          "index": 1,
+          "raw_frame": 158,
+          "video": "004",
+          "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+          "role": "FIT",
+          "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_12.0mm_closed_R10_single_refY_004/inputs/view_001.npz",
+          "T": [
+            [
+              0.9798385732704002,
+              -0.10479551731689106,
+              0.1701007639069019,
+              -11.451257730231408
+            ],
+            [
+              -0.19360329351179986,
+              -0.7082798462742922,
+              0.6788648054679578,
+              -22.63416310215462
+            ],
+            [
+              0.04933695443387483,
+              -0.6981099905544603,
+              -0.7142886713474039,
+              15.29177694598521
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "K": [
+            [
+              490.0,
+              0.0,
+              319.5
+            ],
+            [
+              0.0,
+              490.0,
+              179.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "RGB_SHA256": "9c87dabe732fddcd6a9ea6586b4a3a845aac60e20f09a1fb6b7bedeecaeedaa6",
+          "capture_type": "VIDEO",
+          "C": [
+            [
+              0.9805319957260451,
+              -0.10184947820581172,
+              0.16787998435401125,
+              -11.31873031260539
+            ],
+            [
+              -0.1901126515379106,
+              -0.706346168414824,
+              0.6818594210619386,
+              -22.729115219562313
+            ],
+            [
+              0.04913435745712111,
+              -0.7005010879041523,
+              -0.7119578925486919,
+              15.210841628515896
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "formal": true,
+          "HERO_target_eligible": true,
+          "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+          "qualification_reasons": [],
+          "RGB_evaluation": {
+            "FIT": {
+              "N": 30,
+              "MAE": 0.8746769537945049,
+              "median": 0.886186713810662,
+              "p95": 1.4089053841531998,
+              "maximum": 2.1794159695342072
+            },
+            "FIT_positive_fraction": 1.0,
+            "FIT_cells": 14,
+            "FEATURE_HELD": {
+              "N": 7,
+              "MAE": 1.02652317994166,
+              "median": 0.7363353780381623,
+              "p95": 2.658647055571417,
+              "maximum": 3.2474645562276545
+            },
+            "FEATURE_HELD_positive_fraction": 1.0,
+            "FEATURE_HELD_cells": 6
+          },
+          "Ring": {
+            "inner": {
+              "N": 0,
+              "MAE": null,
+              "median": null,
+              "p95": null,
+              "maximum": null
+            },
+            "outer": {
+              "N": 96,
+              "MAE": 5.142000113546723,
+              "median": 5.820131463049156,
+              "p95": 9.171555092833158,
+              "maximum": 9.89829940762515
+            },
+            "Ring_IoU": 0.7116647555509226,
+            "minimum_depth_mm": 24.207103438077947,
+            "camera_torus_clearance_mm": 24.361403505279988,
+            "proper_rotation": 1.0000000000000002,
+            "coordinate_unit": "mm",
+            "physical_valid": true
+          },
+          "RGB_rank": 6,
+          "RGB_singular_values": [
+            128.66326960264723,
+            115.27717247485268,
+            63.52487631173009,
+            19.751638094518906,
+            17.88474309821826,
+            11.108901997973657
+          ],
+          "RGB_condition": 11.58199699899381,
+          "calibrated_camera_truth": false,
+          "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+          "candidate_source": "REAL_RGB_PNP_LM",
+          "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+          "seconds": 0.7616744041442871
+        },
+        "support_views": [
+          {
+            "id": "view_002",
+            "index": 2,
+            "raw_frame": 231,
+            "video": "004",
+            "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_12.0mm_closed_R10_single_refY_004/inputs/view_002.npz",
+            "T": [
+              [
+                0.9907560464896915,
+                -0.09697050382231805,
+                0.09486399597614459,
+                -11.57575777431653
+              ],
+              [
+                -0.13563279193007477,
+                -0.695263205270914,
+                0.7058419236271443,
+                -21.32394385951291
+              ],
+              [
+                -0.002490401045856974,
+                -0.7121838223273963,
+                -0.7019886046922483,
+                16.38206690412468
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "f26ad138c471bb1c0597aace9f49f38938e2fd6e22fad95e7932fbf313be791b",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9904997698329566,
+                -0.09322747469137677,
+                0.1010882976586714,
+                -11.82247010367935
+              ],
+              [
+                -0.13745150240905468,
+                -0.6934277323075033,
+                0.7072941852951764,
+                -21.330594371964107
+              ],
+              [
+                0.004158178249314389,
+                -0.7144694661282189,
+                -0.6996542657085031,
+                16.255492892244106
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 27,
+                "MAE": 0.8218921802738821,
+                "median": 0.815417203432619,
+                "p95": 1.3069685119761978,
+                "maximum": 1.7673205683673088
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 10,
+              "FEATURE_HELD": {
+                "N": 4,
+                "MAE": 0.8381270680503736,
+                "median": 0.7784881543465435,
+                "p95": 1.3955509197263571,
+                "maximum": 1.4336425796645107
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 4
+            },
+            "Ring": {
+              "inner": {
+                "N": 3,
+                "MAE": 5.607047030784032,
+                "median": 5.594033906698342,
+                "p95": 5.767052804135217,
+                "maximum": 5.7862771260726475
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 5.384428933149441,
+                "median": 4.80434112587835,
+                "p95": 12.119183958189529,
+                "maximum": 12.513998077279524
+              },
+              "Ring_IoU": 0.7079418455147859,
+              "minimum_depth_mm": 23.626198440280458,
+              "camera_torus_clearance_mm": 24.243966742975935,
+              "proper_rotation": 0.9999999999999999,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              124.19542396184528,
+              103.06264925163367,
+              40.9887026449729,
+              17.015984182167156,
+              14.456682777611746,
+              7.385116197435234
+            ],
+            "RGB_condition": 16.816989826778475,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 0.6919496059417725
+          },
+          {
+            "id": "view_003",
+            "index": 3,
+            "raw_frame": 303,
+            "video": "004",
+            "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_12.0mm_closed_R10_single_refY_004/inputs/view_003.npz",
+            "T": [
+              [
+                0.9931005110474713,
+                -0.0723736391307919,
+                0.09226825735981266,
+                -9.607967464386581
+              ],
+              [
+                -0.1168449751162563,
+                -0.6773486929368208,
+                0.7263236193095068,
+                -22.413311690493508
+              ],
+              [
+                0.009931100006150372,
+                -0.7320934397573482,
+                -0.6811318291762036,
+                17.85152756032582
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "fca5f3834015cd01926e9df6c7a38ab8539488c2509352e437f4f59181be5caa",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9933418119191393,
+                -0.08370369666363878,
+                0.07915640124489046,
+                -9.110077917611441
+              ],
+              [
+                -0.11502829814749006,
+                -0.6826543414919815,
+                0.7216311666408548,
+                -22.06630555370244
+              ],
+              [
+                -0.0063667353088281585,
+                -0.7259316367310289,
+                -0.6877373942679841,
+                17.8301984624161
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 38,
+                "MAE": 1.1652190052932319,
+                "median": 1.090552288959746,
+                "p95": 2.3292218130488838,
+                "maximum": 3.5853072800821284
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 17,
+              "FEATURE_HELD": {
+                "N": 11,
+                "MAE": 1.1121871714039857,
+                "median": 1.0992748271144865,
+                "p95": 2.0839518269861066,
+                "maximum": 2.4293144641883657
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 8
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 3.9683112082575676,
+                "median": 3.884289418859068,
+                "p95": 7.1748772815250215,
+                "maximum": 7.5113720977682945
+              },
+              "Ring_IoU": 0.7540254237288135,
+              "minimum_depth_mm": 24.801075722691348,
+              "camera_torus_clearance_mm": 24.93066501769212,
+              "proper_rotation": 0.9999999999999994,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              139.39225032642267,
+              129.4535128587662,
+              61.022965416867244,
+              25.334957325864153,
+              23.513215038051126,
+              11.454602949850774
+            ],
+            "RGB_condition": 12.169103629055831,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 0.8132951259613037
+          },
+          {
+            "id": "view_004",
+            "index": 4,
+            "raw_frame": 375,
+            "video": "004",
+            "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_12.0mm_closed_R10_single_refY_004/inputs/view_004.npz",
+            "T": [
+              [
+                0.993499041810155,
+                -0.08103379233925595,
+                0.07995735376700419,
+                -5.799166272804279
+              ],
+              [
+                -0.11374195566059553,
+                -0.6773649006494029,
+                0.7268009073265714,
+                -23.744485164353172
+              ],
+              [
+                -0.004735128805708238,
+                -0.7311705108026051,
+                -0.6821783217662745,
+                18.570921909586374
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "44792ad3902ee35f736f98804504b272d63023f79402534d32283c426585b29d",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9939452134415909,
+                -0.0805532671305547,
+                0.0747267276892499,
+                -5.557780169227079
+              ],
+              [
+                -0.10959374975898625,
+                -0.6780220821678485,
+                0.7268254715587089,
+                -23.838482928618898
+              ],
+              [
+                -0.007881794866305036,
+                -0.73061428075789,
+                -0.682744937778609,
+                18.66923465929845
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 48,
+                "MAE": 0.7780260709176045,
+                "median": 0.7342790116772057,
+                "p95": 1.69886565151325,
+                "maximum": 2.518753361942038
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 23,
+              "FEATURE_HELD": {
+                "N": 13,
+                "MAE": 1.2116417833828306,
+                "median": 1.0596419608579342,
+                "p95": 2.5975427608672494,
+                "maximum": 3.309923096825911
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 11
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 3.9074350880901,
+                "median": 4.245089765674901,
+                "p95": 6.207464603364515,
+                "maximum": 6.952556043291371
+              },
+              "Ring_IoU": 0.7786616752456715,
+              "minimum_depth_mm": 26.362444137738038,
+              "camera_torus_clearance_mm": 25.950165099997463,
+              "proper_rotation": 0.9999999999999998,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              150.48005886933746,
+              133.95943992584677,
+              100.78190455575884,
+              27.931056545948017,
+              24.808349238464732,
+              14.952833836257705
+            ],
+            "RGB_condition": 10.063648169783889,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 0.817758321762085
+          }
+        ],
+        "rank": 1,
+        "reused": false
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_12.0mm_closed_R10_single_refY_004/selection/HERO_PLAN.json",
+      "source_plan_sha256": "b891a6403bcbed1a8760d1bd73da42fb162c99086bef171770d1aa24e7c7eab7",
+      "ring_inner_mm": 10.0
+    },
+    {
+      "case": "GP_Ip_12.0mm_closed_R10_single_refY_004",
+      "route": "V6_LIMITED_DIAGNOSTIC",
+      "status": "NO_LEGAL_SUPPORT_TUPLE",
+      "plan": null,
+      "v6_root": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Ip_12.0mm_closed_R10_single_refY_004",
+      "RUN_STATE": {
+        "path": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Ip_12.0mm_closed_R10_single_refY_004/RUN_STATE.json",
+        "sha256": "98e055f9485e476c6f6fcc4a6d8ca3261dc5b1580da53df7ed14f7416797c82c",
+        "run_id": "M2F10-FORMAL-20261125-02-a1-GP_Ip_12.0mm_closed_R10_single_refY_004",
+        "code_commit": "a38d4c822daf9a9b3cd88e1cd0edebdc70b9bfad"
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Ip_12.0mm_closed_R10_single_refY_004/inputs/MVS_supported_cases.json",
+      "source_plan_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "ring_inner_mm": 10.0,
+      "target_own_validated": null,
+      "support_own_validated": []
+    },
+    {
+      "case": "GP_Ip_12.0mm_closed_R10_single_refY_005",
+      "route": "H004_RAW_BASELINE",
+      "status": "READY",
+      "plan": {
+        "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+        "id": "view_004",
+        "view_id": "view_004",
+        "variant": "GEOMETRIC3",
+        "target": {
+          "id": "view_004",
+          "index": 4,
+          "raw_frame": 258,
+          "video": "005",
+          "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+          "role": "FIT",
+          "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_12.0mm_closed_R10_single_refY_005/inputs/view_004.npz",
+          "T": [
+            [
+              0.9932805510195459,
+              0.00811446389157959,
+              0.11544653499373261,
+              -4.546192244460649
+            ],
+            [
+              -0.05505165166475623,
+              -0.8443226339294388,
+              0.5329996299092867,
+              -18.014226775640278
+            ],
+            [
+              0.10179912875505973,
+              -0.5357736885198887,
+              -0.8382025364281025,
+              29.405296774900442
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "K": [
+            [
+              490.0,
+              0.0,
+              319.5
+            ],
+            [
+              0.0,
+              490.0,
+              179.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "RGB_SHA256": "7fcfb4f180a620f8744e01365b9954fac95fccd2033f06b60853ff4bc79873e8",
+          "capture_type": "VIDEO",
+          "C": [
+            [
+              0.9935682254896131,
+              0.008866644994689763,
+              0.11288739479658184,
+              -4.407337360222972
+            ],
+            [
+              -0.05275187479209345,
+              -0.8458969823886119,
+              0.5307311323935685,
+              -17.94658178425976
+            ],
+            [
+              0.10019691114670395,
+              -0.5332726111402857,
+              -0.839988631592286,
+              29.50214629557628
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "formal": true,
+          "HERO_target_eligible": true,
+          "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+          "qualification_reasons": [],
+          "RGB_evaluation": {
+            "FIT": {
+              "N": 44,
+              "MAE": 0.7041489835076408,
+              "median": 0.617150666463605,
+              "p95": 1.3496594071758194,
+              "maximum": 1.9614322043100143
+            },
+            "FIT_positive_fraction": 1.0,
+            "FIT_cells": 23,
+            "FEATURE_HELD": {
+              "N": 14,
+              "MAE": 0.8664446605450333,
+              "median": 0.7163360334445921,
+              "p95": 1.6441183593234092,
+              "maximum": 1.7320787135807914
+            },
+            "FEATURE_HELD_positive_fraction": 1.0,
+            "FEATURE_HELD_cells": 13
+          },
+          "Ring": {
+            "inner": {
+              "N": 0,
+              "MAE": null,
+              "median": null,
+              "p95": null,
+              "maximum": null
+            },
+            "outer": {
+              "N": 96,
+              "MAE": 2.1182567034044473,
+              "median": 1.9463874581224874,
+              "p95": 4.198600570143428,
+              "maximum": 4.622679466030624
+            },
+            "Ring_IoU": 0.7935018876558746,
+            "minimum_depth_mm": 31.657470566028138,
+            "camera_torus_clearance_mm": 31.591099211052736,
+            "proper_rotation": 0.9999999999999999,
+            "coordinate_unit": "mm",
+            "physical_valid": true
+          },
+          "RGB_rank": 6,
+          "RGB_singular_values": [
+            143.07257729761432,
+            130.87553631674152,
+            71.16372754763087,
+            20.31098511573037,
+            14.80817827400363,
+            10.799708774739768
+          ],
+          "RGB_condition": 13.247818092304236,
+          "calibrated_camera_truth": false,
+          "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+          "candidate_source": "REAL_RGB_PNP_LM",
+          "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+          "seconds": 0.8587279319763184
+        },
+        "support_views": [
+          {
+            "id": "view_005",
+            "index": 5,
+            "raw_frame": 310,
+            "video": "005",
+            "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_12.0mm_closed_R10_single_refY_005/inputs/view_005.npz",
+            "T": [
+              [
+                0.9944548871556016,
+                0.014758424415988552,
+                0.10412332265682278,
+                -2.26848977309608
+              ],
+              [
+                -0.042457816933179134,
+                -0.8494805493079728,
+                0.5259088610478935,
+                -18.13507902854559
+              ],
+              [
+                0.09621232350176309,
+                -0.5274134860393519,
+                -0.8441434733208628,
+                30.381557381941708
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "f40ba28a4eb07af660b8509a0a868a6acddb02d1fdd30aec7c03ec4eba3dc4cc",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9946777597766413,
+                0.014385470398998628,
+                0.10202554801186856,
+                -2.149501268811325
+              ],
+              [
+                -0.041787063253472284,
+                -0.848791890171575,
+                0.5270732098329559,
+                -18.205977805385942
+              ],
+              [
+                0.09418065380094189,
+                -0.5285313476231701,
+                -0.8436732892709492,
+                30.359377475672584
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 55,
+                "MAE": 0.6598771697184996,
+                "median": 0.5602668702202015,
+                "p95": 1.579455194906341,
+                "maximum": 1.6346411499536804
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 25,
+              "FEATURE_HELD": {
+                "N": 15,
+                "MAE": 1.03103633539122,
+                "median": 0.7959715305219686,
+                "p95": 1.6727986882621835,
+                "maximum": 1.839441325980226
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 15
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 1.5083745049243948,
+                "median": 1.2908226157486031,
+                "p95": 4.207015198749035,
+                "maximum": 5.038861957537069
+              },
+              "Ring_IoU": 0.8470335954253038,
+              "minimum_depth_mm": 32.309324441737886,
+              "camera_torus_clearance_mm": 32.32121762851221,
+              "proper_rotation": 1.0000000000000002,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              174.35431543981187,
+              155.11768102948264,
+              86.8745914356551,
+              29.989923343560253,
+              26.272789606538684,
+              13.788511695701837
+            ],
+            "RGB_condition": 12.644897381793692,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 0.8660576343536377
+          },
+          {
+            "id": "view_007",
+            "index": 7,
+            "raw_frame": 411,
+            "video": "005",
+            "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_12.0mm_closed_R10_single_refY_005/inputs/view_007.npz",
+            "T": [
+              [
+                0.9970562802619756,
+                0.02705669409220451,
+                0.07174056937990303,
+                0.3055157479606707
+              ],
+              [
+                -0.01453634168357122,
+                -0.8519920143576369,
+                0.5233529423259929,
+                -18.32896954432282
+              ],
+              [
+                0.07528259267991694,
+                -0.5228551833687953,
+                -0.8490906832981816,
+                33.51534334910205
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "d913d3e816f06fd92e220a192151a61fd8c991588e165f3af4c3246ff199e1dd",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9970385216330359,
+                0.0272627954716048,
+                0.07190915354031248,
+                0.2892088660941761
+              ],
+              [
+                -0.01442904082895937,
+                -0.852131158384459,
+                0.5231293259712327,
+                -18.318743283354774
+              ],
+              [
+                0.07553799812390459,
+                -0.5226176699016534,
+                -0.8492142144041157,
+                33.536871945291416
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 66,
+                "MAE": 0.7388114934012124,
+                "median": 0.6287177088638061,
+                "p95": 1.6316932505456503,
+                "maximum": 1.9566352763817771
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 27,
+              "FEATURE_HELD": {
+                "N": 20,
+                "MAE": 11.027362247132022,
+                "median": 1.065547901331119,
+                "p95": 17.72655038142674,
+                "maximum": 191.03328320635185
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 17
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 1.448305646506239,
+                "median": 1.3414980974026127,
+                "p95": 2.9686292646793597,
+                "maximum": 4.182935339664937
+              },
+              "Ring_IoU": 0.84230304657093,
+              "minimum_depth_mm": 34.95628769058059,
+              "camera_torus_clearance_mm": 35.26845807722049,
+              "proper_rotation": 1.0000000000000002,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              192.41678757838457,
+              170.98525802575128,
+              80.28081535522219,
+              31.015506679327846,
+              27.185323304145864,
+              13.405422118955986
+            ],
+            "RGB_condition": 14.353653758227942,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 0.9327907562255859
+          },
+          {
+            "id": "view_008",
+            "index": 8,
+            "raw_frame": 462,
+            "video": "005",
+            "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_12.0mm_closed_R10_single_refY_005/inputs/view_008.npz",
+            "T": [
+              [
+                0.9980522654430515,
+                0.03229098144077947,
+                0.05337572445956601,
+                3.733317434183672
+              ],
+              [
+                -3.809835336086016e-20,
+                -0.8556092590131968,
+                0.5176222521210695,
+                -19.13335550744399
+              ],
+              [
+                0.06238329459071779,
+                -0.5166140613731679,
+                -0.853942759292172,
+                34.19109946493651
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "8075792709cde013b1a750781abb4ce9eeb650ec1958beddcc8187802d61dace",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9980380032367114,
+                0.03219366440160272,
+                0.05370020547143299,
+                3.7314803678965425
+              ],
+              [
+                -0.00028652069894585547,
+                -0.8553219293713865,
+                0.5180968201430093,
+                -19.12777828265534
+              ],
+              [
+                0.06261039850668752,
+                -0.5170957020792241,
+                -0.8536345663631647,
+                34.180367285989846
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 71,
+                "MAE": 0.7431680148069966,
+                "median": 0.6391084375171847,
+                "p95": 1.4205239112209045,
+                "maximum": 3.3720115966606796
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 25,
+              "FEATURE_HELD": {
+                "N": 20,
+                "MAE": 1.8198869962935569,
+                "median": 0.8162069390026836,
+                "p95": 2.570690364349897,
+                "maximum": 21.13041436069737
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 14
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 1.4997138498477927,
+                "median": 1.0968012690994002,
+                "p95": 4.704266894869313,
+                "maximum": 5.087266624918643
+              },
+              "Ring_IoU": 0.8788645306351883,
+              "minimum_depth_mm": 35.85003887621814,
+              "camera_torus_clearance_mm": 36.29422472072278,
+              "proper_rotation": 0.9999999999999996,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              210.99472180219072,
+              192.41797266709884,
+              79.5995289677386,
+              23.124219486454077,
+              17.444338651806998,
+              11.304517689991595
+            ],
+            "RGB_condition": 18.664637235164307,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 0.929185152053833
+          }
+        ],
+        "rank": 1,
+        "reused": false
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_12.0mm_closed_R10_single_refY_005/selection/HERO_PLAN.json",
+      "source_plan_sha256": "9a6bb30235bb0fc3653ec3bda4cfc43f8fb47d89b65c9c9e9cc9a8e559dfa1b3",
+      "ring_inner_mm": 10.0
+    },
+    {
+      "case": "GP_Ip_12.0mm_closed_R10_single_refY_005",
+      "route": "V6_LIMITED_DIAGNOSTIC",
+      "status": "READY",
+      "plan": {
+        "tag": "005_supported_ref00062",
+        "reference": 1,
+        "reference_id": "GP_Ip_12.0mm_closed_R10_single_refY_005-raw00062",
+        "sources": [
+          9,
+          8,
+          11
+        ],
+        "source_ids": [
+          "GP_Ip_12.0mm_closed_R10_single_refY_005-raw00440",
+          "GP_Ip_12.0mm_closed_R10_single_refY_005-raw00398",
+          "GP_Ip_12.0mm_closed_R10_single_refY_005-raw00566"
+        ],
+        "independent_image_heldout": 0,
+        "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+        "selection_uses_GT": false,
+        "selection_uses_MVS_error": false,
+        "source_diagnostics": [
+          {
+            "i": 9,
+            "overlap": 52,
+            "angle": 25.133142307674387
+          },
+          {
+            "i": 8,
+            "overlap": 51,
+            "angle": 22.3292126204015
+          },
+          {
+            "i": 11,
+            "overlap": 37,
+            "angle": 31.2861336647666
+          },
+          {
+            "i": 12,
+            "overlap": 26,
+            "angle": 34.650508119941065
+          }
+        ],
+        "original_previews_preserved": true,
+        "independent_target_id": "GP_Ip_12.0mm_closed_R10_single_refY_005-raw00062",
+        "support_attempt": 1
+      },
+      "v6_root": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Ip_12.0mm_closed_R10_single_refY_005",
+      "RUN_STATE": {
+        "path": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Ip_12.0mm_closed_R10_single_refY_005/RUN_STATE.json",
+        "sha256": "8d5dfa488429b782098908afa3d4ed018845a94f48f5649de893f4d24f1b166e",
+        "run_id": "M2F10-FORMAL-20261125-02-a0-GP_Ip_12.0mm_closed_R10_single_refY_005",
+        "code_commit": "a38d4c822daf9a9b3cd88e1cd0edebdc70b9bfad"
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Ip_12.0mm_closed_R10_single_refY_005/inputs/MVS_supported_cases.json",
+      "source_plan_sha256": "ad0dfe13686758933092794c81db04c1d30e5111e037ad2bc570096da386021b",
+      "ring_inner_mm": 10.0,
+      "target_own_validated": false,
+      "support_own_validated": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "case": "GP_Ip_20.0mm_closed_R10_single_refY_004",
+      "route": "H004_RAW_BASELINE",
+      "status": "READY",
+      "plan": {
+        "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+        "id": "view_000",
+        "view_id": "view_000",
+        "variant": "GEOMETRIC3",
+        "target": {
+          "id": "view_000",
+          "index": 0,
+          "raw_frame": 64,
+          "video": "004",
+          "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+          "role": "FIT",
+          "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_20.0mm_closed_R10_single_refY_004/inputs/view_000.npz",
+          "T": [
+            [
+              0.9657053809584035,
+              -0.25934553432498636,
+              0.012369762070162167,
+              -6.664208523536915
+            ],
+            [
+              -0.07430107333836257,
+              -0.3216908053596414,
+              -0.943924984438823,
+              42.696213880811605
+            ],
+            [
+              0.24878196817444861,
+              0.9106343500948954,
+              -0.3299281933065059,
+              19.35766108805885
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "K": [
+            [
+              490.0,
+              0.0,
+              319.5
+            ],
+            [
+              0.0,
+              490.0,
+              179.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "RGB_SHA256": "811df04603c89b72a09c41726cfd4c30d9f03fdf23217bf443325652970ac5ca",
+          "capture_type": "VIDEO",
+          "C": [
+            [
+              0.9652030281899625,
+              -0.2611610070979852,
+              0.013343265885574,
+              -6.765073604513349
+            ],
+            [
+              -0.07413410060845957,
+              -0.3222048232079841,
+              -0.9437627811205984,
+              42.65440099684966
+            ],
+            [
+              0.2507733030047293,
+              0.9099335032149756,
+              -0.33035400743296633,
+              19.33958519739187
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "formal": true,
+          "HERO_target_eligible": true,
+          "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+          "qualification_reasons": [],
+          "RGB_evaluation": {
+            "FIT": {
+              "N": 234,
+              "MAE": 0.6553623683092604,
+              "median": 0.5738450741103127,
+              "p95": 1.319446406010694,
+              "maximum": 2.6919448186469936
+            },
+            "FIT_positive_fraction": 1.0,
+            "FIT_cells": 39,
+            "FEATURE_HELD": {
+              "N": 61,
+              "MAE": 0.7455766463474354,
+              "median": 0.6503376395545698,
+              "p95": 1.555537775686893,
+              "maximum": 4.083025032959
+            },
+            "FEATURE_HELD_positive_fraction": 1.0,
+            "FEATURE_HELD_cells": 25
+          },
+          "Ring": {
+            "inner": {
+              "N": 0,
+              "MAE": null,
+              "median": null,
+              "p95": null,
+              "maximum": null
+            },
+            "outer": {
+              "N": 96,
+              "MAE": 3.87573535056012,
+              "median": 3.99209846439243,
+              "p95": 6.562800030525099,
+              "maximum": 7.204613688089734
+            },
+            "Ring_IoU": 0.6205787781350482,
+            "minimum_depth_mm": 41.35487666089496,
+            "camera_torus_clearance_mm": 41.67106792637902,
+            "proper_rotation": 1.0000000000000004,
+            "coordinate_unit": "mm",
+            "physical_valid": true
+          },
+          "RGB_rank": 6,
+          "RGB_singular_values": [
+            383.4878962447091,
+            313.93437442376853,
+            254.93935753284214,
+            27.726523677133432,
+            24.008895127515036,
+            19.592148958142154
+          ],
+          "RGB_condition": 19.573549438809174,
+          "calibrated_camera_truth": false,
+          "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+          "candidate_source": "REAL_RGB_PNP_LM",
+          "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+          "seconds": 1.8669703006744385
+        },
+        "support_views": [
+          {
+            "id": "view_001",
+            "index": 1,
+            "raw_frame": 124,
+            "video": "004",
+            "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_20.0mm_closed_R10_single_refY_004/inputs/view_001.npz",
+            "T": [
+              [
+                0.9675413498649594,
+                -0.25214800772675183,
+                0.016885452345800935,
+                -4.742133993340555
+              ],
+              [
+                -0.06679428166300498,
+                -0.3195991399693501,
+                -0.9451957012534361,
+                40.69646662620227
+              ],
+              [
+                0.2437257890306555,
+                0.9133880730173138,
+                -0.3260674283504914,
+                18.59394078501147
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "2949528fb7643401479fd59d330f1a93736c0bf59b6a2e1f3d354dc973e2ffe7",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9671700733848498,
+                -0.25357046836241554,
+                0.01685427907710969,
+                -4.745965992911212
+              ],
+              [
+                -0.06753906783638357,
+                -0.3204112483514866,
+                -0.9448677718313999,
+                40.65253124715314
+              ],
+              [
+                0.2449908640430011,
+                0.9127095099232326,
+                -0.3270180836454714,
+                18.63118616460488
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 261,
+                "MAE": 0.6141374390919301,
+                "median": 0.5316709834769617,
+                "p95": 1.3511842384152084,
+                "maximum": 2.077381769047522
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 39,
+              "FEATURE_HELD": {
+                "N": 70,
+                "MAE": 0.6449411273867562,
+                "median": 0.5708464574810068,
+                "p95": 1.4651021819855201,
+                "maximum": 1.8627917266579195
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 30
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 93,
+                "MAE": 3.589496234234255,
+                "median": 3.630532785013062,
+                "p95": 6.204680782615259,
+                "maximum": 7.2272071500921395
+              },
+              "Ring_IoU": 0.6605616605616605,
+              "minimum_depth_mm": 39.19064343941187,
+              "camera_torus_clearance_mm": 39.340367649573494,
+              "proper_rotation": 1.0000000000000002,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              417.4326881464644,
+              342.5807075467198,
+              270.5023601891188,
+              29.28482721541066,
+              26.172750288009095,
+              22.055696637688712
+            ],
+            "RGB_condition": 18.926298044612956,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 1.6009981632232666
+          },
+          {
+            "id": "view_002",
+            "index": 2,
+            "raw_frame": 183,
+            "video": "004",
+            "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_20.0mm_closed_R10_single_refY_004/inputs/view_002.npz",
+            "T": [
+              [
+                0.9691803390071158,
+                -0.24417650545258843,
+                0.03266962912269599,
+                -1.1790627319906146
+              ],
+              [
+                -0.049830393245973735,
+                -0.32417965364308915,
+                -0.9446822132721662,
+                43.62314338561347
+              ],
+              [
+                0.24126003065365811,
+                0.9139394872467264,
+                -0.3263559579051485,
+                19.76708935590196
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "1d1ef1688e73755f243dec0d5bd46e78ca8ae88d3c9fc75b4e38157cf3971425",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9691631886404591,
+                -0.2442566943277908,
+                0.03257884375354681,
+                -1.1527792443229048
+              ],
+              [
+                -0.04989961618319686,
+                -0.32400096009564194,
+                -0.944739861634869,
+                43.62316756617212
+              ],
+              [
+                0.2413146122575827,
+                0.9139814249388017,
+                -0.32619811890599565,
+                19.743216340192582
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 316,
+                "MAE": 0.6432373853645063,
+                "median": 0.5371351421921768,
+                "p95": 1.484225127108051,
+                "maximum": 3.832172849192655
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 43,
+              "FEATURE_HELD": {
+                "N": 77,
+                "MAE": 0.6723495002835141,
+                "median": 0.5957089270469834,
+                "p95": 1.625028891418017,
+                "maximum": 1.9727275916320568
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 35
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 2.921972660315053,
+                "median": 2.741887774939431,
+                "p95": 6.40233384582103,
+                "maximum": 7.103163393329245
+              },
+              "Ring_IoU": 0.7592592592592593,
+              "minimum_depth_mm": 42.30091849393809,
+              "camera_torus_clearance_mm": 42.25690375219557,
+              "proper_rotation": 0.9999999999999998,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              438.452563487544,
+              387.195442926826,
+              271.17673218368844,
+              32.93328349620252,
+              29.78458497620936,
+              23.5657527220898
+            ],
+            "RGB_condition": 18.605497929907084,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 1.7533199787139893
+          },
+          {
+            "id": "view_003",
+            "index": 3,
+            "raw_frame": 242,
+            "video": "004",
+            "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_20.0mm_closed_R10_single_refY_004/inputs/view_003.npz",
+            "T": [
+              [
+                0.9713078963002459,
+                -0.2342672924086449,
+                0.04098544000389959,
+                1.139375509966174
+              ],
+              [
+                -0.03924577843382985,
+                -0.3278578240337412,
+                -0.9439115509913959,
+                44.927934174036835
+              ],
+              [
+                0.23456500050074286,
+                0.9152202373895489,
+                -0.32764489559995214,
+                21.414619996296942
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "58579d18cd8872d1d53ab0a999ac8d1adb485e7a2c59cf70f2fd30e01b8e9c78",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.971210895465897,
+                -0.23467186970284493,
+                0.04096962409519444,
+                1.1524683117711767
+              ],
+              [
+                -0.039645559861514454,
+                -0.3288067344768966,
+                -0.9435647094640127,
+                44.85365274239538
+              ],
+              [
+                0.23489918286702838,
+                0.9147760627239929,
+                -0.32864438068464186,
+                21.455864776757476
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 313,
+                "MAE": 0.6485274982516009,
+                "median": 0.5497819545506962,
+                "p95": 1.5258501730999672,
+                "maximum": 2.467806146112759
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 45,
+              "FEATURE_HELD": {
+                "N": 82,
+                "MAE": 0.575281006056739,
+                "median": 0.47343197558117195,
+                "p95": 1.227857890795958,
+                "maximum": 1.6959389774103841
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 29
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 1.212491557158972,
+                "median": 0.8427998961059298,
+                "p95": 4.271741746672014,
+                "maximum": 4.976171694423426
+              },
+              "Ring_IoU": 0.8600417785735601,
+              "minimum_depth_mm": 43.93018799659228,
+              "camera_torus_clearance_mm": 44.147801881199754,
+              "proper_rotation": 1.0,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              429.9308277514738,
+              393.46771872089545,
+              255.72891388870065,
+              29.345226356659445,
+              27.464258768836114,
+              21.409945729945452
+            ],
+            "RGB_condition": 20.080892925858397,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 1.8444921970367432
+          }
+        ],
+        "rank": 1,
+        "reused": false
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_20.0mm_closed_R10_single_refY_004/selection/HERO_PLAN.json",
+      "source_plan_sha256": "0cac47d5dd2635d895428fb88c727d333fadd21497ab6c9240ac2ba250d22be8",
+      "ring_inner_mm": 10.0
+    },
+    {
+      "case": "GP_Ip_20.0mm_closed_R10_single_refY_004",
+      "route": "V6_LIMITED_DIAGNOSTIC",
+      "status": "NO_LEGAL_SUPPORT_TUPLE",
+      "plan": null,
+      "v6_root": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Ip_20.0mm_closed_R10_single_refY_004",
+      "RUN_STATE": {
+        "path": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Ip_20.0mm_closed_R10_single_refY_004/RUN_STATE.json",
+        "sha256": "a8761ba51f07a00b7c913acb4a8b9e47e07ee809a6331e588960a7128e909257",
+        "run_id": "M2F10-FORMAL-20261125-02-a1-GP_Ip_20.0mm_closed_R10_single_refY_004",
+        "code_commit": "a38d4c822daf9a9b3cd88e1cd0edebdc70b9bfad"
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Ip_20.0mm_closed_R10_single_refY_004/inputs/MVS_supported_cases.json",
+      "source_plan_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "ring_inner_mm": 10.0,
+      "target_own_validated": null,
+      "support_own_validated": []
+    },
+    {
+      "case": "GP_Ip_20.0mm_closed_R10_single_refY_005",
+      "route": "H004_RAW_BASELINE",
+      "status": "READY",
+      "plan": {
+        "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+        "id": "view_000",
+        "view_id": "view_000",
+        "variant": "GEOMETRIC3",
+        "target": {
+          "id": "view_000",
+          "index": 0,
+          "raw_frame": 46,
+          "video": "005",
+          "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+          "role": "FIT",
+          "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_20.0mm_closed_R10_single_refY_005/inputs/view_000.npz",
+          "T": [
+            [
+              0.9929935379004179,
+              0.11666076515682267,
+              0.01881753334094392,
+              0.5058405863339899
+            ],
+            [
+              0.08840153936239988,
+              -0.62770341189084,
+              -0.7734168310419403,
+              29.79800249957591
+            ],
+            [
+              -0.07841556941303764,
+              0.7696614142424082,
+              -0.6336184229487062,
+              30.30315525226035
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "K": [
+            [
+              490.0,
+              0.0,
+              319.5
+            ],
+            [
+              0.0,
+              490.0,
+              179.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "RGB_SHA256": "0e20c10beaf89d50c10c3be6ac91844f4905c78c5e950b28e907d4c0d6113531",
+          "capture_type": "VIDEO",
+          "C": [
+            [
+              0.9927390232915161,
+              0.11845001803000155,
+              0.02094814700393403,
+              0.3978538655344133
+            ],
+            [
+              0.09119069206650474,
+              -0.6275280829668621,
+              -0.7732352570649936,
+              29.789007785544364
+            ],
+            [
+              -0.07844417960969466,
+              0.7695310898960659,
+              -0.6337731552919662,
+              30.362180459335992
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "formal": true,
+          "HERO_target_eligible": true,
+          "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+          "qualification_reasons": [],
+          "RGB_evaluation": {
+            "FIT": {
+              "N": 125,
+              "MAE": 0.8680752651366708,
+              "median": 0.7362235784995258,
+              "p95": 1.846546870124162,
+              "maximum": 3.5776914958501513
+            },
+            "FIT_positive_fraction": 1.0,
+            "FIT_cells": 39,
+            "FEATURE_HELD": {
+              "N": 33,
+              "MAE": 10.872795423030984,
+              "median": 0.8061093157399154,
+              "p95": 4.392230540227784,
+              "maximum": 324.3351241324721
+            },
+            "FEATURE_HELD_positive_fraction": 1.0,
+            "FEATURE_HELD_cells": 20
+          },
+          "Ring": {
+            "inner": {
+              "N": 0,
+              "MAE": null,
+              "median": null,
+              "p95": null,
+              "maximum": null
+            },
+            "outer": {
+              "N": 96,
+              "MAE": 4.005713180876321,
+              "median": 4.646671256553775,
+              "p95": 5.880660142671429,
+              "maximum": 6.50819469568626
+            },
+            "Ring_IoU": 0.6742936384122031,
+            "minimum_depth_mm": 37.80128314907974,
+            "camera_torus_clearance_mm": 38.22136824745077,
+            "proper_rotation": 0.9999999999999997,
+            "coordinate_unit": "mm",
+            "physical_valid": true
+          },
+          "RGB_rank": 6,
+          "RGB_singular_values": [
+            295.4149378633215,
+            269.4642982303874,
+            173.35305410260068,
+            22.039340424580345,
+            18.09693915790822,
+            12.822748788576744
+          ],
+          "RGB_condition": 23.038347138680155,
+          "calibrated_camera_truth": false,
+          "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+          "candidate_source": "REAL_RGB_PNP_LM",
+          "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+          "seconds": 1.6503241062164307
+        },
+        "support_views": [
+          {
+            "id": "view_001",
+            "index": 1,
+            "raw_frame": 87,
+            "video": "005",
+            "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_20.0mm_closed_R10_single_refY_005/inputs/view_001.npz",
+            "T": [
+              [
+                0.9927190841331024,
+                0.1199832126583992,
+                0.01062302584500271,
+                -0.3840860211149804
+              ],
+              [
+                0.08283387890260291,
+                -0.6159933600141131,
+                -0.7833841515658024,
+                29.736966698082743
+              ],
+              [
+                -0.08744923386675925,
+                0.7785603439032149,
+                -0.6214470390929737,
+                32.82984971315022
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "0ba342b7f42a96300cdf92fa8e82e55a87337e3639661065aaa868e9682a61e1",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9925652037258659,
+                0.1212071013812682,
+                0.011097518974142458,
+                -0.3699221854628864
+              ],
+              [
+                0.08387053333683109,
+                -0.615031564778816,
+                -0.7840292774912916,
+                29.804109416901696
+              ],
+              [
+                -0.08820459166293998,
+                0.779130934375264,
+                -0.6206246346295817,
+                32.75847522241306
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 153,
+                "MAE": 0.7877374537288598,
+                "median": 0.6541411462209707,
+                "p95": 1.713899370743149,
+                "maximum": 2.8009311977285116
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 41,
+              "FEATURE_HELD": {
+                "N": 42,
+                "MAE": 1.011820428215196,
+                "median": 0.694769193535137,
+                "p95": 2.128730659573517,
+                "maximum": 7.6479636152621335
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 26
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 5.1935896127398244,
+                "median": 6.41116267434839,
+                "p95": 8.763174408356685,
+                "maximum": 9.257121334343147
+              },
+              "Ring_IoU": 0.513003663003663,
+              "minimum_depth_mm": 39.14553355021431,
+              "camera_torus_clearance_mm": 40.13165529618462,
+              "proper_rotation": 1.0,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              305.48549075863457,
+              272.7681137137125,
+              199.12947459289026,
+              28.562557705767816,
+              25.76294263512356,
+              17.254684007501588
+            ],
+            "RGB_condition": 17.70449639215779,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 1.2516028881072998
+          },
+          {
+            "id": "view_002",
+            "index": 2,
+            "raw_frame": 127,
+            "video": "005",
+            "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_20.0mm_closed_R10_single_refY_005/inputs/view_002.npz",
+            "T": [
+              [
+                0.9925575741569262,
+                0.12170382106716979,
+                -0.004200228728069688,
+                -1.7412277211024254
+              ],
+              [
+                0.07079307195579285,
+                -0.6047315776133954,
+                -0.7932767865003213,
+                29.122898169518425
+              ],
+              [
+                -0.09908482702603713,
+                0.7870755357491841,
+                -0.6088466950541452,
+                33.585110202302126
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "38b33f59c250c76d72dffc43ec0689f4452ddaaccf9c834ddcf7c175e4ed6bc1",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9924222527356509,
+                0.12283292872550033,
+                -0.0031849483216488143,
+                -1.823690800796437
+              ],
+              [
+                0.0722476945272276,
+                -0.6042956586019159,
+                -0.7934778053798209,
+                29.10679801166396
+              ],
+              [
+                -0.09938985315712985,
+                0.7872349259373549,
+                -0.608590854740532,
+                33.52815572810377
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 179,
+                "MAE": 0.7231718774872015,
+                "median": 0.599561797470665,
+                "p95": 1.6491487556414826,
+                "maximum": 3.680918967660777
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 38,
+              "FEATURE_HELD": {
+                "N": 46,
+                "MAE": 0.6881451887418636,
+                "median": 0.4509461161566153,
+                "p95": 1.7687101232639397,
+                "maximum": 4.737894215514716
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 32
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 5.14106244077983,
+                "median": 4.698406010989171,
+                "p95": 11.141343307546855,
+                "maximum": 11.6227081186182
+              },
+              "Ring_IoU": 0.3944697234861743,
+              "minimum_depth_mm": 38.86250665848202,
+              "camera_torus_clearance_mm": 40.380402363864114,
+              "proper_rotation": 0.9999999999999996,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              333.36691956733785,
+              288.6383723271217,
+              223.33779509632407,
+              27.993185770682157,
+              24.86794272114855,
+              18.01909349984114
+            ],
+            "RGB_condition": 18.500759739677076,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 1.375450849533081
+          },
+          {
+            "id": "view_003",
+            "index": 3,
+            "raw_frame": 167,
+            "video": "005",
+            "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_20.0mm_closed_R10_single_refY_005/inputs/view_003.npz",
+            "T": [
+              [
+                0.992657552244187,
+                0.11847226656415147,
+                -0.02439889398582456,
+                -4.365955800974047
+              ],
+              [
+                0.05248612963124459,
+                -0.6036118538911082,
+                -0.7955488269355139,
+                28.648777952426776
+              ],
+              [
+                -0.10897793432117825,
+                0.7884269477239425,
+                -0.6053980161297166,
+                32.886379436190374
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "b3879fe3a2cb0bc2e5b2ef96ba2c08fe1f95706dc30c9eafa95650072f637ddb",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9926737288140035,
+                0.11850880507035402,
+                -0.02354848707027402,
+                -4.439352722730871
+              ],
+              [
+                0.053154221595333916,
+                -0.6033508486272162,
+                -0.7957024457593503,
+                28.655483872163483
+              ],
+              [
+                -0.10850574569623568,
+                0.7886212123583887,
+                -0.60522977997558,
+                32.822303785248934
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 205,
+                "MAE": 0.607995454901724,
+                "median": 0.550507688243384,
+                "p95": 1.372234520604207,
+                "maximum": 2.5715185703143066
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 41,
+              "FEATURE_HELD": {
+                "N": 50,
+                "MAE": 1.925878898280227,
+                "median": 0.5602104527003032,
+                "p95": 1.824772990334983,
+                "maximum": 63.13469600401335
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 32
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 5.1913681346461535,
+                "median": 4.514130357225962,
+                "p95": 12.404175368148353,
+                "maximum": 12.92801425233905
+              },
+              "Ring_IoU": 0.4010867719476991,
+              "minimum_depth_mm": 37.9110891965135,
+              "camera_torus_clearance_mm": 39.70804190639725,
+              "proper_rotation": 0.9999999999999998,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              357.6258857649176,
+              323.0377450028184,
+              223.94604854618382,
+              32.15754767032367,
+              29.317392462080974,
+              20.58782369326272
+            ],
+            "RGB_condition": 17.37074744242876,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 1.5015497207641602
+          }
+        ],
+        "rank": 1,
+        "reused": false
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_20.0mm_closed_R10_single_refY_005/selection/HERO_PLAN.json",
+      "source_plan_sha256": "41c9c6b2681ace66eb773e7ba1003c85e56b724444638aa81dc0421c78fc88e0",
+      "ring_inner_mm": 10.0
+    },
+    {
+      "case": "GP_Ip_20.0mm_closed_R10_single_refY_005",
+      "route": "V6_LIMITED_DIAGNOSTIC",
+      "status": "NO_LEGAL_SUPPORT_TUPLE",
+      "plan": null,
+      "v6_root": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Ip_20.0mm_closed_R10_single_refY_005",
+      "RUN_STATE": {
+        "path": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Ip_20.0mm_closed_R10_single_refY_005/RUN_STATE.json",
+        "sha256": "ce57b732333b27eb65245aaed59841e81b5624282424ce9c944272fc1a51dc43",
+        "run_id": "M2F10-FORMAL-20261125-02-a1-GP_Ip_20.0mm_closed_R10_single_refY_005",
+        "code_commit": "a38d4c822daf9a9b3cd88e1cd0edebdc70b9bfad"
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Ip_20.0mm_closed_R10_single_refY_005/inputs/MVS_supported_cases.json",
+      "source_plan_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "ring_inner_mm": 10.0,
+      "target_own_validated": null,
+      "support_own_validated": []
+    },
+    {
+      "case": "GP_Ip_8.8mm_closed_R5_single_refY_004",
+      "route": "H004_RAW_BASELINE",
+      "status": "READY",
+      "plan": {
+        "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+        "id": "view_001",
+        "view_id": "view_001",
+        "variant": "GEOMETRIC3",
+        "target": {
+          "id": "view_001",
+          "index": 1,
+          "raw_frame": 112,
+          "video": "004",
+          "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+          "role": "FIT",
+          "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_8.8mm_closed_R5_single_refY_004/inputs/view_001.npz",
+          "T": [
+            [
+              0.9988560464059727,
+              0.024238395018347365,
+              0.04122012572959993,
+              1.0372243709343416
+            ],
+            [
+              -0.024656821895359355,
+              -0.4775128234247888,
+              0.8782787396942424,
+              -20.614492758458322
+            ],
+            [
+              0.04097120564799139,
+              -0.8782903868720309,
+              -0.4763689291252413,
+              12.363133985018017
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "K": [
+            [
+              490.0,
+              0.0,
+              319.5
+            ],
+            [
+              0.0,
+              490.0,
+              179.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "RGB_SHA256": "74affb2bf7d1c29f0458cadffc02096e93badef7615ea693794dbe63aa54360e",
+          "capture_type": "VIDEO",
+          "C": [
+            [
+              0.9988212021549691,
+              0.02365344922548544,
+              0.04238773956511569,
+              0.9779308749177004
+            ],
+            [
+              -0.02591408993117913,
+              -0.4785473979136687,
+              0.8776792397528244,
+              -20.612893135491955
+            ],
+            [
+              0.04104468380608446,
+              -0.8777430730514449,
+              -0.477370329661851,
+              12.40922294253678
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "formal": true,
+          "HERO_target_eligible": true,
+          "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+          "qualification_reasons": [],
+          "RGB_evaluation": {
+            "FIT": {
+              "N": 235,
+              "MAE": 0.5166634140862779,
+              "median": 0.4380844494452736,
+              "p95": 1.2451200170980579,
+              "maximum": 2.06046204771059
+            },
+            "FIT_positive_fraction": 1.0,
+            "FIT_cells": 45,
+            "FEATURE_HELD": {
+              "N": 60,
+              "MAE": 0.49709790408227195,
+              "median": 0.47177387001152415,
+              "p95": 1.0709455301482709,
+              "maximum": 1.1677390444378002
+            },
+            "FEATURE_HELD_positive_fraction": 1.0,
+            "FEATURE_HELD_cells": 31
+          },
+          "Ring": {
+            "inner": {
+              "N": 0,
+              "MAE": null,
+              "median": null,
+              "p95": null,
+              "maximum": null
+            },
+            "outer": {
+              "N": 96,
+              "MAE": 10.780905105551398,
+              "median": 9.854649707917764,
+              "p95": 15.950393120267403,
+              "maximum": 16.912256843277042
+            },
+            "Ring_IoU": 0.4922388845040779,
+            "minimum_depth_mm": 21.16087568802085,
+            "camera_torus_clearance_mm": 20.88261723117536,
+            "proper_rotation": 1.0000000000000002,
+            "coordinate_unit": "mm",
+            "physical_valid": true
+          },
+          "RGB_rank": 6,
+          "RGB_singular_values": [
+            402.1732047656499,
+            347.7571165742742,
+            221.79705781314553,
+            64.65590669862289,
+            55.71617437235733,
+            34.825218452616745
+          ],
+          "RGB_condition": 11.548332577234152,
+          "calibrated_camera_truth": false,
+          "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+          "candidate_source": "REAL_RGB_PNP_LM",
+          "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+          "seconds": 1.475437879562378
+        },
+        "support_views": [
+          {
+            "id": "view_005",
+            "index": 5,
+            "raw_frame": 328,
+            "video": "004",
+            "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_8.8mm_closed_R5_single_refY_004/inputs/view_005.npz",
+            "T": [
+              [
+                0.9935649437913,
+                0.09797810903203957,
+                0.05682422563922033,
+                6.09919760397398
+              ],
+              [
+                -0.0056335284883054235,
+                -0.45832808763308186,
+                0.8887652262793441,
+                -20.786124575907237
+              ],
+              [
+                0.11312367491273749,
+                -0.8833660929858629,
+                -0.45482675815867457,
+                13.5208795774381
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "29b3103ca215ea50c9b9881a0a52c1b0472bcc5b4066aef9b460cb9b8cac1879",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.993559728240966,
+                0.0982232777866457,
+                0.056491186202667555,
+                6.116421682937828
+              ],
+              [
+                -0.005259078591913634,
+                -0.45804409844794847,
+                0.8889139136999545,
+                -20.795549395624633
+              ],
+              [
+                0.11318749272822108,
+                -0.8834861581133309,
+                -0.4545776060388868,
+                13.51121864088589
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 154,
+                "MAE": 0.5359533690867311,
+                "median": 0.47542607059361547,
+                "p95": 1.2521955397131552,
+                "maximum": 1.9704307200783613
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 41,
+              "FEATURE_HELD": {
+                "N": 40,
+                "MAE": 0.5519536141979773,
+                "median": 0.459193393883196,
+                "p95": 1.3396991449612883,
+                "maximum": 2.146782590528568
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 22
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 10.48406397134502,
+                "median": 9.649343504385232,
+                "p95": 18.604788842547837,
+                "maximum": 19.36009473517027
+              },
+              "Ring_IoU": 0.48980899884630175,
+              "minimum_depth_mm": 21.3870507743565,
+              "camera_torus_clearance_mm": 22.37030597224834,
+              "proper_rotation": 0.9999999999999996,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              350.9205697476881,
+              314.5896158881635,
+              167.51911018050347,
+              44.072481247576185,
+              38.52156950962202,
+              22.024349900761752
+            ],
+            "RGB_condition": 15.933299794494769,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 1.2131578922271729
+          },
+          {
+            "id": "view_008",
+            "index": 8,
+            "raw_frame": 490,
+            "video": "004",
+            "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_8.8mm_closed_R5_single_refY_004/inputs/view_008.npz",
+            "T": [
+              [
+                0.9940664365925042,
+                0.09575708898215242,
+                0.05159941424032568,
+                6.59956490067549
+              ],
+              [
+                -1.4681913571673974e-20,
+                -0.47436994556301115,
+                0.8803255958715196,
+                -25.598222338499685
+              ],
+              [
+                0.10877462774140195,
+                -0.8751021281291745,
+                -0.47155524141240285,
+                11.640536289978316
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "124a22a8aa94056e364093f7fd926c710e1290d609a1d9ada0cf883c69c2a5bd",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9939501974748338,
+                0.09653335642192475,
+                0.052386219921432664,
+                6.555449034006942
+              ],
+              [
+                -0.00021151776150131737,
+                -0.47528477204531316,
+                0.8798319957367267,
+                -25.60541814963165
+              ],
+              [
+                0.10983150822954058,
+                -0.8745202665231679,
+                -0.4723889745117598,
+                11.684416229303691
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 97,
+                "MAE": 0.6528135622710077,
+                "median": 0.5784375722854455,
+                "p95": 1.3988202190404486,
+                "maximum": 1.5324345572049916
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 33,
+              "FEATURE_HELD": {
+                "N": 27,
+                "MAE": 0.6180953717882584,
+                "median": 0.5568090555416374,
+                "p95": 1.2528165863771585,
+                "maximum": 1.511604141796673
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 17
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 8.566473775298924,
+                "median": 7.428350038156811,
+                "p95": 13.02840147677345,
+                "maximum": 13.882395042243004
+              },
+              "Ring_IoU": 0.556695464362851,
+              "minimum_depth_mm": 24.95364951446902,
+              "camera_torus_clearance_mm": 25.49354593379335,
+              "proper_rotation": 1.0000000000000004,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              257.8958229295947,
+              245.25044104081326,
+              131.09325126211147,
+              31.452164321948292,
+              29.105335070708417,
+              17.779125575043334
+            ],
+            "RGB_condition": 14.505540322613202,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 1.0626871585845947
+          },
+          {
+            "id": "view_006",
+            "index": 6,
+            "raw_frame": 380,
+            "video": "004",
+            "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_8.8mm_closed_R5_single_refY_004/inputs/view_006.npz",
+            "T": [
+              [
+                0.9926840562204365,
+                0.10345720974975806,
+                0.06224925924488034,
+                8.128632821382006
+              ],
+              [
+                -0.008000474504474388,
+                -0.45806661689529277,
+                0.888881863294445,
+                -21.7180008185445
+              ],
+              [
+                0.12047554496014949,
+                -0.88287687716742,
+                -0.4538877205098849,
+                13.816872852187666
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "d5fa4cb3813ce6243b057643c131f64aa22dadf822713a566d138582cfef3efa",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9925347141913602,
+                0.1042330457975033,
+                0.06332703442331072,
+                8.07272277844628
+              ],
+              [
+                -0.008651233506371784,
+                -0.4577563444377437,
+                0.8890355928115656,
+                -21.731910940072694
+              ],
+              [
+                0.12165523944283627,
+                -0.8829465449792355,
+                -0.4534373180775231,
+                13.805626567648396
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 111,
+                "MAE": 0.5254556395635813,
+                "median": 0.4633846899650718,
+                "p95": 1.0556915155969673,
+                "maximum": 1.828516922489896
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 36,
+              "FEATURE_HELD": {
+                "N": 29,
+                "MAE": 3.759759902305643,
+                "median": 0.554985544512031,
+                "p95": 1.3106585554681498,
+                "maximum": 93.94002324327265
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 20
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 10.232422874864179,
+                "median": 8.352360299748735,
+                "p95": 19.003406399402884,
+                "maximum": 20.58618242574828
+              },
+              "Ring_IoU": 0.4888260635433495,
+              "minimum_depth_mm": 22.17656674212999,
+              "camera_torus_clearance_mm": 23.77040058581058,
+              "proper_rotation": 1.0000000000000002,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              299.66268003262786,
+              271.32337208892164,
+              140.74474546234563,
+              35.691382070549615,
+              31.19236721769255,
+              17.978971829381084
+            ],
+            "RGB_condition": 16.66739805125684,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 1.0963916778564453
+          }
+        ],
+        "rank": 1,
+        "reused": false
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_8.8mm_closed_R5_single_refY_004/selection/HERO_PLAN.json",
+      "source_plan_sha256": "d93c99a66f4420b368e0da466424da8ae8dd05c14c601e69e30a0fc757eb9289",
+      "ring_inner_mm": 5.0
+    },
+    {
+      "case": "GP_Ip_8.8mm_closed_R5_single_refY_004",
+      "route": "V6_LIMITED_DIAGNOSTIC",
+      "status": "READY",
+      "plan": {
+        "tag": "005_supported_ref00269",
+        "reference": 4,
+        "reference_id": "GP_Ip_8.8mm_closed_R5_single_refY_004-raw00269",
+        "sources": [
+          1,
+          2,
+          3
+        ],
+        "source_ids": [
+          "GP_Ip_8.8mm_closed_R5_single_refY_004-raw00065",
+          "GP_Ip_8.8mm_closed_R5_single_refY_004-raw00133",
+          "GP_Ip_8.8mm_closed_R5_single_refY_004-raw00201"
+        ],
+        "independent_image_heldout": 0,
+        "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+        "selection_uses_GT": false,
+        "selection_uses_MVS_error": false,
+        "source_diagnostics": [
+          {
+            "i": 1,
+            "overlap": 221,
+            "angle": 7.881622874936797
+          },
+          {
+            "i": 2,
+            "overlap": 247,
+            "angle": 6.354259691801573
+          },
+          {
+            "i": 3,
+            "overlap": 248,
+            "angle": 3.164944414708494
+          }
+        ],
+        "original_previews_preserved": true,
+        "independent_target_id": "GP_Ip_8.8mm_closed_R5_single_refY_004-raw00269",
+        "support_attempt": 1
+      },
+      "v6_root": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Ip_8.8mm_closed_R5_single_refY_004",
+      "RUN_STATE": {
+        "path": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Ip_8.8mm_closed_R5_single_refY_004/RUN_STATE.json",
+        "sha256": "5a5f125c451d633b77ef22129c5353eea3a52e6144efc58ff675e4183d584e1a",
+        "run_id": "M2F10-FORMAL-20261125-02-a0-GP_Ip_8.8mm_closed_R5_single_refY_004",
+        "code_commit": "a38d4c822daf9a9b3cd88e1cd0edebdc70b9bfad"
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Ip_8.8mm_closed_R5_single_refY_004/inputs/MVS_supported_cases.json",
+      "source_plan_sha256": "1034c493355670495ae2fc405ed010fff4263768fd735bb21f7899bf45d933f5",
+      "ring_inner_mm": 5.0,
+      "target_own_validated": false,
+      "support_own_validated": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "case": "GP_Ip_8.8mm_closed_R5_single_refY_005",
+      "route": "H004_RAW_BASELINE",
+      "status": "READY",
+      "plan": {
+        "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+        "id": "view_002",
+        "view_id": "view_002",
+        "variant": "GEOMETRIC3",
+        "target": {
+          "id": "view_002",
+          "index": 2,
+          "raw_frame": 156,
+          "video": "005",
+          "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+          "role": "FIT",
+          "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_8.8mm_closed_R5_single_refY_005/inputs/view_002.npz",
+          "T": [
+            [
+              0.9556586958857035,
+              0.28888978508424523,
+              -0.05708895735617443,
+              0.17902985885636133
+            ],
+            [
+              0.0037963962604115266,
+              -0.20593637835607634,
+              -0.9785580184358088,
+              16.11812911041682
+            ],
+            [
+              -0.2944521087604409,
+              0.9349507474426455,
+              -0.19790163087495755,
+              3.7708217844343985
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "K": [
+            [
+              490.0,
+              0.0,
+              319.5
+            ],
+            [
+              0.0,
+              490.0,
+              179.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "RGB_SHA256": "b4e3afb5572df04dc48d85be1c4e9f055c3d76d2d1a8e010aad59a5263d8da4c",
+          "capture_type": "VIDEO",
+          "C": [
+            [
+              0.9557742418091545,
+              0.2885206455192347,
+              -0.057021362692413494,
+              0.1544884283986852
+            ],
+            [
+              0.0027264008454586314,
+              -0.20256721518499946,
+              -0.9792645659221129,
+              16.179086094100036
+            ],
+            [
+              -0.29408870334061715,
+              0.9358003849333245,
+              -0.19439514944071065,
+              3.6955242325551962
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "formal": true,
+          "HERO_target_eligible": true,
+          "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+          "qualification_reasons": [],
+          "RGB_evaluation": {
+            "FIT": {
+              "N": 66,
+              "MAE": 0.7616346779261933,
+              "median": 0.7018243447068946,
+              "p95": 1.6044691815652623,
+              "maximum": 1.7510920550968283
+            },
+            "FIT_positive_fraction": 1.0,
+            "FIT_cells": 23,
+            "FEATURE_HELD": {
+              "N": 20,
+              "MAE": 0.7292015390049978,
+              "median": 0.663314136615642,
+              "p95": 1.3316710036330026,
+              "maximum": 1.5168919959177394
+            },
+            "FEATURE_HELD_positive_fraction": 1.0,
+            "FEATURE_HELD_cells": 13
+          },
+          "Ring": {
+            "inner": {
+              "N": 0,
+              "MAE": null,
+              "median": null,
+              "p95": null,
+              "maximum": null
+            },
+            "outer": {
+              "N": 96,
+              "MAE": 13.067801778257186,
+              "median": 8.573697224475247,
+              "p95": 32.569418410948,
+              "maximum": 35.779133994931684
+            },
+            "Ring_IoU": 0.408791599928813,
+            "minimum_depth_mm": 13.455540150949346,
+            "camera_torus_clearance_mm": 12.991861028045312,
+            "proper_rotation": 1.0,
+            "coordinate_unit": "mm",
+            "physical_valid": true
+          },
+          "RGB_rank": 6,
+          "RGB_singular_values": [
+            192.5056777344603,
+            172.66045617977386,
+            104.62313595147307,
+            36.83344607806875,
+            30.929830210894988,
+            18.76243767475095
+          ],
+          "RGB_condition": 10.260163475107486,
+          "calibrated_camera_truth": false,
+          "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+          "candidate_source": "REAL_RGB_PNP_LM",
+          "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+          "seconds": 0.9841663837432861
+        },
+        "support_views": [
+          {
+            "id": "view_010",
+            "index": 10,
+            "raw_frame": 553,
+            "video": "005",
+            "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_8.8mm_closed_R5_single_refY_005/inputs/view_010.npz",
+            "T": [
+              [
+                0.9517929779646412,
+                0.2969467327779466,
+                -0.07689450558851603,
+                2.301174123855682
+              ],
+              [
+                -0.010772021052559904,
+                -0.21817000865835948,
+                -0.9758513262195497,
+                17.31001441130375
+              ],
+              [
+                -0.3065519379479483,
+                0.9296367490662764,
+                -0.2044539657865386,
+                3.920211133226381
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "4733f7f504929772d55f68969f9e80de451d8afab8746ec496fc5076d323f178",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9514841693056022,
+                0.29761569881642475,
+                -0.07812023667935221,
+                2.3335523784673953
+              ],
+              [
+                -0.011022539675874356,
+                -0.22075551937776838,
+                -0.9752668887455092,
+                17.290709490256745
+              ],
+              [
+                -0.30750021004857975,
+                0.9288120888975675,
+                -0.2067649011264158,
+                3.9692503050917987
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 66,
+                "MAE": 0.6964957092706897,
+                "median": 0.6016437481284711,
+                "p95": 1.3137647744598289,
+                "maximum": 1.5347537803236821
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 27,
+              "FEATURE_HELD": {
+                "N": 16,
+                "MAE": 0.5693815759915576,
+                "median": 0.48858899289502156,
+                "p95": 1.2719872122543394,
+                "maximum": 1.3837182190215092
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 12
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 11.90000610214328,
+                "median": 9.668652236040927,
+                "p95": 30.1297501416906,
+                "maximum": 34.02298134305216
+              },
+              "Ring_IoU": 0.3777890983188996,
+              "minimum_depth_mm": 14.771765128518632,
+              "camera_torus_clearance_mm": 14.286394948301231,
+              "proper_rotation": 0.9999999999999992,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              180.66417144136557,
+              164.03370870341843,
+              101.0532368981443,
+              34.044851816986714,
+              30.136859666545675,
+              19.46699220153443
+            ],
+            "RGB_condition": 9.280538542935524,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 0.9944853782653809
+          },
+          {
+            "id": "view_003",
+            "index": 3,
+            "raw_frame": 208,
+            "video": "005",
+            "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_8.8mm_closed_R5_single_refY_005/inputs/view_003.npz",
+            "T": [
+              [
+                0.9555548147035107,
+                0.2884338370431279,
+                -0.060999325779209586,
+                -1.20017067071252
+              ],
+              [
+                -0.007633936258604121,
+                -0.18263099283420084,
+                -0.9831518923714652,
+                17.399112546318506
+              ],
+              [
+                -0.29471464014218796,
+                0.9399211893052376,
+                -0.172312038989991,
+                4.237756497029192
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "f5a39e67734c0dff2ceba1d9f13b312123153ed63406040338d6ffe5c342175b",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9558428626546763,
+                0.28845507234830936,
+                -0.05619691404912662,
+                -1.3542559835268377
+              ],
+              [
+                -0.0044963339143123966,
+                -0.17684826673946957,
+                -0.9842278565111722,
+                17.45837480312222
+              ],
+              [
+                -0.2938438444028466,
+                0.9410198519626336,
+                -0.16774216321121724,
+                4.111081320688049
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 86,
+                "MAE": 0.7142669810752562,
+                "median": 0.6797494091266606,
+                "p95": 1.4682664392644107,
+                "maximum": 1.7968959992549172
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 30,
+              "FEATURE_HELD": {
+                "N": 27,
+                "MAE": 0.7739301605908238,
+                "median": 0.754205761842219,
+                "p95": 1.2913296746641583,
+                "maximum": 2.030906238870349
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 15
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 12.02457741966989,
+                "median": 7.110153965701148,
+                "p95": 30.20032688188745,
+                "maximum": 31.941919102984293
+              },
+              "Ring_IoU": 0.42493005906123715,
+              "minimum_depth_mm": 14.649019957579396,
+              "camera_torus_clearance_mm": 14.38575183481526,
+              "proper_rotation": 0.9999999999999998,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              220.1873678391926,
+              192.04047232162662,
+              132.50161214785376,
+              48.405035512714946,
+              35.965130874535056,
+              21.86983582627527
+            ],
+            "RGB_condition": 10.068085082497554,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 1.0407490730285645
+          },
+          {
+            "id": "view_004",
+            "index": 4,
+            "raw_frame": 255,
+            "video": "005",
+            "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+            "role": "FIT",
+            "cache": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_8.8mm_closed_R5_single_refY_005/inputs/view_004.npz",
+            "T": [
+              [
+                0.9549652237460197,
+                0.2915299032957381,
+                -0.05524252818338108,
+                -2.164688366021078
+              ],
+              [
+                -0.008488365163690028,
+                -0.15926095845526378,
+                -0.9872000277394435,
+                18.275262716598615
+              ],
+              [
+                -0.29659630660640723,
+                0.9432106141240607,
+                -0.14961406454992704,
+                4.674101535212069
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "K": [
+              [
+                490.0,
+                0.0,
+                319.5
+              ],
+              [
+                0.0,
+                490.0,
+                179.5
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "RGB_SHA256": "ae85a98346f92da18fd24244009c1482601512b0d1cd28cb4ed010ad35bfee64",
+            "capture_type": "VIDEO",
+            "C": [
+              [
+                0.9551482518590283,
+                0.29130649049624946,
+                -0.05321978546932435,
+                -2.236658512562821
+              ],
+              [
+                -0.006528814921867013,
+                -0.15895960784258786,
+                -0.9872634996039541,
+                18.2685568120226
+              ],
+              [
+                -0.2960560614923437,
+                0.9433304679004538,
+                -0.14992810538505583,
+                4.684161523379002
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "formal": true,
+            "HERO_target_eligible": true,
+            "status": "METRIC_POSE_VALIDATED_CONDITIONAL",
+            "qualification_reasons": [],
+            "RGB_evaluation": {
+              "FIT": {
+                "N": 106,
+                "MAE": 0.6523637312503018,
+                "median": 0.568708736291278,
+                "p95": 1.3421270128457259,
+                "maximum": 1.7529495779478352
+              },
+              "FIT_positive_fraction": 1.0,
+              "FIT_cells": 35,
+              "FEATURE_HELD": {
+                "N": 26,
+                "MAE": 0.6239027017976854,
+                "median": 0.5844245282368893,
+                "p95": 1.0690755535913785,
+                "maximum": 2.1823600635109637
+              },
+              "FEATURE_HELD_positive_fraction": 1.0,
+              "FEATURE_HELD_cells": 15
+            },
+            "Ring": {
+              "inner": {
+                "N": 0,
+                "MAE": null,
+                "median": null,
+                "p95": null,
+                "maximum": null
+              },
+              "outer": {
+                "N": 96,
+                "MAE": 11.448885721249463,
+                "median": 7.380925190012759,
+                "p95": 29.488420258968695,
+                "maximum": 31.36122767610415
+              },
+              "Ring_IoU": 0.4186356073211314,
+              "minimum_depth_mm": 15.440719050155286,
+              "camera_torus_clearance_mm": 15.405729700243983,
+              "proper_rotation": 1.0,
+              "coordinate_unit": "mm",
+              "physical_valid": true
+            },
+            "RGB_rank": 6,
+            "RGB_singular_values": [
+              240.1208145020261,
+              226.20197083660716,
+              135.33670224169427,
+              56.78127456955989,
+              41.515404581041004,
+              30.41112261032597
+            ],
+            "RGB_condition": 7.895822116757178,
+            "calibrated_camera_truth": false,
+            "independent_validation": "DIAGNOSTIC map-held only; upstream observations reused",
+            "candidate_source": "REAL_RGB_PNP_LM",
+            "numeric_status": "NUMERIC_RGB_REGISTERED_CONDITIONAL",
+            "seconds": 1.0380585193634033
+          }
+        ],
+        "rank": 1,
+        "reused": false
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Ip_8.8mm_closed_R5_single_refY_005/selection/HERO_PLAN.json",
+      "source_plan_sha256": "8d9a40da76714f38dbb9c0a9cc72bffa36f9a9561eb4ad357548260debed3d52",
+      "ring_inner_mm": 5.0
+    },
+    {
+      "case": "GP_Ip_8.8mm_closed_R5_single_refY_005",
+      "route": "V6_LIMITED_DIAGNOSTIC",
+      "status": "READY",
+      "plan": {
+        "tag": "005_supported_ref00061",
+        "reference": 1,
+        "reference_id": "GP_Ip_8.8mm_closed_R5_single_refY_005-raw00061",
+        "sources": [
+          5,
+          6,
+          7
+        ],
+        "source_ids": [
+          "GP_Ip_8.8mm_closed_R5_single_refY_005-raw00313",
+          "GP_Ip_8.8mm_closed_R5_single_refY_005-raw00376",
+          "GP_Ip_8.8mm_closed_R5_single_refY_005-raw00439"
+        ],
+        "independent_image_heldout": 0,
+        "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+        "selection_uses_GT": false,
+        "selection_uses_MVS_error": false,
+        "source_diagnostics": [
+          {
+            "i": 5,
+            "overlap": 47,
+            "angle": 21.346119632635556
+          },
+          {
+            "i": 6,
+            "overlap": 40,
+            "angle": 21.19148568876529
+          },
+          {
+            "i": 7,
+            "overlap": 31,
+            "angle": 18.94261228775058
+          },
+          {
+            "i": 9,
+            "overlap": 35,
+            "angle": 8.59254058854348
+          }
+        ],
+        "original_previews_preserved": true,
+        "independent_target_id": "GP_Ip_8.8mm_closed_R5_single_refY_005-raw00061",
+        "support_attempt": 1
+      },
+      "v6_root": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Ip_8.8mm_closed_R5_single_refY_005",
+      "RUN_STATE": {
+        "path": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Ip_8.8mm_closed_R5_single_refY_005/RUN_STATE.json",
+        "sha256": "fb9b56ea7dc7c018f62aab5ac3eee10a77819beda9ec6e270204f13b797f1d00",
+        "run_id": "M2F10-FORMAL-20261125-02-a0-GP_Ip_8.8mm_closed_R5_single_refY_005",
+        "code_commit": "a38d4c822daf9a9b3cd88e1cd0edebdc70b9bfad"
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Ip_8.8mm_closed_R5_single_refY_005/inputs/MVS_supported_cases.json",
+      "source_plan_sha256": "2f8657468eecd9616b47bc439ca34fab70f73e191065fb66e9e5b31ec0b6c0ac",
+      "ring_inner_mm": 5.0,
+      "target_own_validated": false,
+      "support_own_validated": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "case": "GP_Is_14.0mm_closed_R5_single_refY_004",
+      "route": "H004_RAW_BASELINE",
+      "status": "NO_LEGAL_TARGET",
+      "plan": null,
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Is_14.0mm_closed_R5_single_refY_004/selection/HERO_PLAN.json",
+      "source_plan_sha256": null,
+      "ring_inner_mm": 5.0
+    },
+    {
+      "case": "GP_Is_14.0mm_closed_R5_single_refY_004",
+      "route": "V6_LIMITED_DIAGNOSTIC",
+      "status": "READY",
+      "plan": {
+        "tag": "005_supported_ref00056",
+        "reference": 1,
+        "reference_id": "GP_Is_14.0mm_closed_R5_single_refY_004-raw00056",
+        "sources": [
+          9,
+          8,
+          12
+        ],
+        "source_ids": [
+          "GP_Is_14.0mm_closed_R5_single_refY_004-raw00495",
+          "GP_Is_14.0mm_closed_R5_single_refY_004-raw00440",
+          "GP_Is_14.0mm_closed_R5_single_refY_004-raw00623"
+        ],
+        "independent_image_heldout": 0,
+        "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+        "selection_uses_GT": false,
+        "selection_uses_MVS_error": false,
+        "source_diagnostics": [
+          {
+            "i": 9,
+            "overlap": 21,
+            "angle": 10.114683481810744
+          },
+          {
+            "i": 8,
+            "overlap": 22,
+            "angle": 9.570005450931108
+          },
+          {
+            "i": 12,
+            "overlap": 21,
+            "angle": 8.80227178577676
+          }
+        ],
+        "original_previews_preserved": true,
+        "independent_target_id": "GP_Is_14.0mm_closed_R5_single_refY_004-raw00056",
+        "support_attempt": 1
+      },
+      "v6_root": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Is_14.0mm_closed_R5_single_refY_004",
+      "RUN_STATE": {
+        "path": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Is_14.0mm_closed_R5_single_refY_004/RUN_STATE.json",
+        "sha256": "3dd9f53283180f74e313109f595fd0ff8e9078c5908ae8e8fa01493640bfcf44",
+        "run_id": "M2F10-FORMAL-20261125-02-a0-GP_Is_14.0mm_closed_R5_single_refY_004",
+        "code_commit": "a38d4c822daf9a9b3cd88e1cd0edebdc70b9bfad"
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt0/v6/GP_Is_14.0mm_closed_R5_single_refY_004/inputs/MVS_supported_cases.json",
+      "source_plan_sha256": "39755d9d2e0721b122fd1933bd166937f4b6741a6f7623f8c76805db2767e760",
+      "ring_inner_mm": 5.0,
+      "target_own_validated": false,
+      "support_own_validated": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "case": "GP_Is_14.0mm_closed_R5_single_refY_005",
+      "route": "H004_RAW_BASELINE",
+      "status": "NO_LEGAL_TARGET",
+      "plan": null,
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f12_historical004/H004_RAW_BASELINE/GP_Is_14.0mm_closed_R5_single_refY_005/selection/HERO_PLAN.json",
+      "source_plan_sha256": null,
+      "ring_inner_mm": 5.0
+    },
+    {
+      "case": "GP_Is_14.0mm_closed_R5_single_refY_005",
+      "route": "V6_LIMITED_DIAGNOSTIC",
+      "status": "NO_LEGAL_SUPPORT_TUPLE",
+      "plan": null,
+      "v6_root": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Is_14.0mm_closed_R5_single_refY_005",
+      "RUN_STATE": {
+        "path": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Is_14.0mm_closed_R5_single_refY_005/RUN_STATE.json",
+        "sha256": "669885871d3afa0d8551b0e992740009e1ca14148b622b8f8f5dba23293c4f33",
+        "run_id": "M2F10-FORMAL-20261125-02-a1-GP_Is_14.0mm_closed_R5_single_refY_005",
+        "code_commit": "a38d4c822daf9a9b3cd88e1cd0edebdc70b9bfad"
+      },
+      "source_plan": "/home/liu/ring_first_3d_workspace/runs/m2f10_v6_multiview/M2F10-FORMAL-20261125-02/attempt1/v6/GP_Is_14.0mm_closed_R5_single_refY_005/inputs/MVS_supported_cases.json",
+      "source_plan_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "ring_inner_mm": 5.0,
+      "target_own_validated": null,
+      "support_own_validated": []
+    }
+  ],
+  "source_code_sha256": "51286a90a8bbf8aca14556382e834b1205e1bbeb7f6e77551136707e7345ef5b"
+}

@@ -31,5 +31,5 @@ for p in sorted((B/'HERO_LIMITED').glob('*/*/HERO_A_TO_B.png')):
  name=p.parent.parent.name+'__'+p.parent.name+'.png';shutil.copyfile(p,F/name);links.append((name,p.parent.name+' / '+p.parent.parent.name))
 html='<!doctype html><meta charset="utf-8"><title>M2F12 figures</title><h1>M2F12 evidence</h1><p>Real imagery and computed geometry. Ring dimensions and depth are in millimeters. No independent pose/shape GT. Native schedules differ; A→B B views are HERO supports.</p>'
 html+=''.join('<p><a href="'+p+'">'+title+'</a></p><img style="max-width:1100px;width:100%" src="'+p+'">'for p,title in links);(F/'index.html').write_text(html)
-(T/'VISUALIZATION_INDEX.md').write_text('# Visualization index\n\nFixed 5 groups / 10 videos. Real images, physical mm units, no independent pose/shape GT.\n\n'+''.join('- ['+title+'](figures/'+p+')\n'for p,title in links)+'\n[HTML gallery](figures/index.html)\n')
+(T/'VISUALIZATION_INDEX.md').write_text('# Visualization index\n\nFixed 5 groups / 10 videos. Real images, physical mm units, independent pose/registered-shape GT evaluation NOT_EVALUABLE.\n\n'+''.join('- ['+title+'](figures/'+p+')\n'for p,title in links)+'\n[HTML gallery](figures/index.html)\n')
 print('FIGURES',len(links))
