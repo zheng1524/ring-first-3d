@@ -1,0 +1,789 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>V6 RAW到HERO：中文完整图集</title><style>body{max-width:1450px;margin:2em auto;font-family:system-ui;background:#f5f6fa;color:#182336}table{border-collapse:collapse}td,th{padding:8px;border:1px solid #bdc7da}img{max-width:100%}section{background:white;padding:1.3em;margin:1.5em 0}summary{cursor:pointer;padding:10px}a{color:#1458ac}.new{color:#a43e00}</style><h1>V6：从RAW重新运行的完整中文图集</h1><p>蓝色＝本轮同一相机下原规则已通过的组合；橙色＝放宽后新增。它们不等同于历史基线的成员。全部原始面源均保留；没有ICP、额外缩放、形变、融合或按深度误差删面。不同运行/视频的yaw未认证，不叠成一个世界。Ring指标以相机正确为条件；重叠差异及A→B投影均不是形状GT。</p><p><a href="TECHNICAL_REPORT.md">中文技术报告</a> · <a href="OBSERVATIONS_INDEX.html">RAW/Mask/Ring观测链</a> · <a href="SOURCE_MANIFEST.csv">逐源清单</a> · <a href="VIDEO_COMPARISON.csv">逐视频比较</a></p><p><b>固定5组10视频；统一HIST候选 163张 / 8/10视频。候选不升级，保留当前V6基线；没有共同RAW/Support的比较不记为通过。</b></p><table><tr><th>物理视频</th><th>运行</th><th>合法/启动/推理成功/可渲染/失败</th><th>原规则/新增</th><th>Ring MAE中位数（可评价源/可渲染源）</th><th>重叠P95中位数（可评价/有向配对）</th></tr>
+<tr><td><a href="#BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004">IIa_14.0mm / R10 / 视频004</a></td><td>当前V6基线</td><td>17 / 17 / 17 / 17 / 0</td><td>17 / 0</td><td>0.45 (17/17)</td><td>0.55 (272/272)</td></tr>
+<tr><td><a href="#BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_005">IIa_14.0mm / R10 / 视频005</a></td><td>当前V6基线</td><td>0 / 0 / 0 / 0 / 0</td><td>0 / 0</td><td>不可评价 (0/0)</td><td>不可评价 (0/0)</td></tr>
+<tr><td><a href="#BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_004">Ip_12.0mm / R10 / 视频004</a></td><td>当前V6基线</td><td>0 / 0 / 0 / 0 / 0</td><td>0 / 0</td><td>不可评价 (0/0)</td><td>不可评价 (0/0)</td></tr>
+<tr><td><a href="#BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005">Ip_12.0mm / R10 / 视频005</a></td><td>当前V6基线</td><td>15 / 15 / 15 / 15 / 0</td><td>15 / 0</td><td>1.05 (15/15)</td><td>0.87 (210/210)</td></tr>
+<tr><td><a href="#BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_004">Ip_20.0mm / R10 / 视频004</a></td><td>当前V6基线</td><td>0 / 0 / 0 / 0 / 0</td><td>0 / 0</td><td>不可评价 (0/0)</td><td>不可评价 (0/0)</td></tr>
+<tr><td><a href="#BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_005">Ip_20.0mm / R10 / 视频005</a></td><td>当前V6基线</td><td>0 / 0 / 0 / 0 / 0</td><td>0 / 0</td><td>不可评价 (0/0)</td><td>不可评价 (0/0)</td></tr>
+<tr><td><a href="#BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004">Ip_8.8mm / R5 / 视频004</a></td><td>当前V6基线</td><td>12 / 12 / 12 / 12 / 0</td><td>12 / 0</td><td>0.72 (12/12)</td><td>0.76 (132/132)</td></tr>
+<tr><td><a href="#BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005">Ip_8.8mm / R5 / 视频005</a></td><td>当前V6基线</td><td>13 / 13 / 13 / 13 / 0</td><td>13 / 0</td><td>0.84 (13/13)</td><td>0.73 (156/156)</td></tr>
+<tr><td><a href="#BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004">Is_14.0mm / R5 / 视频004</a></td><td>当前V6基线</td><td>9 / 9 / 9 / 9 / 0</td><td>9 / 0</td><td>1.05 (9/9)</td><td>1.08 (72/72)</td></tr>
+<tr><td><a href="#BASELINE__GP_Is_14.0mm_closed_R5_single_refY_005">Is_14.0mm / R5 / 视频005</a></td><td>当前V6基线</td><td>0 / 0 / 0 / 0 / 0</td><td>0 / 0</td><td>不可评价 (0/0)</td><td>不可评价 (0/0)</td></tr>
+<tr><td><a href="#GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004">IIa_14.0mm / R10 / 视频004</a></td><td>连接图锚帧试点</td><td>21 / 21 / 21 / 21 / 0</td><td>21 / 0</td><td>0.56 (21/21)</td><td>0.39 (420/420)</td></tr>
+<tr><td><a href="#GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005">Ip_12.0mm / R10 / 视频005</a></td><td>连接图锚帧试点</td><td>21 / 21 / 21 / 21 / 0</td><td>21 / 0</td><td>1.09 (21/21)</td><td>0.92 (420/420)</td></tr>
+<tr><td><a href="#GRAPH__GP_Is_14.0mm_closed_R5_single_refY_005">Is_14.0mm / R5 / 视频005</a></td><td>连接图锚帧试点</td><td>0 / 0 / 0 / 0 / 0</td><td>0 / 0</td><td>不可评价 (0/0)</td><td>不可评价 (0/0)</td></tr>
+<tr><td><a href="#HIST__GP_IIa_14.0mm_closed_R10_single_refY_004">IIa_14.0mm / R10 / 视频004</a></td><td>历史锚帧候选</td><td>21 / 21 / 21 / 21 / 0</td><td>0 / 21</td><td>0.62 (21/21)</td><td>0.40 (420/420)</td></tr>
+<tr><td><a href="#HIST__GP_IIa_14.0mm_closed_R10_single_refY_005">IIa_14.0mm / R10 / 视频005</a></td><td>历史锚帧候选</td><td>0 / 0 / 0 / 0 / 0</td><td>0 / 0</td><td>不可评价 (0/0)</td><td>不可评价 (0/0)</td></tr>
+<tr><td><a href="#HIST__GP_Ip_12.0mm_closed_R10_single_refY_004">Ip_12.0mm / R10 / 视频004</a></td><td>历史锚帧候选</td><td>18 / 18 / 18 / 18 / 0</td><td>0 / 18</td><td>1.44 (18/18)</td><td>0.84 (306/306)</td></tr>
+<tr><td><a href="#HIST__GP_Ip_12.0mm_closed_R10_single_refY_005">Ip_12.0mm / R10 / 视频005</a></td><td>历史锚帧候选</td><td>21 / 21 / 21 / 21 / 0</td><td>21 / 0</td><td>1.12 (21/21)</td><td>0.90 (420/420)</td></tr>
+<tr><td><a href="#HIST__GP_Ip_20.0mm_closed_R10_single_refY_004">Ip_20.0mm / R10 / 视频004</a></td><td>历史锚帧候选</td><td>21 / 21 / 21 / 21 / 0</td><td>21 / 0</td><td>4.19 (21/21)</td><td>1.00 (420/420)</td></tr>
+<tr><td><a href="#HIST__GP_Ip_20.0mm_closed_R10_single_refY_005">Ip_20.0mm / R10 / 视频005</a></td><td>历史锚帧候选</td><td>21 / 21 / 21 / 21 / 0</td><td>0 / 21</td><td>1.69 (21/21)</td><td>1.04 (420/420)</td></tr>
+<tr><td><a href="#HIST__GP_Ip_8.8mm_closed_R5_single_refY_004">Ip_8.8mm / R5 / 视频004</a></td><td>历史锚帧候选</td><td>21 / 21 / 21 / 21 / 0</td><td>20 / 1</td><td>0.77 (21/21)</td><td>0.69 (420/420)</td></tr>
+<tr><td><a href="#HIST__GP_Ip_8.8mm_closed_R5_single_refY_005">Ip_8.8mm / R5 / 视频005</a></td><td>历史锚帧候选</td><td>21 / 21 / 21 / 21 / 0</td><td>18 / 3</td><td>0.86 (21/21)</td><td>0.80 (420/420)</td></tr>
+<tr><td><a href="#HIST__GP_Is_14.0mm_closed_R5_single_refY_004">Is_14.0mm / R5 / 视频004</a></td><td>历史锚帧候选</td><td>19 / 19 / 19 / 19 / 0</td><td>19 / 0</td><td>0.93 (19/19)</td><td>0.65 (342/342)</td></tr>
+<tr><td><a href="#HIST__GP_Is_14.0mm_closed_R5_single_refY_005">Is_14.0mm / R5 / 视频005</a></td><td>历史锚帧候选</td><td>0 / 0 / 0 / 0 / 0</td><td>0 / 0</td><td>不可评价 (0/0)</td><td>不可评价 (0/0)</td></tr>
+</table><p>表中毫米误差为不同目标集合的描述性统计；不能据此作同帧因果比较。下方可逐一展开每张面源。</p>
+<section id="BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004"><h2>IIa_14.0mm / R10 / 视频004 · 当前V6基线</h2>
+<p>Ring共同像素/观测Ring像素：99625 / 106360；重叠共同像素累计 2626868（各面重复计数，仅分母说明）。</p>
+<details open><summary>RGB.png</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RGB.png"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__规则.png"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__逐面图集.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__相机.png"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__近景RGB.png"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__近景逐源.png"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__近景逐源.png"></a></details>
+<details><summary class="">Target RAW 389 / Support [943, 785, 600] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW389.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW389.jpg"></a></details>
+<details><summary class="">Target RAW 20 / Support [600, 547, 785] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW20.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW20.jpg"></a></details>
+<details><summary class="">Target RAW 996 / Support [890, 785, 600] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW996.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW996.jpg"></a></details>
+<details><summary class="">Target RAW 125 / Support [600, 547, 943] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW125.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW125.jpg"></a></details>
+<details><summary class="">Target RAW 706 / Support [943, 890, 785] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW706.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW706.jpg"></a></details>
+<details><summary class="">Target RAW 890 / Support [600, 706, 547] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW890.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW890.jpg"></a></details>
+<details><summary class="">Target RAW 72 / Support [600, 547, 706] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW72.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW72.jpg"></a></details>
+<details><summary class="">Target RAW 468 / Support [943, 785, 890] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW468.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW468.jpg"></a></details>
+<details><summary class="">Target RAW 231 / Support [600, 943, 706] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW231.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW231.jpg"></a></details>
+<details><summary class="">Target RAW 626 / Support [943, 890, 785] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW626.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW626.jpg"></a></details>
+<details><summary class="">Target RAW 943 / Support [600, 706, 547] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW943.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW943.jpg"></a></details>
+<details><summary class="">Target RAW 785 / Support [600, 943, 547] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW785.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW785.jpg"></a></details>
+<details><summary class="">Target RAW 547 / Support [943, 890, 785] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW547.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW547.jpg"></a></details>
+<details><summary class="">Target RAW 310 / Support [943, 600, 785] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW310.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW310.jpg"></a></details>
+<details><summary class="">Target RAW 151 / Support [600, 547, 943] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW151.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW151.jpg"></a></details>
+<details><summary class="">Target RAW 864 / Support [600, 706, 547] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW864.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW864.jpg"></a></details>
+<details><summary class="">Target RAW 600 / Support [943, 890, 785] / 原规则</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW600.jpg"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW600.jpg"></a></details>
+</section>
+<section id="BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_005"><h2>IIa_14.0mm / R10 / 视频005 · 当前V6基线</h2>
+<p>Ring共同像素/观测Ring像素：0 / 0；重叠共同像素累计 0（各面重复计数，仅分母说明）。</p>
+<details open><summary>RGB.png</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_005__RGB.png"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_005__规则.png"><img loading="lazy" src="figures/BASELINE__GP_IIa_14.0mm_closed_R10_single_refY_005__规则.png"></a></details>
+</section>
+<section id="BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_004"><h2>Ip_12.0mm / R10 / 视频004 · 当前V6基线</h2>
+<p>Ring共同像素/观测Ring像素：0 / 0；重叠共同像素累计 0（各面重复计数，仅分母说明）。</p>
+<details open><summary>RGB.png</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_004__RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_004__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_004__规则.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_004__规则.png"></a></details>
+</section>
+<section id="BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005"><h2>Ip_12.0mm / R10 / 视频005 · 当前V6基线</h2>
+<p>Ring共同像素/观测Ring像素：105178 / 116638；重叠共同像素累计 2752718（各面重复计数，仅分母说明）。</p>
+<details open><summary>RGB.png</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__规则.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__逐面图集.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__相机.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__近景RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__近景逐源.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__近景逐源.png"></a></details>
+<details><summary class="">Target RAW 503 / Support [398, 629, 440] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW503.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW503.jpg"></a></details>
+<details><summary class="">Target RAW 62 / Support [440, 398, 566] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW62.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW62.jpg"></a></details>
+<details><summary class="">Target RAW 230 / Support [566, 629, 440] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW230.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW230.jpg"></a></details>
+<details><summary class="">Target RAW 818 / Support [440, 398, 566] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW818.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW818.jpg"></a></details>
+<details><summary class="">Target RAW 398 / Support [629, 566, 440] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW398.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW398.jpg"></a></details>
+<details><summary class="">Target RAW 692 / Support [398, 440, 566] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW692.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW692.jpg"></a></details>
+<details><summary class="">Target RAW 188 / Support [566, 440, 629] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW188.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW188.jpg"></a></details>
+<details><summary class="">Target RAW 125 / Support [440, 398, 566] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW125.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW125.jpg"></a></details>
+<details><summary class="">Target RAW 377 / Support [629, 566, 440] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW377.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW377.jpg"></a></details>
+<details><summary class="">Target RAW 629 / Support [398, 440, 566] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW629.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW629.jpg"></a></details>
+<details><summary class="">Target RAW 755 / Support [398, 440, 566] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW755.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW755.jpg"></a></details>
+<details><summary class="">Target RAW 440 / Support [629, 566, 398] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW440.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW440.jpg"></a></details>
+<details><summary class="">Target RAW 566 / Support [398, 440, 629] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW566.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW566.jpg"></a></details>
+<details><summary class="">Target RAW 314 / Support [629, 566, 440] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW314.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW314.jpg"></a></details>
+<details><summary class="">Target RAW 251 / Support [566, 629, 440] / 原规则</summary><a href="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW251.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW251.jpg"></a></details>
+</section>
+<section id="BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_004"><h2>Ip_20.0mm / R10 / 视频004 · 当前V6基线</h2>
+<p>Ring共同像素/观测Ring像素：0 / 0；重叠共同像素累计 0（各面重复计数，仅分母说明）。</p>
+<details open><summary>RGB.png</summary><a href="figures/BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_004__RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_004__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_004__规则.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_004__规则.png"></a></details>
+</section>
+<section id="BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_005"><h2>Ip_20.0mm / R10 / 视频005 · 当前V6基线</h2>
+<p>Ring共同像素/观测Ring像素：0 / 0；重叠共同像素累计 0（各面重复计数，仅分母说明）。</p>
+<details open><summary>RGB.png</summary><a href="figures/BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_005__RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_005__规则.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_20.0mm_closed_R10_single_refY_005__规则.png"></a></details>
+</section>
+<section id="BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004"><h2>Ip_8.8mm / R5 / 视频004 · 当前V6基线</h2>
+<p>Ring共同像素/观测Ring像素：45966 / 48105；重叠共同像素累计 1237217（各面重复计数，仅分母说明）。</p>
+<details open><summary>RGB.png</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__规则.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__逐面图集.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__相机.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__近景RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__近景逐源.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__近景逐源.png"></a></details>
+<details><summary class="">Target RAW 541 / Support [201, 133, 65] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW541.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW541.jpg"></a></details>
+<details><summary class="">Target RAW 790 / Support [201, 65, 133] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW790.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW790.jpg"></a></details>
+<details><summary class="">Target RAW 405 / Support [65, 133, 201] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW405.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW405.jpg"></a></details>
+<details><summary class="">Target RAW 654 / Support [201, 133, 65] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW654.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW654.jpg"></a></details>
+<details><summary class="">Target RAW 473 / Support [65, 133, 201] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW473.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW473.jpg"></a></details>
+<details><summary class="">Target RAW 722 / Support [201, 133, 65] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW722.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW722.jpg"></a></details>
+<details><summary class="">Target RAW 858 / Support [201, 65, 133] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW858.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW858.jpg"></a></details>
+<details><summary class="">Target RAW 337 / Support [65, 133, 201] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW337.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW337.jpg"></a></details>
+<details><summary class="">Target RAW 609 / Support [201, 133, 65] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW609.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW609.jpg"></a></details>
+<details><summary class="">Target RAW 269 / Support [65, 133, 201] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW269.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW269.jpg"></a></details>
+<details><summary class="">Target RAW 745 / Support [201, 133, 65] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW745.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW745.jpg"></a></details>
+<details><summary class="">Target RAW 700 / Support [201, 133, 65] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW700.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW700.jpg"></a></details>
+</section>
+<section id="BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005"><h2>Ip_8.8mm / R5 / 视频005 · 当前V6基线</h2>
+<p>Ring共同像素/观测Ring像素：48419 / 52966；重叠共同像素累计 1010318（各面重复计数，仅分母说明）。</p>
+<details open><summary>RGB.png</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__规则.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__逐面图集.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__相机.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__近景RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__近景逐源.png"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__近景逐源.png"></a></details>
+<details><summary class="">Target RAW 502 / Support [376, 313, 439] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW502.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW502.jpg"></a></details>
+<details><summary class="">Target RAW 817 / Support [565, 376, 313] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW817.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW817.jpg"></a></details>
+<details><summary class="">Target RAW 628 / Support [313, 376, 439] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW628.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW628.jpg"></a></details>
+<details><summary class="">Target RAW 376 / Support [565, 439, 313] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW376.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW376.jpg"></a></details>
+<details><summary class="">Target RAW 124 / Support [313, 376, 439] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW124.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW124.jpg"></a></details>
+<details><summary class="">Target RAW 691 / Support [313, 376, 439] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW691.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW691.jpg"></a></details>
+<details><summary class="">Target RAW 187 / Support [565, 376, 439] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW187.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW187.jpg"></a></details>
+<details><summary class="">Target RAW 250 / Support [565, 439, 376] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW250.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW250.jpg"></a></details>
+<details><summary class="">Target RAW 439 / Support [565, 313, 376] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW439.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW439.jpg"></a></details>
+<details><summary class="">Target RAW 754 / Support [565, 313, 376] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW754.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW754.jpg"></a></details>
+<details><summary class="">Target RAW 565 / Support [313, 376, 439] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW565.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW565.jpg"></a></details>
+<details><summary class="">Target RAW 313 / Support [565, 439, 376] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW313.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW313.jpg"></a></details>
+<details><summary class="">Target RAW 61 / Support [313, 376, 439] / 原规则</summary><a href="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW61.jpg"><img loading="lazy" src="figures/BASELINE__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW61.jpg"></a></details>
+</section>
+<section id="BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004"><h2>Is_14.0mm / R5 / 视频004 · 当前V6基线</h2>
+<p>Ring共同像素/观测Ring像素：38600 / 42689；重叠共同像素累计 1071352（各面重复计数，仅分母说明）。</p>
+<details open><summary>RGB.png</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__规则.png"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__逐面图集.jpg"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__相机.png"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__近景RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__近景逐源.png"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__近景逐源.png"></a></details>
+<details><summary class="">Target RAW 385 / Support [495, 440, 623] / 原规则</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW385.jpg"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW385.jpg"></a></details>
+<details><summary class="">Target RAW 331 / Support [440, 623, 495] / 原规则</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW331.jpg"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW331.jpg"></a></details>
+<details><summary class="">Target RAW 550 / Support [623, 495, 440] / 原规则</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW550.jpg"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW550.jpg"></a></details>
+<details><summary class="">Target RAW 56 / Support [495, 440, 623] / 原规则</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW56.jpg"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW56.jpg"></a></details>
+<details><summary class="">Target RAW 221 / Support [440, 623, 495] / 原规则</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW221.jpg"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW221.jpg"></a></details>
+<details><summary class="">Target RAW 111 / Support [495, 623, 440] / 原规则</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW111.jpg"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW111.jpg"></a></details>
+<details><summary class="">Target RAW 166 / Support [495, 440, 623] / 原规则</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW166.jpg"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW166.jpg"></a></details>
+<details><summary class="">Target RAW 276 / Support [495, 440, 623] / 原规则</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW276.jpg"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW276.jpg"></a></details>
+<details><summary class="">Target RAW 605 / Support [495, 440, 623] / 原规则</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW605.jpg"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_004__RAW605.jpg"></a></details>
+</section>
+<section id="BASELINE__GP_Is_14.0mm_closed_R5_single_refY_005"><h2>Is_14.0mm / R5 / 视频005 · 当前V6基线</h2>
+<p>Ring共同像素/观测Ring像素：0 / 0；重叠共同像素累计 0（各面重复计数，仅分母说明）。</p>
+<details open><summary>RGB.png</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_005__RGB.png"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_005__规则.png"><img loading="lazy" src="figures/BASELINE__GP_Is_14.0mm_closed_R5_single_refY_005__规则.png"></a></details>
+</section>
+<section id="GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004"><h2>IIa_14.0mm / R10 / 视频004 · 连接图锚帧试点</h2>
+<p>Ring共同像素/观测Ring像素：121293 / 129847；重叠共同像素累计 4013669（各面重复计数，仅分母说明）。</p>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / True</td><td>初始化中心分散 2.784 mm &gt; 2 mm</td></tr>
+<tr><td>52</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>71</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>108</td><td>False / False</td><td>RGB P95 px 10.688066172961953 &gt; 6</td></tr>
+<tr><td>143</td><td>False / False</td><td>RGB MAE px 4.752389937726367 &gt; 3；RGB P95 px 20.85183769839281 &gt; 6</td></tr>
+<tr><td>214</td><td>False / False</td><td>RGB MAE px 4.312987692100813 &gt; 3；RGB P95 px 14.889906557622622 &gt; 6</td></tr>
+<tr><td>285</td><td>False / False</td><td>RGB MAE px 6.403487809908225 &gt; 3；RGB P95 px 26.98600512119154 &gt; 6</td></tr>
+<tr><td>356</td><td>False / False</td><td>RGB P95 px 10.804488870167354 &gt; 6</td></tr>
+<tr><td>428</td><td>False / False</td><td>RGB MAE px 13.613085437079086 &gt; 3；RGB P95 px 39.96533066837432 &gt; 6</td></tr>
+<tr><td>499</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>534</td><td>False / False</td><td>RGB MAE px 77.03992481349658 &gt; 3</td></tr>
+<tr><td>570</td><td>False / False</td><td>RGB MAE px 68.09578774671878 &gt; 3</td></tr>
+<tr><td>641</td><td>False / False</td><td>RGB MAE px 52.98660224484102 &gt; 3；RGB P95 px 195.52469458084522 &gt; 6；正深度比例 0.9411764705882353 &lt; 0.95</td></tr>
+<tr><td>672</td><td>False / False</td><td>RGB MAE px 16.363481931885158 &gt; 3；RGB P95 px 28.216091954130057 &gt; 6</td></tr>
+<tr><td>713</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>750</td><td>False / False</td><td>RGB MAE px 9.273011433067014 &gt; 3；RGB P95 px 20.363066904217973 &gt; 6；正深度比例 0.9230769230769231 &lt; 0.95</td></tr>
+<tr><td>784</td><td>False / False</td><td>RGB MAE px 9.060681175216962 &gt; 3；RGB P95 px 57.41741167832464 &gt; 6</td></tr>
+<tr><td>855</td><td>False / False</td><td>RGB MAE px 10.41409517794404 &gt; 3；RGB P95 px 40.313184872575704 &gt; 6</td></tr>
+<tr><td>889</td><td>False / False</td><td>RGB MAE px 9.120076471127629 &gt; 3；RGB P95 px 29.52206681738878 &gt; 6</td></tr>
+<tr><td>926</td><td>False / False</td><td>RGB MAE px 10.53810317155769 &gt; 3；RGB P95 px 17.545937956875218 &gt; 6</td></tr>
+<tr><td>998</td><td>False / False</td><td>RGB MAE px 53.95680079043767 &gt; 3；RGB P95 px 374.29390312440694 &gt; 6；正深度比例 0.9230769230769231 &lt; 0.95；初始化中心分散 2.128 mm &gt; 2 mm</td></tr>
+<tr><td>1069</td><td>False / False</td><td>RGB MAE px 17.113994434804074 &gt; 3；RGB P95 px 44.147362241967826 &gt; 6；初始化中心分散 2.058 mm &gt; 2 mm</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RGB.png"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__规则.png"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__逐面图集.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__相机.png"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__近景RGB.png"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__近景逐源.png"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__近景逐源.png"></a></details>
+<details><summary class="">Target RAW 356 / Support [52, 71, 499] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW356.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW356.jpg"></a></details>
+<details><summary class="">Target RAW 0 / Support [499, 713, 71] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW0.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW0.jpg"></a></details>
+<details><summary class="">Target RAW 998 / Support [71, 52, 499] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW998.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW998.jpg"></a></details>
+<details><summary class="">Target RAW 108 / Support [499, 713, 52] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW108.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW108.jpg"></a></details>
+<details><summary class="">Target RAW 672 / Support [71, 52, 713] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW672.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW672.jpg"></a></details>
+<details><summary class="">Target RAW 889 / Support [52, 71, 499] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW889.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW889.jpg"></a></details>
+<details><summary class="">Target RAW 214 / Support [499, 52, 71] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW214.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW214.jpg"></a></details>
+<details><summary class="">Target RAW 52 / Support [499, 713, 71] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW52.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW52.jpg"></a></details>
+<details><summary class="">Target RAW 428 / Support [52, 71, 713] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW428.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW428.jpg"></a></details>
+<details><summary class="">Target RAW 750 / Support [71, 52, 499] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW750.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW750.jpg"></a></details>
+<details><summary class="">Target RAW 143 / Support [52, 499, 71] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW143.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW143.jpg"></a></details>
+<details><summary class="">Target RAW 499 / Support [52, 71, 713] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW499.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW499.jpg"></a></details>
+<details><summary class="">Target RAW 71 / Support [499, 713, 52] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW71.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW71.jpg"></a></details>
+<details><summary class="">Target RAW 926 / Support [499, 71, 52] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW926.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW926.jpg"></a></details>
+<details><summary class="">Target RAW 713 / Support [71, 52, 499] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW713.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW713.jpg"></a></details>
+<details><summary class="">Target RAW 784 / Support [71, 52, 499] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW784.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW784.jpg"></a></details>
+<details><summary class="">Target RAW 285 / Support [71, 52, 499] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW285.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW285.jpg"></a></details>
+<details><summary class="">Target RAW 855 / Support [52, 71, 499] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW855.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW855.jpg"></a></details>
+<details><summary class="">Target RAW 534 / Support [71, 52, 713] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW534.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW534.jpg"></a></details>
+<details><summary class="">Target RAW 570 / Support [52, 71, 713] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW570.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW570.jpg"></a></details>
+<details><summary class="">Target RAW 641 / Support [71, 52, 713] / 原规则</summary><a href="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW641.jpg"><img loading="lazy" src="figures/GRAPH__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW641.jpg"></a></details>
+</section>
+<section id="GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005"><h2>Ip_12.0mm / R10 / 视频005 · 连接图锚帧试点</h2>
+<p>Ring共同像素/观测Ring像素：148229 / 162868；重叠共同像素累计 5418836（各面重复计数，仅分母说明）。</p>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / False</td><td>RGB MAE px 14.486284209507595 &gt; 3；初始化中心分散 5.825 mm &gt; 2 mm</td></tr>
+<tr><td>57</td><td>False / True</td><td>初始化中心分散 4.764 mm &gt; 2 mm</td></tr>
+<tr><td>115</td><td>False / False</td><td>RGB MAE px 7.403867934187333 &gt; 3；初始化中心分散 4.206 mm &gt; 2 mm</td></tr>
+<tr><td>172</td><td>False / True</td><td>初始化中心分散 2.951 mm &gt; 2 mm</td></tr>
+<tr><td>229</td><td>False / False</td><td>RGB MAE px 13.813086605234968 &gt; 3；RGB P95 px 22.666974247272712 &gt; 6；初始化中心分散 2.145 mm &gt; 2 mm</td></tr>
+<tr><td>287</td><td>False / False</td><td>RGB MAE px 4.662536314994989 &gt; 3；初始化中心分散 2.061 mm &gt; 2 mm</td></tr>
+<tr><td>326</td><td>False / False</td><td>RGB MAE px 7.551713476740526 &gt; 3</td></tr>
+<tr><td>344</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>401</td><td>False / False</td><td>RGB MAE px 4.713388910582827 &gt; 3；RGB P95 px 7.056811327851953 &gt; 6</td></tr>
+<tr><td>427</td><td>False / False</td><td>RGB MAE px 3.511413629972176 &gt; 3</td></tr>
+<tr><td>459</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>516</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>573</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>611</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>631</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>655</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>688</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>745</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>785</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>803</td><td>False / True</td><td>初始化中心分散 2.018 mm &gt; 2 mm</td></tr>
+<tr><td>834</td><td>False / True</td><td>初始化中心分散 2.295 mm &gt; 2 mm</td></tr>
+<tr><td>860</td><td>False / True</td><td>初始化中心分散 2.475 mm &gt; 2 mm</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RGB.png"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__规则.png"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__逐面图集.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__相机.png"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__近景RGB.png"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__近景逐源.png"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__近景逐源.png"></a></details>
+<details><summary class="">Target RAW 611 / Support [344, 785, 745] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW611.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW611.jpg"></a></details>
+<details><summary class="">Target RAW 57 / Support [459, 344, 516] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW57.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW57.jpg"></a></details>
+<details><summary class="">Target RAW 287 / Support [631, 655, 611] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW287.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW287.jpg"></a></details>
+<details><summary class="">Target RAW 860 / Support [344, 516, 459] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW860.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW860.jpg"></a></details>
+<details><summary class="">Target RAW 172 / Support [573, 516, 611] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW172.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW172.jpg"></a></details>
+<details><summary class="">Target RAW 427 / Support [688, 655, 745] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW427.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW427.jpg"></a></details>
+<details><summary class="">Target RAW 745 / Support [344, 459, 516] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW745.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW745.jpg"></a></details>
+<details><summary class="">Target RAW 516 / Support [785, 745, 344] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW516.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW516.jpg"></a></details>
+<details><summary class="">Target RAW 803 / Support [344, 516, 459] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW803.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW803.jpg"></a></details>
+<details><summary class="">Target RAW 655 / Support [344, 459, 516] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW655.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW655.jpg"></a></details>
+<details><summary class="">Target RAW 115 / Support [459, 516, 573] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW115.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW115.jpg"></a></details>
+<details><summary class="">Target RAW 459 / Support [745, 785, 688] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW459.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW459.jpg"></a></details>
+<details><summary class="">Target RAW 326 / Support [655, 785, 688] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW326.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW326.jpg"></a></details>
+<details><summary class="">Target RAW 229 / Support [611, 573, 631] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW229.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW229.jpg"></a></details>
+<details><summary class="">Target RAW 401 / Support [655, 688, 785] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW401.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW401.jpg"></a></details>
+<details><summary class="">Target RAW 631 / Support [344, 459, 785] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW631.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW631.jpg"></a></details>
+<details><summary class="">Target RAW 834 / Support [344, 516, 459] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW834.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW834.jpg"></a></details>
+<details><summary class="">Target RAW 573 / Support [344, 785, 745] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW573.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW573.jpg"></a></details>
+<details><summary class="">Target RAW 785 / Support [344, 459, 516] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW785.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW785.jpg"></a></details>
+<details><summary class="">Target RAW 344 / Support [655, 745, 631] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW344.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW344.jpg"></a></details>
+<details><summary class="">Target RAW 688 / Support [344, 459, 516] / 原规则</summary><a href="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW688.jpg"><img loading="lazy" src="figures/GRAPH__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW688.jpg"></a></details>
+</section>
+<section id="GRAPH__GP_Is_14.0mm_closed_R5_single_refY_005"><h2>Is_14.0mm / R5 / 视频005 · 连接图锚帧试点</h2>
+<p>Ring共同像素/观测Ring像素：0 / 0；重叠共同像素累计 0（各面重复计数，仅分母说明）。</p>
+<details><summary>未获合法三Support组合的全部Target</summary><pre>[(277, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (0, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (417, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (119, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (158, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (336, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (475, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (238, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (79, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (356, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (296, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (40, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (198, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (436, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (317, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (259, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (396, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (554, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (454, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (374, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (515, &#x27;不足3个通过上游资格及共视条件的Support&#x27;)]</pre></details>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / False</td><td>RGB MAE px 4.9026588326009515 &gt; 3；RGB P95 px 12.634300071559938 &gt; 6；初始化中心分散 4.553 mm &gt; 2 mm</td></tr>
+<tr><td>40</td><td>False / False</td><td>RGB MAE px 3.030937464837139 &gt; 3；RGB P95 px 8.543835472805618 &gt; 6；初始化中心分散 3.990 mm &gt; 2 mm</td></tr>
+<tr><td>79</td><td>False / False</td><td>RGB MAE px 4.6127602055291845 &gt; 3；RGB P95 px 10.098730441959876 &gt; 6；初始化中心分散 3.304 mm &gt; 2 mm</td></tr>
+<tr><td>119</td><td>False / False</td><td>RGB MAE px 5.821039910000663 &gt; 3；RGB P95 px 15.973536171099513 &gt; 6；初始化中心分散 2.516 mm &gt; 2 mm</td></tr>
+<tr><td>158</td><td>False / False</td><td>RGB MAE px 4.86549680533726 &gt; 3；RGB P95 px 17.51799833051552 &gt; 6</td></tr>
+<tr><td>198</td><td>False / False</td><td>RGB MAE px 13.110271561905103 &gt; 3；RGB P95 px 15.191430323930996 &gt; 6</td></tr>
+<tr><td>238</td><td>False / False</td><td>RGB MAE px 9.878604945813139 &gt; 3；RGB P95 px 13.622877508894572 &gt; 6</td></tr>
+<tr><td>259</td><td>False / False</td><td>RGB MAE px 8.596416826596805 &gt; 3；RGB P95 px 13.236248066497398 &gt; 6</td></tr>
+<tr><td>277</td><td>False / False</td><td>RGB MAE px 9.118389833225047 &gt; 3；RGB P95 px 16.762423244223797 &gt; 6</td></tr>
+<tr><td>296</td><td>False / False</td><td>RGB MAE px 15.171461543067814 &gt; 3；RGB P95 px 21.775221371107765 &gt; 6；初始化中心分散 2.568 mm &gt; 2 mm</td></tr>
+<tr><td>317</td><td>False / False</td><td>RGB MAE px 6.29416026923891 &gt; 3；RGB P95 px 11.798652768552882 &gt; 6；初始化中心分散 3.748 mm &gt; 2 mm</td></tr>
+<tr><td>336</td><td>False / False</td><td>RGB MAE px 9.457924490552054 &gt; 3；RGB P95 px 27.17246771066181 &gt; 6；初始化中心分散 4.354 mm &gt; 2 mm</td></tr>
+<tr><td>356</td><td>False / False</td><td>RGB MAE px 6.758411565640938 &gt; 3；RGB P95 px 21.417535844338172 &gt; 6；初始化中心分散 6.745 mm &gt; 2 mm</td></tr>
+<tr><td>374</td><td>False / False</td><td>RGB MAE px 6.85979925840234 &gt; 3；RGB P95 px 19.81907183191757 &gt; 6；初始化中心分散 6.689 mm &gt; 2 mm</td></tr>
+<tr><td>396</td><td>False / False</td><td>RGB MAE px 29.351737421734047 &gt; 3；RGB P95 px 33.40738229895974 &gt; 6；初始化中心分散 52.185 mm &gt; 2 mm</td></tr>
+<tr><td>417</td><td>False / False</td><td>RGB MAE px 8.380883264724691 &gt; 3；RGB P95 px 20.863716257687383 &gt; 6；初始化中心分散 52.095 mm &gt; 2 mm</td></tr>
+<tr><td>436</td><td>False / False</td><td>RGB MAE px 12.701288764980129 &gt; 3；RGB P95 px 23.84553009453815 &gt; 6；初始化中心分散 53.869 mm &gt; 2 mm</td></tr>
+<tr><td>454</td><td>False / False</td><td>RGB MAE px 10.538920130686614 &gt; 3；RGB P95 px 29.624040340691234 &gt; 6；初始化中心分散 53.221 mm &gt; 2 mm</td></tr>
+<tr><td>475</td><td>False / False</td><td>RGB MAE px 12.97516876902638 &gt; 3；RGB P95 px 35.496829405484185 &gt; 6；初始化中心分散 53.642 mm &gt; 2 mm</td></tr>
+<tr><td>515</td><td>False / False</td><td>RGB MAE px 6.550842556632595 &gt; 3；RGB P95 px 25.843293825776872 &gt; 6；正深度比例 0.9473684210526315 &lt; 0.95；初始化中心分散 54.018 mm &gt; 2 mm</td></tr>
+<tr><td>554</td><td>False / False</td><td>RGB MAE px 10.281156663916828 &gt; 3；RGB P95 px 23.289780921353223 &gt; 6；初始化中心分散 54.404 mm &gt; 2 mm</td></tr>
+<tr><td>594</td><td>False / False</td><td>RGB MAE px 11.387205340228054 &gt; 3；RGB P95 px 22.090306753336538 &gt; 6；正深度比例 0.9298245614035088 &lt; 0.95；初始化中心分散 54.777 mm &gt; 2 mm</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/GRAPH__GP_Is_14.0mm_closed_R5_single_refY_005__RGB.png"><img loading="lazy" src="figures/GRAPH__GP_Is_14.0mm_closed_R5_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/GRAPH__GP_Is_14.0mm_closed_R5_single_refY_005__规则.png"><img loading="lazy" src="figures/GRAPH__GP_Is_14.0mm_closed_R5_single_refY_005__规则.png"></a></details>
+</section>
+<section id="HIST__GP_IIa_14.0mm_closed_R10_single_refY_004"><h2>IIa_14.0mm / R10 / 视频004 · 历史锚帧候选</h2>
+<p>Ring共同像素/观测Ring像素：124578 / 132744；重叠共同像素累计 4119945（各面重复计数，仅分母说明）。</p>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / True</td><td>初始化中心分散 4.104 mm &gt; 2 mm</td></tr>
+<tr><td>52</td><td>False / True</td><td>初始化中心分散 3.082 mm &gt; 2 mm</td></tr>
+<tr><td>71</td><td>False / True</td><td>初始化中心分散 2.696 mm &gt; 2 mm</td></tr>
+<tr><td>108</td><td>False / False</td><td>RGB P95 px 10.680183249062969 &gt; 6；初始化中心分散 2.199 mm &gt; 2 mm</td></tr>
+<tr><td>143</td><td>False / False</td><td>RGB MAE px 4.76217129760425 &gt; 3；RGB P95 px 20.84275526888716 &gt; 6</td></tr>
+<tr><td>214</td><td>False / False</td><td>RGB MAE px 4.328232349692648 &gt; 3；RGB P95 px 15.403530653500422 &gt; 6</td></tr>
+<tr><td>285</td><td>False / False</td><td>RGB MAE px 6.412881119628372 &gt; 3；RGB P95 px 26.78856916944029 &gt; 6</td></tr>
+<tr><td>356</td><td>False / False</td><td>RGB MAE px 3.0246605412683016 &gt; 3；RGB P95 px 10.780704331378969 &gt; 6</td></tr>
+<tr><td>428</td><td>False / False</td><td>RGB MAE px 13.627700304581438 &gt; 3；RGB P95 px 39.965108126794036 &gt; 6</td></tr>
+<tr><td>499</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>534</td><td>False / False</td><td>RGB MAE px 77.11548260955357 &gt; 3</td></tr>
+<tr><td>570</td><td>False / False</td><td>RGB MAE px 64.34102066787005 &gt; 3</td></tr>
+<tr><td>641</td><td>False / False</td><td>RGB MAE px 52.81566805948862 &gt; 3；RGB P95 px 195.05710425511435 &gt; 6；正深度比例 0.9411764705882353 &lt; 0.95</td></tr>
+<tr><td>672</td><td>False / False</td><td>RGB MAE px 16.271890570431147 &gt; 3；RGB P95 px 28.035132191265593 &gt; 6</td></tr>
+<tr><td>713</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>750</td><td>False / False</td><td>RGB MAE px 9.370324990315817 &gt; 3；RGB P95 px 20.427190662162413 &gt; 6；正深度比例 0.9230769230769231 &lt; 0.95</td></tr>
+<tr><td>784</td><td>False / False</td><td>RGB MAE px 9.068844579403466 &gt; 3；RGB P95 px 57.450998626221434 &gt; 6</td></tr>
+<tr><td>855</td><td>False / False</td><td>RGB MAE px 10.46527103709872 &gt; 3；RGB P95 px 39.94402601194152 &gt; 6</td></tr>
+<tr><td>889</td><td>False / False</td><td>RGB MAE px 9.157641879920465 &gt; 3；RGB P95 px 29.16269854225908 &gt; 6</td></tr>
+<tr><td>926</td><td>False / False</td><td>RGB MAE px 10.560376376843982 &gt; 3；RGB P95 px 17.26971272775981 &gt; 6</td></tr>
+<tr><td>998</td><td>False / False</td><td>RGB MAE px 54.43712343593415 &gt; 3；RGB P95 px 376.8044592901809 &gt; 6；正深度比例 0.9230769230769231 &lt; 0.95</td></tr>
+<tr><td>1069</td><td>False / False</td><td>RGB MAE px 17.167676777358945 &gt; 3；RGB P95 px 44.17924713264098 &gt; 6</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RGB.png"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__规则.png"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__逐面图集.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__相机.png"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__近景RGB.png"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__近景逐源.png"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__近景逐源.png"></a></details>
+<details><summary class="new">Target RAW 570 / Support [52, 71, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW570.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW570.jpg"></a></details>
+<details><summary class="new">Target RAW 0 / Support [499, 713, 71] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW0.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW0.jpg"></a></details>
+<details><summary class="new">Target RAW 214 / Support [499, 52, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW214.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW214.jpg"></a></details>
+<details><summary class="new">Target RAW 998 / Support [71, 52, 499] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW998.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW998.jpg"></a></details>
+<details><summary class="new">Target RAW 889 / Support [52, 0, 71] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW889.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW889.jpg"></a></details>
+<details><summary class="new">Target RAW 108 / Support [499, 0, 713] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW108.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW108.jpg"></a></details>
+<details><summary class="new">Target RAW 428 / Support [52, 71, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW428.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW428.jpg"></a></details>
+<details><summary class="new">Target RAW 52 / Support [499, 713, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW52.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW52.jpg"></a></details>
+<details><summary class="new">Target RAW 285 / Support [71, 52, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW285.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW285.jpg"></a></details>
+<details><summary class="new">Target RAW 713 / Support [71, 52, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW713.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW713.jpg"></a></details>
+<details><summary class="new">Target RAW 143 / Support [52, 0, 499] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW143.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW143.jpg"></a></details>
+<details><summary class="new">Target RAW 1069 / Support [52, 71, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW1069.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW1069.jpg"></a></details>
+<details><summary class="new">Target RAW 71 / Support [499, 713, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW71.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW71.jpg"></a></details>
+<details><summary class="new">Target RAW 784 / Support [71, 0, 52] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW784.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW784.jpg"></a></details>
+<details><summary class="new">Target RAW 499 / Support [52, 71, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW499.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW499.jpg"></a></details>
+<details><summary class="new">Target RAW 926 / Support [499, 71, 52] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW926.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW926.jpg"></a></details>
+<details><summary class="new">Target RAW 750 / Support [71, 52, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW750.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW750.jpg"></a></details>
+<details><summary class="new">Target RAW 356 / Support [52, 71, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW356.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW356.jpg"></a></details>
+<details><summary class="new">Target RAW 855 / Support [0, 52, 71] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW855.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW855.jpg"></a></details>
+<details><summary class="new">Target RAW 534 / Support [71, 52, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW534.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW534.jpg"></a></details>
+<details><summary class="new">Target RAW 672 / Support [71, 52, 0] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW672.jpg"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_004__RAW672.jpg"></a></details>
+</section>
+<section id="HIST__GP_IIa_14.0mm_closed_R10_single_refY_005"><h2>IIa_14.0mm / R10 / 视频005 · 历史锚帧候选</h2>
+<p>Ring共同像素/观测Ring像素：0 / 0；重叠共同像素累计 0（各面重复计数，仅分母说明）。</p>
+<details><summary>未获合法三Support组合的全部Target</summary><pre>[(509, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (954, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (64, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (827, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (254, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (664, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (794, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (318, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (890, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (191, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (872, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (763, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (445, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (0, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (914, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (382, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (636, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (127, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (31, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (414, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (700, &#x27;不足3个通过上游资格及共视条件的Support&#x27;)]</pre></details>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / False</td><td>RGB MAE px 29.51218528024686 &gt; 3；RGB P95 px 38.75323368176801 &gt; 6；初始化中心分散 4.207 mm &gt; 2 mm</td></tr>
+<tr><td>31</td><td>False / False</td><td>RGB MAE px 4.910849699911808 &gt; 3；初始化中心分散 4.618 mm &gt; 2 mm</td></tr>
+<tr><td>64</td><td>False / False</td><td>RGB MAE px 34.08378856370117 &gt; 3；RGB P95 px 31.56274632152273 &gt; 6；初始化中心分散 4.980 mm &gt; 2 mm</td></tr>
+<tr><td>127</td><td>False / False</td><td>RGB MAE px 17.094955815563175 &gt; 3；RGB P95 px 153.31394316453716 &gt; 6；初始化中心分散 4.895 mm &gt; 2 mm</td></tr>
+<tr><td>191</td><td>False / False</td><td>RGB MAE px 28.256356136084875 &gt; 3；RGB P95 px 87.42443776233637 &gt; 6；初始化中心分散 3.200 mm &gt; 2 mm</td></tr>
+<tr><td>254</td><td>False / True</td><td>初始化中心分散 3.796 mm &gt; 2 mm</td></tr>
+<tr><td>318</td><td>False / False</td><td>RGB MAE px 124.92886689324109 &gt; 3；RGB P95 px 61.15469699075258 &gt; 6；初始化中心分散 2.031 mm &gt; 2 mm</td></tr>
+<tr><td>382</td><td>False / False</td><td>RGB MAE px 8.694946015598486 &gt; 3；RGB P95 px 15.500222661448568 &gt; 6</td></tr>
+<tr><td>414</td><td>False / False</td><td>RGB MAE px 9.908574644701527 &gt; 3；RGB P95 px 51.44286710634723 &gt; 6</td></tr>
+<tr><td>445</td><td>False / False</td><td>RGB MAE px 11.842445318647588 &gt; 3；RGB P95 px 53.12628330016587 &gt; 6；正深度比例 0.9230769230769231 &lt; 0.95</td></tr>
+<tr><td>509</td><td>False / False</td><td>RGB MAE px 8.311314627139199 &gt; 3；RGB P95 px 52.40375179699649 &gt; 6</td></tr>
+<tr><td>572</td><td>False / False</td><td>RGB MAE px 6.0917906059310765 &gt; 3；RGB P95 px 25.374325121544015 &gt; 6</td></tr>
+<tr><td>636</td><td>False / False</td><td>RGB P95 px 6.320011134933793 &gt; 6；正深度比例 0.9 &lt; 0.95；初始化中心分散 2.264 mm &gt; 2 mm</td></tr>
+<tr><td>664</td><td>False / False</td><td>留出观测数 7 &lt; 8；初始化中心分散 2.479 mm &gt; 2 mm</td></tr>
+<tr><td>700</td><td>False / False</td><td>留出观测数 7 &lt; 8；初始化中心分散 2.189 mm &gt; 2 mm</td></tr>
+<tr><td>763</td><td>False / False</td><td>留出观测数 5 &lt; 8；初始化中心分散 2.942 mm &gt; 2 mm</td></tr>
+<tr><td>794</td><td>False / False</td><td>留出观测数 7 &lt; 8；初始化中心分散 3.820 mm &gt; 2 mm</td></tr>
+<tr><td>827</td><td>False / False</td><td>留出观测数 5 &lt; 8；RGB MAE px 3.7014085873581672 &gt; 3；RGB P95 px 8.284070907400864 &gt; 6；初始化中心分散 3.404 mm &gt; 2 mm</td></tr>
+<tr><td>872</td><td>False / False</td><td>留出观测数 7 &lt; 8；RGB MAE px 5.640309432405544 &gt; 3；RGB P95 px 12.261850283502675 &gt; 6；初始化中心分散 3.975 mm &gt; 2 mm</td></tr>
+<tr><td>890</td><td>False / True</td><td>初始化中心分散 4.533 mm &gt; 2 mm</td></tr>
+<tr><td>914</td><td>False / False</td><td>RGB P95 px 6.02328120763357 &gt; 6；初始化中心分散 5.227 mm &gt; 2 mm</td></tr>
+<tr><td>954</td><td>False / True</td><td>初始化中心分散 7.484 mm &gt; 2 mm</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_005__RGB.png"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_005__规则.png"><img loading="lazy" src="figures/HIST__GP_IIa_14.0mm_closed_R10_single_refY_005__规则.png"></a></details>
+</section>
+<section id="HIST__GP_Ip_12.0mm_closed_R10_single_refY_004"><h2>Ip_12.0mm / R10 / 视频004 · 历史锚帧候选</h2>
+<p>Ring共同像素/观测Ring像素：91846 / 103203；重叠共同像素累计 4323876（各面重复计数，仅分母说明）。</p>
+<details><summary>未获合法三Support组合的全部Target</summary><pre>[(1264, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (734, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (84, &#x27;不足3个通过上游资格及共视条件的Support&#x27;)]</pre></details>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / False</td><td>RGB MAE px 184.9147978686998 &gt; 3；RGB P95 px 11.730641537377853 &gt; 6；初始化中心分散 5.627 mm &gt; 2 mm</td></tr>
+<tr><td>84</td><td>False / True</td><td>初始化中心分散 5.416 mm &gt; 2 mm</td></tr>
+<tr><td>169</td><td>False / False</td><td>RGB MAE px 10.277985461855627 &gt; 3；RGB P95 px 7.328804093590463 &gt; 6；Ring边界 P95 px 7.80839949226076 &gt; 6；初始化中心分散 4.845 mm &gt; 2 mm</td></tr>
+<tr><td>253</td><td>False / False</td><td>RGB P95 px 7.212845837149493 &gt; 6</td></tr>
+<tr><td>337</td><td>False / False</td><td>RGB MAE px 16.371463205482538 &gt; 3；RGB P95 px 17.505854165657432 &gt; 6；初始化中心分散 3.505 mm &gt; 2 mm</td></tr>
+<tr><td>421</td><td>False / False</td><td>RGB MAE px 277.7048335502917 &gt; 3</td></tr>
+<tr><td>506</td><td>False / False</td><td>RGB MAE px 32.49638312666977 &gt; 3；RGB P95 px 13.341440490214827 &gt; 6</td></tr>
+<tr><td>590</td><td>False / False</td><td>RGB MAE px 4.100755075480249 &gt; 3</td></tr>
+<tr><td>635</td><td>False / False</td><td>RGB MAE px 9.971672709844748 &gt; 3；RGB P95 px 7.875184640106206 &gt; 6</td></tr>
+<tr><td>674</td><td>False / False</td><td>RGB P95 px 6.412496823604391 &gt; 6</td></tr>
+<tr><td>692</td><td>False / False</td><td>RGB MAE px 12.29301280365826 &gt; 3；RGB P95 px 6.036116024101726 &gt; 6</td></tr>
+<tr><td>734</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>758</td><td>False / False</td><td>RGB P95 px 8.312888569793987 &gt; 6</td></tr>
+<tr><td>792</td><td>False / False</td><td>RGB MAE px 4.744384365534168 &gt; 3；RGB P95 px 6.032481158123934 &gt; 6</td></tr>
+<tr><td>843</td><td>False / False</td><td>RGB MAE px 3.955291060809741 &gt; 3；RGB P95 px 6.555270448979098 &gt; 6</td></tr>
+<tr><td>927</td><td>False / False</td><td>RGB MAE px 3.110432638213113 &gt; 3；RGB P95 px 6.22443155715626 &gt; 6</td></tr>
+<tr><td>1011</td><td>False / False</td><td>RGB MAE px 7.759641711096216 &gt; 3</td></tr>
+<tr><td>1050</td><td>False / False</td><td>RGB MAE px 4.779234508075297 &gt; 3；初始化中心分散 2.395 mm &gt; 2 mm</td></tr>
+<tr><td>1095</td><td>False / False</td><td>RGB MAE px 4.122755873739689 &gt; 3；初始化中心分散 2.820 mm &gt; 2 mm</td></tr>
+<tr><td>1126</td><td>False / False</td><td>RGB MAE px 73.86049343998319 &gt; 3；初始化中心分散 2.723 mm &gt; 2 mm</td></tr>
+<tr><td>1180</td><td>False / False</td><td>RGB MAE px 3.4228740843479266 &gt; 3；初始化中心分散 3.255 mm &gt; 2 mm</td></tr>
+<tr><td>1264</td><td>False / True</td><td>初始化中心分散 3.909 mm &gt; 2 mm</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__规则.png"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__逐面图集.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__相机.png"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__近景RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__近景逐源.png"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__近景逐源.png"></a></details>
+<details><summary class="new">Target RAW 674 / Support [1264, 84, 734] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW674.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW674.jpg"></a></details>
+<details><summary class="new">Target RAW 0 / Support [734, 1264, 84] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW0.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW0.jpg"></a></details>
+<details><summary class="new">Target RAW 337 / Support [84, 734, 1264] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW337.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW337.jpg"></a></details>
+<details><summary class="new">Target RAW 1011 / Support [1264, 734, 84] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW1011.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW1011.jpg"></a></details>
+<details><summary class="new">Target RAW 169 / Support [734, 84, 1264] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW169.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW169.jpg"></a></details>
+<details><summary class="new">Target RAW 1126 / Support [734, 1264, 84] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW1126.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW1126.jpg"></a></details>
+<details><summary class="new">Target RAW 506 / Support [1264, 84, 734] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW506.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW506.jpg"></a></details>
+<details><summary class="new">Target RAW 253 / Support [734, 1264, 84] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW253.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW253.jpg"></a></details>
+<details><summary class="new">Target RAW 792 / Support [1264, 84, 734] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW792.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW792.jpg"></a></details>
+<details><summary class="new">Target RAW 635 / Support [1264, 84, 734] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW635.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW635.jpg"></a></details>
+<details><summary class="new">Target RAW 1180 / Support [734, 84, 1264] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW1180.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW1180.jpg"></a></details>
+<details><summary class="new">Target RAW 1095 / Support [734, 1264, 84] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW1095.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW1095.jpg"></a></details>
+<details><summary class="new">Target RAW 692 / Support [1264, 84, 734] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW692.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW692.jpg"></a></details>
+<details><summary class="new">Target RAW 421 / Support [84, 1264, 734] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW421.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW421.jpg"></a></details>
+<details><summary class="new">Target RAW 1050 / Support [1264, 734, 84] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW1050.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW1050.jpg"></a></details>
+<details><summary class="new">Target RAW 927 / Support [1264, 84, 734] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW927.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW927.jpg"></a></details>
+<details><summary class="new">Target RAW 590 / Support [1264, 84, 734] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW590.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW590.jpg"></a></details>
+<details><summary class="new">Target RAW 843 / Support [1264, 84, 734] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW843.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_004__RAW843.jpg"></a></details>
+</section>
+<section id="HIST__GP_Ip_12.0mm_closed_R10_single_refY_005"><h2>Ip_12.0mm / R10 / 视频005 · 历史锚帧候选</h2>
+<p>Ring共同像素/观测Ring像素：150590 / 166380；重叠共同像素累计 5546599（各面重复计数，仅分母说明）。</p>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / False</td><td>RGB MAE px 14.494734115258101 &gt; 3；初始化中心分散 6.166 mm &gt; 2 mm</td></tr>
+<tr><td>57</td><td>False / True</td><td>初始化中心分散 5.124 mm &gt; 2 mm</td></tr>
+<tr><td>115</td><td>False / False</td><td>RGB MAE px 7.412401769163924 &gt; 3；初始化中心分散 4.552 mm &gt; 2 mm</td></tr>
+<tr><td>172</td><td>False / True</td><td>初始化中心分散 3.211 mm &gt; 2 mm</td></tr>
+<tr><td>229</td><td>False / False</td><td>RGB MAE px 14.180292446462687 &gt; 3；RGB P95 px 22.355923995428697 &gt; 6；初始化中心分散 2.298 mm &gt; 2 mm</td></tr>
+<tr><td>287</td><td>False / False</td><td>RGB MAE px 4.690564433655305 &gt; 3；初始化中心分散 2.042 mm &gt; 2 mm</td></tr>
+<tr><td>326</td><td>False / False</td><td>RGB MAE px 7.553435359543828 &gt; 3</td></tr>
+<tr><td>344</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>401</td><td>False / False</td><td>RGB MAE px 4.735568862369183 &gt; 3；RGB P95 px 7.013423022801591 &gt; 6</td></tr>
+<tr><td>427</td><td>False / False</td><td>RGB MAE px 3.516190800766657 &gt; 3</td></tr>
+<tr><td>459</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>516</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>573</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>611</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>631</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>655</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>688</td><td>False / True</td><td>初始化中心分散 2.035 mm &gt; 2 mm</td></tr>
+<tr><td>745</td><td>False / True</td><td>初始化中心分散 2.495 mm &gt; 2 mm</td></tr>
+<tr><td>785</td><td>False / True</td><td>初始化中心分散 2.612 mm &gt; 2 mm</td></tr>
+<tr><td>803</td><td>False / True</td><td>初始化中心分散 2.830 mm &gt; 2 mm</td></tr>
+<tr><td>834</td><td>False / True</td><td>初始化中心分散 3.210 mm &gt; 2 mm</td></tr>
+<tr><td>860</td><td>False / True</td><td>初始化中心分散 3.488 mm &gt; 2 mm</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__规则.png"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__逐面图集.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__相机.png"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__近景RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__近景逐源.png"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__近景逐源.png"></a></details>
+<details><summary class="">Target RAW 459 / Support [655, 344, 631] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW459.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW459.jpg"></a></details>
+<details><summary class="">Target RAW 0 / Support [344, 459, 573] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW0.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW0.jpg"></a></details>
+<details><summary class="">Target RAW 860 / Support [344, 459, 611] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW860.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW860.jpg"></a></details>
+<details><summary class="">Target RAW 172 / Support [573, 611, 459] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW172.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW172.jpg"></a></details>
+<details><summary class="">Target RAW 287 / Support [631, 655, 611] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW287.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW287.jpg"></a></details>
+<details><summary class="">Target RAW 655 / Support [344, 459, 573] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW655.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW655.jpg"></a></details>
+<details><summary class="">Target RAW 115 / Support [459, 573, 611] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW115.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW115.jpg"></a></details>
+<details><summary class="">Target RAW 573 / Support [344, 655, 459] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW573.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW573.jpg"></a></details>
+<details><summary class="">Target RAW 401 / Support [655, 631, 611] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW401.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW401.jpg"></a></details>
+<details><summary class="">Target RAW 785 / Support [344, 459, 573] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW785.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW785.jpg"></a></details>
+<details><summary class="">Target RAW 57 / Support [459, 344, 573] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW57.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW57.jpg"></a></details>
+<details><summary class="">Target RAW 631 / Support [344, 459, 573] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW631.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW631.jpg"></a></details>
+<details><summary class="">Target RAW 326 / Support [655, 631, 611] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW326.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW326.jpg"></a></details>
+<details><summary class="">Target RAW 229 / Support [611, 573, 631] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW229.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW229.jpg"></a></details>
+<details><summary class="">Target RAW 745 / Support [344, 459, 573] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW745.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW745.jpg"></a></details>
+<details><summary class="">Target RAW 427 / Support [655, 631, 611] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW427.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW427.jpg"></a></details>
+<details><summary class="">Target RAW 834 / Support [344, 459, 573] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW834.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW834.jpg"></a></details>
+<details><summary class="">Target RAW 611 / Support [344, 459, 655] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW611.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW611.jpg"></a></details>
+<details><summary class="">Target RAW 803 / Support [344, 459, 573] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW803.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW803.jpg"></a></details>
+<details><summary class="">Target RAW 344 / Support [655, 631, 611] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW344.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW344.jpg"></a></details>
+<details><summary class="">Target RAW 688 / Support [344, 459, 573] / 原规则</summary><a href="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW688.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_12.0mm_closed_R10_single_refY_005__RAW688.jpg"></a></details>
+</section>
+<section id="HIST__GP_Ip_20.0mm_closed_R10_single_refY_004"><h2>Ip_20.0mm / R10 / 视频004 · 历史锚帧候选</h2>
+<p>Ring共同像素/观测Ring像素：68440 / 75688；重叠共同像素累计 10357323（各面重复计数，仅分母说明）。</p>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / False</td><td>Ring边界 P95 px 8.915787563102494 &gt; 6</td></tr>
+<tr><td>66</td><td>False / False</td><td>RGB MAE px 5.1742309801686215 &gt; 3；RGB P95 px 11.767640272647679 &gt; 6</td></tr>
+<tr><td>133</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>164</td><td>False / False</td><td>RGB MAE px 3.1787969073399185 &gt; 3</td></tr>
+<tr><td>199</td><td>False / False</td><td>RGB MAE px 3.5180867208976165 &gt; 3</td></tr>
+<tr><td>237</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>265</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>332</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>380</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>398</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>426</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>464</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>508</td><td>False / False</td><td>RGB MAE px 3.9929972149952984 &gt; 3；RGB P95 px 7.266534955937284 &gt; 6</td></tr>
+<tr><td>531</td><td>False / False</td><td>RGB MAE px 3.917757677300361 &gt; 3</td></tr>
+<tr><td>565</td><td>False / False</td><td>RGB MAE px 9.970780157730768 &gt; 3</td></tr>
+<tr><td>597</td><td>False / False</td><td>RGB MAE px 8.631581891090274 &gt; 3；RGB P95 px 20.414613372343602 &gt; 6；Ring边界 MAE px 6.158640604238673 &gt; 3；Ring边界 P95 px 14.62868538675856 &gt; 6；初始化中心分散 2.836 mm &gt; 2 mm</td></tr>
+<tr><td>663</td><td>False / False</td><td>RGB MAE px 13.34756301773673 &gt; 3；RGB P95 px 24.86011681411055 &gt; 6；初始化中心分散 5.115 mm &gt; 2 mm</td></tr>
+<tr><td>730</td><td>False / False</td><td>RGB MAE px 7.210423050865012 &gt; 3；RGB P95 px 16.188230499639175 &gt; 6；初始化中心分散 5.438 mm &gt; 2 mm</td></tr>
+<tr><td>796</td><td>False / False</td><td>RGB MAE px 7.378327281066164 &gt; 3；RGB P95 px 12.022054579181116 &gt; 6；初始化中心分散 4.623 mm &gt; 2 mm</td></tr>
+<tr><td>862</td><td>False / False</td><td>RGB MAE px 7.668272003375538 &gt; 3；RGB P95 px 10.66121461057335 &gt; 6；初始化中心分散 4.680 mm &gt; 2 mm</td></tr>
+<tr><td>929</td><td>False / False</td><td>RGB MAE px 5.179600536090776 &gt; 3；RGB P95 px 13.328205081496607 &gt; 6；初始化中心分散 4.211 mm &gt; 2 mm</td></tr>
+<tr><td>995</td><td>False / False</td><td>RGB MAE px 4.696750908526951 &gt; 3；RGB P95 px 9.521916159227867 &gt; 6；初始化中心分散 3.775 mm &gt; 2 mm</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__规则.png"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__逐面图集.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__相机.png"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__近景RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__近景逐源.png"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__近景逐源.png"></a></details>
+<details><summary class="">Target RAW 531 / Support [133, 237, 265] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW531.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW531.jpg"></a></details>
+<details><summary class="">Target RAW 0 / Support [464, 426, 398] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW0.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW0.jpg"></a></details>
+<details><summary class="">Target RAW 995 / Support [464, 426, 398] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW995.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW995.jpg"></a></details>
+<details><summary class="">Target RAW 380 / Support [133, 237, 265] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW380.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW380.jpg"></a></details>
+<details><summary class="">Target RAW 133 / Support [464, 426, 398] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW133.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW133.jpg"></a></details>
+<details><summary class="">Target RAW 66 / Support [464, 426, 398] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW66.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW66.jpg"></a></details>
+<details><summary class="">Target RAW 663 / Support [133, 464, 426] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW663.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW663.jpg"></a></details>
+<details><summary class="">Target RAW 464 / Support [133, 237, 265] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW464.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW464.jpg"></a></details>
+<details><summary class="">Target RAW 730 / Support [133, 464, 426] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW730.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW730.jpg"></a></details>
+<details><summary class="">Target RAW 164 / Support [464, 426, 398] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW164.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW164.jpg"></a></details>
+<details><summary class="">Target RAW 265 / Support [133, 464, 426] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW265.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW265.jpg"></a></details>
+<details><summary class="">Target RAW 565 / Support [133, 237, 265] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW565.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW565.jpg"></a></details>
+<details><summary class="">Target RAW 862 / Support [133, 464, 426] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW862.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW862.jpg"></a></details>
+<details><summary class="">Target RAW 508 / Support [133, 237, 265] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW508.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW508.jpg"></a></details>
+<details><summary class="">Target RAW 398 / Support [133, 237, 265] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW398.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW398.jpg"></a></details>
+<details><summary class="">Target RAW 332 / Support [133, 464, 426] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW332.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW332.jpg"></a></details>
+<details><summary class="">Target RAW 237 / Support [464, 426, 133] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW237.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW237.jpg"></a></details>
+<details><summary class="">Target RAW 426 / Support [133, 237, 265] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW426.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW426.jpg"></a></details>
+<details><summary class="">Target RAW 929 / Support [464, 426, 398] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW929.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW929.jpg"></a></details>
+<details><summary class="">Target RAW 199 / Support [464, 426, 398] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW199.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW199.jpg"></a></details>
+<details><summary class="">Target RAW 796 / Support [133, 464, 426] / 原规则</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW796.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_004__RAW796.jpg"></a></details>
+</section>
+<section id="HIST__GP_Ip_20.0mm_closed_R10_single_refY_005"><h2>Ip_20.0mm / R10 / 视频005 · 历史锚帧候选</h2>
+<p>Ring共同像素/观测Ring像素：96221 / 103126；重叠共同像素累计 10963871（各面重复计数，仅分母说明）。</p>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / False</td><td>RGB P95 px 6.602763100093275 &gt; 6；初始化中心分散 3.230 mm &gt; 2 mm</td></tr>
+<tr><td>47</td><td>False / True</td><td>初始化中心分散 3.081 mm &gt; 2 mm</td></tr>
+<tr><td>75</td><td>False / False</td><td>RGB MAE px 4.153480656044372 &gt; 3；初始化中心分散 3.538 mm &gt; 2 mm</td></tr>
+<tr><td>94</td><td>False / False</td><td>RGB MAE px 3.5144862259681506 &gt; 3；初始化中心分散 3.846 mm &gt; 2 mm</td></tr>
+<tr><td>120</td><td>False / False</td><td>RGB MAE px 3.106214758035276 &gt; 3；RGB P95 px 7.116321225710072 &gt; 6；初始化中心分散 3.968 mm &gt; 2 mm</td></tr>
+<tr><td>141</td><td>False / False</td><td>RGB MAE px 4.8266762764660385 &gt; 3；RGB P95 px 6.4550553836007465 &gt; 6；初始化中心分散 4.028 mm &gt; 2 mm</td></tr>
+<tr><td>187</td><td>False / True</td><td>初始化中心分散 3.767 mm &gt; 2 mm</td></tr>
+<tr><td>234</td><td>False / True</td><td>初始化中心分散 3.783 mm &gt; 2 mm</td></tr>
+<tr><td>252</td><td>False / False</td><td>RGB MAE px 3.9074100783224224 &gt; 3；初始化中心分散 3.775 mm &gt; 2 mm</td></tr>
+<tr><td>281</td><td>False / False</td><td>RGB MAE px 4.4347166966460465 &gt; 3；初始化中心分散 4.143 mm &gt; 2 mm</td></tr>
+<tr><td>328</td><td>False / False</td><td>RGB MAE px 5.2658719675263 &gt; 3；初始化中心分散 3.745 mm &gt; 2 mm</td></tr>
+<tr><td>375</td><td>False / True</td><td>初始化中心分散 13.213 mm &gt; 2 mm</td></tr>
+<tr><td>422</td><td>False / True</td><td>初始化中心分散 3.093 mm &gt; 2 mm</td></tr>
+<tr><td>442</td><td>False / False</td><td>RGB MAE px 16.13637253604376 &gt; 3；RGB P95 px 7.770318616078104 &gt; 6；初始化中心分散 2.798 mm &gt; 2 mm</td></tr>
+<tr><td>469</td><td>False / False</td><td>RGB MAE px 4.276118482370502 &gt; 3；RGB P95 px 9.07239996039478 &gt; 6；初始化中心分散 2.483 mm &gt; 2 mm</td></tr>
+<tr><td>516</td><td>False / False</td><td>RGB MAE px 11.561736698344948 &gt; 3；RGB P95 px 7.644019409870537 &gt; 6；初始化中心分散 3.217 mm &gt; 2 mm</td></tr>
+<tr><td>562</td><td>False / True</td><td>初始化中心分散 3.421 mm &gt; 2 mm</td></tr>
+<tr><td>609</td><td>False / False</td><td>RGB MAE px 3.313624543708873 &gt; 3；初始化中心分散 3.163 mm &gt; 2 mm</td></tr>
+<tr><td>630</td><td>False / False</td><td>RGB MAE px 4.714058291469588 &gt; 3；RGB P95 px 7.183263502006521 &gt; 6；初始化中心分散 3.856 mm &gt; 2 mm</td></tr>
+<tr><td>656</td><td>False / False</td><td>RGB P95 px 6.293822185570482 &gt; 6；初始化中心分散 4.520 mm &gt; 2 mm</td></tr>
+<tr><td>685</td><td>False / False</td><td>RGB MAE px 3.7761321561245227 &gt; 3；初始化中心分散 4.484 mm &gt; 2 mm</td></tr>
+<tr><td>703</td><td>False / True</td><td>初始化中心分散 4.273 mm &gt; 2 mm</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__规则.png"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__逐面图集.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__相机.png"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__近景RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__近景逐源.png"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__近景逐源.png"></a></details>
+<details><summary class="new">Target RAW 375 / Support [562, 703, 47] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW375.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW375.jpg"></a></details>
+<details><summary class="new">Target RAW 703 / Support [234, 375, 187] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW703.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW703.jpg"></a></details>
+<details><summary class="new">Target RAW 516 / Support [234, 703, 187] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW516.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW516.jpg"></a></details>
+<details><summary class="new">Target RAW 75 / Support [562, 703, 375] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW75.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW75.jpg"></a></details>
+<details><summary class="new">Target RAW 442 / Support [703, 562, 47] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW442.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW442.jpg"></a></details>
+<details><summary class="new">Target RAW 609 / Support [234, 375, 187] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW609.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW609.jpg"></a></details>
+<details><summary class="new">Target RAW 141 / Support [562, 703, 375] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW141.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW141.jpg"></a></details>
+<details><summary class="new">Target RAW 0 / Support [375, 234, 187] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW0.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW0.jpg"></a></details>
+<details><summary class="new">Target RAW 187 / Support [562, 703, 47] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW187.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW187.jpg"></a></details>
+<details><summary class="new">Target RAW 630 / Support [375, 234, 187] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW630.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW630.jpg"></a></details>
+<details><summary class="new">Target RAW 656 / Support [375, 234, 187] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW656.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW656.jpg"></a></details>
+<details><summary class="new">Target RAW 281 / Support [562, 703, 47] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW281.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW281.jpg"></a></details>
+<details><summary class="new">Target RAW 469 / Support [703, 234, 187] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW469.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW469.jpg"></a></details>
+<details><summary class="new">Target RAW 94 / Support [562, 703, 375] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW94.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW94.jpg"></a></details>
+<details><summary class="new">Target RAW 47 / Support [375, 234, 187] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW47.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW47.jpg"></a></details>
+<details><summary class="new">Target RAW 120 / Support [562, 703, 375] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW120.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW120.jpg"></a></details>
+<details><summary class="new">Target RAW 562 / Support [234, 187, 375] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW562.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW562.jpg"></a></details>
+<details><summary class="new">Target RAW 328 / Support [562, 703, 47] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW328.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW328.jpg"></a></details>
+<details><summary class="new">Target RAW 685 / Support [375, 234, 187] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW685.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW685.jpg"></a></details>
+<details><summary class="new">Target RAW 234 / Support [562, 703, 47] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW234.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW234.jpg"></a></details>
+<details><summary class="new">Target RAW 252 / Support [562, 703, 47] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW252.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_20.0mm_closed_R10_single_refY_005__RAW252.jpg"></a></details>
+</section>
+<section id="HIST__GP_Ip_8.8mm_closed_R5_single_refY_004"><h2>Ip_8.8mm / R5 / 视频004 · 历史锚帧候选</h2>
+<p>Ring共同像素/观测Ring像素：87146 / 91068；重叠共同像素累计 4053600（各面重复计数，仅分母说明）。</p>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / False</td><td>RGB MAE px 6.966254200004458 &gt; 3；RGB P95 px 9.42578217102947 &gt; 6；初始化中心分散 2.051 mm &gt; 2 mm</td></tr>
+<tr><td>62</td><td>False / False</td><td>RGB MAE px 12.983006528371162 &gt; 3；RGB P95 px 7.7244291171617965 &gt; 6</td></tr>
+<tr><td>123</td><td>False / False</td><td>RGB MAE px 12.740894998551598 &gt; 3</td></tr>
+<tr><td>155</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>185</td><td>False / False</td><td>RGB MAE px 32.31989244432935 &gt; 3</td></tr>
+<tr><td>208</td><td>False / False</td><td>RGB MAE px 24.799364123690673 &gt; 3；RGB P95 px 6.089633152521281 &gt; 6</td></tr>
+<tr><td>246</td><td>False / False</td><td>RGB MAE px 13.599812831581207 &gt; 3；RGB P95 px 6.8708637913288975 &gt; 6</td></tr>
+<tr><td>287</td><td>False / False</td><td>RGB MAE px 11.765279901209292 &gt; 3；RGB P95 px 6.317831279995188 &gt; 6</td></tr>
+<tr><td>308</td><td>False / False</td><td>RGB MAE px 14.180348630857758 &gt; 3；RGB P95 px 6.385070998740104 &gt; 6</td></tr>
+<tr><td>370</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>431</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>471</td><td>False / False</td><td>RGB MAE px 5.73935330445351 &gt; 3</td></tr>
+<tr><td>493</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>522</td><td>False / False</td><td>RGB MAE px 4.279837865192941 &gt; 3</td></tr>
+<tr><td>554</td><td>False / False</td><td>RGB MAE px 3.494249282867796 &gt; 3</td></tr>
+<tr><td>574</td><td>False / False</td><td>RGB MAE px 11.550858400146108 &gt; 3</td></tr>
+<tr><td>616</td><td>False / False</td><td>RGB MAE px 22.528866950490407 &gt; 3；RGB P95 px 6.387432093470434 &gt; 6</td></tr>
+<tr><td>678</td><td>False / False</td><td>RGB MAE px 4.624288878491958 &gt; 3</td></tr>
+<tr><td>739</td><td>False / False</td><td>RGB MAE px 8.73215774911649 &gt; 3；RGB P95 px 11.211698322010754 &gt; 6；Ring边界 P95 px 7.0833479556457615 &gt; 6；初始化中心分散 2.413 mm &gt; 2 mm</td></tr>
+<tr><td>801</td><td>False / False</td><td>Ring边界 MAE px 3.4449055443524474 &gt; 3；Ring边界 P95 px 22.555863252785088 &gt; 6；初始化中心分散 2.788 mm &gt; 2 mm</td></tr>
+<tr><td>862</td><td>False / True</td><td>初始化中心分散 2.510 mm &gt; 2 mm</td></tr>
+<tr><td>924</td><td>False / True</td><td>初始化中心分散 2.195 mm &gt; 2 mm</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__规则.png"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__逐面图集.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__相机.png"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__近景RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__近景逐源.png"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__近景逐源.png"></a></details>
+<details><summary class="">Target RAW 493 / Support [155, 370, 431] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW493.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW493.jpg"></a></details>
+<details><summary class="new">Target RAW 924 / Support [493, 431, 862] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW924.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW924.jpg"></a></details>
+<details><summary class="">Target RAW 123 / Support [431, 370, 493] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW123.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW123.jpg"></a></details>
+<details><summary class="">Target RAW 616 / Support [370, 431, 493] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW616.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW616.jpg"></a></details>
+<details><summary class="">Target RAW 308 / Support [493, 155, 431] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW308.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW308.jpg"></a></details>
+<details><summary class="">Target RAW 739 / Support [493, 431, 370] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW739.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW739.jpg"></a></details>
+<details><summary class="">Target RAW 0 / Support [431, 370, 493] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW0.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW0.jpg"></a></details>
+<details><summary class="">Target RAW 431 / Support [155, 493, 370] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW431.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW431.jpg"></a></details>
+<details><summary class="">Target RAW 208 / Support [493, 431, 370] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW208.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW208.jpg"></a></details>
+<details><summary class="">Target RAW 678 / Support [493, 370, 431] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW678.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW678.jpg"></a></details>
+<details><summary class="">Target RAW 574 / Support [431, 370, 155] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW574.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW574.jpg"></a></details>
+<details><summary class="">Target RAW 801 / Support [493, 431, 370] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW801.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW801.jpg"></a></details>
+<details><summary class="">Target RAW 370 / Support [155, 493, 431] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW370.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW370.jpg"></a></details>
+<details><summary class="">Target RAW 522 / Support [155, 370, 431] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW522.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW522.jpg"></a></details>
+<details><summary class="">Target RAW 471 / Support [155, 370, 493] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW471.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW471.jpg"></a></details>
+<details><summary class="">Target RAW 246 / Support [493, 431, 370] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW246.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW246.jpg"></a></details>
+<details><summary class="">Target RAW 862 / Support [493, 431, 370] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW862.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW862.jpg"></a></details>
+<details><summary class="">Target RAW 287 / Support [493, 431, 155] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW287.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW287.jpg"></a></details>
+<details><summary class="">Target RAW 155 / Support [431, 493, 370] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW155.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW155.jpg"></a></details>
+<details><summary class="">Target RAW 62 / Support [431, 370, 493] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW62.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW62.jpg"></a></details>
+<details><summary class="">Target RAW 185 / Support [493, 431, 370] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW185.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_004__RAW185.jpg"></a></details>
+</section>
+<section id="HIST__GP_Ip_8.8mm_closed_R5_single_refY_005"><h2>Ip_8.8mm / R5 / 视频005 · 历史锚帧候选</h2>
+<p>Ring共同像素/观测Ring像素：82713 / 90276；重叠共同像素累计 2855817（各面重复计数，仅分母说明）。</p>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / False</td><td>RGB P95 px 7.650728950784459 &gt; 6；初始化中心分散 4.630 mm &gt; 2 mm</td></tr>
+<tr><td>23</td><td>False / False</td><td>RGB MAE px 3.3398509762606152 &gt; 3；初始化中心分散 4.292 mm &gt; 2 mm</td></tr>
+<tr><td>57</td><td>False / False</td><td>RGB MAE px 3.0275735358645144 &gt; 3；RGB P95 px 6.1121025615269975 &gt; 6；初始化中心分散 3.600 mm &gt; 2 mm</td></tr>
+<tr><td>93</td><td>False / False</td><td>RGB MAE px 8.87864219166831 &gt; 3；RGB P95 px 19.527840722884875 &gt; 6；初始化中心分散 3.409 mm &gt; 2 mm</td></tr>
+<tr><td>114</td><td>False / False</td><td>RGB MAE px 5.004189268549583 &gt; 3；初始化中心分散 3.256 mm &gt; 2 mm</td></tr>
+<tr><td>137</td><td>False / True</td><td>初始化中心分散 2.941 mm &gt; 2 mm</td></tr>
+<tr><td>172</td><td>False / True</td><td>初始化中心分散 2.478 mm &gt; 2 mm</td></tr>
+<tr><td>229</td><td>False / True</td><td>初始化中心分散 2.199 mm &gt; 2 mm</td></tr>
+<tr><td>286</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>343</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>400</td><td>False / False</td><td>RGB P95 px 6.910188269990559 &gt; 6</td></tr>
+<tr><td>458</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>495</td><td>False / False</td><td>RGB MAE px 4.253781865378416 &gt; 3；初始化中心分散 2.011 mm &gt; 2 mm</td></tr>
+<tr><td>515</td><td>False / True</td><td>初始化中心分散 2.247 mm &gt; 2 mm</td></tr>
+<tr><td>545</td><td>False / False</td><td>RGB MAE px 5.862269227676609 &gt; 3；初始化中心分散 3.013 mm &gt; 2 mm</td></tr>
+<tr><td>572</td><td>False / False</td><td>RGB MAE px 21.638102006981764 &gt; 3；初始化中心分散 3.474 mm &gt; 2 mm</td></tr>
+<tr><td>629</td><td>False / True</td><td>初始化中心分散 3.958 mm &gt; 2 mm</td></tr>
+<tr><td>686</td><td>False / True</td><td>初始化中心分散 4.196 mm &gt; 2 mm</td></tr>
+<tr><td>744</td><td>False / False</td><td>RGB MAE px 3.672446321782345 &gt; 3；初始化中心分散 4.920 mm &gt; 2 mm</td></tr>
+<tr><td>766</td><td>False / False</td><td>RGB MAE px 5.8985052118941885 &gt; 3；初始化中心分散 5.489 mm &gt; 2 mm</td></tr>
+<tr><td>801</td><td>False / False</td><td>RGB MAE px 6.433061483131395 &gt; 3；初始化中心分散 5.908 mm &gt; 2 mm</td></tr>
+<tr><td>858</td><td>False / True</td><td>初始化中心分散 5.879 mm &gt; 2 mm</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__规则.png"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__逐面图集.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__相机.png"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__近景RGB.png"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__近景逐源.png"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__近景逐源.png"></a></details>
+<details><summary class="new">Target RAW 458 / Support [629, 686, 137] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW458.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW458.jpg"></a></details>
+<details><summary class="">Target RAW 858 / Support [458, 286, 343] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW858.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW858.jpg"></a></details>
+<details><summary class="">Target RAW 93 / Support [286, 343, 458] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW93.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW93.jpg"></a></details>
+<details><summary class="">Target RAW 57 / Support [286, 343, 458] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW57.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW57.jpg"></a></details>
+<details><summary class="">Target RAW 137 / Support [343, 286, 458] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW137.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW137.jpg"></a></details>
+<details><summary class="">Target RAW 229 / Support [458, 343, 286] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW229.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW229.jpg"></a></details>
+<details><summary class="new">Target RAW 343 / Support [629, 686, 137] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW343.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW343.jpg"></a></details>
+<details><summary class="">Target RAW 0 / Support [286, 343, 458] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW0.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW0.jpg"></a></details>
+<details><summary class="">Target RAW 114 / Support [343, 286, 458] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW114.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW114.jpg"></a></details>
+<details><summary class="">Target RAW 495 / Support [343, 286, 458] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW495.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW495.jpg"></a></details>
+<details><summary class="">Target RAW 629 / Support [286, 343, 458] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW629.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW629.jpg"></a></details>
+<details><summary class="">Target RAW 172 / Support [343, 286, 458] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW172.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW172.jpg"></a></details>
+<details><summary class="">Target RAW 766 / Support [458, 286, 343] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW766.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW766.jpg"></a></details>
+<details><summary class="">Target RAW 744 / Support [286, 458, 343] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW744.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW744.jpg"></a></details>
+<details><summary class="">Target RAW 400 / Support [286, 458, 343] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW400.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW400.jpg"></a></details>
+<details><summary class="">Target RAW 545 / Support [343, 286, 458] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW545.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW545.jpg"></a></details>
+<details><summary class="new">Target RAW 286 / Support [629, 686, 137] / 放宽新增：中心分散硬门槛改警告</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW286.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW286.jpg"></a></details>
+<details><summary class="">Target RAW 572 / Support [343, 286, 458] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW572.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW572.jpg"></a></details>
+<details><summary class="">Target RAW 801 / Support [458, 286, 343] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW801.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW801.jpg"></a></details>
+<details><summary class="">Target RAW 23 / Support [286, 458, 343] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW23.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW23.jpg"></a></details>
+<details><summary class="">Target RAW 686 / Support [286, 343, 458] / 原规则</summary><a href="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW686.jpg"><img loading="lazy" src="figures/HIST__GP_Ip_8.8mm_closed_R5_single_refY_005__RAW686.jpg"></a></details>
+</section>
+<section id="HIST__GP_Is_14.0mm_closed_R5_single_refY_004"><h2>Is_14.0mm / R5 / 视频004 · 历史锚帧候选</h2>
+<p>Ring共同像素/观测Ring像素：83617 / 91438；重叠共同像素累计 5286523（各面重复计数，仅分母说明）。</p>
+<details><summary>未获合法三Support组合的全部Target</summary><pre>[(44, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (0, &#x27;不足3个通过上游资格及共视条件的Support&#x27;)]</pre></details>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / False</td><td>RGB MAE px 10.402758872767464 &gt; 3；初始化中心分散 5.540 mm &gt; 2 mm</td></tr>
+<tr><td>44</td><td>False / False</td><td>RGB MAE px 10.363130624278785 &gt; 3；初始化中心分散 5.787 mm &gt; 2 mm</td></tr>
+<tr><td>70</td><td>False / False</td><td>RGB MAE px 8.88947405709818 &gt; 3；初始化中心分散 4.711 mm &gt; 2 mm</td></tr>
+<tr><td>88</td><td>False / False</td><td>RGB MAE px 9.282322677962135 &gt; 3；Ring边界 MAE px 3.778552984926248 &gt; 3；Ring边界 P95 px 13.088254224963435 &gt; 6；初始化中心分散 4.274 mm &gt; 2 mm</td></tr>
+<tr><td>108</td><td>False / False</td><td>RGB MAE px 3.8775329049833784 &gt; 3；Ring边界 P95 px 7.701279850694139 &gt; 6；初始化中心分散 3.172 mm &gt; 2 mm</td></tr>
+<tr><td>132</td><td>False / False</td><td>RGB MAE px 87.82064332784522 &gt; 3；RGB P95 px 6.476442897358904 &gt; 6；Ring边界 MAE px 3.280917220834608 &gt; 3；Ring边界 P95 px 15.795765434775422 &gt; 6；初始化中心分散 3.158 mm &gt; 2 mm</td></tr>
+<tr><td>177</td><td>False / False</td><td>RGB P95 px 8.39218668819321 &gt; 6；初始化中心分散 2.677 mm &gt; 2 mm</td></tr>
+<tr><td>203</td><td>False / False</td><td>RGB P95 px 6.208896324790833 &gt; 6；初始化中心分散 2.880 mm &gt; 2 mm</td></tr>
+<tr><td>221</td><td>False / False</td><td>RGB P95 px 7.309616877492648 &gt; 6；初始化中心分散 3.108 mm &gt; 2 mm</td></tr>
+<tr><td>242</td><td>False / False</td><td>RGB MAE px 21.703849462632213 &gt; 3；RGB P95 px 15.73664951988231 &gt; 6；Ring边界 P95 px 6.955518232170357 &gt; 6；初始化中心分散 2.124 mm &gt; 2 mm</td></tr>
+<tr><td>265</td><td>False / False</td><td>RGB MAE px 11.441280417688612 &gt; 3；RGB P95 px 17.179291807958233 &gt; 6</td></tr>
+<tr><td>309</td><td>False / False</td><td>RGB MAE px 17.696019822451373 &gt; 3；RGB P95 px 56.85804168486158 &gt; 6；正深度比例 0.9259259259259259 &lt; 0.95；初始化中心分散 2.094 mm &gt; 2 mm</td></tr>
+<tr><td>334</td><td>False / False</td><td>RGB P95 px 6.420445994767208 &gt; 6</td></tr>
+<tr><td>353</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>373</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>397</td><td>False / False</td><td>RGB MAE px 3.5679653453610958 &gt; 3；RGB P95 px 10.598627330099195 &gt; 6</td></tr>
+<tr><td>441</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>485</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>530</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>574</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>618</td><td>True / True</td><td>原规则通过</td></tr>
+<tr><td>662</td><td>True / True</td><td>原规则通过</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RGB.png"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__规则.png"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__规则.png"></a></details>
+<details open><summary>逐面图集.jpg</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__逐面图集.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__逐面图集.jpg"></a></details>
+<details open><summary>相机.png</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__相机.png"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__相机.png"></a></details>
+<details open><summary>近景RGB.png</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__近景RGB.png"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__近景RGB.png"></a></details>
+<details open><summary>近景逐源.png</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__近景逐源.png"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__近景逐源.png"></a></details>
+<details><summary class="">Target RAW 353 / Support [441, 530, 485] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW353.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW353.jpg"></a></details>
+<details><summary class="">Target RAW 530 / Support [373, 353, 618] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW530.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW530.jpg"></a></details>
+<details><summary class="">Target RAW 177 / Support [353, 373, 441] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW177.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW177.jpg"></a></details>
+<details><summary class="">Target RAW 221 / Support [353, 373, 441] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW221.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW221.jpg"></a></details>
+<details><summary class="">Target RAW 88 / Support [353, 373, 441] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW88.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW88.jpg"></a></details>
+<details><summary class="">Target RAW 373 / Support [441, 530, 485] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW373.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW373.jpg"></a></details>
+<details><summary class="">Target RAW 309 / Support [373, 353, 441] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW309.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW309.jpg"></a></details>
+<details><summary class="">Target RAW 132 / Support [353, 373, 441] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW132.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW132.jpg"></a></details>
+<details><summary class="">Target RAW 618 / Support [373, 353, 530] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW618.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW618.jpg"></a></details>
+<details><summary class="">Target RAW 203 / Support [353, 441, 662] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW203.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW203.jpg"></a></details>
+<details><summary class="">Target RAW 242 / Support [373, 441, 618] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW242.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW242.jpg"></a></details>
+<details><summary class="">Target RAW 334 / Support [441, 373, 618] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW334.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW334.jpg"></a></details>
+<details><summary class="">Target RAW 70 / Support [353, 373, 441] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW70.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW70.jpg"></a></details>
+<details><summary class="">Target RAW 574 / Support [373, 353, 530] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW574.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW574.jpg"></a></details>
+<details><summary class="">Target RAW 485 / Support [373, 353, 530] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW485.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW485.jpg"></a></details>
+<details><summary class="">Target RAW 108 / Support [353, 373, 441] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW108.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW108.jpg"></a></details>
+<details><summary class="">Target RAW 265 / Support [373, 441, 618] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW265.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW265.jpg"></a></details>
+<details><summary class="">Target RAW 441 / Support [353, 373, 530] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW441.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW441.jpg"></a></details>
+<details><summary class="">Target RAW 662 / Support [373, 353, 530] / 原规则</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW662.jpg"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_004__RAW662.jpg"></a></details>
+</section>
+<section id="HIST__GP_Is_14.0mm_closed_R5_single_refY_005"><h2>Is_14.0mm / R5 / 视频005 · 历史锚帧候选</h2>
+<p>Ring共同像素/观测Ring像素：0 / 0；重叠共同像素累计 0（各面重复计数，仅分母说明）。</p>
+<details><summary>未获合法三Support组合的全部Target</summary><pre>[(317, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (0, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (158, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (475, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (119, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (396, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (259, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (198, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (79, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (40, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (374, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (238, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (296, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (436, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (336, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (417, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (277, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (554, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (454, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (515, &#x27;不足3个通过上游资格及共视条件的Support&#x27;), (594, &#x27;不足3个通过上游资格及共视条件的Support&#x27;)]</pre></details>
+<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>
+<tr><td>0</td><td>False / False</td><td>RGB MAE px 5.407860483159192 &gt; 3；RGB P95 px 14.145273437760663 &gt; 6；初始化中心分散 22.680 mm &gt; 2 mm</td></tr>
+<tr><td>40</td><td>False / False</td><td>RGB MAE px 3.101767182897644 &gt; 3；RGB P95 px 8.107997933836003 &gt; 6；初始化中心分散 22.870 mm &gt; 2 mm</td></tr>
+<tr><td>79</td><td>False / False</td><td>RGB MAE px 4.492719643623699 &gt; 3；RGB P95 px 9.812439493773102 &gt; 6；初始化中心分散 22.414 mm &gt; 2 mm</td></tr>
+<tr><td>119</td><td>False / False</td><td>RGB MAE px 5.8647739127708345 &gt; 3；RGB P95 px 15.63538753854173 &gt; 6；初始化中心分散 21.247 mm &gt; 2 mm</td></tr>
+<tr><td>158</td><td>False / False</td><td>RGB MAE px 5.041477617645005 &gt; 3；RGB P95 px 17.551202855368444 &gt; 6；初始化中心分散 19.596 mm &gt; 2 mm</td></tr>
+<tr><td>198</td><td>False / False</td><td>RGB MAE px 13.43227459476887 &gt; 3；RGB P95 px 15.220902891449587 &gt; 6；初始化中心分散 16.978 mm &gt; 2 mm</td></tr>
+<tr><td>238</td><td>False / False</td><td>RGB MAE px 9.799370180801752 &gt; 3；RGB P95 px 11.760883502303118 &gt; 6；初始化中心分散 16.502 mm &gt; 2 mm</td></tr>
+<tr><td>259</td><td>False / False</td><td>RGB MAE px 9.141585939922718 &gt; 3；RGB P95 px 16.396587268516424 &gt; 6；初始化中心分散 14.212 mm &gt; 2 mm</td></tr>
+<tr><td>277</td><td>False / False</td><td>RGB MAE px 9.014296146500454 &gt; 3；RGB P95 px 14.7913656045151 &gt; 6；初始化中心分散 13.569 mm &gt; 2 mm</td></tr>
+<tr><td>296</td><td>False / False</td><td>RGB MAE px 15.467904831362057 &gt; 3；RGB P95 px 23.90227226689484 &gt; 6；初始化中心分散 12.213 mm &gt; 2 mm</td></tr>
+<tr><td>317</td><td>False / False</td><td>RGB MAE px 6.955892670285711 &gt; 3；RGB P95 px 19.773561529500327 &gt; 6；初始化中心分散 11.792 mm &gt; 2 mm</td></tr>
+<tr><td>336</td><td>False / False</td><td>RGB MAE px 8.856047121012436 &gt; 3；RGB P95 px 23.447544824434864 &gt; 6；初始化中心分散 14.562 mm &gt; 2 mm</td></tr>
+<tr><td>356</td><td>False / False</td><td>RGB MAE px 6.692372314078484 &gt; 3；RGB P95 px 22.07961212271078 &gt; 6；初始化中心分散 14.363 mm &gt; 2 mm</td></tr>
+<tr><td>374</td><td>False / False</td><td>RGB MAE px 6.652040409392017 &gt; 3；RGB P95 px 19.52702496516392 &gt; 6；初始化中心分散 14.257 mm &gt; 2 mm</td></tr>
+<tr><td>396</td><td>False / False</td><td>RGB MAE px 9.405462218784834 &gt; 3；RGB P95 px 32.834269446443294 &gt; 6；初始化中心分散 13.901 mm &gt; 2 mm</td></tr>
+<tr><td>417</td><td>False / False</td><td>RGB MAE px 7.779013578678827 &gt; 3；RGB P95 px 20.251885902360197 &gt; 6；初始化中心分散 13.977 mm &gt; 2 mm</td></tr>
+<tr><td>436</td><td>False / False</td><td>RGB MAE px 12.886030109788853 &gt; 3；RGB P95 px 23.97070636511613 &gt; 6；初始化中心分散 14.054 mm &gt; 2 mm</td></tr>
+<tr><td>454</td><td>False / False</td><td>RGB MAE px 10.478466446608074 &gt; 3；RGB P95 px 29.127761940297635 &gt; 6；正深度比例 0.9473684210526315 &lt; 0.95；初始化中心分散 14.188 mm &gt; 2 mm</td></tr>
+<tr><td>475</td><td>False / False</td><td>RGB MAE px 9.399294837943216 &gt; 3；RGB P95 px 31.079675590912547 &gt; 6；初始化中心分散 14.058 mm &gt; 2 mm</td></tr>
+<tr><td>515</td><td>False / False</td><td>RGB MAE px 6.135770057928195 &gt; 3；RGB P95 px 24.02836168948976 &gt; 6；正深度比例 0.9473684210526315 &lt; 0.95；初始化中心分散 14.350 mm &gt; 2 mm</td></tr>
+<tr><td>554</td><td>False / False</td><td>RGB MAE px 10.47619606564471 &gt; 3；RGB P95 px 21.959585515589932 &gt; 6；正深度比例 0.9482758620689655 &lt; 0.95；初始化中心分散 14.434 mm &gt; 2 mm</td></tr>
+<tr><td>594</td><td>False / False</td><td>RGB MAE px 11.334753828770902 &gt; 3；RGB P95 px 22.26808894364127 &gt; 6；正深度比例 0.9298245614035088 &lt; 0.95；初始化中心分散 14.637 mm &gt; 2 mm</td></tr>
+</table></details>
+<details open><summary>RGB.png</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_005__RGB.png"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_005__RGB.png"></a></details>
+<details open><summary>规则.png</summary><a href="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_005__规则.png"><img loading="lazy" src="figures/HIST__GP_Is_14.0mm_closed_R5_single_refY_005__规则.png"></a></details>
+</section>
+</html>

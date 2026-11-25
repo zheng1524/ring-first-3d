@@ -45,7 +45,7 @@ def six(rows,data,cad,bounds,path,title,rule=False,summary=None):
  fig,axs=plt.subplots(2,3,figsize=(12,8.8))
  for ax,(name,e,a)in zip(axs.flat,ANGLES):
   if vv:draw(ax,np.concatenate(vv),np.concatenate(ff),np.concatenate(cc),cad,bounds,e,a)
-  else:ax.text(.5,.5,'原规则无可渲染输出\n新规则仍无可渲染输出\n'+('无合法组合'if not summary.get('legal_combinations')else'存在合法组合，推理/建面/评价失败'),ha='center',va='center',fontsize=12);ax.axis('off')
+  else:ax.text(.5,.5,('当前V6基线无正式面源\n未在基线输入上运行本轮Q1'if '当前V6基线'in title else'原规则无可渲染输出\n新规则仍无可渲染输出\n'+('无合法组合'if not summary.get('legal_combinations')else'存在合法组合，推理/建面/评价失败')),ha='center',va='center',fontsize=12);ax.axis('off')
   ax.set_title(name)
  old=sum(r['old_rule_generated']for r in rows);added=len(rows)-old
  fig.suptitle(title+f'\n全部可渲染 {len(rows)} 张；原规则 {old} 张'+('（原规则无可渲染输出）'if not old else'')+f'；放宽新增 {added} 张；失败/不可渲染 {summary.get("failed_or_nonrenderable",0)}\n'+('蓝色=原规则组合；橙色=放宽后新增；'if rule else'原始RGB面色；')+'黑色=真实Ring CAD；全范围毫米坐标；各运行yaw独立，不跨运行叠加',fontsize=10);finish(fig,path)
@@ -107,20 +107,22 @@ def render_run(out,bounds=None):
  save(out/'VISUALIZATION.json',result);return result
 
 def index():
- records=[read(p)for p in sorted((B/'evaluation').glob('*/*/VISUALIZATION.json'))];parts=['<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>V6 RAW到HERO：中文完整图集</title><style>body{max-width:1450px;margin:2em auto;font-family:system-ui;background:#f5f6fa;color:#182336}table{border-collapse:collapse}td,th{padding:8px;border:1px solid #bdc7da}img{max-width:100%}section{background:white;padding:1.3em;margin:1.5em 0}summary{cursor:pointer;padding:10px}a{color:#1458ac}.new{color:#a43e00}</style><h1>V6：从RAW重新运行的完整中文图集</h1><p>蓝色＝本轮同一相机下原规则已通过的组合；橙色＝放宽后新增。它们不等同于历史基线的成员。全部原始面源均保留；没有ICP、额外缩放、形变、融合或按深度误差删面。不同运行/视频的yaw未认证，不叠成一个世界。Ring指标以相机正确为条件；重叠差异及A→B投影均不是形状GT。</p><p><a href="TECHNICAL_REPORT.md">中文技术报告</a> · <a href="SOURCE_MANIFEST.csv">逐源清单</a> · <a href="VIDEO_COMPARISON.csv">逐视频比较</a></p><table><tr><th>物理视频</th><th>运行</th><th>合法/启动/推理成功/可渲染/失败</th><th>原规则/新增</th><th>Ring MAE中位数（可评价源/可渲染源）</th><th>重叠P95中位数（可评价/有向配对）</th></tr>']
+ records=[read(p)for p in sorted((B/'evaluation').glob('*/*/VISUALIZATION.json'))];parts=['<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>V6 RAW到HERO：中文完整图集</title><style>body{max-width:1450px;margin:2em auto;font-family:system-ui;background:#f5f6fa;color:#182336}table{border-collapse:collapse}td,th{padding:8px;border:1px solid #bdc7da}img{max-width:100%}section{background:white;padding:1.3em;margin:1.5em 0}summary{cursor:pointer;padding:10px}a{color:#1458ac}.new{color:#a43e00}</style><h1>V6：从RAW重新运行的完整中文图集</h1><p>蓝色＝本轮同一相机下原规则已通过的组合；橙色＝放宽后新增。它们不等同于历史基线的成员。全部原始面源均保留；没有ICP、额外缩放、形变、融合或按深度误差删面。不同运行/视频的yaw未认证，不叠成一个世界。Ring指标以相机正确为条件；重叠差异及A→B投影均不是形状GT。</p><p><a href="TECHNICAL_REPORT.md">中文技术报告</a> · <a href="OBSERVATIONS_INDEX.html">RAW/Mask/Ring观测链</a> · <a href="SOURCE_MANIFEST.csv">逐源清单</a> · <a href="VIDEO_COMPARISON.csv">逐视频比较</a></p><table><tr><th>物理视频</th><th>运行</th><th>合法/启动/推理成功/可渲染/失败</th><th>原规则/新增</th><th>Ring MAE中位数（可评价源/可渲染源）</th><th>重叠P95中位数（可评价/有向配对）</th></tr>']
  for r in records:
   s=r['summary'];ident=r['variant']+'__'+r['case'];parts.append(f'<tr><td><a href="#{ident}">{short(r["case"])}</a></td><td>{LABEL[r["variant"]]}</td><td>{s.get("legal_combinations","待更新")} / {s.get("inference_started","待更新")} / {s.get("inference_success","待更新")} / {s["generated"]} / {s.get("failed_or_nonrenderable","待更新")}</td><td>{s["old_rule_generated"]} / {s["added"]}</td><td>{num(s["ring_MAE_median"])} ({s.get("ring_evaluable_sources","待更新")}/{s["generated"]})</td><td>{num(s["overlap_P95_pair_median"])} ({s["pair_evaluable"]}/{s["pair_count"]})</td></tr>')
+ candidate=[r['summary']for r in records if r['variant']=='HIST'];parts[0]=parts[0].replace('<table><tr>',f'<p><b>固定5组10视频；统一HIST候选 {sum(x["generated"]for x in candidate)}张 / {sum(x["generated"]>0 for x in candidate)}/10视频。候选不升级，保留当前V6基线；没有共同RAW/Support的比较不记为通过。</b></p><table><tr>',1)
  parts.append('</table><p>表中毫米误差为不同目标集合的描述性统计；不能据此作同帧因果比较。下方可逐一展开每张面源。</p>')
  for r in records:
   ident=r['variant']+'__'+r['case'];parts.append(f'<section id="{ident}"><h2>{short(r["case"])} · {LABEL[r["variant"]]}</h2>')
   s=r['summary'];parts.append(f'<p>Ring共同像素/观测Ring像素：{s.get("ring_common_pixels","待更新")} / {s.get("ring_observed_pixels","待更新")}；重叠共同像素累计 {s.get("pair_common_pixels","待更新")}（各面重复计数，仅分母说明）。</p>')
   for failure in s.get('nonrenderable',[]):parts.append('<p class="new">未能渲染：Target RAW '+str(failure['raw_target'])+' / Support '+str(failure['raw_support'])+' / '+html.escape(failure.get('failure_reason',failure['status']))+'</p>')
-  if s.get('not_admitted_targets'):parts.append('<details><summary>未获合法三Support组合的全部Target</summary><pre>'+html.escape(str([(x['raw_target'],x.get('failure_reason'))for x in s['not_admitted_targets']]))+'</pre></details>')
+  if s.get('not_admitted_targets'):parts.append('<details><summary>未获合法三Support组合的全部Target</summary><pre>'+html.escape(str([(x['raw_target'],'不足3个通过上游资格及共视条件的Support')for x in s['not_admitted_targets']]))+'</pre></details>')
   if r.get('gates'):
    parts.append('<details><summary>全部相机的旧/新门控与拒绝原因</summary><table><tr><th>RAW</th><th>旧/新通过</th><th>原因（像素或毫米）</th></tr>')
    for g in r['gates']:parts.append(f'<tr><td>{g["raw_frame"]}</td><td>{g["old_pass"]} / {g["new_pass"]}</td><td>'+html.escape('；'.join(g['reasons'])or'原规则通过')+'</td></tr>')
    parts.append('</table></details>')
-  for name in r['images']:parts.append(f'<details open><summary>{html.escape(name.split("__")[-1])}</summary><a href="figures/{name}"><img loading="lazy" src="figures/{name}"></a></details>')
+  extra=[r['variant']+'__'+r['case']+'__'+x+'.png'for x in ['近景RGB','近景逐源']if(F/(r['variant']+'__'+r['case']+'__'+x+'.png')).exists()]
+  for name in r['images']+extra:parts.append(f'<details open><summary>{html.escape(name.split("__")[-1])}</summary><a href="figures/{name}"><img loading="lazy" src="figures/{name}"></a></details>')
   for d in r['details']:parts.append(f'<details><summary class="{"new"if not d["old"]else""}">Target RAW {d["raw"]} / Support {d["support"]} / {"原规则"if d["old"]else"放宽新增：中心分散硬门槛改警告"}</summary><a href="figures/{d["image"]}"><img loading="lazy" src="figures/{d["image"]}"></a></details>')
   parts.append('</section>')
  parts.append('</html>');(T/'VISUALIZATION_INDEX.html').write_text('\n'.join(parts));save(T/'evidence/VISUALIZATION_INDEX.json',records)

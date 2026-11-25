@@ -8,7 +8,7 @@ def make(variant,case):
  for row,i in enumerate(inds):
   a=L[i];im=cv2.cvtColor(cv2.imread(a['RGB_path']),cv2.COLOR_BGR2RGB);lab=cv2.imread(a['Mask_path'],0);ob=np.load(R/'observations'/(a['id']+'_ring.npz'));ax=axs[row]
   ax[0].imshow(im);ax[0].set_title(f"RAW {a['raw_frame']} 原RGB\n时间戳 {a['time_sec']:.4f}秒"if'time_sec'in a else f"RAW {a['raw_frame']} 原RGB")
-  ax[1].imshow(lab,vmin=0,vmax=2,cmap='viridis');ax[1].set_title('原标签：背景0 / 息肉1 / Ring2\nSIFT/HERO使用此标签，不换成拟合椭圆')
+  ax[1].imshow(lab,vmin=0,vmax=2,cmap='viridis');ax[1].set_title('原标签：背景0 / 息肉1 / Ring2\nSIFT及建面/评价使用；HERO网络不读Mask')
   ax[2].imshow(im)
   for key,color,label in [('q_train','cyan','轮廓训练'),('q_held','red','轮廓留出'),('ambiguous_boundary','yellow','邻息肉边界，不强迫作轮廓')]:
    q=ob[key];ax[2].scatter(q[:,0],q[:,1],s=2,color=color,label=label)

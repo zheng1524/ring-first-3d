@@ -15,7 +15,17 @@ def main():
  save(T/'evidence/PAIRED_COMPARISON.json',paired)
  cand=[b for _,a,b,s in rows];base=[a for _,a,b,s in rows];n=sum(b['generated']for b in cand);old=sum(b['old_rule_generated']for b in cand);added=n-old;nv=sum(b['generated']>0 for b in cand);bv=sum(a['generated']>0 for a in base);fail=[short(c)for c,a,b,s in rows if s=='FAIL_COVERAGE_LOSS'];gained=[short(c)for c,a,b,s in rows if not a['generated']and b['generated']]
  own=sum(b['target_own_new_pass']for b in cand);starts=len((B/'INFERENCE_STARTS.jsonl').read_text().splitlines())
- plan=(T/'IMPLEMENTATION_PLAN.md').read_text();table=plan[plan.index('| 环节'):plan.index('\n## 候选')].replace('实际拟用策略/来源','实际策略/来源').replace('主点490/319.5/179.5假设','焦距490像素与主点319.5/179.5假设').replace('采用理由、本轮适配、验证','采用理由与本轮改动').replace('处理后Mask留存对比','观测点、边界与原mask留存对比').replace('173张上轮图只作只读参照，当前图由当前结果生成','历史图只作只读参照，当前图由当前结果生成')
+ table="""| 环节 | 实际策略 | 历史来源/代码版本 | 输入与输出 | 采用理由 | 本轮改动 |
+|---|---|---|---|---|---|
+| RAW选帧 | 全时序16帧+最多6清晰/新颖补帧 | 原V6 setup_audit.py（01805b2c…）；M2F7实际策略 | RAW顺序解码→真实帧/PTS/RGB SHA | 恢复已验证身份的历史入口 | AST复用原选择块，按视频长度通用化；不读取历史帧清单 |
+| 分割与Ring观测 | INIT原Mask供SIFT与输出建面/评价；DXY真实边界、可见/背景区域 | M2F7 INITSegmentation；V5 ring_observations.main、V4 adapter.adapt | RGB/标签0/1/2→训练/留出Ring观测 | 保留原始观测和遮挡不确定性 | 独立本轮缓存与输入哈希；不先回写清理Mask |
+| Ring候选 | 原多分支seed→diverse_four→solve，R5/R10真实参数 | M2F10 build_ring@a38d4c8…；原V5科学内核 | 当前Ring观测/K→候选C2R | 保留Ring物理尺度与后续真实frame-ID修复 | 明确centerline键、候选调用和R5参数；未重写求解器 |
+| 初始化与BA | RGB连接图/yaw初始化两版本；Ring+RGB BA，固定首成功版本 | 原V6 track005；local_ring_sfm（673b57af…） | 当前轨迹/候选→C2W/XYZ/留出轨迹 | 保留历史Ring-First几何骨架 | 科学目标函数不变；仅重绑定当前输入目录/索引 |
+| BA锚帧与诊断帧 | 全量HIST：基础帧索引8/9（第9/10帧）；GRAPH只作三视频试点 | M2F7历史规则；M2F9/M2F10 select_v6_reference | 同一当前RAW池→实际ref/B索引 | 比较历史与连接图策略；无配对通过时按预案历史优先 | 冻结一个全局HIST；不制造459/516假编号、不逐视频挑路线 |
+| 相机门控 | 原留出RGB/Ring/正深度条件；Q1中心分散只警告 | 原V6 validate_select（bdfb607d…） | 两版本相机→Q0/Q1资格与拒绝原因 | 检验次解失败是否连带拒绝可用主解 | 唯一放宽：中心分散≤2毫米硬门槛改警告；不看HERO误差 |
+| Target与Support | 全部数值Target；合格Support共视≥15，原视差×共视排序 | M2F10 all-target适配；V6 select_supported_views（f8439f53…） | 当前相机/训练轨迹→每Target一个三Support元组 | 扩展可见视角，同时保留原组合 | 原规则足够时保持原三元组；否则Q1；Target自身资格另报 |
+| HERO与Mesh | 官方352×640、3 Support、refine1/FP16；原V6 Mesh定义 | run_mvs005_supported、package_surfaces；模型00878bab… | 冻结四帧/K/C→原生深度/毫米Mesh | 模型和几何约定可核对 | 仅适配完整计划与打包接口；无额外缩放/形变/融合/输出门控 |
+| 共同评价与中文图集 | 全源Ring尾部、稀疏留出、非输入B投影、重叠深度；完整六视角 | M2F12/13 CAD/原reprojection；既有actual_mesh_image | 所有原输出→计数/指标/逐源中文图 | 覆盖与质量分开，不隐藏失败/离群面 | 新增共同像素分母、三态对照、近景出画数及Q0/Q1颜色；不据此删面 |"""
  text='# TASK-V6-RAW-TO-HERO-MAINLINE-001 技术报告\n\n## 完整流程：策略—效果\n\n'+table+'\n\n'
  text+=f'''## 结论与推荐状态
 
@@ -36,6 +46,8 @@ def main():
   label='覆盖损失，拒绝升级'if s=='FAIL_COVERAGE_LOSS'else('恢复组合，质量未证'if not a['generated']and b['generated']else'仍无输出'if not b['generated']else'组合增加/保留，配对质量未证')
   text+=f"| {short(c)} | {a['generated']}→{b['generated']} | {b['numeric_cameras']}；{b['old_admitted_cameras']}/{b['new_admitted_cameras']} | {b['old_rule_generated']}/{b['added']} | {b['target_own_new_pass']} | {num(a['ring_MAE_median'])}→{num(b['ring_MAE_median'])} | {num(a['ring_P95_median'])}→{num(b['ring_P95_median'])} | {num(a['overlap_P95_pair_median'])}→{num(b['overlap_P95_pair_median'])} | {label} |\n"
  text+='''
+全10视频仅Is14/004的RAW221是共同Target，其Support不同；没有共同四帧元组，不能据此建立同元组非退化结论。完整共同样本清单见[evidence/PAIRED_COMPARISON.json](evidence/PAIRED_COMPARISON.json)。
+
 完整分母、合法/启动/原生成功/可渲染/失败、方向跨度、10°观察方向占据数见[VIDEO_COMPARISON.csv](VIDEO_COMPARISON.csv)；逐源全部指标及输入/相机/Mesh哈希见[SOURCE_MANIFEST.csv](SOURCE_MANIFEST.csv)。方向占据数依赖本次相机与自身yaw坐标，不可直接跨运行作配准后的覆盖比较。原基线统计限定66个正式生成面源，另有74个历史备用分支未执行（ALTERNATE_NOT_NEEDED），见[BASELINE_UNUSED_CANDIDATES.csv](BASELINE_UNUSED_CANDIDATES.csv)，不把它们计为推理失败或补跑。
 
 ## 历史恢复究竟恢复了什么
@@ -49,7 +61,7 @@ Ip20/004早期M2F8有有限输出，M2F10正式集失去输出。本次HIST恢�
 ## 观测、初始化与门控的实际含义
 
 1. RAW顺序解码；以真实PTS和解码BGR SHA绑定身份。基础16帧覆盖完整时间段，补帧按原V6“相对基础帧灰度新颖度×封顶清晰度”选择，候选清晰度≥25分位、离基础帧≥18帧、补帧彼此≥36帧，最多6帧。它补的是外观，不保证增加真实视角；实际方向覆盖另报。
-2. 原INIT分割工作于640×360，标签背景0/息肉1/Ring2；SIFT及HERO使用原Mask。DXY洞处理/椭圆诊断用于观测解释，但Ring损失使用真实可见区域和背景朝向的实测边界。邻息肉边界的遮挡次序未知，不强迫成为轮廓；原生真实Ring像素仍作为正区域。处理后边界/训练与留出点保存在本轮observations NPZ，[观测链中文图集](OBSERVATIONS_INDEX.html)提供实际叠加检查。DXY内部FrameInput的10毫米旧诊断不提供最终尺度；真正几何轮廓由R5=3.1/.6、R10=5.6/.6毫米参数生成。背景负约束仍依赖受控后方背景假设，不适于任意前景组织遮挡。
+2. 原INIT分割工作于640×360，标签背景0/息肉1/Ring2；SIFT及HERO输出建面/评价使用原Mask；HERO网络本身只接收RGB、内参和位姿，不读取Mask。Mask通过相机恢复间接影响深度，也影响建面范围和评价像素集合。DXY洞处理/椭圆诊断用于观测解释，但Ring损失使用真实可见区域和背景朝向的实测边界。邻息肉边界的遮挡次序未知，不强迫成为轮廓；原生真实Ring像素仍作为正区域。处理后边界/训练与留出点保存在本轮observations NPZ，[观测链中文图集](OBSERVATIONS_INDEX.html)提供实际叠加检查。DXY内部FrameInput的10毫米旧诊断不提供最终尺度；真正几何轮廓由R5=3.1/.6、R10=5.6/.6毫米参数生成。背景负约束仍依赖受控后方背景假设，不适于任意前景组织遮挡。
 3. Ring候选初始化两分支；RGB训练轨迹通过相对极线关系/全局yaw调整连接图。BA固定锚帧6DoF和Ring模型/K，优化其余相机SE(3)及最多500个训练轨迹点；Ring区域/边界、RGB重投影、正深度及弱时间平滑共同生效。最多60次函数评价。选择最先成功版本，不按留出误差挑最好的版本；失败NaN/日志保留，不回退旧相机。
 4. 相机Q0：留出观测≥8，RGB MAE≤3/P95≤6像素，正深度≥0.95，Ring边界MAE≤3/P95≤6像素，两初始化中心分散≤2毫米。Q1只将最后一个硬门槛改为警告，其余不变。所有逐帧旧/新状态和原因见[CAMERA_GATES.csv](CAMERA_GATES.csv)。Q1并没有证明不稳定性无害。
 5. HERO Target按原M2F10遍历全部有限数值相机，排除诊断图像；Target自身是否通过门控单列，**不把三Support通过冒称Target已验证**。Support沿用共视FIT轨迹≥15以及`min(视差角,25°)×min(共视数,100)/100`排序；原规则能凑三个时保留原三元组，否则才用Q1池。25°是评分封顶，不是最大视差拒绝阈值；未引入米尺度距离、按深度择优或多个组合试到成功。
@@ -71,7 +83,7 @@ Ip20/004早期M2F8有有限输出，M2F10正式集失去输出。本次HIST恢�
 
 ## 可复核入口与执行身份
 
-入口：`tools/v6_raw_to_hero.py --case <真实物理视频名> --variant HIST --stage all`；当前缓存逐阶段验证RGB/Mask、相机/计划/模型及科学函数SHA，不能静默换组合或覆盖已启动的失败运行。全部官方推理启动记录见`evidence/INFERENCE_STARTS.jsonl`。
+入口：`tools/v6_raw_to_hero.py --case <真实物理视频名> --variant HIST --stage all`；当前缓存逐阶段验证RGB/Mask、相机/计划/模型及科学函数SHA，不能静默换组合或覆盖已启动的失败运行。全部官方推理启动记录见`evidence/INFERENCE_STARTS.jsonl`；配置、相机数组和原日志见[小证据入口](EVIDENCE_README.md)。
 
 实现初始提交62ab735…；官方HERO包装修订28124b6…；独立最终评价源码25dcf083…（若仅补缓存依赖，最终哈希以回执为准）；批量候选冻结d3dbedf8…。首次Ip12/HIST RAW及相机是在5efa072… HEAD与尚未提交的本轮入口代码下开始，实际函数/内核SHA在执行前保存，不能将它追写成后来提交。每视频/阶段的CAMERA_STARTED、RUN_STATE、HERO_STARTED及输入/输出SHA均随小证据上传，实际身份以这些记录为准。最初临时评价在长进程中运行，随后为消除源码加载身份歧义，所有评价在冻结源码的新进程重算；旧回执只作历史记录，不作为最终指标依据。
 
@@ -84,7 +96,7 @@ Ip20/004早期M2F8有有限输出，M2F10正式集失去输出。本次HIST恢�
 本地浏览器地址：http://127.0.0.1:8956/VISUALIZATION_INDEX.html 。HTTP服务只绑定本机；停止后可用`python3 -m http.server 8956 --bind 127.0.0.1 --directory <本任务目录>`重启。
 '''
  space=read(T/'evidence/SPACE_FINAL.json')if(T/'evidence/SPACE_FINAL.json').exists()else{}
- text+=f'\n实际启动{starts}/273次（含全部试点）；自动资源重试0次。空间记录：`{json.dumps(space,ensure_ascii=False)}`。保留失败视频在10视频分母，未实施新主线变体。\n'
+ text+=f'\n实际启动{starts}/273次（含全部试点）；自动资源重试0次。同一根挂载点可用空间从{space.get("before_available_B",0)/1024**3:.2f} GiB变为{space.get("final_available_B",0)/1024**3:.2f} GiB；当前运行产物{space.get("current_run_allocated_B",0)/1024**3:.2f} GiB，交付目录{space.get("delivery_allocated_B",0)/1024**3:.2f} GiB。df差值包含其他进程写入，精确字节见[evidence/SPACE_FINAL.json](evidence/SPACE_FINAL.json)。没有声称本轮清理释放空间；保留零输出视频在10视频分母，未实施额外主线变体。\n'
  (T/'TECHNICAL_REPORT.md').write_text(text)
  (T/'FINAL_REPORT.md').write_text(f'''# 最终交付
 

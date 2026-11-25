@@ -21,7 +21,12 @@ def make(O):
    draw(ax,V,F0,col,cad,bounds,e,a);out=projected_out(V,bounds,cad,e,a);count=int(out.sum());faces=int(out[F0].any(1).sum());ax.set_title(f'{label}：出画顶点 {count}/{len(V)}\n含出画顶点三角形 {faces}/{len(F0)}',fontsize=8)
    if name=='近景RGB':records.append(dict(view=label,outside_vertices=count,total_vertices=len(V),triangles_with_outside_vertex=faces,total_triangles=len(F0)))
   fig.suptitle(short(case)+' / '+LABEL[variant]+f'：补充近景，{len(rows)}个面源仍全部送入原renderer\n观察框按Ring内径固定为±{half:g}毫米；实际投影出画数量逐视角标注；完整范围见总览\n'+('颜色按真实Target帧先后（蓝→红），不表示质量或准入；黑色为CAD'if name=='近景逐源'else'原始RGB；没有裁掉或重建Mesh文件'),fontsize=10)
-  finish(fig,T/'figures'/(variant+'__'+case+'__'+name+'.png'))
+  fig.tight_layout(rect=(0,.09,1,.92),h_pad=3.8,w_pad=1.2)
+  if name=='近景逐源':
+   from matplotlib.colors import Normalize
+   cb=fig.colorbar(plt.cm.ScalarMappable(norm=Normalize(0,max(1,len(rows)-1)),cmap=palette),cax=fig.add_axes([.13,.045,.74,.015]),orientation='horizontal',ticks=range(len(rows)))
+   cb.ax.set_xticklabels([str(r['raw_target'])for r in sorted(rows,key=lambda r:r['raw_target'])],fontsize=6);cb.set_label('真实RAW Target帧（时序颜色，不表示质量）',fontsize=8)
+  fig.savefig(T/'figures'/(variant+'__'+case+'__'+name+'.png'),dpi=105);plt.close(fig)
  return dict(case=case,variant=variant,viewer_bound_half_mm=half,views=records,ordered_raw_targets=sorted(r['raw_target']for r in rows))
 
 if __name__=='__main__':
