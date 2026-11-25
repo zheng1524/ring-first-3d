@@ -199,3 +199,20 @@ def test_raw_video_enumeration_does_not_consult_prepared_cache(tmp_path):
     source.write_bytes(b'raw')
     selected = route.raw_video_paths(raw, group, {'004', '005'})
     assert selected == [source]
+
+
+def test_native_depth_metric_uses_unscreened_raw_depth_and_native_k():
+    import open3d as o3d
+    vertices = np.array([[-10., -10., 10.], [20., -10., 10.],
+                         [20., 20., 10.], [-10., 20., 10.]], np.float32)
+    faces = np.array([[0, 1, 2], [0, 2, 3]], np.uint32)
+    scene = o3d.t.geometry.RaycastingScene(nthreads=1)
+    scene.add_triangles(o3d.core.Tensor(vertices), o3d.core.Tensor(faces))
+    depth = np.full((2, 2), 10., np.float32)
+    labels = np.array([[2, 2], [1, 0]], np.uint8)
+    pose = np.eye(4)
+    result = route.native_depth_metrics(depth, np.eye(3), pose, labels, scene)
+    assert result['ring_pixels'] == 2
+    assert result['ring_ratio_median'] == pytest.approx(1., abs=1e-6)
+    assert result['ring_mae_mm'] == pytest.approx(0., abs=1e-6)
+    assert result['polyp_centroid_mm'] == pytest.approx([0., 10., 10.])

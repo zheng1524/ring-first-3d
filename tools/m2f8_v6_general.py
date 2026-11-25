@@ -130,12 +130,34 @@ def classify_outputs(root,camera_status):
  return out
 
 def select_v6_reference(rows,rings,edges,ring_counts):
+ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
  from tools.run_w0_camera import select_reference
  raw=[int(a['raw_frame']) for a in rows]
  ref,receipt=select_reference(raw,rings,edges,ring_counts)
  held=max((i for i in range(len(raw)) if i!=ref),key=lambda i:(abs(raw[i]-raw[ref]),-i))
  return ref,held,dict(receipt,heldout_index=held,heldout_raw_frame=raw[held],
                       heldout_policy='largest_raw_time_distance_from_reference')
+
+def native_depth_metrics(depth_mm,K_native,c2w_mm,labels,scene):
+ """Existing CAD axial-ray metric on every raw HERO prediction, before selection."""
+ import open3d as o3d
+ z=np.asarray(depth_mm,float);K=np.asarray(K_native,float);pose=np.asarray(c2w_mm,float)
+ mask=cv2.resize(np.asarray(labels,dtype=np.uint8),(z.shape[1],z.shape[0]),interpolation=cv2.INTER_NEAREST)
+ yy,xx=np.nonzero((mask==2)&np.isfinite(z)&(z>0))
+ uv=np.c_[xx,yy,np.ones(len(xx))];direction=(uv@np.linalg.inv(K).T)@pose[:3,:3].T
+ rays=np.c_[np.broadcast_to(pose[:3,3],direction.shape),direction].astype(np.float32)
+ hits=scene.cast_rays(o3d.core.Tensor(rays))['t_hit'].numpy() if len(rays) else np.empty(0)
+ good=np.isfinite(hits)&(hits>0);hero=z[yy[good],xx[good]];cad=hits[good];ratio=hero/cad
+ yp,xp=np.nonzero((mask==1)&np.isfinite(z)&(z>0))
+ up=np.c_[xp,yp,np.ones(len(xp))]
+ points=pose[:3,3]+((up@np.linalg.inv(K).T)*z[yp,xp,None])@pose[:3,:3].T if len(up) else np.empty((0,3))
+ return dict(ring_pixels=int(len(hero)),ring_ratio_median=float(np.median(ratio)) if len(ratio) else float('nan'),
+             ring_ratio_mae=float(np.mean(abs(ratio-1))) if len(ratio) else float('nan'),
+             ring_mae_mm=float(np.mean(abs(hero-cad))) if len(hero) else float('nan'),
+             ring_signed_median_mm=float(np.median(hero-cad)) if len(hero) else float('nan'),
+             polyp_pixels=int(len(points)),polyp_centroid_mm=points.mean(0).tolist() if len(points) else None,
+             polyp_bbox_min_mm=points.min(0).tolist() if len(points) else None,
+             polyp_bbox_max_mm=points.max(0).tolist() if len(points) else None)
 
 def invoke_adapted_v6(module,source,reference_index,heldout_index,expected,top_level=False):
  tree,receipt=adapt_reference_lookups(source,reference_index,heldout_index,expected)
