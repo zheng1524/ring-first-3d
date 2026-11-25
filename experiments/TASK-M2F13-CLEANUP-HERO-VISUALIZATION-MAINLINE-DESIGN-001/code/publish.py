@@ -2,6 +2,7 @@
 Uploads only this task's committed changes; no force updates or credential output.
 """
 import subprocess,json,base64,datetime,re,sys
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3];REPO='zheng1524/ring-first-3d';TASK='experiments/TASK-M2F13-CLEANUP-HERO-VISUALIZATION-MAINLINE-DESIGN-001/'
 def git(*args):return subprocess.check_output(['git',*args],cwd=ROOT)
@@ -19,13 +20,14 @@ branch=git('branch','--show-current').decode().strip();assert branch.startswith(
 remote=api('git/ref/heads/'+branch)['object']['sha'];head=git('rev-parse','HEAD').decode().strip();commits=git('rev-list','--reverse',remote+'..'+head).decode().splitlines();receipts=[]
 for commit in commits:
  raw=git('cat-file','-p',commit).decode();header,message=raw.split('\n\n',1);fields=dict(x.split(' ',1)for x in header.splitlines());parent=fields['parent'];assert parent==remote,'Only linear task commits allowed'
- elements=[]
- for line in git('diff-tree','--no-commit-id','--name-status','-r',parent,commit).decode().splitlines():
+ def upload(line):
   status,path=line.split('\t');assert path.startswith(TASK),path
-  if status=='D':elements.append(dict(path=path,mode='100644',type='blob',sha=None));continue
+  if status=='D':return dict(path=path,mode='100644',type='blob',sha=None)
   assert status in ['A','M'],status
   data=git('show',commit+':'+path);blob=api('git/blobs',dict(content=base64.b64encode(data).decode(),encoding='base64'));expected=git('rev-parse',commit+':'+path).decode().strip();assert blob['sha']==expected
-  mode=git('ls-tree',commit,'--',path).decode().split()[0];elements.append(dict(path=path,mode=mode,type='blob',sha=blob['sha']))
+  mode=git('ls-tree',commit,'--',path).decode().split()[0];return dict(path=path,mode=mode,type='blob',sha=blob['sha'])
+ lines=git('diff-tree','--no-commit-id','--name-status','-r',parent,commit).decode().splitlines()
+ with ThreadPoolExecutor(max_workers=6)as pool:elements=list(pool.map(upload,lines))
  tree=api('git/trees',dict(base_tree=git('rev-parse',parent+'^{tree}').decode().strip(),tree=elements));assert tree['sha']==fields['tree']
  obj=api('git/commits',dict(message=message,tree=tree['sha'],parents=[parent],author=person(fields['author']),committer=person(fields['committer'])))
  receipt=dict(local_commit=commit,remote_object_commit=obj['sha'],tree=tree['sha'],files=len(elements));receipts.append(receipt);print(receipt,flush=True)
