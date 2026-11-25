@@ -90,6 +90,8 @@ def verify_run_state(state,run_id,code_commit,config_sha256):
   raise ValueError('RUN_STATE_IDENTITY_MISMATCH')
  raw=Path(state['raw_video'])
  if not raw.is_file() or h(raw)!=state['raw_video_sha256']:raise ValueError('RAW_SHA_MISMATCH')
+ for path,expected in state.get('upstream_files',{}).items():
+  if not Path(path).is_file() or h(path)!=expected:raise ValueError('UPSTREAM_SHA_MISMATCH '+path)
  previous=None;seen=set()
  for item in state['stages']:
   if item['stage'] in seen:raise ValueError('DUPLICATE_STAGE '+item['stage'])
@@ -100,6 +102,9 @@ def verify_run_state(state,run_id,code_commit,config_sha256):
   if not out.is_file() or h(out)!=item['output_sha256']:
    raise ValueError('OUTPUT_SHA_MISMATCH '+item['stage'])
   previous=item['output_sha256']
+ trace_path=state.get('run_trace_path')
+ if trace_path and (not Path(trace_path).is_file() or h(trace_path)!=state.get('run_trace_sha256')):
+  raise ValueError('RUN_TRACE_SHA_MISMATCH')
  return True
 
 def classify_outputs(root,camera_status):
@@ -354,6 +359,21 @@ def prep_input(g,v,root):
  if held==ref and len(rows)>1:held=0
  return run,rows,ref,held
 
+def upstream_files_for_run(prepared,run,rows):
+ meta=json.loads((Path(prepared)/'PREPARED.json').read_text())
+ files=[Path(meta['video_path']),Path(prepared)/'PREPARED.json',Path(meta['candidate_manifest']),
+        Path(meta['observation_selection']),V5/'config.json',V6/'config.json',
+        run/'inputs/ledger005.json',run/'inputs/INPUT_IDENTITY.json']
+ files += [Path(q['cache']) for q in meta['views']]
+ files += [INP/'clean_labels'/f"{meta['group']}_{meta['video_id']}"/(q['view']+'.npz') for q in meta['views']]
+ files += [Path(a[k]) for a in rows for k in ('RGB_path','Mask_path')]
+ files += [V5S/name for name in ('g5_common.py','ring_observations.py','ring_candidates_new.py','branch_seed_policy.py')]
+ files += [V6S/name for name in ('v6_common.py','track005.py','local_ring_sfm.py','validate_select.py',
+                                  'select_supported_views.py','run_mvs005.py','run_mvs005_supported.py','package_surfaces.py')]
+ files += [DXY/'src/dxy_mid/_engine/ring_holes.py']
+ if meta.get('init_weights'):files.append(Path(meta['init_weights']))
+ return {str(p.resolve()):h(p) for p in files}
+
 def source_modules(ring_R):
  sys.path[:0]=[str(V6S),str(V5S),str(DXY/'src')]
  import g5_common,g5_common as g5
@@ -547,6 +567,8 @@ def main():
     checkpoint(run,state,'prepare',path,prepared/'PREPARED.json')
     if a.stage=='all':
      run,rows,_,_=prep_input(g,v,prepared)
+     state['upstream_files']=upstream_files_for_run(prepared,run,rows)
+     write(run/'RUN_STATE.json',state)
      checkpoint(run,state,'input_bridge',prepared/'PREPARED.json',run/'inputs/INPUT_IDENTITY.json')
      mods=source_modules(ring_r(g));records=build_ring(run,rows,ring_r(g),mods)
      checkpoint(run,state,'ring',run/'inputs/INPUT_IDENTITY.json',run/'predictions/ring_candidates005.json')
@@ -556,6 +578,11 @@ def main():
     trace(run,'video','EXECUTION_ERROR',[path],[],{'reason':repr(e),'traceback':traceback.format_exc()})
     write(run/'metrics/EXECUTION_FAILURE.json',dict(group=g,video=v,reason=repr(e),traceback=traceback.format_exc()))
     print('V6_FAIL',g,v,repr(e),flush=True)
+   finally:
+    trace_path=run/'RUN_TRACE.jsonl'
+    if trace_path.is_file():
+     state['run_trace_path']=str(trace_path);state['run_trace_sha256']=h(trace_path)
+     write(run/'RUN_STATE.json',state)
    attempted+=1
    if a.limit and attempted>=a.limit:break
   if a.limit and attempted>=a.limit:break

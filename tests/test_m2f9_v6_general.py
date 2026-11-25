@@ -248,3 +248,14 @@ def test_support_shortage_is_not_an_inference_exception(tmp_path):
     result = route.classify_outputs(root, {'short':'MODEL_PREDICTED'})['short']
     assert result['status'] == 'NOT_EVALUABLE'
     assert result['reason'] == 'SUPPORT_INSUFFICIENT'
+
+
+def test_resume_checks_selected_mask_not_only_manifest(tmp_path):
+    raw = tmp_path / 'raw.mp4';raw.write_bytes(b'raw')
+    mask = tmp_path / 'clean.png';mask.write_bytes(b'clean')
+    state = route.new_run_state('M2F9-test', 'commit', 'config', raw)
+    state['upstream_files'] = {str(mask): route.h(mask)}
+    route.verify_run_state(state, 'M2F9-test', 'commit', 'config')
+    mask.write_bytes(b'changed')
+    with pytest.raises(ValueError, match='UPSTREAM_SHA_MISMATCH'):
+        route.verify_run_state(state, 'M2F9-test', 'commit', 'config')
