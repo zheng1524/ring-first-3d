@@ -31,6 +31,8 @@ def save(p,x):
 def read(p):return json.loads(Path(p).read_text())
 def head():return subprocess.check_output(['git','rev-parse','HEAD'],cwd=WT,text=True).strip()
 def environment():
+ lock=T/'evidence/KERNEL_LOCK.json';assert sha(lock)=='23423a790daeb5db6282a9c4ea36410d2cb7f64fef2ed382bd00e9873f5abd50','KERNEL_LOCK_DRIFT'
+ for p,h in read(lock)['files'].items():assert sha(p)==h,'SCIENTIFIC_KERNEL_DRIFT '+p
  sys.dont_write_bytecode=True
  for k in ['HF_HOME','HF_MODULES_CACHE','TORCH_HOME','MPLCONFIGDIR','XDG_CACHE_HOME']:os.environ[k]=str(B/'runtime'/k)
  os.environ.update(HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1')
