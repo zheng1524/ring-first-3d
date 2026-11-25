@@ -8,6 +8,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 import pytest
+import pandas as pd
 
 from tools import m2f8_v6_general as route
 
@@ -216,3 +217,34 @@ def test_native_depth_metric_uses_unscreened_raw_depth_and_native_k():
     assert result['ring_ratio_median'] == pytest.approx(1., abs=1e-6)
     assert result['ring_mae_mm'] == pytest.approx(0., abs=1e-6)
     assert result['polyp_centroid_mm'] == pytest.approx([0., 10., 10.])
+
+
+def test_native_summary_keeps_video_and_group_denominators_distinct():
+    targets = pd.DataFrame([
+        dict(group_id='G',video_id='004',tag='a',raw_sha256='sha-a',
+             execution_status='PACKAGED_MESH',camera_status='VALIDATED',ring_ratio_median=1.0,ring_mae_mm=.5),
+        dict(group_id='G',video_id='004',tag='b',raw_sha256='sha-b',
+             execution_status='RAW_HERO',camera_status='MODEL_PREDICTED',ring_ratio_median=.8,ring_mae_mm=5.),
+        dict(group_id='G',video_id='005',tag='c',raw_sha256='sha-c',
+             execution_status='RAW_HERO',camera_status='MODEL_PREDICTED',ring_ratio_median=.9,ring_mae_mm=3.),
+    ])
+    videos, groups = route.summarize_native_metrics(targets)
+    assert len(videos) == 2 and len(groups) == 1
+    v4 = videos.set_index('video_id').loc['004']
+    v5 = videos.set_index('video_id').loc['005']
+    assert v4['raw_count'] == 2 and v5['raw_count'] == 1
+    assert v4['unfiltered_ratio_median'] == pytest.approx(.9)
+    assert v4['packaged_ratio_median'] == pytest.approx(1.)
+    assert pd.isna(v5['packaged_ratio_median'])
+    assert groups.iloc[0]['raw_count'] == 3
+
+
+def test_support_shortage_is_not_an_inference_exception(tmp_path):
+    root = tmp_path / 'video'
+    for d in ('inputs', 'metrics'):(root / d).mkdir(parents=True)
+    (root / 'inputs/MVS_supported_cases.json').write_text(json.dumps([{'tag':'short'}]))
+    (root / 'metrics/MVS005_supported_runs.json').write_text(json.dumps([{
+        'tag':'short','success':False,'failure':'RuntimeError: fewer than three supported source cameras'}]))
+    result = route.classify_outputs(root, {'short':'MODEL_PREDICTED'})['short']
+    assert result['status'] == 'NOT_EVALUABLE'
+    assert result['reason'] == 'SUPPORT_INSUFFICIENT'

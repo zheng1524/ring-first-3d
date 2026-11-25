@@ -118,16 +118,97 @@ def classify_outputs(root,camera_status):
  for case in cases:
   tag=case['tag'];native=root/'raw'/f'{tag}.npz';surface=root/'predictions'/f'{tag}_surface.npz';mesh=root/'meshes'/f'{tag}_Polyp.ply'
   validated=camera_status.get(tag)=='VALIDATED'
+  insufficient='fewer than three supported source cameras' in errors.get(tag,'')
   status=('PACKAGED_MESH' if native.is_file() and surface.is_file() and mesh.is_file() else
           'VALIDATED_HERO' if native.is_file() and validated else
           'RAW_HERO' if native.is_file() else
+          'NOT_EVALUABLE' if insufficient else
           'EXECUTION_ERROR' if tag in errors else 'NOT_EVALUABLE')
   out[tag]=dict(status=status,camera_status=camera_status.get(tag,'UNKNOWN'),
                 raw_hero_path=str(native) if native.is_file() else None,
                 mesh_path=str(mesh) if mesh.is_file() else None,
                 mesh_state='PACKAGED' if status=='PACKAGED_MESH' else 'MISSING_MESH_PREREQUISITE',
-                reason=errors.get(tag) if status=='EXECUTION_ERROR' else None)
+                reason='SUPPORT_INSUFFICIENT' if insufficient else errors.get(tag) if status=='EXECUTION_ERROR' else None,
+                execution_error=errors.get(tag))
  return out
+
+def summarize_native_metrics(targets):
+ def aggregate(keys):
+  result=[]
+  for name,part in targets.groupby(keys,dropna=False,sort=True):
+   identity=name if isinstance(name,tuple) else (name,)
+   raw=part[part.raw_sha256.notna()];pack=raw[raw.execution_status=='PACKAGED_MESH'];validated=raw[raw.camera_status=='VALIDATED']
+   def median(frame,col):return float(frame[col].median()) if len(frame) and frame[col].notna().any() else float('nan')
+   row=dict(zip(keys,identity));row.update(target_count=len(part),raw_count=len(raw),
+       validated_raw_count=len(validated),packaged_count=len(pack),
+       unfiltered_ratio_median=median(raw,'ring_ratio_median'),
+       unfiltered_mae_median_mm=median(raw,'ring_mae_mm'),
+       validated_ratio_median=median(validated,'ring_ratio_median'),
+       validated_mae_median_mm=median(validated,'ring_mae_mm'),
+       packaged_ratio_median=median(pack,'ring_ratio_median'),
+       packaged_mae_median_mm=median(pack,'ring_mae_mm'))
+   if keys==['group_id']:row['video_count']=part.video_id.nunique()
+   result.append(row)
+  return pd.DataFrame(result)
+ return aggregate(['group_id','video_id']),aggregate(['group_id'])
+
+def audit_native_runs(source_root,destination):
+ """Read every existing native V6 depth, including unvalidated and unmeshed cases."""
+ import open3d as o3d
+ source_root=Path(source_root).resolve();destination=Path(destination);destination.mkdir(parents=True,exist_ok=False)
+ trace(destination,'native_audit','STARTED',[source_root],[],{'selection':'all_cases_no_posthoc_filter'})
+ scenes={};cad_hashes={}
+ for kind in ('R5','R10'):
+  cad=WS/'runs/m2f5_unified/cad'/f'{kind}.npz';cad_hashes[kind]=h(cad)
+  with np.load(cad) as a:vertices=np.asarray(a['V'],np.float32);faces=np.asarray(a['F'],np.uint32)
+  scene=o3d.t.geometry.RaycastingScene(nthreads=2);scene.add_triangles(o3d.core.Tensor(vertices),o3d.core.Tensor(faces));scenes[kind]=scene
+ rows=[];inputs={}
+ for root in sorted(source_root.glob('*_*')):
+  ledger_path=root/'inputs/ledger005.json'
+  if not ledger_path.is_file():continue
+  inputs[str(ledger_path)]=h(ledger_path);ledger=json.loads(ledger_path.read_text())
+  group,video=root.name.rsplit('_',1);kind='R5' if '_R5_' in group else 'R10'
+  val=root/'metrics/local_validation.json';camera_status={}
+  if val.is_file():
+   d=json.loads(val.read_text());versions={x['version']:x for x in d['versions']};primary=versions.get(d['primary'])
+   if primary:
+    per=primary['per_frame']
+    for case_name in ('MVS_cases.json','MVS_supported_cases.json'):
+     case_path=root/'inputs'/case_name
+     if case_path.is_file():
+      inputs[str(case_path)]=h(case_path)
+      for case in json.loads(case_path.read_text()):camera_status[case['tag']]=per[case['reference']]['status']
+  statuses=classify_outputs(root,camera_status)
+  for tag,item in statuses.items():
+   row=dict(group_id=group,video_id=video,ring=kind,tag=tag,
+            execution_status=item['status'],camera_status=item['camera_status'],reason=item['reason'],
+            raw_sha256=None,raw_frame=None,ring_ratio_median=float('nan'),ring_mae_mm=float('nan'))
+   native=root/'raw'/f'{tag}.npz'
+   if native.is_file():
+    inputs[str(native)]=h(native)
+    with np.load(native) as z:
+     i=int(z['reference']);a=ledger[i];label=cv2.imread(a['Mask_path'],0)
+     if label is None or h(a['Mask_path'])!=a['Mask_SHA256'] or h(a['RGB_path'])!=a['RGB_SHA256']:
+      raise ValueError('AUDIT_INPUT_HASH '+tag)
+     if str(z['geometry_status']) not in ('LOCAL005_MODEL_PREDICTED_PREVIEW','LOCAL005_GEOMETRY_SCREENED','LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT'):
+      raise ValueError('AUDIT_GEOMETRY_STATUS '+tag)
+     measure=native_depth_metrics(z['depth_mm'],z['K_index_native'],z['c2w'][i],label,scenes[kind])
+     row.update(measure,raw_sha256=inputs[str(native)],raw_frame=int(a['source_raw_frame']),
+                native_K_sha256=hashlib.sha256(np.ascontiguousarray(z['K_index_native']).tobytes()).hexdigest(),
+                camera_sha256=hashlib.sha256(np.ascontiguousarray(z['c2w'][i]).tobytes()).hexdigest())
+     if measure['polyp_centroid_mm'] is not None:
+      row.update(zip(('polyp_centroid_x_mm','polyp_centroid_y_mm','polyp_centroid_z_mm'),measure['polyp_centroid_mm']))
+   rows.append(row)
+  trace(destination,'native_audit_video','PASS',[ledger_path],[native for native in (root/'raw').glob('*.npz')],
+        {'group_id':group,'video_id':video,'cases':len(statuses),'raw':sum((root/'raw'/f'{tag}.npz').is_file() for tag in statuses)})
+ targets=pd.DataFrame(rows);videos,groups=summarize_native_metrics(targets)
+ targets.to_csv(destination/'TARGET_METRICS.csv',index=False);videos.to_csv(destination/'VIDEO_METRICS.csv',index=False);groups.to_csv(destination/'GROUP_METRICS.csv',index=False)
+ write(destination/'AUDIT_INPUT_RECEIPT.json',dict(run_id=RUN_ID,source_root=str(source_root),cad_sha256=cad_hashes,
+      input_sha256=inputs,code_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=Path(__file__).resolve().parents[1],text=True).strip()))
+ trace(destination,'native_audit','PASS',[destination/'AUDIT_INPUT_RECEIPT.json'],
+       [destination/'TARGET_METRICS.csv',destination/'VIDEO_METRICS.csv',destination/'GROUP_METRICS.csv'],
+       {'cases':len(targets),'raw':int(targets.raw_sha256.notna().sum())})
+ return targets,videos,groups
 
 def select_v6_reference(rows,rings,edges,ring_counts):
  sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
@@ -368,7 +449,7 @@ def run_v6(run,rows,mods,ring_records,state):
 
 def main():
  global BASE,INP,RUN_ID
- ap=argparse.ArgumentParser();ap.add_argument('--run-id',required=True);ap.add_argument('--groups',default=','.join(GROUPS));ap.add_argument('--videos',default='004,005');ap.add_argument('--limit',type=int,default=0);ap.add_argument('--stage',choices=('prepare','all'),default='all');ap.add_argument('--verify-resume',action='store_true');a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('--run-id',required=True);ap.add_argument('--groups',default=','.join(GROUPS));ap.add_argument('--videos',default='004,005');ap.add_argument('--limit',type=int,default=0);ap.add_argument('--stage',choices=('prepare','all'),default='all');ap.add_argument('--verify-resume',action='store_true');ap.add_argument('--audit-source');a=ap.parse_args()
  import re
  if not re.fullmatch(r'[A-Za-z0-9_-]+',a.run_id):raise SystemExit('INVALID_RUN_ID')
  RUN_ID=a.run_id;BASE=WS/'runs/m2f9_v6_general'/RUN_ID;INP=BASE/'current_inputs'
@@ -383,6 +464,10 @@ def main():
   return
  if BASE.exists():raise SystemExit('RUN_ID_ALREADY_EXISTS '+str(BASE))
  BASE.mkdir(parents=True)
+ if a.audit_source:
+  targets,videos,groups=audit_native_runs(a.audit_source,BASE/'analysis')
+  print('AUDIT_DONE',len(targets),int(targets.raw_sha256.notna().sum()),len(videos),len(groups),flush=True)
+  return
  raw_root=WS/'smart_endoscope_20260805 (1)'/'raw';groups=[x for x in a.groups.split(',') if x];wanted={x.zfill(3) for x in a.videos.split(',') if x};attempted=0
  for g in groups:
   paths=raw_video_paths(raw_root,g,wanted);found={p.stem.rsplit('_',1)[-1] for p in paths}
