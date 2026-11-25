@@ -23,15 +23,16 @@ def ring_r(g):return 3.1 if '_R5_' in g else 5.6
 def raw_video_paths(raw_root,group,wanted):
  return [p for p in sorted(Path(raw_root).glob(f'{group}_*.mp4'))
          if p.stem.rsplit('_',1)[-1] in wanted]
-def prepare_raw_subprocess(group,video,source,run):
+def prepare_raw_subprocess(group,video,source,run,supplement_frames=()):
  """Reuse M2F6 preparation without contaminating V5's historical module names."""
  worktree=Path(__file__).resolve().parents[1]
- child=("import sys; from pathlib import Path; from tools import m2f5_unified as p; "
+ child=("import sys,json; from pathlib import Path; from tools import m2f5_unified as p; "
         "p.O=Path(sys.argv[1]); p.M2F6=True; p.trace=lambda *a,**k: None; "
-        "p.prepare_one_m2f6(sys.argv[2],Path(sys.argv[3]))")
- command=[sys.executable,'-c',child,str(INP),group,str(source)]
+        "p.prepare_one_m2f6(sys.argv[2],Path(sys.argv[3]),supplement_frames=json.loads(sys.argv[4]))")
+ command=[sys.executable,'-c',child,str(INP),group,str(source),json.dumps(list(supplement_frames))]
  log=Path(run)/'RAW_PREP.log';log.parent.mkdir(parents=True,exist_ok=True)
- trace(run,'raw_prepare','STARTED',[source],[],{'entrypoint':'m2f5_unified.prepare_one_m2f6','process':'isolated'})
+ trace(run,'raw_prepare','STARTED',[source],[],{'entrypoint':'m2f5_unified.prepare_one_m2f6',
+       'process':'isolated','supplement_raw_frames':list(supplement_frames)})
  with log.open('w') as output:
   result=subprocess.run(command,cwd=worktree,stdout=output,stderr=subprocess.STDOUT,check=False)
  prepared=INP/'prepared'/f'{group}_{video}'
@@ -73,7 +74,7 @@ def adapt_reference_lookups(source,reference_index,heldout_index,expected):
 
 def new_run_state(run_id,code_commit,config_sha256,raw_video):
  raw=Path(raw_video).resolve()
- return dict(run_id=run_id,route_id='rf-m2f9-v6-generalized@1',code_commit=code_commit,
+ return dict(run_id=run_id,route_id='rf-m2f10-v6-multiview@1',code_commit=code_commit,
              config_sha256=config_sha256,raw_video=str(raw),raw_video_sha256=h(raw),stages=[])
 
 def record_stage(state,name,input_path,output_path):
@@ -124,16 +125,17 @@ def classify_outputs(root,camera_status):
   tag=case['tag'];native=root/'raw'/f'{tag}.npz';surface=root/'predictions'/f'{tag}_surface.npz';mesh=root/'meshes'/f'{tag}_Polyp.ply'
   validated=camera_status.get(tag)=='VALIDATED'
   insufficient='fewer than three supported source cameras' in errors.get(tag,'')
+  skipped=errors.get(tag)=='ALTERNATE_NOT_NEEDED'
   status=('PACKAGED_MESH' if native.is_file() and surface.is_file() and mesh.is_file() else
           'VALIDATED_HERO' if native.is_file() and validated else
           'RAW_HERO' if native.is_file() else
-          'NOT_EVALUABLE' if insufficient else
+          'NOT_EVALUABLE' if insufficient or skipped else
           'EXECUTION_ERROR' if tag in errors else 'NOT_EVALUABLE')
   out[tag]=dict(status=status,camera_status=camera_status.get(tag,'UNKNOWN'),
                 raw_hero_path=str(native) if native.is_file() else None,
                 mesh_path=str(mesh) if mesh.is_file() else None,
                 mesh_state='PACKAGED' if status=='PACKAGED_MESH' else 'MISSING_MESH_PREREQUISITE',
-                reason='SUPPORT_INSUFFICIENT' if insufficient else errors.get(tag) if status=='EXECUTION_ERROR' else None,
+                reason='SUPPORT_INSUFFICIENT' if insufficient else 'ALTERNATE_NOT_NEEDED' if skipped else errors.get(tag) if status=='EXECUTION_ERROR' else None,
                 execution_error=errors.get(tag))
  return out
 
@@ -283,6 +285,174 @@ def select_v6_reference(rows,rings,edges,ring_counts):
  return ref,held,dict(receipt,heldout_index=held,heldout_raw_frame=raw[held],
                       heldout_policy='largest_raw_time_distance_from_reference')
 
+def diverse_target_order(c2w,center,reference,heldout):
+ """Extend V6's farthest-direction reference schedule until each real camera is visited."""
+ centers=np.asarray(c2w)[:,:3,3];direction=np.asarray(center,float)[None]-centers
+ direction/=np.maximum(np.linalg.norm(direction,axis=1,keepdims=True),1e-12)
+ remaining=set(range(len(direction)))-{int(heldout)}
+ if reference not in remaining:raise ValueError('REFERENCE_IS_HELDOUT')
+ selected=[int(reference)];remaining.remove(reference)
+ while remaining:
+  nxt=max(remaining,key=lambda i:(min(float(np.degrees(np.arccos(np.clip(direction[i]@direction[j],-1,1))))
+                                        for j in selected),-i))
+  selected.append(nxt);remaining.remove(nxt)
+ return selected
+
+def adapt_all_supported_targets(source,reference,heldout,targets):
+ """Change only the two-reference iterable in the frozen V6 Support selector."""
+ tree,receipt=adapt_reference_lookups(source,reference,heldout,{'reference':1,'heldout':1})
+ found=[]
+ for node in ast.walk(tree):
+  if (isinstance(node,ast.For) and isinstance(node.target,ast.Name) and node.target.id=='rr' and
+      isinstance(node.iter,ast.List) and len(node.iter.elts)==2 and
+      all(isinstance(x,ast.Name) for x in node.iter.elts) and
+      [x.id for x in node.iter.elts]==['ref','other']):
+   node.iter=ast.Name(id='_M2F10_TARGET_INDICES',ctx=ast.Load());found.append(node)
+ if len(found)!=1:raise ValueError('V6_TARGET_LOOP_CONTRACT '+str(source))
+ tree=ast.fix_missing_locations(tree)
+ return tree,dict(receipt,targets=list(map(int,targets)),target_loop_replacements=1,
+                  adapted_ast_sha256=hashlib.sha256(ast.dump(tree).encode()).hexdigest())
+
+def schedule_supported_tuples(original,rows,validated_indices,heldout):
+ """Use V6-ranked, validated candidates; vary only the tuple if inference fails."""
+ cases=[];receipts=[];validated_indices=set(validated_indices)
+ for source_case in original:
+  rr=int(source_case['reference']);ranked=source_case['source_diagnostics']
+  if source_case['reference_id']!=rows[rr]['id'] or source_case['independent_image_heldout']!=heldout:
+   raise ValueError('V6_SUPPORT_TARGET_CONTRACT')
+  if any(int(x['i']) not in validated_indices or int(x['i']) in (rr,heldout) or
+         int(x['overlap'])<15 for x in ranked):
+   raise ValueError('V6_SUPPORT_SOURCE_CONTRACT')
+  eligible=[int(x['i']) for x in ranked]
+  if source_case['sources']!=eligible[:3]:raise ValueError('V6_SUPPORT_RANK_CONTRACT')
+  options=[]
+  if len(eligible)>=3:options.append(eligible[:3])
+  if len(eligible)>=4:
+   options.extend(([eligible[0],eligible[1],eligible[3]],
+                   [eligible[0],eligible[2],eligible[3]]))
+  for attempt,sources in enumerate(options[:3],1):
+   case=dict(source_case)
+   case.update(tag=f'{source_case["tag"]}_alt{attempt}' if attempt>1 else source_case['tag'],
+               sources=sources,source_ids=[rows[i]['id'] for i in sources],
+               independent_target_id=source_case['reference_id'],support_attempt=attempt)
+   cases.append(case)
+  receipts.append(dict(reference_id=source_case['reference_id'],raw_frame=rows[rr]['raw_frame'],
+                       validated_support_candidates=len(eligible),candidate_support_tuples=min(3,len(options)),
+                       reason=None if options else 'FEWER_THAN_THREE_V6_LEGAL_SUPPORT_CAMERAS'))
+ return cases,receipts
+
+def adapt_supported_hero_schedule(source):
+ """Keep V6 HERO inference intact; skip later tuples after a target succeeds."""
+ tree=ast.parse(Path(source).read_text(),filename=str(source))
+ functions=[x for x in tree.body if isinstance(x,ast.FunctionDef) and x.name=='main']
+ if len(functions)!=1:raise ValueError('V6_SUPPORTED_HERO_MAIN_CONTRACT')
+ loops=[x for x in ast.walk(functions[0]) if isinstance(x,ast.For) and isinstance(x.target,ast.Name)
+        and x.target.id=='c' and "MVS_supported_cases.json" in ast.unparse(x.iter)]
+ if len(loops)!=1:raise ValueError('V6_SUPPORTED_HERO_LOOP_CONTRACT')
+ guard=ast.parse("""\
+if any(r.get('success') and r.get('reference') == c['reference_id'] for r in runs):
+    runs.append(dict(tag=c['tag'], reference=c['reference_id'], sources=c['source_ids'],
+                     success=False, failure='ALTERNATE_NOT_NEEDED', geometry_status=c['scope'],
+                     depth_is_new005_prediction=False, GT_used=False))
+    save('metrics/MVS005_supported_runs.json', runs)
+    continue
+""").body[0]
+ loops[0].body[:0]=[guard,ast.parse('_M2F10_TUPLE_RECEIPT(c)').body[0]]
+ tree=ast.fix_missing_locations(tree)
+ return tree,dict(source=str(source),source_sha256=h(source),schedule_guards=1,
+                  adapted_ast_sha256=hashlib.sha256(ast.dump(tree).encode()).hexdigest())
+
+def adapt_independent_package(source):
+ """Reuse V6 per-case depth mesh; remove its fixed two-supported-case comparison."""
+ tree=ast.parse(Path(source).read_text(),filename=str(source))
+ functions=[x for x in tree.body if isinstance(x,ast.FunctionDef) and x.name=='main']
+ if len(functions)!=1:raise ValueError('V6_PACKAGE_MAIN_CONTRACT')
+ body=functions[0].body;assignments={}
+ for item in body:
+  if isinstance(item,ast.Assign) and len(item.targets)==1 and isinstance(item.targets[0],ast.Name):
+   assignments[item.targets[0].id]=item
+ if not {'cases','runs'}<=assignments.keys():raise ValueError('V6_PACKAGE_INPUT_CONTRACT')
+ assignments['cases'].value=ast.parse("load('inputs/MVS_supported_cases.json')",mode='eval').body
+ assignments['runs'].value=ast.parse("load('metrics/MVS005_supported_runs.json')",mode='eval').body
+ def call_named(node,name,first):
+  return (isinstance(node,ast.Expr) and isinstance(node.value,ast.Call) and
+          isinstance(node.value.func,ast.Name) and node.value.func.id==name and
+          node.value.args and isinstance(node.value.args[0],ast.Constant) and
+          node.value.args[0].value==first)
+ saved=[i for i,x in enumerate(body) if call_named(x,'save','metrics/surfaces005.json')]
+ frozen=[i for i,x in enumerate(body) if call_named(x,'freeze','surfaces')]
+ if len(saved)!=1 or len(frozen)!=1 or saved[0]>=frozen[0]:raise ValueError('V6_PACKAGE_TAIL_CONTRACT')
+ freeze=body[frozen[0]]
+ freeze.value.args[1]=ast.parse("[R/'metrics/surfaces005.json']+list((R/'predictions').glob('*surface.npz'))+list((R/'meshes').glob('005*'))",mode='eval').body
+ functions[0].body=body[:saved[0]+1]+body[frozen[0]:]
+ tree=ast.fix_missing_locations(tree)
+ return tree,dict(source=str(source),source_sha256=h(source),two_case_tail_removed=True,
+                  adapted_ast_sha256=hashlib.sha256(ast.dump(tree).encode()).hexdigest())
+
+def accepted_independent_targets(root):
+ """Count only native-plus-mesh cases with the original V6 legal Support evidence."""
+ root=Path(root);cases=json.loads((root/'inputs/MVS_supported_cases.json').read_text())
+ runs={r['tag']:r for r in json.loads((root/'metrics/MVS005_supported_runs.json').read_text())}
+ validation=json.loads((root/'metrics/local_validation.json').read_text())
+ per=next(x['per_frame'] for x in validation['versions'] if x['version']==validation['primary'])
+ accepted=set()
+ for case in cases:
+  tag=case['tag'];sources=case['sources'];diagnostics={int(x['i']):x for x in case['source_diagnostics']}
+  legal=(len(sources)==3 and len(set(sources))==3 and
+         all(per[i]['status']=='VALIDATED' and i in diagnostics and
+             int(diagnostics[i]['overlap'])>=15 for i in sources))
+  if (legal and runs.get(tag,{}).get('success') and
+      (root/'raw'/f'{tag}.npz').is_file() and
+      (root/'predictions'/f'{tag}_surface.npz').is_file() and
+      (root/'meshes'/f'{tag}_Polyp.ply').is_file()):
+   accepted.add(case['reference_id'])
+ return accepted
+
+def select_current_real_supplements(prepared,run,reason,matcher=None):
+ """Reuse M2F6's C2/B1R real-frame choice on this attempt's clean RGB graph."""
+ from tools.m2f6_observations import choose_real_supplements
+ prepared=Path(prepared);run=Path(run);meta=json.loads((prepared/'PREPARED.json').read_text())
+ manifest=Path(meta['candidate_manifest'])
+ if h(manifest)!=meta['candidate_manifest_sha256']:raise ValueError('SUPPLEMENT_CANDIDATE_HASH')
+ candidates=json.loads(manifest.read_text())['candidates'];by_view={x['view']:x for x in candidates}
+ existing={x['view'] for x in meta['views']}
+ if len(existing)!=len(meta['views']) or not existing<=by_view.keys():raise ValueError('SUPPLEMENT_VIEW_IDENTITY')
+ if (run/'observations/tracks005.npz').is_file():
+  from tools.m2a_c3 import pair_graph
+  tracks,_,parts=pair_graph(run)
+  components=[[str(tracks['ids'][i]) for i in part] for part in parts]
+ else:components=[sorted(existing)]
+ if not components:components=[sorted(existing)]
+ if len(components)==1 and len(components[0])>4:
+  part=sorted(components[0]);representatives=[part[i] for i in np.linspace(0,len(part)-1,4,dtype=int)]
+ else:representatives=[part[len(part)//2] for part in components if part]
+ if matcher is None:
+  replay=WS/'experiments/TASK-E4-W0-CROSSVIDEO-027-CORRECTIVE-R6/replay'
+  if str(replay) not in sys.path:sys.path.insert(0,str(replay))
+  import features019 as F19
+  F19.R=INP/'observation_matches'/f"{meta['group']}_{meta['video_id']}"
+  matcher=F19.matches
+ cache_root=INP/'observation_matches'/f"{meta['group']}_{meta['video_id']}"/'clean_cache'
+ match_counts={};cache_hashes={}
+ def view(row):
+  path=cache_root/(row['view']+'.npz')
+  if not path.is_file():raise ValueError('SUPPLEMENT_CLEAN_MATCH_CACHE_MISSING '+row['view'])
+  cache_hashes[str(path)]=h(path)
+  return dict(id=row['view'],cache=str(path),RGB_SHA256=row['RGB_sha256'])
+ for row in candidates:
+  if row['view'] in existing or row['ring_train_points']<20:continue
+  av=view(row)
+  for rep in representatives:
+   if rep not in by_view:raise ValueError('SUPPLEMENT_GRAPH_REP_MISSING '+rep)
+   m=matcher(av,view(by_view[rep]))
+   match_counts[(row['view'],rep)]=int(np.asarray(m['RGB_RANSAC']).sum())
+ added,receipt=choose_real_supplements(candidates,list(existing),components,match_counts,reason,budget=4)
+ frames=[int(x['raw_frame']) for x in added]
+ receipt.update(added_raw_frames=frames,candidate_manifest_sha256=h(manifest),
+                clean_match_cache_sha256=cache_hashes,match_count=len(match_counts),
+                source_prepared_sha256=h(prepared/'PREPARED.json'))
+ return frames,receipt
+
 def native_depth_metrics(depth_mm,K_native,c2w_mm,labels,scene):
  """Existing CAD axial-ray metric on every raw HERO prediction, before selection."""
  import open3d as o3d
@@ -371,6 +541,10 @@ def upstream_files_for_run(prepared,run,rows):
  files += [V6S/name for name in ('v6_common.py','track005.py','local_ring_sfm.py','validate_select.py',
                                   'select_supported_views.py','run_mvs005.py','run_mvs005_supported.py','package_surfaces.py')]
  files += [DXY/'src/dxy_mid/_engine/ring_holes.py']
+ files += [Path(__file__).resolve().parents[1]/'tools'/name for name in
+           ('m2f5_unified.py','m2f6_observations.py')]
+ supplement=run/'inputs/SUPPLEMENT_RECEIPT.json'
+ if supplement.is_file():files.append(supplement)
  if meta.get('init_weights'):files.append(Path(meta['init_weights']))
  return {str(p.resolve()):h(p) for p in files}
 
@@ -430,13 +604,14 @@ def checkpoint(run,state,name,input_path,output_path):
  write(run/'RUN_STATE.json',state)
  trace(run,name,'PASS',[input_path],[output_path],{'stage_output_sha256':h(output_path)})
 
-def hero_input_receipts(run,rows,cases_path):
+def hero_input_receipts(run,rows,cases_path,only_tag=None):
  """Record actual V6 PNG/K/camera tuple before the original HERO module runs."""
  sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
  from ring_first_3d.mainline.input_identity import tuple_receipt
  cases=json.loads(Path(cases_path).read_text());primary=json.loads((run/'predictions/local005_primary.json').read_text())['primary_version']
  with np.load(run/f'predictions/local005_camera_{primary}.npz') as z:poses=np.asarray(z['c2w'])
  for c in cases:
+  if only_tag is not None and c['tag']!=only_tag:continue
   tag=c['tag']
   if len(c['sources'])!=3:
    trace(run,'hero_input','NOT_EVALUABLE',[cases_path],[],{'target':tag,'reason':'SUPPORT_INSUFFICIENT'})
@@ -480,11 +655,34 @@ def run_v6(run,rows,mods,ring_records,state):
  receipts.append(invoke_adapted_v6(validate_select,V6S/'validate_select.py',ref,held,{'reference':1,'heldout':1}))
  checkpoint(run,state,'validation',run/'metrics/local005_solver.json',run/'metrics/local_validation.json')
  write(run/'inputs/V6_INDEX_ADAPTER.json',receipts)
- try:
-  receipts.append(invoke_adapted_v6(None,V6S/'select_supported_views.py',ref,held,{'reference':1,'heldout':1},top_level=True))
-  checkpoint(run,state,'support',run/'metrics/local_validation.json',run/'inputs/MVS_supported_cases.json')
- except (ValueError,StopIteration) as e:
-  trace(run,'support','NOT_EVALUABLE',[run/'metrics/local_validation.json'],[],{'reason':'SUPPORT_INSUFFICIENT','detail':repr(e)})
+ validation=json.loads((run/'metrics/local_validation.json').read_text());primary=validation['primary']
+ per=next(x for x in validation['versions'] if x['version']==primary)['per_frame']
+ validated={i for i,x in enumerate(per) if x['status']=='VALIDATED'}
+ with np.load(run/f'predictions/local005_camera_{primary}.npz') as camera:poses=np.asarray(camera['c2w'])
+ center=next(x['P_estimate_mm'] for x in validation['coverage'] if x['version']==primary)
+ target_order=diverse_target_order(poses,center,ref,held)
+ supported_path=run/'inputs/MVS_supported_cases.json'
+ if validated-{ref,held}:
+  tree,receipt=adapt_all_supported_targets(V6S/'select_supported_views.py',ref,held,target_order)
+  namespace={'__name__':'m2f10_v6_support','__file__':str(V6S/'select_supported_views.py'),
+             '_M2F9_REFERENCE_INDEX':ref,'_M2F9_HELDOUT_INDEX':held,
+             '_M2F10_TARGET_INDICES':target_order}
+  exec(compile(tree,str(V6S/'select_supported_views.py'),'exec'),namespace)
+  original=json.loads(supported_path.read_text())
+  write(run/'inputs/MVS_supported_source_cases.json',original)
+  cases,schedule=schedule_supported_tuples(original,rows,validated,held)
+  write(supported_path,cases)
+  mods['v6'].freeze('supported_view_selection',[supported_path])
+  receipts.append(receipt)
+ else:
+  cases=[];schedule=[dict(reason='NO_VALIDATED_NON_REFERENCE_CAMERA',validated_count=len(validated))]
+  write(supported_path,cases);mods['v6'].freeze('supported_view_selection',[supported_path])
+ write(run/'inputs/SUPPORT_SCHEDULE.json',dict(target_order=target_order,validated_indices=sorted(validated),
+       supported_candidates=schedule,legal_tuple_count=len(cases),source_sha256=h(V6S/'select_supported_views.py')))
+ checkpoint(run,state,'support',run/'metrics/local_validation.json',supported_path)
+ trace(run,'support_schedule','PASS',[run/'metrics/local_validation.json',run/'observations/tracks005.npz'],
+       [run/'inputs/SUPPORT_SCHEDULE.json',supported_path],{'legal_tuple_count':len(cases),
+       'independent_legal_targets':len({x['reference_id'] for x in cases})})
  write(run/'inputs/V6_INDEX_ADAPTER.json',receipts)
  import run_mvs005,run_mvs005_supported,package_surfaces
  for module in (run_mvs005,run_mvs005_supported,package_surfaces):
@@ -498,22 +696,36 @@ def run_v6(run,rows,mods,ring_records,state):
   if conflicts:
    trace(run,name,'EXECUTION_ERROR',[case_path],[],{'reason':'EXISTING_OUTPUT_CONFLICT','targets':conflicts})
    continue
-  hero_input_receipts(run,rows,case_path)
+  if name=='hero_raw':hero_input_receipts(run,rows,case_path)
   try:
+   if name=='hero_supported':
+    tree,receipt=adapt_supported_hero_schedule(V6S/'run_mvs005_supported.py')
+    write(run/'inputs/SUPPORTED_HERO_ADAPTER.json',receipt)
+    main_node=next(x for x in tree.body if isinstance(x,ast.FunctionDef) and x.name=='main')
+    module.__dict__['_M2F10_TUPLE_RECEIPT']=lambda c:hero_input_receipts(run,rows,case_path,only_tag=c['tag'])
+    exec(compile(ast.Module(body=[main_node],type_ignores=[]),str(V6S/'run_mvs005_supported.py'),'exec'),module.__dict__)
    module.main()
    metric_path=run/'metrics'/metric
    if metric_path.is_file():checkpoint(run,state,name,previous,metric_path);previous=metric_path
   except Exception as e:
    trace(run,name,'EXECUTION_ERROR',[case_path],[],{'reason':repr(e),'traceback':traceback.format_exc()})
+   raise
  supported=run/'inputs/MVS_supported_cases.json'
  if supported.is_file():
-  cases=json.loads(supported.read_text());missing=[c['tag'] for c in cases if not (run/'raw'/f"{c['tag']}.npz").is_file()]
-  if len(cases)!=2 or missing or not (run/'metrics/MVS005_supported_runs.json').is_file():
-   trace(run,'mesh','NOT_EVALUABLE',[supported],[],{'reason':'MISSING_MESH_PREREQUISITE','missing':missing})
+  runs_path=run/'metrics/MVS005_supported_runs.json'
+  success=[r['tag'] for r in json.loads(runs_path.read_text()) if r['success']] if runs_path.is_file() else []
+  if not success:
+   trace(run,'mesh','NOT_EVALUABLE',[supported],[],{'reason':'NO_SUCCESSFUL_V6_SUPPORTED_HERO'})
   else:
    try:
+    tree,receipt=adapt_independent_package(V6S/'package_surfaces.py')
+    write(run/'inputs/INDEPENDENT_PACKAGE_ADAPTER.json',receipt)
+    main_node=next(x for x in tree.body if isinstance(x,ast.FunctionDef) and x.name=='main')
+    exec(compile(ast.Module(body=[main_node],type_ignores=[]),str(V6S/'package_surfaces.py'),'exec'),package_surfaces.__dict__)
     package_surfaces.main();checkpoint(run,state,'mesh',previous,run/'metrics/surfaces005.json')
-   except Exception as e:trace(run,'mesh','EXECUTION_ERROR',[supported],[],{'reason':repr(e),'traceback':traceback.format_exc()})
+   except Exception as e:
+    trace(run,'mesh','EXECUTION_ERROR',[supported],[],{'reason':repr(e),'traceback':traceback.format_exc()})
+    raise
  else:trace(run,'mesh','NOT_EVALUABLE',[],[],{'reason':'MISSING_MESH_PREREQUISITE'})
  validation=json.loads((run/'metrics/local_validation.json').read_text());primary=validation['primary']
  per=next(x for x in validation['versions'] if x['version']==primary)['per_frame'];cam_status={}
@@ -522,20 +734,104 @@ def run_v6(run,rows,mods,ring_records,state):
   if path.is_file():
    for c in json.loads(path.read_text()):cam_status[c['tag']]=per[c['reference']]['status']
  statuses=classify_outputs(run,cam_status);write(run/'metrics/EXECUTION_STATUS.json',statuses)
+ accepted=accepted_independent_targets(run) if (run/'metrics/MVS005_supported_runs.json').is_file() else set()
+ write(run/'metrics/ACCEPTED_TARGETS.json',dict(target_ids=sorted(accepted),count=len(accepted),
+       rule='V6_SUPPORTED_SOURCE_VALIDATED_OVERLAP15_THREE_PLUS_NATIVE_AND_MESH'))
  trace(run,'classification','PASS',[run/'metrics/local_validation.json'],[run/'metrics/EXECUTION_STATUS.json'],
-       {'counts':{s:sum(x['status']==s for x in statuses.values()) for s in ('RAW_HERO','VALIDATED_HERO','PACKAGED_MESH','NOT_EVALUABLE','EXECUTION_ERROR')}})
+       {'counts':{s:sum(x['status']==s for x in statuses.values()) for s in ('RAW_HERO','VALIDATED_HERO','PACKAGED_MESH','NOT_EVALUABLE','EXECUTION_ERROR')},
+        'accepted_independent_targets':len(accepted)})
  return statuses
+
+def execute_video_from_raw(source,top,base_run_id,code,cfg_sha,stage='all'):
+ """One initial V6 attempt plus at most one full RAW reconstruction with real frames."""
+ global BASE,INP,RUN_ID
+ from tools.m2f6_observations import bounded_recovery
+ source=Path(source);group,video=source.stem.rsplit('_',1);top=Path(top)
+ results=[]
+ def activate(attempt):
+  global BASE,INP,RUN_ID
+  RUN_ID=f'{base_run_id}-a{attempt}'
+  BASE=top/f'attempt{attempt}';INP=BASE/'current_inputs'
+  return BASE/'v6'/f'{group}_{video}'
+ initial_run=activate(0)
+ initial_prepared=prepare_raw_subprocess(group,video,source,initial_run)
+
+ def run_attempt(prepared,attempt):
+  run=activate(attempt);state=new_run_state(RUN_ID+'-'+run.name,code,cfg_sha,source)
+  write(run/'RUN_STATE.json',state)
+  try:
+   checkpoint(run,state,'prepare',source,Path(prepared)/'PREPARED.json')
+   if stage=='prepare':
+    outcome=dict(status='PREPARED_ONLY',recovery_reason=None,accepted=0)
+   else:
+    run,rows,_,_=prep_input(group,video,prepared)
+    state['upstream_files']=upstream_files_for_run(prepared,run,rows)
+    write(run/'RUN_STATE.json',state)
+    checkpoint(run,state,'input_bridge',Path(prepared)/'PREPARED.json',run/'inputs/INPUT_IDENTITY.json')
+    mods=source_modules(ring_r(group));records=build_ring(run,rows,ring_r(group),mods)
+    checkpoint(run,state,'ring',run/'inputs/INPUT_IDENTITY.json',run/'predictions/ring_candidates005.json')
+    run_v6(run,rows,mods,records,state)
+    accepted=accepted_independent_targets(run)
+    outcome=dict(status='COMPLETE' if accepted and len(accepted)>=6 else 'RECOVERY_NEEDED',
+                 recovery_reason=None if len(accepted)>=6 else 'SUPPORT_INSUFFICIENT',
+                 accepted=len(accepted),accepted_target_ids=sorted(accepted))
+   trace(run,'video','PASS',[source],[run/'metrics/EXECUTION_STATUS.json'] if stage=='all' else
+         [Path(prepared)/'PREPARED.json'],outcome)
+  except Exception as error:
+   reason=repr(error);detail=traceback.format_exc()
+   trace(run,'video','EXECUTION_ERROR',[source],[],{'reason':reason,'traceback':detail})
+   write(run/'metrics/EXECUTION_FAILURE.json',dict(group=group,video=video,reason=reason,traceback=detail))
+   recovery_reason=('RGB_GRAPH_DISCONNECTED' if 'GRAPH_DISCONNECTED' in reason else
+                    'RING_OBSERVATION_INSUFFICIENT' if 'RING_OBSERVATION' in reason else
+                    'INITIALIZATION_INSUFFICIENT' if 'INITIALIZATION' in reason or 'SCENE_POINTS' in reason else None)
+   outcome=dict(status='EXECUTION_ERROR',recovery_reason=recovery_reason,
+                accepted=0,failure_reason=reason)
+  finally:
+   trace_path=run/'RUN_TRACE.jsonl'
+   if trace_path.is_file():
+    state['run_trace_path']=str(trace_path);state['run_trace_sha256']=h(trace_path)
+   write(run/'RUN_STATE.json',state)
+  results.append(dict(attempt=attempt,run_path=str(run),**outcome))
+  print('V6_ATTEMPT',group,video,attempt,outcome['status'],outcome['accepted'],flush=True)
+  return outcome
+
+ def add_real_frames(prepared,reason,number):
+  previous=activate(number-1)
+  frames,receipt=select_current_real_supplements(prepared,previous,reason)
+  receipt.update(added=frames,attempt=number,reason=reason)
+  if not frames:
+   no_real=top/'recovery'/f'{group}_{video}_NO_REAL_SUPPLEMENT.json'
+   write(no_real,receipt)
+   trace(top/'recovery','supplement','NOT_EVALUABLE',[Path(prepared)/'PREPARED.json'],
+         [no_real],{'reason':'NO_REAL_SUPPLEMENT','video':video})
+   return prepared,receipt
+  next_run=activate(number)
+  next_prepared=prepare_raw_subprocess(group,video,source,next_run,frames)
+  write(next_run/'inputs/SUPPLEMENT_RECEIPT.json',receipt)
+  trace(next_run,'supplement','PASS',[Path(prepared)/'PREPARED.json',source],
+        [next_prepared/'PREPARED.json',next_run/'inputs/SUPPLEMENT_RECEIPT.json'],
+        {'added_raw_frames':frames,'prior_attempt':number-1})
+  return next_prepared,receipt
+
+ result=bounded_recovery(initial_prepared,run_attempt,add_real_frames,max_rounds=1)
+ final=results[-1] if results else None
+ write(top/f'VIDEO_RESULT_{group}_{video}.json',dict(group_id=group,video_id=video,
+       source_video=str(source),source_sha256=h(source),code_commit=code,
+       recovery=result,attempts=results,final_attempt=final['attempt'] if final else None,
+       final_accepted=final['accepted'] if final else 0))
+ BASE=top;INP=top/'current_inputs';RUN_ID=base_run_id
+ return result
 
 def main():
  global BASE,INP,RUN_ID
  ap=argparse.ArgumentParser();ap.add_argument('--run-id',required=True);ap.add_argument('--groups',default=','.join(GROUPS));ap.add_argument('--videos',default='004,005');ap.add_argument('--limit',type=int,default=0);ap.add_argument('--stage',choices=('prepare','all'),default='all');ap.add_argument('--verify-resume',action='store_true');ap.add_argument('--audit-source');ap.add_argument('--compare-run');ap.add_argument('--compare-tag');a=ap.parse_args()
  import re
  if not re.fullmatch(r'[A-Za-z0-9_-]+',a.run_id):raise SystemExit('INVALID_RUN_ID')
- RUN_ID=a.run_id;BASE=WS/'runs/m2f9_v6_general'/RUN_ID;INP=BASE/'current_inputs'
+ RUN_ID=a.run_id;BASE=WS/'runs/m2f10_v6_multiview'/RUN_ID;INP=BASE/'current_inputs'
  code=subprocess.check_output(['git','rev-parse','HEAD'],cwd=Path(__file__).resolve().parents[1],text=True).strip()
  cfg_sha=h(V6/'config.json')
  if a.verify_resume:
-  states=sorted((BASE/'v6').glob('*/RUN_STATE.json'))
+  states=sorted(BASE.glob('attempt*/v6/*/RUN_STATE.json'))
   if not states:raise SystemExit('RUN_STATE_MISSING')
   for p in states:
    state=json.loads(p.read_text());verify_run_state(state,state['run_id'],code,cfg_sha)
@@ -552,39 +848,25 @@ def main():
   targets,videos,groups=audit_native_runs(a.audit_source,BASE/'analysis')
   print('AUDIT_DONE',len(targets),int(targets.raw_sha256.notna().sum()),len(videos),len(groups),flush=True)
   return
- raw_root=WS/'smart_endoscope_20260805 (1)'/'raw';groups=[x for x in a.groups.split(',') if x];wanted={x.zfill(3) for x in a.videos.split(',') if x};attempted=0
+ top=BASE;raw_root=WS/'smart_endoscope_20260805 (1)'/'raw';groups=[x for x in a.groups.split(',') if x];wanted={x.zfill(3) for x in a.videos.split(',') if x};attempted=0
  for g in groups:
   paths=raw_video_paths(raw_root,g,wanted);found={p.stem.rsplit('_',1)[-1] for p in paths}
   for missing in sorted(wanted-found):
-   run=BASE/'v6'/f'{g}_{missing}'
+   run=top/'missing'/f'{g}_{missing}'
    trace(run,'raw_source','NOT_EVALUABLE',[raw_root],[],{'reason':'MISSING_RAW_VIDEO'})
   for path in paths:
-   v=path.stem.rsplit('_',1)[-1];run=BASE/'v6'/f'{g}_{v}'
-   state=new_run_state(RUN_ID+'-'+run.name,code,cfg_sha,path)
-   write(run/'RUN_STATE.json',state)
+   v=path.stem.rsplit('_',1)[-1]
    try:
-    prepared=prepare_raw_subprocess(g,v,path,run)
-    checkpoint(run,state,'prepare',path,prepared/'PREPARED.json')
-    if a.stage=='all':
-     run,rows,_,_=prep_input(g,v,prepared)
-     state['upstream_files']=upstream_files_for_run(prepared,run,rows)
-     write(run/'RUN_STATE.json',state)
-     checkpoint(run,state,'input_bridge',prepared/'PREPARED.json',run/'inputs/INPUT_IDENTITY.json')
-     mods=source_modules(ring_r(g));records=build_ring(run,rows,ring_r(g),mods)
-     checkpoint(run,state,'ring',run/'inputs/INPUT_IDENTITY.json',run/'predictions/ring_candidates005.json')
-     run_v6(run,rows,mods,records,state)
-    print('V6_DONE',g,v,run,flush=True)
+    result=execute_video_from_raw(path,top,a.run_id,code,cfg_sha,a.stage)
+    print('V6_DONE',g,v,result['status'],result['final_attempt'],flush=True)
    except Exception as e:
+    BASE=top;INP=top/'current_inputs';RUN_ID=a.run_id
+    run=top/'failures'/f'{g}_{v}'
     trace(run,'video','EXECUTION_ERROR',[path],[],{'reason':repr(e),'traceback':traceback.format_exc()})
     write(run/'metrics/EXECUTION_FAILURE.json',dict(group=g,video=v,reason=repr(e),traceback=traceback.format_exc()))
     print('V6_FAIL',g,v,repr(e),flush=True)
-   finally:
-    trace_path=run/'RUN_TRACE.jsonl'
-    if trace_path.is_file():
-     state['run_trace_path']=str(trace_path);state['run_trace_sha256']=h(trace_path)
-     write(run/'RUN_STATE.json',state)
    attempted+=1
    if a.limit and attempted>=a.limit:break
   if a.limit and attempted>=a.limit:break
- print('DONE',attempted,BASE,flush=True)
+ print('DONE',attempted,top,flush=True)
 if __name__=='__main__':main()

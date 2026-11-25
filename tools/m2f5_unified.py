@@ -87,7 +87,10 @@ def prepare_real_candidate(g,vid,path,idx,root,cleaner):
  return rec,match_view,cleanrow
 
 
-def prepare_one_m2f6(g,path):
+def prepare_one_m2f6(g,path,supplement_frames=()):
+ supplement_frames=tuple(int(x) for x in supplement_frames)
+ if len(supplement_frames)>4 or len(set(supplement_frames))!=len(supplement_frames):
+  raise ValueError('SUPPLEMENT_BUDGET')
  vid=path.stem.split('_')[-1]; root=O/'prepared'/f'{g}_{vid}'; root.mkdir(parents=True,exist_ok=True)
  cap=cv2.VideoCapture(str(path)); n=int(cap.get(cv2.CAP_PROP_FRAME_COUNT)); cap.release()
  frames=candidate_frames(n)
@@ -108,6 +111,16 @@ def prepare_one_m2f6(g,path):
    edges[(i,j)]=hits;edge_rows.append(dict(first=i,second=j,RGB_RANSAC_N=hits,
                                            first_frame=frames[i],second_frame=frames[j]))
  selected,selection=select_observations(candidates,edges)
+ if supplement_frames:
+  by_frame={int(row['raw_frame']):row for row in candidates}
+  if any(frame not in by_frame for frame in supplement_frames):
+   raise ValueError('SUPPLEMENT_NOT_CURRENT_RAW_CANDIDATE')
+  selected_by_frame={int(row['raw_frame']):row for row in selected}
+  selected_by_frame.update({frame:by_frame[frame] for frame in supplement_frames})
+  selected=[selected_by_frame[frame] for frame in sorted(selected_by_frame)]
+  selection=dict(selection,supplemental_raw_frames=list(supplement_frames),
+                 final_selected_raw_frames=[int(row['raw_frame']) for row in selected],
+                 supplement_rule='CURRENT_REAL_CANDIDATE_REPREPARED_FROM_RAW')
  candidate_manifest=dict(group=g,video=vid,source_video=str(path),source_video_sha256=h(path),
                          frame_count=n,policy='M2F6_2D_CANDIDATES',candidates=candidates,
                          edges=edge_rows,source='raw_video_current_run')
@@ -118,7 +131,8 @@ def prepare_one_m2f6(g,path):
  meta=dict(group=g,video_id=vid,video=path.name,video_path=str(path),
            video_sha256=candidate_manifest['source_video_sha256'],init_weights=str(INIT),
            init_weight_sha256=INIT_SHA,math='PIL bilinear 256 /255; bilinear logits upsample; argmax',
-           ring_mm=ring_mm(g),K=K.tolist(),views=views,source='M2F6_REAL_RAW_FRAMES',
+           ring_mm=ring_mm(g),K=K.tolist(),views=views,
+           source='M2F6_REAL_RAW_FRAMES_RECOVERY' if supplement_frames else 'M2F6_REAL_RAW_FRAMES',
            candidate_manifest=str(root/'CANDIDATE_MANIFEST.json'),
            candidate_manifest_sha256=h(root/'CANDIDATE_MANIFEST.json'),
            observation_selection=str(root/'OBSERVATION_SELECTION.json'),
