@@ -88,4 +88,6 @@ Ip20/004早期M2F8有有限输出，M2F10正式集失去输出。本次HIST恢�
 
 本地浏览器地址：http://127.0.0.1:8956/VISUALIZATION_INDEX.html 。HTTP服务只绑定本机；停止后可用`python3 -m http.server 8956 --bind 127.0.0.1 --directory <本任务目录>`重启。
 
-实际启动205/273次（含全部试点）；自动资源重试0次。同一根挂载点可用空间从11.37 GiB变为9.85 GiB；当前运行产物1.39 GiB，交付目录0.07 GiB。df差值包含其他进程写入，精确字节见[evidence/SPACE_FINAL.json](evidence/SPACE_FINAL.json)。没有声称本轮清理释放空间；保留零输出视频在10视频分母，未实施额外主线变体。
+实际启动205/273次（含全部试点）；自动资源重试0次。同一根挂载点可用空间从11.37 GiB变为9.81 GiB；当前运行产物1.39 GiB，交付目录0.07 GiB。df差值包含其他进程写入，精确字节见[evidence/SPACE_FINAL.json](evidence/SPACE_FINAL.json)。没有声称本轮清理释放空间；保留零输出视频在10视频分母，未实施额外主线变体。
+
+上传核验：数据、图集与报告交付提交 [`3064b45c54a8e606c042d9d4cf1b7905ecb1eac9`](https://github.com/zheng1524/ring-first-3d/commit/3064b45c54a8e606c042d9d4cf1b7905ecb1eac9)，分支 `exp/TASK-V6-RAW-TO-HERO-MAINLINE-001`；远端tree/commit已与本地逐项匹配。一次性建树HTTP422后分批建树恢复，未改动结果；见[evidence/PUBLICATION_RECEIPT.json](evidence/PUBLICATION_RECEIPT.json)。

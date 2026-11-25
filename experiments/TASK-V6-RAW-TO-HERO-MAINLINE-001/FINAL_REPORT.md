@@ -10,3 +10,5 @@
 - 本地地址：http://127.0.0.1:8956/VISUALIZATION_INDEX.html
 
 实际启动205/273次，未按输出误差删面或换Support重试。RAW、模型和全量Mesh在`/home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001`及清单所指原始路径，代码、配置、日志、小证据和中文图随分支提交。
+
+上传核验：数据、图集与报告交付提交 [`3064b45c54a8e606c042d9d4cf1b7905ecb1eac9`](https://github.com/zheng1524/ring-first-3d/commit/3064b45c54a8e606c042d9d4cf1b7905ecb1eac9)，分支 `exp/TASK-V6-RAW-TO-HERO-MAINLINE-001`；远端tree/commit已与本地逐项匹配。一次性建树HTTP422后分批建树恢复，未改动结果；见[evidence/PUBLICATION_RECEIPT.json](evidence/PUBLICATION_RECEIPT.json)。
