@@ -210,6 +210,65 @@ def audit_native_runs(source_root,destination):
        {'cases':len(targets),'raw':int(targets.raw_sha256.notna().sum())})
  return targets,videos,groups
 
+def compare_hero_adapters(source_run,tag,destination):
+ """Rerun only M2F6 adapter on an exact V6 four-view raw tuple."""
+ source_run=Path(source_run).resolve();destination=Path(destination);destination.mkdir(parents=True,exist_ok=False)
+ trace(destination,'adapter_compare','STARTED',[source_run/'inputs/ledger005.json',source_run/'raw'/f'{tag}.npz'],[],{'tag':tag})
+ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
+ from ring_first_3d.mainline.input_identity import tuple_receipt
+ from ring_first_3d.mainline.native.hero import load_official,infer
+ cases=[]
+ for name in ('MVS_cases.json','MVS_supported_cases.json'):
+  path=source_run/'inputs'/name
+  if path.is_file():cases+=json.loads(path.read_text())
+ matches=[c for c in cases if c['tag']==tag]
+ if len(matches)!=1:raise ValueError('ADAPTER_CASE_IDENTITY '+tag)
+ c=matches[0];ledger=json.loads((source_run/'inputs/ledger005.json').read_text())
+ primary=json.loads((source_run/'predictions/local005_primary.json').read_text())['primary_version']
+ with np.load(source_run/f'predictions/local005_camera_{primary}.npz') as a:poses=np.asarray(a['c2w'])
+ frames=[]
+ for i in [c['reference']]+c['sources']:
+  a=ledger[i]
+  if h(a['RGB_path'])!=a['RGB_SHA256'] or h(a['Mask_path'])!=a['Mask_SHA256']:
+   raise ValueError('ADAPTER_FRAME_HASH '+a['id'])
+  frames.append(dict(id=a['id'],RGB=cv2.imread(a['RGB_path'])[:,:,::-1].copy(),
+                     labels=cv2.imread(a['Mask_path'],0),K=np.asarray(a['K'],float),c2w_mm=poses[i]))
+ receipt=tuple_receipt(True,frames,RUN_ID,subprocess.check_output(['git','rev-parse','HEAD'],cwd=Path(__file__).resolve().parents[1],text=True).strip())
+ v6_receipt=json.loads((source_run/'inputs'/f'TUPLE_{tag}.json').read_text())
+ if receipt['tuple_sha256']!=v6_receipt['tuple_sha256']:raise ValueError('ADAPTER_TUPLE_MISMATCH')
+ with np.load(source_run/'raw'/f'{tag}.npz') as a:
+  if int(a['reference'])!=c['reference'] or not np.array_equal(a['sources'],c['sources']) or not np.array_equal(a['c2w'],poses):
+   raise ValueError('ADAPTER_V6_CAMERA_MISMATCH')
+  if not np.array_equal(a['K_full'],frames[0]['K']):raise ValueError('ADAPTER_V6_K_MISMATCH')
+  v6_depth=np.asarray(a['depth_mm'],float);v6_K=np.asarray(a['K_index_native'],float)
+ write(destination/'SHARED_TUPLE_RECEIPT.json',receipt)
+ trace(destination,'adapter_tuple','VERIFIED',[source_run/'inputs'/f'TUPLE_{tag}.json',source_run/'raw'/f'{tag}.npz'],[destination/'SHARED_TUPLE_RECEIPT.json'],
+       {'tuple_sha256':receipt['tuple_sha256']})
+ cfg=json.loads((WS/'mainline/configs/SITE.local.json').read_text())
+ sys.path[:0]=[str(x) for x in cfg.get('readonly_dependency_paths',[])]
+ model,model_receipt=load_official(cfg['mvs_root'],cfg['checkpoint'],cfg['dino_root'],
+    json.loads((WS/'src/ring_first_3d/mainline/native/upstream_source_lock.json').read_text()))
+ write(destination/'MODEL_RECEIPT.json',model_receipt)
+ trace(destination,'adapter_model','PASS',[cfg['checkpoint']],[destination/'MODEL_RECEIPT.json'],
+       {'checkpoint_sha256':model_receipt.get('checkpoint_SHA256')})
+ output=destination/'m2f6_hero';infer(model,frames,output)
+ trace(destination,'adapter_infer','PASS',[destination/'SHARED_TUPLE_RECEIPT.json'],[output/'HERO_native.npz'],{'tag':tag})
+ with np.load(output/'HERO_native.npz') as a:m2_depth=np.asarray(a['depth_mm'],float);m2_K=np.asarray(a['K_index_native'],float)
+ if m2_depth.shape!=v6_depth.shape:raise ValueError('ADAPTER_NATIVE_SHAPE_MISMATCH')
+ valid=np.isfinite(m2_depth)&np.isfinite(v6_depth)&(m2_depth>0)&(v6_depth>0)
+ delta=abs(m2_depth[valid]-v6_depth[valid]);result=dict(run_id=RUN_ID,source_run=str(source_run),tag=tag,
+       source_raw_sha256=h(source_run/'raw'/f'{tag}.npz'),m2f6_raw_sha256=h(output/'HERO_native.npz'),
+       tuple_sha256=receipt['tuple_sha256'],pixels=int(valid.sum()),
+       native_K_max_abs=float(np.max(abs(m2_K-v6_K))),
+       depth_abs_median_mm=float(np.median(delta)) if len(delta) else float('nan'),
+       depth_abs_p95_mm=float(np.quantile(delta,.95)) if len(delta) else float('nan'),
+       depth_abs_max_mm=float(np.max(delta)) if len(delta) else float('nan'),
+       depth_exact_fraction=float(np.mean(delta==0)) if len(delta) else float('nan'))
+ write(destination/'ADAPTER_EQUIVALENCE.json',result)
+ trace(destination,'adapter_compare','PASS',[output/'HERO_native.npz',source_run/'raw'/f'{tag}.npz'],
+       [destination/'ADAPTER_EQUIVALENCE.json'],result)
+ return result
+
 def select_v6_reference(rows,rings,edges,ring_counts):
  sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
  from tools.run_w0_camera import select_reference
@@ -449,7 +508,7 @@ def run_v6(run,rows,mods,ring_records,state):
 
 def main():
  global BASE,INP,RUN_ID
- ap=argparse.ArgumentParser();ap.add_argument('--run-id',required=True);ap.add_argument('--groups',default=','.join(GROUPS));ap.add_argument('--videos',default='004,005');ap.add_argument('--limit',type=int,default=0);ap.add_argument('--stage',choices=('prepare','all'),default='all');ap.add_argument('--verify-resume',action='store_true');ap.add_argument('--audit-source');a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('--run-id',required=True);ap.add_argument('--groups',default=','.join(GROUPS));ap.add_argument('--videos',default='004,005');ap.add_argument('--limit',type=int,default=0);ap.add_argument('--stage',choices=('prepare','all'),default='all');ap.add_argument('--verify-resume',action='store_true');ap.add_argument('--audit-source');ap.add_argument('--compare-run');ap.add_argument('--compare-tag');a=ap.parse_args()
  import re
  if not re.fullmatch(r'[A-Za-z0-9_-]+',a.run_id):raise SystemExit('INVALID_RUN_ID')
  RUN_ID=a.run_id;BASE=WS/'runs/m2f9_v6_general'/RUN_ID;INP=BASE/'current_inputs'
@@ -464,6 +523,11 @@ def main():
   return
  if BASE.exists():raise SystemExit('RUN_ID_ALREADY_EXISTS '+str(BASE))
  BASE.mkdir(parents=True)
+ if a.compare_run:
+  if not a.compare_tag:raise SystemExit('COMPARE_TAG_REQUIRED')
+  result=compare_hero_adapters(a.compare_run,a.compare_tag,BASE/'adapter_compare')
+  print('ADAPTER_COMPARE_DONE',result['tag'],result['pixels'],result['depth_abs_p95_mm'],flush=True)
+  return
  if a.audit_source:
   targets,videos,groups=audit_native_runs(a.audit_source,BASE/'analysis')
   print('AUDIT_DONE',len(targets),int(targets.raw_sha256.notna().sum()),len(videos),len(groups),flush=True)
