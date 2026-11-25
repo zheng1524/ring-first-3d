@@ -1,0 +1,1 @@
+Large audit JSON/JSONL lists are gzip-compressed in Git. Exact uncompressed originals remain at the same local paths. For a fresh checkout, decompress the needed file with `gzip -dk evidence/FILE.json.gz` before replaying inspection tools. They are historical execution receipts, not a command to repeat deletion.
