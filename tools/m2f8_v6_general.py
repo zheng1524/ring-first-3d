@@ -23,6 +23,23 @@ def ring_r(g):return 3.1 if '_R5_' in g else 5.6
 def raw_video_paths(raw_root,group,wanted):
  return [p for p in sorted(Path(raw_root).glob(f'{group}_*.mp4'))
          if p.stem.rsplit('_',1)[-1] in wanted]
+def prepare_raw_subprocess(group,video,source,run):
+ """Reuse M2F6 preparation without contaminating V5's historical module names."""
+ worktree=Path(__file__).resolve().parents[1]
+ child=("import sys; from pathlib import Path; from tools import m2f5_unified as p; "
+        "p.O=Path(sys.argv[1]); p.M2F6=True; p.trace=lambda *a,**k: None; "
+        "p.prepare_one_m2f6(sys.argv[2],Path(sys.argv[3]))")
+ command=[sys.executable,'-c',child,str(INP),group,str(source)]
+ log=Path(run)/'RAW_PREP.log';log.parent.mkdir(parents=True,exist_ok=True)
+ trace(run,'raw_prepare','STARTED',[source],[],{'entrypoint':'m2f5_unified.prepare_one_m2f6','process':'isolated'})
+ with log.open('w') as output:
+  result=subprocess.run(command,cwd=worktree,stdout=output,stderr=subprocess.STDOUT,check=False)
+ prepared=INP/'prepared'/f'{group}_{video}'
+ if result.returncode or not (prepared/'PREPARED.json').is_file():
+  trace(run,'raw_prepare','EXECUTION_ERROR',[source],[log],{'returncode':result.returncode})
+  raise RuntimeError(f'RAW_PREP_FAILED returncode={result.returncode}; log={log}')
+ trace(run,'raw_prepare','PASS',[source],[prepared/'PREPARED.json',log],{'process':'isolated'})
+ return prepared
 def ring_status_by_id(records):
  out={}
  for row in records:
@@ -344,12 +361,7 @@ def main():
   return
  if BASE.exists():raise SystemExit('RUN_ID_ALREADY_EXISTS '+str(BASE))
  BASE.mkdir(parents=True)
- sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
- from tools import m2f5_unified as preparer
- preparer.O=INP;preparer.M2F6=True
- preparer.trace=lambda g,v,stage,route,entry,inputs,outputs,status,extra=None:trace(
-  BASE/'v6'/f'{g}_{v}',stage,status,inputs,outputs,dict(route_id=route,entrypoint=entry,**(extra or {})))
- raw_root=preparer.RAW;groups=[x for x in a.groups.split(',') if x];wanted={x.zfill(3) for x in a.videos.split(',') if x};attempted=0
+ raw_root=WS/'smart_endoscope_20260805 (1)'/'raw';groups=[x for x in a.groups.split(',') if x];wanted={x.zfill(3) for x in a.videos.split(',') if x};attempted=0
  for g in groups:
   paths=raw_video_paths(raw_root,g,wanted);found={p.stem.rsplit('_',1)[-1] for p in paths}
   for missing in sorted(wanted-found):
@@ -360,7 +372,7 @@ def main():
    state=new_run_state(RUN_ID+'-'+run.name,code,cfg_sha,path)
    write(run/'RUN_STATE.json',state)
    try:
-    prepared,_,_=preparer.prepare_one_m2f6(g,path)
+    prepared=prepare_raw_subprocess(g,v,path,run)
     checkpoint(run,state,'prepare',path,prepared/'PREPARED.json')
     if a.stage=='all':
      run,rows,_,_=prep_input(g,v,prepared)
