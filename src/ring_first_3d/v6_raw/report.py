@@ -1,0 +1,103 @@
+"""Build the Chinese strategy/effect report from frozen run evidence."""
+from .route import *
+from .visualize import short,num
+import collections
+
+def main():
+ rows=[];paired=[]
+ for group in GROUPS:
+  for v in ['004','005']:
+   case=group+'_'+v;a=read(B/'evaluation/BASELINE'/case/'SUMMARY.json');b=read(B/'evaluation/HIST'/case/'SUMMARY.json');ar=read(B/'evaluation/BASELINE'/case/'RESULTS.json');br=read(B/'evaluation/HIST'/case/'RESULTS.json')
+   targets=lambda r:{x['raw_target']for x in r if x['status']=='RENDERABLE'}
+   tuples=lambda r:{(x['raw_target'],tuple(x['raw_support']))for x in r if x['status']=='RENDERABLE'}
+   common=sorted(targets(ar)&targets(br));ct=sorted(tuples(ar)&tuples(br));status='FAIL_COVERAGE_LOSS'if a['generated']and not b['generated']else'NOT_ASSESSABLE'
+   paired.append(dict(case=case,common_RAW_targets=common,common_RAW_tuples=ct,status=status,quality_causal_comparison=False));rows.append((case,a,b,status))
+ save(T/'evidence/PAIRED_COMPARISON.json',paired)
+ cand=[b for _,a,b,s in rows];base=[a for _,a,b,s in rows];n=sum(b['generated']for b in cand);old=sum(b['old_rule_generated']for b in cand);added=n-old;nv=sum(b['generated']>0 for b in cand);bv=sum(a['generated']>0 for a in base);fail=[short(c)for c,a,b,s in rows if s=='FAIL_COVERAGE_LOSS'];gained=[short(c)for c,a,b,s in rows if not a['generated']and b['generated']]
+ own=sum(b['target_own_new_pass']for b in cand);starts=len((B/'INFERENCE_STARTS.jsonl').read_text().splitlines())
+ plan=(T/'IMPLEMENTATION_PLAN.md').read_text();table=plan[plan.index('| 环节'):plan.index('\n## 候选')].replace('实际拟用策略/来源','实际策略/来源').replace('主点490/319.5/179.5假设','焦距490像素与主点319.5/179.5假设').replace('采用理由、本轮适配、验证','采用理由与本轮改动').replace('处理后Mask留存对比','观测点、边界与原mask留存对比').replace('173张上轮图只作只读参照，当前图由当前结果生成','历史图只作只读参照，当前图由当前结果生成')
+ text='# TASK-V6-RAW-TO-HERO-MAINLINE-001 技术报告\n\n## 完整流程：策略—效果\n\n'+table+'\n\n'
+ text+=f'''## 结论与推荐状态
+
+完成固定5组10视频的RAW→分割→Ring/RGB相机→官方HERO，采用一个全局HIST规则；另保留三视频GRAPH试点。共23条评价运行记录，仍只有10个视频、5个物理组。当前V6基线有66张正式面源、{bv}/10视频；本轮HIST有{n}张、{nv}/10视频，原规则组合{old}张、放宽新增{added}张。新增组合不等于新增有效覆盖：其中只有{own}/{n}个已生成Target自身通过Q1相机门控，全部结果保留。
+
+**本轮候选不升级为统一科研主线，保留M2F10冻结基线。** 全量出现的覆盖损失：{'；'.join(fail)or'无完全失去输出的视频'}。恢复输出的视频：{'；'.join(gained)or'无'}。质量证据仍缺同RAW/Support受控比较与全链路独立观测，且存在大误差尾部/离散片层；不以总张数或非配对均值宣布更优。代码和候选实验完成，不代表研究目标已证实达到。
+
+推荐保持“真实Ring尺度与约束→RGB解yaw/完整位姿→原V6联合BA→上游相机/组合准入→官方HERO→共同评价”的统一骨架。当前正式科研/比较基准继续使用已冻结M2F10；历史16+6选帧和Q1警告化仅保留为可复核候选。后续应先解决Target自身可信度和对照帧不共同的问题，再决定是否采纳其中机制，不能逐视频混用HIST/GRAPH或按HERO误差挑面。
+
+## 逐视频覆盖与质量
+
+下表所有毫米统计都是该运行**完整输出集**的描述性统计，不是同帧因果排名。Ring为相机条件下HERO深度对CAD的误差；“重叠P95”是有向面源配对P95的中位数，包含遮挡/分割影响，不是真实形状误差。
+
+| 物理视频 | 基线正式→本轮HERO | 数值相机；旧/新准入 | 本轮原规则/新增 | Target自身Q1通过 | Ring MAE中位数 基线→本轮 | Ring P95中位数 基线→本轮 | 重叠P95中位数 基线→本轮 | 判定 |
+|---|---:|---|---:|---:|---:|---:|---:|---|
+'''
+ for c,a,b,s in rows:
+  label='覆盖损失，拒绝升级'if s=='FAIL_COVERAGE_LOSS'else('恢复组合，质量未证'if not a['generated']and b['generated']else'仍无输出'if not b['generated']else'组合增加/保留，配对质量未证')
+  text+=f"| {short(c)} | {a['generated']}→{b['generated']} | {b['numeric_cameras']}；{b['old_admitted_cameras']}/{b['new_admitted_cameras']} | {b['old_rule_generated']}/{b['added']} | {b['target_own_new_pass']} | {num(a['ring_MAE_median'])}→{num(b['ring_MAE_median'])} | {num(a['ring_P95_median'])}→{num(b['ring_P95_median'])} | {num(a['overlap_P95_pair_median'])}→{num(b['overlap_P95_pair_median'])} | {label} |\n"
+ text+='''
+完整分母、合法/启动/原生成功/可渲染/失败、方向跨度、10°观察方向占据数见[VIDEO_COMPARISON.csv](VIDEO_COMPARISON.csv)；逐源全部指标及输入/相机/Mesh哈希见[SOURCE_MANIFEST.csv](SOURCE_MANIFEST.csv)。方向占据数依赖本次相机与自身yaw坐标，不可直接跨运行作配准后的覆盖比较。原基线统计限定66个正式生成面源，另有74个历史备用分支未执行（ALTERNATE_NOT_NEEDED），见[BASELINE_UNUSED_CANDIDATES.csv](BASELINE_UNUSED_CANDIDATES.csv)，不把它们计为推理失败或补跑。
+
+## 历史恢复究竟恢复了什么
+
+来源与原始小表见[HISTORICAL_STRATEGY.md](HISTORICAL_STRATEGY.md)。M2F7的G01-005实际是Ip12/005。本次从RAW得到相同22帧与904条轨迹，但原门控通过7相机，M2F7部分重现记录为8、更早原记录为15，不能称逐位重现。M2F7已有逐阶段数值漂移证据，说明入口完全相同也不足以保证非线性BA和门控边界稳定。
+
+本次恢复的是原V6相对时序16帧+最多6个外观补帧、原Mask入口、历史锚帧索引8（第9个基础帧）与诊断索引9（第10个基础帧）。保留M2F9/M2F10按真实帧ID绑定centerline、明确diverse_four、真实索引替代459/516假别名、完整Target遍历等修复。不存在某组专用成功帧列表；旧`ledger005`/`005_supported`仅是沿用内核的阶段文件名，视频身份始终由物理RAW路径/哈希与case字段给出。
+
+Ip20/004早期M2F8有有限输出，M2F10正式集失去输出。本次HIST恢复21张且全属于Q0组合，因此恢复能力不能都归因于门槛放宽；但Ring尾部很差，也不能说恢复了历史的几何质量。其余跨历史版本差异同时涉及帧池、Mask、锚帧、支持池及数值优化，没有把所有退化归为数据难或某一个阈值。
+
+## 观测、初始化与门控的实际含义
+
+1. RAW顺序解码；以真实PTS和解码BGR SHA绑定身份。基础16帧覆盖完整时间段，补帧按原V6“相对基础帧灰度新颖度×封顶清晰度”选择，候选清晰度≥25分位、离基础帧≥18帧、补帧彼此≥36帧，最多6帧。它补的是外观，不保证增加真实视角；实际方向覆盖另报。
+2. 原INIT分割工作于640×360，标签背景0/息肉1/Ring2；SIFT及HERO使用原Mask。DXY洞处理/椭圆诊断用于观测解释，但Ring损失使用真实可见区域和背景朝向的实测边界。邻息肉边界的遮挡次序未知，不强迫成为轮廓；原生真实Ring像素仍作为正区域。处理后边界/训练与留出点保存在本轮observations NPZ，[观测链中文图集](OBSERVATIONS_INDEX.html)提供实际叠加检查。DXY内部FrameInput的10毫米旧诊断不提供最终尺度；真正几何轮廓由R5=3.1/.6、R10=5.6/.6毫米参数生成。背景负约束仍依赖受控后方背景假设，不适于任意前景组织遮挡。
+3. Ring候选初始化两分支；RGB训练轨迹通过相对极线关系/全局yaw调整连接图。BA固定锚帧6DoF和Ring模型/K，优化其余相机SE(3)及最多500个训练轨迹点；Ring区域/边界、RGB重投影、正深度及弱时间平滑共同生效。最多60次函数评价。选择最先成功版本，不按留出误差挑最好的版本；失败NaN/日志保留，不回退旧相机。
+4. 相机Q0：留出观测≥8，RGB MAE≤3/P95≤6像素，正深度≥0.95，Ring边界MAE≤3/P95≤6像素，两初始化中心分散≤2毫米。Q1只将最后一个硬门槛改为警告，其余不变。所有逐帧旧/新状态和原因见[CAMERA_GATES.csv](CAMERA_GATES.csv)。Q1并没有证明不稳定性无害。
+5. HERO Target按原M2F10遍历全部有限数值相机，排除诊断图像；Target自身是否通过门控单列，**不把三Support通过冒称Target已验证**。Support沿用共视FIT轨迹≥15以及`min(视差角,25°)×min(共视数,100)/100`排序；原规则能凑三个时保留原三元组，否则才用Q1池。25°是评分封顶，不是最大视差拒绝阈值；未引入米尺度距离、按深度择优或多个组合试到成功。
+6. 官方HERO权重SHA `00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d`，352×640、3 Support、refine1、FP16、fast_cost_volume=False；保持K像素中心约定与mm→m转换。原生深度全留；原V6 Mesh仍线性352→360、沿原定义生成三角形（既有0.75毫米轴向深度跳变限制），没有新增输出误差门控、ICP、缩放、形变或融合。
+
+## 观察事实、机制推断与未证假设
+
+- **事实：** Ip12/004从0恢复18张，全部由Q1增加；仅RAW84/734/1264为新合格Support池，其中两帧因中心分散5.416/3.909毫米超过旧2毫米阈值而原先被拒。18个Target自身Q1通过数为0。它证明组合可运行，不证明新增目标位姿可信。
+- **事实：** IIa14/004在HIST下原规则0、Q1新增21，而GRAPH试点原规则已有21；IIa14/005新合格相机3个仍不能满足排除诊断帧/目标自身后的三Support与共视条件。初始化选择和元组结构都会影响覆盖。
+- **事实：** Ip12/005基线和候选均有Ring下方离散片层；Ip12/004有远离主体的零散表面；Ip20/004可在重叠P95约1毫米的同时出现Ring P95中位数约36毫米。完整范围、逐源图及超5毫米色标提示保留这些现象。
+- **推断：** 同一偏置相机、相近Support以及共同分割错误可能使多张深度互相一致但整体错误；多初始化分歧也可能既揭示坏主解又误罚好主解。当前证据不能将这些解释定为唯一根因。
+- **待证：** 历史选帧/原Mask/锚帧各自贡献多少；Q1增加的相机是否在独立query帧上成立；异常片层中分割边缘、相机误差和HERO模型域偏移各占多少。没有继续按单个异常反复调参，也没有用GT调主线。
+
+## 评价边界与下一次最小验证
+
+整轨迹留出没有参与相机初始化/BA，但HERO仍读取含这些像素的RGB，不能称独立神经深度GT；稀疏证据还需区分Polyp与背景/Ring，例如Ip12/005 RAW459的44个留出点仅1个在Polyp。非HERO输入诊断B的相机仍由包含该帧的RGB BA求得，所以A→B是部分条件诊断，不是全链路独立检验。Ring CAD重合像素比例是相机条件覆盖，不是独立深度有效率。
+
+下轮最小试验应先冻结共同RAW帧池和同一Target/三Support元组，用当前基线与历史候选做整路线对照；单独改变选帧或Mask的试验另列，避免混合归因。冻结地图/相机训练观测后选新query图像，全链路排除其RGB与Ring观测，并在同一质量标准下报告数值覆盖、合法组合覆盖、有效覆盖。Target自身与Support的上游可靠性应同时验证，但不能先按HERO误差删去困难结果再报覆盖。判据沿用本轮预登记的绝对/相对误差退化限并保留NOT_ASSESSABLE；若已有好视频全失输出或独立质量明显变差，整条候选拒绝升级。此计划本轮不实施。
+
+## 可复核入口与执行身份
+
+入口：`tools/v6_raw_to_hero.py --case <真实物理视频名> --variant HIST --stage all`；当前缓存逐阶段验证RGB/Mask、相机/计划/模型及科学函数SHA，不能静默换组合或覆盖已启动的失败运行。全部官方推理启动记录见`evidence/INFERENCE_STARTS.jsonl`。
+
+实现初始提交62ab735…；官方HERO包装修订28124b6…；独立最终评价源码25dcf083…（若仅补缓存依赖，最终哈希以回执为准）；批量候选冻结d3dbedf8…。首次Ip12/HIST RAW及相机是在5efa072… HEAD与尚未提交的本轮入口代码下开始，实际函数/内核SHA在执行前保存，不能将它追写成后来提交。每视频/阶段的CAMERA_STARTED、RUN_STATE、HERO_STARTED及输入/输出SHA均随小证据上传，实际身份以这些记录为准。最初临时评价在长进程中运行，随后为消除源码加载身份歧义，所有评价在冻结源码的新进程重算；旧回执只作历史记录，不作为最终指标依据。
+
+相机/HERO科学内核未复制改写；复用明确版本的M2F10适配器、原V5/V6内核。INIT、原始RAW、全部大Mesh保留在本地准确路径，未重复上传模型/视频。既有P与DXY科研目录只读；本次没有训练、H004、跨视频融合或39组全量。
+
+## 可视化、空间和交付
+
+完整中文入口：[VISUALIZATION_INDEX.html](VISUALIZATION_INDEX.html)，含所有当前输出、三视频GRAPH和当前基线正式面源；零输出、未准入和失败均有说明。全范围同组采用统一观察范围；近景保留所有几何输入并逐视角报告出画顶点/三角形数。逐面页含真实Target/Support、Q0/Q1与原因、RGB/Mask、Ring尾部及疑似问题箭头；箭头只标待核，不当作自动诊断结论。
+
+本地浏览器地址：http://127.0.0.1:8956/VISUALIZATION_INDEX.html 。HTTP服务只绑定本机；停止后可用`python3 -m http.server 8956 --bind 127.0.0.1 --directory <本任务目录>`重启。
+'''
+ space=read(T/'evidence/SPACE_FINAL.json')if(T/'evidence/SPACE_FINAL.json').exists()else{}
+ text+=f'\n实际启动{starts}/273次（含全部试点）；自动资源重试0次。空间记录：`{json.dumps(space,ensure_ascii=False)}`。保留失败视频在10视频分母，未实施新主线变体。\n'
+ (T/'TECHNICAL_REPORT.md').write_text(text)
+ (T/'FINAL_REPORT.md').write_text(f'''# 最终交付
+
+固定5组10视频已运行；另有3个GRAPH试点。HIST生成{n}张（原规则{old}、放宽新增{added}），覆盖{nv}/10视频；当前V6正式基线66张、{bv}/10视频。已生成Target自身通过Q1为{own}/{n}，不能把所有生成量当有效重建覆盖。
+
+候选不升级；保留当前V6基线。覆盖损失：{'；'.join(fail)or'无整视频丢失'}。恢复输出：{'；'.join(gained)or'无'}。完整质量与异常见[技术报告](TECHNICAL_REPORT.md)。
+
+- [完整中文HERO图集](VISUALIZATION_INDEX.html)
+- [RGB/Mask/Ring观测链](OBSERVATIONS_INDEX.html)
+- [逐视频比较](VIDEO_COMPARISON.csv) · [全部源身份与指标](SOURCE_MANIFEST.csv) · [相机拒绝原因](CAMERA_GATES.csv)
+- 本地地址：http://127.0.0.1:8956/VISUALIZATION_INDEX.html
+
+实际启动{starts}/273次，未按输出误差删面或换Support重试。RAW、模型和全量Mesh在`/home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001`及清单所指原始路径，代码、配置、日志、小证据和中文图随分支提交。
+''')
+
+if __name__=='__main__':main()

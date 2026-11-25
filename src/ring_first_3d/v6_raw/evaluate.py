@@ -26,6 +26,8 @@ def evaluate_run(R,out=None,case=None,variant=None):
  files += [R/p for p in ['config.json','inputs/ledger005.json','inputs/MVS_supported_cases.json','predictions/local005_primary.json','metrics/local_validation.json','metrics/surfaces005.json','metrics/MVS005_supported_runs.json','PLAN_FROZEN.json']if(R/p).exists()]
  for row in read(R/'inputs/ledger005.json'):files += [Path(row['RGB_path']),Path(row['Mask_path'])]
  files += [Path(__file__),P12/'code/hero_check.py',W/'src/ring_first_3d/sim/geometry.py',W/'src/ring_first_3d/mainline/lineage/experiments/TASK-VIEW-OBSERVABILITY-GT-EVAL-001/code/reprojection.py',W/'runs/m2f5_unified/cad'/('R5.npz'if '_R5_'in case else'R10.npz')]
+ files += [CORE/'src/ring_first_hero/geometry.py']
+ if(R/'PLAN_FROZEN.json').exists():files += [B/'INFERENCE_STARTS.jsonl']
  input_hashes={str(p):sha(p)for p in files}
  if(out/'COMPLETE.json').exists():
   prior=read(out/'COMPLETE.json')

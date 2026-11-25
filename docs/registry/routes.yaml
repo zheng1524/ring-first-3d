@@ -1084,10 +1084,15 @@ v6_raw_to_hero_001:
   status: candidate
   approval: "TASK-V6-RAW-TO-HERO-MAINLINE-001 explicitly approved by researcher; bounded pilot and all 5 groups / 10 videos"
   entrypoint: tools/v6_raw_to_hero.py
-  composes: [rf-m2f7-hist-v6@1, rf-m2f9-v6-generalized@1, rf-m2f10-v6-multiview@1]
+  composes: [rf-m2f7-hist-v6@1]
+  adapter_source: /home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-M2F10/tools/m2f8_v6_general.py
+  adapter_sha256: 6ad695b0ffd66699a41306d4d38c1853a5d65b6a372d758a54ce284e7a586412
+  adapter_execution_lineage: a38d4c822daf9a9b3cd88e1cd0edebdc70b9bfad
+  historical_fix_lineage: M2F9 real-frame and centerline/diverse-seed repairs retained by M2F10
   plan: experiments/TASK-V6-RAW-TO-HERO-MAINLINE-001/IMPLEMENTATION_PLAN.md
   protocol: experiments/TASK-V6-RAW-TO-HERO-MAINLINE-001/config/PROTOCOL.json
   run_root: /home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001
-  scientific_status: pending_actual_pilot_and_nonregression
+  scientific_status: candidate_not_promoted_no_paired_nonregression_pass
+  formal_usable: false
   historical_outputs_as_inputs: false
   depth_error_gate: false
