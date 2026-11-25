@@ -203,7 +203,7 @@ def hero(case,variant):
   tree,adapt=m.adapt_supported_hero_schedule(V6/'scripts/run_mvs005_supported.py');node=next(n for n in tree.body if isinstance(n,ast.FunctionDef)and n.name=='main');run_mvs005_supported.__dict__['_M2F10_TUPLE_RECEIPT']=lambda c:inference_start(case,variant,R,c,poses,meta['frames'],meta,mods);exec(compile(ast.Module(body=[node],type_ignores=[]),str(V6/'scripts/run_mvs005_supported.py'),'exec'),run_mvs005_supported.__dict__);run_mvs005_supported.main()
  else:save(R/'metrics/MVS005_supported_runs.json',[]);mods['v6'].freeze('MVS_supported_raw',[R/'metrics/MVS005_supported_runs.json'])
  # Original package kernel needs an empty preview ledger; all current output is scheduled exactly once.
- save(R/'inputs/MVS_cases.json',[]);save(R/'metrics/MVS005_runs.json',[]);mods['v6'].freeze('MVS_raw',[R/'metrics/MVS005_runs.json'])
+ save(R/'metrics/MVS005_runs.json',[]);mods['v6'].freeze('MVS_raw',[R/'metrics/MVS005_runs.json'])
  if any(r['success']for r in read(R/'metrics/MVS005_supported_runs.json')):
   import package_surfaces
   package_surfaces.R=R;package_surfaces.V5=R/'v5raw';tree,receipt=m.adapt_independent_package(V6/'scripts/package_surfaces.py');node=next(n for n in tree.body if isinstance(n,ast.FunctionDef)and n.name=='main');exec(compile(ast.Module(body=[node],type_ignores=[]),str(V6/'scripts/package_surfaces.py'),'exec'),package_surfaces.__dict__);package_surfaces.main();save(R/'inputs/PACKAGE_ADAPTER.json',receipt)
