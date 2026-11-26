@@ -60,6 +60,10 @@ def page(case,result,depth):
                 collection=Poly3DCollection(v[f],facecolor=COLORS[ti],edgecolor='none',alpha=.82,rasterized=True);ax.add_collection3d(collection)
             ax.set_xlim(center[0]-half,center[0]+half);ax.set_ylim(center[1]-half,center[1]+half);ax.set_zlim(center[2]-half,center[2]+half);ax.set_box_aspect((1,1,1));ax.view_init(elev,azim)
             ax.set_xlabel('X（归一单位）',fontsize=8);ax.set_ylabel('Y',fontsize=8);ax.set_zlabel('Z',fontsize=8)
+            if row==2:
+                ax.set_yticks([]);ax.set_ylabel('')
+                note='两臂均可见主体外分离片层' if '12.0mm' in case else '两臂均见上部断开小面与下方细长面'
+                ax.text2D(.02,.02,note+'；无GT，是否错误未知',transform=ax.transAxes,fontsize=8,color='darkred')
             ax.set_title(f'{arm} 原始HERO全部选定面源｜'+('斜视' if row==1 else '侧视')+'\n蓝='+str(tuples[0]['raw_target'])+'；橙='+str(tuples[1]['raw_target'])+'；两臂同视角/同尺度/同范围')
             if not meshdata[arm]:ax.text(*center,'无可用原始曲面')
         ax=fig.add_subplot(grid[3,col])
@@ -81,7 +85,7 @@ def page(case,result,depth):
         ax.text(.02,.98,'\n'.join(lines),va='top',fontsize=10)
     title=case.replace('GP_','').replace('_closed_',' / ').replace('_single_refY_',' / 视频')
     fig.suptitle(title+'\n无GT：一致性/覆盖对照｜固定输入、独立相机、同HERO｜1归一单位在R中为1mm；S非独立公制',fontsize=15,y=.995)
-    fig.subplots_adjust(top=.96,bottom=.015,left=.03,right=.97,hspace=.30,wspace=.1)
+    fig.subplots_adjust(top=.925,bottom=.015,left=.03,right=.97,hspace=.30,wspace=.1)
     path=REPORT/'figures'/(case+'.png');path.parent.mkdir(exist_ok=True);fig.savefig(path,dpi=110);plt.close(fig)
     return path
 
@@ -102,7 +106,7 @@ def report():
                 if (root/arm/name).exists():shutil.copy2(root/arm/name,ad/name)
             for name in ['RESULT.json','PLAN_FROZEN.json']:
                 if (root/arm/'hero'/name).exists():shutil.copy2(root/arm/'hero'/name,ad/('HERO_'+name))
-            a=r['arms'][arm];camera_rows.append(dict(case=case,arm=arm,numeric=a['numeric_cameras'],total=22,rgb_pass=a['rgb_pass'],three_support_targets=len(a['graph_three_support_targets']),fixed_complete=sum(t['complete'] for t in a['fixed_tuples']),fixed_total=2))
+            a=r['arms'][arm];camera_rows.append(dict(case=case,arm=arm,numeric=a['numeric_cameras'],registered_union=a['registered_union_count'],component_sizes=json.dumps(a['camera_receipt'].get('component_sizes',[a['numeric_cameras']])),downstream_scope=a['downstream_component_scope'],total=22,rgb_pass=a['rgb_pass'],three_support_targets=len(a['graph_three_support_targets']),fixed_complete=sum(t['complete'] for t in a['fixed_tuples']),fixed_total=2))
             for name in ['polyp','background']:
                 s=a['test'][name];rows.append(dict(case=case,arm=arm,metric='held_track_query',region=name,domain='all_fixed_queries',unit='px',**{k:v for k,v in s.items() if k!='reasons'}))
                 s=r['pairing'][name][arm];rows.append(dict(case=case,arm=arm,metric='held_track_query',region=name,domain='paired_predictable_queries',unit='px',**{k:v for k,v in s.items() if k!='reasons'}))
@@ -110,7 +114,7 @@ def report():
             for arm in ['R','S']:
                 if d['status']=='NOT_EVALUABLE':rows.append(dict(case=case,arm=arm,metric='HERO_directed_depth',status='NOT_EVALUABLE',reason=d.get('reason')));continue
                 for domain in ['all_common','both_nonoccluded']:
-                    s=d[domain];rows.append(dict(case=case,arm=arm,metric='HERO_directed_depth',region='polyp',domain=domain,unit='R_scale_normalized_unit',source_raw=d['source_raw'],target_raw=d['target_raw'],total=d['target_polyp_pixels'],predicted=s['pixels'],predicted_fraction=s['fraction_of_target'],median=s[arm]['median'],P95=s[arm]['P95'],status=d['status']))
+                    s=d[domain];rows.append(dict(case=case,arm=arm,metric='HERO_directed_depth',region='polyp',domain=domain,unit='R_scale_normalized_unit',source_raw=d['source_raw'],target_raw=d['target_raw'],total=d['target_polyp_pixels'],predicted=s['pixels'],predicted_fraction=s['fraction_of_target'],median=s[arm]['median'],P95=s[arm]['P95'],status='EVALUABLE' if s['pixels'] else 'NOT_EVALUABLE'))
         parts.append((case,r,depth))
     csv_write(REPORT/'PILOT_RESULTS.csv',rows);csv_write(REPORT/'CAMERA_COVERAGE.csv',camera_rows)
     if (BASE/'INFERENCE_STARTS.jsonl').exists():shutil.copy2(BASE/'INFERENCE_STARTS.jsonl',evidence/'INFERENCE_STARTS.jsonl')
@@ -128,6 +132,15 @@ def report():
             if d['status']!='EVALUABLE':content.append(f'| {case} | 不可评价 | 0 | NaN | NaN |');continue
             s=d['all_common'];content.append(f'| {case} | {d["source_raw"]}→{d["target_raw"]} | {s["pixels"]}/{d["target_polyp_pixels"]} | {fmt(s["R"]["median"])} / {fmt(s["R"]["P95"])} | {fmt(s["S"]["median"])} / {fmt(s["S"]["P95"])} |')
     content+=['','单位为R尺度归一单位（R中1单位=1mm）。S仅在求解后用共同训练3D点做一次正尺度/无反射Sim(3)；HERO前冻结。上表使用未按目标遮挡剔除的两臂共同投影域；双方非遮挡交集、每臂支持数、疑似遮挡数见CSV/JSON。正向投影使用最近层z-buffer，单点离散投影可能有空洞。没有GT，不能完全区分真遮挡、相机错位和深度错层；不可只用过滤后较小误差宣布更好。原深度不删，Mesh沿原V6定义生成，全部选定面源留存。','','## 执行范围与限制','','- 已完成：固定快照/划分/元组；两臂独立相机；预测query评价；原生HERO运行状态及原始曲面/共同域诊断；两张中文对照页。','- 未实施：配对训练扰动稳定性实验，状态NOT_EXECUTED。相同确定性重复及R两个初始化均不能代替它。','- 后续扩组：按冻结协议扩至5组10视频，不在本轮外推总体结论；绝对相机/曲面精度仍需独立可信GT与对齐。','- R的SciPy BA用原60次函数评价预算，终止/收敛状态在原solver日志和receipt保留；相机有限并不等价于优化已收敛。','', '## 入口与证据','','`/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python tools/ring_sift_comparison.py --stage {prepare,R,S,evaluate,hero,report}`，相机/推理阶段禁止静默覆盖已启动结果。大数据：`/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001`。共同输入/划分/相机/元组及原预测坐标见 `evidence/<完整case>/`；CSV为小表，原始输出按路径与SHA追溯。','','COLMAP官方依据：[数据库](https://colmap.github.io/database.html)、[FAQ](https://colmap.github.io/faq.html)、[教程](https://colmap.github.io/tutorial.html)。软件版本/完整参数、0.5像素、w2c/c2w、正深度、原frame/track身份检查见S/receipt.json。','']
+    interpretation=REPORT/'evidence/INTERPRETATION.md'
+    if interpretation.exists():content.insert(3,interpretation.read_text())
+    content+=['## 分量与共同样本核对','']
+    for case,r,depth in parts:
+        for arm in ['R','S']:
+            a=r['arms'][arm];content.append(f"- {case} / {arm}：注册并集 {a['registered_union_count']}/22；下游数值相机 {a['numeric_cameras']}/22；分量规模 {a['camera_receipt'].get('component_sizes',[a['numeric_cameras']])}。")
+        p=r['pairing']['rgb_pass_ids'];content.append(f"- 共同RGB通过：交集 {len(p['intersection'])}，仅R {len(p['R_only'])}，仅S {len(p['S_only'])}，均未通过 {len(p['neither'])}。")
+        content.append(f"- 生产历史HIST诊断（非B可比门控）：Q0 {sum(x['old_pass'] for x in r['historical_Q0_Q1'])}/22，Q1 {sum(x['new_pass'] for x in r['historical_Q0_Q1'])}/22。")
+    content+=['','本次所有重建都只有一个22相机分量；多分量的注册并集与最大分量下游评价分开记录，不能混合不同分量的坐标系。','', '## 执行核验','', '15项对照接口/预测/尺度/GPU隔离测试及7项既有V6策略测试通过。8条实际推理启动记录，8次成功，无额外推理；首次S因本进程残留CUDA上下文被误判忙，修正并验证无已启动S推理后继续，保留原忙回执。A每段75个源身份和9个相机输出哈希未变，科学源码与历史相机签名逐项一致，见READONLY_AND_KERNEL_AUDIT.json。']
     (REPORT/'TECHNICAL_REPORT.md').write_text('\n'.join(content))
     body='<!doctype html><html lang="zh"><meta charset="utf-8"><title>无GT：Ring+SIFT / SIFT 对照</title><style>body{max-width:1500px;margin:auto;font-family:sans-serif}img{width:100%}</style><h1>两视频小试：无GT，一致性/覆盖对照</h1><p><a href="TECHNICAL_REPORT.md">技术报告</a> · <a href="PILOT_RESULTS.csv">结果CSV</a> · <a href="COMPARISON_PROTOCOL.md">冻结协议</a></p>'
     for p in figs:body+=f'<h2>{html.escape(p.stem)}</h2><img src="figures/{p.name}">'
