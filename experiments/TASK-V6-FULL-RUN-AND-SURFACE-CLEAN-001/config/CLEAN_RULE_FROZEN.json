@@ -1,0 +1,17 @@
+{
+  "epoch": 1795675103.1264946,
+  "candidate": "C1: delete original faces with a confirmed two-sided native grid gap, OR stretched faces contradicted by at least two qualified same-video silhouettes; preserve CAD-occluded/conflicting two-view mask support",
+  "thresholds": {
+    "perspective_stretch": 4,
+    "native_depth_jump_mm": 0.5,
+    "silhouette_margin_work_px": 3,
+    "opposing_views": 2,
+    "support_veto_views": 2
+  },
+  "qualified_views": "current Q1 gate, exclude own Target; HERO Supports may participate so this is conditional, not independent geometry truth",
+  "density": "continuous rho diagnostic only, never automatic delete",
+  "depth_MAE_used": false,
+  "parameter_search_runs": 0,
+  "output": "unchanged original coordinates and subset of original faces; all indices preserved",
+  "automatic_mainline_adoption": false
+}

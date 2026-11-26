@@ -1,0 +1,554 @@
+[
+  {
+    "case": "GP_Ip_12.0mm_closed_R10_single_refY_005",
+    "raw_target": 459,
+    "raw_support": [
+      655,
+      344,
+      631
+    ],
+    "tag": "005_supported_ref00459",
+    "input_sha256": "38dff8470b58360c340abfe29f0e205af0439b126c01d53329cee0cd0ba71f37",
+    "run": "/home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001/HIST/GP_Ip_12.0mm_closed_R10_single_refY_005",
+    "reason": "拉伸附片：Raw侧视存在与主体分离的延伸片及稀疏连接；其真假待证",
+    "mesh_sha256": "48c6f037e21f090a7b9060ba8e737c7122b6729237cd368770e127d6d137dee0",
+    "native_sha256": "85c8a619f48c37224d9ab8bd804d468b6d5006d6ef43f8c14906440e441cb171",
+    "selection_basis": "existing RAW single-source visualization; no depth MAE used",
+    "clean_not_run_yet": false,
+    "historical": {
+      "deleted_faces": 0,
+      "deleted_face_area_mm2": 0.0,
+      "vertices_losing_all_incident_faces": 0,
+      "vertices_touching_deleted_faces": 0,
+      "coordinates_deleted": 0,
+      "topology": {
+        "faces": 24188,
+        "components": 5,
+        "boundary_edges": 842,
+        "boundary_components": 5,
+        "area_mm2": 114.98083403711607
+      }
+    },
+    "candidate": {
+      "deleted_faces": 73,
+      "deleted_face_area_mm2": 1.041047038400808,
+      "vertices_losing_all_incident_faces": 24,
+      "vertices_touching_deleted_faces": 65,
+      "coordinates_deleted": 0,
+      "topology": {
+        "faces": 24115,
+        "components": 6,
+        "boundary_edges": 865,
+        "boundary_components": 6,
+        "area_mm2": 113.93978699871528
+      }
+    },
+    "raw": {
+      "faces": 24188,
+      "components": 5,
+      "boundary_edges": 842,
+      "boundary_components": 5,
+      "area_mm2": 114.98083403711607
+    },
+    "density_diagnostic": {
+      "q80_over_q10": 3.782608695652174,
+      "low_q20_vertices": 2576,
+      "largest_source_contiguous_low_fraction": 0.5353260869565217,
+      "not_error_truth": true
+    },
+    "hist_state_counts": {
+      "TRUSTED": 22123,
+      "UNCERTAIN": 1153,
+      "REJECTED": 0,
+      "UNKNOWN": 912
+    },
+    "native_confirmed_gap_faces": 0,
+    "candidate_regions": 2,
+    "qualified_observers": [
+      {
+        "index": 1,
+        "raw_frame": 57,
+        "opposed_faces": 0,
+        "supported_faces": 23128,
+        "unknown_faces": 1060,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 3,
+        "raw_frame": 172,
+        "opposed_faces": 0,
+        "supported_faces": 22931,
+        "unknown_faces": 1257,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 7,
+        "raw_frame": 344,
+        "opposed_faces": 0,
+        "supported_faces": 23344,
+        "unknown_faces": 844,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 11,
+        "raw_frame": 516,
+        "opposed_faces": 0,
+        "supported_faces": 23572,
+        "unknown_faces": 616,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 12,
+        "raw_frame": 573,
+        "opposed_faces": 5,
+        "supported_faces": 23345,
+        "unknown_faces": 838,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 13,
+        "raw_frame": 611,
+        "opposed_faces": 54,
+        "supported_faces": 23169,
+        "unknown_faces": 965,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 14,
+        "raw_frame": 631,
+        "opposed_faces": 141,
+        "supported_faces": 22825,
+        "unknown_faces": 1222,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 15,
+        "raw_frame": 655,
+        "opposed_faces": 190,
+        "supported_faces": 22989,
+        "unknown_faces": 1009,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 16,
+        "raw_frame": 688,
+        "opposed_faces": 238,
+        "supported_faces": 23001,
+        "unknown_faces": 949,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 17,
+        "raw_frame": 745,
+        "opposed_faces": 186,
+        "supported_faces": 22688,
+        "unknown_faces": 1314,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 18,
+        "raw_frame": 785,
+        "opposed_faces": 123,
+        "supported_faces": 22371,
+        "unknown_faces": 1694,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 19,
+        "raw_frame": 803,
+        "opposed_faces": 45,
+        "supported_faces": 22107,
+        "unknown_faces": 2036,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 20,
+        "raw_frame": 834,
+        "opposed_faces": 125,
+        "supported_faces": 21747,
+        "unknown_faces": 2316,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 21,
+        "raw_frame": 860,
+        "opposed_faces": 153,
+        "supported_faces": 21672,
+        "unknown_faces": 2363,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      }
+    ],
+    "reason_bits": {
+      "1": "perspective stretch>4 or native local jump>.5 mm",
+      "2": "at least2 outside original silhouettes, margin>3px, all4 samples",
+      "4": "two-sided native grid gap",
+      "8": "2 mask supports: retained conflict",
+      "16": "CAD occluded: retained unknown",
+      "32": "derived face deleted"
+    },
+    "original_face_subset": true,
+    "original_vertex_coordinates_bitwise": true,
+    "depth_MAE_used": false,
+    "working_shape": [
+      360,
+      640
+    ],
+    "native_shape": [
+      352,
+      640
+    ],
+    "mapping": "OpenCV linear resize: native y=(working y+.5)*352/360-.5; original row-major valid vertices + original .75mm face test reproduced exactly; jump/gap uses nearest native pixel; bilinear lower/upper/weights saved",
+    "raw_recovery": "original PLY+native referenced by SHA; ORIGINAL_MAPPING contains full original V/F, ids and pixel mapping",
+    "source_artifacts": {
+      "mesh": "/home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001/HIST/GP_Ip_12.0mm_closed_R10_single_refY_005/meshes/005_supported_ref00459_Polyp.ply",
+      "mesh_sha256": "48c6f037e21f090a7b9060ba8e737c7122b6729237cd368770e127d6d137dee0",
+      "depth": "/home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001/HIST/GP_Ip_12.0mm_closed_R10_single_refY_005/raw/005_supported_ref00459.npz",
+      "depth_sha256": "85c8a619f48c37224d9ab8bd804d468b6d5006d6ef43f8c14906440e441cb171",
+      "camera_sha256": "4c8db07d025662d9a5fab42352081e67924cca80bbf7b6f3b4a17fa9a8b4bd42"
+    },
+    "candidate_status": "DIAGNOSTIC_NOT_ADOPTED",
+    "potential_structure_damage": "cannot certify anatomy or other-object occlusion; any removed area may include real thin structure; inspect single-source figure",
+    "rule_sha256": "607a7339aef72e76e49019aed2a2240b7dc79c34c6873cccebc1de2a801eb62f",
+    "execution_source_sha256": "66fdbf81ea3be915719c28bbbb57df403b6b995e8cf931bbdecf5be4c2008a07"
+  },
+  {
+    "case": "GP_Ip_8.8mm_closed_R5_single_refY_005",
+    "raw_target": 458,
+    "raw_support": [
+      629,
+      686,
+      137
+    ],
+    "tag": "005_supported_ref00458",
+    "input_sha256": "acbe35d7cd6ba8b2d46a7f07f06848ef35958adc387bb8e09cf7acd3309552d4",
+    "run": "/home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001/HIST/GP_Ip_8.8mm_closed_R5_single_refY_005",
+    "reason": "细柄/边界敏感：Raw弯曲侧壁、薄边和下端收窄；删除易损伤真实结构",
+    "mesh_sha256": "fcf1207496578b13d2ce25afa1b6f6f465f1e59e658ed403a92bd7ee1a6fbebc",
+    "native_sha256": "320ea8221273930e1addd883fff2dddbf5086dceb5ce1a6fa9d0e0b539b809d8",
+    "selection_basis": "existing RAW single-source visualization; no depth MAE used",
+    "clean_not_run_yet": false,
+    "historical": {
+      "deleted_faces": 0,
+      "deleted_face_area_mm2": 0.0,
+      "vertices_losing_all_incident_faces": 0,
+      "vertices_touching_deleted_faces": 0,
+      "coordinates_deleted": 0,
+      "topology": {
+        "faces": 14734,
+        "components": 3,
+        "boundary_edges": 612,
+        "boundary_components": 3,
+        "area_mm2": 74.04933288859614
+      }
+    },
+    "candidate": {
+      "deleted_faces": 0,
+      "deleted_face_area_mm2": 0.0,
+      "vertices_losing_all_incident_faces": 0,
+      "vertices_touching_deleted_faces": 0,
+      "coordinates_deleted": 0,
+      "topology": {
+        "faces": 14734,
+        "components": 3,
+        "boundary_edges": 612,
+        "boundary_components": 3,
+        "area_mm2": 74.04933288859614
+      }
+    },
+    "raw": {
+      "faces": 14734,
+      "components": 3,
+      "boundary_edges": 612,
+      "boundary_components": 3,
+      "area_mm2": 74.04933288859614
+    },
+    "density_diagnostic": {
+      "q80_over_q10": 3.4782608695652173,
+      "low_q20_vertices": 1574,
+      "largest_source_contiguous_low_fraction": 0.8945362134688691,
+      "not_error_truth": true
+    },
+    "hist_state_counts": {
+      "TRUSTED": 13182,
+      "UNCERTAIN": 637,
+      "REJECTED": 0,
+      "UNKNOWN": 915
+    },
+    "native_confirmed_gap_faces": 0,
+    "candidate_regions": 0,
+    "qualified_observers": [
+      {
+        "index": 5,
+        "raw_frame": 137,
+        "opposed_faces": 18,
+        "supported_faces": 13499,
+        "unknown_faces": 1217,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 6,
+        "raw_frame": 172,
+        "opposed_faces": 2,
+        "supported_faces": 13694,
+        "unknown_faces": 1038,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 7,
+        "raw_frame": 229,
+        "opposed_faces": 0,
+        "supported_faces": 13816,
+        "unknown_faces": 918,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 8,
+        "raw_frame": 286,
+        "opposed_faces": 0,
+        "supported_faces": 14078,
+        "unknown_faces": 656,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 9,
+        "raw_frame": 343,
+        "opposed_faces": 0,
+        "supported_faces": 14019,
+        "unknown_faces": 715,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 13,
+        "raw_frame": 515,
+        "opposed_faces": 25,
+        "supported_faces": 13815,
+        "unknown_faces": 894,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 16,
+        "raw_frame": 629,
+        "opposed_faces": 37,
+        "supported_faces": 13579,
+        "unknown_faces": 1118,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 17,
+        "raw_frame": 686,
+        "opposed_faces": 25,
+        "supported_faces": 13574,
+        "unknown_faces": 1135,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 21,
+        "raw_frame": 858,
+        "opposed_faces": 25,
+        "supported_faces": 13247,
+        "unknown_faces": 1462,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      }
+    ],
+    "reason_bits": {
+      "1": "perspective stretch>4 or native local jump>.5 mm",
+      "2": "at least2 outside original silhouettes, margin>3px, all4 samples",
+      "4": "two-sided native grid gap",
+      "8": "2 mask supports: retained conflict",
+      "16": "CAD occluded: retained unknown",
+      "32": "derived face deleted"
+    },
+    "original_face_subset": true,
+    "original_vertex_coordinates_bitwise": true,
+    "depth_MAE_used": false,
+    "working_shape": [
+      360,
+      640
+    ],
+    "native_shape": [
+      352,
+      640
+    ],
+    "mapping": "OpenCV linear resize: native y=(working y+.5)*352/360-.5; original row-major valid vertices + original .75mm face test reproduced exactly; jump/gap uses nearest native pixel; bilinear lower/upper/weights saved",
+    "raw_recovery": "original PLY+native referenced by SHA; ORIGINAL_MAPPING contains full original V/F, ids and pixel mapping",
+    "source_artifacts": {
+      "mesh": "/home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001/HIST/GP_Ip_8.8mm_closed_R5_single_refY_005/meshes/005_supported_ref00458_Polyp.ply",
+      "mesh_sha256": "fcf1207496578b13d2ce25afa1b6f6f465f1e59e658ed403a92bd7ee1a6fbebc",
+      "depth": "/home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001/HIST/GP_Ip_8.8mm_closed_R5_single_refY_005/raw/005_supported_ref00458.npz",
+      "depth_sha256": "320ea8221273930e1addd883fff2dddbf5086dceb5ce1a6fa9d0e0b539b809d8",
+      "camera_sha256": "d030adb37b79727b2535cf5aae2819fe7fa352d3a579c288700d46380270a2f2"
+    },
+    "candidate_status": "DIAGNOSTIC_NOT_ADOPTED",
+    "potential_structure_damage": "cannot certify anatomy or other-object occlusion; any removed area may include real thin structure; inspect single-source figure",
+    "rule_sha256": "607a7339aef72e76e49019aed2a2240b7dc79c34c6873cccebc1de2a801eb62f",
+    "execution_source_sha256": "66fdbf81ea3be915719c28bbbb57df403b6b995e8cf931bbdecf5be4c2008a07"
+  },
+  {
+    "case": "GP_IIa_14.0mm_closed_R10_single_refY_004",
+    "raw_target": 570,
+    "raw_support": [
+      52,
+      71,
+      0
+    ],
+    "tag": "005_supported_ref00570",
+    "input_sha256": "037bc215573ec36a13ec0dd81653c949e840b71ef644c292417112e91e3cd242",
+    "run": "/home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001/HIST/GP_IIa_14.0mm_closed_R10_single_refY_004",
+    "reason": "相对平整对照：主体呈平整浅面；原Mask与Ring遮挡产生分层边界，不预设为错误",
+    "mesh_sha256": "f12f6eeca6abfb835d44ad18eb71a42246bf38b61c3b799d2668984cb6d73778",
+    "native_sha256": "1ee9a273d53edb16ed1712f91ab023ba60da4ddb4be5d31e7f00f8aa138142e9",
+    "selection_basis": "existing RAW single-source visualization; no depth MAE used",
+    "clean_not_run_yet": false,
+    "historical": {
+      "deleted_faces": 0,
+      "deleted_face_area_mm2": 0.0,
+      "vertices_losing_all_incident_faces": 0,
+      "vertices_touching_deleted_faces": 0,
+      "coordinates_deleted": 0,
+      "topology": {
+        "faces": 17750,
+        "components": 2,
+        "boundary_edges": 732,
+        "boundary_components": 2,
+        "area_mm2": 80.1252188279863
+      }
+    },
+    "candidate": {
+      "deleted_faces": 0,
+      "deleted_face_area_mm2": 0.0,
+      "vertices_losing_all_incident_faces": 0,
+      "vertices_touching_deleted_faces": 0,
+      "coordinates_deleted": 0,
+      "topology": {
+        "faces": 17750,
+        "components": 2,
+        "boundary_edges": 732,
+        "boundary_components": 2,
+        "area_mm2": 80.1252188279863
+      }
+    },
+    "raw": {
+      "faces": 17750,
+      "components": 2,
+      "boundary_edges": 732,
+      "boundary_components": 2,
+      "area_mm2": 80.1252188279863
+    },
+    "density_diagnostic": {
+      "q80_over_q10": 1.6578947368421053,
+      "low_q20_vertices": 1901,
+      "largest_source_contiguous_low_fraction": 0.8516570226196739,
+      "not_error_truth": true
+    },
+    "hist_state_counts": {
+      "TRUSTED": 16300,
+      "UNCERTAIN": 1384,
+      "REJECTED": 0,
+      "UNKNOWN": 66
+    },
+    "native_confirmed_gap_faces": 0,
+    "candidate_regions": 0,
+    "qualified_observers": [
+      {
+        "index": 0,
+        "raw_frame": 0,
+        "opposed_faces": 129,
+        "supported_faces": 16653,
+        "unknown_faces": 968,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 1,
+        "raw_frame": 52,
+        "opposed_faces": 89,
+        "supported_faces": 16839,
+        "unknown_faces": 822,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 2,
+        "raw_frame": 71,
+        "opposed_faces": 96,
+        "supported_faces": 16760,
+        "unknown_faces": 894,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 9,
+        "raw_frame": 499,
+        "opposed_faces": 0,
+        "supported_faces": 17328,
+        "unknown_faces": 422,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      },
+      {
+        "index": 14,
+        "raw_frame": 713,
+        "opposed_faces": 67,
+        "supported_faces": 17318,
+        "unknown_faces": 365,
+        "camera_admission": "Q1; conditional, not independent truth",
+        "GT_used": false
+      }
+    ],
+    "reason_bits": {
+      "1": "perspective stretch>4 or native local jump>.5 mm",
+      "2": "at least2 outside original silhouettes, margin>3px, all4 samples",
+      "4": "two-sided native grid gap",
+      "8": "2 mask supports: retained conflict",
+      "16": "CAD occluded: retained unknown",
+      "32": "derived face deleted"
+    },
+    "original_face_subset": true,
+    "original_vertex_coordinates_bitwise": true,
+    "depth_MAE_used": false,
+    "working_shape": [
+      360,
+      640
+    ],
+    "native_shape": [
+      352,
+      640
+    ],
+    "mapping": "OpenCV linear resize: native y=(working y+.5)*352/360-.5; original row-major valid vertices + original .75mm face test reproduced exactly; jump/gap uses nearest native pixel; bilinear lower/upper/weights saved",
+    "raw_recovery": "original PLY+native referenced by SHA; ORIGINAL_MAPPING contains full original V/F, ids and pixel mapping",
+    "source_artifacts": {
+      "mesh": "/home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001/HIST/GP_IIa_14.0mm_closed_R10_single_refY_004/meshes/005_supported_ref00570_Polyp.ply",
+      "mesh_sha256": "f12f6eeca6abfb835d44ad18eb71a42246bf38b61c3b799d2668984cb6d73778",
+      "depth": "/home/liu/ring_first_3d_workspace/runs/v6_raw_to_hero_001/HIST/GP_IIa_14.0mm_closed_R10_single_refY_004/raw/005_supported_ref00570.npz",
+      "depth_sha256": "1ee9a273d53edb16ed1712f91ab023ba60da4ddb4be5d31e7f00f8aa138142e9",
+      "camera_sha256": "c16499a91cb3e5af77ec61049c4d65be054a8028b663dab37a4528e08d25f098"
+    },
+    "candidate_status": "DIAGNOSTIC_NOT_ADOPTED",
+    "potential_structure_damage": "cannot certify anatomy or other-object occlusion; any removed area may include real thin structure; inspect single-source figure",
+    "rule_sha256": "607a7339aef72e76e49019aed2a2240b7dc79c34c6873cccebc1de2a801eb62f",
+    "execution_source_sha256": "66fdbf81ea3be915719c28bbbb57df403b6b995e8cf931bbdecf5be4c2008a07"
+  }
+]

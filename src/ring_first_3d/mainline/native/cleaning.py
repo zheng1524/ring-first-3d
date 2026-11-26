@@ -17,10 +17,12 @@ from . import _clean_kernels
 from .geometry import unproject
 from .io import save_json, sha256
 
-def classify_native(output, ring_cad):
+def classify_native(output, ring_cad, *, mapped_input=None):
     import open3d as o3d
-    root=Path(output);raw=dict(np.load(root/'RAW_NATIVE_MESH.npz'))
-    native=dict(np.load(root/'HERO_native.npz'));img=dict(np.load(root/'NATIVE_RGB_LABELS.npz'))
+    root=Path(output)
+    raw=mapped_input['raw'] if mapped_input is not None else dict(np.load(root/'RAW_NATIVE_MESH.npz'))
+    native=mapped_input['native'] if mapped_input is not None else dict(np.load(root/'HERO_native.npz'))
+    img=mapped_input['image_native'] if mapped_input is not None else dict(np.load(root/'NATIVE_RGB_LABELS.npz'))
     z=native['depth_mm'];K=native['K_index_native'];T=native['reference_pose_mm'];lab=img['labels'];rgb=img['RGB']
     protocol=json.loads(Path(__file__).with_name('cleaning_protocol.json').read_text());t=protocol['thresholds']
     cad=dict(np.load(ring_cad))
@@ -35,10 +37,16 @@ def classify_native(output, ring_cad):
         f=getattr(_clean_kernels,name);ns[name]=types.FunctionType(f.__code__,ns,name,f.__defaults__)
     # Historical classifier reads the Raw PLY as float32, then restores exact
     # generated float64 coordinates in retained exports. Preserve that behaviour.
-    m=trimesh.load(root/'Raw_open_mesh.ply',process=False);V=np.asarray(m.vertices);F=np.asarray(m.faces)
+    m=trimesh.load(mapped_input['original_mesh_path'] if mapped_input is not None else root/'Raw_open_mesh.ply',process=False);V=np.asarray(m.vertices);F=np.asarray(m.faces)
     if not np.array_equal(F,raw['F']):raise ValueError('Raw face ordering changed')
     if np.max(abs(V-raw['V']))>=1e-5:raise ValueError('Raw vertex identity mismatch')
-    uv=raw['uv'];s=dict(P=V,F=F,uv=uv,pack=dict(depth_mm=z,labels=lab,K=K,pose=T),T=T,K=K,Kn=K,nativez=z[uv[:,1],uv[:,0]],boundary_distance_native=distance_transform_edt(np.pad(lab==1,1))[1:-1,1:-1][uv[:,1],uv[:,0]],mask_ok=lab[uv[:,1],uv[:,0]]==1)
+    uv=raw['native_uv'] if mapped_input is not None else raw['uv'];s=dict(P=V,F=F,uv=uv,pack=dict(depth_mm=z,labels=lab,K=K,pose=T),T=T,K=K,Kn=K,nativez=z[uv[:,1],uv[:,0]],boundary_distance_native=distance_transform_edt(np.pad(lab==1,1))[1:-1,1:-1][uv[:,1],uv[:,0]],mask_ok=lab[uv[:,1],uv[:,0]]==1)
+    if mapped_input is not None:
+        # V6 builds the archived Mesh at 360 rows after linear native-depth resize.
+        # Geometry/density uses that actual working lattice; native jump/gap evidence
+        # uses the recorded 352-row nearest-pixel correspondence, never a renamed pack.
+        work=mapped_input['working'];nuv=raw['native_uv'];uv=raw['uv']
+        s=dict(P=V,F=F,uv=uv,pack=dict(depth_mm=work['depth_mm'],labels=work['labels'],K=work['K'],pose=T),T=T,K=work['K'],Kn=K,nativez=z[nuv[:,1],nuv[:,0]],boundary_distance_native=distance_transform_edt(np.pad(lab==1,1))[1:-1,1:-1][nuv[:,1],nuv[:,0]],mask_ok=lab[nuv[:,1],nuv[:,0]]==1)
     f,state,reason,top=ns['analyze'](s,ring,t)
     Pn,Fn,uvn,_=ns['native_grid'](z,lab,K,T)
     gaps,grows=ns['gap_edges'](z,lab,K,T,Pn,Fn,uvn,t)
@@ -49,9 +57,10 @@ def classify_native(output, ring_cad):
     rej=confirmed&shape&((f['boundary_distance_native_px']<=t['edge_native_px'])|material)&f['native_mask_supported']&(~f['CAD_occluded']|material)&(f['native_depth_jump_mm']>t['native_depth_jump_mm'])&(f['perspective_stretch']>t['stretch_perspective'])
     state[rej]=2;reason[confirmed]|=1<<13;reason[rej]|=1<<14
     np.savez_compressed(root/'FACE_EVIDENCE.npz',state=state,reason_bits=reason,original_face_id=raw['original_face_id'],V=raw['V'],F=F,native_pixel_id=pix,**f)
-    colors=np.c_[rgb[uv[:,1],uv[:,0]],np.full(len(uv),255)]
+    color_image=mapped_input['working']['RGB'] if mapped_input is not None else rgb
+    colors=np.c_[color_image[raw['uv'][:,1],raw['uv'][:,0]],np.full(len(raw['uv']),255)]
     for name,sel in [('Trusted_visible_mesh',state==0),('Conservative_cleaned_mesh',state!=2),('Uncertain',state==1),('Rejected',state==2),('Unknown',state==3)]:
         if sel.any():trimesh.Trimesh(raw['V'],F[sel],vertex_colors=colors,process=False).export(root/(name+'.ply'))
-    rec=dict(protocol_sha256=sha256(Path(__file__).with_name('cleaning_protocol.json')),raw_preserved=True,retained_vertices_unchanged=True,counts={name:int((state==i).sum())for i,name in enumerate(['TRUSTED','UNCERTAIN','REJECTED','UNKNOWN'])},confirmed_gap_edges=len(gaps),UNKNOWN_is_not_error=True,conservative_retains_unknown=True)
+    rec=dict(protocol_sha256=sha256(Path(__file__).with_name('cleaning_protocol.json')),raw_preserved=True,retained_vertices_unchanged=True,counts={name:int((state==i).sum())for i,name in enumerate(['TRUSTED','UNCERTAIN','REJECTED','UNKNOWN'])},confirmed_gap_edges=len(gaps),UNKNOWN_is_not_error=True,conservative_retains_unknown=True,input_contract='V6 archived 360-row original mesh + explicit 352 native mapping' if mapped_input is not None else 'native mesh')
     save_json(root/'CLEANING.json',rec)
     return rec
