@@ -19,3 +19,16 @@ class FullRunTests(unittest.TestCase):
  def test_atomic_json_replaces_without_tmp(self):
   with tempfile.TemporaryDirectory() as td:
    p=Path(td)/'state.json';f.atomic_json(p,dict(status='RUNNING'));f.atomic_json(p,dict(status='DONE'));self.assertEqual(json.loads(p.read_text())['status'],'DONE');self.assertEqual(len(list(Path(td).iterdir())),1)
+
+ def test_cli_runner_creates_new_state_before_stage(self):
+  from unittest.mock import patch
+  with tempfile.TemporaryDirectory() as td:
+   root=Path(td);manifest=root/'manifest.json';manifest.write_text(json.dumps(dict(videos=[dict(case='fresh',group='g',status='READY')],groups=['g'])))
+   cfg=root/'config.json';cfg.write_text(json.dumps(dict(run_root=str(root),manifest=str(manifest),minimum_free_bytes=0)))
+   def child(cmd,**kwargs):
+    self.assertEqual(cmd[2],'ring_first_3d.v6_raw.full_run')
+    state=f.read(root/'states/fresh.json');self.assertEqual(state['status'],'PREPARE_RUNNING')
+    return 3
+   with patch.object(f.subprocess,'call',side_effect=child):f.run(cfg)
+   self.assertEqual(f.read(root/'states/fresh.json')['status'],'PREPARE_FAILED')
+   self.assertEqual(f.read(root/'PROGRESS.json')['status'],'COMPLETE_WITH_FAILURES')

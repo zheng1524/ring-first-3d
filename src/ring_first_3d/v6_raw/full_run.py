@@ -206,6 +206,7 @@ def run(config):
      if rc==0:s.update(read(root/'states'/(case+'.reuse.json')));s['status']='REUSE_VERIFIED'
      else:s.update(origin='NEW',reuse_rejection_log=str(log.name),status='PENDING')
      atomic_json(sp,s)
+    atomic_json(sp,s)
     stages=['render'] if s.get('origin')=='REUSED' else ['prepare','camera','schedule','hero','render']
     for stage in stages:
      if (root/'PAUSE_REQUESTED').exists():stop='PAUSED';break
