@@ -1,0 +1,77 @@
+TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002
+修订版：采用用户已认可的TRUSTED-only clean，取消IIa/Is限定。若旧002已执行，保留原冻结结果，新对照另记批次，不改写历史。
+仓库：https://github.com/zheng1524/ring-first-3d
+
+目标
+同轮实际完成：①修正受控配准的Ring漂移；②从全量HIST已完成双视频输出的组中选约5组实测；③比较Raw/Clean的几何变化，以及Clean辅助选点对配准变换的影响；④交付中文可视化。允许Ip/Is/IIa，不以虚拟全部通过为实测前提。每视频仅求一个刚体T，主体拟合留接口，不在本任务启动。
+
+一、全量任务保护
+独立分支/worktree及输出目录，原始数据、现有HIST/Clean和全量运行目录只读。不得暂停、重启、改配置、操作锁/状态/日志、retry或清理全量资产；不调用原调度/打包入口检查缓存。不得重跑相机、HERO或分割模型，不使用全量GPU。
+本任务单进程、默认CPU 1线程、低CPU/I/O优先级，包含数值库/OpenCV/渲染器内部线程。允许仅对选中来源补齐冻结clean，输出至独立目录，不接入全量队列。按需读取选中资产，逐组处理，不复制全量RAW/模型或多套网格；先为全量后续输出保留磁盘预算，再限制本任务空间。发生资源争用时由本任务让出，不干预全量进展。
+
+二、选组、资产和Clean复用
+1. 从实际执行快照的FULL_RUN.json定位清单，轻量只读检查：
+   /home/liu/ring_first_3d_workspace/runs/v6_full_run_001/
+   PROGRESS.json、GROUP_RESULTS.csv、VIDEO_RESULTS.csv、states/<case>.json。
+   按DATASET_MANIFEST.group配对。两视频均须DONE、native_success>0、renderable>0，CAMERA_COMPLETE→PLAN_FROZEN→HERO_COMPLETE及消费文件身份可核验。DONE但零输出不合格。视频编号不限004/005，内部用A/B，参考侧按完整case ID排序固定；三视频组也按预先规则选两段，不按效果选。
+2. 配准前选约5组：兼顾Ip/Is/IIa、R5/R10与尺寸，同等条件优先已有可复用Clean的组，再按group ID排序。不得看配准误差或效果换组；选后失败也保留。不足5组先跑全部合格组，结束前可再读一次进度补齐，仍不足则按实际数量交付，不等待或加速全量队列。
+3. 资产位置读state.run_path；NEW及合法REUSED的同版本HIST均可，不用BASELINE/GRAPH/H004。冻结选中资产SHA而非冻结全量进度。记录相机primary/K/c2w、ledger真实RGB/Mask、视频内tracks/held、Ring观测、门控、计划、原生raw/<tag>.npz与meshes/<tag>_Polyp.ply。选中资产读取前后须一致；目录迁移按登记/SHA追溯。已删除的*_surface.npz或*_points.ply是可再生缓存，不能据此判定HERO缺失或触发上游重跑。
+4. 唯一Clean版本为TASK-V6-RESTORE-TRUSTED-ONLY-CLEAN-001：017分类＋冻结gap＋018的F[state==0]。已完成4个单来源：Ip12/R5/004 RAW301；Ip10.3/R5/005 RAW579；IIa22/R10/005 RAW640；Ip4/R10/004 RAW68。分别在：
+   /home/liu/ring_first_3d_workspace/runs/v6_trusted_clean_restore_001/source1..4
+   读取TRUSTED_ONLY、FACE_EVIDENCE、ORIGINAL_MAPPING、COMPLETE及SOURCE_MANIFEST。case/Target/Support tuple、Raw/native/camera/CAD和方法身份匹配才复用；不能把4个单来源当成4个视频或双视频组已全部清完。
+5. 入选组缺少的Clean，只写薄manifest/output适配层，复用mapped_input_for_source、冻结classify_native及trusted_subset(state==0)，不改分类器/参数/Mask。不要调用硬编码四源的旧run/freeze，不调用旧C1的surface_clean.run_one；state!=2、state in {0,1}均不是本轮Clean。已有结果不重算，逐源记复用/新算/缺失；不推广全量clean。
+6. Clean保留全部原V，仅改变F。所有采样/配准支持必须使用保留F及original_face_id，禁止直接将mesh.vertices当Clean点云。保存原资产引用＋面ID/标签＋T，避免复制大网格。适配器核对毫米c2w、轴向Z、352/360像素与半像素K、真实Ring规格；两视频同号track ID不代表同一物理点。
+
+三、配准方法：延续原修正目标
+固定A，T=T_(B→A)，尺度1；相机C_B、地标、HERO网格同步左乘T，K/原生深度值不改。禁止ICP、逐帧优化、主体形变、补面/融合，除冻结Clean外不加删面。
+主实验共用帧池、自动跨视频匹配、视频内独立DLT、整轨迹FIT/HOLDOUT及评价域：
+M0：不配准。
+M1：Ring中心/法向对齐，yaw未辨识。
+M2：保留虚拟001原实现。
+M3：硬保持Ring中心/法向，用原RGB目标仅估yaw；实测作为消融，不默认Ring精确。
+M4：主候选，保留原3D RGB残差、逐坐标soft_l1及sigma_RGB，只修正Ring项：
+  E(T)=(1/N) sum_j sum_k rho((r_RGB[j,k]/sigma_RGB)^2)
+       +lambda*r_Ring^T inv(Sigma_Ring) r_Ring
+归一化放在损失外，不将RGB先除sqrt(N)，不把Ring继续交给全局soft_l1。r_Ring为中心3维差(mm)＋法向切平面2维角差(rad)，不约束yaw；独立二次项lambda默认1。不确定度估计与宽保护界限在求解前冻结，先验和界限共用同一不确定度。精确Ring锁中心3＋法向2自由度，保留yaw，退化为M3。
+Sigma_Ring由两侧FIT Ring观测/已有候选及小预算留一帧稳定性传播合成。固定A只是坐标规范，不能把零中心误当零误差；重复性不能排除系统偏差。法向正负/候选分支仅用FIT处理；无法估计或Ring/RGB冲突时记INCONCLUSIVE_RING/CONFLICT，不无限放宽。各组同一规则，不更换RGB目标或重做BA。数值收敛与质量状态分开。
+
+四、受控回归：实际执行
+复用虚拟001的原场景、纹理、RGB、独立网格、轨迹、分区和评价域，执行V0/V1及V2原五种子20261117—20261121；旧种子称回归集，不称盲测。保持原0.5°/0.2mm位姿门槛，不按GT选分支或调参数。
+另加V3：复用各V2的相机/轨迹/曲面，独立随机流仅扰005 Ring观测参数，中心每轴sigma=0.1mm、旋转向量每轴sigma=0.3°；物理CAD、RGB、深度、GT不变。这是Ring参数误差，非分割噪声模拟。M4可知预设噪声模型，不可读取实际扰动值/种子恢复真值。
+预测冻结后评旋转/平移、Ring漂移、双向自动留出、留出视角、固定表面距离/覆盖及全部分母。补正确全局D^-1作用于同批有噪相机的评价参考；其V2/V3值应一致。它只供评价，不进入求解，也不是可达误差下界。分别回答Ring漂移是否消除、T是否正确、逐帧残差剩多少；保留所有负结果。本节不引入真实Clean选点消融。
+
+五、实测与评价
+每组实际执行自动跨视频RGB关联、独立DLT、M0—M4及同步几何变换，保留Mask/Ring/相机/HERO原有噪声，不用理想值替换。
+按完整连通轨迹留出20%，相关观测不能拆进两边；新配准初始化、yaw搜索、外点筛选、不确定度与调参只用FIT。保留原BA held标志。训练至少6条有效双视频轨迹；主留出结论至少8条独立轨迹、两侧各覆盖至少2帧，否则证据不足；空间支持/退化另报。
+主评价为双向跨视频留出：各方向3D点仅由源视频观测和冻结相机构建。A点投B使用(T C_B)^(-1)X_A，B点投A使用C_A^(-1)T X_B，再用对应K投影；C是c2w。不能用双侧共同拟合的留出点替代，不能把同视频点/相机同步变换后的投影不变当改进。
+固定同一未筛留出全集，报双向MAE/P95、有效比例、负深度/越界/失效数，分息肉/Ring/背景；3/6px只作沿用诊断门槛，同时报相对M1/M2变化。变换后相机投影共同固定CAD，评原Ring留出残差；不把相机和各自CAD一同变换的不变投影当改善。
+做小预算、预先固定的FIT留一帧敏感性检查，报T离散与地标存活变化。各组用简表串联：Mask/Ring及相机门控→匹配/轨迹/DLT数量、视差与残差→配准训练/留出/Ring变化→HERO错层/缺面。表面距离不进入优化。结论为支持改善/退化/证据不足，不能从一个残差唯一归因到某个上游噪声环节；这不是全链独立三维GT验证。
+
+六、Raw/Clean成对实验
+A. 固定T的几何对照（必做）
+M0—M4各求一次T，同一T分别作用于同一来源全集的Raw/Clean；共同保留面的坐标须一致。只换Mesh时求解输入未变，T不应变化，若变化先查隐含输入。比较错层、排除区域、边界退缩、碎裂、保留面积和覆盖，不能把删面后的均值下降称作位姿精度提升。Clean在配准前冻结，不随T重分类。
+
+B. Clean辅助选点（仅扩展M4，必做）
+保留T_base=M4全部RGB；另算T_raw_support及T_clean_support。前者要求息肉FIT轨迹有Raw面支持，后者在同域增加TRUSTED要求。base→raw_support量化支持范围筛选；raw_support→clean_support才是Clean标签增量。两支只改FIT轨迹集合，保留点的DLT坐标/三角化观测、Ring先验、优化配置均相同；不以HERO深度替换地标，不加表面距离项。背景/Ring轨迹原样保留。
+在读Clean状态前固定支持规则：按真实Target及ORIGINAL_MAPPING中working_uv/uv与原F做二维三角包含查询；每条息肉FIT轨迹每侧按真实帧ID选首个有可核验Raw面映射的观测。两侧原面存在可入raw_support，两侧均state==0才入clean_support；DLT仍须每侧至少两视图。其他观测支持数另报，不因Clean状态改选证据观测；同Target多source按冻结计划选一个。
+无对应Target/映射或边界面状态冲突记UNKNOWN，不扩大邻域、不用三维最近面/待估计T找支持，不修改Mask或重跑SIFT。两支共用完整、未经Clean筛选的HOLDOUT，不据留出选择支持规则。筛后支持不足/退化或无轨迹发生改变都如实报，不放宽门槛制造收益。
+Clean直接依赖单源观测/CAD，并继承HERO的Target＋3 Support依赖；留出独立性限定于新跨视频对应。若另设整帧HOLDOUT，参与选点来源的Target和全部Support须在FIT，否则跳过该支，不为此重跑HERO。
+
+C. 共同分母及交叉展示
+冻结同一Raw source/tag全集和原面采样，联合报告Raw面积、Clean保留/排除面积、缺失/空子集、共同原面上的条件指标、完整双向留出误差；缺Clean文件不能当空子集。M4支持筛选增加2×2图：行T_raw_support/T_clean_support，列Raw/Clean。固定视角、Raw＋CAD完整范围、色标和切面，区分T变化与显示几何变化，不用各支各自剩下的区域比较精度。
+
+七、可视化与完成标准
+独立中文HTML索引＋PNG，每个入选组包括失败组均有页：真实case/视频、方法、Raw/Clean source数、FIT/held分母及状态。至少含同相机六视图、两个固定平面的真实三角面截面、真实RGB匹配/双向held投影、逐阶段残差及支持度。Raw保留所有离群片；Clean显示真实子集和排除区，不补孔。近景与完整范围分开，标裁切数量；代表帧/切面按预设时序/几何规则选，最差实例另标。
+交付可复现入口/冻结配置、选组及Raw/Clean来源清单、逐组T与支持筛选去留原因、指标/失败、中文图集和简短报告；执行代码与外核SHA在运行前记录，代码/小证据上传独立分支，大文件引用路径＋SHA。不得改全量分支或快照。
+完成是受控和实测都真实运行、Raw/Clean两种作用分清、正负结果完整且保护全量进展，不要求强行PASS。说明哪些组支持把T交给后续主体接口，哪些拒绝或待研究；不启动主体拟合。
+
+版本锚点（实际身份以逐阶段回执为准）
+虚拟001：537c20701f6a7a8f2de150a87357195e0d5118a0
+  experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/
+HIST：115e41fe5e57deff2898258d2ee836c83d686982
+全量交接：3b7b767a5ba51277584605304f462993f0396d14
+全量执行：da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a
+Clean交付：2d34cc866cd175d4d770a3e09d07b31a5c3662d7
+Clean分类执行：e30ac479e6b555cbe906bd516d09c4849e4b8cbd
+  experiments/TASK-V6-RESTORE-TRUSTED-ONLY-CLEAN-001/METHOD.md、SOURCE_MANIFEST.csv、config/SOURCES_FROZEN.json
+Clean交付HEAD含图示修订，不冒称重新分类。实际可选组数、路径与全量进度由Codex只读本地实时核实。
