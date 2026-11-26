@@ -19,4 +19,12 @@ class Contracts(unittest.TestCase):
  def test_held_projection_is_cross_video(self):
   from ring_first_3d.contracts.coordinates import project
   K=np.eye(3);A=np.array([[1.,0.,4.]]);C=np.eye(4);D=se3([0,0,.4,.5,0,0]);local=transform(A,D);before=project(local,K,C)[0];after=project(transform(local,np.linalg.inv(D)),K,C)[0];np.testing.assert_allclose(after,project(A,K,C)[0],atol=1e-12);self.assertGreater(np.linalg.norm(before-after),.1)
+ def test_empty_held_both_directions(self):
+  from metrics2 import bidirectional
+  result,records=bidirectional([],np.empty((0,4,4)),dict(held=np.zeros(0,bool),xy=np.empty((0,0,2)),category=np.empty(0,int)),np.empty((0,2,3)),np.eye(4))
+  self.assertEqual(result['A_to_B']['N'],0);self.assertEqual(result['B_to_A']['N'],0);self.assertFalse(result['denominators']['evidence_sufficient'])
+ def test_missing_clean_is_not_empty(self):
+  from evaluate_real2 import geometric
+  result=geometric([dict(state=None)],np.eye(4),True)
+  self.assertEqual(result['status'],'NOT_EVALUABLE_CLEAN_MISSING');self.assertTrue(result['missing_is_not_empty'])
 if __name__=='__main__':unittest.main()

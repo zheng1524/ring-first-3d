@@ -16,11 +16,23 @@ def mapping(source):
  try:return mapped_input_for_source(source)
  finally:route.legacy,route.bind=oldlegacy,oldbind
 
+def verify_clean_identity(source=None,old=None):
+ frozen=read(CLEAN_T/'config/SOURCES_FROZEN.json')
+ for key,name in [('classifier_sha256','cleaning.py'),('kernel_sha256','_clean_kernels.py'),('protocol_sha256','cleaning_protocol.json')]:
+  assert sha(ROOT/'src/ring_first_3d/mainline/native'/name)==frozen[key],('CLEAN_METHOD_DRIFT',name)
+ assert frozen['export_rule']=='state==0'
+ if old is not None:
+  for key in ['camera_path','cad_path']:
+   assert sha(old[key])==old['artifacts'][old[key]],('OLD_CLEAN_INPUT_DRIFT',key)
+  for key in ['input_sha256','model_sha256','mesh_sha256','native_sha256','raw_target','raw_support']:
+   assert source[key]==old[key],('OLD_CLEAN_IDENTITY_MISMATCH',key)
+ return True
+
 def clean_one(group,ordinal,source,out,old):
- resource();key=source['side']+'__'+source['tag'];dest=out/'clean'/key;dest.mkdir(parents=True,exist_ok=False);start=stage_freeze('CLEAN',dest,[T/'config'/group/'ASSETS.json']);info=mapping(source);V,F=info['V'],info['F'];reuse=None
+ resource();verify_clean_identity();key=source['side']+'__'+source['tag'];dest=out/'clean'/key;dest.mkdir(parents=True,exist_ok=False);start=stage_freeze('CLEAN',dest,[T/'config'/group/'ASSETS.json']);info=mapping(source);V,F=info['V'],info['F'];reuse=None
  for j,c in enumerate(old,1):
   if c['case']==source['case']and c['tag']==source['tag']:
-   assert c['mesh_sha256']==source['mesh_sha256']and c['native_sha256']==source['native_sha256']and c['raw_support']==source['raw_support'];assert sha(c['camera_path'])==source['camera_sha256']and sha(c['cad_path'])==source['cad_sha256'];reuse=CLEAN_RUN/('source'+str(j));break
+   verify_clean_identity(source,c);assert c['mesh_sha256']==source['mesh_sha256']and c['native_sha256']==source['native_sha256']and c['raw_support']==source['raw_support'];assert sha(c['camera_path'])==source['camera_sha256']and sha(c['cad_path'])==source['cad_sha256'];reuse=CLEAN_RUN/('source'+str(j));break
  if reuse:
   complete=read(reuse/'COMPLETE.json')
   for name in ['TRUSTED_ONLY.npz','FACE_EVIDENCE.npz','ORIGINAL_MAPPING.npz']:

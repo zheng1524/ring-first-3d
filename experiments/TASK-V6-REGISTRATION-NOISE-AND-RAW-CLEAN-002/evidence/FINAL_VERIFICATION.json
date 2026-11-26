@@ -1,0 +1,87 @@
+{
+  "resource": {
+    "free_bytes": 5143953408,
+    "task_bytes": 47727850,
+    "nice": 19,
+    "affinity": [
+      0
+    ]
+  },
+  "groups": [
+    {
+      "group": "GP_IIa_22.0mm_closed_R10_single_refY",
+      "verified_files": 207,
+      "sources": 42,
+      "predictions": 7,
+      "held_denominator": 51,
+      "numerical_M4": "CONVERGED",
+      "support_variants_identical": true
+    },
+    {
+      "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+      "verified_files": 207,
+      "sources": 42,
+      "predictions": 7,
+      "held_denominator": 114,
+      "numerical_M4": "CONVERGED",
+      "support_variants_identical": true
+    },
+    {
+      "group": "GP_Ip_4.0mm_closed_R10_single_refY",
+      "verified_files": 201,
+      "sources": 39,
+      "predictions": 7,
+      "held_denominator": 39,
+      "numerical_M4": "CONVERGED",
+      "support_variants_identical": true
+    },
+    {
+      "group": "GP_IIa_14.0mm_closed_R5_single_refY",
+      "verified_files": 163,
+      "sources": 20,
+      "predictions": 7,
+      "held_denominator": 23,
+      "numerical_M4": "CONVERGED",
+      "support_variants_identical": true
+    },
+    {
+      "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+      "verified_files": 201,
+      "sources": 39,
+      "predictions": 7,
+      "held_denominator": 71,
+      "numerical_M4": "CONVERGED",
+      "support_variants_identical": true
+    }
+  ],
+  "selected_input_records_verified": 979,
+  "controlled_rows": 72,
+  "V2_V3_inverse_reference_identical": true,
+  "syntax_all_code_valid": true,
+  "html_links_valid": true,
+  "source_identity_review": {
+    "classifier_kernel_protocol_match": true,
+    "reused": [
+      {
+        "group": "GP_IIa_22.0mm_closed_R10_single_refY",
+        "tag": "005_supported_ref00640",
+        "old_frozen_camera_and_cad_match": true,
+        "input_model_tuple_match": true
+      },
+      {
+        "group": "GP_Ip_4.0mm_closed_R10_single_refY",
+        "tag": "005_supported_ref00068",
+        "old_frozen_camera_and_cad_match": true,
+        "input_model_tuple_match": true
+      }
+    ],
+    "check_timing": "post-run strengthening; no reclassification"
+  },
+  "scientific_failure_is_preserved": true,
+  "full_run_actions": "READ ONLY selected files; no scheduler/model/state/lock/log writes",
+  "runtime": {
+    "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+    "numpy": "2.4.6"
+  },
+  "review": "Static independent reviewer: no blocking findings after identity/missing-input fixes"
+}

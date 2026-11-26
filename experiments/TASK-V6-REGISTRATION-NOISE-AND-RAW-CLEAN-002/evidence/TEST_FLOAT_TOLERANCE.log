@@ -1,0 +1,27 @@
+.F...
+======================================================================
+FAIL: test_held_projection_is_cross_video (__main__.Contracts.test_held_projection_is_cross_video)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/test_contracts2.py", line 21, in test_held_projection_is_cross_video
+    K=np.eye(3);A=np.array([[1.,0.,4.]]);C=np.eye(4);D=se3([0,0,.4,.5,0,0]);local=transform(A,D);before=project(local,K,C)[0];after=project(transform(local,np.linalg.inv(D)),K,C)[0];np.testing.assert_allclose(after,project(A,K,C)[0]);self.assertGreater(np.linalg.norm(before-after),.1)
+                                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 1768, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 983, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=1e-07, atol=0
+
+Mismatched elements: 1 / 2 (50%)
+Mismatch at index:
+ [0, 1]: -6.938893903907228e-18 (ACTUAL), 0.0 (DESIRED)
+Max absolute difference among violations: 6.9388939e-18
+Max relative difference among violations: inf
+ ACTUAL: array([[ 2.500000e-01, -6.938894e-18]])
+ DESIRED: array([[0.25, 0.  ]])
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.015s
+
+FAILED (failures=1)

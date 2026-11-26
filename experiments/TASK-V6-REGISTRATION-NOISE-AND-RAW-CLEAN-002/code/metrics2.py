@@ -8,7 +8,7 @@ def summarize(errors):
  return dict(N=n,finite=int(ok.sum()),invalid=int((~ok).sum()),finite_fraction=float(ok.mean())if n else 0.,MAE=float(a.mean())if n else None,P95=float(np.sort(a)[max(0,int(np.ceil(.95*n))-1)])if n else None,conditional_MAE=float(finite.mean())if len(finite)else None,conditional_P95=float(np.quantile(finite,.95))if len(finite)else None)
 
 def bidirectional(frames,poses,tr,xyz,T0):
- records=[];groups={};validtracks=set();frames_seen={'A':set(),'B':set()}
+ records=[];groups={'A_to_B':[],'B_to_A':[]};validtracks=set();frames_seen={'A':set(),'B':set()}
  for tid in np.flatnonzero(tr['held']):
   for targetside,sourceind,direction in [('B',0,'A_to_B'),('A',1,'B_to_A')]:
    P=xyz[tid,sourceind]
@@ -33,15 +33,16 @@ def bidirectional(frames,poses,tr,xyz,T0):
  return result,records
 
 def ring_pixels(asset,frames,poses,T0):
- # Original frozen g5 contour function is installed by native torus implementation.
- from ring_first_3d.mainline.native.geometry import project as native_project
- from ring_first_3d.synthetic.raster import ray_map
- # Render fixed CAD in the A frame; NEVER move the CAD alongside each camera.
- cad=np.load(asset['sources'][0]['cad_path']);values=[];per=[]
+ from ring_first_3d.mainline.native.ring_cad import project_contours
+ values=[];per=[];by_side={'A':[],'B':[]}
  for i,f in enumerate(frames):
-  side=f['side'];R=Path(next(v['run']for v in asset['videos']if v['side']==side));ob=np.load(R/'observations'/(f['id'].split('__',1)[1]+'_ring.npz'));q=ob['q_held'];C=(T0@poses[i])if side=='B'else poses[i]
-  r=ray_map(cad['V'],cad['F'],np.array(f['K']),C,(360,640));mask=r['valid'].astype(np.uint8)
-  import cv2
-  curves,_=cv2.findContours(mask,cv2.RETR_LIST,cv2.CHAIN_APPROX_NONE)
-  contour=np.concatenate([c[:,0,:]for c in curves])if curves else np.empty((0,2));errors=cKDTree(contour).query(q)[0]if len(contour)else np.full(len(q),np.inf);values.extend(errors);per.append(dict(frame=i,side=side,**summarize(errors)))
- return dict(all=summarize(values),per_frame=per,domain='original q_held; fixed shared CAD; raster contour pixel discretization'),per
+  side=f['side'];video=next(v for v in asset['videos']if v['side']==side);R=Path(video['run']);ob=np.load(R/'observations'/(f['id'].split('__',1)[1]+'_ring.npz'));q=ob['q_held'];error=None
+  try:
+   if T0 is None:raise ValueError('NO_TRANSFORM')
+   C=T0@poses[i]if side=='B'else poses[i]
+   contour=project_contours(C,np.array(f['K']),2*(video['ring_radius_mm']-.6),n=256).reshape(-1,2)
+   if not np.isfinite(contour).all():raise ValueError('INVALID_CONTOUR')
+   errors=cKDTree(contour).query(q)[0]
+  except Exception as e:errors=np.full(len(q),np.inf);error=repr(e)
+  values.extend(errors);by_side[side].extend(errors);per.append(dict(frame=i,side=side,error=error,**summarize(errors)))
+ return dict(all=summarize(values),by_side={s:summarize(v)for s,v in by_side.items()},per_frame=per,domain='original q_held; fixed shared CAD; original analytic apparent contour n=256; validity inherits camera gate'),per

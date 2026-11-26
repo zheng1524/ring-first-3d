@@ -21,15 +21,18 @@ def classify_support(group,frames,tr,xyz,fit):
     key=(side,frames[j]['raw_frame'])
     if key not in by:continue
     r=by[key]
-    if r.get('status')=='MISSING':continue
     if key not in cache:
-     e=np.load(r['selection_path']);s=r['source'];m=trimesh.load(str(__import__('pathlib').Path(s['run'])/'meshes'/(s['tag']+'_Polyp.ply')),process=False);cache[key]=(e['working_uv'],np.asarray(m.faces),e['state'])
+     if r.get('status')=='MISSING':
+      from clean2 import mapping
+      original=mapping(r['source']);cache[key]=(original['uv'],original['F'],np.full(len(original['F']),-1,int))
+     else:
+      e=np.load(r['selection_path']);s=r['source'];m=trimesh.load(str(__import__('pathlib').Path(s['run'])/'meshes'/(s['tag']+'_Polyp.ply')),process=False);cache[key]=(e['working_uv'],np.asarray(m.faces),e['state'])
     uv,F,state=cache[key];faces=containing_faces(tr['xy'][tid,j],uv,F)
     if len(faces):extra+=1
     # Select on Raw geometry only. Classification does not change this choice.
     if chosen is None and len(faces):chosen=(j,faces,state[faces],r)
    if chosen is None:rawgood=False;cleangood=False;entry['sides'][side]=dict(status='UNKNOWN_NO_RAW_FACE',other_raw_supported_observations=extra);continue
-   j,faces,states,r=chosen;conflict=len(set(map(int,states)))>1;trusted=not conflict and bool((states==0).all());rawgood&=not conflict;cleangood&=trusted;entry['sides'][side]=dict(frame=j,raw_frame=frames[j]['raw_frame'],tag=r['source']['tag'],original_face_ids=faces,states=states.tolist(),status='UNKNOWN_BOUNDARY_CONFLICT'if conflict else'TRUSTED'if trusted else'RAW_ONLY',other_raw_supported_observations=extra-1)
+   j,faces,states,r=chosen;conflict=len(set(map(int,states)))>1;trusted=not conflict and bool((states==0).all());rawgood&=not conflict;cleangood&=trusted;entry['sides'][side]=dict(frame=j,raw_frame=frames[j]['raw_frame'],tag=r['source']['tag'],original_face_ids=faces,states=states.tolist(),status='UNKNOWN_BOUNDARY_CONFLICT'if conflict else'TRUSTED'if trusted else'UNKNOWN_CLEAN_MISSING'if (states<0).any()else'RAW_ONLY',other_raw_supported_observations=extra-1)
   rawmask[tid]=rawgood;cleanmask[tid]=cleangood;entry.update(raw_support=rawgood,clean_support=cleangood);records.append(entry)
  save(RUN/'real'/group/'SUPPORT_SELECTION.json',records);np.savez_compressed(RUN/'real'/group/'SUPPORT_MASKS.npz',base=fit,raw_support=rawmask,clean_support=cleanmask)
  return rawmask,cleanmask
