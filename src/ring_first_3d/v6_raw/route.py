@@ -13,6 +13,10 @@ K=np.array([[490.,0,319.5],[0,490.,179.5],[0,0,1.]])
 GROUPS=['GP_IIa_14.0mm_closed_R10_single_refY','GP_Ip_12.0mm_closed_R10_single_refY','GP_Ip_20.0mm_closed_R10_single_refY','GP_Ip_8.8mm_closed_R5_single_refY','GP_Is_14.0mm_closed_R5_single_refY']
 ALLOWED={g+'_'+v for g in GROUPS for v in ['004','005']}
 SIGNATURES={}
+FULL_CONFIG=read_config=json.loads(Path(os.environ['V6_FULL_CONFIG']).read_text()) if os.environ.get('V6_FULL_CONFIG') else None
+if FULL_CONFIG:
+ TASK=FULL_CONFIG['task'];T=WT/'experiments'/TASK;B=Path(FULL_CONFIG['run_root'])
+ _manifest=json.loads(Path(FULL_CONFIG['manifest']).read_text());ALLOWED={r['case'] for r in _manifest['videos'] if r['status']=='READY'};GROUPS=_manifest['groups']
 def sha(p):
  h=hashlib.sha256()
  with open(p,'rb')as f:
@@ -27,11 +31,14 @@ def clean(x):
  if isinstance(x,Path):return str(x)
  return x
 def save(p,x):
- p=Path(p);p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(clean(x),ensure_ascii=False,indent=2,allow_nan=False))
+ from .full_run import atomic_json
+ atomic_json(p,clean(x))
 def read(p):return json.loads(Path(p).read_text())
-def head():return subprocess.check_output(['git','rev-parse','HEAD'],cwd=WT,text=True).strip()
+def head():
+ if os.environ.get('V6_EXECUTION_COMMIT'):return os.environ['V6_EXECUTION_COMMIT']
+ return subprocess.check_output(['git','rev-parse','HEAD'],cwd=WT,text=True).strip()
 def environment():
- lock=T/'evidence/KERNEL_LOCK.json';assert sha(lock)=='23423a790daeb5db6282a9c4ea36410d2cb7f64fef2ed382bd00e9873f5abd50','KERNEL_LOCK_DRIFT'
+ lock=WT/'experiments/TASK-V6-RAW-TO-HERO-MAINLINE-001/evidence/KERNEL_LOCK.json';assert sha(lock)=='23423a790daeb5db6282a9c4ea36410d2cb7f64fef2ed382bd00e9873f5abd50','KERNEL_LOCK_DRIFT'
  for p,h in read(lock)['files'].items():assert sha(p)==h,'SCIENTIFIC_KERNEL_DRIFT '+p
  sys.dont_write_bytecode=True
  for k in ['HF_HOME','HF_MODULES_CACHE','TORCH_HOME','MPLCONFIGDIR','XDG_CACHE_HOME']:os.environ[k]=str(B/'runtime'/k)
@@ -61,9 +68,21 @@ def inference_start(case,variant,R,c,poses,rows,meta,mods):
  path=B/'INFERENCE_STARTS.jsonl';path.parent.mkdir(parents=True,exist_ok=True)
  with path.open('a+')as f:
   fcntl.flock(f,fcntl.LOCK_EX);f.seek(0);prior=[json.loads(x)for x in f if x.strip()]
-  if len(prior)>=273:raise RuntimeError('GLOBAL_INFERENCE_BUDGET_273_EXHAUSTED')
-  if any(x['case']==case and x['variant']==variant and x['tag']==c['tag']for x in prior):raise RuntimeError('NO_UNRECEIPTED_RETRY')
-  rec=dict(ordinal=len(prior)+1,case=case,variant=variant,tag=c['tag'],input_sha256=c['input_sha256'],epoch=time.time(),execution_commit=head(),resource_retry=0)
+  retry=0
+  if FULL_CONFIG:
+   from .full_run import authorize_tuple
+   authorize_tuple(R/'PLAN_FROZEN.json',c['tag'],c['input_sha256'])
+   attempts=[x for x in prior if x['case']==case and x['variant']==variant and x['tag']==c['tag']]
+   if attempts:
+    assert all(x['input_sha256']==c['input_sha256'] for x in attempts),'RETRY_INPUT_DRIFT'
+    assert len(attempts)<2,'RESOURCE_RETRY_LIMIT'
+    assert not(R/'raw'/(c['tag']+'.npz')).exists(),'SUCCESS_MUST_REUSE'
+    retry=len(attempts)
+   if sum(x['case']==case and x['variant']==variant and x.get('resource_retry',0)==0 for x in prior)>=read(R/'PLAN_FROZEN.json')['budget'] and not retry:raise RuntimeError('VIDEO_FROZEN_BUDGET_EXHAUSTED')
+  else:
+   if len(prior)>=273:raise RuntimeError('GLOBAL_INFERENCE_BUDGET_273_EXHAUSTED')
+   if any(x['case']==case and x['variant']==variant and x['tag']==c['tag']for x in prior):raise RuntimeError('NO_UNRECEIPTED_RETRY')
+  rec=dict(ordinal=len(prior)+1,case=case,variant=variant,tag=c['tag'],input_sha256=c['input_sha256'],epoch=time.time(),execution_commit=head(),resource_retry=retry,retry_reason='interrupted process with no committed native result; identical frozen tuple' if retry else None)
   f.write(json.dumps(rec)+'\n');f.flush();os.fsync(f.fileno());fcntl.flock(f,fcntl.LOCK_UN)
  save(R/'inputs'/('TUPLE_'+c['tag']+'.json'),dict(**rec,frames=[dict(raw_frame=a['raw_frame'],RGB_sha256=hashlib.sha256(a['RGB'].tobytes()).hexdigest(),Mask_sha256=hashlib.sha256(a['labels'].tobytes()).hexdigest(),K=a['K'],C=a['c2w_mm'])for a in fs]))
 
@@ -115,6 +134,9 @@ def prepare(case):
 def bind(m,R,meta):
  mods=m.source_modules(3.1 if meta['ring_inner_mm']==5 else 5.6)
  for mod in [mods['v6'],mods['track'],mods['lba']]:mod.R=R;mod.V5=R/'v5raw'
+ if FULL_CONFIG:
+  for mod in mods.values():
+   if hasattr(mod,'save'):mod.save=lambda path,obj:save(R/path,obj)
  return mods
 
 def cameras(case,variant):
@@ -186,7 +208,7 @@ def schedule(case,variant):
   c['input_sha256']=tuple_identity(fs,meta['raw_sha256'],MODEL_SHA);legal.append(c)
  save(R/'inputs/MVS_supported_cases.json',legal);mods['v6'].freeze('supported_view_selection',[R/'inputs/MVS_supported_cases.json'])
  out=dict(protocol_signature=sig,parent_sha256=sha(R/'CAMERA_COMPLETE.json'),cases_sha256=sha(R/'inputs/MVS_supported_cases.json'),case=case,variant=variant,execution_commit=head(),cameras_sha256=sha(R/f'predictions/local005_camera_{primary}.npz'),input_sha256=sha(B/'prepared'/case/'PREPARED.json'),old_cameras=len(old),new_cameras=len(new),numeric_cameras=len(rows),old_legal_targets=sum(c['old_rule_generated']for c in legal),new_legal_targets=len(legal),budget=len(legal),all_targets=cases,legal=legal,no_depth_in_selection=True,model_sha256=MODEL_SHA)
- assert len(legal)<=21 and len({c['input_sha256']for c in legal})==len(legal);save(R/'PLAN_FROZEN.json',out);print('BUDGET_FROZEN',variant,case,out['old_cameras'],out['new_cameras'],len(legal),flush=True);return out
+ assert len(legal)<=len(rows)-1 and len({c['input_sha256']for c in legal})==len(legal);save(R/'PLAN_FROZEN.json',out);print('BUDGET_FROZEN',variant,case,out['old_cameras'],out['new_cameras'],len(legal),flush=True);return out
 
 def hero(case,variant):
  plan=schedule(case,variant);sig=protocol_signature('hero');m=legacy();R=B/variant/case;meta=read(B/'prepared'/case/'PREPARED.json');mods=bind(m,R,meta)
@@ -194,13 +216,20 @@ def hero(case,variant):
   x=read(R/'HERO_COMPLETE.json');assert x['plan_sha256']==sha(R/'PLAN_FROZEN.json')and x['protocol_signature']==sig,'HERO_PROTOCOL_DRIFT'
   for p,h in x['outputs'].items():assert sha(p)==h
   return x
- assert not(R/'HERO_STARTED.json').exists(),'No silent retries; interrupted inference needs an explicit identical-input recovery receipt'
+ if (R/'HERO_STARTED.json').exists():
+  assert FULL_CONFIG,'No silent retries; interrupted inference needs an explicit identical-input recovery receipt'
+  prior=read(R/'HERO_STARTED.json');assert prior['plan_sha256']==sha(R/'PLAN_FROZEN.json'),'RECOVERY_PLAN_DRIFT'
+  save(R/'HERO_RECOVERY.json',dict(reason='resume identical frozen plan; exact successful tags reused',prior=prior,epoch=time.time()))
  save(R/'HERO_STARTED.json',dict(execution_commit=head(),plan_sha256=sha(R/'PLAN_FROZEN.json'),new_inference_budget=plan['budget'],epoch=time.time()))
  import run_mvs005_supported
  run_mvs005_supported.R=R;run_mvs005_supported.V5=R/'v5raw'
  if plan['legal']:
   primary=read(R/'predictions/local005_primary.json')['primary_version'];poses=np.load(R/f'predictions/local005_camera_{primary}.npz')['c2w'];assert sha(R/f'predictions/local005_camera_{primary}.npz')==plan['cameras_sha256']
-  tree,adapt=m.adapt_supported_hero_schedule(V6/'scripts/run_mvs005_supported.py');node=next(n for n in tree.body if isinstance(n,ast.FunctionDef)and n.name=='main');run_mvs005_supported.__dict__['_M2F10_TUPLE_RECEIPT']=lambda c:inference_start(case,variant,R,c,poses,meta['frames'],meta,mods);exec(compile(ast.Module(body=[node],type_ignores=[]),str(V6/'scripts/run_mvs005_supported.py'),'exec'),run_mvs005_supported.__dict__);run_mvs005_supported.main()
+  tree,adapt=m.adapt_supported_hero_schedule(V6/'scripts/run_mvs005_supported.py')
+  if FULL_CONFIG:
+   from .full_run import recover_inference,previous_runs,atomic_npz
+   tree=recover_inference(tree,R);run_mvs005_supported._FULL_PREVIOUS_RUNS=lambda:previous_runs(R,plan);run_mvs005_supported._FULL_ATOMIC_NPZ=atomic_npz
+  node=next(n for n in tree.body if isinstance(n,ast.FunctionDef)and n.name=='main');run_mvs005_supported.__dict__['_M2F10_TUPLE_RECEIPT']=lambda c:inference_start(case,variant,R,c,poses,meta['frames'],meta,mods);exec(compile(ast.Module(body=[node],type_ignores=[]),str(V6/'scripts/run_mvs005_supported.py'),'exec'),run_mvs005_supported.__dict__);run_mvs005_supported.main()
  else:save(R/'metrics/MVS005_supported_runs.json',[]);mods['v6'].freeze('MVS_supported_raw',[R/'metrics/MVS005_supported_runs.json'])
  # Original package kernel needs an empty preview ledger; all current output is scheduled exactly once.
  save(R/'metrics/MVS005_runs.json',[]);mods['v6'].freeze('MVS_raw',[R/'metrics/MVS005_runs.json'])

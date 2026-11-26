@@ -1096,3 +1096,14 @@ v6_raw_to_hero_001:
   formal_usable: false
   historical_outputs_as_inputs: false
   depth_error_gate: false
+
+
+v6_hist_full_001:
+  route_id: rf-v6-hist-full@1
+  status: authorized_full_run
+  approval: TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001 direct researcher approval
+  composes: [rf-v6-raw-to-hero@1]
+  entrypoint: python -m ring_first_3d.v6_raw.full_run
+  scientific_policy: fixed HIST; no GRAPH; no depth gate; original mesh
+  config: experiments/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001/config/FULL_RUN.json
+  full_run_outputs_are_accuracy: false
