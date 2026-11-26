@@ -34,3 +34,15 @@ R/S方法、软件/参数、训练轨迹、原held拆validation/test、正深度
 原8条HERO启动保留，全任务累计≤40；新8视频各两Target×两臂≤32，不对失败换Support/重试。GPU共用 /home/liu/ring_first_3d_workspace/runs/shared_gpu.lock，A优先；A全量调度器在运行时先完成CPU，再登记排队，绝不抢占。原始大输出在 runs/ring_sift_comparison_001；CPU及GPU分开启动并可恢复，不把排队算成功。
 
 交付新增EXPANDED_RESULTS.csv、CAMERA_POSE_DIFFERENCES.csv、HERO_RELATIVE_POSE_DIFFERENCES.csv、POSE_DIFFERENCE_SUMMARY.csv、扩组中文可视化入口及各阶段状态。唯一TECHNICAL_REPORT.md更新为本轮总报告，原小试报告按此前Git提交可追溯。提交源码前运行边界测试，执行前冻结版本/输入哈希，增量push后核对远端SHA。
+
+## 人工追加：覆盖率、投影一致性与Ring意义诊断
+
+追加请求：“另外向我汇报覆盖率，投影一致性等指标。思考ring在一致性/检查相机位置姿态是否正确上的作用，为我找到一个实验角度能说明ring的意义。”
+
+维持主比较的共同RGB门槛，额外Ring诊断不作为S臂准入或胜负标准。逐视频列数值相机/22、共同RGB通过/22、固定HERO四帧完整/2、原生成功/计划4及共同深度支持像素/目标Mask像素。分别报告息肉/背景全query成功率和共同可预测query的median/P95；5物理组分母不变。
+
+新增CPU观测性诊断（冻结参数，不反向选模型）：
+- 对R与已整体归一的S，使用既有torus轮廓投影内核与原q_held实测点，报告留出Ring轮廓MAE/P95及可评价帧。历史Ring held曾用于旧门控，不能称全新盲测。
+- 同一视频的整套相机中心及三维点相对Ring原点同时乘固定尺度 `[0.5,0.75,1.0,1.25,1.5]`，旋转不变。RGB投影理论上严格不变；数值检查同一组可投影训练点的投影变化max(px)，同时报告Ring q_held残差曲线（CAD尺寸固定R5/R10，管半径0.6）。这只展示RGB尺度不可观测与已知尺寸Ring的额外尺度信息，不证明1.0或某个候选是正确尺度；不得用结果重新调相机、尺度或HERO。
+- 增加整套相机/点绕Ring z轴旋转30°的对照（尺度1）：RGB不变，轴对称Ring投影也基本不变，仅离散轮廓采样误差。明确Ring不能验证绝对绕轴yaw，不能单独证明完整6DoF正确。
+- 实际名义相机上列“共同RGB通过但Ring轮廓MAE>3px或P95>6px”的数量/共同RGB通过数。该额外约束不一致可能来自位姿、分割、K假设、CAD/遮挡问题；只能标异常，不能在无GT时给真伪分类。S的Ring世界坐标来自既有训练点整体归一，存在配准敏感性，单列该限制，不把Ring满足度用作R胜出证据。

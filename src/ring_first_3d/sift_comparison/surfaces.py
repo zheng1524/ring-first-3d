@@ -41,7 +41,7 @@ def other_gpu_processes(text,own_pid):
     return [line.strip() for line in text.splitlines() if line.strip() and line.split(",",1)[0].strip()!=str(own_pid)]
 
 
-def hero(case):
+def hero(case,limit=8,respect_A=False):
     common=verify_common(case);root=BASE/case;meta=read(common/'meta.json');tuples=read(common/'TUPLES_FROZEN.json')['tuples'];normal=read(root/'NORMALIZATION_FROZEN.json')
     checkpoint=Path(read(route.CORE/'site_config.local.json')['checkpoint']);assert sha(checkpoint)==route.MODEL_SHA
     for arm in ['R','S']:
@@ -75,6 +75,11 @@ def hero(case):
         if not valid:
             save(dest/'RESULT.json',dict(status='NOT_EVALUABLE',reason='NO_COMPLETE_FIXED_TUPLE',skipped=skipped));continue
         lock_path=W/'runs/shared_gpu.lock';lock_path.parent.mkdir(exist_ok=True)
+        if respect_A:
+            from .expansion import active_priority_jobs
+            jobs=active_priority_jobs()
+            if jobs:
+                save(dest/'RESULT.json',dict(status='NOT_EXECUTED_GPU_BUSY',reason='ACTIVE_A_SCHEDULER_PRIORITY',jobs=jobs,planned=valid,skipped=skipped));continue
         with lock_path.open('a+') as lock:
             try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
             except BlockingIOError:
@@ -90,7 +95,7 @@ def hero(case):
                 receipt=BASE/'INFERENCE_STARTS.jsonl'
                 with receipt.open('a+') as f:
                     fcntl.flock(f,fcntl.LOCK_EX);f.seek(0);old=[json.loads(x) for x in f if x.strip()]
-                    assert len(old)<8,'BUDGET_8_EXHAUSTED'
+                    assert limit in [8,40] and len(old)<limit,'AUTHORIZED_INFERENCE_BUDGET_EXHAUSTED'
                     assert not any(x['case']==case and x['arm']==arm and x['tag']==c['tag'] for x in old),'NO_SILENT_RETRY'
                     # Recheck all four image/mask hashes at inference boundary.
                     for i in [c['reference']]+c['sources']:

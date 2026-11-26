@@ -30,7 +30,9 @@ def kernels(root,meta):
     return m,route.bind(m,root,meta)
 
 
-def prepare(case):
+def prepare(case,cohort="pilot"):
+    from .expansion import authorized_cases
+    assert case in authorized_cases(cohort),'CASE_NOT_AUTHORIZED'
     root=BASE/case; common=root/'common'; manifest=common/'INPUT_MANIFEST.json'
     if manifest.exists():
         for p,h in read(manifest)['source_hashes'].items():assert sha(p)==h,p
@@ -52,7 +54,7 @@ def prepare(case):
         t.update(tag=f'B_target_{i}',raw_target=meta['frames'][t['reference']]['raw_frame'],raw_support=[meta['frames'][j]['raw_frame'] for j in t['sources']])
     save(common/'TUPLES_FROZEN.json',tuples)
     outputs=list(common.glob('*'))
-    save(manifest,dict(case=case,raw_sha256=meta['raw_sha256'],created_epoch=time.time(),source_commit='115e41fe5e57deff2898258d2ee836c83d686982',source_hashes={str(p):sha(p) for p in source_files},frozen_inputs={str(p):sha(p) for p in outputs},protocol_sha256=sha(REPORT/'COMPARISON_PROTOCOL.md'),split_counts={k:len(v) for k,v in split.items()},frames=len(meta['frames']),GT=False,test_historically_consumed=True))
+    save(manifest,dict(case=case,raw_sha256=meta['raw_sha256'],created_epoch=time.time(),source_commit='115e41fe5e57deff2898258d2ee836c83d686982',source_hashes={str(p):sha(p) for p in source_files},frozen_inputs={str(p):sha(p) for p in outputs},protocol_sha256=sha(REPORT/('EXPANSION_PROTOCOL.md' if cohort=='expanded' else 'COMPARISON_PROTOCOL.md')),cohort=cohort,split_counts={k:len(v) for k,v in split.items()},frames=len(meta['frames']),GT=False,test_historically_consumed=True))
     print('PREPARED',case,{k:len(v) for k,v in split.items()},tuples['tuples'],flush=True)
     return common
 
@@ -65,7 +67,8 @@ def verify_common(case):
 
 def solve_r(case):
     common=verify_common(case);root=BASE/case/'R';meta=read(common/'meta.json');a=HIST/'HIST'/case
-    if (root/'receipt.json').exists():return read(root/'receipt.json')
+    if (root/'receipt.json').exists():
+        receipt=read(root/'receipt.json');assert sha(root/'cameras.npz')==receipt['camera_sha256'],'R_CAMERA_DRIFT';return receipt
     assert not (root/'STARTED.json').exists(),'Interrupted R run: preserve and inspect before retry'
     for d in ['inputs','observations','predictions','metrics','v5raw/inputs']:(root/d).mkdir(parents=True,exist_ok=True)
     for p,target in [(root/'scripts',route.V6/'scripts'),(root/'v5raw/scripts',route.V5/'scripts')]:
@@ -143,9 +146,24 @@ def evaluate(case):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--stage',choices=['prepare','R','S','evaluate','hero','report'],required=True);parser.add_argument('--case',choices=CASES);args=parser.parse_args()
-    for case in [args.case] if args.case else CASES:
-        if args.stage=='prepare':prepare(case)
+    from .expansion import authorized_cases,inference_limit,batch
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--stage',choices=['prepare','R','S','evaluate','hero','report','poses','ring','cpu-batch','hero-batch','expanded-report'],required=True)
+    parser.add_argument('--cohort',choices=['pilot','expanded'],default='pilot')
+    parser.add_argument('--case',choices=authorized_cases('expanded'))
+    args=parser.parse_args();cases=[args.case] if args.case else authorized_cases(args.cohort)
+    assert set(cases).issubset(authorized_cases(args.cohort)),'CASE_NOT_AUTHORIZED_BY_COHORT'
+    if args.stage in ['cpu-batch','hero-batch']:
+        assert args.cohort=='expanded','EXPANSION_REQUIRES_EXPLICIT_COHORT'
+        return batch(args.stage.split('-')[0],cases)
+    if args.stage=='expanded-report':
+        from .expanded_report import report_expanded
+        return report_expanded()
+    if args.stage=='report':
+        from .report import report
+        return report()
+    for case in cases:
+        if args.stage=='prepare':prepare(case,args.cohort)
         elif args.stage=='R':solve_r(case)
         elif args.stage=='S':
             from .colmap_arm import solve
@@ -153,7 +171,10 @@ def main():
         elif args.stage=='evaluate':evaluate(case)
         elif args.stage=='hero':
             from .surfaces import hero
-            hero(case)
-    if args.stage=='report':
-        from .report import report
-        report()
+            hero(case,limit=inference_limit(args.cohort),respect_A=args.cohort=='expanded')
+        elif args.stage=='poses':
+            from .pose_metrics import evaluate_pose
+            evaluate_pose(case)
+        elif args.stage=='ring':
+            from .ring_diagnostic import diagnose_ring
+            diagnose_ring(case)
