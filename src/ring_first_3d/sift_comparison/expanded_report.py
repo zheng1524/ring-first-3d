@@ -120,7 +120,7 @@ def report_expanded():
                 for arm in ['R','S']:
                     for domain in ['all_common','both_nonoccluded']:
                         s=d.get(domain,{});v=s.get(arm,{})
-                        hero_depth.append(dict(case=case,arm=arm,domain=domain,source=d.get('source_raw',d.get('source')),target=d.get('target_raw',d.get('target')),pixels=s.get('pixels',0),target_polyp_pixels=d.get('target_polyp_pixels'),fraction_of_target=s.get('fraction_of_target'),median=v.get('median'),P95=v.get('P95'),status='EVALUABLE' if s.get('pixels',0) else 'NOT_EVALUABLE'))
+                        hero_depth.append(dict(case=case,arm=arm,domain=domain,source=d.get('source_raw',d.get('source')),target=d.get('target_raw',d.get('target')),pixels=s.get('pixels',0),target_polyp_pixels=d.get('target_polyp_pixels'),fraction_of_target=s.get('fraction_of_target'),median=v.get('median'),P95=v.get('P95'),status='EVALUABLE' if s.get('pixels',0) else 'NOT_EVALUABLE',reason='' if s.get('pixels',0) else d.get('reason','NO_COMMON_PIXELS'),unit='R_scale_unit'))
         state.append(dict(case=case,status='CAMERAS_EVALUATED',pose_status=p.get('status','NOT_EXECUTED'),ring_status=ring.get('status','AVAILABLE' if ring else 'NOT_EXECUTED')))
         # Reuse old pages; new pages only if native outputs actually exist in both arms.
         figpath=REPORT/'figures'/(case+'.png')
