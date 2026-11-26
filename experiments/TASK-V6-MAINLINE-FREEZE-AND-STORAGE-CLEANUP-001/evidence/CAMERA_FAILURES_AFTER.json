@@ -1,0 +1,271 @@
+[
+  {
+    "case": "GP_IIa_4.5mm_closed_R10_single_refY_005",
+    "stage": "camera",
+    "status": "CAMERA_FAILED",
+    "failure_beijing": "2026-11-26T14:54:18.475486+08:00",
+    "last_error": "AssertionError",
+    "log": "/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/logs/GP_IIa_4.5mm_closed_R10_single_refY_005__camera.log",
+    "log_tail": [
+      "                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/full_run.py\", line 138, in worker",
+      "    r.cameras(case,'HIST')",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/route.py\", line 165, in cameras",
+      "    m.invoke_adapted_v6(validate_select,V6/'scripts/validate_select.py',ref,held,{'reference':1,'heldout':1});state['stages'].append('original_upstream_validation')",
+      "    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-M2F10/tools/m2f8_v6_general.py\", line 702, in invoke_adapted_v6",
+      "    module.main()",
+      "  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/validate_select.py\", line 5, in main",
+      "    verify('local_cameras');freeze('validation_protocol',[Path(__file__),R/'scripts/v6_common.py',R/'config.json']);L=ledger();tr=np.load(R/'observations/tracks005.npz');runs=load('metrics/local005_solver.json');available=[x['version'] for x in runs if x['success']];assert available;primary=min(available);packs={v:np.load(R/f'predictions/local005_camera_{v}.npz') for v in available};records=[];poses=packs[primary]['c2w'];testids=np.flatnonzero(tr['held']);point_categories=tr['category'][packs[primary]['point_track_ids']];Pp=packs[primary]['points'][point_categories==1];P=np.median(Pp,0) if len(Pp)>=5 else np.zeros(3);span=[]",
+      "                                                                                                                                                                                                                                                                                  ^^^^^^^^^",
+      "AssertionError"
+    ],
+    "solver_versions": [
+      {
+        "version": 0,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      },
+      {
+        "version": 1,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      }
+    ],
+    "before_actual_deletion": true
+  },
+  {
+    "case": "GP_IIa_5.2mm_closed_R10_single_refY_001",
+    "stage": "camera",
+    "status": "CAMERA_FAILED",
+    "failure_beijing": "2026-11-26T14:55:01.860037+08:00",
+    "last_error": "AssertionError",
+    "log": "/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/logs/GP_IIa_5.2mm_closed_R10_single_refY_001__camera.log",
+    "log_tail": [
+      "                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/full_run.py\", line 138, in worker",
+      "    r.cameras(case,'HIST')",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/route.py\", line 165, in cameras",
+      "    m.invoke_adapted_v6(validate_select,V6/'scripts/validate_select.py',ref,held,{'reference':1,'heldout':1});state['stages'].append('original_upstream_validation')",
+      "    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-M2F10/tools/m2f8_v6_general.py\", line 702, in invoke_adapted_v6",
+      "    module.main()",
+      "  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/validate_select.py\", line 5, in main",
+      "    verify('local_cameras');freeze('validation_protocol',[Path(__file__),R/'scripts/v6_common.py',R/'config.json']);L=ledger();tr=np.load(R/'observations/tracks005.npz');runs=load('metrics/local005_solver.json');available=[x['version'] for x in runs if x['success']];assert available;primary=min(available);packs={v:np.load(R/f'predictions/local005_camera_{v}.npz') for v in available};records=[];poses=packs[primary]['c2w'];testids=np.flatnonzero(tr['held']);point_categories=tr['category'][packs[primary]['point_track_ids']];Pp=packs[primary]['points'][point_categories==1];P=np.median(Pp,0) if len(Pp)>=5 else np.zeros(3);span=[]",
+      "                                                                                                                                                                                                                                                                                  ^^^^^^^^^",
+      "AssertionError"
+    ],
+    "solver_versions": [
+      {
+        "version": 0,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      },
+      {
+        "version": 1,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      }
+    ],
+    "before_actual_deletion": true
+  },
+  {
+    "case": "GP_Ip_2.9mm_closed_R10_single_refY_004",
+    "stage": "camera",
+    "status": "CAMERA_FAILED",
+    "failure_beijing": "2026-11-26T15:20:02.291058+08:00",
+    "last_error": "AssertionError",
+    "log": "/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/logs/GP_Ip_2.9mm_closed_R10_single_refY_004__camera.log",
+    "log_tail": [
+      "                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/full_run.py\", line 138, in worker",
+      "    r.cameras(case,'HIST')",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/route.py\", line 165, in cameras",
+      "    m.invoke_adapted_v6(validate_select,V6/'scripts/validate_select.py',ref,held,{'reference':1,'heldout':1});state['stages'].append('original_upstream_validation')",
+      "    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-M2F10/tools/m2f8_v6_general.py\", line 702, in invoke_adapted_v6",
+      "    module.main()",
+      "  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/validate_select.py\", line 5, in main",
+      "    verify('local_cameras');freeze('validation_protocol',[Path(__file__),R/'scripts/v6_common.py',R/'config.json']);L=ledger();tr=np.load(R/'observations/tracks005.npz');runs=load('metrics/local005_solver.json');available=[x['version'] for x in runs if x['success']];assert available;primary=min(available);packs={v:np.load(R/f'predictions/local005_camera_{v}.npz') for v in available};records=[];poses=packs[primary]['c2w'];testids=np.flatnonzero(tr['held']);point_categories=tr['category'][packs[primary]['point_track_ids']];Pp=packs[primary]['points'][point_categories==1];P=np.median(Pp,0) if len(Pp)>=5 else np.zeros(3);span=[]",
+      "                                                                                                                                                                                                                                                                                  ^^^^^^^^^",
+      "AssertionError"
+    ],
+    "solver_versions": [
+      {
+        "version": 0,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      },
+      {
+        "version": 1,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      }
+    ],
+    "before_actual_deletion": true
+  },
+  {
+    "case": "GP_Is_10.5mm_closed_R10_single_refY_005",
+    "stage": "camera",
+    "status": "CAMERA_FAILED",
+    "failure_beijing": "2026-11-26T16:27:04.451217+08:00",
+    "last_error": "AssertionError",
+    "log": "/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/logs/GP_Is_10.5mm_closed_R10_single_refY_005__camera.log",
+    "log_tail": [
+      "                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/full_run.py\", line 138, in worker",
+      "    r.cameras(case,'HIST')",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/route.py\", line 165, in cameras",
+      "    m.invoke_adapted_v6(validate_select,V6/'scripts/validate_select.py',ref,held,{'reference':1,'heldout':1});state['stages'].append('original_upstream_validation')",
+      "    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-M2F10/tools/m2f8_v6_general.py\", line 702, in invoke_adapted_v6",
+      "    module.main()",
+      "  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/validate_select.py\", line 5, in main",
+      "    verify('local_cameras');freeze('validation_protocol',[Path(__file__),R/'scripts/v6_common.py',R/'config.json']);L=ledger();tr=np.load(R/'observations/tracks005.npz');runs=load('metrics/local005_solver.json');available=[x['version'] for x in runs if x['success']];assert available;primary=min(available);packs={v:np.load(R/f'predictions/local005_camera_{v}.npz') for v in available};records=[];poses=packs[primary]['c2w'];testids=np.flatnonzero(tr['held']);point_categories=tr['category'][packs[primary]['point_track_ids']];Pp=packs[primary]['points'][point_categories==1];P=np.median(Pp,0) if len(Pp)>=5 else np.zeros(3);span=[]",
+      "                                                                                                                                                                                                                                                                                  ^^^^^^^^^",
+      "AssertionError"
+    ],
+    "solver_versions": [
+      {
+        "version": 0,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      },
+      {
+        "version": 1,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      }
+    ],
+    "before_actual_deletion": true
+  },
+  {
+    "case": "GP_Is_18.0mm_closed_R10_single_refY_005",
+    "stage": "camera",
+    "status": "CAMERA_FAILED",
+    "failure_beijing": "2026-11-26T16:38:13.064312+08:00",
+    "last_error": "AssertionError",
+    "log": "/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/logs/GP_Is_18.0mm_closed_R10_single_refY_005__camera.log",
+    "log_tail": [
+      "                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/full_run.py\", line 138, in worker",
+      "    r.cameras(case,'HIST')",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/route.py\", line 165, in cameras",
+      "    m.invoke_adapted_v6(validate_select,V6/'scripts/validate_select.py',ref,held,{'reference':1,'heldout':1});state['stages'].append('original_upstream_validation')",
+      "    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-M2F10/tools/m2f8_v6_general.py\", line 702, in invoke_adapted_v6",
+      "    module.main()",
+      "  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/validate_select.py\", line 5, in main",
+      "    verify('local_cameras');freeze('validation_protocol',[Path(__file__),R/'scripts/v6_common.py',R/'config.json']);L=ledger();tr=np.load(R/'observations/tracks005.npz');runs=load('metrics/local005_solver.json');available=[x['version'] for x in runs if x['success']];assert available;primary=min(available);packs={v:np.load(R/f'predictions/local005_camera_{v}.npz') for v in available};records=[];poses=packs[primary]['c2w'];testids=np.flatnonzero(tr['held']);point_categories=tr['category'][packs[primary]['point_track_ids']];Pp=packs[primary]['points'][point_categories==1];P=np.median(Pp,0) if len(Pp)>=5 else np.zeros(3);span=[]",
+      "                                                                                                                                                                                                                                                                                  ^^^^^^^^^",
+      "AssertionError"
+    ],
+    "solver_versions": [
+      {
+        "version": 0,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      },
+      {
+        "version": 1,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      }
+    ],
+    "before_actual_deletion": true
+  },
+  {
+    "case": "GP_Is_18.0mm_closed_R5_single_refY_005",
+    "stage": "camera",
+    "status": "CAMERA_FAILED",
+    "failure_beijing": "2026-11-26T16:41:27.952832+08:00",
+    "last_error": "TypeError: '<=' not supported between instances of 'NoneType' and 'int'",
+    "log": "/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/logs/GP_Is_18.0mm_closed_R5_single_refY_005__camera.log",
+    "log_tail": [
+      "                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/full_run.py\", line 138, in worker",
+      "    r.cameras(case,'HIST')",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/route.py\", line 165, in cameras",
+      "    m.invoke_adapted_v6(validate_select,V6/'scripts/validate_select.py',ref,held,{'reference':1,'heldout':1});state['stages'].append('original_upstream_validation')",
+      "    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-M2F10/tools/m2f8_v6_general.py\", line 702, in invoke_adapted_v6",
+      "    module.main()",
+      "  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/validate_select.py\", line 15, in main",
+      "    cr=contours(po[i],n=2048);ob=obs(a['id']);rq=cKDTree(cr.reshape(-1,2)).query(ob['q_held'])[0];rg=stats(rq);ee=stats(errors);pos=float(np.mean(positive)) if positive else 0.;spread=max([float(np.linalg.norm(po[i,:3,3]-xx['c2w'][i,:3,3])) for xx in packs.values()]);rotspread=max(float(np.degrees(Rotation.from_matrix(po[i,:3,:3].T@xx['c2w'][i,:3,:3]).magnitude())) for xx in packs.values());passed=len(errors)>=8 and ee['MAE']<=3 and ee['p95']<=6 and pos>=.95 and rg['MAE']<=3 and rg['p95']<=6 and spread<=2.",
+      "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^^^^^^^^^^^^",
+      "TypeError: '<=' not supported between instances of 'NoneType' and 'int'"
+    ],
+    "solver_versions": [
+      {
+        "version": 0,
+        "success": true,
+        "failure": null
+      },
+      {
+        "version": 1,
+        "success": true,
+        "failure": null
+      }
+    ],
+    "before_actual_deletion": true
+  },
+  {
+    "case": "GP_Is_4.8mm_closed_R10_single_refY_005",
+    "stage": "camera",
+    "status": "CAMERA_FAILED",
+    "failure_beijing": "2026-11-26T16:44:50.210809+08:00",
+    "last_error": "AssertionError",
+    "log": "/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/logs/GP_Is_4.8mm_closed_R10_single_refY_005__camera.log",
+    "log_tail": [
+      "                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/full_run.py\", line 138, in worker",
+      "    r.cameras(case,'HIST')",
+      "  File \"/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/src/ring_first_3d/v6_raw/route.py\", line 165, in cameras",
+      "    m.invoke_adapted_v6(validate_select,V6/'scripts/validate_select.py',ref,held,{'reference':1,'heldout':1});state['stages'].append('original_upstream_validation')",
+      "    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-M2F10/tools/m2f8_v6_general.py\", line 702, in invoke_adapted_v6",
+      "    module.main()",
+      "  File \"/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/validate_select.py\", line 5, in main",
+      "    verify('local_cameras');freeze('validation_protocol',[Path(__file__),R/'scripts/v6_common.py',R/'config.json']);L=ledger();tr=np.load(R/'observations/tracks005.npz');runs=load('metrics/local005_solver.json');available=[x['version'] for x in runs if x['success']];assert available;primary=min(available);packs={v:np.load(R/f'predictions/local005_camera_{v}.npz') for v in available};records=[];poses=packs[primary]['c2w'];testids=np.flatnonzero(tr['held']);point_categories=tr['category'][packs[primary]['point_track_ids']];Pp=packs[primary]['points'][point_categories==1];P=np.median(Pp,0) if len(Pp)>=5 else np.zeros(3);span=[]",
+      "                                                                                                                                                                                                                                                                                  ^^^^^^^^^",
+      "AssertionError"
+    ],
+    "solver_versions": [
+      {
+        "version": 0,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      },
+      {
+        "version": 1,
+        "success": false,
+        "failure": [
+          "RuntimeError: Ring pose graph disconnected; no free SfM fallback"
+        ]
+      }
+    ],
+    "before_actual_deletion": true
+  }
+]

@@ -1,0 +1,5 @@
+# TASK-V6-MAINLINE-FREEZE-AND-STORAGE-CLEANUP-001
+
+本任务完整技术报告见 [CLEANUP_REPORT.md](CLEANUP_REPORT.md)。
+
+方法冻结：[METHOD_FREEZE.md](METHOD_FREEZE.md)。保护、实际删除和后台健康均在该报告链接的机器可读回执中。
