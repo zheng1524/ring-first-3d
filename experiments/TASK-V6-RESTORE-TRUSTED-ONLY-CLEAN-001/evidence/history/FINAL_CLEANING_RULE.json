@@ -1,0 +1,17 @@
+{
+  "epoch": 1794303862.1255255,
+  "status": "FROZEN_BEFORE_FINAL_CLEANING",
+  "initial_diagnostic": "Original PCA tangent plane is self-referential for depth-stretched sheets; all 36 representation runs rejected zero. Retain complete initial results. No removal rate target.",
+  "change": "Replace candidate-contaminated tangent qualification only when two endpoint-excluded outward source-pixel patches independently support a sharp first-depth discontinuity. Reject only interpolating faces, never vertices or supported layers.",
+  "formula": "1/Z=alpha*du+beta*dv+gamma; endpoint excluded from its 8-sample 3x3 outward half-patch; >=6 original Polyp valid samples, rank3; depth RMS and endpoint residual <=0.5/4=0.125 mm; bidirectional endpoint extrapolation error >0.5mm; length/(mean planar predicted edge lengths)>4; both patch incidences>=0.2. Same perspective8, jump0.5, source edge2px or CAD-material context, triangle quality/normal condition.",
+  "unknown_policy": "Insufficient patch support, actual legitimate CAD occlusion or invalid native binding -> retain. Plane-proven step replaces contaminated triangle/PCA grazing flag only for the gap-crossing face.",
+  "evidence_dependencies": "Both patches share HERO prediction and are not statistically independent; never report independent vote count. Separation reduces candidate-face self-explanation, not HERO systematic error.",
+  "scope": "Same single-video 18 sources; both original archive and native grid; archive rejection requires mapped confirmed native edge and its own severe jump/shape/context. No per-group branches.",
+  "threshold_search": 0,
+  "GT": false,
+  "controls": {
+    "path": "/home/liu/ring_first_3d_e4_sdf_localization/experiments/TASK-E4-HERO-GEOMETRY-CLEAN-017/metrics/TWO_SIDED_CONTROL_TESTS.json",
+    "bytes": 947,
+    "sha256": "c8d751cbd6286964e8a0c65812f637fa3c0e36e3f3df0c96402670a6184e113e"
+  }
+}
