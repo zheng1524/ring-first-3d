@@ -4,7 +4,7 @@ import numpy as np
 from common import *
 
 def original(name,functions,namespace):
- path=V6/name;tree=ast.parse(path.read_text());nodes=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in functions]
+ path=V6/name;namespace['__file__']=str(path);tree=ast.parse(path.read_text());nodes=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in functions]
  assert {n.name for n in nodes}==set(functions)
  exec(compile(ast.Module(body=nodes,type_ignores=[]),str(path),'exec'),namespace)
  return namespace

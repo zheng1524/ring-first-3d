@@ -1096,3 +1096,18 @@ v6_raw_to_hero_001:
   formal_usable: false
   historical_outputs_as_inputs: false
   depth_error_gate: false
+
+v6_virtual_polyp_registration_001:
+  route_id: rf-v6-virtual-polyp-registration@1
+  status: controlled_validation_partial_pass
+  formal_pipeline: false
+  entrypoint: experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/reproduce.sh
+  composes: [rf-m2f7-hist-v6@1]
+  reused_modules: [sim.scene, sim.geometry, synthetic.raster, multisurface.geometry, multisurface.scene, contracts.coordinates]
+  frontend_source: TASK-V6-RAW-TO-HERO-MAINLINE-001/HIST
+  scope: original_G01_virtual_scene_independent_two_video_RGB_depth_meshes
+  methods: [M0_identity, M1_Ring_yaw_unidentifiable, M2_Ring_RGB_robust_SE3]
+  result: V0_non_degradation_and_V1_pose_pass_V2_five_seeds_pose_fail
+  physical_groups: 1
+  real_registration_validated: false
+  evidence: experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/TECHNICAL_REPORT.md

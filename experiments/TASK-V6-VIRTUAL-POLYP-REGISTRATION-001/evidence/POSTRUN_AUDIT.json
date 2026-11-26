@@ -1,0 +1,133 @@
+{
+  "binding_time": "POSTRUN; not a retroactive prediction-start freeze",
+  "external_kernels": [
+    {
+      "original": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/track005.py",
+      "protected": "inputs/V6_KERNELS/track005.py",
+      "sha256": "c912da0713a329a3c954fc7b1dfbdcf43459493432ccbc782d7742cd26e514ac",
+      "binding_time": "POSTRUN_AUDIT",
+      "source_commit": "Original V6, same as base HIST kernel lock"
+    },
+    {
+      "original": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/v6_common.py",
+      "protected": "inputs/V6_KERNELS/v6_common.py",
+      "sha256": "59404f5c2a35913c253f802f5bb4ff21461861958a881f86973de15710693fe1",
+      "binding_time": "POSTRUN_AUDIT",
+      "source_commit": "Original V6, same as base HIST kernel lock"
+    }
+  ],
+  "reused_sources": [
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/src/ring_first_3d/contracts/coordinates.py",
+      "sha256": "03b45ba4811c00b01a4e5c014a888d003dca51fe0399e1b2f4d261195286171b",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/src/ring_first_3d/sim/scene.py",
+      "sha256": "45ae2c6d7a89f957c7472a34359599da6eaa1da4e82ff75fc117530488038944",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/src/ring_first_3d/sim/geometry.py",
+      "sha256": "8bf9af204ac9faa71fa3b9b15e68b2284bad9f7cd842424e4aacbc88924d1381",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/src/ring_first_3d/sim/registration.py",
+      "sha256": "9f154e3525ae1b42d56e2d6eea92d0e2cd1b8a8b88f7ac74dd0e8be4519ea2b3",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/src/ring_first_3d/synthetic/raster.py",
+      "sha256": "5286279d8ad7f18aadb63e5e10c8e4647467334fc53e89affc98ee06fbb9976b",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/src/ring_first_3d/multisurface/geometry.py",
+      "sha256": "5463b3bc4c963969218dcee4341d556efe1d301c268d4053a9a7d0046578bbb7",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/src/ring_first_3d/multisurface/scene.py",
+      "sha256": "da6ca2ed8a758015436dd1168e01245c51fba61928ae559818cb8621a6f21943",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/src/ring_first_3d/_legacy.py",
+      "sha256": "375959e174b47b982194de6764d99afa41d1e7e3df4dd47349efce8ab901aff5",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/src/ring_first_3d/source_lock.json",
+      "sha256": "3bee30d508fa9ca6bbc4bbc315b217a0a660b77c6498cfce7ccbba6d9ba5f2b0",
+      "unchanged_from_base": true
+    }
+  ],
+  "diagnostics": [
+    {
+      "condition": "V0",
+      "common_landmark_N": 133,
+      "triangulation_delta_from_clean_median_mm": 0.0,
+      "triangulation_delta_from_clean_p95_mm": 0.0,
+      "residual_yaw_deg": 0.13279610411946496,
+      "ring_center_after_mm": 0.001116835099922471,
+      "matrix_determinant": 0.9999999999999998
+    },
+    {
+      "condition": "V1",
+      "common_landmark_N": 133,
+      "triangulation_delta_from_clean_median_mm": 4.672114692852689e-06,
+      "triangulation_delta_from_clean_p95_mm": 0.00023894650612491097,
+      "residual_yaw_deg": 0.1321567215841424,
+      "ring_center_after_mm": 0.0011151319778423378,
+      "matrix_determinant": 0.9999999999999998
+    },
+    {
+      "condition": "V2_20261117",
+      "common_landmark_N": 132,
+      "triangulation_delta_from_clean_median_mm": 0.6553739493528219,
+      "triangulation_delta_from_clean_p95_mm": 1.5723637469436365,
+      "residual_yaw_deg": 0.6707225832664525,
+      "ring_center_after_mm": 0.6034721129517596,
+      "matrix_determinant": 1.0
+    },
+    {
+      "condition": "V2_20261118",
+      "common_landmark_N": 49,
+      "triangulation_delta_from_clean_median_mm": 0.9111758165235548,
+      "triangulation_delta_from_clean_p95_mm": 2.613706996766586,
+      "residual_yaw_deg": 0.6078470182765839,
+      "ring_center_after_mm": 0.7255723495856711,
+      "matrix_determinant": 1.0
+    },
+    {
+      "condition": "V2_20261119",
+      "common_landmark_N": 16,
+      "triangulation_delta_from_clean_median_mm": 1.0765584479611627,
+      "triangulation_delta_from_clean_p95_mm": 3.578262418317173,
+      "residual_yaw_deg": -1.7831288528124645,
+      "ring_center_after_mm": 0.1265414730681411,
+      "matrix_determinant": 1.0
+    },
+    {
+      "condition": "V2_20261120",
+      "common_landmark_N": 131,
+      "triangulation_delta_from_clean_median_mm": 0.1210688048575825,
+      "triangulation_delta_from_clean_p95_mm": 0.9375052616444133,
+      "residual_yaw_deg": -0.5721172075267066,
+      "ring_center_after_mm": 0.01190965949599357,
+      "matrix_determinant": 1.0
+    },
+    {
+      "condition": "V2_20261121",
+      "common_landmark_N": 69,
+      "triangulation_delta_from_clean_median_mm": 0.5539008890037428,
+      "triangulation_delta_from_clean_p95_mm": 2.0721430040847326,
+      "residual_yaw_deg": 0.5538966741020889,
+      "ring_center_after_mm": 0.2143634314597863,
+      "matrix_determinant": 0.9999999999999998
+    }
+  ],
+  "prediction_hashes_valid": true,
+  "all_public_and_private_generation_hashes_valid": true
+}

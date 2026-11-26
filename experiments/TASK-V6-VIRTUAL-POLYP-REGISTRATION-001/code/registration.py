@@ -39,6 +39,15 @@ def landmarks(frames,poses,tr):
   if valid:points.append(pair);ids.append(tid);held.append(bool(tr['held'][tid]))
  return np.array(points).reshape(-1,2,3),np.array(ids),np.array(held,bool),records
 
+def install_guard():
+ import sys,os
+ denied=[RUN/'private',T/'inputs/virtual_GT.npz']
+ def hook(event,args):
+  if event=='open' and isinstance(args[0],(str,bytes,os.PathLike)):
+   path=Path(os.fsdecode(args[0])).resolve()
+   if any(path==x or x in path.parents for x in denied) or 'virtual_GT' in path.name or path.name=='TRUTH.json':raise PermissionError('GT_READ_DENIED: '+str(path))
+ sys.addaudithook(hook)
+
 def predict(condition):
  check_freeze(read(RUN/'GENERATION_FREEZE.json')['public']);frames=read(RUN/'tracks/ADAPTER.json')['frames'];tr=dict(np.load(RUN/'tracks/observations/tracks005.npz'));public=read(RUN/'public/conditions'/(condition+'.json'));by={r['id']:r for r in public['frames']};poses=np.array([by[r['id']]['C']for r in frames]);pts,ids,held,details=landmarks(frames,poses,tr);ring=public['ring']['005'];c=np.array(ring['center']);n=np.array(ring['normal']);out=RUN/'predictions'/condition;out.mkdir(parents=True,exist_ok=False)
  np.savez_compressed(out/'LANDMARKS.npz',points=pts,track_ids=ids,held=held);save(out/'TRIANGULATION.json',details)
@@ -49,4 +58,5 @@ def predict(condition):
  print(condition,rec,'held',held.sum(),flush=True)
 if __name__=='__main__':
  import sys
+ install_guard()
  for c in sys.argv[1:] or cases():predict(c)

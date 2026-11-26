@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/code/v6_adapter.py", line 46, in <module>
+    audit_real() if sys.argv[1]=='audit' else track()
+                                              ^^^^^^^
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/code/v6_adapter.py", line 21, in track
+    original('track005.py',['main'],ns)['main']()
+  File "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/track005.py", line 4, in main
+    verify('ring_inputs');freeze('tracking_protocol',[Path(__file__),R/'scripts/v6_common.py',R/'config.json']);L=ledger();sift=cv2.SIFT_create(nfeatures=cfg()['SIFT_features'],contrastThreshold=.01);xy=[];desc=[];cat=[];offset=[0]
+                                                           ^^^^^^^^
+NameError: name '__file__' is not defined. Did you mean: '__name__'?
