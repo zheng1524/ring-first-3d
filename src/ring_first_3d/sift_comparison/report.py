@@ -62,7 +62,7 @@ def page(case,result,depth):
             ax.set_xlabel('X（归一单位）',fontsize=8);ax.set_ylabel('Y',fontsize=8);ax.set_zlabel('Z',fontsize=8)
             if row==2:
                 ax.set_yticks([]);ax.set_ylabel('')
-                note='两臂均可见主体外分离片层' if '12.0mm' in case else '两臂均见上部断开小面与下方细长面'
+                note=('两臂均可见主体外分离片层' if case=='GP_Ip_12.0mm_closed_R10_single_refY_005' else '两臂均见上部断开小面与下方细长面' if case=='GP_Ip_20.0mm_closed_R10_single_refY_004' else '保留所有面源；形态未经逐图判定')
                 ax.text2D(.02,.02,note+'；无GT，是否错误未知',transform=ax.transAxes,fontsize=8,color='darkred')
             ax.set_title(f'{arm} 原始HERO全部选定面源｜'+('斜视' if row==1 else '侧视')+'\n蓝='+str(tuples[0]['raw_target'])+'；橙='+str(tuples[1]['raw_target'])+'；两臂同视角/同尺度/同范围')
             if not meshdata[arm]:ax.text(*center,'无可用原始曲面')
