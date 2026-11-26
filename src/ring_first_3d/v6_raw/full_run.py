@@ -79,6 +79,8 @@ def baseline_module():
 
 def verify_reuse(case):
  # Execute only the baseline's full cache-verification path with all writes forbidden.
+ for p in [OLD/'prepared'/case/'PREPARED.json']+[OLD/'HIST'/case/n for n in ['CAMERA_COMPLETE.json','PLAN_FROZEN.json','HERO_COMPLETE.json']]:
+  if not p.is_file():raise ValueError('REUSE_INCOMPLETE_STAGE_CHAIN '+str(p))
  m=baseline_module();assert case in m.ALLOWED
  for fn in ['prepare','cameras','schedule','hero','historical_extra','bind','inference_start']:
   # Base source identity is separately locked in the immutable snapshot receipt.
@@ -120,6 +122,10 @@ def worker(config,case,stage):
  os.environ['V6_FULL_CONFIG']=str(config)
  from . import route as r
  cfg=read(config);root=Path(cfg['run_root']);R=root/'HIST'/case
+ entry=next(v for v in read(cfg['manifest'])['videos'] if v['case']==case)
+ raw=W/'smart_endoscope_20260805 (1)/raw'/(case+'.mp4')
+ assert entry['raw_path']==str(raw) and hash_file(raw)==entry['raw_sha256'],'FROZEN_RAW_MANIFEST_DRIFT'
+ assert entry['ring_inner_mm']==(5 if '_R5_' in case else 10),'FROZEN_RING_IDENTITY_DRIFT'
  if stage=='reuse':
   os.environ.pop('V6_FULL_CONFIG',None)
   atomic_json(root/'states'/(case+'.reuse.json'),verify_reuse(case));return
@@ -151,9 +157,10 @@ def summarize_video(cfg,case):
  O=root/'display'/case;O.mkdir(parents=True,exist_ok=True);n=sum(r['status']=='RENDERABLE' for r in rows)
  atomic_json(O/'RESULTS.json',rows);atomic_json(O/'SUMMARY.json',dict(case=case,variant='HIST',renderable=n))
  nearviews.T=root;nearviews.LABEL['HIST']='V6 HIST';(root/'figures').mkdir(exist_ok=True)
- crop=nearviews.make(O,kinds=('近景逐源',),full_range_link=False);atomic_json(O/'CROP_COUNTS.json',crop)
  state.update(status='DONE',selected_targets=len(plan['all_targets']),legal_targets=len(plan['legal']),native_success=sum(bool(x.get('success')) for x in results),renderable=n,q0=sum(r['status']=='RENDERABLE' and r['rule']=='Q0' for r in rows),q1=sum(r['status']=='RENDERABLE' and r['rule']=='Q1' for r in rows),finished_epoch=time.time(),figure=('figures/HIST__'+case+'__近景逐源.png') if n else '',source_results=str(O/'RESULTS.json'))
- atomic_json(statepath,state)
+ state['status']='RENDERING';atomic_json(statepath,state)
+ crop=nearviews.make(O,kinds=('近景逐源',),full_range_link=False);atomic_json(O/'CROP_COUNTS.json',crop)
+ state['status']='DONE';atomic_json(statepath,state)
  if state['origin']=='NEW':
   # These are redundant exports only; preserve all native depths, cameras and PLY meshes.
   temps=list((R/'meshes').glob('*_points.ply'))+list((R/'predictions').glob('*_surface.npz'))
@@ -166,7 +173,15 @@ def summarize_video(cfg,case):
 def refresh(cfg,status):
  root=Path(cfg['run_root']);manifest=read(cfg['manifest']);rows=[]
  for v in manifest['videos']:
-  p=root/'states'/(v['case']+'.json');rows.append(read(p) if p.exists() else dict(case=v['case'],group=v['group'],status='PENDING' if v['status']=='READY' else v['status'],origin='',renderable=0,selected_targets=None))
+  p=root/'states'/(v['case']+'.json');row=read(p) if p.exists() else dict(case=v['case'],group=v['group'],status='PENDING' if v['status']=='READY' else v['status'],origin='',renderable=0,selected_targets=None)
+  R=Path(row.get('run_path',str(root/'HIST'/v['case'])))
+  if (R/'PLAN_FROZEN.json').exists():
+   plan=read(R/'PLAN_FROZEN.json');row.update(selected_targets=len(plan['all_targets']),legal_targets=len(plan['legal']))
+  ledger=R/'metrics/MVS005_supported_runs.json'
+  if ledger.exists():
+   # A successful atomic native write precedes each atomic ledger entry. No dependence on PNG completion.
+   rr=read(ledger);row['native_success']=len({x['tag'] for x in rr if x.get('success') and (R/'raw'/(x['tag']+'.npz')).is_file()})
+  rows.append(row)
  cov=coverage(rows);cov.update(status=status,updated_epoch=time.time(),pid=os.getpid(),disk_free_bytes=shutil.disk_usage(root).free,output_coverage_not_accuracy=True,manifest_sha256=hash_file(cfg['manifest']));atomic_json(root/'PROGRESS.json',cov);table(root/'VIDEO_RESULTS.csv',rows)
  groups=[dict(group=g,videos=sum(r['group']==g for r in rows),videos_with_output=sum(r['group']==g and r.get('renderable',0)>0 for r in rows),renderable=sum(r.get('renderable',0) for r in rows if r['group']==g)) for g in manifest['groups']];table(root/'GROUP_RESULTS.csv',groups)
  style='<meta charset="utf-8"><style>body{font-family:system-ui;max-width:1400px;margin:25px auto}img{max-width:100%}td,th{padding:6px;border:1px solid #bbb}section{margin:25px 0}</style>'
@@ -214,22 +229,30 @@ def run(config):
      s=read(sp);s.update(status=stage.upper()+'_RUNNING',current_stage=stage,updated_epoch=time.time());atomic_json(sp,s);refresh(cfg,'RUNNING');print('STAGE_START',case,stage,flush=True)
      with (root/'logs'/(case+'__'+stage+'.log')).open('a') as log:rc=subprocess.call([sys.executable,'-m','ring_first_3d.v6_raw.full_run','worker','--config',str(config),'--case',case,'--stage',stage],stdout=log,stderr=subprocess.STDOUT)
      s=read(sp)
-     if rc:s.update(status=stage.upper()+'_FAILED',reason=f'process exit {rc}; log {log.name}');atomic_json(sp,s);break
+     if rc:
+      s.update(status='RESOURCE_INTERRUPTED' if rc<0 or rc in [137,143] else stage.upper()+'_FAILED',reason=f'process exit {rc}; log {log.name}');atomic_json(sp,s);break
      if stage=='prepare':s.update(selected_targets=len(read(root/'prepared'/case/'PREPARED.json')['frames'])-1);atomic_json(sp,s)
      if stage=='schedule':p=read(root/'HIST'/case/'PLAN_FROZEN.json');s.update(legal_targets=len(p['legal']),selected_targets=len(p['all_targets']));atomic_json(sp,s)
+     if stage=='hero':
+      results=read(root/'HIST'/case/'metrics/MVS005_supported_runs.json');s.update(native_success=sum(bool(x.get('success')) for x in results));atomic_json(sp,s)
      print('STAGE_END',case,stage,rc,flush=True)
     refresh(cfg,'RUNNING')
     if stop!='RUNNING':break
    if stop=='RUNNING':
-    rows=refresh(cfg,'RUNNING');stop='COMPLETE' if all(r['status']=='DONE' for r in rows) else 'COMPLETE_WITH_FAILURES'
+    rows=refresh(cfg,'RUNNING');stop='COMPLETE' if all(r['status']=='DONE' for r in rows) else 'PARTIAL_RESUMABLE' if any(r['status']=='RESOURCE_INTERRUPTED' for r in rows) else 'COMPLETE_WITH_FAILURES'
   except BaseException as ex:
    stop='INTERRUPTED';atomic_json(root/'RUNNER_EXCEPTION.json',dict(error=repr(ex),traceback=traceback.format_exc(),epoch=time.time()));raise
   finally:refresh(cfg,stop);print('QUEUE_EXIT',stop,flush=True)
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('action',choices=['inventory','run','worker','refresh']);ap.add_argument('--config');ap.add_argument('--destination');ap.add_argument('--case');ap.add_argument('--stage');a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('action',choices=['inventory','run','worker','refresh','retry']);ap.add_argument('--config');ap.add_argument('--destination');ap.add_argument('--case');ap.add_argument('--stage');a=ap.parse_args()
  if a.action=='inventory':print(inventory(a.destination)['verified'])
  elif a.action=='run':run(Path(a.config))
  elif a.action=='worker':worker(Path(a.config),a.case,a.stage)
+ elif a.action=='retry':
+  cfg=read(a.config);p=Path(cfg['run_root'])/'states'/(a.case+'.json');old=read(p)
+  assert old['status'].endswith('_FAILED') or old['status']=='RESOURCE_INTERRUPTED','NOT_A_FAILED_VIDEO'
+  atomic_json(p.with_name(p.stem+'.retry.'+str(time.time_ns())+'.json'),dict(prior=old,reason='explicit engineering resume; no support changes; successful tuple hashes rechecked'))
+  old['status']='PENDING';atomic_json(p,old)
  else:refresh(read(a.config),'PARTIAL')
 if __name__=='__main__':main()
