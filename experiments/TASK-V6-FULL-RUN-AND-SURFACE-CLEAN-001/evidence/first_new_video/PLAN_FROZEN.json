@@ -1,0 +1,2806 @@
+{
+  "protocol_signature": "42852fb9fc25c2d9432ab4e68610d3b64a8470f60260f38f87b2ca860312fcc8",
+  "parent_sha256": "5cc28faa5b1b31990481861bf1bbea0f0afa52672f0130564ba00e3ea89b25d4",
+  "cases_sha256": "ba51796a005f1a74af35bd1614bb48ee3112934654852f9a1257493c6e25415d",
+  "case": "GP_IIa_14.0mm_closed_R5_single_refY_004",
+  "variant": "HIST",
+  "execution_commit": "da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a",
+  "cameras_sha256": "306daf4dd6a0ab5e587dd551159f00fc71a082013effcbcbdb63c06bb11fbd56",
+  "input_sha256": "924e65709fa518e557f52b0d77664db4a16563bb836c642b3627085a9d39091c",
+  "old_cameras": 0,
+  "new_cameras": 10,
+  "numeric_cameras": 22,
+  "old_legal_targets": 0,
+  "new_legal_targets": 14,
+  "budget": 14,
+  "all_targets": [
+    {
+      "tag": "005_supported_ref00609",
+      "reference": 12,
+      "reference_id": "raw_000609",
+      "sources": [
+        6,
+        21,
+        19
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_001141",
+        "raw_000989"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 16,
+          "angle": 29.055822562765435
+        },
+        {
+          "i": 21,
+          "overlap": 24,
+          "angle": 14.12735401504946
+        },
+        {
+          "i": 19,
+          "overlap": 22,
+          "angle": 14.90846331507722
+        },
+        {
+          "i": 15,
+          "overlap": 32,
+          "angle": 10.234839003468787
+        },
+        {
+          "i": 16,
+          "overlap": 28,
+          "angle": 11.57198327287604
+        },
+        {
+          "i": 17,
+          "overlap": 23,
+          "angle": 11.961660000450614
+        },
+        {
+          "i": 14,
+          "overlap": 37,
+          "angle": 7.109773654364058
+        },
+        {
+          "i": 18,
+          "overlap": 21,
+          "angle": 10.114832368007857
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 609,
+      "raw_support": [
+        263,
+        1141,
+        989
+      ],
+      "input_sha256": "6c96f0005e08f95785d0ea193a9a13414f03c86788d193296caa3ba38e6215c2"
+    },
+    {
+      "tag": "005_supported_ref00076",
+      "reference": 1,
+      "reference_id": "raw_000076",
+      "sources": [
+        6,
+        0
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_000000"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 24,
+          "angle": 25.124133360951518
+        },
+        {
+          "i": 0,
+          "overlap": 80,
+          "angle": 0.9052927054786863
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 0,
+          "reasons": [
+            "初始化中心分散 13.659 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 76,
+      "raw_support": [
+        263,
+        0
+      ],
+      "failure_reason": "FEWER_THAN_THREE_UPSTREAM_ADMITTED_SUPPORTS"
+    },
+    {
+      "tag": "005_supported_ref00263",
+      "reference": 6,
+      "reference_id": "raw_000263",
+      "sources": [
+        0
+      ],
+      "source_ids": [
+        "raw_000000"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 0,
+          "overlap": 25,
+          "angle": 24.39360647150155
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 0,
+          "reasons": [
+            "初始化中心分散 13.659 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 263,
+      "raw_support": [
+        0
+      ],
+      "failure_reason": "FEWER_THAN_THREE_UPSTREAM_ADMITTED_SUPPORTS"
+    },
+    {
+      "tag": "005_supported_ref00989",
+      "reference": 19,
+      "reference_id": "raw_000989",
+      "sources": [
+        15,
+        14,
+        16
+      ],
+      "source_ids": [
+        "raw_000803",
+        "raw_000761",
+        "raw_000837"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 15,
+          "overlap": 25,
+          "angle": 14.927648893761205
+        },
+        {
+          "i": 14,
+          "overlap": 29,
+          "angle": 12.783871809596072
+        },
+        {
+          "i": 16,
+          "overlap": 24,
+          "angle": 14.896092450616262
+        },
+        {
+          "i": 17,
+          "overlap": 25,
+          "angle": 11.107825896221266
+        },
+        {
+          "i": 18,
+          "overlap": 29,
+          "angle": 7.706663640563479
+        },
+        {
+          "i": 21,
+          "overlap": 27,
+          "angle": 6.574748193506245
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 761,
+          "reasons": [
+            "初始化中心分散 2.028 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 989,
+      "raw_support": [
+        803,
+        761,
+        837
+      ],
+      "input_sha256": "dfa7c25339258a327bca3ed9732ae3fe507dbf62e5709f50f9cde5cb93ac47ec"
+    },
+    {
+      "tag": "005_supported_ref00837",
+      "reference": 16,
+      "reference_id": "raw_000837",
+      "sources": [
+        19,
+        21,
+        18
+      ],
+      "source_ids": [
+        "raw_000989",
+        "raw_001141",
+        "raw_000939"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 19,
+          "overlap": 24,
+          "angle": 14.896092450616262
+        },
+        {
+          "i": 21,
+          "overlap": 33,
+          "angle": 9.309453468638507
+        },
+        {
+          "i": 18,
+          "overlap": 34,
+          "angle": 7.314634743013554
+        },
+        {
+          "i": 14,
+          "overlap": 42,
+          "angle": 4.652461484376587
+        },
+        {
+          "i": 17,
+          "overlap": 38,
+          "angle": 4.056477223064858
+        },
+        {
+          "i": 15,
+          "overlap": 35,
+          "angle": 1.4446110920638155
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 939,
+          "reasons": [
+            "初始化中心分散 2.655 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 837,
+      "raw_support": [
+        989,
+        1141,
+        939
+      ],
+      "input_sha256": "92c783f58c27a73ef180e85e0b14cab364202a208da5ea9f09f6559b8cb77e2e"
+    },
+    {
+      "tag": "005_supported_ref00175",
+      "reference": 4,
+      "reference_id": "raw_000175",
+      "sources": [
+        0,
+        6
+      ],
+      "source_ids": [
+        "raw_000000",
+        "raw_000263"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 0,
+          "overlap": 59,
+          "angle": 9.62447633027432
+        },
+        {
+          "i": 6,
+          "overlap": 34,
+          "angle": 14.993637826264651
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 0,
+          "reasons": [
+            "初始化中心分散 13.659 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 175,
+      "raw_support": [
+        0,
+        263
+      ],
+      "failure_reason": "FEWER_THAN_THREE_UPSTREAM_ADMITTED_SUPPORTS"
+    },
+    {
+      "tag": "005_supported_ref00380",
+      "reference": 8,
+      "reference_id": "raw_000380",
+      "sources": [
+        6,
+        15,
+        16
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_000803",
+        "raw_000837"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 16,
+          "angle": 20.465126518868825
+        },
+        {
+          "i": 15,
+          "overlap": 18,
+          "angle": 17.133952987473176
+        },
+        {
+          "i": 16,
+          "overlap": 16,
+          "angle": 17.991562183948425
+        },
+        {
+          "i": 14,
+          "overlap": 19,
+          "angle": 13.643180549659798
+        },
+        {
+          "i": 21,
+          "overlap": 15,
+          "angle": 14.516625723036512
+        },
+        {
+          "i": 18,
+          "overlap": 17,
+          "angle": 12.118774701763897
+        },
+        {
+          "i": 19,
+          "overlap": 15,
+          "angle": 10.659287452097374
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 380,
+      "raw_support": [
+        263,
+        803,
+        837
+      ],
+      "input_sha256": "1460fba59e828d9e4809c152905306183d4da175860f8941cecba9b04aef2bd6"
+    },
+    {
+      "tag": "005_supported_ref00304",
+      "reference": 7,
+      "reference_id": "raw_000304",
+      "sources": [
+        0,
+        6,
+        15
+      ],
+      "source_ids": [
+        "raw_000000",
+        "raw_000263",
+        "raw_000803"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 0,
+          "overlap": 22,
+          "angle": 33.698505009244904
+        },
+        {
+          "i": 6,
+          "overlap": 40,
+          "angle": 9.977811521411402
+        },
+        {
+          "i": 15,
+          "overlap": 17,
+          "angle": 22.542519677872242
+        },
+        {
+          "i": 16,
+          "overlap": 16,
+          "angle": 22.773137844342507
+        },
+        {
+          "i": 14,
+          "overlap": 15,
+          "angle": 19.772968083575282
+        },
+        {
+          "i": 17,
+          "overlap": 15,
+          "angle": 19.259080637713634
+        },
+        {
+          "i": 21,
+          "overlap": 16,
+          "angle": 14.994229400436593
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 0,
+          "reasons": [
+            "初始化中心分散 13.659 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 304,
+      "raw_support": [
+        0,
+        263,
+        803
+      ],
+      "input_sha256": "d5a7658bbdba3a99126d81cd2deefc6fdba083c5b66ce303c87062930bcda709"
+    },
+    {
+      "tag": "005_supported_ref00939",
+      "reference": 18,
+      "reference_id": "raw_000939",
+      "sources": [
+        16,
+        19,
+        15
+      ],
+      "source_ids": [
+        "raw_000837",
+        "raw_000989",
+        "raw_000803"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 16,
+          "overlap": 34,
+          "angle": 7.314634743013554
+        },
+        {
+          "i": 19,
+          "overlap": 29,
+          "angle": 7.706663640563479
+        },
+        {
+          "i": 15,
+          "overlap": 27,
+          "angle": 7.227421551991331
+        },
+        {
+          "i": 14,
+          "overlap": 33,
+          "angle": 5.3716764221554865
+        },
+        {
+          "i": 17,
+          "overlap": 38,
+          "angle": 4.055621033315093
+        },
+        {
+          "i": 21,
+          "overlap": 33,
+          "angle": 4.042952049281593
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 939,
+      "raw_support": [
+        837,
+        989,
+        803
+      ],
+      "input_sha256": "9625a94291502cc3a7506e2d4420a51ab0d7cb7d76491f36709ca8766de9543d"
+    },
+    {
+      "tag": "005_supported_ref01065",
+      "reference": 20,
+      "reference_id": "raw_001065",
+      "sources": [
+        16,
+        14,
+        17
+      ],
+      "source_ids": [
+        "raw_000837",
+        "raw_000761",
+        "raw_000913"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 16,
+          "overlap": 34,
+          "angle": 17.706110165791994
+        },
+        {
+          "i": 14,
+          "overlap": 30,
+          "angle": 17.18736539686218
+        },
+        {
+          "i": 17,
+          "overlap": 34,
+          "angle": 13.658857845766917
+        },
+        {
+          "i": 15,
+          "overlap": 25,
+          "angle": 18.2480839939296
+        },
+        {
+          "i": 18,
+          "overlap": 31,
+          "angle": 11.840097993642287
+        },
+        {
+          "i": 21,
+          "overlap": 37,
+          "angle": 8.452624391005475
+        },
+        {
+          "i": 19,
+          "overlap": 26,
+          "angle": 6.587005195938962
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 761,
+          "reasons": [
+            "初始化中心分散 2.028 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 913,
+          "reasons": [
+            "初始化中心分散 3.434 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 1065,
+      "raw_support": [
+        837,
+        761,
+        913
+      ],
+      "input_sha256": "f654f780ea0ea316d6034c6dc5f9f08504fd8836c251e38b03655f731c41baba"
+    },
+    {
+      "tag": "005_supported_ref00228",
+      "reference": 5,
+      "reference_id": "raw_000228",
+      "sources": [
+        0,
+        6
+      ],
+      "source_ids": [
+        "raw_000000",
+        "raw_000263"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 0,
+          "overlap": 29,
+          "angle": 18.969136564150542
+        },
+        {
+          "i": 6,
+          "overlap": 39,
+          "angle": 5.424499006039104
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 0,
+          "reasons": [
+            "初始化中心分散 13.659 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 228,
+      "raw_support": [
+        0,
+        263
+      ],
+      "failure_reason": "FEWER_THAN_THREE_UPSTREAM_ADMITTED_SUPPORTS"
+    },
+    {
+      "tag": "005_supported_ref00761",
+      "reference": 14,
+      "reference_id": "raw_000761",
+      "sources": [
+        19,
+        21,
+        16
+      ],
+      "source_ids": [
+        "raw_000989",
+        "raw_001141",
+        "raw_000837"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 19,
+          "overlap": 29,
+          "angle": 12.783871809596072
+        },
+        {
+          "i": 21,
+          "overlap": 31,
+          "angle": 9.012830154054798
+        },
+        {
+          "i": 16,
+          "overlap": 42,
+          "angle": 4.652461484376587
+        },
+        {
+          "i": 18,
+          "overlap": 33,
+          "angle": 5.3716764221554865
+        },
+        {
+          "i": 17,
+          "overlap": 31,
+          "angle": 5.191195367379271
+        },
+        {
+          "i": 15,
+          "overlap": 45,
+          "angle": 3.5419222810320448
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 761,
+      "raw_support": [
+        989,
+        1141,
+        837
+      ],
+      "input_sha256": "85578ff74380a6aee2a2f3763d33c86a4442f2138a5ad6941d7288e95559d4c6"
+    },
+    {
+      "tag": "005_supported_ref00456",
+      "reference": 10,
+      "reference_id": "raw_000456",
+      "sources": [
+        6,
+        15,
+        16
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_000803",
+        "raw_000837"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 18,
+          "angle": 22.3605290231311
+        },
+        {
+          "i": 15,
+          "overlap": 30,
+          "angle": 13.07040542541735
+        },
+        {
+          "i": 16,
+          "overlap": 26,
+          "angle": 13.953527346023808
+        },
+        {
+          "i": 14,
+          "overlap": 32,
+          "angle": 9.575522885689216
+        },
+        {
+          "i": 17,
+          "overlap": 19,
+          "angle": 12.188936320896293
+        },
+        {
+          "i": 21,
+          "overlap": 20,
+          "angle": 11.55239912186775
+        },
+        {
+          "i": 19,
+          "overlap": 20,
+          "angle": 9.478959151725386
+        },
+        {
+          "i": 18,
+          "overlap": 21,
+          "angle": 8.532834541080533
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 456,
+      "raw_support": [
+        263,
+        803,
+        837
+      ],
+      "input_sha256": "36f790edd198e63975570a61a2937e3c131879ddf8aab08f390ed5f1124b0579"
+    },
+    {
+      "tag": "005_supported_ref00913",
+      "reference": 17,
+      "reference_id": "raw_000913",
+      "sources": [
+        19,
+        21,
+        14
+      ],
+      "source_ids": [
+        "raw_000989",
+        "raw_001141",
+        "raw_000761"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 19,
+          "overlap": 25,
+          "angle": 11.107825896221266
+        },
+        {
+          "i": 21,
+          "overlap": 37,
+          "angle": 5.2539919414307565
+        },
+        {
+          "i": 14,
+          "overlap": 31,
+          "angle": 5.191195367379271
+        },
+        {
+          "i": 16,
+          "overlap": 38,
+          "angle": 4.056477223064858
+        },
+        {
+          "i": 18,
+          "overlap": 38,
+          "angle": 4.055621033315093
+        },
+        {
+          "i": 15,
+          "overlap": 31,
+          "angle": 4.677268472799715
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 761,
+          "reasons": [
+            "初始化中心分散 2.028 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 913,
+      "raw_support": [
+        989,
+        1141,
+        761
+      ],
+      "input_sha256": "450c142e2e2b80ff8d4982df842bd951f447f869f2c97fb08731b77279b69f50"
+    },
+    {
+      "tag": "005_supported_ref01141",
+      "reference": 21,
+      "reference_id": "raw_001141",
+      "sources": [
+        16,
+        15,
+        14
+      ],
+      "source_ids": [
+        "raw_000837",
+        "raw_000803",
+        "raw_000761"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 16,
+          "overlap": 33,
+          "angle": 9.309453468638507
+        },
+        {
+          "i": 15,
+          "overlap": 30,
+          "angle": 9.795984361142787
+        },
+        {
+          "i": 14,
+          "overlap": 31,
+          "angle": 9.012830154054798
+        },
+        {
+          "i": 17,
+          "overlap": 37,
+          "angle": 5.2539919414307565
+        },
+        {
+          "i": 19,
+          "overlap": 27,
+          "angle": 6.574748193506245
+        },
+        {
+          "i": 18,
+          "overlap": 33,
+          "angle": 4.042952049281593
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 761,
+          "reasons": [
+            "初始化中心分散 2.028 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 1141,
+      "raw_support": [
+        837,
+        803,
+        761
+      ],
+      "input_sha256": "eeb13cd85f2f3bd2e39f4e6a73204868ebee22153d6f59f9bed4e564d92d903b"
+    },
+    {
+      "tag": "005_supported_ref00152",
+      "reference": 3,
+      "reference_id": "raw_000152",
+      "sources": [
+        6,
+        0
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_000000"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 32,
+          "angle": 17.056375236558388
+        },
+        {
+          "i": 0,
+          "overlap": 61,
+          "angle": 7.535556298774926
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 0,
+          "reasons": [
+            "初始化中心分散 13.659 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 152,
+      "raw_support": [
+        263,
+        0
+      ],
+      "failure_reason": "FEWER_THAN_THREE_UPSTREAM_ADMITTED_SUPPORTS"
+    },
+    {
+      "tag": "005_supported_ref00532",
+      "reference": 11,
+      "reference_id": "raw_000532",
+      "sources": [
+        6,
+        15,
+        21
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_000803",
+        "raw_001141"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 16,
+          "angle": 28.179847620757652
+        },
+        {
+          "i": 15,
+          "overlap": 29,
+          "angle": 12.77829813915271
+        },
+        {
+          "i": 21,
+          "overlap": 22,
+          "angle": 15.463065912509025
+        },
+        {
+          "i": 17,
+          "overlap": 22,
+          "angle": 14.032426541323467
+        },
+        {
+          "i": 19,
+          "overlap": 19,
+          "angle": 15.102707248835914
+        },
+        {
+          "i": 14,
+          "overlap": 30,
+          "angle": 9.493131405429311
+        },
+        {
+          "i": 16,
+          "overlap": 19,
+          "angle": 14.07070346070548
+        },
+        {
+          "i": 18,
+          "overlap": 20,
+          "angle": 11.605662174397484
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 532,
+      "raw_support": [
+        263,
+        803,
+        1141
+      ],
+      "input_sha256": "3fc8096f78ad2473c3f88dfad59fcbae38e7db98420387905a6cc9a7926e9afb"
+    },
+    {
+      "tag": "005_supported_ref00426",
+      "reference": 9,
+      "reference_id": "raw_000426",
+      "sources": [
+        6,
+        15,
+        16
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_000803",
+        "raw_000837"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 21,
+          "angle": 21.44161945428107
+        },
+        {
+          "i": 15,
+          "overlap": 24,
+          "angle": 15.56701955780275
+        },
+        {
+          "i": 16,
+          "overlap": 19,
+          "angle": 16.4579481973859
+        },
+        {
+          "i": 17,
+          "overlap": 20,
+          "angle": 14.610340451877008
+        },
+        {
+          "i": 14,
+          "overlap": 23,
+          "angle": 12.061057704345556
+        },
+        {
+          "i": 21,
+          "overlap": 19,
+          "angle": 13.522178791029562
+        },
+        {
+          "i": 19,
+          "overlap": 19,
+          "angle": 10.345978173126905
+        },
+        {
+          "i": 18,
+          "overlap": 18,
+          "angle": 10.83716062577834
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 426,
+      "raw_support": [
+        263,
+        803,
+        837
+      ],
+      "input_sha256": "740e376c8c452a95f83a622a03d49a472649b307497401a73488bc81cede1899"
+    },
+    {
+      "tag": "005_supported_ref00803",
+      "reference": 15,
+      "reference_id": "raw_000803",
+      "sources": [
+        19,
+        21,
+        18
+      ],
+      "source_ids": [
+        "raw_000989",
+        "raw_001141",
+        "raw_000939"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 19,
+          "overlap": 25,
+          "angle": 14.927648893761205
+        },
+        {
+          "i": 21,
+          "overlap": 30,
+          "angle": 9.795984361142787
+        },
+        {
+          "i": 18,
+          "overlap": 27,
+          "angle": 7.227421551991331
+        },
+        {
+          "i": 14,
+          "overlap": 45,
+          "angle": 3.5419222810320448
+        },
+        {
+          "i": 17,
+          "overlap": 31,
+          "angle": 4.677268472799715
+        },
+        {
+          "i": 16,
+          "overlap": 35,
+          "angle": 1.4446110920638155
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 939,
+          "reasons": [
+            "初始化中心分散 2.655 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 803,
+      "raw_support": [
+        989,
+        1141,
+        939
+      ],
+      "input_sha256": "22a92708d5fbd300b238dea01523ca2f200e3ebaab3ae6450a0ab1e193c43b9a"
+    },
+    {
+      "tag": "005_supported_ref00000",
+      "reference": 0,
+      "reference_id": "raw_000000",
+      "sources": [
+        6
+      ],
+      "source_ids": [
+        "raw_000263"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 25,
+          "angle": 24.39360647150155
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 0,
+      "raw_support": [
+        263
+      ],
+      "failure_reason": "FEWER_THAN_THREE_UPSTREAM_ADMITTED_SUPPORTS"
+    },
+    {
+      "tag": "005_supported_ref00111",
+      "reference": 2,
+      "reference_id": "raw_000111",
+      "sources": [
+        6,
+        0
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_000000"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 30,
+          "angle": 25.12890741216721
+        },
+        {
+          "i": 0,
+          "overlap": 74,
+          "angle": 1.5879129562407266
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 0,
+          "reasons": [
+            "初始化中心分散 13.659 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 111,
+      "raw_support": [
+        263,
+        0
+      ],
+      "failure_reason": "FEWER_THAN_THREE_UPSTREAM_ADMITTED_SUPPORTS"
+    }
+  ],
+  "legal": [
+    {
+      "tag": "005_supported_ref00609",
+      "reference": 12,
+      "reference_id": "raw_000609",
+      "sources": [
+        6,
+        21,
+        19
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_001141",
+        "raw_000989"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 16,
+          "angle": 29.055822562765435
+        },
+        {
+          "i": 21,
+          "overlap": 24,
+          "angle": 14.12735401504946
+        },
+        {
+          "i": 19,
+          "overlap": 22,
+          "angle": 14.90846331507722
+        },
+        {
+          "i": 15,
+          "overlap": 32,
+          "angle": 10.234839003468787
+        },
+        {
+          "i": 16,
+          "overlap": 28,
+          "angle": 11.57198327287604
+        },
+        {
+          "i": 17,
+          "overlap": 23,
+          "angle": 11.961660000450614
+        },
+        {
+          "i": 14,
+          "overlap": 37,
+          "angle": 7.109773654364058
+        },
+        {
+          "i": 18,
+          "overlap": 21,
+          "angle": 10.114832368007857
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 609,
+      "raw_support": [
+        263,
+        1141,
+        989
+      ],
+      "input_sha256": "6c96f0005e08f95785d0ea193a9a13414f03c86788d193296caa3ba38e6215c2"
+    },
+    {
+      "tag": "005_supported_ref00989",
+      "reference": 19,
+      "reference_id": "raw_000989",
+      "sources": [
+        15,
+        14,
+        16
+      ],
+      "source_ids": [
+        "raw_000803",
+        "raw_000761",
+        "raw_000837"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 15,
+          "overlap": 25,
+          "angle": 14.927648893761205
+        },
+        {
+          "i": 14,
+          "overlap": 29,
+          "angle": 12.783871809596072
+        },
+        {
+          "i": 16,
+          "overlap": 24,
+          "angle": 14.896092450616262
+        },
+        {
+          "i": 17,
+          "overlap": 25,
+          "angle": 11.107825896221266
+        },
+        {
+          "i": 18,
+          "overlap": 29,
+          "angle": 7.706663640563479
+        },
+        {
+          "i": 21,
+          "overlap": 27,
+          "angle": 6.574748193506245
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 761,
+          "reasons": [
+            "初始化中心分散 2.028 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 989,
+      "raw_support": [
+        803,
+        761,
+        837
+      ],
+      "input_sha256": "dfa7c25339258a327bca3ed9732ae3fe507dbf62e5709f50f9cde5cb93ac47ec"
+    },
+    {
+      "tag": "005_supported_ref00837",
+      "reference": 16,
+      "reference_id": "raw_000837",
+      "sources": [
+        19,
+        21,
+        18
+      ],
+      "source_ids": [
+        "raw_000989",
+        "raw_001141",
+        "raw_000939"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 19,
+          "overlap": 24,
+          "angle": 14.896092450616262
+        },
+        {
+          "i": 21,
+          "overlap": 33,
+          "angle": 9.309453468638507
+        },
+        {
+          "i": 18,
+          "overlap": 34,
+          "angle": 7.314634743013554
+        },
+        {
+          "i": 14,
+          "overlap": 42,
+          "angle": 4.652461484376587
+        },
+        {
+          "i": 17,
+          "overlap": 38,
+          "angle": 4.056477223064858
+        },
+        {
+          "i": 15,
+          "overlap": 35,
+          "angle": 1.4446110920638155
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 939,
+          "reasons": [
+            "初始化中心分散 2.655 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 837,
+      "raw_support": [
+        989,
+        1141,
+        939
+      ],
+      "input_sha256": "92c783f58c27a73ef180e85e0b14cab364202a208da5ea9f09f6559b8cb77e2e"
+    },
+    {
+      "tag": "005_supported_ref00380",
+      "reference": 8,
+      "reference_id": "raw_000380",
+      "sources": [
+        6,
+        15,
+        16
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_000803",
+        "raw_000837"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 16,
+          "angle": 20.465126518868825
+        },
+        {
+          "i": 15,
+          "overlap": 18,
+          "angle": 17.133952987473176
+        },
+        {
+          "i": 16,
+          "overlap": 16,
+          "angle": 17.991562183948425
+        },
+        {
+          "i": 14,
+          "overlap": 19,
+          "angle": 13.643180549659798
+        },
+        {
+          "i": 21,
+          "overlap": 15,
+          "angle": 14.516625723036512
+        },
+        {
+          "i": 18,
+          "overlap": 17,
+          "angle": 12.118774701763897
+        },
+        {
+          "i": 19,
+          "overlap": 15,
+          "angle": 10.659287452097374
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 380,
+      "raw_support": [
+        263,
+        803,
+        837
+      ],
+      "input_sha256": "1460fba59e828d9e4809c152905306183d4da175860f8941cecba9b04aef2bd6"
+    },
+    {
+      "tag": "005_supported_ref00304",
+      "reference": 7,
+      "reference_id": "raw_000304",
+      "sources": [
+        0,
+        6,
+        15
+      ],
+      "source_ids": [
+        "raw_000000",
+        "raw_000263",
+        "raw_000803"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 0,
+          "overlap": 22,
+          "angle": 33.698505009244904
+        },
+        {
+          "i": 6,
+          "overlap": 40,
+          "angle": 9.977811521411402
+        },
+        {
+          "i": 15,
+          "overlap": 17,
+          "angle": 22.542519677872242
+        },
+        {
+          "i": 16,
+          "overlap": 16,
+          "angle": 22.773137844342507
+        },
+        {
+          "i": 14,
+          "overlap": 15,
+          "angle": 19.772968083575282
+        },
+        {
+          "i": 17,
+          "overlap": 15,
+          "angle": 19.259080637713634
+        },
+        {
+          "i": 21,
+          "overlap": 16,
+          "angle": 14.994229400436593
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 0,
+          "reasons": [
+            "初始化中心分散 13.659 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 304,
+      "raw_support": [
+        0,
+        263,
+        803
+      ],
+      "input_sha256": "d5a7658bbdba3a99126d81cd2deefc6fdba083c5b66ce303c87062930bcda709"
+    },
+    {
+      "tag": "005_supported_ref00939",
+      "reference": 18,
+      "reference_id": "raw_000939",
+      "sources": [
+        16,
+        19,
+        15
+      ],
+      "source_ids": [
+        "raw_000837",
+        "raw_000989",
+        "raw_000803"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 16,
+          "overlap": 34,
+          "angle": 7.314634743013554
+        },
+        {
+          "i": 19,
+          "overlap": 29,
+          "angle": 7.706663640563479
+        },
+        {
+          "i": 15,
+          "overlap": 27,
+          "angle": 7.227421551991331
+        },
+        {
+          "i": 14,
+          "overlap": 33,
+          "angle": 5.3716764221554865
+        },
+        {
+          "i": 17,
+          "overlap": 38,
+          "angle": 4.055621033315093
+        },
+        {
+          "i": 21,
+          "overlap": 33,
+          "angle": 4.042952049281593
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 939,
+      "raw_support": [
+        837,
+        989,
+        803
+      ],
+      "input_sha256": "9625a94291502cc3a7506e2d4420a51ab0d7cb7d76491f36709ca8766de9543d"
+    },
+    {
+      "tag": "005_supported_ref01065",
+      "reference": 20,
+      "reference_id": "raw_001065",
+      "sources": [
+        16,
+        14,
+        17
+      ],
+      "source_ids": [
+        "raw_000837",
+        "raw_000761",
+        "raw_000913"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 16,
+          "overlap": 34,
+          "angle": 17.706110165791994
+        },
+        {
+          "i": 14,
+          "overlap": 30,
+          "angle": 17.18736539686218
+        },
+        {
+          "i": 17,
+          "overlap": 34,
+          "angle": 13.658857845766917
+        },
+        {
+          "i": 15,
+          "overlap": 25,
+          "angle": 18.2480839939296
+        },
+        {
+          "i": 18,
+          "overlap": 31,
+          "angle": 11.840097993642287
+        },
+        {
+          "i": 21,
+          "overlap": 37,
+          "angle": 8.452624391005475
+        },
+        {
+          "i": 19,
+          "overlap": 26,
+          "angle": 6.587005195938962
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 761,
+          "reasons": [
+            "初始化中心分散 2.028 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 913,
+          "reasons": [
+            "初始化中心分散 3.434 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 1065,
+      "raw_support": [
+        837,
+        761,
+        913
+      ],
+      "input_sha256": "f654f780ea0ea316d6034c6dc5f9f08504fd8836c251e38b03655f731c41baba"
+    },
+    {
+      "tag": "005_supported_ref00761",
+      "reference": 14,
+      "reference_id": "raw_000761",
+      "sources": [
+        19,
+        21,
+        16
+      ],
+      "source_ids": [
+        "raw_000989",
+        "raw_001141",
+        "raw_000837"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 19,
+          "overlap": 29,
+          "angle": 12.783871809596072
+        },
+        {
+          "i": 21,
+          "overlap": 31,
+          "angle": 9.012830154054798
+        },
+        {
+          "i": 16,
+          "overlap": 42,
+          "angle": 4.652461484376587
+        },
+        {
+          "i": 18,
+          "overlap": 33,
+          "angle": 5.3716764221554865
+        },
+        {
+          "i": 17,
+          "overlap": 31,
+          "angle": 5.191195367379271
+        },
+        {
+          "i": 15,
+          "overlap": 45,
+          "angle": 3.5419222810320448
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 761,
+      "raw_support": [
+        989,
+        1141,
+        837
+      ],
+      "input_sha256": "85578ff74380a6aee2a2f3763d33c86a4442f2138a5ad6941d7288e95559d4c6"
+    },
+    {
+      "tag": "005_supported_ref00456",
+      "reference": 10,
+      "reference_id": "raw_000456",
+      "sources": [
+        6,
+        15,
+        16
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_000803",
+        "raw_000837"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 18,
+          "angle": 22.3605290231311
+        },
+        {
+          "i": 15,
+          "overlap": 30,
+          "angle": 13.07040542541735
+        },
+        {
+          "i": 16,
+          "overlap": 26,
+          "angle": 13.953527346023808
+        },
+        {
+          "i": 14,
+          "overlap": 32,
+          "angle": 9.575522885689216
+        },
+        {
+          "i": 17,
+          "overlap": 19,
+          "angle": 12.188936320896293
+        },
+        {
+          "i": 21,
+          "overlap": 20,
+          "angle": 11.55239912186775
+        },
+        {
+          "i": 19,
+          "overlap": 20,
+          "angle": 9.478959151725386
+        },
+        {
+          "i": 18,
+          "overlap": 21,
+          "angle": 8.532834541080533
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 456,
+      "raw_support": [
+        263,
+        803,
+        837
+      ],
+      "input_sha256": "36f790edd198e63975570a61a2937e3c131879ddf8aab08f390ed5f1124b0579"
+    },
+    {
+      "tag": "005_supported_ref00913",
+      "reference": 17,
+      "reference_id": "raw_000913",
+      "sources": [
+        19,
+        21,
+        14
+      ],
+      "source_ids": [
+        "raw_000989",
+        "raw_001141",
+        "raw_000761"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 19,
+          "overlap": 25,
+          "angle": 11.107825896221266
+        },
+        {
+          "i": 21,
+          "overlap": 37,
+          "angle": 5.2539919414307565
+        },
+        {
+          "i": 14,
+          "overlap": 31,
+          "angle": 5.191195367379271
+        },
+        {
+          "i": 16,
+          "overlap": 38,
+          "angle": 4.056477223064858
+        },
+        {
+          "i": 18,
+          "overlap": 38,
+          "angle": 4.055621033315093
+        },
+        {
+          "i": 15,
+          "overlap": 31,
+          "angle": 4.677268472799715
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 761,
+          "reasons": [
+            "初始化中心分散 2.028 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 913,
+      "raw_support": [
+        989,
+        1141,
+        761
+      ],
+      "input_sha256": "450c142e2e2b80ff8d4982df842bd951f447f869f2c97fb08731b77279b69f50"
+    },
+    {
+      "tag": "005_supported_ref01141",
+      "reference": 21,
+      "reference_id": "raw_001141",
+      "sources": [
+        16,
+        15,
+        14
+      ],
+      "source_ids": [
+        "raw_000837",
+        "raw_000803",
+        "raw_000761"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 16,
+          "overlap": 33,
+          "angle": 9.309453468638507
+        },
+        {
+          "i": 15,
+          "overlap": 30,
+          "angle": 9.795984361142787
+        },
+        {
+          "i": 14,
+          "overlap": 31,
+          "angle": 9.012830154054798
+        },
+        {
+          "i": 17,
+          "overlap": 37,
+          "angle": 5.2539919414307565
+        },
+        {
+          "i": 19,
+          "overlap": 27,
+          "angle": 6.574748193506245
+        },
+        {
+          "i": 18,
+          "overlap": 33,
+          "angle": 4.042952049281593
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 761,
+          "reasons": [
+            "初始化中心分散 2.028 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 1141,
+      "raw_support": [
+        837,
+        803,
+        761
+      ],
+      "input_sha256": "eeb13cd85f2f3bd2e39f4e6a73204868ebee22153d6f59f9bed4e564d92d903b"
+    },
+    {
+      "tag": "005_supported_ref00532",
+      "reference": 11,
+      "reference_id": "raw_000532",
+      "sources": [
+        6,
+        15,
+        21
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_000803",
+        "raw_001141"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 16,
+          "angle": 28.179847620757652
+        },
+        {
+          "i": 15,
+          "overlap": 29,
+          "angle": 12.77829813915271
+        },
+        {
+          "i": 21,
+          "overlap": 22,
+          "angle": 15.463065912509025
+        },
+        {
+          "i": 17,
+          "overlap": 22,
+          "angle": 14.032426541323467
+        },
+        {
+          "i": 19,
+          "overlap": 19,
+          "angle": 15.102707248835914
+        },
+        {
+          "i": 14,
+          "overlap": 30,
+          "angle": 9.493131405429311
+        },
+        {
+          "i": 16,
+          "overlap": 19,
+          "angle": 14.07070346070548
+        },
+        {
+          "i": 18,
+          "overlap": 20,
+          "angle": 11.605662174397484
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 532,
+      "raw_support": [
+        263,
+        803,
+        1141
+      ],
+      "input_sha256": "3fc8096f78ad2473c3f88dfad59fcbae38e7db98420387905a6cc9a7926e9afb"
+    },
+    {
+      "tag": "005_supported_ref00426",
+      "reference": 9,
+      "reference_id": "raw_000426",
+      "sources": [
+        6,
+        15,
+        16
+      ],
+      "source_ids": [
+        "raw_000263",
+        "raw_000803",
+        "raw_000837"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 6,
+          "overlap": 21,
+          "angle": 21.44161945428107
+        },
+        {
+          "i": 15,
+          "overlap": 24,
+          "angle": 15.56701955780275
+        },
+        {
+          "i": 16,
+          "overlap": 19,
+          "angle": 16.4579481973859
+        },
+        {
+          "i": 17,
+          "overlap": 20,
+          "angle": 14.610340451877008
+        },
+        {
+          "i": 14,
+          "overlap": 23,
+          "angle": 12.061057704345556
+        },
+        {
+          "i": 21,
+          "overlap": 19,
+          "angle": 13.522178791029562
+        },
+        {
+          "i": 19,
+          "overlap": 19,
+          "angle": 10.345978173126905
+        },
+        {
+          "i": 18,
+          "overlap": 18,
+          "angle": 10.83716062577834
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": false,
+      "addition_reasons": [
+        {
+          "raw_frame": 263,
+          "reasons": [
+            "初始化中心分散 8.633 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 803,
+          "reasons": [
+            "初始化中心分散 3.055 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 837,
+          "reasons": [
+            "初始化中心分散 3.220 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 426,
+      "raw_support": [
+        263,
+        803,
+        837
+      ],
+      "input_sha256": "740e376c8c452a95f83a622a03d49a472649b307497401a73488bc81cede1899"
+    },
+    {
+      "tag": "005_supported_ref00803",
+      "reference": 15,
+      "reference_id": "raw_000803",
+      "sources": [
+        19,
+        21,
+        18
+      ],
+      "source_ids": [
+        "raw_000989",
+        "raw_001141",
+        "raw_000939"
+      ],
+      "independent_image_heldout": 13,
+      "scope": "LOCAL005_GEOMETRY_SCREENED_STILL_NO_GT",
+      "selection_uses_GT": false,
+      "selection_uses_MVS_error": false,
+      "source_diagnostics": [
+        {
+          "i": 19,
+          "overlap": 25,
+          "angle": 14.927648893761205
+        },
+        {
+          "i": 21,
+          "overlap": 30,
+          "angle": 9.795984361142787
+        },
+        {
+          "i": 18,
+          "overlap": 27,
+          "angle": 7.227421551991331
+        },
+        {
+          "i": 14,
+          "overlap": 45,
+          "angle": 3.5419222810320448
+        },
+        {
+          "i": 17,
+          "overlap": 31,
+          "angle": 4.677268472799715
+        },
+        {
+          "i": 16,
+          "overlap": 35,
+          "angle": 1.4446110920638155
+        }
+      ],
+      "original_previews_preserved": true,
+      "old_rule_generated": false,
+      "rule_version": "Q1",
+      "target_own_old_pass": false,
+      "target_own_new_pass": true,
+      "addition_reasons": [
+        {
+          "raw_frame": 989,
+          "reasons": [
+            "初始化中心分散 3.693 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 1141,
+          "reasons": [
+            "初始化中心分散 4.264 mm > 2 mm"
+          ]
+        },
+        {
+          "raw_frame": 939,
+          "reasons": [
+            "初始化中心分散 2.655 mm > 2 mm"
+          ]
+        }
+      ],
+      "raw_target": 803,
+      "raw_support": [
+        989,
+        1141,
+        939
+      ],
+      "input_sha256": "22a92708d5fbd300b238dea01523ca2f200e3ebaab3ae6450a0ab1e193c43b9a"
+    }
+  ],
+  "no_depth_in_selection": true,
+  "model_sha256": "00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d"
+}
