@@ -134,9 +134,6 @@ def prepare(case):
 def bind(m,R,meta):
  mods=m.source_modules(3.1 if meta['ring_inner_mm']==5 else 5.6)
  for mod in [mods['v6'],mods['track'],mods['lba']]:mod.R=R;mod.V5=R/'v5raw'
- if FULL_CONFIG:
-  for mod in mods.values():
-   if hasattr(mod,'save'):mod.save=lambda path,obj:save(R/path,obj)
  return mods
 
 def cameras(case,variant):
@@ -223,6 +220,7 @@ def hero(case,variant):
  save(R/'HERO_STARTED.json',dict(execution_commit=head(),plan_sha256=sha(R/'PLAN_FROZEN.json'),new_inference_budget=plan['budget'],epoch=time.time()))
  import run_mvs005_supported
  run_mvs005_supported.R=R;run_mvs005_supported.V5=R/'v5raw'
+ if FULL_CONFIG:run_mvs005_supported.save=lambda path,obj:save(R/path,obj)
  if plan['legal']:
   primary=read(R/'predictions/local005_primary.json')['primary_version'];poses=np.load(R/f'predictions/local005_camera_{primary}.npz')['c2w'];assert sha(R/f'predictions/local005_camera_{primary}.npz')==plan['cameras_sha256']
   tree,adapt=m.adapt_supported_hero_schedule(V6/'scripts/run_mvs005_supported.py')
