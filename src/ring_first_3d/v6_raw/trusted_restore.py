@@ -84,13 +84,16 @@ def render(c,info,state,result,path):
     # CAD-only scene: never show excluded Raw geometry as an empty subset.
     draw(ax,cad['V'],cad['F'],np.full((len(cad['F']),3),.035),cad,bounds,e,a);ax.text(.5,.5,'可信子集为空',transform=ax.transAxes,ha='center')
    ax.set_title(title)
-  focus=result['focus'];q=project_view(np.array(focus['xyz_mm']),bounds,cad,e,a)
+  focus=result['focus']
+  if c['role']=='孤立小片':focus=dict(label='下方独立片：关注保留与残留',xyz_mm=min(result['components'][1:],key=lambda q:q['centroid_mm'][2])['centroid_mm'])
+  q=project_view(np.array(focus['xyz_mm']),bounds,cad,e,a)
   for ax in row[:2]:ax.annotate(focus['label'],xy=q,xytext=(10,26),fontsize=8,color='#205070',bbox=dict(facecolor='white',alpha=.9),arrowprops=dict(arrowstyle='->',color='#205070'))
  legend=[Patch(facecolor=COLORS[i],label=label) for i,label in [(0,'可信 TRUSTED'),(1,'待定 UNCERTAIN'),(3,'未知 UNKNOWN'),(2,'拒绝 REJECTED')]]
  fig.legend(handles=legend,loc='lower center',bbox_to_anchor=(.5,.065),ncol=4,fontsize=10)
  fig.suptitle(c['case']+f"\nTarget RAW {c['raw_target']} / Support {c['raw_support']} · {c['role']}\n仅保留 TRUSTED；UNKNOWN 与 UNCERTAIN 同时排除（REJECTED亦排除）\n同源、同视角、同Raw完整毫米范围；黑色Ring CAD；没有修改坐标、重网格或补洞",fontsize=11)
  q=result['states'];text='；'.join(f"{LABELS[i]} {q[i]['faces']}面 / {q[i]['area_mm2']:.3f}mm²" for i in [0,1,3,2]);fig.text(.5,.045,text,ha='center',fontsize=9);fig.text(.5,.018,'排除未知/待定表示本轮不使用这些面，不等于证明错误。正常边界、薄结构可能同步减少，需人工判断。',ha='center',fontsize=9)
  fig.tight_layout(rect=(0,.11,1,.87));fig.savefig(path,dpi=130);plt.close(fig)
+ return dict(path=str(path),sha256=sha(path),focus=focus,bounds_min_mm=bounds.min(0),bounds_max_mm=bounds.max(0),views=[dict(elev=20,azim=60),dict(elev=0,azim=90)],rule='same Raw + CAD bounds for all columns',renderer_sha256=sha(W/'src/ring_first_3d/mainline/native/_mesh_renderer.py'))
 
 
 def run():
@@ -110,7 +113,7 @@ def run():
   components.sort(key=lambda x:x['area_mm2'],reverse=True);boundary=e['boundary_face'];lower=info['uv'][F].mean(1)[:,1]>=np.quantile(info['uv'][F].mean(1)[:,1],.8)
   zones=[]
   for name,sel in [('原面边界邻接面',boundary),('源图像下方20%面中心（位置代理非解剖标签）',lower)]:zones.append(dict(name=name,faces=int(sel.sum()),area_mm2=float(area[sel].sum()),states=[dict(code=j,faces=int((sel&(state==j)).sum()),area_mm2=float(area[sel&(state==j)].sum())) for j in range(4)]))
-  if c['role']=='孤立小片':focus=dict(label='原始独立片（非错误真值）',xyz_mm=components[1]['centroid_mm'])
+  if c['role']=='孤立小片':focus=dict(label='原始独立片（非错误真值）',xyz_mm=min(components[1:],key=lambda q:q['centroid_mm'][2])['centroid_mm'])
   elif c['role']=='异常延伸':
    centers=V[F].mean(1);distance=np.linalg.norm(centers-np.median(centers,axis=0),axis=1);idx=np.flatnonzero(lower);j=idx[np.argmax(distance[idx])];focus=dict(label='下方延伸/细条关注区',xyz_mm=centers[j])
   else:
@@ -121,9 +124,21 @@ def run():
   save(dest/'COMPLETE.json',dict(result_sha256=sha(dest/'RESULT.json'),outputs={str(p):sha(p) for p in dest.glob('*') if p.is_file()},original_inputs_unchanged=True));rows.append(result);print('TRUSTED_COMPLETE',k,c['case'],states,flush=True)
  save(T/'evidence/RESULTS.json',rows);table(T/'SURFACE_COUNTS.csv',[dict(case=r['case'],target=r['target'],**s) for r in rows for s in r['states']]);return rows
 
+def repaint():
+ from . import route as r
+ from .surface_clean import mapped_input_for_source
+ r.B=O;r.environment();rows=[]
+ for k,c in enumerate(read(T/'config/SOURCES_FROZEN.json')['cases'],1):
+  d=O/f'source{k}';complete=read(d/'COMPLETE.json')
+  for p,h in complete['outputs'].items():assert sha(p)==h
+  info=mapped_input_for_source(c);result=read(d/'RESULT.json');state=np.load(d/'FACE_EVIDENCE.npz')['state']
+  rows.append(render(c,info,state,result,T/'figures'/f'source{k}.png'))
+ save(T/'evidence/RENDER_RECEIPT.json',dict(checked_beijing=now(),source_sha256=sha(__file__),classification_rerun=False,change='Source2 arrow points to the lower original island rather than the second-largest original component at CAD; same raw geometry/classes/bounds',figures=rows))
+
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('action',choices=['progress','freeze','run']);ap.add_argument('--label',default='INITIAL');a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('action',choices=['progress','freeze','run','figures']);ap.add_argument('--label',default='INITIAL');a=ap.parse_args()
  if a.action=='progress':print(json.dumps(progress_snapshot(a.label),ensure_ascii=False,default=str))
  elif a.action=='freeze':print(len(freeze()))
+ elif a.action=='figures':repaint()
  else:run()
 if __name__=='__main__':main()
