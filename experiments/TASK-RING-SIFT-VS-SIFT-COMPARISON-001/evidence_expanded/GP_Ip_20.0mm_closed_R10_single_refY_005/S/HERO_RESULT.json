@@ -1,0 +1,73 @@
+{
+  "status": "NOT_EXECUTED_GPU_BUSY",
+  "reason": "ACTIVE_A_SCHEDULER_PRIORITY",
+  "jobs": [
+    {
+      "pid": 185164,
+      "command": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python -u -m ring_first_3d.v6_raw.full_run run --config /home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/experiments/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001/config/FULL_RUN.json"
+    },
+    {
+      "pid": 210878,
+      "command": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python -m ring_first_3d.v6_raw.full_run worker --config /home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/experiments/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001/config/FULL_RUN.json --case GP_Ip_10.3mm_closed_R5_single_refY_005 --stage schedule"
+    }
+  ],
+  "planned": [
+    {
+      "reference": 7,
+      "sources": [
+        8,
+        9,
+        6
+      ],
+      "overlap": [
+        382,
+        352,
+        349
+      ],
+      "tag": "B_target_0",
+      "raw_target": 234,
+      "raw_support": [
+        252,
+        281,
+        187
+      ],
+      "reference_id": "raw_000234",
+      "source_ids": [
+        "raw_000252",
+        "raw_000281",
+        "raw_000187"
+      ],
+      "scope": "B_NO_GT_FIXED_TUPLE",
+      "input_sha256": "56c9755f40744ea1cc37ff93b52480fb85b332ad43b2175df08370aac542c92f"
+    },
+    {
+      "reference": 8,
+      "sources": [
+        7,
+        9,
+        10
+      ],
+      "overlap": [
+        382,
+        353,
+        341
+      ],
+      "tag": "B_target_1",
+      "raw_target": 252,
+      "raw_support": [
+        234,
+        281,
+        328
+      ],
+      "reference_id": "raw_000252",
+      "source_ids": [
+        "raw_000234",
+        "raw_000281",
+        "raw_000328"
+      ],
+      "scope": "B_NO_GT_FIXED_TUPLE",
+      "input_sha256": "7110656d78f410869bf199a8bd1a9af7b9a4a024588a54eb7f0128b0c4a6d34a"
+    }
+  ],
+  "skipped": []
+}

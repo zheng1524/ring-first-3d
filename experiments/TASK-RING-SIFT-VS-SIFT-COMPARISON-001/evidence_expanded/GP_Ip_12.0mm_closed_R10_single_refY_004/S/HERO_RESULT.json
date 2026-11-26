@@ -1,0 +1,73 @@
+{
+  "status": "NOT_EXECUTED_GPU_BUSY",
+  "reason": "ACTIVE_A_SCHEDULER_PRIORITY",
+  "jobs": [
+    {
+      "pid": 185164,
+      "command": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python -u -m ring_first_3d.v6_raw.full_run run --config /home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/experiments/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001/config/FULL_RUN.json"
+    },
+    {
+      "pid": 210080,
+      "command": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python -m ring_first_3d.v6_raw.full_run worker --config /home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/experiments/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001/config/FULL_RUN.json --case GP_Ip_10.3mm_closed_R5_single_refY_005 --stage camera"
+    }
+  ],
+  "planned": [
+    {
+      "reference": 17,
+      "sources": [
+        18,
+        19,
+        16
+      ],
+      "overlap": [
+        266,
+        246,
+        244
+      ],
+      "tag": "B_target_0",
+      "raw_target": 1050,
+      "raw_support": [
+        1095,
+        1126,
+        1011
+      ],
+      "reference_id": "raw_001050",
+      "source_ids": [
+        "raw_001095",
+        "raw_001126",
+        "raw_001011"
+      ],
+      "scope": "B_NO_GT_FIXED_TUPLE",
+      "input_sha256": "2393655d6c6e5d207ff450f876ec5e0cc31896831107fc30c8c53826eeb2fcfe"
+    },
+    {
+      "reference": 16,
+      "sources": [
+        17,
+        18,
+        15
+      ],
+      "overlap": [
+        244,
+        231,
+        216
+      ],
+      "tag": "B_target_1",
+      "raw_target": 1011,
+      "raw_support": [
+        1050,
+        1095,
+        927
+      ],
+      "reference_id": "raw_001011",
+      "source_ids": [
+        "raw_001050",
+        "raw_001095",
+        "raw_000927"
+      ],
+      "scope": "B_NO_GT_FIXED_TUPLE",
+      "input_sha256": "4b543732ff4704a7e523dcf93d981ad3b38cd84413ac5cb54edfbe637f462e7c"
+    }
+  ],
+  "skipped": []
+}

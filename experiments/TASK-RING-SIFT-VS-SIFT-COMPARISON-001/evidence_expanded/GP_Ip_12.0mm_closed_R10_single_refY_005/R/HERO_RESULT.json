@@ -1,0 +1,114 @@
+{
+  "status": "COMPLETED",
+  "runs": [
+    {
+      "tag": "B_target_0",
+      "reference": "raw_000516",
+      "sources": [
+        "raw_000573",
+        "raw_000611",
+        "raw_000459"
+      ],
+      "success": true,
+      "geometry_status": "B_NO_GT_FIXED_TUPLE",
+      "depth_is_new005_prediction": true,
+      "GT_used": false,
+      "native_shape": [
+        352,
+        640
+      ],
+      "positive_fraction": 1.0,
+      "peak_GPU_GB": 1.508467712,
+      "model_info": {
+        "all_learned_parameters_loaded": 535,
+        "learned_parameter_elements": 201670426,
+        "regenerated_fixed_buffers": {
+          "mv_depth_loss.backproject.pix_coords_13N": [
+            1,
+            3,
+            235200
+          ],
+          "compute_normals.backproject.pix_coords_13N": [
+            1,
+            3,
+            235200
+          ],
+          "cost_volume.backprojector.pix_coords_13N": [
+            1,
+            3,
+            19200
+          ]
+        },
+        "core_source_unchanged": true,
+        "fast_cost_volume": false,
+        "no_other_pretrained_download": true,
+        "checkpoint_SHA256": "00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d",
+        "opts_model_num_views": 8,
+        "actual_source_views": 3
+      },
+      "raw_SHA256": "95cfedc68cf638ac3a5777150bc132509efbc94105e0c6105568f6103fa4803e",
+      "seconds": 9.449099256999034
+    },
+    {
+      "tag": "B_target_1",
+      "reference": "raw_000573",
+      "sources": [
+        "raw_000611",
+        "raw_000516",
+        "raw_000459"
+      ],
+      "success": true,
+      "geometry_status": "B_NO_GT_FIXED_TUPLE",
+      "depth_is_new005_prediction": true,
+      "GT_used": false,
+      "native_shape": [
+        352,
+        640
+      ],
+      "positive_fraction": 1.0,
+      "peak_GPU_GB": 1.504523776,
+      "model_info": {
+        "all_learned_parameters_loaded": 535,
+        "learned_parameter_elements": 201670426,
+        "regenerated_fixed_buffers": {
+          "mv_depth_loss.backproject.pix_coords_13N": [
+            1,
+            3,
+            235200
+          ],
+          "compute_normals.backproject.pix_coords_13N": [
+            1,
+            3,
+            235200
+          ],
+          "cost_volume.backprojector.pix_coords_13N": [
+            1,
+            3,
+            19200
+          ]
+        },
+        "core_source_unchanged": true,
+        "fast_cost_volume": false,
+        "no_other_pretrained_download": true,
+        "checkpoint_SHA256": "00878bab903b1d384cd6bb9ea092e247a9036d429cb8bcc3d6dcbb81f67e556d",
+        "opts_model_num_views": 8,
+        "actual_source_views": 3
+      },
+      "raw_SHA256": "7609e6797ca3685726c02d90e05a91e435ec71511fbcfad6e7bdfad6264412c1",
+      "seconds": 0.3563958449958591
+    }
+  ],
+  "skipped": [],
+  "adapter": {
+    "source": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/run_mvs005_supported.py",
+    "source_sha256": "353dc7f3ed2baf7383f45f141d51ad074e14fdc723efc4cc4b3a7b59d02ab46f",
+    "schedule_guards": 1,
+    "adapted_ast_sha256": "76d3566eb23f9e61e4404d8061b936f92de802d58d96526ae3eed4ff913ccb36"
+  },
+  "outputs": {
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_005/R/hero/raw/B_target_1.npz": "7609e6797ca3685726c02d90e05a91e435ec71511fbcfad6e7bdfad6264412c1",
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_005/R/hero/raw/B_target_0.npz": "95cfedc68cf638ac3a5777150bc132509efbc94105e0c6105568f6103fa4803e",
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_005/R/hero/meshes/B_target_1_Polyp.ply": "823ff5b447ac7f4b85e17275d9e931f24a826e7802fdcca0141c1eba845c31bf",
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_005/R/hero/meshes/B_target_0_Polyp.ply": "c8ec9cf3dbc800fbbb87daaa5f2c89e9d020c3c329391b72378e4f585cd7b795"
+  }
+}

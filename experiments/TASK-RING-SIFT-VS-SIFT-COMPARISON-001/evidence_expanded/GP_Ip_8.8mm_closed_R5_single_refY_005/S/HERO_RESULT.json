@@ -1,0 +1,73 @@
+{
+  "status": "NOT_EXECUTED_GPU_BUSY",
+  "reason": "ACTIVE_A_SCHEDULER_PRIORITY",
+  "jobs": [
+    {
+      "pid": 185164,
+      "command": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python -u -m ring_first_3d.v6_raw.full_run run --config /home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/experiments/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001/config/FULL_RUN.json"
+    },
+    {
+      "pid": 210949,
+      "command": "/home/liu/polyp_research/ring_anchor_3d/.venv/bin/python -m ring_first_3d.v6_raw.full_run worker --config /home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/experiments/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001/config/FULL_RUN.json --case GP_Ip_10.3mm_closed_R5_single_refY_005 --stage hero"
+    }
+  ],
+  "planned": [
+    {
+      "reference": 13,
+      "sources": [
+        14,
+        12,
+        15
+      ],
+      "overlap": [
+        244,
+        243,
+        222
+      ],
+      "tag": "B_target_0",
+      "raw_target": 515,
+      "raw_support": [
+        545,
+        495,
+        572
+      ],
+      "reference_id": "raw_000515",
+      "source_ids": [
+        "raw_000545",
+        "raw_000495",
+        "raw_000572"
+      ],
+      "scope": "B_NO_GT_FIXED_TUPLE",
+      "input_sha256": "f43ceb345f81537f43ee7670fc91650e98eab5385e90acfd53fb70ddc0136ba2"
+    },
+    {
+      "reference": 15,
+      "sources": [
+        14,
+        16,
+        13
+      ],
+      "overlap": [
+        232,
+        229,
+        222
+      ],
+      "tag": "B_target_1",
+      "raw_target": 572,
+      "raw_support": [
+        545,
+        629,
+        515
+      ],
+      "reference_id": "raw_000572",
+      "source_ids": [
+        "raw_000545",
+        "raw_000629",
+        "raw_000515"
+      ],
+      "scope": "B_NO_GT_FIXED_TUPLE",
+      "input_sha256": "c5c0c0dadd76d1a949d54933f90a2f4d1e154110e1eaf25d10439c81c1fddc42"
+    }
+  ],
+  "skipped": []
+}

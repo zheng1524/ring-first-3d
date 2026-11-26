@@ -1,0 +1,530 @@
+{
+  "case": "GP_Ip_12.0mm_closed_R10_single_refY_004",
+  "not_GT": true,
+  "units": "R_scale_normalized_units; R one unit = one mm; not independent S metric scale",
+  "source_hashes": {
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_004/R/cameras.npz": "b46224a65878ca0e0a46dee7cffe12d6fec7b0de1885c316776051990997f65b",
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_004/S/cameras.npz": "66cbb245a42779cf8cd384ff055a0a4c9830a9d85178bcb1eefc2b2c72d3cf04",
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_004/S/cameras_normalized.npz": "ae4a8b7eabefcad70ca7b175f7b2b26a0c90a5ad04427f6bbd599089dc8c6637",
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_004/NORMALIZATION_FROZEN.json": "632cbbe0256e50e1d871514b377c6c0342e03d27e6bcc9b540cec0b208d4dada",
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_004/R/RGB_CHECKS.json": "87aa156a73ea1a0b4ef99dbd13de516d4c97bef95a56eda08eb68f8e3209fa1f",
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_004/S/RGB_CHECKS.json": "a18bd49816f1de703601a46d5d03c9693556bf3b0ac16015e57a82bd58506053",
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_004/common/INPUT_MANIFEST.json": "1343013607ee36359faa9880df82fe601f2b9d562d51b23ae552746871cc8e02",
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_004/common/meta.json": "96cb8514ddc49b86647401282788048bae6fff3153eb7618550b1b15c519c604",
+    "/home/liu/ring_first_3d_workspace/runs/ring_sift_comparison_001/GP_Ip_12.0mm_closed_R10_single_refY_004/common/TUPLES_FROZEN.json": "8f33886ab5dabe8a7ca1dd503f41ab902043ca1256b033c5593670a0ab4b8b2d"
+  },
+  "evaluator_sha256": "1a37ec6c0b2d75b8c37e6b3d32aa5d3c85cd24ae968dc822639abc4420a37a60",
+  "execution_commit": "577d4ce93128ed1bd127de6c9b3fa15bd0a56e03",
+  "interpretation": "Symmetric inter-solution position and rotation differences; neither solution is GT. Signed vectors use S minus R; percentage denominator is R baseline.",
+  "position_delta_convention": "S_minus_R",
+  "rotation_units": "degrees",
+  "status": "EVALUABLE",
+  "total": 6,
+  "count": 6,
+  "relative_transform_convention": "inverse(target_c2w) @ support_c2w",
+  "per_role": [
+    {
+      "status": "OK",
+      "reason": "",
+      "position_delta": [
+        0.08317230516178609,
+        -0.05486358119885304,
+        0.006925430233614804
+      ],
+      "position_norm": 0.09987795788765946,
+      "rotation_deg": 0.06949764253489572,
+      "relative_R": [
+        [
+          0.999946820027387,
+          -0.002055654554777668,
+          -0.010106008186620124,
+          0.8072665041870455
+        ],
+        [
+          0.002070985863495615,
+          0.999996720253047,
+          0.0015068180721890332,
+          -0.5655323944766134
+        ],
+        [
+          0.010102877544037223,
+          -0.00152766733973622,
+          0.9999477976863739,
+          -0.22046785314399386
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "relative_S": [
+        [
+          0.999938499618387,
+          -0.0016983465707544677,
+          -0.01095958940173874,
+          0.8904388093488316
+        ],
+        [
+          0.0017235945473543027,
+          0.9999958817785517,
+          0.002294699931067527,
+          -0.6203959756754664
+        ],
+        [
+          0.010955647071963708,
+          -0.002313448694680015,
+          0.9999373089110996,
+          -0.21354242291037906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "baseline_R": 1.0100060258507109,
+      "baseline_S": 1.10606184556349,
+      "translation_error_percent": 9.88884772281769,
+      "percentage_status": "OK",
+      "percentage_reason": "",
+      "tuple_index": 0,
+      "tuple_tag": "B_target_0",
+      "support_slot": 0,
+      "target_frame": 17,
+      "support_frame": 18,
+      "target_frame_id": "raw_001050",
+      "support_frame_id": "raw_001095",
+      "target_raw_frame": 1050,
+      "support_raw_frame": 1095
+    },
+    {
+      "status": "OK",
+      "reason": "",
+      "position_delta": [
+        0.3313074660673605,
+        0.05045904337380419,
+        -0.06668342023231588
+      ],
+      "position_norm": 0.34169786458808066,
+      "rotation_deg": 0.2162615240017978,
+      "relative_R": [
+        [
+          0.9994374233884322,
+          -0.009151673479062681,
+          -0.03226582717401905,
+          2.573240615953448
+        ],
+        [
+          0.00930898378795598,
+          0.9999454901018185,
+          0.004728598721596681,
+          0.25596036698331354
+        ],
+        [
+          0.032220793775551496,
+          -0.0050263005846183555,
+          0.9994681369362939,
+          -0.34159696021486496
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "relative_S": [
+        [
+          0.9993095019221055,
+          -0.009152513449458291,
+          -0.036010427180898176,
+          2.9045480820208085
+        ],
+        [
+          0.00931229522145285,
+          0.9999475147460554,
+          0.004271874400801959,
+          0.3064194103571177
+        ],
+        [
+          0.03596943877657519,
+          -0.004604264408698322,
+          0.9993422838163876,
+          -0.40828038044718085
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "baseline_R": 2.608404006339269,
+      "baseline_S": 2.9490651543959583,
+      "translation_error_percent": 13.099882677593039,
+      "percentage_status": "OK",
+      "percentage_reason": "",
+      "tuple_index": 0,
+      "tuple_tag": "B_target_0",
+      "support_slot": 1,
+      "target_frame": 17,
+      "support_frame": 19,
+      "target_frame_id": "raw_001050",
+      "support_frame_id": "raw_001126",
+      "target_raw_frame": 1050,
+      "support_raw_frame": 1126
+    },
+    {
+      "status": "OK",
+      "reason": "",
+      "position_delta": [
+        -0.10256161801641328,
+        0.19339800420736064,
+        0.0858501887601193
+      ],
+      "position_norm": 0.23514235779987208,
+      "rotation_deg": 0.16371180954353365,
+      "relative_R": [
+        [
+          0.9996931336259209,
+          0.010141632293562835,
+          0.022600572461958034,
+          -1.198470434408823
+        ],
+        [
+          -0.010049550270721345,
+          0.9999407478118948,
+          -0.0041841850753600324,
+          1.3109593807198874
+        ],
+        [
+          -0.022641667795069684,
+          0.003955775500554174,
+          0.9997358184638815,
+          1.1546020005136484
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "relative_S": [
+        [
+          0.9996921859490145,
+          0.00875869263655032,
+          0.023212467679664364,
+          -1.3010320524252363
+        ],
+        [
+          -0.00860818157866731,
+          0.9999413255202534,
+          -0.006576072285773907,
+          1.504357384927248
+        ],
+        [
+          -0.023268703496106435,
+          0.0063742309416485185,
+          0.9997089259467042,
+          1.2404521892737677
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "baseline_R": 2.1185022208248125,
+      "baseline_S": 2.3440343804852892,
+      "translation_error_percent": 11.099462416816458,
+      "percentage_status": "OK",
+      "percentage_reason": "",
+      "tuple_index": 0,
+      "tuple_tag": "B_target_0",
+      "support_slot": 2,
+      "target_frame": 17,
+      "support_frame": 16,
+      "target_frame_id": "raw_001050",
+      "support_frame_id": "raw_001011",
+      "target_raw_frame": 1050,
+      "support_raw_frame": 1011
+    },
+    {
+      "status": "OK",
+      "reason": "",
+      "position_delta": [
+        0.10502574093794093,
+        -0.19748610305524394,
+        -0.07827263704110976
+      ],
+      "position_norm": 0.23697631288565366,
+      "rotation_deg": 0.16371180953908113,
+      "relative_R": [
+        [
+          0.9996931336259215,
+          -0.010049550270721252,
+          -0.02264166779506973,
+          1.2374193312627455
+        ],
+        [
+          0.010141632293562939,
+          0.9999407478118949,
+          0.003955775500553952,
+          -1.303294603354108
+        ],
+        [
+          0.022600572461958023,
+          -0.004184185075360238,
+          0.9997358184638815,
+          -1.1217255614119637
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "relative_S": [
+        [
+          0.9996921859490144,
+          -0.008608181578667284,
+          -0.02326870349610648,
+          1.3424450722006864
+        ],
+        [
+          0.008758692636550344,
+          0.9999413255202532,
+          0.006374230941648645,
+          -1.500780706409352
+        ],
+        [
+          0.02321246767966438,
+          -0.00657607228577379,
+          0.999708925946704,
+          -1.1999981984530734
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "baseline_R": 2.1185022208248134,
+      "baseline_S": 2.344034380485295,
+      "translation_error_percent": 11.186030892778096,
+      "percentage_status": "OK",
+      "percentage_reason": "",
+      "tuple_index": 1,
+      "tuple_tag": "B_target_1",
+      "support_slot": 0,
+      "target_frame": 16,
+      "support_frame": 17,
+      "target_frame_id": "raw_001011",
+      "support_frame_id": "raw_001050",
+      "target_raw_frame": 1011,
+      "support_raw_frame": 1050
+    },
+    {
+      "status": "OK",
+      "reason": "",
+      "position_delta": [
+        0.18780590988116153,
+        -0.25322375946777864,
+        -0.06720522014902741
+      ],
+      "position_norm": 0.3223505448429793,
+      "rotation_deg": 0.22525873643336405,
+      "relative_R": [
+        [
+          0.9993904114987825,
+          -0.012069952117849803,
+          -0.03275853568412328,
+          2.0551132186231276
+        ],
+        [
+          0.012251920830360833,
+          0.9999105774576212,
+          0.005359806370857397,
+          -1.8614786100826564
+        ],
+        [
+          0.03269091372632053,
+          -0.005757894080245747,
+          0.9994489235651309,
+          -1.3215241936912534
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "relative_S": [
+        [
+          0.9993609437799258,
+          -0.010252138972355824,
+          -0.03424321383554998,
+          2.242919128504289
+        ],
+        [
+          0.010551481214503595,
+          0.9999075857885841,
+          0.008572404949920254,
+          -2.114702369550435
+        ],
+        [
+          0.0341521637890731,
+          -0.008928243328725712,
+          0.9993767638781618,
+          -1.3887294138402808
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "baseline_R": 3.071647628173858,
+      "baseline_S": 3.381008978642002,
+      "translation_error_percent": 10.494385550162267,
+      "percentage_status": "OK",
+      "percentage_reason": "",
+      "tuple_index": 1,
+      "tuple_tag": "B_target_1",
+      "support_slot": 1,
+      "target_frame": 16,
+      "support_frame": 18,
+      "target_frame_id": "raw_001011",
+      "support_frame_id": "raw_001095",
+      "target_raw_frame": 1011,
+      "support_raw_frame": 1095
+    },
+    {
+      "status": "OK",
+      "reason": "",
+      "position_delta": [
+        -0.12582770559691525,
+        0.11724236583277459,
+        0.07755250221573817
+      ],
+      "position_norm": 0.1886604739784468,
+      "rotation_deg": 0.1291879629262086,
+      "relative_R": [
+        [
+          0.9988201544575034,
+          0.0019863804324903593,
+          0.04852167909571312,
+          -0.7745529035478032
+        ],
+        [
+          -0.001970439430675826,
+          0.9999979878572249,
+          -0.0003763641212109086,
+          0.5325418878204822
+        ],
+        [
+          -0.048522329065493024,
+          0.00028031103994713744,
+          0.9988220587310739,
+          0.9713381205108007
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "relative_S": [
+        [
+          0.9987517236089902,
+          0.0021445286415034725,
+          0.04990386342736288,
+          -0.9003806091447184
+        ],
+        [
+          -0.0020395226598413927,
+          0.9999955981685678,
+          -0.00215499206690145,
+          0.6497842536532568
+        ],
+        [
+          -0.049908265201177845,
+          0.0020505219809080085,
+          0.9987517010870193,
+          1.0488906227265389
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "baseline_R": 1.3516770350328478,
+      "baseline_S": 1.5274411137792516,
+      "translation_error_percent": 13.957511231509681,
+      "percentage_status": "OK",
+      "percentage_reason": "",
+      "tuple_index": 1,
+      "tuple_tag": "B_target_1",
+      "support_slot": 2,
+      "target_frame": 16,
+      "support_frame": 15,
+      "target_frame_id": "raw_001011",
+      "support_frame_id": "raw_000927",
+      "target_raw_frame": 1011,
+      "support_raw_frame": 927
+    }
+  ],
+  "summary": {
+    "status": "EVALUABLE",
+    "count": 6,
+    "total": 6,
+    "position_norm": {
+      "count": 6,
+      "total": 6,
+      "median": 0.23605933534276285,
+      "P95": 0.33686103465180534,
+      "max": 0.34169786458808066
+    },
+    "rotation_deg": {
+      "count": 6,
+      "total": 6,
+      "median": 0.16371180954130737,
+      "P95": 0.2230094333254725,
+      "max": 0.22525873643336405
+    },
+    "baseline_R": {
+      "count": 6,
+      "total": 6,
+      "median": 2.118502220824813,
+      "P95": 2.9558367227152105,
+      "max": 3.071647628173858
+    },
+    "baseline_S": {
+      "count": 6,
+      "total": 6,
+      "median": 2.344034380485292,
+      "P95": 3.273023022580491,
+      "max": 3.381008978642002
+    },
+    "translation_error_percent": {
+      "count": 6,
+      "total": 6,
+      "median": 11.142746654797277,
+      "P95": 13.74310409303052,
+      "max": 13.957511231509681
+    },
+    "reasons": {}
+  }
+}
