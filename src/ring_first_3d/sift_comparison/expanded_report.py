@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from .run import BASE,REPORT,read,save,sha,verify_common
+from .run import BASE,HIST,REPORT,read,save,sha,verify_common
 from .expansion import authorized_cases
 from .report import csv_write,fmt,page
 
@@ -55,13 +55,28 @@ def ring_figure(records):
     fig.tight_layout(rect=(0,0,1,.91));path=REPORT/'figures/RING_OBSERVABILITY.png';fig.savefig(path,dpi=120);plt.close(fig);return path
 
 
+def unavailable_coverage(case,n,reason):
+    return [dict(case=case,physical_group=case.rsplit('_',1)[0],arm=arm,selected_frames=n,
+                 numeric_cameras=None,registered_union=None,component_sizes='[]',rgb_pass=None,
+                 rgb_fraction=None,graph_three_support_targets=None,fixed_camera_complete=None,
+                 fixed_targets=2,normalization_status='NOT_EVALUABLE',native_success=0,native_planned=2,
+                 native_attempted=0,hero_status='NOT_EXECUTED',evaluation_status=reason) for arm in ['R','S']]
+
+
 def report_expanded():
     E.mkdir(exist_ok=True);(REPORT/'figures').mkdir(exist_ok=True)
     records=[];coverage=[];projection=[];pose_rows=[];role_rows=[];pose_summaries=[];ring_checks=[];ring_scales=[];hero_depth=[];manifest=[];state=[]
     for case in authorized_cases('expanded'):
         root=BASE/case;common=root/'common';dest=E/case;dest.mkdir(exist_ok=True)
         if not (root/'CAMERA_RESULTS.json').exists():
-            state.append(dict(case=case,status='NOT_EVALUABLE_CAMERA_RESULTS_MISSING'));continue
+            reason='NOT_EVALUABLE_CAMERA_RESULTS_MISSING'
+            n=len(read(HIST/'prepared'/case/'PREPARED.json')['frames'])
+            coverage.extend(unavailable_coverage(case,n,reason))
+            for arm in ['R','S']:
+                for region in ['polyp','background']:
+                    for domain in ['all_fixed_queries','common_predictable_queries']:
+                        projection.append(dict(case=case,physical_group=case.rsplit('_',1)[0],arm=arm,region=region,domain=domain,test_tracks=None,total=None,predicted=None,success_3px=None,success_fraction=None,predicted_fraction=None,median_px=None,P95_px=None,status=reason))
+            state.append(dict(case=case,status=reason));continue
         verify_common(case);r=read(root/'CAMERA_RESULTS.json');p=read(root/'POSE_DIFFERENCES.json') if (root/'POSE_DIFFERENCES.json').exists() else {};ring=read(root/'RING_DIAGNOSTIC.json') if (root/'RING_DIAGNOSTIC.json').exists() else {}
         records.append((case,r,p,ring));n=r['frames'];meta=read(common/'meta.json');split=read(common/'split.json');tr=np.load(common/'tracks.npz')
         for f in ['INPUT_MANIFEST.json','split.json','TUPLES_FROZEN.json','ledger.json']:shutil.copy2(common/f,dest/f)
@@ -74,7 +89,7 @@ def report_expanded():
             receipt=a['camera_receipt'];components=receipt.get('component_sizes',[len(c) for c in receipt.get('components',[])])
             h=read(root/arm/'hero/RESULT.json') if (root/arm/'hero/RESULT.json').exists() else {'status':'NOT_EXECUTED'}
             runs=h.get('runs',[]);native=sum(x.get('success',False) for x in runs)
-            cov=dict(case=case,physical_group=case.rsplit('_',1)[0],arm=arm,selected_frames=n,numeric_cameras=a['numeric_cameras'],registered_union=a['registered_union_count'],component_sizes=json.dumps(components),rgb_pass=a['rgb_pass'],rgb_fraction=a['rgb_pass']/n,graph_three_support_targets=len(a['graph_three_support_targets']),fixed_camera_complete=sum(x['complete'] for x in a['fixed_tuples']),fixed_targets=2,normalization_status=r['normalization']['status'],native_success=native,native_planned=2,native_attempted=len([x for x in runs if x.get('failure')!='ALTERNATE_NOT_NEEDED']),hero_status=h['status'])
+            cov=dict(case=case,physical_group=case.rsplit('_',1)[0],arm=arm,selected_frames=n,numeric_cameras=a['numeric_cameras'],registered_union=a['registered_union_count'],component_sizes=json.dumps(components),rgb_pass=a['rgb_pass'],rgb_fraction=a['rgb_pass']/n,graph_three_support_targets=len(a['graph_three_support_targets']),fixed_camera_complete=sum(x['complete'] for x in a['fixed_tuples']),fixed_targets=2,normalization_status=r['normalization']['status'],native_success=native,native_planned=2,native_attempted=len([x for x in runs if x.get('failure')!='ALTERNATE_NOT_NEEDED']),hero_status=h['status'],evaluation_status='EVALUATED')
             coverage.append(cov)
             for region,cat in [('polyp',1),('background',0)]:
                 for domain,s in [('all_fixed_queries',a['test'][region]),('common_predictable_queries',r['pairing'][region][arm])]:
@@ -117,7 +132,7 @@ def report_expanded():
         for arm in ['R','S']:
             cs=[x for x in coverage if x['physical_group']==group and x['arm']==arm]
             ps=[x for x in projection if x['physical_group']==group and x['arm']==arm and x['region']=='polyp' and x['domain']=='common_predictable_queries']
-            groups.append(dict(physical_group=group,arm=arm,videos_evaluated=len(cs),videos_total=2,numeric=sum(x['numeric_cameras'] for x in cs),frames=sum(x['selected_frames'] for x in cs),median_video_rgb_fraction=med([x['rgb_fraction'] for x in cs]),median_video_polyp_query_error_px=med([x['median_px'] for x in ps]),polyp_evaluable_videos=sum(x['median_px'] is not None for x in ps)))
+            groups.append(dict(physical_group=group,arm=arm,videos_evaluated=sum(x['evaluation_status']=='EVALUATED' for x in cs),videos_total=2,numeric_observed=sum(x['numeric_cameras'] or 0 for x in cs),numeric_nonevaluable_videos=sum(x['numeric_cameras'] is None for x in cs),frames=sum(x['selected_frames'] for x in cs),median_video_rgb_fraction=med([x['rgb_fraction'] for x in cs]),median_video_polyp_query_error_px=med([x['median_px'] for x in ps]),polyp_evaluable_videos=sum(x['median_px'] is not None for x in ps)))
     csv_write(REPORT/'EXPANDED_GROUP_SUMMARY.csv',groups)
     for filename in ['EXPANSION_CPU_STATUS.json','EXPANSION_HERO_STATUS.json','INFERENCE_STARTS.jsonl']:
         if (BASE/filename).exists():shutil.copy2(BASE/filename,E/filename)

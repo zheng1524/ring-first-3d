@@ -148,11 +148,15 @@ def evaluate(case):
 def main():
     from .expansion import authorized_cases,inference_limit,batch
     parser=argparse.ArgumentParser()
-    parser.add_argument('--stage',choices=['prepare','R','S','evaluate','hero','report','poses','ring','cpu-batch','hero-batch','expanded-report'],required=True)
+    parser.add_argument('--stage',choices=['prepare','R','S','evaluate','hero','report','poses','ring','cpu-batch','hero-batch','expanded-report','gpu-queue'],required=True)
     parser.add_argument('--cohort',choices=['pilot','expanded'],default='pilot')
     parser.add_argument('--case',choices=authorized_cases('expanded'))
     args=parser.parse_args();cases=[args.case] if args.case else authorized_cases(args.cohort)
     assert set(cases).issubset(authorized_cases(args.cohort)),'CASE_NOT_AUTHORIZED_BY_COHORT'
+    if args.stage=='gpu-queue':
+        assert args.cohort=='expanded','EXPLICIT_EXPANSION_REQUIRED'
+        from .expansion import gpu_queue
+        return gpu_queue()
     if args.stage in ['cpu-batch','hero-batch']:
         assert args.cohort=='expanded','EXPANSION_REQUIRES_EXPLICIT_COHORT'
         return batch(args.stage.split('-')[0],cases)

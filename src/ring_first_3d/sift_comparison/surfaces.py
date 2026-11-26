@@ -43,6 +43,10 @@ def other_gpu_processes(text,own_pid):
 
 def hero(case,limit=8,respect_A=False):
     common=verify_common(case);root=BASE/case;meta=read(common/'meta.json');tuples=read(common/'TUPLES_FROZEN.json')['tuples'];normal=read(root/'NORMALIZATION_FROZEN.json')
+    if (root/'HERO_DEPTH_RESULTS.json').exists() and all((root/a/'hero/RESULT.json').exists() and read(root/a/'hero/RESULT.json')['status']=='COMPLETED' for a in ['R','S']):
+        for arm in ['R','S']:
+            for path,h in read(root/arm/'hero/RESULT.json')['outputs'].items():assert sha(path)==h,'CACHED_HERO_DRIFT '+path
+        return read(root/'HERO_DEPTH_RESULTS.json')
     checkpoint=Path(read(route.CORE/'site_config.local.json')['checkpoint']);assert sha(checkpoint)==route.MODEL_SHA
     for arm in ['R','S']:
         dest=root/arm/'hero'
