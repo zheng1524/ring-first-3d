@@ -44,3 +44,7 @@ retry只重置状态并记录原因，不改变相机方法、Support或参数�
 [中文简报](CLEAN_REPORT.md)；恰好三图：[Raw459](figures/clean_1.png)、[Raw458](figures/clean_2.png)、[Raw570](figures/clean_3.png)。[本地三源对比](http://127.0.0.1:8957/clean/index.html)。原坐标、原面全集、子集、映射、逐面理由、删除连通区域和恢复路径：`runs/v6_full_run_001/clean/case1`至`case3`。原Mesh与depth仍在旧HIST位置，SHA见[CLEAN_VERIFICATION](evidence/CLEAN_VERIFICATION.json)。C1未自动采用。
 
 后续决策是人工审阅clean的73面及新增断裂；后台HIST输出保持Raw。不要启动其他路线、Body训练或跨视频融合。用户要求的持续任务已交给后台，此轮交接后停止。
+
+## 已核实远端交付
+
+独立分支 `exp/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001` 已逐提交上传；交付数据提交 [`865a6990b45d882700b7b7732834a894626c7ee3`](https://github.com/zheng1524/ring-first-3d/commit/865a6990b45d882700b7b7732834a894626c7ee3) 经GitHub API读回与本地SHA一致。clean提交 `8016ed9b6a8a124ff5570f50b6e498fe6dfa4699`，后台执行提交 `da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a`。本段与上传回执是后续元数据提交，不改变运行快照。GitHub插件写权限403，沿用本机已授权Git-data API正常上传，未force更新。

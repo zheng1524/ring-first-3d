@@ -37,3 +37,7 @@ clean：[简报](CLEAN_REPORT.md)、[图1](figures/clean_1.png)、[图2](figures
 17项策略/预算/队列/映射检查通过；另36项独立文件/索引检查通过，含原文件哈希不变、原V/F、保留/删除完整分区、派生PLY完全相同原坐标及恰好3图。独立[只读代码复核](evidence/INDEPENDENT_REVIEW.md)核对映射误差<5e-7mm并确认已记录结构风险。它们是工程验证，不是科研精度通过。
 
 交接操作与最终报告预定路径见[RUN_HANDOFF](RUN_HANDOFF.md)。全量结束后后台自行写FINAL_COVERAGE_REPORT及最终索引；本轮聊天到交接停止，不守候全量。
+
+## 已核实远端交付
+
+独立分支 `exp/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001` 已逐提交上传；交付数据提交 [`865a6990b45d882700b7b7732834a894626c7ee3`](https://github.com/zheng1524/ring-first-3d/commit/865a6990b45d882700b7b7732834a894626c7ee3) 经GitHub API读回与本地SHA一致。clean提交 `8016ed9b6a8a124ff5570f50b6e498fe6dfa4699`，后台执行提交 `da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a`。本段与上传回执是后续元数据提交，不改变运行快照。GitHub插件写权限403，沿用本机已授权Git-data API正常上传，未force更新。
