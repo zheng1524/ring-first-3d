@@ -1,0 +1,127 @@
+{
+  "task": "TASK-V6-MAINLINE-FREEZE-AND-STORAGE-CLEANUP-001",
+  "status": "人工认可、当前固定、等待全量确认",
+  "checked_beijing": "2026-11-26T16:36:17.776504+08:00",
+  "V6_execution_commit": "da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a",
+  "V6_snapshot": {
+    "execution_commit": "da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a",
+    "snapshot": "/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a",
+    "config": "/home/liu/ring_first_3d_workspace/runs/v6_full_run_001/snapshots/da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a/experiments/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001/config/FULL_RUN.json",
+    "files": {
+      "src/ring_first_3d/__init__.py": "74f163ae3f6301882d1f66309d26c3c8509d78cab058fa3a12ec6149c1077d21",
+      "src/ring_first_3d/v6_raw/route.py": "6c2be122aa7f981959c70b5566620c14b49ee7599f68753a3adc55da72ec7eac",
+      "src/ring_first_3d/v6_raw/nearviews.py": "6d5cba6ac1c194dd9839d0dece41cc4176fc181d055d9623868a78aa113028e8",
+      "src/ring_first_3d/v6_raw/visualize.py": "5eccac7e408a8a90318a0eb448171fbcd65d9d3fb3e04947c483d46d662ea6e3",
+      "src/ring_first_3d/v6_raw/full_run.py": "d106f7827979bf11f436b3ce17d8167e6d0bc31915b2abd563ba159497ebda6a",
+      "src/ring_first_3d/v6_raw/evaluate.py": "3bfa3173461c98636cecd027a6ceab61cbee1222778b156b28cf85907cf7d5ba",
+      "src/ring_first_3d/v6_raw/policy.py": "a57b13597e4e32f75f4b8a554c766ea33cad7e8e8fb5b7d2916bf0476d090a66",
+      "src/ring_first_3d/v6_raw/observations.py": "6196ad1e8872552715ebd1b1b4427863d6f2cf414804643530ce814cd6ebdea5",
+      "src/ring_first_3d/v6_raw/delivery.py": "c6861331353ff4847b1588669031e79614a938fb89766015208172690a5ffa7a",
+      "src/ring_first_3d/v6_raw/__init__.py": "3534215e478144047e52fce7699faa8421fe04b65f41ff3d83234725806a2d54",
+      "src/ring_first_3d/v6_raw/report.py": "7e31414b725715abf1883564d451ae3baffb75680423dedf6838a609c5d23e71",
+      "experiments/TASK-V6-RAW-TO-HERO-MAINLINE-001/evidence/KERNEL_LOCK.json": "23423a790daeb5db6282a9c4ea36410d2cb7f64fef2ed382bd00e9873f5abd50",
+      "experiments/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001/config/FULL_RUN.json": "56d8103305afa725f8103a1e9ee2d18b7d8de8ef7c445718b11880682dc04db9",
+      "experiments/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001/evidence/DATASET_MANIFEST.json": "c5c635582444a559945e04b0acf5800ce7c29b7c386ec2216227e2b861978141"
+    },
+    "baseline_readonly_files": {
+      "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-RAW-TO-HERO-001/src/ring_first_3d/v6_raw/route.py": "3e0adc6bdc3745f2acf0c83a9a02f1f3e23fe45f798d9484e486d78c4e16d75f",
+      "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-RAW-TO-HERO-001/src/ring_first_3d/v6_raw/policy.py": "a57b13597e4e32f75f4b8a554c766ea33cad7e8e8fb5b7d2916bf0476d090a66"
+    }
+  },
+  "clean_delivery_commit": "2d34cc866cd175d4d770a3e09d07b31a5c3662d7",
+  "classification_execution_commit": "e30ac479e6b555cbe906bd516d09c4849e4b8cbd",
+  "historical_rule_commit": "62c286fcbf39cbba9ec5adb148bd50ba9dc94093",
+  "protocol_sha256": "99c00fe52effa2589c21ad93c2f06a3b1c4d9c86c4c0c37b9bf5a2db33495b56",
+  "modules": {
+    "v6_raw/trusted_restore.py": {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-TRUSTED-CLEAN-001/src/ring_first_3d/v6_raw/trusted_restore.py",
+      "delivery_sha256": "edef508cb794a8ff8041e87d8c3a5d2ee87561e48e68c6101af72c85127fc828",
+      "classification_execution_sha256": "0a089ccef7cfe791280073642d8e259ef6ba3d832d4c0d49bda2ee43311af6f0"
+    },
+    "v6_raw/surface_clean.py": {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-TRUSTED-CLEAN-001/src/ring_first_3d/v6_raw/surface_clean.py",
+      "delivery_sha256": "cd51afb36bf4c067a7dde93049eb52e0afa6e3383556914b5227c11c41699c92",
+      "classification_execution_sha256": "cd51afb36bf4c067a7dde93049eb52e0afa6e3383556914b5227c11c41699c92"
+    },
+    "mainline/native/cleaning.py": {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-TRUSTED-CLEAN-001/src/ring_first_3d/mainline/native/cleaning.py",
+      "delivery_sha256": "a5fd471ad85767399c9013d3668863eb4a2950fcdf712267dd154a128db2e4e7",
+      "classification_execution_sha256": "a5fd471ad85767399c9013d3668863eb4a2950fcdf712267dd154a128db2e4e7"
+    },
+    "mainline/native/_clean_kernels.py": {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-TRUSTED-CLEAN-001/src/ring_first_3d/mainline/native/_clean_kernels.py",
+      "delivery_sha256": "e81b6166a7236616ea03a277d597c966c49da2233fc46d72afa2c19ba405d08a",
+      "classification_execution_sha256": "e81b6166a7236616ea03a277d597c966c49da2233fc46d72afa2c19ba405d08a"
+    },
+    "mainline/native/cleaning_protocol.json": {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-TRUSTED-CLEAN-001/src/ring_first_3d/mainline/native/cleaning_protocol.json",
+      "delivery_sha256": "99c00fe52effa2589c21ad93c2f06a3b1c4d9c86c4c0c37b9bf5a2db33495b56",
+      "classification_execution_sha256": "99c00fe52effa2589c21ad93c2f06a3b1c4d9c86c4c0c37b9bf5a2db33495b56"
+    }
+  },
+  "documents": {
+    "METHOD.md": {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-TRUSTED-CLEAN-001/experiments/TASK-V6-RESTORE-TRUSTED-ONLY-CLEAN-001/METHOD.md",
+      "sha256": "e3a76244db9199c8d936dabd19928e42b141f77e69bfa7efec9ae18b7b457fc3"
+    },
+    "TECHNICAL_REPORT.md": {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-TRUSTED-CLEAN-001/experiments/TASK-V6-RESTORE-TRUSTED-ONLY-CLEAN-001/TECHNICAL_REPORT.md",
+      "sha256": "9dd497d514d7f8b7ed1c40ffd11de9284dbc4cf53afb7f6987549ee2d234de78"
+    },
+    "config/SOURCES_FROZEN.json": {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-TRUSTED-CLEAN-001/experiments/TASK-V6-RESTORE-TRUSTED-ONLY-CLEAN-001/config/SOURCES_FROZEN.json",
+      "sha256": "31fe5064f31352d4dae2489f568385ff60c0c7538d74fc37110b5672e2e0183f"
+    },
+    "evidence/VERIFICATION.json": {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-TRUSTED-CLEAN-001/experiments/TASK-V6-RESTORE-TRUSTED-ONLY-CLEAN-001/evidence/VERIFICATION.json",
+      "sha256": "b36c8e35f08061026e2c086b7b5a101e53bdf3aa6c1b9f159933a8150baae58d"
+    },
+    "evidence/RENDER_RECEIPT.json": {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-TRUSTED-CLEAN-001/experiments/TASK-V6-RESTORE-TRUSTED-ONLY-CLEAN-001/evidence/RENDER_RECEIPT.json",
+      "sha256": "f6ec137adf4fc76e38ed7d8f84d4177dfa46900d15efa1822f604d1e4127e994"
+    }
+  },
+  "pipeline": [
+    "current V6 Raw + actual pixel/camera mapping",
+    "017 four-state classification",
+    "frozen gap supplement",
+    "018 F[state==0] subset preserving original V and Face/Vertex IDs"
+  ],
+  "states": {
+    "0": "TRUSTED",
+    "1": "UNCERTAIN",
+    "2": "REJECTED",
+    "3": "UNKNOWN"
+  },
+  "excluded_states": [
+    1,
+    2,
+    3
+  ],
+  "four_examples_not_full_runner": true,
+  "four_source_classification_code_sha256": [
+    "0a089ccef7cfe791280073642d8e259ef6ba3d832d4c0d49bda2ee43311af6f0"
+  ],
+  "input_adapter_sha256": [
+    "cd51afb36bf4c067a7dde93049eb52e0afa6e3383556914b5227c11c41699c92"
+  ],
+  "display_source_sha256": "edef508cb794a8ff8041e87d8c3a5d2ee87561e48e68c6101af72c85127fc828",
+  "display_note": "Source2 arrow points to the lower original island rather than the second-largest original component at CAD; same raw geometry/classes/bounds",
+  "full_clean_executed": false,
+  "algorithm_or_parameters_changed": false,
+  "limitations": [
+    "可信孤片仍可能残留",
+    "开放边界可能收缩",
+    "UNKNOWN是证据不足，不是错误真值",
+    "无GT，删面比例不是精度或误删率"
+  ],
+  "excluded_work": [
+    "C1",
+    "MAE gates",
+    "Body",
+    "smoothing",
+    "hole filling",
+    "full clean"
+  ],
+  "confirmation_scope": "全量完成后统一检查固定分母的覆盖、残留和边界损失；本轮只固定方法，不开展优化或额外推理"
+}
