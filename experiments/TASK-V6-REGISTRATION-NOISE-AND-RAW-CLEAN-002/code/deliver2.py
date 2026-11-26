@@ -6,7 +6,7 @@ from visualize2 import plt
 def csvwrite(path,rows):
  path.parent.mkdir(parents=True,exist_ok=True)
  with open(path,'w',newline='')as f:
-  keys=list(dict.fromkeys(k for r in rows for k in r));w=csv.DictWriter(f,keys);w.writeheader();w.writerows(clean(rows))
+  keys=list(dict.fromkeys(k for r in rows for k in r));w=csv.DictWriter(f,keys,lineterminator="\n");w.writeheader();w.writerows(clean(rows))
 def fmt(x):return '不可评价'if x is None else f'{x:.3f}'if isinstance(x,(float,np.floating))else str(x)
 def mdtable(headers,rows):return '| '+' | '.join(headers)+' |\n|'+'|'.join(['---']*len(headers))+'|\n'+'\n'.join('| '+' | '.join(fmt(x)for x in row)+' |'for row in rows)+'\n'
 
