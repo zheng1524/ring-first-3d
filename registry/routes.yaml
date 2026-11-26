@@ -40,3 +40,24 @@ routes:
     known_limitations:
       - joint BA on 16 real views not yet completed
       - 009 inner-only collapse root-caused in 010 (single CAD cannot fit both curves)
+
+  - route_id: ring-sift-vs-sift-comparison
+    version: 1
+    component: controlled_no_gt_comparison
+    status: pilot
+    source:
+      base_commit: 115e41fe5e57deff2898258d2ee836c83d686982
+      branch: exp/TASK-RING-SIFT-VS-SIFT-COMPARISON-001
+    composes:
+      - HIST-RAW-TO-HERO@115e41fe
+      - pycolmap-incremental@4.2.1
+      - V6-native-HERO@00878bab
+    entrypoint: tools/ring_sift_comparison.py
+    protocol: experiments/TASK-RING-SIFT-VS-SIFT-COMPARISON-001/COMPARISON_PROTOCOL.md
+    evidence:
+      report: experiments/TASK-RING-SIFT-VS-SIFT-COMPARISON-001/TECHNICAL_REPORT.md
+      fixture: tests/test_sift_comparison_colmap.py
+    known_limitations:
+      - no GT; held tracks historically consumed, isolated within B only
+      - two physical groups, two videos; paired stability perturbations not executed
+      - does not replace the research mainline

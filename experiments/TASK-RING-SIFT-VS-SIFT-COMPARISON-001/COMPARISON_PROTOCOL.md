@@ -29,7 +29,7 @@ registry/routes.yaml 存在，但未登记新版 HIST；以附件指定提交与
 
 使用历史 Python 3.12.13 环境；pycolmap 4.2.1，固定随机种子20261126、CPU两线程。COLMAP PINHOLE共享相机，(fx,fy,cx,cy)=(490,490,320,180)，输入原OpenCV轨迹加(0.5,0.5)；导出还原K=(490,490,319.5,179.5)。所有BA和绝对位姿的焦距/主点/额外参数优化关闭。使用既有训练匹配做官方二视图验证，记录 matches 与 two_view_geometries 数量。数据库特征ID是原track身份的单帧重编号，另存映射；描述子不再需要，禁止重新匹配。
 
-S采用官方默认增量策略（最小模型10；初始化100内点、16度；官方自带自动初始化放宽保留），禁止读R位姿或Ring几何。多分量均保留，覆盖用注册集合并集，连通规模分别列；配对HERO仅最大分量（相同规模按模型ID），不拼不同尺度分量。相机导出明确 cam_from_world 为w2c，逆矩阵为c2w；检查SO(3)、正深度和K不变。
+S采用官方默认增量策略（最小模型10；初始化100内点、16度；官方自带自动初始化放宽保留），禁止读R位姿或Ring几何；关闭4.2.1新增structure_less_registration_fallback，确保注册依赖三角化SfM。多分量均保留，覆盖用注册集合并集，连通规模分别列；配对HERO仅最大分量（相同规模按模型ID），不拼不同尺度分量。相机导出明确 cam_from_world 为w2c，逆矩阵为c2w；检查SO(3)、正深度和K不变。
 
 依据：[数据库](https://colmap.github.io/database.html)、[FAQ](https://colmap.github.io/faq.html)、[教程](https://colmap.github.io/tutorial.html)。
 
