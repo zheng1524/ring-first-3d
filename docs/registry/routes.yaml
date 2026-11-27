@@ -1125,3 +1125,27 @@ v6_frontend_photo_pilot_001:
   full_run_requires_pilot_review: true
   formal_usable: false
   full_run_outputs_are_accuracy: false
+
+
+# Current researcher-authorized default supersedes earlier entrypoint descriptions.
+current_mainline:
+  route_id: rf-v6-r1-video@1
+  entrypoint: python tools/v6_raw_to_hero.py run
+  implementation: ring_first_3d.v6_raw.full_run
+  config: experiments/TASK-V6-R1-MAINLINE-AND-FULL-RUN-B-001/config/FULL_RUN.json
+  scientific_baseline_commit: dfc13a01cbbc5d57af99f2cb38a0c6aee3f0fd8e
+  authorization: TASK-V6-R1-MAINLINE-AND-FULL-RUN-B-001
+  status: authorized_full_run
+  modules: [route.build_raw_preprocessing, stage_cache.ensure_prepared, frontend_kernels.install, stage_cache.ensure_matching, frontend.component, route.cameras, frontend.select_complete_plan, route.hero, clean_stage.clean_source, full_run.summarize_video, full_run.refresh]
+  inputs: frozen39 registry; 79 registered videos; 1653 original non-diagnostic Targets
+  photos: 120 protected and unprocessed
+  reuse_old_results: false
+  approval_required: false
+  include_photos: false
+  cache: verified immutable preprocessing and complete-original-pool matching; cold builders unchanged
+  initialization: original two candidates; fallback only when default legal plan is empty
+  cleaning: frozen 017 plus gap; original F[state==0]
+  display: existing Raw nearview per-source six views; crop counts retained
+  run_root: /home/liu/ring_first_3d_workspace/runs/v6_r1_full_b_001
+  cache_root: /home/liu/ring_first_3d_workspace/cache/v6_r1
+  output_coverage_is_accuracy: false

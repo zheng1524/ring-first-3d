@@ -1,0 +1,72 @@
+..................E..EE.......E......
+======================================================================
+ERROR: test_unapproved_full_run_stops_before_creating_output (test_v6_frontend_recovery.FrontendTests.test_unapproved_full_run_stops_before_creating_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_frontend_recovery.py", line 76, in test_unapproved_full_run_stops_before_creating_output
+    from ring_first_3d.v6_raw.full_run import run
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/src/ring_first_3d/v6_raw/full_run.py", line 285
+    compared.append(dict(case=old['case'],raw_target=old['raw_target'],status='RETAINED' if new else 'LOST' if state['status']=='DONE' else 'FAILED' if state['status'].endswith('_FAILED') else 'PENDING',support_equal=new['raw_support']==old['raw_support'] if new else None,tuple_hash_equal=new['input_sha256']==old['input_sha256'] if new else None,baseline_selected_version=old.get('selected_version'),new_selected_version=plan.get('selected_version') if plan else None,new_outcome=state.get('outcome'),baseline_geometry=old.get('geometry_diagnostics'),new_geometry=new.get('geometry_diagnostics') if new else None,geometry_comparison='same Target; support/init changes shown, not independent GT accuracy')))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+SyntaxError: unmatched ')'
+
+======================================================================
+ERROR: test_v6_full_run (unittest.loader._FailedTest.test_v6_full_run)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v6_full_run
+Traceback (most recent call last):
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_full_run.py", line 3, in <module>
+    import ring_first_3d.v6_raw.full_run as f
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/src/ring_first_3d/v6_raw/full_run.py", line 285
+    compared.append(dict(case=old['case'],raw_target=old['raw_target'],status='RETAINED' if new else 'LOST' if state['status']=='DONE' else 'FAILED' if state['status'].endswith('_FAILED') else 'PENDING',support_equal=new['raw_support']==old['raw_support'] if new else None,tuple_hash_equal=new['input_sha256']==old['input_sha256'] if new else None,baseline_selected_version=old.get('selected_version'),new_selected_version=plan.get('selected_version') if plan else None,new_outcome=state.get('outcome'),baseline_geometry=old.get('geometry_diagnostics'),new_geometry=new.get('geometry_diagnostics') if new else None,geometry_comparison='same Target; support/init changes shown, not independent GT accuracy')))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+SyntaxError: unmatched ')'
+
+
+======================================================================
+ERROR: test_v6_r1_runner (unittest.loader._FailedTest.test_v6_r1_runner)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v6_r1_runner
+Traceback (most recent call last):
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_r1_runner.py", line 3, in <module>
+    from ring_first_3d.v6_raw import full_run as f
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/src/ring_first_3d/v6_raw/full_run.py", line 285
+    compared.append(dict(case=old['case'],raw_target=old['raw_target'],status='RETAINED' if new else 'LOST' if state['status']=='DONE' else 'FAILED' if state['status'].endswith('_FAILED') else 'PENDING',support_equal=new['raw_support']==old['raw_support'] if new else None,tuple_hash_equal=new['input_sha256']==old['input_sha256'] if new else None,baseline_selected_version=old.get('selected_version'),new_selected_version=plan.get('selected_version') if plan else None,new_outcome=state.get('outcome'),baseline_geometry=old.get('geometry_diagnostics'),new_geometry=new.get('geometry_diagnostics') if new else None,geometry_comparison='same Target; support/init changes shown, not independent GT accuracy')))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+SyntaxError: unmatched ')'
+
+
+======================================================================
+ERROR: test_v6_stage_cache (unittest.loader._FailedTest.test_v6_stage_cache)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v6_stage_cache
+Traceback (most recent call last):
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_stage_cache.py", line 4, in <module>
+    from ring_first_3d.v6_raw import stage_cache as c
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/src/ring_first_3d/v6_raw/stage_cache.py", line 5, in <module>
+    from .full_run import atomic_json,read,hash_file
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/src/ring_first_3d/v6_raw/full_run.py", line 285
+    compared.append(dict(case=old['case'],raw_target=old['raw_target'],status='RETAINED' if new else 'LOST' if state['status']=='DONE' else 'FAILED' if state['status'].endswith('_FAILED') else 'PENDING',support_equal=new['raw_support']==old['raw_support'] if new else None,tuple_hash_equal=new['input_sha256']==old['input_sha256'] if new else None,baseline_selected_version=old.get('selected_version'),new_selected_version=plan.get('selected_version') if plan else None,new_outcome=state.get('outcome'),baseline_geometry=old.get('geometry_diagnostics'),new_geometry=new.get('geometry_diagnostics') if new else None,geometry_comparison='same Target; support/init changes shown, not independent GT accuracy')))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+SyntaxError: unmatched ')'
+
+
+----------------------------------------------------------------------
+Ran 37 tests in 0.314s
+
+FAILED (errors=4)

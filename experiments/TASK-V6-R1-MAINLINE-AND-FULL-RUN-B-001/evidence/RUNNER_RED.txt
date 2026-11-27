@@ -1,0 +1,41 @@
+EEEE
+======================================================================
+ERROR: test_clean_is_mandatory_before_render (test_v6_r1_runner.R1RunnerTests.test_clean_is_mandatory_before_render)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_r1_runner.py", line 6, in test_clean_is_mandatory_before_render
+    self.assertEqual(f.stages_for(dict(fixed_clean=True),{'origin':'NEW'}),['prepare','camera','schedule','hero','clean','render'])
+                     ^^^^^^^^^^^^
+AttributeError: module 'ring_first_3d.v6_raw.full_run' has no attribute 'stages_for'
+
+======================================================================
+ERROR: test_exception_categories_preserve_engineering_failure (test_v6_r1_runner.R1RunnerTests.test_exception_categories_preserve_engineering_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_r1_runner.py", line 13, in test_exception_categories_preserve_engineering_failure
+    self.assertEqual(f.failure_category(1,'Traceback KeyError: x'),'ENGINEERING_ERROR')
+                     ^^^^^^^^^^^^^^^^^^
+AttributeError: module 'ring_first_3d.v6_raw.full_run' has no attribute 'failure_category'
+
+======================================================================
+ERROR: test_no_output_keeps_full_denominator (test_v6_r1_runner.R1RunnerTests.test_no_output_keeps_full_denominator)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_r1_runner.py", line 10, in test_no_output_keeps_full_denominator
+    f.freeze_denominators(rows,manifest)
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'ring_first_3d.v6_raw.full_run' has no attribute 'freeze_denominators'
+
+======================================================================
+ERROR: test_space_reserves_current_stage_peak (test_v6_r1_runner.R1RunnerTests.test_space_reserves_current_stage_peak)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_r1_runner.py", line 20, in test_space_reserves_current_stage_peak
+    self.assertEqual(f.required_free(cfg,'hero'),1573741824)
+                     ^^^^^^^^^^^^^^^
+AttributeError: module 'ring_first_3d.v6_raw.full_run' has no attribute 'required_free'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+FAILED (errors=4)

@@ -284,6 +284,11 @@ def hero(case,variant):
    tree=recover_inference(tree,R);run_mvs005_supported._FULL_PREVIOUS_RUNS=lambda:previous_runs(R,plan);run_mvs005_supported._FULL_ATOMIC_NPZ=atomic_npz
   node=next(n for n in tree.body if isinstance(n,ast.FunctionDef)and n.name=='main');run_mvs005_supported.__dict__['_M2F10_TUPLE_RECEIPT']=lambda c:inference_start(case,variant,R,c,poses,meta['frames'],meta,mods);exec(compile(ast.Module(body=[node],type_ignores=[]),str(V6/'scripts/run_mvs005_supported.py'),'exec'),run_mvs005_supported.__dict__);run_mvs005_supported.main()
  else:save(R/'metrics/MVS005_supported_runs.json',[]);mods['v6'].freeze('MVS_supported_raw',[R/'metrics/MVS005_supported_runs.json'])
+ if FULL_CONFIG:
+  from .full_run import ordered_hero_results
+  ledger=R/'metrics/MVS005_supported_runs.json';runs=read(ledger);ordered=ordered_hero_results(runs,plan)
+  if runs!=ordered:
+   save(ledger,ordered);mods['v6'].freeze('MVS_supported_raw',[ledger]+list((R/'raw').glob('*.npz')))
  # Original package kernel needs an empty preview ledger; all current output is scheduled exactly once.
  save(R/'metrics/MVS005_runs.json',[]);mods['v6'].freeze('MVS_raw',[R/'metrics/MVS005_runs.json'])
  if any(r['success']for r in read(R/'metrics/MVS005_supported_runs.json')):

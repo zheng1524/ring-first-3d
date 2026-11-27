@@ -18,21 +18,8 @@ def clean(variant):
   if s['status']!='DONE' or not result.exists():continue
   for source in read(result):
    if source['status']!='RENDERABLE':continue
-   tag=source['tag'];dest=O/variant/'clean'/case/tag;receipt=dest/'COMPLETE.json'
-   if receipt.exists():
-    row=read(receipt)
-    for p,h in row['retained_hashes'].items():assert hash_file(p)==h
-    rows.append(row);continue
-   if shutil.disk_usage(O).free<1073741824:raise RuntimeError('CLEAN_LOW_DISK_PAUSE')
-   dest.mkdir(parents=True,exist_ok=True);c=dict(source,case=case,run=str(R),native_sha256=hash_file(R/'raw'/(tag+'.npz')))
-   info=mapped_input_for_source(c);rec=classify_native(dest,info['cadpath'],mapped_input=info['payload']);e=dict(np.load(dest/'FACE_EVIDENCE.npz'));state=e['state'];sub=trusted_subset(info['V'],info['F'],state)
-   assert np.array_equal(e['F'],info['F']) and np.array_equal(e['V'],info['V']) and np.array_equal(sub['F'],info['F'][state==0])
-   removed=[]
-   for name in ['Conservative_cleaned_mesh','Uncertain','Rejected','Unknown']:
-    p=dest/(name+'.ply')
-    if p.exists():removed.append(dict(path=str(p),bytes=p.stat().st_size,sha256=hash_file(p),reason='redundant export; exact faces/states/V/F retained in FACE_EVIDENCE'));p.unlink()
-   row=dict(case=case,variant=variant,tag=tag,target=source['raw_target'],target_media_type=source['target_media_type'],target_view_id=source['target_view_id'],raw_mesh_sha256=c['mesh_sha256'],native_sha256=c['native_sha256'],raw_faces=len(info['F']),trusted_faces=len(sub['F']),raw_area_mm2=float(e['area_mm2'].sum()),states=[dict(code=i,faces=int((state==i).sum()),area_mm2=float(e['area_mm2'][state==i].sum())) for i in range(4)],protocol=rec,source_execution=read(R/'HERO_COMPLETE.json')['execution_commit'],classifier_sha256=hash_file(WT/'src/ring_first_3d/mainline/native/cleaning.py'),kernel_sha256=hash_file(WT/'src/ring_first_3d/mainline/native/_clean_kernels.py'),filter='F[state==0]',removed_regenerable_exports=removed,retained_hashes={str(p):hash_file(p) for p in dest.iterdir() if p.is_file()})
-   atomic_json(receipt,row);rows.append(row);print('CLEAN',variant,case,tag,len(sub['F']),flush=True)
+   from ring_first_3d.v6_raw.clean_stage import clean_source
+   rows.append(clean_source(source,case,R,O/variant/'clean'/case/source['tag'],variant))
  atomic_json(O/variant/'CLEAN_RESULTS.json',rows);table(T/('CLEAN_'+variant+'.csv'),[{k:x[k] for k in ['case','tag','target','target_media_type','target_view_id','raw_faces','trusted_faces','raw_area_mm2']} for x in rows]);return rows
 
 def graphs():

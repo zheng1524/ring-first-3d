@@ -1,0 +1,14 @@
+....E
+======================================================================
+ERROR: test_completed_receipt_rejects_corrupted_output (test_v6_r1_runner.ResumeIdentityTests.test_completed_receipt_rejects_corrupted_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_r1_runner.py", line 26, in test_completed_receipt_rejects_corrupted_output
+    f.verify_outputs(receipt)
+    ^^^^^^^^^^^^^^^^
+AttributeError: module 'ring_first_3d.v6_raw.full_run' has no attribute 'verify_outputs'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.016s
+
+FAILED (errors=1)

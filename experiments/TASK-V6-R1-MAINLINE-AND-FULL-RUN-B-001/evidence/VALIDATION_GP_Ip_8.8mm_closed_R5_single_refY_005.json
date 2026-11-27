@@ -1,0 +1,52 @@
+{
+  "case": "GP_Ip_8.8mm_closed_R5_single_refY_005",
+  "status": "PASS",
+  "cold_seconds": 168.88081097602844,
+  "hot_seconds": 0.567089319229126,
+  "forbidden_old_read_attempts": [],
+  "hot_decode_calls": 0,
+  "cache_probes": [
+    {
+      "path": "/home/liu/ring_first_3d_workspace/cache/v6_r1/prepared/GP_Ip_8.8mm_closed_R5_single_refY_005",
+      "content_id": "8fcacfadad52d02dcf816e9587aff2c6306ae8e74c0442fa16baed1e87754fbb",
+      "cache_hit": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_workspace/cache/v6_r1/matching/GP_Ip_8.8mm_closed_R5_single_refY_005",
+      "content_id": "d668471266623b3bbb634f485487b87a154e29e02ebd659891277d23ed24a2cc",
+      "cache_hit": true
+    }
+  ],
+  "config_sha256": "25ee4dc1ce1677a3da094beab43156dcc3212a2a61bb3d3ccd52388aaa9ec20c",
+  "execution_commit": "756f2870161c1ca8fae623cfd81b8394d725f9d8",
+  "checks": {
+    "frames_rgb_mask_K_mapping_order": "EXACT",
+    "full_and_component_tracks_pairs_train_held": {
+      "status": "EXACT",
+      "arrays": 132
+    },
+    "anchor_B_component_temporal_edges": "EXACT"
+  },
+  "cameras": [
+    {
+      "file": "local005_camera_0.npz",
+      "bitwise_equal": true,
+      "max_abs_delta": 0.0,
+      "rtol": 1e-08,
+      "atol": 1e-07
+    },
+    {
+      "file": "local005_camera_1.npz",
+      "bitwise_equal": true,
+      "max_abs_delta": 0.0,
+      "rtol": 1e-08,
+      "atol": 1e-07
+    }
+  ],
+  "selected_version": 1,
+  "legal_targets": 21,
+  "baseline_plan_sha256": "0347be56b46134662aad1b6dd18a200c90e9914f4f0be6fda5fa0b63bd53d962",
+  "new_plan_sha256": "6a94d8159800d2c789305623d9cf3af3a31edcc043346dd3bd585de147b01d08",
+  "tuple_hashes_equal": true,
+  "source_ids_preserved": true
+}

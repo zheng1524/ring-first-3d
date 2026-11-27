@@ -1,0 +1,14 @@
+..E.....
+======================================================================
+ERROR: test_retry_completion_restores_original_case_order (test_v6_r1_runner.HeroLedgerOrderTests.test_retry_completion_restores_original_case_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_r1_runner.py", line 45, in test_retry_completion_restores_original_case_order
+    self.assertEqual([x['tag'] for x in f.ordered_hero_results(rows,plan)],['a','b','c'])
+                                        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'ring_first_3d.v6_raw.full_run' has no attribute 'ordered_hero_results'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.016s
+
+FAILED (errors=1)

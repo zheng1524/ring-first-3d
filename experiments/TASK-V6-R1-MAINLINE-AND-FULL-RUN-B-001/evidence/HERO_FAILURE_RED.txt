@@ -1,0 +1,23 @@
+EE.....
+======================================================================
+ERROR: test_partial_hero_is_not_successful_terminal (test_v6_r1_runner.HeroFailureTests.test_partial_hero_is_not_successful_terminal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_r1_runner.py", line 38, in test_partial_hero_is_not_successful_terminal
+    self.assertEqual(f.hero_outcome(rows),'RESOURCE_ERROR')
+                     ^^^^^^^^^^^^^^
+AttributeError: module 'ring_first_3d.v6_raw.full_run' has no attribute 'hero_outcome'
+
+======================================================================
+ERROR: test_resource_retry_never_selects_success_or_engineering_failure (test_v6_r1_runner.HeroFailureTests.test_resource_retry_never_selects_success_or_engineering_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_r1_runner.py", line 34, in test_resource_retry_never_selects_success_or_engineering_failure
+    self.assertEqual(f.retryable_hero_tags(rows,[]),['oom'])
+                     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'ring_first_3d.v6_raw.full_run' has no attribute 'retryable_hero_tags'
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.017s
+
+FAILED (errors=2)
