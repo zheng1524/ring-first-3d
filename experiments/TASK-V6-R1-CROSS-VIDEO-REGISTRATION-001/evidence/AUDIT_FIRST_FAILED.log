@@ -1,0 +1,16 @@
+FROZEN GP_Ip_8.8mm_closed_R5_single_refY sources 42 files 211
+FROZEN GP_Ip_4.0mm_closed_R10_single_refY sources 39 files 205
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/worker.py", line 24, in <module>
+    else:sys.argv=args;runpy.run_path(args[0],run_name='__main__')
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/audit.py", line 30, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/audit.py", line 25, in main
+    native=[s for s in a['sources']if s['side']==v['side']];plan=read(R/'PLAN_FROZEN.json');assert len(native)==len(plan['all_targets'])
+                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

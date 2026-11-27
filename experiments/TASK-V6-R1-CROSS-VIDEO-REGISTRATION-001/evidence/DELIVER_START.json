@@ -1,0 +1,224 @@
+{
+  "stage": "DELIVER",
+  "before_execution": true,
+  "resolved_config": {
+    "task": "TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001",
+    "batch": "R1_001",
+    "base": "f78e854bdbb6487cc946f4543250b8432dbfc779",
+    "groups": 5,
+    "frames_per_video": 8,
+    "features": 6000,
+    "ratio": 0.72,
+    "sigma_rgb_mm": 0.2,
+    "yaw_grid": 72,
+    "max_nfev": 100,
+    "ring_lambda": 1.0,
+    "ring_sigma_floor_mm": 0.1,
+    "ring_sigma_floor_deg": 0.3,
+    "ring_max_sigma_mm": 2.0,
+    "ring_max_sigma_deg": 15.0,
+    "ring_guard_mahalanobis": 5.0,
+    "min_fit_tracks": 6,
+    "min_held_tracks": 8,
+    "min_parallax_deg": 0.5,
+    "fit_reprojection_max_px": 6.0,
+    "coverage_mm": 0.2,
+    "seeds": [
+      20261117,
+      20261118,
+      20261119,
+      20261120,
+      20261121
+    ],
+    "v3_seed_offset": 900000,
+    "reserve_bytes": 5368709120,
+    "task_bytes_cap": 268435456,
+    "surface_samples_per_source": 96,
+    "LOO_per_side": 3,
+    "sigma_epipolar_px": 1.5,
+    "group_names": [
+      "GP_Ip_8.8mm_closed_R5_single_refY",
+      "GP_Ip_4.0mm_closed_R10_single_refY",
+      "GP_IIa_14.0mm_closed_R5_single_refY",
+      "GP_IIa_14.0mm_closed_R10_single_refY",
+      "GP_Ip_20.0mm_closed_R10_single_refY",
+      "GP_Ip_2.9mm_closed_R10_single_refY"
+    ]
+  },
+  "epoch": 1795793174.7827787,
+  "resource": {
+    "free_bytes": 9620885504,
+    "task_bytes": 61712339,
+    "nice": 19,
+    "affinity": [
+      0
+    ]
+  },
+  "sources": [
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/visualize.py",
+      "sha256": "b3416ff3b7ae5e0d00aa051ade412cb0613e6362b80b692f5188b027c77b5dfe"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/evaluate.py",
+      "sha256": "3132ddb442fafba3c67845bf8dbfb16d1dff7d944eeba083053f9476c22e44e9"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/test_registration.py",
+      "sha256": "396b8b13f65b740cc01b53a2385536f445b1df275629c1118c8fde4aee229aa0"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/registration.py",
+      "sha256": "56ad7b7b129a16cb6553dc1fb28a347dd48460f1b18184bbab8d54853e1eedfb"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/deliver.py",
+      "sha256": "14e3c24a5bb18984bed0ee2c081dd2b23b57c04f05b1b3da4063d2439c0bccb0"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/candidate_clean.py",
+      "sha256": "d311d1429bd0a88e1ae3040b04ed2c66238af46c4da71d0214ce7b9329a06864"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/replay_check.py",
+      "sha256": "85dbbc823fc1d2b16fe98e7450788c39eb88637134fe35ca7189149ba5bf9db3"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/predict.py",
+      "sha256": "cf382f357cbb5d853a82ae58e4cb088c318d2f459b38755e33c6f8e6d6a32e91"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/audit.py",
+      "sha256": "53f829b2580f83d8ae14faf30cbee5c15d40f304aaad9131ccdeacbd1915b220"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/context.py",
+      "sha256": "c938c6e24bfde958eda0082d917781bd29deab3583a804ec5d66adccb6992b44"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/clean_after.py",
+      "sha256": "b5e0fa4e56a9f2713a3b2b397c4fdaa06134535d0f576c640f968123a892ad09"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/worker.py",
+      "sha256": "ba77a1aeb7de60d2f57d5df86936de0c749f6db5ece23a3074f7b0e95991b9b0"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/visualize2.py",
+      "sha256": "c0ac2264c4ff2dd57e0b66422dc6a7d738d9073932aaf9f56177c96be5870a0a"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/verify_final2.py",
+      "sha256": "8fbb18847d9364e89c2ff96a0d8d7a9487827b6635e58f12bceb0d89713e5f16"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/run_real_stage.py",
+      "sha256": "cbba8619e611613d075e4126e6f03d0c14172b71a95b8d1433377ad8a39e46ce"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/clean2.py",
+      "sha256": "ea48037c1b888769777bef511422e374bf62675e11b46b6a990521850fd80b9a"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/metrics2.py",
+      "sha256": "5257918969be1fcab4bc3fe83c76235a749d02d8f3dc33793a615f1aac8fafe1"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/deliver2.py",
+      "sha256": "0f61de0e9c5ab19c484c2a3ee97de16e29b457612b30227c8f030c3ec15f03fa"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/solver2.py",
+      "sha256": "b1c582c04e6627322be4adf7969e1cc507b9b979486969254939376cedc2e47a"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/common2.py",
+      "sha256": "a993f4c39848c0ba0b4d407ee2aa5aba59ed7c144462827e2bc1fa6447e85e9e"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/support2.py",
+      "sha256": "07c7a150497c6992f2e5d2deb7591f5014152ebc1b04985e0d961fa104f58cef"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/control2.py",
+      "sha256": "f7b56dfbebd8acedf099a47b391418364d0904e4a701bb8be5afcf806335c1f8"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/real2.py",
+      "sha256": "31d43b2aa01d6bcf84720e772db681087038f5bd3563a7f21880b13f6c79b135"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/preflight.py",
+      "sha256": "0a6b18e12fd8808f63eb8093cd2f326f9f41417e489e53b066721bedf970ce4b"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/test_contracts2.py",
+      "sha256": "1560ae443778562a7a427ddff500f97b930986a59e8f098d93d86f73dc8bfec1"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/evaluate_real2.py",
+      "sha256": "11c650aef09396349c2478613782c2aef82cfed62b52c327b232b1628953b075"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/predict_real2.py",
+      "sha256": "63805450ef8e421ae4170e03ff31d84917ca2dda61150ffb10d182ba069e3f3f"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/inputs/V6_KERNELS/track005.py",
+      "sha256": "c912da0713a329a3c954fc7b1dfbdcf43459493432ccbc782d7742cd26e514ac"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/inputs/V6_KERNELS/v6_common.py",
+      "sha256": "59404f5c2a35913c253f802f5bb4ff21461861958a881f86973de15710693fe1"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-REG-CLEAN-002/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/config/PROTOCOL.json",
+      "sha256": "1a19a7b8e20a11cfdedffecf2828068f230a8943fca17fc986a53708e3053f91"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/code/registration.py",
+      "sha256": "cde33875484f18ba2053f39eb99e0d618a84645816133d1655e0bf7846bdadbc"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/config.json",
+      "sha256": "edff9919e6ee39d8470cbc39b7d1ad27634817b27425e8fae2eaa3da88f94214"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/config/PROTOCOL.json",
+      "sha256": "7c2d3becf8450e196b0cd2dc2c9465451ab57553a805f102a5e085b38234fd77"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/src/ring_first_3d/mainline/native/cleaning.py",
+      "sha256": "a5fd471ad85767399c9013d3668863eb4a2950fcdf712267dd154a128db2e4e7"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/src/ring_first_3d/mainline/native/_clean_kernels.py",
+      "sha256": "e81b6166a7236616ea03a277d597c966c49da2233fc46d72afa2c19ba405d08a"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/src/ring_first_3d/mainline/native/cleaning_protocol.json",
+      "sha256": "99c00fe52effa2589c21ad93c2f06a3b1c4d9c86c4c0c37b9bf5a2db33495b56"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/src/ring_first_3d/v6_raw/surface_clean.py",
+      "sha256": "cd51afb36bf4c067a7dde93049eb52e0afa6e3383556914b5227c11c41699c92"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/src/ring_first_3d/v6_raw/trusted_restore.py",
+      "sha256": "edef508cb794a8ff8041e87d8c3a5d2ee87561e48e68c6101af72c85127fc828"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/src/ring_first_3d/mainline/native/camera.py",
+      "sha256": "1f033569541ea074c716b579552f8a33508e3738205a742be7b3b0de6cb86535"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/src/ring_first_3d/mainline/native/_kernels.py",
+      "sha256": "60cb2ff6638d0153a781fae2ad8964904b06fdd004fbca05ddb2e1ca1f5d059f"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-REG-001/src/ring_first_3d/sim/geometry.py",
+      "sha256": "8bf9af204ac9faa71fa3b9b15e68b2284bad9f7cd842424e4aacbc88924d1381"
+    }
+  ],
+  "inputs": []
+}

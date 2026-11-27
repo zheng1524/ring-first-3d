@@ -1,0 +1,17 @@
+.....F
+======================================================================
+FAIL: test_zero_baseline_solver_inconclusive (__main__.Test.test_zero_baseline_solver_inconclusive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/test_registration.py", line 28, in test_zero_baseline_solver_inconclusive
+    f,C,tr,D=fixture();C[:]=np.eye(4);p=pack_pairs(f,C,tr,~tr['held']);ring=dict(center=[0,0,0],normal=[0,0,1],covariance=np.eye(5)*.01,status='ESTIMATED');r=solve_m5(p,ring,None);self.assertEqual(r['quality'],'DEGENERATE_EPIPOLAR')
+                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'UNASSESSED' != 'DEGENERATE_EPIPOLAR'
+- UNASSESSED
++ DEGENERATE_EPIPOLAR
+
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.125s
+
+FAILED (failures=1)
