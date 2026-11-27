@@ -39,6 +39,8 @@
 
 旧数组和权重的历史完成回执只说明当时运行状态，不再证明这些大产物仍在磁盘。其原路径、身份、哈希和逐项删除结果可从共享 `releases/A002...A005` 与 `receipts/A002...A005` 查到。审计旧静态预算约 12.11 GB；规范缓存和实际峰值、能否启动 R1 全量由 B 复核决定，本任务未启动科研实验。
 
+远端可复核的精确清单与回执压缩快照位于本任务 `evidence/`；`EVIDENCE_INDEX.json` 逐项记录原 JSON 和 gzip 的 SHA256。九个快照解压后与共享目录原件逐字节一致，合计约 5.70 MB，未包含原始视频、权重或大型科研产物。
+
 ## 验证命令
 
 - `python3 -m unittest discover -s experiments/TASK-V6-R1-STORAGE-CLEANUP-A-001/code -p 'test_*.py' -v`：5 项通过。
