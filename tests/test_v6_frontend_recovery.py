@@ -70,4 +70,12 @@ class FrontendTests(unittest.TestCase):
   old=np.array([[[1.,1.],[2,2]],[[1.,1.],[2,2]]]);mix=np.array([[[1.,1.],[2,2],[5,5]]])
   xy,cat,held,mapping,diagnostic=f.extend_video_tracks(old,[0,0],[True,False],mix,[0])
   self.assertEqual(mapping,{});self.assertTrue(np.isnan(xy[:,2]).all());np.testing.assert_equal(held,[True,False]);self.assertEqual(diagnostic['ambiguous_old_track_merges'],1)
+ def test_unapproved_full_run_stops_before_creating_output(self):
+  import tempfile,json
+  from pathlib import Path
+  from ring_first_3d.v6_raw.full_run import run
+  with tempfile.TemporaryDirectory() as d:
+   p=Path(d);config=p/'config.json';config.write_text(json.dumps({'approval_required':True,'run_root':str(p/'not_started')}))
+   with self.assertRaisesRegex(RuntimeError,'PILOT_REVIEW_REQUIRED'):run(config)
+   self.assertFalse((p/'not_started').exists())
 if __name__=='__main__':unittest.main()
