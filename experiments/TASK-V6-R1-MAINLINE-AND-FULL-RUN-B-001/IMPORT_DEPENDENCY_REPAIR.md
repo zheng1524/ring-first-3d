@@ -1,0 +1,7 @@
+# 清理后暴露的导入依赖修复
+
+首次正式启动cb20a728在相机模块导入阶段失败：g5_common→v4_common会在模块顶层读取退役surface_fusion_v2/inputs/real_camera_0.npz的K和OLDPOSE。清理前两例冷/热验证通过；清理后该文件被删除，揭示旧输入依赖清单遗漏。队列已暂停，尚无HERO推理，失败stage记录全部保留。
+
+修复不恢复退役相机：在内存加载原v4_common，只有两个模块初始化赋值改变——K从当前冻结R1输入提供；无主线消费者的OLDPOSE置None。所有函数AST完全相同，外部源码只读并锁SHA。既有两例R1相机NPZ的K均精确等于当前490/319.5/179.5，与原输入一致。真实source_modules导入测试已通过，g5/v6/lba/track的K相同。
+
+随后重新验证这两例相机与计划，证据另存BOOTSTRAP_VALIDATION。正式失败尝试归档在新运行根engineering_failed_launch，未计新成果，不更换Support、门槛或初始化规则。

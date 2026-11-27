@@ -171,3 +171,24 @@ def install(adapter):
   return tree,receipt
  adapter.adapt_independent_package=package
  return adapter
+
+
+def bootstrap_tree(source):
+ """Remove two obsolete import-time example-camera reads; retain every function AST."""
+ tree=ast.parse(source);removed=[]
+ for i,node in enumerate(tree.body):
+  if isinstance(node,ast.Assign) and len(node.targets)==1 and isinstance(node.targets[0],ast.Name) and node.targets[0].id in ['K','OLDPOSE']:
+   name=node.targets[0].id;assert ast.unparse(node.value)==("prev.cam('real', '0')['K']" if name=='K' else "prev.cam('real', '0')['c2w']"),'BOOTSTRAP_SOURCE_CONTRACT'
+   node.value=ast.parse('_R1_INPUT_K.copy()' if name=='K' else 'None',mode='eval').body;removed.append(name)
+ assert sorted(removed)==['K','OLDPOSE'],'BOOTSTRAP_ASSIGNMENTS'
+ return ast.fix_missing_locations(tree)
+
+def bootstrap_common(experiments,K):
+ import sys,types
+ name='v4_common'
+ if name in sys.modules:
+  assert np.array_equal(sys.modules[name].K,K),'SHARED_INTRINSICS_DRIFT';return
+ source=Path(experiments)/'surface_reconstruction_v4/scripts/v4_common.py'
+ assert hashlib.sha256(source.read_bytes()).hexdigest()=='c30822e5421b6b4b13991f81c1ab063930edac5bc0a4faa48a8a13cee14f0ee0','SHARED_SOURCE_DRIFT'
+ module=types.ModuleType(name);module.__file__=str(source);module._R1_INPUT_K=np.asarray(K).copy();tree=bootstrap_tree(source.read_text());exec(compile(tree,str(source),'exec'),module.__dict__);sys.modules[name]=module
+ RECEIPTS['v4_common.bootstrap']=dict(source=str(source),source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),adapted_ast_sha256=hashlib.sha256(ast.dump(tree).encode()).hexdigest(),only_changes=['K from current frozen input, identical to pilot camera K','unused OLDPOSE import removed'],K=K.tolist())

@@ -159,6 +159,9 @@ def prepared_identity(case):
  return x['preprocessing_content_id'] if FULL_CONFIG and FULL_CONFIG.get('cache') else sha(B/'prepared'/case/'PREPARED.json')
 
 def bind(m,R,meta):
+ if frontend.enabled(sys.modules[__name__]):
+  from .frontend_kernels import bootstrap_common
+  bootstrap_common(E,K)
  mods=m.source_modules(3.1 if meta['ring_inner_mm']==5 else 5.6)
  for mod in [mods['v6'],mods['track'],mods['lba']]:mod.R=R;mod.V5=R/'v5raw'
  return mods

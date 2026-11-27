@@ -67,3 +67,12 @@ class HeroRetryTransactionTests(unittest.TestCase):
    f.hero_with_resource_retry(r,'case',R)
    self.assertEqual(f.read(R/'HERO_RESOURCE_RETRIES.json')[0]['status'],'COMPLETE')
    self.assertEqual([x['tag'] for x in f.read(ledger)],['a','b'])
+
+class HistoricalImportTests(unittest.TestCase):
+ def test_bootstrap_replaces_only_retired_import_time_camera_reads(self):
+  import ast
+  from ring_first_3d.v6_raw.frontend_kernels import bootstrap_tree
+  source="import numpy as np\nK=prev.cam('real','0')['K'];OLDPOSE=prev.cam('real','0')['c2w']\ndef compute(x):return x+K[0,0]\n"
+  before=ast.parse(source);after=bootstrap_tree(source)
+  self.assertEqual(ast.dump(before.body[-1]),ast.dump(after.body[-1]))
+  self.assertNotIn('prev.cam',ast.unparse(after))
