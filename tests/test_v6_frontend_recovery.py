@@ -59,4 +59,11 @@ class FrontendTests(unittest.TestCase):
   tree=package_transform(ast.parse("ts=np.flatnonzero(tr['held'] & np.isfinite(tr['xy'][:,held,0]))\nr=dict(heldout_frame=L[held]['id'])"));ast.fix_missing_locations(tree)
   ns={'np':np,'held':-1};exec(compile(tree,'test','exec'),ns)
   self.assertEqual(len(ns['ts']),0);self.assertIsNone(ns['r']['heldout_frame'])
+ def test_photo_extension_preserves_old_tracks_and_rejects_ambiguous_merge(self):
+  old=np.array([[[1.,1.],[2,2]],[[3,3],[4,4]]]);mix=np.array([[[1.,1.],[2,2],[5,5]],[[3,3],[4,4],[6,6]]])
+  xy,cat,held,mapping,diagnostic=f.extend_video_tracks(old,[0,1],[True,False],mix,[0,1])
+  np.testing.assert_equal(xy[:,:2],old);np.testing.assert_equal(held,[True,False]);self.assertEqual(mapping,{0:0,1:1})
+  mix[0,1]=[4,4]
+  xy,cat,held,mapping,diagnostic=f.extend_video_tracks(old,[0,1],[True,False],mix,[0,1])
+  np.testing.assert_equal(xy[:,:2],old);self.assertTrue(np.isnan(xy[0,2]).all());self.assertEqual(diagnostic['ambiguous_old_track_merges'],1)
 if __name__=='__main__':unittest.main()

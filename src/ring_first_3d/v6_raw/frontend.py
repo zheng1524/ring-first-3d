@@ -3,7 +3,7 @@ from pathlib import Path
 import copy, hashlib, json, sys
 import cv2
 import numpy as np
-from .frontend_policy import anchor_component,temporal_edges,unique_eligible,select_plan_version
+from .frontend_policy import anchor_component,temporal_edges,unique_eligible,select_plan_version,extend_video_tracks
 
 def enabled(r):return bool(r.FULL_CONFIG and r.FULL_CONFIG.get('frontend'))
 
@@ -28,7 +28,8 @@ def prepare_cached(r,case,root,raw_hash,signature):
  r.save(root/'PREPARED.json',meta);return meta
 
 def component(r,R,meta,mods,ref,held):
- full=meta['frames'];tr=dict(np.load(R/'observations/tracks005.npz'));pack=dict(np.load(R/'observations/pairs005.npz'));edges=mods['lba'].pair_data(tr,pack)
+ full=meta['frames'];preserve_video_tracks(r,R,meta)
+ tr=dict(np.load(R/'observations/tracks005.npz'));pack=dict(np.load(R/'observations/pairs005.npz'));edges=mods['lba'].pair_data(tr,pack)
  keep=anchor_component(len(full),[(e['i'],e['j']) for e in edges],ref)
  eligible=unique_eligible(full,keep,held)
  original_reference=dict(reference_index=ref,heldout_index=held,reference_view_id=full[ref]['view_id'],diagnostic_view_id=full[held]['view_id'],reference_raw=full[ref]['raw_frame'],diagnostic_raw=full[held]['raw_frame'])
@@ -51,6 +52,28 @@ def component(r,R,meta,mods,ref,held):
  v6.freeze('tracks',[R/'observations/tracks005.npz',R/'observations/pairs005.npz',R/'metrics/track005.json',R/'COMPONENT.json'])
  mods['lba']._FRONTEND_TEMPORAL=receipt['temporal_edges']
  return meta,index[ref],index.get(held,-1),original_reference
+
+def preserve_video_tracks(r,R,meta):
+ base=Path(meta['preprocessing_reuse']['source']).parents[1];old=dict(np.load(base/'observations/tracks005.npz'));op=dict(np.load(base/'observations/pairs005.npz'));tr=dict(np.load(R/'observations/tracks005.npz'));pack=dict(np.load(R/'observations/pairs005.npz'));n=len(old['ids'])
+ assert list(old['ids'])==[a['id'] for a in meta['original_video_frames']]
+ if len(meta['frames'])==n:
+  assert np.array_equal(old['xy'],tr['xy'],equal_nan=True) and np.array_equal(old['held'],tr['held']) and np.array_equal(old['category'],tr['category']),'ORIGINAL_VIDEO_TRACK_DRIFT'
+  r.save(R/'TRACK_EXTENSION.json',dict(original_tracks=len(old['held']),original_track_file=str(base/'observations/tracks005.npz'),original_track_sha256=r.sha(base/'observations/tracks005.npz'),video_only_recomputed_exactly=True));return
+ xy,cat,held,mapping,receipt=extend_video_tracks(old['xy'],old['category'],old['held'],tr['xy'],tr['category'])
+ ij=op['ij'].tolist();pairs={k:v for k,v in op.items() if k!='ij'};skipped=0
+ for k,(i,j) in enumerate(pack['ij']):
+  if i<n and j<n:continue
+  rows=[]
+  for row in pack['pair'+str(k)]:
+   tid=mapping.get(int(row[0]))
+   if tid is None or not np.array_equal(xy[tid,[i,j]].ravel(),row[1:]):skipped+=1;continue
+   rows.append([tid,*row[1:]])
+  pairs['pair'+str(len(ij))]=np.asarray(rows).reshape(-1,5);ij.append([int(i),int(j)])
+ for name in ['tracks005.npz','pairs005.npz']:(R/'observations'/name).rename(R/'observations'/('MIXED_UNION_'+name))
+ np.savez_compressed(R/'observations/tracks005.npz',**dict(tr,xy=xy,category=cat,held=held))
+ np.savez_compressed(R/'observations/pairs005.npz',ij=np.asarray(ij),**pairs)
+ receipt.update(original_track_file=str(base/'observations/tracks005.npz'),original_track_sha256=r.sha(base/'observations/tracks005.npz'),discarded_ambiguous_pair_rows=skipped,mixed_track_to_preserved_track=mapping,photo_connection='original SIFT matching; reject ambiguous original-track merges; old video pairs retained bitwise')
+ r.save(R/'TRACK_EXTENSION.json',receipt)
 
 def record_kernels(r,R,mods):
  from .frontend_kernels import RECEIPTS

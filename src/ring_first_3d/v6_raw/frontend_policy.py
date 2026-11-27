@@ -52,3 +52,30 @@ def view_tag(view):
 
 def match_partners(i, views, offsets):
  return [j for j in range(i+1,len(views)) if views[i].get('media_type','video')=='photo' or views[j].get('media_type','video')=='photo' or j-i in offsets]
+
+def extend_video_tracks(old_xy,old_category,old_held,mixed_xy,mixed_category):
+ """Preserve every original video observation/track ID; add unambiguous photo links.
+
+ Mixed union tracks which merge distinct original tracks are rejected, rather than
+ moving original held observations into training. New tracks have no old keypoints.
+ """
+ n=old_xy.shape[1];lookup={}
+ for t in range(len(old_xy)):
+  for i in np.flatnonzero(np.isfinite(old_xy[t,:,0])):lookup[(int(i),*old_xy[t,i])]=t
+ associations=[];owners={};ambiguous=0
+ for t,row in enumerate(mixed_xy):
+  found={lookup[(int(i),*row[i])] for i in np.flatnonzero(np.isfinite(row[:n,0])) if (int(i),*row[i]) in lookup}
+  associations.append(found)
+  if len(found)==1:owners.setdefault(next(iter(found)),[]).append(t)
+  elif len(found)>1:ambiguous+=1
+ out=np.full((len(old_xy),mixed_xy.shape[1],2),np.nan);out[:,:n]=old_xy
+ rows=list(out);cats=list(old_category);held=list(old_held);mapping={};added=0
+ for t,found in enumerate(associations):
+  if len(found)>1:continue
+  if len(found)==1:
+   dest=next(iter(found))
+   if len(owners[dest])!=1 or mixed_category[t]!=old_category[dest]:continue
+   rows[dest][n:]=mixed_xy[t,n:];mapping[t]=dest
+  else:
+   dest=len(rows);mapping[t]=dest;rows.append(mixed_xy[t].copy());cats.append(mixed_category[t]);held.append(dest%5==0);added+=1
+ return np.asarray(rows),np.asarray(cats),np.asarray(held,dtype=bool),mapping,dict(original_tracks=len(old_xy),new_tracks=added,ambiguous_old_track_merges=ambiguous,fragmented_old_tracks=sum(len(v)>1 for v in owners.values()),original_video_observations_unchanged=True,original_train_held_unchanged=True)
