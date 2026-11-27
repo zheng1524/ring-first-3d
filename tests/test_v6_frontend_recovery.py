@@ -66,4 +66,8 @@ class FrontendTests(unittest.TestCase):
   mix[0,1]=[4,4]
   xy,cat,held,mapping,diagnostic=f.extend_video_tracks(old,[0,1],[True,False],mix,[0,1])
   np.testing.assert_equal(xy[:,:2],old);self.assertTrue(np.isnan(xy[0,2]).all());self.assertEqual(diagnostic['ambiguous_old_track_merges'],1)
+ def test_duplicate_sift_coordinates_never_overwrite_held_identity(self):
+  old=np.array([[[1.,1.],[2,2]],[[1.,1.],[2,2]]]);mix=np.array([[[1.,1.],[2,2],[5,5]]])
+  xy,cat,held,mapping,diagnostic=f.extend_video_tracks(old,[0,0],[True,False],mix,[0])
+  self.assertEqual(mapping,{});self.assertTrue(np.isnan(xy[:,2]).all());np.testing.assert_equal(held,[True,False]);self.assertEqual(diagnostic['ambiguous_old_track_merges'],1)
 if __name__=='__main__':unittest.main()

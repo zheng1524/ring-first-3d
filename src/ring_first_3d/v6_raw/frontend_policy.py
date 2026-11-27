@@ -61,10 +61,10 @@ def extend_video_tracks(old_xy,old_category,old_held,mixed_xy,mixed_category):
  """
  n=old_xy.shape[1];lookup={}
  for t in range(len(old_xy)):
-  for i in np.flatnonzero(np.isfinite(old_xy[t,:,0])):lookup[(int(i),*old_xy[t,i])]=t
+  for i in np.flatnonzero(np.isfinite(old_xy[t,:,0])):lookup.setdefault((int(i),*old_xy[t,i]),set()).add(t)
  associations=[];owners={};ambiguous=0
  for t,row in enumerate(mixed_xy):
-  found={lookup[(int(i),*row[i])] for i in np.flatnonzero(np.isfinite(row[:n,0])) if (int(i),*row[i]) in lookup}
+  found=set().union(*(lookup.get((int(i),*row[i]),set()) for i in np.flatnonzero(np.isfinite(row[:n,0]))))
   associations.append(found)
   if len(found)==1:owners.setdefault(next(iter(found)),[]).append(t)
   elif len(found)>1:ambiguous+=1
