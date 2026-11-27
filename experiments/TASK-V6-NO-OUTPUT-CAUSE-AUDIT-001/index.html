@@ -1,0 +1,198 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V6 无输出与失败原因审计</title><style>body{font-family:system-ui,sans-serif;max-width:1280px;margin:30px auto;padding:0 22px;color:#182335;line-height:1.7}table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow-x:auto;margin:18px 0}th,td{border:1px solid #ccd3dd;padding:9px;vertical-align:top}th{background:#edf2f8}code{background:#edf2f8;padding:2px 4px;overflow-wrap:anywhere}a{color:#174da0}h2{margin-top:38px}img{max-width:100%}nav{padding:15px;background:#edf2f8}td{overflow-wrap:anywhere}figure{margin:20px 0}figcaption{font-size:14px}</style><nav><a href="/index.html">全量图集</a> · <a href="TECHNICAL_REPORT.md">报告原文</a> · <a href="GROUP_CAUSES.csv">39组表</a> · <a href="VIDEO_CAUSES.csv">79视频表</a> · <a href="FRAME_GATES.csv">逐帧指标</a> · <a href="ALTERNATIVE_INITIALIZATIONS.csv">另一初始化诊断</a> · <a href="evidence/SUMMARY.json">核验摘要</a></nav><h1>V6 全量无输出与失败原因审计</h1>
+<p>本轮按研究者指示解释原因，不以恢复全部组为目标。没有重算相机、BA、HERO，没有换初始化、放宽门槛、修改失败记录或开始全量 clean。只读取最终记录，并用原始 <code>pair_data</code> 函数在已冻结的匹配缓存上复核八段失败视频的图连通性。</p>
+<p>全量执行身份为 <code>da92d8ddfaf9a3fc266b518e56e2d3a6c2ed056a</code>；其中10段复用结果保留各自原执行身份，见 VIDEO_CAUSES.csv。最终固定分母为39组79视频：42段有795个面源，28段DONE但零输出，9段CAMERA_FAILED。9组完全无输出；9组含相机失败，两者重叠2组。不存在“某组的全部视频都相机崩溃”的情形。研究者已认可有输出组的视觉效果，本审计不将该认可替代GT精度评价。</p>
+<h2>1. 已确认的直接阻断原因</h2>
+<table>
+<thead>
+<tr>
+<th>阻断位置</th>
+<th style="text-align:right">视频数</th>
+<th>已确认事实</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>相机质量准入</td>
+<td style="text-align:right">21</td>
+<td>已有数值相机，但没有一张通过当前Q1规则；HERO预算为0</td>
+</tr>
+<tr>
+<td>三张Support不足</td>
+<td style="text-align:right">6</td>
+<td>仅1或2张相机通过Q1，无法组成三张不同Support；HERO预算为0</td>
+</tr>
+<tr>
+<td>共享训练轨迹不足</td>
+<td style="text-align:right">1</td>
+<td>IIa14/R10/005有3张Q1相机，但对任何Target实际最多只有2张满足共同轨迹条件的Support；HERO预算为0</td>
+</tr>
+<tr>
+<td>位姿图断连</td>
+<td style="text-align:right">8</td>
+<td>两套初始化均无法从参考帧连通全部选定帧，原程序终止整段</td>
+</tr>
+<tr>
+<td>验证阶段空值异常</td>
+<td style="text-align:right">1</td>
+<td>Is18/R5/005两套求解均返回结果，但Ring轮廓验证值为None，原代码与整数比较时报错</td>
+</tr>
+</tbody>
+</table>
+<p><strong>全部37段零输出视频都在HERO推理之前受阻。</strong> 70段DONE的冻结计划合计795个合法元组，795个全部完成；各HERO_COMPLETE的failed列表为空。因此本次全量的零输出不能归因于“HERO对这些视频重建失败”。这也不证明给HERO任意输入都能成功。</p>
+<p>Q1仍要求：留出RGB观测数至少8，重投影MAE≤3px、P95≤6px，正深度比例≥95%，Ring留出轮廓MAE≤3px、P95≤6px；仅把两初始化中心分散&gt;2mm降为警告。每个Target另需三张准入Support，各自与Target至少共享15条非留出训练轨迹，排除Target自身与指定诊断帧。Target自身不要求通过同一相机准入条件，因此不可用“相机通过数/帧数”直接代替Target覆盖率。</p>
+<p>28段空DONE共616帧：596帧违反至少一项RGB重投影条件；581帧违反RGB MAE、586帧违反RGB P95、81帧正深度不足、27帧留出观测不足、33帧违反/缺失Ring MAE、68帧违反/缺失Ring P95。这些条件可同时失败，计数不能相加。主要可观测症状是跨视图RGB几何不一致，不是单凭Ring像素少、数据缺失或GPU资源不足。</p>
+<h2>2. 九个完全无输出组</h2>
+<p>所有组名按原物理注册表，省略共同的GP_/closed/single_refY前后缀；下表相机数为各段22张数值相机中通过Q1的数量。</p>
+<table>
+<thead>
+<tr>
+<th>物理组</th>
+<th>004</th>
+<th>005</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IIa22/R5</td>
+<td>0/22</td>
+<td>0/22</td>
+<td>两段22帧均同时违反RGB MAE与P95，另有Ring空轮廓/误差项</td>
+</tr>
+<tr>
+<td>IIa9.5/R10</td>
+<td>0/22</td>
+<td>0/22</td>
+<td>两段22帧均同时违反RGB MAE与P95；已存第二初始化分别有11、14张Q1相机</td>
+</tr>
+<tr>
+<td>Ip4.7/R5</td>
+<td>0/22</td>
+<td>1/22</td>
+<td>004的22帧同时违反RGB MAE/P95及Ring P95；005只剩1张准入相机</td>
+</tr>
+<tr>
+<td>Ip6.2/R5</td>
+<td>0/22</td>
+<td>0/22</td>
+<td>两段22帧均同时违反RGB MAE/P95，部分还有正深度/Ring问题；005另一初始化有5张Q1相机</td>
+</tr>
+<tr>
+<td>Is10.5/R5</td>
+<td>0/22</td>
+<td>0/22</td>
+<td>主要为RGB重投影不合格；005另有13/22帧留出观测不足</td>
+</tr>
+<tr>
+<td>Is14/R10</td>
+<td>2/22</td>
+<td>2/22</td>
+<td>两段均不足三张Support；005另有13帧Ring P95不合格</td>
+</tr>
+<tr>
+<td>Is18/R5</td>
+<td>0/22</td>
+<td>验证异常</td>
+<td>004的22帧均违反RGB MAE/P95；005见空Ring观测分析</td>
+</tr>
+<tr>
+<td>Is7/R5</td>
+<td>0/22</td>
+<td>图断连</td>
+<td>004的22帧均违反RGB MAE/P95，但另一初始化有19张Q1相机；005图分成15+6+1帧</td>
+</tr>
+<tr>
+<td>Is8.8/R10</td>
+<td>0/22</td>
+<td>0/22</td>
+<td>两段22帧均同时违反RGB MAE/P95；另一初始化分别有13、6张Q1相机</td>
+</tr>
+</tbody>
+</table>
+<p>完整39组和79视频表见 GROUP_CAUSES.csv、VIDEO_CAUSES.csv；FRAME_GATES.csv给出每张相机的真实RAW帧号、所有硬门槛及数值。没有隐去“同组另一视频已成功”的失败案例。</p>
+<h2>3. 图断连具体意味着什么</h2>
+<p>实际初始化使用共享非留出SIFT轨迹构成边：先要求至少12个匹配，再经F矩阵RANSAC（1.5px阈值、0.999置信度），至少12个内点才保留边。原初始化从固定参考帧扩展；只要任何选定帧不可达就报错，不会自动只保留参考帧所在分量。下面是使用原冻结函数、原seed、已有缓存的诊断复核，没有重新抽帧、匹配图像或估计相机。</p>
+<table>
+<thead>
+<tr>
+<th>失败视频</th>
+<th>有效边图的分量大小</th>
+<th style="text-align:right">参考帧可达数</th>
+<th>原始不可达帧号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IIa4.5/R10/005</td>
+<td>21+1</td>
+<td style="text-align:right">21/22</td>
+<td>542</td>
+</tr>
+<tr>
+<td>IIa5.2/R10/001</td>
+<td>21+1</td>
+<td style="text-align:right">21/22</td>
+<td>872</td>
+</tr>
+<tr>
+<td>Ip2.9/R10/004</td>
+<td>21+1</td>
+<td style="text-align:right">21/22</td>
+<td>927</td>
+</tr>
+<tr>
+<td>Is10.5/R10/005</td>
+<td>19+1+1+1</td>
+<td style="text-align:right">19/22</td>
+<td>918、964、984</td>
+</tr>
+<tr>
+<td>Is18/R10/005</td>
+<td>12+5+2+2+1</td>
+<td style="text-align:right">12/22</td>
+<td>549、579、604、659、681、714、736、769、801、824</td>
+</tr>
+<tr>
+<td>Is4.8/R10/005</td>
+<td>21+1</td>
+<td style="text-align:right">21/22</td>
+<td>874</td>
+</tr>
+<tr>
+<td>Is7/R5/005</td>
+<td>15+6+1</td>
+<td style="text-align:right">15/22</td>
+<td>0、73、103、146、176、219、237</td>
+</tr>
+<tr>
+<td>Is9.79/R10/004</td>
+<td>14+7+1</td>
+<td style="text-align:right">14/22</td>
+<td>0、41、59、117、176、198、235、293</td>
+</tr>
+</tbody>
+</table>
+<p>四段仅一帧孤立却整段失败，是当前“全部选帧必须连通”规则的直接后果，不能解释为整段视频都没有可用信息。另四段断得更严重。八段中四段在训练匹配数门槛之后、RANSAC之前就已断开；另四段在RANSAC后断开。弱纹理、反光、模糊、视角变化、采样跨度与匹配错误都可能造成断边，但本轮没有对这些物理成因逐一完成排除试验，不能仅凭断图给素材贴上单一标签。保留分量是否科学有效仍需另行设计统一规则，不能把21/22可达当作21个可用HERO结果。</p>
+<h2>4. Is18/R5/005：观测规则与实现异常叠加</h2>
+<p>该段并非没有检测到Ring。原始RGB可见Ring位于息肉表面；首帧有6535个Ring像素、776个原始边界点、547个受原像素支持的DXY边缘点。现行adapter把邻近息肉掩膜5×5膨胀区域的边界标为遮挡顺序不明，未用其作表观轮廓。22帧均有 <code>q_train=0</code>、<code>q_held=0</code>，原始边界全部落入ambiguous集合。</p>
+<p>这里存在两层原因：</p>
+<ol>
+<li><strong>已确认的运行中断</strong>：两套local005_solver均标记成功返回，但validate_select的 <code>rg['MAE']&lt;=3</code> 没处理空轮廓统计的None，抛出TypeError。属于实现对缺失观测的处理问题；不应归类为图断连、HERO失败或GPU不足。</li>
+<li><strong>代码机制推断</strong>：<code>g5_common.py::torus_residual</code> 用 <code>sqrt(len(q)/max(1,len(p)))</code> 和 <code>sqrt(len(q)/max(1,len(b)))</code> 给可见区域/背景区域残差加权。q为空时这些权重也为0，正常计算分支的Ring残差失去约束。首帧训练缓存为q/p/b=0/512/0：可见区域项被乘0，背景区域本来就是空集合；其他帧的p/b长度见证据。因此即使只修None比较，也不能宣称已恢复可信Ring约束或有效相机。应把“可见Ring区域存在”和“可用表观轮廓不存在”区分开。</li>
+</ol>
+<p>本轮仅确认缓存及追踪原公式，未改变遮挡解释、重新引入边界或重新优化。原始图链接在本地审计页面，保持原图，不做美化。Ring内径参数为5mm；图像本身为像素视图，不冒充已标定的毫米空间图。</p>
+<h2>5. 固定初始化选择的潜在影响</h2>
+<p>原验证器执行 <code>primary=min(available)</code>，以固定版本顺序选主相机，不按验证集择优。28段空DONE中，10段的另一个<strong>已经保存的</strong>版本有至少3张相机通过相同Q1规则：IIa9.5/R10的004与005、Ip10.3/R5/004、Ip4.0/R5/007、Ip6.2/R5/005、Is7/R5/004、Is7/R10/004、Is8.8/R10的004与005、Is8.8/R5/005。具体数目在ALTERNATIVE_INITIALIZATIONS.csv。</p>
+<p>这是对既有两套结果的事后诊断，说明“数值求解成功”与“被选中的几何能通过后续检查”是两件事。<strong>不能把这10段计入恢复覆盖率</strong>：没有检查替代版本的全部Target/Support共同轨迹组合，没有用其推理HERO，也没有独立于选择过程的质量验证。若按同一留出集择优，再用该集合报告性能，会产生选择偏差。</p>
+<p>BA迭代是否达到收敛条件也不能单独解释失败：42段有输出中14段两套BA均未报告收敛；28段空DONE中10段两套BA均报告收敛。因此“多给迭代次数”不是本轮证据已支持的统一解释。</p>
+<h2>6. 已知边界与后续讨论</h2>
+<ul>
+<li><strong>事实</strong>：37段无输出的直接阻断阶段已全部解释；本轮没有HERO推理失败记录。数据身份、逐帧阈值、失败日志、图分量和初始化版本可追溯。</li>
+<li><strong>机制推断</strong>：整段连通要求放大少量孤立帧的影响；固定初始化次序可能舍弃更一致的现成候选；Ring邻息肉边界排除和按轮廓数加权共同导致该段约束缺失。</li>
+<li><strong>待验证</strong>：高RGB重投影误差究竟由错匹配、错误初始化/yaw、固定内参假设、低视差或非刚性等哪一项主导，现有日志不能唯一归因。不能据此宣称某一组先天不可恢复，或某一改法必能恢复。</li>
+</ul>
+<p>若后续仅做最低成本的归因验证，可先选三类代表：一段21+1断图、一段主版本0相机而另一版本很多相机通过、一段Ring轮廓全空。先审真实图像/掩膜和对应观测，再为每个假设设计独立证据。无需追求39组全部恢复，也无需本轮直接放宽质量门槛。任何候选选择或保留分量的新规则，应另立统一协议，并保留独立评估集。</p>
+<h2>7. 复核与复现</h2>
+<p><code>collect.py</code>仅写本任务目录；全部被读取的源文件记录SHA256，收集结束再次比对，未改变原资产，文件数见SUMMARY。原始RAW视频与模型不重哈希、不复制。图复核严格抽取原local_ring_sfm.py::pair_data，代码、配置、tracks/pairs缓存SHA与原运行冻结回执一致；不导入其main，也不调用initialize、BA或HERO。FRAME_GATES按冻结policy.py::admit_camera复算，与每条原GATES旧/新布尔结果逐项一致。</p>
+<p>本报告为原因审计，科学执行身份保持原值；审计代码提交不是新的科研执行提交。完整机器回执见 evidence/SUMMARY.json、SOURCE_IDENTITIES.json、GRAPH_DIAGNOSTICS.json、EMPTY_RING_OBSERVATIONS.json与DETAILS.json。</p>
+<h2>原图证据：Is18/R5/005，RAW第0帧</h2><figure><img src="/prepared/GP_Is_18.0mm_closed_R5_single_refY_005/raw_000000.png" alt="Is18 R5 005 RAW第0帧原始RGB"><figcaption>原始RGB，640×360像素；R5物理内径为5mm。Ring可见，但当前掩膜规则把全部邻息肉边界列为遮挡顺序不明。未重绘图像、未使用GT，图像不是毫米坐标视图。</figcaption></figure><h2>全部37段零输出视频逐项索引</h2><table><thead><tr><th>视频（原注册身份）</th><th>直接阻断原因</th><th>Q1相机</th><th>最大Support数</th><th>另一已存版本Q1相机</th><th>硬门槛失败帧数（可重叠）</th></tr></thead><tbody><tr><td>GP_IIa_14.0mm_closed_R10_single_refY_005</td><td>共同轨迹Support不足</td><td>3</td><td>2</td><td>0</td><td>{&quot;RGB MAE px&quot;: 13, &quot;RGB P95 px&quot;: 14, &quot;正深度比例&quot;: 2, &quot;留出观测数&quot;: 6}</td></tr><tr><td>GP_IIa_22.0mm_closed_R5_single_refY_004</td><td>相机均未准入</td><td>0</td><td>0</td><td>0</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;Ring边界 MAE px&quot;: 2, &quot;Ring边界 P95 px&quot;: 2}</td></tr><tr><td>GP_IIa_22.0mm_closed_R5_single_refY_005</td><td>相机均未准入</td><td>0</td><td>0</td><td>0</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;Ring边界 MAE px&quot;: 11, &quot;Ring边界 P95 px&quot;: 11}</td></tr><tr><td>GP_IIa_4.5mm_closed_R10_single_refY_005</td><td>位姿图断连</td><td>未进入准入</td><td>未调度</td><td>未生成验证表</td><td>21+1</td></tr><tr><td>GP_IIa_5.2mm_closed_R10_single_refY_001</td><td>位姿图断连</td><td>未进入准入</td><td>未调度</td><td>未生成验证表</td><td>21+1</td></tr><tr><td>GP_IIa_9.5mm_closed_R10_single_refY_004</td><td>相机均未准入</td><td>0</td><td>0</td><td>11</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22}</td></tr><tr><td>GP_IIa_9.5mm_closed_R10_single_refY_005</td><td>相机均未准入</td><td>0</td><td>0</td><td>14</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 3}</td></tr><tr><td>GP_IIa_9.5mm_closed_R5_single_refY_005</td><td>准入相机不足3张</td><td>2</td><td>2</td><td>0</td><td>{&quot;RGB MAE px&quot;: 19, &quot;RGB P95 px&quot;: 18, &quot;正深度比例&quot;: 8, &quot;留出观测数&quot;: 3}</td></tr><tr><td>GP_Ip_10.3mm_closed_R5_single_refY_004</td><td>相机均未准入</td><td>0</td><td>0</td><td>8</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;Ring边界 P95 px&quot;: 1}</td></tr><tr><td>GP_Ip_12.0mm_closed_R5_single_refY_005</td><td>相机均未准入</td><td>0</td><td>0</td><td>0</td><td>{&quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 2, &quot;RGB MAE px&quot;: 19}</td></tr><tr><td>GP_Ip_2.9mm_closed_R10_single_refY_004</td><td>位姿图断连</td><td>未进入准入</td><td>未调度</td><td>未生成验证表</td><td>21+1</td></tr><tr><td>GP_Ip_2.9mm_closed_R5_single_refY_004</td><td>相机均未准入</td><td>0</td><td>0</td><td>0</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 3}</td></tr><tr><td>GP_Ip_4.0mm_closed_R5_single_refY_005</td><td>相机均未准入</td><td>0</td><td>0</td><td>0</td><td>{&quot;RGB MAE px&quot;: 21, &quot;RGB P95 px&quot;: 19, &quot;正深度比例&quot;: 1}</td></tr><tr><td>GP_Ip_4.0mm_closed_R5_single_refY_007</td><td>准入相机不足3张</td><td>2</td><td>2</td><td>8</td><td>{&quot;RGB MAE px&quot;: 18, &quot;RGB P95 px&quot;: 20, &quot;正深度比例&quot;: 6}</td></tr><tr><td>GP_Ip_4.7mm_closed_R5_single_refY_004</td><td>相机均未准入</td><td>0</td><td>0</td><td>0</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;Ring边界 P95 px&quot;: 22, &quot;正深度比例&quot;: 5, &quot;Ring边界 MAE px&quot;: 2}</td></tr><tr><td>GP_Ip_4.7mm_closed_R5_single_refY_005</td><td>准入相机不足3张</td><td>1</td><td>1</td><td>0</td><td>{&quot;RGB MAE px&quot;: 21, &quot;RGB P95 px&quot;: 21, &quot;正深度比例&quot;: 1}</td></tr><tr><td>GP_Ip_6.2mm_closed_R5_single_refY_004</td><td>相机均未准入</td><td>0</td><td>0</td><td>0</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 6, &quot;Ring边界 MAE px&quot;: 8, &quot;Ring边界 P95 px&quot;: 8}</td></tr><tr><td>GP_Ip_6.2mm_closed_R5_single_refY_005</td><td>相机均未准入</td><td>0</td><td>0</td><td>5</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 3, &quot;Ring边界 MAE px&quot;: 2, &quot;Ring边界 P95 px&quot;: 2}</td></tr><tr><td>GP_Ip_9.7mm_closed_R5_single_refY_004</td><td>准入相机不足3张</td><td>2</td><td>2</td><td>0</td><td>{&quot;RGB MAE px&quot;: 20, &quot;RGB P95 px&quot;: 16}</td></tr><tr><td>GP_Is_10.5mm_closed_R10_single_refY_005</td><td>位姿图断连</td><td>未进入准入</td><td>未调度</td><td>未生成验证表</td><td>19+1+1+1</td></tr><tr><td>GP_Is_10.5mm_closed_R5_single_refY_004</td><td>相机均未准入</td><td>0</td><td>0</td><td>0</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 4}</td></tr><tr><td>GP_Is_10.5mm_closed_R5_single_refY_005</td><td>相机均未准入</td><td>0</td><td>0</td><td>2</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 21, &quot;留出观测数&quot;: 13, &quot;正深度比例&quot;: 1}</td></tr><tr><td>GP_Is_14.0mm_closed_R10_single_refY_004</td><td>准入相机不足3张</td><td>2</td><td>2</td><td>0</td><td>{&quot;RGB MAE px&quot;: 15, &quot;RGB P95 px&quot;: 19, &quot;正深度比例&quot;: 1, &quot;留出观测数&quot;: 1}</td></tr><tr><td>GP_Is_14.0mm_closed_R10_single_refY_005</td><td>准入相机不足3张</td><td>2</td><td>2</td><td>0</td><td>{&quot;RGB MAE px&quot;: 19, &quot;RGB P95 px&quot;: 20, &quot;正深度比例&quot;: 7, &quot;Ring边界 P95 px&quot;: 13, &quot;Ring边界 MAE px&quot;: 6}</td></tr><tr><td>GP_Is_14.0mm_closed_R5_single_refY_005</td><td>相机均未准入</td><td>0</td><td>0</td><td>0</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 4}</td></tr><tr><td>GP_Is_18.0mm_closed_R10_single_refY_005</td><td>位姿图断连</td><td>未进入准入</td><td>未调度</td><td>未生成验证表</td><td>12+5+2+2+1</td></tr><tr><td>GP_Is_18.0mm_closed_R5_single_refY_004</td><td>相机均未准入</td><td>0</td><td>0</td><td>2</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;Ring边界 P95 px&quot;: 3}</td></tr><tr><td>GP_Is_18.0mm_closed_R5_single_refY_005</td><td>Ring空观测＋验证异常</td><td>未进入准入</td><td>未调度</td><td>未生成验证表</td><td>22帧Ring轮廓为空</td></tr><tr><td>GP_Is_4.8mm_closed_R10_single_refY_005</td><td>位姿图断连</td><td>未进入准入</td><td>未调度</td><td>未生成验证表</td><td>21+1</td></tr><tr><td>GP_Is_6.5mm_closed_R10_single_refY_005</td><td>相机均未准入</td><td>0</td><td>0</td><td>0</td><td>{&quot;RGB MAE px&quot;: 20, &quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 8}</td></tr><tr><td>GP_Is_7.0mm_closed_R5_single_refY_004</td><td>相机均未准入</td><td>0</td><td>0</td><td>19</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 1}</td></tr><tr><td>GP_Is_7.0mm_closed_R5_single_refY_005</td><td>位姿图断连</td><td>未进入准入</td><td>未调度</td><td>未生成验证表</td><td>15+6+1</td></tr><tr><td>GP_Is_7mm_closed_R10_single_refY_004</td><td>相机均未准入</td><td>0</td><td>0</td><td>6</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 3, &quot;Ring边界 P95 px&quot;: 4, &quot;留出观测数&quot;: 1}</td></tr><tr><td>GP_Is_8.8mm_closed_R10_single_refY_004</td><td>相机均未准入</td><td>0</td><td>0</td><td>13</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;Ring边界 MAE px&quot;: 1, &quot;Ring边界 P95 px&quot;: 1, &quot;正深度比例&quot;: 1}</td></tr><tr><td>GP_Is_8.8mm_closed_R10_single_refY_005</td><td>相机均未准入</td><td>0</td><td>0</td><td>6</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 5, &quot;留出观测数&quot;: 3, &quot;Ring边界 MAE px&quot;: 1, &quot;Ring边界 P95 px&quot;: 1}</td></tr><tr><td>GP_Is_8.8mm_closed_R5_single_refY_005</td><td>相机均未准入</td><td>0</td><td>0</td><td>4</td><td>{&quot;RGB MAE px&quot;: 22, &quot;RGB P95 px&quot;: 22, &quot;正深度比例&quot;: 6}</td></tr><tr><td>GP_Is_9.79mm_closed_R10_single_refY_004</td><td>位姿图断连</td><td>未进入准入</td><td>未调度</td><td>未生成验证表</td><td>14+7+1</td></tr></tbody></table></html>
