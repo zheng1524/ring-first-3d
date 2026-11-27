@@ -1149,3 +1149,20 @@ current_mainline:
   run_root: /home/liu/ring_first_3d_workspace/runs/v6_r1_full_b_001
   cache_root: /home/liu/ring_first_3d_workspace/cache/v6_r1
   output_coverage_is_accuracy: false
+
+r1_cross_video_registration_research:
+  route_id: rf-v6-r1-cross-video-registration@1
+  status: candidate
+  scientific_status: MIXED
+  formal_usable: false
+  task: TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001
+  composes: [rf-v6-r1-video@1, rf-native-ring-cad@2, rf-frozen-tracks005@1]
+  external_reuse:
+    m4: "TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002@efa0adfb/code/solver2.py"
+    trusted_clean: "mainline/native/cleaning.py + v6_raw/trusted_restore.py::trusted_subset"
+  entrypoint: experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/run_all.sh
+  upstream_run: /home/liu/ring_first_3d_workspace/runs/v6_r1_full_b_001
+  upstream_execution: 29874fe61f59c429fb83d2377ab707c847992ef8
+  contract: "one metric SE3/video; frozen internal cameras; post-registration state==0; candidate interface only"
+  report: experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/TECHNICAL_REPORT.md
+  tests: experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/test_registration.py

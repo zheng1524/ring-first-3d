@@ -1,0 +1,16 @@
+task_id: TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001
+base_commit: f78e854bdbb6487cc946f4543250b8432dbfc779
+upstream_execution: 29874fe61f59c429fb83d2377ab707c847992ef8
+branch: exp/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001
+entry: run_all.sh
+protocol: config/PROTOCOL.json
+selection: config/SELECTION.json
+report: TECHNICAL_REPORT.md
+visuals: visuals/index.html
+interfaces: runs/R1_001/real/<group>/interfaces
+batch: R1_001
+frozen_cameras: true
+scale: 1
+clean_order: after_frozen_registration
+upstream_read_only: true
+body_update_authorized: false

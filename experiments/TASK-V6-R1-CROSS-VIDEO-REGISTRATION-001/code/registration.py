@@ -16,9 +16,9 @@ def pack_pairs(frames,C,tr,mask,omit=None):
    for j in bb:ids.append(tid);ia.append(i);ib.append(j);xa.append([*tr['xy'][tid,i],1]);xb.append([*tr['xy'][tid,j],1]);weights.append(1/count)
  n=len(set(ids));ia=np.array(ia,int);ib=np.array(ib,int);return dict(track_ids=np.array(ids,int),ia=ia,ib=ib,A=C[ia],B=C[ib],invKA=np.array([np.linalg.inv(frames[i]['K'])for i in ia]),invKB=np.array([np.linalg.inv(frames[i]['K'])for i in ib]),xa=np.array(xa).reshape(-1,3),xb=np.array(xb).reshape(-1,3),weights=np.array(weights)/max(1,n),tracks=n)
 
-def pair_residuals(T0,p):
- if not len(p['xa']):return np.empty(0)
- A=p['A'];B=T0@p['B'];R=np.swapaxes(B[:,:3,:3],1,2)@A[:,:3,:3];t=np.einsum('nji,nj->ni',B[:,:3,:3],A[:,:3,3]-B[:,:3,3]);S=np.zeros((len(t),3,3));S[:,0,1]=-t[:,2];S[:,0,2]=t[:,1];S[:,1,0]=t[:,2];S[:,1,2]=-t[:,0];S[:,2,0]=-t[:,1];S[:,2,1]=t[:,0];F=np.swapaxes(p['invKB'],1,2)@S@R@p['invKA'];lB=np.einsum('nij,nj->ni',F,p['xa']);lA=np.einsum('nji,nj->ni',F,p['xb']);num=np.einsum('ni,ni->n',p['xb'],lB);den=np.sqrt((lB[:,:2]**2).sum(1)+(lA[:,:2]**2).sum(1));r=num/np.maximum(den,1e-15);r[(np.linalg.norm(t,axis=1)<1e-6)|(den<1e-15)]=50.;return r
+def pair_residuals(T0,p,return_flags=False):
+ if not len(p['xa']):return (np.empty(0),dict(zero_baseline=np.empty(0,bool),undefined_sampson=np.empty(0,bool)))if return_flags else np.empty(0)
+ A=p['A'];B=T0@p['B'];R=np.swapaxes(B[:,:3,:3],1,2)@A[:,:3,:3];t=np.einsum('nji,nj->ni',B[:,:3,:3],A[:,:3,3]-B[:,:3,3]);S=np.zeros((len(t),3,3));S[:,0,1]=-t[:,2];S[:,0,2]=t[:,1];S[:,1,0]=t[:,2];S[:,1,2]=-t[:,0];S[:,2,0]=-t[:,1];S[:,2,1]=t[:,0];F=np.swapaxes(p['invKB'],1,2)@S@R@p['invKA'];lB=np.einsum('nij,nj->ni',F,p['xa']);lA=np.einsum('nji,nj->ni',F,p['xb']);num=np.einsum('ni,ni->n',p['xb'],lB);den=np.sqrt((lB[:,:2]**2).sum(1)+(lA[:,:2]**2).sum(1));r=num/np.maximum(den,1e-15);zero=np.linalg.norm(t,axis=1)<1e-6;undefined=den<1e-15;r[zero|undefined]=50.;return (r,dict(zero_baseline=zero,undefined_sampson=undefined))if return_flags else r
 
 def pair_loss(weights):
  def loss(z):

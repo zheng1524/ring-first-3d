@@ -2,7 +2,7 @@ from context import *
 from metrics2 import bidirectional,ring_pixels,summarize
 from evaluate_real2 import load_geometry,geometric
 from registration import pack_pairs,pair_residuals
-from ring_first_3d.sim.geometry import transform,pose_error
+from ring_first_3d.sim.geometry import transform,pose_error,se3,parameters
 import traceback
 
 def evaluate(group):
@@ -19,6 +19,12 @@ def evaluate(group):
   T0=np.array(r['T'])if r['T']is not None else None;bidi,rows=bidirectional(frames,C,tr,lm['xyz'],T0);ring,_=ring_pixels(asset,frames,C,T0);fitb,fitrows=bidirectional(frames,C,fittr,lm['xyz'],T0);result=dict(numerical=r['numerical'],quality=r['quality'],bidir=bidi,ring=ring,FIT_cross_projection=fitb,held_epipolar_px=summarize(abs(pair_residuals(T0,ep)))if T0 is not None else dict(status='NO_TRANSFORM'),FIT_epipolar_px=summarize(abs(pair_residuals(T0,ft)))if T0 is not None else dict(status='NO_TRANSFORM'));save(out/'evaluation'/(method+'_HELD.json'),rows)
   if T0 is not None:
    result['raw']=geometric(packs,T0,False)
+   _,flags=pair_residuals(T0,ft,return_flags=True);result['epipolar_degeneracy']={k:int(v.sum())for k,v in flags.items()}
+   pp=parameters(T0);cols=[]
+   for k in range(6):
+    step=1e-6 if k<3 else 1e-4;delta=np.zeros(6);delta[k]=step;cols.append((pair_residuals(se3(pp+delta),ft)-pair_residuals(se3(pp-delta),ft))/(2*step))
+   J=np.stack(cols,axis=1)*np.sqrt(ft['weights'])[:,None]/CFG['sigma_epipolar_px'];result['image_only_J_singular']=np.linalg.svd(J,compute_uv=False);result['J_parameter_units']='rotvec radians, translation mm; descriptive only; no GT gate'
+   np.savez_compressed(out/(method+'_LANDMARKS_GLOBAL.npz'),points=np.stack([lm['xyz'][:,0],transform(lm['xyz'][:,1],T0)],1),held=tr['held'],M4_fit=lm['fit'],units='mm')
    if method=='M5':result['clean']=geometric(packs,T0,True)
    err=0.;worldcams=[]
    for v in asset['videos']:
@@ -29,6 +35,13 @@ def evaluate(group):
     if len(X):before=(X-C[j,:3,3])@C[j,:3,:3];cc=T0@C[j];after=(transform(X,T0)-cc[:3,3])@cc[:3,:3];err=max(err,float(np.max(abs(before-after))))
    assert err<1e-7;result['coordinate_invariance_max_mm']=err;save(out/'interfaces'/(method+'.json'),dict(group=group,method=method,T_A=np.eye(4),T_B=T0,scale=1,units='mm',cameras=worldcams,rule='C_global=T_v@C_local; X_global=T_v@X_local; K and native axial Z unchanged',Raw_sources=[dict(case=p['source']['case'],side=p['source']['side'],tag=p['source']['tag'],raw=p['source']['mesh_path'],raw_sha256=p['source']['mesh_sha256'],target=p['source']['raw_target'],support=p['source']['raw_support'],clean_selection=p['record'].get('selection_path')if method=='M5'else None,clean_coordinate_frame='M5 shared frame ONLY'if method=='M5'else None)for p in packs],clean_rule='F[state==0], all original V transformed once by T, no extra vertex change',candidate_only=True,body_update_authorized=False))
   results[method]=result
+ # Secondary comparison only: identical finite observation IDs across methods.
+ allrows={m:read(out/'evaluation'/(m+'_HELD.json'))for m in results};common={}
+ for direction in ['A_to_B','B_to_A']:
+  key=lambda r:(r['track'],r['frame'])
+  sets=[{key(r)for r in rows if r['direction']==direction and r['error_px']is not None}for rows in allrows.values()];domain=set.intersection(*sets)
+  common[direction]=dict(observation_ids=sorted(domain),N=len(domain),interpretation='secondary common-finite diagnostic ONLY; full unfiltered held counts retained above',methods={m:summarize([r['error_px']for r in rows if r['direction']==direction and key(r)in domain])for m,rows in allrows.items()})
+ save(out/'COMMON_FINITE_DIAGNOSTIC.json',common)
  # FIT spatial rank is a descriptive diagnostic, not a GT-based gate.
  spatial=[]
  for si,side in enumerate(['A','B']):
