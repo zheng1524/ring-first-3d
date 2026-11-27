@@ -1,0 +1,109 @@
+{
+  "execution_commit": "dfc13a01cbbc5d57af99f2cb38a0c6aee3f0fd8e",
+  "frontend_config": {
+    "baseline_root": "/home/liu/ring_first_3d_workspace/runs/v6_full_run_001",
+    "photo_cache": "/home/liu/ring_first_3d_workspace/runs/v6_frontend_photo_pilot_001/photo_prepared",
+    "photo_intrinsics_basis": "USER_CONFIRMED_SAME_OPTICS_ZOOM_CROP_DISTORTION_AS_VIDEO",
+    "policy": "real_ring_boundary-original_anchor_component-zero_plan_only_fallback-v1",
+    "include_photos": false
+  },
+  "functions": {
+    "g5_common.torus_residual": {
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v5_geometry_crossvideo/scripts/g5_common.py",
+      "function_source_location": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v5_geometry_crossvideo/scripts/g5_common.py:30",
+      "disk_sha256": "d004b136fc46e2f1d28503ae3986d4ab42261977839d7235f644da99aa5e2a0a",
+      "adapted_ast_sha256": "38e8b1ecabca3a104bb2fe8af5c0e13d7a510a87b27aabb3a123e25625f826de",
+      "adapted_source": "def torus_residual(pose, ob, part='train', K0=K):\n    from matplotlib.path import Path as Poly\n    q = ob['q_' + part]\n    p = ob['p_' + part]\n    b = ob['b_' + part]\n    try:\n        cr = contour_project(pose, 256, K0)\n        assert np.isfinite(cr).all()\n        areas = [abs(cv2.contourArea(x.astype(np.float32))) for x in cr]\n        i = np.argmax(areas)\n        a, bcr = (Poly(cr[i]), Poly(cr[1 - i]))\n        inside = lambda uv: a.contains_points(uv) & ~bcr.contains_points(uv)\n        tree = cKDTree(cr.reshape(-1, 2))\n        dq = tree.query(q)[0]\n        dp = tree.query(p)[0] * ~inside(p)\n        db = tree.query(b)[0] * inside(b)\n        return np.r_[dq, dp * _FRONTEND_REGION_SCALE(len(q), max(1, len(p))), db * _FRONTEND_REGION_SCALE(len(q), max(1, len(b)))]\n    except (ValueError, AssertionError):\n        return np.full(len(q) + len(p) + len(b), 1000.0)"
+    },
+    "local_ring_sfm.initialize": {
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py",
+      "function_source_location": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py:20",
+      "disk_sha256": "673b57af12fcda5dad082eb7397574d46f0bdce2c097956c0682d8dac2cd8541",
+      "adapted_ast_sha256": "2ac7aa106b528f31d336e45a0766428f8582a7737f7ab55e2fd2eb5da40c8e44",
+      "adapted_source": "def initialize(ring, tr, edges, ref, version):\n    n = len(ring)\n    pp = [None] * n\n    branch = np.full(n, -1, int)\n    cand = ring[ref]['candidates']\n    select = 0\n    if version:\n        base = np.array(cand[0]['normal'])\n        alts = [i for i, c in enumerate(cand) if np.degrees(np.arccos(np.clip(abs(base @ c['normal']), -1, 1))) > 10]\n        select = alts[0] if alts else min(1, len(cand) - 1)\n    pp[ref] = canonical_reference(np.array(cand[select]['c2r']))\n    branch[ref] = select\n    history = []\n    for step in range(n - 1):\n        possibilities = []\n        for e in edges:\n            if (pp[e['i']] is None) == (pp[e['j']] is None):\n                continue\n            possibilities.append((len(e['rows']), e))\n        if not possibilities:\n            break\n        e = max(possibilities, key=lambda x: x[0])[1]\n        i, j = (e['i'], e['j'])\n        rows = e['rows']\n        p, q = (rows[:, 1:3], rows[:, 3:5])\n        if pp[i] is None:\n            i, j = (j, i)\n            p, q = (q, p)\n        starts = []\n        for ci, c in enumerate(ring[j]['candidates']):\n            base = positive_gauge(np.array(c['c2r']))\n\n            def score(t):\n                po = spin(base, t)\n                ee = epi(pp[i], po, p, q, K)\n                return float(np.mean(2 * (np.sqrt(1 + ee * ee) - 1)))\n            grid = np.linspace(-np.pi, np.pi, cfg()['yaw_grid'], endpoint=False)\n            vals = [score(t) for t in grid]\n            best = grid[int(np.argmin(vals))]\n            f = minimize_scalar(score, bounds=(best - np.pi / 36, best + np.pi / 36), method='bounded')\n            po = spin(base, f.x)\n            P = []\n            for u, v in zip(p[::max(1, len(p) // 50)], q[::max(1, len(q) // 50)]):\n                P.append(triangle([pp[i], po], [u, v]))\n            P = np.array(P)\n            _, a = project(P, pp[i], K)\n            _, b = project(P, po, K)\n            pos = float(((a > 0) & (b > 0)).mean())\n            starts.append((f.fun + 5 * max(0, 0.95 - pos), ci, f.x, po, pos))\n        starts.sort(key=lambda x: x[0])\n        cost, ci, yaw, po, pos = starts[0]\n        pp[j] = po\n        branch[j] = ci\n        history.append(dict(from_frame=i, to_frame=j, candidate=ci, alpha_rad=yaw, training_cost=cost, positive_fraction=pos))\n    if any((p is None for p in pp)):\n        raise RuntimeError('Ring pose graph disconnected; no free SfM fallback')\n    pp = np.array(pp)\n    base = pp.copy()\n    others = [i for i in range(n) if i != ref]\n\n    def alpha_res(x):\n        cur = base.copy()\n        for i, v in zip(others, x):\n            cur[i] = spin(base[i], v)\n        out = [epi(cur[e['i']], cur[e['j']], e['rows'][:, 1:3], e['rows'][:, 3:5], K) for e in edges]\n        full = np.zeros(n)\n        full[others] = x\n        out.append(_FRONTEND_TIME_DIFF(full) / np.deg2rad(30))\n        return np.concatenate(out)\n    fit = least_squares(alpha_res, np.zeros(n - 1), loss='soft_l1', f_scale=1.0, max_nfev=cfg()['global_alpha_nfev'])\n    out = base.copy()\n    for i, v in zip(others, fit.x):\n        out[i] = spin(base[i], v)\n    return (out, dict(reference_branch=select, branches=branch, initialization_steps=history, alpha_nfev=fit.nfev, alpha_training_loss=float(np.mean(abs(alpha_res(fit.x))))))"
+    },
+    "local_ring_sfm.triangulate_training": {
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py",
+      "function_source_location": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py:52",
+      "disk_sha256": "673b57af12fcda5dad082eb7397574d46f0bdce2c097956c0682d8dac2cd8541",
+      "adapted_ast_sha256": "62c126a22f2f6fddb0ab776b5a2cca31beb26264f4198c2fef7319a06799c9ae",
+      "adapted_source": "def triangulate_training(poses, tr):\n    X = []\n    tids = []\n    support = []\n    xy = tr['xy']\n    order = sorted(np.flatnonzero(~tr['held']), key=lambda t: (-np.isfinite(xy[t, :, 0]).sum(), int(t)))\n    for t in order:\n        frames = np.flatnonzero(np.isfinite(xy[t, :, 0]))\n        if len(frames) < 2:\n            continue\n        P = triangle(poses[frames], xy[t, frames])\n        uv = np.array([project(P[None], poses[i], K)[0][0] for i in frames])\n        z = np.array([project(P[None], poses[i], K)[1][0] for i in frames])\n        er = np.linalg.norm(uv - xy[t, frames], axis=1)\n        rays = unit(P - poses[frames, :3, 3])\n        angle = float(np.degrees(np.arccos(np.clip((rays @ rays.T).min(), -1, 1))))\n        if (z > 0).mean() < 0.8 or np.median(er) > 6.0 or angle < 0.5:\n            continue\n        X.append(P)\n        tids.append(t)\n        support.append(frames)\n        if len(X) >= cfg()['BA_max_train_tracks']:\n            break\n    if len(X) < 15:\n        raise RuntimeError('insufficient positive Ring-initialized scene points')\n    return (np.array(X), np.array(tids), support)"
+    },
+    "local_ring_sfm.BA": {
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py",
+      "function_source_location": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py:63",
+      "disk_sha256": "673b57af12fcda5dad082eb7397574d46f0bdce2c097956c0682d8dac2cd8541",
+      "adapted_ast_sha256": "aef95846b6c3c5bb06fa2b9457a6ac472341c9862bbd64348a2a53582de09f96",
+      "adapted_source": "def BA(poses, X, tids, support, tr, ref):\n    n = len(poses)\n    others = [i for i in range(n) if i != ref]\n    lookup = {i: j for j, i in enumerate(others)}\n    nc = 6 * len(others)\n    x0 = np.r_[np.concatenate([vec(poses[i]) for i in others]), X.ravel()]\n    ob = [obs(a['id']) for a in ledger()]\n    pi = []\n    fi = []\n    uv = []\n    for j, (t, frames) in enumerate(zip(tids, support)):\n        for i in frames:\n            pi.append(j)\n            fi.append(i)\n            uv.append(tr['xy'][t, i])\n    pi, fi, uv = (np.array(pi), np.array(fi), np.array(uv))\n    counts = np.bincount(fi, minlength=n)\n    rglen = [len(ring_residual(poses[i], ob[i])) for i in range(n)]\n    nf = len(fi)\n    rows = 3 * nf + sum(rglen) + 6 * len(_FRONTEND_TEMPORAL)\n    sp = lil_matrix((rows, len(x0)), dtype=int)\n    for j, (point, frame) in enumerate(zip(pi, fi)):\n        row = [2 * j, 2 * j + 1, 2 * nf + j]\n        sp[row, nc + point * 3:nc + point * 3 + 3] = 1\n        if frame != ref:\n            sp[row, lookup[frame] * 6:lookup[frame] * 6 + 6] = 1\n    row = 3 * nf\n    for i, nn in enumerate(rglen):\n        if i != ref:\n            sp[row:row + nn, lookup[i] * 6:lookup[i] * 6 + 6] = 1\n        row += nn\n    for i, _temporal_j in _FRONTEND_TEMPORAL:\n        for j in [i, _temporal_j]:\n            if j != ref:\n                sp[row:row + 6, lookup[j] * 6:lookup[j] * 6 + 6] = 1\n        row += 6\n\n    def decode(x):\n        cur = poses.copy()\n        for i in others:\n            cur[i] = pose(x[lookup[i] * 6:lookup[i] * 6 + 6])\n        return (cur, x[nc:].reshape(-1, 3))\n\n    def residual(x):\n        cur, P = decode(x)\n        pc = np.einsum('ni,nij->nj', P[pi] - cur[fi, :3, 3], cur[fi, :3, :3])\n        q = pc @ K.T\n        den = np.where(abs(q[:, 2]) > 0.01, q[:, 2], 0.01)\n        feat = (q[:, :2] / den[:, None] - uv).ravel()\n        positive = 10 * np.maximum(0, 0.1 - pc[:, 2])\n        out = [feat, positive]\n        for i in range(n):\n            out.append(ring_residual(cur[i], ob[i]) * np.sqrt(max(1, counts[i]) / max(1, rglen[i])))\n        for i, _temporal_j in _FRONTEND_TEMPORAL:\n            dc = cur[_temporal_j, :3, 3] - poses[_temporal_j, :3, 3] - (cur[i, :3, 3] - poses[i, :3, 3])\n            r0 = Rotation.from_matrix(cur[i, :3, :3] @ poses[i, :3, :3].T).as_rotvec()\n            r1 = Rotation.from_matrix(cur[_temporal_j, :3, :3] @ poses[_temporal_j, :3, :3].T).as_rotvec()\n            out.append(np.r_[dc / 10.0, (r1 - r0) / np.deg2rad(30)])\n        return np.concatenate(out)\n    fit = least_squares(residual, x0, jac_sparsity=sp.tocsr(), loss='soft_l1', f_scale=1.0, max_nfev=cfg()['BA_max_nfev'], diff_step=1e-05, ftol=1e-05, xtol=1e-05, gtol=1e-05)\n    cur, P = decode(fit.x)\n    res = residual(fit.x)\n    return (cur, P, dict(success=fit.success, nfev=fit.nfev, train_track_ids=tids, train_feature_residual=stats(res[:2 * nf]), training_soft_l1_objective=float(np.mean(2 * (np.sqrt(1 + res * res) - 1))), train_observations=nf, trained_points=len(X), optimized_reference=False, ring_model_static=True))"
+    },
+    "track005.main": {
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/track005.py",
+      "function_source_location": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/track005.py:3",
+      "disk_sha256": "c912da0713a329a3c954fc7b1dfbdcf43459493432ccbc782d7742cd26e514ac",
+      "adapted_ast_sha256": "fbc18aae2ab3f23afae216050112ffbbdac202526337bc8761a8c1007ed9723f",
+      "adapted_source": "def main():\n    verify('ring_inputs')\n    freeze('tracking_protocol', [Path(__file__), R / 'scripts/v6_common.py', R / 'config.json'])\n    L = ledger()\n    sift = cv2.SIFT_create(nfeatures=cfg()['SIFT_features'], contrastThreshold=0.01)\n    xy = []\n    desc = []\n    cat = []\n    offset = [0]\n    for a in L:\n        rgb = image(a)\n        l = labels(a)\n        gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)\n        mask = (cv2.dilate((l == 2).astype(np.uint8), np.ones((5, 5), np.uint8)) == 0) & (gray < 245)\n        mask[:8] = False\n        mask[-8:] = False\n        mask[:, :8] = False\n        mask[:, -8:] = False\n        kp, de = sift.detectAndCompute(gray, mask.astype(np.uint8) * 255)\n        p = np.array([x.pt for x in kp])\n        ij = np.rint(p).astype(int)\n        xy.append(p)\n        desc.append(de)\n        cat.append(l[ij[:, 1], ij[:, 0]])\n        offset.append(offset[-1] + len(p))\n    par = np.arange(offset[-1])\n    members = {i: {int(np.searchsorted(offset, i, side='right') - 1)} for i in range(offset[-1])}\n\n    def find(x):\n        while par[x] != x:\n            par[x] = par[par[x]]\n            x = par[x]\n        return x\n    bf = cv2.BFMatcher()\n    pairs = []\n    edges = []\n    for i in range(len(L)):\n        for j in _FRONTEND_MATCH_PARTNERS(i, L, cfg()['pair_offsets']):\n            if j >= len(L):\n                continue\n            f = [m for m, n in bf.knnMatch(desc[i], desc[j], k=2) if m.distance < cfg()['SIFT_ratio'] * n.distance]\n            b = {m.queryIdx: m.trainIdx for m, n in bf.knnMatch(desc[j], desc[i], k=2) if m.distance < cfg()['SIFT_ratio'] * n.distance}\n            matches = [m for m in f if b.get(m.trainIdx) == m.queryIdx and cat[i][m.queryIdx] == cat[j][m.trainIdx]]\n            pair = []\n            for m in sorted(matches, key=lambda x: x.distance):\n                x = find(offset[i] + m.queryIdx)\n                y = find(offset[j] + m.trainIdx)\n                if x != y:\n                    if members[x] & members[y]:\n                        continue\n                    par[y] = x\n                    members[x] |= members.pop(y)\n                pair.append([m.queryIdx, m.trainIdx])\n            pairs.append(dict(i=i, j=j, raw_i=L[i]['raw_frame'], raw_j=L[j]['raw_frame'], appearance_matches=len(matches), union_consistent=len(pair), background=sum((cat[i][x] == 0 for x, y in pair)), polyp=sum((cat[i][x] == 1 for x, y in pair))))\n            edges.append((i, j, np.array(pair, int).reshape(-1, 2)))\n            print('TRACK_PAIR', i, j, 'matches', len(pair), flush=True)\n    roots = {}\n    for i in range(len(L)):\n        for k, p in enumerate(xy[i]):\n            rt = find(offset[i] + k)\n            if len(members.get(rt, [])) >= 3:\n                roots.setdefault(rt, []).append((i, k))\n    tracks = []\n    cats = []\n    for root, t in sorted(roots.items()):\n        z = np.full((len(L), 2), np.nan)\n        for i, k in t:\n            z[i] = xy[i][k]\n        tracks.append(z)\n        cats.append(int(cat[t[0][0]][t[0][1]]))\n    T = np.array(tracks)\n    hold = np.arange(len(T)) % 5 == 0\n    keytrack = {}\n    for id, (_, t) in enumerate(sorted(roots.items())):\n        for i, k in t:\n            keytrack[i, k] = id\n    pairpacks = {}\n    for n, (i, j, pairs0) in enumerate(edges):\n        rows = []\n        for p, q in pairs0:\n            t = keytrack.get((i, int(p)))\n            if t is not None:\n                rows.append((t, *xy[i][p], *xy[j][q]))\n        pairpacks[f'pair{n}'] = np.array(rows).reshape(-1, 5)\n    np.savez_compressed(R / 'observations/tracks005.npz', xy=T, category=cats, held=hold, ids=[a['id'] for a in L], frame_raw=[a['raw_frame'] if a['raw_frame'] is not None else -1 for a in L])\n    np.savez_compressed(R / 'observations/pairs005.npz', ij=np.array([[i, j] for i, j, _ in edges]), **pairpacks)\n    save('metrics/track005.json', dict(frames=len(L), tracks=len(T), held_tracks=int(hold.sum()), background_tracks=int((np.array(cats) == 0).sum()), polyp_tracks=int((np.array(cats) == 1).sum()), pairs=pairs, per_frame=[dict(id=a['id'], features=len(xy[i]), track_observations=int(np.isfinite(T[:, i, 0]).sum()), background=int(((np.array(cats) == 0) & np.isfinite(T[:, i, 0])).sum()), polyp=int(((np.array(cats) == 1) & np.isfinite(T[:, i, 0])).sum())) for i, a in enumerate(L)], no_geometric_filter_using_heldout=True))\n    freeze('tracks', [R / 'observations/tracks005.npz', R / 'observations/pairs005.npz', R / 'metrics/track005.json'])\n    print('TRACKS005', len(T), 'held', hold.sum(), flush=True)"
+    },
+    "ring_observations.adapt": {
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v5_geometry_crossvideo/scripts/ring_observations.py",
+      "original_adapter_function_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v4_synthetic_audit/scripts/adapter.py",
+      "adapter_file": "/home/liu/ring_first_3d_workspace/runs/v6_frontend_photo_pilot_001/snapshots/dfc13a01cbbc5d57af99f2cb38a0c6aee3f0fd8e/src/ring_first_3d/v6_raw/frontend_kernels.py",
+      "adapter_sha256": "c2687424da2ce22c66303ba5b38fda37fdfd9553c33c9d2d1e14713bc744deda"
+    },
+    "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py": {
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py",
+      "disk_sha256": "673b57af12fcda5dad082eb7397574d46f0bdce2c097956c0682d8dac2cd8541",
+      "adapted_ast_sha256": "5c584096603f8f4ef653f95efb52f1e8fa695c0d5b119d1ffc278f3c053003cc"
+    },
+    "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/validate_select.py": {
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/validate_select.py",
+      "disk_sha256": "bdfb607de4c3d967b2c84ce866a24f5fd5bd046744ce6dd62d4e545fd07b58db",
+      "adapted_ast_sha256": "b7eb1e29a157c28ffbe29feaaa9490e9e79d55117a0a51d16d11acd476d5fe2a"
+    },
+    "module:g5": {
+      "module": "g5_common",
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v5_geometry_crossvideo/scripts/g5_common.py",
+      "sha256": "d004b136fc46e2f1d28503ae3986d4ab42261977839d7235f644da99aa5e2a0a"
+    },
+    "module:v6": {
+      "module": "v6_common",
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/v6_common.py",
+      "sha256": "59404f5c2a35913c253f802f5bb4ff21461861958a881f86973de15710693fe1"
+    },
+    "namespace:ns": {
+      "kind": "function namespace",
+      "functions": {
+        "least_squares": {
+          "file": "/home/liu/polyp_research/ring_anchor_3d/.venv/lib/python3.12/site-packages/scipy/optimize/_lsq/least_squares.py",
+          "line": 241
+        },
+        "decode": {
+          "file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_pose_contact_v1/scripts/recover.py",
+          "line": 21
+        },
+        "image_seeds": {
+          "file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_pose_contact_v1/scripts/recover.py",
+          "line": 44
+        },
+        "solve": {
+          "file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_pose_contact_v1/scripts/recover.py",
+          "line": 52
+        },
+        "residual": {
+          "file": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-M2F10/tools/m2f8_v6_general.py",
+          "line": 797
+        }
+      }
+    },
+    "module:lba": {
+      "module": "local_ring_sfm",
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/local_ring_sfm.py",
+      "sha256": "673b57af12fcda5dad082eb7397574d46f0bdce2c097956c0682d8dac2cd8541"
+    },
+    "module:track": {
+      "module": "track005",
+      "module_file": "/home/liu/polyp_research/ring_anchor_3d/experiments/ring_first_v6_local_reconstruction/scripts/track005.py",
+      "sha256": "c912da0713a329a3c954fc7b1dfbdcf43459493432ccbc782d7742cd26e514ac"
+    }
+  },
+  "external_sources_modified": false
+}

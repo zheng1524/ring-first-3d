@@ -1107,3 +1107,21 @@ v6_hist_full_001:
   scientific_policy: fixed HIST; no GRAPH; no depth gate; original mesh
   config: experiments/TASK-V6-FULL-RUN-AND-SURFACE-CLEAN-001/config/FULL_RUN.json
   full_run_outputs_are_accuracy: false
+
+v6_frontend_photo_pilot_001:
+  route_id: rf-v6-frontend-photo@1
+  status: candidate_pilot_completed_not_promoted
+  approval: TASK-V6-FRONTEND-RECOVERY-AND-PHOTO-PILOT-001 direct researcher approval
+  composes: [rf-v6-raw-to-hero@1]
+  entrypoint: python -m ring_first_3d.v6_raw.full_run run --config
+  scientific_execution_commit: dfc13a01cbbc5d57af99f2cb38a0c6aee3f0fd8e
+  config: experiments/TASK-V6-FRONTEND-RECOVERY-AND-PHOTO-PILOT-001/config/R2.json
+  report: experiments/TASK-V6-FRONTEND-RECOVERY-AND-PHOTO-PILOT-001/TECHNICAL_REPORT.md
+  run_root: /home/liu/ring_first_3d_workspace/runs/v6_frontend_photo_pilot_001
+  input_policy: original video pool plus optional same-group independent photos before anchor component
+  adaptations: real Ring boundary; original-anchor component; preserved train/held identities; zero-plan bounded fallback
+  photo_intrinsics: researcher-confirmed same optics/zoom/crop/distortion; no independent photo calibration
+  pilot_regression: R1 retained 105 of 105 original Targets; R2 lost 21 and is not eligible for promotion
+  full_run_requires_pilot_review: true
+  formal_usable: false
+  full_run_outputs_are_accuracy: false

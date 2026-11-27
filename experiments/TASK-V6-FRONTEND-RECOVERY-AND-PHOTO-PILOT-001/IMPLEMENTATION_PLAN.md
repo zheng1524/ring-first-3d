@@ -27,16 +27,18 @@ Registry exists; docs/architecture.md absent at pin. Registry's historical candi
 
 ## Steps
 
-- [ ] Freeze baseline audit tables, six-group manifest, all79/120 manifests, photo metadata/calibration evidence, disk estimate and actual imported source hashes.
-- [ ] Add failing boundary tests in tests/test_v6_frontend_recovery.py: adjacency retention, safe empty metrics, region evidence, anchor component, train/held identity, temporal gaps, B exclusion, duplicate physical IDs, zero-plan-only fallback, candidate binding.
-- [ ] Add frontend_policy.py (pure identity/component/temporal decisions), frontend_kernels.py (checked process-local frozen kernel adapters), frontend.py (route integration and full-plan selection). Modify route.py/full_run.py only at explicit opt-in hooks and cache/signature boundaries.
-- [ ] Add photo admission/geometry metadata contract. Missing trusted calibration remains NOT_EVALUABLE; continue video pilot.
-- [ ] Run tests with PYTHONPATH=src and the shared venv; record red/green evidence. Audit actual imports and replay 79 saved Mask point counts without HERO.
-- [ ] Freeze source commit and independent run root/config. Execute original full_run runner with reuse_old_results=false for the 12-video R1 cohort, shared GPU lock, source snapshots and per-tuple budget freeze.
-- [ ] Execute R2 only with eligible independently identified/calibrated photos; all input starts from the original video pool before component selection. If calibration cannot be established, expose explicit R2 blocking evidence and do not masquerade R1 reuse as a photo trial.
-- [ ] Apply unchanged TRUSTED-only to actual new Raw, create nearviews and 3–4 single-source figures, compare all105 original successful targets; retain losses/failures.
-- [ ] Register candidate composition; commit/push report, hashes, tests, figures and commands. Prepare full79/120 config/space/launch/recovery plan without starting it. Obtain human confirmation of pilot before full rerun.
+- [x] Freeze baseline audit tables, six-group manifest, all79/120 manifests, photo metadata/calibration evidence, disk estimate and actual imported source hashes.
+- [x] Add failing boundary tests in tests/test_v6_frontend_recovery.py: adjacency retention, safe empty metrics, region evidence, anchor component, train/held identity, temporal gaps, B exclusion, duplicate physical IDs, zero-plan-only fallback, candidate binding.
+- [x] Add frontend_policy.py (pure identity/component/temporal decisions), frontend_kernels.py (checked process-local frozen kernel adapters), frontend.py (route integration and full-plan selection). Modify route.py/full_run.py only at explicit opt-in hooks and cache/signature boundaries.
+- [x] Add photo admission/geometry metadata contract. Researcher confirmed same optics/zoom/crop/distortion; use video processing with explicit uncalibrated shared-K assumption.
+- [x] Run tests with PYTHONPATH=src and the shared venv; record red/green evidence. Audit actual imports and replay 79 saved Mask point counts without HERO.
+- [x] Freeze source commit and independent run root/config. Execute original full_run runner with reuse_old_results=false for the 12-video R1 cohort, shared GPU lock, source snapshots and per-tuple budget freeze.
+- [x] Execute R2 only with eligible independently identified photos under the researcher-confirmed shared imaging assumption; all input starts from the original video pool before component selection. If calibration cannot be established, expose explicit R2 blocking evidence and do not masquerade R1 reuse as a photo trial.
+- [x] Apply unchanged TRUSTED-only to actual new Raw, create nearviews and 3–4 single-source figures, compare all105 original successful targets; retain losses/failures.
+- [x] Register candidate composition; commit/push report, hashes, tests, figures and commands. Prepare full79/120 config/space/launch/recovery plan without starting it. Obtain human confirmation of pilot before full rerun.
 
 ## Scope safeguards
 
 No H004, no new optimizer, no GT tuning, no borrowed poses, no camera interpolation, no tolerance/BA-success gate changes, no best-looking HERO selection. All discarded original views remain in denominator and provenance. Only immutable baseline preprocessing may be reused, never R0 cameras under a new protocol. Source-level patches are local, hashed, and included in camera/schedule/hero signatures. Existing shared GPU queues/assets are protected.
+
+Completed bounded pilot only. Full run has not started: R2 lost 21 original video Targets; R1 consistency trade-offs require researcher review. Full-run confirmation remains outstanding, as required by the attachment.
