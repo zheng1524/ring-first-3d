@@ -56,3 +56,7 @@ prepare不再强制旧INPUT_IDENTITY，preserve_video_tracks不再沿preprocessi
 `evidence/SPACE_BUDGET.json`按1653全部产出估算约13.16GB，含新缓存、相机、400MB阶段峰值和1GiB保底；不假设困难视频会失败。实际启动df/清理回执另记STARTUP_CHECK。至少1GiB+当前阶段峰值不足时暂停。
 
 `config/BASELINE_RECORDS.json`归档105、205、795三个重叠集合的真实Target、Support、元组/mesh哈希、初始化和原单面诊断指标；不相加。运行自动逐Target对照保留/丢失/失败/待运行及Support/init/指标变化，不把不同条件下的均值称路线精度提升。Raw/Trusted非空只是输出覆盖。
+
+## 清理后导入依赖补充修复
+
+原两例验证后，A清理暴露共享模块顶层对退役示例相机的隐藏读取。首启无HERO即暂停并归档。29874fe6只解除两项模块初始化读旧相机，保留全部原函数AST；两例再次重解/比较全部逐位一致（13/21元组），最终56项测试通过。细节见IMPORT_DEPENDENCY_REPAIR.md及BOOTSTRAP_VALIDATION证据。

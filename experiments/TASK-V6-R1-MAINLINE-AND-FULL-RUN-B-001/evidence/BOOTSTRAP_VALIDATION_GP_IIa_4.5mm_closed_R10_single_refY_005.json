@@ -1,0 +1,52 @@
+{
+  "case": "GP_IIa_4.5mm_closed_R10_single_refY_005",
+  "status": "PASS",
+  "cold_seconds": 69.66852045059204,
+  "hot_seconds": 0.549480676651001,
+  "forbidden_old_read_attempts": [],
+  "hot_decode_calls": 0,
+  "cache_probes": [
+    {
+      "path": "/home/liu/ring_first_3d_workspace/cache/v6_r1/prepared/GP_IIa_4.5mm_closed_R10_single_refY_005",
+      "content_id": "60fa90c7dbb575d3e25e0a248e25c606f15a66a8e77c750354c8a8ef51e6d777",
+      "cache_hit": true
+    },
+    {
+      "path": "/home/liu/ring_first_3d_workspace/cache/v6_r1/matching/GP_IIa_4.5mm_closed_R10_single_refY_005",
+      "content_id": "d6f1e0a2fa2ac63fde0017459d8725b7b5c7a35bb6a798fd145017337c0d66a7",
+      "cache_hit": true
+    }
+  ],
+  "config_sha256": "ddbb5210e26545a94bea1da1355b80d041415dbf201b071ea12d802a95f64d41",
+  "execution_commit": "29874fe61f59c429fb83d2377ab707c847992ef8",
+  "checks": {
+    "frames_rgb_mask_K_mapping_order": "EXACT",
+    "full_and_component_tracks_pairs_train_held": {
+      "status": "EXACT",
+      "arrays": 126
+    },
+    "anchor_B_component_temporal_edges": "EXACT"
+  },
+  "cameras": [
+    {
+      "file": "local005_camera_0.npz",
+      "bitwise_equal": true,
+      "max_abs_delta": 0.0,
+      "rtol": 1e-08,
+      "atol": 1e-07
+    },
+    {
+      "file": "local005_camera_1.npz",
+      "bitwise_equal": true,
+      "max_abs_delta": 0.0,
+      "rtol": 1e-08,
+      "atol": 1e-07
+    }
+  ],
+  "selected_version": 0,
+  "legal_targets": 13,
+  "baseline_plan_sha256": "59e7819273f65843ab06006c8acd9d9dceccca9c774fed5903ff72c2ebc60e43",
+  "new_plan_sha256": "588daa158fe9c07b354f41581c0484832e482ce04ca35dc45d9b15bbade28b69",
+  "tuple_hashes_equal": true,
+  "source_ids_preserved": true
+}
