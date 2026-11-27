@@ -1,0 +1,45 @@
+FCACHE_MISS /tmp/tmpou4x9oj8/a
+CACHE_MISS /tmp/tmpou4x9oj8/b
+FCACHE_MISS /tmp/tmpq5v0ymxg/e
+CACHE_HIT /tmp/tmpq5v0ymxg/e
+FCORRUPT /tmp/tmpduko_36q/e
+.CACHE_MISS /tmp/tmpq32pg8nz/entry
+CACHE_HIT /tmp/tmpq32pg8nz/entry
+CORRUPT /tmp/tmpq32pg8nz/entry
+..CACHE_MISS /tmp/tmp_o28ps2g/e
+STALE /tmp/tmp_o28ps2g/e
+.
+======================================================================
+FAIL: test_json_materialization_does_not_share_writes (test_v6_stage_cache.CacheIdentityTests.test_json_materialization_does_not_share_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_stage_cache.py", line 47, in test_json_materialization_does_not_share_writes
+    self.assertEqual((p/'source.json').read_text(),'{}')
+AssertionError: '{"x":1}' != '{}'
+- {"x":1}
++ {}
+
+
+======================================================================
+FAIL: test_provenance_and_storage_location_do_not_change_science (test_v6_stage_cache.CacheIdentityTests.test_provenance_and_storage_location_do_not_change_science)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_stage_cache.py", line 43, in test_provenance_and_storage_location_do_not_change_science
+    self.assertEqual(a['content_id'],b['content_id'])
+AssertionError: '257eef16d97dd00dacb47f7b0c25ff54ca679875568c999bb7ed7bf424759bec' != 'fd8f787bd130aa99cb6be58869bf370fd9cca20ac3ff58604c01f8ff27fff076'
+- 257eef16d97dd00dacb47f7b0c25ff54ca679875568c999bb7ed7bf424759bec
++ fd8f787bd130aa99cb6be58869bf370fd9cca20ac3ff58604c01f8ff27fff076
+
+
+======================================================================
+FAIL: test_tampered_receipt_is_not_cache_hit (test_v6_stage_cache.CacheIdentityTests.test_tampered_receipt_is_not_cache_hit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_stage_cache.py", line 54, in test_tampered_receipt_is_not_cache_hit
+    self.assertEqual(len(calls),2)
+AssertionError: 1 != 2
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.091s
+
+FAILED (failures=3)

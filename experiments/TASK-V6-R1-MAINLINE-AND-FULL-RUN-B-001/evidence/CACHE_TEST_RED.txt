@@ -1,0 +1,20 @@
+E
+======================================================================
+ERROR: test_v6_stage_cache (unittest.loader._FailedTest.test_v6_stage_cache)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v6_stage_cache
+Traceback (most recent call last):
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/miniconda3/envs/vpo/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/tests/test_v6_stage_cache.py", line 4, in <module>
+    from ring_first_3d.v6_raw import stage_cache as c
+ImportError: cannot import name 'stage_cache' from 'ring_first_3d.v6_raw' (/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-FULL-B-001/src/ring_first_3d/v6_raw/__init__.py)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

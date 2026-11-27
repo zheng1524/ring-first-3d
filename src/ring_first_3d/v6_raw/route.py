@@ -60,11 +60,14 @@ def protocol_signature(stage):
  if frontend.enabled(sys.modules[__name__]):
   hashes[str(Path(__file__))]=sha(__file__)
   p=Path(__file__).parents[1]/'mainline/native/camera.py';hashes[str(p)]=sha(p)
-  for name in ['frontend.py','frontend_policy.py','frontend_kernels.py','frontend_photos.py']:
+  for name in ['frontend.py','frontend_policy.py','frontend_kernels.py','frontend_photos.py','stage_cache.py']:
    p=Path(__file__).with_name(name);hashes[str(p)]=sha(p)
  if stage=='hero':assert hashes[str(Path(read(CORE/'site_config.local.json')['checkpoint']))]==MODEL_SHA,'OFFICIAL_MODEL_DRIFT'
  payload=dict(stage=stage,entry_functions={n:hashlib.sha256(inspect.getsource(globals()[n]).encode()).hexdigest()for n in names},files=hashes,K=K.tolist(),model=MODEL_SHA)
- if frontend.enabled(sys.modules[__name__]):payload['frontend']=FULL_CONFIG['frontend']
+ if frontend.enabled(sys.modules[__name__]):payload['frontend']={k:v for k,v in FULL_CONFIG['frontend'].items() if not (FULL_CONFIG.get('cache') and k in ['baseline_root','photo_cache'])}
+ if FULL_CONFIG and FULL_CONFIG.get('cache'):
+  payload['files']={('local:'+str(Path(k).relative_to(WT)) if Path(k).is_relative_to(WT) else k):v for k,v in hashes.items()}
+  if stage=='prepare':payload['entry_functions']['build_raw_preprocessing']=hashlib.sha256(inspect.getsource(build_raw_preprocessing).encode()).hexdigest()
  key=hashlib.sha256(json.dumps(payload,sort_keys=True).encode()).hexdigest();save(B/'protocols'/(stage+'_'+key+'.json'),payload);SIGNATURES[stage]=key;return key
 
 def inference_start(case,variant,R,c,poses,rows,meta,mods):
@@ -117,12 +120,19 @@ def historical_extra(gray,blurs,original):
 def prepare(case):
  assert case in ALLOWED,'CASE_NOT_AUTHORIZED'
  environment();sig=protocol_signature('prepare');R=B/'prepared'/case;receipt=R/'PREPARED.json';raw=W/'smart_endoscope_20260805 (1)/raw'/(case+'.mp4');rh=sha(raw)
+ if FULL_CONFIG and FULL_CONFIG.get('cache'):
+  from .stage_cache import ensure_prepared
+  return ensure_prepared(sys.modules[__name__],case,R,raw,rh,sig)
  if receipt.exists():
   x=read(receipt);assert x['raw_sha256']==rh and x['protocol_signature']==sig,'PREPARED_PROTOCOL_DRIFT'
   for f in x['frames']:
    assert sha(f['RGB_path'])==f['RGB_SHA256']and sha(f['Mask_path'])==f['Mask_SHA256']
   print('REUSE_CURRENT_RAW_CACHE',case,flush=True);return x
  if frontend.enabled(sys.modules[__name__]):return frontend.prepare_cached(sys.modules[__name__],case,R,rh,sig)
+ return build_raw_preprocessing(case,R,raw,rh,sig)
+
+def build_raw_preprocessing(case,R,raw,rh,sig):
+ receipt=R/'PREPARED.json'
  R.mkdir(parents=True,exist_ok=True);cap=cv2.VideoCapture(str(raw));gray=[];blurs=[];pts=[]
  while True:
   ok,im=cap.read()
@@ -144,6 +154,10 @@ def prepare(case):
  x=dict(protocol_signature=sig,case=case,raw_path=str(raw),raw_sha256=rh,frame_count=i,frames=rows,original16=original,selected_extra=extra,K=K,ring_inner_mm=5 if '_R5_'in case else 10,INIT_files={str(p):sha(p)for p in INIT_PATH.rglob('*')if p.is_file()},execution_commit=head(),selection_source_sha256=sha(V6/'scripts/setup_audit.py'))
  save(receipt,x);return clean(x)
 
+def prepared_identity(case):
+ x=read(B/'prepared'/case/'PREPARED.json')
+ return x['preprocessing_content_id'] if FULL_CONFIG and FULL_CONFIG.get('cache') else sha(B/'prepared'/case/'PREPARED.json')
+
 def bind(m,R,meta):
  mods=m.source_modules(3.1 if meta['ring_inner_mm']==5 else 5.6)
  for mod in [mods['v6'],mods['track'],mods['lba']]:mod.R=R;mod.V5=R/'v5raw'
@@ -152,7 +166,7 @@ def bind(m,R,meta):
 def cameras(case,variant):
  m=legacy();meta=prepare(case);sig=protocol_signature('camera');R=B/variant/case
  if(R/'CAMERA_COMPLETE.json').exists():
-  receipt=read(R/'CAMERA_COMPLETE.json');assert receipt['input_sha256']==sha(B/'prepared'/case/'PREPARED.json')and receipt['protocol_signature']==sig,'CAMERA_PROTOCOL_DRIFT'
+  receipt=read(R/'CAMERA_COMPLETE.json');assert receipt['input_sha256']==prepared_identity(case)and receipt['protocol_signature']==sig,'CAMERA_PROTOCOL_DRIFT'
   for p,h in receipt['outputs'].items():assert sha(p)==h
   print('REUSE_CURRENT_CAMERAS',variant,case,flush=True);return R
  assert not(R/'CAMERA_STARTED.json').exists(),'Interrupted camera run needs a new attempt directory, never silent overwrite'
@@ -161,10 +175,14 @@ def cameras(case,variant):
   if not p.exists():p.symlink_to(target,target_is_directory=True)
  rows=meta['frames'];save(R/'inputs/ledger005.json',rows);save(R/'inputs/INPUT_IDENTITY.json',meta)
  cfg=read(V6/'config.json');cfg['ring_R_mm']=3.1 if meta['ring_inner_mm']==5 else 5.6;save(R/'config.json',cfg)
- state=dict(protocol_signature=sig,task=TASK,variant=variant,case=case,execution_commit=head(),input_sha256=sha(B/'prepared'/case/'PREPARED.json'),started_epoch=time.time(),stages=[]);save(R/'CAMERA_STARTED.json',state)
+ state=dict(protocol_signature=sig,task=TASK,variant=variant,case=case,execution_commit=head(),input_sha256=prepared_identity(case),started_epoch=time.time(),stages=[]);save(R/'CAMERA_STARTED.json',state)
  try:
   mods=bind(m,R,meta);rings=m.build_ring(R,rows,cfg['ring_R_mm'],mods);state['stages'].append('current_Ring_observations_candidates');save(R/'RUN_STATE.json',state)
-  mods['track'].main();state['stages'].append('current_SIFT_tracks')
+  if FULL_CONFIG and FULL_CONFIG.get('cache'):
+   from .stage_cache import ensure_matching
+   ensure_matching(sys.modules[__name__],R,meta,mods)
+  else:mods['track'].main()
+  state['stages'].append('current_SIFT_tracks')
   tr=np.load(R/'observations/tracks005.npz');pairs=np.load(R/'observations/pairs005.npz')
   if variant=='HIST':
    ref=next(i for i,r in enumerate(rows)if r['raw_frame']==meta['original16'][8]);held=next(i for i,r in enumerate(rows)if r['raw_frame']==meta['original16'][9]);reference=dict(policy='original V6 16-frame anchor index8 and diagnostic index9 generalized to actual RAW',ref=ref,held=held)
@@ -240,7 +258,7 @@ def _schedule(case,variant,R=None,primary_override=None):
    c.update(target_view_id=rows[rr]['view_id'],support_view_ids=[rows[i]['view_id'] for i in src],target_media_type=rows[rr]['media_type'],selected_version=primary,component='ORIGINAL_ANCHOR')
   c['input_sha256']=tuple_identity(fs,meta['raw_sha256'],MODEL_SHA);legal.append(c)
  save(R/'inputs/MVS_supported_cases.json',legal);mods['v6'].freeze('supported_view_selection',[R/'inputs/MVS_supported_cases.json'])
- out=dict(protocol_signature=sig,parent_sha256=sha(R/'CAMERA_COMPLETE.json'),cases_sha256=sha(R/'inputs/MVS_supported_cases.json'),case=case,variant=variant,execution_commit=head(),cameras_sha256=sha(R/f'predictions/local005_camera_{primary}.npz'),input_sha256=sha(B/'prepared'/case/'PREPARED.json'),old_cameras=len(old),new_cameras=len(new),numeric_cameras=len(rows),old_legal_targets=sum(c['old_rule_generated']for c in legal),new_legal_targets=len(legal),budget=len(legal),all_targets=cases,legal=legal,no_depth_in_selection=True,model_sha256=MODEL_SHA)
+ out=dict(protocol_signature=sig,parent_sha256=sha(R/'CAMERA_COMPLETE.json'),cases_sha256=sha(R/'inputs/MVS_supported_cases.json'),case=case,variant=variant,execution_commit=head(),cameras_sha256=sha(R/f'predictions/local005_camera_{primary}.npz'),input_sha256=prepared_identity(case),old_cameras=len(old),new_cameras=len(new),numeric_cameras=len(rows),old_legal_targets=sum(c['old_rule_generated']for c in legal),new_legal_targets=len(legal),budget=len(legal),all_targets=cases,legal=legal,no_depth_in_selection=True,model_sha256=MODEL_SHA)
  if frontend.enabled(sys.modules[__name__]):out.update(selected_version=primary,original_target_count=meta['original_video_target_count'],original_view_pool=str(R/'ORIGINAL_VIEW_POOL.json'),original_component_receipt=str(R/'COMPONENT.json'))
  assert len(legal)<=len(rows)-int(held>=0) and len({c['input_sha256']for c in legal})==len(legal);save(R/'PLAN_FROZEN.json',out);print('BUDGET_FROZEN',variant,case,out['old_cameras'],out['new_cameras'],len(legal),flush=True);return out
 

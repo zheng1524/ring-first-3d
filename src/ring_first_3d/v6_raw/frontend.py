@@ -54,6 +54,11 @@ def component(r,R,meta,mods,ref,held):
  return meta,index[ref],index.get(held,-1),original_reference
 
 def preserve_video_tracks(r,R,meta):
+ if r.FULL_CONFIG and r.FULL_CONFIG.get('cache') and not r.FULL_CONFIG['frontend'].get('include_photos'):
+  tr=np.load(R/'observations/tracks005.npz')
+  assert list(tr['ids'])==[a['id'] for a in meta['original_video_frames']]
+  r.save(R/'TRACK_EXTENSION.json',dict(original_tracks=len(tr['held']),full_pool_cache=r.read(R/'MATCH_CACHE.json'),video_only_current_full_pool=True))
+  return
  base=Path(meta['preprocessing_reuse']['source']).parents[1];old=dict(np.load(base/'observations/tracks005.npz'));op=dict(np.load(base/'observations/pairs005.npz'));tr=dict(np.load(R/'observations/tracks005.npz'));pack=dict(np.load(R/'observations/pairs005.npz'));n=len(old['ids'])
  assert list(old['ids'])==[a['id'] for a in meta['original_video_frames']]
  if len(meta['frames'])==n:
