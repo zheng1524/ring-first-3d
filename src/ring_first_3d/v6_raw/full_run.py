@@ -30,9 +30,9 @@ def valid_cached_native(path,record):
  return bool(record.get('success') and Path(path).is_file() and hash_file(path)==record.get('raw_SHA256'))
 
 def coverage(rows):
- groups=sorted({r['group'] for r in rows});out=lambda r:r.get('renderable',0)>0
+ groups=sorted({r['group'] for r in rows});out=lambda r:r.get('video_renderable',r.get('renderable',0))>0
  x=dict(groups_total=len(groups),videos_total=len(rows),videos_with_output=sum(out(r) for r in rows),groups_with_output=sum(any(out(r) for r in rows if r['group']==g) for g in groups),groups_two_videos_output=sum(sum(out(r) for r in rows if r['group']==g)>=2 for g in groups),groups_all_videos_output=sum(all(out(r) for r in rows if r['group']==g) for g in groups),target_denominator_known=sum(r.get('selected_targets') or 0 for r in rows),target_denominator_unknown_videos=sum(r.get('selected_targets') is None for r in rows))
- for k in ['renderable','native_success','legal_targets','q0','q1']:x[k]=sum(r.get(k,0) for r in rows)
+ for k in ['renderable','video_renderable','photo_renderable','native_success','legal_targets','q0','q1']:x[k]=sum(r.get(k,0) for r in rows)
  x['status_counts']={s:sum(r.get('status')==s for r in rows) for s in sorted({r.get('status','PENDING') for r in rows})}
  x['origins']={o:dict(videos=sum(r.get('origin')==o for r in rows),native_success=sum(r.get('native_success',0) for r in rows if r.get('origin')==o),renderable=sum(r.get('renderable',0) for r in rows if r.get('origin')==o)) for o in ['REUSED','NEW']}
  return x
@@ -146,6 +146,7 @@ def summarize_video(cfg,case):
  root=Path(cfg['run_root']);statepath=root/'states'/(case+'.json');state=read(statepath);R=Path(state['run_path']);plan=read(R/'PLAN_FROZEN.json');results=read(R/'metrics/MVS005_supported_runs.json');by={r['tag']:r for r in results};rows=[]
  for c in plan['legal']:
   p=R/'meshes'/(c['tag']+'_Polyp.ply');rec=dict(tag=c['tag'],raw_target=c['raw_target'],raw_support=c['raw_support'],input_sha256=c['input_sha256'],rule=c['rule_version'],mesh_path=str(p),status='NATIVE_FAILED',reason=by.get(c['tag'],{}).get('failure','NO_RESULT'))
+  rec.update(target_media_type=c.get('target_media_type','video'),target_view_id=c.get('target_view_id'),support_view_ids=c.get('support_view_ids'))
   if by.get(c['tag'],{}).get('success'):
    try:
     if not valid_cached_native(R/'raw'/(c['tag']+'.npz'),by[c['tag']]):raise ValueError('native hash mismatch')
@@ -157,7 +158,8 @@ def summarize_video(cfg,case):
  O=root/'display'/case;O.mkdir(parents=True,exist_ok=True);n=sum(r['status']=='RENDERABLE' for r in rows)
  atomic_json(O/'RESULTS.json',rows);atomic_json(O/'SUMMARY.json',dict(case=case,variant='HIST',renderable=n))
  nearviews.T=root;nearviews.LABEL['HIST']='V6 HIST';(root/'figures').mkdir(exist_ok=True)
- state.update(status='DONE',selected_targets=len(plan['all_targets']),legal_targets=len(plan['legal']),native_success=sum(bool(x.get('success')) for x in results),renderable=n,q0=sum(r['status']=='RENDERABLE' and r['rule']=='Q0' for r in rows),q1=sum(r['status']=='RENDERABLE' and r['rule']=='Q1' for r in rows),finished_epoch=time.time(),figure=('figures/HIST__'+case+'__近景逐源.png') if n else '',source_results=str(O/'RESULTS.json'))
+ state.update(status='DONE',selected_targets=plan.get('original_target_count',len(plan['all_targets'])),legal_targets=len(plan['legal']),native_success=sum(bool(x.get('success')) for x in results),renderable=n,q0=sum(r['status']=='RENDERABLE' and r['rule']=='Q0' for r in rows),q1=sum(r['status']=='RENDERABLE' and r['rule']=='Q1' for r in rows),finished_epoch=time.time(),figure=('figures/HIST__'+case+'__近景逐源.png') if n else '',source_results=str(O/'RESULTS.json'))
+ state.update(video_renderable=sum(r['status']=='RENDERABLE' and r['target_media_type']=='video' for r in rows),photo_renderable=sum(r['status']=='RENDERABLE' and r['target_media_type']=='photo' for r in rows))
  state['status']='RENDERING';atomic_json(statepath,state)
  crop=nearviews.make(O,kinds=('近景逐源',),full_range_link=False);atomic_json(O/'CROP_COUNTS.json',crop)
  state['status']='DONE';atomic_json(statepath,state)
@@ -176,7 +178,7 @@ def refresh(cfg,status):
   p=root/'states'/(v['case']+'.json');row=read(p) if p.exists() else dict(case=v['case'],group=v['group'],status='PENDING' if v['status']=='READY' else v['status'],origin='',renderable=0,selected_targets=None)
   R=Path(row.get('run_path',str(root/'HIST'/v['case'])))
   if (R/'PLAN_FROZEN.json').exists():
-   plan=read(R/'PLAN_FROZEN.json');row.update(selected_targets=len(plan['all_targets']),legal_targets=len(plan['legal']))
+   plan=read(R/'PLAN_FROZEN.json');row.update(selected_targets=plan.get('original_target_count',len(plan['all_targets'])),legal_targets=len(plan['legal']))
   ledger=R/'metrics/MVS005_supported_runs.json'
   if ledger.exists():
    # A successful atomic native write precedes each atomic ledger entry. No dependence on PNG completion.
@@ -186,6 +188,7 @@ def refresh(cfg,status):
  groups=[dict(group=g,videos=sum(r['group']==g for r in rows),videos_with_output=sum(r['group']==g and r.get('renderable',0)>0 for r in rows),renderable=sum(r.get('renderable',0) for r in rows if r['group']==g)) for g in manifest['groups']];table(root/'GROUP_RESULTS.csv',groups)
  style='<meta charset="utf-8"><style>body{font-family:system-ui;max-width:1400px;margin:25px auto}img{max-width:100%}td,th{padding:6px;border:1px solid #bbb}section{margin:25px 0}</style>'
  intro=f'<h1>V6 HIST 全量 · {status}</h1><p>更新时间 {time.strftime("%Y-%m-%d %H:%M:%S")}。输出覆盖，不代表表面积覆盖或正确率。各视频坐标独立；只展示原始全源近景逐源六视图。</p><p>组 {cov["groups_with_output"]}/{cov["groups_total"]}；视频 {cov["videos_with_output"]}/{cov["videos_total"]}；Target {cov["renderable"]}/{cov["target_denominator_known"]}（已知分母；另 {cov["target_denominator_unknown_videos"]} 视频分母未知）。</p><p><a href="PROGRESS.json">实时状态</a> · <a href="VIDEO_RESULTS.csv">视频表</a> · <a href="GROUP_RESULTS.csv">组表</a> · <a href="clean/index.html">三源clean小试</a></p>'
+ if cfg.get('frontend'):intro+=f'<p>视频帧Target非空Raw：{cov["video_renderable"]}；照片Target注册输出：{cov["photo_renderable"]}。上方总面源包含照片，不能除以视频帧分母解释视频恢复；本页为运行监测，最终三栏对照见小试首页。</p>'
  parts=[style,intro,'<table><tr><th>物理组</th><th>有输出视频/全部</th><th>可渲染Target</th></tr>'];(root/'groups').mkdir(exist_ok=True)
  for g in groups:
   name=g['group'];parts.append(f'<tr><td><a href="groups/{name}.html">{name}</a></td><td>{g["videos_with_output"]}/{g["videos"]}</td><td>{g["renderable"]}</td></tr>');gp=[style,f'<h1>{name}</h1><a href="../index.html">全量进度</a>']
@@ -201,10 +204,12 @@ def refresh(cfg,status):
  return rows
 
 def run(config):
- cfg=read(config);root=Path(cfg['run_root']);root.mkdir(parents=True,exist_ok=True);(root/'states').mkdir(exist_ok=True);(root/'logs').mkdir(exist_ok=True)
+ cfg=read(config)
+ if cfg.get('approval_required'):raise RuntimeError('PILOT_REVIEW_REQUIRED_BEFORE_FULL_RUN')
+ root=Path(cfg['run_root']);root.mkdir(parents=True,exist_ok=True);(root/'states').mkdir(exist_ok=True);(root/'logs').mkdir(exist_ok=True)
  with (root/'RUNNER.lock').open('a+') as guard:
   fcntl.flock(guard,fcntl.LOCK_EX|fcntl.LOCK_NB);atomic_json(root/'PID.json',dict(pid=os.getpid(),started_epoch=time.time(),snapshot=str(Path(__file__).resolve()),execution_commit=os.environ.get('V6_EXECUTION_COMMIT'),command=sys.argv))
-  manifest=read(cfg['manifest']);oldcases={p.name for p in (OLD/'HIST').iterdir() if (p/'HERO_COMPLETE.json').exists()}
+  manifest=read(cfg['manifest']);oldcases={p.name for p in (OLD/'HIST').iterdir() if (p/'HERO_COMPLETE.json').exists()} if cfg.get('reuse_old_results',True) else set()
   # New physical case first proves the new job is actually computing; all remaining rows remain queued.
   ordered=sorted(manifest['videos'],key=lambda v:(v['case'] in oldcases,v['case']))
   stop='RUNNING'
@@ -231,8 +236,8 @@ def run(config):
      s=read(sp)
      if rc:
       s.update(status='RESOURCE_INTERRUPTED' if rc<0 or rc in [137,143] else stage.upper()+'_FAILED',reason=f'process exit {rc}; log {log.name}');atomic_json(sp,s);break
-     if stage=='prepare':s.update(selected_targets=len(read(root/'prepared'/case/'PREPARED.json')['frames'])-1);atomic_json(sp,s)
-     if stage=='schedule':p=read(root/'HIST'/case/'PLAN_FROZEN.json');s.update(legal_targets=len(p['legal']),selected_targets=len(p['all_targets']));atomic_json(sp,s)
+     if stage=='prepare':s.update(selected_targets=read(root/'prepared'/case/'PREPARED.json').get('original_video_target_count',len(read(root/'prepared'/case/'PREPARED.json')['frames'])-1));atomic_json(sp,s)
+     if stage=='schedule':p=read(root/'HIST'/case/'PLAN_FROZEN.json');s.update(legal_targets=len(p['legal']),selected_targets=p.get('original_target_count',len(p['all_targets'])));atomic_json(sp,s)
      if stage=='hero':
       results=read(root/'HIST'/case/'metrics/MVS005_supported_runs.json');s.update(native_success=sum(bool(x.get('success')) for x in results));atomic_json(sp,s)
      print('STAGE_END',case,stage,rc,flush=True)

@@ -25,5 +25,7 @@ def tuple_identity(frames,raw_sha,model_sha):
  records=[]
  for f in frames:
   if not(np.isfinite(f['K']).all()and np.isfinite(f['c2w_mm']).all()):raise ValueError('NONFINITE_INPUT_CAMERA')
-  records.append({k:hashlib.sha256(np.ascontiguousarray(f[k]).tobytes()).hexdigest()for k in ['RGB','labels','K','c2w_mm']}|dict(raw_frame=int(f['raw_frame'])))
+  record={k:hashlib.sha256(np.ascontiguousarray(f[k]).tobytes()).hexdigest()for k in ['RGB','labels','K','c2w_mm']}|dict(raw_frame=int(f['raw_frame']) if f['raw_frame'] is not None else None)
+  if 'view_id' in f:record.update(view_id=f['view_id'],physical_view_id=f['physical_view_id'])
+  records.append(record)
  return hashlib.sha256(json.dumps(dict(raw=raw_sha,model=model_sha,frames=records,protocol='V6-352x640-refine1-fp16-fastFalse-K+.5-mmToM'),sort_keys=True).encode()).hexdigest()

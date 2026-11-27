@@ -3,6 +3,8 @@ import ast,hashlib,importlib.util,inspect,json,os,subprocess,sys,time,traceback,
 from pathlib import Path
 import cv2,numpy as np
 from .policy import frame_indices,admit_camera,choose_sources,tuple_identity
+from . import frontend
+from .frontend_policy import view_tag,bind_validation
 W=Path('/home/liu/ring_first_3d_workspace');WT=Path(__file__).resolve().parents[3]
 TASK='TASK-V6-RAW-TO-HERO-MAINLINE-001';T=WT/'experiments'/TASK;B=W/'runs/v6_raw_to_hero_001'
 M10=Path('/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-M2F10')
@@ -55,15 +57,21 @@ def protocol_signature(stage):
  if stage=='hero':
   files += [E/'surface_fusion_v1/scripts/run_mvs_adapter3.py',Path(read(CORE/'site_config.local.json')['checkpoint'])]
  hashes={str(p):sha(p)for p in files}
+ if frontend.enabled(sys.modules[__name__]):
+  hashes[str(Path(__file__))]=sha(__file__)
+  p=Path(__file__).parents[1]/'mainline/native/camera.py';hashes[str(p)]=sha(p)
+  for name in ['frontend.py','frontend_policy.py','frontend_kernels.py','frontend_photos.py']:
+   p=Path(__file__).with_name(name);hashes[str(p)]=sha(p)
  if stage=='hero':assert hashes[str(Path(read(CORE/'site_config.local.json')['checkpoint']))]==MODEL_SHA,'OFFICIAL_MODEL_DRIFT'
  payload=dict(stage=stage,entry_functions={n:hashlib.sha256(inspect.getsource(globals()[n]).encode()).hexdigest()for n in names},files=hashes,K=K.tolist(),model=MODEL_SHA)
+ if frontend.enabled(sys.modules[__name__]):payload['frontend']=FULL_CONFIG['frontend']
  key=hashlib.sha256(json.dumps(payload,sort_keys=True).encode()).hexdigest();save(B/'protocols'/(stage+'_'+key+'.json'),payload);SIGNATURES[stage]=key;return key
 
 def inference_start(case,variant,R,c,poses,rows,meta,mods):
  rr=c['reference'];src=c['sources'];fs=[]
  for i in [rr]+src:
   a=rows[i];assert sha(a['RGB_path'])==a['RGB_SHA256']and sha(a['Mask_path'])==a['Mask_SHA256'],'INFERENCE_INPUT_FILE_DRIFT'
-  fs.append(dict(RGB=mods['v6'].image(a),labels=mods['v6'].labels(a),K=K,c2w_mm=poses[i],raw_frame=a['raw_frame']))
+  fs.append(dict(RGB=mods['v6'].image(a),labels=mods['v6'].labels(a),K=K,c2w_mm=poses[i],raw_frame=a['raw_frame'],**({'view_id':a['view_id'],'physical_view_id':a['physical_view_id']} if frontend.enabled(sys.modules[__name__]) else {})))
  assert tuple_identity(fs,meta['raw_sha256'],MODEL_SHA)==c['input_sha256'],'TUPLE_DRIFT'
  path=B/'INFERENCE_STARTS.jsonl';path.parent.mkdir(parents=True,exist_ok=True)
  with path.open('a+')as f:
@@ -84,10 +92,14 @@ def inference_start(case,variant,R,c,poses,rows,meta,mods):
    if any(x['case']==case and x['variant']==variant and x['tag']==c['tag']for x in prior):raise RuntimeError('NO_UNRECEIPTED_RETRY')
   rec=dict(ordinal=len(prior)+1,case=case,variant=variant,tag=c['tag'],input_sha256=c['input_sha256'],epoch=time.time(),execution_commit=head(),resource_retry=retry,retry_reason='interrupted process with no committed native result; identical frozen tuple' if retry else None)
   f.write(json.dumps(rec)+'\n');f.flush();os.fsync(f.fileno());fcntl.flock(f,fcntl.LOCK_UN)
- save(R/'inputs'/('TUPLE_'+c['tag']+'.json'),dict(**rec,frames=[dict(raw_frame=a['raw_frame'],RGB_sha256=hashlib.sha256(a['RGB'].tobytes()).hexdigest(),Mask_sha256=hashlib.sha256(a['labels'].tobytes()).hexdigest(),K=a['K'],C=a['c2w_mm'])for a in fs]))
+ save(R/'inputs'/('TUPLE_'+c['tag']+'.json'),dict(**rec,frames=[dict(raw_frame=a['raw_frame'],view_id=a.get('view_id'),physical_view_id=a.get('physical_view_id'),RGB_sha256=hashlib.sha256(a['RGB'].tobytes()).hexdigest(),Mask_sha256=hashlib.sha256(a['labels'].tobytes()).hexdigest(),K=a['K'],C=a['c2w_mm'])for a in fs]))
 
 def legacy():
- environment();p=M10/'tools/m2f8_v6_general.py';assert sha(p)=='6ad695b0ffd66699a41306d4d38c1853a5d65b6a372d758a54ce284e7a586412','M2F10_ADAPTER_DRIFT';sp=importlib.util.spec_from_file_location('retained_m2f10',p);m=importlib.util.module_from_spec(sp);sp.loader.exec_module(m);return m
+ environment();p=M10/'tools/m2f8_v6_general.py';assert sha(p)=='6ad695b0ffd66699a41306d4d38c1853a5d65b6a372d758a54ce284e7a586412','M2F10_ADAPTER_DRIFT';sp=importlib.util.spec_from_file_location('retained_m2f10',p);m=importlib.util.module_from_spec(sp);sp.loader.exec_module(m)
+ if frontend.enabled(sys.modules[__name__]):
+  from .frontend_kernels import install
+  m=install(m)
+ return m
 
 def historical_extra(gray,blurs,original):
  """Execute the original V6 appearance selector block, without setup_audit's old assets/writes."""
@@ -110,6 +122,7 @@ def prepare(case):
   for f in x['frames']:
    assert sha(f['RGB_path'])==f['RGB_SHA256']and sha(f['Mask_path'])==f['Mask_SHA256']
   print('REUSE_CURRENT_RAW_CACHE',case,flush=True);return x
+ if frontend.enabled(sys.modules[__name__]):return frontend.prepare_cached(sys.modules[__name__],case,R,rh,sig)
  R.mkdir(parents=True,exist_ok=True);cap=cv2.VideoCapture(str(raw));gray=[];blurs=[];pts=[]
  while True:
   ok,im=cap.read()
@@ -159,11 +172,19 @@ def cameras(case,variant):
    edges=mods['lba'].pair_data(tr,pairs);counts=[len(np.load(R/'observations'/(a['id']+'_ring.npz'))['q_train'])for a in rows];ref,held,reference=m.select_v6_reference(rows,rings,edges,counts)
   else:raise ValueError('UNKNOWN_VARIANT')
   reference.update(reference_index=ref,heldout_index=held,reference_raw=rows[ref]['raw_frame'],diagnostic_raw=rows[held]['raw_frame'],diagnostic_image_used_in_camera_BA=True);save(R/'inputs/REFERENCE_RECEIPT.json',reference)
+  if frontend.enabled(sys.modules[__name__]):
+   meta,ref,held,original_reference=frontend.component(sys.modules[__name__],R,meta,mods,ref,held)
+   rows=meta['frames'];reference.update(original_reference=original_reference,reference_index=ref,heldout_index=held,diagnostic_available=held>=0,diagnostic_image_used_in_camera_BA=held>=0)
+   save(R/'inputs/REFERENCE_RECEIPT.json',reference)
   m.invoke_adapted_v6(mods['lba'],V6/'scripts/local_ring_sfm.py',ref,held,{'reference':1,'heldout':0});state['stages'].append('current_Ring_RGB_BA')
   import validate_select
   validate_select.R=R;validate_select.V5=R/'v5raw';validate_select.contours=mods['v6'].contours
   m.invoke_adapted_v6(validate_select,V6/'scripts/validate_select.py',ref,held,{'reference':1,'heldout':1});state['stages'].append('original_upstream_validation')
   outputs=[R/'config.json',R/'inputs/ledger005.json',R/'inputs/REFERENCE_RECEIPT.json',R/'metrics/local_validation.json',R/'predictions/local005_primary.json',R/'observations/tracks005.npz',R/'predictions/ring_candidates005.json']+list((R/'predictions').glob('local005_camera_*.npz'))
+  if frontend.enabled(sys.modules[__name__]):
+   frontend.record_kernels(sys.modules[__name__],R,mods)
+   outputs.remove(R/'predictions/local005_primary.json') # selected camera is a schedule-stage output
+   outputs += [R/'FRONTEND_KERNELS.json',R/'COMPONENT.json',R/'inputs/INPUT_IDENTITY.json']
   state.update(status='COMPLETED',outputs={str(p):sha(p)for p in outputs});save(R/'CAMERA_COMPLETE.json',state)
  except Exception as ex:
   state.update(status='FAILED',error=repr(ex),traceback=traceback.format_exc());save(R/'CAMERA_FAILURE.json',state);raise
@@ -171,10 +192,16 @@ def cameras(case,variant):
  return R
 
 def schedule(case,variant):
- R=cameras(case,variant);m=legacy();sig=protocol_signature('schedule');meta=read(B/'prepared'/case/'PREPARED.json');rows=meta['frames'];mods=bind(m,R,meta)
+ if frontend.enabled(sys.modules[__name__]):return frontend.select_complete_plan(sys.modules[__name__],case,variant,_schedule)
+ return _schedule(case,variant)
+
+def _schedule(case,variant,R=None,primary_override=None):
+ R=cameras(case,variant) if R is None else R;m=legacy();sig=protocol_signature('schedule');meta=read(R/'inputs/INPUT_IDENTITY.json') if frontend.enabled(sys.modules[__name__]) else read(B/'prepared'/case/'PREPARED.json');rows=meta['frames'];mods=bind(m,R,meta)
  if(R/'PLAN_FROZEN.json').exists():
   oldplan=read(R/'PLAN_FROZEN.json');assert oldplan['protocol_signature']==sig and oldplan['parent_sha256']==sha(R/'CAMERA_COMPLETE.json'),'PLAN_PARENT_DRIFT';assert oldplan['cases_sha256']==sha(R/'inputs/MVS_supported_cases.json'),'PLAN_CASES_DRIFT';return oldplan
- val=read(R/'metrics/local_validation.json');primary=val['primary'];per=next(v['per_frame']for v in val['versions']if v['version']==primary);old=set();new=set();gates=[]
+ val=read(R/'metrics/local_validation.json');primary=val['primary'] if primary_override is None else primary_override
+ if frontend.enabled(sys.modules[__name__]):val=bind_validation(val,primary)
+ per=next(v['per_frame']for v in val['versions']if v['version']==primary);old=set();new=set();gates=[]
  for i,r in enumerate(per):
   a,b,reasons=admit_camera(r);assert a==(r['status']=='VALIDATED')
   if a:old.add(i)
@@ -189,9 +216,15 @@ def schedule(case,variant):
   original_load=mods['v6'].load
   mods['v6'].load=lambda path:q if path=='metrics/local_validation.json'else original_load(path)
   tree,adapt=m.adapt_all_supported_targets(V6/'scripts/select_supported_views.py',ref,held,order)
-  try:exec(compile(tree,str(V6/'scripts/select_supported_views.py'),'exec'),dict(__name__='v6_current_selection',__file__=str(V6/'scripts/select_supported_views.py'),_M2F9_REFERENCE_INDEX=ref,_M2F9_HELDOUT_INDEX=held,_M2F10_TARGET_INDICES=order))
+  try:exec(compile(tree,str(V6/'scripts/select_supported_views.py'),'exec'),dict(__name__='v6_current_selection',__file__=str(V6/'scripts/select_supported_views.py'),_M2F9_REFERENCE_INDEX=ref,_M2F9_HELDOUT_INDEX=held,_M2F10_TARGET_INDICES=order,_FRONTEND_VIEW_TAG=view_tag))
   finally:mods['v6'].load=original_load
   for c in read(R/'inputs/MVS_supported_cases.json'):
+   if frontend.enabled(sys.modules[__name__]):
+    used={rows[c['reference']]['physical_view_id']};ranked=[]
+    for candidate in c['source_diagnostics']:
+     physical=rows[candidate['i']]['physical_view_id']
+     if physical not in used:ranked.append(candidate);used.add(physical)
+    c['source_diagnostics']=ranked
    src,original=choose_sources(c['source_diagnostics'],old,new);c.update(sources=src,source_ids=[rows[i]['id']for i in src],old_rule_generated=original,rule_version='Q0'if original else'Q1',target_own_old_pass=c['reference']in old,target_own_new_pass=c['reference']in new,addition_reasons=[]if original else[dict(raw_frame=rows[i]['raw_frame'],reasons=gates[i]['reasons'])for i in src if i not in old]);cases.append(c)
  # Keep all rejected target plans, but inference receives only true 3-source tuples.
  missing={c['reference']for c in cases}
@@ -201,14 +234,18 @@ def schedule(case,variant):
  for c in cases:
   rr=c['reference'];src=c['sources'];c['raw_target']=rows[rr]['raw_frame'];c['raw_support']=[rows[i]['raw_frame']for i in src]
   if len(src)!=3:c['failure_reason']='FEWER_THAN_THREE_UPSTREAM_ADMITTED_SUPPORTS';continue
-  fs=[dict(RGB=mods['v6'].image(rows[i]),labels=mods['v6'].labels(rows[i]),K=K,c2w_mm=poses[i],raw_frame=rows[i]['raw_frame'])for i in [rr]+src]
+  fs=[dict(RGB=mods['v6'].image(rows[i]),labels=mods['v6'].labels(rows[i]),K=K,c2w_mm=poses[i],raw_frame=rows[i]['raw_frame'],**({'view_id':rows[i]['view_id'],'physical_view_id':rows[i]['physical_view_id']} if frontend.enabled(sys.modules[__name__]) else {}))for i in [rr]+src]
+  if frontend.enabled(sys.modules[__name__]):
+   assert rr!=held and len({rows[i]['physical_view_id'] for i in [rr]+src})==4
+   c.update(target_view_id=rows[rr]['view_id'],support_view_ids=[rows[i]['view_id'] for i in src],target_media_type=rows[rr]['media_type'],selected_version=primary,component='ORIGINAL_ANCHOR')
   c['input_sha256']=tuple_identity(fs,meta['raw_sha256'],MODEL_SHA);legal.append(c)
  save(R/'inputs/MVS_supported_cases.json',legal);mods['v6'].freeze('supported_view_selection',[R/'inputs/MVS_supported_cases.json'])
  out=dict(protocol_signature=sig,parent_sha256=sha(R/'CAMERA_COMPLETE.json'),cases_sha256=sha(R/'inputs/MVS_supported_cases.json'),case=case,variant=variant,execution_commit=head(),cameras_sha256=sha(R/f'predictions/local005_camera_{primary}.npz'),input_sha256=sha(B/'prepared'/case/'PREPARED.json'),old_cameras=len(old),new_cameras=len(new),numeric_cameras=len(rows),old_legal_targets=sum(c['old_rule_generated']for c in legal),new_legal_targets=len(legal),budget=len(legal),all_targets=cases,legal=legal,no_depth_in_selection=True,model_sha256=MODEL_SHA)
- assert len(legal)<=len(rows)-1 and len({c['input_sha256']for c in legal})==len(legal);save(R/'PLAN_FROZEN.json',out);print('BUDGET_FROZEN',variant,case,out['old_cameras'],out['new_cameras'],len(legal),flush=True);return out
+ if frontend.enabled(sys.modules[__name__]):out.update(selected_version=primary,original_target_count=meta['original_video_target_count'],original_view_pool=str(R/'ORIGINAL_VIEW_POOL.json'),original_component_receipt=str(R/'COMPONENT.json'))
+ assert len(legal)<=len(rows)-int(held>=0) and len({c['input_sha256']for c in legal})==len(legal);save(R/'PLAN_FROZEN.json',out);print('BUDGET_FROZEN',variant,case,out['old_cameras'],out['new_cameras'],len(legal),flush=True);return out
 
 def hero(case,variant):
- plan=schedule(case,variant);sig=protocol_signature('hero');m=legacy();R=B/variant/case;meta=read(B/'prepared'/case/'PREPARED.json');mods=bind(m,R,meta)
+ plan=schedule(case,variant);sig=protocol_signature('hero');m=legacy();R=B/variant/case;meta=read(R/'inputs/INPUT_IDENTITY.json') if frontend.enabled(sys.modules[__name__]) else read(B/'prepared'/case/'PREPARED.json');mods=bind(m,R,meta)
  if(R/'HERO_COMPLETE.json').exists():
   x=read(R/'HERO_COMPLETE.json');assert x['plan_sha256']==sha(R/'PLAN_FROZEN.json')and x['protocol_signature']==sig,'HERO_PROTOCOL_DRIFT'
   for p,h in x['outputs'].items():assert sha(p)==h
