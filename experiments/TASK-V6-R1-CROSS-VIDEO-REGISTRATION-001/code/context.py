@@ -11,6 +11,7 @@ from common2 import read,save,sha,verify,resource,np,WORK,V6
 
 def freeze(stage,out,inputs=()):
  sources=list((T/'code').glob('*.py'))+list((OLD/'code').glob('*.py'))+[V6/'track005.py',V6/'v6_common.py']
+ sources += [OLD/'config/PROTOCOL.json',c.V001/'code/registration.py',c.V001/'config.json',T/'config/PROTOCOL.json']
  sources += [ROOT/'src/ring_first_3d'/p for p in ['mainline/native/cleaning.py','mainline/native/_clean_kernels.py','mainline/native/cleaning_protocol.json','v6_raw/surface_clean.py','v6_raw/trusted_restore.py','mainline/native/camera.py','mainline/native/_kernels.py','sim/geometry.py']]
- save(out/(stage+'_START.json'),dict(stage=stage,before_execution=True,epoch=time.time(),resource=resource(),sources=[dict(path=str(p),sha256=sha(p))for p in sources],inputs=[dict(path=str(p),sha256=sha(p))for p in inputs]))
+ save(out/(stage+'_START.json'),dict(stage=stage,before_execution=True,resolved_config=CFG,epoch=time.time(),resource=resource(),sources=[dict(path=str(p),sha256=sha(p))for p in sources],inputs=[dict(path=str(p),sha256=sha(p))for p in inputs]))
 c.stage_freeze=freeze

@@ -24,4 +24,6 @@ class Test(unittest.TestCase):
   f,C,tr,D=fixture();p=pack_pairs(f,C,tr,~tr['held']);ring=dict(center=D[:3,3],normal=D[:3,2],covariance=np.diag([.01]*3+[.0001]*2),status='ESTIMATED');r=solve_m5(p,ring,None);self.assertLess(np.linalg.norm(np.array(r['T'])@D-np.eye(4)),1e-4)
  def test_zero_baseline_not_zero_error(self):
   f,C,tr,D=fixture();C[:]=np.eye(4);p=pack_pairs(f,C,tr,~tr['held']);self.assertTrue((abs(pair_residuals(np.eye(4),p))>=30).all())
+ def test_zero_baseline_solver_inconclusive(self):
+  f,C,tr,D=fixture();C[:]=np.eye(4);p=pack_pairs(f,C,tr,~tr['held']);ring=dict(center=[0,0,0],normal=[0,0,1],covariance=np.eye(5)*.01,status='ESTIMATED');r=solve_m5(p,ring,None);self.assertEqual(r['quality'],'DEGENERATE_EPIPOLAR')
 if __name__=='__main__':unittest.main()
