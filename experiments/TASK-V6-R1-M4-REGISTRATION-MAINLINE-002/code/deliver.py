@@ -60,7 +60,7 @@ def main():
 
 ## 异常是否真的拖动 T，为什么保留原 M4？
 
-原六组是已看过的开发回归。对冻结 FIT 去除最高残差5%后，T变化约0.03–0.27°、0.002–0.043mm；去除最远空间杠杆5%约0.02–0.49°。双向held变化很小且方向不一致。IIa14/R10去除高FIT残差后均值约125.96/30.47px，原值126.00/30.45px，不能由held极端值断言FIT把T拖错。
+原六组是已看过的开发回归。对冻结 FIT 去除最高残差5%后，T变化约0.03–0.27°、0.002–0.043mm；移除距FIT点集中心最远的5%轨迹，T旋转变化约0.02–0.49°。双向held变化很小且方向不一致。IIa14/R10去除高FIT残差后均值约125.96/30.47px，原值126.00/30.45px，不能由held极端值断言FIT把T拖错。
 
 因此没有硬加新算法，全量固定原`solver2.py@efa0adfb` M4：三维地标逐坐标soft_l1按1/N归一化，独立五维Ring二次先验保持原强度；每视频一个SE(3)，尺度1。诊断trim仅用于开发解释，未按组选择旧/新T。决策在新增组求解前冻结于[DECISION.json](config/DECISION.json)。完整诊断见[FIT_DIAGNOSIS.json](evidence/FIT_DIAGNOSIS.json)。
 
@@ -86,7 +86,7 @@ def main():
 
 统一入口为[GROUP_INDEX.json](GROUP_INDEX.json)，指向每组`GROUP.json`。每个来源以case+tag唯一登记，包含原Raw/native SHA、Target/Support、所属视频、T和可信原面索引；所有原始顶点引用只应用一次T，全视频相机和其内部地标已导出为COMMON坐标并显式标注，跨视频独立DLT地标单独保存。消费者无需判断M4/M5或candidate特例。
 
-先冻结M4，再按017+gap、018原规则分类，只取原`F[state==0]`。参考侧仅在Raw、native、相机链、CAD和分类器SHA一致时复用R1原标签；非参考侧重新调用上一轮真实`clean_after.one`，没有使用M5标签。Clean只改保留面，没有额外顶点变化。旧六组221源的原面采样ID/重心坐标与历史完全一致；IIa14/R5的42源M4标签逐面复核改变数为0，原candidate补充已经成为统一常规路径。所有来源均由轻量读取器实际加载，核对相机坐标与轴向Z不变；本轮没有主体拟合。
+先冻结M4，再按017+gap、018原规则分类，只取原`F[state==0]`。实际703源核验同坐标复用，450源配准后新分类；1,153源后续复核复用了这批冻结分类，未重复计为新计算。参考侧仅在Raw、native、相机链、CAD和分类器SHA一致时复用R1原标签；非参考侧重新调用上一轮真实`clean_after.one`，没有使用M5标签。Clean只改保留面，没有额外顶点变化。旧六组221源的原面采样ID/重心坐标与历史完全一致；IIa14/R5的42源M4标签逐面复核改变数为0，原candidate补充已经成为统一常规路径。所有来源均由轻量读取器实际加载，核对相机坐标与轴向Z不变；本轮没有主体拟合。
 
 曲面指标使用每源固定96个原面面积样点，Raw/Clean同域；删去的样点仍占完整分母并记未覆盖。最近真实三角面距离仅为跨视频一致性，0.2mm覆盖是固定样本距离阈值，不是GT表面完整率。[SURFACE_RESULTS.csv](evidence/SURFACE_RESULTS.csv)和[SOURCE_STATUS.csv](evidence/SOURCE_STATUS.csv)保留Raw/Clean及逐源面积变化。不能把清理整洁算作位姿提高。
 

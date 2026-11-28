@@ -17,7 +17,7 @@ bash experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/run.sh --resume --stage
 bash experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/run.sh --resume --stage verify
 ```
 
-首次新工作树运行不带`--resume`，审计会生成全部清单。局部失败保留阶段错误和原观测，继续其他组；中断未完成目录改名为`.incomplete_时间`保留，再执行原阶段。已完成缓存按输入、代码/配置、T、CAD和分类器身份校验。哈希不一致会停止该阶段，不能把旧缓存改名后接用。任务内限1GiB、磁盘余量5GiB；CPU单线程且低优先级，GPU不可见。不触发上游模型、相机、分割、HERO或原调度器。
+单组运行只生成该组GROUP和图集，不要求其他组完成、不触发全量报告。首次新工作树运行不带`--resume`，审计会生成全部清单。局部失败保留阶段错误和原观测，继续其他组；中断未完成目录改名为`.incomplete_时间`保留，再执行原阶段。已完成缓存按输入、代码/配置、T、CAD和分类器身份校验。哈希不一致会停止该阶段，不能把旧缓存改名后接用。任务内限1GiB、磁盘余量5GiB；CPU单线程且低优先级，GPU不可见。不触发上游模型、相机、分割、HERO或原调度器。
 
 `--stage register`只求M4及图像评价；`clean`输出可信面、相机、地标和GROUP接口；`review`固定原面曲面评价及三状态图集。无需运行旧方法矩阵。`diagnose.py`是本次已完成的开发诊断，不在全量入口重复搜索方法。
 

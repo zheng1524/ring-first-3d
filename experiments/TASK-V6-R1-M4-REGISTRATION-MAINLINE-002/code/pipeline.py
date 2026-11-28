@@ -25,8 +25,9 @@ def main():
      from review import review;review(g)
    except Exception as e:
     rec=dict(group=g,stage=stage,error=repr(e),traceback=traceback.format_exc());failures.append(rec);save(group_out(g)/('ERROR_'+stage+'_'+stamp+'.json'),rec);print('STAGE ERROR',g,stage,repr(e),flush=True);break
- if a.stage in ['all','deliver']:
+ if a.stage in ['all','deliver']and not a.group:
   from deliver import main as deliver;deliver()
+ if a.group:print('SINGLE_GROUP_ENTRY',group_out(a.group)/'GROUP.json',flush=True)
  if a.stage in ['all','verify']and not a.group:
   from verify_final import main as verify_final;verify_final()
  if failures:raise SystemExit('Stages failed; retained receipts, rerun same command with --resume')
