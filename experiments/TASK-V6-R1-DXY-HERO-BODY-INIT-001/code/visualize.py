@@ -79,7 +79,8 @@ def geometry_panels(g,r,folder,limits):
    for VV,col in [(RV,COL['raw']),(CV,COL['corrected'])]:ax.add_collection(LineCollection((section(VV,RF,normal,origin)-origin)@B,colors=col,linewidths=.7,alpha=.65))
   if ax is ax3 and plane is not None:ax.axhline(-(origin@n+plane[3]),color='#333333',ls='--',lw=.8)
   ax.autoscale();ax.set_aspect('equal');ax.set(xlabel='截面水平 / mm',ylabel='截面垂直 / mm',title=label);ax.grid(alpha=.2)
- fig.suptitle(f"{r['configuration']} | {r['base_status']} {'实际裁切'if r['base_applied']else'母体保留；弱基底仅候选'if plane is not None else'无可用基底'}\n橙 原始 HERO / 青 校正 HERO / 蓝 未裁母体 / 绿 主体 / 红 被切部分与切侧可信点 / 紫 推断底盖\nHERO 三角面显示每视频均匀选 2 来源；指标保留全部来源；固定 CAD 黑色；GT 不可评价",fontsize=10);fig.tight_layout(rect=(0,0,1,.89));fig.savefig(folder/'GEOMETRY_SECTIONS.png',dpi=115);plt.close(fig)
+ base_label='实际裁切'if r['base_applied']else'母体保留；弱基底仅候选'if base.get('candidate')else'平面方向未获支持；仅诊断'if plane is not None else'无可用基底'
+ fig.suptitle(f"{r['configuration']} | {r['base_status']} {base_label}\n橙 原始 HERO / 青 校正 HERO / 蓝 未裁母体 / 绿 主体 / 红 被切部分与切侧可信点 / 紫 推断底盖\nHERO 三角面显示每视频均匀选 2 来源；指标保留全部来源；固定 CAD 黑色；GT 不可评价",fontsize=10);fig.tight_layout(rect=(0,0,1,.89));fig.savefig(folder/'GEOMETRY_SECTIONS.png',dpi=115);plt.close(fig)
 def main():
  import argparse
  pa=argparse.ArgumentParser();pa.add_argument('--group');args=pa.parse_args();links=[]
@@ -90,12 +91,17 @@ def main():
   rec=read(folder/'GROUP_RESULT.json');P=[]
   for r in rec['results']:
    root=folder/r['configuration'];a=np.load(root/'FINAL_UNCUT.npz');P.append(a['V']);q=np.load(root/'CORRECTED_OBSERVATIONS.npz');P.extend([q['raw_X'],q['corrected_X']])
-  if not P:continue
-  P=np.concatenate(P);lo=P.min(0);hi=P.max(0);center=(lo+hi)/2;rad=max((hi-lo).max()/2,6)*1.1;limits=(center-rad,center+rad)
+  if not P:
+   (folder/'index.html').write_text('<meta charset="utf-8"><h1>'+g+'</h1><p>本组未产出可审阅初体；失败仍保留在39组分母。</p><pre>'+json.dumps(rec['failures'],ensure_ascii=False,indent=2)+'</pre>');links.append(f'<li><a href="{g}/index.html">{g} — 未完成</a></li>');continue
+  audit=read(T/'runs/inputs'/g/'AUDIT.json');cadpath=next((s['cad_path']for s in audit['source_metadata']),None)
+  if cadpath is None:cadpath=WORK/'runs/m2f5_unified/cad'/('R5.npz'if audit['videos'][0]['ring_radius_mm']<4 else'R10.npz')
+  P.append(np.load(cadpath)['V']);P=np.concatenate(P);lo=P.min(0);hi=P.max(0);center=(lo+hi)/2;rad=max((hi-lo).max()/2,6)*1.1;limits=(center-rad,center+rad)
   cols=[]
   for r in rec['results']:
-   root=folder/r['configuration'];image_panels(g,r,root);geometry_panels(g,r,root,limits)
-   cols.append(f'<section><h2>{r["configuration"]}</h2><p>{r["input_kind"]}；{r["base_status"]}；留出 IoU {r["held_IoU_mean"]:.3f}</p><a href="{r["configuration"]}/RESULT.json">参数、偏置与来源</a><br><img src="{r["configuration"]}/RGB_PROJECTIONS.png"><img src="{r["configuration"]}/GEOMETRY_SECTIONS.png"></section>')
+   root=folder/r['configuration'];fk=digest([sha(root/'RESULT.json'),sha(root/'BASE.json'),sha(Path(__file__)),limits]);receipt=root/'FIGURES.json'
+   if not(receipt.exists()and read(receipt)['key']==fk and all(Path(x['path']).exists()and sha(x['path'])==x['sha256']for x in read(receipt)['files'])):
+    image_panels(g,r,root);geometry_panels(g,r,root,limits);save(receipt,dict(key=fk,files=[asset(root/n)for n in ['RGB_PROJECTIONS.png','GEOMETRY_SECTIONS.png']]))
+   cols.append(f'<section><h2>{r["configuration"]}</h2><p>{r["input_kind"]}；{r["base_status"]}；留出固定网格 IoU {r["held_IoU_mean"]:.3f}</p><a href="{r["configuration"]}/RESULT.json">参数、偏置与来源</a> | <a href="{r["configuration"]}/BASE.json">基底证据</a> | <a href="{r["configuration"]}/EVALUATION.json">固定分母评价</a><br><img src="{r["configuration"]}/RGB_PROJECTIONS.png"><img src="{r["configuration"]}/GEOMETRY_SECTIONS.png"></section>')
   html='<meta charset="utf-8"><style>body{font-family:sans-serif;background:#fafafa}main{display:flex;gap:10px}section{min-width:500px;flex:1}img{width:100%}pre{white-space:pre-wrap}</style><h1>'+g+'</h1><p>本轮新算粗初始化。真实 GT 不可评价；数值完成不等于形状已验证。单视频各用自身观测，联合重新优化。</p><main>'+''.join(cols)+'</main><pre>'+json.dumps(rec['failures'],ensure_ascii=False,indent=2)+'</pre>'
   (folder/'index.html').write_text(html);links.append(f'<li><a href="{g}/index.html">{g}</a></li>');print('FIGURE',g,flush=True)
  (T/'runs/results/index.html').write_text('<meta charset="utf-8"><h1>39 组主体初始化审阅</h1><p>单位 mm；原始 R1/M4 只读。黄色 Mask、紫色 DXY、绿色主体。失败和弱基底均保留。</p><ul>'+''.join(links)+'</ul>')

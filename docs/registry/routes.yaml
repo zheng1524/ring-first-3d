@@ -1186,3 +1186,17 @@ current_downstream_registration:
   previous_M5: historical_only_not_in_regular_run
   report: experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/TECHNICAL_REPORT.md
   body_update_authorized: false
+
+r1_coarse_body_initialization_pilot:
+  route_id: rf-v6-r1-dxy-hero-body-init@1
+  authorization: TASK-V6-R1-DXY-HERO-BODY-INIT-001
+  status: authorized_coarse_initialization_pilot
+  scientific_status: observations_consistency_only_not_absolute_shape_validation
+  composes: [rf-v6-r1-video@1, rf-v6-r1-m4-registration@2]
+  entrypoint: experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/batch.py
+  consumer: experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/consume_body.py
+  config: experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/config.json
+  report: experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/TECHNICAL_REPORT.md
+  upstream_commit: 80d00ad3530abfd782e27a2c1981a272bf9739e7
+  contract: fixed_metric_cameras__one_ellipsoid__bounded_source_axial_bias__exact_optional_halfspace_clip
+  high_frequency_body_update_authorized: false

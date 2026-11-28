@@ -1,0 +1,632 @@
+{
+  "GT_shape": {
+    "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-VIRTUAL-REG-001/experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/inputs/virtual_GT.npz",
+    "sha256": "1c857568eee39f39d2b18c15abe23e227827eb89215df067d1140ece5a6b0f4f",
+    "bytes": 34610
+  },
+  "fixed_exact_mesh_bias_diagnostic": [
+    {
+      "source_id": "G01_004_new_r00",
+      "estimated_b_mm": 0.24999985530918423,
+      "error_mm": 1.446908157731741e-07
+    },
+    {
+      "source_id": "G01_v004_raw00282",
+      "estimated_b_mm": 0.2500001844467121,
+      "error_mm": 1.8444671212591857e-07
+    },
+    {
+      "source_id": "G01_v005_raw00104",
+      "estimated_b_mm": -0.250000305239265,
+      "error_mm": 3.052392649749436e-07
+    },
+    {
+      "source_id": "G01_v005_raw00694",
+      "estimated_b_mm": -0.2499984685002019,
+      "error_mm": 1.531499798090863e-06
+    }
+  ],
+  "coarse_model_bias": [
+    {
+      "source_id": "G01_004_new_r00",
+      "injected": 0.25,
+      "fitted": 0.014479094862641394
+    },
+    {
+      "source_id": "G01_v004_raw00282",
+      "injected": 0.25,
+      "fitted": 0.014140895856140851
+    },
+    {
+      "source_id": "G01_v005_raw00104",
+      "injected": -0.25,
+      "fitted": -0.017929599647708343
+    },
+    {
+      "source_id": "G01_v005_raw00694",
+      "injected": -0.25,
+      "fitted": -0.015203229594313512
+    }
+  ],
+  "parent_to_GT_mm": {
+    "median": 0.07988148927688599,
+    "p95": 0.39056095480918884
+  },
+  "conditions": [
+    {
+      "name": "KNOWN_SUPPORT",
+      "plane": [
+        0.0,
+        0.0,
+        1.0,
+        13.599999719858143
+      ],
+      "metrics": {
+        "projections": [
+          {
+            "case": "004",
+            "frame": "G01_004_new_r00",
+            "role": "FIT",
+            "foreground_N": 91,
+            "foreground_hit_N": 86,
+            "foreground_miss_N": 5,
+            "background_N": 753,
+            "false_positive_N": 1,
+            "IoU": 0.9347826086956522,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "004",
+            "frame": "G01_v004_raw00282",
+            "role": "FIT",
+            "foreground_N": 90,
+            "foreground_hit_N": 86,
+            "foreground_miss_N": 4,
+            "background_N": 748,
+            "false_positive_N": 2,
+            "IoU": 0.9347826086956522,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "005",
+            "frame": "G01_v005_raw00104",
+            "role": "FIT",
+            "foreground_N": 68,
+            "foreground_hit_N": 68,
+            "foreground_miss_N": 0,
+            "background_N": 778,
+            "false_positive_N": 0,
+            "IoU": 1.0,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "005",
+            "frame": "G01_v005_raw00694",
+            "role": "FIT",
+            "foreground_N": 62,
+            "foreground_hit_N": 61,
+            "foreground_miss_N": 1,
+            "background_N": 786,
+            "false_positive_N": 0,
+            "IoU": 0.9838709677419355,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "004",
+            "frame": "G01_004_growth_r04",
+            "role": "HOLDOUT",
+            "foreground_N": 85,
+            "foreground_hit_N": 82,
+            "foreground_miss_N": 3,
+            "background_N": 762,
+            "false_positive_N": 1,
+            "IoU": 0.9534883720930233,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "004",
+            "frame": "G01_004_growth_r06",
+            "role": "HOLDOUT",
+            "foreground_N": 65,
+            "foreground_hit_N": 60,
+            "foreground_miss_N": 5,
+            "background_N": 789,
+            "false_positive_N": 0,
+            "IoU": 0.9230769230769231,
+            "inferred_cap_pixels_N": 0
+          }
+        ],
+        "depth": [
+          {
+            "source_id": "G01_004_new_r00",
+            "fixed_N": 128,
+            "valid_N": 122,
+            "invalid_N": 6,
+            "cap_only_N": 0,
+            "bias_mm": 0.01488114395543679,
+            "MAE_mm": 0.29638910181330774,
+            "p95_mm": 0.7811542987670992,
+            "original_on_cut_side_N": 2,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          },
+          {
+            "source_id": "G01_v004_raw00282",
+            "fixed_N": 128,
+            "valid_N": 124,
+            "invalid_N": 4,
+            "cap_only_N": 0,
+            "bias_mm": 0.014475508813321806,
+            "MAE_mm": 0.3540698999900236,
+            "p95_mm": 0.8358932084942237,
+            "original_on_cut_side_N": 1,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          },
+          {
+            "source_id": "G01_v005_raw00104",
+            "fixed_N": 128,
+            "valid_N": 128,
+            "invalid_N": 0,
+            "cap_only_N": 0,
+            "bias_mm": -0.01792690578569741,
+            "MAE_mm": 0.26244227265478925,
+            "p95_mm": 0.5288479055122423,
+            "original_on_cut_side_N": 0,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          },
+          {
+            "source_id": "G01_v005_raw00694",
+            "fixed_N": 128,
+            "valid_N": 126,
+            "invalid_N": 2,
+            "cap_only_N": 0,
+            "bias_mm": -0.015205350894307693,
+            "MAE_mm": 0.37027479594852114,
+            "p95_mm": 0.523872834421903,
+            "original_on_cut_side_N": 0,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          }
+        ],
+        "real_GT": "NOT_EVALUABLE"
+      },
+      "clip_error": null,
+      "stages": [
+        {
+          "stage": "KNOWN_SUPPORT",
+          "iteration": 0,
+          "objective_before": 0.711986945297015,
+          "objective_after_theta": 0.7119857703196718,
+          "objective_after": 0.7119840277241113,
+          "theta_accepted": true,
+          "bias_accepted": true,
+          "nfev": 2,
+          "optimizer_success": true,
+          "stop": "`ftol` termination condition is satisfied.",
+          "alpha": 1.0,
+          "components": {
+            "visible_boundary": 0.18798758329553725,
+            "mask": 0.060283337040572156,
+            "dxy_completion": 0.0134232633579082,
+            "depth": 0.43996963639377484,
+            "coverage": 0.001931095996569426,
+            "bias_prior": 0.0016392757461588085,
+            "shape_prior": 0.006749835893590657
+          }
+        }
+      ],
+      "p": [
+        0.03692633510522792,
+        0.021046457483398975,
+        -4.167663834389431,
+        -1.1746371065272947,
+        -1.35135213998614,
+        -1.0940205331389667,
+        1.850205339682738,
+        1.786992869577665,
+        1.7742562427429076
+      ],
+      "b": [
+        0.01488114395543679,
+        0.014475508813321806,
+        -0.01792690578569741,
+        -0.015205350894307693
+      ],
+      "original_trusted_cut_side_N": 3
+    },
+    {
+      "name": "WRONG_HEIGHT",
+      "plane": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "metrics": {
+        "projections": [
+          {
+            "case": "004",
+            "frame": "G01_004_new_r00",
+            "role": "FIT",
+            "foreground_N": 91,
+            "foreground_hit_N": 40,
+            "foreground_miss_N": 51,
+            "background_N": 753,
+            "false_positive_N": 1,
+            "IoU": 0.43478260869565216,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "004",
+            "frame": "G01_v004_raw00282",
+            "role": "FIT",
+            "foreground_N": 90,
+            "foreground_hit_N": 48,
+            "foreground_miss_N": 42,
+            "background_N": 748,
+            "false_positive_N": 1,
+            "IoU": 0.5274725274725275,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "005",
+            "frame": "G01_v005_raw00104",
+            "role": "FIT",
+            "foreground_N": 68,
+            "foreground_hit_N": 55,
+            "foreground_miss_N": 13,
+            "background_N": 778,
+            "false_positive_N": 1,
+            "IoU": 0.7971014492753623,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "005",
+            "frame": "G01_v005_raw00694",
+            "role": "FIT",
+            "foreground_N": 62,
+            "foreground_hit_N": 46,
+            "foreground_miss_N": 16,
+            "background_N": 786,
+            "false_positive_N": 1,
+            "IoU": 0.7301587301587301,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "004",
+            "frame": "G01_004_growth_r04",
+            "role": "HOLDOUT",
+            "foreground_N": 85,
+            "foreground_hit_N": 43,
+            "foreground_miss_N": 42,
+            "background_N": 762,
+            "false_positive_N": 1,
+            "IoU": 0.5,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "004",
+            "frame": "G01_004_growth_r06",
+            "role": "HOLDOUT",
+            "foreground_N": 65,
+            "foreground_hit_N": 34,
+            "foreground_miss_N": 31,
+            "background_N": 789,
+            "false_positive_N": 1,
+            "IoU": 0.5151515151515151,
+            "inferred_cap_pixels_N": 0
+          }
+        ],
+        "depth": [
+          {
+            "source_id": "G01_004_new_r00",
+            "fixed_N": 128,
+            "valid_N": 60,
+            "invalid_N": 68,
+            "cap_only_N": 0,
+            "bias_mm": 0.07278492677519516,
+            "MAE_mm": 0.7911870882516676,
+            "p95_mm": 1.9620918395813687,
+            "original_on_cut_side_N": 76,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          },
+          {
+            "source_id": "G01_v004_raw00282",
+            "fixed_N": 128,
+            "valid_N": 66,
+            "invalid_N": 62,
+            "cap_only_N": 0,
+            "bias_mm": 0.07366120774876818,
+            "MAE_mm": 0.7830534875798976,
+            "p95_mm": 2.0213275580671466,
+            "original_on_cut_side_N": 68,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          },
+          {
+            "source_id": "G01_v005_raw00104",
+            "fixed_N": 128,
+            "valid_N": 101,
+            "invalid_N": 27,
+            "cap_only_N": 0,
+            "bias_mm": 0.03982855898124591,
+            "MAE_mm": 0.34866835741828717,
+            "p95_mm": 0.9294429102826633,
+            "original_on_cut_side_N": 26,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          },
+          {
+            "source_id": "G01_v005_raw00694",
+            "fixed_N": 128,
+            "valid_N": 86,
+            "invalid_N": 42,
+            "cap_only_N": 0,
+            "bias_mm": 0.053067872474752704,
+            "MAE_mm": 0.3801853711586305,
+            "p95_mm": 1.0302441766844286,
+            "original_on_cut_side_N": 44,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          }
+        ],
+        "real_GT": "NOT_EVALUABLE"
+      },
+      "clip_error": null,
+      "stages": [
+        {
+          "stage": "WRONG_HEIGHT",
+          "iteration": 0,
+          "objective_before": 19.01702819833399,
+          "objective_after_theta": 17.516300847950642,
+          "objective_after": 17.490559044835727,
+          "theta_accepted": true,
+          "bias_accepted": true,
+          "nfev": 15,
+          "optimizer_success": true,
+          "stop": "`ftol` termination condition is satisfied.",
+          "alpha": 1.0,
+          "components": {
+            "visible_boundary": 8.350799556980398,
+            "mask": 0.5834251123156659,
+            "dxy_completion": 0.027412604045480297,
+            "depth": 5.93265847016934,
+            "coverage": 2.5648821019821155,
+            "bias_prior": 0.025210220486994846,
+            "shape_prior": 0.006170978855731183
+          }
+        }
+      ],
+      "p": [
+        0.015998848555836505,
+        -0.07220684366956963,
+        -3.9016836355201847,
+        -1.25217924085437,
+        -1.3955845863284866,
+        -1.1870161244481854,
+        1.8963511885742497,
+        1.7911845746704194,
+        1.7482071012329126
+      ],
+      "b": [
+        0.07278492677519516,
+        0.07366120774876818,
+        0.03982855898124591,
+        0.053067872474752704
+      ],
+      "original_trusted_cut_side_N": 214
+    },
+    {
+      "name": "FLIPPED_SIDE",
+      "plane": [
+        -0.0,
+        -0.0,
+        -1.0,
+        -13.599999719858143
+      ],
+      "metrics": {
+        "projections": [
+          {
+            "case": "004",
+            "frame": "G01_004_new_r00",
+            "role": "FIT",
+            "foreground_N": 91,
+            "foreground_hit_N": 0,
+            "foreground_miss_N": 91,
+            "background_N": 753,
+            "false_positive_N": 0,
+            "IoU": 0.0,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "004",
+            "frame": "G01_v004_raw00282",
+            "role": "FIT",
+            "foreground_N": 90,
+            "foreground_hit_N": 0,
+            "foreground_miss_N": 90,
+            "background_N": 748,
+            "false_positive_N": 0,
+            "IoU": 0.0,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "005",
+            "frame": "G01_v005_raw00104",
+            "role": "FIT",
+            "foreground_N": 68,
+            "foreground_hit_N": 0,
+            "foreground_miss_N": 68,
+            "background_N": 778,
+            "false_positive_N": 0,
+            "IoU": 0.0,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "005",
+            "frame": "G01_v005_raw00694",
+            "role": "FIT",
+            "foreground_N": 62,
+            "foreground_hit_N": 0,
+            "foreground_miss_N": 62,
+            "background_N": 786,
+            "false_positive_N": 0,
+            "IoU": 0.0,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "004",
+            "frame": "G01_004_growth_r04",
+            "role": "HOLDOUT",
+            "foreground_N": 85,
+            "foreground_hit_N": 0,
+            "foreground_miss_N": 85,
+            "background_N": 762,
+            "false_positive_N": 0,
+            "IoU": 0.0,
+            "inferred_cap_pixels_N": 0
+          },
+          {
+            "case": "004",
+            "frame": "G01_004_growth_r06",
+            "role": "HOLDOUT",
+            "foreground_N": 65,
+            "foreground_hit_N": 0,
+            "foreground_miss_N": 65,
+            "background_N": 789,
+            "false_positive_N": 0,
+            "IoU": 0.0,
+            "inferred_cap_pixels_N": 0
+          }
+        ],
+        "depth": [
+          {
+            "source_id": "G01_004_new_r00",
+            "fixed_N": 128,
+            "valid_N": 0,
+            "invalid_N": 128,
+            "cap_only_N": 0,
+            "bias_mm": -0.09505106735958432,
+            "MAE_mm": null,
+            "p95_mm": null,
+            "original_on_cut_side_N": 126,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          },
+          {
+            "source_id": "G01_v004_raw00282",
+            "fixed_N": 128,
+            "valid_N": 0,
+            "invalid_N": 128,
+            "cap_only_N": 0,
+            "bias_mm": -0.10497305400532027,
+            "MAE_mm": null,
+            "p95_mm": null,
+            "original_on_cut_side_N": 127,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          },
+          {
+            "source_id": "G01_v005_raw00104",
+            "fixed_N": 128,
+            "valid_N": 0,
+            "invalid_N": 128,
+            "cap_only_N": 0,
+            "bias_mm": -0.13504975942618103,
+            "MAE_mm": null,
+            "p95_mm": null,
+            "original_on_cut_side_N": 128,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          },
+          {
+            "source_id": "G01_v005_raw00694",
+            "fixed_N": 128,
+            "valid_N": 0,
+            "invalid_N": 128,
+            "cap_only_N": 0,
+            "bias_mm": -0.12961910269030963,
+            "MAE_mm": null,
+            "p95_mm": null,
+            "original_on_cut_side_N": 128,
+            "original_CAD_conflict_N": 0,
+            "corrected_CAD_conflict_N": 0,
+            "corrected_negative_Z_N": 0,
+            "model_CAD_occluded_N": 0
+          }
+        ],
+        "real_GT": "NOT_EVALUABLE"
+      },
+      "clip_error": "ValueError('CLIP_REMOVED_ENTIRE_BODY')",
+      "stages": [
+        {
+          "stage": "FLIPPED_SIDE",
+          "iteration": 0,
+          "objective_before": 52.25620605308926,
+          "objective_after_theta": 52.15256176557733,
+          "objective_after": 52.06408943690484,
+          "theta_accepted": true,
+          "bias_accepted": true,
+          "nfev": 14,
+          "optimizer_success": true,
+          "stop": "Both `ftol` and `xtol` termination conditions are satisfied.",
+          "alpha": 1.0,
+          "components": {
+            "visible_boundary": 10.965439903043405,
+            "mask": 1.5615528127515494,
+            "dxy_completion": 0.01322664277674335,
+            "depth": 15.000000000000002,
+            "coverage": 24.425256560711084,
+            "bias_prior": 0.09182266129451755,
+            "shape_prior": 0.006790856327536744
+          }
+        }
+      ],
+      "p": [
+        0.0358133688315698,
+        0.0164165467832684,
+        -4.183179401262758,
+        -1.167730537598445,
+        -1.3514216411021478,
+        -1.097252033936152,
+        1.8492071085577722,
+        1.7872260219915954,
+        1.7732595596770115
+      ],
+      "b": [
+        -0.09505106735958432,
+        -0.10497305400532027,
+        -0.13504975942618103,
+        -0.12961910269030963
+      ],
+      "original_trusted_cut_side_N": 509
+    }
+  ],
+  "interpretation": "Exact-geometry bias diagnostic separated from nonellipsoidal G01 coarse fit; model mismatch and common-depth ambiguity retained",
+  "no_GT_tuning": true
+}

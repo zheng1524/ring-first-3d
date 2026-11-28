@@ -1,0 +1,106 @@
+{
+  "epoch": 1795868812.3003433,
+  "execution_commit": "ae86d9a3f253e01c1ed63377c32e510772bb4a99",
+  "config": {
+    "schema": 1,
+    "units": "mm",
+    "seed": 20261128,
+    "frames_per_video": 8,
+    "held_frames_per_video": 2,
+    "depth_samples_per_source": 64,
+    "mask_grid_step": 16,
+    "boundary_samples": 64,
+    "background_samples_per_source": 192,
+    "bias_bound_mm": 0.4,
+    "bias_prior_sigma_mm": 0.15,
+    "depth_sigma_mm": 0.5,
+    "theta_nfev": 25,
+    "alternations": 3,
+    "clipped_alternations": 2,
+    "boundary_sigma_px": 6,
+    "dxy_weight": 0.1,
+    "mask_weight": 1.0,
+    "depth_weight": 0.3,
+    "shape_prior_weight": 0.03,
+    "missing_depth_cost": 100.0,
+    "base_roi_px": [
+      30,
+      45,
+      60
+    ],
+    "base_min_points": 100,
+    "base_normal_stability_deg": 10,
+    "base_offset_stability_mm": 0.5,
+    "base_inlier_fraction": 0.5,
+    "reserve_bytes": 5368709120,
+    "task_bytes_cap": 1073741824,
+    "bias_scope": "trusted_polyp_only_background_and_CAD_unchanged",
+    "GT_real": "NOT_EVALUABLE",
+    "no_high_frequency_update": true
+  },
+  "config_sha256": "1b415f7b4028901dfc88b8f20affedab08627369efd295385f44b5342f628879",
+  "code_key": "331cd8b86505805792f26035420d4f02acc8923562862711f806dd7cd1c289f5",
+  "sources": [
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/geometry.py",
+      "sha256": "54d3ed919ae24d9b7018e9a71bca5456f26468006b21998f584dbbd59aefb84c",
+      "bytes": 1885
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/worker.py",
+      "sha256": "f9a7dd41295e9b0b1278fac9c55ef8f3054a814932750e0c76bad5bb2dded691",
+      "bytes": 582
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/core.py",
+      "sha256": "b836f67bd9f00026c162197e85dd28fd91a85d33f21b131b54342e6d2c9b01d2",
+      "bytes": 2280
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/base_plane.py",
+      "sha256": "c270aeb55d4be9d860342381824837c9ed873294cedbc26fa8a3ff75f03558a3",
+      "bytes": 3446
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/visualize.py",
+      "sha256": "b123c21f21f6dc10d07e3b19f8e94a783bffac79f25c7479e22fc9cd6f0cfbca",
+      "bytes": 10052
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/fit.py",
+      "sha256": "4f6ad614a79bcf732df7f51773d24b41d3121662b7011be15c1914dd492b9351",
+      "bytes": 9384
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/observations.py",
+      "sha256": "9c8551b99ac45dc7a3d69e587500a9c7fa921a160c885fdb61e201a88c1af8f1",
+      "bytes": 8450
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/pipeline.py",
+      "sha256": "8390c6b127ee02804b1242ab6526df4b5c8e40dad23ed55baf789bf4cb9c5a1f",
+      "bytes": 5987
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/control.py",
+      "sha256": "cc89a02dc69a2e874bf54f24b50bd70fe7171b80831e56bea01da54a6f025382",
+      "bytes": 4501
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/supplement.py",
+      "sha256": "765808bb7166fc985b5e614fe2f0146e478dcc8d1a5fbb261f3e5c74e6a77b5c",
+      "bytes": 3512
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/code/test_contracts.py",
+      "sha256": "d67f8385d2adfa99e38636753e76d306dc3a5d9c6bfa20fc471b92a86b4a7b49",
+      "bytes": 2120
+    }
+  ],
+  "base_commit": "80d00ad3530abfd782e27a2c1981a272bf9739e7",
+  "input_index": {
+    "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-001/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-001/evidence/FULL_INPUT_INDEX.json",
+    "sha256": "71fcfa0657e13ad65ecda8a0c0570a1163eafa715d3b30325ee312fac3b92d6d",
+    "bytes": 13540
+  }
+}
