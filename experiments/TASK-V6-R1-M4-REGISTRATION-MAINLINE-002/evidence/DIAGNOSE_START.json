@@ -1,0 +1,207 @@
+{
+  "stage": "DIAGNOSE",
+  "before_execution": true,
+  "resolved_config": {
+    "task": "TASK-V6-R1-M4-REGISTRATION-MAINLINE-002",
+    "batch": "FULL_001",
+    "base": "f7a3ff8581a80b44adc9eb8415d11748f086a6ee",
+    "groups": 5,
+    "frames_per_video": 8,
+    "features": 6000,
+    "ratio": 0.72,
+    "sigma_rgb_mm": 0.2,
+    "yaw_grid": 72,
+    "max_nfev": 100,
+    "ring_lambda": 1.0,
+    "ring_sigma_floor_mm": 0.1,
+    "ring_sigma_floor_deg": 0.3,
+    "ring_max_sigma_mm": 2.0,
+    "ring_max_sigma_deg": 15.0,
+    "ring_guard_mahalanobis": 5.0,
+    "min_fit_tracks": 6,
+    "min_held_tracks": 8,
+    "min_parallax_deg": 0.5,
+    "fit_reprojection_max_px": 6.0,
+    "coverage_mm": 0.2,
+    "seeds": [
+      20261117,
+      20261118,
+      20261119,
+      20261120,
+      20261121
+    ],
+    "v3_seed_offset": 900000,
+    "reserve_bytes": 5368709120,
+    "task_bytes_cap": 1073741824,
+    "surface_samples_per_source": 96,
+    "LOO_per_side": 3,
+    "sigma_epipolar_px": 1.5,
+    "method": "M4",
+    "reference_rule": "lexicographic case among usable HERO videos; independent of held and surfaces",
+    "upstream_root": "/home/liu/ring_first_3d_workspace/runs/v6_r1_full_b_001",
+    "regression_groups": [
+      "GP_Ip_8.8mm_closed_R5_single_refY",
+      "GP_Ip_4.0mm_closed_R10_single_refY",
+      "GP_IIa_14.0mm_closed_R5_single_refY",
+      "GP_IIa_14.0mm_closed_R10_single_refY",
+      "GP_Ip_20.0mm_closed_R10_single_refY",
+      "GP_Ip_2.9mm_closed_R10_single_refY"
+    ]
+  },
+  "epoch": 1795850162.2977405,
+  "resource": {
+    "free_bytes": 7945437184,
+    "task_bytes": 52937075,
+    "nice": 19,
+    "affinity": [
+      0
+    ]
+  },
+  "sources": [
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/connections.py",
+      "sha256": "39cbafdfdaf7f68575a372dd8897603b39b3522da88edefcc95648fa336b2782"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/test_mainline.py",
+      "sha256": "b2558dbbc799d581224af15b088062e5bf948386cee2c0582ef80c3f7dd56bff"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/pinned.py",
+      "sha256": "6ece82794f0f45a0d3d6bc49bcb6158f48da267e2cba49ba34c7b5b0a2d0c2e3"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/diagnose.py",
+      "sha256": "1577a450ab8c4f7ad3876444eda86f1e55957e547034b1215c20e2a956152b00"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/audit.py",
+      "sha256": "7f87531f058b649f7503e44b80d0d89c95961edc5a021671766a012b5f201c09"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/context.py",
+      "sha256": "70111c10011908a026517283d18d564b09399bec3bfaabba500127e6b6ea8cef"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/efa0adfb09f23f355d3d55180f2becfb1036f35c/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/worker.py",
+      "sha256": "ba77a1aeb7de60d2f57d5df86936de0c749f6db5ece23a3074f7b0e95991b9b0"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/efa0adfb09f23f355d3d55180f2becfb1036f35c/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/visualize2.py",
+      "sha256": "c0ac2264c4ff2dd57e0b66422dc6a7d738d9073932aaf9f56177c96be5870a0a"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/efa0adfb09f23f355d3d55180f2becfb1036f35c/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/clean2.py",
+      "sha256": "ea48037c1b888769777bef511422e374bf62675e11b46b6a990521850fd80b9a"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/efa0adfb09f23f355d3d55180f2becfb1036f35c/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/metrics2.py",
+      "sha256": "5257918969be1fcab4bc3fe83c76235a749d02d8f3dc33793a615f1aac8fafe1"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/efa0adfb09f23f355d3d55180f2becfb1036f35c/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/solver2.py",
+      "sha256": "b1c582c04e6627322be4adf7969e1cc507b9b979486969254939376cedc2e47a"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/efa0adfb09f23f355d3d55180f2becfb1036f35c/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/common2.py",
+      "sha256": "a993f4c39848c0ba0b4d407ee2aa5aba59ed7c144462827e2bc1fa6447e85e9e"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/efa0adfb09f23f355d3d55180f2becfb1036f35c/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/real2.py",
+      "sha256": "31d43b2aa01d6bcf84720e772db681087038f5bd3563a7f21880b13f6c79b135"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/efa0adfb09f23f355d3d55180f2becfb1036f35c/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/evaluate_real2.py",
+      "sha256": "11c650aef09396349c2478613782c2aef82cfed62b52c327b232b1628953b075"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/537c20701f6a7a8f2de150a87357195e0d5118a0/experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/code/registration.py",
+      "sha256": "cde33875484f18ba2053f39eb99e0d618a84645816133d1655e0bf7846bdadbc"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/537c20701f6a7a8f2de150a87357195e0d5118a0/experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/inputs/V6_KERNELS/track005.py",
+      "sha256": "c912da0713a329a3c954fc7b1dfbdcf43459493432ccbc782d7742cd26e514ac"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/537c20701f6a7a8f2de150a87357195e0d5118a0/experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/inputs/V6_KERNELS/v6_common.py",
+      "sha256": "59404f5c2a35913c253f802f5bb4ff21461861958a881f86973de15710693fe1"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/2d34cc866cd175d4d770a3e09d07b31a5c3662d7/experiments/TASK-V6-RESTORE-TRUSTED-ONLY-CLEAN-001/config/SOURCES_FROZEN.json",
+      "sha256": "31fe5064f31352d4dae2489f568385ff60c0c7538d74fc37110b5672e2e0183f"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/efa0adfb09f23f355d3d55180f2becfb1036f35c/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/config/PROTOCOL.json",
+      "sha256": "1a19a7b8e20a11cfdedffecf2828068f230a8943fca17fc986a53708e3053f91"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/537c20701f6a7a8f2de150a87357195e0d5118a0/experiments/TASK-V6-VIRTUAL-POLYP-REGISTRATION-001/config.json",
+      "sha256": "edff9919e6ee39d8470cbc39b7d1ad27634817b27425e8fae2eaa3da88f94214"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/config/PROTOCOL.json",
+      "sha256": "43de986bb612f1b64cc3bac90aadaab81d530d77594c5157e6f51b30737ea5f1"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/geometry.py",
+      "sha256": "b6622afb24500f5a5e1388bc3953904eca8803f3e32fcf1034dcbdc689604665"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/_kernels.py",
+      "sha256": "60cb2ff6638d0153a781fae2ad8964904b06fdd004fbca05ddb2e1ca1f5d059f"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/validation.py",
+      "sha256": "d2528dcb3f6b0f14989fb3afb392be74b52d80bbcc56a97506872b7a09535558"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/__main__.py",
+      "sha256": "e2d9c3d79b129a5212091bd6fe19a1f7a147cc429929f8777186a159d55db1da"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/cleaning.py",
+      "sha256": "a5fd471ad85767399c9013d3668863eb4a2950fcdf712267dd154a128db2e4e7"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/visualization.py",
+      "sha256": "35b9ed6600c95117b5fc041d6da356cca4bf801b9cd67d11a455cda03710870f"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/camera.py",
+      "sha256": "1f033569541ea074c716b579552f8a33508e3738205a742be7b3b0de6cb86535"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/rgb.py",
+      "sha256": "29bd1d25e2b04d0e30ef947706541ae910bf3c016a5fc1eaf40495df27d4b455"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/io.py",
+      "sha256": "51a6337fb25fcaded3d69a22332b668d44e95b3f1aba083df2914af8bf460615"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/_clean_kernels.py",
+      "sha256": "e81b6166a7236616ea03a277d597c966c49da2233fc46d72afa2c19ba405d08a"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/hero.py",
+      "sha256": "9a83c565a5633c54b2034c0bb62b50a9c459e26d36fc1c48d7ef631417fb7eab"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/_mesh_renderer.py",
+      "sha256": "68367842db544217a56f2ddf1e1cfe36bd97cada1f0c3975b569f583b41911fe"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/cli.py",
+      "sha256": "9fcc40a6be193dec3b20ad1bc8e160f4ac1290a89dc93abddb457f2d816dfcfc"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/__init__.py",
+      "sha256": "d7e5160e3b8252ba500cbc46ba4c45fc76c5bc921af994c10a6184c7a5648f4a"
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/mainline/native/ring_cad.py",
+      "sha256": "78b878b7d62f1a3d91595e020faf30e912f64b205766e78434bd7de021763254"
+    }
+  ],
+  "inputs": []
+}

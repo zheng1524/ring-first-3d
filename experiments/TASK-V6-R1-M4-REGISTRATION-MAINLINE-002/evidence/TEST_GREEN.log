@@ -1,0 +1,17 @@
+.E
+======================================================================
+ERROR: test_pair_slice_preserves_global_held (__main__.Contracts.test_pair_slice_preserves_global_held)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/test_mainline.py", line 20, in test_pair_slice_preserves_global_held
+    f,c,t=pair_view(frames,np.tile(np.eye(4),(3,1,1)),tr,'006','009')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/connections.py", line 17, in pair_view
+    ff=[dict(frames[i],side='A'if frames[i]['case']==a else'B',id=('A'if frames[i]['case']==a else'B')+'__'+frames[i]['id'].split('__',1)[1])for i in ids]
+                                                                                                            ~~~~~~~~~^^^^^^
+KeyError: 'id'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (errors=1)

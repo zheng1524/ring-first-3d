@@ -48,3 +48,12 @@ PY
 解压到另一个路径后，GROUP/回执中的任务内绝对路径需按旧任务根→新任务根统一映射；上游路径按原身份解析并校验SHA，不能更换内容。当前入口在本工作空间可直接运行；并非无外部原资产的独立安装包。
 
 图集：`visuals/index.html`。结果表：`evidence/GROUP_STATUS.csv`、`VIDEO_STATUS.csv`、`EDGE_RESULTS.csv`、`SURFACE_RESULTS.csv`、`SOURCE_STATUS.csv`。失效和null均保留；条件统计不是完整均值，也不是GT精度。
+
+恢复已交付的小型结果（在没有同名输出的新任务目录中）：
+
+```bash
+cd experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002
+tar -xzf evidence/R1_M4_FULL_EVIDENCE.tar.gz
+```
+
+归档内仅本任务结果，解压前校验ARCHIVE_MANIFEST中的SHA；不会包含上游视频、完整Mesh或模型。

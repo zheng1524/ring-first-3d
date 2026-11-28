@@ -1,0 +1,1900 @@
+[
+  {
+    "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+    "FIT_tracks": 140,
+    "removed_global_tracks": [
+      206,
+      179,
+      147,
+      181,
+      229,
+      73,
+      436
+    ],
+    "residual_mm": {
+      "median": 2.289956660293698,
+      "p95": 15.568008703510722,
+      "max": 62.1599944692248
+    },
+    "trim_delta": {
+      "rotation_deg": 0.13266731144968932,
+      "translation_mm": 0.04311576242121501
+    },
+    "leverage_delta": {
+      "rotation_deg": 0.09582421006064498,
+      "translation_mm": 0.03544663643197189
+    },
+    "old_replay_identical": true,
+    "old": {
+      "T": [
+        [
+          0.8607134019879802,
+          0.5085764969571482,
+          0.022855773473534194,
+          0.19208754800034866
+        ],
+        [
+          -0.5072291964793894,
+          0.8605378530300136,
+          -0.04683103395578371,
+          0.018775537053426584
+        ],
+        [
+          -0.04348542143236919,
+          0.02871498294080152,
+          0.9986413109207724,
+          0.6440897964479074
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 77.24770049106266,
+      "nfev": 6,
+      "ring_residual": [
+        0.19208754800034866,
+        0.018775537053426584,
+        0.6440897964479074,
+        0.022866130399094704,
+        -0.04685225509420475
+      ],
+      "ring_mahalanobis": 2.3408942013647622,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "trim": {
+      "T": [
+        [
+          0.8615627410309756,
+          0.5072085806969033,
+          0.021191954478639932,
+          0.17037782068977794
+        ],
+        [
+          -0.5059106065055616,
+          0.86131423044785,
+          -0.046821519125316874,
+          0.051250944753933485
+        ],
+        [
+          -0.04200120822508051,
+          0.02961844181351528,
+          0.9986784499588307,
+          0.6244356858380778
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 59.259198555553084,
+      "nfev": 6,
+      "ring_residual": [
+        0.17037782068977794,
+        0.051250944753933485,
+        0.6244356858380778,
+        0.021201294825758783,
+        -0.04684215569480852
+      ],
+      "ring_mahalanobis": 2.293532028084917,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "metrics": {
+      "original": {
+        "A_to_B": {
+          "N": 468,
+          "finite": 212,
+          "invalid": 256,
+          "finite_fraction": 0.452991452991453,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 16.742006028794396,
+          "conditional_P95": 27.575336918517685,
+          "valid_inside": 209,
+          "negative": 2,
+          "out_of_bounds": 3,
+          "source_DLT_missing": 254,
+          "categories": {
+            "0": {
+              "N": 468,
+              "finite": 212,
+              "invalid": 256,
+              "finite_fraction": 0.452991452991453,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 16.742006028794396,
+              "conditional_P95": 27.575336918517685
+            },
+            "1": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 370,
+          "finite": 184,
+          "invalid": 186,
+          "finite_fraction": 0.4972972972972973,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 20.703691822348812,
+          "conditional_P95": 29.681594901896617,
+          "valid_inside": 178,
+          "negative": 0,
+          "out_of_bounds": 6,
+          "source_DLT_missing": 186,
+          "categories": {
+            "0": {
+              "N": 367,
+              "finite": 184,
+              "invalid": 183,
+              "finite_fraction": 0.5013623978201635,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 20.703691822348812,
+              "conditional_P95": 29.681594901896617
+            },
+            "1": {
+              "N": 3,
+              "finite": 0,
+              "invalid": 3,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 169,
+          "two_sided_DLT_tracks": 52,
+          "valid_projected_tracks": 92,
+          "target_frames_A": 8,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      },
+      "trim5_diagnostic": {
+        "A_to_B": {
+          "N": 468,
+          "finite": 212,
+          "invalid": 256,
+          "finite_fraction": 0.452991452991453,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 16.68970916291158,
+          "conditional_P95": 27.66024415663305,
+          "valid_inside": 209,
+          "negative": 2,
+          "out_of_bounds": 3,
+          "source_DLT_missing": 254,
+          "categories": {
+            "0": {
+              "N": 468,
+              "finite": 212,
+              "invalid": 256,
+              "finite_fraction": 0.452991452991453,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 16.68970916291158,
+              "conditional_P95": 27.66024415663305
+            },
+            "1": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 370,
+          "finite": 184,
+          "invalid": 186,
+          "finite_fraction": 0.4972972972972973,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 20.688228718876164,
+          "conditional_P95": 29.998516484072006,
+          "valid_inside": 178,
+          "negative": 0,
+          "out_of_bounds": 6,
+          "source_DLT_missing": 186,
+          "categories": {
+            "0": {
+              "N": 367,
+              "finite": 184,
+              "invalid": 183,
+              "finite_fraction": 0.5013623978201635,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 20.688228718876164,
+              "conditional_P95": 29.998516484072006
+            },
+            "1": {
+              "N": 3,
+              "finite": 0,
+              "invalid": 3,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 169,
+          "two_sided_DLT_tracks": 52,
+          "valid_projected_tracks": 92,
+          "target_frames_A": 8,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      }
+    },
+    "held_used_for_fitting": false,
+    "normalization": "original robust coordinate mean 1/N; trim diagnostic renormalizes to 1/(N-k), independent quadratic Ring unchanged"
+  },
+  {
+    "group": "GP_Ip_4.0mm_closed_R10_single_refY",
+    "FIT_tracks": 22,
+    "removed_global_tracks": [
+      37,
+      184
+    ],
+    "residual_mm": {
+      "median": 1.0933047555245856,
+      "p95": 3.5590124942340235,
+      "max": 30.996260167555622
+    },
+    "trim_delta": {
+      "rotation_deg": 0.26955617081712296,
+      "translation_mm": 0.01326178326316008
+    },
+    "leverage_delta": {
+      "rotation_deg": 0.40727407098541885,
+      "translation_mm": 0.01703219606972719
+    },
+    "old_replay_identical": true,
+    "old": {
+      "T": [
+        [
+          0.9592053819515504,
+          0.2827084167745676,
+          -0.0009931364446303485,
+          -0.0023336676983253157
+        ],
+        [
+          -0.2827045596718176,
+          0.9591583444204805,
+          -0.009664484948842977,
+          -0.093820802897812
+        ],
+        [
+          -0.0017796561308137484,
+          0.009550990177993195,
+          0.9999528045916346,
+          0.05857615281150655
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 34.60511130347379,
+      "nfev": 7,
+      "ring_residual": [
+        -0.0023336676983253157,
+        -0.093820802897812,
+        0.05857615281150655,
+        -0.0009931520687519926,
+        -0.009664636991484534
+      ],
+      "ring_mahalanobis": 0.6891723935162293,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "trim": {
+      "T": [
+        [
+          0.9583247093940725,
+          0.28568120041637585,
+          -5.561856635851652e-05,
+          -0.007115575906337549
+        ],
+        [
+          -0.2856759525233174,
+          0.9583058882180451,
+          -0.006250980444628931,
+          -0.10557605153255396
+        ],
+        [
+          -0.0017324879975652713,
+          0.006006357904949501,
+          0.9999804608841395,
+          0.06237194375683625
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 15.81558922384549,
+      "nfev": 6,
+      "ring_residual": [
+        -0.007115575906337549,
+        -0.10557605153255396,
+        0.06237194375683625,
+        -5.561892860721842e-05,
+        -0.006251021157824181
+      ],
+      "ring_mahalanobis": 0.6713363490949384,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "metrics": {
+      "original": {
+        "A_to_B": {
+          "N": 155,
+          "finite": 40,
+          "invalid": 115,
+          "finite_fraction": 0.25806451612903225,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 53.14006881281593,
+          "conditional_P95": 213.0498041033258,
+          "valid_inside": 38,
+          "negative": 1,
+          "out_of_bounds": 2,
+          "source_DLT_missing": 114,
+          "categories": {
+            "0": {
+              "N": 137,
+              "finite": 40,
+              "invalid": 97,
+              "finite_fraction": 0.291970802919708,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 53.14006881281593,
+              "conditional_P95": 213.0498041033258
+            },
+            "1": {
+              "N": 18,
+              "finite": 0,
+              "invalid": 18,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 125,
+          "finite": 36,
+          "invalid": 89,
+          "finite_fraction": 0.288,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 28.050882556894535,
+          "conditional_P95": 93.70967260441451,
+          "valid_inside": 35,
+          "negative": 3,
+          "out_of_bounds": 1,
+          "source_DLT_missing": 86,
+          "categories": {
+            "0": {
+              "N": 121,
+              "finite": 36,
+              "invalid": 85,
+              "finite_fraction": 0.2975206611570248,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 28.050882556894535,
+              "conditional_P95": 93.70967260441451
+            },
+            "1": {
+              "N": 4,
+              "finite": 0,
+              "invalid": 4,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 66,
+          "two_sided_DLT_tracks": 10,
+          "valid_projected_tracks": 19,
+          "target_frames_A": 7,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      },
+      "trim5_diagnostic": {
+        "A_to_B": {
+          "N": 155,
+          "finite": 40,
+          "invalid": 115,
+          "finite_fraction": 0.25806451612903225,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 52.966598176539016,
+          "conditional_P95": 213.84215387752275,
+          "valid_inside": 38,
+          "negative": 1,
+          "out_of_bounds": 2,
+          "source_DLT_missing": 114,
+          "categories": {
+            "0": {
+              "N": 137,
+              "finite": 40,
+              "invalid": 97,
+              "finite_fraction": 0.291970802919708,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 52.966598176539016,
+              "conditional_P95": 213.84215387752275
+            },
+            "1": {
+              "N": 18,
+              "finite": 0,
+              "invalid": 18,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 125,
+          "finite": 36,
+          "invalid": 89,
+          "finite_fraction": 0.288,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 28.041054222105664,
+          "conditional_P95": 93.82444472330937,
+          "valid_inside": 35,
+          "negative": 3,
+          "out_of_bounds": 1,
+          "source_DLT_missing": 86,
+          "categories": {
+            "0": {
+              "N": 121,
+              "finite": 36,
+              "invalid": 85,
+              "finite_fraction": 0.2975206611570248,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 28.041054222105664,
+              "conditional_P95": 93.82444472330937
+            },
+            "1": {
+              "N": 4,
+              "finite": 0,
+              "invalid": 4,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 66,
+          "two_sided_DLT_tracks": 10,
+          "valid_projected_tracks": 19,
+          "target_frames_A": 7,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      }
+    },
+    "held_used_for_fitting": false,
+    "normalization": "original robust coordinate mean 1/N; trim diagnostic renormalizes to 1/(N-k), independent quadratic Ring unchanged"
+  },
+  {
+    "group": "GP_IIa_14.0mm_closed_R5_single_refY",
+    "FIT_tracks": 35,
+    "removed_global_tracks": [
+      19,
+      164
+    ],
+    "residual_mm": {
+      "median": 0.5150338116999974,
+      "p95": 2.8925698205832893,
+      "max": 6.242899105968952
+    },
+    "trim_delta": {
+      "rotation_deg": 0.10100527761156727,
+      "translation_mm": 0.004097977781077536
+    },
+    "leverage_delta": {
+      "rotation_deg": 0.25941094155011285,
+      "translation_mm": 0.013512094074575154
+    },
+    "old_replay_identical": true,
+    "old": {
+      "T": [
+        [
+          0.7635105551199096,
+          0.645785038623531,
+          -0.0036491246199758,
+          0.03038540788077867
+        ],
+        [
+          -0.6457263141691584,
+          0.7634993687403647,
+          0.010307333436832818,
+          -0.0068370574630884145
+        ],
+        [
+          0.00944242606541714,
+          -0.005513422083361328,
+          0.9999402195966166,
+          -0.04507864371037472
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 11.855192260017212,
+      "nfev": 5,
+      "ring_residual": [
+        0.03038540788077867,
+        -0.0068370574630884145,
+        -0.04507864371037472,
+        -0.0036491973370952192,
+        0.01030753883392787
+      ],
+      "ring_mahalanobis": 0.39792986460189783,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "trim": {
+      "T": [
+        [
+          0.7644150655156775,
+          0.6447165217047459,
+          -0.0031959745926196568,
+          0.034282583604347966
+        ],
+        [
+          -0.644651303003537,
+          0.7643936221595355,
+          0.011273328597504201,
+          -0.0060609660601750855
+        ],
+        [
+          0.009711083796599934,
+          -0.006557213032942474,
+          0.9999313465477199,
+          -0.0441319504355651
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 7.939783502909935,
+      "nfev": 5,
+      "ring_residual": [
+        0.034282583604347966,
+        -0.0060609660601750855,
+        -0.0441319504355651,
+        -0.0031960477328579202,
+        0.011273586588897985
+      ],
+      "ring_mahalanobis": 0.4226561041571731,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "metrics": {
+      "original": {
+        "A_to_B": {
+          "N": 103,
+          "finite": 63,
+          "invalid": 40,
+          "finite_fraction": 0.6116504854368932,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 5.013527697287464,
+          "conditional_P95": 9.225042479145007,
+          "valid_inside": 63,
+          "negative": 0,
+          "out_of_bounds": 0,
+          "source_DLT_missing": 40,
+          "categories": {
+            "0": {
+              "N": 93,
+              "finite": 53,
+              "invalid": 40,
+              "finite_fraction": 0.5698924731182796,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 5.523403747021094,
+              "conditional_P95": 10.545547081094016
+            },
+            "1": {
+              "N": 10,
+              "finite": 10,
+              "invalid": 0,
+              "finite_fraction": 1.0,
+              "MAE": 2.311184633699223,
+              "P95": 6.651168251402239,
+              "conditional_MAE": 2.311184633699223,
+              "conditional_P95": 5.581184043887312
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 97,
+          "finite": 59,
+          "invalid": 38,
+          "finite_fraction": 0.6082474226804123,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 4.011306653928861,
+          "conditional_P95": 8.40740000706569,
+          "valid_inside": 59,
+          "negative": 0,
+          "out_of_bounds": 0,
+          "source_DLT_missing": 38,
+          "categories": {
+            "0": {
+              "N": 90,
+              "finite": 52,
+              "invalid": 38,
+              "finite_fraction": 0.5777777777777777,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 4.263600051190597,
+              "conditional_P95": 8.511160402795893
+            },
+            "1": {
+              "N": 7,
+              "finite": 7,
+              "invalid": 0,
+              "finite_fraction": 1.0,
+              "MAE": 2.1371271314131053,
+              "P95": 3.643751748432604,
+              "conditional_MAE": 2.1371271314131053,
+              "conditional_P95": 3.344623404759754
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 36,
+          "two_sided_DLT_tracks": 14,
+          "valid_projected_tracks": 23,
+          "target_frames_A": 8,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      },
+      "trim5_diagnostic": {
+        "A_to_B": {
+          "N": 103,
+          "finite": 63,
+          "invalid": 40,
+          "finite_fraction": 0.6116504854368932,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 4.998081326907865,
+          "conditional_P95": 9.337811633510013,
+          "valid_inside": 63,
+          "negative": 0,
+          "out_of_bounds": 0,
+          "source_DLT_missing": 40,
+          "categories": {
+            "0": {
+              "N": 93,
+              "finite": 53,
+              "invalid": 40,
+              "finite_fraction": 0.5698924731182796,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 5.5068848642951265,
+              "conditional_P95": 10.63654619298726
+            },
+            "1": {
+              "N": 10,
+              "finite": 10,
+              "invalid": 0,
+              "finite_fraction": 1.0,
+              "MAE": 2.30142257875539,
+              "P95": 6.6663774235813795,
+              "conditional_MAE": 2.30142257875539,
+              "conditional_P95": 5.5964559596775265
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 97,
+          "finite": 59,
+          "invalid": 38,
+          "finite_fraction": 0.6082474226804123,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 3.966297929836618,
+          "conditional_P95": 8.368039778210365,
+          "valid_inside": 59,
+          "negative": 0,
+          "out_of_bounds": 0,
+          "source_DLT_missing": 38,
+          "categories": {
+            "0": {
+              "N": 90,
+              "finite": 52,
+              "invalid": 38,
+              "finite_fraction": 0.5777777777777777,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 4.212767652576399,
+              "conditional_P95": 8.45212848367994
+            },
+            "1": {
+              "N": 7,
+              "finite": 7,
+              "invalid": 0,
+              "finite_fraction": 1.0,
+              "MAE": 2.1353799894839622,
+              "P95": 3.6440446814435923,
+              "conditional_MAE": 2.1353799894839622,
+              "conditional_P95": 3.333189767081791
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 36,
+          "two_sided_DLT_tracks": 14,
+          "valid_projected_tracks": 23,
+          "target_frames_A": 8,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      }
+    },
+    "held_used_for_fitting": false,
+    "normalization": "original robust coordinate mean 1/N; trim diagnostic renormalizes to 1/(N-k), independent quadratic Ring unchanged"
+  },
+  {
+    "group": "GP_IIa_14.0mm_closed_R10_single_refY",
+    "FIT_tracks": 58,
+    "removed_global_tracks": [
+      213,
+      8,
+      172
+    ],
+    "residual_mm": {
+      "median": 1.0206523292937022,
+      "p95": 7.359919027116484,
+      "max": 16.465127574408584
+    },
+    "trim_delta": {
+      "rotation_deg": 0.028507219870170224,
+      "translation_mm": 0.0017030326114708888
+    },
+    "leverage_delta": {
+      "rotation_deg": 0.028642735476086777,
+      "translation_mm": 0.004587930143925308
+    },
+    "old_replay_identical": true,
+    "old": {
+      "T": [
+        [
+          0.9906567007464752,
+          0.13637867528052897,
+          0.0003977371452962792,
+          0.03823498074792562
+        ],
+        [
+          -0.13637897982690408,
+          0.9906563483747238,
+          0.000879366948759681,
+          0.028309945424768466
+        ],
+        [
+          -0.0002740939284148728,
+          -0.000925393746318532,
+          0.9999995342593578,
+          0.023273766270135103
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 23.988293644114083,
+      "nfev": 6,
+      "ring_residual": [
+        0.03823498074792562,
+        0.028309945424768466,
+        0.023273766270135103,
+        0.00039773720704374186,
+        0.0008793670852786823
+      ],
+      "ring_mahalanobis": 0.34613391192828097,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "trim": {
+      "T": [
+        [
+          0.9905930600027979,
+          0.1368401051926526,
+          0.0004184317827427994,
+          0.03834507505893419
+        ],
+        [
+          -0.13684047772474273,
+          0.9905925374281812,
+          0.0010528284102987557,
+          0.02974478473702464
+        ],
+        [
+          -0.0002704262509926921,
+          -0.001100182921661466,
+          0.9999993582333848,
+          0.024158325975568867
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 15.79276609326975,
+      "nfev": 7,
+      "ring_residual": [
+        0.03834507505893419,
+        0.02974478473702464,
+        0.024158325975568867,
+        0.000418431872254672,
+        0.0010528286355221887
+      ],
+      "ring_mahalanobis": 0.36060869521037375,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "metrics": {
+      "original": {
+        "A_to_B": {
+          "N": 91,
+          "finite": 66,
+          "invalid": 25,
+          "finite_fraction": 0.7252747252747253,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 125.99618173844831,
+          "conditional_P95": 1193.4327467536943,
+          "valid_inside": 61,
+          "negative": 2,
+          "out_of_bounds": 5,
+          "source_DLT_missing": 23,
+          "categories": {
+            "0": {
+              "N": 91,
+              "finite": 66,
+              "invalid": 25,
+              "finite_fraction": 0.7252747252747253,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 125.99618173844831,
+              "conditional_P95": 1193.4327467536943
+            },
+            "1": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 157,
+          "finite": 77,
+          "invalid": 80,
+          "finite_fraction": 0.49044585987261147,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 30.447707096999256,
+          "conditional_P95": 83.09719562764336,
+          "valid_inside": 75,
+          "negative": 0,
+          "out_of_bounds": 2,
+          "source_DLT_missing": 80,
+          "categories": {
+            "0": {
+              "N": 157,
+              "finite": 77,
+              "invalid": 80,
+              "finite_fraction": 0.49044585987261147,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 30.447707096999256,
+              "conditional_P95": 83.09719562764336
+            },
+            "1": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 45,
+          "two_sided_DLT_tracks": 17,
+          "valid_projected_tracks": 22,
+          "target_frames_A": 8,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      },
+      "trim5_diagnostic": {
+        "A_to_B": {
+          "N": 91,
+          "finite": 66,
+          "invalid": 25,
+          "finite_fraction": 0.7252747252747253,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 125.95910906639112,
+          "conditional_P95": 1193.1334092631052,
+          "valid_inside": 61,
+          "negative": 2,
+          "out_of_bounds": 5,
+          "source_DLT_missing": 23,
+          "categories": {
+            "0": {
+              "N": 91,
+              "finite": 66,
+              "invalid": 25,
+              "finite_fraction": 0.7252747252747253,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 125.95910906639112,
+              "conditional_P95": 1193.1334092631052
+            },
+            "1": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 157,
+          "finite": 77,
+          "invalid": 80,
+          "finite_fraction": 0.49044585987261147,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 30.46640061502104,
+          "conditional_P95": 83.17281257088844,
+          "valid_inside": 75,
+          "negative": 0,
+          "out_of_bounds": 2,
+          "source_DLT_missing": 80,
+          "categories": {
+            "0": {
+              "N": 157,
+              "finite": 77,
+              "invalid": 80,
+              "finite_fraction": 0.49044585987261147,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 30.46640061502104,
+              "conditional_P95": 83.17281257088844
+            },
+            "1": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 45,
+          "two_sided_DLT_tracks": 17,
+          "valid_projected_tracks": 22,
+          "target_frames_A": 8,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      }
+    },
+    "held_used_for_fitting": false,
+    "normalization": "original robust coordinate mean 1/N; trim diagnostic renormalizes to 1/(N-k), independent quadratic Ring unchanged"
+  },
+  {
+    "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+    "FIT_tracks": 170,
+    "removed_global_tracks": [
+      1424,
+      801,
+      1188,
+      313,
+      958,
+      846,
+      621,
+      957,
+      1247
+    ],
+    "residual_mm": {
+      "median": 3.675101627869357,
+      "p95": 12.52078941290867,
+      "max": 76.34791991389582
+    },
+    "trim_delta": {
+      "rotation_deg": 0.1356011819511533,
+      "translation_mm": 0.010379160472801794
+    },
+    "leverage_delta": {
+      "rotation_deg": 0.49416163354327763,
+      "translation_mm": 0.010092780415252146
+    },
+    "old_replay_identical": true,
+    "old": {
+      "T": [
+        [
+          0.5745417672904664,
+          0.8184461830408628,
+          0.006899500314529128,
+          0.12199004971486863
+        ],
+        [
+          -0.8184126237360142,
+          0.5745816737531267,
+          -0.007528445828228394,
+          -0.04137675169456765
+        ],
+        [
+          -0.010125954191125806,
+          -0.0013212315837803582,
+          0.9999478583400343,
+          0.17151255239950064
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 85.4755550844942,
+      "nfev": 7,
+      "ring_residual": [
+        0.12199004971486863,
+        -0.04137675169456765,
+        0.17151255239950064,
+        0.006899620234163366,
+        -0.007528576679511668
+      ],
+      "ring_mahalanobis": 0.9897547578516858,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "trim": {
+      "T": [
+        [
+          0.5733068554347678,
+          0.8192975832543969,
+          0.008409493742359483,
+          0.12697710447594326
+        ],
+        [
+          -0.819277855460802,
+          0.5733598188563344,
+          -0.006504896046888577,
+          -0.03961014670175118
+        ],
+        [
+          -0.010151111419329603,
+          -0.00316041050117957,
+          0.9999434817740533,
+          0.1804066434913503
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 60.88238798211809,
+      "nfev": 7,
+      "ring_residual": [
+        0.12697710447594326,
+        -0.03961014670175118,
+        0.1804066434913503,
+        0.008409652175830382,
+        -0.0065050185980539766
+      ],
+      "ring_mahalanobis": 1.0342122527694795,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "metrics": {
+      "original": {
+        "A_to_B": {
+          "N": 673,
+          "finite": 219,
+          "invalid": 454,
+          "finite_fraction": 0.32540861812778604,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 9.253522560293606,
+          "conditional_P95": 17.441070255845457,
+          "valid_inside": 219,
+          "negative": 4,
+          "out_of_bounds": 0,
+          "source_DLT_missing": 450,
+          "categories": {
+            "0": {
+              "N": 647,
+              "finite": 215,
+              "invalid": 432,
+              "finite_fraction": 0.3323029366306028,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 9.37439760222557,
+              "conditional_P95": 17.46690093208938
+            },
+            "1": {
+              "N": 26,
+              "finite": 4,
+              "invalid": 22,
+              "finite_fraction": 0.15384615384615385,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 2.7564890564505036,
+              "conditional_P95": 3.3379061224548816
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 781,
+          "finite": 245,
+          "invalid": 536,
+          "finite_fraction": 0.31370038412291934,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 19.98197971924272,
+          "conditional_P95": 70.40333907298309,
+          "valid_inside": 243,
+          "negative": 0,
+          "out_of_bounds": 2,
+          "source_DLT_missing": 536,
+          "categories": {
+            "0": {
+              "N": 769,
+              "finite": 240,
+              "invalid": 529,
+              "finite_fraction": 0.31209362808842656,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 20.339463180191828,
+              "conditional_P95": 71.50346730001014
+            },
+            "1": {
+              "N": 12,
+              "finite": 5,
+              "invalid": 7,
+              "finite_fraction": 0.4166666666666667,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 2.8227735936855014,
+              "conditional_P95": 3.2105425440502295
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 286,
+          "two_sided_DLT_tracks": 45,
+          "valid_projected_tracks": 76,
+          "target_frames_A": 8,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      },
+      "trim5_diagnostic": {
+        "A_to_B": {
+          "N": 673,
+          "finite": 219,
+          "invalid": 454,
+          "finite_fraction": 0.32540861812778604,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 9.424965742545194,
+          "conditional_P95": 17.353177424004013,
+          "valid_inside": 219,
+          "negative": 4,
+          "out_of_bounds": 0,
+          "source_DLT_missing": 450,
+          "categories": {
+            "0": {
+              "N": 647,
+              "finite": 215,
+              "invalid": 432,
+              "finite_fraction": 0.3323029366306028,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 9.547578198052019,
+              "conditional_P95": 17.39742525954191
+            },
+            "1": {
+              "N": 26,
+              "finite": 4,
+              "invalid": 22,
+              "finite_fraction": 0.15384615384615385,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 2.8345462590533668,
+              "conditional_P95": 3.34481634028763
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 781,
+          "finite": 245,
+          "invalid": 536,
+          "finite_fraction": 0.31370038412291934,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 19.89742043191468,
+          "conditional_P95": 70.34039823239557,
+          "valid_inside": 243,
+          "negative": 0,
+          "out_of_bounds": 2,
+          "source_DLT_missing": 536,
+          "categories": {
+            "0": {
+              "N": 769,
+              "finite": 240,
+              "invalid": 529,
+              "finite_fraction": 0.31209362808842656,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 20.255517672937934,
+              "conditional_P95": 71.42066107463855
+            },
+            "1": {
+              "N": 12,
+              "finite": 5,
+              "invalid": 7,
+              "finite_fraction": 0.4166666666666667,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 2.708752862798495,
+              "conditional_P95": 3.1060262982707894
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 286,
+          "two_sided_DLT_tracks": 45,
+          "valid_projected_tracks": 76,
+          "target_frames_A": 8,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      }
+    },
+    "held_used_for_fitting": false,
+    "normalization": "original robust coordinate mean 1/N; trim diagnostic renormalizes to 1/(N-k), independent quadratic Ring unchanged"
+  },
+  {
+    "group": "GP_Ip_2.9mm_closed_R10_single_refY",
+    "FIT_tracks": 43,
+    "removed_global_tracks": [
+      39,
+      123,
+      13
+    ],
+    "residual_mm": {
+      "median": 0.6783263436887487,
+      "p95": 4.034309092625107,
+      "max": 14.237642684544777
+    },
+    "trim_delta": {
+      "rotation_deg": 0.0833997059431887,
+      "translation_mm": 0.004210534374234985
+    },
+    "leverage_delta": {
+      "rotation_deg": 0.020246487870840067,
+      "translation_mm": 0.003370701138858794
+    },
+    "old_replay_identical": true,
+    "old": {
+      "T": [
+        [
+          0.9447584804094422,
+          0.327764118595208,
+          0.001447845277626025,
+          0.03859198504613585
+        ],
+        [
+          -0.32776555085740217,
+          0.9447586727287424,
+          0.0008910527306634335,
+          0.03859528439196846
+        ],
+        [
+          -0.0010758092699187872,
+          -0.0013163834287636517,
+          0.9999985548834974,
+          0.03843058992053411
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 15.863922965906589,
+      "nfev": 5,
+      "ring_residual": [
+        0.03859198504613585,
+        0.03859528439196846,
+        0.03843058992053411,
+        0.0014478459750614627,
+        0.0008910531598886835
+      ],
+      "ring_mahalanobis": 0.4427622877559467,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "trim": {
+      "T": [
+        [
+          0.9442910167490812,
+          0.3291095427442367,
+          0.0011766739845340754,
+          0.034860429570349585
+        ],
+        [
+          -0.32911073103263716,
+          0.9442907871850372,
+          0.0010178195448552058,
+          0.0366981777959652
+        ],
+        [
+          -0.0007761482781123924,
+          -0.0013483738881155047,
+          0.9999987897401217,
+          0.03819380913133736
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "numerical": "CONVERGED",
+      "quality": "UNASSESSED",
+      "cost": 8.892590363478153,
+      "nfev": 5,
+      "ring_residual": [
+        0.034860429570349585,
+        0.0366981777959652,
+        0.03819380913133736,
+        0.0011766744592280763,
+        0.0010178199554641242
+      ],
+      "ring_mahalanobis": 0.41852648642587154,
+      "guard": 5.0,
+      "candidate_only": false
+    },
+    "metrics": {
+      "original": {
+        "A_to_B": {
+          "N": 78,
+          "finite": 65,
+          "invalid": 13,
+          "finite_fraction": 0.8333333333333334,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 11.66999290408741,
+          "conditional_P95": 63.6622712728804,
+          "valid_inside": 65,
+          "negative": 0,
+          "out_of_bounds": 0,
+          "source_DLT_missing": 13,
+          "categories": {
+            "0": {
+              "N": 73,
+              "finite": 60,
+              "invalid": 13,
+              "finite_fraction": 0.821917808219178,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 9.034111609560666,
+              "conditional_P95": 63.99333131554867
+            },
+            "1": {
+              "N": 5,
+              "finite": 5,
+              "invalid": 0,
+              "finite_fraction": 1.0,
+              "MAE": 43.30056843840832,
+              "P95": 62.890440480153515,
+              "conditional_MAE": 43.30056843840832,
+              "conditional_P95": 61.81412143832776
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 113,
+          "finite": 74,
+          "invalid": 39,
+          "finite_fraction": 0.6548672566371682,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 11.209732812111401,
+          "conditional_P95": 54.62995292687842,
+          "valid_inside": 72,
+          "negative": 1,
+          "out_of_bounds": 2,
+          "source_DLT_missing": 38,
+          "categories": {
+            "0": {
+              "N": 108,
+              "finite": 69,
+              "invalid": 39,
+              "finite_fraction": 0.6388888888888888,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 9.984621045548693,
+              "conditional_P95": 55.9674953727693
+            },
+            "1": {
+              "N": 5,
+              "finite": 5,
+              "invalid": 0,
+              "finite_fraction": 1.0,
+              "MAE": 28.116275190676788,
+              "P95": 41.850108322216464,
+              "conditional_MAE": 28.116275190676788,
+              "conditional_P95": 40.933745150993516
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 30,
+          "two_sided_DLT_tracks": 16,
+          "valid_projected_tracks": 22,
+          "target_frames_A": 8,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      },
+      "trim5_diagnostic": {
+        "A_to_B": {
+          "N": 78,
+          "finite": 65,
+          "invalid": 13,
+          "finite_fraction": 0.8333333333333334,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 11.711136139164886,
+          "conditional_P95": 64.00247681561765,
+          "valid_inside": 65,
+          "negative": 0,
+          "out_of_bounds": 0,
+          "source_DLT_missing": 13,
+          "categories": {
+            "0": {
+              "N": 73,
+              "finite": 60,
+              "invalid": 13,
+              "finite_fraction": 0.821917808219178,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 9.064666764355009,
+              "conditional_P95": 64.36482616926392
+            },
+            "1": {
+              "N": 5,
+              "finite": 5,
+              "invalid": 0,
+              "finite_fraction": 1.0,
+              "MAE": 43.4687686368834,
+              "P95": 63.08219646039453,
+              "conditional_MAE": 43.4687686368834,
+              "conditional_P95": 62.001213900330434
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "B_to_A": {
+          "N": 113,
+          "finite": 74,
+          "invalid": 39,
+          "finite_fraction": 0.6548672566371682,
+          "MAE": null,
+          "P95": null,
+          "conditional_MAE": 11.205820695816469,
+          "conditional_P95": 54.327926142561815,
+          "valid_inside": 72,
+          "negative": 1,
+          "out_of_bounds": 2,
+          "source_DLT_missing": 38,
+          "categories": {
+            "0": {
+              "N": 108,
+              "finite": 69,
+              "invalid": 39,
+              "finite_fraction": 0.6388888888888888,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": 9.978142746108013,
+              "conditional_P95": 55.68420216361296
+            },
+            "1": {
+              "N": 5,
+              "finite": 5,
+              "invalid": 0,
+              "finite_fraction": 1.0,
+              "MAE": 28.147776401793145,
+              "P95": 41.8866357928482,
+              "conditional_MAE": 28.147776401793145,
+              "conditional_P95": 40.963912509588106
+            },
+            "2": {
+              "N": 0,
+              "finite": 0,
+              "invalid": 0,
+              "finite_fraction": 0.0,
+              "MAE": null,
+              "P95": null,
+              "conditional_MAE": null,
+              "conditional_P95": null
+            }
+          }
+        },
+        "denominators": {
+          "all_held_tracks": 30,
+          "two_sided_DLT_tracks": 16,
+          "valid_projected_tracks": 22,
+          "target_frames_A": 8,
+          "target_frames_B": 8,
+          "evidence_sufficient": true
+        }
+      }
+    },
+    "held_used_for_fitting": false,
+    "normalization": "original robust coordinate mean 1/N; trim diagnostic renormalizes to 1/(N-k), independent quadratic Ring unchanged"
+  }
+]

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/efa0adfb09f23f355d3d55180f2becfb1036f35c/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/worker.py", line 24, in <module>
+    else:sys.argv=args;runpy.run_path(args[0],run_name='__main__')
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/diagnose.py", line 3, in <module>
+    from solver2 import solve_methods
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runtime/pinned/efa0adfb09f23f355d3d55180f2becfb1036f35c/experiments/TASK-V6-REGISTRATION-NOISE-AND-RAW-CLEAN-002/code/solver2.py", line 5, in <module>
+    from ring_first_3d.sim.geometry import se3,parameters,transform
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-M4-002/src/ring_first_3d/sim/geometry.py", line 7, in <module>
+    from ..synthetic.raster import scene
+ModuleNotFoundError: No module named 'ring_first_3d.synthetic'

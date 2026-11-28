@@ -1,0 +1,21 @@
+.F.F.
+======================================================================
+FAIL: test_interrupted_stage_is_preserved_and_can_restart (__main__.Contracts.test_interrupted_stage_is_preserved_and_can_restart)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/test_mainline.py", line 10, in test_interrupted_stage_is_preserved_and_can_restart
+    self.assertTrue(hasattr(context,'isolate_incomplete'),'missing interrupted stage recovery')
+AssertionError: False is not true : missing interrupted stage recovery
+
+======================================================================
+FAIL: test_output_guard_rejects_input_and_transform_drift (__main__.Contracts.test_output_guard_rejects_input_and_transform_drift)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/test_mainline.py", line 20, in test_output_guard_rejects_input_and_transform_drift
+    self.assertTrue(hasattr(context,'verify_registration'),'missing output frozen-input guard')
+AssertionError: False is not true : missing output frozen-input guard
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.048s
+
+FAILED (failures=2)
