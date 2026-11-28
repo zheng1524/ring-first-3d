@@ -3,6 +3,28 @@ import numpy as np
 import importlib.util
 
 class Contracts(unittest.TestCase):
+ def test_interrupted_stage_is_preserved_and_can_restart(self):
+  import tempfile
+  from pathlib import Path
+  import context
+  self.assertTrue(hasattr(context,'isolate_incomplete'),'missing interrupted stage recovery')
+  with tempfile.TemporaryDirectory(dir=context.T/'runtime')as tmp:
+   stage=Path(tmp)/'stage';stage.mkdir();(stage/'partial').write_text('evidence')
+   archived=context.isolate_incomplete(stage)
+   self.assertFalse(stage.exists());self.assertEqual((archived/'partial').read_text(),'evidence')
+   stage.mkdir();self.assertTrue(stage.exists())
+ def test_output_guard_rejects_input_and_transform_drift(self):
+  import tempfile,json
+  from pathlib import Path
+  import context
+  self.assertTrue(hasattr(context,'verify_registration'),'missing output frozen-input guard')
+  with tempfile.TemporaryDirectory(dir=context.T/'runtime')as tmp:
+   p=Path(tmp);inp=p/'CAD';inp.write_text('original');a=p/'ASSETS.json';a.write_text(json.dumps(dict(files=[dict(path=str(inp),sha256=context.sha(inp))])));r=p/'REGISTRATION.json';r.write_text('{}')
+   f=p/'TRANSFORM_FREEZE.json';f.write_text(json.dumps(dict(registration_sha256=context.sha(r),inputs=[dict(path=str(a),sha256=context.sha(a))])))
+   context.verify_registration(p);inp.write_text('changed')
+   with self.assertRaises(AssertionError):context.verify_registration(p)
+   inp.write_text('original');r.write_text('{"T":"modified"}')
+   with self.assertRaises(AssertionError):context.verify_registration(p)
  def test_multivideo_connection_and_unconnected(self):
   self.assertIsNotNone(importlib.util.find_spec('connections'), 'missing group connection adapter')
   from connections import connect

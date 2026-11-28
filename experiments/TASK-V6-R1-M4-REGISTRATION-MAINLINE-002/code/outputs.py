@@ -14,6 +14,8 @@ def clean_source(source,ordinal,out,TV):
  key=cache_key(dict(source=source,T=TV,classifier=classifier,adapter=sha(ROOT/'experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/clean_after.py'),mapping=sha(ROOT/'src/ring_first_3d/v6_raw/surface_clean.py'),ordinal=ordinal))
  if (folder/'COMPLETE.json').exists():
   r=read(folder/'COMPLETE.json');assert r['cache_key']==key,'CLEAN_CACHE_MISMATCH';assert sha(r['selection_path'])==r['selection_sha256'];assert sha(r['raw_domain'])==r['raw_domain_sha256'];return r
+ if (folder/'clean_M4').exists():
+  isolate_incomplete(folder);folder.mkdir(parents=True)
  save(folder/'PREDICTION_FREEZE.json',dict(T=TV,registration_sha256=sha(out/'REGISTRATION.json'),cache_key=key))
  # Exact identity sources can reuse R1's own verified classification, relative to the same CAD.
  if np.array_equal(TV,np.eye(4)):
@@ -29,7 +31,7 @@ def clean_source(source,ordinal,out,TV):
  rec.update(cache_key=key,raw_domain_sha256=sha(rec['raw_domain']),registration_method='M4',classifier=classifier);save(folder/'COMPLETE.json',rec);return rec
 
 def outputs(g):
- out=group_out(g);asset=read(out/'ASSETS.json');reg=read(out/'REGISTRATION.json');before=sha(out/'REGISTRATION.json');freeze('OUTPUTS',out,[out/'REGISTRATION.json']);index=[];sources=[];videos=[]
+ out=group_out(g);asset,reg=verify_registration(out);before=sha(out/'REGISTRATION.json');freeze('OUTPUTS',out,[out/'REGISTRATION.json']);index=[];sources=[];videos=[]
  for v in asset['videos']:
   connection=reg['videos'][v['case']];t=connection['T'];entry=dict(case=v['case'],status=connection['status'],T_local_to_common=t,path_to_reference=connection['path'],local_camera=v['camera'],local_camera_sha256=v['camera_sha256'],common_cameras=None,camera_coordinate_frame=None)
   if t is not None:

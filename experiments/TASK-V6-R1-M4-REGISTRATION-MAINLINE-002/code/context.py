@@ -19,6 +19,11 @@ def freeze(stage,out,inputs=()):
 c.stage_freeze=freeze
 def cache_key(value):return hashlib.sha256(json.dumps(c.clean(value),sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def group_out(g):return RUN/'groups'/g
+def isolate_incomplete(folder):
+ folder=Path(folder);assert T in folder.resolve().parents
+ dest=folder.with_name(folder.name+'.incomplete_'+str(time.time_ns()));folder.rename(dest);return dest
+def verify_registration(out):
+ out=Path(out);receipt=read(out/'TRANSFORM_FREEZE.json');assert sha(out/'REGISTRATION.json')==receipt['registration_sha256'],'REGISTRATION_DRIFT';verify(receipt['inputs']);asset=read(out/'ASSETS.json');verify(asset['files']);return asset,read(out/'REGISTRATION.json')
 def prior_run():
  # Restore the committed small archive once; no historical worktree is needed.
  import tarfile

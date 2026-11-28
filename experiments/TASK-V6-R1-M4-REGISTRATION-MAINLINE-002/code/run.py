@@ -23,6 +23,10 @@ def matches(g,asset,out):
  else:
   import real2
   oldrun=real2.RUN;real2.RUN=RUN/'matching'
+  temp=RUN/'matching/real'/g
+  if temp.exists():isolate_incomplete(temp)
+  for name in ['FRAMES.json','CAMERAS.npz','TRACK_FROZEN.json','tracks']:
+   if (out/name).exists():isolate_incomplete(out/name)
   try:make_tracks(g)
   finally:real2.RUN=oldrun
   temp=RUN/'matching/real'/g
@@ -51,21 +55,25 @@ def solve_edge(g,asset,out,frames,C,tr,a,b):
 
 def predict(g):
  out=group_out(g);asset=read(out/'ASSETS.json');verify(asset['files']);videos=[v['case']for v in asset['videos']];ref=asset['reference'];decision=read(T/'config/DECISION.json');assert decision['method']=='M4_ORIGINAL'
- if not videos:save(out/'REGISTRATION.json',dict(reference=None,videos={},edges=[],status='NO_OUTPUT'));return
- if len(videos)==1:save(out/'REGISTRATION.json',dict(reference=ref,videos=connect(videos,ref,{}),edges=[],status='SINGLE_VIDEO_ONLY'));return
+ if len(videos)<2:
+  save(out/'REGISTRATION.json',dict(reference=ref,videos=connect(videos,ref,{})if videos else{},edges=[],status='SINGLE_VIDEO_ONLY'if videos else'NO_OUTPUT'));freeze_transform(out);return
  matches(g,asset,out);frames=read(out/'FRAMES.json');C=np.load(out/'CAMERAS.npz')['c2w'];tr=dict(np.load(out/'tracks/observations/tracks005.npz'));edges={};records=[]
  # Attempt direct reference edges first. Fallback uses a connected video, never held scores.
- for a,b in [(ref,v)for v in videos if v!=ref]+[(a,b)for a,b in itertools.combinations(videos,2)if ref not in [a,b]]:
+ attempted=set()
+ while True:
   connected=connect(videos,ref,edges)
-  if a!=ref:
-   if (connected[a]['T']is None)==(connected[b]['T']is None):continue
-   if connected[a]['T']is None:a,b=b,a
+  options=[(a,b)for a in videos if connected[a]['T']is not None for b in videos if connected[b]['T']is None and frozenset([a,b])not in attempted]
+  if not options:break
+  a,b=min(options,key=lambda ab:(ab[0]!=ref,ab));attempted.add(frozenset([a,b]))
   rec=solve_edge(g,asset,out,frames,C,tr,a,b);records.append(rec)
   if rec['results']['M4']['T']is not None:edges[(a,b)]=np.array(rec['results']['M4']['T'])
  result=connect(videos,ref,edges);used=set(int(i)for r in records for i in r['FIT_track_ids']);assert not np.any(tr['held'][list(used)])
  status='CONNECTED'if all(r['T']is not None for r in result.values())else'PARTIAL_UNCONNECTED'
  save(out/'REGISTRATION.json',dict(reference=ref,videos=result,edges=records,status=status,method='M4_ORIGINAL',decision_sha256=sha(T/'config/DECISION.json'),used_FIT_global_track_ids=sorted(used),global_held_track_ids=np.flatnonzero(tr['held']),no_cross_edge_held_reuse_as_fit=True))
- save(out/'TRANSFORM_FREEZE.json',dict(registration_sha256=sha(out/'REGISTRATION.json'),inputs=[dict(path=str(out/n),sha256=sha(out/n))for n in ['ASSETS.json','MATCH_CACHE.json']],decision_sha256=sha(T/'config/DECISION.json')))
+ freeze_transform(out)
+
+def freeze_transform(out):
+ save(out/'TRANSFORM_FREEZE.json',dict(registration_sha256=sha(out/'REGISTRATION.json'),inputs=[dict(path=str(out/n),sha256=sha(out/n))for n in ['ASSETS.json','MATCH_CACHE.json']if(out/n).exists()],decision_sha256=sha(T/'config/DECISION.json')))
 
 def evaluate_edges(g):
  out=group_out(g);asset=read(out/'ASSETS.json');reg=read(out/'REGISTRATION.json');rows=[]
