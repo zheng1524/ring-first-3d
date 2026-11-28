@@ -12,12 +12,12 @@
 |Clean|clean_after.one +017/018|按冻结M4，所有源一次登记，缓存键含T/CAD/分类器|原面ID/state、同步相机、共同面零额外位移|
 |评价/图|metrics2/evaluate_real2、R1 visualize|M4统一，三状态、原面固定采样|完整失效计数、同观测辅助对照、接口读取|
 
-- [ ] code/context.py 与入口：固定提交解析依赖；CPU单线程、逐组续跑；保留5GiB磁盘余量，任务上限1GiB。
-- [ ] code/audit.py：核验终态清单、摄像机/Ring/HERO链；所有视频含无输出；来源键case+tag；统一按case排序参考（不读held/效果）。
-- [ ] code/diagnose.py：旧六组冻结FIT，最高残差5%/重复空间桶影响诊断；只验证一个通用可靠性限权候选；无工程收益则保留原M4。冻结 config/DECISION.json。
-- [ ] code/run.py：复用旧六组相同输入的tracks/DLT；新增组一次全视频匹配后共享FIT/held切片。先直接参考边、必要时已连接视频中转；未连接不伪造T。
-- [ ] code/outputs.py：所有已连接来源配准后Clean、相机/地标与GROUP.json接口；未连接保留本地来源和明确状态。
-- [ ] code/review.py：旧六组旧新同域比较，全量表；三状态中文HTML、真实截面、RGB/Ring/相机；下游读取契约测试。
+- [x] code/context.py 与入口：固定提交解析依赖；CPU单线程、逐组续跑；保留5GiB磁盘余量，任务上限1GiB。
+- [x] code/audit.py：核验终态清单、摄像机/Ring/HERO链；所有视频含无输出；来源键case+tag；统一按case排序参考（不读held/效果）。
+- [x] code/diagnose.py：旧六组冻结FIT，最高残差5%/重复空间桶影响诊断；只验证一个通用可靠性限权候选；无工程收益则保留原M4。冻结 config/DECISION.json。
+- [x] code/run.py：复用旧六组相同输入的tracks/DLT；新增组一次全视频匹配后共享FIT/held切片。先直接参考边、必要时已连接视频中转；未连接不伪造T。
+- [x] code/outputs.py：所有已连接来源配准后Clean、相机/地标与GROUP.json接口；未连接保留本地来源和明确状态。
+- [x] code/review.py：旧六组旧新同域比较，全量表；三状态中文HTML、真实截面、RGB/Ring/相机；下游读取契约测试。
 - [ ] 全量实际运行：局部失败记录并继续，恢复错误阶段；最终核验输入哈希、每源唯一、所有39组状态及续跑入口。
 - [ ] TECHNICAL_REPORT.md/REPRODUCE.md、注册表、精选证据提交增量push，核实远端SHA。
 

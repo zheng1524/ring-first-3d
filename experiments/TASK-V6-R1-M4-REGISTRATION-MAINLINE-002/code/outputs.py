@@ -47,6 +47,7 @@ def outputs(g):
   index.append(rec);save(out/'CLEAN_INDEX.json',index)
   sources.append(dict(source_id=source['source_id'],case=source['case'],tag=source['tag'],reference=source['reference'],target=source['raw_target'],support=source['raw_support'],raw_mesh=str(Path(source['run'])/'meshes'/(source['tag']+'_Polyp.ply')),raw_mesh_sha256=source['mesh_sha256'],native_depth=str(Path(source['run'])/'raw'/(source['tag']+'.npz')),native_sha256=source['native_sha256'],raw_coordinate_frame='LOCAL',T_local_to_common=t,connected=t is not None,clean_status=rec['status'],selection=rec.get('selection_path'),selection_sha256=rec.get('selection_sha256'),raw_domain=rec.get('raw_domain'),clean_rule='original F[state==0]; same original V after one rigid transform'))
   print('SOURCE',g,ordinal+1,'/',len(asset['sources']),rec['origin'],flush=True)
+ save(out/'CLEAN_INDEX.json',index)
  landmarks=[]
  for e in reg['edges']:
   lm=np.load(Path(e['folder'])/'LANDMARKS.npz');p=out/'landmarks'/(e['parent'].rsplit('_',1)[-1]+'__'+e['child'].rsplit('_',1)[-1]+'.npz');p.parent.mkdir(exist_ok=True);points=[]

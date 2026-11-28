@@ -21,7 +21,7 @@ def main():
    if rb['conditional_MAE']is not None and r0['conditional_MAE']is not None and rb['conditional_MAE']>r0['conditional_MAE']+1:cautions.append('Ring吻合有明显代价')
    for method,m in e['methods'].items():
     for direction in ['A_to_B','B_to_A']:
-     b0=m['bidir'][direction];edges.append(dict(group=g,parent=e['parent'],child=e['child'],method=method,direction=direction,FIT_tracks=e['FIT_tracks'],held_tracks=m['bidir']['denominators']['all_held_tracks'],two_sided_held=m['bidir']['denominators']['two_sided_DLT_tracks'],**{k:v for k,v in b0.items()if k!='categories'},Ring_B_conditional_MAE=m['ring']['by_side']['B']['conditional_MAE']))
+     b0=m['bidir'][direction];edges.append(dict(group=g,parent=e['parent'],child=e['child'],method=method,direction=direction,FIT_tracks=e['FIT_tracks'],held_tracks=m['bidir']['denominators']['all_held_tracks'],two_sided_held=m['bidir']['denominators']['two_sided_DLT_tracks'],**{k:v for k,v in b0.items()if k!='categories'},Ring_B_conditional_MAE=m['ring']['by_side']['B']['conditional_MAE'],common_finite_N=e['common_finite'][direction]['methods'][method]['N'],common_finite_conditional_MAE=e['common_finite'][direction]['methods'][method]['conditional_MAE']))
   grow=dict(row,registration=reg['status'],clean_complete=complete,clean_missing=len(asset['sources'])-complete,review_ready=(out/'REVIEW_COMPLETE.json').exists(),downstream_note=note,cautions='；'.join(sorted(set(cautions))))
   if ee:
    b=ee[0]['methods']['M4']['bidir'];grow.update(A_to_B_mean=b['A_to_B']['conditional_MAE'],B_to_A_mean=b['B_to_A']['conditional_MAE'],A_to_B_median=b['A_to_B']['conditional_median'],B_to_A_median=b['B_to_A']['conditional_median'])
@@ -70,6 +70,8 @@ def main():
 
 新增IIa9.5/R10双向条件均值4.53/6.98px、中位数2.39/2.95px，适合下游试用复核。IIa14/R10的均值126.00/30.45px、中位数4.38/3.90px；新增Is9.79/R10为8.34/327.71px、中位数4.19/3.69px，均说明尾部异常不能被隐藏，也不能单凭均值认定整个T失效。Ip4/R10、Ip8.8/R5仍有较大的典型投影残差；Ip8.8/R5的Ring代价也保留。Is18/R5、Ip7.1/R10、Is8.8/R5的双侧留出量偏少，使用时需留意证据不足。
 
+27组中23组的双向有限投影条件均值均较M0下降；Ip6.2/R10、Is18/R10、Is9.79/R10、Is18/R5至少一个方向未改善。Is9.79/R10反向均值由103.57升至327.71px，Is18/R10由76.14升至96.16px，负结果不能被中位数较好掩盖。但Is9.79/R10的反向有限观测由40变41，其中一个原先负深度的观测变为有限极端投影；共同40个观测的均值实际由103.57降到4.19px。不能把有限集合变化误判为整个T变差，也不删除这个新极端值。共同有限观测域上的双向改善为24/27组，仍有Ip6.2/R10、Is18/R10、Is18/R5至少一向未改善。统计分母、失效数量和共同有限观测辅助均值均在结果表中。
+
 这些说明是审阅提示，不是新自动拒绝门槛，也不按held改T。全量双向均值/中位数/P95、有效/失效/负深度/越界、Ring见[EDGE_RESULTS.csv](evidence/EDGE_RESULTS.csv)，全部39组状态与提示见[GROUP_STATUS.csv](evidence/GROUP_STATUS.csv)。同一方法完整held含缺DLT等失效，完整MAE不可评价时保留null；有限条件统计不冒充完整均值。每条边另保留共同有限观测ID比较。
 
 ## 全量范围与输入身份
@@ -84,7 +86,7 @@ def main():
 
 统一入口为[GROUP_INDEX.json](GROUP_INDEX.json)，指向每组`GROUP.json`。每个来源以case+tag唯一登记，包含原Raw/native SHA、Target/Support、所属视频、T和可信原面索引；所有原始顶点引用只应用一次T，全视频相机和其内部地标已导出为COMMON坐标并显式标注，跨视频独立DLT地标单独保存。消费者无需判断M4/M5或candidate特例。
 
-先冻结M4，再按017+gap、018原规则分类，只取原`F[state==0]`。参考侧仅在Raw、native、相机链、CAD和分类器SHA一致时复用R1原标签；非参考侧重新调用上一轮真实`clean_after.one`，没有使用M5标签。Clean只改保留面，没有额外顶点变化。所有来源均由轻量读取器实际加载，核对相机坐标与轴向Z不变；本轮没有主体拟合。
+先冻结M4，再按017+gap、018原规则分类，只取原`F[state==0]`。参考侧仅在Raw、native、相机链、CAD和分类器SHA一致时复用R1原标签；非参考侧重新调用上一轮真实`clean_after.one`，没有使用M5标签。Clean只改保留面，没有额外顶点变化。旧六组221源的原面采样ID/重心坐标与历史完全一致；IIa14/R5的42源M4标签逐面复核改变数为0，原candidate补充已经成为统一常规路径。所有来源均由轻量读取器实际加载，核对相机坐标与轴向Z不变；本轮没有主体拟合。
 
 曲面指标使用每源固定96个原面面积样点，Raw/Clean同域；删去的样点仍占完整分母并记未覆盖。最近真实三角面距离仅为跨视频一致性，0.2mm覆盖是固定样本距离阈值，不是GT表面完整率。[SURFACE_RESULTS.csv](evidence/SURFACE_RESULTS.csv)和[SOURCE_STATUS.csv](evidence/SOURCE_STATUS.csv)保留Raw/Clean及逐源面积变化。不能把清理整洁算作位姿提高。
 

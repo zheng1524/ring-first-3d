@@ -41,7 +41,7 @@ PY
 
 ## 依赖与归档
 
-科学代码由`code/pinned.py`通过Git SHA解析：002 `efa0adfb`、虚拟001代码 `537c2070`、可信Clean `2d34cc86`；只恢复代码和必要小配置，不读取旧H004成品。R1 `clean_after.one`与共享源码保留在本分支基础 `f7a3ff85`。不再依赖旧临时worktree路径；本机Python环境仍使用原只读venv及extra_packages，迁移可按`run_python.sh`改解释器/包路径。
+科学代码由`code/pinned.py`通过Git SHA解析：002 `efa0adfb`、虚拟001代码 `537c2070`、可信Clean `2d34cc86`；只恢复代码和必要小配置，不读取旧H004成品。R1 `clean_after.one`与共享源码保留在本分支基础 `f7a3ff85`。浅克隆若缺提交对象，先用`git fetch origin <完整提交SHA>`取回上述版本；解析器会核对内容，不能换成当前最新版本。不再依赖旧临时worktree路径；本机Python环境仍使用原只读venv及extra_packages，迁移可按`run_python.sh`改解释器/包路径。
 
 输出归档以任务目录为根保留`runs/FULL_001/groups/`及统一入口，原始视频、HERO大文件、完整网格和环境不入归档。`evidence/ARCHIVE_MANIFEST.json`列归档SHA与成员。`evidence/RETAIN_DEPENDENCIES.json`列不可清理的原始输入和代码身份。
 

@@ -1166,3 +1166,23 @@ r1_cross_video_registration_research:
   contract: "one metric SE3/video; frozen internal cameras; post-registration state==0; candidate interface only"
   report: experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/TECHNICAL_REPORT.md
   tests: experiments/TASK-V6-R1-CROSS-VIDEO-REGISTRATION-001/code/test_registration.py
+
+current_downstream_registration:
+  route_id: rf-v6-r1-m4-registration@2
+  authorization: TASK-V6-R1-M4-REGISTRATION-MAINLINE-002
+  status: researcher_authorized_M4_mainline
+  scientific_status: mixed_real_data_consistency_not_absolute_accuracy
+  composes: [rf-v6-r1-video@1, rf-v6-r1-cross-video-registration@1]
+  entrypoint: bash experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/run.sh --resume
+  config: experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/config/PROTOCOL.json
+  method_decision: experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/config/DECISION.json
+  solver: solver2.solve_methods(M4)@efa0adfb09f23f355d3d55180f2becfb1036f35c
+  resolver: experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/pinned.py
+  interface: experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/GROUP_INDEX.json
+  consumer: experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/code/consume.py
+  contract: one_metric_SE3_per_video_then_original_state_zero_faces
+  upstream_execution: 29874fe61f59c429fb83d2377ab707c847992ef8
+  upstream_run: /home/liu/ring_first_3d_workspace/runs/v6_r1_full_b_001
+  previous_M5: historical_only_not_in_regular_run
+  report: experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/TECHNICAL_REPORT.md
+  body_update_authorized: false
