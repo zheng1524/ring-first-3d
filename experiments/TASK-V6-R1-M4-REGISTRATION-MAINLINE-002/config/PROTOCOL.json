@@ -1,0 +1,31 @@
+{
+  "task": "TASK-V6-R1-M4-REGISTRATION-MAINLINE-002",
+  "batch": "FULL_001",
+  "base": "f7a3ff8581a80b44adc9eb8415d11748f086a6ee",
+  "frames_per_video": 8,
+  "features": 6000,
+  "ratio": 0.72,
+  "sigma_rgb_mm": 0.2,
+  "sigma_epipolar_px": 1.5,
+  "yaw_grid": 72,
+  "max_nfev": 100,
+  "ring_lambda": 1.0,
+  "ring_guard_mahalanobis": 5.0,
+  "min_fit_tracks": 6,
+  "min_held_tracks": 8,
+  "reserve_bytes": 5368709120,
+  "task_bytes_cap": 1073741824,
+  "surface_samples_per_source": 96,
+  "LOO_per_side": 3,
+  "method": "M4",
+  "reference_rule": "lexicographic case among usable HERO videos; independent of held and surfaces",
+  "upstream_root": "/home/liu/ring_first_3d_workspace/runs/v6_r1_full_b_001",
+  "regression_groups": [
+    "GP_Ip_8.8mm_closed_R5_single_refY",
+    "GP_Ip_4.0mm_closed_R10_single_refY",
+    "GP_IIa_14.0mm_closed_R5_single_refY",
+    "GP_IIa_14.0mm_closed_R10_single_refY",
+    "GP_Ip_20.0mm_closed_R10_single_refY",
+    "GP_Ip_2.9mm_closed_R10_single_refY"
+  ]
+}
