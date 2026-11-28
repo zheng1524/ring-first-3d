@@ -14,6 +14,7 @@ sys.path.insert(0,str(DXY/'src'))
 from dxy_mid import diagnostics, pipeline as official_pipeline, _engine as engine
 from dxy_mid._engine.observable_boundary import observable_P
 from dxy_mid._engine.exact_v2 import geometry
+from dxy_mid._engine import geometry_competition
 from dxy_mid._engine.contracts import BoundaryResult
 
 def clean(v):
@@ -81,17 +82,44 @@ def inventory():
  save(T/'evidence/DXY_INPUT_INDEX.json',dict(rows=rows,frames=len(rows),videos=79,groups=39,audits=audits,source=lock,roles_are_unchanged=True))
  return rows,lock
 
+def resolve_selected_record(records, selected, body, shape, origin, actual_record_id=None):
+ matches=[]
+ for record in records:
+  if record['body']!=body or record['shape']!=shape or record.get('origin')!=origin or record.get('diagnostic_profile',False):continue
+  delta=max(np.max(np.abs(np.asarray(record['center_px'])-selected['center_px'])),np.max(np.abs(np.asarray(record['basis_px'])-selected['basis_px'])))
+  if delta<=1e-10:matches.append(record)
+ if not matches:raise ValueError('No exact native-parameter candidate identity')
+ ids=[r['record_id'] for r in matches]
+ if actual_record_id is None:
+  if len(matches)!=1:raise ValueError('Ambiguous exact candidates require actual object observation')
+  return matches[0],ids
+ if actual_record_id not in ids:raise ValueError('Observed object identity disagrees with native parameters')
+ return next(r for r in matches if r['record_id']==actual_record_id),ids
+
 def observe_complete(row):
- baseline=[];previous=sys.getprofile()
+ baseline=[];candidate_objects={};previous=sys.getprofile()
  def capture(frame,event,arg):
   if previous is not None:previous(frame,event,arg)
   if event=='return' and frame.f_code is official_pipeline._measure.__code__:
    baseline.extend(frame.f_locals.get('current',[]))
+  elif event=='return' and frame.f_code is geometry_competition.to_candidate.__code__:
+   candidate_objects[id(arg)]=frame.f_locals['r']
  try:
   sys.setprofile(capture)
   observed=diagnostics.observe_files(row['RGB'],row['Mask'],inner_diameter_mm=row['inner_diameter_mm'],source_id=row['source_id'],stem=row['stem'])
  finally:sys.setprofile(previous)
- return observed,baseline
+ identity=None;c=observed.measurement.candidate
+ if c is not None:
+  original=candidate_objects.get(id(c))
+  if original is not None:
+   found=[f"default:{body['data']['name']}:{i}" for body in observed.results['default'] for i,r in enumerate(body['records']) if r is original]
+   assert len(found)==1,'Actual selected record object must occur exactly once in default pool'
+   identity=found[0]
+  else:
+   found=[f'default:{q.name}:exact_V2:{i}' for i,q in enumerate(baseline) if q is c]
+   assert len(found)==1,'No-Q selected object must occur in actual baseline pool'
+   identity=found[0]
+ return observed,baseline,identity
 
 def run_frame(row,lock):
  out=T/'runs/dxy'/row['case']/row['frame_id'];out.mkdir(parents=True,exist_ok=True)
@@ -101,9 +129,9 @@ def run_frame(row,lock):
   old=read(receipt)
   if old['key']==key and all(Path(x['path']).exists() and sha(x['path'])==x['sha256'] for x in old['files']):return read(out/'FRAME.json')
  assert sha(row['RGB'])==row['RGB_sha256'] and sha(row['Mask'])==row['Mask_sha256']
- start=time.time();obs,baseline=observe_complete(row)
+ start=time.time();obs,baseline,actual_record_id=observe_complete(row)
  diagnostics.export_observation(obs,out/'official')
- m=obs.measurement;selected=None;arrays=official_arrays(obs);records=diagnostics.candidate_records(obs)
+ m=obs.measurement;selected=None;equivalent=[];selection_identity=dict(record_id=None,equivalent_record_ids=[],method='no_selected_curve');arrays=official_arrays(obs);records=diagnostics.candidate_records(obs)
  for rec in records:
   rec['record_id']=f"default:{rec['body']}:{rec['index']}";theta=rec['angle_rad'];rec['center_px']=[rec['cx'],rec['cy']];rec['basis_px']=(np.array([[np.cos(theta),-np.sin(theta)],[np.sin(theta),np.cos(theta)]])@np.diag([rec['radius_1_px'],rec['radius_2_px']])).tolist()
   rec['supervision_eligible']=not rec['diagnostic_profile'] and not rec['current_reasons'];rec['selected']=False
@@ -118,18 +146,21 @@ def run_frame(row,lock):
   c=m.candidate;weight=.8 if m.audit['strict_stable'] else .5 if m.audit['normal_Gate_pass'] else .25
   if m.audit.get('P_zero_occlusion_inference'):weight=min(weight,.15)
   selected=dict(center_px=c.center_native,basis_px=c.basis_native,shape=c.shape,weight=weight)
-  matches=[r for r in records if not r['diagnostic_profile'] and r['body']==c.name and r['shape']==c.shape and (r.get('origin')==c.provenance.get('candidate_origin',r.get('origin'))) and np.allclose(r['center_px'],c.center_native) and np.allclose(r['basis_px'],c.basis_native)]
-  assert matches,'Selected candidate must correspond to actual default-pool record'
-  chosen=matches[0];chosen['selected']=True;selected['record_id']=chosen['record_id']
+  actual=next(r for r in records if r['record_id']==actual_record_id)
+  chosen,equivalent=resolve_selected_record(records,selected,c.name,c.shape,actual.get('origin'),actual_record_id)
+  chosen['selected']=True;selected['record_id']=chosen['record_id']
+  selection_identity=dict(record_id=chosen['record_id'],equivalent_record_ids=equivalent,method='observed_actual_record_object',absolute_tolerance_px=1e-10)
  else:
   pixel=pixel_only(obs.native_image,obs.original_labels,row['source_id']);status=pixel['status'];quality='pixel_observed_P_uncertain' if pixel['selected'] else 'pixel_fit_failure';selected=pixel['selected'];records+=pixel['candidates']
+  if selected is not None:
+   equivalent=[selected['record_id']];selection_identity=dict(record_id=selected['record_id'],equivalent_record_ids=equivalent,method='actual_pixel_V2_selection_record')
   br=pixel['boundary_records'];Pidx=[i for i,r in enumerate(br) if r['accepted_P']];Xidx=[i for i,r in enumerate(br) if not r['accepted_P']]
   arrays=dict(P=pixel['P'],Q=pixel['Q'],X=pixel['X'],Q_normals=np.empty((0,2)),Q_lo=np.empty(0),Q_hi=np.empty(0),P_global_indices=np.array(Pidx,int),Q_global_indices=np.empty(0,int),X_global_indices=np.array(Xidx,int),boundary_points=np.array([r['q'] for r in br]).reshape(-1,2),boundary_global_indices=np.arange(len(br)),boundary_contour_ids=np.array([r['contour_id'] for r in br],int),boundary_contour_indices=np.array([r['contour_index'] for r in br],int),boundary_classes=np.array(['P' if r['accepted_P'] else 'X' for r in br]))
  if arrays is None:arrays={k:np.empty((0,2)) for k in ['P','Q','X','Q_normals']};arrays.update({k:np.empty(0) for k in ['Q_lo','Q_hi','P_global_indices','Q_global_indices','X_global_indices']})
  arrays['selected_curve']=curve(selected);np.savez_compressed(out/'CURVES.npz',**arrays)
- process=dict(actual_baseline_candidates=baseline,default_candidate_pool=records,selection=None if obs.selected is None else {k:obs.selected[k] for k in ['actual_sampled_P_indices','actual_sampled_Q_indices','plan','reason','branch'] if k in obs.selected},variant_summary=m.variants,pixel_branch=pixel,checks=obs.checks)
+ process=dict(selection_identity=selection_identity,actual_baseline_candidates=baseline,default_candidate_pool=records,selection=None if obs.selected is None else {k:obs.selected[k] for k in ['actual_sampled_P_indices','actual_sampled_Q_indices','plan','reason','branch'] if k in obs.selected},variant_summary=m.variants,pixel_branch=pixel,checks=obs.checks)
  with gzip.open(out/'PROCESS.json.gz','wt',encoding='utf8') as f:json.dump(clean(process),f,ensure_ascii=False)
- result={**row,'status':status,'quality':quality,'selected':selected,'selected_record_id':selected['record_id'] if selected else None,'official_measurement_valid':bool(m.audit['measurement_eligible']),'official_ring_valid':bool(m.ring.valid),'official_reason':m.ring.reason,'official_audit':m.audit,'candidate_count':len(records),'profile_count':sum(r.get('diagnostic_profile',False) for r in records),'P_count':len(arrays['P']),'Q_count':len(arrays['Q']),'X_count':len(arrays['X']),'arrays':asset(out/'CURVES.npz'),'process':asset(out/'PROCESS.json.gz'),'seconds':time.time()-start,'cache_key':key,'DXY_commit':COMMIT,'PIXEL_ONLY_has_no_mm_output':True}
+ result={**row,'status':status,'quality':quality,'selected':selected,'selected_record_id':selected['record_id'] if selected else None,'official_measurement_valid':bool(m.audit['measurement_eligible']),'official_ring_valid':bool(m.ring.valid),'official_reason':m.ring.reason,'official_audit':m.audit,'candidate_count':len(records),'profile_count':sum(r.get('diagnostic_profile',False) for r in records),'P_count':len(arrays['P']),'Q_count':len(arrays['Q']),'X_count':len(arrays['X']),'arrays':asset(out/'CURVES.npz'),'process':asset(out/'PROCESS.json.gz'),'seconds':time.time()-start,'cache_key':key,'DXY_commit':COMMIT,'PIXEL_ONLY_has_no_mm_output':True,'selection_identity':selection_identity,'selected_record_equivalent_ids':equivalent,'execution_wrapper_sha256':sha(__file__),'metadata_revalidation_wrapper_sha256':sha(__file__),'numeric_cache_reused':False}
  save(out/'FRAME.json',result);save(receipt,dict(key=key,files=[asset(p) for p in sorted(out.rglob('*')) if p.is_file() and p.name!='COMPLETE.json']))
  return result
 

@@ -3,7 +3,7 @@ from dxy_full import *
 from collections import Counter
 
 def main():
- inp=read(T/'evidence/DXY_INPUT_INDEX.json');rows=inp['rows'];counts=Counter();quality=Counter();reliability=Counter();missing=[];oldstats=Counter();errors=[];equal=0;maxdelta=0.;pixels=[];profile_selected=[]
+ inp=read(T/'evidence/DXY_INPUT_INDEX.json');rows=inp['rows'];counts=Counter();quality=Counter();reliability=Counter();missing=[];oldstats=Counter();errors=[];equal=0;maxdelta=0.;pixels=[];no_curves=[];profile_selected=[]
  for row in rows:
   p=T/'runs/dxy'/row['case']/row['frame_id']/'FRAME.json'
   if not p.exists():missing.append(row['source_id']);continue
@@ -23,13 +23,29 @@ def main():
   if r['selected']:
    assert len(chosen)==1 and chosen[0]['record_id']==r['selected_record_id']
    assert not chosen[0]['diagnostic_profile']
+   assert not chosen[0].get('current_reasons','')
+   if 'valid' in chosen[0]:assert chosen[0]['valid'] is True
+   delta=max(np.max(np.abs(np.asarray(chosen[0]['center_px'])-r['selected']['center_px'])),np.max(np.abs(np.asarray(chosen[0]['basis_px'])-r['selected']['basis_px'])))
+   assert delta<=1e-10,('SELECTED_ID_NOT_EXACT',r['source_id'],delta)
+   assert process['selection_identity']['record_id']==r['selected_record_id']
    assert np.allclose(a['selected_curve'],curve(r['selected']))
    assert r['selected']['weight']>0
-  else:assert len(chosen)==0 and len(a['selected_curve'])==0
+  else:
+   assert len(chosen)==0 and len(a['selected_curve'])==0
+   pb=process.get('pixel_branch') or {}
+   no_curves.append(dict(source_id=r['source_id'],P_count=r['P_count'],official_reason=r['official_reason'],official_quality=r['official_audit']['quality_class'],pixel_reason=pb.get('reason'),pixel_candidate_rejections=[dict(shape=c['shape'],reason=c['reason']) for c in pb.get('candidates',[])],pixel_fit_failures=pb.get('failures',[])))
   if r['status']=='PIXEL_ONLY':
    assert not r['official_measurement_valid'] and r['selected'] is not None
    assert 'D_frame_mm' not in r['selected'];assert len(a['P'])>=20 and len(a['Q'])==0
    pixels.append(dict(source_id=r['source_id'],official_ring_valid=r['official_ring_valid'],official_reason=r['official_reason'],P_count=r['P_count'],selected=r['selected']))
+  if 'boundary_points' in a:
+   gid=a['boundary_global_indices'].astype(int);assert len(np.unique(gid))==len(gid)==len(a['boundary_points'])
+   lookup={int(g):i for i,g in enumerate(gid)}
+   for cl in ['P','Q','X']:
+    indices=a[cl+'_global_indices'].astype(int);assert len(indices)==len(a[cl])
+    loc=[lookup[int(g)] for g in indices]
+    assert np.array_equal(a['boundary_points'][loc],a[cl]),('BOUNDARY_IDENTITY',r['source_id'],cl)
+    assert np.all(a['boundary_classes'][loc]==cl),('BOUNDARY_CLASS',r['source_id'],cl)
   if len(a['Q']):
    assert np.allclose(np.linalg.norm(a['Q_normals'],axis=1),1)
    assert np.all(a['Q_lo']<=0) and np.all(a['Q_hi']>=0)
@@ -44,7 +60,7 @@ def main():
    else:oldstats['previous_missing']+=1;oldstats['missing_recovered']+=bool(r['selected'])
  for item in inp['source']['files']:assert sha(item['path'])==item['sha256']
  assert len(rows)==1700 and len({x['case'] for x in rows})==79 and len({x['group'] for x in rows})==39
- result=dict(expected=1700,completed=sum(counts.values()),statuses=dict(counts),quality=dict(quality),reliability=dict(reliability),missing=missing,old_overlap=dict(oldstats),old_available_equal=int(equal),old_available_max_center_basis_difference_px=maxdelta,pixel_recovered=pixels,official_measurement_is_not_pixel_outlet=True,held_role_preserved=True,input_identity=asset(T/'evidence/DXY_INPUT_INDEX.json'),implementation=asset(T/'code/dxy_full.py'))
+ result=dict(expected=1700,completed=sum(counts.values()),statuses=dict(counts),quality=dict(quality),reliability=dict(reliability),missing=missing,old_overlap=dict(oldstats),old_available_equal=int(equal),old_available_max_center_basis_difference_px=maxdelta,pixel_recovered=pixels,no_curve=no_curves,official_measurement_is_not_pixel_outlet=True,held_role_preserved=True,input_identity=asset(T/'evidence/DXY_INPUT_INDEX.json'),implementation=asset(T/'code/dxy_full.py'))
  save(T/'evidence/DXY_VERIFICATION.json',result)
  print(json.dumps({k:v for k,v in result.items() if k!='pixel_recovered'},ensure_ascii=False))
  assert not missing,'Not all ledger frames completed'
