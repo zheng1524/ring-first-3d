@@ -15,6 +15,12 @@ def main():
   index=read(out/'CLEAN_INDEX.json');assert len(index)==len(asset['sources']);old=prior_run()/g
   for s,r in zip(group['sources'],index):
    assert r['status']=='COMPLETE'and s['connected'];assert sha(r['selection_path'])==r['selection_sha256'];assert sha(r['raw_domain'])==r['raw_domain_sha256'];sel=np.load(r['selection_path']);assert np.array_equal(sel['trusted_original_face_id'],np.flatnonzero(sel['state']==0));assert len(sel['state'])==r['raw_faces'];assert r['common_faces_additional_coordinate_change_mm']==0;reused[r['origin']]+=1;total+=1
+   upstream=[]
+   if r.get('upstream_receipt'):
+    q=Path(r['upstream_receipt']);upstream=[(q,r['upstream_receipt_sha256']),(q.parent/'FACE_EVIDENCE.npz',r['upstream_evidence_sha256'])]
+   comparison=r.get('upstream_single_video_clean_comparison',{})
+   if comparison.get('status')=='COMPARED_AFTER_PREDICTION':upstream.append((Path(comparison['path']),comparison['sha256']))
+   for q,h in upstream:assert sha(q)==h;retained[str(q)]=dict(path=str(q),sha256=h,bytes=q.stat().st_size,role='verified upstream clean reuse/evidence; protect alongside native Raw sources')
    if g in CFG['regression_groups']:
     oldindex=read(old/'CLEAN_INDEX.json');prior=next(q for q in oldindex if q['source']['case']==s['case']and q['source']['tag']==s['tag']);rel=prior['raw_domain'].split('/runs/R1_001/',1)[1];q=T/'runtime/regression/runs/R1_001'/rel;a=np.load(r['raw_domain']);b=np.load(q);assert np.array_equal(a['original_face_id'],b['original_face_id'])and np.array_equal(a['bary'],b['bary']);domains+=1
   if g in CFG['regression_groups']:
