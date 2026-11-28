@@ -1,7 +1,7 @@
 {
-  "scientific_key": "efa7060fb9ee323ada59af4bc79e0f15da36ea96c6a0f475f0829190f1e29222",
+  "scientific_key": "97277cb95c2a468b7eab8393a88de2a117d90ec7b176aa98fbf8c10aa0d7e518",
   "config_sha256": "bf0fd9c5325e386de3c1a581018e2ed4a7a41105f36c6ceb3b90468269f620bc",
-  "execution_commit": "e56191a7d8dbedb60ecfd8c4e389a3de1a20b4b1",
+  "execution_commit": "033271c9a77f7a7b55ff522a79fc529a1a5494a3",
   "qualification": {
     "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/evidence/REGISTRATION_QUALIFICATION.json",
     "sha256": "8aba2c365448998dc9aea6fd472cd0d1369bc97545496941443ae8cd123b7ed0",
@@ -18,6 +18,16 @@
     "bytes": 1611
   },
   "visual_review": "actual vertical RGB / geometry PNG inspected; only selected 2D and delivered 3D projection on RGB",
-  "scope": "79 LOCAL singles plus 14 qualified joint components; no upstream rerun; DXY outputs still calculating from frozen input manifest",
-  "CPU_budget": "4 DXY + at most 2 fitting low-priority CPU; 16 total hardware threads"
+  "scope": "All 93 configurations truly reoptimized after metadata repair; numerical DXY arrays unchanged",
+  "CPU_budget": "4 low-priority fitting workers; DXY numeric pool complete",
+  "predecessor_freeze": {
+    "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/evidence/FULL_RUN_FREEZE_BEFORE_SELECTION_ID_REPAIR.json",
+    "sha256": "c16683f975cc7fec8794137a38354a7235567b20305bacbb32613e366029d614",
+    "bytes": 1521
+  },
+  "selection_identity_repair": {
+    "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/evidence/DXY_METADATA_REVALIDATION_FREEZE.json",
+    "sha256": "f15528e5cd0328e62e6b5317901942f8e9babf777496d2a2c080fa490d598417",
+    "bytes": 1020
+  }
 }

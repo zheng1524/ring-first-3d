@@ -10,15 +10,17 @@ def csvout(name,rows):
         w=csv.DictWriter(f,fieldnames=keys,lineterminator='\n');w.writeheader();w.writerows([{k:json.dumps(clean(v),ensure_ascii=False) if isinstance(v,(list,dict)) else v for k,v in r.items()} for r in rows])
 
 def main():
+    verified=read(T/'evidence/FINAL_VERIFICATION.json');assert verified['scientific_key']==revision_key() and verified['config_sha256']==sha(T/'config.json')
+    repair=read(T/'evidence/SELECTION_ID_REPAIR_FIT_COMPARISON.json')
     q=read(T/'evidence/REGISTRATION_QUALIFICATION.json');dx=read(T/'evidence/DXY_FRAME_INDEX.json');rows=[];groups=[];bias=[];index=[];fail=[]
     for g in q['groups']:
         folder=T/'runs/results'/g['group'];rec=read(folder/'GROUP_RESULT.json');fail+=rec['failures'];grows=[]
         for r in rec['results']:
-            out=folder/r['configuration'];ev=read(out/'VISIBILITY.json');base=read(out/'BASE.json');body=np.load(out/'BODY.npz');oldfolder=OLD/'runs/results'/g['group']/r['configuration'];old=None
+            out=folder/r['configuration'];ev=read(out/'VISIBILITY.json');base=read(out/'BASE.json');body=np.load(out/'BODY.npz');oldfolder=OLD/'runs/results'/g['group']/r['configuration'];old=None;oldpenetration=None
             if (oldfolder/'VISIBILITY.json').exists():
-                oe=read(oldfolder/'VISIBILITY.json');vals=[x['full_mesh_IoU'] for x in oe['frames'] if x['role']=='HOLDOUT'];old=float(np.mean(vals)) if vals else None
+                oe=read(oldfolder/'VISIBILITY.json');oldpenetration=oe['CAD_vertex_penetration_max_mm'];vals=[x['full_mesh_IoU'] for x in oe['frames'] if x['role']=='HOLDOUT'];old=float(np.mean(vals)) if vals else None
             held=[x['full_mesh_IoU'] for x in ev['frames'] if x['role']=='HOLDOUT'];fit=[x['full_mesh_IoU'] for x in ev['frames'] if x['role']=='FIT'];bs=[abs(x['b_mm']) for x in r['bias']]
-            row=dict(group=g['group'],configuration=r['configuration'],videos=r['videos'],coordinate_frame=r['coordinate_frame'],status=r['status'],input_kind=r['input_kind'],source_N=r['source_N'],fit_full_mesh_IoU=np.mean(fit) if fit else None,held_full_mesh_IoU=np.mean(held) if held else None,old001_held_full_mesh_IoU=old,base_status=r['base_status'],base_applied=r['base_applied'],base_before_conflict=base.get('original_001_status',base['status']),base_conflict_downgraded=base.get('downgraded_for_conflict',False),base_cut_side_N=base.get('original_trusted_removed_side_N'),base_cut_side_fraction=base.get('original_trusted_removed_side_fraction'),actual_cap_faces=int(body['inferred_base_faces'].sum()),bias_abs_median_mm=np.median(bs) if bs else None,bias_abs_max_mm=max(bs) if bs else None,bias_near_bound_N=sum(x>.39 for x in bs),fixed_depth_N=sum(x['fixed_N'] for x in ev['depth']),invalid_depth_N=sum(x['invalid_N'] for x in ev['depth']),CAD_inside_vertex_N=ev['CAD_inside_vertex_N'],CAD_beyond_tolerance_vertex_N=ev['CAD_beyond_tolerance_vertex_N'],CAD_penetration_max_mm=ev['CAD_penetration_max_mm'],seconds=r['seconds'],GT='NOT_EVALUABLE')
+            row=dict(group=g['group'],configuration=r['configuration'],videos=r['videos'],coordinate_frame=r['coordinate_frame'],status=r['status'],input_kind=r['input_kind'],source_N=r['source_N'],fit_full_mesh_IoU=np.mean(fit) if fit else None,held_full_mesh_IoU=np.mean(held) if held else None,old001_held_full_mesh_IoU=old,old001_CAD_penetration_max_mm=oldpenetration,base_status=r['base_status'],base_applied=r['base_applied'],base_before_conflict=base.get('original_001_status',base['status']),base_conflict_downgraded=base.get('downgraded_for_conflict',False),base_cut_side_N=base.get('original_trusted_removed_side_N'),base_cut_side_fraction=base.get('original_trusted_removed_side_fraction'),actual_cap_faces=int(body['inferred_base_faces'].sum()),bias_abs_median_mm=np.median(bs) if bs else None,bias_abs_max_mm=max(bs) if bs else None,bias_near_bound_N=sum(x>.39 for x in bs),fixed_depth_N=sum(x['fixed_N'] for x in ev['depth']),invalid_depth_N=sum(x['invalid_N'] for x in ev['depth']),CAD_inside_vertex_N=ev['CAD_inside_vertex_N'],CAD_beyond_tolerance_vertex_N=ev['CAD_beyond_tolerance_vertex_N'],CAD_penetration_max_mm=ev['CAD_penetration_max_mm'],seconds=r['seconds'],GT='NOT_EVALUABLE')
             rows.append(row);grows.append(row);bias.extend(dict(group=g['group'],configuration=r['configuration'],**x) for x in r['bias'])
             index.append(dict(group=g['group'],configuration=r['configuration'],videos=r['videos'],path=str(out/'RESULT.json'),sha256=sha(out/'RESULT.json'),coordinate_frame=r['coordinate_frame'],qualification=r['qualification']['status']))
         groups.append(dict(group=g['group'],videos=len(g['videos']),eligible_components=[c['videos'] for c in g['joint_components']],initializations=len(grows),not_run=rec['not_run'],failures=rec['failures']))
@@ -26,6 +28,8 @@ def main():
     for r in joints:
         ss=[s for s in singles if s['group']==r['group'] and s['videos'][0] in r['videos']];delta=r['held_full_mesh_IoU']-np.mean([s['held_full_mesh_IoU'] for s in ss]);comparison.append(dict(group=r['group'],configuration=r['configuration'],videos=r['videos'],joint_full_mesh_IoU=r['held_full_mesh_IoU'],single_mean_full_mesh_IoU=np.mean([s['held_full_mesh_IoU'] for s in ss]),delta=delta))
     summary=dict(groups=len(groups),videos=sum(g['videos'] for g in groups),single=len(singles),joint=len(joints),configurations=len(rows),failures=len(fail),relation_states=Counter(e['status'] for g in q['groups'] for e in g['edges']),DXY_completed=dx['completed'],DXY_statuses=dx['statuses'],DXY_failures=len(dx['failures']),base_states=Counter(r['base_status'] for r in rows),actual_cuts=sum(r['actual_cap_faces']>0 for r in rows),base_conflict_downgrades=sum(r['base_conflict_downgraded'] for r in rows),base_hard_clip_prevented=sum(r['base_conflict_downgraded'] and r['base_before_conflict']=='RELIABLE' for r in rows),only_2D=sum(r['input_kind']=='DXY_MASK_2D_ONLY' for r in rows),bias_abs_median_mm=float(np.median(babs)),bias_abs_max_mm=float(babs.max()),bias_near_bound_N=int((babs>.39).sum()),fixed_depth_N=sum(r['fixed_depth_N'] for r in rows),invalid_depth_N=sum(r['invalid_depth_N'] for r in rows),CAD_penetration_configs=sum(r['CAD_beyond_tolerance_vertex_N']>0 for r in rows),joint_improves_single=sum(r['delta']>0 for r in comparison),joint_comparison_denominator=len(comparison))
+    pairs=[r for r in rows if r['old001_CAD_penetration_max_mm'] is not None]
+    summary.update(CAD_paired_configurations=len(pairs),old_CAD_above_tolerance=sum(r['old001_CAD_penetration_max_mm']>.05 for r in pairs),new_CAD_above_tolerance=sum(r['CAD_penetration_max_mm']>.05 for r in pairs),CAD_max_improved=sum(r['CAD_penetration_max_mm']<r['old001_CAD_penetration_max_mm']-1e-6 for r in pairs),CAD_max_worsened=sum(r['CAD_penetration_max_mm']>r['old001_CAD_penetration_max_mm']+1e-6 for r in pairs))
     save(T/'evidence/SUMMARY.json',summary);save(T/'evidence/FULL_STATUS.json',groups);save(T/'evidence/FAILURES.json',fail);csvout('CONFIGURATION_RESULTS.csv',rows);csvout('GROUP_COMPARISON.csv',comparison);csvout('SOURCE_BIASES.csv',bias)
     save(T/'INITIALIZATION_INDEX.json',dict(schema='R1_BODY_INIT_002_QUALIFIED',units='mm',consumer='code/consume_revision.py',qualification=asset(T/'evidence/REGISTRATION_QUALIFICATION.json'),configs=index,groups=groups,old_001_joint_is_not_accepted=True,evaluation_scope='2D omitted frames only; qualification uses prior HELD; not independent end-to-end test'))
     figures=T/'figures';figures.mkdir(exist_ok=True)
@@ -48,7 +52,11 @@ def main():
 
 逐帧真实执行冻结 DXY@75d58ca 的 observe_files，保留原 P/Q/X 轮廓身份、Q法向区间、完整 ObservedMeasurement 候选池与实际选择 ID。no-Q 分支保留原 exact_V2 的真实求解候选，不以 variants 摘要代替完整池。完整可核验缓存才复用。官方无候选帧调用原 observable_P 与 exact_v2.geometry 的像素出口，真实拟合圆/椭圆，标 PIXEL_ONLY；不伪造 ring.valid，不输出毫米测量。
 
+原32个缺曲线帧恢复29个PIXEL_ONLY，3个仍不可解。全1700帧中，1324个官方候选达到内部normal_Gate，303个属于Q冲突恢复；1289个strict_stable、135个P=0推断与这些类别有重叠，均不代表真实几何已验证。共1693帧生成曲线，7帧无曲线。
+
 原790帧三维FIT/留出角色保持；新增910帧仅扩大二维计算覆盖，未自动加入三维拟合。二维主体用于形状起点与补全先验，P才作等式可见边界，Q沿原法向区间，X不作真实轮廓。profile及当前仍被拒绝的候选不作监督；官方恢复候选保留历史拒绝原因，恢复和像素出口统一降低软权重。OFFICIAL仅表示官方流程实际选出候选，不等于可靠几何或正式毫米测量通过；质量分级与measurement_eligible另行保留。全1700帧索引及逐帧过程入口位于 runs/review/index.html；不可解与不可靠状态按实记录。
+
+完整性复核发现旧包装器用近似数值匹配候选 ID，1700帧中363帧指向邻近候选。已改为实际返回对象身份捕获，并将旧缓存与唯一精确参数记录核对；全部曲线、选中中心/basis/权重和官方导出字节不变。原数值执行源码与迁移回执分别保存，不把元数据迁移称为重新运行DXY。随后按新科学键真实复算全部93个初体：九参数最大差 {repair['max_parameter_abs_delta']:.3g}，来源偏置最大差 {repair['max_bias_abs_delta_mm']:.3g}mm。详见 [迁移证据](evidence/DXY_SELECTION_METADATA_MIGRATION.json) 和 [复算比较](evidence/SELECTION_ID_REPAIR_FIT_COMPARISON.json)。
 
 ## 拟合修正与受控证据
 
@@ -62,7 +70,7 @@ CAD射线遮挡和容忍0.05mm后的穿入代价进入实际优化，交付Mesh�
 
 {summary['only_2D']}个配置只有二维约束。实际|b|中位数 {summary['bias_abs_median_mm']:.4f}mm、最大 {summary['bias_abs_max_mm']:.4f}mm，{summary['bias_near_bound_N']}个来源配置接近上界（>0.39mm）；接近界限提示模型/观测冲突，不能解释为精确校准。唯一物理组分母39，源存在共享Target/Support相关性；单/联合重复来源不算独立样本。
 
-固定源像素分母合计{summary['fixed_depth_N']}（配置间有重复），实际三角Mesh未解释{summary['invalid_depth_N']}，未删掉无交点、底盖或CAD遮挡样本。{summary['CAD_penetration_configs']}个配置仍有模型顶点超过CAD穿入容忍；这只是顶点采样检查，不是完整三角碰撞证明。早期一个二维缓存回执误收迁出的展示文件曾拦截Ip10.3/R5的004及联合；修复回执、保持科学字节不变后重跑，原失败与修复回执另存，不从运行历史抹掉。完整分母、前后偏置、基底、参数与不利案例在 [配置表](evidence/CONFIGURATION_RESULTS.csv)。
+固定源像素分母合计{summary['fixed_depth_N']}（配置间有重复），实际三角Mesh未解释{summary['invalid_depth_N']}，未删掉无交点、底盖或CAD遮挡样本。{summary['CAD_penetration_configs']}个配置仍有模型顶点超过CAD穿入容忍；这只是顶点采样检查，不是完整三角碰撞证明。在可对应的{summary['CAD_paired_configurations']}个配置中，超过0.05mm的配置由001的{summary['old_CAD_above_tolerance']}个变为{summary['new_CAD_above_tolerance']}个；最大穿入降低{summary['CAD_max_improved']}个、升高{summary['CAD_max_worsened']}个，负例不删除。早期一个二维缓存回执误收迁出的展示文件曾拦截Ip10.3/R5的004及联合；修复回执、保持科学字节不变后重跑，原失败与修复回执另存，不从运行历史抹掉。完整分母、前后偏置、基底、参数与不利案例在 [配置表](evidence/CONFIGURATION_RESULTS.csv)。
 
 合格联合中，{summary['joint_improves_single']}/{summary['joint_comparison_denominator']}组全分辨率二维留出轮廓指标优于参与单视频平均。这些帧只从显式二维项留出，可能仍是HERO Target/Support、Clean或相机输入，不能称独立测试。001比较列保留原值，但本轮修正二维证据、坐标路由和目标，差异不是单因素因果结论。
 

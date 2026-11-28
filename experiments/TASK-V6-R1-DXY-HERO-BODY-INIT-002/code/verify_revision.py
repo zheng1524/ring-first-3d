@@ -7,6 +7,7 @@ import csv
 
 def main():
     frozen=read(T/'evidence/FULL_RUN_FREEZE.json');assert frozen['scientific_key']==revision_key();assert frozen['config_sha256']==sha(T/'config.json');asset(frozen['qualification']['path'],frozen['qualification']['sha256'])
+    for name in ['DXY_input_index','selection_identity_repair']:asset(frozen[name]['path'],frozen[name]['sha256'])
     q=read(T/'evidence/REGISTRATION_QUALIFICATION.json');dxy=read(T/'evidence/DXY_FRAME_INDEX.json');assert len(q['groups'])==39 and dxy['completed']==1700 and not dxy['failures']
     failures=[];rows=[];nsteps=0;cuts=0;dependencies={x['path']:x['sha256'] for x in q['source_files']};consumer_check=None
     for group in q['groups']:
@@ -38,9 +39,14 @@ def main():
                 pl=np.asarray(base['plane']);assert np.min(body['V'][np.unique(body['F_solid'])]@pl[:3]+pl[3])>=-1e-6;cuts+=1
             if base.get('source_ids'):assert set(base['source_ids'])<={s['meta']['source_id'] for s in sources}
             ev=read(out/'VISIBILITY.json')
+            assert ev['key']==digest([sha(out/'BODY.npz'),sha(out/'RESULT.json'),sha(T/'code/visibility_revision.py'),sha(T/'config.json')]),'STALE_VISIBILITY: '+str(out)
+            for item in ev['files']:asset(item['path'],item['sha256'])
             for x in ev['depth']:assert x['fixed_N']==x['valid_N']+x['invalid_N']
             for x in ev['frames']:assert x['foreground_fixed_N']==x['foreground_hit_N']+x['foreground_miss_N']
             assert (out/'RGB_PROJECTIONS.png').exists() and (out/'GEOMETRY_SECTIONS.png').exists()
+            figs=read(out/'FIGURES.json');assert figs['layout']=='one_column_HTML_and_PNG';assert figs['RGB_layers']==['native_2D_body','delivered_3D_visible_body']
+            assert figs['key']==digest([sha(out/'RESULT.json'),sha(out/'BASE.json'),sha(T/'code/visualize_revision.py')]),'STALE_FIGURES: '+str(out)
+            for item in figs['files']:asset(item['path'],item['sha256'])
             if consumer_check is None and sources:
                 x=corrected_source(out/'RESULT.json',sources[0]['meta']['source_id']);used=np.unique(x['F']);A=(x['original_V'][used]-x['C'][:3,3])@x['C'][:3,:3];B=(x['V'][used]-x['C'][:3,3])@x['C'][:3,:3];rayerr=np.max(np.abs(A[:,:2]/A[:,2,None]-B[:,:2]/B[:,2,None]));zerr=np.max(np.abs(B[:,2]-A[:,2]+x['bias_mm']));assert rayerr<1e-10 and zerr<1e-10;consumer_check=dict(source=sources[0]['meta']['source_id'],ray_error=rayerr,axial_error=zerr)
             rows.append(dict(group=g,configuration=r['configuration'],videos=r['videos'],coordinate_frame=r['coordinate_frame']))

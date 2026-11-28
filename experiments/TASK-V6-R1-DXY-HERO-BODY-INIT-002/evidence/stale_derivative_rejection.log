@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/code/verify_revision.py", line 62, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/code/verify_revision.py", line 41, in main
+    assert ev['key']==digest([sha(out/'BODY.npz'),sha(out/'RESULT.json'),sha(T/'code/visibility_revision.py'),sha(T/'config.json')]),'STALE_VISIBILITY: '+str(out)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: STALE_VISIBILITY: /home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/runs/results/GP_IIa_14.0mm_closed_R10_single_refY/004

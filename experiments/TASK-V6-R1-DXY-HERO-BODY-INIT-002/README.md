@@ -36,3 +36,5 @@ bash run_python.sh code/visualize_revision.py --frame GP_IIa_14.0mm_closed_R5_si
 资格中HELD用于本轮路由，二维HOLDOUT只未进入显式二维目标；HERO/上游相机可能使用同帧，不宣称端到端独立留出。真实GT不可评价。单/联合共享来源具有相关性，39组是物理组分母。
 
 依赖及证据包见 `evidence/PRESERVE_DEPENDENCIES.csv` 与 `ARCHIVE_MANIFEST.json`。原图、Raw/Clean、完整二维过程大包保留可核验本地路径；仓库上传代码、表格、紧凑初体和精选图，不上传视频/模型权重。回执含本机绝对路径，异机解包不自动完成上游路径迁移。不要清理原资产来复现本任务。
+
+候选身份修复：原数值执行源码及回执另存，363个近似ID经唯一精确候选核对迁移；所有数值数组不变。新执行使用实际返回对象捕获ID。1700帧全量核验见DXY_VERIFICATION.json；93个初体随后按新科学键真实复算，比较见SELECTION_ID_REPAIR_FIT_COMPARISON.json。重现迁移仅用于保留的旧缓存，不是常规重跑步骤。测试汇总命令：`bash run_python.sh -m unittest discover -s code -p 'test_*.py'`。

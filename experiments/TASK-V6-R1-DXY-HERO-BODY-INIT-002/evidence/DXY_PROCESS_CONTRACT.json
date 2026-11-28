@@ -18,5 +18,10 @@
     "CURVES.npz": "Actual selected curve and P/Q/X arrays with contour/global identity, Q normal intervals",
     "PROCESS.json.gz": "Actual baseline candidates, full default A/B candidate pool including profiles/rejections and sample traces, selection plan, official variant summary, pixel fallback evidence",
     "official/": "Official diagnostic exporter audit, Ring points, P/Q/X solver records, full default geometry pool, pre-filter Q"
+  },
+  "selection_identity": {
+    "fresh_wrapper": "Read-only Python profiler captures actual geometry_competition.to_candidate record object; no-Q selected object is traced to actual baseline list. No approximate lookup.",
+    "migrated_full_numeric_cache": "Unique native center/basis and origin match at absolute tolerance 1e-10; ambiguous identity requires actual one-frame numerical observation. Full original output receipts and values preserved.",
+    "no_numeric_change": "Selected geometry, weights, CURVES arrays and official export bytes must remain identical; new wrapper SHA is metadata revalidation, not claimed as original numerical execution."
   }
 }
