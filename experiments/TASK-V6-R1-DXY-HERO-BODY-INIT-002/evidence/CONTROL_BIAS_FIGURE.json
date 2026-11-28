@@ -1,0 +1,107 @@
+{
+  "figure": {
+    "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/figures/CONTROL_BIAS.png",
+    "sha256": "a477bb34c024b3f3bb4f6f72df00db532706093a7bee56a774830c87320127c3",
+    "bytes": 250327
+  },
+  "code": {
+    "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/code/control_figure_revision.py",
+    "sha256": "9c814cabd36c53b1dc33eebbf6394e1b3e8d1450c7a4de65380a2fdceab7fb02",
+    "bytes": 4667
+  },
+  "inputs": [
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/evidence/CONTROL_REVISION.json",
+      "sha256": "eadb108888cf2b9418815c220d25fae530f0eeea01e2bc90dd91ed3c18719382",
+      "bytes": 29737
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/runs/control/GENERATOR.json",
+      "sha256": "0158600b868eed265ccc5143241e911b9fa6c6bbb95e50ec811487d8c4e2c4a5",
+      "bytes": 1401
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/runs/control/ZERO_PREDICTION_FREEZE.json",
+      "sha256": "a9fa8a041d75aa5bc254ace90455f7b95d6f4d40ca0bc14586465c006cad62e9",
+      "bytes": 7449
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/runs/control/ZERO_BODY.npz",
+      "sha256": "6050613e48391a0a38f01a2d3e9097f97027f7288755e4a9b81315bc1c890b57",
+      "bytes": 20917
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/runs/control/ZERO_FIXED_GT_DIAGNOSTIC.json",
+      "sha256": "a8bcb21a39f0956ec110462f09536477290aa2e25206dd72689554b05efec0c2",
+      "bytes": 20209
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/runs/control/OPPOSITE_025_PREDICTION_FREEZE.json",
+      "sha256": "a139a7e0d5d73ae548008813e4256a4da35aeb4c52b62fba447ba9d12ba6bc4c",
+      "bytes": 7451
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/runs/control/OPPOSITE_025_BODY.npz",
+      "sha256": "fd48d583e1d32f518e4ebf65dd5e198557d1a7a224c6e1f7ddc9ac62a0b6cfb5",
+      "bytes": 20903
+    },
+    {
+      "path": "/home/liu/.config/superpowers/worktrees/ring_first_3d_workspace/TASK-V6-R1-BODY-INIT-002/experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/runs/control/OPPOSITE_025_FIXED_GT_DIAGNOSTIC.json",
+      "sha256": "6835d682a8504e99f13d836fbf640a3bf79dff67e041b676495d82e99b08d99b",
+      "bytes": 19952
+    }
+  ],
+  "layout": "3_rows_1_column",
+  "units": "mm",
+  "control_only": true,
+  "GT_scope": "generation and frozen evaluation; fixed-GT geometry solver diagnostic separately labeled",
+  "new_optimization": false,
+  "source_ids": [
+    "G01_004_new_r00",
+    "G01_v004_raw00282",
+    "G01_v005_raw00104",
+    "G01_v005_raw00694"
+  ],
+  "drawn_values": {
+    "ZERO": {
+      "injected_b_mm": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fitted_b_mm": [
+        0.018471728937929827,
+        0.002692658506617071,
+        -0.015897996500133356,
+        0.003240569841753093
+      ],
+      "fixed_true_geometry_fitted_b_mm": [
+        1.228174315304198e-07,
+        2.730782813070709e-07,
+        -7.806546706222249e-07,
+        1.0642086476039438e-06
+      ]
+    },
+    "OPPOSITE_025": {
+      "injected_b_mm": [
+        0.25,
+        0.25,
+        -0.25,
+        -0.25
+      ],
+      "fitted_b_mm": [
+        0.2270038880875718,
+        0.2047840021619252,
+        -0.23281844774816624,
+        -0.21379192474099237
+      ],
+      "fixed_true_geometry_fitted_b_mm": [
+        0.22767755717628627,
+        0.22767769413760888,
+        -0.22767820303595865,
+        -0.22767636980658787
+      ]
+    }
+  }
+}

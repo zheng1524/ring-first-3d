@@ -37,7 +37,9 @@ def dxy_frame_page(path):
     state=f"{r['status']} / {r['quality']}；正式 Ring 测量 {'有效' if r['official_measurement_valid'] else '未通过'}；二维角色 {r['role']}"
     body=f'<p>{esc(state)}</p><p>紫色：本帧真实算法曲线。PIXEL_ONLY 不提供毫米量尺；有曲线不等于质量可靠。完整流程先于三维，未由三维反推。</p>'
     if len(selected):body+=f'<h2>算法选中主体：{esc(r.get("selected_record_id"))}</h2>'
-    else:body+=f'<h2>无可用选中曲线</h2><p>{esc(r.get("official_reason"))} / {esc(process.get("pixel_branch",{}))}</p>'
+    else:
+        failures=[dict(record_id=c.get('record_id'),reason=c.get('reason') or c.get('current_reasons')) for c in process.get('default_candidate_pool',[]) if not c.get('supervision_eligible')]
+        body+=f'<h2>无可靠二维算法曲线 / 保留求解失败</h2><p>正式 Ring：{esc(r.get("official_reason"))}；真实可见 P={r["P_count"]}。下层像素候选也经过实际求解；拒绝理由：</p><pre>{esc(json.dumps(failures,ensure_ascii=False,indent=2))}</pre>'
     body+=svg_rgb(r['RGB'],r['native_shape'],selected,folder)
     body+='<h2>真实候选过程</h2><p>以下每幅只展示一个实际候选。它们是过程证据，不与选中预测同等使用；完整池中的拒绝项和 identifiability profile 仅供数据诊断。</p>'
     ids=[]
@@ -89,7 +91,7 @@ def render_rgb_axis(ax,frame,model_scene,cad_scene):
     if len(selected):ax.plot(selected[:,0],selected[:,1],color=PURPLE,lw=1.25)
     ax.set_xlim(0,rgb.shape[1]);ax.set_ylim(rgb.shape[0],0);ax.axis('off')
     status=frame['DXY']['status'];role={'FIT':'拟合','HOLDOUT':'仅二维目标留出'}.get(frame['role'],frame['role'])
-    suffix='无选中二维曲线'if not len(selected)else frame['DXY'].get('selected_record_id')
+    suffix='无可靠二维算法曲线 / 保留求解失败'if not len(selected)else frame['DXY'].get('selected_record_id')
     ax.set_title(f"{frame['case'].rsplit('_',1)[-1]} / {frame['id']} / {role}\n{status} / {suffix}",fontsize=10,pad=8)
 
 def image_panels(g,r,folder):
@@ -148,7 +150,22 @@ def frame_comparison(case,frame_id):
     if not(folder/'RESULT.json').exists():raise ValueError('No completed single-video initialization for '+case)
     r=load_configuration(folder/'RESULT.json')['record'];assert r['coordinate_frame']=='VIDEO_LOCAL';asset(d['camera']['path'],d['camera']['sha256']);cam=np.load(d['camera']['path']);j=d['index']
     if j>=len(cam['c2w'])or not np.isfinite(cam['c2w'][j]).all():raise ValueError('No reliable finite camera for this ledger frame')
-    f=dict(case=case,id=frame_id,role=d['role'],RGB=d['RGB'],K=cam['K'],C=cam['c2w'][j],DXY=d,DXY_curve=np.load(d['arrays']['path'])['selected_curve']);body=np.load(folder/'BODY.npz');cad=np.load(r['cad']['path']);fig,ax=plt.subplots(1,1,figsize=(9,6.5));render_rgb_axis(ax,f,scene(body['V'],body['F_solid']),scene(cad['V'],cad['F']));fig.suptitle('本地单视频：紫 二维算法主体 / 绿 交付三角主体可见投影\n真实相机与固定毫米尺度；GT不可评价',fontsize=11);fig.tight_layout(rect=(0,0,1,.9));review=T/'runs/review/frames'/case/frame_id;review.mkdir(parents=True,exist_ok=True);fig.savefig(review/'BODY_COMPARISON.png',dpi=110);plt.close(fig);save(review/'BODY_COMPARISON.json',dict(result=asset(folder/'RESULT.json'),frame=asset(fp),camera=d['camera'],projection='actual exported triangles; anchor CAD occlusion',layers=['2D_selected','3D_visible'],layout='one_column'));dxy_frame_page(fp)
+    f=dict(case=case,id=frame_id,role=d['role'],RGB=d['RGB'],K=cam['K'],C=cam['c2w'][j],DXY=d,DXY_curve=np.load(d['arrays']['path'])['selected_curve']);body=np.load(folder/'BODY.npz');cad=np.load(r['cad']['path']);fig,ax=plt.subplots(1,1,figsize=(9,6.5));render_rgb_axis(ax,f,scene(body['V'],body['F_solid']),scene(cad['V'],cad['F']));legend='无可靠二维算法曲线 / 保留求解失败（未绘紫线）' if d['selected'] is None else '紫 二维算法主体'
+    fig.suptitle('本地单视频：'+legend+' / 绿 交付三角主体可见投影\n真实相机与固定毫米尺度；GT不可评价',fontsize=11);fig.tight_layout(rect=(0,0,1,.9));review=T/'runs/review/frames'/case/frame_id;review.mkdir(parents=True,exist_ok=True);fig.savefig(review/'BODY_COMPARISON.png',dpi=110);plt.close(fig);save(review/'BODY_COMPARISON.json',dict(result=asset(folder/'RESULT.json'),frame=asset(fp),camera=d['camera'],projection='actual exported triangles; anchor CAD occlusion',layers=['2D_selected','3D_visible'],layout='one_column'));dxy_frame_page(fp)
+
+def dxy_process_png(case,frame_id):
+    fp=T/'runs/dxy'/case/frame_id/'FRAME.json';d=read(fp);process=read_gzip(d['process']['path']);selected=np.load(d['arrays']['path'])['selected_curve'];rows=[(d.get('selected_record_id') or '无可靠二维算法曲线 / 保留求解失败',selected)]
+    rows += [(r['record_id']+'（真实候选，非最终预测）',curve(r))for r in selected_candidates(process,d.get('selected_record_id'))]
+    fig,axes=plt.subplots(len(rows),1,figsize=(9,6*len(rows)),squeeze=False);rgb=cv2.imread(d['RGB'])[:,:,::-1]
+    for ax,(label,points)in zip(axes[:,0],rows):
+        ax.imshow(rgb)
+        if len(points):ax.plot(points[:,0],points[:,1],color=PURPLE,lw=1.3)
+        ax.set_xlim(0,rgb.shape[1]);ax.set_ylim(rgb.shape[0],0);ax.axis('off');ax.set_title(label,fontsize=11,pad=10)
+    why='；'.join(str(c.get('record_id'))+':'+str(c.get('reason') or c.get('current_reasons'))for c in process.get('default_candidate_pool',[])if not c.get('supervision_eligible'))
+    heading=f"{case} / {frame_id}\n{d['status']}；P={d['P_count']}；正式Ring未通过={not d['official_measurement_valid']}\n紫：真实原生像素主体；此图仅二维过程，未绘三维或毫米量尺"
+    if d['selected'] is None:heading+='\n无可靠二维算法曲线 / 保留求解失败：'+why
+    fig.suptitle(heading,fontsize=10,y=.995);fig.tight_layout(rect=(0,0,1,1-.15/len(rows)));out=T/'runs/review/frames'/case/frame_id;out.mkdir(parents=True,exist_ok=True);fig.savefig(out/'DXY_PROCESS.png',dpi=110);plt.close(fig)
+    save(out/'DXY_PROCESS.json',dict(frame=asset(fp),process=d['process'],selected_record_id=d.get('selected_record_id'),displayed_record_ids=[x[0]for x in rows],layout='one_column',no_3D_or_metric_scale_claim=True));dxy_frame_page(fp)
 
 def group_page(g):
     folder=T/'runs/results'/g;rec=read(folder/'GROUP_RESULT.json');parts=['<p>单视频均在自身 LOCAL 坐标，未把失败关系叠成同一场景；只有明确 PASS 的子集执行联合。GT不可评价。</p>'];shown=[]
@@ -169,9 +186,11 @@ def group_page(g):
     parts.append('<p><a href="GROUP_RESULT.json">全组结果与资格</a></p>');(folder/'index.html').write_text(page(g,''.join(parts)));print('VERTICAL_REVIEW',g,shown,flush=True)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--group');parser.add_argument('--frame');parser.add_argument('--dxy-only',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--group');parser.add_argument('--frame');parser.add_argument('--dxy-frame');parser.add_argument('--dxy-only',action='store_true');args=parser.parse_args()
     if args.frame:
         case,f=args.frame.split('/');frame_comparison(case,f);return
+    if args.dxy_frame:
+        case,f=args.dxy_frame.split('/');dxy_process_png(case,f);return
     cases=None
     if args.group:
         q=next(g for g in read(T/'evidence/REGISTRATION_QUALIFICATION.json')['groups']if g['group']==args.group);cases=q['videos']

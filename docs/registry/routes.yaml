@@ -1200,3 +1200,23 @@ r1_coarse_body_initialization_pilot:
   upstream_commit: 80d00ad3530abfd782e27a2c1981a272bf9739e7
   contract: fixed_metric_cameras__one_ellipsoid__bounded_source_axial_bias__exact_optional_halfspace_clip
   high_frequency_body_update_authorized: false
+
+r1_coarse_body_initialization_revision:
+  route_id: rf-v6-r1-dxy-hero-body-init@2
+  authorization: TASK-V6-R1-DXY-HERO-BODY-INIT-002
+  status: researcher_authorized_coarse_initialization_revision
+  scientific_status: controlled_bias_validated_real_shape_not_absolute_GT_validated
+  composes: [rf-v6-r1-dxy-hero-body-init@1, rf-v6-r1-m4-registration@2]
+  entrypoint: experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/code/batch_revision.py
+  qualification: experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/code/registration.py
+  dxy_process: experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/code/run_dxy_batch.py
+  dxy_source: zheng1524/new-polyp-dxy@75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95
+  dxy_pixel_outlet: task_local_observable_P_exact_v2_no_metric_claim
+  consumer: experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/code/consume_revision.py
+  interface: experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/INITIALIZATION_INDEX.json
+  config: experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/config.json
+  report: experiments/TASK-V6-R1-DXY-HERO-BODY-INIT-002/TECHNICAL_REPORT.md
+  base_commit: 3b8610075a4959a32097cca83247faaddbf61aa1
+  contract: local_single_videos__qualified_components_only__complete_native_2D__bounded_axial_bias__reversible_conflict_aware_base
+  source_sampling: fixed_001_trusted_native_pixels_no_upstream_rerun
+  high_frequency_body_update_authorized: false
