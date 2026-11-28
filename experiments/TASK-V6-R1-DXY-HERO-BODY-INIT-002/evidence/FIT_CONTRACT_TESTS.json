@@ -1,0 +1,17 @@
+{
+  "tests": 7,
+  "exit_code": 0,
+  "log_sha256": "60727e36075d646d1285aee80e93756346f06c0fee27c2430dfd562fdbb09dea",
+  "scientific_codes": {
+    "fit_revision.py": "534f334589d89d03104961efa5d210200bf07a0626e99ed32e106c53e1852ac0",
+    "base_revision.py": "dbf7329d0ca33e7d4f0efcc3e1d4201f0bc501a6b070fca6a5e041653ec96d99",
+    "control_revision.py": "cc0afc804f02e04943070e34a5e6f2fb640d5f08349c7e53ca9e3f1a5d087a79",
+    "test_fit_revision.py": "5358153650fb1239bb71888c4f5f08b6cbe95e1bb4079409c9f67bee9ab143ac"
+  },
+  "config_sha256": "bf0fd9c5325e386de3c1a581018e2ed4a7a41105f36c6ceb3b90468269f620bc",
+  "reused_base": "001 Problem, initialization, static source weights, analytic ray and ellipse kernels, base estimator, exact clipping; no raw input mutation",
+  "bias_update": "sequential bounded coordinate minimization of exactly source_parts + coupled weighted-mean prior; full-objective check after each sweep",
+  "CAD": "fixed mesh ray depth occlusion and signed distance over retained mother vertices, 0.05mm contact tolerance; no per-case threshold",
+  "Q": "official DXY soft_geometry.interval_residual on projected mother ellipse; P equality only, X never boundary supervision",
+  "base": "equal-source negative-distance soft score combined with unique-target consistency; conflict gives WEAK reversible candidate, never delete cut-side points"
+}

@@ -1,0 +1,22 @@
+{
+  "official": "dxy_mid.diagnostics.observe_files + export_observation + candidate_records, frozen 75d58ca5b643fb4d8e0eb887b45ad0f056b0bb95",
+  "additional_observation": "Read-only profiler captures pipeline current baseline candidates, required because the official no_Q_exact_V2 branch has an empty competition records list. No engine hook is changed.",
+  "pixel_only": "observable_P on current native labels; exact_v2.geometry invokes original V2 fit_circle/fit_ellipse and native-axis conversion. Ring validity and official Measurement remain unchanged.",
+  "pixel_bounds": "Observable P bounding-box midpoint, extent=max span, rr_proxy=extent/2; image-pixel solver bounds, not estimated Ring geometry or metric scale.",
+  "pixel_selection": "Only original valid finite V2 candidates. Minimize norm_residual_all + 0.005 for ellipse, 0 for circle, uniformly across frames. Rejected candidates retained.",
+  "weights": {
+    "strict_stable": 0.8,
+    "normal_gate": 0.5,
+    "other_official_numeric": 0.25,
+    "P_zero_max": 0.15,
+    "PIXEL_ONLY": 0.2
+  },
+  "Q_semantic": "Curve intersection with native q + t*n should lie in [lo,hi]; Q is not an exact contour point. X is excluded.",
+  "roles": "Original 001 FIT/HOLDOUT assignments kept; every other existing ledger frame UNSELECTED. Full 2D coverage does not add new 3D fitting frames.",
+  "files": {
+    "FRAME.json": "Identity, official audit, selected center/basis/weight and record ID, paths and SHA",
+    "CURVES.npz": "Actual selected curve and P/Q/X arrays with contour/global identity, Q normal intervals",
+    "PROCESS.json.gz": "Actual baseline candidates, full default A/B candidate pool including profiles/rejections and sample traces, selection plan, official variant summary, pixel fallback evidence",
+    "official/": "Official diagnostic exporter audit, Ring points, P/Q/X solver records, full default geometry pool, pre-filter Q"
+  }
+}
