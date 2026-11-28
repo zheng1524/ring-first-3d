@@ -5,7 +5,7 @@ def main():
  files={};summary=[];oldT=0;video_total=0;source_total=0;completed=0;failures=[];phase_checks=0;clip_checks=0
  groups=read(M4/'GROUP_INDEX.json')['groups'];assert len(groups)==39
  for item in groups:
-  g=item['group'];a=read(T/'runs/inputs'/g/'AUDIT.json');old=read(item['path']);video_total+=len(a['all_video_states']);source_total+=len(a['sources'])
+  g=item['group'];a=read(T/'runs/inputs'/g/'AUDIT.json');asset(item['path'],item['sha256']);old=read(item['path']);video_total+=len(a['all_video_states']);source_total+=len(a['sources'])
   for v in old['videos']:assert np.array_equal(a['transforms'][v['case']],v['T_local_to_common']);oldT+=1
   for x in a['files']:files[x['path']]=x['sha256']
   root=T/'runs/results'/g;group=read(root/'GROUP_RESULT.json');failures+=group['failures'];assert sorted(group['all_video_cases'])==sorted(s['case']for s in a['all_video_states'])
@@ -14,10 +14,15 @@ def main():
    for stage in ph:
     assert stage['objective_after_theta']<=stage['objective_before']+1e-8;assert stage['objective_after']<=stage['objective_after_theta']+1e-8;phase_checks+=1
    for item2 in read(conf/'COMPLETE.json')['files']:asset(item2['path'],item2['sha256'])
+   for name in ['FIGURES.json','VISIBILITY.json']:
+    for item2 in read(conf/name)['files']:asset(item2['path'],item2['sha256'])
+   visibility=np.load(conf/'VISIBILITY.npz');assert visibility['visible_model_faces_by_frame'].shape[1]==len(body['F_solid']);assert np.array_equal(visibility['inferred_base_faces'],body['inferred_base_faces'])
    assert all(abs(x['b_mm'])<=read(T/'config.json')['bias_bound_mm']+1e-9 for x in r['bias'])
    identities=[]
    for p in r['source_indices']:
-    idx=read(p);assert idx['case']in r['videos'];identities+=idx['sources']
+    idx=read(p);assert idx['case']in r['videos'];identities+=idx['sources'];assert sum(f['role']=='FIT'for f in idx['frames'])==read(T/'config.json')['frames_per_video']
+    for source in idx['sources']:
+     for original in source['source_files']:files[original['path']]=original['sha256']
     for f in idx['frames']:
      for key in ['RGB','Mask','DXY','observations_2D']:asset(f[key]['path'],f[key]['sha256'])
    assert sorted(s['source_id']for s in identities)==sorted(x['source_id']for x in r['bias'])

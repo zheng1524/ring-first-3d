@@ -33,24 +33,31 @@ def hero_meshes(sources,bias):
   m=trimesh.load(s['meta']['source']['raw_mesh'],process=False);V=np.asarray(m.vertices);F=np.asarray(m.faces);sel=np.load(s['meta']['source']['selection'])['trusted_original_face_id'];D=np.array(s['meta']['source']['T_local_to_common']);V=V@D[:3,:3].T+D[:3,3];C=s['C'];q=(V-C[:3,3])@C[:3,:3];z=q[:,2];Q=(q*(1-bias[i]/np.where(abs(z)>1e-12,z,np.inf))[:,None])@C[:3,:3].T+C[:3,3];meshes.append((V,F[sel],Q))
  return meshes
 def image_panels(g,r,folder):
- fs,ss=load_views(g,r);p=np.array(r['p']);p0=np.array(r['initial_p']);base=read(folder/'BASE.json');plane=np.array(base['plane'])if r['base_applied']else None;selected=[]
+ fs,ss=load_views(g,r);p=np.array(r['p']);p0=np.array(r['initial_p']);base=read(folder/'BASE.json');plane=np.array(base['plane'])if r['base_applied']else None;selected=[];body=np.load(folder/'BODY.npz');model_scene=scene(body['V'],body['F_solid']);audit=read(T/'runs/inputs'/g/'AUDIT.json');cadpath=next((s['cad_path']for s in audit['source_metadata']),None)
+ if cadpath is None:cadpath=WORK/'runs/m2f5_unified/cad'/('R5.npz'if audit['videos'][0]['ring_radius_mm']<4 else'R10.npz')
+ cad=np.load(cadpath);cad_scene=scene(cad['V'],cad['F'])
  for case in r['videos']:
   ff=[f for f in fs if f['case']==case];fit=[f for f in ff if f['role']=='FIT'];held=[f for f in ff if f['role']=='HOLDOUT'];selected+=([fit[0],fit[len(fit)//2]]if fit else[])+(held[:1])
  fig,axes=plt.subplots(len(r['videos']),3,figsize=(12,3.15*len(r['videos'])),squeeze=False)
  for ax,f in zip(axes.flat,selected):
   rgb=cv2.imread(f['RGB'])[:,:,::-1];labels=cv2.imread(f['Mask'],0);ax.imshow(rgb);ax.contour(labels==1,levels=[.5],colors=['#ffcf00'],linewidths=.7)
-  y,x=np.mgrid[1:rgb.shape[0]:2,1:rgb.shape[1]:2];uv=np.c_[x.ravel(),y.ravel()];rr=rays(uv,f['K'],f['C']);z,hit,cap=clipped_depth(p,rr,plane);pred=np.isfinite(z).reshape(y.shape);initial=np.isfinite(ellipsoid_depth(p0,rr)).reshape(y.shape)
+  y,x=np.mgrid[1:rgb.shape[0]:2,1:rgb.shape[1]:2];uv=np.c_[x.ravel(),y.ravel()];rr=rays(uv,f['K'],f['C']);z,_=cast(model_scene,rr);cz,_=cast(cad_scene,rr);pred=(np.isfinite(z)&(z<cz)).reshape(y.shape);initial=np.isfinite(ellipsoid_depth(p0,rr)).reshape(y.shape)
+  ring=np.isfinite(cz).reshape(y.shape)
+  if ring.any()and not ring.all():ax.contour(x,y,ring,levels=[.5],colors=['#32cbd3'],linewidths=.5)
   if pred.any()and not pred.all():ax.contour(x,y,pred,levels=[.5],colors=[COL['body']],linewidths=1.5)
   if initial.any()and not initial.all():ax.contour(x,y,initial,levels=[.5],colors=['white'],linewidths=.6,linestyles='dashed')
   d=f['DXY']
   if d['available']:
    t=np.linspace(0,2*np.pi,100);q=np.array(d['center_px'])+np.c_[np.cos(t),np.sin(t)]@np.array(d['basis_px']).T;ax.plot(q[:,0],q[:,1],color='#e989f0',lw=.8)
   ax.set_xlim(0,rgb.shape[1]);ax.set_ylim(rgb.shape[0],0);ax.set_title(f"{f['case'].rsplit('_',1)[-1]} / {f['id']} / {'留出'if f['role']=='HOLDOUT'else'拟合'}",fontsize=9);ax.axis('off')
- fig.suptitle(f"{r['configuration']}：原相机 RGB 投影｜黄 Mask / 紫 DXY / 白 虚线起点 / 绿 交付主体\n{r['input_kind']}；基底 {r['base_status']}；真实 GT 不可评价",fontsize=11);fig.tight_layout(rect=(0,0,1,.91));fig.savefig(folder/'RGB_PROJECTIONS.png',dpi=120);plt.close(fig)
+ fig.suptitle(f"{r['configuration']}：原相机 RGB 投影｜黄 Mask / 紫 DXY / 白 起点 / 绿 交付三角 Mesh / 青 CAD\n{r['input_kind']}；基底 {r['base_status']}；真实 GT 不可评价",fontsize=11);fig.tight_layout(rect=(0,0,1,.91));fig.savefig(folder/'RGB_PROJECTIONS.png',dpi=120);plt.close(fig)
  return fs,ss
 def geometry_panels(g,r,folder,limits):
  fs,ss=load_views(g,r);raw=np.load(folder/'CORRECTED_OBSERVATIONS.npz');body=np.load(folder/'BODY.npz');parent=np.load(folder/'FINAL_UNCUT.npz');base=read(folder/'BASE.json');plane=np.array(base['plane'])if base.get('plane')is not None else None;V,F=parent['V'],parent['F'];b=np.array([x['b_mm']for x in r['bias']]);meshes=hero_meshes(ss,b)
- n=plane[:3]if plane is not None else fs[0]['C'][:3,2];n=n/np.linalg.norm(n);u=basis(n)[:,0];v=np.cross(n,u);center=np.array(r['p'][:3]);origin=center
+ n=plane[:3]if plane is not None else fs[0]['C'][:3,2];n=n/np.linalg.norm(n);u=basis(n)[:,0];v=np.cross(n,u);center=np.array(r['p'][:3]);origin=center;missing=[]
+ for i,s in enumerate(ss):
+  _,hit,_=clipped_depth(np.array(r['p']),s['rays'],plane if r['base_applied']else None);missing.extend(corrected_points(s['rays'],s['D'],b[i])[~hit])
+ missing=np.array(missing).reshape(-1,3)
  cut=(V[F].mean(1)@n+plane[3]<0)if plane is not None else np.zeros(len(F),bool)
  fig=plt.figure(figsize=(13,8));ax1=fig.add_subplot(221,projection='3d');ax2=fig.add_subplot(222,projection='3d');ax3=fig.add_subplot(223);ax4=fig.add_subplot(224)
  audit=read(T/'runs/inputs'/g/'AUDIT.json');cadfile=next((s['cad_path']for s in audit['source_metadata']),None)
@@ -65,7 +72,8 @@ def geometry_panels(g,r,folder,limits):
   if len(raw['raw_X']):
    ax.scatter(*raw['raw_X'][::6].T,s=1,c=COL['raw'],alpha=.35)
    if plane is not None:
-    miss=raw['raw_X']@plane[:3]+plane[3]<0;ax.scatter(*raw['raw_X'][miss].T,s=4,c=COL['missing'],marker='x')
+    miss=raw['raw_X']@plane[:3]+plane[3]<0;ax.scatter(*raw['raw_X'][miss].T,s=4,c=COL['cut'],marker='o')
+  if len(missing):ax.scatter(*missing.T,s=8,c=COL['missing'],marker='x')
   if plane is not None:
    anchor=center-(center@n+plane[3])*n;radius=max(2,float(np.max(np.exp(np.array(r['p'])[6:]))));corners=anchor+np.array([[-1,-1],[1,-1],[1,1],[-1,1]])@np.c_[u,v].T*radius;ax.add_collection3d(Poly3DCollection([corners],facecolor='#aaaaaa',alpha=.16));ax.quiver(*anchor,*n,length=2,color='#222222')
   lo,hi=limits
@@ -78,9 +86,11 @@ def geometry_panels(g,r,folder,limits):
   for RV,RF,CV in meshes:
    for VV,col in [(RV,COL['raw']),(CV,COL['corrected'])]:ax.add_collection(LineCollection((section(VV,RF,normal,origin)-origin)@B,colors=col,linewidths=.7,alpha=.65))
   if ax is ax3 and plane is not None:ax.axhline(-(origin@n+plane[3]),color='#333333',ls='--',lw=.8)
+  if len(missing):
+   near=missing[abs((missing-origin)@normal)<.3];ax.scatter(*((near-origin)@B).T,s=8,c=COL['missing'],marker='x')
   ax.autoscale();ax.set_aspect('equal');ax.set(xlabel='截面水平 / mm',ylabel='截面垂直 / mm',title=label);ax.grid(alpha=.2)
  base_label='实际裁切'if r['base_applied']else'母体保留；弱基底仅候选'if base.get('candidate')else'平面方向未获支持；仅诊断'if plane is not None else'无可用基底'
- fig.suptitle(f"{r['configuration']} | {r['base_status']} {base_label}\n橙 原始 HERO / 青 校正 HERO / 蓝 未裁母体 / 绿 主体 / 红 被切部分与切侧可信点 / 紫 推断底盖\nHERO 三角面显示每视频均匀选 2 来源；指标保留全部来源；固定 CAD 黑色；GT 不可评价",fontsize=10);fig.tight_layout(rect=(0,0,1,.89));fig.savefig(folder/'GEOMETRY_SECTIONS.png',dpi=115);plt.close(fig)
+ fig.suptitle(f"{r['configuration']} | {r['base_status']} {base_label}\n橙 原始 HERO / 青 校正 HERO / 蓝 未裁母体 / 绿 主体 / 红 切侧部分 / 深红× 未解释 {len(missing)}/{r['depth_fixed_N']} / 紫 底盖\nHERO 三角面显示每视频均匀选 2 来源；指标保留全部来源；固定 CAD 黑色；GT 不可评价",fontsize=10);fig.tight_layout(rect=(0,0,1,.89));fig.savefig(folder/'GEOMETRY_SECTIONS.png',dpi=115);plt.close(fig)
 def main():
  import argparse
  pa=argparse.ArgumentParser();pa.add_argument('--group');args=pa.parse_args();links=[]

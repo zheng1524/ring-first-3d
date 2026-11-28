@@ -1,0 +1,3662 @@
+[
+  {
+    "group": "GP_IIa_14.0mm_closed_R10_single_refY",
+    "official_joint_objective": 0.3436155416213353,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.446207948346165,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.08482553231247075,
+          "mask": 0.05188919851447129,
+          "dxy_completion": 0.022673086699423375,
+          "depth": 0.2649327149317939,
+          "coverage": 0.0001079704723354053,
+          "bias_prior": 0.0010404984074160726,
+          "shape_prior": 0.020738947008254217
+        },
+        "center_to_joint_mm": 0.2201052927176846
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 1.5399277723178098,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 1.1253801177416856,
+          "mask": 0.06948403504067564,
+          "dxy_completion": 0.03311539332087306,
+          "depth": 0.30145912838692746,
+          "coverage": 2.2503481387133153e-05,
+          "bias_prior": 0.0010404984074160726,
+          "shape_prior": 0.009426095938844773
+        },
+        "center_to_joint_mm": 0.4238567007872629
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_IIa_14.0mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 8.019592685153242,
+        "gate_reasons": [
+          "RGB MAE px 10.336629749297849 > 3",
+          "RGB MAE px 17.59503012547698 > 3",
+          "RGB MAE px 59.29223726936251 > 3",
+          "RGB MAE px 6.536283428349595 > 3",
+          "RGB MAE px 61.44309099943583 > 3",
+          "RGB MAE px 9.502901941956887 > 3",
+          "RGB P95 px 10.307465106993085 > 6",
+          "RGB P95 px 20.924002028621214 > 6",
+          "RGB P95 px 224.35254642296795 > 6",
+          "RGB P95 px 28.140163998546395 > 6",
+          "RGB P95 px 28.26705837558304 > 6",
+          "RGB P95 px 386.019190578994 > 6",
+          "RGB P95 px 44.23838467645663 > 6",
+          "初始化中心分散 2.229 mm > 2 mm",
+          "初始化中心分散 2.922 mm > 2 mm",
+          "初始化中心分散 3.488 mm > 2 mm",
+          "正深度比例 0.9230769230769231 < 0.95",
+          "正深度比例 0.9411764705882353 < 0.95"
+        ]
+      },
+      {
+        "case": "GP_IIa_14.0mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 2,
+        "R1_held_MAE_px_median": 4.348801289235631,
+        "gate_reasons": [
+          "RGB MAE px 117.96852531709942 > 3",
+          "RGB MAE px 12.10696491600277 > 3",
+          "RGB MAE px 17.220533979364 > 3",
+          "RGB MAE px 29.592196524430157 > 3",
+          "RGB MAE px 3.411384814990743 > 3",
+          "RGB MAE px 5.2862177634805185 > 3",
+          "RGB P95 px 151.32063697254776 > 6",
+          "RGB P95 px 38.72059354995331 > 6",
+          "RGB P95 px 54.096585453676894 > 6",
+          "RGB P95 px 6.04952664071912 > 6",
+          "RGB P95 px 6.861271077911341 > 6",
+          "RGB P95 px 60.52627884988664 > 6",
+          "初始化中心分散 2.065 mm > 2 mm",
+          "初始化中心分散 2.502 mm > 2 mm",
+          "初始化中心分散 2.881 mm > 2 mm",
+          "初始化中心分散 3.372 mm > 2 mm",
+          "初始化中心分散 3.437 mm > 2 mm",
+          "初始化中心分散 3.598 mm > 2 mm",
+          "初始化中心分散 5.899 mm > 2 mm",
+          "初始化中心分散 8.261 mm > 2 mm",
+          "正深度比例 0.9230769230769231 < 0.95",
+          "留出观测数 5 < 8",
+          "留出观测数 7 < 8"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_IIa_14.0mm_closed_R5_single_refY",
+    "official_joint_objective": 0.8402153245279782,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 1.206263120444556,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.2699347315580581,
+          "mask": 0.08973090608522226,
+          "dxy_completion": 0.11999528796379394,
+          "depth": 0.7147278721050057,
+          "coverage": 0.0002402838291624136,
+          "bias_prior": 0.0006345442740667235,
+          "shape_prior": 0.010999494629246927
+        },
+        "center_to_joint_mm": 0.22261080749143702
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.7198392536312894,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.35253107449453147,
+          "mask": 0.046086396417303714,
+          "dxy_completion": 0.13171672066581538,
+          "depth": 0.1795022462048107,
+          "coverage": 2.4492129727980862e-05,
+          "bias_prior": 0.0006345442740667235,
+          "shape_prior": 0.009343779445033437
+        },
+        "center_to_joint_mm": 0.0857743176457987
+      }
+    ],
+    "any_feasible_single_has_lower_objective": true,
+    "upstream_quality": [
+      {
+        "case": "GP_IIa_14.0mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 6,
+        "R1_held_MAE_px_median": 2.2672048698637908,
+        "gate_reasons": [
+          "RGB MAE px 3.2244827255474715 > 3",
+          "RGB MAE px 5.648485745581802 > 3",
+          "RGB MAE px 6.3597161975421095 > 3",
+          "RGB MAE px 7.373318592162442 > 3",
+          "RGB P95 px 16.804838384575437 > 6",
+          "RGB P95 px 19.844945616600036 > 6",
+          "RGB P95 px 6.259050198302574 > 6",
+          "初始化中心分散 2.225 mm > 2 mm",
+          "初始化中心分散 2.712 mm > 2 mm",
+          "初始化中心分散 5.195 mm > 2 mm",
+          "初始化中心分散 6.410 mm > 2 mm",
+          "初始化中心分散 6.564 mm > 2 mm",
+          "初始化中心分散 7.075 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_IIa_14.0mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 7,
+        "R1_held_MAE_px_median": 2.0014107728114823,
+        "gate_reasons": [
+          "RGB MAE px 5.377720838434976 > 3",
+          "RGB P95 px 23.47328972990772 > 6",
+          "RGB P95 px 6.2752337097626585 > 6",
+          "RGB P95 px 6.9587395733338635 > 6",
+          "初始化中心分散 4.369 mm > 2 mm",
+          "初始化中心分散 4.523 mm > 2 mm",
+          "初始化中心分散 4.631 mm > 2 mm",
+          "初始化中心分散 5.410 mm > 2 mm",
+          "初始化中心分散 6.385 mm > 2 mm",
+          "初始化中心分散 6.940 mm > 2 mm",
+          "初始化中心分散 7.307 mm > 2 mm",
+          "初始化中心分散 7.380 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_IIa_22.0mm_closed_R10_single_refY",
+    "official_joint_objective": 3.9301405699420333,
+    "single_parameter_probes": [
+      {
+        "configuration": "006",
+        "objective_with_joint_b_fixed": 4.389471400633343,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 2.9873954683647854,
+          "mask": 0.6975641743331725,
+          "dxy_completion": 0.32875997452797207,
+          "depth": 0.2259614917221896,
+          "coverage": 2.6475620807178742e-05,
+          "bias_prior": 0.0025430909396980507,
+          "shape_prior": 0.14722072512471793
+        },
+        "center_to_joint_mm": 4.535726718767046
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 14.524716263383667,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 3.170069171024987,
+          "mask": 0.47779367031944614,
+          "dxy_completion": 0.38102858884590174,
+          "depth": 10.337076515251521,
+          "coverage": 0.14083197662587937,
+          "bias_prior": 0.0025430909396980507,
+          "shape_prior": 0.01537325037623367
+        },
+        "center_to_joint_mm": 6.092146941898679
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_IIa_22.0mm_closed_R10_single_refY_006",
+        "sampled_frames": 10,
+        "R1_new_pass": 4,
+        "R1_held_MAE_px_median": 3.2812409952268746,
+        "gate_reasons": [
+          "RGB MAE px 11.583555764192404 > 3",
+          "RGB MAE px 16.809059599355848 > 3",
+          "RGB MAE px 3.022083580224451 > 3",
+          "RGB MAE px 3.540398410229298 > 3",
+          "RGB MAE px 3.7501079102319124 > 3",
+          "RGB MAE px 6.283183610754636 > 3",
+          "RGB P95 px 12.077518183156965 > 6",
+          "RGB P95 px 14.693551355196146 > 6",
+          "RGB P95 px 15.439638200828828 > 6",
+          "RGB P95 px 38.782933533256916 > 6",
+          "RGB P95 px 6.797431284380624 > 6",
+          "RGB P95 px 9.284723753658142 > 6",
+          "Ring边界 P95 px 13.663164510682742 > 6",
+          "初始化中心分散 2.076 mm > 2 mm",
+          "初始化中心分散 2.210 mm > 2 mm",
+          "初始化中心分散 2.955 mm > 2 mm",
+          "初始化中心分散 3.266 mm > 2 mm",
+          "初始化中心分散 3.451 mm > 2 mm",
+          "初始化中心分散 4.348 mm > 2 mm",
+          "初始化中心分散 4.409 mm > 2 mm",
+          "初始化中心分散 6.192 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_IIa_22.0mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 11.216807841121257,
+        "gate_reasons": [
+          "RGB MAE px 10.422533494041915 > 3",
+          "RGB MAE px 12.0110821882006 > 3",
+          "RGB MAE px 12.145966812040655 > 3",
+          "RGB MAE px 13.881828007072132 > 3",
+          "RGB MAE px 13.89051172571444 > 3",
+          "RGB MAE px 36.132718794036535 > 3",
+          "RGB MAE px 7.7963163432864775 > 3",
+          "RGB MAE px 8.497219380783614 > 3",
+          "RGB MAE px 9.284980476360722 > 3",
+          "RGB MAE px 9.376794605973608 > 3",
+          "RGB P95 px 163.64648175088504 > 6",
+          "RGB P95 px 21.555260822170634 > 6",
+          "RGB P95 px 24.5840311760157 > 6",
+          "RGB P95 px 24.8513081579706 > 6",
+          "RGB P95 px 25.923463788139035 > 6",
+          "RGB P95 px 28.703886906519834 > 6",
+          "RGB P95 px 34.93468607249079 > 6",
+          "RGB P95 px 35.553619341714665 > 6",
+          "RGB P95 px 46.43390569006979 > 6",
+          "RGB P95 px 50.96584793483912 > 6",
+          "初始化中心分散 3.825 mm > 2 mm",
+          "初始化中心分散 4.087 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_IIa_22.0mm_closed_R5_single_refY",
+    "official_joint_objective": 0.5277124039535332,
+    "single_parameter_probes": [
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.5410695091107963,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.2061733489337477,
+          "mask": 0.04061054300331134,
+          "dxy_completion": 0.015687024859019783,
+          "depth": 0.2574336822903883,
+          "coverage": 0.007234371621341312,
+          "bias_prior": 0.0005507892521641316,
+          "shape_prior": 0.013379749150823784
+        },
+        "center_to_joint_mm": 0.1918726905276692
+      },
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 3.3924169830984345,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 2.5228934113117982,
+          "mask": 0.06946694214334384,
+          "dxy_completion": 0.004946122065922867,
+          "depth": 0.7794894884333603,
+          "coverage": 0.007397237863521501,
+          "bias_prior": 0.0005507892521641316,
+          "shape_prior": 0.007672992028323507
+        },
+        "center_to_joint_mm": 0.9297620269062858
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_IIa_22.0mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 1.9892703164347179,
+        "gate_reasons": [
+          "RGB MAE px 11.627880329458593 > 3",
+          "RGB MAE px 19.041801645116788 > 3",
+          "RGB MAE px 9.754422470512761 > 3",
+          "RGB P95 px 33.49955188778402 > 6",
+          "RGB P95 px 6.745517895377879 > 6",
+          "Ring边界 MAE px 3.002240432582873 > 3",
+          "Ring边界 MAE px 3.6765765921723426 > 3",
+          "Ring边界 P95 px 16.937006440331864 > 6",
+          "Ring边界 P95 px 17.995666426310745 > 6",
+          "Ring边界 P95 px 20.403816962127287 > 6",
+          "Ring边界 P95 px 20.60310997989349 > 6",
+          "Ring边界 P95 px 23.414661703937874 > 6",
+          "Ring边界 P95 px 8.688173739833479 > 6",
+          "初始化中心分散 2.342 mm > 2 mm",
+          "初始化中心分散 2.675 mm > 2 mm",
+          "初始化中心分散 3.428 mm > 2 mm",
+          "正深度比例 0.9230769230769231 < 0.95"
+        ]
+      },
+      {
+        "case": "GP_IIa_22.0mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 1,
+        "R1_held_MAE_px_median": 7.510032286320447,
+        "gate_reasons": [
+          "RGB MAE px 11.904362769311197 > 3",
+          "RGB MAE px 11.95575852649412 > 3",
+          "RGB MAE px 17.689411857069597 > 3",
+          "RGB MAE px 3.3922494307243705 > 3",
+          "RGB MAE px 4.522374566513024 > 3",
+          "RGB MAE px 5.610957685628441 > 3",
+          "RGB MAE px 6.084246775117259 > 3",
+          "RGB MAE px 8.935817797523635 > 3",
+          "RGB MAE px 9.706998103007624 > 3",
+          "RGB P95 px 11.330671466171989 > 6",
+          "RGB P95 px 13.044557550063196 > 6",
+          "RGB P95 px 15.287739534729505 > 6",
+          "RGB P95 px 16.459707946230846 > 6",
+          "RGB P95 px 17.00610933316828 > 6",
+          "RGB P95 px 25.68519967279854 > 6",
+          "RGB P95 px 6.235311442137286 > 6",
+          "RGB P95 px 8.955280248813327 > 6",
+          "RGB P95 px 9.311099985442759 > 6",
+          "Ring边界 MAE px 3.3890236923178607 > 3",
+          "Ring边界 MAE px 3.659274199422465 > 3",
+          "Ring边界 MAE px 3.7621443644230306 > 3",
+          "Ring边界 P95 px 11.81830180754311 > 6",
+          "Ring边界 P95 px 12.048034203863553 > 6",
+          "Ring边界 P95 px 13.297922275789206 > 6",
+          "Ring边界 P95 px 15.542578003977312 > 6",
+          "Ring边界 P95 px 8.108050576672861 > 6",
+          "初始化中心分散 2.494 mm > 2 mm",
+          "初始化中心分散 2.677 mm > 2 mm",
+          "初始化中心分散 3.127 mm > 2 mm",
+          "初始化中心分散 3.261 mm > 2 mm",
+          "初始化中心分散 4.808 mm > 2 mm",
+          "初始化中心分散 5.440 mm > 2 mm",
+          "初始化中心分散 7.149 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_IIa_4.5mm_closed_R10_single_refY",
+    "official_joint_objective": 0.4701260196432607,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 5.158680165520889,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.7121225892761297,
+          "mask": 0.6005404106700107,
+          "dxy_completion": 0.019229386254085566,
+          "depth": 3.7803691298381876,
+          "coverage": 0.019748969737975325,
+          "bias_prior": 0.009219819058531706,
+          "shape_prior": 0.017449860685968068
+        },
+        "center_to_joint_mm": 0.4704195243141648
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.47783990021785866,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.15666733150896733,
+          "mask": 0.11984693474911468,
+          "dxy_completion": 0.017978483740808446,
+          "depth": 0.13918154292409815,
+          "coverage": 0.019777799291672483,
+          "bias_prior": 0.009219819058531706,
+          "shape_prior": 0.015167988944665853
+        },
+        "center_to_joint_mm": 0.01832619754381551
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_IIa_4.5mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 2,
+        "R1_held_MAE_px_median": 3.4202424947964616,
+        "gate_reasons": [
+          "RGB MAE px 19.546011367373673 > 3",
+          "RGB MAE px 4.0669790849793745 > 3",
+          "RGB MAE px 50.888398763894 > 3",
+          "RGB MAE px 9.972474359183446 > 3",
+          "RGB MAE px 94.72497677422734 > 3",
+          "RGB P95 px 11.492280553630003 > 6",
+          "RGB P95 px 34.68840007950452 > 6",
+          "RGB P95 px 6.002981445986081 > 6",
+          "RGB P95 px 6.004340971751307 > 6",
+          "RGB P95 px 8.624580802605106 > 6",
+          "RGB P95 px 9.113820794268946 > 6",
+          "初始化中心分散 2.543 mm > 2 mm",
+          "初始化中心分散 2.713 mm > 2 mm",
+          "初始化中心分散 2.741 mm > 2 mm",
+          "初始化中心分散 3.636 mm > 2 mm",
+          "初始化中心分散 4.350 mm > 2 mm",
+          "初始化中心分散 4.468 mm > 2 mm",
+          "初始化中心分散 4.735 mm > 2 mm",
+          "正深度比例 0.9393939393939394 < 0.95"
+        ]
+      },
+      {
+        "case": "GP_IIa_4.5mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 3.8839614844493324,
+        "gate_reasons": [
+          "RGB MAE px 186.73688631251505 > 3",
+          "RGB MAE px 234.10311507811164 > 3",
+          "RGB MAE px 271.6797612764727 > 3",
+          "RGB MAE px 3.7575104138249187 > 3",
+          "RGB MAE px 4.010412555073747 > 3",
+          "RGB MAE px 4.462459093407313 > 3",
+          "RGB P95 px 11.998978574152073 > 6",
+          "RGB P95 px 1140.8134655529607 > 6",
+          "RGB P95 px 1210.1407905972449 > 6",
+          "RGB P95 px 14.709461648957523 > 6",
+          "RGB P95 px 15.714170265280615 > 6",
+          "RGB P95 px 833.1741730381324 > 6",
+          "正深度比例 0.8333333333333334 < 0.95",
+          "正深度比例 0.8571428571428571 < 0.95",
+          "留出观测数 6 < 8",
+          "留出观测数 7 < 8"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_IIa_5.2mm_closed_R10_single_refY",
+    "official_joint_objective": 0.3614664496568073,
+    "single_parameter_probes": [
+      {
+        "configuration": "001",
+        "objective_with_joint_b_fixed": 0.373933611366683,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.03900949979755096,
+          "mask": 0.09713548859417315,
+          "dxy_completion": 0.003969787485021772,
+          "depth": 0.1471559989697149,
+          "coverage": 0.04985347421353739,
+          "bias_prior": 0.018479052744499503,
+          "shape_prior": 0.01833030956218535
+        },
+        "center_to_joint_mm": 0.059511568321981866
+      },
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.3780001790816059,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.037820524109896836,
+          "mask": 0.12636477460089968,
+          "dxy_completion": 0.003318366311673538,
+          "depth": 0.12450985063055788,
+          "coverage": 0.049867251293713624,
+          "bias_prior": 0.018479052744499503,
+          "shape_prior": 0.01764035939036481
+        },
+        "center_to_joint_mm": 0.05347859705761754
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_IIa_5.2mm_closed_R10_single_refY_001",
+        "sampled_frames": 10,
+        "R1_new_pass": 9,
+        "R1_held_MAE_px_median": 1.6972586760640214,
+        "gate_reasons": [
+          "RGB P95 px 6.458643075586655 > 6",
+          "初始化中心分散 2.429 mm > 2 mm",
+          "初始化中心分散 3.634 mm > 2 mm",
+          "初始化中心分散 4.191 mm > 2 mm",
+          "初始化中心分散 4.269 mm > 2 mm",
+          "初始化中心分散 4.880 mm > 2 mm",
+          "初始化中心分散 6.238 mm > 2 mm",
+          "初始化中心分散 7.389 mm > 2 mm",
+          "初始化中心分散 7.683 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_IIa_5.2mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 5,
+        "R1_held_MAE_px_median": 2.412587970247745,
+        "gate_reasons": [
+          "RGB MAE px 10.682028387693814 > 3",
+          "RGB MAE px 13.052782159654353 > 3",
+          "RGB MAE px 7.138141964644296 > 3",
+          "RGB P95 px 6.0955699610508995 > 6",
+          "RGB P95 px 66.61648153983461 > 6",
+          "RGB P95 px 7.2992680703157555 > 6",
+          "RGB P95 px 8.131332771312168 > 6",
+          "初始化中心分散 2.687 mm > 2 mm",
+          "初始化中心分散 2.693 mm > 2 mm",
+          "初始化中心分散 2.711 mm > 2 mm",
+          "初始化中心分散 3.156 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_IIa_9.5mm_closed_R10_single_refY",
+    "official_joint_objective": 0.19421106227610263,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.2298958869658852,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.007321345372562528,
+          "mask": 0.0307789508649432,
+          "dxy_completion": 0.011586809600850258,
+          "depth": 0.1718675770244557,
+          "coverage": 2.1374752433572238e-05,
+          "bias_prior": 0.0007065963425224755,
+          "shape_prior": 0.007613233008117448
+        },
+        "center_to_joint_mm": 0.06646960685559332
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.1822242239564547,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.009708122434633489,
+          "mask": 0.02566749013139655,
+          "dxy_completion": 0.01845484777473816,
+          "depth": 0.1214956649043821,
+          "coverage": 1.2987780286629247e-05,
+          "bias_prior": 0.0007065963425224755,
+          "shape_prior": 0.006178514588495309
+        },
+        "center_to_joint_mm": 0.07009960599144983
+      }
+    ],
+    "any_feasible_single_has_lower_objective": true,
+    "upstream_quality": [
+      {
+        "case": "GP_IIa_9.5mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 5,
+        "R1_held_MAE_px_median": 2.3762181208494315,
+        "gate_reasons": [
+          "RGB MAE px 21.618019945454055 > 3",
+          "RGB MAE px 35.6355957813501 > 3",
+          "RGB MAE px 4.090354965541664 > 3",
+          "RGB MAE px 4.0947051472688525 > 3",
+          "RGB P95 px 10.85192664249971 > 6",
+          "RGB P95 px 6.67350758859916 > 6",
+          "RGB P95 px 8.166292533534984 > 6",
+          "初始化中心分散 2.034 mm > 2 mm",
+          "初始化中心分散 2.582 mm > 2 mm",
+          "初始化中心分散 2.981 mm > 2 mm",
+          "初始化中心分散 2.996 mm > 2 mm",
+          "初始化中心分散 3.843 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_IIa_9.5mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 6,
+        "R1_held_MAE_px_median": 2.505957795035408,
+        "gate_reasons": [
+          "RGB MAE px 23.015811668034758 > 3",
+          "RGB MAE px 4.5468925880687125 > 3",
+          "RGB MAE px 7.150952309563873 > 3",
+          "RGB MAE px 7.283030409999881 > 3",
+          "RGB P95 px 12.043702200422189 > 6",
+          "RGB P95 px 12.264515145149975 > 6",
+          "RGB P95 px 17.34315221205063 > 6",
+          "初始化中心分散 2.045 mm > 2 mm",
+          "初始化中心分散 2.732 mm > 2 mm",
+          "初始化中心分散 3.004 mm > 2 mm",
+          "初始化中心分散 3.489 mm > 2 mm",
+          "初始化中心分散 3.757 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_IIa_9.5mm_closed_R5_single_refY",
+    "official_joint_objective": 0.6742024788816345,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.8432316715718284,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.3567249546661053,
+          "mask": 0.22279443556673806,
+          "dxy_completion": 0.07103002267979072,
+          "depth": 0.18241664407524116,
+          "coverage": 0.00013343089330604494,
+          "bias_prior": 0.001764724423788089,
+          "shape_prior": 0.008367459266859046
+        },
+        "center_to_joint_mm": 0.6565890854640898
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 10.428399456540985,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 1.2104538960590596,
+          "mask": 0.44326012043399354,
+          "dxy_completion": 0.16892394768797647,
+          "depth": 8.301856295495416,
+          "coverage": 0.16171552628245925,
+          "bias_prior": 0.001764724423788089,
+          "shape_prior": 0.1404249461582932
+        },
+        "center_to_joint_mm": 2.159609949529385
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_IIa_9.5mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 8,
+        "R1_held_MAE_px_median": 1.9100793933238829,
+        "gate_reasons": [
+          "RGB P95 px 6.78260498898463 > 6",
+          "RGB P95 px 7.9892460634797615 > 6",
+          "初始化中心分散 2.110 mm > 2 mm",
+          "初始化中心分散 2.492 mm > 2 mm",
+          "初始化中心分散 2.825 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_IIa_9.5mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 26.38916179015601,
+        "gate_reasons": [
+          "RGB MAE px 12.506150188001202 > 3",
+          "RGB MAE px 14.40456235633397 > 3",
+          "RGB MAE px 16.914331994546043 > 3",
+          "RGB MAE px 204.8441024648291 > 3",
+          "RGB MAE px 22.059913764348686 > 3",
+          "RGB MAE px 30.718409815963337 > 3",
+          "RGB MAE px 36.31211573324901 > 3",
+          "RGB MAE px 37.06288364459747 > 3",
+          "RGB MAE px 76.16545501293484 > 3",
+          "RGB MAE px 9.837792025168188 > 3",
+          "RGB P95 px 124.42388788703207 > 6",
+          "RGB P95 px 129.82079723826095 > 6",
+          "RGB P95 px 23.234582785793666 > 6",
+          "RGB P95 px 37.167350697270834 > 6",
+          "RGB P95 px 43.20784310364921 > 6",
+          "RGB P95 px 56.551613411677806 > 6",
+          "RGB P95 px 617.4947157953218 > 6",
+          "RGB P95 px 75.72231868213547 > 6",
+          "RGB P95 px 91.83856610916298 > 6",
+          "RGB P95 px 93.33072076865578 > 6",
+          "初始化中心分散 2.210 mm > 2 mm",
+          "初始化中心分散 2.823 mm > 2 mm",
+          "初始化中心分散 3.239 mm > 2 mm",
+          "初始化中心分散 3.637 mm > 2 mm",
+          "初始化中心分散 4.367 mm > 2 mm",
+          "初始化中心分散 7.057 mm > 2 mm",
+          "正深度比例 0.9090909090909091 < 0.95",
+          "留出观测数 6 < 8",
+          "留出观测数 7 < 8"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_10.3mm_closed_R5_single_refY",
+    "official_joint_objective": 0.721521882252634,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.8778342141482005,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.16304651222254923,
+          "mask": 0.06601970743501193,
+          "dxy_completion": 0.006547307913318406,
+          "depth": 0.6378076322950361,
+          "coverage": 0.0003710739518052045,
+          "bias_prior": 0.0027972586789221363,
+          "shape_prior": 0.0012447216515575055
+        },
+        "center_to_joint_mm": 0.06299875122153828
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.8434727176899863,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.14572849509204328,
+          "mask": 0.05802490124682111,
+          "dxy_completion": 0.003153334475426829,
+          "depth": 0.6305529049665147,
+          "coverage": 0.001180235902788477,
+          "bias_prior": 0.0027972586789221363,
+          "shape_prior": 0.002035587327469724
+        },
+        "center_to_joint_mm": 0.09462956353411366
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_10.3mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 4,
+        "R1_held_MAE_px_median": 5.353448099308293,
+        "gate_reasons": [
+          "RGB MAE px 10.002246541395454 > 3",
+          "RGB MAE px 29.47078552102095 > 3",
+          "RGB MAE px 4.770183293250937 > 3",
+          "RGB MAE px 5.936712905365649 > 3",
+          "RGB MAE px 7.1941076571727445 > 3",
+          "RGB MAE px 8.19003386493127 > 3",
+          "初始化中心分散 2.083 mm > 2 mm",
+          "初始化中心分散 2.489 mm > 2 mm",
+          "初始化中心分散 2.690 mm > 2 mm",
+          "初始化中心分散 2.726 mm > 2 mm",
+          "初始化中心分散 2.951 mm > 2 mm",
+          "初始化中心分散 3.204 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_10.3mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 5,
+        "R1_held_MAE_px_median": 1.9959039717695197,
+        "gate_reasons": [
+          "RGB MAE px 15.482040911476444 > 3",
+          "RGB MAE px 5.797222080124295 > 3",
+          "RGB MAE px 69.33058538829854 > 3",
+          "RGB P95 px 10.898243632986864 > 6",
+          "RGB P95 px 11.140265015160454 > 6",
+          "RGB P95 px 6.999566862215114 > 6",
+          "RGB P95 px 7.795191504507906 > 6",
+          "初始化中心分散 2.011 mm > 2 mm",
+          "初始化中心分散 2.231 mm > 2 mm",
+          "初始化中心分散 2.653 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_12.0mm_closed_R10_single_refY",
+    "official_joint_objective": 1.1030314710313245,
+    "single_parameter_probes": [
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 1.1101176525026197,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.401884815319714,
+          "mask": 0.0803951120391018,
+          "dxy_completion": 0.04564206347972875,
+          "depth": 0.5768431296252905,
+          "coverage": 0.00013778500086362603,
+          "bias_prior": 0.000657282936734569,
+          "shape_prior": 0.0045574641011866
+        },
+        "center_to_joint_mm": 0.09277474510591564
+      },
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 1.3725397333454612,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.4217300199221372,
+          "mask": 0.09404598763349867,
+          "dxy_completion": 0.05403134303199725,
+          "depth": 0.7947860627458825,
+          "coverage": 0.0001987911687678765,
+          "bias_prior": 0.000657282936734569,
+          "shape_prior": 0.007090245906443138
+        },
+        "center_to_joint_mm": 0.3245661941655376
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_12.0mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 7,
+        "R1_held_MAE_px_median": 1.4298487004088527,
+        "gate_reasons": [
+          "RGB MAE px 14.658184874114612 > 3",
+          "RGB MAE px 3.5421768326388072 > 3",
+          "RGB MAE px 7.559307361890154 > 3",
+          "初始化中心分散 2.273 mm > 2 mm",
+          "初始化中心分散 2.392 mm > 2 mm",
+          "初始化中心分散 2.882 mm > 2 mm",
+          "初始化中心分散 2.910 mm > 2 mm",
+          "初始化中心分散 3.166 mm > 2 mm",
+          "初始化中心分散 3.190 mm > 2 mm",
+          "初始化中心分散 3.536 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_12.0mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 1,
+        "R1_held_MAE_px_median": 3.041664971979512,
+        "gate_reasons": [
+          "RGB MAE px 228.1471573223389 > 3",
+          "RGB MAE px 3.2277896724871042 > 3",
+          "RGB MAE px 3.5279973492349916 > 3",
+          "RGB MAE px 31.278880095847192 > 3",
+          "RGB MAE px 4.217633940254533 > 3",
+          "RGB P95 px 11.85667393858327 > 6",
+          "RGB P95 px 13.304014165065482 > 6",
+          "RGB P95 px 6.288232081906149 > 6",
+          "RGB P95 px 6.300520640645764 > 6",
+          "RGB P95 px 8.003341301232801 > 6",
+          "RGB P95 px 8.145353617766295 > 6",
+          "Ring边界 P95 px 6.007050547590217 > 6",
+          "Ring边界 P95 px 7.40707668199992 > 6",
+          "初始化中心分散 2.305 mm > 2 mm",
+          "初始化中心分散 2.986 mm > 2 mm",
+          "初始化中心分散 3.534 mm > 2 mm",
+          "初始化中心分散 4.119 mm > 2 mm",
+          "初始化中心分散 4.634 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_12.0mm_closed_R5_single_refY",
+    "official_joint_objective": 0.880681989112532,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 1.2344515254253279,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.25752284854269225,
+          "mask": 0.11528973710849519,
+          "dxy_completion": 0.03013686814577856,
+          "depth": 0.8190266920247539,
+          "coverage": 0.0008420305806507615,
+          "bias_prior": 0.004196132415695924,
+          "shape_prior": 0.007437216607261297
+        },
+        "center_to_joint_mm": 0.2723658356821496
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.9224402064191152,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.2203673693266369,
+          "mask": 0.06461934942448405,
+          "dxy_completion": 0.03394568614022013,
+          "depth": 0.5896963917887812,
+          "coverage": 0.0007373192184104815,
+          "bias_prior": 0.004196132415695924,
+          "shape_prior": 0.008877958104886527
+        },
+        "center_to_joint_mm": 0.06840750115128007
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_12.0mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 5,
+        "R1_held_MAE_px_median": 2.483561419951978,
+        "gate_reasons": [
+          "RGB MAE px 3.389536522512366 > 3",
+          "RGB MAE px 5.475570656905281 > 3",
+          "RGB MAE px 8.779114257592989 > 3",
+          "RGB MAE px 96.79835669148119 > 3",
+          "RGB P95 px 6.25659115970541 > 6",
+          "RGB P95 px 6.687744835745425 > 6",
+          "Ring边界 P95 px 6.268914272283852 > 6",
+          "初始化中心分散 2.371 mm > 2 mm",
+          "初始化中心分散 3.127 mm > 2 mm",
+          "初始化中心分散 4.546 mm > 2 mm",
+          "初始化中心分散 4.601 mm > 2 mm",
+          "初始化中心分散 4.882 mm > 2 mm",
+          "初始化中心分散 5.158 mm > 2 mm",
+          "初始化中心分散 5.293 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_12.0mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 7,
+        "R1_held_MAE_px_median": 2.0032178698449763,
+        "gate_reasons": [
+          "RGB MAE px 3.742138950047201 > 3",
+          "RGB P95 px 11.170137398757161 > 6",
+          "RGB P95 px 6.49250410669562 > 6",
+          "初始化中心分散 2.084 mm > 2 mm",
+          "初始化中心分散 2.582 mm > 2 mm",
+          "正深度比例 0.9487179487179487 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_2.9mm_closed_R10_single_refY",
+    "official_joint_objective": 0.14913878790860138,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.2525875442488661,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.023007207523181937,
+          "mask": 0.0839111531771918,
+          "dxy_completion": 0.0025252612688243777,
+          "depth": 0.14113687126976088,
+          "coverage": 4.2096352573427964e-05,
+          "bias_prior": 0.001341238115039438,
+          "shape_prior": 0.0006237165422942118
+        },
+        "center_to_joint_mm": 0.01846956796581263
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.15576943452540554,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.03554593689618774,
+          "mask": 0.05715072150112528,
+          "dxy_completion": 0.0031673662085781344,
+          "depth": 0.058219958959821114,
+          "coverage": 3.2834275545063084e-06,
+          "bias_prior": 0.001341238115039438,
+          "shape_prior": 0.0003409294170993115
+        },
+        "center_to_joint_mm": 0.01877394563497437
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_2.9mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 2,
+        "R1_held_MAE_px_median": 3.6200796077964488,
+        "gate_reasons": [
+          "RGB MAE px 10.522163830244804 > 3",
+          "RGB MAE px 3.378928911053105 > 3",
+          "RGB MAE px 3.8612303045397924 > 3",
+          "RGB MAE px 4.500214342340146 > 3",
+          "RGB MAE px 6.135710583139146 > 3",
+          "RGB MAE px 9.19417805778349 > 3",
+          "RGB P95 px 11.302714756891795 > 6",
+          "RGB P95 px 11.9365916645979 > 6",
+          "RGB P95 px 14.724319949682275 > 6",
+          "RGB P95 px 16.862308562103262 > 6",
+          "RGB P95 px 29.378522155783855 > 6",
+          "RGB P95 px 37.52834650349125 > 6",
+          "RGB P95 px 6.206815884245652 > 6",
+          "Ring边界 MAE px 3.394386992764187 > 3",
+          "Ring边界 P95 px 8.809957645779285 > 6",
+          "正深度比例 0.9166666666666666 < 0.95",
+          "正深度比例 0.9285714285714286 < 0.95",
+          "留出观测数 3 < 8",
+          "留出观测数 6 < 8",
+          "留出观测数 7 < 8"
+        ]
+      },
+      {
+        "case": "GP_Ip_2.9mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 9.173647631333443,
+        "gate_reasons": [
+          "RGB MAE px 13.80415873964942 > 3",
+          "RGB MAE px 19.27023894370753 > 3",
+          "RGB MAE px 20.20102026903783 > 3",
+          "RGB MAE px 31.039771780155885 > 3",
+          "RGB MAE px 4.543136523017467 > 3",
+          "RGB MAE px 79.93060317685186 > 3",
+          "RGB P95 px 100.12765326729397 > 6",
+          "RGB P95 px 162.34694221733508 > 6",
+          "RGB P95 px 18.37148548857529 > 6",
+          "RGB P95 px 422.7576776257592 > 6",
+          "RGB P95 px 62.261276430221194 > 6",
+          "RGB P95 px 8.754268126083593 > 6",
+          "RGB P95 px 93.91566544102986 > 6",
+          "初始化中心分散 2.090 mm > 2 mm",
+          "初始化中心分散 2.484 mm > 2 mm",
+          "初始化中心分散 2.494 mm > 2 mm",
+          "初始化中心分散 2.734 mm > 2 mm",
+          "初始化中心分散 3.272 mm > 2 mm",
+          "初始化中心分散 3.492 mm > 2 mm",
+          "初始化中心分散 4.735 mm > 2 mm",
+          "初始化中心分散 5.371 mm > 2 mm",
+          "正深度比例 0.875 < 0.95",
+          "正深度比例 0.8888888888888888 < 0.95",
+          "正深度比例 0.9230769230769231 < 0.95",
+          "正深度比例 0.9285714285714286 < 0.95",
+          "正深度比例 0.9333333333333333 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_2.9mm_closed_R5_single_refY",
+    "official_joint_objective": 0.17224688590702059,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.7032786437647927,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.27269295800307924,
+          "mask": 0.3097042268951593,
+          "dxy_completion": 0.037028427284907225,
+          "depth": 0.0,
+          "coverage": 0.0,
+          "bias_prior": 0.0,
+          "shape_prior": 0.08385303158164686
+        },
+        "center_to_joint_mm": 0.5796315105722144
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.962665743872163,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.4207977667544374,
+          "mask": 0.4587110160223035,
+          "dxy_completion": 0.06465402530793693,
+          "depth": 0.0,
+          "coverage": 0.0,
+          "bias_prior": 0.0,
+          "shape_prior": 0.018502935787485145
+        },
+        "center_to_joint_mm": 0.8858308292890913
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_2.9mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 17.340551196043734,
+        "gate_reasons": [
+          "RGB MAE px 10.30167969822978 > 3",
+          "RGB MAE px 10.355033274928335 > 3",
+          "RGB MAE px 116.77441795155977 > 3",
+          "RGB MAE px 16.685530521009262 > 3",
+          "RGB MAE px 17.9955718710782 > 3",
+          "RGB MAE px 37.35139252535221 > 3",
+          "RGB MAE px 52.75816344415683 > 3",
+          "RGB MAE px 53.955400694083814 > 3",
+          "RGB MAE px 8.068472962504877 > 3",
+          "RGB MAE px 8.98086303947291 > 3",
+          "RGB P95 px 102.98800144815863 > 6",
+          "RGB P95 px 162.45801219973757 > 6",
+          "RGB P95 px 228.19848400694812 > 6",
+          "RGB P95 px 26.274823737123143 > 6",
+          "RGB P95 px 28.88317890447418 > 6",
+          "RGB P95 px 32.646207565938646 > 6",
+          "RGB P95 px 34.49778886743606 > 6",
+          "RGB P95 px 53.411289016637696 > 6",
+          "RGB P95 px 545.1191082143978 > 6",
+          "RGB P95 px 58.937452340944596 > 6",
+          "初始化中心分散 13.927 mm > 2 mm",
+          "初始化中心分散 14.764 mm > 2 mm",
+          "初始化中心分散 14.934 mm > 2 mm",
+          "初始化中心分散 15.235 mm > 2 mm",
+          "初始化中心分散 38.658 mm > 2 mm",
+          "初始化中心分散 4.090 mm > 2 mm",
+          "初始化中心分散 40.725 mm > 2 mm",
+          "初始化中心分散 42.039 mm > 2 mm",
+          "初始化中心分散 5.217 mm > 2 mm",
+          "初始化中心分散 6.833 mm > 2 mm",
+          "正深度比例 0.9230769230769231 < 0.95",
+          "正深度比例 0.9333333333333333 < 0.95"
+        ]
+      },
+      {
+        "case": "GP_Ip_2.9mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 5.420860865353949,
+        "gate_reasons": [
+          "RGB MAE px 22.767673925371835 > 3",
+          "RGB MAE px 3.180807813030108 > 3",
+          "RGB MAE px 36.88791042050682 > 3",
+          "RGB MAE px 4.231686807118083 > 3",
+          "RGB MAE px 6.610034923589814 > 3",
+          "RGB MAE px 6.717169208362241 > 3",
+          "RGB MAE px 8.531151937506811 > 3",
+          "RGB P95 px 10.17094979573061 > 6",
+          "RGB P95 px 12.292551181582448 > 6",
+          "RGB P95 px 14.707141445912269 > 6",
+          "RGB P95 px 198.93576883515254 > 6",
+          "RGB P95 px 27.60291632358887 > 6",
+          "RGB P95 px 31.930282244726854 > 6",
+          "RGB P95 px 6.231120379104315 > 6",
+          "RGB P95 px 8.566684711062559 > 6",
+          "RGB P95 px 85.31210985188633 > 6",
+          "Ring边界 P95 px 11.408190180112653 > 6",
+          "Ring边界 P95 px 6.084660876372958 > 6",
+          "Ring边界 P95 px 8.566657447933357 > 6",
+          "初始化中心分散 2.510 mm > 2 mm",
+          "初始化中心分散 2.520 mm > 2 mm",
+          "初始化中心分散 2.699 mm > 2 mm",
+          "初始化中心分散 3.356 mm > 2 mm",
+          "初始化中心分散 4.323 mm > 2 mm",
+          "初始化中心分散 5.246 mm > 2 mm",
+          "初始化中心分散 5.688 mm > 2 mm",
+          "正深度比例 0.875 < 0.95",
+          "正深度比例 0.9090909090909091 < 0.95",
+          "正深度比例 0.9411764705882353 < 0.95",
+          "留出观测数 6 < 8"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_20.0mm_closed_R10_single_refY",
+    "official_joint_objective": 2.1811551297737095,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 2.569035254606112,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.8845360848641379,
+          "mask": 0.15650477197942025,
+          "dxy_completion": 0.04036604785202055,
+          "depth": 1.4685405101775069,
+          "coverage": 0.015362530078124215,
+          "bias_prior": 0.0014725461288345879,
+          "shape_prior": 0.002252763526067762
+        },
+        "center_to_joint_mm": 0.4680372788040067
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 2.1891410170969636,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.8236240041225229,
+          "mask": 0.125691785298857,
+          "dxy_completion": 0.038173609528984465,
+          "depth": 1.1831159431517517,
+          "coverage": 0.013909531601869168,
+          "bias_prior": 0.0014725461288345879,
+          "shape_prior": 0.0031535972641439708
+        },
+        "center_to_joint_mm": 0.39379181966497423
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_20.0mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 3.660331470436419,
+        "gate_reasons": [
+          "RGB MAE px 3.6128791249976695 > 3",
+          "RGB MAE px 3.707783815875169 > 3",
+          "RGB MAE px 3.939124602534279 > 3",
+          "RGB MAE px 4.6641550653768995 > 3",
+          "RGB MAE px 4.678686558960186 > 3",
+          "RGB MAE px 7.182801250108434 > 3",
+          "RGB P95 px 6.091851964308094 > 6",
+          "Ring边界 MAE px 4.125380452776622 > 3",
+          "Ring边界 P95 px 19.318724108070835 > 6",
+          "Ring边界 P95 px 6.251825792623504 > 6",
+          "初始化中心分散 2.111 mm > 2 mm",
+          "初始化中心分散 2.368 mm > 2 mm",
+          "初始化中心分散 2.424 mm > 2 mm",
+          "初始化中心分散 2.983 mm > 2 mm",
+          "初始化中心分散 3.482 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_20.0mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 6,
+        "R1_held_MAE_px_median": 2.916573137408645,
+        "gate_reasons": [
+          "RGB MAE px 16.74241277049411 > 3",
+          "RGB MAE px 4.266687015664938 > 3",
+          "RGB MAE px 4.734551852440099 > 3",
+          "RGB MAE px 5.010942164908389 > 3",
+          "RGB P95 px 7.066295997365435 > 6",
+          "RGB P95 px 7.345841960438925 > 6",
+          "初始化中心分散 2.011 mm > 2 mm",
+          "初始化中心分散 2.100 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_4.0mm_closed_R10_single_refY",
+    "official_joint_objective": 0.3779883934207791,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.6700214063272105,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.058977307835676195,
+          "mask": 0.08026384866653544,
+          "dxy_completion": 0.006579462136525504,
+          "depth": 0.5153309239873113,
+          "coverage": 0.00027996010233768666,
+          "bias_prior": 0.0013150575277526674,
+          "shape_prior": 0.007274846071071735
+        },
+        "center_to_joint_mm": 0.23810132488889124
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.6152802825466911,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.07234788670209918,
+          "mask": 0.08818600792553234,
+          "dxy_completion": 0.006923380695920588,
+          "depth": 0.4435942049539594,
+          "coverage": 0.00033384466198878115,
+          "bias_prior": 0.0013150575277526674,
+          "shape_prior": 0.0025799000794381453
+        },
+        "center_to_joint_mm": 0.1021159974020171
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_4.0mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 8,
+        "R1_held_MAE_px_median": 1.706889487658012,
+        "gate_reasons": [
+          "RGB MAE px 5.43010764315329 > 3",
+          "RGB MAE px 6.9857656008796125 > 3",
+          "RGB P95 px 6.270402685642465 > 6",
+          "初始化中心分散 2.049 mm > 2 mm",
+          "初始化中心分散 2.108 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_4.0mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 4,
+        "R1_held_MAE_px_median": 3.0177952810926403,
+        "gate_reasons": [
+          "RGB MAE px 10.412704097210888 > 3",
+          "RGB MAE px 11.616279334365323 > 3",
+          "RGB MAE px 3.1790465725036086 > 3",
+          "RGB MAE px 5.571758595687939 > 3",
+          "RGB MAE px 6.954927405901567 > 3",
+          "RGB P95 px 15.043453253735331 > 6",
+          "RGB P95 px 19.589349948772597 > 6",
+          "RGB P95 px 40.89350868506703 > 6",
+          "RGB P95 px 6.286069119667377 > 6",
+          "RGB P95 px 6.5257465068842855 > 6",
+          "RGB P95 px 9.107251172084245 > 6",
+          "初始化中心分散 15.300 mm > 2 mm",
+          "初始化中心分散 18.089 mm > 2 mm",
+          "初始化中心分散 2.211 mm > 2 mm",
+          "初始化中心分散 2.607 mm > 2 mm",
+          "初始化中心分散 20.871 mm > 2 mm",
+          "初始化中心分散 21.483 mm > 2 mm",
+          "初始化中心分散 3.948 mm > 2 mm",
+          "初始化中心分散 4.566 mm > 2 mm",
+          "初始化中心分散 9.803 mm > 2 mm",
+          "正深度比例 0.9459459459459459 < 0.95",
+          "正深度比例 0.9473684210526315 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_4.0mm_closed_R5_single_refY",
+    "official_joint_objective": 0.4504682576119271,
+    "single_parameter_probes": [
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.5155148639627294,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.07254510329070932,
+          "mask": 0.0629389968083457,
+          "dxy_completion": 0.11878077891816385,
+          "depth": 0.24239575438977898,
+          "coverage": 5.890774191883368e-05,
+          "bias_prior": 0.002181583718881393,
+          "shape_prior": 0.0166137390949313
+        },
+        "center_to_joint_mm": 0.7098833284910673
+      },
+      {
+        "configuration": "007",
+        "objective_with_joint_b_fixed": 0.6935854326546522,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.117486554343341,
+          "mask": 0.09357679430183122,
+          "dxy_completion": 0.028240422029940628,
+          "depth": 0.44825166511869663,
+          "coverage": 0.001508077675310245,
+          "bias_prior": 0.002181583718881393,
+          "shape_prior": 0.002340335466651086
+        },
+        "center_to_joint_mm": 0.1824538466318729
+      },
+      {
+        "configuration": "006",
+        "objective_with_joint_b_fixed": 0.7281608360611294,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.13726383859696847,
+          "mask": 0.05078322929604232,
+          "dxy_completion": 0.024852096059371463,
+          "depth": 0.5088951696198252,
+          "coverage": 0.0012945980672514673,
+          "bias_prior": 0.002181583718881393,
+          "shape_prior": 0.002890320702789068
+        },
+        "center_to_joint_mm": 0.37686148287908344
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_4.0mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 1,
+        "R1_held_MAE_px_median": 4.594149206941257,
+        "gate_reasons": [
+          "RGB MAE px 12.430509312935671 > 3",
+          "RGB MAE px 12.557659672230002 > 3",
+          "RGB MAE px 3.690373572233444 > 3",
+          "RGB MAE px 30.28539109704246 > 3",
+          "RGB MAE px 5.49792484164907 > 3",
+          "RGB MAE px 9.791916713756425 > 3",
+          "RGB P95 px 14.003619558891582 > 6",
+          "RGB P95 px 17.894583831472044 > 6",
+          "RGB P95 px 39.848038934769164 > 6",
+          "RGB P95 px 41.453140039820795 > 6",
+          "Ring边界 P95 px 6.144047482813737 > 6",
+          "Ring边界 P95 px 6.520674588852222 > 6",
+          "Ring边界 P95 px 7.339090232265895 > 6",
+          "初始化中心分散 2.782 mm > 2 mm",
+          "初始化中心分散 2.833 mm > 2 mm",
+          "初始化中心分散 2.844 mm > 2 mm",
+          "正深度比例 0.9411764705882353 < 0.95"
+        ]
+      },
+      {
+        "case": "GP_Ip_4.0mm_closed_R5_single_refY_007",
+        "sampled_frames": 10,
+        "R1_new_pass": 5,
+        "R1_held_MAE_px_median": 2.2339195829434555,
+        "gate_reasons": [
+          "RGB MAE px 20.044751358366046 > 3",
+          "RGB MAE px 3.492357555228935 > 3",
+          "RGB MAE px 36.274790781309974 > 3",
+          "RGB MAE px 5.345420983949178 > 3",
+          "RGB P95 px 132.69997011540323 > 6",
+          "RGB P95 px 6.578906524500497 > 6",
+          "RGB P95 px 6.665055992152978 > 6",
+          "RGB P95 px 79.17124257051273 > 6",
+          "RGB P95 px 9.701144048805435 > 6",
+          "初始化中心分散 2.167 mm > 2 mm",
+          "初始化中心分散 2.214 mm > 2 mm",
+          "初始化中心分散 2.224 mm > 2 mm",
+          "初始化中心分散 2.395 mm > 2 mm",
+          "初始化中心分散 2.599 mm > 2 mm",
+          "正深度比例 0.9130434782608695 < 0.95",
+          "正深度比例 0.9459459459459459 < 0.95"
+        ]
+      },
+      {
+        "case": "GP_Ip_4.0mm_closed_R5_single_refY_006",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 7.012776382255128,
+        "gate_reasons": [
+          "RGB MAE px 10.661877513927015 > 3",
+          "RGB MAE px 12.967509226668593 > 3",
+          "RGB MAE px 13.588345624147722 > 3",
+          "RGB MAE px 15.863975438251133 > 3",
+          "RGB MAE px 4.246047576300875 > 3",
+          "RGB MAE px 5.288901234323064 > 3",
+          "RGB MAE px 5.661307996320262 > 3",
+          "RGB MAE px 5.881726109195127 > 3",
+          "RGB MAE px 8.143826655315127 > 3",
+          "RGB P95 px 11.080260142304942 > 6",
+          "RGB P95 px 18.259651160041155 > 6",
+          "RGB P95 px 20.545207985439745 > 6",
+          "RGB P95 px 22.74284871882704 > 6",
+          "RGB P95 px 31.187394994076463 > 6",
+          "RGB P95 px 37.047885200989235 > 6",
+          "RGB P95 px 37.07294388624792 > 6",
+          "RGB P95 px 6.549734164212843 > 6",
+          "Ring边界 P95 px 6.17283481016253 > 6",
+          "Ring边界 P95 px 9.77154668142019 > 6",
+          "初始化中心分散 2.396 mm > 2 mm",
+          "正深度比例 0.9333333333333333 < 0.95",
+          "正深度比例 0.9487179487179487 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_4.7mm_closed_R5_single_refY",
+    "official_joint_objective": 0.3910908241071713,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.6107480862999033,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.33093849422124516,
+          "mask": 0.13533138768183792,
+          "dxy_completion": 0.001227974739588624,
+          "depth": 0.0,
+          "coverage": 0.0,
+          "bias_prior": 0.0,
+          "shape_prior": 0.14325022965723155
+        },
+        "center_to_joint_mm": 0.2986606319000327
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 1.447045812069887,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 1.1900356095945346,
+          "mask": 0.24869286542257277,
+          "dxy_completion": 0.0024755709814782527,
+          "depth": 0.0,
+          "coverage": 0.0,
+          "bias_prior": 0.0,
+          "shape_prior": 0.005841766071301342
+        },
+        "center_to_joint_mm": 1.46069028571614
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_4.7mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 18.426098044720646,
+        "gate_reasons": [
+          "RGB MAE px 11.933093991314164 > 3",
+          "RGB MAE px 12.474232115562078 > 3",
+          "RGB MAE px 15.438489052151555 > 3",
+          "RGB MAE px 18.367195656894022 > 3",
+          "RGB MAE px 18.485000432547274 > 3",
+          "RGB MAE px 23.94808938148659 > 3",
+          "RGB MAE px 40.386841110087545 > 3",
+          "RGB MAE px 41.06655070170232 > 3",
+          "RGB MAE px 41.872417033926894 > 3",
+          "RGB MAE px 7.925175848676208 > 3",
+          "RGB P95 px 157.2663173264616 > 6",
+          "RGB P95 px 183.60240505509273 > 6",
+          "RGB P95 px 21.397360979657343 > 6",
+          "RGB P95 px 27.027105966360544 > 6",
+          "RGB P95 px 38.99825983501344 > 6",
+          "RGB P95 px 40.63182732365412 > 6",
+          "RGB P95 px 43.2970770933792 > 6",
+          "RGB P95 px 52.74759693846449 > 6",
+          "RGB P95 px 61.85371914346602 > 6",
+          "RGB P95 px 64.86968046666601 > 6",
+          "Ring边界 MAE px 3.039726605623221 > 3",
+          "Ring边界 MAE px 3.2683406099741696 > 3",
+          "Ring边界 MAE px 3.302012665921905 > 3",
+          "Ring边界 MAE px 3.3277988050458114 > 3",
+          "Ring边界 MAE px 3.4812748043658868 > 3",
+          "Ring边界 MAE px 3.664635074179753 > 3",
+          "Ring边界 MAE px 3.6957658703562233 > 3",
+          "Ring边界 P95 px 10.044472747018107 > 6",
+          "Ring边界 P95 px 10.45465289616438 > 6",
+          "Ring边界 P95 px 12.93292766519035 > 6",
+          "Ring边界 P95 px 7.883091598496443 > 6",
+          "Ring边界 P95 px 8.693220594866427 > 6",
+          "Ring边界 P95 px 8.907685348474319 > 6",
+          "Ring边界 P95 px 9.231232307407689 > 6",
+          "Ring边界 P95 px 9.27518765933243 > 6",
+          "Ring边界 P95 px 9.310710604864106 > 6",
+          "Ring边界 P95 px 9.842310069390214 > 6",
+          "初始化中心分散 2.149 mm > 2 mm",
+          "初始化中心分散 2.851 mm > 2 mm",
+          "初始化中心分散 22.456 mm > 2 mm",
+          "初始化中心分散 25.495 mm > 2 mm",
+          "初始化中心分散 25.971 mm > 2 mm",
+          "初始化中心分散 27.555 mm > 2 mm",
+          "初始化中心分散 28.566 mm > 2 mm",
+          "初始化中心分散 28.717 mm > 2 mm",
+          "初始化中心分散 28.819 mm > 2 mm",
+          "初始化中心分散 33.360 mm > 2 mm",
+          "正深度比例 0.9375 < 0.95"
+        ]
+      },
+      {
+        "case": "GP_Ip_4.7mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 5.414493335093946,
+        "gate_reasons": [
+          "RGB MAE px 16.513909184192688 > 3",
+          "RGB MAE px 3.1410822759559127 > 3",
+          "RGB MAE px 3.379033411726075 > 3",
+          "RGB MAE px 4.704420837582859 > 3",
+          "RGB MAE px 47.1530695361577 > 3",
+          "RGB MAE px 58.09464450465576 > 3",
+          "RGB MAE px 6.124565832605033 > 3",
+          "RGB MAE px 8.776773167308942 > 3",
+          "RGB P95 px 10.881108754811727 > 6",
+          "RGB P95 px 12.812216946700065 > 6",
+          "RGB P95 px 206.08200937208719 > 6",
+          "RGB P95 px 32.317876717320054 > 6",
+          "RGB P95 px 6.582911675381381 > 6",
+          "RGB P95 px 77.69857012847947 > 6",
+          "RGB P95 px 9.682746512576928 > 6",
+          "Ring边界 MAE px 3.256683635280052 > 3",
+          "Ring边界 P95 px 10.11849595261014 > 6",
+          "Ring边界 P95 px 10.827977230403736 > 6",
+          "Ring边界 P95 px 11.09980020342911 > 6",
+          "Ring边界 P95 px 11.212814531236146 > 6",
+          "Ring边界 P95 px 7.086549469849323 > 6",
+          "Ring边界 P95 px 7.134724191684269 > 6",
+          "Ring边界 P95 px 7.547811926545942 > 6",
+          "Ring边界 P95 px 7.587755392632438 > 6",
+          "Ring边界 P95 px 7.5910959596513194 > 6",
+          "Ring边界 P95 px 9.733311041590111 > 6",
+          "初始化中心分散 2.194 mm > 2 mm",
+          "初始化中心分散 2.469 mm > 2 mm",
+          "初始化中心分散 2.522 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_5.6mm_closed_R10_single_refY",
+    "official_joint_objective": 0.2853632376041094,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.5099984345527901,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.06358411401402665,
+          "mask": 0.10056000893676725,
+          "dxy_completion": 0.006879676985957702,
+          "depth": 0.3343111552585041,
+          "coverage": 9.329755081888451e-05,
+          "bias_prior": 0.003699748469449424,
+          "shape_prior": 0.0008704333372661227
+        },
+        "center_to_joint_mm": 0.24591035196753475
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.3748056128173416,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.05361930272958082,
+          "mask": 0.08651249964742729,
+          "dxy_completion": 0.005714576550128727,
+          "depth": 0.2236671714233612,
+          "coverage": 7.4397046190364555e-06,
+          "bias_prior": 0.003699748469449424,
+          "shape_prior": 0.0015848742927750763
+        },
+        "center_to_joint_mm": 0.09912754444236577
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_5.6mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 4,
+        "R1_held_MAE_px_median": 3.8381682138670565,
+        "gate_reasons": [
+          "RGB MAE px 11.929005101208281 > 3",
+          "RGB MAE px 17.511442273898954 > 3",
+          "RGB MAE px 3.387707171481366 > 3",
+          "RGB MAE px 4.288629256252747 > 3",
+          "RGB MAE px 5.105483080579897 > 3",
+          "RGB MAE px 5.572551129772906 > 3",
+          "RGB P95 px 47.13107514754808 > 6",
+          "RGB P95 px 7.243159164973797 > 6",
+          "RGB P95 px 96.91272541622168 > 6",
+          "初始化中心分散 2.268 mm > 2 mm",
+          "初始化中心分散 2.762 mm > 2 mm",
+          "初始化中心分散 3.442 mm > 2 mm",
+          "初始化中心分散 3.752 mm > 2 mm",
+          "初始化中心分散 4.430 mm > 2 mm",
+          "初始化中心分散 5.078 mm > 2 mm",
+          "初始化中心分散 5.688 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_5.6mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 2,
+        "R1_held_MAE_px_median": 4.526612583412369,
+        "gate_reasons": [
+          "RGB MAE px 3.2163197632862666 > 3",
+          "RGB MAE px 4.281747652851747 > 3",
+          "RGB MAE px 4.401378530444117 > 3",
+          "RGB MAE px 4.651846636380622 > 3",
+          "RGB MAE px 4.796996434883073 > 3",
+          "RGB MAE px 47.00034088463964 > 3",
+          "RGB MAE px 6.1647766706583385 > 3",
+          "RGB MAE px 9.284387814108397 > 3",
+          "RGB P95 px 18.3870360770592 > 6",
+          "RGB P95 px 20.305770313134435 > 6",
+          "RGB P95 px 6.0732208133688 > 6",
+          "RGB P95 px 6.477546897815865 > 6",
+          "RGB P95 px 7.895472426001719 > 6",
+          "初始化中心分散 3.008 mm > 2 mm",
+          "初始化中心分散 3.665 mm > 2 mm",
+          "初始化中心分散 3.885 mm > 2 mm",
+          "初始化中心分散 3.996 mm > 2 mm",
+          "初始化中心分散 4.397 mm > 2 mm",
+          "初始化中心分散 5.738 mm > 2 mm",
+          "初始化中心分散 6.222 mm > 2 mm",
+          "初始化中心分散 6.256 mm > 2 mm",
+          "正深度比例 0.9487179487179487 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_6.2mm_closed_R10_single_refY",
+    "official_joint_objective": 0.7658371659007901,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 1.0778230908995243,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.22563261640458065,
+          "mask": 0.10087037439970171,
+          "dxy_completion": 0.017136982349727506,
+          "depth": 0.728891698578936,
+          "coverage": 0.0013875626891277529,
+          "bias_prior": 0.002441781856495554,
+          "shape_prior": 0.0014620746209551402
+        },
+        "center_to_joint_mm": 0.48236972699032554
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 1.313962141077407,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.2413893275462053,
+          "mask": 0.11763078619278143,
+          "dxy_completion": 0.018082129918382428,
+          "depth": 0.9301698543692019,
+          "coverage": 0.0007950740544307908,
+          "bias_prior": 0.002441781856495554,
+          "shape_prior": 0.0034531871399095535
+        },
+        "center_to_joint_mm": 0.7059835515114024
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_6.2mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 5,
+        "R1_held_MAE_px_median": 2.450340982873643,
+        "gate_reasons": [
+          "RGB MAE px 28.153796153078375 > 3",
+          "RGB MAE px 44.19411658762223 > 3",
+          "RGB MAE px 9.25037221319651 > 3",
+          "RGB MAE px 9.590460035854628 > 3",
+          "RGB P95 px 16.0884876078185 > 6",
+          "RGB P95 px 6.546139926145278 > 6",
+          "Ring边界 P95 px 6.248422923953673 > 6",
+          "初始化中心分散 2.229 mm > 2 mm",
+          "初始化中心分散 2.864 mm > 2 mm",
+          "初始化中心分散 2.893 mm > 2 mm",
+          "初始化中心分散 3.163 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_6.2mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 4,
+        "R1_held_MAE_px_median": 2.3929750948448523,
+        "gate_reasons": [
+          "RGB MAE px 14.436495982688598 > 3",
+          "RGB MAE px 3.2721998556650975 > 3",
+          "RGB MAE px 3.992313833834341 > 3",
+          "RGB MAE px 7.173205723825206 > 3",
+          "RGB P95 px 17.304420190679586 > 6",
+          "RGB P95 px 6.150901567165076 > 6",
+          "RGB P95 px 6.359584004889421 > 6",
+          "RGB P95 px 8.543553546099327 > 6",
+          "RGB P95 px 9.47046895291921 > 6",
+          "RGB P95 px 9.689732990527608 > 6",
+          "初始化中心分散 2.085 mm > 2 mm",
+          "正深度比例 0.9428571428571428 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_6.2mm_closed_R5_single_refY",
+    "official_joint_objective": 1.4795540542286816,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 1.5559805783963363,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.31896110611629186,
+          "mask": 0.09786592954990472,
+          "dxy_completion": 0.04674584308008356,
+          "depth": 1.0886655983975133,
+          "coverage": 0.0008140877939795857,
+          "bias_prior": 0.0011845988771164342,
+          "shape_prior": 0.001743414581446866
+        },
+        "center_to_joint_mm": 0.18029014188687234
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 1.4021693609343333,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.3249474167392436,
+          "mask": 0.0979253686813572,
+          "dxy_completion": 0.05207703336019921,
+          "depth": 0.9239319268038078,
+          "coverage": 0.0003268353594067976,
+          "bias_prior": 0.0011845988771164342,
+          "shape_prior": 0.0017761811132022535
+        },
+        "center_to_joint_mm": 0.4247430799224637
+      }
+    ],
+    "any_feasible_single_has_lower_objective": true,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_6.2mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 1,
+        "R1_held_MAE_px_median": 5.398149132944149,
+        "gate_reasons": [
+          "RGB MAE px 10.288939081935533 > 3",
+          "RGB MAE px 11.546295231833131 > 3",
+          "RGB MAE px 3.30814859171012 > 3",
+          "RGB MAE px 4.228831482718527 > 3",
+          "RGB MAE px 42.30820723503256 > 3",
+          "RGB MAE px 5.152001013493827 > 3",
+          "RGB MAE px 5.644297252394471 > 3",
+          "RGB MAE px 6.562800107488332 > 3",
+          "RGB P95 px 10.885915430210373 > 6",
+          "RGB P95 px 278.54614062328926 > 6",
+          "RGB P95 px 7.1977178722601565 > 6",
+          "RGB P95 px 7.90624815413673 > 6",
+          "RGB P95 px 8.09780036721565 > 6",
+          "RGB P95 px 8.929922872579581 > 6",
+          "RGB P95 px 9.950794852032846 > 6",
+          "Ring边界 P95 px 6.893428376372599 > 6",
+          "Ring边界 P95 px 7.418238245103619 > 6",
+          "Ring边界 P95 px 8.217396434668046 > 6",
+          "初始化中心分散 2.005 mm > 2 mm",
+          "初始化中心分散 2.287 mm > 2 mm",
+          "初始化中心分散 2.505 mm > 2 mm",
+          "初始化中心分散 2.608 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_6.2mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 14.70642786581145,
+        "gate_reasons": [
+          "RGB MAE px 105.15135499969719 > 3",
+          "RGB MAE px 21.876536824303823 > 3",
+          "RGB MAE px 230.40496547178148 > 3",
+          "RGB MAE px 3.9008816437187463 > 3",
+          "RGB MAE px 42.30569570181922 > 3",
+          "RGB MAE px 7.536318907319078 > 3",
+          "RGB MAE px 71.52866354773627 > 3",
+          "RGB P95 px 14.79166412515005 > 6",
+          "RGB P95 px 166.60700365687322 > 6",
+          "RGB P95 px 184.50444854956078 > 6",
+          "RGB P95 px 19.444200738574153 > 6",
+          "RGB P95 px 406.99664628259063 > 6",
+          "RGB P95 px 7.58410443774882 > 6",
+          "Ring边界 MAE px 3.027753439483588 > 3",
+          "Ring边界 P95 px 6.707116312796742 > 6",
+          "Ring边界 P95 px 7.626603415324704 > 6",
+          "初始化中心分散 2.911 mm > 2 mm",
+          "初始化中心分散 2.997 mm > 2 mm",
+          "正深度比例 0.9285714285714286 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_6.4mm_closed_R10_single_refY",
+    "official_joint_objective": 0.2463739138974806,
+    "single_parameter_probes": [
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.41625691652503644,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.08733012630851412,
+          "mask": 0.06701912151028591,
+          "dxy_completion": 0.007500507483365114,
+          "depth": 0.25100688050945047,
+          "coverage": 5.276056743250273e-05,
+          "bias_prior": 0.0019350958074199785,
+          "shape_prior": 0.0014124243385683132
+        },
+        "center_to_joint_mm": 0.24023751946076516
+      },
+      {
+        "configuration": "006",
+        "objective_with_joint_b_fixed": 0.3582790541725395,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.07854577702148567,
+          "mask": 0.07524920109294153,
+          "dxy_completion": 0.005981906268510164,
+          "depth": 0.19584775320205366,
+          "coverage": 2.1315083637703786e-05,
+          "bias_prior": 0.0019350958074199785,
+          "shape_prior": 0.0006980056964908032
+        },
+        "center_to_joint_mm": 0.20941374397019957
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_6.4mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 6,
+        "R1_held_MAE_px_median": 2.1758655176119204,
+        "gate_reasons": [
+          "RGB MAE px 11.663961495483813 > 3",
+          "RGB MAE px 16.63364585953853 > 3",
+          "RGB MAE px 3.6540097278197683 > 3",
+          "RGB MAE px 6.405038244648376 > 3",
+          "RGB P95 px 6.030631050838829 > 6",
+          "RGB P95 px 9.067288095473067 > 6",
+          "初始化中心分散 2.127 mm > 2 mm",
+          "初始化中心分散 2.459 mm > 2 mm",
+          "初始化中心分散 2.675 mm > 2 mm",
+          "初始化中心分散 3.177 mm > 2 mm",
+          "初始化中心分散 3.187 mm > 2 mm",
+          "初始化中心分散 3.251 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_6.4mm_closed_R10_single_refY_006",
+        "sampled_frames": 10,
+        "R1_new_pass": 6,
+        "R1_held_MAE_px_median": 2.0648567291760207,
+        "gate_reasons": [
+          "RGB MAE px 3.565485559985095 > 3",
+          "RGB MAE px 3.985242860110824 > 3",
+          "RGB MAE px 5.526349718419009 > 3",
+          "RGB MAE px 6.804816960224232 > 3",
+          "初始化中心分散 2.070 mm > 2 mm",
+          "初始化中心分散 2.554 mm > 2 mm",
+          "初始化中心分散 3.086 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_7.1mm_closed_R10_single_refY",
+    "official_joint_objective": 1.2012410860733524,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 1.491558262117771,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.24464035398498685,
+          "mask": 0.16244737865526748,
+          "dxy_completion": 0.05410443149580467,
+          "depth": 1.0238769210787457,
+          "coverage": 0.0013280076579858444,
+          "bias_prior": 0.0026995732738721505,
+          "shape_prior": 0.0024615959711083665
+        },
+        "center_to_joint_mm": 0.20195741598901343
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 1.7871219313627482,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.2706004683241264,
+          "mask": 0.15158119472810355,
+          "dxy_completion": 0.03520267269603615,
+          "depth": 1.3178671938428939,
+          "coverage": 0.00874118405191334,
+          "bias_prior": 0.0026995732738721505,
+          "shape_prior": 0.0004296444458026904
+        },
+        "center_to_joint_mm": 0.47219477889562256
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_7.1mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 3.2968860692333957,
+        "gate_reasons": [
+          "RGB MAE px 3.01168563866464 > 3",
+          "RGB MAE px 3.0301258941717117 > 3",
+          "RGB MAE px 3.563646244295079 > 3",
+          "RGB MAE px 3.631821541034395 > 3",
+          "RGB MAE px 4.022414595323734 > 3",
+          "RGB MAE px 4.4278214383264185 > 3",
+          "RGB MAE px 6.519375039451074 > 3",
+          "初始化中心分散 2.511 mm > 2 mm",
+          "初始化中心分散 3.010 mm > 2 mm",
+          "初始化中心分散 4.005 mm > 2 mm",
+          "初始化中心分散 4.693 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_7.1mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 7,
+        "R1_held_MAE_px_median": 2.0404024273180927,
+        "gate_reasons": [
+          "RGB MAE px 10.712121239731259 > 3",
+          "RGB MAE px 3.8487247071157475 > 3",
+          "RGB P95 px 33.82505728893871 > 6",
+          "RGB P95 px 6.780432244632928 > 6",
+          "初始化中心分散 2.250 mm > 2 mm",
+          "初始化中心分散 2.870 mm > 2 mm",
+          "初始化中心分散 2.871 mm > 2 mm",
+          "初始化中心分散 4.331 mm > 2 mm",
+          "初始化中心分散 4.451 mm > 2 mm",
+          "初始化中心分散 5.843 mm > 2 mm",
+          "初始化中心分散 6.267 mm > 2 mm",
+          "初始化中心分散 6.576 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_8.8mm_closed_R10_single_refY",
+    "official_joint_objective": 0.46710366774421064,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.5171966494812941,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.09306282644957503,
+          "mask": 0.059228366102952866,
+          "dxy_completion": 0.007152069162552932,
+          "depth": 0.3519889261885597,
+          "coverage": 0.000506642918074651,
+          "bias_prior": 0.0011233700609365952,
+          "shape_prior": 0.004134448598642289
+        },
+        "center_to_joint_mm": 0.19899608356899587
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.598751356360568,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.09887427187914531,
+          "mask": 0.07041439575007796,
+          "dxy_completion": 0.004105796841162938,
+          "depth": 0.4208521664980141,
+          "coverage": 0.00074887551074216,
+          "bias_prior": 0.0011233700609365952,
+          "shape_prior": 0.002632479820488861
+        },
+        "center_to_joint_mm": 0.05224276813399192
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_8.8mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 8,
+        "R1_held_MAE_px_median": 1.2054095790337316,
+        "gate_reasons": [
+          "RGB MAE px 5.388320522009177 > 3",
+          "RGB P95 px 6.4506701406258635 > 6",
+          "初始化中心分散 2.075 mm > 2 mm",
+          "初始化中心分散 2.342 mm > 2 mm",
+          "初始化中心分散 3.256 mm > 2 mm",
+          "初始化中心分散 3.267 mm > 2 mm",
+          "初始化中心分散 3.304 mm > 2 mm",
+          "初始化中心分散 3.340 mm > 2 mm",
+          "初始化中心分散 4.000 mm > 2 mm",
+          "初始化中心分散 4.320 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_8.8mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 8,
+        "R1_held_MAE_px_median": 1.4874884153468018,
+        "gate_reasons": [
+          "RGB MAE px 20.327125623680303 > 3",
+          "RGB MAE px 6.316505211443927 > 3",
+          "RGB P95 px 6.5617654192295 > 6",
+          "初始化中心分散 2.352 mm > 2 mm",
+          "初始化中心分散 2.405 mm > 2 mm",
+          "初始化中心分散 3.574 mm > 2 mm",
+          "初始化中心分散 4.124 mm > 2 mm",
+          "初始化中心分散 6.055 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_8.8mm_closed_R5_single_refY",
+    "official_joint_objective": 0.3468603546745249,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.6850922539082104,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.10033957735351057,
+          "mask": 0.09392263881559175,
+          "dxy_completion": 0.007061333853265009,
+          "depth": 0.4772432048615345,
+          "coverage": 7.597200700143982e-05,
+          "bias_prior": 0.0034871370683555777,
+          "shape_prior": 0.0029623899489515867
+        },
+        "center_to_joint_mm": 0.3107000214398216
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.37312158817141255,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.10565269166853217,
+          "mask": 0.038418196956587866,
+          "dxy_completion": 0.011963818250486657,
+          "depth": 0.21053377129776135,
+          "coverage": 5.272039596173348e-06,
+          "bias_prior": 0.0034871370683555777,
+          "shape_prior": 0.0030607008900927586
+        },
+        "center_to_joint_mm": 0.18747165145944097
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_8.8mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 4,
+        "R1_held_MAE_px_median": 6.436284186449633,
+        "gate_reasons": [
+          "RGB MAE px 11.970996972441233 > 3",
+          "RGB MAE px 12.85905284960714 > 3",
+          "RGB MAE px 14.572690111903029 > 3",
+          "RGB MAE px 17.311968227087135 > 3",
+          "RGB MAE px 3.9101795218402495 > 3",
+          "RGB MAE px 8.962388851059016 > 3",
+          "RGB P95 px 10.73624293455703 > 6",
+          "RGB P95 px 10.809269574718483 > 6",
+          "RGB P95 px 15.664166857138728 > 6",
+          "RGB P95 px 17.53510920110506 > 6",
+          "RGB P95 px 7.666751267316629 > 6",
+          "RGB P95 px 8.490966682069532 > 6",
+          "Ring边界 MAE px 3.1345687772463595 > 3",
+          "Ring边界 P95 px 6.34660071644891 > 6",
+          "初始化中心分散 11.453 mm > 2 mm",
+          "初始化中心分散 11.885 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_8.8mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 6,
+        "R1_held_MAE_px_median": 2.3991601895622328,
+        "gate_reasons": [
+          "RGB MAE px 19.28031048731632 > 3",
+          "RGB MAE px 5.4226567614848165 > 3",
+          "RGB MAE px 5.518658920670565 > 3",
+          "RGB MAE px 7.628648497184693 > 3",
+          "RGB P95 px 6.489683511866718 > 6",
+          "RGB P95 px 6.692824292426305 > 6",
+          "初始化中心分散 4.217 mm > 2 mm",
+          "初始化中心分散 4.301 mm > 2 mm",
+          "初始化中心分散 4.570 mm > 2 mm",
+          "初始化中心分散 4.866 mm > 2 mm",
+          "初始化中心分散 5.051 mm > 2 mm",
+          "初始化中心分散 5.432 mm > 2 mm",
+          "初始化中心分散 5.556 mm > 2 mm",
+          "初始化中心分散 5.731 mm > 2 mm",
+          "初始化中心分散 6.177 mm > 2 mm",
+          "初始化中心分散 6.504 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Ip_9.7mm_closed_R5_single_refY",
+    "official_joint_objective": 1.4771245269497124,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 1.5577174445625743,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.3908437208786873,
+          "mask": 0.1030204668407898,
+          "dxy_completion": 0.04780994739167274,
+          "depth": 1.0097899352296946,
+          "coverage": 0.0013996968506053756,
+          "bias_prior": 0.0007265008865830674,
+          "shape_prior": 0.004127176484541472
+        },
+        "center_to_joint_mm": 0.46044025598125404
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 1.5790397090683232,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.3662357285758064,
+          "mask": 0.1101369911088082,
+          "dxy_completion": 0.03629961453996367,
+          "depth": 1.0612468860354078,
+          "coverage": 0.0016965811798771656,
+          "bias_prior": 0.0007265008865830674,
+          "shape_prior": 0.0026974067418768163
+        },
+        "center_to_joint_mm": 0.12586018296479157
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Ip_9.7mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 5.013246626221356,
+        "gate_reasons": [
+          "RGB MAE px 15.055289023377666 > 3",
+          "RGB MAE px 19.74831814867726 > 3",
+          "RGB MAE px 4.344260932985883 > 3",
+          "RGB MAE px 4.754167419660173 > 3",
+          "RGB MAE px 5.27232583278254 > 3",
+          "RGB MAE px 5.5435623491194335 > 3",
+          "RGB MAE px 6.521605888655604 > 3",
+          "RGB P95 px 47.96023992455831 > 6",
+          "RGB P95 px 6.711507871386659 > 6",
+          "RGB P95 px 7.1994083200514885 > 6",
+          "RGB P95 px 7.628490388402365 > 6",
+          "初始化中心分散 2.344 mm > 2 mm",
+          "初始化中心分散 2.470 mm > 2 mm",
+          "初始化中心分散 2.984 mm > 2 mm",
+          "初始化中心分散 4.141 mm > 2 mm",
+          "初始化中心分散 4.262 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Ip_9.7mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 5.034526361889546,
+        "gate_reasons": [
+          "RGB MAE px 17.861927333815377 > 3",
+          "RGB MAE px 4.058386886756639 > 3",
+          "RGB MAE px 5.016732028872965 > 3",
+          "RGB MAE px 5.052320694906128 > 3",
+          "RGB MAE px 5.562565277866649 > 3",
+          "RGB MAE px 6.671747415031524 > 3",
+          "RGB MAE px 9.083614897692382 > 3",
+          "RGB P95 px 10.568782495996366 > 6",
+          "RGB P95 px 7.9265983761374 > 6",
+          "RGB P95 px 8.29086415458605 > 6",
+          "RGB P95 px 8.846697622986166 > 6",
+          "初始化中心分散 2.835 mm > 2 mm",
+          "初始化中心分散 4.649 mm > 2 mm",
+          "初始化中心分散 5.191 mm > 2 mm",
+          "初始化中心分散 5.231 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_10.5mm_closed_R10_single_refY",
+    "official_joint_objective": 0.2415331506327045,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.3125361325180709,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.0006349552778038641,
+          "mask": 0.01989360744846699,
+          "dxy_completion": 0.02932261220662415,
+          "depth": 0.2561075711270085,
+          "coverage": 4.0001626665033435e-05,
+          "bias_prior": 0.0023827965519898865,
+          "shape_prior": 0.00415458827951246
+        },
+        "center_to_joint_mm": 0.22568103352914973
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.2048625863939426,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.05591790425796692,
+          "mask": 0.011462320786296398,
+          "dxy_completion": 0.030656127987470357,
+          "depth": 0.10065933555803405,
+          "coverage": 1.4028383666065196e-06,
+          "bias_prior": 0.0023827965519898865,
+          "shape_prior": 0.0037826984138183504
+        },
+        "center_to_joint_mm": 0.4157390999858504
+      }
+    ],
+    "any_feasible_single_has_lower_objective": true,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_10.5mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 4,
+        "R1_held_MAE_px_median": 3.5108572986566733,
+        "gate_reasons": [
+          "RGB MAE px 10.031321564502882 > 3",
+          "RGB MAE px 3.4940294063667547 > 3",
+          "RGB MAE px 3.527685190946592 > 3",
+          "RGB MAE px 314.6197173372956 > 3",
+          "RGB MAE px 4.8008036550642625 > 3",
+          "RGB MAE px 7.995397215617312 > 3",
+          "RGB P95 px 10.222405635473656 > 6",
+          "RGB P95 px 6.32534678021862 > 6",
+          "RGB P95 px 6.7959429675319285 > 6",
+          "RGB P95 px 6.964143372044687 > 6",
+          "RGB P95 px 8.701527659868285 > 6",
+          "初始化中心分散 2.814 mm > 2 mm",
+          "初始化中心分散 3.123 mm > 2 mm",
+          "初始化中心分散 3.364 mm > 2 mm",
+          "正深度比例 0.925 < 0.95"
+        ]
+      },
+      {
+        "case": "GP_Is_10.5mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 2.4639482312981946,
+        "gate_reasons": [
+          "RGB MAE px 14.256205173922776 > 3",
+          "RGB MAE px 164.84593656822608 > 3",
+          "RGB MAE px 22.918302866161266 > 3",
+          "RGB MAE px 6.50768286859615 > 3",
+          "RGB P95 px 112.6608160767791 > 6",
+          "RGB P95 px 26.312065094853146 > 6",
+          "RGB P95 px 6.187421392764807 > 6",
+          "RGB P95 px 62.92044912716413 > 6",
+          "RGB P95 px 8.502040129407384 > 6",
+          "RGB P95 px 883.2249031437149 > 6",
+          "初始化中心分散 2.254 mm > 2 mm",
+          "初始化中心分散 2.517 mm > 2 mm",
+          "正深度比例 0.8888888888888888 < 0.95",
+          "留出观测数 6 < 8",
+          "留出观测数 7 < 8"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_10.5mm_closed_R5_single_refY",
+    "official_joint_objective": 0.30293136589768244,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.8090432900166372,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.46300949650043877,
+          "mask": 0.19086965367314976,
+          "dxy_completion": 0.1279855276582289,
+          "depth": 0.0,
+          "coverage": 0.0,
+          "bias_prior": 0.0,
+          "shape_prior": 0.02717861218481981
+        },
+        "center_to_joint_mm": 1.2624031443478412
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 3.3260233965459323,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 2.318210969741741,
+          "mask": 0.7137456619646674,
+          "dxy_completion": 0.2106796037632614,
+          "depth": 0.0,
+          "coverage": 0.0,
+          "bias_prior": 0.0,
+          "shape_prior": 0.08338716107626284
+        },
+        "center_to_joint_mm": 3.817268575129686
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_10.5mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 1,
+        "R1_held_MAE_px_median": 4.51084320944153,
+        "gate_reasons": [
+          "RGB MAE px 15.193444351341087 > 3",
+          "RGB MAE px 3.192166709585654 > 3",
+          "RGB MAE px 3.5217645211201365 > 3",
+          "RGB MAE px 4.3874402949354625 > 3",
+          "RGB MAE px 4.453999915745381 > 3",
+          "RGB MAE px 4.56768650313768 > 3",
+          "RGB MAE px 4.729084237997646 > 3",
+          "RGB MAE px 5.00870958523428 > 3",
+          "RGB MAE px 6.432781990516108 > 3",
+          "RGB P95 px 10.060801503755666 > 6",
+          "RGB P95 px 12.763318454390433 > 6",
+          "RGB P95 px 7.067507609021251 > 6",
+          "RGB P95 px 7.199372673727822 > 6",
+          "RGB P95 px 7.850253007758738 > 6",
+          "RGB P95 px 8.25769598708423 > 6",
+          "RGB P95 px 9.142863402327542 > 6",
+          "初始化中心分散 2.267 mm > 2 mm",
+          "初始化中心分散 2.436 mm > 2 mm",
+          "初始化中心分散 2.756 mm > 2 mm",
+          "初始化中心分散 2.850 mm > 2 mm",
+          "初始化中心分散 3.350 mm > 2 mm",
+          "初始化中心分散 3.631 mm > 2 mm",
+          "初始化中心分散 3.809 mm > 2 mm",
+          "初始化中心分散 7.566 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Is_10.5mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 9.13795133438165,
+        "gate_reasons": [
+          "RGB MAE px 12.336399844686428 > 3",
+          "RGB MAE px 14.62837044921792 > 3",
+          "RGB MAE px 21.41465051785847 > 3",
+          "RGB MAE px 3.8003023560301696 > 3",
+          "RGB MAE px 5.380514897748971 > 3",
+          "RGB MAE px 5.897615846542056 > 3",
+          "RGB MAE px 6.196226399203727 > 3",
+          "RGB MAE px 82.40441972164254 > 3",
+          "RGB MAE px 9.049545075715688 > 3",
+          "RGB MAE px 9.226357593047613 > 3",
+          "RGB P95 px 11.619575599993427 > 6",
+          "RGB P95 px 16.05978832046516 > 6",
+          "RGB P95 px 17.996454342903014 > 6",
+          "RGB P95 px 19.93102644938086 > 6",
+          "RGB P95 px 211.6060394249267 > 6",
+          "RGB P95 px 22.356779544687893 > 6",
+          "RGB P95 px 29.614843534650845 > 6",
+          "RGB P95 px 33.094389068893264 > 6",
+          "RGB P95 px 7.288653367661143 > 6",
+          "RGB P95 px 75.9384119960332 > 6",
+          "初始化中心分散 2.405 mm > 2 mm",
+          "初始化中心分散 2.415 mm > 2 mm",
+          "初始化中心分散 3.421 mm > 2 mm",
+          "正深度比例 0.8 < 0.95",
+          "正深度比例 0.875 < 0.95",
+          "正深度比例 0.9444444444444444 < 0.95",
+          "留出观测数 3 < 8",
+          "留出观测数 4 < 8",
+          "留出观测数 5 < 8"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_14.0mm_closed_R10_single_refY",
+    "official_joint_objective": 0.7534419378417269,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 5.351031856816889,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 4.396252194083795,
+          "mask": 0.3833841091131045,
+          "dxy_completion": 0.4569103065550517,
+          "depth": 0.0,
+          "coverage": 0.0,
+          "bias_prior": 0.0,
+          "shape_prior": 0.11448524706493816
+        },
+        "center_to_joint_mm": 2.7443252713690294
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 4.364079617227805,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 3.6684827714034522,
+          "mask": 0.3438581112800162,
+          "dxy_completion": 0.3459328143291417,
+          "depth": 0.0,
+          "coverage": 0.0,
+          "bias_prior": 0.0,
+          "shape_prior": 0.005805920215194566
+        },
+        "center_to_joint_mm": 3.5531022128168717
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_14.0mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 1,
+        "R1_held_MAE_px_median": 3.3022851172884344,
+        "gate_reasons": [
+          "RGB MAE px 13.292558716231085 > 3",
+          "RGB MAE px 3.153814483218681 > 3",
+          "RGB MAE px 3.4507557513581877 > 3",
+          "RGB MAE px 3.731893408783779 > 3",
+          "RGB MAE px 37.257372608755205 > 3",
+          "RGB MAE px 4.230025523723687 > 3",
+          "RGB P95 px 10.632194977919985 > 6",
+          "RGB P95 px 12.938826209963764 > 6",
+          "RGB P95 px 329.8811803312079 > 6",
+          "RGB P95 px 7.266789136815274 > 6",
+          "RGB P95 px 8.409276420202048 > 6",
+          "RGB P95 px 9.584130493992605 > 6",
+          "RGB P95 px 9.671522533022078 > 6",
+          "RGB P95 px 9.738093774551908 > 6",
+          "初始化中心分散 2.133 mm > 2 mm",
+          "初始化中心分散 2.745 mm > 2 mm",
+          "初始化中心分散 2.912 mm > 2 mm",
+          "初始化中心分散 3.160 mm > 2 mm",
+          "初始化中心分散 3.706 mm > 2 mm",
+          "留出观测数 6 < 8"
+        ]
+      },
+      {
+        "case": "GP_Is_14.0mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 38.625631799334755,
+        "gate_reasons": [
+          "RGB MAE px 16.262364255333683 > 3",
+          "RGB MAE px 19.902268121689293 > 3",
+          "RGB MAE px 31.91220490714289 > 3",
+          "RGB MAE px 35.30867124962595 > 3",
+          "RGB MAE px 41.94259234904355 > 3",
+          "RGB MAE px 43.71600823973142 > 3",
+          "RGB MAE px 53.017046239257475 > 3",
+          "RGB MAE px 56.01811565005896 > 3",
+          "RGB MAE px 57.41403462994763 > 3",
+          "RGB MAE px 8.920975457148389 > 3",
+          "RGB P95 px 114.29208554994977 > 6",
+          "RGB P95 px 152.4878398761153 > 6",
+          "RGB P95 px 157.0547693251457 > 6",
+          "RGB P95 px 219.8888935158903 > 6",
+          "RGB P95 px 224.3099554306575 > 6",
+          "RGB P95 px 246.63385233028976 > 6",
+          "RGB P95 px 36.32570592500047 > 6",
+          "RGB P95 px 72.33824184220472 > 6",
+          "RGB P95 px 80.54587275600117 > 6",
+          "RGB P95 px 85.19343229742553 > 6",
+          "Ring边界 MAE px 3.114975130836463 > 3",
+          "Ring边界 MAE px 3.939509624691209 > 3",
+          "Ring边界 MAE px 3.9643989004152766 > 3",
+          "Ring边界 MAE px 5.650062529241691 > 3",
+          "Ring边界 MAE px 6.011425615212625 > 3",
+          "Ring边界 MAE px 6.791536651793028 > 3",
+          "Ring边界 P95 px 11.107345260402855 > 6",
+          "Ring边界 P95 px 13.487586222204035 > 6",
+          "Ring边界 P95 px 14.461190307618574 > 6",
+          "Ring边界 P95 px 15.147198130311752 > 6",
+          "Ring边界 P95 px 15.962535758175683 > 6",
+          "Ring边界 P95 px 6.734042064037597 > 6",
+          "Ring边界 P95 px 8.732093911095903 > 6",
+          "正深度比例 0.8333333333333334 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_14.0mm_closed_R5_single_refY",
+    "official_joint_objective": 2.6609947890311787,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 2.5387346021416883,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 1.6814229494527595,
+          "mask": 0.3713257399625496,
+          "dxy_completion": 0.22271799605225517,
+          "depth": 0.25253201164411887,
+          "coverage": 2.9413576780554268e-05,
+          "bias_prior": 0.0007783537730287657,
+          "shape_prior": 0.009928137680196049
+        },
+        "center_to_joint_mm": 2.9359787036127045
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 6.825285904762614,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 1.1078120628089723,
+          "mask": 0.20084673452470128,
+          "dxy_completion": 0.15950786797975736,
+          "depth": 5.322254912165239,
+          "coverage": 0.02271099131978393,
+          "bias_prior": 0.0007783537730287657,
+          "shape_prior": 0.011374982191131379
+        },
+        "center_to_joint_mm": 2.821908122500665
+      }
+    ],
+    "any_feasible_single_has_lower_objective": true,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_14.0mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 4,
+        "R1_held_MAE_px_median": 3.846125791855237,
+        "gate_reasons": [
+          "RGB MAE px 10.19810278739199 > 3",
+          "RGB MAE px 10.254953412274356 > 3",
+          "RGB MAE px 16.713452604795243 > 3",
+          "RGB MAE px 4.7597931916571055 > 3",
+          "RGB MAE px 9.213734631619877 > 3",
+          "RGB P95 px 15.914338779723394 > 6",
+          "RGB P95 px 17.192800981193557 > 6",
+          "RGB P95 px 8.625170829205175 > 6",
+          "Ring边界 P95 px 11.028494372206609 > 6",
+          "初始化中心分散 2.684 mm > 2 mm",
+          "初始化中心分散 4.168 mm > 2 mm",
+          "初始化中心分散 4.275 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Is_14.0mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 33.02132825502435,
+        "gate_reasons": [
+          "RGB MAE px 20.16478304604708 > 3",
+          "RGB MAE px 25.90694879955073 > 3",
+          "RGB MAE px 4.266662527855608 > 3",
+          "RGB MAE px 4.406327540024694 > 3",
+          "RGB MAE px 4.548293800180058 > 3",
+          "RGB MAE px 40.135707710497975 > 3",
+          "RGB MAE px 55.2448969065002 > 3",
+          "RGB MAE px 58.63651680332809 > 3",
+          "RGB MAE px 64.16984307612027 > 3",
+          "RGB MAE px 89.2971175354515 > 3",
+          "RGB P95 px 14.394705114312748 > 6",
+          "RGB P95 px 147.28104629420105 > 6",
+          "RGB P95 px 16.795768396709995 > 6",
+          "RGB P95 px 19.557614209061878 > 6",
+          "RGB P95 px 234.02807956300896 > 6",
+          "RGB P95 px 255.95400041603645 > 6",
+          "RGB P95 px 362.5855100846445 > 6",
+          "RGB P95 px 396.9002196310134 > 6",
+          "RGB P95 px 67.93544667484524 > 6",
+          "RGB P95 px 72.12497916545122 > 6",
+          "初始化中心分散 2.067 mm > 2 mm",
+          "初始化中心分散 2.858 mm > 2 mm",
+          "初始化中心分散 2.861 mm > 2 mm",
+          "初始化中心分散 3.211 mm > 2 mm",
+          "初始化中心分散 51.282 mm > 2 mm",
+          "初始化中心分散 52.063 mm > 2 mm",
+          "初始化中心分散 53.849 mm > 2 mm",
+          "初始化中心分散 54.141 mm > 2 mm",
+          "初始化中心分散 54.624 mm > 2 mm",
+          "正深度比例 0.9473684210526315 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_18.0mm_closed_R10_single_refY",
+    "official_joint_objective": 0.3540581620887144,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.4350247271725374,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.10599327097023892,
+          "mask": 0.041563132985693835,
+          "dxy_completion": 0.012585123622955715,
+          "depth": 0.27193827355992306,
+          "coverage": 3.093316276006669e-05,
+          "bias_prior": 0.0005823930328655849,
+          "shape_prior": 0.002331599838100176
+        },
+        "center_to_joint_mm": 0.08658320078185601
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.374476595830658,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.15787809072186196,
+          "mask": 0.02955082939798085,
+          "dxy_completion": 0.01336644612076732,
+          "depth": 0.1697483058828821,
+          "coverage": 1.176516461894102e-05,
+          "bias_prior": 0.0005823930328655849,
+          "shape_prior": 0.0033387655096812478
+        },
+        "center_to_joint_mm": 0.565159861067916
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_18.0mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 2.7003803081010824,
+        "gate_reasons": [
+          "RGB MAE px 3.357494498217932 > 3",
+          "RGB MAE px 4.389190725797542 > 3",
+          "RGB MAE px 5.5542067376936375 > 3",
+          "RGB MAE px 6.983248719066083 > 3",
+          "RGB P95 px 14.227544015945098 > 6",
+          "RGB P95 px 19.046016835379017 > 6",
+          "RGB P95 px 28.592988318673207 > 6",
+          "RGB P95 px 6.608396357050288 > 6",
+          "RGB P95 px 6.799997751354657 > 6",
+          "RGB P95 px 8.637838526207984 > 6",
+          "RGB P95 px 9.25395035891449 > 6",
+          "初始化中心分散 2.008 mm > 2 mm",
+          "初始化中心分散 2.196 mm > 2 mm",
+          "初始化中心分散 2.232 mm > 2 mm",
+          "正深度比例 0.9259259259259259 < 0.95",
+          "正深度比例 0.9375 < 0.95"
+        ]
+      },
+      {
+        "case": "GP_Is_18.0mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 5,
+        "R1_held_MAE_px_median": 2.228773063017595,
+        "gate_reasons": [
+          "RGB MAE px 3.213791586730392 > 3",
+          "RGB MAE px 3.81216009807334 > 3",
+          "RGB MAE px 4.072110243909153 > 3",
+          "RGB P95 px 11.431425190236803 > 6",
+          "RGB P95 px 13.38003041807752 > 6",
+          "RGB P95 px 6.392348810737869 > 6",
+          "RGB P95 px 7.878051044872435 > 6",
+          "RGB P95 px 8.617906919489467 > 6",
+          "Ring边界 MAE px 4.361912800879546 > 3",
+          "Ring边界 P95 px 26.722958247608098 > 6",
+          "初始化中心分散 2.365 mm > 2 mm",
+          "初始化中心分散 4.069 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_18.0mm_closed_R5_single_refY",
+    "official_joint_objective": 0.5006901668965708,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.9862616500922277,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.15503783421088912,
+          "mask": 0.08254964322834406,
+          "dxy_completion": 0.017092285647224134,
+          "depth": 0.728867928595827,
+          "coverage": 0.00017531692757533413,
+          "bias_prior": 0.0012671301408415398,
+          "shape_prior": 0.001271511341526426
+        },
+        "center_to_joint_mm": 0.26937065943655203
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.5575420401568043,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.35838015793616085,
+          "mask": 0.03543672170895416,
+          "dxy_completion": 0.03361722405782016,
+          "depth": 0.12538980075865325,
+          "coverage": 1.2157083997928192e-05,
+          "bias_prior": 0.0012671301408415398,
+          "shape_prior": 0.003438848470376412
+        },
+        "center_to_joint_mm": 0.9971844977177134
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_18.0mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 2.4924378353152976,
+        "gate_reasons": [
+          "RGB MAE px 11.854528401766983 > 3",
+          "RGB MAE px 3.158578528387286 > 3",
+          "RGB MAE px 45.49350095881255 > 3",
+          "RGB P95 px 11.316174723144453 > 6",
+          "RGB P95 px 11.736662141937241 > 6",
+          "RGB P95 px 17.1951503525019 > 6",
+          "RGB P95 px 6.533546153856415 > 6",
+          "RGB P95 px 6.560604610723811 > 6",
+          "RGB P95 px 7.695642199910562 > 6",
+          "RGB P95 px 98.1067505767647 > 6",
+          "初始化中心分散 2.307 mm > 2 mm",
+          "初始化中心分散 2.671 mm > 2 mm",
+          "初始化中心分散 2.909 mm > 2 mm",
+          "初始化中心分散 3.461 mm > 2 mm",
+          "初始化中心分散 3.884 mm > 2 mm",
+          "初始化中心分散 4.497 mm > 2 mm",
+          "初始化中心分散 4.774 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Is_18.0mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 2,
+        "R1_held_MAE_px_median": 8.937211092308496,
+        "gate_reasons": [
+          "RGB MAE px 12.590462251863844 > 3",
+          "RGB MAE px 14.327903946889824 > 3",
+          "RGB MAE px 14.767192519126116 > 3",
+          "RGB MAE px 15.23354118994417 > 3",
+          "RGB MAE px 22.82897768953148 > 3",
+          "RGB MAE px 3.147228814035056 > 3",
+          "RGB MAE px 4.231002264587032 > 3",
+          "RGB MAE px 5.283959932753149 > 3",
+          "RGB P95 px 11.976749466815813 > 6",
+          "RGB P95 px 110.06376161300345 > 6",
+          "RGB P95 px 32.979744757580015 > 6",
+          "RGB P95 px 33.86599771727089 > 6",
+          "RGB P95 px 72.56286859950679 > 6",
+          "RGB P95 px 79.07946733094761 > 6",
+          "RGB P95 px 9.278843119333324 > 6",
+          "初始化中心分散 10.355 mm > 2 mm",
+          "初始化中心分散 2.124 mm > 2 mm",
+          "初始化中心分散 2.445 mm > 2 mm",
+          "初始化中心分散 3.486 mm > 2 mm",
+          "初始化中心分散 3.594 mm > 2 mm",
+          "初始化中心分散 4.299 mm > 2 mm",
+          "初始化中心分散 5.120 mm > 2 mm",
+          "初始化中心分散 5.681 mm > 2 mm",
+          "正深度比例 0.9166666666666666 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_4.8mm_closed_R10_single_refY",
+    "official_joint_objective": 0.5094089486093281,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.4418282026401875,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.07149417501175047,
+          "mask": 0.0898587401751908,
+          "dxy_completion": 0.007352361338631408,
+          "depth": 0.19526031072529382,
+          "coverage": 0.05439546732832511,
+          "bias_prior": 0.007808425636755457,
+          "shape_prior": 0.015658722424240462
+        },
+        "center_to_joint_mm": 0.0835068144670522
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 1.6811055381926108,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.6706572771389008,
+          "mask": 0.14146807335757267,
+          "dxy_completion": 0.0029348386528040655,
+          "depth": 0.8015039482535461,
+          "coverage": 0.0539900463985455,
+          "bias_prior": 0.007808425636755457,
+          "shape_prior": 0.0027429287544861202
+        },
+        "center_to_joint_mm": 0.5115918681291552
+      }
+    ],
+    "any_feasible_single_has_lower_objective": true,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_4.8mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 4,
+        "R1_held_MAE_px_median": 2.88531440303949,
+        "gate_reasons": [
+          "RGB MAE px 12.520763453596382 > 3",
+          "RGB MAE px 20.49435535881882 > 3",
+          "RGB MAE px 24.486568546425843 > 3",
+          "RGB MAE px 3.612602210711096 > 3",
+          "RGB MAE px 52.09717919405525 > 3",
+          "RGB P95 px 13.00314622967862 > 6",
+          "RGB P95 px 6.702155460156485 > 6",
+          "RGB P95 px 7.171234002261089 > 6",
+          "RGB P95 px 8.002343693448449 > 6",
+          "RGB P95 px 9.734356998737148 > 6",
+          "初始化中心分散 2.094 mm > 2 mm",
+          "初始化中心分散 2.361 mm > 2 mm",
+          "初始化中心分散 2.579 mm > 2 mm",
+          "初始化中心分散 3.489 mm > 2 mm",
+          "初始化中心分散 3.764 mm > 2 mm",
+          "初始化中心分散 4.000 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Is_4.8mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 1,
+        "R1_held_MAE_px_median": 7.72219221962886,
+        "gate_reasons": [
+          "RGB MAE px 11.454355702610242 > 3",
+          "RGB MAE px 127.46962310205885 > 3",
+          "RGB MAE px 14.694513422599593 > 3",
+          "RGB MAE px 15.038158938418292 > 3",
+          "RGB MAE px 3.2577033172977314 > 3",
+          "RGB MAE px 3.497464657519691 > 3",
+          "RGB MAE px 3.990028736647478 > 3",
+          "RGB MAE px 38.12581950155053 > 3",
+          "RGB P95 px 10.500372606482022 > 6",
+          "RGB P95 px 12.467092867971719 > 6",
+          "RGB P95 px 196.41311858983943 > 6",
+          "RGB P95 px 37.437492958853824 > 6",
+          "RGB P95 px 498.7425099485115 > 6",
+          "RGB P95 px 58.79916071500627 > 6",
+          "RGB P95 px 6.918997345249544 > 6",
+          "RGB P95 px 7.487258852226392 > 6",
+          "RGB P95 px 71.94196848995776 > 6",
+          "Ring边界 MAE px 3.104774878763547 > 3",
+          "Ring边界 MAE px 3.5803628612532226 > 3",
+          "Ring边界 P95 px 12.850477402621664 > 6",
+          "Ring边界 P95 px 6.898276731199081 > 6",
+          "Ring边界 P95 px 7.392839551171623 > 6",
+          "Ring边界 P95 px 7.6665675483075715 > 6",
+          "初始化中心分散 2.766 mm > 2 mm",
+          "初始化中心分散 2.791 mm > 2 mm",
+          "初始化中心分散 2.796 mm > 2 mm",
+          "初始化中心分散 3.123 mm > 2 mm",
+          "初始化中心分散 3.141 mm > 2 mm",
+          "初始化中心分散 3.143 mm > 2 mm",
+          "初始化中心分散 4.142 mm > 2 mm",
+          "初始化中心分散 4.628 mm > 2 mm",
+          "正深度比例 0.8888888888888888 < 0.95",
+          "正深度比例 0.9411764705882353 < 0.95",
+          "正深度比例 0.9444444444444444 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_4.8mm_closed_R5_single_refY",
+    "official_joint_objective": 0.07978856599379401,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.4770249307280493,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.0017250703116820298,
+          "mask": 0.04294025615354226,
+          "dxy_completion": 0.015312195789137381,
+          "depth": 0.4079296415765171,
+          "coverage": 0.0003169598508291731,
+          "bias_prior": 0.0014007222619350777,
+          "shape_prior": 0.007400084784406281
+        },
+        "center_to_joint_mm": 0.14833274242901387
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.115731940343163,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.0007778864903604809,
+          "mask": 0.015210383784145574,
+          "dxy_completion": 0.024608639280348038,
+          "depth": 0.0601286440479074,
+          "coverage": 1.4568189430618406e-06,
+          "bias_prior": 0.0014007222619350777,
+          "shape_prior": 0.013604207659523367
+        },
+        "center_to_joint_mm": 0.08564399591629095
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_4.8mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 6,
+        "R1_held_MAE_px_median": 2.4215991540328665,
+        "gate_reasons": [
+          "RGB MAE px 18.761718088949905 > 3",
+          "RGB MAE px 3.350478957535507 > 3",
+          "RGB MAE px 4.28812306607282 > 3",
+          "RGB MAE px 80.93934730998481 > 3",
+          "RGB P95 px 425.93621390011936 > 6",
+          "RGB P95 px 59.668932970374925 > 6",
+          "RGB P95 px 6.1744954021454275 > 6",
+          "RGB P95 px 6.282237421160314 > 6",
+          "初始化中心分散 2.379 mm > 2 mm",
+          "初始化中心分散 3.197 mm > 2 mm",
+          "初始化中心分散 3.738 mm > 2 mm",
+          "初始化中心分散 4.321 mm > 2 mm",
+          "初始化中心分散 5.748 mm > 2 mm",
+          "初始化中心分散 5.857 mm > 2 mm",
+          "初始化中心分散 5.922 mm > 2 mm",
+          "正深度比例 0.8571428571428571 < 0.95"
+        ]
+      },
+      {
+        "case": "GP_Is_4.8mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 3.40632535984527,
+        "gate_reasons": [
+          "RGB MAE px 23.637239647097623 > 3",
+          "RGB MAE px 3.151092700641584 > 3",
+          "RGB MAE px 3.6615580190489556 > 3",
+          "RGB MAE px 30.677321839700227 > 3",
+          "RGB MAE px 6.485212625536439 > 3",
+          "RGB MAE px 8.811366994086178 > 3",
+          "RGB P95 px 10.501672510404202 > 6",
+          "RGB P95 px 23.8671485162075 > 6",
+          "RGB P95 px 27.122926529653714 > 6",
+          "RGB P95 px 28.07519673351456 > 6",
+          "RGB P95 px 8.575861901233534 > 6",
+          "RGB P95 px 9.54378819769604 > 6",
+          "初始化中心分散 2.292 mm > 2 mm",
+          "初始化中心分散 2.703 mm > 2 mm",
+          "初始化中心分散 3.055 mm > 2 mm",
+          "初始化中心分散 3.243 mm > 2 mm",
+          "初始化中心分散 5.009 mm > 2 mm",
+          "正深度比例 0.9411764705882353 < 0.95",
+          "留出观测数 7 < 8"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_6.5mm_closed_R10_single_refY",
+    "official_joint_objective": 0.3977256298351876,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.38492976833074766,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.03925174011542243,
+          "mask": 0.11845648110598023,
+          "dxy_completion": 0.014478598141730751,
+          "depth": 0.139580412810178,
+          "coverage": 0.05559590988408811,
+          "bias_prior": 0.006151421343937788,
+          "shape_prior": 0.011415204929410356
+        },
+        "center_to_joint_mm": 0.19845558407242364
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 1.2681013208695686,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.5196109046373143,
+          "mask": 0.11939828902253222,
+          "dxy_completion": 0.0022132076891047915,
+          "depth": 0.5610508976846872,
+          "coverage": 0.05580313866266153,
+          "bias_prior": 0.006151421343937788,
+          "shape_prior": 0.0038734618293308157
+        },
+        "center_to_joint_mm": 0.5731161020378037
+      }
+    ],
+    "any_feasible_single_has_lower_objective": true,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_6.5mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 5,
+        "R1_held_MAE_px_median": 3.31573951655574,
+        "gate_reasons": [
+          "RGB MAE px 12.074769574575036 > 3",
+          "RGB MAE px 15.036835232463185 > 3",
+          "RGB MAE px 15.797194504372767 > 3",
+          "RGB MAE px 3.740867477995355 > 3",
+          "RGB MAE px 4.637481044665222 > 3",
+          "RGB P95 px 10.989876754515507 > 6",
+          "RGB P95 px 7.254022332601512 > 6",
+          "Ring边界 P95 px 6.432171518507035 > 6",
+          "Ring边界 P95 px 6.839097398579225 > 6",
+          "初始化中心分散 2.214 mm > 2 mm",
+          "初始化中心分散 2.305 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Is_6.5mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 9.460027093305708,
+        "gate_reasons": [
+          "RGB MAE px 10.267655022412923 > 3",
+          "RGB MAE px 19.742964355619787 > 3",
+          "RGB MAE px 24.602032170430803 > 3",
+          "RGB MAE px 33.23225796133823 > 3",
+          "RGB MAE px 48.39828011282656 > 3",
+          "RGB MAE px 5.744284438994369 > 3",
+          "RGB MAE px 6.496569240226615 > 3",
+          "RGB MAE px 7.4957632974128305 > 3",
+          "RGB MAE px 8.652399164198494 > 3",
+          "RGB P95 px 10.271006215951491 > 6",
+          "RGB P95 px 101.75001035865803 > 6",
+          "RGB P95 px 16.01559789752451 > 6",
+          "RGB P95 px 164.15434033944672 > 6",
+          "RGB P95 px 291.6889050006429 > 6",
+          "RGB P95 px 33.143742444629616 > 6",
+          "RGB P95 px 34.32321865349261 > 6",
+          "RGB P95 px 34.911568163711735 > 6",
+          "RGB P95 px 79.18766754283496 > 6",
+          "RGB P95 px 8.170402142726768 > 6",
+          "初始化中心分散 2.402 mm > 2 mm",
+          "初始化中心分散 2.602 mm > 2 mm",
+          "初始化中心分散 2.685 mm > 2 mm",
+          "初始化中心分散 4.101 mm > 2 mm",
+          "初始化中心分散 4.313 mm > 2 mm",
+          "正深度比例 0.8888888888888888 < 0.95",
+          "正深度比例 0.9310344827586207 < 0.95",
+          "正深度比例 0.9354838709677419 < 0.95",
+          "正深度比例 0.9428571428571428 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_7.0mm_closed_R5_single_refY",
+    "official_joint_objective": 4.126286437128676,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 2.591871777198409,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 1.8922970654888933,
+          "mask": 0.4750735489683415,
+          "dxy_completion": 0.1428136401402867,
+          "depth": 0.05897589649452767,
+          "coverage": 0.002441555715147623,
+          "bias_prior": 0.010435484771187326,
+          "shape_prior": 0.00983458562002476
+        },
+        "center_to_joint_mm": 1.4420605364857217
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 19.95252120264313,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 3.086454372155063,
+          "mask": 0.6620862196689743,
+          "dxy_completion": 0.2085685735127938,
+          "depth": 12.418080360176965,
+          "coverage": 3.4860393538889802,
+          "bias_prior": 0.010435484771187326,
+          "shape_prior": 0.08085683846916492
+        },
+        "center_to_joint_mm": 3.5079622213699824
+      }
+    ],
+    "any_feasible_single_has_lower_objective": true,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_7.0mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 5,
+        "R1_held_MAE_px_median": 1.8333198941711184,
+        "gate_reasons": [
+          "RGB MAE px 3.2942207691999905 > 3",
+          "RGB P95 px 6.2547454043676245 > 6",
+          "RGB P95 px 7.2787354733468455 > 6",
+          "Ring边界 P95 px 6.948194320664827 > 6",
+          "Ring边界 P95 px 7.1495672178768 > 6",
+          "Ring边界 P95 px 7.487842072552361 > 6",
+          "初始化中心分散 2.780 mm > 2 mm",
+          "初始化中心分散 3.391 mm > 2 mm",
+          "初始化中心分散 3.944 mm > 2 mm",
+          "初始化中心分散 4.194 mm > 2 mm",
+          "初始化中心分散 4.674 mm > 2 mm",
+          "初始化中心分散 4.944 mm > 2 mm",
+          "初始化中心分散 5.248 mm > 2 mm",
+          "初始化中心分散 5.348 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Is_7.0mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 30.14505094411495,
+        "gate_reasons": [
+          "RGB MAE px 14.036267482847675 > 3",
+          "RGB MAE px 1501.8641519515877 > 3",
+          "RGB MAE px 16.628359457391788 > 3",
+          "RGB MAE px 1961.221454629758 > 3",
+          "RGB MAE px 26.279088614060313 > 3",
+          "RGB MAE px 3.532974148469293 > 3",
+          "RGB MAE px 34.011013274169585 > 3",
+          "RGB MAE px 50.23614795043801 > 3",
+          "RGB MAE px 60.40237353940575 > 3",
+          "RGB P95 px 105.17442635933274 > 6",
+          "RGB P95 px 149.4481440811059 > 6",
+          "RGB P95 px 272.54937176072184 > 6",
+          "RGB P95 px 314.0726056402881 > 6",
+          "RGB P95 px 39.218034618850226 > 6",
+          "RGB P95 px 59.86100425644534 > 6",
+          "RGB P95 px 7.894156959735257 > 6",
+          "RGB P95 px 7347.040305974445 > 6",
+          "RGB P95 px 8.33122878088425 > 6",
+          "RGB P95 px 8830.938844284246 > 6",
+          "Ring边界 P95 px 8.471557903493025 > 6",
+          "初始化中心分散 2.011 mm > 2 mm",
+          "初始化中心分散 2.029 mm > 2 mm",
+          "初始化中心分散 2.729 mm > 2 mm",
+          "初始化中心分散 3.280 mm > 2 mm",
+          "初始化中心分散 3.700 mm > 2 mm",
+          "初始化中心分散 3.900 mm > 2 mm",
+          "初始化中心分散 4.694 mm > 2 mm",
+          "正深度比例 0.9090909090909091 < 0.95",
+          "正深度比例 0.9333333333333333 < 0.95",
+          "留出观测数 7 < 8"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_7mm_closed_R10_single_refY",
+    "official_joint_objective": 0.7435338667697552,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.9296375741585966,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.22792358444322688,
+          "mask": 0.07604586401588002,
+          "dxy_completion": 0.019566690421644266,
+          "depth": 0.5688176591327772,
+          "coverage": 0.0004081272064158261,
+          "bias_prior": 0.0018469271646814308,
+          "shape_prior": 0.03502872177397105
+        },
+        "center_to_joint_mm": 1.1909377317097762
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.7717012465398851,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.0793880259537971,
+          "mask": 0.07928505906939823,
+          "dxy_completion": 0.01674022579857342,
+          "depth": 0.592718459834824,
+          "coverage": 0.0007343326230633983,
+          "bias_prior": 0.0018469271646814308,
+          "shape_prior": 0.0009882160955476138
+        },
+        "center_to_joint_mm": 0.3296391578714144
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_7mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 4,
+        "R1_held_MAE_px_median": 5.837476128392934,
+        "gate_reasons": [
+          "RGB MAE px 10.749256013236987 > 3",
+          "RGB MAE px 13.201516056341738 > 3",
+          "RGB MAE px 13.677591152587821 > 3",
+          "RGB MAE px 17.741131840076363 > 3",
+          "RGB MAE px 9.215045879571935 > 3",
+          "RGB P95 px 19.665768827256215 > 6",
+          "RGB P95 px 7.49867991809864 > 6",
+          "Ring边界 P95 px 6.503619979592291 > 6"
+        ]
+      },
+      {
+        "case": "GP_Is_7mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 5,
+        "R1_held_MAE_px_median": 2.1644155266529403,
+        "gate_reasons": [
+          "RGB MAE px 3.1810373595709396 > 3",
+          "RGB MAE px 34.73050400947035 > 3",
+          "RGB MAE px 834.3819115699584 > 3",
+          "RGB P95 px 12.687262587066364 > 6",
+          "RGB P95 px 132.51734825230034 > 6",
+          "RGB P95 px 4582.805286228464 > 6",
+          "RGB P95 px 6.4510675961581665 > 6",
+          "RGB P95 px 8.174236718147649 > 6",
+          "初始化中心分散 2.030 mm > 2 mm",
+          "正深度比例 0.9230769230769231 < 0.95",
+          "正深度比例 0.9333333333333333 < 0.95",
+          "正深度比例 0.9375 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_8.8mm_closed_R10_single_refY",
+    "official_joint_objective": 0.3353039779010865,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.6401315196609189,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.03848642534741777,
+          "mask": 0.0771990790299136,
+          "dxy_completion": 0.01080557017609506,
+          "depth": 0.49239748498176755,
+          "coverage": 0.01244676113029173,
+          "bias_prior": 0.0033548498406281786,
+          "shape_prior": 0.005441349154804984
+        },
+        "center_to_joint_mm": 0.1121741944103438
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.37179937688558656,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.031943360079555644,
+          "mask": 0.05296310832766063,
+          "dxy_completion": 0.022922245471102443,
+          "depth": 0.24643666766013864,
+          "coverage": 0.012350003135754455,
+          "bias_prior": 0.0033548498406281786,
+          "shape_prior": 0.001829142370746563
+        },
+        "center_to_joint_mm": 0.3643761803112917
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_8.8mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 6,
+        "R1_held_MAE_px_median": 1.6904753183579055,
+        "gate_reasons": [
+          "RGB MAE px 31.59521832150501 > 3",
+          "RGB P95 px 25.65876730505355 > 6",
+          "RGB P95 px 8.883455734353804 > 6",
+          "Ring边界 P95 px 6.076642362727689 > 6",
+          "Ring边界 P95 px 7.000790090791138 > 6",
+          "初始化中心分散 2.829 mm > 2 mm",
+          "初始化中心分散 3.325 mm > 2 mm",
+          "初始化中心分散 3.580 mm > 2 mm",
+          "初始化中心分散 4.654 mm > 2 mm",
+          "初始化中心分散 4.975 mm > 2 mm",
+          "正深度比例 0.9230769230769231 < 0.95"
+        ]
+      },
+      {
+        "case": "GP_Is_8.8mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 1,
+        "R1_held_MAE_px_median": 5.416619595665719,
+        "gate_reasons": [
+          "RGB MAE px 17.873699304849744 > 3",
+          "RGB MAE px 3.541509778847758 > 3",
+          "RGB MAE px 4.279247136923023 > 3",
+          "RGB MAE px 46.32032202510678 > 3",
+          "RGB MAE px 6.553992054408416 > 3",
+          "RGB MAE px 6.793607934547498 > 3",
+          "RGB MAE px 6.900940352296121 > 3",
+          "RGB P95 px 12.760929208717299 > 6",
+          "RGB P95 px 14.113462607672805 > 6",
+          "RGB P95 px 16.807882551379784 > 6",
+          "RGB P95 px 17.10039252314338 > 6",
+          "RGB P95 px 21.707609083537903 > 6",
+          "RGB P95 px 21.728543182573624 > 6",
+          "RGB P95 px 270.2364951707859 > 6",
+          "RGB P95 px 6.3633455529755265 > 6",
+          "RGB P95 px 7.667707770740359 > 6",
+          "初始化中心分散 2.073 mm > 2 mm",
+          "初始化中心分散 2.082 mm > 2 mm",
+          "初始化中心分散 2.089 mm > 2 mm",
+          "初始化中心分散 2.254 mm > 2 mm",
+          "初始化中心分散 4.159 mm > 2 mm",
+          "初始化中心分散 4.180 mm > 2 mm",
+          "初始化中心分散 4.748 mm > 2 mm",
+          "初始化中心分散 5.415 mm > 2 mm",
+          "初始化中心分散 6.368 mm > 2 mm",
+          "正深度比例 0.8666666666666667 < 0.95",
+          "留出观测数 7 < 8"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_8.8mm_closed_R5_single_refY",
+    "official_joint_objective": 0.3973148548956439,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.5131727771928979,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.24912177180084966,
+          "mask": 0.06745974391911995,
+          "dxy_completion": 0.026554603297398706,
+          "depth": 0.16374925873842955,
+          "coverage": 0.0030765423366758853,
+          "bias_prior": 0.001006346277952841,
+          "shape_prior": 0.0022045108224713365
+        },
+        "center_to_joint_mm": 0.41708452598007134
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.3941860653283369,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.06658107415614103,
+          "mask": 0.050277489654891594,
+          "dxy_completion": 0.052220558705461384,
+          "depth": 0.21846090459221695,
+          "coverage": 0.0031031945951172967,
+          "bias_prior": 0.001006346277952841,
+          "shape_prior": 0.0025364973465557836
+        },
+        "center_to_joint_mm": 0.07420664205139864
+      }
+    ],
+    "any_feasible_single_has_lower_objective": true,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_8.8mm_closed_R5_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 3,
+        "R1_held_MAE_px_median": 3.1799003291895467,
+        "gate_reasons": [
+          "RGB MAE px 10.354366609896358 > 3",
+          "RGB MAE px 17.692265912358543 > 3",
+          "RGB MAE px 3.0614124947399284 > 3",
+          "RGB MAE px 3.298388163639165 > 3",
+          "RGB MAE px 3.5968567908167897 > 3",
+          "RGB MAE px 7.424969621671953 > 3",
+          "RGB P95 px 10.113840773505377 > 6",
+          "RGB P95 px 10.870067599560308 > 6",
+          "RGB P95 px 12.393325003040948 > 6",
+          "RGB P95 px 18.24426305821091 > 6",
+          "RGB P95 px 6.411380949755139 > 6",
+          "RGB P95 px 69.88758687580408 > 6",
+          "RGB P95 px 73.61478531408714 > 6",
+          "初始化中心分散 2.366 mm > 2 mm",
+          "初始化中心分散 2.908 mm > 2 mm",
+          "初始化中心分散 3.471 mm > 2 mm",
+          "初始化中心分散 4.105 mm > 2 mm"
+        ]
+      },
+      {
+        "case": "GP_Is_8.8mm_closed_R5_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 0,
+        "R1_held_MAE_px_median": 8.163746477252914,
+        "gate_reasons": [
+          "RGB MAE px 1872.9756648336702 > 3",
+          "RGB MAE px 23.46404326489043 > 3",
+          "RGB MAE px 3.5858431075252355 > 3",
+          "RGB MAE px 3.9873296768350297 > 3",
+          "RGB MAE px 51.03206442500942 > 3",
+          "RGB MAE px 6.588888587585291 > 3",
+          "RGB MAE px 9.738604366920535 > 3",
+          "RGB MAE px 9.898369606000873 > 3",
+          "RGB P95 px 10.680014088067619 > 6",
+          "RGB P95 px 10045.414040790072 > 6",
+          "RGB P95 px 13.518342722205752 > 6",
+          "RGB P95 px 150.01137159824594 > 6",
+          "RGB P95 px 246.8869554212252 > 6",
+          "RGB P95 px 25.814398683550365 > 6",
+          "RGB P95 px 28.211911975689624 > 6",
+          "RGB P95 px 59.075884386505784 > 6",
+          "RGB P95 px 6.3517395045362814 > 6",
+          "RGB P95 px 7.227139704316308 > 6",
+          "初始化中心分散 2.116 mm > 2 mm",
+          "初始化中心分散 2.593 mm > 2 mm",
+          "初始化中心分散 3.467 mm > 2 mm",
+          "初始化中心分散 4.034 mm > 2 mm",
+          "正深度比例 0.8888888888888888 < 0.95"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  },
+  {
+    "group": "GP_Is_9.79mm_closed_R10_single_refY",
+    "official_joint_objective": 0.17850408546134539,
+    "single_parameter_probes": [
+      {
+        "configuration": "004",
+        "objective_with_joint_b_fixed": 0.4253290626688741,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.2853667009384347,
+          "mask": 0.01452575927584911,
+          "dxy_completion": 0.02887602896882628,
+          "depth": 0.09164713271752367,
+          "coverage": 2.598961988629386e-07,
+          "bias_prior": 0.0026007358775342977,
+          "shape_prior": 0.002312444994507175
+        },
+        "center_to_joint_mm": 1.0116633234720487
+      },
+      {
+        "configuration": "005",
+        "objective_with_joint_b_fixed": 0.2653284156105833,
+        "within_joint_bounds": true,
+        "components": {
+          "visible_boundary": 0.011501790240392714,
+          "mask": 0.02402960326538423,
+          "dxy_completion": 0.05088291685726328,
+          "depth": 0.17189159230804463,
+          "coverage": 7.090804020911571e-06,
+          "bias_prior": 0.0026007358775342977,
+          "shape_prior": 0.004414686257943252
+        },
+        "center_to_joint_mm": 0.14076785299146574
+      }
+    ],
+    "any_feasible_single_has_lower_objective": false,
+    "upstream_quality": [
+      {
+        "case": "GP_Is_9.79mm_closed_R10_single_refY_004",
+        "sampled_frames": 10,
+        "R1_new_pass": 1,
+        "R1_held_MAE_px_median": 6.057919401792143,
+        "gate_reasons": [
+          "RGB MAE px 16.880944843081075 > 3",
+          "RGB MAE px 18.881722523697814 > 3",
+          "RGB MAE px 3.126327532622585 > 3",
+          "RGB MAE px 5.419335870154094 > 3",
+          "RGB MAE px 6.696502933430192 > 3",
+          "RGB MAE px 6.936137785284389 > 3",
+          "RGB MAE px 9.939599280758006 > 3",
+          "RGB P95 px 13.642121986841795 > 6",
+          "RGB P95 px 29.448860783550302 > 6",
+          "RGB P95 px 32.75297292180096 > 6",
+          "RGB P95 px 6.972366020895413 > 6",
+          "RGB P95 px 69.21581365303044 > 6",
+          "RGB P95 px 7.147897902581881 > 6",
+          "RGB P95 px 73.47874585950957 > 6",
+          "RGB P95 px 8.722528536254497 > 6",
+          "RGB P95 px 95.2879902003139 > 6",
+          "初始化中心分散 2.305 mm > 2 mm",
+          "初始化中心分散 2.309 mm > 2 mm",
+          "初始化中心分散 3.056 mm > 2 mm",
+          "初始化中心分散 4.022 mm > 2 mm",
+          "初始化中心分散 5.425 mm > 2 mm",
+          "初始化中心分散 5.723 mm > 2 mm",
+          "初始化中心分散 6.749 mm > 2 mm",
+          "初始化中心分散 6.843 mm > 2 mm",
+          "初始化中心分散 7.062 mm > 2 mm",
+          "留出观测数 5 < 8"
+        ]
+      },
+      {
+        "case": "GP_Is_9.79mm_closed_R10_single_refY_005",
+        "sampled_frames": 10,
+        "R1_new_pass": 2,
+        "R1_held_MAE_px_median": 2.5969077879594886,
+        "gate_reasons": [
+          "RGB MAE px 4.142304737625022 > 3",
+          "RGB MAE px 8.988319008479252 > 3",
+          "RGB P95 px 10.198968283955162 > 6",
+          "RGB P95 px 10.602233758388346 > 6",
+          "RGB P95 px 13.582561577578002 > 6",
+          "RGB P95 px 6.2766179626429395 > 6",
+          "RGB P95 px 61.29556424058537 > 6",
+          "RGB P95 px 7.129899218710706 > 6",
+          "RGB P95 px 7.667441550196813 > 6",
+          "初始化中心分散 2.173 mm > 2 mm",
+          "初始化中心分散 2.779 mm > 2 mm",
+          "初始化中心分散 2.922 mm > 2 mm",
+          "初始化中心分散 3.661 mm > 2 mm",
+          "初始化中心分散 3.911 mm > 2 mm",
+          "初始化中心分散 4.449 mm > 2 mm",
+          "初始化中心分散 5.350 mm > 2 mm",
+          "初始化中心分散 5.641 mm > 2 mm"
+        ]
+      }
+    ],
+    "not_optimization": true,
+    "prediction_replaced": false
+  }
+]

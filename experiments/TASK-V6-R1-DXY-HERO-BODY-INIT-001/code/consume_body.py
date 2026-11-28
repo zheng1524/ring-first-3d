@@ -5,7 +5,7 @@ def load_configuration(result_path):
  result_path=Path(result_path);r=read(result_path);folder=result_path.parent
  for item in read(folder/'COMPLETE.json')['files']:asset(item['path'],item['sha256'])
  if r['status']!='COARSE_INIT_COMPLETE':raise ValueError('Configuration is not a completed initializer')
- result=dict(record=r,parent=dict(np.load(folder/'PARENT.npz')),uncut=dict(np.load(folder/'FINAL_UNCUT.npz')),body=dict(np.load(folder/'BODY.npz')),base=read(folder/'BASE.json'))
+ result=dict(record=r,parent=dict(np.load(folder/'PARENT.npz')),uncut=dict(np.load(folder/'FINAL_UNCUT.npz')),body=dict(np.load(folder/'BODY.npz')),base=read(folder/'BASE.json'),evaluation_scope='HOLDOUT means excluded from explicit 2D terms only; the same frame may be HERO Target/Support, Clean or camera input. Not independent data holdout.')
  if(folder/'VISIBILITY.json').exists():
   vr=read(folder/'VISIBILITY.json')
   for item in vr['files']:asset(item['path'],item['sha256'])

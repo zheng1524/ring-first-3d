@@ -12,7 +12,9 @@ bash run_python.sh code/visualize.py
 bash run_python.sh code/visibility.py
 bash run_python.sh code/control_figure.py
 bash run_python.sh code/verify.py
+bash run_python.sh code/diagnose.py          # 冻结后诊断，不替换预测
 bash run_python.sh code/report.py
+bash run_python.sh code/package.py           # 小型结果与必要输入证据包
 ```
 
 单组重跑：`bash run_python.sh code/pipeline.py --group GP_IIa_14.0mm_closed_R5_single_refY`。不得根据图像效果逐病例改参数。更改科学代码、配置或输入会使相应缓存失效。
@@ -21,10 +23,12 @@ bash run_python.sh code/report.py
 
 本地审阅：`runs/results/index.html`。每组的 `index.html` 并列单视频和联合，失败保留在 `GROUP_RESULT.json`；每配置有 `RESULT.json`、`BASE.json`、`STAGES.json`、`EVALUATION.json`、`PARENT.npz`、`FINAL_UNCUT.npz`、`BODY.npz`。
 
-`BODY.npz` 的 `F` 只含保留的母体三角面（模型推断，并非实测 HERO）；`F_solid` 另加闭合底盖，`inferred_base_faces` 明确标记。`VISIBILITY.npz` 另存实际拟合相机、完整图像网格下的模型可见面及 Mask 相容面，它们也不等于已测真值。弱基底的 `WEAK_BASE_CANDIDATE.npz` 仅是可逆候选，正式 BODY 保留完整母体。无背景证据时不造基底。
+`BODY.npz` 的 `F` 只含保留的母体三角面（模型推断，并非实测 HERO）；`F_solid` 另加闭合底盖，`inferred_base_faces` 明确标记。`VISIBILITY.npz` 另存实际拟合/留出相机、完整图像网格下的模型可见面及 Mask 相容面，它们也不等于已测真值；同名 JSON 保存实际 Mesh 的全分辨率 IoU、原生深度、解析/离散误差与 CAD 顶点检查。弱基底的 `WEAK_BASE_CANDIDATE.npz` 仅是可逆候选，正式 BODY 保留完整母体。无背景证据时不造基底。
 
 消费接口：`code/consume_body.py::load_configuration` 校验结果与来源；`corrected_source` 返回保持原面 ID 的可信曲面工作副本。使用 `D-b` 沿原 Target 射线校正；背景和 CAD 不动。不要把返回的完整顶点数组中的未选顶点当成可信点云。相机与尺度保持 M4 冻结值。
 
 必要大输入仍依赖原 R1 与 M4 路径；`evidence/FULL_INPUT_INDEX.json`、归档中的 `runs/inputs/*/AUDIT.json` 和 `runs/observations/*/*/INDEX.json` 记录准确路径、哈希、帧、原始面和像素身份。禁止清理这些输入来复现实验。`evidence/SOURCE_LOCK.json` 记录真实源码提交与哈希；历史函数经 AST 原样加载，避免历史主程序副作用。
 
-二维留出只表示没有进入本轮主体二维目标；相机/M4、HERO 模型的原 Target/Support 可能含同帧，因此不能称端到端盲测。偏置默认保守先验，不能解读为已准确恢复真实 HERO 深度误差。
+二维留出只表示没有进入本轮主体二维目标；相同帧可能参与相机/M4、HERO Target/Support 及 Clean，因此不是独立数据留出，也不能称端到端盲测。偏置默认保守先验，不能解读为已准确恢复真实 HERO 深度误差。
+
+上传的 `evidence/CORE_RESULTS.tar.gz` 保存全量紧凑观测、初体、裁切映射、补充 M4 轨迹及历史源码；`ARCHIVE_MANIFEST.json` 逐文件列 SHA。新检出目录可用 `tar -xzf evidence/CORE_RESULTS.tar.gz -C .` 解包审查。原始回执含本机绝对路径，原图图集再生成和严格消费校验仍依赖这些上游路径；解包不等于已经迁移所有依赖。完整 HTML/PNG 图集保留于上述本地目录，仓库提交精选图。

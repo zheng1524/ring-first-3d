@@ -8,6 +8,10 @@ def main():
  # Preserve the actual small historical code definitions, not only pointers.
  paths.extend(p for p in (T/'runtime/pinned').rglob('*.py'))
  paths.extend(p for p in (T/'runtime/pinned').rglob('*.json')if p.name in ['PROTOCOL.json','DECISION.json','config.json','source_lock.json','SOURCES_FROZEN.json'])
+ # The new zero-HERO M4 supplements are local scientific evidence too: protect
+ # actual matched tracks, independently triangulated points and Ring priors.
+ supplement=T/'runtime/pinned'/BASE/'experiments/TASK-V6-R1-M4-REGISTRATION-MAINLINE-002/runs'
+ paths.extend(p for p in supplement.rglob('*')if p.is_file()and p.suffix in ['.npz','.json'])
  paths=sorted(set(paths));records=[dict(path=str(p.relative_to(T)),sha256=sha(p),bytes=p.stat().st_size)for p in paths]
  with tarfile.open(archive,'w:gz',compresslevel=6)as tf:
   for p in paths:tf.add(p,arcname=str(p.relative_to(T)),recursive=False)

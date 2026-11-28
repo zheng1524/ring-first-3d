@@ -1,0 +1,101 @@
+{
+  "groups": 39,
+  "videos": 79,
+  "original_hero_videos": 62,
+  "zero_hero_videos_audited": 17,
+  "hero_sources": 1153,
+  "configurations": 118,
+  "single": 79,
+  "joint": 39,
+  "kinds": {
+    "DXY_MASK_HERO": 97,
+    "DXY_MASK_2D_ONLY": 21
+  },
+  "bases": {
+    "RELIABLE": 29,
+    "WEAK": 68,
+    "UNOBSERVABLE": 21
+  },
+  "base_applied": 29,
+  "actual_cut_with_cap": 28,
+  "failed_slots": 0,
+  "joint_improves_mean_single_held": 9,
+  "joint_comparison_N": 39,
+  "joint_minus_single_median": -0.004166666666666652,
+  "all_config_fixed_depth_samples": 147584,
+  "all_config_invalid_depth_samples": 2709,
+  "bias_abs_max_mm": 0.1366352461127498,
+  "lower_joint_objective_at_feasible_single_parameters": 9,
+  "selected_figures": [
+    [
+      "BROAD",
+      "GP_IIa_14.0mm_closed_R5_single_refY",
+      "005"
+    ],
+    [
+      "STALK",
+      "GP_Ip_12.0mm_closed_R10_single_refY",
+      "JOINT"
+    ],
+    [
+      "LOWEST_HELD",
+      "GP_IIa_22.0mm_closed_R10_single_refY",
+      "JOINT"
+    ],
+    [
+      "MAX_CUT_CONFLICT",
+      "GP_IIa_5.2mm_closed_R10_single_refY",
+      "001"
+    ]
+  ],
+  "lowest_held": {
+    "group": "GP_IIa_22.0mm_closed_R10_single_refY",
+    "configuration": "JOINT",
+    "status": "COARSE_INIT_COMPLETE",
+    "input_kind": "DXY_MASK_HERO",
+    "videos": [
+      "GP_IIa_22.0mm_closed_R10_single_refY_006",
+      "GP_IIa_22.0mm_closed_R10_single_refY_005"
+    ],
+    "sources": 21,
+    "fit_IoU": 0.5598986496901744,
+    "held_IoU": 0.5318027484024725,
+    "initial_held_IoU": 0.6346256301087408,
+    "parent_held_IoU": 0.5318027484024725,
+    "fixed_depth_N": 1344,
+    "valid_depth_N": 1299,
+    "invalid_depth_N": 45,
+    "bias_abs_median_mm": 0.018710888390735977,
+    "bias_abs_max_mm": 0.028141157678677715,
+    "base_status": "WEAK",
+    "base_applied": false,
+    "base_unique_targets": 21,
+    "base_cut_side_trusted_N": 11,
+    "base_cut_side_trusted_fraction": 0.00818452380952381,
+    "base_negative_p95_mm": 0.2980902843586546,
+    "mother_faces": 1280,
+    "mother_fully_below_plane_faces": 0,
+    "inferred_cap_faces": 0,
+    "corrected_CAD_conflict_N": 0,
+    "original_CAD_conflict_N": 0,
+    "corrected_negative_Z_N": 0,
+    "shape_condition": 2.018209714007574,
+    "seconds": 3.445597348996671,
+    "GT": "NOT_EVALUABLE",
+    "full_mesh_held_IoU": 0.5323950204062986,
+    "mesh_depth_invalid_N": 52,
+    "analytic_mesh_Z_largest_source_p95_mm": 0.007512029453309309,
+    "CAD_inside_model_vertex_N": 20,
+    "CAD_vertex_penetration_max_mm": 0.4973110556602478,
+    "DXY_available_frames": 20,
+    "DXY_total_frames": 20,
+    "DXY_missing_FIT_frames": 0
+  },
+  "bias_abs_median_mm": 0.01212422435212876,
+  "DXY_available_unique_frames": 758,
+  "unique_frames": 790,
+  "full_mesh_joint_improves_single": 10,
+  "CAD_inside_vertex_configurations": 62,
+  "CAD_vertex_penetration_max_mm": 0.5871779322624207,
+  "analytic_mesh_Z_largest_source_p95_mm": 0.11845695332921288
+}
