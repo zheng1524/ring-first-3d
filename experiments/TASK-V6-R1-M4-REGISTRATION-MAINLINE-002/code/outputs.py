@@ -35,7 +35,9 @@ def outputs(g):
  for v in asset['videos']:
   connection=reg['videos'][v['case']];t=connection['T'];entry=dict(case=v['case'],status=connection['status'],T_local_to_common=t,path_to_reference=connection['path'],local_camera=v['camera'],local_camera_sha256=v['camera_sha256'],common_cameras=None,camera_coordinate_frame=None)
   if t is not None:
-   cams=np.load(v['camera']);p=out/'cameras'/(v['case']+'.npz');p.parent.mkdir(exist_ok=True);globalcams=np.array(t)@cams['c2w'];np.savez_compressed(p,c2w=globalcams,K=cams['K'],ids=cams['ids'],units='mm',coordinate_frame='COMMON');entry.update(common_cameras=str(p),common_cameras_sha256=sha(p),camera_coordinate_frame='COMMON')
+   cams=dict(np.load(v['camera']));p=out/'cameras'/(v['case']+'.npz');p.parent.mkdir(exist_ok=True);globalcams=np.array(t)@cams['c2w'];export=dict(cams,c2w=globalcams,units='mm',coordinate_frame='COMMON')
+   if 'points'in cams:export['points']=transform(cams['points'],np.array(t))
+   np.savez_compressed(p,**export);entry.update(common_cameras=str(p),common_cameras_sha256=sha(p),camera_coordinate_frame='COMMON',landmark_coordinate_frame='COMMON',landmark_key='points',landmark_track_id_key='point_track_ids',landmark_track_namespace=v['case'])
   videos.append(entry)
  for ordinal,source in enumerate(asset['sources']):
   t=reg['videos'][source['case']]['T'];rec=dict(source=source,status='MISSING',origin='UNCONNECTED',error='NO_VIDEO_TRANSFORM')
